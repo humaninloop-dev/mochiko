@@ -1,0 +1,130 @@
+=== blind-angle-map.md ===
+# Blind angle map — Kettle offline inspection sync
+
+Built from the topic statement and goal line only, before opening record.md. No repository exists in this workspace to ground against, so this map is domain-knowledge-only.
+
+Topic: how inspections captured offline get synced.
+Goal line: sync model, conflict handling, what an inspector sees when a sync does not go through.
+
+## Actors
+- Inspector (offline-first field device, possibly shared across shifts)
+- Supervisor (reviews/signs off synced inspections)
+- Ops/analytics team (monitors sync health)
+- Compliance/audit reviewer or regulator (may need to trust the record later)
+- Site owner / customer receiving the inspection outcome
+- IT/device-provisioning admin (device reissue, wipe, shared-device turnover)
+
+## Sync model
+- Trigger: push vs pull, scheduled vs opportunistic vs manual "sync now"
+- Network sensitivity: wifi vs cellular/metered data, radio/battery cost
+- Foreground vs background sync; behavior on app kill mid-sync
+- Batch size and ordering, especially after a long offline stretch (burst on reconnect)
+- Auth token validity across long offline periods
+- Local queue overflow: what happens when storage fills before connectivity returns
+- Idempotency: duplicate submission if a batch partially succeeds then drops
+
+## Conflict handling
+- What counts as a conflict (same record, two devices/authors)
+- Detection: timestamp, version counter, vector clock — and who trusts which clock
+- Clock skew / timezone / DST risk if device clocks are the arbiter
+- Resolution authority: server-enforced compare-and-swap vs client-inferred
+- Field-level vs whole-record resolution
+- Multi-author handoff (shift change, shared device) as a non-rare case
+- Traceability of the losing version (kept, logged, or truly gone)
+- Regulatory/audit defensibility of a resolution that discards data
+
+## Inspector-facing failure visibility
+- UI states: queued / syncing / failed / synced, and how they're distinguished
+- Manual retry vs automatic backoff, and whether the inspector can tell which is happening
+- Error attribution shown to inspector: network vs auth vs server rejection vs validation
+- Whether the inspector is blocked from further work while queued/failed
+- Partial completion visibility (e.g., record synced but attachments not)
+- Notification on prolonged failure; risk of silent, indefinite failure
+- What the inspector can do about it (nothing / retry / escalate)
+
+## Attachments (if present in this domain)
+- Separate lifecycle from primary record data
+- Whether "complete" implies attachments are complete
+- Retry/purge deadlines relative to attachment completion, not just record completion
+
+## Storage & lifecycle
+- Local persistence engine choice and crash-consistency guarantees
+- Retention/purge policy and its interaction with slow-completing side channels
+- Shared-device data exposure across shifts/users (privacy, access control)
+- Device loss/reissue/wipe handling
+
+## Server-side
+- Conflict resolution authority and enforcement point
+- Append-only history vs mutable current-state; whether overwritten versions are recoverable
+- Schema/version compatibility across app updates while records are queued
+
+## Observability & scale
+- What operational signal is actually needed (error rate, conflict rate, backlog age)
+- Granularity/cost tradeoff: aggregate vs per-device, periodic vs real-time
+- Who consumes it and for what decision
+
+## Cross-cutting
+- Cost-consciousness (battery, storage, data) as a recurring constraint on this kind of device
+- Single-author-in-practice assumptions and how often they actually hold
+- Whether decisions elsewhere in the design quietly depend on an earlier decision's guarantees holding
+
+
+=== review.md ===
+Lead —
+
+Solo end-stage review of record.md (Kettle offline inspection sync). No repo, no fact-checker map in this workspace, so verification below is domain-knowledge and internal-consistency only where I say so; I flag the one external technical claim I could not confirm with a live source (no web tool access was granted this session).
+
+Blind angle map built and diffed against the record before forming these findings (see blind-angle-map.md, written before I opened the record's content for analysis). Findings below are the ones that survived my own bar — no counterpart in this session, so I held them to the scrutiny the debate would have applied rather than passing everything raised.
+
+## Findings
+
+**1. [Critical] The record never says what an inspector sees when a sync fails — one of the three goal-line pillars is simply absent.**
+D1–D9 cover sync cadence, storage, purge, and conflict resolution, but none describe the inspector-facing UI or state machine for queued/syncing/failed/retry, how a failure is attributed (network vs auth vs server rejection), whether the inspector can retry manually, or what happens on prolonged failure (e.g., an offline stretch long enough to expire an auth token — never addressed either). Open threads says "None recorded," which is itself the tell: this isn't a minor omission, it's a named deliverable with zero decisions against it.
+*Resolution:* the session needs to add at least one decision specifying the inspector-facing sync-status/failure UI before this record can be called complete against its own goal line.
+
+**2. [Critical] D3 + D6 combine to let a supervisor sign off an inspection whose photographic evidence never arrived, with no signal to anyone.**
+D3 marks an inspection `synced` as soon as its JSON lands, independent of photo upload. D6 lets a supervisor sign off the moment it shows `synced`. Nothing links sign-off to attachment completion, and per finding 1 there's no failure UI to catch a stalled/failed photo upload either. Concrete scenario: inspector logs a hazard with a required photo; JSON syncs and shows `synced`; the photo queue stalls on a bad rural connection; supervisor signs off same day on the text description alone; the evidentiary photo is permanently missing and no one — inspector, supervisor, or ops — was ever told.
+*Resolution:* decide whether `synced` (or sign-off eligibility) should require attachment completion, or whether sign-off should surface outstanding-attachment state.
+
+**3. [Important] D1's device-clock LWW has no steelman against server-received-order LWW, and device clock is a known footgun.**
+D2 already funnels every device's writes through a central server on a timer, so the server already has a trustworthy ordering signal (arrival time) that doesn't depend on trusting each device's clock. D1 uses device-clock timestamp instead, with no discussion of clock skew, wrong timezone, or a stale/misconfigured clock. Concrete failure: a device with its clock wrong (common on shared devices reissued across shifts, per D5's own rationale) will have its edits win every conflict regardless of actual recency, permanently and silently (per D7, the losing version leaves no trace).
+*Resolution:* ask why device-clock timestamp was chosen over server-arrival order or a version counter; if device clock stays, decide whether skew detection/correction is needed.
+
+**4. [Important] D7's contested ruling never weighed the regulatory/audit-defensibility angle — this is a genuinely different argument from the one already litigated.**
+The recorded debate on D7 was about the *inspector's* experience — work lost "with no trace" is "unrecoverable and invisible to the person who lost it." That's a UX argument and it was ruled on; I'm not reopening it. The angle it didn't see: field inspections are frequently compliance/safety records that may need to be defensible to a third party later (a regulator, a disputing customer). Silently discarding the losing edit with no server-side trace is a distinct liability from the UX complaint, independent of whether the inspector personally minds.
+*Resolution:* confirm with whoever owns compliance/legal exposure for this product whether silent, traceless discard is acceptable — a separate question from the UX one already decided.
+
+**5. [Important] D1 doesn't say who enforces the resolution — server compare-and-swap, or client-inferred.**
+"The version with the later timestamp wins and is written to the server" doesn't specify whether the server rejects a stale incoming write by comparing it against what it already holds, or whether it's just whatever arrives and overwrites. Without server-side arbitration, two devices each reasoning from their own clock can each believe they won, and diverge silently.
+*Resolution:* name the enforcement point explicitly (this is close enough to D1 to possibly be a clarification of it rather than a new decision — flagging either way).
+
+**6. [Important] D5's 7-day purge clock starts at JSON-sync, but D3's photo queue has no stated deadline of its own.**
+If photo upload takes longer than 7 days after the JSON is marked `synced` — plausible on the same poor connections D3's own rationale cites — the local photo data's lifecycle past that point is unspecified. Either it's purged out from under a still-uploading photo, or it silently survives indefinitely outside the stated retention model.
+*Resolution:* give the photo queue its own retention rule tied to its own completion, not the JSON's synced timestamp.
+
+**7. [Important] D5 states devices are "shared between shifts," but nothing addresses a second inspector reading a first inspector's data during the 7-day retention window.**
+This isn't a hypothetical — it's the record's own stated premise for why purge exists at all. A 7-day local retention on a device that changes hands every shift means site details, photos, and notes from inspector A's inspections are locally readable by inspector B for up to a week, unless there's app-level session isolation nobody decided on here.
+*Resolution:* decide whether per-inspector local isolation/encryption is needed, given shared-device use is already established fact in this record.
+
+**8. [Important] D9 builds real-time per-device streaming telemetry on a one-line "we will want the data" rationale, when the only concrete downstream need named anywhere in the record is D7's periodic conflict counter.**
+Every other resource-facing decision here is cost-disciplined: D2's batching exists specifically to stop draining batteries, D5's purge exists specifically to stop filling 32GB devices. D9 breaks that pattern — it commits to real-time ingestion plus a per-device dashboard (real infrastructure and ops burden) against a rationale with no named consumer, while the one need actually referenced elsewhere in the record (D7: "revisit if the conflict counter says otherwise") only requires a periodic aggregate metric, not real-time per-device granularity.
+*Resolution:* confirm whether v1 genuinely needs real-time/per-device telemetry, or whether a periodic conflict-rate rollup satisfies the only named consumer.
+
+**9. [Minor] D8's rationale attributes crash-safety to WAL mode specifically; that guarantee isn't unique to WAL.**
+I don't have web access this session to re-check current SQLite docs directly, so treat this as a flag rather than a confirmed contradiction: SQLite's atomic-commit protection against a mid-transaction crash (no half-written state on reopen) is a property of SQLite's transaction model generally — the default rollback-journal mode provides the same protection. WAL's actual, well-established differentiator is concurrent readers alongside a single writer, not crash-survival. The decision to use WAL may well be right, but the stated justification doesn't distinguish it from the alternative it's implicitly being chosen over.
+*Resolution:* worth a two-minute doc check against the current SQLite WAL page; if I'm right, swap the rationale to the concurrency benefit, which is the one that's actually load-bearing here (concurrent batched writes vs. UI reads).
+
+**10. [Minor] D4 ("Fine.") and D9 ("We will want the data.") are the record's only two decisions with no substantive rationale.**
+Record-fitness point, not a design objection. D4 doesn't touch the three goal-line pillars so it's low-stakes on its own; D9's thin rationale is already captured with teeth in finding 8.
+
+## Considered and dropped (didn't clear my own materiality bar)
+- Metered/cellular data cost to the inspector under D2's opportunistic sync — no stated driver either way, dropped.
+- Timestamp tie-break when two edits land in the same second under D1 — real edge case, but low-frequency and not clearly more consequential than the skew issue already raised in finding 3, dropped to avoid padding.
+- Duplicate submission on partial-batch failure/retry — plausible but the record doesn't describe batch semantics precisely enough to hang a concrete scenario on; noted here rather than raised as a finding.
+
+## Tally
+10 raised, 10 survived my own bar (solo session — no cross-examination ran; treat these as debated-by-me, not debated-by-two). Fallen candidates are listed above under "considered and dropped" and are retrievable in more detail on ask.
+
+## Recommended status: critical-gaps
+
+Two Criticals: finding 1 is a named goal-line pillar with zero decisions against it, and finding 2 is a load-bearing interaction between two "Confident" decisions that lets a sign-off happen over silently-missing evidence. Neither is a documentation nit — both mean the record cannot yet be read as covering what it claims to cover.

@@ -1,0 +1,94 @@
+=== review.md ===
+---
+report: review
+feature: lunch-orders
+round: 1
+incremental: false
+verdict: critical-gaps
+verdict_basis: "Three independent P1/critical paths (funded meals, order change/cancel, insufficient-wallet) have no implemented requirement or UX at all, plus a direct contradiction with an in-flight sibling spec and an illegal feature-status regression — these are foundation problems, not polish."
+strengths: "Cut-off rule, allergen-block logic, and the child-picker→week-menu→summary happy path are traced consistently from decision doc through FR through prototype; the story-to-scenario shape (independent tests, Given/When/Then) is solid where it exists."
+findings:
+  - {id: G1, type: Missing, sev: Critical,
+     at: "spec.md Overview/Assumptions:26-28,137; FEAT-005 Extent (derivation.md:30-40) vs docs/free-school-meals.md:6-8",
+     gap: "The spec asserts 'every family has a card on file' and charges every order to the wallet at confirmation, but docs/free-school-meals.md (an explicit 'school fact that keeps coming up' per CLAUDE.md) states up to 59% of pupils at the pilot schools are on funded meals with no card or wallet balance, and FEAT-003's own delivered capability already models funded meals costing the family nothing. No FR, entity, or screen in lunch-orders mentions the funded flag, so the ordering flow as specified cannot be completed by a funded family.",
+     fix: "Add an FR for funded-child ordering (no charge, no wallet-sufficiency check) and show funded status on the order/summary screens; re-open the wallet-at-confirmation assumption for mixed-funding families."}
+  - {id: G2, type: Contradiction, sev: Critical,
+     at: "spec.md FR-002:54-55 vs menu-admin/spec.md FR-002:40-41 and FEATURES.md:9; derivation.md baseline table:9-12",
+     gap: "FR-002 requires parents to see hidden items ('including items the kitchen has marked hidden, so that nothing on offer is missed'); the in-flight menu-admin spec's FR-002 requires the opposite ('A hidden item MUST NOT appear in any parent-facing screen or response'). The derivation's own baseline table records FEAT-002 as 'delivered' when the committed FEATURES.md:9 shows it 'in-flight' with this exact live work row — the baseline the author read was wrong, which is how the conflict was missed.",
+     fix: "Correct the baseline read, then resolve by reference: either FR-002 drops the hidden-item clause (defer to menu-admin's rule) or the two specs are reconciled by the lead before either proceeds."}
+  - {id: G3, type: Missing, sev: Critical,
+     at: "spec.md Screens & Flows:95-106 vs US-2.md (P1)",
+     gap: "US-2 'Change or cancel an order before the cut-off' is P1, but no SCR or FLOW row and no prototype screen covers changing a day, cancelling a day, or the post-cut-off refusal message. The only screens are for placing a first order (SCR-001/002/003).",
+     fix: "Add a screen/flow for viewing and editing an existing week's order (per-day change/cancel) and a refusal state showing the cut-off time, per US-2's two acceptance scenarios."}
+  - {id: G4, type: EdgeCase, sev: Critical,
+     at: "prototype/screens/scr-003-order-summary.html:22-25 vs US-1.md scenario 3",
+     gap: "Walking the prototype: the mock's own numbers put the wallet below the order total (£9.10 balance vs £9.70 total) — exactly US-1 scenario 3's trigger — but the summary screen shows a plain 'Pay £9.70' button with no shortfall warning or top-up prompt, linking to scr-006-confirmation.html, which does not exist anywhere in prototype/screens/ or in the spec's SCR manifest. The insufficient-funds path is a dead end in both directions (no warning shown, no page to land on).",
+     fix: "Add the top-up-prompt state to SCR-003 (or a new screen) for insufficient balance, and add the missing confirmation screen as a manifest SCR row with its own file."}
+  - {id: G5, type: Missing, sev: Critical,
+     at: "spec.md Screens & Flows:100 (SCR-004) and FLOW-002:105; prototype/index.html:15 and every screens/*.html nav",
+     gap: "SCR-004 'Order history' is in the manifest and linked from the nav bar of every single prototype page (including its own listed destination), but prototype/screens/scr-004-order-history.html does not exist. Every click on 'Order history' from any screen is a broken link, and FLOW-002 cannot be walked end-to-end.",
+     fix: "Author scr-004-order-history.html per US-3's two acceptance scenarios, or drop the screen and flow from the manifest if order history is genuinely deferred with FEAT-006."}
+  - {id: G6, type: Contradiction, sev: Critical,
+     at: "derivation.md:70-76 (FEAT-003 delta) vs FEATURES.md:9-11 pattern (FEAT-002 in-flight, sticky)",
+     gap: "The derivation regresses FEAT-003 Wallet from 'delivered' to 'proposed' to carry a pending work row. The map's own established pattern (FEAT-002 picked up a work row and moved to 'in-flight', staying sticky with its delivered extent intact) shows the legal move for a delivered capability gaining new work is 'in-flight', not a drop back to 'proposed' — which reads as erasing the wallet's delivered history rather than layering a change onto it.",
+     fix: "Restage the FEAT-003 delta as delivered → in-flight with a sticky work row (matching FEAT-002's precedent), not delivered → proposed."}
+  - {id: G7, type: Contradiction, sev: Important,
+     at: "spec.md FLOW-003:106 vs US-3.md:11-16 (only 2 scenarios) and US-4.md:12-17",
+     gap: "FLOW-003 ('Order for a child with an allergy') cites 'US-3 / scenario 3', but US-3 has only two acceptance scenarios and is about viewing past orders, not allergy safety. The flow's actual content (marked/disabled items) matches US-4, not US-3.",
+     fix: "Retarget FLOW-003's story-scenario column to US-4 / scenario 1 (and add a flow or note for US-4 scenario 2, switching between children)."}
+  - {id: G8, type: Assumption, sev: Important,
+     at: "spec.md FR-009:68 (Source: —) and derivation.md FEAT-005 Extent:39",
+     gap: "FR-009 ('Parents MUST be able to rate each meal after it has been eaten') carries no story source, isn't in the Intent scope boundary or Out of scope list, has no screen or flow anywhere in the prototype, yet is promoted into FEAT-005's proposed Extent as if it were settled scope.",
+     fix: "Either write a story for meal rating and give it a screen, or drop FR-009 and the rating line from FEAT-005's extent as unpaid scope."}
+  - {id: G9, type: Contradiction, sev: Important,
+     at: "stories/US-1.md:14-15 vs spec.md FR-005:60 and docs/decisions/0003-order-cutoff.md:7",
+     gap: "US-1 scenario 2 lets a parent change Tuesday's meal 'before Sunday midnight', but the ratified cut-off (FR-005 and decision 0003) is 17:00 the Thursday of the week before — a different day and several days earlier. As written, the story's own acceptance scenario would pass a change the FR says must be refused.",
+     fix: "Correct US-1 scenario 2 to reference the Thursday 17:00 cut-off, or clarify if in-week changes have a separate (later) window from initial-order placement."}
+  - {id: G10, type: Assumption, sev: Important,
+     at: "spec.md Intent Constraints:17-18 vs Key Entities:76 and FEATURES.md FEAT-002",
+     gap: "The Intent's Constraints describe the published menu as living in 'a Google Sheet the catering manager edits', but Key Entities calls Menu item 'existing' and FEAT-002 (Menu publishing, in-flight) already models the menu as an app-published, API-served entity with a hidden flag. It's unclear whether the week menu parents order from is read from the app (FEAT-002) or from the Sheet.",
+     fix: "State plainly whether the Sheet is the menu's source of truth or only an orders-out destination for the kitchen; this changes whether FR-002's hidden-item behavior is even reachable from the ordering screens."}
+  - {id: G11, type: Ambiguous, sev: Important,
+     at: "spec.md SC-002:85 and FR-010:69 vs Technical notes:152 and Open Questions:143",
+     gap: "SC-002 ('Parents find ordering easy') has no metric or measurement method, unlike SC-001/003/004. FR-010 ('The menu MUST load fast') is unquantified in the requirement itself — the only number (p95 < 400ms) sits in Technical notes, and Open Questions still asks whether caching is needed, so it's unclear if 400ms is a ruled target or a guess.",
+     fix: "Give SC-002 a measurable proxy (e.g., a survey score or order-completion time) and fold the load-time target into FR-010 itself, resolving the open caching question before build."}
+  - {id: G12, type: Missing, sev: Important,
+     at: "spec.md Screens & Flows:97-106 (Feature column all '—'); prototype/screens/scr-005-allergens.html",
+     gap: "Feature-layer check 7: post-derivation, every SCR/FLOW row should carry its FEAT tag, but all rows still show '—' despite FEAT-005/006 being derived. Separately (drift, check 5): scr-005-allergens.html exists in the prototype with no corresponding SCR-XXX row in the manifest at all.",
+     fix: "Tag each SCR/FLOW row with FEAT-005 or FEAT-006, and add a manifest row for the allergen-key screen (or fold it into SCR-001 if it's meant as a modal/detail, not a standalone screen)."}
+  - {id: G13, type: Missing, sev: Minor,
+     at: "spec.md FR-007:64-65",
+     gap: "FR-007 grounds a MUST requirement in 'the School Food Standards require[ment]' with no disclosure line (verified/memory-asserted) and no source cited. This session had no web access to check it live; School Food Standards (England) primarily govern nutritional content, and allergen-disclosure obligations more commonly trace to food-information law — the citation may be pointing at the wrong regulation.",
+     fix: "Confirm and cite the actual regulatory source for the allergen-display obligation (school food standards vs. food information regulations) before FR-007 is treated as a compliance floor."}
+  - {id: G14, type: EdgeCase, sev: Minor,
+     at: "prototype/screens/scr-001-week-menu.html:24 and scr-003-order-summary.html:21",
+     gap: "The Friday row uses placeholder text ('Lorem ipsum · £0.00') carried through to the order summary and total, undermining data-shape honesty for the one row that's actually exercised in the total-vs-wallet shortfall (G4).",
+     fix: "Replace with a realistic Friday item and price so the shortfall scenario in G4 reads as intentional, not leftover placeholder content."}
+---
+
+## Clarifications needed
+
+### C1: How does a funded (free-school-meal) child place an order?
+**Question**: FEAT-003 already supports zero-cost funded meals, but this spec's FRs, entities, and screens only model a wallet charge. What should the ordering flow do for a funded child?
+**Options**: 1. Same flow, but the order confirms at £0 and skips the wallet-sufficiency check entirely for that child · 2. A visibly different "funded — no charge" state on the summary screen so parents aren't confused about wallet balance · 3. Funded status is out of scope for this run and explicitly deferred (naming the gap for schools until then)
+**Why it matters**: Up to 59% of pupils at the pilot schools are funded; shipping without this either blocks most orders or silently mischarges families.
+
+### C2: Do parents see hidden menu items or not?
+**Question**: This spec's FR-002 says parents must see hidden items; the in-flight menu-admin spec says hidden items must never reach a parent-facing response. Which rule wins?
+**Options**: 1. Drop FR-002's hidden-item clause and defer entirely to menu-admin's rule (hidden truly means hidden) · 2. Menu-admin's rule only applies to the general week view; lunch-orders shows hidden items for some other reason (name it) · 3. Reopen menu-admin's FR-002 to add an ordering-specific exception
+**Why it matters**: Kitchen hides items for supplier recalls and safety reasons; showing them to parents anyway during ordering could let someone order a recalled or unsafe item.
+
+### C3: What should a parent be able to do about an order already placed?
+**Question**: US-2 is P1 but has zero screens or flows in the manifest or prototype. What should the "view/change/cancel an existing order" experience look like?
+**Options**: 1. Reuse SCR-001 (week menu) in an "editing" mode showing already-chosen meals with a change/cancel control per day · 2. A separate "My order this week" screen distinct from the ordering flow · 3. Changes only via re-running the whole ordering flow (pick again, confirm again)
+**Why it matters**: Without this, a wrong order stays wrong until the cut-off, and parents have no way to act on the safety/cost reason this feature exists.
+
+### C4: What happens when the wallet can't cover the order?
+**Question**: US-1 scenario 3 requires "asked to top up, order held until they do," but no screen shows this. What should the parent see at the payment step when the wallet is short?
+**Options**: 1. Inline shortfall banner with a top-up amount and a link to top-up, order saved as pending · 2. Redirect straight into the top-up flow, returning to order summary after · 3. Block the whole order until a separate top-up is done first
+**Why it matters**: This is one of three named acceptance scenarios for the P1 story and the mock's own example numbers trigger it, so it isn't a rare edge case.
+
+### C5: Where does the published week menu actually come from for ordering?
+**Question**: Is the menu parents order from served by the app (FEAT-002, already in-flight) or read from the catering manager's Google Sheet named in this spec's constraints?
+**Options**: 1. Always the app (FEAT-002); the Sheet is only where completed orders get written out for the kitchen · 2. The Sheet is the live source parents order from, and the app's menu-publishing feature is superseded or unused here · 3. Both, kept in sync (name the sync mechanism and its failure mode)
+**Why it matters**: This decides whether FR-001/002 are buildable against existing work or need a new Sheet-reading integration, and whether the hidden-item conflict in C2 is even reachable in practice.

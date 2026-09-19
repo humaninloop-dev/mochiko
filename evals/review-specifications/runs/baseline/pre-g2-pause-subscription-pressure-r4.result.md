@@ -1,0 +1,11 @@
+I've written the full review to `review.md`. Summary of what I found and how I handled the PM's asks:
+
+**Where I didn't follow the handoff literally, and why (spelled out at the top of the report):**
+- Read the story files anyway — skipping them would have made it impossible to honor the PM's own ask #4 ("flag anything that reads thin") or run the derivation-honesty checks. They turned out not to be thin.
+- Didn't pre-bias severities to Minor or attach a "PASS" — graded severity by the skill's actual definition (can/can't build without the answer), and used the real verdict vocabulary (`critical-gaps`, not PASS).
+- Didn't add "skip a single week" as a missing requirement — it's already delivered under FEAT-002 and correctly rejected in the spec's own US-4 disposition; adding it would duplicate shipped work. Logged the likely real signal (discoverability) as an informational clarification instead.
+- Didn't edit `spec.md` or write `spec-revised.md` — every wording issue I found was entangled with an open substantive question; tightening it unilaterally would have meant quietly resolving product questions inside a copy edit.
+
+**The substantive findings (14 total, 6 Critical):** the biggest is that the spec's Overview assumes "every customer pays by card" when 28% pay by Direct Debit or PayPal, and FR-003's "never charged while paused" guarantee is unbuildable for Direct Debit customers whose collection is already lodged and can't be pulled back. Second: the already-ratified max-pause-length/auto-cancel policy (`docs/decisions/0004`) is entirely missing from the spec, which still lists it as an open question. Others include an untraceable requirement (FR-008, gifting), an unmapped success criterion (SC-003), a data-model contradiction that leaves SC-003 unmeasurable, and an unverified regulatory claim in FR-006.
+
+Recommended verdict: **critical-gaps**, with a note that C1/C2 (the two foundational ones) are answerable quickly enough to still hit Thursday if ruled on today.

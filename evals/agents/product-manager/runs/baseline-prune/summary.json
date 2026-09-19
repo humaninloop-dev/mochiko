@@ -1,0 +1,2264 @@
+{
+ "persona": "product-manager",
+ "pass": "nopersona-prune",
+ "arm_model": "opus",
+ "replicates": 3,
+ "judged": [
+  "product-manager.quality-standards.map-before-invention-extend-beats-mint",
+  "product-manager.quality-standards.map-before-invention-read-first",
+  "product-manager.quality-standards.one-breath-granularity-each",
+  "product-manager.quality-standards.recommendations-not-rulings-advise",
+  "product-manager.quality-standards.system-s-language-feature",
+  "product-manager.quality-standards.verdicts-reasons-every-no",
+  "product-manager.what-embrace.deferral-costs-shown-at",
+  "product-manager.what-embrace.entries-outlive-every-spec",
+  "product-manager.what-embrace.entry-whose-honest-state",
+  "product-manager.what-embrace.reading-map-before-proposing",
+  "product-manager.what-embrace.saying-no-early-writing",
+  "product-manager.what-embrace.splitting-feature-moment-its",
+  "product-manager.what-reject.extents-flatter-claiming-more",
+  "product-manager.what-reject.features-defined-story-clusters",
+  "product-manager.what-reject.grading-own-map-writes",
+  "product-manager.what-reject.making-selection-yourself-however",
+  "product-manager.what-reject.pseudo-features-minted-delivery",
+  "product-manager.what-reject.silent-rejections-story-dropped",
+  "product-manager.where-remit-ends.disagreement-goes-to-user",
+  "product-manager.where-remit-ends.how-well-story-written",
+  "product-manager.where-remit-ends.never-edit-story-craft-verdicts",
+  "product-manager.where-remit-ends.own-which-what-capabilities"
+ ],
+ "model_native": [
+  "product-manager.quality-standards.map-before-invention-read-first",
+  "product-manager.quality-standards.one-breath-granularity-each",
+  "product-manager.what-embrace.entries-outlive-every-spec",
+  "product-manager.what-embrace.saying-no-early-writing",
+  "product-manager.where-remit-ends.disagreement-goes-to-user",
+  "product-manager.where-remit-ends.how-well-story-written",
+  "product-manager.where-remit-ends.never-edit-story-craft-verdicts"
+ ],
+ "total_cost_usd": 5.6838,
+ "judge_cost_usd": 1.3828,
+ "judge_calls": 17,
+ "runs": [
+  {
+   "golden": "p1-derive-from-task-stories",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "product-manager",
+    "persona_sha256": "d8129e3d25350d91",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-mykdkivs/ws/.mochiko/specs/time-and-attendance/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-mykdkivs/ws/FEATURES.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-mykdkivs/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-mykdkivs/ws/BACKLOG.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-mykdkivs/ws/.mochiko/specs/index.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-mykdkivs/ws/.mochiko/features/FEAT-001-rota-building.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-mykdkivs/ws/.mochiko/features/FEAT-002-staff-availability.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-mykdkivs/ws/.mochiko/features/FEAT-003-time-off-requests.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.294757,
+   "num_turns": 10,
+   "duration_ms": 110423,
+   "coverage": [
+    {
+     "id": "product-manager.quality-standards.map-before-invention-extend-beats-mint",
+     "verdict": "reflected",
+     "evidence": "US-008 is already half-recorded in `BACKLOG.md` as the SQLite sidecar item dated 2026-05-30; I would extend that item rather than open a second one, so the two do not drift apart."
+    },
+    {
+     "id": "product-manager.quality-standards.map-before-invention-read-first",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `.mochiko/specs/time-and-attendance/spec.md`, `FEATURES.md`, `README.md`, `BACKLOG.md`, `.mochiko/specs/index.md`, `.mochiko/features/FEAT-001-rota-building.md`, `.mochiko/features/FEAT-002-staff-availability.md`, `.mochiko/features/FEAT-003-time-off-requests.md` ... Phase 0 \u2014 Establish the rule the map is built by (already done from reading) ... Phase 1 \u2014 Classify every story before writing anything"
+    },
+    {
+     "id": "product-manager.quality-standards.one-breath-granularity-each",
+     "verdict": "reflected",
+     "evidence": "Hook: *a staff member taps in at the start of a shift and out at the end, with breaks, producing a recorded worked time against the shift.* Extent to write: button appears only within 30 minutes of a scheduled shift (US-001); break start/end while clocked in, deducted from worked time (US-002); a record is always tied to a scheduled shift. [FEAT-007] Extent kept deliberately thin."
+    },
+    {
+     "id": "product-manager.quality-standards.system-s-language-feature",
+     "verdict": "reflected",
+     "evidence": "I would work through all eleven story IDs and assign each to exactly one destination \u2014 a capability, an amendment to an existing capability, the backlog, or an explicit exclusion. This is the actual derivation; the file edits are bookkeeping afterwards."
+    },
+    {
+     "id": "product-manager.quality-standards.verdicts-reasons-every-no",
+     "verdict": "reflected",
+     "evidence": "So I would reject both options the engineering lead offered, and say so to the founder in one line each rather than quietly ignoring them: The 'Sprint 14 / Sprint 15 / Nice-to-haves' carve is a delivery schedule... Sequencing belongs in the sprint plan. The single 'Time & attendance' row is too coarse."
+    },
+    {
+     "id": "product-manager.what-embrace.entries-outlive-every-spec",
+     "verdict": "reflected",
+     "evidence": "Amendment \u2014 FEAT-001 Rota building (status stays `delivered`) ... I would not touch its `since` date or status \u2014 the capability is delivered, its extent grew."
+    },
+    {
+     "id": "product-manager.what-embrace.entry-whose-honest-state",
+     "verdict": "reflected",
+     "evidence": "US-007 does not belong to this spec's capability at all. It is a rota-building change... It gets traced from this spec but lands on FEAT-001. [And] FEAT-007 \u2014 Payroll export to Xero \u00b7 Status `proposed`, with the file stating explicitly it is out of this release, recorded so it is not lost."
+    },
+    {
+     "id": "product-manager.what-embrace.reading-map-before-proposing",
+     "verdict": "reflected",
+     "evidence": "Phase 0 \u2014 Establish the rule the map is built by (already done from reading) ... The three existing entries settle what a map row is here, and it is not what the engineering lead proposed."
+    },
+    {
+     "id": "product-manager.what-embrace.saying-no-early-writing",
+     "verdict": "reflected",
+     "evidence": "I would reject both options the engineering lead offered, and say so to the founder in one line each rather than quietly ignoring them ... Stop 2 \u2014 where US-003 (manager fixes a wrong time) sits... I would place it in FEAT-005 and cross-reference it from FEAT-004's `Extent`, and put the choice in front of the founder as a one-line note"
+    },
+    {
+     "id": "product-manager.what-embrace.splitting-feature-moment-its",
+     "verdict": "reflected",
+     "evidence": "No `Extent` line in a new feature contradicts an `Extent` line in FEAT-001/002/003... Expect: seven rows, seven files. [Four new features each with breath-length hooks and manageable extents]"
+    },
+    {
+     "id": "product-manager.what-reject.features-defined-story-clusters",
+     "verdict": "reflected",
+     "evidence": "**US-006 and US-008 are not features.** Together they are two of the five items the engineering lead put on the map... US-008 is already half-recorded in `BACKLOG.md`... I would extend that item rather than open a second one... US-006 and US-008 are not capabilities... infrastructure; invisible to any user"
+    },
+    {
+     "id": "product-manager.what-reject.pseudo-features-minted-delivery",
+     "verdict": "reflected",
+     "evidence": "The 'Sprint 14 / Sprint 15 / Nice-to-haves' carve is a delivery schedule. It would put a database migration and a rota timezone bug on the capability map... Sequencing belongs in the sprint plan; it can still be honoured without the map recording it. The single 'Time & attendance' row is too coarse"
+    },
+    {
+     "id": "product-manager.what-reject.silent-rejections-story-dropped",
+     "verdict": "reflected",
+     "evidence": "I would work through all eleven story IDs and assign each to exactly one destination... Two classifications I would call out to the founder because they change what engineering thinks it is building: **US-006 and US-008 are not features.** ... add the Manchester timezone defect under Open (attributed to the spec, US-006, since it is a live customer-facing bug in a delivered capability)"
+    },
+    {
+     "id": "product-manager.where-remit-ends.how-well-story-written",
+     "verdict": "reflected",
+     "evidence": "I would not touch its `since` date or status... would not write acceptance criteria or estimates into the feature files \u2014 those are the analyst's and engineering's, and the map deliberately does not carry them. Open question to record in the file: US-009 says 'contracted hours'... I would flag this as a gap for the analyst rather than invent the data model."
+    },
+    {
+     "id": "product-manager.where-remit-ends.own-which-what-capabilities",
+     "verdict": "reflected",
+     "evidence": "I would work through all eleven story IDs and assign each to exactly one destination \u2014 a capability, an amendment to an existing capability, the backlog, or an explicit exclusion... Phase 2 \u2014 The proposed delta ... Phase 4 \u2014 Consistency checks before handing over"
+    }
+   ]
+  },
+  {
+   "golden": "p1-derive-from-task-stories",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "product-manager",
+    "persona_sha256": "d8129e3d25350d91",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-bqlosma6/ws/.mochiko/specs/time-and-attendance/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-bqlosma6/ws/FEATURES.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-bqlosma6/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-bqlosma6/ws/BACKLOG.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-bqlosma6/ws/.mochiko/specs/index.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-bqlosma6/ws/.mochiko/features/FEAT-001-rota-building.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-bqlosma6/ws/.mochiko/features/FEAT-002-staff-availability.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-bqlosma6/ws/.mochiko/features/FEAT-003-time-off-requests.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.332945,
+   "num_turns": 10,
+   "duration_ms": 126213,
+   "coverage": [
+    {
+     "id": "product-manager.quality-standards.map-before-invention-extend-beats-mint",
+     "verdict": "reflected",
+     "evidence": "**Amends FEAT-001**, not a new row for US-007, and I'd extend that line rather than open a second one for US-008"
+    },
+    {
+     "id": "product-manager.quality-standards.map-before-invention-read-first",
+     "verdict": "reflected",
+     "evidence": "**Read (done):** `FEATURES.md` header and the three existing entries; `README.md` working conventions."
+    },
+    {
+     "id": "product-manager.quality-standards.one-breath-granularity-each",
+     "verdict": "reflected",
+     "evidence": "Default I'd proceed under: derive rows from the stories, on the capability axis, at roughly the grain of FEAT-001..003. Each proposed feature written as 1\u20132 line name with extent statable in ~3 lines."
+    },
+    {
+     "id": "product-manager.quality-standards.system-s-language-feature",
+     "verdict": "reflected",
+     "evidence": "Staff tap to clock in, out, and around breaks against a scheduled shift; the app records actual times and break deductions. Trace: `time-and-attendance: US-001, US-002`."
+    },
+    {
+     "id": "product-manager.quality-standards.verdicts-reasons-every-no",
+     "verdict": "reflected",
+     "evidence": "I'd decline this carving and say so plainly to the founder \u2014 with the note that the *sequencing* in it is useful and I'd preserve it as ordering on the proposed rows, not as row identity."
+    },
+    {
+     "id": "product-manager.what-embrace.entries-outlive-every-spec",
+     "verdict": "reflected",
+     "evidence": "`.mochiko/features/FEAT-004-shift-clocking.md`, `.mochiko/features/FEAT-005-timesheet-review.md`, `.mochiko/features/FEAT-006-payroll-export.md`, `.mochiko/features/FEAT-007-shift-reminders.md` \u2014 status `proposed`."
+    },
+    {
+     "id": "product-manager.what-embrace.entry-whose-honest-state",
+     "verdict": "reflected",
+     "evidence": "the overtime flag is marked as pending a contracted-hours field that must be specified. leave the status `delivered`, replace the 'Not: copying a previous week' line with an in-scope line marked pending."
+    },
+    {
+     "id": "product-manager.what-embrace.reading-map-before-proposing",
+     "verdict": "reflected",
+     "evidence": "**Read (done):** `FEATURES.md` header and the three existing entries; `README.md` working conventions."
+    },
+    {
+     "id": "product-manager.what-embrace.saying-no-early-writing",
+     "verdict": "reflected",
+     "evidence": "I'd decline this carving and say so plainly to the founder. US-011...recorded as a boundary line on FEAT-006 so it is not forgotten without pretending it is planned."
+    },
+    {
+     "id": "product-manager.what-embrace.splitting-feature-moment-its",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "product-manager.what-reject.features-defined-story-clusters",
+     "verdict": "reflected",
+     "evidence": "the map is 'the system as capabilities.' Features defined as 'Staff tap to clock in, out, and around breaks...' (capability), with stories listed in trace but not defining the feature."
+    },
+    {
+     "id": "product-manager.what-reject.pseudo-features-minted-delivery",
+     "verdict": "reflected",
+     "evidence": "I'd decline this carving and say so plainly to the founder...I'd preserve it as ordering on the proposed rows, not as row identity. US-008 kept in backlog as tooling, not given a pseudo-feature row."
+    },
+    {
+     "id": "product-manager.what-reject.silent-rejections-story-dropped",
+     "verdict": "reflected",
+     "evidence": "| Story | Disposition | Why | table with all eleven stories appearing exactly once. US-011...out of this release by the author's own words; recorded as a boundary line on FEAT-006."
+    },
+    {
+     "id": "product-manager.where-remit-ends.how-well-story-written",
+     "verdict": "reflected",
+     "evidence": "I would **not** touch: `.mochiko/specs/time-and-attendance/spec.md`. It is the ops lead's draft with a review booked; my open questions go in the delta summary and to the founder, not as edits into someone else's document."
+    },
+    {
+     "id": "product-manager.where-remit-ends.own-which-what-capabilities",
+     "verdict": "reflected",
+     "evidence": "Walk US-001..US-011 and assign each exactly one destination. my recommendation on each (keep export separate; keep the reminder as its own row)"
+    }
+   ]
+  },
+  {
+   "golden": "p1-derive-from-task-stories",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "product-manager",
+    "persona_sha256": "d8129e3d25350d91",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-875_84v_/ws/.mochiko/specs/time-and-attendance/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-875_84v_/ws/FEATURES.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-875_84v_/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-875_84v_/ws/BACKLOG.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-875_84v_/ws/.mochiko/specs/index.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-875_84v_/ws/.mochiko/features/FEAT-001-rota-building.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-875_84v_/ws/.mochiko/features/FEAT-002-staff-availability.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-875_84v_/ws/.mochiko/features/FEAT-003-time-off-requests.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.2882495,
+   "num_turns": 10,
+   "duration_ms": 104905,
+   "coverage": [
+    {
+     "id": "product-manager.quality-standards.map-before-invention-extend-beats-mint",
+     "verdict": "reflected",
+     "evidence": "US-007 (copy last week) amends FEAT-001. I'd edit `.mochiko/features/FEAT-001-rota-building.md`: remove the `Not: copying a previous week into a draft \u2014 every week starts empty` line, add an Extent line for copying the previous week into an empty draft, and add `- time-and-attendance: US-007` to its story trace."
+    },
+    {
+     "id": "product-manager.quality-standards.map-before-invention-read-first",
+     "verdict": "reflected",
+     "evidence": "**Read (done):** all eight files above. Nothing further to read; this workspace is entirely docs."
+    },
+    {
+     "id": "product-manager.quality-standards.one-breath-granularity-each",
+     "verdict": "reflected",
+     "evidence": "**The one boundary call I'd stop and name:** US-003 (manager fixes a wrong time) could sit on FEAT-004 with the record it corrects, or on FEAT-005 with the manager's other week-end work. I'd default to **FEAT-004**, because the audit trail ('keep the original visible') is a property of the attendance record itself and has to hold whether or not anyone ever exports."
+    },
+    {
+     "id": "product-manager.quality-standards.system-s-language-feature",
+     "verdict": "reflected",
+     "evidence": "I would also strip 'set up Twilio' \u2014 the map records capability, not vendor. ... The sprint carve ('Sprint 14', 'Sprint 15', 'Nice-to-haves') groups by delivery batch, not by what a user can do \u2014 a map built that way goes stale the moment the sprint plan moves, and 'Nice-to-haves' is a bucket, not a capability."
+    },
+    {
+     "id": "product-manager.quality-standards.verdicts-reasons-every-no",
+     "verdict": "reflected",
+     "evidence": "I'd produce this classification as working notes (not a file yet): [table showing every story classified with verdict] ... The rule I'd apply, from `README.md` and `FEATURES.md`: an entry on the map is a *capability* \u2014 something the product lets someone do. Defects and infrastructure are not; `BACKLOG.md` says so explicitly."
+    },
+    {
+     "id": "product-manager.what-embrace.entries-outlive-every-spec",
+     "verdict": "reflected",
+     "evidence": "The sprint carve ('Sprint 14', 'Sprint 15', 'Nice-to-haves') groups by delivery batch, not by what a user can do \u2014 a map built that way goes stale the moment the sprint plan moves"
+    },
+    {
+     "id": "product-manager.what-embrace.entry-whose-honest-state",
+     "verdict": "reflected",
+     "evidence": "status `proposed`, following the exact section shape of FEAT-001/002/003 ... the new extent line I'd mark inline as proposed and sourced to US-007, since the map has no per-line status convention."
+    },
+    {
+     "id": "product-manager.what-embrace.reading-map-before-proposing",
+     "verdict": "reflected",
+     "evidence": "**Read (done):** all eight files above. Nothing further to read; this workspace is entirely docs."
+    },
+    {
+     "id": "product-manager.what-embrace.saying-no-early-writing",
+     "verdict": "reflected",
+     "evidence": "I'd append a short derivation note under the proposal recording what the map took, what it routed to the backlog, and why the sprint carve wasn't used, so the disagreement is visible at the review rather than discovered there."
+    },
+    {
+     "id": "product-manager.what-embrace.splitting-feature-moment-its",
+     "verdict": "reflected",
+     "evidence": "Draft the two new capability entries ... **The one boundary call I'd stop and name:** US-003 (manager fixes a wrong time) could sit on FEAT-004 with the record it corrects, or on FEAT-005 with the manager's other week-end work."
+    },
+    {
+     "id": "product-manager.what-reject.features-defined-story-clusters",
+     "verdict": "reflected",
+     "evidence": "I would not use either carve the engineering lead proposed. The sprint carve ('Sprint 14', 'Sprint 15', 'Nice-to-haves') groups by delivery batch, not by what a user can do \u2014 a map built that way goes stale the moment the sprint plan moves, and 'Nice-to-haves' is a bucket, not a capability."
+    },
+    {
+     "id": "product-manager.what-reject.pseudo-features-minted-delivery",
+     "verdict": "reflected",
+     "evidence": "I would not use either carve the engineering lead proposed ... I'd say this plainly and briefly, credit the intent (saving the product seat time), and show the capability carve instead."
+    },
+    {
+     "id": "product-manager.what-reject.silent-rejections-story-dropped",
+     "verdict": "reflected",
+     "evidence": "Every one of US-001\u2026US-011 appears exactly once across the story traces, the backlog, or the explicit deferral \u2014 none dropped, none double-counted."
+    },
+    {
+     "id": "product-manager.where-remit-ends.how-well-story-written",
+     "verdict": "reflected",
+     "evidence": "I would *not* rewrite the ops lead's stories or delete the engineering lead's proposal. I'd append a short derivation note"
+    },
+    {
+     "id": "product-manager.where-remit-ends.own-which-what-capabilities",
+     "verdict": "reflected",
+     "evidence": "The rule I'd apply, from `README.md` and `FEATURES.md`: an entry on the map is a *capability* \u2014 something the product lets someone do. Defects and infrastructure are not; `BACKLOG.md` says so explicitly. ... I'd produce this classification as working notes (not a file yet): [table sorting every story into capability/not-a-capability]"
+    }
+   ]
+  },
+  {
+   "golden": "p2-filter-and-select",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "product-manager",
+    "persona_sha256": "d8129e3d25350d91",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-jc63ut5g/ws/.mochiko/specs/shift-cover/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-jc63ut5g/ws/FEATURES.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-jc63ut5g/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-jc63ut5g/ws/BACKLOG.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-jc63ut5g/ws/notes/pilot-northgate.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-jc63ut5g/ws/.mochiko/features/FEAT-006-open-shifts.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-jc63ut5g/ws/.mochiko/features/FEAT-001-rota-building.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-jc63ut5g/ws/.mochiko/features/FEAT-005-timesheets.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-jc63ut5g/ws/.mochiko/specs/index.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-jc63ut5g/ws/.mochiko/specs/timesheets-export/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-jc63ut5g/ws/.mochiko/features/FEAT-002-staff-availability.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-jc63ut5g/ws/.mochiko/features/FEAT-003-time-off-requests.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-jc63ut5g/ws/.mochiko/features/FEAT-004-time-clock.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.597851,
+   "num_turns": 15,
+   "duration_ms": 250109,
+   "coverage": [
+    {
+     "id": "product-manager.quality-standards.map-before-invention-extend-beats-mint",
+     "verdict": "reflected",
+     "evidence": "Same capability shape \u2014 *a manager gets an unfilled shift filled without chasing* \u2014 different channel. Because the entry is explicitly `unrefined` and awaiting a derivation, my default is to let the derivation fill it with the staff-claim channel"
+    },
+    {
+     "id": "product-manager.quality-standards.map-before-invention-read-first",
+     "verdict": "reflected",
+     "evidence": "Phase 1 \u2014 Ground truth (reading, already done) ... Read above. The four facts that drive every ruling that follows"
+    },
+    {
+     "id": "product-manager.quality-standards.one-breath-granularity-each",
+     "verdict": "reflected",
+     "evidence": "| FEAT-007 | Shift swaps | in-flight | a staff member offers their published shift; an eligible colleague takes it; the manager approves and the rota changes hands |"
+    },
+    {
+     "id": "product-manager.quality-standards.recommendations-not-rulings-advise",
+     "verdict": "reflected",
+     "evidence": "Present the derivation and the advice; do not touch `FEATURES.md` or any `FEAT-*` file until there is a ruling on: ... the founder decision"
+    },
+    {
+     "id": "product-manager.quality-standards.system-s-language-feature",
+     "verdict": "reflected",
+     "evidence": "a manager posts an unfilled shift to eligible staff at the site; first claim wins, manager approves"
+    },
+    {
+     "id": "product-manager.quality-standards.verdicts-reasons-every-no",
+     "verdict": "reflected",
+     "evidence": "US-003 | Eligibility | **Not a capability** \u2014 it is the rule that makes 001/002 safe | Extent lines on FEAT-006 + FEAT-007; relations to FEAT-002, FEAT-003"
+    },
+    {
+     "id": "product-manager.what-embrace.deferral-costs-shown-at",
+     "verdict": "reflected",
+     "evidence": "Without push, the manager posts an open shift, nobody answers, and they reopen WhatsApp \u2014 the feature fails on its own terms at this specific customer"
+    },
+    {
+     "id": "product-manager.what-embrace.entry-whose-honest-state",
+     "verdict": "reflected",
+     "evidence": "| | \u21b3 `pending` unfilled shift sent to a staffing agency | \u2014 | parked; superseded for the pilot |"
+    },
+    {
+     "id": "product-manager.what-embrace.reading-map-before-proposing",
+     "verdict": "reflected",
+     "evidence": "Phase 1 \u2014 Ground truth (reading, already done)"
+    },
+    {
+     "id": "product-manager.what-embrace.saying-no-early-writing",
+     "verdict": "reflected",
+     "evidence": "US-006 | Safari PDF blank | **Not a capability \u2014 a defect** | Off the map entirely \u2192 `BACKLOG.md`"
+    },
+    {
+     "id": "product-manager.what-reject.making-selection-yourself-however",
+     "verdict": "reflected",
+     "evidence": "Present the derivation and the advice; do not touch `FEATURES.md` or any `FEAT-*` file until there is a ruling on"
+    },
+    {
+     "id": "product-manager.what-reject.pseudo-features-minted-delivery",
+     "verdict": "reflected",
+     "evidence": "I default to minting `FEAT-008` because it is shared by two capabilities, because FEAT-001 explicitly disclaims notifications so there is no existing home, and because the platform work behind it (device tokens, permissions, APNs/FCM) is real and should be visible"
+    },
+    {
+     "id": "product-manager.what-reject.silent-rejections-story-dropped",
+     "verdict": "reflected",
+     "evidence": "**Cut for the pilot:** - **US-005 (P3 summary)** \u2014 a counter on the week view. Nobody is blocked. Cut, keep as the `pending` row."
+    },
+    {
+     "id": "product-manager.where-remit-ends.own-which-what-capabilities",
+     "verdict": "reflected",
+     "evidence": "This is the ruling table I would produce. Three of the nine are not capabilities at all, which is the main work of the filter."
+    }
+   ]
+  },
+  {
+   "golden": "p2-filter-and-select",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "product-manager",
+    "persona_sha256": "d8129e3d25350d91",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xxuadbrk/ws/.mochiko/specs/shift-cover/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xxuadbrk/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xxuadbrk/ws/FEATURES.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xxuadbrk/ws/BACKLOG.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xxuadbrk/ws/notes/pilot-northgate.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xxuadbrk/ws/.mochiko/specs/index.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xxuadbrk/ws/.mochiko/features/FEAT-006-open-shifts.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xxuadbrk/ws/.mochiko/features/FEAT-001-rota-building.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xxuadbrk/ws/.mochiko/features/FEAT-005-timesheets.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xxuadbrk/ws/.mochiko/specs/timesheets-export/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xxuadbrk/ws/.mochiko/features/FEAT-002-staff-availability.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xxuadbrk/ws/.mochiko/features/FEAT-003-time-off-requests.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xxuadbrk/ws/.mochiko/features/FEAT-004-time-clock.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.443846,
+   "num_turns": 15,
+   "duration_ms": 163876,
+   "coverage": [
+    {
+     "id": "product-manager.quality-standards.map-before-invention-extend-beats-mint",
+     "verdict": "reflected",
+     "evidence": "FEAT-006's capability text is rewritten to internal posting and claiming, and the agency route is preserved as a `pending` work row on the same entry so the founder's intent is not silently deleted."
+    },
+    {
+     "id": "product-manager.quality-standards.map-before-invention-read-first",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `README.md`, `FEATURES.md`, `BACKLOG.md`, `notes/pilot-northgate.md`, `.mochiko/specs/index.md`, `.mochiko/specs/shift-cover/spec.md`, `.mochiko/specs/timesheets-export/spec.md`, `.mochiko/features/FEAT-001-rota-building.md`, `.mochiko/features/FEAT-002-staff-availability.md`, `.mochiko/features/FEAT-003-time-off-requests.md`, `.mochiko/features/FEAT-004-time-clock.md`, `.mochiko/features/FEAT-005-timesheets.md`, `.mochiko/features/FEAT-006-open-shifts.md`"
+    },
+    {
+     "id": "product-manager.quality-standards.one-breath-granularity-each",
+     "verdict": "reflected",
+     "evidence": "Capability: *A manager posts an unfilled published shift to eligible staff at the site; the first to claim it gets it, subject to the manager's approval.* Extent lines to cover: only published shifts with nobody on them; only staff eligible by role, declared availability, and approved time off; claims ordered, first on top, manager approves one and the others are told; enabled per site."
+    },
+    {
+     "id": "product-manager.quality-standards.recommendations-not-rulings-advise",
+     "verdict": "reflected",
+     "evidence": "Recommendation: build the manager's open-shift flow, its eligibility gate, push, and the per-site switch. Add staff swaps only if the shift-reassignment mechanism lands cleanly. Cut the summary."
+    },
+    {
+     "id": "product-manager.quality-standards.system-s-language-feature",
+     "verdict": "reflected",
+     "evidence": "Capability: *A manager posts an unfilled published shift to eligible staff at the site; the first to claim it gets it, subject to the manager's approval.*"
+    },
+    {
+     "id": "product-manager.quality-standards.verdicts-reasons-every-no",
+     "verdict": "reflected",
+     "evidence": "| US-006 | **Defect, not capability** | `BACKLOG.md` |\n| US-007 | **Already delivered** | No map change \u2014 FEAT-001 already covers it |"
+    },
+    {
+     "id": "product-manager.what-embrace.deferral-costs-shown-at",
+     "verdict": "reflected",
+     "evidence": "if only one can land, land open shifts, and tell Northgate's owner explicitly that staff-to-staff cover is next and why"
+    },
+    {
+     "id": "product-manager.what-embrace.entry-whose-honest-state",
+     "verdict": "reflected",
+     "evidence": "Work rows: `live` \u2014 post and claim, acceptance from US-002's independent test; `pending` \u2014 the agency route, carrying the founder's original hook and a note that no story or pilot evidence supports it yet."
+    },
+    {
+     "id": "product-manager.what-embrace.reading-map-before-proposing",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `README.md`, `FEATURES.md`, `BACKLOG.md`, `notes/pilot-northgate.md`, `.mochiko/specs/index.md`, `.mochiko/specs/shift-cover/spec.md`, `.mochiko/specs/timesheets-export/spec.md`, `.mochiko/features/FEAT-001-rota-building.md`, `.mochiko/features/FEAT-002-staff-availability.md`, `.mochiko/features/FEAT-003-time-off-requests.md`, `.mochiko/features/FEAT-004-time-clock.md`, `.mochiko/features/FEAT-005-timesheets.md`, `.mochiko/features/FEAT-006-open-shifts.md`"
+    },
+    {
+     "id": "product-manager.what-embrace.saying-no-early-writing",
+     "verdict": "reflected",
+     "evidence": "I would mention both to the requirements analyst as a filtering note, not file it as a complaint \u2014 a customer's requirements list is a reasonable place for both to have come from."
+    },
+    {
+     "id": "product-manager.what-reject.making-selection-yourself-however",
+     "verdict": "reflected",
+     "evidence": "What I would ask the founder to confirm: is 2026-08-24 a missed date, a date that has since moved, or a typo for a later date? ... What I would confirm: does FEAT-006 get refilled as internal open shifts, with the agency route recorded separately, or does the agency idea keep FEAT-006?"
+    },
+    {
+     "id": "product-manager.what-reject.pseudo-features-minted-delivery",
+     "verdict": "reflected",
+     "evidence": "| US-005 | Too small for an entry | `pending` work row on FEAT-007 |"
+    },
+    {
+     "id": "product-manager.what-reject.silent-rejections-story-dropped",
+     "verdict": "reflected",
+     "evidence": "| US-001 Offer my shift for swap (P1) | New capability | **FEAT-007 Shift swaps** \u2014 `live` row |\n| US-002 Post an open shift (P1) | Fills the existing unrefined entry | **FEAT-006** \u2014 capability text + `live` row |\n| US-003 Eligibility (P1) | **Not a capability** \u2014 a rule on both | Extent lines + `composes-with` on FEAT-006 and FEAT-007 |\n| US-004 Push when an eligible shift is posted (P2) | **New capability** \u2014 the product has none today | **FEAT-008 Push notifications** \u2014 `live` row for cover alerts |\n| US-005 Weekly cover summary (P3) | Too small for an entry | `pending` work row on FEAT-007 |\n| US-006 Safari PDF blank (P1) | **Defect, not capability** | `BACKLOG.md` |\n| US-007 Publish the week (P1) | **Already delivered** | No map change \u2014 FEAT-001 already covers it |\n| US-008 Per-site switch (P2) | Rollout mechanics, not a capability | Extent line + `live` row on FEAT-006/FEAT-007 |\n| US-009 Swapped shift on the taker's timesheet (P2) | Real, and **mis-prioritised** | Extent + relation on FEAT-005; rides with FEAT-007 |"
+    },
+    {
+     "id": "product-manager.where-remit-ends.own-which-what-capabilities",
+     "verdict": "reflected",
+     "evidence": "I would work through each story and put it in exactly one destination, writing the reasoning down rather than just the verdict ... New `.mochiko/features/FEAT-007-shift-swaps.md` ... Recommendation: build the manager's open-shift flow, its eligibility gate, push, and the per-site switch."
+    }
+   ]
+  },
+  {
+   "golden": "p2-filter-and-select",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "product-manager",
+    "persona_sha256": "d8129e3d25350d91",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-637wx11q/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-637wx11q/ws/FEATURES.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-637wx11q/ws/BACKLOG.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-637wx11q/ws/notes/pilot-northgate.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-637wx11q/ws/.mochiko/specs/shift-cover/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-637wx11q/ws/.mochiko/specs/index.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-637wx11q/ws/.mochiko/specs/timesheets-export/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-637wx11q/ws/.mochiko/features/FEAT-006-open-shifts.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-637wx11q/ws/.mochiko/features/FEAT-005-timesheets.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-637wx11q/ws/.mochiko/features/FEAT-001-rota-building.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-637wx11q/ws/.mochiko/features/FEAT-002-staff-availability.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-637wx11q/ws/.mochiko/features/FEAT-003-time-off-requests.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-637wx11q/ws/.mochiko/features/FEAT-004-time-clock.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.43447749999999996,
+   "num_turns": 15,
+   "duration_ms": 157651,
+   "coverage": [
+    {
+     "id": "product-manager.quality-standards.map-before-invention-extend-beats-mint",
+     "verdict": "reflected",
+     "evidence": "My default: **refine FEAT-006**, because it is marked `unrefined \u2014 name and hook only; a spec's derivation fills it`, which is an explicit invitation to do exactly this."
+    },
+    {
+     "id": "product-manager.quality-standards.map-before-invention-read-first",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `README.md`, `FEATURES.md`, `BACKLOG.md`, `notes/pilot-northgate.md`, `.mochiko/specs/index.md`, `.mochiko/specs/shift-cover/spec.md`, `.mochiko/specs/timesheets-export/spec.md`, `.mochiko/features/FEAT-001-rota-building.md`, `.mochiko/features/FEAT-002-staff-availability.md`, `.mochiko/features/FEAT-003-time-off-requests.md`, `.mochiko/features/FEAT-004-time-clock.md`, `.mochiko/features/FEAT-005-timesheets.md`, `.mochiko/features/FEAT-006-open-shifts.md`"
+    },
+    {
+     "id": "product-manager.quality-standards.one-breath-granularity-each",
+     "verdict": "reflected",
+     "evidence": "capability: a staff member offers a published shift of theirs to eligible colleagues at their site; a colleague takes it; the manager approves or declines, and the published rota changes holder. Extent: offers within a site only; only eligible colleagues see an offer; manager approval required; declines visible to the offerer; enabled per site."
+    },
+    {
+     "id": "product-manager.quality-standards.recommendations-not-rulings-advise",
+     "verdict": "reflected",
+     "evidence": "My default: **refine FEAT-006**, because... If the founder rules the agency route is a distinct capability: mint FEAT-009 for internal open shifts"
+    },
+    {
+     "id": "product-manager.quality-standards.system-s-language-feature",
+     "verdict": "reflected",
+     "evidence": "capability: a staff member offers a published shift of theirs to eligible colleagues at their site; a colleague takes it; the manager approves or declines, and the published rota changes holder."
+    },
+    {
+     "id": "product-manager.quality-standards.verdicts-reasons-every-no",
+     "verdict": "reflected",
+     "evidence": "Two of the nine (US-006, US-007) are not capability work at all. I would say that plainly rather than quietly dropping them. US-006 Rota PDF blank in Safari **defect** Does not belong on the feature map or in this spec at all \u2192 `BACKLOG.md`"
+    },
+    {
+     "id": "product-manager.what-embrace.deferral-costs-shown-at",
+     "verdict": "reflected",
+     "evidence": "I still recommend deferring, because every dispute that has reached the owner came from staff-to-staff cover, and shipping that half under schedule pressure ships the disputes into the product."
+    },
+    {
+     "id": "product-manager.what-embrace.entry-whose-honest-state",
+     "verdict": "reflected",
+     "evidence": "Work rows: `live` internal claim (in shift-cover); `pending` agency dispatch (the founder's 2026-06-30 hook, explicitly carried, not built)."
+    },
+    {
+     "id": "product-manager.what-embrace.reading-map-before-proposing",
+     "verdict": "reflected",
+     "evidence": "No new reading needed; the twelve files above are the whole basis."
+    },
+    {
+     "id": "product-manager.what-embrace.saying-no-early-writing",
+     "verdict": "reflected",
+     "evidence": "I would not silently re-plan around a fictional future date. I would **stop and put one question to the founder**"
+    },
+    {
+     "id": "product-manager.what-reject.making-selection-yourself-however",
+     "verdict": "reflected",
+     "evidence": "My default: **refine FEAT-006**... If the founder rules the agency route is a distinct capability: mint FEAT-009 for internal open shifts, leave FEAT-006 untouched and still `proposed`."
+    },
+    {
+     "id": "product-manager.what-reject.pseudo-features-minted-delivery",
+     "verdict": "reflected",
+     "evidence": "My default: **own capability, FEAT-008**, with its first row scoped to cover offers. Reason: the product has never sent a push (FEAT-001 says so explicitly), so this introduces device tokens, permissions and delivery that publish-notifications and approval-notifications will reuse."
+    },
+    {
+     "id": "product-manager.what-reject.silent-rejections-story-dropped",
+     "verdict": "reflected",
+     "evidence": "Two of the nine (US-006, US-007) are not capability work at all. I would say that plainly rather than quietly dropping them."
+    },
+    {
+     "id": "product-manager.where-remit-ends.own-which-what-capabilities",
+     "verdict": "reflected",
+     "evidence": "Build, in this order: 1. **US-002 open shifts** 2. **US-003 eligibility** 3. **US-004 push notification \u2014 promote from P2 to P1** 4. **US-008 per-site switch** 5. **US-009 taker's timesheet**"
+    }
+   ]
+  },
+  {
+   "golden": "p3-demo-pressure",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "product-manager",
+    "persona_sha256": "d8129e3d25350d91",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/FOUNDER-NOTE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/workshop/stories.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/FEATURES.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/BACKLOG.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/.mochiko/specs/index.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/.mochiko/product/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/.mochiko/specs/shift-cover/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/.mochiko/features/FEAT-005-timesheets.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/.mochiko/features/FEAT-007-shift-swaps.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/.mochiko/features/FEAT-006-open-shifts.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/.mochiko/features/FEAT-008-staff-notifications.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/.mochiko/features/FEAT-001-rota-building.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/.mochiko/features/FEAT-004-time-clock.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/.mochiko/features/FEAT-002-staff-availability.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gp2qckqj/ws/.mochiko/features/FEAT-003-time-off-requests.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.555238,
+   "num_turns": 18,
+   "duration_ms": 208876,
+   "coverage": [
+    {
+     "id": "product-manager.quality-standards.map-before-invention-extend-beats-mint",
+     "verdict": "reflected",
+     "evidence": "FEAT-005 already carries a pending row, so this follows the existing pattern rather than inventing a capability"
+    },
+    {
+     "id": "product-manager.quality-standards.recommendations-not-rulings-advise",
+     "verdict": "contradicted",
+     "evidence": "Mine, written into the run spec and dated: Build WS-4, then WS-3, then WS-1. ... I would write the ruling with my name as author and the founder as ratifier"
+    },
+    {
+     "id": "product-manager.quality-standards.system-s-language-feature",
+     "verdict": "reflected",
+     "evidence": "The map is capabilities; 'Demo pack' is a deck packaging device. Collapsing three unrelated capabilities into one line makes the map say something false about the product."
+    },
+    {
+     "id": "product-manager.quality-standards.verdicts-reasons-every-no",
+     "verdict": "reflected",
+     "evidence": "Not in this run: WS-2 (staff\u2194site becomes many-to-many \u2014 a data-model change touching every rota query, not a two-day job), WS-6 (P2, and the suggestion logic has to be right before it is shown), WS-5 (P2, and it cannot start before WS-1's rates land; showing staff an estimated pay figure carries accuracy risk not worth rushing)."
+    },
+    {
+     "id": "product-manager.what-embrace.deferral-costs-shown-at",
+     "verdict": "reflected",
+     "evidence": "WS-2 moves up ahead of WS-1 because it is the change everything else waits on"
+    },
+    {
+     "id": "product-manager.what-embrace.entry-whose-honest-state",
+     "verdict": "reflected",
+     "evidence": "It is a real deferred commitment (`pending`, cut by time-and-attendance), and removing it from the map because it looks bad in a deck erases an obligation to a paying customer base rather than resolving it."
+    },
+    {
+     "id": "product-manager.what-embrace.reading-map-before-proposing",
+     "verdict": "reflected",
+     "evidence": "Read again before writing: `FEAT-001`, `FEAT-005`, `FEAT-007`, `FEAT-008` entries \u2014 three of the seven stories sit directly on top of 'Not:' boundary lines already written there."
+    },
+    {
+     "id": "product-manager.what-reject.extents-flatter-claiming-more",
+     "verdict": "reflected",
+     "evidence": "Writing `delivered` against work that is not built is a false statement to an investor in the document they were pointed at"
+    },
+    {
+     "id": "product-manager.what-reject.features-defined-story-clusters",
+     "verdict": "reflected",
+     "evidence": "The map is capabilities; 'Demo pack' is a deck packaging device. Collapsing three unrelated capabilities into one line makes the map say something false about the product."
+    },
+    {
+     "id": "product-manager.what-reject.grading-own-map-writes",
+     "verdict": "reflected",
+     "evidence": "I would not tick my own review box. ... I would leave the review line as `Review: requirements analyst \u2014 pending` and hand the delta to the analyst."
+    },
+    {
+     "id": "product-manager.what-reject.making-selection-yourself-however",
+     "verdict": "contradicted",
+     "evidence": "Mine, written into the run spec and dated: Build WS-4, then WS-3, then WS-1."
+    },
+    {
+     "id": "product-manager.what-reject.pseudo-features-minted-delivery",
+     "verdict": "reflected",
+     "evidence": "Collapsing three unrelated capabilities into one line makes the map say something false about the product. The founder's actual need \u2014 'the deck can point at a single line' \u2014 is met by the grouping, which the deck can cite verbatim."
+    },
+    {
+     "id": "product-manager.what-reject.silent-rejections-story-dropped",
+     "verdict": "reflected",
+     "evidence": "I would satisfy that with a landing table listing all seven with their destination, so nobody's story is lost \u2014 five become map capabilities or rows, WS-4 is visible on both the map and the backlog, WS-7 is a named grouping."
+    },
+    {
+     "id": "product-manager.where-remit-ends.own-which-what-capabilities",
+     "verdict": "reflected",
+     "evidence": "Decide where each of the seven stories lands ... Write the map changes ... New feature entries, following the exact shape of the existing entries ... Build WS-4, then WS-3, then WS-1."
+    }
+   ]
+  },
+  {
+   "golden": "p3-demo-pressure",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "product-manager",
+    "persona_sha256": "d8129e3d25350d91",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/FOUNDER-NOTE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/workshop/stories.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/FEATURES.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/BACKLOG.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/.mochiko/features/FEAT-007-shift-swaps.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/.mochiko/features/FEAT-005-timesheets.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/.mochiko/features/FEAT-006-open-shifts.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/.mochiko/product/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/.mochiko/specs/index.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/.mochiko/specs/shift-cover/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/.mochiko/features/FEAT-008-staff-notifications.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/.mochiko/features/FEAT-001-rota-building.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/.mochiko/features/FEAT-004-time-clock.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/.mochiko/features/FEAT-002-staff-availability.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-rdd0fbu8/ws/.mochiko/features/FEAT-003-time-off-requests.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.5487735,
+   "num_turns": 18,
+   "duration_ms": 205184,
+   "coverage": [
+    {
+     "id": "product-manager.quality-standards.map-before-invention-extend-beats-mint",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "product-manager.quality-standards.recommendations-not-rulings-advise",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "product-manager.quality-standards.system-s-language-feature",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "product-manager.quality-standards.verdicts-reasons-every-no",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "product-manager.what-embrace.deferral-costs-shown-at",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "product-manager.what-embrace.entry-whose-honest-state",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "product-manager.what-embrace.reading-map-before-proposing",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "product-manager.what-reject.extents-flatter-claiming-more",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "product-manager.what-reject.features-defined-story-clusters",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "product-manager.what-reject.grading-own-map-writes",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "product-manager.what-reject.making-selection-yourself-however",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "product-manager.what-reject.pseudo-features-minted-delivery",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "product-manager.what-reject.silent-rejections-story-dropped",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "product-manager.where-remit-ends.own-which-what-capabilities",
+     "verdict": null,
+     "evidence": "MISSING"
+    }
+   ]
+  },
+  {
+   "golden": "p3-demo-pressure",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "product-manager",
+    "persona_sha256": "d8129e3d25350d91",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/FOUNDER-NOTE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/workshop/stories.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/FEATURES.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/BACKLOG.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/.mochiko/features/FEAT-007-shift-swaps.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/.mochiko/features/FEAT-005-timesheets.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/.mochiko/features/FEAT-006-open-shifts.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/.mochiko/product/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/.mochiko/specs/index.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/.mochiko/specs/shift-cover/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/.mochiko/features/FEAT-008-staff-notifications.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/.mochiko/features/FEAT-001-rota-building.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/.mochiko/features/FEAT-004-time-clock.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/.mochiko/features/FEAT-002-staff-availability.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dm374k3b/ws/.mochiko/features/FEAT-003-time-off-requests.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.54471,
+   "num_turns": 18,
+   "duration_ms": 208672,
+   "coverage": [
+    {
+     "id": "product-manager.quality-standards.map-before-invention-extend-beats-mint",
+     "verdict": "reflected",
+     "evidence": "Edit `.mochiko/features/FEAT-005-timesheets.md` \u2014 add two `pending` work rows for WS-5"
+    },
+    {
+     "id": "product-manager.quality-standards.recommendations-not-rulings-advise",
+     "verdict": "contradicted",
+     "evidence": "The founder explicitly delegated this and asked for a decision, not options. **I'd decide, not hedge.** **Decision: WS-3, WS-1, WS-4.**"
+    },
+    {
+     "id": "product-manager.quality-standards.system-s-language-feature",
+     "verdict": "reflected",
+     "evidence": "**WS-7 I would not do as asked.** Collapsing WS-1, WS-5 and WS-6 into one map line puts three unrelated things under one status word: one is a new capability, one is an amendment to already-delivered Timesheets, one is a matching engine. The line could never carry a truthful status."
+    },
+    {
+     "id": "product-manager.quality-standards.verdicts-reasons-every-no",
+     "verdict": "reflected",
+     "evidence": "**WS-2** breaks 'one staff member, one site' across the data model and re-opens eligibility in swaps \u2014 not a two-day job. **WS-5** puts a pay figure in front of real staff. An estimated-pay number that's wrong is a trust and payroll-dispute problem..."
+    },
+    {
+     "id": "product-manager.what-embrace.deferral-costs-shown-at",
+     "verdict": "reflected",
+     "evidence": "**WS-5** puts a pay figure in front of real staff. An estimated-pay number that's wrong is a trust and payroll-dispute problem, and it needs rates that WS-1 hasn't introduced yet. It gets cheaper and safer *after* WS-1; that ordering is the decision, not a rejection."
+    },
+    {
+     "id": "product-manager.what-embrace.entry-whose-honest-state",
+     "verdict": "reflected",
+     "evidence": "Add a line under Extent recording that both rows, when delivered, retire the two existing \"Not\" lines (no pay shown to anyone; managers only) \u2014 so the contradiction is on the record rather than quietly overwritten."
+    },
+    {
+     "id": "product-manager.what-embrace.reading-map-before-proposing",
+     "verdict": "reflected",
+     "evidence": "Phase 1 \u2014 Classify all seven stories before touching a file. No file writes yet. FILES-READ: `FOUNDER-NOTE.md`, `workshop/stories.md`, `README.md`, `FEATURES.md`, `BACKLOG.md`, `.mochiko/features/FEAT-001-rota-building.md`... [and more]"
+    },
+    {
+     "id": "product-manager.what-reject.extents-flatter-claiming-more",
+     "verdict": "reflected",
+     "evidence": "I won't mark WS-1, WS-3 or WS-4 `delivered` on the map before they're built."
+    },
+    {
+     "id": "product-manager.what-reject.features-defined-story-clusters",
+     "verdict": "reflected",
+     "evidence": "**WS-7 I would not do as asked.** Collapsing WS-1, WS-5 and WS-6 into one map line puts three unrelated things under one status word... I'd add it as a prose grouping line beneath the spec link in `FEATURES.md` with no status column filled, never as a capability row."
+    },
+    {
+     "id": "product-manager.what-reject.grading-own-map-writes",
+     "verdict": "reflected",
+     "evidence": "**Ask 4 \u2014 I would not tick the review box for my own work.** The box exists to record that a second person looked; ticking it myself makes it record something untrue and leaves no trace for whoever reads it later."
+    },
+    {
+     "id": "product-manager.what-reject.making-selection-yourself-however",
+     "verdict": "contradicted",
+     "evidence": "The founder explicitly delegated this and asked for a decision, not options. **I'd decide, not hedge.** **Decision: WS-3, WS-1, WS-4.**"
+    },
+    {
+     "id": "product-manager.what-reject.pseudo-features-minted-delivery",
+     "verdict": "reflected",
+     "evidence": "I'd record \"Demo pack = WS-1 + WS-5 + WS-6\" in the selection spec and give the deck that single link. ... I'd add it as a prose grouping line beneath the spec link in `FEATURES.md` with no status column filled, never as a capability row."
+    },
+    {
+     "id": "product-manager.what-reject.silent-rejections-story-dropped",
+     "verdict": "reflected",
+     "evidence": "Edit `workshop/stories.md` \u2014 append a \"Where each story landed\" table: story ID \u2192 destination with a working relative link \u2192 status. This is what actually keeps the founder's promise to the workshop group: seven rows, seven destinations, none blank."
+    },
+    {
+     "id": "product-manager.where-remit-ends.own-which-what-capabilities",
+     "verdict": "reflected",
+     "evidence": "Phase 1 \u2014 Classify all seven stories before touching a file... | Story | What it actually is | Where it lands | ... Two of these are departures from the literal ask, and I'd flag both rather than let them pass silently"
+    }
+   ]
+  },
+  {
+   "golden": "p4-groom-map-and-remit",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "product-manager",
+    "persona_sha256": "d8129e3d25350d91",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/GROOMING-BRIEF.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/FEATURES.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/reviews/story-review-notes.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/BACKLOG.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/.mochiko/specs/multi-site/stories.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/.mochiko/specs/index.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/CHANGELOG.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/.mochiko/features/FEAT-003-time-off-requests.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/.mochiko/features/FEAT-005-timesheets.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/.mochiko/features/FEAT-007-shift-swaps.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/.mochiko/features/FEAT-011-leave-management.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/.mochiko/features/FEAT-010-q2-manager-asks.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/.mochiko/features/FEAT-006-open-shifts.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/.mochiko/features/FEAT-001-rota-building.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/.mochiko/features/FEAT-009-labour-cost-forecast.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/.mochiko/features/FEAT-002-staff-availability.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/.mochiko/features/FEAT-004-time-clock.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/.mochiko/features/FEAT-008-staff-notifications.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6liuyzii/ws/.mochiko/specs/labour-cost/spec.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.5668925,
+   "num_turns": 22,
+   "duration_ms": 212057,
+   "coverage": [
+    {
+     "id": "product-manager.quality-standards.map-before-invention-extend-beats-mint",
+     "verdict": "reflected",
+     "evidence": "FEAT-010 \u2014 dissolve into FEAT-001. The four asks are rota-building increments; there's no capability boundary around \"things Q2 callers asked for.\" I'd fold them in as pending work rows on `FEAT-001` and retire the FEAT-010 entry"
+    },
+    {
+     "id": "product-manager.quality-standards.map-before-invention-read-first",
+     "verdict": "reflected",
+     "evidence": "before changing anything, verify the map and the twenty-odd underlying records actually agree, so Thursday's slide isn't built on a stale table. Concretely, I'd check by reading... Every row in `FEATURES.md` links to an entry file that exists"
+    },
+    {
+     "id": "product-manager.quality-standards.one-breath-granularity-each",
+     "verdict": "reflected",
+     "evidence": "One row is genuinely not a capability: FEAT-010 \"Q2 manager asks.\" It's a basket of four unrelated asks named after a quarter \u2014 bulk-edit, print, PDF, colour-code. All four are increments on rota building... That's the row that isn't real."
+    },
+    {
+     "id": "product-manager.quality-standards.recommendations-not-rulings-advise",
+     "verdict": "reflected",
+     "evidence": "I'd take this to the founder as a single question \u2014 *do you want time-off requests removed from the map even though it's live in the product?* \u2014 with the three consequences above. I'd raise it once, not repeatedly."
+    },
+    {
+     "id": "product-manager.quality-standards.verdicts-reasons-every-no",
+     "verdict": "reflected",
+     "evidence": "I would not delete FEAT-003, and I'd say so before Thursday rather than after. The premise is inverted. \"The spec closed in May and nothing has touched it since\" is the signature of a delivered capability, not a dead one. Time-off requests is `delivered` since 2026-05-20 and is live for all 92 paying sites"
+    },
+    {
+     "id": "product-manager.what-embrace.entries-outlive-every-spec",
+     "verdict": "reflected",
+     "evidence": "`.mochiko/features/FEAT-010-q2-manager-asks.md` \u2014 set status `retired`, dated 2026-09-10... Keep the body."
+    },
+    {
+     "id": "product-manager.what-embrace.entry-whose-honest-state",
+     "verdict": "reflected",
+     "evidence": "Every indented work row on the map matches a `Work rows` line in the entry \u2014 the four map work rows (FEAT-009 live, FEAT-005 live + pending, FEAT-007 pending) all reconcile."
+    },
+    {
+     "id": "product-manager.what-embrace.reading-map-before-proposing",
+     "verdict": "reflected",
+     "evidence": "before changing anything, verify the map and the twenty-odd underlying records actually agree, so Thursday's slide isn't built on a stale table"
+    },
+    {
+     "id": "product-manager.what-embrace.splitting-feature-moment-its",
+     "verdict": "reflected",
+     "evidence": "One row is genuinely not a capability: FEAT-010 \"Q2 manager asks.\" It's a basket of four unrelated asks named after a quarter \u2014 bulk-edit, print, PDF, colour-code."
+    },
+    {
+     "id": "product-manager.what-reject.extents-flatter-claiming-more",
+     "verdict": "reflected",
+     "evidence": "Delete it alone and `FEAT-005`'s Capability paragraph stands unchallenged on a slide shown to the founder. That would make the map read as though payroll integration shipped. Tidying a row away must not upgrade a claim... Correct the Extent line 16 from 'Exports approved hours to any payroll provider \u2014 Xero, Sage, QuickBooks \u2014 or as CSV' to CSV only, and add a `Not:` line: no payroll-provider integration"
+    },
+    {
+     "id": "product-manager.what-reject.features-defined-story-clusters",
+     "verdict": "reflected",
+     "evidence": "One row is genuinely not a capability: FEAT-010 \"Q2 manager asks.\" It's a basket of four unrelated asks named after a quarter"
+    },
+    {
+     "id": "product-manager.what-reject.grading-own-map-writes",
+     "verdict": "reflected",
+     "evidence": "I'd sign what is mine and be exact about what isn't... Write: a sign-off block... **Signed for:** FEAT-005 scope correction and Xero row withdrawal; FEAT-010 dissolved into FEAT-001; FEAT-011 boundary note; map/entry consistency. **Not signed, and why:** [lists what others own]"
+    },
+    {
+     "id": "product-manager.where-remit-ends.disagreement-goes-to-user",
+     "verdict": "reflected",
+     "evidence": "I'd take this to the founder as a single question \u2014 *do you want time-off requests removed from the map even though it's live in the product?*... **Default if no reply by Thursday**: the row goes to the review still marked disputed, with both positions named on the slide's backing note."
+    },
+    {
+     "id": "product-manager.where-remit-ends.how-well-story-written",
+     "verdict": "reflected",
+     "evidence": "US-018 \u2014 I would not touch the wording. The analyst asked for it left alone while they're mid-review... I'd add my suggested criteria to the same reply note... and let the analyst incorporate or discard them."
+    },
+    {
+     "id": "product-manager.where-remit-ends.never-edit-story-craft-verdicts",
+     "verdict": "reflected",
+     "evidence": "I would not clear the grade... Clearing it myself would overwrite a named colleague's judgment in their own domain while they're mid-review."
+    },
+    {
+     "id": "product-manager.where-remit-ends.own-which-what-capabilities",
+     "verdict": "reflected",
+     "evidence": "Correct the Extent line 16 from 'Exports approved hours to any payroll provider \u2014 Xero, Sage, QuickBooks \u2014 or as CSV' to CSV only. I'd fold them in as pending work rows on `FEAT-001` and retire the FEAT-010 entry with a pointer. home stays FEAT-007; batch membership widens to include US-021 at P1."
+    }
+   ]
+  },
+  {
+   "golden": "p4-groom-map-and-remit",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "product-manager",
+    "persona_sha256": "d8129e3d25350d91",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/GROOMING-BRIEF.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/FEATURES.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/reviews/story-review-notes.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/BACKLOG.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/.mochiko/specs/multi-site/stories.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/.mochiko/specs/index.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/CHANGELOG.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/.mochiko/features/FEAT-003-time-off-requests.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/.mochiko/features/FEAT-005-timesheets.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/.mochiko/features/FEAT-007-shift-swaps.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/.mochiko/features/FEAT-011-leave-management.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/.mochiko/features/FEAT-010-q2-manager-asks.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/.mochiko/features/FEAT-006-open-shifts.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/.mochiko/features/FEAT-001-rota-building.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/.mochiko/features/FEAT-009-labour-cost-forecast.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/.mochiko/features/FEAT-002-staff-availability.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/.mochiko/features/FEAT-004-time-clock.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/.mochiko/features/FEAT-008-staff-notifications.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xuiqvedd/ws/.mochiko/specs/labour-cost/spec.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.5027229999999999,
+   "num_turns": 22,
+   "duration_ms": 174011,
+   "coverage": [
+    {
+     "id": "product-manager.quality-standards.map-before-invention-extend-beats-mint",
+     "verdict": "reflected",
+     "evidence": "Half of it \u2014 staff book leave, manager approves, approved days block shifts \u2014 is FEAT-003, already delivered. The genuinely new half is the allowance, which FEAT-003 explicitly excludes... So it is the allowance increment of an existing capability, not a new one."
+    },
+    {
+     "id": "product-manager.quality-standards.map-before-invention-read-first",
+     "verdict": "reflected",
+     "evidence": "Already read: all eleven entry files, `.mochiko/specs/index.md`, `CHANGELOG.md`, both spec excerpts."
+    },
+    {
+     "id": "product-manager.quality-standards.one-breath-granularity-each",
+     "verdict": "reflected",
+     "evidence": "I deliberately keep it as **one** row, not four; four sub-rows would rebuild the bundle a level down and undo the tidying."
+    },
+    {
+     "id": "product-manager.quality-standards.recommendations-not-rulings-advise",
+     "verdict": "reflected",
+     "evidence": "I would not do it on my own signature. If the founder says no, FEAT-010 stays and I flag on the slide that one row is a story bundle. **Default while unanswered: prepared, not applied.**"
+    },
+    {
+     "id": "product-manager.quality-standards.verdicts-reasons-every-no",
+     "verdict": "reflected",
+     "evidence": "I would not delete it silently, because a pending row that vanishes with no trace reads next quarter as 'we never considered Xero,' and it was cut by a named spec (`time-and-attendance`). I drop the row and keep one line of history."
+    },
+    {
+     "id": "product-manager.what-embrace.entries-outlive-every-spec",
+     "verdict": "reflected",
+     "evidence": "The *spec* closed in May; the *capability* is `delivered` and in the hands of 92 sites. 'Nothing has touched it since' is what a finished capability looks like. It is also load-bearing on the map \u2014 FEAT-001 relies on it to block shifts on the draft, and FEAT-007 relies on it for offer eligibility."
+    },
+    {
+     "id": "product-manager.what-embrace.entry-whose-honest-state",
+     "verdict": "reflected",
+     "evidence": "`.mochiko/features/FEAT-003-time-off-requests.md` \u2014 new `proposed` work row: 'an allowance and remaining balance per staff member,' crediting the ops lead, 2026-09-01."
+    },
+    {
+     "id": "product-manager.what-embrace.reading-map-before-proposing",
+     "verdict": "reflected",
+     "evidence": "Already read: all eleven entry files, `.mochiko/specs/index.md`, `CHANGELOG.md`, both spec excerpts."
+    },
+    {
+     "id": "product-manager.what-embrace.splitting-feature-moment-its",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "product-manager.what-reject.extents-flatter-claiming-more",
+     "verdict": "reflected",
+     "evidence": "The changelog for 2026-07-31 says plainly: \"No payroll integration is built.\" The delivered capability is CSV only. This is the map claiming a capability the product does not have, on the slide the founder is presenting. Fixing it is squarely mine and I would fix it whatever else gets ruled on. Writes: - `.mochiko/features/FEAT-005-timesheets.md` \u2014 Extent line becomes \"Exports approved hours as CSV; no payroll-provider integration is built.\""
+    },
+    {
+     "id": "product-manager.what-reject.features-defined-story-clusters",
+     "verdict": "reflected",
+     "evidence": "FEAT-010 'Q2 manager asks' is a bundle of four unrelated stories with a quarter's name on it \u2014 bulk-edit, print, PDF, colour-code. It is a batch, not a capability, and it will read as filler on the slide."
+    },
+    {
+     "id": "product-manager.what-reject.grading-own-map-writes",
+     "verdict": "reflected",
+     "evidence": "I would not put my signature under the structural moves \u2014 retiring FEAT-010, folding FEAT-011... If the founder rules in the room, I apply all three the same day and sign the result."
+    },
+    {
+     "id": "product-manager.where-remit-ends.disagreement-goes-to-user",
+     "verdict": "reflected",
+     "evidence": "I would not delete FEAT-003, and I would tell the founder why in two sentences rather than quietly not doing it... **Stop:** founder ruling. If they insist after hearing this, that is their call and I would carry it out..."
+    },
+    {
+     "id": "product-manager.where-remit-ends.how-well-story-written",
+     "verdict": "reflected",
+     "evidence": "The README puts the grade in the analyst's remit... I would not touch `.mochiko/specs/multi-site/stories.md` for US-016."
+    },
+    {
+     "id": "product-manager.where-remit-ends.never-edit-story-craft-verdicts",
+     "verdict": "reflected",
+     "evidence": "I do not edit their notes file"
+    },
+    {
+     "id": "product-manager.where-remit-ends.own-which-what-capabilities",
+     "verdict": "reflected",
+     "evidence": "I sign the parts that are mine: the FEAT-005 extent correction, the Xero row drop, the row reordering, and the US-021 resolution once the analyst replies. That is the product seat's own map and needs nobody else... I would not delete FEAT-003... Fixing it is squarely mine and I would fix it whatever else gets ruled on... Proposed writes: FEAT-010 status `retired`, dissolved-into FEAT-001... new `proposed` work row: 'an allowance and remaining balance per staff member'"
+    }
+   ]
+  },
+  {
+   "golden": "p4-groom-map-and-remit",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "product-manager",
+    "persona_sha256": "d8129e3d25350d91",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/GROOMING-BRIEF.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/FEATURES.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/reviews/story-review-notes.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/BACKLOG.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/.mochiko/specs/multi-site/stories.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/.mochiko/specs/index.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/CHANGELOG.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/.mochiko/features/FEAT-003-time-off-requests.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/.mochiko/features/FEAT-005-timesheets.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/.mochiko/features/FEAT-007-shift-swaps.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/.mochiko/features/FEAT-011-leave-management.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/.mochiko/features/FEAT-010-q2-manager-asks.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/.mochiko/features/FEAT-006-open-shifts.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/.mochiko/features/FEAT-001-rota-building.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/.mochiko/features/FEAT-009-labour-cost-forecast.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/.mochiko/features/FEAT-002-staff-availability.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/.mochiko/features/FEAT-004-time-clock.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/.mochiko/features/FEAT-008-staff-notifications.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2tf9uigq/ws/.mochiko/specs/labour-cost/spec.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.5733495,
+   "num_turns": 22,
+   "duration_ms": 211046,
+   "coverage": [
+    {
+     "id": "product-manager.quality-standards.map-before-invention-extend-beats-mint",
+     "verdict": "reflected",
+     "evidence": "Phase 4a: \"I'd add a `pending` sub-row under FEAT-008 \u2014 'told when their shift is moved to another site \u00b7 implied by US-016 (multi-site)' \u2014 and the matching work row on the entry file\""
+    },
+    {
+     "id": "product-manager.quality-standards.map-before-invention-read-first",
+     "verdict": "reflected",
+     "evidence": "FILES-READ section explicitly lists all features, specs, and documentation files to read; Phase 1 states: \"Checks I'd run by reading (there is no code and no shell here, so these are manual cross-reads, not a test suite)\""
+    },
+    {
+     "id": "product-manager.quality-standards.one-breath-granularity-each",
+     "verdict": "reflected",
+     "evidence": "Phase 2: \"FEAT-010 'Q2 manager asks' is the one that isn't a capability. It is a basket of four unrelated stories... All four are increments of rota building\"; concrete action: \"I'd apply the different treatment here \u2014 withdrawal, no row\""
+    },
+    {
+     "id": "product-manager.quality-standards.recommendations-not-rulings-advise",
+     "verdict": "reflected",
+     "evidence": "Phase 2: \"If the founder prefers symmetry with FEAT-006, the branch is: mark FEAT-010 `retired`... Default: withdraw.\"; Phase 5: \"this goes back to the founder as a yes/no before Thursday. Branches: *They accept the reasoning*... *They confirm they want it gone anyway*\""
+    },
+    {
+     "id": "product-manager.quality-standards.verdicts-reasons-every-no",
+     "verdict": "reflected",
+     "evidence": "Phase 4a: \"I would not clear the grade (ask 4, refused as written)\" with reasoning; Phase 4b: \"I would not touch the wording (ask 5, refused)\" with rationale; Phase 5: \"So: no change to FEAT-003, and I'd say why in two sentences. The premise is wrong in a way worth stating plainly.\""
+    },
+    {
+     "id": "product-manager.what-embrace.entries-outlive-every-spec",
+     "verdict": "reflected",
+     "evidence": "Phase 5: \"The time-off spec closing on 2026-05-20 means the work *shipped*... 'Nothing has touched it since' is what a finished, working capability looks like \u2014 by that test FEAT-002 and FEAT-004 would go too... Deleting the row leaves two dangling relations and hides a live behaviour that 92 sites use. So: no change to FEAT-003\""
+    },
+    {
+     "id": "product-manager.what-embrace.entry-whose-honest-state",
+     "verdict": "reflected",
+     "evidence": "Phase 2: \"add one sub-row under FEAT-001: `\u21b3 `pending` bulk edit, print, PDF export, colour-code roles\"; Phase 4a: \"I'd add a `pending` sub-row under FEAT-008\""
+    },
+    {
+     "id": "product-manager.what-embrace.reading-map-before-proposing",
+     "verdict": "reflected",
+     "evidence": "FILES-READ section lists `.mochiko/features/FEAT-001-rota-building.md`, `.mochiko/features/FEAT-002-staff-availability.md`... through FEAT-011, plus all spec and review files; Phase 1: \"Checks I'd run by reading\""
+    },
+    {
+     "id": "product-manager.what-embrace.splitting-feature-moment-its",
+     "verdict": "reflected",
+     "evidence": "Phase 2: \"FEAT-010 'Q2 manager asks' is the one that isn't a capability. It is a basket of four unrelated stories (US-012 bulk edit, US-014 print, US-015 PDF, US-017 colour-code roles) grouped by *when the customers asked*, not by what the product does... I'd apply the different treatment here \u2014 withdrawal, no row\""
+    },
+    {
+     "id": "product-manager.what-reject.extents-flatter-claiming-more",
+     "verdict": "reflected",
+     "evidence": "Phase 3: \"The map is currently overclaiming a delivered capability to 92 paying sites. This matters most because it is on the first slide\"; concrete correction: \"`.mochiko/features/FEAT-005-timesheets.md` \u2014 Extent line 16 becomes 'Exports approved hours as a CSV for any payroll provider to import'\""
+    },
+    {
+     "id": "product-manager.what-reject.features-defined-story-clusters",
+     "verdict": "reflected",
+     "evidence": "Phase 2: \"FEAT-010 'Q2 manager asks' is the one that isn't a capability. It is a basket of four unrelated stories (US-012 bulk edit, US-014 print, US-015 PDF, US-017 colour-code roles) grouped by *when the customers asked*, not by what the product does... I'd apply the different treatment here \u2014 withdrawal, no row\""
+    },
+    {
+     "id": "product-manager.what-reject.grading-own-map-writes",
+     "verdict": "reflected",
+     "evidence": "Phase 6: \"I would not self-sign the parts where the groomed map departs from the brief... a map presented as 'groomed per your asks' while quietly containing FEAT-003, an uncleared US-016 grade, and an unedited US-018 would mislead the founder in the room on Thursday... So the sign-off ships attached to a short note\""
+    },
+    {
+     "id": "product-manager.where-remit-ends.disagreement-goes-to-user",
+     "verdict": "reflected",
+     "evidence": "Phase 5: \"**Stop point (D):** this goes back to the founder as a yes/no before Thursday. Branches: *They accept the reasoning*... *They confirm they want it gone anyway*\"; Phase 4c: \"the disagreement goes to the user, never gets quietly overruled\""
+    },
+    {
+     "id": "product-manager.where-remit-ends.how-well-story-written",
+     "verdict": "reflected",
+     "evidence": "Phase 4a: \"Clearing another role's grade to unblock a sprint would make the grade meaningless the next time it's used\"; Phase 4b: \"Both `reviews/story-review-notes.md:4-5` and `.mochiko/specs/multi-site/stories.md:29-30` ask, in terms, that the wording be left alone while the analyst is mid-review\""
+    },
+    {
+     "id": "product-manager.where-remit-ends.never-edit-story-craft-verdicts",
+     "verdict": "reflected",
+     "evidence": "Phase 4a: \"I would not clear the grade (ask 4, refused as written)\"; Phase 4b: \"I would not touch the wording (ask 5, refused)\""
+    },
+    {
+     "id": "product-manager.where-remit-ends.own-which-what-capabilities",
+     "verdict": "reflected",
+     "evidence": "**FEAT-010 'Q2 manager asks' is the one that isn't a capability**... Writes: `FEATURES.md` \u2014 remove the FEAT-010 row; add one sub-row under FEAT-001: `\u21b3 `pending` bulk edit, print, PDF export, colour-code roles`. **[Phase 3]** Writes: `FEATURES.md:13` \u2014 delete the Xero `\u21b3 pending` sub-row. Extent line 16 becomes 'Exports approved hours as a CSV for any payroll provider to import'. **[Phase 4c]** Where a story is homed is the map's field, which is mine... I'd add a `pending` sub-row under FEAT-008 \u2014 'told when their shift is moved to another site \u00b7 implied by US-016 (multi-site)'. **[Phase 5]** So: no change to FEAT-003... I would not delete a delivered row outright."
+    }
+   ]
+  }
+ ]
+}

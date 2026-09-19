@@ -1,0 +1,65 @@
+=== review.md ===
+---
+report: review
+feature: FEAT-027
+round: 2
+incremental: true
+scope:
+  full_review: [tasks.md, contracts/api.yaml, constraints-and-decisions.md]
+  consistency_only: [data-model.md, store-delta.md, quickstart.md]
+verdict: critical-gaps
+verdict_basis: "6 Critical issues: a required artifact is absent, the re-issued ingest decision contradicts the signed architecture and its own governing requirement, an unresolved [TODO] marker, a single-option decision, and a P2 story with zero coverage anywhere in the package"
+strengths: "round-1 gaps closed cleanly — pagination on the consumption list, the US-3 tariff card, D-004's rationale reworded against C-005, the Reading example; tariff overlap/authorization carry clear 409/403 semantics"
+consistency_checks:
+  entity_names: pass
+  schemas: fail
+  decisions_honored: fail
+  architecture_conformance: fail
+  sensitivity_annotations: pass
+  integration_boundaries: pass
+findings:
+  - {id: G1, type: Missing, sev: Critical,
+     at: "FEAT-027 package — quickstart.md",
+     gap: "sufficiency-report.md rules quickstart.md required (Enerlink is an x-integration surface) and it is part of the prior set this round inherits, but no such file exists anywhere under .mochiko/features/FEAT-027/, and there is no plan.md recording a null path in its place",
+     fix: "author quickstart.md (Enerlink auth/flow/error docs per patterns-api-contracts) or, if the call changed, record the null path where a consumer would look for it"}
+  - {id: G2, type: Contradiction, sev: Critical,
+     at: "constraints-and-decisions.md C-005/D-004",
+     gap: "C-005 asserts (memory-asserted, unverified) Enerlink v3 has no push and only hourly pull; D-004 chooses hourly pull on that basis. This directly contradicts the signed store-delta.md, which rules SPN-009 'push over pull: the 5-minute visibility target needs the gateway to tell us, not us to ask' and AX-013 'push-based ingest through meter-ingest' — and contradicts contracts/api.yaml's POST /gateway/readings (operationId pushReadings, HMAC-signed gateway push) and tasks.md Cycle 1, whose entire walking-skeleton TEST simulates the gateway pushing a reading. Three of four new/signed artifacts assume push; one asserts push is impossible",
+     fix: "resolve which vendor capability is real (neither C-005 nor the store delta's ruling is verified against Enerlink's actual v3 docs) and re-align whichever artifacts are wrong — likely re-opening AX-013"}
+  - {id: G3, type: Contradiction, sev: Critical,
+     at: "constraints-and-decisions.md D-004 Consequences",
+     gap: "D-004's own Consequences field states 'consumption freshness is up to 60 min', which contradicts FR-002 ('visible... within 5 minutes') and SC-001 (p95 ≤ 5 min) — the requirements D-004 is shaped to serve",
+     fix: "if pull is the real ingest mode, FR-002/SC-001 need renegotiating with product before this proceeds; if the 5-minute target holds, pull cannot be the chosen mode"}
+  - {id: G4, type: Missing, sev: Critical,
+     at: "constraints-and-decisions.md C-006 Impact",
+     gap: "unresolved '[TODO] confirm the marina-admin role name' marker, gating the authorization check on PUT /marinas/{marinaId}/tariffs (403 case)",
+     fix: "resolve the role name before this round clears"}
+  - {id: G5, type: Missing, sev: Critical,
+     at: "constraints-and-decisions.md D-005",
+     gap: "the alternatives table carries a single option (hand-rolled monthly ring-buffer tables) — no second alternative is evaluated. Native PostgreSQL declarative partitioning (core to PG16 per AX-002, not an extension) is a direct off-the-shelf fit for this exact shape and is absent from the table and from design-disclosure.md's adopt-first note ('plain tables; nothing to adopt')",
+     fix: "add a genuine second alternative (at minimum native partitioning) with rationale for rejecting it"}
+  - {id: G6, type: Missing, sev: Critical,
+     at: "tasks.md Overview + Cycles 1-5",
+     gap: "the Overview table admits 'Stories covered: US-1, US-2, US-3' — US-4 (P2, FR-005: backfill + gap notice) has no cycle card. Nothing else in the new set fills the gap either: data-model.md models no gap/notice entity or field, and no contract endpoint surfaces a gap notice — only the Reading.source enum and a prose fallback note on POST /gateway/readings acknowledge backfill exists at all",
+     fix: "add a cycle card for US-4 and a gap-notice representation the owner-facing consumption view can carry"}
+  - {id: G7, type: Assumption, sev: Important,
+     at: "contracts/api.yaml GET /marinas/{marinaId}/consumption-export",
+     fix: "source it to a real FR/US or drop it from this round; if finance genuinely asked, that needs a requirement first",
+     gap: "the summary cites 'US-6', which does not exist — spec.md defines only US-1 through US-4 — an endpoint with no traceable requirement, disclosed in design-disclosure.md only as 'finance asked for a CSV'"}
+  - {id: G8, type: Missing, sev: Important,
+     at: "data-model.md Tariff — Traceability",
+     gap: "cites 'D-009', which is defined nowhere — constraints-and-decisions.md's feature rows are D-004 and D-005 only, baseline is D-001-D-003",
+     fix: "correct the citation to a real decision or add the missing one"}
+  - {id: G9, type: Ambiguous, sev: Minor,
+     at: "contracts/api.yaml Reading schema",
+     gap: "field names (recordedAt, energyKwh) diverge from data-model.md's MeterReading (readAt, kwh) with no mapping note",
+     fix: "align the names, or document the gateway-payload-to-entity mapping once"}
+---
+
+## Clarifications needed
+
+### C1: Does Enerlink v3 push or only expose hourly pull? (G2)
+
+**Question**: The signed architecture (store-delta.md, AX-013) and this round's constraints-and-decisions.md (C-005, D-004) assert opposite vendor capabilities, and both are explicitly unverified against real Enerlink documentation ("memory-asserted"). Which is true?
+**Options**: 1. Push is real — keep the signed architecture and SPN-007/AX-013 as ruled; retract C-005/D-004 and rewrite the ingest decision to match. 2. Pull-only is real — re-open AX-013, redesign meter-ingest as a poller, rewrite contracts/api.yaml and tasks.md Cycle 1 off the push shape, and take FR-002/SC-001's 5-minute target back to product since hourly pull cannot meet it. 3. Neither has been checked — verify against Enerlink's actual v3 docs before either artifact is trusted further.
+**Why it matters**: this single fact decides the container topology (SPN-007's existence and shape), the gateway contract's auth/method, the walking-skeleton test, and whether FR-002/SC-001 are achievable at all — every other finding in this round downstream of ingest mode inherits whichever answer is wrong.

@@ -1,0 +1,88 @@
+=== blind-angle-map.md ===
+# Phase 0 — Blind angle map (topic-only, pre-record)
+
+Topic: Threadline — migrating 4,000 teams from invoiced annual contracts to self-serve card billing.
+No repository/source available in this workspace; this map is built from the topic statement alone, before weighing it against the record.
+
+Angles a migration decision record of this shape should plausibly cover:
+
+1. Cutover mechanics — single cutover date vs staggered/waved, and what triggers a given team's move.
+2. Price continuity — does per-seat price change at migration, when, how much notice, and whether it differs for non-standard (negotiated/discounted) accounts.
+3. Non-action path — what happens to a team that never adds a card: grace period, suspension, data retention/deletion, and whether/when it's reversible.
+4. Payment capture mechanics — who can add a card (admin-only?), backup card support, currency handling for non-US teams.
+5. Ongoing payment failure / dunning — not just "no card at renewal," but card-on-file declines at a later cycle (expired, insufficient funds).
+6. Seat-count changes — proration on add AND on remove, reconciliation cadence, billing-noise tradeoffs.
+7. Tax compliance — sales tax / VAT obligations, nexus, filing responsibility, whether a third-party tool fully discharges the obligation or just assists it.
+8. Enterprise/large-account carve-outs — procurement policies that require PO/invoice; is there a threshold above which invoicing continues.
+9. Legal/contract constraints — do existing invoiced annual contracts have auto-renewal, notice-period, or price-change clauses that constrain a unilateral billing-model switch.
+10. Communications — cadence, audience (admin vs all users), and whether messaging continues through consequential state changes (grace, suspension) or stops at a fixed point.
+11. Downgrade/upgrade self-serve paths and any dark-pattern risk in gating one direction behind support.
+12. Internal tooling — operator overrides, audit logging, permissioning, abuse risk for high-blast-radius controls.
+13. Rollback — path back to invoiced billing if a wave migration fails or a team needs an exception.
+14. Data retention/deletion policy for suspended accounts — is suspension terminal or does it have an endpoint.
+15. Success metrics / conversion targets for the migration itself.
+16. Multi-year contract terms — does "next renewal" mean multi-year for some accounts, and is that intended.
+
+This map was diffed against the frozen record in the cold read; gaps and their materiality are reported in review.md.
+
+
+=== review.md ===
+Solo cold end-stage review of record.md (Threadline self-serve billing migration). No repo, no fact-checker claim map in this workspace, so I verified only what the record's own text lets me verify (internal consistency, and one externally-checkable factual claim in D8). Everything else marked "unverifiable" is exactly that, not a stand-in for "wrong." Blind angle map (topic-only, pre-record) written to blind-angle-map.md before I weighed it against the record; diff and materiality below. No counterpart ran in this session, so there is no cross-examination round — treat every item as a candidate, not a confirmed survivor.
+
+## Findings
+
+**1. [Critical] D8's central factual claim is very likely wrong, and a legal conclusion rests on it.**
+Decision(s): D8.
+D8 states Stripe Tax "registers us and files returns automatically in every US state once revenue crosses that state's economic-nexus threshold, so we carry no filing obligation of our own and need no tax counsel." As I understand Stripe Tax's actual scope: it calculates/collects tax and can flag when a state's nexus threshold is crossed, but registration in a state is not automatic on your behalf, and automatic filing across "every" state is not a blanket guarantee — filing support has historically been narrower and often requires separate setup. If this is wrong, the conclusion "no filing obligation, no tax counsel needed" is wrong too, and that's a real exposure: back taxes, penalties, and interest across a 4,000-team customer base, discovered only after the fact. The decision is marked "Confident" on a claim I could not verify in this workspace and have reason to doubt.
+Resolution path: get an actual answer from Stripe (docs or account rep) on registration and filing coverage per state, and get tax counsel to sign off before treating this as closed — at minimum, downgrade D8's confidence from Confident to Assumed until that happens.
+
+**2. [Critical] D3 and D6 combine to cut off communication exactly when it matters most.**
+Decision(s): D3, D6.
+D3 puts a team with no card at renewal into 30 days of read-only grace, then suspends it. D6 stops all migration email at the renewal date — the exact moment D3's clock starts. So the 30-day window explicitly justified as "long enough for a finance approval to come through" (D3's own rationale) runs with zero communication, and the suspension event itself is never announced. This directly undercuts D3's stated goal of not losing "accounts we could have saved." This reads as an oversight rather than an intentional tradeoff — the record gives no rationale for silence during the grace period specifically, only for silence after a team has "chosen to leave," which isn't the same population.
+Resolution path: either extend D6's email schedule to cover the grace-period window (e.g., a nudge partway through the 30 days and a suspension notice), or add explicit rationale to D6 for why grace-period teams should hear nothing.
+
+**3. [Important] No enterprise/large-account exception path.**
+Decision(s): D1, D2, D7 (by omission), and the record as a whole.
+Nothing addresses teams whose procurement process requires a PO or invoice as a matter of policy, not preference. Forcing 4,000 teams — including presumably some of Threadline's largest — onto card billing with no carve-out risks losing exactly the accounts most worth keeping, or forces an ad hoc exception process that the record doesn't acknowledge exists.
+Resolution path: either state explicitly that there is no size-based exception (a real decision, even if the answer is "no"), or set a seat/revenue threshold above which invoicing continues.
+
+**4. [Important] D1's "no contract is broken mid-term" is asserted, not established.**
+Decision(s): D1.
+The whole wave-by-renewal design leans on this claim, but the record shows no legal/contract review behind it. Invoiced annual contracts commonly carry auto-renewal, notice-period, or price-change clauses; a unilateral switch of billing model (not just price) at renewal could trigger some of those depending on how the contracts are worded. This is exactly the kind of unchallenged assumption that's cheap to check and expensive to be wrong about.
+Resolution path: confirm with whoever holds the contract templates (or legal) that "billing method" isn't a term requiring separate notice/consent beyond what D1 assumes.
+
+**5. [Important] D2 doesn't address negotiated/discounted pricing.**
+Decision(s): D2.
+"Current per-seat rate held for 12 months, then list price" implicitly assumes teams are on a rate that maps cleanly to a list price. Larger accounts on custom-negotiated discounts would see the actual list price as a much bigger jump than a normal price rise — for precisely the highest-value teams D2's rationale ("avoid two shocks") is trying hardest to protect. The record is silent on whether "list price" means the negotiated discount persists, phases out, or disappears entirely at month 12.
+Resolution path: state explicitly what happens to negotiated-discount accounts at the 12-month mark.
+
+**6. [Important] No stated policy for payment failures after a card is already on file.**
+Decision(s): D3, D4.
+D3 only covers the "no card at renewal" case. The more common real-world failure — a card that's on file at renewal later expires or gets declined — isn't given an explicit grace/suspend policy; it's implicitly left to whatever Stripe Billing's defaults do (via D4). Given how precisely D3 specifies its own timeline (30 days, then suspend), the silence here reads like a gap rather than an intentional "same policy applies," especially since Stripe's default dunning windows don't necessarily match 30 days.
+Resolution path: state whether post-migration dunning follows the same 30-day/read-only/suspend shape as D3, or a different one, and why.
+
+**7. [Minor] D9's operator override has no stated guardrails.**
+Decision(s): D9.
+"An operator override that can force any team into any billing state" is high blast-radius (it can presumably force a suspended/non-paying team back into active service, or the reverse). The record doesn't mention audit logging or who can invoke it. It's already marked "Assumed," so this is a smaller gap than 1–6, but worth closing before build.
+Resolution path: add an audit-log requirement and a stated permission tier for the override in D9, or note it's deferred to a follow-up.
+
+**8. [Minor] D5 addresses seat additions but not seat removals.**
+Decision(s): D5.
+The decision explicitly covers seats added mid-cycle (billed the following month, no per-event proration). It says nothing about seats removed mid-cycle — whether that's credited, or (mirroring D7's no-refund stance) billing simply continues until the cycle ends. Plausibly intentional, but unstated.
+Resolution path: one sentence extending D5's stated treatment to removals, even if the answer is "no credit, mirrors D7."
+
+**9. [Minor] "Open threads: None recorded" is itself a fitness signal worth flagging.**
+Decision(s): record as a whole.
+Given findings 3–8 above, a record with zero acknowledged open threads for a 4,000-team billing-model migration reads as under-scoped rather than fully resolved. Not a claim that any specific thread was suppressed — just that the empty section didn't catch things a first pass surfaces fairly easily.
+
+## Coverage diff (blind map vs. record)
+Covered directly: cutover mechanics (D1), price continuity (D2, partial — see #5), non-action path (D3), platform choice (D4), seat reconciliation (D5), comms (D6, partial — see #2), downgrade gating (D7), tax (D8, contested — see #1), internal tooling (D9, partial — see #7).
+Not addressed anywhere in the record: enterprise/PO carve-outs (#3), contract/legal constraints on the switch itself (#4), post-migration payment-failure policy (#6), rollback path if a wave migration needs to be undone, data-retention endpoint for indefinitely-suspended accounts, multi-year-contract handling, success metrics for the migration.
+
+## Tally
+Critical: 2 (D8 tax claim, D3×D6 comms gap)
+Important: 4 (enterprise carve-out, D1 legal assumption, D2 negotiated pricing, post-migration dunning policy)
+Minor: 3 (D9 override guardrails, D5 seat-removal silence, empty open-threads section)
+
+## Recommended status: needs-revision
+The two Critical items are both the kind that would very plausibly change a ruling if pursued: #1 because it's a factual claim underpinning a "no counsel needed" conclusion that I have specific reason to doubt, and #2 because it's an internal contradiction between two Confident decisions, not a matter of opinion. I'd hold this record short of ready until at least those two are resolved on the page — this is my input, not the verdict.

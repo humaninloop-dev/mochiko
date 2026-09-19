@@ -1,0 +1,97 @@
+=== blind-angle-map.md ===
+# Phase 0 — Blind Angle Map
+Produced from the topic and goal line alone, before record contact.
+
+Topic: Palisade (incident-management SaaS) — incident notification delivery to on-call responders.
+Goal line: delivery mechanism, escalation policy, what we owe a customer when a page fails to land.
+
+## Angles I expect a thorough session to touch
+
+1. Delivery channel menu and why each is in/out (push, SMS, voice call, email, chat-ops/Slack-Teams)
+2. Cost/reliability tradeoff per channel, and whether severity should change the channel used
+3. Escalation ladder: hop count, hop timing, who is the final backstop, what happens if the backstop also fails
+4. Acknowledgement semantics: what counts as an ack, race conditions across simultaneous channels/hops
+5. Delivery status/observability: how "sent" vs "delivered" vs "failed" is captured and for how long
+6. Precise definition of "a page fails to land" — never delivered vs delivered-but-unacked vs acked-late
+7. Customer-facing commitment when paging fails: SLA credit, proactive notice, postmortem obligation
+8. Redundancy: simultaneous multi-channel send vs strictly sequential fallback
+9. Platform-specific push reliability caveats (iOS background limits, Android OEM battery killers) and whether any delivery-time guarantee is real
+10. Single-vendor dependency risk (e.g., an FCM outage taking down the entire primary channel at once)
+11. On-call schedule/rotation integration, overrides, holidays
+12. Regulatory/compliance: payload sensitivity, SMS consent requirements (e.g. TCPA-style), data residency
+13. International reliability/cost variance for SMS and push outside the home market
+14. Quiet hours, snooze, notification fatigue controls
+15. Multi-device / multiple logged-in sessions per responder
+16. Retry/backoff at the transport layer, separate from human-ack-driven escalation
+17. Audit/reconciliation of delivery truth vs the primary status store, and its alerting path
+18. Retention length for delivery records, tied to support-ticket and audit/compliance needs
+19. Per-responder channel preference vs one-policy-for-everyone, and the risk each way
+20. Accessibility: responders who cannot use a given channel (e.g., audio-only escalation) and legal/compliance exposure
+21. Ongoing verification that the pipeline actually works (synthetic/game-day paging tests)
+22. Abuse/rate-limit protection against a channel being used to spam a responder
+
+This map is intentionally built before reading record.md and is not edited after record contact; the cold read below diffs the record against it.
+
+
+=== review.md ===
+Lead —
+
+Cold, solo end-stage pass on the Palisade paging record. No counterpart in this session, so no cross-examination round ran — treat everything below as one reviewer's read, not a cross-checked consensus. There's no fact-checker claim map and no repo here, so I verified what the record itself lets me verify (internal consistency between decisions) and flagged everything else by what it is: a domain-knowledge claim I couldn't run through your fact-checking tooling. Blind angle map was built from the topic alone before I touched the record; it's saved alongside this as `blind-angle-map.md` if you want the raw diff surface.
+
+9 findings survived. 2 Critical, 3 Important, 4 Minor. Recommended status: **needs-revision**.
+
+## Critical
+
+**1. The record never decides what we owe the customer when a page fails to land — the third leg of your own goal line is unaddressed.**
+Touches: D6, D8, and the goal line itself.
+D6's escalation ladder terminates at the incident commander. Nothing says what happens if the IC also doesn't ack, and no decision anywhere commits to a customer-facing consequence (SLA credit, proactive notice, forced postmortem, anything). D8 is an internal audit/reconciliation mechanism — it's about Palisade knowing paging broke, not about the customer being told or compensated. Failure scenario: full chain (responder → next responder → IC) all miss, and the incident just... sits there, with zero contractual signal outward. This is exactly the case the goal line asked you to cover.
+Resolution path: add a decision for post-exhaustion behavior and for what's owed externally. This can't be inferred from D8 — it's a different audience (customer vs. internal ops) and needs its own ruling.
+
+**2. D4's technical rationale overclaims FCM's guarantees on two counts, and the rest of the chain leans on it.**
+Touches: D1, D2, D4.
+- "FCM guarantees delivery inside five seconds" — FCM (like APNs) is documented as best-effort with no delivery-time SLA. There is no such guarantee to lean on.
+- "without us holding a separate APNs entitlement" — FCM brokers push to iOS through APNs; you still need an APNs auth key registered with Apple and the push entitlement in the app. FCM removes the need to run your own APNs connection, not the need for APNs credentials at all.
+Why this matters beyond D4 itself: D2's "five minutes is generous against that guarantee" and D1's cost tradeoff both implicitly trust that push reliably lands fast. D2's fallback also triggers on ack-timeout, not on delivery-failure — so if a push is silently delayed or dropped (routine, best-effort behavior, not an edge case), nobody notices until the same 5-minute clock that assumes push already arrived. Delivery failure and ack failure are being treated as the same signal when they aren't.
+Resolution path: re-derive D4's rationale without the guarantee language, confirm who owns the APNs credential work, and consider whether D2's SMS trigger should also fire on a D3 "failed" status, not only on ack-timeout.
+
+## Important
+
+**3. D2 (SMS retry to the same responder at 5 min) and D6 (escalation to the next responder at 3 min) race, with no stated resolution.**
+Touches: D2, D6.
+The next-responder hop fires before the original responder's SMS retry ever would. Unless the 5-minute SMS timer is meant to restart per-hop (not stated either way), the original responder is already bypassed by the time their "cheap fallback" would trigger — so D2 does little for the exact phone-off/DND case it was written to cover. Failure scenario: responder is on Do Not Disturb (would see an SMS banner) but gets escalated away at t=3min, never receiving the t=5min SMS.
+Resolution path: state explicitly whether the SMS timer is per-responder-per-hop, and whether it should fire before or in parallel with the next-hop escalation rather than after it's moot.
+
+**4. No voice-call (or other high-urgency) tier exists anywhere in the channel or escalation policy, despite severity already being a first-class field (D5).**
+Touches: D1, D5, D6.
+Industry-standard practice reserves a phone call for late-stage escalation or high severity specifically because it's the hardest channel to sleep through. Here, every escalation hop — regardless of severity — stays within push/SMS. Failure scenario: a Sev-1 goes unacked through two hops of push/SMS with no channel-urgency increase, only a different human getting the same signal.
+Resolution path: either decide severity should drive channel choice at some hop, or record an explicit rationale for ruling voice out (cost, vendor complexity, whatever it is) rather than leaving it absent by omission.
+
+**5. D8's in-house audit/reconciliation service is real build cost justified only by "we want a second source of truth" (Assumed), and a cheaper shape exists.**
+Touches: D8, D3.
+Cheaper shape: make provider webhooks the direct write path for D3's status rows (one source of truth) with a lightweight periodic spot-check, instead of independently re-deriving full delivery state and reconciling nightly against a store you could just write correctly in the first place. As designed, D8 reads like "we don't trust our own status writer" without deciding to fix the writer. Separately, nightly cadence means D8 structurally cannot be the mechanism behind finding #1 — it can't produce a same-day customer commitment on a failure that already happened.
+Resolution path: decide whether D8 is for real-time failure detection (then nightly is the wrong cadence and the design is under-built for its purpose) or for after-the-fact audit/billing-dispute defense (then the simpler single-source shape is probably sufficient and the current design is over-built).
+
+## Minor
+
+**6. "Open threads: None recorded" doesn't match the record's own content.**
+At minimum, findings #1, #3, and #5 above are unresolved threads that the decisions themselves surface (IC-exhausted path, D2/D6 timer interaction, D8's real-time-vs-audit purpose). An empty section reads as "nothing outstanding," which isn't accurate here — worth populating rather than leaving blank.
+
+**7. D7 (Contested, no per-responder channel preference in v1) was ruled on the churn/muting argument — a distinct angle wasn't in the room.**
+Not re-litigating the recorded argument. A responder who cannot use a mandated channel for an accessibility reason (e.g., an audio-based escalation and a hearing-impaired responder) has no override, which is a compliance question, not a UX-annoyance one. Flagging as new since it wasn't the argument already heard and ruled on.
+Resolution path: confirm whether this was considered and knowingly deferred to the "revisit after a quarter of data" review, or note it separately since it isn't answered by more paging data.
+
+**8. SMS regulatory/deliverability exposure is unaddressed, and it's a second reason (beyond cost) SMS was demoted in D1.**
+Automated SMS consent requirements and carrier spam-filtering of bulk/automated texts aren't mentioned. This matters specifically because D2 depends on SMS to actually land when push didn't — if SMS deliverability itself is unreliable for automated senders, the fallback inherits the same failure mode it's meant to catch.
+
+**9. Single-vendor dependency: FCM is the entire primary channel (D1 + D4), with no stated fallback for an FCM-side outage window.**
+During any such window the "push costs nothing and is reliable" premise inverts to 0% primary delivery, with only the ack-timeout-driven (not delivery-failure-driven — see finding #2) SMS fallback as the safety net. May be an acceptable residual risk, but it's currently unstated rather than consciously accepted.
+
+## Tally
+Critical: 2 (customer-commitment gap, D4 overclaim)
+Important: 3 (D2/D6 timer race, missing voice tier, D8 shape/cadence)
+Minor: 4 (open-threads section, D7 new angle, SMS regulatory exposure, FCM single-vendor risk)
+
+## Recommended status: needs-revision
+Core channel/escalation shape is coherent and most confidence labels are honestly calibrated (D3, D7, D8 correctly flagged as Assumed/Contested rather than dressed up as Confident). But two things need to close before this is ready: a real decision on customer-owed consequences (goal-line leg 3, currently zero coverage), and a correction to D4's technical rationale since two other decisions lean on it. Neither requires reopening the channel-cost logic in D1, which holds up fine on its own terms.
+
+— cold reviewer

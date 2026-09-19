@@ -1,0 +1,119 @@
+=== review.md ===
+---
+report: review
+feature: FEAT-031
+round: 1
+incremental: false
+verdict: critical-gaps
+verdict_basis: "11 Critical findings — a P2 story (US-4/FR-006) dropped with zero coverage while an unsourced capability (contracts 'US-5'/'FR-009' forecast) was added instead; D-005 introduces a second datastore forbidden by blocking constraint C-003 on a factually false rationale; the sufficiency report's G-04 NFR gap and G-03 adopt-first steer were both left unresolved; the core offer-issue trigger has no modeled mechanism given the baseline has no cancellation path."
+strengths: "WaitlistEntry/Offer cardinalities, join-order-by-createdAt, and C-007's per-berth serialization requirement are well-formed; Cycles 1-3's TEST asserts map cleanly to their cited Given/When/Then scenarios; RFC 7807 and 409-conflict conventions carried consistently onto join/decline."
+findings:
+  - {id: G1, type: Missing, sev: Critical,
+     at: "contracts/api.yaml + tasks.md vs spec.md FR-006/US-4",
+     gap: "Marina staff queue view (P2, named explicitly in sufficiency-report.md G-01) has no endpoint and no cycle card anywhere in the package.",
+     fix: "Add a GET waitlist-by-berth-class endpoint and a cycle card covering FR-006/US-4."}
+  - {id: G2, type: Contradiction, sev: Critical,
+     at: "contracts/api.yaml (/berths/{berthId}/availability-forecast) + tasks.md Cycle 4 + design-disclosure.md",
+     gap: "Endpoint, schema, and cycle built around 'US-5'/FR-009, neither of which exists in spec.md (stories stop at US-4, FRs at FR-006) or the sufficiency report — unsourced scope addition displacing the dropped US-4 (G1).",
+     fix: "Remove the forecast endpoint/schema/cycle from this package, or route it through its own spec/feature if genuinely wanted."}
+  - {id: G3, type: Missing, sev: Critical,
+     at: "data-model.md Entity: Notification",
+     gap: "Traceability cites FR-007, which does not exist in spec.md (FRs stop at FR-006) — orphan requirement, broken FR-to-entity trace.",
+     fix: "Re-trace Notification to a real source (e.g. US-2/US-3 notify scenarios) or have the requirements analyst add the missing FR."}
+  - {id: G4, type: Missing, sev: Critical,
+     at: "data-model.md Entity: WaitlistEntry, contactEmail row + Data Sensitivity Summary",
+     gap: "contactEmail is DS-002-declared Confidential but its entity-table Sensitivity column is blank, it carries no [PII] marker (Tier-1 checker confirms, line 41), it's absent from the Data Sensitivity Summary index, and WaitlistEntry has no Sensitivity Details row.",
+     fix: "Mark contactEmail Confidential + [PII], add it to the coverage index, and add a Sensitivity Details row (retention/access/masking)."}
+  - {id: G5, type: Contradiction, sev: Critical,
+     at: "constraints-and-decisions.md D-005 vs product baseline C-003 / AX-002 / AX-009",
+     gap: "D-005 provisions a new Redis instance (IP-003) as hold-expiry storage — a second datastore, which blocking constraint C-003 forbids without a platform sign-off recorded on AX-002; none is recorded. It also bypasses AX-009's decided ruling that pg-boss handles all scheduled/timed work.",
+     fix: "Use pg-boss delayed jobs (already in D-005's own alternatives table) for hold expiry, or obtain and record the AX-002 sign-off before any code."}
+  - {id: G6, type: Contradiction, sev: Critical,
+     at: "constraints-and-decisions.md D-005 rationale + design-disclosure.md rung claim",
+     gap: "Rationale and the disclosed rung-3 ('already exists') claim assert 'Redis is already in the stack for sessions' — false: baseline D-002 puts sessions in a PostgreSQL table, and this same delta's own IP-003 entry admits the Redis instance is new infrastructure to provision.",
+     fix: "Correct the rationale; the decision likely converges on G5's fix once the false premise is removed."}
+  - {id: G7, type: Missing, sev: Critical,
+     at: "constraints-and-decisions.md D-004 + design-disclosure.md adopt_first block",
+     gap: "D-004 (locking) names zero alternatives (checklist requires ≥2) and the disclosure claims 'no shelf candidate' for the locking category, contradicting sufficiency-report.md G-03, which already named pg-boss singleton keys as an adopt-first-answerable candidate for this exact serialization need.",
+     fix: "Evaluate pg-boss singleton-key serialization and/or Postgres advisory locks / SELECT...FOR UPDATE SKIP LOCKED (already available in the single datastore) before defaulting to a hand-rolled polling table."}
+  - {id: G8, type: Missing, sev: Critical,
+     at: "data-model.md (no Booking release/cancel transition) vs product baseline Booking state machine + tasks.md Cycle 2",
+     gap: "FR-003's entire trigger ('a berth of the class frees') has no modeled mechanism: the baseline Booking state machine explicitly has 'No cancellation path in the baseline (FEAT-034 pending)', and this package adds none. Cycle 2's TEST simulates release via a raw SQL UPDATE to 'completed', which is not a documented, real trigger.",
+     fix: "Model the actual release/cancellation event (or declare FEAT-034 as a hard blocking dependency) and rewrite Cycle 2's Setup around a real trigger path."}
+  - {id: G9, type: Missing, sev: Critical,
+     at: "contracts/api.yaml /offers/{offerId}/accept responses",
+     gap: "No 402 response for a declined charge despite FR-004/edge-case requiring the offer stay open for retry (the baseline's analogous /bookings/{id}/pay documents exactly this); also no 409 for an offer no longer open, unlike /decline.",
+     fix: "Add 402 and 409 Problem responses, mirroring the baseline payment endpoint's pattern."}
+  - {id: G10, type: Missing, sev: Critical,
+     at: "contracts/api.yaml /offers/{offerId}/accept x-integration",
+     gap: "The Stripe integration boundary on accept carries no failure_modes list, unlike the baseline pay endpoint's fully documented failure_modes for the identical integration.",
+     fix: "Copy/adapt the baseline's Stripe failure_modes (timeout, 5xx, card declined) onto this endpoint."}
+  - {id: G11, type: Missing, sev: Critical,
+     at: "constraints-and-decisions.md (no NFR row) vs sufficiency-report.md G-04",
+     gap: "G-04 explicitly directed the design phase to record a numeric offer-issue-latency target and measurement method (for SC-002) on a concern row; the FEAT-031 delta adds no NFR-XXX row at all — nothing measurable exists for the build to meet.",
+     fix: "Add an NFR row (e.g. on AX-009) with target p95 ≤ 60 s, source SC-002, and a measurement method, per G-04."}
+  - {id: I1, type: Ambiguous, sev: Important,
+     at: "constraints-and-decisions.md C-006",
+     gap: "Unresolved [NEEDS CLARIFICATION] marker ('does marketing consent gate the offer e-mail, or is it transactional?'), confirmed by the Tier-1 checker.",
+     fix: "Resolve at the clarification gate before build."}
+  - {id: I2, type: Contradiction, sev: Important,
+     at: "tasks.md Cycle 2",
+     gap: "Lists explicit file paths and a pre-written task breakdown, violating the tasks.md grammar that decomposition happens at build time; disclosed at rung 5 ('builder's room') but the grammar still disallows it.",
+     fix: "Strip the task list; leave Cycle 2 as stories + TEST cases only."}
+  - {id: I3, type: Missing, sev: Important,
+     at: "design-disclosure.md",
+     gap: "No store-consult record accompanies the inherited no-delta claim, and the G-04 trip the sufficiency report raised is left silently unresolved (see G11) rather than explicitly dispositioned.",
+     fix: "Record the consult and give G-04 an explicit disposition."}
+  - {id: I4, type: Missing, sev: Important,
+     at: "data-model.md Entity: WaitlistEntry",
+     gap: "No updatedAt field, unlike every baseline entity with mutable state (Owner, Vessel, Marina, Berth, Booking all carry both createdAt and updatedAt); WaitlistEntry's status/position mutate.",
+     fix: "Add updatedAt per the baseline's standard-fields convention."}
+  - {id: I5, type: Missing, sev: Important,
+     at: "contracts/api.yaml",
+     gap: "No GET endpoint to re-fetch a WaitlistEntry's current state; only POST (create) and DELETE (leave) exist, so US-1's 'the owner sees it' is satisfied only at join time, not on later position/status change.",
+     fix: "Add GET /waitlist/{entryId} for the owner to poll current status/position."}
+---
+
+## Clarifications needed
+
+### C1: Does the offer notice require marketing consent, or is it transactional? (I1)
+
+**Question**: C-006 leaves this open with a [NEEDS CLARIFICATION] marker. An offer e-mail is
+time-critical (24 h hold) — treating it as marketing-gated risks an owner missing their hold
+window because they opted out of marketing mail.
+**Options**: 1. Transactional (sends regardless of marketing opt-out) · 2. Gated by marketing
+consent · 3. A new consent category ("service alerts") distinct from marketing
+**Why it matters**: Determines whether Postmark suppression lists can block an offer notice,
+which directly risks SC-001/SC-002 if an owner never learns their hold started.
+
+### C2: What actually frees a berth for a waitlisted date range? (G8)
+
+**Question**: The product baseline's Booking state machine has no cancellation path
+(FEAT-034 pending), yet FR-003's whole trigger is "a berth of the class frees." Is FEAT-034
+a hard dependency this feature must wait on, or is there an interim release mechanism
+(e.g. marina staff manually reassign/cancel) that should be modeled now?
+**Options**: 1. Block FEAT-031 on FEAT-034 landing first · 2. Design an interim
+release/cancel transition scoped to this feature · 3. Restrict "frees" to non-renewal at
+endsOn only (no early release) and say so explicitly in the spec
+**Why it matters**: Without this, Cycle 2's core TEST has no real trigger to test against,
+and the feature's central mechanic is unbuildable as specified.
+
+---
+
+## Spec gaps (flagged for requirements-analyst, not part of this review's verdict)
+
+- **Release trigger undefined**: spec.md never states what "a berth of the class frees"
+  means operationally — cancellation, non-renewal, or both — and the baseline has no
+  cancellation path yet (see C2 above). This ambiguity is what let the design phase leave
+  G8 unresolved.
+- **Notification requirement missing**: US-2/US-3 acceptance scenarios say "the owner is
+  notified" but no FR requires it or names a channel/content constraint, which let the
+  design phase invent an orphan FR-007 for the Notification entity (G3). Consider adding an
+  FR sourced from C-004 (Postmark-only) covering what an offer/decline/lapse notice must
+  and must not contain (feeds directly into C-006/I1's consent question too).
+- **Concurrent entries per owner unstated**: spec.md doesn't say whether an owner may hold
+  waitlist entries at multiple marinas, or multiple berth classes at one marina,
+  simultaneously — the design phase had to invent this via a validation rule
+  (one entry per ownerId+marinaId+berthClass+range) without a spec anchor.
+- **Expiry notice unspecified**: the edge case "the entry expires ... and the owner is told"
+  has no FR requiring a notification on expiry, leaving it to design/build discretion.

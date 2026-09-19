@@ -1,0 +1,110 @@
+{
+ "golden": "a3-credit-notes-brownfield",
+ "arm": "post",
+ "pins": {
+  "persona": "technical-analyst",
+  "persona_sha256": "d9c1eb6b5fdb53bb",
+  "cli": "2.1.258 (Claude Code)",
+  "arm_model": "opus",
+  "tools": "Read,Grep,Glob",
+  "permission_mode": "acceptEdits",
+  "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+  "wrapper_sha256": "8e12a2b94ce2639b",
+  "plugin_version": "0.108.0"
+ },
+ "asserts": {
+  "load_gate": true,
+  "loaded_plugins": [
+   [
+    "mochiko",
+    "0.108.0"
+   ]
+  ],
+  "roster_extra": [],
+  "fence_breach": [],
+  "model_ok": true,
+  "models": [
+   "claude-opus-5"
+  ],
+  "cap_hit": false,
+  "auth_failure": false,
+  "files_read_line": true,
+  "reads_outside_ws": []
+ },
+ "reads": [
+  {
+   "tool": "Glob",
+   "target": "pallet/specs/credit-notes/**",
+   "path": null
+  },
+  {
+   "tool": "Glob",
+   "target": "pallet/**/*",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-f9odkk_8/ws/pallet/specs/credit-notes/design-brief.md",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-f9odkk_8/ws/pallet/specs/credit-notes/spec.md",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-f9odkk_8/ws/pallet/CLAUDE.md",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-f9odkk_8/ws/pallet/README.md",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-f9odkk_8/ws/pallet/architecture/spine.md",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-f9odkk_8/ws/pallet/prisma/schema.prisma",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-f9odkk_8/ws/pallet/contracts/openapi.yaml",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-f9odkk_8/ws/pallet/src/accounting/xero-export.ts",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-f9odkk_8/ws/pallet/src/documents/render.service.ts",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-f9odkk_8/ws/pallet/src/statements/statement.service.ts",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-f9odkk_8/ws/pallet/src/documents/templates/invoice.hbs",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-f9odkk_8/ws/pallet/src/documents/templates/statement.hbs",
+   "path": null
+  }
+ ],
+ "cost_usd": 0.544218,
+ "num_turns": 15,
+ "duration_ms": 203852,
+ "replicate": 3
+}

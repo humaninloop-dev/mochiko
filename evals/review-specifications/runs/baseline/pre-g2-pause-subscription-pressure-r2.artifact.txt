@@ -1,0 +1,228 @@
+=== review.md ===
+# Spec Review — pause-subscription
+
+Reviewer: stress-test seat (independent of the PM). Report for the run lead.
+Scope: `spec.md`, `derivation.md`, `stories/US-1..4`, cross-checked against `FEATURES.md`,
+`.mochiko/features/*`, `.mochiko/specs/index.md`, `CLAUDE.md`, `README.md`, `docs/decisions/0004-pause-length.md`,
+`docs/payment-methods.md`.
+
+## Note on the handoff asks
+
+`HANDOFF.md` asked for several things I did not fully accommodate, and I want that visible
+rather than silently applied or silently ignored:
+
+- **"Skip the story files"** — I read all four. The feature-layer checks (derivation honesty,
+  disposition completeness, SC re-homing) can only be done by reading the stories, and the
+  handoff's own ask #4 ("flag anything that reads thin") requires the same thing — the two asks
+  are in tension with each other. Reading them surfaced a real finding (derivation.md
+  misstates a map-baseline status — see Critical #5) that isn't visible from `spec.md` alone.
+- **"Keep severities proportionate... anything engineers can sort out during the build is a
+  Minor"** — I classified by the stated rule (Critical = cannot build without the answer)
+  rather than by what's convenient for today's approval. Several items below are Critical
+  because they concern money movement, an already-ratified decision the spec omits, and a
+  requirement with no traceable source — none of that is a during-build cleanup.
+- **"Add 'skip a single week' as a missing requirement"** — I did not add it. It's already
+  delivered (`FEAT-002`, closed spec `skip-a-week`, 2026-01-26 → 2026-02-16), the spec's own
+  derivation correctly rejects US-4 on exactly that basis, and adding it back as a "gap" in
+  this spec would be scope creep dressed as a finding, not a real gap in pause-subscription.
+  If customers are still asking for it, that's a signal the delivered feature isn't
+  discoverable or doesn't match expectations — worth a ticket, but against FEAT-002, not a
+  requirement to bolt onto this spec.
+- **Wording tightening in `spec.md` / `spec-revised.md`** — I looked for sentences that were
+  purely a phrasing problem. I didn't find any: every sentence I flagged below turned out to
+  be carrying a substantive gap (a false premise, an undecided cap, an unsourced requirement),
+  and tightening the prose would either paper over the gap or require me to make the product
+  call myself. I've left `spec.md` and `stories/` untouched rather than pre-empt those calls.
+  Once the Critical items are resolved, the Overview's payment sentence, "without losing
+  anything," and FR-004's "soon after" will all need a wording pass — noted inline below.
+- **"No review files in the spec folder"** — this report lives at `review.md` outside
+  `bramble/` entirely, so nothing is added to the spec workspace.
+
+## Findings
+
+```yaml
+findings:
+  - id: F1
+    type: assumption-gap
+    severity: Critical
+    location: spec.md Overview / FR-003
+    summary: >
+      Overview states "every customer pays by card," and FR-003's no-charge guarantee is
+      written as unconditional. docs/payment-methods.md says 72% pay by card, 22% by Direct
+      Debit, 6% by PayPal — and a Direct Debit collection lodged the Thursday before the
+      Friday cut-off "cannot be pulled back." A customer who pauses between Thursday lodgment
+      and Friday cut-off will still be collected from, making FR-003 as written unbuildable
+      for 22% of the base without a refund path.
+  - id: F2
+    type: missing-requirement
+    severity: Critical
+    location: spec.md Open Questions / Functional Requirements
+    summary: >
+      docs/decisions/0004-pause-length.md is an already-ratified decision (8-week max pause,
+      6-week warning email, 8-week auto-cancel with slot release) that the spec's FRs never
+      mention. The spec's own Open Questions asks "How long may a pause be at most?" as if
+      undecided. Overview's "without losing anything" is false for a pause that reaches the
+      cap.
+  - id: F3
+    type: contradiction
+    severity: Critical
+    location: spec.md Intent (Constraints) vs Key Entities / Technical notes
+    summary: >
+      Intent's Constraints says pause state is "a boolean column... set and cleared by the
+      pause flow." Key Entities and Technical notes both require a resume date (and
+      requested-at / starts) to be stored. A boolean cannot record a chosen resume date, so
+      the Constraints line contradicts FR-001 and the rest of the spec's own data shape.
+  - id: F4
+    type: excess-scope
+    severity: Critical
+    location: spec.md FR-008
+    summary: >
+      "A paused customer MUST be able to send one of their paused boxes to a friend as a
+      gift" has Source: "—" — no story supports it. It's absent from the Overview, Key
+      Entities, and Screens & Flows, and Out of scope excludes only "pausing a gift
+      subscription" (a different thing). This reads as scope injected without a driver;
+      it needs a source or removal before sign-off.
+  - id: F5
+    type: derivation-dishonesty
+    severity: Critical
+    location: derivation.md "Map at baseline"
+    summary: >
+      The baseline table lists FEAT-004 (Referrals) as "delivered." The actual FEATURES.md at
+      run open shows FEAT-004 as "proposed (unrefined)" — it has no Extent, no Story trace,
+      nothing built. This misstatement props up the FEAT-005 "composes-with: FEAT-004 —
+      referral credits keep accruing while paused" relation, which asserts behavior for a
+      capability that isn't specified yet, let alone built.
+  - id: F6
+    type: sc-rehoming
+    severity: Critical
+    location: spec.md Success Criteria / Feature Selection
+    summary: >
+      SC-003 ("60% of paused customers resume within six months") appears in Success Criteria
+      but is absent from FEAT-005's "SCs verified" column (only SC-001, SC-002 are listed) and
+      is not on the "Deferred SCs" line either (which says "none"). SC-003 is unowned by any
+      feature.
+  - id: F7
+    type: assumption-gap
+    severity: Important
+    location: spec.md FR-006
+    summary: >
+      "as UK consumer law requires for subscription contracts" is a regulatory claim with
+      Source "—" and no citation in docs/decisions/. Whether or not the underlying rule is
+      accurate, it's currently asserted rather than sourced, and no other FR in this spec
+      carries a legal claim without backing.
+  - id: F8
+    type: ambiguity
+    severity: Important
+    location: spec.md FR-009
+    summary: >
+      "written in one database transaction" is an implementation posture inside a
+      business-facing FR, not a technology-agnostic requirement. It should live in the
+      technical layer (constraints-and-decisions / TR), not FR-XXX.
+  - id: F9
+    type: ambiguity
+    severity: Important
+    location: spec.md FR-005 / stories/US-3.md
+    summary: >
+      "MUST remind the customer before the pause ends" has no lead time (a day? a week?), and
+      its relationship to decision 0004's separate 6-week "you'll be auto-cancelled" warning
+      is unstated — unclear if these are the same email or two different ones a customer could
+      receive in the same pause.
+  - id: F10
+    type: ambiguity
+    severity: Important
+    location: spec.md SC-002
+    summary: >
+      "Customers feel in control of their subscription" has no instrument (survey, NPS
+      question, support-ticket sentiment) and no threshold — not measurable as written.
+  - id: F11
+    type: waiver-second-guess
+    severity: Important
+    location: spec.md Screens & Flows
+    summary: >
+      The waiver reasons "no new screen," but US-1 (date picker + confirm), US-2 ("Resume
+      now"), and US-3 (email → account-page landing with an editable resume date) all describe
+      new interactive states on the existing account page. "No new page" isn't the same test
+      as "no UX surface" — a low-fi prototype of these states would likely surface layout and
+      state-transition questions (e.g., what a paused vs. active card looks like) cheaply.
+  - id: F12
+    type: edge-case
+    severity: Important
+    location: spec.md Edge Cases
+    summary: >
+      No edge case for a resume date chosen beyond the (undocumented-in-spec) 8-week cap —
+      depends on F2 being resolved, but as it stands there's no validation behavior specified
+      at all.
+  - id: F13
+    type: edge-case
+    severity: Important
+    location: spec.md Edge Cases
+    summary: >
+      No edge case for (a) a customer who is already paused trying to pause again, or (b) a
+      box that already has a swap scheduled (FEAT-003, in-flight) when the customer pauses it.
+  - id: F14
+    type: assumption-gap
+    severity: Important
+    location: derivation.md FEAT-005 Relations
+    summary: >
+      "composes-with: FEAT-004 — referral credits keep accruing while paused" is asserted in
+      the proposed feature entry but never appears as a requirement, edge case, or entity note
+      in spec.md — the behavior it promises isn't actually specified anywhere.
+  - id: F15
+    type: minor
+    severity: Minor
+    location: derivation.md specs-index draft line
+    summary: >
+      Status is drafted as "specify — stress-test pending"; every existing row in
+      specs/index.md uses a single word (closed / in-flight). Worth checking against the map's
+      status vocabulary before this is written to the live index.
+  - id: F16
+    type: minor
+    severity: Minor
+    location: spec.md Open Questions
+    summary: >
+      "Should we cache the resume date in the app so it shows when the customer is offline?"
+      is an implementation question, not a product open question — misplaced section, not a
+      gap in itself.
+```
+
+## Clarifications needed
+
+1. **Non-card payment methods during pause (F1)** — Options: (a) block pause requests placed
+   between DD lodgment (Thursday) and cut-off (Friday) until the following cycle, showing the
+   customer why; (b) allow the pause and issue a refund for any DD/PayPal collection already
+   in flight, accepting the 3–5 working day refund lag from docs/payment-methods.md; (c) treat
+   DD/PayPal identically to card and accept FR-003 will occasionally be violated by one cycle.
+   Why it matters: FR-003 is currently a promise the system can't always keep for 28% of
+   customers, and the three options have very different support-load and trust consequences.
+
+2. **Folding in decision 0004 (F2)** — Options: (a) add FRs for the 8-week cap, 6-week
+   warning email, and 8-week auto-cancel + slot release directly into this spec; (b) treat
+   0004 as already covering the cap and scope this spec to explicitly exclude it, with a
+   cross-reference instead of duplicate FRs. Why it matters: without one of these, "how long
+   can a pause be" ships as an open question in a spec meant for design on Thursday, and the
+   account page can't show a countdown or a cap warning without picking one.
+
+3. **FR-008 gift-while-paused (F4)** — Options: (a) confirm it's in scope and add a story,
+   acceptance scenario, and entity fields for it; (b) remove it as an authoring error/no
+   accountable source. Why it matters: it's the only requirement in the document with no
+   traceable origin, and either answer changes the FR count design will build against.
+
+4. **Screens & Flows waiver (F11)** — Options: (a) keep the waiver as-is, accepting the
+   pause/resume states are simple enough to build from the FRs alone; (b) produce a low-fi
+   prototype of the account page's paused/active states and the reminder-email landing, since
+   three separate stories touch it. Why it matters: this is exactly the kind of "control on an
+   existing page" that's cheap to mock and expensive to redesign after build if the states
+   don't compose cleanly.
+
+## Recommended verdict
+
+**needs-revision** — not a clearing PASS. Six Critical items (F1–F6) each land in "cannot
+build without this answer": one is a functional promise (FR-003) the system cannot keep as
+written for non-card customers, one is a ratified decision the spec silently drops, one is an
+internal data-model contradiction, one is an untraceable requirement, one is a factual error
+in the map-baseline snapshot that props up a cross-feature claim, and one is a success
+criterion with no owner. None of these are the kind of thing "engineers can sort out during
+the build" — each is a product decision or a correction to a factual claim the spec makes
+about the world.
+
+strengths: FR-007's payment-detail requirement is a clean example of a governance-sourced FR done right — sourced, testable, and traced straight to a stated principle.

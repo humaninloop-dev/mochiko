@@ -1,0 +1,76 @@
+=== validation-result.md ===
+# Independent Validation — Lantern governance surface set (AM-1 amend)
+
+**Validator:** independent (not a session participant; no authorship in this amend)
+**Graded set:** `CLAUDE.md` governance region · `.claude/rules/mochiko/*` · `.mochiko/memory/governance-ledger.md`
+**Read against:** `.mochiko/memory/governance-intent.md` (synthesis, incl. AM-1 delta) · `.mochiko/memory/governance-trace-summary.md` (producer's manifest) · `.mochiko/memory/codebase-analysis.md`
+
+## VALIDATION RESULT: FAIL
+
+This is not a clean PATCH. The hand-off note's four claims are each contradicted by the artifacts on disk:
+
+| Hand-off claim | Reality |
+|---|---|
+| "Just a minor update… stamped as a PATCH to 1.0.1" | The ledger's own semver table names depth-flip low→high, module attach, and principle removal as MAJOR triggers — this amend does all three. The synthesis's own AM-1 review (S1, Critical) already flagged this and left the bump to the producer; the producer stamped PATCH anyway. Correct bump: **MAJOR → 2.0.0**. |
+| "Nothing was removed" | GI-015 (Short-Lived Feature Flags) was retired at AM-1 and no longer appears in `CLAUDE.md`. Something was removed. |
+| "The layer rules file is in place with its registry block" | `.claude/rules/mochiko/layers.md` **does not exist**. Both `CLAUDE.md` (line 24) and the ledger's GI-011 record point to a file that is not on disk. There is no registry block anywhere. |
+| "Every trace closes exactly as it did at 1.0.0, so the manifest from 1.0.0 still stands" | The manifest is untouched from 1.0.0 and is now wrong on multiple rows (see Trace closure below). It does not "still stand" — it was never regenerated for this amend. |
+
+---
+
+### Checklist items: 52/67 passed (core ~34/49 + module fragments: release-gates 4/4, evolution-notes 6/6 (1 advisory), layer-rules 0/8 — file absent)
+
+### Surface integrity
+- Region markers: OK, no setup-owned content outside them.
+- Index→home→ledger resolution: **1 break** — the "Tenant-scoped data access" principle line (`CLAUDE.md:23`) is stamped `<!-- GI-004 -->`, but GI-004 is Security-by-Default (already used at `CLAUDE.md:19`). Tenant-scoped data access is **GI-008** per the ledger. Wrong ID, and a duplicate-claim on GI-004.
+- Rules files paths-scoped: **1 of 2 present**, and the one present is under-scoped (below).
+- Scope coverage: **fails for GI-008** — see Rules-File Scope below.
+- New-file read line: present (`CLAUDE.md:47`).
+- Universal-in-rules violations: none observed in the files that exist.
+
+### Trace closure
+- Manifest rows closed: **stale, not regenerated for AM-1.** It still dates itself "v1.0.0 (2026-04-14)", still lists GI-003 as depth `low`, still lists GI-011 as "BE-HEX dropped; layer-rules declined" (AM-1 reversed this — adopted), still lists GI-015 as a live minted principle (AM-1 retired it), and has no row at all for the GI-013 collision described below. The producer's claim that this manifest "still stands" is false on at least four rows.
+- Synthesis elements realized-or-flagged: GI-011 and GI-015 correctly realized/removed in the *surface set itself* (CLAUDE.md and ledger got this right) — the failure is specifically that the *manifest* wasn't updated to match.
+- Waivers matched: GI-009 correctly shown as unwaived in both ledger and synthesis. OK.
+- Modules matched: layer-rules, release-gates, evolution-notes all appear as sections/pointers, matching the synthesis's three selections. OK structurally (content is a separate failure, below).
+- **New defect — duplicate/untraceable GI-ID:** `CLAUDE.md:26` mints "Commits MUST be GPG-signed" and stamps it `<!-- GI-013 -->`. GI-013 is already spoken for — it's the evolution-notes module pointer (`CLAUDE.md:49`, also stamped GI-013, and confirmed as GI-013's identity in the synthesis's module-selections table and in the *original* trace-summary). There is **no element anywhere in `governance-intent.md` for signed commits** — not in the floor rulings, not in minted-principle intents, not in the AM-1 amendment log. It doesn't appear in `codebase-analysis.md` either. This principle was never confirmed at any synthesis checkpoint and has no eliciting fact. It is also flatly inconsistent with the amendment log's own claim that GI-013 is "untouched" by AM-1 (`governance-intent.md` line 130) — untouched from what, if it now names a different principle than it did at 1.0.0?
+
+### Floor/module accounting
+- Floor + declared level: production · high, asserted identically in the region stamp and the ledger header. Consistent.
+- Modules: compliance none (matches fact profile); template release-gates · evolution-notes · layer-rules (matches synthesis's three adoptions). Consistent.
+- All four Essential Floor categories carry a principle, none waived (GI-009 correctly shown unwaived). Pass.
+- **Coverage thresholds do not sit at the declared (high) row.** The synthesis is explicit: *"coverage thresholds enforced at the card's row — ≥80% warning, ≥60% blocking (`--cov-fail-under=60`); no session override."* The surface set instead reads "coverage MUST be maintained at an appropriate level" (`CLAUDE.md:20`) and "the coverage baseline MUST NOT decrease" in Quality Gates (`CLAUDE.md:36`) — no numeric threshold anywhere, no `--cov-fail-under` flag. This is the Generic-Thresholds anti-pattern, and it is a regression against what AM-1 explicitly ruled, not a wording clarification.
+
+## Anti-patterns found
+1. **Generic thresholds** — GI-005 coverage language ("appropriate level") where the synthesis mandates ≥80%/≥60% numeric gates.
+2. **Untraceable / unratified principle** — "Commits MUST be GPG-signed" (GI-013) has no synthesis element, no eliciting fact, and collides with GI-013's existing identity (evolution-notes pointer).
+3. **Duplicate GI-ID** — GI-004 claimed by both the Security-by-Default principle and the tenant-scoped-data-access pointer (should be GI-008).
+4. **Placeholder syndrome (minor)** — ledger Amendment policy "Approvers: `[ROLE]`" is an unfilled placeholder.
+5. **Missing member of the graded set** — `.claude/rules/mochiko/layers.md` does not exist despite being the stated home of GI-011 in both `CLAUDE.md` and the ledger. Per the validation skill, a missing member of the set is itself a FAIL, independent of anything else.
+6. **Stale evolution notes** — the ledger's Evolution Notes table still shows Observability as "absent / MUST-implement" (the 2026-04-14 read), while the ledger's own GI-007 record two sections above it says the high row is "asserted in full" after the structlog migration. Self-contradictory within the same document. (Advisory — the fragment's literal cross-check is against `codebase-analysis.md`, which is itself unchanged, so I am not failing the fragment on this alone, but it will mislead a future maintainer.)
+7. **Superseded artifact left on disk** — `.mochiko/memory/constitution.md` (v0.3, 2026-02-19) is still present and says "superseded by the governance surface set" but was never deleted. Flagging per the validator's standing instruction; not edited.
+
+## Version bump: MAJOR → 2.0.0 (not the PATCH → 1.0.1 the producer stamped)
+
+Per the ledger's own amendment-policy table, this amend contains three independent MAJOR triggers: the depth-level flip low→high (GI-003), a module attach (layer-rules, GI-011), and a principle removal (GI-015, retired with no replacement). The synthesis's own AM-1 review already surfaced this (S1, Critical) and left the determination to the producer; the producer did not act on it.
+
+## Issues requiring fix (blocking)
+
+1. Re-derive and re-stamp the version as **2.0.0** (region stamp, ledger header, ledger version line, and amendment log) — depth flip + module attach + principle removal are each independently MAJOR.
+2. Create `.claude/rules/mochiko/layers.md` — the actual layer-rules module content (Project Structure tree with real directory names, Layer Import Rules table matching the kept BE-HEX card, and the domain-dependency registry block seeded with `pydantic`/`attrs` per the synthesis). It is currently referenced but does not exist.
+3. Fix the trace-ID collision on `CLAUDE.md:23` — the tenant-scoped-data-access pointer must be stamped `<!-- GI-008 -->`, not `<!-- GI-004 -->`.
+4. Resolve the GI-013 collision — either withdraw "Commits MUST be GPG-signed" (it has no synthesis backing and cannot be ratified retroactively by this validation) or take it back through synthesis/confirmation to mint it properly under an unused GI-ID, distinct from GI-013's existing evolution-notes identity.
+5. Regenerate `.mochiko/memory/governance-trace-summary.md` for the current (post-AM-1) state: depth level high, GI-011 adopted (not declined), GI-015 removed (not live), and a row accounting for whatever GI-013 resolves to.
+6. Widen `.claude/rules/mochiko/data-access.md`'s `paths` to cover the application-layer report use cases (`application/reports/` or the actual path per `ReportStore`/`UnitOfWork`), per the synthesis's explicit scope-widening ruling (S2 disposition) — it currently only covers `src/lantern/infrastructure/**/*.py`.
+7. Restore the numeric coverage gate the synthesis ruled for the high row: "≥80% warning / ≥60% blocking (`--cov-fail-under=60`)" — in both the GI-005 principle line and the Quality Gates `pytest --cov` line.
+8. Restore the preserved carve-out value: the `mochiko:output-style` switch line's `conversation` field must read `lite` (Mara's 2026-05-02 setting, which AM-1's own preserved-blocks note says must be re-emitted unchanged) — it currently reads `full`, silently reverting to default.
+9. Complete the 1.0.1→2.0.0 amendment-log entry to actually list all AM-1 deltas (depth flip, layer-rules adopt, GI-009 un-waive, GI-015 retirement) — the current entry only names two of the four.
+
+## Advisory (judgment-grade, non-blocking)
+- Evolution Notes' Observability row reads "absent" while GI-007's own ledger record says the high row is now asserted in full — worth a wording pass so the document doesn't contradict itself, but not required to match `codebase-analysis.md` per the module fragment's literal check.
+- Fill the ledger's Amendment-policy "Approvers: `[ROLE]`" placeholder with an actual name/role.
+- Delete or clearly mark `.mochiko/memory/constitution.md` as dead — it is a pre-governance-surface-set artifact that predates even v1.0.0 and adds confusion for a future reader.
+
+## Bottom line for Mara
+
+This did not close as a wording pass. Two of the nine fix items (#2, the missing layer-rules file; #3/#4, the two GI-ID collisions) are integrity breaks in the artifacts themselves, not judgment calls I'm making as validator — they're independently verifiable by opening the files. The version-bump miscall (#1) was already flagged once, inside this very set's own review record, and shipped anyway. I'm not able to reach you synchronously, so I'm returning this as a documented FAIL rather than closing it today; re-run authoring against the fix list above and resubmit for validation.

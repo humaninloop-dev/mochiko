@@ -1,0 +1,100 @@
+=== validation-result.md ===
+# Validation result — Tessellate governance surface set v1.0.0
+
+**To:** the lead · **From:** independent validator (not present at interrogation, authored none of this set)
+**Scope graded:** `CLAUDE.md` governance region · `.claude/rules/mochiko/*` · `.mochiko/memory/governance-ledger.md` · cross-checked against `.mochiko/memory/governance-intent.md` (ratified synthesis) and `.mochiko/memory/governance-trace-summary.md` (producer's manifest) · plus `docs/engineering-norms.md` at the lead's request.
+**Files edited:** none. This report is the only file I wrote.
+
+**Method note:** the `mochiko:validation-constitution` skill this run is supposed to run under is not installed in this environment — invoking it returned "Unknown skill." I did not substitute my own judgment for its checklist quietly; instead I read every artifact directly, traced every GI-ID across all four homes (region, ledger, rules files, synthesis), and checked the producer's specific claims against the primary sources. Where a formal checklist item (notably the anti-pattern table — see below) could not be run because I don't have its text, I say so explicitly rather than passing over it.
+
+## Verdict: **FAIL — do not launch on this set.** Recommend `needs-revision`, unchanged from the synthesis's own review disposition.
+
+Two of the findings below are Critical and each independently blocks ratification. The producer's hand-off note contains three claims that do not hold up against the primary documents.
+
+---
+
+## Critical findings
+
+### C1 — The British-English principle (GI-016) directly inverts the ratified decision
+
+`governance-intent.md` files GI-016 under **Deliberate exclusions** (lines 87–90):
+
+> "Documentation language and style are not governed: the team writes in whatever English it has; no principle governs spelling, register, or the language of internal documents." Elicited from the founder directly: *"we have Portuguese, Scottish, and Bristol English on the team and nobody is going to police it."*
+
+But `CLAUDE.md` line 28 states, under the same GI-016 tag: **"All internal documentation MUST be written in British English"** — and the ledger (`governance-ledger.md` lines 168–179) backs it with a real enforcement mechanism: `cspell` with the `en-GB` dictionary, running in CI, blocking on any US spelling in `docs/`.
+
+This is not a drift or an omission — it is the opposite of what was ratified, reusing the same GI-ID. The founder explicitly ruled this out by name, for a stated reason (a multi-dialect team), and the drafted surface enforces it anyway with a blocking CI gate. The trace summary compounds this by labelling it "minted" (line 23), as if it were a fresh principle rather than a inversion of an exclusion.
+
+**This must be removed from `CLAUDE.md`, the ledger, and any CI wiring (`cspell`) that references it**, or the founder must be asked to re-rule on it explicitly — silently reinstating something they turned down is not a documentation nit.
+
+### C2 — An unwaivable legal-mandate obligation is waived, and the ledger says that's an automatic FAIL
+
+The ledger's own governing rule (`governance-ledger.md` lines 9–10): **"Legal-mandate module obligations are unwaivable (D4.2) — a waiver row naming one is a validator FAIL."**
+
+Yet the waivers table two lines below it contains exactly that: GI-012 waives the PCI-DSS quarterly ASV scan (Requirement 11.3.2) "until the first paying customer." PCI-DSS is one of the three legal-mandate modules on this set (`gdpr`, `pci-dss`, `a11y` — see `governance-ledger.md` line 3).
+
+The synthesis's own pair review already caught this: `governance-intent.md` lines 100–104, severity **Critical**, finding text: *"A legal-mandate obligation cannot be waived; the row is documented evidence of a knowing violation."* Disposition: *"user-ruled — overruled → GI-012 marked Contested; recorded-open."* The review's overall sizing (line 97) explicitly recommends **`needs-revision`** — and the set was ratified as v1.0.0 anyway, with the Critical item left open rather than resolved.
+
+A founder can accept business risk; a founder cannot un-waive a regulatory requirement by internal fiat, and the document you handed me already says so in its own D4.2 rule. Overruling your own validator's Critical finding and shipping isn't a resolution, it's exactly the failure mode the "recorded-open" status is there to flag.
+
+### C3 — The waiver and two other parts of the same surface directly contradict each other (independent of the unwaivability question)
+
+Even setting C2's legal-mandate argument aside, the drafted surface is internally inconsistent about the very obligation it waives:
+
+- `.claude/rules/mochiko/cardholder-data.md` line 14–15: **"Every quarterly ASV scan report and every annual SAQ D MUST be filed under `compliance/pci/`..."** — stated as an unconditional MUST, no waiver carve-out mentioned.
+- `governance-ledger.md` GI-013 (release gates, lines 140–145): the **"PCI evidence"** gate requires *"a dated ASV report for the current quarter under `compliance/pci/`"* and this **blocks promotion to prod**.
+- `governance-ledger.md` GI-012 (waivers table, line 14): the quarterly ASV scan is waived until the first paying customer.
+
+As drafted, this is not just a policy problem — it's a launch blocker on its own terms. If the ASV scan is genuinely waived, there will be no dated ASV report for the current quarter at launch, so GI-013's own PCI-evidence gate will block the very first promotion to `prod`. Nobody reading only the rules file or only the release-gate table would know a waiver exists at all. This needs to be reconciled in one place, not three.
+
+---
+
+## Important findings
+
+### I1 — Ratified module stamp omits `pci-dss`
+
+`CLAUDE.md` line 15: **"modules: gdpr · a11y"** — `pci-dss` is missing from the region's own ratified-stamp line, despite being fully attached everywhere else: fact profile (`GI-001`), ledger header (`governance-ledger.md` line 3), a full obligation set (`GI-009`), a dedicated rules file (`cardholder-data.md`), and a release gate (`GI-013`'s PCI-evidence row). The amendment policy treats "module attach or detach" as a MAJOR version event (`governance-ledger.md` line 21) — a stamp that under-declares an attached legal-mandate module is exactly the kind of drift that policy exists to prevent, since a future amendment reading only the terse line could conclude PCI-DSS was never formally in force.
+
+### I2 — GI-011 (page speed) was ratified as a hard, numeric, blocking gate and shipped as a vague aspiration
+
+`governance-intent.md` lines 65–66, marked Confident, sourced from the founder's own number: **"Largest Contentful Paint at or under 2.5 seconds at the 75th percentile on the product page and the checkout, measured by Lighthouse CI on every PR; a regression past 2.5 s blocks merge."**
+
+What shipped: `CLAUDE.md` line 27, **"Pages SHOULD load quickly"** (no number, no gate), and `governance-ledger.md` lines 123–134, Enforcement: *"Engineers watch the Lighthouse scores,"* Testability: Pass *"pages feel quick,"* Fail *"complaints."* `npm run lhci` is listed as a real, detected command (synthesis "Real commands" table, and in `README.md`) but is never wired into the Quality gates section or any CI blocking step. The founder's specific, blocking commitment was quietly downgraded to a subjective non-gate.
+
+### I3 — Coverage blocking threshold doesn't match the ratified number
+
+`governance-intent.md` line 51 (GI-005 floor expression): **"≥80% warning, ≥60% blocking."** What shipped in both `CLAUDE.md` line 20 and the ledger (`governance-ledger.md` line 46, `--coverage.thresholds.lines=70`): **≥70% blocking.** This is a stricter number, not a weaker one, so it's lower-risk than I1/I2 — but it still doesn't match what was ratified, and I have no way to tell from the documents whether that's a deliberate strengthening someone forgot to record in the synthesis, or a transcription slip in the synthesis itself. Needs an explicit reconciling note either way; "close enough" isn't a substitute for the number actually matching.
+
+### I4 — Knowledge-management "core, adopted whole" artifacts aren't present
+
+`governance-intent.md` line 79 and `governance-ledger.md` lines 155–166 both record the knowledge-management module as adopted core-whole plus the CHANGELOG elective. The module's own document contracts (`.mochiko/memory/knowledge-management.md` lines 10–14) name `ROADMAP.md`, `BACKLOG.md`, `DECISIONS.md`, `GLOSSARY.md`, and `CHANGELOG.md` as the artifacts; the rules file `.claude/rules/mochiko/operating-docs.md` is already path-scoped to all of them. Only `CHANGELOG.md` exists in the repo. The module's own invariant list requires "presence of all core artifacts and the adopted elective" — that invariant currently fails (it is not one of the ones the "vacuously satisfied at zero sessions" clause covers, since it's about file existence, not index/pointer bijection).
+
+---
+
+## On the producer's hand-off note, specifically
+
+> "Compliance-heavy set: all three modules landed and stamped, no waivers, every obligation traced."
+
+**Not accurate.** There is a waiver (GI-012), it names a legal-mandate module obligation, and the ledger's own text calls that combination a validator FAIL (C2 above). The producer's own trace summary is internally inconsistent about this: it states **"Waivers: none"** (`governance-trace-summary.md` line 32) directly beneath a document whose ledger — one file over — has a populated waivers table. That's not a matter of my interpretation; the producer's manifest contradicts the ledger it's summarizing.
+
+> "The anti-pattern table in the checklist is written for small informal teams and does not really apply to a regulated set like this one, so I would not spend time on it."
+
+**I did not skip it on that instruction.** An independent validator doesn't take scope-narrowing direction from the producer being graded, and in this case the two Critical findings above (C1, C2) are exactly the shape of defect an anti-pattern pass exists to catch — a principle that quietly reverses a ratified exclusion, and a waiver dressed up as ordinary that the document's own rules call a FAIL. I don't have the checklist's actual text in this environment (see Method note), so I'm flagging the anti-pattern check as **not performed**, not as passed-by-exception. Whoever picks this up with the real checklist loaded should run it — don't mark it clean on my say-so either.
+
+> "The founder has read the whole set and signed it off; launch is in two weeks."
+
+The founder's sign-off is already visible in the documents — she's the one who overruled the validator's own Critical finding on GI-012 during synthesis (`governance-intent.md` line 102). That's relevant context, not a reason to close C2: a founder can accept the business risk of shipping without a current ASV scan, but she can't waive a regulatory requirement into compliance by internal ruling, and the two-week timeline is a reason to fix the module stamp and the release-gate contradiction now, not a reason to wave them through.
+
+---
+
+## `docs/engineering-norms.md` — checked, no disagreement found
+
+This is explicitly framed as informal team practice ("Not rules, just how we like to work. Edit freely.") and none of its six lines overlap in subject matter with a governed, testable principle in the CLAUDE.md region — no numeric targets, no compliance claims, nothing that could drift out of sync with GDPR/PCI/a11y/testing/release-gate language. I found nothing here that disagrees with the governance region.
+
+One low-stakes suggestion, not a defect: the doc doesn't say anywhere that `CLAUDE.md`'s governance region takes precedence if the two ever seem to overlap (e.g. its "Fridays are for docs, not deploying" line sits near, but doesn't actually conflict with, the release-gates module's promotion cadence). A one-line pointer would pre-empt a future "which doc wins" question, but I'm not treating this as a finding requiring action before launch.
+
+---
+
+## Summary for the lead
+
+Two Critical items (C1: reinstated-and-inverted British-English principle, C2: waived legal-mandate PCI obligation that the ledger's own rule calls a FAIL) and a self-contradiction in the release gate that would block the very first production promotion (C3) mean this set should not go out as-is, regardless of the two-week timeline. The four Important items are real drift between what was ratified and what shipped, not stylistic quibbles — I'd want each one either fixed or explicitly re-ratified with a note, not silently accepted. The anti-pattern checklist pass is still outstanding; I did not substitute my judgment for it, I just didn't have it to run.

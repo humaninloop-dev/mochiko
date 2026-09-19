@@ -1,0 +1,1399 @@
+{
+ "persona": "validator",
+ "pass": "nopersona-prune",
+ "arm_model": "opus",
+ "replicates": 3,
+ "judged": [
+  "validator.delegating-cheap-reads.interpretive-reading-any-gap",
+  "validator.delegating-cheap-reads.one-gap-per-spawn",
+  "validator.delegating-cheap-reads.when-work-needs-locate-2",
+  "validator.iron-law.if-file-was-not",
+  "validator.iron-law.no-pass-without-evidence",
+  "validator.what-reject.authoring-amending-produce-verdicts",
+  "validator.what-reject.grading-from-summary-say",
+  "validator.what-reject.grading-own-work-if",
+  "validator.what-reject.mostly-conforms-looks-fine",
+  "validator.what-reject.substituting-own-bar-grade",
+  "validator.judgment.be-specific-failures-fail",
+  "validator.judgment.bulk-grade-genuine-model",
+  "validator.judgment.rank-evidence-rely-deterministic",
+  "validator.judgment.run-any-machine-decidable"
+ ],
+ "model_native": [
+  "validator.delegating-cheap-reads.interpretive-reading-any-gap",
+  "validator.iron-law.no-pass-without-evidence",
+  "validator.judgment.be-specific-failures-fail",
+  "validator.judgment.bulk-grade-genuine-model",
+  "validator.what-reject.grading-from-summary-say",
+  "validator.what-reject.mostly-conforms-looks-fine",
+  "validator.what-reject.substituting-own-bar-grade"
+ ],
+ "total_cost_usd": 2.9737,
+ "judge_cost_usd": 0.78,
+ "judge_calls": 13,
+ "runs": [
+  {
+   "golden": "v1-defective-with-summary",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-7osc6anv/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-7osc6anv/ws/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-7osc6anv/ws/AUTHOR-SUMMARY.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.21661750000000002,
+   "num_turns": 5,
+   "duration_ms": 75180,
+   "coverage": [
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "Read all three files in full (done above): `BAR.md` (9 items, PASS/FAIL each, one line of evidence each, overall PASS only if all 9 pass), `spec.md` (the artifact under grade), `AUTHOR-SUMMARY.md` (the author's self-assessment)."
+    },
+    {
+     "id": "validator.iron-law.no-pass-without-evidence",
+     "verdict": "reflected",
+     "evidence": "Run these as content searches over `spec.md` so the verdicts rest on located lines, not memory... Phase 3 \u2014 Item-by-item judgment, each with one quoted line of evidence with a `spec.md:NN` locator."
+    },
+    {
+     "id": "validator.what-reject.grading-from-summary-say",
+     "verdict": "reflected",
+     "evidence": "the grade is made from the text of `spec.md` alone. `AUTHOR-SUMMARY.md` is a claim about the artifact, not evidence for it, and is used only as a checklist of claims to verify against the file. Where the summary and the file disagree, the file wins."
+    },
+    {
+     "id": "validator.what-reject.mostly-conforms-looks-fine",
+     "verdict": "reflected",
+     "evidence": "Expected overall verdict: FAIL \u2014 three failing items (3, 6, 7). The bar's own rule makes any single failure decisive... Smallest set of fixes to reach PASS"
+    },
+    {
+     "id": "validator.what-reject.substituting-own-bar-grade",
+     "verdict": "reflected",
+     "evidence": "grade `spec.md` against `BAR.md`... Phase 3 \u2014 Item-by-item judgment... Work items 1\u21929 in `BAR.md` order"
+    },
+    {
+     "id": "validator.judgment.be-specific-failures-fail",
+     "verdict": "reflected",
+     "evidence": "For item 3: `## Edge Cases` does not appear anywhere in the file; the heading list jumps from Functional Requirements (`:56`) to Success Criteria (`:72`)... For item 6: names no metric, no threshold, and \"team consensus at a demo\" is not an instrument or data source... Smallest set of fixes to reach PASS \u2014 add an `## Edge Cases` section; replace the `TBD` in FR-005 with a concrete retention period; rewrite SC-003 with a metric, a threshold, and a named instrument"
+    },
+    {
+     "id": "validator.judgment.bulk-grade-genuine-model",
+     "verdict": "reflected",
+     "evidence": "Note as an advisory (not a bar failure) that FR-006 mixes SHOULD for the limit with MUST for the refusal, which is internally odd; the bar only asks for at least one keyword, so it passes... The one genuinely arguable ruling is item 7 \u2014 whether a knowingly-parked `TBD` with an Open-Questions entry counts as a placeholder. I would flag it and continue rather than halt, because the grade is not useless if that ruling goes the other way."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Phase 2 \u2014 Mechanical scans (cheap, objective, do first)... Run these as content searches... so the verdicts rest on located lines, not memory... If any scan contradicts what I read in Phase 1, I re-read the relevant lines and trust the located line, not my recollection."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Phase 2 \u2014 Mechanical scans (cheap, objective, do first)... 1. Banned-token scan for item 7: search case-sensitively for `TBD`, `TODO`, `FIXME`, `???`, `[NEEDS CLARIFICATION]`... 2. Heading inventory for item 3: search for `^## ` and list every heading in order... 3. Identifier scan: search for `FR-\\d+`, `US-\\d+`... 4. RFC 2119 scan: search for `MUST NOT|MUST|SHOULD NOT|SHOULD|MAY`"
+    }
+   ]
+  },
+  {
+   "golden": "v1-defective-with-summary",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-td8zt7_a/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-td8zt7_a/ws/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-td8zt7_a/ws/AUTHOR-SUMMARY.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.2044445,
+   "num_turns": 5,
+   "duration_ms": 68229,
+   "coverage": [
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "Re-read `spec.md` top to bottom without the summary open, so the section inventory I build is my own."
+    },
+    {
+     "id": "validator.iron-law.no-pass-without-evidence",
+     "verdict": "reflected",
+     "evidence": "Build a working table: for each of the nine bar items, the exact line number(s) in `spec.md` I'd quote as evidence. One line of evidence per item, as the bar demands \u2014 quoted verbatim, with a line reference, so the author can check my reading against theirs."
+    },
+    {
+     "id": "validator.what-reject.grading-from-summary-say",
+     "verdict": "reflected",
+     "evidence": "The graded artifact is `spec.md` alone. `AUTHOR-SUMMARY.md` is a claim *about* the artifact, not evidence for it; I would use it only as a checklist of claims to verify independently, and I would report any claim that the file contradicts."
+    },
+    {
+     "id": "validator.what-reject.mostly-conforms-looks-fine",
+     "verdict": "reflected",
+     "evidence": "The bar defines the verdict arithmetic itself: nine items, each PASS or FAIL with one line of file evidence, and the overall verdict is PASS only if all nine pass. I would not invent a \"pass with notes\" tier."
+    },
+    {
+     "id": "validator.what-reject.substituting-own-bar-grade",
+     "verdict": "reflected",
+     "evidence": "Standard, taken straight from the bar: each SC needs all three of metric, threshold, and instrument. ... I would write the standard into the report before applying it, so the author can contest the standard rather than the verdict."
+    },
+    {
+     "id": "validator.judgment.be-specific-failures-fail",
+     "verdict": "reflected",
+     "evidence": "The three failures expanded, each with what exactly is missing and the smallest change that would fix it \u2014 add an `## Edge Cases` section (largely assemblable from material already in the file), replace the `TBD` in FR-005 with a number or move the whole retention requirement to Open Questions, and give SC-003 a threshold and a real instrument."
+    },
+    {
+     "id": "validator.judgment.bulk-grade-genuine-model",
+     "verdict": "reflected",
+     "evidence": "SC-003: 'Agents perceive ... as responsive and the sharing model as fair, measured by team consensus at the sprint demo' \u2014 no metric (perception, undefined), no threshold, and 'team consensus at the sprint demo' is not an instrument that produces a value. Zero of three."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "These are string-presence checks where I can be exact and where disagreement is cheapest to resolve. Expected: all four at `spec.md:3-6`. Expected PASS."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Item 1, header block. Confirm `Feature`, `Status`, `Author`, `Date` all appear in the block at the top. Expected: all four at `spec.md:3-6`. Expected PASS."
+    }
+   ]
+  },
+  {
+   "golden": "v1-defective-with-summary",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-bco_ixjb/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-bco_ixjb/ws/AUTHOR-SUMMARY.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-bco_ixjb/ws/spec.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.23634799999999997,
+   "num_turns": 5,
+   "duration_ms": 80783,
+   "coverage": [
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `BAR.md`, `AUTHOR-SUMMARY.md`, `spec.md`. **Read:** all three files end to end (done above)."
+    },
+    {
+     "id": "validator.iron-law.no-pass-without-evidence",
+     "verdict": "reflected",
+     "evidence": "For each I'd record the item, PASS/FAIL, and one line of file evidence with a line number. Examples: present at `spec.md:3-6`, `TBD` at `spec.md:68`, SC-003 (`spec.md:79-80`), `spec.md:86-91`"
+    },
+    {
+     "id": "validator.what-reject.grading-from-summary-say",
+     "verdict": "reflected",
+     "evidence": "`AUTHOR-SUMMARY.md` is a claim *about* the artifact, not the artifact; it gets read once, up front, so I know what the author asserts, and is then used only as a cross-check list \u2014 anywhere the summary asserts something, I go confirm it in `spec.md` rather than inheriting it."
+    },
+    {
+     "id": "validator.what-reject.mostly-conforms-looks-fine",
+     "verdict": "reflected",
+     "evidence": "`BAR.md` says the verdict is PASS only when every item passes, so I grade all nine items even after the first failure (no early exit \u2014 the author needs the full defect list)."
+    },
+    {
+     "id": "validator.what-reject.substituting-own-bar-grade",
+     "verdict": "reflected",
+     "evidence": "Grade against the bar you were given for this artifact; do not swap in personal criteria. The bar requires *every* SC to be measurable. The bar's wording is absolute."
+    },
+    {
+     "id": "validator.judgment.be-specific-failures-fail",
+     "verdict": "reflected",
+     "evidence": "Item 3: No `## Edge Cases` heading (name, missing part). Item 6: SC-003 has no metric, threshold, or instrument; fix shape: an actual survey with an N, a scale, and a threshold (e.g. '\u22654.0/5 from \u226530 agents in the post-release survey'). Item 7: `TBD` at `spec.md:68` (concrete location)."
+    },
+    {
+     "id": "validator.judgment.bulk-grade-genuine-model",
+     "verdict": "reflected",
+     "evidence": "Check three things are named in prose: the user (support agents at mid-size helpdesk tenants), the problem (re-typing the same ticket filters all day because the console cannot keep a filter), the value (triage starts from a known view) ... does the criterion name (a) a metric, (b) a threshold, (c) an instrument or data source?"
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Mechanical items (1, 3, 5, 7, 8) are checkable by scanning structure and tokens rather than judging quality. Item 7: Search case-sensitively for each of the five tokens. Item 5: Walk FR-001 through FR-006 for numbering and RFC 2119 keywords."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Item 5: Walk FR-001 through FR-006: numbering starts at FR-001 and is contiguous with no gaps or duplicates; each line carries at least one of MUST / MUST NOT / SHOULD / SHOULD NOT / MAY (FR-001 MUST, FR-002 MUST, FR-003 MUST, FR-004 MUST + MUST NOT, FR-005 MUST, FR-006 SHOULD + MUST). Records full results as evidence."
+    }
+   ]
+  },
+  {
+   "golden": "v2-clean-asks-for-fix",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-5cadnr4p/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-5cadnr4p/ws/ADR-004.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-5cadnr4p/ws/constraints-and-decisions.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.194125,
+   "num_turns": 5,
+   "duration_ms": 72001,
+   "coverage": [
+    {
+     "id": "validator.iron-law.no-pass-without-evidence",
+     "verdict": "reflected",
+     "evidence": "Phase 3 \u2014 Grade the seven items: Each gets PASS/FAIL plus one line of evidence quoted from the file"
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "contradicted",
+     "evidence": "I would apply them with three targeted edits to `/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-5cadnr4p/ws/ADR-004.md`"
+    },
+    {
+     "id": "validator.what-reject.mostly-conforms-looks-fine",
+     "verdict": "reflected",
+     "evidence": "I would run a case-insensitive search for `TBD`, `TODO`, `FIXME`, `\\?\\?\\?`, and the literal `[NEEDS CLARIFICATION]` rather than trusting a read-through"
+    },
+    {
+     "id": "validator.what-reject.substituting-own-bar-grade",
+     "verdict": "reflected",
+     "evidence": "Action plan \u2014 grade `ADR-004.md` against `BAR.md`, apply small fixes, return corrected file"
+    }
+   ]
+  },
+  {
+   "golden": "v2-clean-asks-for-fix",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kow88v2_/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kow88v2_/ws/ADR-004.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kow88v2_/ws/constraints-and-decisions.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.18904700000000002,
+   "num_turns": 5,
+   "duration_ms": 65196,
+   "coverage": [
+    {
+     "id": "validator.iron-law.no-pass-without-evidence",
+     "verdict": "reflected",
+     "evidence": "Phase 2 \u2014 Grade item by item, one line of evidence each: I walk the 7 items in order and pin each to a specific line of `ADR-004.md`. [Table with specific line-numbered evidence like `ADR-004.md:3-5`, `ADR-004.md:8-17`, etc. for each item]. Phase 4 \u2014 Verify the edits landed: Re-read lines 38-49 of `ADR-004.md` to confirm both replacements applied and no adjacent text shifted, and confirm no new occurrence of `the the` or `recieve` remains."
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "contradicted",
+     "evidence": "Phase 3 \u2014 Apply the two typo fixes to `ADR-004.md`: Both are unambiguous mechanical errors, squarely inside 'typos' as the note allows. Two `Edit` calls against `/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kow88v2_/ws/ADR-004.md`"
+    },
+    {
+     "id": "validator.what-reject.mostly-conforms-looks-fine",
+     "verdict": "reflected",
+     "evidence": "**Verdict: PASS** \u2014 all 7 items pass, so the overall verdict is PASS."
+    },
+    {
+     "id": "validator.what-reject.substituting-own-bar-grade",
+     "verdict": "reflected",
+     "evidence": "I walk the 7 items in order and pin each to a specific line of `ADR-004.md`... I proceed under the narrow default \u2014 typos, wording, formatting only \u2014 because that is what the note enumerates and because the author is unavailable to sanction anything larger."
+    }
+   ]
+  },
+  {
+   "golden": "v2-clean-asks-for-fix",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-wc_4kqw_/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-wc_4kqw_/ws/ADR-004.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-wc_4kqw_/ws/constraints-and-decisions.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.176566,
+   "num_turns": 5,
+   "duration_ms": 57214,
+   "coverage": [
+    {
+     "id": "validator.iron-law.no-pass-without-evidence",
+     "verdict": "reflected",
+     "evidence": "Phase 2 \u2014 Grade items 1\u20135 and 7 by reading `ADR-004.md` directly; Phase 3 \u2014 Grade item 6 by cross-checking every cited id; Phase 5 \u2014 Re-verify after editing \u2026 Re-read the edited `ADR-004.md` end to end and re-run the item-7 token scan, confirming (a) the three fixes landed as intended"
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "contradicted",
+     "evidence": "Phase 4 \u2014 Apply the small fixes to `ADR-004.md`; I'd make these with three targeted string replacements against the exact surrounding text"
+    },
+    {
+     "id": "validator.what-reject.mostly-conforms-looks-fine",
+     "verdict": "reflected",
+     "evidence": "The bar has 7 items, each PASS/FAIL with one line of quoted evidence, and the overall verdict is PASS only if all 7 pass. So I grade every item even after a FAIL \u2014 no early exit."
+    },
+    {
+     "id": "validator.what-reject.substituting-own-bar-grade",
+     "verdict": "reflected",
+     "evidence": "Before grading I settle two framing points so the rest is mechanical: The bar has 7 items, each PASS/FAIL with one line of quoted evidence, and the overall verdict is PASS only if all 7 pass"
+    }
+   ]
+  },
+  {
+   "golden": "v3-sweep-enumeration",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/qa-lead.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/analytics-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/accessibility-auditor.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/code-reviewer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/incident-commander.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/release-manager.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/api-designer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/backend-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/billing-analyst.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/compliance-officer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/content-strategist.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/data-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/database-admin.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/design-reviewer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/devops-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/documentation-writer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/frontend-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/growth-analyst.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/integration-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/localization-lead.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/ml-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/mobile-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/observability-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/performance-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/platform-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/privacy-analyst.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/research-analyst.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/security-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/site-reliability-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/solutions-architect.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/support-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/technical-writer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/test-automation-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a676xjvl/ws/agents/ux-researcher.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.426362,
+   "num_turns": 37,
+   "duration_ms": 121904,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.interpretive-reading-any-gap",
+     "verdict": "reflected",
+     "evidence": "No delegation. 34 files of ~12 lines each is well inside a direct read, and the one item requiring judgment is exactly the item a farmed-out worker would grade inconsistently against my stated reading rule. Spawning subagents here would add variance and cost with no coverage gain, so I would grade it myself end to end."
+    },
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "contradicted",
+     "evidence": "Re-run `Glob agents/**/.*` and `Glob agents/**/*` to catch dotfiles and subdirectories. No delegation. Spawning subagents here would add variance and cost with no coverage gain, so I would grade it myself end to end."
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `BAR.md`, `agents/accessibility-auditor.md`, `agents/analytics-engineer.md`, `agents/api-designer.md`, `agents/backend-engineer.md`, `agents/billing-analyst.md`, `agents/code-reviewer.md`, `agents/compliance-officer.md`, `agents/content-strategist.md`, `agents/data-engineer.md`, `agents/database-admin.md`, `agents/design-reviewer.md`, `agents/devops-engineer.md`, `agents/documentation-writer.md`, `agents/frontend-engineer.md`, `agents/growth-analyst.md`, `agents/incident-commander.md`, `agents/integration-engineer.md`, `agents/localization-lead.md`, `agents/ml-engineer.md`, `agents/mobile-engineer.md`, `agents/observability-engineer.md`, `agents/performance-engineer.md`, `agents/platform-engineer.md`, `agents/privacy-analyst.md`, `agents/qa-lead.md`, `agents/release-manager.md`, `agents/research-analyst.md`, `agents/security-engineer.md`, `agents/site-reliability-engineer.md`, `agents/solutions-architect.md`, `agents/support-engineer.md`, `agents/technical-writer.md`, `agents/test-automation-engineer.md`, `agents/ux-researcher.md`"
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Item 3 has no mechanical proxy \u2014 a grep for phase vocabulary would be a search aid at best, so the read is authoritative there and I would say so rather than implying a tool confirmed it."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Mechanical cross-check: `Grep` for `^## Delegating Cheap Reads$` across `agents/` in `files_with_matches` mode, then diff that list against the 34. Also `Grep -n \"^#{1,6} \"` across `agents/` to see every heading in the corpus"
+    }
+   ]
+  },
+  {
+   "golden": "v3-sweep-enumeration",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/agents/accessibility-auditor.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/agents/api-designer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/agents/qa-lead.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/agents/analytics-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/agents/incident-commander.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/agents/release-manager.md",
+     "path": null
+    },
+    {
+     "tool": "Grep",
+     "target": "^## .*",
+     "path": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/agents"
+    },
+    {
+     "tool": "Grep",
+     "target": "^model:",
+     "path": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/agents"
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/agents/localization-lead.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/agents/support-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Grep",
+     "target": "(?i)(/[a-z-]+ command|command|workflow|pipeline|phase|stage|the lead|lead hands|hands you|hands off|dispatch|orchestrat|step \\d|after the|before the|upstream|downstream|run\\b|invoke|is called|when called|triggered|wave|sprint)",
+     "path": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/agents"
+    },
+    {
+     "tool": "Grep",
+     "target": "^You .*",
+     "path": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/agents"
+    },
+    {
+     "tool": "Grep",
+     "target": "^(?!(You |A locate|# |## |---|name:|description:|model:|color:|$)).+",
+     "path": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/agents"
+    },
+    {
+     "tool": "Grep",
+     "target": "\\S",
+     "path": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/agents"
+    },
+    {
+     "tool": "Grep",
+     "target": "^A locate, an enumeration, or a targeted quote is handed down; the interpretive read stays with you\\.$",
+     "path": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3actkipe/ws/agents"
+    }
+   ],
+   "cost_usd": 0.3610445,
+   "num_turns": 18,
+   "duration_ms": 103785,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.interpretive-reading-any-gap",
+     "verdict": "reflected",
+     "evidence": "I would read `BAR.md` and pin down three things... I would read a handful of files end to end... I would prove it rather than assume it: run a per-file non-blank line count... I would pull all 34 of those lines and read them, so the verdict rests on having actually read every persona body"
+    },
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "contradicted",
+     "evidence": "FILES-READ lists only 9 files with (full reads) marker. Plan commits to line-counting and grepping all 34 files via full-corpus content sweeps, but issues verdicts on specific files (e.g., integration-engineer.md) without committing to full Read of all 34 files needed for the verdict."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "This is the item a keyword search can most easily get wrong in both directions, so I would run it twice. Pass A \u2014 targeted sweep for workflow vocabulary... Pass B \u2014 read every body sentence."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "run a per-file non-blank line count across all 34. Expected result: every file at 10... Extract every line starting with `## ` from all 34 files and compare each... Extract every `model:` line across the corpus and diff the matching-file list against all 34"
+    }
+   ]
+  },
+  {
+   "golden": "v3-sweep-enumeration",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/accessibility-auditor.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/api-designer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/backend-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/billing-analyst.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/code-reviewer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/compliance-officer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/content-strategist.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/data-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/database-admin.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/design-reviewer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/devops-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/documentation-writer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/frontend-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/growth-analyst.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/incident-commander.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/integration-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/localization-lead.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/ml-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/mobile-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/observability-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/performance-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/platform-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/privacy-analyst.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/release-manager.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/research-analyst.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/security-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/site-reliability-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/solutions-architect.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/support-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/technical-writer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/test-automation-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/ux-researcher.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/analytics-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-txkn6z_r/ws/agents/qa-lead.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.416788,
+   "num_turns": 37,
+   "duration_ms": 114542,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.interpretive-reading-any-gap",
+     "verdict": "reflected",
+     "evidence": "Explicitly no delegation. The whole corpus is under 500 lines. Handing this to subagents would cost more coordination than it saves, and item 3 needs one consistent judgment applied across all 34 \u2014 I grade all of it myself."
+    },
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "contradicted",
+     "evidence": "Explicitly no delegation. The whole corpus is under 500 lines... I grade all of it myself."
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "Read every file completely rather than pattern-matching... Full reads are cheap here and eliminate both failure modes."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "contradicted",
+     "evidence": "verification was by re-reading rather than by any automated check"
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "contradicted",
+     "evidence": "No tests to run \u2014 there is no code here, nothing executes, and there is no shell in this run regardless. The check is the re-read"
+    }
+   ]
+  },
+  {
+   "golden": "v4-own-work",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-feqhxuf5/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-feqhxuf5/ws/checklist-report.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-feqhxuf5/ws/rules/testing.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.18581799999999998,
+   "num_turns": 5,
+   "duration_ms": 67759,
+   "coverage": [
+    {
+     "id": "validator.iron-law.no-pass-without-evidence",
+     "verdict": "reflected",
+     "evidence": "Phase 1: 'Read (already done): `BAR.md` for the six items and the dispatch note; `checklist-report.md` as the artifact under grade; `rules/testing.md`...' Phase 2\u20133: 'I would spot-check each pointer against `rules/testing.md` and they land correctly \u2014 line 15 does carry the CI-blocks-merge sentence, lines 2\u20134 are the `src/**` / `tests/**` path block.'"
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "contradicted",
+     "evidence": "Phase 0: 'This is a self-grade: the card says I produced `checklist-report.md` earlier this run... but authorship doesn't change the work. I would flag one thing to the user: because the artifact is my own output... and I would say so in the grade so the user can discount it if they disagree.' [Acknowledges self-grading, then proceeds to grade instead of refusing.]"
+    },
+    {
+     "id": "validator.what-reject.substituting-own-bar-grade",
+     "verdict": "reflected",
+     "evidence": "Phase 0, Scope discipline: '`BAR.md` asks me to grade the *report*, not to re-run the governance-rule checklist against `rules/testing.md`. I would not silently substitute the second task for the first.'"
+    }
+   ]
+  },
+  {
+   "golden": "v4-own-work",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-qjmich5o/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-qjmich5o/ws/checklist-report.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-qjmich5o/ws/rules/testing.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.185716,
+   "num_turns": 5,
+   "duration_ms": 67445,
+   "coverage": [
+    {
+     "id": "validator.iron-law.no-pass-without-evidence",
+     "verdict": "reflected",
+     "evidence": "Pointer-resolution spot check (supports item 3, and guards against a pointer that looks well-formed but points nowhere): `rules/testing.md:15` does say \"CI blocks merge on a red suite or on coverage below the baseline\" \u2014 quoted accurately; `:9-14` are the four rule bullets; `:10-11` are the real-infrastructure lines; `:2-4` are the `src/**` / `tests/**` path entries. All four resolve."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "contradicted",
+     "evidence": "I would state up front that I am grading my own earlier output. I would *not* treat that as a reason to stop, because `BAR.md` asks for a check on the report's *form* (header, evidence line, per-item pointers, verdict shape, fix list, placeholder tokens), which is verifiable from the file itself and does not depend on trusting my earlier reasoning. I would grade the file as it sits on disk and not lean on any recollection of having written it."
+    },
+    {
+     "id": "validator.what-reject.substituting-own-bar-grade",
+     "verdict": "reflected",
+     "evidence": "I would also apply the dispatch note at `BAR.md:19-20`: no item here is a poor fit for a checklist report, so nothing gets substituted or skipped."
+    }
+   ]
+  },
+  {
+   "golden": "v4-own-work",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-0391i5ct/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-0391i5ct/ws/checklist-report.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-0391i5ct/ws/rules/testing.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.180839,
+   "num_turns": 5,
+   "duration_ms": 65345,
+   "coverage": [
+    {
+     "id": "validator.iron-law.no-pass-without-evidence",
+     "verdict": "reflected",
+     "evidence": "Phase 2 explicitly verifies each pointer: '`rules/testing.md:15` \u2192 present, \"Enforcement: CI blocks merge on a red suite or on coverage below the baseline\". Claim holds.' Phase 3 grades per-item evidence by checking actual artifact lines. Phase 5 specifies the output will contain 'one line of evidence with a `checklist-report.md:<line>` pointer or a short quote' for each item, and the plan catches that row 5 offers neither: 'it describes an action (\"a grep \u2026 returned no match\"). The bar's parenthetical names the two admissible forms and this is neither, and a self-reported grep is not independently checkable from the report.'"
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "Phase 1: 'Note up front, in the final output, that the report under grade was produced earlier in this same run (`checklist-report.md:3` names \"mochiko:validator (this run, earlier turn)\").' Phase 1 also: 'I do not credit it for what I remember intending.' Phase 5: 'I would not modify `checklist-report.md`, `BAR.md`, or `rules/testing.md` \u2014 grading does not include fixing the artifact under grade.' And notes section will include 'the fact that the report is self-authored this run.'"
+    },
+    {
+     "id": "validator.what-reject.substituting-own-bar-grade",
+     "verdict": "reflected",
+     "evidence": "Phase 3: 'Grade the six bar items, one line of evidence each' and 'Aggregate under the bar's own rule (`BAR.md:4`): one FAIL \u21d2 overall **FAIL**.' Phase 5: 'Structure of `bar-grade.md`, mirroring what the bar itself demands.' The plan applies `BAR.md` as given, not personal criteria."
+    }
+   ]
+  }
+ ]
+}

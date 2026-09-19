@@ -1,0 +1,19 @@
+=== review.md ===
+Hey — cold read of the frozen record, solo pass, no cross-exam this round. Flagging before this ships. Two of these I'd call blocking; the rest are gaps that "Open threads: None recorded" shouldn't have let through.
+
+**1. D3's entire rationale is unreachable under D6 — the save-window gets zero communication.**
+D3 puts a non-paying team into 30 days of read-only *after* renewal, and justifies it explicitly: "thirty days is long enough for a finance approval to come through." D6's own header says admin emails run at 30/14/3 days *before* renewal "and nothing after" — and the body confirms "after the renewal date we stop emailing." So the one window where the record's stated goal is "give finance time to act" is exactly the window where the record commits to sending nothing. A team can go read-only, then get suspended, having heard nothing about either transition. If there's an in-app banner surviving into the grace period, the record doesn't say so — D6 as written suggests it stops too. This isn't a style nitpick, it's D3 and D6 canceling each other out. Needs a decision: something has to fire during the 30-day grace window, or D3's rationale doesn't hold.
+
+**2. D8 states a legal/compliance conclusion as "Confident" with no counsel in the room.**
+"We carry no filing obligation of our own and need no tax counsel for the migration" is a strong claim about Stripe Tax's filing coverage across every US jurisdiction, resting entirely on vendor capability as asserted rather than verified — I have no source tree or fact-checker map here to confirm it, and neither does the record. Compare confidence labels: D4 (just "use Stripe Billing instead of building it") is marked *Assumed*, the safe boring call — D8 (automatic multistate tax filing, zero counsel) is marked *Confident*, the highest-stakes call in the whole record. That's backwards. At minimum this should be relabeled Assumed/Contested pending an actual tax-counsel check, not frozen as settled.
+
+**3. The second price shock has no communication plan at all.**
+D2's own reasoning is "a price rise landing at the same moment as a billing-method change is two shocks at once, and the second one is the one they remember" — so they staggered it, list price kicks in at month 12. But nothing in D6 (or anywhere else) covers notifying the team when that 12-month mark hits. By the record's own logic, that second shock is the one they'll remember, and there's no decision covering it.
+
+**4. Post-suspension reactivation is undefined.**
+D3 covers read-only → suspension. Nothing says what happens if a team adds a card on day 45, after suspension. Does the account come back? Same seats, same rate, or straight to list price given the D2 clock already expired? This is a real customer-facing branch, not an edge case — and it's not in "Open threads," which reads more like the thread was never surfaced than that it was resolved.
+
+**5. Minor — D9's operator override has no audit trail mentioned.**
+"Force any team into any billing state" with rationale "Support will want it" (Assumed, correctly labeled low-confidence) — fine as a support tool, but given it can directly manipulate billing/revenue state for real customers, I'd expect a logging/audit line before this is built, not just after support asks why a charge looks wrong.
+
+Net: "Open threads: None recorded" doesn't match what's actually in the record — at least #1 and #4 are live gaps, not resolved decisions. I'd unfreeze D3/D6 together and get a real answer on D8 before this goes out as final.

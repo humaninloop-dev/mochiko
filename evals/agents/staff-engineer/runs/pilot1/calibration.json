@@ -1,0 +1,255 @@
+{
+ "persona": "staff-engineer",
+ "run": "pilot1",
+ "pairs": 24,
+ "agreement": 0.875,
+ "contradicted_pairs": 0,
+ "contradicted_agreement": null,
+ "confusion": {
+  "label=absent judge=absent": 14,
+  "label=absent judge=reflected": 3,
+  "label=reflected judge=reflected": 7
+ },
+ "rows": [
+  {
+   "id": "staff-engineer.what-reject.skipping-failing-test-step",
+   "label": "reflected",
+   "plan": "ac5081c9",
+   "golden": "g2-delegation-forcing",
+   "arm": "post",
+   "replicate": 1,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.brief-pins-one-task",
+   "label": "absent",
+   "plan": "813a8727",
+   "golden": "g3-contradiction",
+   "arm": "post",
+   "replicate": 1,
+   "judge": "absent",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+   "label": "absent",
+   "plan": "e0417c96",
+   "golden": "g4-brownfield-interface",
+   "arm": "pre",
+   "replicate": 1,
+   "judge": "absent",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+   "label": "absent",
+   "plan": "ff87a0e5",
+   "golden": "g2-delegation-forcing",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "reflected",
+   "agree": false
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+   "label": "absent",
+   "plan": "fe1798a8",
+   "golden": "g3-contradiction",
+   "arm": "pre",
+   "replicate": 1,
+   "judge": "reflected",
+   "agree": false
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+   "label": "absent",
+   "plan": "12a51b81",
+   "golden": "g3-contradiction",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "absent",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.readback-before-counts",
+   "label": "absent",
+   "plan": "e0417c96",
+   "golden": "g4-brownfield-interface",
+   "arm": "pre",
+   "replicate": 1,
+   "judge": "absent",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+   "label": "absent",
+   "plan": "fd2ded81",
+   "golden": "g3-contradiction",
+   "arm": "post",
+   "replicate": 2,
+   "judge": "reflected",
+   "agree": false
+  },
+  {
+   "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+   "label": "reflected",
+   "plan": "091af348",
+   "golden": "g2-delegation-forcing",
+   "arm": "pre",
+   "replicate": 2,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+   "label": "reflected",
+   "plan": "420027cf",
+   "golden": "g2-delegation-forcing",
+   "arm": "post",
+   "replicate": 2,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+   "label": "absent",
+   "plan": "1fda025e",
+   "golden": "g4-brownfield-interface",
+   "arm": "pre",
+   "replicate": 3,
+   "judge": "absent",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.failed-readback-redone",
+   "label": "absent",
+   "plan": "1fda025e",
+   "golden": "g4-brownfield-interface",
+   "arm": "pre",
+   "replicate": 3,
+   "judge": "absent",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.quality-standards.tdd-rigor-every-task",
+   "label": "reflected",
+   "plan": "12a51b81",
+   "golden": "g3-contradiction",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+   "label": "absent",
+   "plan": "cd498138",
+   "golden": "g4-brownfield-interface",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "absent",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+   "label": "absent",
+   "plan": "e0417c96",
+   "golden": "g4-brownfield-interface",
+   "arm": "pre",
+   "replicate": 1,
+   "judge": "absent",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+   "label": "absent",
+   "plan": "ac5081c9",
+   "golden": "g2-delegation-forcing",
+   "arm": "post",
+   "replicate": 1,
+   "judge": "absent",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.what-reject.skipping-failing-test-step",
+   "label": "reflected",
+   "plan": "94d864f5",
+   "golden": "g1-decided-card",
+   "arm": "post",
+   "replicate": 2,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.one-task-per-spawn",
+   "label": "absent",
+   "plan": "ff87a0e5",
+   "golden": "g2-delegation-forcing",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "absent",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+   "label": "absent",
+   "plan": "e4a50d29",
+   "golden": "g1-decided-card",
+   "arm": "pre",
+   "replicate": 1,
+   "judge": "absent",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.what-reject.skipping-failing-test-step",
+   "label": "reflected",
+   "plan": "e0417c96",
+   "golden": "g4-brownfield-interface",
+   "arm": "pre",
+   "replicate": 1,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.what-reject.adding-code-task-didn",
+   "label": "reflected",
+   "plan": "e4a50d29",
+   "golden": "g1-decided-card",
+   "arm": "pre",
+   "replicate": 1,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.rung-execution-have-already",
+   "label": "absent",
+   "plan": "1fda025e",
+   "golden": "g4-brownfield-interface",
+   "arm": "pre",
+   "replicate": 3,
+   "judge": "absent",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.when-task-front-already",
+   "label": "absent",
+   "plan": "458f69ce",
+   "golden": "g2-delegation-forcing",
+   "arm": "pre",
+   "replicate": 1,
+   "judge": "absent",
+   "agree": true
+  },
+  {
+   "id": "staff-engineer.delegating-bounded-work.disclose-delegation-in-report",
+   "label": "absent",
+   "plan": "94d864f5",
+   "golden": "g1-decided-card",
+   "arm": "post",
+   "replicate": 2,
+   "judge": "absent",
+   "agree": true
+  }
+ ]
+}

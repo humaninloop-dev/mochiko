@@ -1,0 +1,27 @@
+=== review.md ===
+Reviewing the frozen sync decision record solo, cold, no repo and no claim map to lean on — so what follows is internal-consistency and domain-knowledge checking, not fact-checking against source. Flagging that scope limit up front so you know what kind of confidence to put on this.
+
+Bottom line: I would not call this converged. One required piece of the goal line isn't in the record at all, and there's a high-risk interaction between two "Confident" decisions that nobody seems to have run through together.
+
+**1. The record doesn't cover what it was asked to cover.**
+The goal line names three things: sync model, conflict handling, and what an inspector sees when a sync fails. D1–D9 give you the first two, but there is no decision anywhere about inspector-facing failure state — no queued/retrying/failed indicator, no error surfaced on-device, nothing. D9 gives ops a per-device telemetry dashboard, which is a different audience entirely. "Open threads: None recorded" is itself the tell — this should have shown up there even if nobody had an answer yet. Right now the record is silently short a third of its own scope.
+
+**2. D1 + D7 stacked together is the sharpest risk in here, and it isn't named as one.**
+D1 resolves conflicts by device-clock timestamp. D7 ships no merge UI and drops the losing version with no trace. Individually each is defensible under "single-author in practice." Together: the resolution key is a value users can trivially have wrong (unsynced clock, wrong timezone, a device that got its clock manually reset) or wrong through no fault of the inspector, and the outcome of getting it wrong is a full inspection silently deleted with nothing recoverable and nothing shown to the person who lost it. D7's own rationale acknowledges this was raised and overridden — but the override rests entirely on "conflicts are rare," not on the mechanism being safe when a conflict does happen. Worth a second look specifically at "clock" as the tiebreaker, independent of how rare you believe conflicts are.
+
+**3. D7's own revisit condition points at something that doesn't exist yet.**
+D7 says "we revisit if the conflict counter says otherwise." There's no decision anywhere establishing a conflict counter. D9's telemetry is queue-state transitions, not conflict events specifically. As written, the condition for revisiting a contested, data-destructive decision has no instrument behind it — so in practice it never gets revisited.
+
+**4. D3 + D6 leaves supervisors signing off on possibly-incomplete inspections without knowing it.**
+D3 marks an inspection `synced` on JSON arrival — photos ride a separate queue and can lag well behind. D6 puts the inspection in front of the supervisor for sign-off the moment it shows `synced`. Nothing in the record distinguishes "fully synced, photos included" from "data's here, photos still in flight or stalled." If photo evidence matters to a sign-off (and on a field-inspection app, it usually does), a supervisor can currently approve based on incomplete evidence with no visible signal that anything's missing.
+
+**5. D2's battery rationale and D9 point in opposite directions.**
+D2 batches uploads on a 60s timer specifically because keeping the radio hot drained batteries on the pilot. D9 then asks for every queue-state transition streamed to the analytics warehouse in real time. That's the same always-on radio behavior D2 was written to avoid, just moved to a different payload. Nothing in the record reconciles this — D9 reads like it was decided independently of D2's constraint ("Assumed" confidence, rationale is just "we will want the data").
+
+**6. D8's stated guarantee is broader than what backs it.**
+The rationale correctly cites that WAL gives SQLite crash-safety against a mid-transaction kill. The decision then concludes "an interrupted sync can never leave a half-written inspection on the device." Sync here is a multi-step, multi-store workflow (DB write, status flag, a separate photo queue per D3) — WAL durability on the SQLite file doesn't by itself make that whole workflow atomic. This is tagged "Confident"; the underlying citation supports a narrower claim than the one written down.
+
+**7. D1 and D7 both lean on one unverified premise, doubling the exposure if it's wrong.**
+"Inspections are single-author in practice" is asserted as settled fact in both rationales, with nothing behind it in the record. Fine if true — but it's currently load-bearing for two separate decisions at once, one of which (D7) is explicitly the contested one. If that premise turns out to be optimistic, both fall together, not independently.
+
+What I'd want back before calling this closed: an actual decision (even a placeholder) for inspector-visible sync failure state, and a real look at #2/#4 as a pair rather than as isolated decisions — those are the two places where the record's own logic, not an outside fact, is the problem.

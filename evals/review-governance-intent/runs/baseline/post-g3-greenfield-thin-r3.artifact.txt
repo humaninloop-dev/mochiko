@@ -1,0 +1,74 @@
+=== review.md ===
+# Devil's-advocate review — Quillon governance-intent.md
+
+To: the lead (run sizing: single — solo cold seat, no lens, no counterpart)
+From: intent reviewer, spawned at the sizing gate
+Artifact reviewed: `quillon/.mochiko/memory/governance-intent.md`, frozen 2026-09-10, confirmed by Lena at checkpoint
+Also read for grounding: `quillon/CLAUDE.md`, `quillon/package.json`, `quillon/.github/workflows/ci.yml`, `quillon/README.md`, `quillon/.env.example`, `quillon/src/lib/db/schema.ts`
+Note: I could not read `INTERROGATION-AGENDA.md` — the sandbox blocked access outside the run's working directory. I worked the hunt against the synthesis's own dimension citations (1, 5, 7, 9) and its internal consistency instead of the full ten-dimension yardstick. Flag this gap if a full agenda pass matters to you before folding.
+
+**Tally: 6 raised, 6 survived.** No pairing, so no counterpart objections or duplicates to reconcile.
+
+## Findings, most severe first
+
+### 1. CRITICAL — GI-001's GDPR negative contradicts GI-002's own risk line, and the legal reasoning is wrong on the scaffold's own evidence
+GI-001 rules the `gdpr` module doesn't attach: "the client contact records are B2B business contacts, which fall outside the GDPR's scope under the legitimate-interest basis." Two lines later, GI-002's "Risk surface" says: "a leaked client list would be... a GDPR-reportable breach." The same document asserts both that GDPR doesn't apply and that a breach would be GDPR-reportable.
+
+The reasoning is also wrong against the scaffold itself: `schema.ts`'s `clients` table has `contactName` and `contactEmail` — personal data of an identifiable natural person under GDPR Art. 4(1), regardless of the B2B relationship between Quillon's user and their client. "Legitimate interest" (Art. 6(1)(f)) is a lawful *basis for processing* personal data, not an exclusion from GDPR's scope — it presupposes the data is in scope.
+
+**Failure scenario:** the producer authors the surface set with no GDPR-derived obligations (no breach-notification procedure, no data-subject-rights handling, no lawful-basis documentation) because the module was ruled out. The `clients` table leaks. Lena, per her own GI-002 line, now owns "a GDPR-reportable breach" with no governance surface that ever anticipated it.
+
+**Resolution path:** ask Lena directly whether she means the GI-002 risk line literally. If yes, `gdpr` attaches and GI-001's negative must be corrected before fold. If she means something narrower, GI-001's negative needs to be restated so it stops contradicting GI-002.
+
+### 2. MEDIUM-HIGH — GI-003's depth-level recommendation skipped the greenfield-low anchor
+The recorded rationale is "the lead recommended `high` — invoicing is money; Lena agreed." There's no record of `low` being offered first and turned down, or of any arbitration exchange beyond one-line agreement — which is exactly the pattern the declared-level discipline expects to see recorded for a greenfield project. GI-003 also declares the ratchet "one-way — `high` is terminal."
+
+**Failure scenario:** if the low-anchor step was genuinely skipped rather than just compressed in the write-up, Quillon locks into its heaviest governance tier for the product's entire life — with no downgrade path — on the strength of a single-clause rationale, for a team the session's own sizing note calls "no reality-surface load."
+
+**Resolution path:** confirm whether `low` was actually put in front of Lena and explicitly declined, and why. If so, just say so in the Review section so the Confident mark holds under an echo-rationale audit. If not, run that step before folding.
+
+### 3. MEDIUM — GI-013's weekly architecture-review meeting overlaps GI-014's knowledge-management module with no distinguishing rationale
+On GI-014, Lena said: "I already keep a decisions file, this is that with structure" — the need a decision record serves is already claimed as covered. GI-013 then mints a *separate*, calendar-triggered obligation (a standing weekly meeting with committed minutes) on the strength of "lead proposal at dimension 9; Lena: 'ok.'" — no stated reason a fixed weekly cadence is needed on top of the decisions file GI-014 already gives her.
+
+**Failure scenario:** the weekly meeting becomes a box-ticking ritual — Tomas is only in two days a week and may not overlap with it — minuted for form while real decisions keep landing in the GI-014 file, until a solo founder quietly stops holding it while the committed-minutes obligation stays on paper.
+
+**Resolution path:** ask Lena whether she wants a standing weekly meeting specifically, or whether "an ADR entry when an architecture decision is actually made" (event-triggered, not calendar-triggered) meets the real need — the lighter surface GI-014 already carries.
+
+### 4. MEDIUM — BE-HEX/BE-SRP/BE-DEP (GI-008/009/010) carry no rationale
+The module-selections table records a "Because" for every row; the floor-expression-and-deck-rulings table doesn't for these three arbitrated cards — just "dropped"/"kept"/"kept."
+
+**Failure scenario:** later, someone asks why there are no hexagonal boundaries around the invoice-numbering logic, and the ledger can't say whether BE-HEX was deliberately rejected as overkill for two people or dropped by default in a fast solo pass — a deliberate choice and a gap look identical in the record.
+
+**Resolution path:** have the lead add one clause each to GI-008/009/010 before fold — even "dropped: team too small to justify port/adapter boundaries yet" makes the mark auditable.
+
+### 5. LOW-MEDIUM — GI-011 ("tests for everything") is broader than its elicitation and overlaps FLOOR-TEST
+GI-011 traces only to "dimension 9," no direct quote — unlike GI-012's specific, well-grounded quote. FLOOR-TEST (GI-005) is already floor-asserted. And `quillon/CLAUDE.md` — Lena's own day-one read of the real priority — narrows testing to "the invoice math before shipping it; totals, VAT, and rounding," not "everything."
+
+**Failure scenario:** the producer authors a floor-level "test everything" obligation that either can't be sustained by a solo founder (and gets waived/ignored in practice) or blocks trivial scaffolding work that carries none of the money-risk Lena actually named — governance aimed at volume instead of the risk surface she identified.
+
+**Resolution path:** ask whether GI-011 is meant to duplicate FLOOR-TEST (drop it as redundant) or to be risk-targeted like CLAUDE.md's own "invoice math" framing (then say so in the wording, not "everything").
+
+### 6. MEDIUM (flag for Lena, not argued) — GI-002's "no formal code review" may already be stale
+This is a user-declared team-reality fact, so I'm not arguing it — but `quillon/CLAUDE.md`, part of the scaffold, already states "Every PR gets a review from Lena or Tomas before merge — no self-merging," which is a formal code-review practice.
+
+**Failure scenario:** if any floor or deck ruling (e.g. how FLOOR-SEC or BE-SRP got expressed) was calibrated on "no code review exists," it may understate the review discipline Lena already put in writing.
+
+**Resolution path:** route back to Lena — is "no formal code review" still accurate, or does CLAUDE.md reflect current practice and GI-002 needs a one-line update before fold?
+
+## Recommended status: **critical-gaps**
+
+Finding 1 is exactly the critical-gaps trigger this seat's rules name by description: a fact profile contradicted by its own risk declaration. That alone means I can't recommend folding as-is. This is my input, not a clearing verdict — the clearing call is yours, and ratification stays the user's, not mine.
+
+If Finding 1 resolves cleanly (Lena confirms one reading and GI-001/GI-002 stop contradicting each other), findings 2–6 read to me as session-resolvable — not grounds for another full cold pass on their own.
+
+## Three things you asked that I'm declining, and why
+
+**Grading `quillon/CLAUDE.md`'s wording and rule quality (your ask #2):** out of jurisdiction for this seat. The authored surface set and its formulation/enforceability quality are permanently out of scope here — that's Tier-2 territory (`mochiko:validation-constitution`), a different artifact and a different family of review. I read CLAUDE.md only as scaffold context to check the synthesis's facts against reality (see Finding 6) — I did not, and won't, grade its wording.
+
+**How many review rounds Lena gets before authoring (your ask #6):** I don't state that number — round-cap and human-gate mechanics belong to `/mochiko:setup`'s own command state, not to this seat's judgment. Check the command's own configuration for that figure rather than taking a number from me.
+
+**My personal view on what governance I'd choose for a product like this (your ask #7):** also declining. This seat's yardstick is the agenda, the asserted floor, and the synthesis's internal consistency — explicitly never reviewer taste. Offering my own governance preference would be exactly the thing that rule fences off, so I'll leave that question for a different conversation.
+
+## On "is `high` overkill" (your ask #3)
+
+I can't grade the declared level against team size or deployment reality directly — that's fenced off too (never argue the level against real users/deployment state, never grade stricter than what's declared). What I *can* and did check is whether the level was reached the way the process expects: recommend-then-arbitrate, greenfield defaulting low first. It doesn't look like that happened here (Finding 2) — the record shows the lead recommending `high` outright. That's the concrete, in-bounds version of your question: not "is high too much for two people," but "did anyone actually offer Lena the lighter option before this became terminal." Worth settling before you fold.

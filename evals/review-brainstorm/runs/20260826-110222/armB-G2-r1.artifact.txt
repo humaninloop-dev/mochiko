@@ -1,0 +1,79 @@
+=== angle-map.md ===
+# Phase 0 — Blind angle map
+
+Topic only, produced before analytical engagement with record.md's specific decisions.
+Kettle: field-inspection mobile app, offline capture → sync. Goal line: sync model, conflict handling, inspector-facing failure UX.
+
+## Sync model
+- Trigger: manual vs. automatic vs. periodic; connectivity-detection method
+- Queue ordering, batching, resumability of large payloads
+- Idempotency/dedup under retry
+- Direction: upload-only, or does the server push back to the device (assignments, template updates, conflict outcomes)?
+- Auth/session expiry across a long offline stretch
+- Multi-device / shared-device handling (same login on different hardware across shifts)
+- Schema/version skew between app versions queued offline
+- Delete propagation
+
+## Conflict handling
+- Detection mechanism (timestamp vs. version vector) and what clock/authority it trusts
+- Clock skew / untrusted device clocks — a named risk for any timestamp-based resolution
+- Field-level vs. record-level granularity
+- Audit trail: is a losing edit recoverable anywhere, even outside the primary UI?
+- Photos/attachments as a separate conflict surface from the record body
+- Metric/trigger for revisiting the conflict policy
+
+## Inspector-facing failure UX (explicit goal-line pillar)
+- Distinguishing "queued, not yet attempted" vs. "attempted and failed" vs. "permanently failed, needs inspector action"
+- Manual retry affordance
+- Blocking vs. non-blocking (can the inspector keep working?)
+- Does the inspector ever learn their edit was discarded by conflict resolution?
+- Behavior once local storage/purge pressure and a stuck item interact
+
+## Storage/persistence
+- DB technology choice, crash-safety guarantees and their actual scope
+- Purge/retention policy and whether it covers the never-synced case, not just the synced case
+- Storage-pressure handling on shared/shift devices
+
+## Downstream/organizational
+- Supervisor workflow: what state triggers visibility and sign-off, and whether that state is "complete" in every sense (data + media)
+- Telemetry: what's captured, at what granularity, proportionate to what decision it's meant to inform
+- Privacy/surveillance implications of per-device tracking of field workers
+
+This map is deliberately produced from the topic and goal line alone, before weighing record.md's specific decisions, so it can be diffed against the record for coverage gaps rather than reconstructed from it.
+
+
+=== review.md ===
+Solo end-stage review of record.md (Kettle — offline inspection sync). No counterpart, no cross-examination round ran; whole surface was mine. No repo and no fact-checker claim map were available in this workspace — I verified only what the record's own text lets me verify (internal consistency, and the D8 technical claim against general SQLite documentation, which I'm flagging as an unverified external claim rather than confirming). Findings below, most severe first, then tally and recommended status.
+
+## Findings
+
+### 1 [Critical] — Coverage gap: the goal line's third pillar has no decision
+The goal line names three things this record must cover: sync model, conflict handling, and what an inspector sees when a sync does not go through. D1–D9 cover the first two at length. Nothing in the record — not a decision, not an open thread — addresses inspector-facing failure UX: no distinction between "queued," "attempted and failed," and "permanently failed," no retry affordance, no statement of whether the inspector is ever told their own edit was the one LWW discarded. "Open threads: None recorded" closes the record without this pillar ever surfacing as a gap to revisit.
+Failure scenario: an inspector loses connectivity mid-shift, fills local storage with unsynced work, and has no in-app signal distinguishing "still trying" from "will never sync without your intervention" — because no decision defines what that signal is.
+This is a stated deliverable requirement with zero coverage, not a stylistic omission — a ruling here would almost certainly change the record's shape.
+
+### 2 [Critical] — D1 × D7 compound: clock-trusted LWW makes silent data loss both invisible and possibly wrong
+D1 resolves conflicts by device-clock timestamp, with no mention of clock skew, NTP, or fallback to server-received time. D7 (Contested, but accepted) ships no merge UI, and the losing version is dropped with no trace. The record never describes any server→device return channel at all — sync is only ever described as device uploading to server. Stacked together: if Inspector A's device clock is fast (dead battery, manual reset, timezone bug — all ordinary field conditions) and Inspector B edits the same inspection genuinely later in real time but with a correct, "earlier" device clock, B's more-recent and more-accurate work is the one discarded — silently, permanently, with no mechanism (per the record) for B or a supervisor to ever learn it happened.
+This is a genuinely new angle on D7, not a re-litigation of the original contest: the prior objection was about visibility/recoverability of the losing edit; this one is that the resolution mechanism itself (device clock) is not a reliable ordering signal, so "later wins" doesn't reliably mean "more correct wins." D1 is marked Confident; given this failure mode, that calibration is worth a second look.
+
+### 3 [Important] — D3 × D6 inconsistency: "synced" triggers sign-off but doesn't mean the inspection is complete
+D3 defines `synced` as the JSON body landing on the server — explicitly independent of photos, which run on a separate queue and can trail by a long margin on a bad connection (D3's own rationale cites "tens of megabytes on a bad connection"). D6 lets a supervisor sign off the moment an inspection shows `synced`. Nothing in the record prevents or flags a supervisor approving an inspection whose photographic evidence hasn't arrived, or has failed independently on its own queue. This is a direct interaction between two Confident decisions that the record never reconciles.
+Failure scenario: a compliance-relevant inspection gets signed off Monday morning while its photos are still queued (or silently dead-lettered) from a rural site visit; the approval record shows "approved," and no one downstream is ever prompted to check that the media actually arrived.
+
+### 4 [Important] — D8's technical claim is broader than what it cites, stated at Confident, and unverifiable here
+"A WAL database is guaranteed to survive the app being force-killed mid-transaction on both iOS and Android — so an interrupted sync can never leave a half-written inspection on the device." WAL mode's durability guarantee is about the SQLite file's own transactional integrity; it does not, on its own, guarantee that a higher-level "sync" operation — which may span multiple statements, app-level state updates, or network round-trips — is atomic. That depends on whether the app wraps the whole sync write in a single DB transaction, which the record never states. This workspace has no source to check that boundary, so the claim is currently unverifiable, not confirmed — and "Confident" reads as broader certainty than the citation actually supports. The underlying choice (WAL mode) is very likely still fine; it's the scope of the stated guarantee that's overreaching.
+
+### 5 [Minor] — D5's purge policy only covers the successful-sync path
+D5 purges the local copy 7 days after a successful sync; the record is silent on inspections that never successfully sync (e.g., repeated server-side rejection). D5's own rationale is protecting 32GB shared devices from filling up within a season — an unbounded pile of permanently-stuck inspections undermines exactly that goal, and is a direct sub-case of finding 1 (no failure-path decision exists at all).
+
+### 6 [Minor] — D9's real-time per-device pipeline is heavier than its one stated consumer needs, and untouched on a privacy angle
+D9 is Assumed, rationale "We will want the data." The one concrete downstream need named anywhere in the record is D7's "we revisit if the conflict counter says otherwise" — which only requires a periodic aggregate count, not a real-time streaming pipeline with a per-device dashboard. Cheaper shape: a periodic batch rollup of queue-outcome counts. Separately, a per-device real-time dashboard tracking individual field workers' devices carries an employee-monitoring/privacy dimension the record doesn't touch at all — flagging for judgment, not asserting it's wrong.
+
+### 7 [Minor] — D1's "single-author in practice" rationale sits uneasily next to D5's "devices are shared between shifts"
+Not a strict contradiction (single-author per inspection ≠ single-user per device), but the record never reconciles why shift-shared devices don't raise handoff/concurrent-edit risk for a given inspection. Worth a sentence; unlikely alone to flip D1.
+
+## Tally
+7 findings: 2 Critical, 2 Important, 3 Minor.
+
+## Recommended status
+critical-gaps — the goal line's third pillar (inspector-facing failure UX) has no decision at all, and the LWW/no-merge-UI combination has a concrete, plausible silent-data-loss path that the record's own "Contested" flag on D7 didn't fully surface. Recommendation is input; disposition is yours.

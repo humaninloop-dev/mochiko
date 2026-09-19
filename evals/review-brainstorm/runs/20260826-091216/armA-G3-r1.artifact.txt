@@ -1,0 +1,126 @@
+=== blind-angle-map.md ===
+# Phase 0 — Blind Angle Map
+
+Built from the topic statement and goal line only, before opening `record.md`. No repo exists in this workspace, so no repo-grounding reading was available or applicable.
+
+Topic: Threadline (team chat product) — moving 4,000 teams from invoiced annual contracts onto self-serve card billing.
+Goal line: migration path, price continuity, what happens to a team that does not act.
+
+## Actors
+- Team admin / billing contact (may have turned over since contract signing)
+- Non-admin end users on affected teams (impact of read-only/suspension)
+- Finance/procurement departments at customer orgs, incl. PO-only / card-incapable orgs (government, universities, some enterprises)
+- Sales / account managers holding existing relationships or multi-year custom deals
+- Support team (volume, tooling, escalation path)
+- Internal finance/revenue ops (cash-flow timing shift, revenue recognition)
+- Legal/compliance (contract amendment terms, tax, data protection)
+- Payments/engineering team (PCI scope, integration risk)
+- Executive sponsor (churn and revenue-risk exposure)
+
+## Cost dimensions
+- Card processing fees vs. invoice/ACH — who absorbs the margin change
+- Support cost of a 4,000-team migration wave
+- Churn/revenue loss from teams that don't or can't convert
+- Build cost of migration console and Stripe integration
+- Dunning/retry cost for failed cards
+- FX and non-USD pricing if any teams are international
+
+## Failure modes
+- No card on file at renewal (explicitly a goal-line topic)
+- Card present but declines/expires after being added
+- Org structurally cannot pay by card (procurement/PO mandate)
+- Admin contact is stale or departed — notice never reaches a human who can act
+- Contract terms require formal notice/mutual agreement to change payment method, not just email
+- Multi-year or non-standard-term contracts complicating "next renewal"
+- Seat-count disputes during reconciliation
+- Data handling during read-only/suspended state (retention, export, deletion, GDPR)
+- Renewal-date clustering defeating any "spread the load" assumption
+- Custom/negotiated per-seat pricing diverging sharply from list price
+
+## Timescales
+- Pre-renewal notice window
+- Grace/read-only period after a missed renewal
+- Price-hold period post-migration and what happens at its expiry
+- Long-run reactivation path after suspension
+
+## Alternatives / rejected roads to steelman if visited
+- Single global cutover vs. wave-by-renewal
+- Immediate price move to list vs. held rate
+- Immediate suspension vs. grace period
+- Build in-house billing vs. buy (Stripe or other)
+- Self-serve downgrade vs. support-mediated
+
+## Second-order effects
+- Sales comp impact if AEs are paid on invoiced annual deals
+- Revenue recognition / cash flow timing shift for finance
+- Tax exposure across US states and any non-US jurisdictions
+- Internal-tool abuse surface if an operator override exists
+- Fairness/consistency across teams migrating at different calendar times (price drift, list-price changes over the rollout year)
+
+## Open questions a thorough treatment should answer
+- Is any segment of the 4,000 teams categorically unable to use card billing, and if so what happens to them?
+- Does "current rate" for price continuity include negotiated discounts, and what happens to those specifically at expiry?
+- What is the customer base's geographic footprint (US-only vs. international) — this gates tax and currency angles?
+- What communication, if any, happens *during* a grace/suspension window, not just before it?
+- What data-handling guarantees exist for a suspended team's content?
+
+
+=== review.md ===
+# Message to lead — solo end-stage review of record.md (Threadline self-serve billing migration)
+
+Spawned solo, no counterpart, no cross-examination round. Findings below are self-filtered against the materiality bar the debate would normally apply, but they are undebated — hold them to that standard when you read them.
+
+Blind angle map was built first (see `blind-angle-map.md`) from the topic and goal line alone; the coverage findings below are the diff between that map and what the record actually decided.
+
+Tally: ~20 candidate angles/hunt-class items raised internally during the cold read; **9 survived** my own materiality filter. The rest died at the diff (no plausible ruling change) or were rejected-roads already visited by the record (D7, Contested, correctly not re-litigated).
+
+## Critical
+
+**1. D3 has no path for teams that are structurally card-incapable, not just slow.**
+D3's 30-day-read-only-then-suspend assumes every team can eventually add a card. Government agencies, universities, and PO-only enterprises are common annual-invoice customers and often cannot pay by card at all, by policy or statute — for them the "grace period" isn't a grace period, it's a guaranteed termination clock regardless of ability or willingness to pay.
+- Failure scenario: a state-university team in good standing for 3 years hits renewal, has no card in 30 days (can never legally add one), and is suspended purely for a payment-mechanism mismatch, not non-payment.
+- Resolution path: does Threadline currently have any teams under PO-only/procurement payment terms? If yes, this decision needs an exemption or manual-invoicing carve-out before it ships; if no, the record should say so explicitly rather than leaving it silent.
+
+**2. D8's central factual claim ("Stripe Tax carries the whole US filing obligation... we need no tax counsel") looks overstated and is rated Confident with essentially no scrutiny.**
+Stripe Tax's base product calculates and collects tax; automatic multi-state registration and return filing is a separate, opt-in capability, and merchant tax liability for registration/filing typically isn't fully absorbed by default configuration. This is a load-bearing compliance claim behind a Confident rating, on a decision that explicitly disclaims needing legal/tax review — for 4,000 teams' worth of revenue that's real exposure if wrong. It also only addresses US tax; nothing in the record covers non-US VAT/GST if any of the 4,000 teams are outside the US.
+- Resolution path: get written confirmation from whoever validated this (Stripe rep or tax counsel) that the filing/remittance SKU — not just calculation — is enabled and covers every state where Threadline has nexus; separately confirm whether any customers are non-US and need their own tax decision.
+
+## Important
+
+**3. Inconsistency between D3 and D6: zero communication during the very grace window D3 relies on.**
+D6 stops all email after the renewal date. D3's rationale for the 30-day window is "long enough for a finance approval to come through" — but if a team never gets a "you're in read-only, N days left" nudge during that window (e.g., they missed or spam-filtered the pre-renewal emails), the grace period's usefulness is undermined by the record's own no-contact-after-renewal rule.
+- Resolution path: clarify whether "nothing after" in D6 was meant to include the grace window, or whether a grace-period reminder should be carved out.
+
+**4. D5 states the seat-addition billing path but never states the seat-removal path.**
+"Seats added mid-cycle are charged on the following invoice" is explicit; whether removed seats generate any credit, and on what cadence, is unaddressed. For 4,000 self-serve teams with ongoing headcount churn, an unstated removal policy is a predictable dispute generator.
+- Resolution path: state explicitly whether/when seat removals are credited.
+
+**5. D2's 12-month price hold assumes "current rate" is a mild variant of list price; for negotiated enterprise discounts it may not be.**
+Many annual invoiced contracts carry custom volume/loyalty discounts. For those teams, month 13 isn't a normal price increase — it's the loss of a specific negotiated discount, potentially a much larger jump than typical, which undercuts D2's own stated rationale of avoiding "two shocks landing together."
+- Resolution path: check the distribution of current-rate-vs-list-price delta across the 4,000 teams; if a meaningful cohort has deep discounts, D2 likely needs a ramp rather than a cliff for that cohort.
+
+**6. D9's operator override has no stated audit or access control.**
+An internal tool that lets an operator "force any team into any billing state" is a real financial-control surface (can grant free service, reverse a suspension, alter what a team is billed) with nothing said about logging, role-gating, or approval.
+- Resolution path: confirm whether audit logging + role restriction is already an assumed build requirement, or needs to be added to D9's statement explicitly.
+
+**7. Coverage gap: no decision addresses data retention/export/deletion for a team in read-only or suspended state.**
+For a chat product, "suspended" implies a real question about what happens to message history — retained, exportable, eventually deleted — with GDPR-shaped stakes if any customers are in the EU/UK. The record is silent on this entirely.
+- Resolution path: confirm whether this is covered by a separate, pre-existing data-retention policy, or is genuinely undecided and needs a D-entry before ship.
+
+**8. Coverage gap: non-US tax obligation is entirely unaddressed.**
+D8 explicitly scopes to "US filing obligation." Nothing states whether any of the 4,000 teams are outside the US, or what happens to VAT/GST compliance if so. This compounds finding #2.
+- Resolution path: confirm the customer base's geographic footprint; if non-US teams exist, this needs its own decision rather than silent inheritance from D8.
+
+## Minor
+
+**9. D1's "spreads support load across the year" assumes roughly uniform renewal-date distribution across the 4,000 teams.**
+Enterprise annual contracts often cluster around fiscal-year boundaries (e.g., calendar-year-end, April). If the actual distribution is clustered, the load-spreading benefit the decision leans on may be much weaker than stated.
+- Resolution path: check the actual renewal-date histogram before treating "spreads across the year" as a settled mitigation.
+
+## Not raised
+
+D7 (self-serve downgrade) is Contested and was already ruled with the steelman in view — I did not find a genuinely new angle against it, so it's excluded per protocol. D4 (Stripe Billing, "Obvious") and D9's overall build-vs-buy framing are thin-rationale but I judged the underlying calls sound enough not to block on; flagging here only for visibility, not as a survivor.
+
+## Recommended status: **critical-gaps**
+
+Basis: a load-bearing claim that looks broken on inspection (D8, finding #2), and a Critical coverage gap where a plausible in-scope decision (an exemption path for card-incapable orgs) would likely have been reached had the angle been visited (finding #1). The rest are Important/Minor and would normally not block alone, but the two Criticals do.

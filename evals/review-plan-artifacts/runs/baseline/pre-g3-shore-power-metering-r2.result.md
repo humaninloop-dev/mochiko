@@ -1,0 +1,7 @@
+I've written the review to `review.md`. Verdict: **critical-gaps**.
+
+The headline finding: round 1's fix for the weak D-004 rationale didn't just improve the writing — it flipped the ingest model from push to hourly pull, which directly reverses the signed architecture delta (SPN-007 was built specifically for push, with an explicit "push over pull" ruling) and contradicts the still-push-shaped `contracts/api.yaml` and Cycle 1 test in the same re-issued package. Three round-2 artifacts now describe incompatible systems, and the new pull decision self-admits 60-minute freshness against a signed 5-minute NFR target.
+
+Other Critical items: a `[TODO]` left in a shipped decision (confirmed by the tier-1 checker), a decision (D-005) with only one option and no real alternative comparison despite disclosure claiming one was weighed, a fabricated `US-6` citation with no such story anywhere in the spec, a P2 story (US-4) with zero cycle coverage, and one cycle card (Cycle 2) that's a horizontal layer slice gated by a test-suite re-run rather than a real-infrastructure end-to-end test. Two Important items round it out: `quickstart.md` is required per the sufficiency report but doesn't exist on disk, and the adopt-first claim for D-005 looks weak given Postgres already ships native partitioning.
+
+Round 1's actual fixes (pagination, the US-3 card, the Reading example) all held up fine — credited in the strengths line.

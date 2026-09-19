@@ -1,0 +1,2350 @@
+{
+ "persona": "technical-analyst",
+ "pass": "nopersona-prune",
+ "arm_model": "opus",
+ "replicates": 3,
+ "judged": [
+  "technical-analyst.brownfield-awareness.collision-risk-transparency-flag",
+  "technical-analyst.brownfield-awareness.convention-consistency-match-existing",
+  "technical-analyst.brownfield-awareness.existing-patterns-over-invention",
+  "technical-analyst.brownfield-awareness.explicit-extension-classification-clearly",
+  "technical-analyst.brownfield-awareness.priority-alignment-track-which",
+  "technical-analyst.quality-standards.classified-every-data-element",
+  "technical-analyst.quality-standards.failure-aware-every-external",
+  "technical-analyst.quality-standards.infrastructure-aware-every-constraint",
+  "technical-analyst.quality-standards.measurable-every-non-functional",
+  "technical-analyst.quality-standards.normalized-entities-have-clear",
+  "technical-analyst.quality-standards.realistic-examples-use-realistic",
+  "technical-analyst.quality-standards.schema-aligned-error-codes-cover-failure-modes",
+  "technical-analyst.quality-standards.schema-aligned-schemas-match-entities",
+  "technical-analyst.quality-standards.technology-agnostic-constraints-real-boundaries",
+  "technical-analyst.quality-standards.technology-agnostic-requirements-what-not-how",
+  "technical-analyst.quality-standards.traceable-every-technical-requirement",
+  "technical-analyst.what-embrace.alignment-project-governance-every",
+  "technical-analyst.what-embrace.constraint-infrastructure-tracing-when",
+  "technical-analyst.what-embrace.decompose-don-t-transcribe",
+  "technical-analyst.what-embrace.explicit-over-implicit-when",
+  "technical-analyst.what-embrace.failure-mode-analysis-what",
+  "technical-analyst.what-embrace.flag-don-t-guess",
+  "technical-analyst.what-embrace.fr-tr-traceability-every",
+  "technical-analyst.what-embrace.measurability-if-cannot-measure",
+  "technical-analyst.what-embrace.question-vague-boundaries-when",
+  "technical-analyst.what-embrace.separate-constraints-from-preferences",
+  "technical-analyst.what-embrace.surface-implicit-business-specs",
+  "technical-analyst.what-embrace.system-boundary-thinking-where",
+  "technical-analyst.what-embrace.thorough-exploration-alternatives-ship",
+  "technical-analyst.what-reject.api-endpoints-without-error",
+  "technical-analyst.what-reject.assumptions-should-be-decisions",
+  "technical-analyst.what-reject.business-requirements-passed-through",
+  "technical-analyst.what-reject.constraints-without-sources-every",
+  "technical-analyst.what-reject.data-requirements-without-sensitivity",
+  "technical-analyst.what-reject.entities-without-clear-lifecycle",
+  "technical-analyst.what-reject.ignoring-brownfield-context-when",
+  "technical-analyst.what-reject.implicit-assumptions-treated-requirements",
+  "technical-analyst.what-reject.integration-dependencies-without-failure",
+  "technical-analyst.what-reject.non-functional-requirements-without",
+  "technical-analyst.what-reject.shallow-research-single-option",
+  "technical-analyst.what-reject.technology-choices-disguised-requirements"
+ ],
+ "model_native": [
+  "technical-analyst.brownfield-awareness.collision-risk-transparency-flag",
+  "technical-analyst.brownfield-awareness.convention-consistency-match-existing",
+  "technical-analyst.brownfield-awareness.existing-patterns-over-invention",
+  "technical-analyst.brownfield-awareness.explicit-extension-classification-clearly",
+  "technical-analyst.brownfield-awareness.priority-alignment-track-which",
+  "technical-analyst.quality-standards.normalized-entities-have-clear",
+  "technical-analyst.quality-standards.realistic-examples-use-realistic",
+  "technical-analyst.quality-standards.schema-aligned-error-codes-cover-failure-modes",
+  "technical-analyst.quality-standards.schema-aligned-schemas-match-entities",
+  "technical-analyst.quality-standards.technology-agnostic-constraints-real-boundaries",
+  "technical-analyst.what-embrace.decompose-don-t-transcribe",
+  "technical-analyst.what-embrace.fr-tr-traceability-every",
+  "technical-analyst.what-reject.api-endpoints-without-error",
+  "technical-analyst.what-reject.assumptions-should-be-decisions",
+  "technical-analyst.what-reject.business-requirements-passed-through",
+  "technical-analyst.what-reject.entities-without-clear-lifecycle",
+  "technical-analyst.what-reject.ignoring-brownfield-context-when",
+  "technical-analyst.what-reject.shallow-research-single-option",
+  "technical-analyst.what-reject.technology-choices-disguised-requirements"
+ ],
+ "total_cost_usd": 5.641,
+ "judge_cost_usd": 1.7148,
+ "judge_calls": 27,
+ "runs": [
+  {
+   "golden": "a1-standing-orders-decomposition",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "technical-analyst",
+    "persona_sha256": "d9c1eb6b5fdb53bb",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-u9ole1xa/ws/pallet/specs/standing-orders/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-u9ole1xa/ws/pallet/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-u9ole1xa/ws/pallet/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-u9ole1xa/ws/pallet/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-u9ole1xa/ws/pallet/prisma/schema.prisma",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.452762,
+   "num_turns": 7,
+   "duration_ms": 195412,
+   "coverage": [
+    {
+     "id": "technical-analyst.quality-standards.classified-every-data-element",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.quality-standards.failure-aware-every-external",
+     "verdict": "reflected",
+     "evidence": "the placement path survives a Redis outage without losing occurrences and a worker restart without duplicating them"
+    },
+    {
+     "id": "technical-analyst.quality-standards.infrastructure-aware-every-constraint",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.quality-standards.measurable-every-non-functional",
+     "verdict": "reflected",
+     "evidence": "Timeliness: an occurrence is placed within 5 minutes of its cut-off at p99, 15 minutes worst case; anything past the ruled catch-up window is not placed and is alerted. Measured from occurrence cut-off timestamp to order placed_at"
+    },
+    {
+     "id": "technical-analyst.quality-standards.technology-agnostic-requirements-what-not-how",
+     "verdict": "reflected",
+     "evidence": "no requirement smuggles in a design decision the team should make"
+    },
+    {
+     "id": "technical-analyst.quality-standards.traceable-every-technical-requirement",
+     "verdict": "reflected",
+     "evidence": "Write derived requirements as TR-###, each traced to its source FR/US and to the governing rule it satisfies"
+    },
+    {
+     "id": "technical-analyst.what-embrace.alignment-project-governance-every",
+     "verdict": "reflected",
+     "evidence": "a traceability matrix from each US/FR to its TR-s and to the governing rule it satisfies"
+    },
+    {
+     "id": "technical-analyst.what-embrace.constraint-infrastructure-tracing-when",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.what-embrace.decompose-don-t-transcribe",
+     "verdict": "reflected",
+     "evidence": "Instruction model & authority \u2014 a standing instruction record naming creator and creation time; versioning on edit so that an issued payment's authority is immutable; a new id prefix; Order.authorised_by widened to accept it"
+    },
+    {
+     "id": "technical-analyst.what-embrace.explicit-over-implicit-when",
+     "verdict": "reflected",
+     "evidence": "I would ask rather than assume, and default to 'the API receives an explicit line list, not a basket reference.'"
+    },
+    {
+     "id": "technical-analyst.what-embrace.failure-mode-analysis-what",
+     "verdict": "reflected",
+     "evidence": "Bacs failure is not same-day \u2014 FR-005 is unsatisfiable as literally written. Skip races placement. Idempotency has a sharper edge here than elsewhere."
+    },
+    {
+     "id": "technical-analyst.what-embrace.flag-don-t-guess",
+     "verdict": "reflected",
+     "evidence": "I would send them as a short list to Priya (and Tom for the money ones) before the design session"
+    },
+    {
+     "id": "technical-analyst.what-embrace.fr-tr-traceability-every",
+     "verdict": "reflected",
+     "evidence": "confirm: every US and FR traces to at least one derived requirement"
+    },
+    {
+     "id": "technical-analyst.what-embrace.measurability-if-cannot-measure",
+     "verdict": "reflected",
+     "evidence": "SC-001 ('placed reliably') is not measurable at all as written and needs a number"
+    },
+    {
+     "id": "technical-analyst.what-embrace.question-vague-boundaries-when",
+     "verdict": "reflected",
+     "evidence": "What 'same day' means for Bacs (Priya + Tom). Missed cut-off behaviour (Priya). Does a basket exist server-side (engineering)?"
+    },
+    {
+     "id": "technical-analyst.what-embrace.surface-implicit-business-specs",
+     "verdict": "reflected",
+     "evidence": "Phase 1 identifies implicit requirements from existing constraints: 'immutability + 7-year retention; authorised_by non-null on payments/payouts; confidentiality of counterparty data... mandatory idempotent jobs with deterministic ids; pino + correlation id + OTel + /health + 5xx and queue-lag alerts.' Phase 2, item 13: 'AX-012 alerts on queue lag above 10 minutes. Ten minutes of lag on a cut-off is a missed cut-off' \u2014 surfaces the implicit alert-threshold requirement. Phase 2, item 12 surfaces the implicit confidentiality requirement in the forecast feature."
+    },
+    {
+     "id": "technical-analyst.what-embrace.system-boundary-thinking-where",
+     "verdict": "reflected",
+     "evidence": "Phase 2, item 5: 'each holding a synchronous Stripe call with an 8 s timeout and a retry, sets a concrete throughput requirement and a Stripe rate-limit question.' Phase 2, item 2 analyzes the Bacs webhook path: 'Bacs debit is accepted at submission and can fail up to three working days later by webhook.' Phase 2, item 4 maps the worker machine as a shared resource: 'one Fly machine already carrying invoice generation, e-mail, PDF rendering, accounting export and the nightly purge. One machine is the availability ceiling.' Phase 4 records Stripe constraints: 'Stripe pinned version, 8 s timeout, single retry, EU entity, Pallet holds no card/bank numbers.'"
+    },
+    {
+     "id": "technical-analyst.what-embrace.thorough-exploration-alternatives-ship",
+     "verdict": "reflected",
+     "evidence": "Phase 2, item 8 explores job-id-only enforcement versus database enforcement: 'A deterministic BullMQ jobId is necessary but not sufficient: it protects against re-running a job, not against two different jobs for the same occurrence, nor against a crash between the Stripe charge and the Postgres commit.' Phase 3 explores Redis versus Postgres: 'occurrences materialised in Postgres (system of record; Redis carries only the job, so a Redis loss loses nothing).' Phase 3 explores versioning versus immutability for standing instructions: 'edits create a new version, the payment points at the version in force \u2014 or the authority trail breaks.'"
+    },
+    {
+     "id": "technical-analyst.what-reject.assumptions-should-be-decisions",
+     "verdict": "reflected",
+     "evidence": "Phase 2 systematically converts spec assumptions into explicit questions: 'Item 1: \"Every retailer has a saved payment method\" \u2014 false.' 'Item 2: Bacs failure is not same-day \u2014 FR-005 is unsatisfiable as literally written.' 'Item 3: Cut-off has no timezone, and the feature is a wall-clock scheduler.' Phase 6 converts the highest-risk assumptions into explicit decisions: 'Decisions I would stop for' lists six rulings (payment method eligibility, same-day meaning for Bacs, missed cut-off behaviour, unavailable product handling, forecast granularity, basket existence) each with evidence and stated consequences. 'I would escalate before the design session rather than after it' prevents assumptions from becoming embedded defaults."
+    },
+    {
+     "id": "technical-analyst.what-reject.business-requirements-passed-through",
+     "verdict": "reflected",
+     "evidence": "Phase 2 translates FR-002 'Every retailer has a saved payment method' into a technical finding: '245 of 1,900 retailers \u2014 roughly 13% \u2014 cannot satisfy FR-002 as written.' Phase 2, item 2 translates FR-005 'notified the same day when an occurrence's charge fails' against AX-003's technical reality: 'can only mean the day Pallet learns of the failure.' Phase 2, item 6 translates 'Prices are those in the catalogue' into explicit policy questions: 'rules for paused/delisted products and for a wholly-unavailable basket; whether a price rise needs disclosure.' Phase 3 converts specifications into technical requirements: each requirement is traced to its source and its constraint."
+    },
+    {
+     "id": "technical-analyst.what-reject.data-requirements-without-sensitivity",
+     "verdict": "reflected",
+     "evidence": "Phase 2, item 12: 'Trading relationships are Restricted. FR-007's forecast spans several retailers... skipped/paused occurrences leak a retailer's closure plans. Default: aggregate per product per route day per currency only.' Phase 5 specifies security/privacy targets: 'no card or bank number stored; no counterparty contact, bank, or trading-relationship data in logs, exports, or error bodies \u2014 verified by the contract suite that already exists for this purpose.' Phase 1 identifies governance constraints: 'confidentiality of counterparty data and UK/EU residency.'"
+    },
+    {
+     "id": "technical-analyst.what-reject.implicit-assumptions-treated-requirements",
+     "verdict": "reflected",
+     "evidence": "Phase 2 methodically identifies and refuses to treat implicit assumptions as facts: 'Item 10: \"From a basket\" \u2014 there is no basket. No Basket model appears in the excerpt. I cannot tell from here, and it changes what FR-001's endpoint receives. I would ask rather than assume, and default to \"the API receives an explicit line list, not a basket reference.\"' Phase 6: 'I would not resolve these myself; each changes the product.' **Refuse/flag:** clearly distinguishes assumptions to escalate from derived requirements to document."
+    },
+    {
+     "id": "technical-analyst.what-reject.integration-dependencies-without-failure",
+     "verdict": "reflected",
+     "evidence": "Phase 2, item 5 analyzes Stripe throughput failure modes: 'A spike of a few hundred occurrences, each holding a synchronous Stripe call with an 8 s timeout and a retry, sets a concrete throughput requirement and a Stripe rate-limit question.' Phase 2, item 7 analyzes skip-placement race: 'Without an atomic state transition this produces either a delivery the caf\u00e9 closed for, or a duplicate.' Phase 2, item 2 analyzes Bacs webhook timing as a failure mode: 'Bacs debit is accepted at submission and can fail up to three working days later by webhook.' Phase 5 specifies availability failure modes: 'the placement path survives a Redis outage without losing occurrences and a worker restart without duplicating them.'"
+    },
+    {
+     "id": "technical-analyst.what-reject.non-functional-requirements-without",
+     "verdict": "reflected",
+     "evidence": "Phase 5 converts 'fast, highly available, secure, accurate' into measurable targets: 'Timeliness: an occurrence is placed within 5 minutes of its cut-off at p99, 15 minutes worst case; Correctness: zero duplicate orders per occurrence \u2014 a hard target, database-enforced; Latency: standing-order read/edit endpoints p95 under 300 ms, p99 under 800 ms; forecast p95 under 1.5 s; Accuracy: reflects currently-scheduled occurrences within 60 seconds; Alerting: a placement-specific lag threshold well under AX-012's global 10 minutes.' Each includes measurement method and verification route."
+    }
+   ]
+  },
+  {
+   "golden": "a1-standing-orders-decomposition",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "technical-analyst",
+    "persona_sha256": "d9c1eb6b5fdb53bb",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-yh1f593k/ws/pallet/specs/standing-orders/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-yh1f593k/ws/pallet/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-yh1f593k/ws/pallet/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-yh1f593k/ws/pallet/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-yh1f593k/ws/pallet/prisma/schema.prisma",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.40593250000000003,
+   "num_turns": 7,
+   "duration_ms": 169315,
+   "coverage": [
+    {
+     "id": "technical-analyst.quality-standards.classified-every-data-element",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.quality-standards.failure-aware-every-external",
+     "verdict": "reflected",
+     "evidence": "Bacs breaks 'same day'. AX-003 says a Bacs debit is only *accepted* at submission and can fail up to three working days later via webhook, and explicitly notes that today this only happens for one-off orders where the retailer is on the page. FR-005's 'told the same day' is unimplementable as written for Bacs: the failure may not exist on the day."
+    },
+    {
+     "id": "technical-analyst.quality-standards.infrastructure-aware-every-constraint",
+     "verdict": "reflected",
+     "evidence": "The spine lists one Fly machine for `worker` against a quality expectation of 'highly available on cut-off mornings'... Placement has a single point of failure... **Second worker machine** ... **Default:** don't buy it yet; ship catch-up plus an unplaced-occurrence alert and document the recovery time, while recommending the second machine as the cheap fix."
+    },
+    {
+     "id": "technical-analyst.quality-standards.measurable-every-non-functional",
+     "verdict": "reflected",
+     "evidence": "Convert each into a number, a measurement method, and the test that would demonstrate it, marking every number as a proposal for Priya and Tom to confirm rather than something I get to decide: *Feels fast* \u2192 p95 server time under 300 ms and p99 under 800 ms on standing-order read/edit endpoints at current scale."
+    },
+    {
+     "id": "technical-analyst.quality-standards.technology-agnostic-requirements-what-not-how",
+     "verdict": "reflected",
+     "evidence": "Walk FR-001\u2026FR-007 and US-001\u2026US-005 and write, for each, the concrete thing the system must do, the data it needs, and where in the existing product it lands."
+    },
+    {
+     "id": "technical-analyst.quality-standards.traceable-every-technical-requirement",
+     "verdict": "reflected",
+     "evidence": "Produce a traceability table (spec item \u2192 derived technical requirement ids, e.g. TR-01x) so nothing in the spec is unaddressed and nothing I invent is unsourced."
+    },
+    {
+     "id": "technical-analyst.what-embrace.alignment-project-governance-every",
+     "verdict": "reflected",
+     "evidence": "Write the constraints the design must obey, each traced to its source rather than asserted: Postgres only, no new datastore without a spine sign-off; no cron, BullMQ repeatable/delayed jobs only (AX-006)... audit row in the same transaction as any financial mutation (AX-008)..."
+    },
+    {
+     "id": "technical-analyst.what-embrace.constraint-infrastructure-tracing-when",
+     "verdict": "reflected",
+     "evidence": "The spine lists one Fly machine for `worker` against a quality expectation of 'highly available on cut-off mornings \u2014 that is when the money is'. Placement has a single point of failure... Highly available at cut-off \u2192 99.9% of due occurrences placed before the supplier's cut-off instant; 100% placed exactly once or explicitly failed and alerted within 60 minutes"
+    },
+    {
+     "id": "technical-analyst.what-embrace.decompose-don-t-transcribe",
+     "verdict": "reflected",
+     "evidence": "FR-002 needs an *occurrence* record per (standing order, route date), not just a job... FR-002 also needs a next-occurrence calculation... FR-004 needs versioned lines, not mutated ones: 'applies from the next occurrence' plus 'history shows who changed it and when' plus a payment that must be reconstructable two years on all point to append-only line versions"
+    },
+    {
+     "id": "technical-analyst.what-embrace.explicit-over-implicit-when",
+     "verdict": "reflected",
+     "evidence": "The core assumption is false. The spec assumes 'every retailer has a saved payment method'. The schema says `payment_method` is null for every one of the 214 `invoice_30d` retailers and for 31 `card_on_file` retailers who never finished setup \u2014 roughly 13% of 1,900. FR-002 cannot be satisfied for them. The spec closes with 'no open questions'; this is one, and it is the biggest."
+    },
+    {
+     "id": "technical-analyst.what-embrace.failure-mode-analysis-what",
+     "verdict": "reflected",
+     "evidence": "Bacs breaks 'same day'. AX-003 says a Bacs debit is only *accepted* at submission and can fail up to three working days later via webhook... **Phase 7:** name the test that would demonstrate it... a Bacs webhook-arrives-three-days-later test... a charge-fails-order-still-exists test"
+    },
+    {
+     "id": "technical-analyst.what-embrace.flag-don-t-guess",
+     "verdict": "reflected",
+     "evidence": "**Phase 8:** Mark each spine/schema-derived claim as excerpt-based and needing confirmation against the real repo. Then write `pallet/specs/standing-orders/technical-requirements.md`."
+    },
+    {
+     "id": "technical-analyst.what-embrace.fr-tr-traceability-every",
+     "verdict": "reflected",
+     "evidence": "Produce a traceability table (spec item \u2192 derived technical requirement ids, e.g. TR-01x) so nothing in the spec is unaddressed and nothing I invent is unsourced... Before writing, verify every FR and US appears in the traceability table and every derived requirement cites a source line in the spec, schema, or spine."
+    },
+    {
+     "id": "technical-analyst.what-embrace.measurability-if-cannot-measure",
+     "verdict": "reflected",
+     "evidence": "*Feels fast* \u2192 p95 server time under 300 ms and p99 under 800 ms on standing-order read/edit endpoints at current scale. *Highly available at cut-off* \u2192 99.9% of due occurrences placed before the supplier's cut-off instant... charge attempted within 5 minutes of placement; failure notification dispatched within 15 minutes of the failure being *known*"
+    },
+    {
+     "id": "technical-analyst.what-embrace.question-vague-boundaries-when",
+     "verdict": "reflected",
+     "evidence": "Bacs breaks 'same day'... Cut-off times have no timezone... `api \u2192 Stripe` is 8 s timeout, one retry, sync. Several hundred occurrences landing on a shared 5pm/6pm cut-off cannot be charged serially. Bounded concurrency and Stripe rate limits become a real capacity requirement... Prices and product status move underneath a standing order. Suppliers reprice monthly; `ProductStatus` has `paused` and `delisted`."
+    },
+    {
+     "id": "technical-analyst.what-embrace.surface-implicit-business-specs",
+     "verdict": "reflected",
+     "evidence": "I read each stated assumption and each quality claim against `schema.prisma` and `spine.md` and record contradictions. What I have already found and would write up: [Phase 3 findings including] Immutability and retention reach the new tables. Financial rows can't be updated and are kept seven years, and the nightly purge skips them."
+    },
+    {
+     "id": "technical-analyst.what-embrace.system-boundary-thinking-where",
+     "verdict": "reflected",
+     "evidence": "I read each stated assumption and each quality claim against `schema.prisma` and `spine.md` and record contradictions. Bacs breaks 'same day'. AX-003 says a Bacs debit is only *accepted* at submission and can fail up to three working days later via webhook, and explicitly notes that today this only happens for one-off orders where the retailer is on the page."
+    },
+    {
+     "id": "technical-analyst.what-embrace.thorough-exploration-alternatives-ship",
+     "verdict": "reflected",
+     "evidence": "Branch A: standing orders are only offered to retailers with a saved method \u2014 needs an eligibility rule and a clear refusal in the retailer app. Branch B: `invoice_30d` retailers get standing orders that place but bill on the monthly statement \u2014 FR-002 must be rewritten and FR-005/FR-006 change shape."
+    },
+    {
+     "id": "technical-analyst.what-reject.assumptions-should-be-decisions",
+     "verdict": "reflected",
+     "evidence": "Record each ruling needed, who rules, and both onward branches, so design week isn't blocked. These are the points where I stop for a human; since I cannot ask anyone here, I state the default and plan on."
+    },
+    {
+     "id": "technical-analyst.what-reject.business-requirements-passed-through",
+     "verdict": "reflected",
+     "evidence": "The spec's quality section is four adjectives. Convert each into a number, a measurement method, and the test that would demonstrate it, marking every number as a proposal for Priya and Tom to confirm rather than something I get to decide: *Feels fast* \u2192 p95 server time under 300 ms and p99 under 800 ms on standing-order read/edit endpoints at current scale."
+    },
+    {
+     "id": "technical-analyst.what-reject.data-requirements-without-sensitivity",
+     "verdict": "reflected",
+     "evidence": "no contact details, Stripe ids, or bank references in logs, exports, error bodies, or the supplier forecast; UK/EU data residency; ... no `stripe_pm_id`, `last4`, or `bacs_mandate_ref` in any log line, e-mail, forecast, or error body"
+    },
+    {
+     "id": "technical-analyst.what-reject.implicit-assumptions-treated-requirements",
+     "verdict": "reflected",
+     "evidence": "every derived requirement that depends on code I cannot see (the existing order-placement path, `audit_events` columns, the payments module, the mail templates) has to be marked as needing confirmation against the real repo before design week. I will not pretend to have verified them."
+    },
+    {
+     "id": "technical-analyst.what-reject.integration-dependencies-without-failure",
+     "verdict": "reflected",
+     "evidence": "US-002 requires the order to exist even when the charge fails, so order creation must commit before the Stripe call \u2014 the habitual 'one transaction per request' shape is wrong here. ... a charge-fails-order-still-exists test, and a skip-at-the-boundary race test, a DST-transition test across the March and October changes, a Bacs webhook-arrives-three-days-later test"
+    },
+    {
+     "id": "technical-analyst.what-reject.non-functional-requirements-without",
+     "verdict": "reflected",
+     "evidence": "Phase 5: 'Convert each into a number, a measurement method, and the test that would demonstrate it... p95 server time under 300 ms and p99 under 800 ms... 99.9% of due occurrences placed before the supplier's cut-off instant; 100% placed exactly once'"
+    }
+   ]
+  },
+  {
+   "golden": "a1-standing-orders-decomposition",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "technical-analyst",
+    "persona_sha256": "d9c1eb6b5fdb53bb",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-0m8u_u52/ws/pallet/specs/standing-orders/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-0m8u_u52/ws/pallet/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-0m8u_u52/ws/pallet/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-0m8u_u52/ws/pallet/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-0m8u_u52/ws/pallet/prisma/schema.prisma",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.4122795,
+   "num_turns": 7,
+   "duration_ms": 172245,
+   "coverage": [
+    {
+     "id": "technical-analyst.quality-standards.classified-every-data-element",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.quality-standards.failure-aware-every-external",
+     "verdict": "reflected",
+     "evidence": "Stripe: pinned API version `2024-06-20`, 8 s timeout, one network retry. Bacs asynchronicity per AX-003. Occurrences must be materialised in Postgres... if the Upstash instance is lost or flushed, pending placements must be recoverable. This means a reconciliation sweep that finds due-and-unplaced occurrences."
+    },
+    {
+     "id": "technical-analyst.quality-standards.infrastructure-aware-every-constraint",
+     "verdict": "reflected",
+     "evidence": "Single worker machine. Placement is the first latency-critical background work in the product; one machine in `lhr` is a single point of failure on exactly the mornings the spec calls 'when the money is'. Either the worker becomes multi-machine (which the idempotency requirements above already make safe) or the availability target must be honestly written down as lower than the spec's aspiration."
+    },
+    {
+     "id": "technical-analyst.quality-standards.measurable-every-non-functional",
+     "verdict": "reflected",
+     "evidence": "Placement timeliness \u2014 proposed: 99.9% of due occurrences result in a placed order within 5 minutes of the supplier's cut-off; 100% within 60 minutes; zero placed after the route day's delivery window... Portal responsiveness \u2014 proposed p95 under 300 ms and p99 under 1 s... Forecast accuracy and freshness \u2014 proposed: reflects any change within 5 minutes; projected quantities match what is actually placed for unskipped, unpaused occurrences exactly."
+    },
+    {
+     "id": "technical-analyst.quality-standards.technology-agnostic-requirements-what-not-how",
+     "verdict": "reflected",
+     "evidence": "Each occurrence is identified by (standing order, occurrence date) and placed at most once... The order is placed even when the charge fails (US-002, FR-005) \u2014 so placement and charging must be separable, and the audit trail must record the payment attempt regardless of outcome."
+    },
+    {
+     "id": "technical-analyst.quality-standards.traceable-every-technical-requirement",
+     "verdict": "reflected",
+     "evidence": "Write numbered technical requirements, each traced back to an FR or to a governance principle... The order is placed even when the charge fails (US-002, FR-005)... This extends AX-008's audit coverage (currently orders, invoices, payments) to the standing instruction itself."
+    },
+    {
+     "id": "technical-analyst.what-embrace.alignment-project-governance-every",
+     "verdict": "reflected",
+     "evidence": "This extends AX-008's audit coverage (currently orders, invoices, payments) to the standing instruction itself... proposed spine amendments (a new row for standing-order scheduling, a note against AX-003 on unattended Bacs, an extension of AX-008 to the standing instruction, and an alert addition to AX-012) marked clearly as *proposed, not ruled*."
+    },
+    {
+     "id": "technical-analyst.what-embrace.constraint-infrastructure-tracing-when",
+     "verdict": "reflected",
+     "evidence": "Placement availability \u2014 proposed 99.9% over the cut-off window, with the explicit note that today's single worker machine does not support that claim... No new datastore without a recorded platform sign-off; a read model for the forecast should be Postgres... Data residency: UK/EU, Fly `lhr`, Stripe EU entity."
+    },
+    {
+     "id": "technical-analyst.what-embrace.decompose-don-t-transcribe",
+     "verdict": "reflected",
+     "evidence": "For each of FR-001\u2026FR-007, write one line: what the current system already does, and what is missing... Placement and correctness / Authority, audit, retention / Scheduling / Forecast / Notifications \u2014 each section decomposes an FR into multiple technical requirements."
+    },
+    {
+     "id": "technical-analyst.what-embrace.explicit-over-implicit-when",
+     "verdict": "reflected",
+     "evidence": "This is where the signed-off spec meets the database. Four contradictions I would document with the exact evidence, because each one changes what gets built... I would also note two smaller ones: a supplier can drop a route day the standing order depends on, and 'the day before each route day' is ill-defined for a Monday route day."
+    },
+    {
+     "id": "technical-analyst.what-embrace.failure-mode-analysis-what",
+     "verdict": "reflected",
+     "evidence": "Test cases that must exist: DST boundary crossing; skip racing the placement job; charge failure still placing the order; Bacs late failure via webhook; delisted product in the basket; price changed between setup and occurrence; duplicate job delivery after worker restart; standing order for a retailer with no payment method."
+    },
+    {
+     "id": "technical-analyst.what-embrace.flag-don-t-guess",
+     "verdict": "reflected",
+     "evidence": "No data for the instruction itself. Nothing in the schema can hold 'this basket, this supplier, these route days'. Needed: the standing order, its lines, and \u2014 importantly \u2014 its *occurrences* as durable rows... I would not block on any of these \u2014 I would write the document in full under stated defaults, with each decision listed by name, owner, and the branch each way."
+    },
+    {
+     "id": "technical-analyst.what-embrace.fr-tr-traceability-every",
+     "verdict": "reflected",
+     "evidence": "For each of FR-001\u2026FR-007, write one line: what the current system already does, and what is missing... Write numbered technical requirements, each traced back to an FR or to a governance principle."
+    },
+    {
+     "id": "technical-analyst.what-embrace.measurability-if-cannot-measure",
+     "verdict": "reflected",
+     "evidence": "The spec's quality section is four sentences with no measurements, and SC-001 ('placed reliably') is not measurable as written. I would convert each into a scenario with a trigger, a measure, and a target, marking every number as **proposed**... Measurability of the success criteria \u2014 SC-002 is measured 'from the standing-orders table', so that table must record creation time."
+    },
+    {
+     "id": "technical-analyst.what-embrace.question-vague-boundaries-when",
+     "verdict": "reflected",
+     "evidence": "Stripe: pinned API version `2024-06-20`, 8 s timeout, one network retry... The system must compute, for each standing order and each chosen route day, the cut-off instant **in the supplier's local time**, correct across DST transitions. This requires a supplier timezone that does not exist today \u2014 a schema addition, and a backfill for 140 existing suppliers."
+    },
+    {
+     "id": "technical-analyst.what-embrace.surface-implicit-business-specs",
+     "verdict": "reflected",
+     "evidence": "The standing order is referenced by payments retained seven years, so it cannot be hard-deleted and the nightly purge must skip it. This extends AX-008's audit coverage (currently orders, invoices, payments) to the standing instruction itself."
+    },
+    {
+     "id": "technical-analyst.what-embrace.system-boundary-thinking-where",
+     "verdict": "reflected",
+     "evidence": "Bacs debits cannot fail the same day. AX-003 as-built: a Bacs debit is *accepted* at submission and can fail **up to three working days later**, reported by the `payment_intent.payment_failed` webhook... Stripe: pinned API version `2024-06-20`, 8 s timeout, one network retry."
+    },
+    {
+     "id": "technical-analyst.what-embrace.thorough-exploration-alternatives-ship",
+     "verdict": "reflected",
+     "evidence": "I would not block on any of these \u2014 I would write the document in full under stated defaults, with each decision listed by name, owner, and the branch each way... [Decision table with alternative branches for retailers with no payment method, Bacs failure timing, supplier timezone, price changes, delisted products, route day drops, forecast granularity]"
+    },
+    {
+     "id": "technical-analyst.what-reject.assumptions-should-be-decisions",
+     "verdict": "reflected",
+     "evidence": "Four contradictions I would document with the exact evidence, because each one changes what gets built: (1) **'Every retailer has a saved payment method' is false.** `Retailer.payment_method` is nullable, and the schema comment says it is null for **every one of the 214 `invoice_30d` retailers**... This is a product call, not mine."
+    },
+    {
+     "id": "technical-analyst.what-reject.business-requirements-passed-through",
+     "verdict": "reflected",
+     "evidence": "The spec's quality section is four sentences with no measurements, and SC-001 ('placed reliably') is not measurable as written. I would convert each into a scenario with a trigger, a measure, and a target, marking every number as **proposed**... This is what SC-001 should have said."
+    },
+    {
+     "id": "technical-analyst.what-reject.data-requirements-without-sensitivity",
+     "verdict": "reflected",
+     "evidence": "Under the confidentiality principle, the default is that a supplier sees **aggregate quantities only**, not a per-retailer breakdown \u2014 trading relationships are Confidential... Counterparty details kept out of logs and out of any error body per the redaction list and the export allowlist."
+    },
+    {
+     "id": "technical-analyst.what-reject.implicit-assumptions-treated-requirements",
+     "verdict": "reflected",
+     "evidence": "Four contradictions I would document with the exact evidence, because each one changes what gets built: (1) **'Every retailer has a saved payment method' is false.'**... The cut-off has no timezone. `Supplier.cutoff_time` is `@db.Time`, 'stored as typed on the supplier's settings page; the worker machine runs in UTC'."
+    },
+    {
+     "id": "technical-analyst.what-reject.integration-dependencies-without-failure",
+     "verdict": "reflected",
+     "evidence": "Bacs debits cannot fail the same day. AX-003 as-built: a Bacs debit is *accepted* at submission and can fail **up to three working days later**, reported by the `payment_intent.payment_failed` webhook... FR-005's 'told the same day' therefore has to mean same day *as the failure becoming known*, which can be three days after the delivery already happened."
+    },
+    {
+     "id": "technical-analyst.what-reject.non-functional-requirements-without",
+     "verdict": "reflected",
+     "evidence": "SC-001 ('placed reliably') is not measurable as written. I would convert each into a scenario with a trigger, a measure, and a target... Placement timeliness \u2014 proposed: 99.9% of due occurrences result in a placed order within 5 minutes of the supplier's cut-off; 100% within 60 minutes; zero placed after the route day's delivery window."
+    }
+   ]
+  },
+  {
+   "golden": "a2-payouts-under-pressure",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "technical-analyst",
+    "persona_sha256": "d9c1eb6b5fdb53bb",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "pallet/specs/supplier-payouts/**",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ddpk8kr3/ws/pallet/specs/supplier-payouts/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ddpk8kr3/ws/pallet/specs/supplier-payouts/decisions-from-cto.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ddpk8kr3/ws/pallet/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ddpk8kr3/ws/pallet/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ddpk8kr3/ws/pallet/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ddpk8kr3/ws/pallet/architecture/concerns.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ddpk8kr3/ws/pallet/prisma/schema.prisma",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.42738500000000007,
+   "num_turns": 10,
+   "duration_ms": 175921,
+   "coverage": [
+    {
+     "id": "technical-analyst.brownfield-awareness.collision-risk-transparency-flag",
+     "verdict": "reflected",
+     "evidence": "records the collisions as named open items with owners so Monday's build can start on the ~90% that is unblocked"
+    },
+    {
+     "id": "technical-analyst.quality-standards.classified-every-data-element",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.quality-standards.failure-aware-every-external",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.quality-standards.technology-agnostic-constraints-real-boundaries",
+     "verdict": "reflected",
+     "evidence": "I'd attach the scale figures against it: 140 suppliers \u2192 ~140 payouts and low-thousands of order lines per weekly run. There is no measurement showing Postgres cannot serve that, because it comfortably can."
+    },
+    {
+     "id": "technical-analyst.quality-standards.traceable-every-technical-requirement",
+     "verdict": "reflected",
+     "evidence": "Phase 5 \u2014 Traceability pass...build the FR \u2192 constraint/decision table and check every row lands somewhere...if anything from either source has no home, it goes in open items rather than being dropped"
+    },
+    {
+     "id": "technical-analyst.what-embrace.alignment-project-governance-every",
+     "verdict": "reflected",
+     "evidence": "each constraint in the document will name the principle or AX row it derives from, so a reader can check it rather than take my word"
+    },
+    {
+     "id": "technical-analyst.what-embrace.explicit-over-implicit-when",
+     "verdict": "reflected",
+     "evidence": "Phase 4 \u2014 Write the defaults where the spec is silent...Each of these goes in the document with a one-line rationale and the rejected alternative"
+    },
+    {
+     "id": "technical-analyst.what-embrace.flag-don-t-guess",
+     "verdict": "reflected",
+     "evidence": "I'm not going to resolve those by quietly picking a side...records the collisions as named open items with owners"
+    },
+    {
+     "id": "technical-analyst.what-embrace.fr-tr-traceability-every",
+     "verdict": "reflected",
+     "evidence": "build the FR \u2192 constraint/decision table and check every row lands somewhere...If anything from either source has no home, it goes in open items rather than being dropped"
+    },
+    {
+     "id": "technical-analyst.what-embrace.measurability-if-cannot-measure",
+     "verdict": "reflected",
+     "evidence": "Proposed replacement...the Thursday run completes and dispatches by 17:00 Europe/London on 51 of 52 weeks"
+    },
+    {
+     "id": "technical-analyst.what-embrace.question-vague-boundaries-when",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.what-embrace.separate-constraints-from-preferences",
+     "verdict": "reflected",
+     "evidence": "Mongo would buy the property the repo already has, and cost the one-transaction-per-request guarantee that lets a payout row, its lines, and its `audit_events` row (AX-008) commit atomically"
+    },
+    {
+     "id": "technical-analyst.what-embrace.thorough-exploration-alternatives-ship",
+     "verdict": "reflected",
+     "evidence": "Rejected: keying eligibility off delivery week, which would strand Bacs orders that settle up to three working days late...Rejected: 8% of the run total, which makes the per-order commission on the FR-002 statement not add up to the total"
+    },
+    {
+     "id": "technical-analyst.what-reject.assumptions-should-be-decisions",
+     "verdict": "reflected",
+     "evidence": "schema comment is explicit: `payout_account` is 'typed in by the supplier at onboarding, **never checked since**', and **11 of 140 suppliers have no `payout_account` at all**...I'm proposing the cheap gate: the run does a pre-flight over eligible suppliers"
+    },
+    {
+     "id": "technical-analyst.what-reject.constraints-without-sources-every",
+     "verdict": "reflected",
+     "evidence": "each constraint in the document will name the principle or AX row it derives from, so a reader can check it rather than take my word"
+    },
+    {
+     "id": "technical-analyst.what-reject.data-requirements-without-sensitivity",
+     "verdict": "reflected",
+     "evidence": "D16 CSV export: **No bank details, no IBAN, no supplier or retailer contact e-mail** \u2014 the confidentiality principle names exports specifically and there is an export allowlist to add to."
+    },
+    {
+     "id": "technical-analyst.what-reject.ignoring-brownfield-context-when",
+     "verdict": "reflected",
+     "evidence": "Phase 1: Re-read the four ratified sources so every constraint I write cites something, not my own taste. D9 mirrors how `src/payments/` already reuses the Stripe idempotency key on a network retry. D15: Statements render through the existing worker PDF path and go out via `src/mail/`."
+    },
+    {
+     "id": "technical-analyst.what-reject.implicit-assumptions-treated-requirements",
+     "verdict": "reflected",
+     "evidence": "Phase 4 header: Write the defaults where the spec is silent. Each default goes in the document with a one-line rationale and the rejected alternative. Phase 3: Onboarding is not, in fact, doing the job the constraint assumes it does."
+    },
+    {
+     "id": "technical-analyst.what-reject.integration-dependencies-without-failure",
+     "verdict": "reflected",
+     "evidence": "D18: a retry creates a new *transfer attempt* against the same payout row; it never creates a second payout. Attempts carry provider status and failure reason. D19: alert on any transfer attempt failure."
+    },
+    {
+     "id": "technical-analyst.what-reject.shallow-research-single-option",
+     "verdict": "reflected",
+     "evidence": "D1 Rejected: generating Thursday morning compresses Tom's window for no reason. D2 Rejected: keying eligibility off delivery week, which would strand Bacs orders that settle up to three working days late. D4 Rejected: 8% of the run total, which makes the per-order commission on the FR-002 statement not add up to the total. D5 Rejected: pulling money back from a supplier, which is a support incident, not a feature."
+    },
+    {
+     "id": "technical-analyst.what-reject.technology-choices-disguised-requirements",
+     "verdict": "reflected",
+     "evidence": "Phase 3 C-MongoDB: The stated *rationale* \u2014 append-only immutable log \u2014 is already delivered in Postgres today: the immutability principle is enforced by database triggers rejecting `UPDATE`. Mongo would buy the property the repo already has, and cost the one-transaction-per-request guarantee that lets a payout row, its lines, and its `audit_events` row commit atomically."
+    }
+   ]
+  },
+  {
+   "golden": "a2-payouts-under-pressure",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "technical-analyst",
+    "persona_sha256": "d9c1eb6b5fdb53bb",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "pallet/specs/**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-fd5965fi/ws/pallet/specs/supplier-payouts/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-fd5965fi/ws/pallet/specs/supplier-payouts/decisions-from-cto.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-fd5965fi/ws/pallet/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-fd5965fi/ws/pallet/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-fd5965fi/ws/pallet/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-fd5965fi/ws/pallet/architecture/concerns.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-fd5965fi/ws/pallet/prisma/schema.prisma",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.36334200000000005,
+   "num_turns": 10,
+   "duration_ms": 136348,
+   "coverage": [
+    {
+     "id": "technical-analyst.brownfield-awareness.collision-risk-transparency-flag",
+     "verdict": "reflected",
+     "evidence": "Four collisions, with the evidence... Phase 4 details: the four things I would stop on, and what I do instead of waiting... I do not block on any of these; each gets a default, and the document names the owner"
+    },
+    {
+     "id": "technical-analyst.quality-standards.classified-every-data-element",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.quality-standards.failure-aware-every-external",
+     "verdict": "reflected",
+     "evidence": "Wise failure webhook marks the line failed; Tom can retry after the supplier's profile is corrected. Retry is a new attempt record against the same immutable payout, capped at three attempts before it needs manual escalation"
+    },
+    {
+     "id": "technical-analyst.quality-standards.technology-agnostic-constraints-real-boundaries",
+     "verdict": "reflected",
+     "evidence": "If he wants the literal number it means multi-region and an on-call rota that doesn't exist, which is a staffing decision, not a payouts decision... the Thursday run completes and Tom can approve within the working day, an hour's API outage does not lose or duplicate a payout, and a failed run is safely re-runnable"
+    },
+    {
+     "id": "technical-analyst.quality-standards.traceable-every-technical-requirement",
+     "verdict": "reflected",
+     "evidence": "The check itself: every FR-001\u2026FR-006 and US-001\u2026US-005 traced to a constraint, decision, or an explicit deferral"
+    },
+    {
+     "id": "technical-analyst.what-embrace.alignment-project-governance-every",
+     "verdict": "reflected",
+     "evidence": "every governance principle in `CLAUDE.md` addressed"
+    },
+    {
+     "id": "technical-analyst.what-embrace.explicit-over-implicit-when",
+     "verdict": "reflected",
+     "evidence": "Decided in the document, each one line with its reason... the approval line that surfaces what's unresolved: It does not cover: the AX-009 platform sign-off for the Mongo ledger (Marcus), the GBP-only vs FR-004 conflict (Priya), or the open FCA question on AX-003"
+    },
+    {
+     "id": "technical-analyst.what-embrace.flag-don-t-guess",
+     "verdict": "reflected",
+     "evidence": "each gets a default, and the document names the owner... Phase 4 details: GBP-only vs FR-004 (Priya), Mongo vs AX-009 (Marcus), Five nines, and the FCA question (Marcus/legal) \u2014 each with owner and working assumption"
+    },
+    {
+     "id": "technical-analyst.what-embrace.fr-tr-traceability-every",
+     "verdict": "reflected",
+     "evidence": "every FR-001\u2026FR-006 and US-001\u2026US-005 traced to a constraint, decision, or an explicit deferral"
+    },
+    {
+     "id": "technical-analyst.what-embrace.measurability-if-cannot-measure",
+     "verdict": "reflected",
+     "evidence": "If he wants the literal number it means multi-region and an on-call rota that doesn't exist, which is a staffing decision, not a payouts decision... restated objective proposed below: the Thursday run completes and Tom can approve within the working day, an hour's API outage does not lose or duplicate a payout, and a failed run is safely re-runnable... 8% computed per order line... rounded half-up to the minor unit... seven years from the end of the tax year... at or above 75%... capped at three attempts"
+    },
+    {
+     "id": "technical-analyst.what-embrace.question-vague-boundaries-when",
+     "verdict": "reflected",
+     "evidence": "Wise failure webhook marks the line failed; Tom can retry after the supplier's profile is corrected. Retry is a new attempt record against the same immutable payout, capped at three attempts before it needs manual escalation"
+    },
+    {
+     "id": "technical-analyst.what-embrace.separate-constraints-from-preferences",
+     "verdict": "reflected",
+     "evidence": "NestJS (matches the stack, no tension at all)... MongoDB for the payout ledger (CTO constraint 1) vs `CLAUDE.md`... D-002 NestJS"
+    },
+    {
+     "id": "technical-analyst.what-embrace.thorough-exploration-alternatives-ship",
+     "verdict": "contradicted",
+     "evidence": "D-001 Wise, no alternatives evaluated (recorded as the AX-014 proposal)"
+    },
+    {
+     "id": "technical-analyst.what-reject.assumptions-should-be-decisions",
+     "verdict": "reflected",
+     "evidence": "each gets a default, and the document names the owner... Phase 4 treats major tensions as decisions to be made (by named owners), not assumptions"
+    },
+    {
+     "id": "technical-analyst.what-reject.constraints-without-sources-every",
+     "verdict": "reflected",
+     "evidence": "Constraints (from the CTO, 2026-09-08) \u2014 all four verbatim in intent... traced to CTO, schema.prisma, concerns.md rows AX-009 and AX-014, and FR-004"
+    },
+    {
+     "id": "technical-analyst.what-reject.data-requirements-without-sensitivity",
+     "verdict": "reflected",
+     "evidence": "CSV export columns: run id, payout id, supplier id, supplier name, currency, gross minor, commission minor, net minor, status, transfer reference, timestamps. Explicitly no account number, sort code, IBAN, BIC, or contact e-mail. Finance role only, and each export writes an `audit_events` row."
+    },
+    {
+     "id": "technical-analyst.what-reject.ignoring-brownfield-context-when",
+     "verdict": "reflected",
+     "evidence": "Four collisions, with the evidence: 1. **MongoDB for the payout ledger** (CTO constraint 1) vs `CLAUDE.md` \"One datastore\" and `concerns.md` AX-009 \u2014 \"a second datastore needs a platform sign-off recorded on this row **before any code**\""
+    },
+    {
+     "id": "technical-analyst.what-reject.implicit-assumptions-treated-requirements",
+     "verdict": "reflected",
+     "evidence": "The premise is false in the current data, so the run has to have a behaviour for those 11 or it breaks on first execution. Suppliers with no `payout_account` (the 11): the run still generates their payout and statement, and holds the line in a `blocked` state with a reason; nothing is transferred, and they appear in Tom's review screen."
+    },
+    {
+     "id": "technical-analyst.what-reject.integration-dependencies-without-failure",
+     "verdict": "reflected",
+     "evidence": "Failed transfers (FR-005): Wise failure webhook marks the line failed; Tom can retry after the supplier's profile is corrected. Retry is a new attempt record against the same immutable payout, capped at three attempts before it needs manual escalation."
+    },
+    {
+     "id": "technical-analyst.what-reject.shallow-research-single-option",
+     "verdict": "reflected",
+     "evidence": "Also, the stated rationale (append-only immutability) is already delivered in Postgres: `CLAUDE.md` says triggers reject `UPDATE` on issued rows of financial tables. And AX-009's upgrade trigger wants a measurement \u2014 140 suppliers \u00d7 52 weeks is roughly 7,300 payouts a year, which is not a workload Postgres cannot serve. Separately, FR-006 (never pay twice \u2014 the July bug) is most cheaply enforced by a unique constraint on the order id in the payout-line table *inside the same transaction that reads orders*; splitting the ledger into Mongo gives that up."
+    },
+    {
+     "id": "technical-analyst.what-reject.technology-choices-disguised-requirements",
+     "verdict": "reflected",
+     "evidence": "the stated rationale (append-only immutability) is already delivered in Postgres... Separately, FR-006 (never pay twice \u2014 the July bug) is most cheaply enforced by a unique constraint on the order id in the payout-line table *inside the same transaction that reads orders*; splitting the ledger into Mongo gives that up."
+    }
+   ]
+  },
+  {
+   "golden": "a2-payouts-under-pressure",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "technical-analyst",
+    "persona_sha256": "d9c1eb6b5fdb53bb",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "pallet/specs/**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-54iue6oo/ws/pallet/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-54iue6oo/ws/pallet/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-54iue6oo/ws/pallet/specs/supplier-payouts/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-54iue6oo/ws/pallet/specs/supplier-payouts/decisions-from-cto.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-54iue6oo/ws/pallet/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-54iue6oo/ws/pallet/architecture/concerns.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-54iue6oo/ws/pallet/prisma/schema.prisma",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.39780950000000004,
+   "num_turns": 10,
+   "duration_ms": 158701,
+   "coverage": [
+    {
+     "id": "technical-analyst.brownfield-awareness.collision-risk-transparency-flag",
+     "verdict": "reflected",
+     "evidence": "I would work through the CTO note item by item against the above and sort each into: *carry as given*, *carry as given but flag*, or *cannot be carried without a ruling*... Four of them have consequences the team would hit on Monday, so each gets a flagged entry... Status: Draft \u2014 ready for review, with a named sign-off block: Marcus for AX-014/Wise and the five-nines target, the platform desk for AX-009/Mongo, Priya for the GBP-vs-FR-004 scope call, Tom"
+    },
+    {
+     "id": "technical-analyst.quality-standards.classified-every-data-element",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.quality-standards.failure-aware-every-external",
+     "verdict": "reflected",
+     "evidence": "a failed transfer is a status the finance lead sees with the provider reason; a retry is a **new** payout referencing the original, not a re-send of the old row; three retries, then the supplier is held and escalated... a Bacs debit that fails *after* the supplier was paid becomes a negative posting netted off the supplier's next payout; unrecovered after two cycles \u2192 escalate to Tom... Partial run failure: transfers dispatched one payout per job, each idempotent, so a worker restart mid-run resumes without re-sending"
+    },
+    {
+     "id": "technical-analyst.quality-standards.technology-agnostic-constraints-real-boundaries",
+     "verdict": "reflected",
+     "evidence": "sort each into: *carry as given*, *carry as given but flag*, or *cannot be carried without a ruling*... Mongo for the payout ledger \u2014 carry as stated, flag as blocked on a recorded sign-off. This isn't a taste disagreement. AX-009's enforcement is procedural... 99.999% availability \u2014 carry as stated, flag as not deliverable and not what this feature needs... GBP only \u2014 carry as stated, flag as a direct contradiction with a signed-off requirement"
+    },
+    {
+     "id": "technical-analyst.quality-standards.traceable-every-technical-requirement",
+     "verdict": "reflected",
+     "evidence": "FR-001\u2026FR-006 each mapped to the decision that delivers it, and SC-001\u2026SC-003 each mapped to the field or timestamp that measures it, so nothing signed-off is silently dropped. FR-004 is the one row that reads 'blocked \u2014 see conflicts'."
+    },
+    {
+     "id": "technical-analyst.what-embrace.alignment-project-governance-every",
+     "verdict": "reflected",
+     "evidence": "Phase 5 \u2014 Self-review pass... Re-read the document against three things and fix what's off: the six FRs and three SCs (nothing signed-off dropped without being marked as such), the six principles in `CLAUDE.md` (immutability, named authority, confidentiality, idempotency, one datastore, errors \u2014 plus testing and observability)"
+    },
+    {
+     "id": "technical-analyst.what-embrace.explicit-over-implicit-when",
+     "verdict": "reflected",
+     "evidence": "Where the spec is genuinely silent I decide and record the decision with a one-line rationale, marked as a default so anyone can overturn it cheaply... Decisions taken here \u2014 the Phase 2 list, each marked *default, cheap to overturn*"
+    },
+    {
+     "id": "technical-analyst.what-embrace.flag-don-t-guess",
+     "verdict": "reflected",
+     "evidence": "Where conflicting, I would not paper over with a default because both readings are defensible and they produce materially different builds. **Stop:** Priya (spec owner) and Marcus jointly."
+    },
+    {
+     "id": "technical-analyst.what-embrace.fr-tr-traceability-every",
+     "verdict": "reflected",
+     "evidence": "FR-001\u2026FR-006 each mapped to the decision that delivers it, and SC-001\u2026SC-003 each mapped to the field or timestamp that measures it, so nothing signed-off is silently dropped"
+    },
+    {
+     "id": "technical-analyst.what-embrace.measurability-if-cannot-measure",
+     "verdict": "reflected",
+     "evidence": "SC-001\u2026SC-003 each mapped to the field or timestamp that measures it... the *feature* objective is stated in terms that match SC-001/SC-003 \u2014 the run generates on schedule, no transfer is sent without approval, and 95% of transfers arrive by Friday... Thresholds: minimum net payout of 100 minor units, otherwise roll forward; zero or negative net creates no transfer"
+    },
+    {
+     "id": "technical-analyst.what-embrace.question-vague-boundaries-when",
+     "verdict": "reflected",
+     "evidence": "the doc states that a payout held beyond one cycle is escalated to Tom and Marcus... a `src/payouts/` module as the only importer of the Wise SDK (mirroring `PLT004` for Stripe), pinned API version, explicit timeout, and idempotency keys on every transfer create"
+    },
+    {
+     "id": "technical-analyst.what-embrace.separate-constraints-from-preferences",
+     "verdict": "reflected",
+     "evidence": "This isn't a taste disagreement. AX-009's enforcement is procedural: sign-off recorded on the row *before any code*... This is squarely the CTO's call and I'd record it as the AX-014 ruling"
+    },
+    {
+     "id": "technical-analyst.what-embrace.thorough-exploration-alternatives-ship",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.what-reject.assumptions-should-be-decisions",
+     "verdict": "reflected",
+     "evidence": "Where the spec is genuinely silent I decide and record the decision with a one-line rationale, marked as a default so anyone can overturn it cheaply... I would not paper over with a default because both readings are defensible and they produce materially different builds"
+    },
+    {
+     "id": "technical-analyst.what-reject.constraints-without-sources-every",
+     "verdict": "reflected",
+     "evidence": "all four verbatim-in-substance and attributed, each with: what it means for the build, and where flagged, the conflicting authority quoted with its file and row... The premise is contradicted by the repo: `payout_account` is `Json?`, the schema comment says it is 'typed in by the supplier at onboarding, **never checked since**', and **11 suppliers have none**"
+    },
+    {
+     "id": "technical-analyst.what-reject.data-requirements-without-sensitivity",
+     "verdict": "reflected",
+     "evidence": "the export ships, restricted to the finance role, authenticated, each download written to `audit_events`, with an allowlisted column set \u2014 payout id, supplier id and name, period, gross, commission, net, currency, status, sent-at, provider reference \u2014 and **no bank details, no IBAN, no contact e-mail**"
+    },
+    {
+     "id": "technical-analyst.what-reject.ignoring-brownfield-context-when",
+     "verdict": "reflected",
+     "evidence": "Phase 0 \u2014 Ground the document in what already exists (done above)... I would work through the CTO note item by item against the above and sort each into: *carry as given*, *carry as given but flag*, or *cannot be carried without a ruling*"
+    },
+    {
+     "id": "technical-analyst.what-reject.implicit-assumptions-treated-requirements",
+     "verdict": "reflected",
+     "evidence": "The premise is contradicted by the repo: `payout_account` is `Json?`, the schema comment says it is \"typed in by the supplier at onboarding, **never checked since**\", and **11 suppliers have none**... **Default I write:** pre-flight validation in the generation step (presence; GB sort code and account number shape/modulus; IE IBAN checksum and BIC)"
+    },
+    {
+     "id": "technical-analyst.what-reject.integration-dependencies-without-failure",
+     "verdict": "reflected",
+     "evidence": "**Failures (FR-005):** a failed transfer is a status the finance lead sees with the provider reason; a retry is a **new** payout referencing the original, not a re-send of the old row; three retries, then the supplier is held and escalated... **Clawback:** a Bacs debit that fails *after* the supplier was paid becomes a negative posting netted off the supplier's next payout; unrecovered after two cycles \u2192 escalate to Tom"
+    },
+    {
+     "id": "technical-analyst.what-reject.shallow-research-single-option",
+     "verdict": "reflected",
+     "evidence": "This is the one place I would not 'pick a sensible default and move on', because both readings are defensible and they produce materially different builds. **Stop:** Priya (spec owner) and Marcus jointly... **If GBP-only wins:** FR-004 and US-004 are struck from scope... **If FR-004 stands:** multi-currency is in scope for the P2 slice"
+    },
+    {
+     "id": "technical-analyst.what-reject.technology-choices-disguised-requirements",
+     "verdict": "reflected",
+     "evidence": "This isn't a taste disagreement. AX-009's enforcement is procedural: sign-off recorded on the row *before any code*... Mongo documents are mutable by default and give no append-only guarantee on their own, whereas the property Marcus wants \u2014 immutability \u2014 is already enforced in this codebase by the `UPDATE`-rejecting triggers the operating manual mandates"
+    }
+   ]
+  },
+  {
+   "golden": "a3-credit-notes-brownfield",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "technical-analyst",
+    "persona_sha256": "d9c1eb6b5fdb53bb",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "pallet/specs/credit-notes/**",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ggon719c/ws/pallet/specs/credit-notes/design-brief.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ggon719c/ws/pallet/specs/credit-notes/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ggon719c/ws/pallet/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ggon719c/ws/pallet/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ggon719c/ws/pallet/prisma/schema.prisma",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ggon719c/ws/pallet/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ggon719c/ws/pallet/contracts/openapi.yaml",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ggon719c/ws/pallet/src/accounting/xero-export.ts",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ggon719c/ws/pallet/src/documents/render.service.ts",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ggon719c/ws/pallet/src/statements/statement.service.ts",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ggon719c/ws/pallet/src/documents/templates/invoice.hbs",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ggon719c/ws/pallet/src/documents/templates/statement.hbs",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.5624359999999999,
+   "num_turns": 15,
+   "duration_ms": 194091,
+   "coverage": [
+    {
+     "id": "technical-analyst.brownfield-awareness.collision-risk-transparency-flag",
+     "verdict": "reflected",
+     "evidence": "Phase 1 explicitly identifies three conflicts and creates escalation points: '**Stop point:** confirm with Priya (spec owner)' for the Adjustment name collision, decides money format explicitly and flags it, and '**Stop point:** Priya and Tom confirm \"disappears from the retailer's list\" is satisfied by \"shows as void / is filtered out'."
+    },
+    {
+     "id": "technical-analyst.brownfield-awareness.convention-consistency-match-existing",
+     "verdict": "reflected",
+     "evidence": "Systematically matches existing patterns: 'The contract's stated convention is `{ amount_minor, currency }` integers, and every example uses it', 'I keep `Money` with `amount_minor`, matching `Invoice`, `Payment`', uses 'existing polymorphic-by-prefix' id schema, models template 'on the existing `invoice.hbs`, using the same `{{money}}` helper', and applies 'existing-shape `Problem`' for all errors."
+    },
+    {
+     "id": "technical-analyst.brownfield-awareness.existing-patterns-over-invention",
+     "verdict": "reflected",
+     "evidence": "Phase 0 reads workspace files before designing: 'Four things in the workspace decide most of the design before I write anything'. Chooses existing `Money` type over spec's decimal proposal. For naming, keeps existing `/orders/{id}/adjustments` and invents only `credit-notes` to avoid collision. References 'Xero has a first-class CreditNotes + Allocations API that nothing uses yet'."
+    },
+    {
+     "id": "technical-analyst.brownfield-awareness.explicit-extension-classification-clearly",
+     "verdict": "reflected",
+     "evidence": "Clearly distinguishes extension types: 'Write: `pallet/prisma/schema.prisma` (append new models and enums; edit `DocumentKind` and `Invoice`)', creates separate enum: '`enum CreditNoteStatus { draft issued void }` \u2014 deliberately a *separate* enum', and documents relationships: 'I add the optional back-relation and note that the existing `invoice Invoice?` relation on `Document` means a second optional relation is needed'."
+    },
+    {
+     "id": "technical-analyst.brownfield-awareness.priority-alignment-track-which",
+     "verdict": "reflected",
+     "evidence": "Tracks scope explicitly: 'Scope is the four gaps in the brief (G1 contract, G2 data model, G3 the exceed-outstanding question, G4 PDF design). Everything else in the spec is treated as already sufficient.' Flags follow-ups: 'Two are required and I would flag both rather than quietly change or quietly skip them.' Defers work: 'I do **not** create `src/documents/templates/credit-note.hbs` as a file on this card'."
+    },
+    {
+     "id": "technical-analyst.quality-standards.classified-every-data-element",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.quality-standards.failure-aware-every-external",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.quality-standards.normalized-entities-have-clear",
+     "verdict": "reflected",
+     "evidence": "Specifies clear boundaries (separate models), relationships, explicit validation: 'Per line: credited quantity \u2264 the invoice line's quantity, and the credited amount \u2264 that line's `line_total_minor`, net of credits already issued against that line', and complete lifecycles: 'status enum `{ draft issued void }`', '`PATCH`/`DELETE` on an issued note return 409', 'Voiding is refused once the credit has been refunded or applied to another invoice'."
+    },
+    {
+     "id": "technical-analyst.quality-standards.realistic-examples-use-realistic",
+     "verdict": "reflected",
+     "evidence": "'I write worked examples that are arithmetically consistent with the existing invoice example (`inv_01J8Q2V7X0P3S9Z6M1K4H2R5T8`, total 18640, two lines at 11520 and 7120): a two-case short delivery on the sourdough line credited at 5760' and 'No real contact details anywhere in examples or error bodies'."
+    },
+    {
+     "id": "technical-analyst.quality-standards.schema-aligned-error-codes-cover-failure-modes",
+     "verdict": "reflected",
+     "evidence": "'New problem types under `https://pallet.dev/problems/`: `invoice-not-issued`, `credit-note-not-draft`, `credit-note-already-issued`, `credit-note-already-settled`, `credit-exceeds-invoice`, `refund-not-available`, `currency-mismatch`' covering validation and state failures, with 'no retailer contact detail, per the confidentiality rule'."
+    },
+    {
+     "id": "technical-analyst.quality-standards.schema-aligned-schemas-match-entities",
+     "verdict": "reflected",
+     "evidence": "Systematically creates matching schemas: 'Schemas: `CreditNote`, `CreditNoteLine`, `CreditNoteRequest`, `CreditNoteLineRequest`, `CreditNoteIssueRequest`, `CreditNoteStatus`, `CreditNoteReason`, `CreditNoteDisposition`, `CreditNoteApplication`, `CreditNoteRefund`' with 'All money via the existing `Money` ref; snake_case; RFC 3339 UTC'."
+    },
+    {
+     "id": "technical-analyst.quality-standards.traceable-every-technical-requirement",
+     "verdict": "reflected",
+     "evidence": "Traces requirements: FR-001 'plus a nullable `reason_note` free-text field (FR-001's \"fixed list plus free text\")', FR-003 'make `amount_outstanding` **net of credits applied to that invoice**, as FR-003 requires', FR-004 '`CreditNoteDisposition` enum', FR-005 'I design the mapping', SC-002 'indexes on `(supplier_id, issued_at)` for SC-002's \"issued within two working days\" measurement'."
+    },
+    {
+     "id": "technical-analyst.what-embrace.alignment-project-governance-every",
+     "verdict": "reflected",
+     "evidence": "Grounds decisions in established principles: money 'matching `Invoice`, `Payment`', status logic referencing 'the two exhaustiveness switches in `xero-export.ts` and `statement.service.ts`', immutability justified by 'financial records are immutable once issued, corrections are new documents never edits', and void aligning with 'Xero voids an authorised credit note, it does not delete it'."
+    },
+    {
+     "id": "technical-analyst.what-embrace.explicit-over-implicit-when",
+     "verdict": "reflected",
+     "evidence": "'**Stop point:** confirm with Priya (spec owner)' on the name collision, '**Stop point:** Priya and Tom confirm' on void semantics, 'Open question I would put to Tom and Priya: does the *supplier* choose the disposition at issue, or does the *retailer* choose', and 'I flag this to Priya as a separate feature rather than silently absorbing it' for goodwill credits."
+    },
+    {
+     "id": "technical-analyst.what-embrace.flag-don-t-guess",
+     "verdict": "reflected",
+     "evidence": "'Unknown I cannot close from this excerpt: how the exporter records that a document has already been pushed... I would not invent a column; I would read the full `src/accounting/` in the real repo and mirror whatever invoices do, and I flag this as an open item in the design record rather than guessing.'"
+    },
+    {
+     "id": "technical-analyst.what-reject.api-endpoints-without-error",
+     "verdict": "reflected",
+     "evidence": "New problem types under `https://pallet.dev/problems/`: `invoice-not-issued`, `credit-note-not-draft`, `credit-note-already-issued`, `credit-note-already-settled`, `credit-exceeds-invoice`, `refund-not-available`, `currency-mismatch`."
+    },
+    {
+     "id": "technical-analyst.what-reject.data-requirements-without-sensitivity",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.what-reject.entities-without-clear-lifecycle",
+     "verdict": "reflected",
+     "evidence": "Status moves `issued \u2192 void`, with `voided_at`, `voided_by`, `void_reason`; the record stays queryable, stops counting toward the invoice's credited amount, and exports to Xero as a voided credit note."
+    },
+    {
+     "id": "technical-analyst.what-reject.ignoring-brownfield-context-when",
+     "verdict": "reflected",
+     "evidence": "Read all twelve workspace files (above). Four things in the workspace decide most of the design before I write anything"
+    },
+    {
+     "id": "technical-analyst.what-reject.integration-dependencies-without-failure",
+     "verdict": "reflected",
+     "evidence": "Refund is only offerable when the invoice has a `succeeded` card payment and the charge is inside Stripe's 180-day window... a Bacs refund is a bank transfer that can fail, so `refund.failed` flips the refund row to `failed` and the credit falls back to `apply` rather than vanishing"
+    }
+   ]
+  },
+  {
+   "golden": "a3-credit-notes-brownfield",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "technical-analyst",
+    "persona_sha256": "d9c1eb6b5fdb53bb",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "pallet/specs/credit-notes/**",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dh_8j0x6/ws/pallet/specs/credit-notes/design-brief.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dh_8j0x6/ws/pallet/specs/credit-notes/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dh_8j0x6/ws/pallet/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dh_8j0x6/ws/pallet/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dh_8j0x6/ws/pallet/prisma/schema.prisma",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dh_8j0x6/ws/pallet/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dh_8j0x6/ws/pallet/contracts/openapi.yaml",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dh_8j0x6/ws/pallet/src/accounting/xero-export.ts",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dh_8j0x6/ws/pallet/src/documents/render.service.ts",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dh_8j0x6/ws/pallet/src/statements/statement.service.ts",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dh_8j0x6/ws/pallet/src/documents/templates/invoice.hbs",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dh_8j0x6/ws/pallet/src/documents/templates/statement.hbs",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.6359675,
+   "num_turns": 15,
+   "duration_ms": 236835,
+   "coverage": [
+    {
+     "id": "technical-analyst.brownfield-awareness.collision-risk-transparency-flag",
+     "verdict": "reflected",
+     "evidence": "so I raise them together in one message to Priya (cc Tom) rather than trickling them out"
+    },
+    {
+     "id": "technical-analyst.brownfield-awareness.convention-consistency-match-existing",
+     "verdict": "reflected",
+     "evidence": "added to the response descriptions the way `order-already-invoiced` already is"
+    },
+    {
+     "id": "technical-analyst.brownfield-awareness.existing-patterns-over-invention",
+     "verdict": "reflected",
+     "evidence": "`Adjustment`/`adj_`/`POST /orders/{id}/adjustments` is taken by a live, unrelated concept (pre-invoice delivery quantity notes)"
+    },
+    {
+     "id": "technical-analyst.brownfield-awareness.explicit-extension-classification-clearly",
+     "verdict": "reflected",
+     "evidence": "`DocumentKind` gains `credit_note`; `Document` gains an optional `creditNote` relation on `subject_id`... I would **not** edit `prisma/schema.prisma` under this card"
+    },
+    {
+     "id": "technical-analyst.brownfield-awareness.priority-alignment-track-which",
+     "verdict": "reflected",
+     "evidence": "Scope is the four gaps in `design-brief.md` (G1 contract, G2 data model, G3 the open question, G4 the PDF). Everything else in the spec is declared sufficient"
+    },
+    {
+     "id": "technical-analyst.quality-standards.classified-every-data-element",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.quality-standards.failure-aware-every-external",
+     "verdict": "reflected",
+     "evidence": "Failure is a first-class state because AX-003 says Bacs refunds can fail after the fact... `status` (`pending|succeeded|failed`), `failure_code`"
+    },
+    {
+     "id": "technical-analyst.quality-standards.normalized-entities-have-clear",
+     "verdict": "reflected",
+     "evidence": "Invariants, and where each is enforced: [8 explicit rules including currency matching, per-line caps, concurrency handling, and audit trails]"
+    },
+    {
+     "id": "technical-analyst.quality-standards.realistic-examples-use-realistic",
+     "verdict": "reflected",
+     "evidence": "credit one case of sourdough against `inv_01J8Q2V7X0P3S9Z6M1K4H2R5T8` for `2880` GBP, so the invoice example shows `total 18640 / paid 0 / credited 2880 / outstanding 15760`"
+    },
+    {
+     "id": "technical-analyst.quality-standards.schema-aligned-error-codes-cover-failure-modes",
+     "verdict": "reflected",
+     "evidence": "`refund-not-available` (422, covering no settled payment / over-refund / past 180 days)"
+    },
+    {
+     "id": "technical-analyst.quality-standards.schema-aligned-schemas-match-entities",
+     "verdict": "reflected",
+     "evidence": "`npx prisma format` / `validate` against the doc's blocks pasted into a scratch copy \u2014 expect clean, confirming relations and enum names"
+    },
+    {
+     "id": "technical-analyst.quality-standards.traceable-every-technical-requirement",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.what-embrace.alignment-project-governance-every",
+     "verdict": "reflected",
+     "evidence": "That collides with the immutability principle, seven-year retention, and the fact that the credit note has already been pushed to Xero"
+    },
+    {
+     "id": "technical-analyst.what-embrace.explicit-over-implicit-when",
+     "verdict": "reflected",
+     "evidence": "I flag that I could not confirm it here... I raise it to Tom as a known limitation with a recommendation to spec it separately"
+    },
+    {
+     "id": "technical-analyst.what-embrace.flag-don-t-guess",
+     "verdict": "reflected",
+     "evidence": "I raise them together in one message to Priya (cc Tom)"
+    },
+    {
+     "id": "technical-analyst.what-reject.api-endpoints-without-error",
+     "verdict": "reflected",
+     "evidence": "Problem types under `https://pallet.dev/problems/`, added to the response descriptions: `invoice-not-issued` (409), `credit-note-not-draft` (409), `credit-note-already-issued` (409), `credit-note-not-issued` (409, void), `credit-exceeds-invoice-total` (422), `credit-exceeds-invoice-line` (422), `currency-mismatch` (422), `refund-not-available` (422, covering no settled payment / over-refund / past 180 days)."
+    },
+    {
+     "id": "technical-analyst.what-reject.data-requirements-without-sensitivity",
+     "verdict": "reflected",
+     "evidence": "No `detail` string names an e-mail, card, or bank account \u2014 the confidentiality rule and the existing contract-suite assertion both apply."
+    },
+    {
+     "id": "technical-analyst.what-reject.entities-without-clear-lifecycle",
+     "verdict": "reflected",
+     "evidence": "Models: `CreditNote` \u2014 `crn_`; `status` (`draft|issued|void`). Draft \u2192 `cancel`; issued \u2192 `void`, a recorded state transition with `voided_at`/`voided_by`/`void_reason`. Write `pallet/specs/credit-notes/data-model.md` containing the Prisma blocks, invariants, and lifecycle. Invariants define currency, invoice state, per-line caps, per-invoice caps, payment requirements, concurrency handling, and audit rows."
+    },
+    {
+     "id": "technical-analyst.what-reject.ignoring-brownfield-context-when",
+     "verdict": "reflected",
+     "evidence": "the existing `Adjustment` model **already exists** \u2014 pre-invoice delivery quantity changes. I would explicitly **not** add an `InvoiceStatus` value for 'credited' \u2014 that would break the `never` guards in `xero-export.ts`, `statement.service.ts`, and the retailer app's badge component in another repo. Then update `pallet/architecture/spine.md`. Re-read `xero-export.ts` and `statement.service.ts` to confirm the design adds no `InvoiceStatus` value and therefore compiles untouched."
+    },
+    {
+     "id": "technical-analyst.what-reject.integration-dependencies-without-failure",
+     "verdict": "reflected",
+     "evidence": "Failure is a first-class state because AX-003 says Bacs refunds can fail after the fact. `Refund` \u2014 status (`pending|succeeded|failed`), `failure_code`. Invariant: `settlement = refund` requires a succeeded payment, amount \u2264 amount paid less amounts already refunded, and charge inside Stripe's 180-day window (AX-003). Concurrency: caps are check-then-write races, so issue path takes `SELECT \u2026 FOR UPDATE` on invoice row inside request transaction."
+    }
+   ]
+  },
+  {
+   "golden": "a3-credit-notes-brownfield",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "technical-analyst",
+    "persona_sha256": "d9c1eb6b5fdb53bb",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-leyop5xn/ws/pallet/specs/credit-notes/design-brief.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-leyop5xn/ws/pallet/specs/credit-notes/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-leyop5xn/ws/pallet/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-leyop5xn/ws/pallet/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-leyop5xn/ws/pallet/prisma/schema.prisma",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-leyop5xn/ws/pallet/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-leyop5xn/ws/pallet/contracts/openapi.yaml",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-leyop5xn/ws/pallet/src/accounting/xero-export.ts",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-leyop5xn/ws/pallet/src/statements/statement.service.ts",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-leyop5xn/ws/pallet/src/documents/render.service.ts",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-leyop5xn/ws/pallet/src/documents/templates/invoice.hbs",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-leyop5xn/ws/pallet/src/documents/templates/statement.hbs",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.608616,
+   "num_turns": 14,
+   "duration_ms": 225263,
+   "coverage": [
+    {
+     "id": "technical-analyst.brownfield-awareness.collision-risk-transparency-flag",
+     "verdict": "reflected",
+     "evidence": "Phase 0 identifies six collisions (C1\u2013C6) between spec and shipped product in a reconciliation table, then writes them into the design-decisions.md register with explicit rulings and escalation points: 'D1 \u2014 Resource name. *Stop point.*... I would confirm with Priya'; D3 similarly flagged with 'Stop point, Priya and Tom together, because it touches a ratified principle.'"
+    },
+    {
+     "id": "technical-analyst.brownfield-awareness.convention-consistency-match-existing",
+     "verdict": "reflected",
+     "evidence": "Matches existing patterns across multiple axes: resource naming ('the credit note is named `credit_note`, path `/credit-notes`, id prefix `crn_`'); money format ('`{ \"amount_minor\": 1250, \"currency\": \"GBP\" }`, not `12.50`. Decimal money in JSON invites float rounding, and the contract's own convention line... would have to be broken'); error-response patterns ('`404` for anyone else, matching the existing \"no such record visible to the caller\" convention rather than a `403`'); endpoint structure ('One list endpoint with a filter rather than a second nested path')."
+    },
+    {
+     "id": "technical-analyst.brownfield-awareness.existing-patterns-over-invention",
+     "verdict": "reflected",
+     "evidence": "Phase 0 is explicitly a read-only reconciliation: 'Already done in the reads above. Six collisions between the spec and what is actually shipped drive the whole design; I resolve each explicitly rather than letting it surface at implementation time.' Files read include live schema, contract, export service, and statement service before proposing any new entities."
+    },
+    {
+     "id": "technical-analyst.brownfield-awareness.explicit-extension-classification-clearly",
+     "verdict": "reflected",
+     "evidence": "Plan distinguishes three categories: new models ('New models: **`CreditNote`** (`crn_`)... **`CreditNoteLine`**... **`CreditApplication`**... **`Refund`**'); extensions ('`Invoice` gains back-relations `credit_notes` and `credits_applied`'); and reuse ('`Money` is reused unchanged'). Prefix comment edit explicitly lists new id conventions alongside existing ones."
+    },
+    {
+     "id": "technical-analyst.brownfield-awareness.priority-alignment-track-which",
+     "verdict": "reflected",
+     "evidence": "Plan maps all four gaps to resolution phases ('G1 in `contracts/openapi.yaml`... G2 in `prisma/schema.prisma`... G3 ruled in `specs/credit-notes/design-decisions.md`... G4 in `specs/credit-notes/document.md`') and flags new gaps discovered ('the `Document.subject_id` FK... I would raise it to the team rather than change a shipped model's constraint as a side effect of a P3 item'); lists follow-on implementation tickets out of scope ('credit-note service and lifecycle, next-invoice application, Stripe refund path')."
+    },
+    {
+     "id": "technical-analyst.quality-standards.classified-every-data-element",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.quality-standards.failure-aware-every-external",
+     "verdict": "reflected",
+     "evidence": "Stripe refund dependency failure handling: 'per AX-003 card refunds take 5\u201310 days and Stripe refuses beyond 180 days from the charge, and Bacs refunds can fail via `refund.failed`. The contract exposes a read-only `refund_available` boolean so the supplier app knows before it offers the choice, and `422 refund-not-available` if it is attempted anyway.' Database immutability constraint flagged as assumption: 'I cannot see whether the trigger permits... I would state that assumption in `data-model.md`, and put \"read the trigger definition and confirm before the migration is written\" as the first implementation ticket.'"
+    },
+    {
+     "id": "technical-analyst.quality-standards.normalized-entities-have-clear",
+     "verdict": "reflected",
+     "evidence": "Plan specifies boundaries ('`CreditNote`... `supplier_id`, `retailer_id`... relations to lines, applications, refunds, invoice'), validation rules ('Invariants written into `data-model.md`... credit note currency equals invoice currency; invoice must be `issued` or `paid` (never `draft` or `void`); per line, cumulative credit \u2264 that invoice line's `line_total_minor`; per invoice, cumulative issued credit \u2264 `total_minor`'), and lifecycle transitions ('issued and not yet consumed... `POST /credit-notes/{id}/void`. The record stays visible... Issued and consumed: refused, `409`')."
+    },
+    {
+     "id": "technical-analyst.quality-standards.realistic-examples-use-realistic",
+     "verdict": "reflected",
+     "evidence": "Examples are grounded in product state and tied-out arithmetic: 'I reuse the existing invoice `inv_01J8Q2V7X0P3S9Z6M1K4H2R5T8`... one of the four sourdough cases arrives short, so the credit note credits `inl_01J8Q2V7X1A2B3C4D5E6F7G8H9` for quantity 1 at 2880 \u2192 credit note total `2880`... updated `Invoice` example then reads total `18640`, paid `0`, credited `2880`, outstanding `15760`.'"
+    },
+    {
+     "id": "technical-analyst.quality-standards.schema-aligned-error-codes-cover-failure-modes",
+     "verdict": "reflected",
+     "evidence": "Error codes enumerate failure modes: '`409 invoice-not-issued`, `422 credit-exceeds-line-total`, `422 credit-exceeds-invoice-total`, `422 currency-mismatch`, `422 refund-not-available`, `409 credit-note-already-settled`, `409 credit-note-not-draft`'\u2014covering validation (exceeds-total), state constraints (not-draft), and settlement unavailability."
+    },
+    {
+     "id": "technical-analyst.quality-standards.schema-aligned-schemas-match-entities",
+     "verdict": "reflected",
+     "evidence": "Schemas are listed in alignment with entity models: 'Schemas: `CreditNote`, `CreditNoteLine`, `CreditNoteRequest`, `CreditNoteLineRequest`, `CreditApplication`, `Refund`, plus `CreditNoteStatus`, `CreditNoteReason`, `CreditSettlement`... `Money` is reused unchanged.' Entity fields in data model correspond to schema fields in contract."
+    },
+    {
+     "id": "technical-analyst.quality-standards.traceable-every-technical-requirement",
+     "verdict": "reflected",
+     "evidence": "Requirements are chained to design artifacts: 'FR-003 wants the invoice's outstanding amount net of credits... `amount_outstanding` is redefined... `amount_credited` is added'; FR-001 traced to '`quantity?` and `unit_price_minor?`... a price correction is amount-only'; FR-004 traced to 'Indexes... `(retailer_id, supplier_id, status)` \u2014 the second serves \"apply to the retailer's next invoice from that supplier\"'; audit traced to 'every state change writes an `AuditEvent` with subject `credit_note:crn_\u2026` in the same transaction (AX-008)'."
+    },
+    {
+     "id": "technical-analyst.what-embrace.alignment-project-governance-every",
+     "verdict": "reflected",
+     "evidence": "Design is anchored to governance principles: 'Governance: issued financial records are immutable, corrections are new documents, seven-year retention, DB triggers reject `UPDATE` on issued rows' (citing `CLAUDE.md:12-17`); 'every state change writes an `AuditEvent`... (AX-008)'; references to `spine.md:25-29` for Stripe timeout behavior and existing `AX-004`/`AX-007` as-built patterns; notes 'D3... touches a ratified principle' and escalates to principals."
+    },
+    {
+     "id": "technical-analyst.what-embrace.explicit-over-implicit-when",
+     "verdict": "reflected",
+     "evidence": "Plan surfaces ambiguities and flags rather than assume: 'D1 \u2014 Resource name. *Stop point.*... I would confirm with Priya'; 'D3 \u2014 Cancel after issue becomes void, not disappear. *Stop point,* Priya and Tom together'; on goodwill credits: 'If Tom wants goodwill in scope, it is a spec change, not a design change, and I would say so rather than smuggle it in'; on immutability transitions: 'I would design `CreditNote.status` to mirror `Invoice.status` exactly on the assumption... state that assumption in `data-model.md`.'"
+    },
+    {
+     "id": "technical-analyst.what-embrace.flag-don-t-guess",
+     "verdict": "reflected",
+     "evidence": "Plan flags missing information rather than silently assume: 'I cannot see whether the trigger permits the `issued \u2192 paid/void` transitions... I would state that assumption in `data-model.md`, and put \"read the trigger definition and confirm before the migration is written\" as the first implementation ticket'; on the `Document.subject_id` FK: 'I would write up the two options... and raise it to the team rather than change a shipped model's constraint as a side effect of a P3 item'; three sign-offs explicitly deferred: 'Priya's call on all three; my defaults hold until they rule' and 'Tom signs this off as the finance owner.'"
+    },
+    {
+     "id": "technical-analyst.what-reject.api-endpoints-without-error",
+     "verdict": "reflected",
+     "evidence": "Phase 3 API contract table specifies HTTP error codes for each endpoint: `409 invoice-not-issued`, `422 credit-exceeds-line-total`, `422 credit-exceeds-invoice-total`, `422 currency-mismatch`, `409 credit-note-not-draft`, `422 refund-not-available`, `404` for not found. Phase 6 includes: `Extend the existing contract suite's no-confidential-data-in-error-bodies assertion to the new problem types.`"
+    },
+    {
+     "id": "technical-analyst.what-reject.data-requirements-without-sensitivity",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.what-reject.entities-without-clear-lifecycle",
+     "verdict": "reflected",
+     "evidence": "Phase 2 defines `CreditNoteStatus { draft issued void }` with explicit state transitions in D3: `Draft: edit and cancel freely`; `Issued and not yet consumed: POST /credit-notes/{id}/void`. The record stays visible to the retailer as void`; `Issued and consumed: refused, 409`. Invariants documented: `every state change writes an AuditEvent with subject credit_note:crn_\u2026 in the same transaction (AX-008)`. Relationships defined: `invoice_id`, `supplier_id`, `retailer_id`, `credit_notes` back-relation on Invoice with unique constraints on CreditApplication."
+    },
+    {
+     "id": "technical-analyst.what-reject.ignoring-brownfield-context-when",
+     "verdict": "reflected",
+     "evidence": "Phase 0: `Six collisions between the spec and what is actually shipped drive the whole design; I resolve each explicitly rather than letting it surface at implementation time.` Documents six collisions (C1\u2013C6) with existing code locations and resolution approach for each. C1 rejects reusing existing `Adjustment` concept; C3 aligns with immutability principle from CLAUDE.md; C5 avoids new InvoiceStatus enum that would break existing exhaustiveness checks. Phase 5: `Two things I deliberately did not change and why: the Document.subject_id FK (a shipped constraint, needs a team decision) and the AX-004/AX-007 as-built lines (this is design, not build).`"
+    },
+    {
+     "id": "technical-analyst.what-reject.integration-dependencies-without-failure",
+     "verdict": "reflected",
+     "evidence": "D7 analyzes Stripe refund failure modes: `card refunds take 5\u201310 days and Stripe refuses beyond 180 days from the charge, and Bacs refunds can fail via refund.failed.` Designs mitigation: `The contract exposes a read-only refund_available boolean so the supplier app knows before it offers the choice, and 422 refund-not-available if it is attempted anyway.` Phase 2 data model includes Refund with `status`, `failure_reason?`, `settled_at?` fields to capture failure states. Implementation tickets explicitly include `Stripe refund path with refund.failed handling.`"
+    }
+   ]
+  },
+  {
+   "golden": "a4-stock-sync-boundaries",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "technical-analyst",
+    "persona_sha256": "d9c1eb6b5fdb53bb",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-m9ethv7e/ws/pallet/specs/live-stock/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-m9ethv7e/ws/pallet/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-m9ethv7e/ws/pallet/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-m9ethv7e/ws/pallet/docs/supplier-systems.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-m9ethv7e/ws/pallet/ops/hosting.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-m9ethv7e/ws/pallet/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-m9ethv7e/ws/pallet/prisma/schema.prisma",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.449267,
+   "num_turns": 9,
+   "duration_ms": 194589,
+   "coverage": [
+    {
+     "id": "technical-analyst.quality-standards.classified-every-data-element",
+     "verdict": "reflected",
+     "evidence": "Phase 4, INF-003 and INF-005: identifies per-supplier credentials (Lightspeed tokens, Shopify secrets, SFTP passwords) as sensitive data requiring encryption infrastructure; proposes envelope encryption in PostgreSQL; explicitly extends shared logger's redaction list to 'tokens, shop secrets, and the SFTP password; keep them out of exports and out of every error body'; Phase 2 distinguishes 'stock values' are not sensitive but 'credentials that fetch them' are."
+    },
+    {
+     "id": "technical-analyst.quality-standards.failure-aware-every-external",
+     "verdict": "reflected",
+     "evidence": "Phase 2, Reliability section specifies per-source failure modes: Lightspeed 'degraded after 3 consecutive failures and reconnect-needed on any auth failure, with the supplier e-mailed'; Shopify 'A missed event is unrecoverable on these suppliers' plan \u2014 no history, no bulk endpoint'; SFTP 'reject a file whose row count is below 80% of the trailing 7-run median, alert, and keep the previous data'; Phase 5 INT-001 states refresh token rotation forces manual reconnection on lost rotation, 'that demands single-flight refresh...and persisting the new refresh token before the request that uses it.'"
+    },
+    {
+     "id": "technical-analyst.quality-standards.infrastructure-aware-every-constraint",
+     "verdict": "reflected",
+     "evidence": "Phase 4 fully traces constraints to infrastructure provisioning: staleness constraint \u2192 INF-001 webhook ingress, INF-004 rate limiting; reliability constraint \u2192 INF-006 observability (new metrics and alerts) plus per-source error handling; credential constraint \u2192 INF-003 envelope encryption; 'not hammer suppliers' \u2192 INF-004 token-bucket per supplier; capacity (500 connected) \u2192 Phase 3 worker concurrency and queue sizing; Phase 4 INF-002 states 'A second worker machine gets a different egress address, so the SFTP job would start failing...a second address must be allowlisted with 10 working days' lead time \u2014 booked *before* the machine is provisioned.'"
+    },
+    {
+     "id": "technical-analyst.quality-standards.measurable-every-non-functional",
+     "verdict": "reflected",
+     "evidence": "Phase 2 converts vague requirements into numeric targets: 'Shopify: p95 \u2264 60 s, p99 \u2264 5 min. Lightspeed: p95 \u2264 poll interval + 60 s; at a 5-minute cadence, p95 \u2264 6 min. SFTP CSV: \u2264 26 h'; reliability targets 'Lightspeed poll success \u2265 99.5% per supplier per day...Shopify: \u2265 99% of received webhooks...SFTP: file present on \u2265 90% of nights'; with measurement methods: 'using each source's own timestamp (`updated_at` for Shopify, the poll's read time for Lightspeed, the file's drop time for SFTP)'; Phase 7 states 'every quality target has a threshold, a measurement source, and a stated time window \u2014 no target of the form \"should be fast.\"'"
+    },
+    {
+     "id": "technical-analyst.quality-standards.technology-agnostic-requirements-what-not-how",
+     "verdict": "reflected",
+     "evidence": "Quality targets (Phase 2, NFR-001\u2026010) describe outcomes not mechanisms: 'Staleness... measured as time from the change in the supplier's system to it being visible on the catalogue'; 'Stock is within its source's published staleness budget 99% of the time'; 'Lightspeed poll success \u2265 99.5%'; infrastructure and integration sections (Phase 4 and 5) contain 'how' details (envelope encryption, BullMQ, OAuth 2) appropriately separated and flagged as recommendations or decisions requiring sign-off."
+    },
+    {
+     "id": "technical-analyst.quality-standards.traceable-every-technical-requirement",
+     "verdict": "reflected",
+     "evidence": "Phase 7 Checks explicitly state: 'every FR-001\u2026005 and every user story is covered by at least one numbered requirement, and every requirement traces to an FR or to a line in the ops notes'; Phase 2 traces each quality sentence from spec to requirement ('Stock should update in near real-time' \u2192 NFR-001\u2026004 staleness budgets); Phase 5 links integration needs to FRs ('FR-001 lists four availability states', 'FR-005 requires [basket and checkout re-check stock]', 'FR-003 requires an override recorded')."
+    },
+    {
+     "id": "technical-analyst.what-embrace.alignment-project-governance-every",
+     "verdict": "reflected",
+     "evidence": "Plan references and aligns to established governance throughout: 'AX-010 caching trigger', 'AX-013 covers platform credentials', 'AX-011 is not-now with the trigger', 'AX-008 audits financial records', 'the one datastore principle'; Phase 7 states 'nothing in the doc contradicts the operating manual (one datastore, idempotent jobs, RFC 7807 errors, 75% coverage, real-PostgreSQL integration tests) \u2014 and where the feature forces a change to an architecture row, it is drafted for sign-off rather than applied'; Phase 6 identifies that AX-011 rate limiting 'now needs a ruling' and INF-003 credentials storage 'needing a platform ruling and a new AX-013 line.'"
+    },
+    {
+     "id": "technical-analyst.what-embrace.constraint-infrastructure-tracing-when",
+     "verdict": "reflected",
+     "evidence": "Phase 4 systematically traces constraints to infrastructure provisioning: staleness target \u2192 INF-001 webhook ingress endpoint with HMAC verification; reliability target \u2192 INF-006 per-source metrics and alerts; not-hammer-suppliers \u2192 INF-004 rate limiting with 'outbound token-bucket per supplier token'; capacity for 500 connected \u2192 Phase 3 'a concurrency of roughly 4 on a dedicated queue'; egress constraint \u2192 INF-002 'SFTP job must be pinned to the machine holding the allowlisted address, or a second address must be allowlisted with 10 working days' lead time.'"
+    },
+    {
+     "id": "technical-analyst.what-embrace.explicit-over-implicit-when",
+     "verdict": "reflected",
+     "evidence": "Plan surfaces ambiguities as flagged decisions, not silent assumptions: Phase 2 'Two behaviour gaps I would raise, not silently resolve: FR-001 lists four availability states with no *unknown/stale* state...Stop point: Priya rules'; Phase 2 '\"Low\" stock has no threshold...Default: a per-supplier default with a per-product override...If Priya wants a platform-wide constant, one line changes'; Phase 6 lists seven explicit stop points and decisions; Phase 1 'guessing these would poison the sizing' so marks items 'to measure' with exact queries rather than inferring values."
+    },
+    {
+     "id": "technical-analyst.what-embrace.failure-mode-analysis-what",
+     "verdict": "reflected",
+     "evidence": "Phase 2 Reliability section documents failure scenarios for each dependency: Lightspeed 'degraded after 3 consecutive failures and reconnect-needed on any auth failure'; Shopify 'A missed event is unrecoverable'; SFTP 'truncation guard: reject a file whose row count is below 80% of the trailing 7-run median, alert, and keep the previous data'; Phase 5 INT-001 states refresh token rotation 'forces the supplier to reconnect by hand. That demands single-flight refresh...persisting the new refresh token before the request that uses it \u2014 otherwise a crash mid-refresh costs a manual reconnect'; Phase 4 addresses infrastructure failure modes (egress IP change consequences, credential loss)."
+    },
+    {
+     "id": "technical-analyst.what-embrace.flag-don-t-guess",
+     "verdict": "reflected",
+     "evidence": "Phase 1 lists five items explicitly marked 'to measure' with exact queries rather than guessing: '`select supplier_id, count(*) from products group by 1` filtered by `inventory_source`', 'observed Shopify `inventory_levels/update` event rate per shop', 'current catalogue p95 latency', 'current Upstash command volume and plan terms'; Phase 5 INT-003 flags unmapped codes as a blocker: 'the Sage export uses Northern Provisions' internal codes, they do not match the SKUs...Without the mapping there is nothing to join on'; Phase 6 lists seven explicit decisions to clarify with 'Stop point' annotations rather than assuming answers."
+    },
+    {
+     "id": "technical-analyst.what-embrace.measurability-if-cannot-measure",
+     "verdict": "reflected",
+     "evidence": "Plan explicitly rejects unmeasurable claims: Phase 2 'SC-002 \"Stock shown is never stale\" is not achievable and I would not write a target that pretends otherwise'; Phase 2 reframes as 'stock is within its source's published staleness budget 99% of the time, and the catalogue shows how fresh it is'; Phase 1 states 'formulas with a worked example, in the doc' with concrete assumptions ('At an assumed ~300 products that is 2'); Phase 3 traces every number to either 'derived from a file I read or marked \"to measure\" with the query to run; no invented product counts, event rates, or Fly prices.'"
+    },
+    {
+     "id": "technical-analyst.what-embrace.question-vague-boundaries-when",
+     "verdict": "reflected",
+     "evidence": "Phase 5 systematically questions each integration boundary: INT-001 Lightspeed specifies 'OAuth 2 per supplier; the access token lives 24 h and the refresh token rotates on every use', pagination at 250, sandbox for tests; INT-002 Shopify specifies 'per-shop webhook registration and de-registration; HMAC verification; tolerate 19 retries over 48 h'; INT-003 SFTP specifies schedule ('nightly ~02:00'), file format ('Sage export uses Northern Provisions' internal codes'), failure rate (missing 4 of 30 nights, truncated twice); Phase 4 INF-002 questions egress IP: 'the cost of an additional dedicated IPv4 is not in hosting.md; flagged for Ops to price.'"
+    },
+    {
+     "id": "technical-analyst.what-embrace.separate-constraints-from-preferences",
+     "verdict": "reflected",
+     "evidence": "Plan distinguishes throughout: Phase 3 identifies cost savings as weaker than infrastructure constraints: 'The \u00a314/month second machine fits the \u00a388 headroom \u2014 but see the next phase, because adding one is not purely a money question' (referring to INF-002 egress IP lead time as binding); Phase 4 INF-003 flags credential storage 'needs a recorded platform ruling' (constraint), not optional; Phase 6 item #4 states 'Where per-supplier credentials live, needing a platform ruling' (constraint with governance) vs. Phase 2 preferences like 'Default proposal in the doc...user-set' (soft default); Phase 5 INT-003 separates SFTP as a choice: 'Stop point for Priya and Ops: either (a) fund the mapping as a separate piece of work...or (b) keep it in the first release' (decision points, not preferences)."
+    },
+    {
+     "id": "technical-analyst.what-embrace.surface-implicit-business-specs",
+     "verdict": "reflected",
+     "evidence": "Plan identifies implicit technical needs absent from spec: Phase 4 INF-004 surfaces rate limiting as implicit, 'Lightspeed's 60 req/min per token is exactly that, so **this feature fires the trigger.** The doc says AX-011 now needs a ruling'; Phase 4 INF-005 makes logging hygiene explicit: 'Extend the shared logger's redaction list to tokens, shop secrets, and the SFTP password'; Phase 4 INF-006 surfaces observability: 'New per-source metrics (staleness p95/p99, poll success rate, 429 rate, webhook verification failures)'; Phase 5 INT-006 surfaces audit logging: 'FR-003 requires an override recorded against the person who made it...AX-008 audits financial records only and says stock is not audited today, so this is a new record'; Phase 5 INT-004 surfaces product matching as implicit: '`supplier_sku` is set on 61% of products...This is integration work Ops must size and it is not mentioned anywhere in the spec.'"
+    },
+    {
+     "id": "technical-analyst.what-embrace.system-boundary-thinking-where",
+     "verdict": "reflected",
+     "evidence": "Phase 4 identifies the webhook ingress as 'the first unauthenticated public endpoint on `api`'; Phase 3 states 'the binding constraint is our worker, not their API' for Lightspeed requests; INF-002 analyzes how 'A second worker machine gets a different egress address, so the SFTP job would start failing from a machine the firewall does not know'; INT-001\u2013003 each identify failure modes at integration boundaries (refresh token rotation forcing reconnect, missed Shopify events being unrecoverable, SFTP truncation showing wrong stock)."
+    },
+    {
+     "id": "technical-analyst.what-embrace.thorough-exploration-alternatives-ship",
+     "verdict": "reflected",
+     "evidence": "Phase 4 INF-003: 'Recommendation: envelope encryption in PostgreSQL... because it keeps the one datastore principle intact and needs no platform sign-off for a new datastore, unlike a managed secrets service which adds cost, a vendor, and operational surface'; Phase 5 INT-003: 'Stop point for Priya and Ops: either (a) fund the mapping as a separate piece of work... or (b) keep it in the first release'; Phase 6 explicitly lists decision points 'so the team is ruling on a proposal rather than an open question'."
+    },
+    {
+     "id": "technical-analyst.what-reject.constraints-without-sources-every",
+     "verdict": "reflected",
+     "evidence": "Phase 1 'What I take as fixed facts, with their source' lists every constraint traced to a file: 'four engineers and no dedicated ops (README); \u00a3300/month infra cap with \u00a3212 spent, so \u00a388 headroom (hosting.md); `api` is the only public ingress (hosting.md, spine.md); the worker's single egress IP `149.248.201.77`... is what Northern Provisions allowlists and changes need 10 working days (hosting.md, supplier-systems.md)'."
+    },
+    {
+     "id": "technical-analyst.what-reject.data-requirements-without-sensitivity",
+     "verdict": "reflected",
+     "evidence": "Phase 2 quotes the spec as 'Stock levels are not sensitive, so no special handling is needed' and then corrects it: 'Correct for stock values; **wrong for the credentials that fetch them**'; Phase 4 INF-003 identifies what credentials need storage (Lightspeed tokens, Shopify secrets, SFTP password) and proposes envelope encryption with a data key in Fly secrets for protection."
+    },
+    {
+     "id": "technical-analyst.what-reject.implicit-assumptions-treated-requirements",
+     "verdict": "reflected",
+     "evidence": "Phase 1 distinguishes 'What I take as fixed facts' from 'What I would mark \"to measure\" rather than invent', listing each unknown with the exact query to run; Phase 2 states 'I set this from the observed 26 of 30, not from a wish' (SFTP reliability); Phase 6 item 7: 'the 500-connected-suppliers figure... if it genuinely means 500 *connected*, the Phase 3 numbers hold as written; if it means connected within a larger platform, the conclusion is unchanged... I would model the higher figure by default and say plainly which reading I assumed.'"
+    },
+    {
+     "id": "technical-analyst.what-reject.integration-dependencies-without-failure",
+     "verdict": "reflected",
+     "evidence": "INT-001 Lightspeed: 'the refresh token rotates on every use, so a lost rotation forces the supplier to reconnect by hand. That demands single-flight refresh'; INT-002 Shopify: '**A missed event is unrecoverable** on these suppliers' plan'; INT-003 SFTP: 'Two truncated files in 30 nights, applied naively, means products showing out of stock and unsellable'; INF-002: 'A second worker machine gets a different egress address, so the SFTP job would start failing from a machine the firewall does not know.'"
+    },
+    {
+     "id": "technical-analyst.what-reject.non-functional-requirements-without",
+     "verdict": "reflected",
+     "evidence": "Phase 2 converts spec sentences to numbered NFRs with thresholds and measurement sources: Staleness (NFR-001\u2026004) 'measured as time from the change in the supplier's system to it being visible on the catalogue... Shopify: p95 \u2264 60 s, p99 \u2264 5 min'; Reliability (NFR-005\u2026008) 'Lightspeed poll success \u2265 99.5% per supplier per day'; Read path (NFR-009\u2026010) 'catalogue p95 stays under 400 ms'; Phase 7 check: 'every quality target has a threshold, a measurement source, and a stated time window \u2014 no target of the form \"should be fast\".'"
+    }
+   ]
+  },
+  {
+   "golden": "a4-stock-sync-boundaries",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "technical-analyst",
+    "persona_sha256": "d9c1eb6b5fdb53bb",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "pallet/**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4m4ha_gv/ws/pallet/specs/live-stock/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4m4ha_gv/ws/pallet/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4m4ha_gv/ws/pallet/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4m4ha_gv/ws/pallet/docs/supplier-systems.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4m4ha_gv/ws/pallet/ops/hosting.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4m4ha_gv/ws/pallet/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4m4ha_gv/ws/pallet/prisma/schema.prisma",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.419316,
+   "num_turns": 9,
+   "duration_ms": 181253,
+   "coverage": [
+    {
+     "id": "technical-analyst.quality-standards.classified-every-data-element",
+     "verdict": "reflected",
+     "evidence": "per-supplier OAuth access and refresh tokens and an SFTP password are credentials to a counterparty's system, and a supplier's stock position is that counterparty's commercial data. The governance rule on counterparty confidentiality and the logger redaction list apply to the credentials regardless of how the stock numbers are classified"
+    },
+    {
+     "id": "technical-analyst.quality-standards.failure-aware-every-external",
+     "verdict": "reflected",
+     "evidence": "never treat a short file as authoritative (row-count and per-supplier-completeness sanity check against the previous night, reject outside tolerance), never blank stock from an absent file (last-known + 'as of' + unknown after the staleness threshold). A crash between 'refresh returned' and 'token stored' must not lose it. Two workers refreshing the same supplier's token concurrently will burn one of them, so refresh needs a per-supplier lock"
+    },
+    {
+     "id": "technical-analyst.quality-standards.infrastructure-aware-every-constraint",
+     "verdict": "reflected",
+     "evidence": "The SFTP job must be pinned to the machine holding 149.248.201.77, or that any scale-out is planned two weeks ahead with their IT. The requirement is therefore not '\u00a314/month for a machine': it is that scaling the worker horizontally either breaks the Sage feed or costs 10 working days' notice to their IT. This constrains infrastructure directly. Webhook receipt lands on `api`, verifies HMAC-SHA256 against the per-shop secret, fast-acks, and enqueues to the worker \u2014 it does not do the write inline"
+    },
+    {
+     "id": "technical-analyst.quality-standards.measurable-every-non-functional",
+     "verdict": "reflected",
+     "evidence": "Catalogue latency: p95 must stay under 400 ms \u2014 not invented, that is the existing AX-010 caching trigger. sustained outbound \u2264 50% of each supplier's documented limit (so \u2264 30 req/min against a Lightspeed token). I would present it as a small table across plausible catalogue sizes... then state the sustained requests/second and concurrent-job count that falls out. coverage floor 75%, p95 \u2264 60 s event-to-visible for Shopify, p95 staleness \u2264 6 min for Lightspeed, test coverage including Shopify HMAC tests"
+    },
+    {
+     "id": "technical-analyst.quality-standards.technology-agnostic-requirements-what-not-how",
+     "verdict": "reflected",
+     "evidence": "Reliability of sync \u2192 expressed as a lost-update target, not an uptime percentage: no stock change may be silently dropped. Correctness under out-of-order delivery: an update whose updated_at is older than the stored one is discarded, never applied. I would present both [encrypted columns vs. managed secrets service], recommend the first, and mark it as needing a ruling before build starts"
+    },
+    {
+     "id": "technical-analyst.quality-standards.traceable-every-technical-requirement",
+     "verdict": "reflected",
+     "evidence": "each target tagged NFR-0xx and referencing the FR-/SC- it serves, with the measurement instrument named. integration needs per source (INT-0xx), infrastructure needs (INF-0xx)"
+    },
+    {
+     "id": "technical-analyst.what-embrace.alignment-project-governance-every",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "technical-analyst.what-embrace.constraint-infrastructure-tracing-when",
+     "verdict": "reflected",
+     "evidence": "Rate limiting \u2014 an existing trigger that this feature fires. AX-011 is 'not-now' with the trigger 'the first integration, inbound or outbound, with a documented rate limit'. Lightspeed's 60 req/min per token is exactly that, so AX-011 must be ruled before this ships. The webhook endpoint requirement maps to hosting constraint that only `api` has a public address. Per-supplier OAuth with a 24 h access token and a refresh token that rotates on every use, the refresh must be written durably and transactionally before the new token is used. Observability: the feature needs freshness-based alerting per supplier and per source, and I would specify severity by hour"
+    },
+    {
+     "id": "technical-analyst.what-embrace.explicit-over-implicit-when",
+     "verdict": "reflected",
+     "evidence": "If no reason code is captured on a supplier-side order edit today, SC-001 is not measurable and the feature needs a small instrumentation requirement before the clock starts. I expect to find nothing \u2014 the workspace is a curated excerpt \u2014 in which case I record it as a verify-with-the-team item rather than asserting the field is absent. I would flag the inconsistency for Priya rather than resolving it myself"
+    },
+    {
+     "id": "technical-analyst.what-embrace.failure-mode-analysis-what",
+     "verdict": "reflected",
+     "evidence": "For each of the four rows of the survey: what we must build, what it depends on, and what is unresolved. Queue lag will catch a stalled poller. It will not catch: a supplier whose token silently died, a Shopify shop whose webhook registration lapsed, or a missing SFTP file. So the feature needs freshness-based alerting per supplier and per source. Never treat a short file as authoritative. Never blank stock from an absent file. A reconciliation path for missed events"
+    },
+    {
+     "id": "technical-analyst.what-embrace.flag-don-t-guess",
+     "verdict": "reflected",
+     "evidence": "I expect to find nothing \u2014 the workspace is a curated excerpt \u2014 in which case I record it as a verify-with-the-team item rather than asserting the field is absent. I would flag this as blocked, and say so plainly rather than sizing it. Four places where a person decides. My defaults let me finish the document either way; none of them blocks writing it. I would mark it as needing a ruling before build starts"
+    },
+    {
+     "id": "technical-analyst.what-embrace.measurability-if-cannot-measure",
+     "verdict": "reflected",
+     "evidence": "SC-002 'Stock shown is never stale' cannot be met and cannot be tested. I would not silently reinterpret it. I would write the replacement I recommend and mark it as a proposed amendment to a signed-off spec. the freshness targets in one table, because that is the number ops will size against. I would compute the outbound poll budget from stated facts rather than assert a machine count"
+    },
+    {
+     "id": "technical-analyst.what-embrace.question-vague-boundaries-when",
+     "verdict": "reflected",
+     "evidence": "The gap: the survey says most of these suppliers' plans have no history and no bulk endpoint, so a missed event is gone. Two independent blockers: No product-code mapping exists... a refresh token that rotates on every use \u2014 this is the sharpest operational risk in the feature: a lost rotation means the supplier reconnects by hand"
+    },
+    {
+     "id": "technical-analyst.what-embrace.separate-constraints-from-preferences",
+     "verdict": "reflected",
+     "evidence": "The requirement is therefore not '\u00a314/month for a machine': it is that the SFTP job must be pinned to the machine holding 149.248.201.77, or that any scale-out is planned two weeks ahead with their IT. I would write that as a named infrastructure constraint. I would present both [solutions], recommend the first, and mark it as needing a ruling before build starts"
+    },
+    {
+     "id": "technical-analyst.what-embrace.surface-implicit-business-specs",
+     "verdict": "reflected",
+     "evidence": "Observability. Existing alerts are 5xx rate above 1% over 5 min and queue lag above 10 min. It will not catch a supplier whose token silently died, a Shopify shop whose webhook registration lapsed, or a missing SFTP file. So the feature needs freshness-based alerting per supplier and per source. Rate limiting \u2014 an existing trigger that this feature fires. AX-011 must be ruled before this ships. Correctness under out-of-order delivery. Idempotency: every sync unit carries a deterministic job id"
+    },
+    {
+     "id": "technical-analyst.what-embrace.system-boundary-thinking-where",
+     "verdict": "reflected",
+     "evidence": "Webhooks need a **public inbound endpoint**, and hosting notes say only `api` has a public address. So webhook receipt lands on `api`, verifies HMAC-SHA256 against the per-shop secret, fast-acks, and enqueues to the worker \u2014 it does not do the write inline. [...] the SFTP fetch **must run from the worker's egress IP `149.248.201.77`**, which is what their firewall allowlists, and changing it needs **10 working days' notice** to their IT."
+    },
+    {
+     "id": "technical-analyst.what-embrace.thorough-exploration-alternatives-ship",
+     "verdict": "reflected",
+     "evidence": "Four places where a person decides. [...] **SC-002 'never stale.'** Confirming: does Priya accept per-source staleness budgets and an 'availability unknown' state? [...] **Per-supplier credential storage.** Confirming: encrypted columns in PostgreSQL, versus a new secrets service. [...] I would present both, recommend the first, and mark it as needing a ruling before build starts."
+    },
+    {
+     "id": "technical-analyst.what-reject.constraints-without-sources-every",
+     "verdict": "reflected",
+     "evidence": "Lightspeed's 60 req/min per token is exactly that, so AX-011 must be ruled before this ships. [...] SC-001 is measured 'from order edit reasons'. If no reason code is captured on a supplier-side order edit today, SC-001 is not measurable and the feature needs a small instrumentation requirement [...] I record it as a verify-with-the-team item rather than asserting the field is absent."
+    },
+    {
+     "id": "technical-analyst.what-reject.data-requirements-without-sensitivity",
+     "verdict": "reflected",
+     "evidence": "stock levels are **not personal data** and need no special retention or export handling; the **credentials that fetch them are Restricted**, never logged, never in an error body, and the contract suite assertion already in place must cover the new webhook endpoint's error responses too."
+    },
+    {
+     "id": "technical-analyst.what-reject.implicit-assumptions-treated-requirements",
+     "verdict": "reflected",
+     "evidence": "The spec's assumption 'Pallet product ids can be matched to the supplier's own product codes' is false for this source. No amount of engineering produces correct stock from an unmapped file; a wrong mapping produces confidently wrong 'out of stock' flags. [...] **SC-002 'Stock shown is never stale' cannot be met and cannot be tested.** I would not silently reinterpret it."
+    },
+    {
+     "id": "technical-analyst.what-reject.integration-dependencies-without-failure",
+     "verdict": "reflected",
+     "evidence": "A 19-retry/48-hour window covers transient outages, but not a webhook we accepted and then dropped, or a registration that lapsed. So there must be a reconciliation path. [...] this is the sharpest operational risk in the feature: a lost rotation means the supplier reconnects by hand, so the refresh must be written durably and transactionally before the new token is used, and a crash between 'refresh returned' and 'token stored' must not lose it."
+    },
+    {
+     "id": "technical-analyst.what-reject.non-functional-requirements-without",
+     "verdict": "reflected",
+     "evidence": "I would rewrite each as a target with a number, a measurement point, and a named source of truth. Shopify (21) | seconds; propose p95 \u2264 60 s event-to-visible [...] Lightspeed (38) | propose 5 min interval, p95 staleness \u2264 6 min [...] Catalogue latency: p95 must stay under 400 ms \u2014 not invented, that is the existing AX-010 caching trigger."
+    }
+   ]
+  },
+  {
+   "golden": "a4-stock-sync-boundaries",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "technical-analyst",
+    "persona_sha256": "d9c1eb6b5fdb53bb",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "pallet/**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-tdr679n9/ws/pallet/specs/live-stock/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-tdr679n9/ws/pallet/CLAUDE.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-tdr679n9/ws/pallet/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-tdr679n9/ws/pallet/docs/supplier-systems.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-tdr679n9/ws/pallet/ops/hosting.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-tdr679n9/ws/pallet/architecture/spine.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-tdr679n9/ws/pallet/prisma/schema.prisma",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.5059049999999999,
+   "num_turns": 9,
+   "duration_ms": 227737,
+   "coverage": [
+    {
+     "id": "technical-analyst.quality-standards.classified-every-data-element",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.quality-standards.failure-aware-every-external",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.quality-standards.infrastructure-aware-every-constraint",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.quality-standards.measurable-every-non-functional",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.quality-standards.technology-agnostic-requirements-what-not-how",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.quality-standards.traceable-every-technical-requirement",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-embrace.alignment-project-governance-every",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-embrace.constraint-infrastructure-tracing-when",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-embrace.explicit-over-implicit-when",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-embrace.failure-mode-analysis-what",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-embrace.flag-don-t-guess",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-embrace.measurability-if-cannot-measure",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-embrace.question-vague-boundaries-when",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-embrace.separate-constraints-from-preferences",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-embrace.surface-implicit-business-specs",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-embrace.system-boundary-thinking-where",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-embrace.thorough-exploration-alternatives-ship",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-reject.constraints-without-sources-every",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-reject.data-requirements-without-sensitivity",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-reject.implicit-assumptions-treated-requirements",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-reject.integration-dependencies-without-failure",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "technical-analyst.what-reject.non-functional-requirements-without",
+     "verdict": null,
+     "evidence": "MISSING"
+    }
+   ]
+  }
+ ]
+}

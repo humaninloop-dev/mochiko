@@ -1,0 +1,50 @@
+=== review.md ===
+Devil's-advocate report — Quillon governance-intent, solo seat, no lens.
+
+**Recommended status: critical-gaps.** Two survivors independently meet the critical-gaps bar (a fact profile contradicted by its own risk declaration; an unrecorded depth-level ruling). This is my input to you — you own the clearing verdict, and the user owns ratification; I'm not clearing anything and "whatever I decide" isn't how this seat works.
+
+Tally: 10 threads worked, 5 survived as findings below, 2 fell to standalone clarifying questions, 3 fell outright (all retrievable on ask — notably the EAA/a11y module trigger, which I couldn't run through the external-claims protocol in this environment and am leaving as commentary, not a finding).
+
+## Survivors
+
+**1. [BLOCKING] GDPR module ruling contradicts the synthesis's own risk declaration — GI-001 vs. the Risk surface line.**
+GI-001 rules the `gdpr` module out: client contact records are "B2B business contacts, which fall outside the GDPR's scope under the legitimate-interest basis." But the Risk surface paragraph in the same document calls a leaked client list "a GDPR-reportable breach" — you can't have a reportable breach under a regulation that doesn't attach. The reasoning itself looks wrong, not just inconsistent: GDPR attaches to personal data of identifiable natural persons regardless of B2B/B2C context (a contact name + email is personal data), and "legitimate interest" is a lawful *basis* for processing under Art. 6(1)(f), not an exemption from applicability. The account email/password hash of Lena's own EU-resident users is in scope too.
+Failure scenario: the surface set gets authored with no breach-notification procedure, no data-subject-rights handling, no lawful-basis record — because GI-001 said it wasn't needed — and Lena finds that out mid-breach, on the clock, which is exactly the scenario her own Risk surface line already names.
+Resolution: reconcile the two lines before ratification. This is a legal-applicability call, not a technical one — worth a real check (counsel or at minimum a harder look), not a rubber-stamp.
+
+**2. [BLOCKING] Depth-level recommendation trail is missing — GI-003.**
+GI-003's rationale reads "the lead recommended `high`" directly. The protocol this seat checks against expects greenfield to get the `low` recommendation first, arbitrated upward from there. Nothing in the record shows `low` was ever presented and arbitrated up — only that `high` was proposed and Lena agreed. The level is a one-way ratchet, terminal — meaning if the lighter option was never actually put in front of her, that permanent lock-in was never really an informed choice between two costs.
+Resolution: check whether `low` was recommended first and Lena arbitrated up (then just record that trail in GI-003) — or whether `high` was proposed directly, in which case that's a process deviation to fix before ratification, not after.
+
+**3. [MEDIUM, over-governance] GI-013 (weekly architecture-review meeting, minutes under `docs/adr/`) doesn't trace to an elicited fact.**
+Unlike GI-012 (rich, specific quote about German invoice-correction law and real financial consequences), GI-013 is "lead proposal at dimension 9; Lena: 'ok.'" No fact in the profile, risk surface, or team reality calls for a standing weekly meeting. It also collides with team reality: Tomas is on contract two days a week, so a strict weekly cadence either turns into a solo status note when he's out, or lapses — and a governance rule that routinely lapses undermines the rest of the set.
+Resolution: name the fact this traces to if one exists beyond "ok," or fold it into the already-adopted GI-014 knowledge-management practice instead of minting a separate meeting obligation.
+
+**4. [MEDIUM] GI-011 ("tests for everything") is recorded with no rationale.**
+GI-012, right next to it, has a full elicited quote. GI-011 has only "Elicited from: dimension 9" and no words from Lena at all. "Everything" is unscoped — literally applied, it spends the same test rigor on a copy change as on VAT/rounding math, which is the actual named risk. For a solo founder plus a 2-day/week contractor, that's real hours misallocated.
+Resolution: pull Lena's actual words for this one, and narrow the scope if the real ask was "test the money paths," not literally everything.
+
+**5. [LOW] GI-006 (FLOOR-ERR) has a blank Ruling/Expression cell.**
+Its floor-asserted siblings all say something — FLOOR-SEC and FLOOR-TEST say "at floor level," FLOOR-OBS says "kept." GI-006 is empty. A producer reading the table cold could take the blank as "no floor here" rather than "at floor level."
+Resolution: fill it in to match its siblings, or record why it's different.
+
+## Clarifying questions (not findings)
+
+- CLAUDE.md already states "Every PR gets a review from Lena or Tomas before merge — no self-merging," while the synthesis's Team reality line says "no formal code review." Is the synthesis describing pre-governance current state, or does it need updating to match what's about to be authored? (I'm not grading CLAUDE.md's wording — see below — just flagging the two facts don't match.)
+- a11y/EAA: is Quillon's own UI consumer-facing, or does only the freelance translator (B2B) ever touch it, with their clients never in Quillon itself? I couldn't run this through the external-claims check in this environment, so treat it as an open question, not a ruling on my part.
+
+## Declining part of the ask — out of jurisdiction
+
+You asked whether Lena's `CLAUDE.md` wording holds up and whether its rules are well formulated. That's the authored surface set — permanently out of this seat's jurisdiction (it's graded downstream by `mochiko:validation-constitution`, a different artifact, different family), and formulation/enforceability quality of authored principles is already closed `Contested` and not mine to re-open. I read CLAUDE.md only as fact substrate (see the review-question above), not to grade its prose. Route the wording/formulation question to the constitution producer↔validator pair once authoring starts.
+
+You also asked me to say how many review rounds Lena gets before authoring begins. Round-cap and human-gate mechanics are stated by the command itself, not restated by this seat — check `/mochiko:setup`'s own stated cap rather than a number from me.
+
+On "is `high` overkill for a two-person greenfield with no customers": I can't rule on that directly — challenging the declared depth level against the absence of real users/deployment is explicitly out of bounds for this seat (that's litigating the ratified choice on taste, not on the record). What I *can* and did check is whether the level was arrived at the way the process requires, and that's survivor #2 above — the actual defect isn't "high is too much," it's "the record doesn't show `low` was ever really on the table."
+
+## My own view, asked for directly, offered as opinion not a finding
+
+If I were picking from scratch for a two-person, pre-revenue invoicing tool: I'd land close to where this session landed on the money-correctness pieces (GI-012's invoice immutability, tests on the VAT/rounding path, FLOOR-SEC/FLOOR-TEST at floor level) — that risk is real and well-argued in the record. I'd be lighter on the process scaffolding: no standing weekly meeting for two people (log decisions in the knowledge-management file already adopted instead), and I'd want the GDPR question actually settled rather than argued away, since it changes what has to be authored at all, not just how strict it is. That's a personal read, not a ruling — the level's already been arbitrated and that's not mine to override.
+
+## Recommendation
+
+Don't send the producer to start authoring on this record yet. The two blocking items change what gets authored (a possible `gdpr` module addition; a possibly-missing recommend step behind a terminal ratchet) — better to settle those first than re-author after the fact.

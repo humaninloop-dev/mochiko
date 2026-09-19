@@ -1,0 +1,38 @@
+=== review.md ===
+To: Lead, Palisade notification-delivery session
+From: End-stage reviewer (cold read, solo, no cross-examination)
+Re: record.md — incident notification delivery to on-call responders
+
+Working conditions on my end: no repo, no source files, no fact-checker claim map. What follows is verified against (a) internal consistency of the record itself and (b) public, checkable facts about the named technology (FCM/APNs). Anything I couldn't check that way, I've labeled unverifiable rather than wrong — treat those as open questions for someone with the actual vendor docs or billing data, not as cleared.
+
+## 1. D4 contains two factual errors, and they're load-bearing (flag: fix before this ships)
+
+D4 says: "FCM guarantees delivery inside five seconds, and its high-priority messages wake a backgrounded iOS app without us holding a separate APNs entitlement."
+
+Both clauses are wrong as stated:
+
+- FCM does not guarantee delivery within five seconds, or any fixed window. It's explicitly best-effort — Google's own documentation describes messages as subject to delay or drop under Doze, battery optimization, and network conditions. There is no SLA-grade delivery guarantee to point to.
+- FCM on iOS is not an alternative to APNs — it's a wrapper over it. You still need to configure an APNs auth key/certificate with Firebase for iOS push to work at all. "Without us holding a separate APNs entitlement" is not how the integration works.
+
+Why this matters beyond nitpicking: D4 is rated Confident, the highest bar in the record, and its rationale is the stated justification for two other things — that one integration safely covers both platforms, and that D2's five-minute SMS fallback is "generous" against the push guarantee. If there's no five-second guarantee, "generous" isn't a measured claim, it's a guess, and D2's timing should be re-justified on its own terms (empirical ack-latency data, not a derived guarantee that doesn't exist). I'd downgrade D4 to Assumed at minimum and have someone check current Firebase/APNs docs before this goes further, since a paging product's core delivery claim resting on an incorrect guarantee is the kind of thing that surfaces publicly the first time a page is late.
+
+## 2. The record doesn't actually answer "what we owe the customer when a page fails to land"
+
+That's one of the three things this session was scoped to settle, and I don't see a decision that addresses it. D3 (delivery-status retention) and D8 (internal reconciliation service) are both about *Palisade's* ability to detect and internally audit failure — neither commits to anything owed to the customer: no SLA credit, no disclosure/notification obligation, no remediation path. D3's rationale ("sounds about right for support to work 'I never got paged' tickets") implies support can look something up reactively, but looking something up isn't an owed outcome.
+
+If this was decided elsewhere and just didn't make it into this record, say so and I'll drop this. If it wasn't decided, it should probably be D9, not an implicit consequence of D3/D8 — right now a customer asking "what do I get when your product fails to page me" has no answer in this document.
+
+## 3. D2 and D6 interact in a way the record doesn't resolve
+
+D6: unacknowledged page escalates to the *next responder* at 3 minutes, and to the incident commander after two hops (~9 minutes total).
+D2: unacknowledged page re-sent via SMS to the *same original responder* at 5 minutes.
+
+Taken together: by the 5-minute mark the record's own escalation policy has already moved the page past the original responder (escalation fired at minute 3). So D2's SMS fallback, as written, appears to fire at a responder who's already been superseded by rotation. Either the SMS fallback is meant to track whoever currently holds the page (not "the same responder" as literally stated), or the two timers are meant to run against different clocks/resets on ack, or this is a genuine gap that never got reconciled. As written, it reads as two policies drafted independently that weren't checked against each other.
+
+## 4. Secondary concerns, lower confidence
+
+- D8's reconciliation is nightly, on a product whose entire value proposition is "we tell you within seconds/minutes something is on fire." A day of latency before a silent delivery failure surfaces (even just internally) seems in tension with the rest of the record's urgency, though I can't rule out that nightly is a deliberate, reasonable cost/complexity tradeoff — flagging for a sanity check, not asserting it's wrong.
+- D1's rationale — SMS would become "the third-largest line item in infrastructure spend" — is a specific-sounding quantitative claim with no figures behind it in the record. I have no way to check it here; I'd want to see the number before treating D1 as more than directionally right.
+- "Open threads: None recorded" is worth a second look given the above. A session that surfaced a contested item (D7) but recorded zero open threads, while a goal-line component (customer remedy) went unaddressed and two decisions (D2/D6) weren't cross-checked against each other, reads more like the open threads weren't captured than that there weren't any.
+
+Net: I'd hold this record from being treated as final. #1 is a factual correction, #2 is a scope gap against your own goal line, #3 is an internal contradiction — none of these are stylistic, all three are the kind of thing that gets found by a customer or an outage before they get found by us.

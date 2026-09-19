@@ -1,0 +1,112 @@
+=== phase0-blind-map.md ===
+# Phase 0 — Blind angle map (pre-record)
+
+Topic: Palisade (incident-management SaaS) — how we deliver incident notifications to on-call responders.
+Goal line: one decision record covering (a) delivery mechanism, (b) escalation policy, (c) what we owe a customer when a page fails to land.
+
+Built from the topic + goal line only, before opening record.md. No repo is present in this workspace, so there is no local grounding to pull in beyond general domain knowledge of paging/incident-management systems (PagerDuty, Opsgenie, VictorOps and similar).
+
+## Angles a thorough treatment should visit
+
+**Delivery mechanism**
+- Channel inventory: push, SMS, voice/phone call, email, Slack/Teams/chat, third-party paging passthrough, webhook to internal tooling, wearable/smartwatch, desktop notification, physical hardware (siren/light).
+- Channel ordering/parallelism: serial fallback vs. simultaneous multi-channel fire.
+- Third-party dependency risk: single vendor (e.g. one push provider) vs. redundant paths; behavior when that vendor has an outage.
+- Delivery guarantees: what latency/uptime the chosen provider(s) actually commit to, contractually or in docs.
+- OS-level gatekeeping: Do Not Disturb / Focus modes, notification permission revocation, background app kill, critical-alert entitlements that bypass silencing.
+- Connectivity failure modes: phone off, dead battery, airplane mode, no signal, poor network, app uninstalled/stale token.
+- Payload content and sensitivity: what's shown on a lock screen, PII exposure, message size limits.
+- International/carrier variance: cost and deliverability of SMS/voice across countries and carriers, regulatory registration (e.g. 10DLC), accessibility for hearing/vision-impaired responders.
+- Cost model: per-message cost by channel, cost at scale, who bears it (plan tier).
+- Observability of the mechanism itself: delivery-status tracking, retention, "who pages the pager" (monitoring the paging system's own health).
+
+**Escalation policy**
+- Rotation model: primary/secondary/tertiary, how responders are ordered, overrides/manual escalation, snooze/deferral.
+- Timing: ack window before escalating, number of hops, terminal fallback (team-wide blast, incident commander, executive).
+- Concurrency: multiple simultaneous incidents contending for the same responder; multi-incident load.
+- Shift boundaries: handoff mid-incident, timezone handling, on-call schedule changes.
+- Severity-based branching: does escalation speed/depth vary by incident severity?
+- Failure at the end of the chain: what happens if the terminal responder also doesn't ack?
+- Auditability: is the escalation path logged/versioned for post-incident review and compliance?
+- Personalization: per-responder channel/timing preferences vs. one policy for everyone; tension between customization and alert-fatigue/muting risk.
+
+**What we owe the customer when a page fails to land**
+- Definition of "failure": send failure vs. delivered-but-unacked vs. acked-but-no-action — do these carry different obligations?
+- Detection: how/when do we know a page failed, and how fast?
+- Notification duty: do we tell the customer (or their team) that a page failed, and when?
+- Remedy: SLA credit/refund, contractual penalty, none — tied to plan tier?
+- Transparency: status page entry, post-incident report, root-cause disclosure.
+- Liability bounds: contractual caps, exclusions (e.g. carrier/OS-level failures outside our control), insurance.
+- Process/timeline: deadline for post-mortem or customer communication, dispute/appeal process.
+- Differentiation by cause: our infra failure vs. third-party provider failure vs. responder inaction — does fault change what's owed?
+- Data trail: retention of delivery/escalation logs long enough to support a claim, dispute, or billing-cycle reconciliation.
+
+**Cross-cutting**
+- Second-order cost: engineering/ops cost of building and maintaining any custom reliability/audit machinery, weighed against the risk it mitigates.
+- Regulatory/compliance: data retention and privacy rules around storing responder contact info and delivery logs (e.g. GDPR-style constraints).
+- Internal consistency: do the chosen timings (ack windows, escalation hops, fallback channel timing) compose without contradiction or race conditions.
+
+This map is intentionally built without reference to record.md. Phase 1 will diff the record's actual decisions against it.
+
+
+=== review.md ===
+To: session lead
+From: end-stage reviewer (solo, cold — no counterpart in this session)
+Re: Palisade incident-notification delivery — record.md, frozen for review
+
+Working conditions on my end: no repo, no source files, no fact-checker map. Where a decision leans on a claim about external systems (FCM behavior, APNs), I'm flagging it as unverified-in-this-review rather than confirming it against source — treat those as "check this," not "this is wrong," even where I say I doubt it.
+
+I built a blind angle map from the topic and goal line alone before opening the record (saved separately as phase0-blind-map.md, since my protocol produces that ahead of the cold read). Diffing it against what the record actually decided is where the biggest finding came from.
+
+No pair was seated, so there's no cross-examination round — these are my findings, undebated, held to the bar the debate would have applied. 9 raised, 8 survived my own cut (1 dropped: a D7 accessibility/opt-out angle, which I killed myself because D7 is Contested and already ruled with the tradeoff in view — I didn't have a genuinely new angle on it, just a variant of the one the ruling already saw).
+
+## Critical
+
+**C1 — The record never decides what we owe the customer when a page fails to land.**
+The goal line names three components: delivery mechanism, escalation policy, and customer obligation on failure. D1–D8 cover the first two in depth. The third has zero decisions, and it isn't even named in "Open threads" (which reads "None recorded"). There's no statement on: what counts as a "failed" page (send failure vs. delivered-but-unacked vs. acked-but-no-action — D3's status vocabulary already distinguishes these, so the record has the vocabulary to answer this and doesn't); whether/when the customer is told; whether any SLA credit or compensation applies; what gets disclosed in a post-incident report.
+Failure scenario: a page silently fails to land, the customer's incident runs long as a direct result, and Palisade has no documented commitment on what happens next — support has to improvise an answer in the moment, for a SaaS whose entire value proposition is "we tell you when something's broken."
+Resolution path: add the missing decision(s) — at minimum a definition of "failure" tied to D3's existing status states, a notification-duty call, and a compensation/credit stance by plan tier. If the session genuinely didn't reach it, it belongs in Open Threads, not silently absent.
+
+**C2 — D4's core factual claim is load-bearing and looks wrong.**
+D4 states FCM "guarantees delivery inside five seconds," and uses that guarantee to justify both D2's five-minute SMS-fallback window and, by extension, D6's three-minute escalation cadence ("the five-minute fallback in D2 is generous against that guarantee"). To my knowledge, Firebase/Google does not publish a delivery-time SLA for FCM — high-priority messages are documented as best-effort, and iOS delivery in particular still routes through APNs underneath FCM, which has no latency guarantee either. I can't check this against a source in this environment, so treat it as unverified rather than confirmed-wrong — but it's a specific, checkable claim, not a vibe, and it's the load-bearing justification for two other decisions' timing.
+Failure scenario: if the guarantee doesn't exist, a push message can sit undelivered for an unknown period before the 5-minute SMS fallback timer (which presumably starts at send-time, not confirmed-delivery-time) even begins to help — meaning the actual worst-case time-to-reach-a-human is unbounded on the record's own logic, not "generous." This directly compounds C1: there's no reliability guarantee backing the primary channel, and no customer-facing commitment covering what happens when that gap is where an incident falls.
+Resolution path: pull FCM's actual documented delivery commitments (not assumed) and re-derive D2/D6's timings independent of a guarantee that may not exist. If no vendor guarantee is available, D8's audit service (or an equivalent live monitor) should be positioned as the real reliability backstop, not framed as a secondary nice-to-have.
+
+## Important
+
+**I1 — D2 and D6 don't compose: unclear who's being paged at minute 5.**
+D6 escalates an unacknowledged page to the next responder at 3 minutes. D2 sends the same responder an SMS fallback at 5 minutes. By minute 5, D6 has already moved the active assignment to someone else — the record doesn't say whether D2's SMS goes to the original (now-superseded) responder, the current escalation target, or both.
+Failure scenario: original responder gets a stale SMS after the rotation has already moved on, creating exactly the ownership ambiguity ("who's actually on this?") that a paging system exists to prevent.
+Resolution path: state explicitly which responder the SMS fallback targets once escalation has already advanced past the original assignee, or state that the SMS fallback is suppressed once escalation moves on.
+
+**I2 — D6 never specifies what channel an escalation hop uses.**
+D1/D2/D4 establish a whole push-primary/SMS-fallback policy for the *first* page, but D6 just says the page "escalates to the next responder" — no channel is named for hop 2 or the incident-commander hop.
+Failure scenario: if hops silently default to push-only, the exact failure mode D2 was built to catch (silent/delayed push) can recur unmitigated at every rotation level, and the "generous" 5-minute SMS safety net (per C2) may only ever apply to the very first responder.
+Resolution path: state the channel policy per hop — does each hop restart D1+D2's push-then-SMS sequence, or something else?
+
+**I3 — D5 protects "description" but not "title," and titles are exactly where customer identifiers usually live.**
+D5's entire rationale is lock-screen exposure ("readable by anyone holding the phone"). It restricts description and customer data but explicitly allows title through. In most on-call tooling, incident titles routinely embed service or tenant names (e.g. "Acme Corp checkout API 5xx spike") — which is customer-identifying and lock-screen-visible, the exact risk D5 names.
+Failure scenario: a customer name leaks via a lock-screen preview on a lost/shared/borrowed phone, via the field D5 believed it had cleared for exposure.
+Resolution path: decide whether titles may contain customer/tenant identifiers; if yes, D5 needs a redaction or generic-title rule to actually satisfy its own stated rationale.
+
+## Minor
+
+**M1 — D8's rationale is thin and may be circular against D3.**
+D8 builds a whole in-house delivery-audit service ("ingests provider webhooks, re-derives delivery state independently") to reconcile against D3's status rows nightly. D3's own status rows are presumably populated from those same provider webhooks. If so, D8 isn't an independent source of truth, it's the same signal computed twice. Confidence is honestly marked "Assumed," but the rationale ("We want a second source of truth") doesn't establish what D3 alone would miss, against real engineering cost to build and maintain.
+Resolution path: name what data source populates D3 today; if it's the same webhooks, either explain what independence D8 actually buys or fold it into D3's population path instead of running it as separate machinery.
+
+**M2 — D6 has no terminal case.**
+After two escalation hops, the incident commander is paged — and then what if they don't ack either? No further policy is stated.
+Resolution path: define the dead-end case (team-wide blast, secondary commander, auto-declared major incident, etc).
+
+**M3 — D3's 30-day retention was picked by feel, and may not cover the window C1 would need.**
+Confidence is honestly marked "Assumed" ("Sounds about right"). If a customer-remedy/SLA-credit process gets defined per C1, 30 days may not span a monthly billing-dispute window or an enterprise contract's SLA true-up period.
+Resolution path: revisit retention once/if C1 is resolved, sized to whatever dispute or billing window the remedy process actually needs.
+
+## Tally
+
+9 raised, 8 survived my own cut. Dropped: a D7 accessibility/opt-out angle — killed because D7 is Contested and already ruled, and I didn't have a genuinely new angle on it beyond a variant of what the ruling already saw.
+
+## Recommended status: critical-gaps
+
+C1 is a Critical coverage gap on an explicit goal-line component with no ruling and no open-thread flag. C2 is a broken-or-unverified load-bearing claim underpinning two other decisions' timing. Either alone clears the critical-gaps bar; both together mean this record isn't ready to leave frozen as-is.

@@ -1,0 +1,123 @@
+=== phase0-angle-map.md ===
+# Phase 0 — Blind angle map
+
+Built from the topic and goal line only, before opening the record:
+
+Topic: Threadline (team chat product) — moving 4,000 teams from invoiced annual contracts onto self-serve card billing.
+Goal line: migration path, price continuity, what happens to a team that does not act.
+
+## Actors
+- End customers: admins (billing contact), finance/procurement teams, end users (seats) — may be different people with different notification needs.
+- Threadline sales / account managers — likely own the relationship for accounts currently big enough to be on invoiced annual contracts.
+- Threadline support/CS — inherits the migration exception queue.
+- Threadline finance/accounting — revenue recognition shifts from upfront annual invoice to monthly recurring card charges; AR/collections process changes.
+- Threadline legal — contract terms, ToS transition, tax exposure.
+- Payment processor (Stripe or other) — a third party now sits in the critical path for revenue.
+- Competitors — a friction window is a poaching opportunity.
+
+## Cost / commercial
+- Price continuity mechanics (glide path vs. cliff, currency).
+- What happens to negotiated terms beyond price: volume discounts, multi-year deals, minimum seats, custom SLAs.
+- Revenue recognition / cash flow impact of upfront annual invoices becoming monthly card charges.
+- Sales/AM commission structure impact.
+- FX / currency of charge if contracts were priced in non-USD.
+
+## Legal / compliance
+- Contract carve-outs: MSAs, DPAs, security addenda, indemnification — do these survive a move to standard self-serve ToS, or need explicit re-papering / termination?
+- Tax: US sales tax nexus, but also VAT/GST for any non-US teams.
+- PCI scope for card data handling.
+- Notice-period / auto-renewal clauses in the existing invoiced contracts — can Threadline unilaterally change billing method at renewal?
+- Data retention / deletion policy for accounts that lapse.
+
+## Migration mechanics
+- Cutover timing model: single date vs. staggered by renewal vs. cohort/pilot.
+- Segmentation: does every account size take the same path, or is there a carve-out (e.g., large enterprise stays invoiced)?
+- Communication: channel, cadence, audience (admin vs. finance contact vs. AM-assisted), and whether it continues through any grace/suspension window.
+- Rollback / pilot validation before broad rollout.
+- Seat-count reconciliation cadence and proration policy (additions and removals).
+- Internal tooling: visibility, manual override, audit trail, permissions.
+
+## Non-action path
+- Grace period length and behavior (read-only, limited, full lockout).
+- What "suspended" means operationally: data access, export, retention, deletion timeline, reactivation path.
+- Interaction between suspension and the price-hold clock (does a returning team keep the held rate?).
+- False-positive handling (payment fails for reasons unrelated to customer intent).
+
+## Second-order / systemic
+- Support/ops load shape over time (spike vs. spread).
+- Signal contamination: if support-mediated processes (e.g., downgrade requests) are gated behind a human, does frustration leak into a different funnel (e.g., non-renewal) that then miscounts as something else?
+- Trust/brand risk of unilaterally changing billing terms on existing customers.
+- Build-vs-buy for billing infrastructure itself.
+
+This map was built before the record was opened; the coverage diff against the frozen record's actual decisions follows in the survivor report (review.md).
+
+
+=== review.md ===
+To: Session lead
+From: End-stage reviewer (solo — no counterpart, no cross-examination round; hold these to the bar the debate would have applied)
+Re: Decision Record — Threadline self-serve billing migration (frozen for review)
+
+Working conditions on my end: no repository/source files were available and the record carries no fact-checker claim map, so everything below is checked against the record's internal consistency and, where a claim is external to the record (Stripe Tax's actual capabilities), against my own knowledge — I did not have web access approved this session, so that one is flagged as unverified rather than benefit-of-the-doubt.
+
+Phase 0 blind map was built from the topic/goal line alone before I opened the record (see phase0-angle-map.md). The diff against it drives several findings below.
+
+## Critical
+
+**1. D3 and D6 contradict each other on the exact window the record says matters most.**
+D3's whole justification for a 30-day grace period is "thirty days is long enough for a finance approval to come through." D6 stops all migration email at the renewal date — which is the moment the grace period *starts*. So the one 30-day window the record is counting on the customer to use productively is the one window nobody is emailing them about. A team that missed all three pre-renewal touches (30/14/3 days) gets zero further prompting before suspension.
+- Resolution path: does the in-app banner persist through the read-only period, or was "nothing after" meant literally? If literally, add a distinct "you are now read-only, N days to suspension" touch — it doesn't need to be part of the "migration" email sequence D6 was scoping.
+
+**2. D3 never defines what "suspended" actually means, and this is squarely inside the stated goal line.**
+The goal line explicitly asks for "what happens to a team that does not act." The record's answer stops at the word "suspended" — no statement on whether data is retained or deleted, whether admins can still export before losing access, or whether there's a hard deletion date. "None recorded" under Open threads implies this was considered closed, but nothing closes it.
+- Resolution path: define suspension's data-retention/export/deletion timeline and whether/how a team can reactivate afterward (and at what rate — see #6).
+
+**3. Coverage gap — no decision addresses contract terms beyond price.**
+The topic is teams moving off *invoiced annual contracts*, which at this scale plausibly include negotiated terms beyond per-seat rate: MSAs, DPAs, security addenda, SLAs, minimum-seat commitments. D2 holds the *price*; nothing holds or re-papers the rest. Moving such an account onto standard self-serve ToS by default risks silently lapsing commitments the company made in writing.
+- Resolution path: confirm whether any of the 4,000 contracts carry terms beyond price/seats, and if so, whether they're carved out of this migration or routed to a legal/AM-assisted track. This is plausibly the single biggest gap — it could change D1's "every team migrates at renewal" into "every team *without a qualifying MSA* migrates at renewal."
+
+**4. Coverage gap — D8 is the only tax decision, and it's US-only.**
+Nothing in D1–D9 restricts this migration to US teams, but D8's entire tax posture ("Stripe Tax carries the whole US filing obligation") is scoped to US economic nexus. VAT/GST exposure for any non-US team is undecided.
+- Resolution path: confirm what fraction of the 4,000 teams are outside the US and whether Stripe Tax's non-US handling (or a separate decision) has been considered.
+
+**5. D8's central claim is a strong, unverified external claim carrying a "Confident" rating and an explicit "no tax counsel" conclusion.**
+"Registers us and files returns automatically in every US state... we carry no filing obligation of our own and need no tax counsel" is the kind of claim that, if it overstates what the product actually does (e.g., automated filing as a limited/paid add-on rather than blanket coverage, with the merchant retaining ultimate registration/remittance responsibility), leaves the company exposed at 4,000-team scale with nobody having checked. I had no web access this session to confirm current Stripe Tax terms either way, so this stands as an unverified load-bearing claim, not a confirmed one.
+- Resolution path: get one person to confirm current Stripe Tax automatic-filing coverage against the actual states involved, and get a one-time tax-counsel sanity check before shipping "no tax counsel needed" as a standing decision.
+
+## Important
+
+**6. D2's price hold defers the shock D2 exists to prevent — and defers it hardest for the accounts most likely to be hurt by it.**
+D2's own rationale is "we don't want two shocks landing at once." At month 13 the price shock still lands, just alone — and its size scales with how deep a team's original negotiated discount was. The accounts with the steepest historical discounts (typically the largest, most contract-negotiated accounts — see #3) get the biggest cliff, with no ramp mentioned.
+- Resolution path: check the spread between current per-seat rate and list price across the 4,000 teams; if it's wide, decide whether outlier accounts need a tapered glide rather than a cliff at month 12.
+
+**7. D9's operator override has no stated relationship to D5's nightly Stripe reconciliation.**
+An override that can "force any team into any billing state" with no mention of whether it writes through to Stripe, is logged, or is permissioned, can drift from Stripe's actual subscription/dunning state and get silently reverted (or masked) by the next nightly reconciliation.
+- Resolution path: decide whether the override is Stripe-authoritative or console-display-only, and whether it's audited/RBAC'd.
+
+**8. D4's rationale ("Obvious") is passive acceptance of an integration question that was never asked.**
+Some system issues the 4,000 invoiced contracts today. D4 doesn't say what it is or whether/how it reconciles with Stripe Billing's records going forward — the "Assumed" confidence mark is itself the signal that this wasn't pressure-tested.
+- Resolution path: name the current invoicing/finance system and confirm a reconciliation path into Stripe Billing.
+
+**9. Coverage gap — no decision addresses the account-manager/CS relationship layer.**
+Teams currently on invoiced annual contracts plausibly got there through a sales-assisted relationship. The record's only communication channel is automated email/banner (D6); there's no escalation path for an AM to intervene on a large account approaching suspension.
+- Resolution path: decide whether AMs get visibility/alerts on their accounts nearing suspension — ties directly to #3's carve-out question.
+
+**10. Record fitness — no decision names an owner, and "Open threads: None recorded" reads as under-scoping rather than completeness given #2–#4 above.**
+Nine decisions, zero named owners (who runs the #3 legal check, who confirms #5's tax claim, who builds #7's console safeguards) makes this record hard to act on as-is.
+- Resolution path: assign an owner per decision, at minimum for D7 (legal/support), D8 (finance/tax), D9 (eng).
+
+**11. New angle on D7 (Contested, not reopened) — the 500-self-serve-team revisit trigger can be contaminated by its own restriction.**
+D7's dark-pattern objection was heard and overruled — I'm not reopening that. But a team blocked from self-serve downgrade may simply let its card lapse rather than file a support ticket, drifting into D3's suspension path instead. That silently converts downgrade-driven churn into suspension-funnel churn, which never counts toward the "revisit at 500" threshold D7 itself set.
+- Resolution path: when counting toward the 500-team trigger, also track suspensions/cancellations that follow a documented downgrade request, so the signal isn't absorbed into D3's funnel.
+
+## Minor
+
+**12. D1 assumes renewal-date data is already accurate, structured, and migration-triggerable for all 4,000 contracts.** Unverified — worth a one-line confirmation, not a blocker on its own.
+
+**13. D5 covers seat additions (charged following month) but not removals** — no stated credit/no-credit policy for a seat removed mid-cycle.
+
+## Tally
+13 raised, 13 survived my own bar (I cut nothing weak enough to drop before writing this — the fallen, if you want them, are retrievable on ask, but there weren't any this pass). No cross-examination ran (solo spawn), so none of these have been counterpart-stress-tested — treat them as unattacked until you or a second pass does that.
+
+## Recommended status: critical-gaps
+
+Findings #3, #4, and #5 are each a broken-or-unverified load-bearing claim or a Critical coverage gap where a plausible decision (a carve-out, a non-US tax posture) would likely have changed the record's shape, not just its footnotes. Finding #10 (no owners anywhere) is also, on its own, a critical-gaps trigger. I'd hold this record short of ready until at least #3, #4, and #5 get a real answer — the rest are legitimately fixable within the existing decisions (#1, #2, #6–#9, #11–#13) and don't require reopening the record's overall shape.

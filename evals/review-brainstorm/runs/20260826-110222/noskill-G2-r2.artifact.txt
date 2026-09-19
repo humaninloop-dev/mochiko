@@ -1,0 +1,35 @@
+=== review.md ===
+To: session lead, Kettle offline-inspection-sync session
+From: cold end-stage reviewer (solo pass, no cross-examination, no fact-checker claim map, no repo access)
+Re: record.md as frozen
+
+Bottom line first: I would not call this converged yet. Of the three things the goal line asked for — sync model, conflict handling, what an inspector sees when a sync doesn't go through — the third has zero coverage in the record, and two of the nine decisions contradict each other in a way that reads as a silent, permanent data-loss bug. Both points below are derivable from the record's own text, not from outside knowledge, so I'm not guessing at your intent — I'm reading definitions you already wrote against each other.
+
+## 1. Blocking — the record never says what an inspector sees on sync failure
+This was the third leg of the goal line and it isn't answered anywhere. D1–D9 cover sync cadence (D2), what counts as synced (D3), storage (D4/D5/D8), sign-off (D6), conflict resolution (D1/D7), and telemetry (D9). None of them describe device-side UX: is there a "pending," "failed," or "retrying" state visible to the inspector? Does anything ever tell them their edit lost a conflict (D7 says the losing version is dropped "with no trace" — no trace to anyone, or no trace to the loser specifically)? Open threads says "None recorded," but this isn't an open thread, it's an unaddressed third of the stated scope. I'd send this back rather than freeze around it.
+
+## 2. Blocking-severity — D3 + D5 combine into a plausible permanent-photo-loss bug
+D3 defines "synced" as: JSON body lands on the server; photos ride a separate queue and are explicitly allowed to still be in flight when that happens. D5 purges the local copy "seven days after a successful sync." If "a successful sync" in D5 means the same synced flag D3 just defined, then the purge clock starts running while photos — by D3's own rationale, "tens of megabytes on a bad connection" — may still be uploading or retrying. A slow-connection device that takes longer than seven days to finish its photo queue would have its local source images deleted out from under an incomplete upload. This isn't a hypothetical edge case dreamed up externally; it falls directly out of the two definitions as written. Either D5 needs to key off "photos and JSON both landed," or the record needs to explicitly say photos are exempt from the purge and explain how an orphaned photo queue entry is retried once its parent record is gone.
+
+## 3. High — D6 sign-off has two races it doesn't acknowledge
+D6 lets a supervisor sign off the instant an inspection shows `synced`. Two things can happen after that moment that D6 doesn't account for:
+- Per D3, the inspection can be `synced` with photos still missing — a supervisor could be signing off site documentation before the photographic evidence exists.
+- Per D1/D7, a second device's edit can still arrive later and silently overwrite the version the supervisor just approved, with the losing version dropped and no record of the discard. If the supervisor signed off the version that turns out to be the loser, that approval is now attached to content that no longer exists, invisibly.
+Neither is called out as accepted risk; it reads as unnoticed rather than deliberately traded off.
+
+## 4. Medium — D1's "Confident" rating is carrying more weight than its rationale supports
+Device-clock timestamps for conflict resolution are a known-shaky pattern — user-changed clocks, timezone misconfiguration, no guarantee of clock sync across devices — and the entire mitigation offered is "inspections are single-author in practice," which is asserted, not measured. That's a reasonable bet to make, but "Confident" implies more certainty than an unverified behavioral assumption should get, especially given D7 (which leans on the same assumption) is separately marked "Contested." I'd expect these two confidence levels to be closer together since they share the same load-bearing premise.
+
+## 5. Medium — D7's escape hatch may not be wired to anything
+D7 accepts silent data loss for v1 on the condition that "we revisit if the conflict counter says otherwise." D9 is the only telemetry decision in the record, and it's scoped to "every queue state transition" on the device side — it's not stated whether a server-side LWW discard event is one of the things that streams. If it isn't, there's no conflict counter to check, and D7's entire justification for shipping as-is becomes unfalsifiable rather than deferred.
+
+## 6. Low — D9's "real-time" framing sits oddly against the rest of the design
+Everything else in the record is built around devices being intermittently offline (D2's opportunistic batching, D3's separate photo queue, D5's purge policy). A per-device real-time dashboard can only reflect a device's state while that device is online — which is exactly not the condition you'd most want visibility into. Not a contradiction to fix, just worth naming as a known blind spot rather than letting "real-time" imply more coverage than the architecture can deliver.
+
+## 7. Note, not a finding — two rationales are placeholders
+D4's rationale is "Fine." and D9's is "We will want the data." Both are marked Assumed, which is the honest confidence level for a placeholder, so I'm not asking you to relitigate them — just flagging that the record's rigor is uneven, which is part of why I'd double-check nothing else got the same treatment at a higher confidence label than it earned (see #4).
+
+## What I could not check
+No repo, no source, no fact-checker claim map was available to me. D8's claim ("per the SQLite documentation... guaranteed to survive the app being force-killed mid-transaction on both iOS and Android") is plausible — WAL-mode atomicity is a real SQLite property — but the specific cross-platform force-kill guarantee is not something I could verify against a citation, and durability in practice also depends on the OS/filesystem honoring fsync, which is outside SQLite's own guarantee. I'm flagging the phrasing as overreaching, not the underlying choice as wrong.
+
+Recommendation: unfreeze for #1 and #2 specifically — one is a scope gap against the stated goal, the other is a data-loss bug implied by your own definitions. #3–#5 I'd want addressed before ship but wouldn't block a re-freeze on their own.

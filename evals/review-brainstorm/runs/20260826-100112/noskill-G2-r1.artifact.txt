@@ -1,0 +1,30 @@
+=== review.md ===
+Subject: End-stage review of the offline-sync decision record — one goal-line gap is a blocker, plus four cross-decision conflicts you'll want to resolve before this ships
+
+I read record.md cold, no repo, no claim map, so everything below is reasoning from the text of the record itself, not verification against code. I've flagged where I'm inferring vs. where I'm just holding the record to its own stated logic.
+
+**Blocker — the record doesn't actually cover the third leg of the goal line.**
+The brief was sync model, conflict handling, and what an inspector sees when a sync doesn't go through. D1–D9 cover the first two. Nothing in the record — not a decision, not a rationale aside, not an open thread — touches inspector-facing behavior on sync failure: no offline indicator, no "this inspection hasn't synced yet" state, no error surfaced when the queue is stuck, nothing on whether an unsynced inspection stays editable. "Open threads: None recorded" means this didn't even get parked as a to-do — it just isn't in the document. Before this record is called complete, either that decision needs to be made and added, or it needs to be logged as an explicit open thread with an owner. Right now it reads as an oversight, not a scoped-out item.
+
+**High — D3 + D6 let a supervisor sign off before the evidence exists.**
+D3 marks an inspection `synced` once the JSON body lands; photos ride a separate, slower queue. D6 puts the inspection on the supervisor's dashboard for sign-off "the moment it shows as synced." Put together: a supervisor can approve an inspection whose photos haven't arrived yet, especially on the "bad connection" case D3's own rationale describes. For a field inspection product, photos are often the evidence the sign-off is actually supposed to be checking. Neither decision acknowledges the other exists — I'd want to see this either accepted explicitly with a reason, or closed by gating dashboard visibility on photo completion.
+
+**High — D5's purge clock may be keyed off the wrong event.**
+D5 deletes the local copy seven days after "a successful sync." D3 defines sync success as the JSON landing, independent of photos. If the seven-day timer starts there rather than at photo-queue completion, a slow photo upload (D3's own example: tens of MB on a bad connection) risks having its local source file purged before it finishes uploading — permanent photo loss with no record of it happening. This may already be handled by keying the photo queue's own retention separately, but the record as written doesn't say that, and the two decisions read as in tension.
+
+**Medium — D1's premise is undercut by D5's own rationale.**
+D1 justifies last-write-wins-by-device-clock partly on "inspections are single-author in practice." D5 justifies the seven-day purge partly on devices being "shared between shifts." A device that changes hands between shifts is exactly the setup where clock skew and unsynced-clock edge cases become likely, and where "single author" stops being a safe assumption. Separately, device-clock-as-tiebreaker is a known-fragile pattern (manual clock changes, no guaranteed NTP sync on field devices) — worth a second look given D7 already flags conflict handling as contested.
+
+**Medium — D9 contradicts the stated reason for D2.**
+D2's batching interval (60s) is explicitly there because "keeping the radio hot... drained batteries on the pilot build." D9 then proposes streaming every queue-state transition to the analytics warehouse in real time. Real-time telemetry for every transition is itself a radio-hot workload — the same failure mode D2 was designed to avoid. D9 is marked "Assumed" with the thinnest rationale in the record ("We will want the data.") — I'd push back on it as scoped, not wave it through.
+
+**Medium — D8's citation is stronger than what it's citing.**
+D8 attributes "a WAL database is guaranteed to survive the app being force-killed mid-transaction on both iOS and Android" to "the SQLite documentation." The core WAL durability property (an incomplete transaction just isn't in the WAL, so it can't corrupt the file) is real and is SQLite's claim. But SQLite's docs don't make platform-specific guarantees about iOS or Android — that's this record's addition, stated as if it were the source's claim. iOS in particular has known WAL gotchas around file-protection classes causing I/O errors while the app is backgrounded/locked, which is exactly the kind of case this guarantee is being invoked for. I'd downgrade this from "Confident" to at least "Assumed" unless someone has actually tested force-kill-during-sync on-device.
+
+**Low — D7's revisit trigger may not be instrumented.**
+D7 (Contested) says the no-merge-UI call gets revisited "if the conflict counter says otherwise." No decision in the record establishes a conflict-specific counter. D9's telemetry is generic "queue state transitions" — it's not clear a discarded-by-LWW event is one of those. If nobody builds the counter, D7 has no mechanism to ever be revisited, which matters more than usual for a decision the record itself marks as contested rather than settled.
+
+**Low — D4's rationale is a placeholder.**
+"Fine." isn't a rationale. It's marked "Assumed" so this isn't urgent, but if anyone downstream cites this record as the reason for the no-ORM call, there's nothing here to cite.
+
+None of the above required a repo to find — they're internal tensions between the decisions as written, or a gap against the brief you set. I'd treat the goal-line gap as blocking and the D3/D6/D5 photo-timing issues as the next priority; the rest are worth a paragraph each but don't need to hold up the freeze.

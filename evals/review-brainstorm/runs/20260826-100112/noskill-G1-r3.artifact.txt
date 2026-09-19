@@ -1,0 +1,39 @@
+=== review.md ===
+# Review — Incident notification delivery record
+
+No repo, no claim map here, so what follows is either (a) an internal contradiction between two decisions in the record itself, (b) a check against a goal line you stated up front, or (c) a public technical fact about FCM/APNs I'm fairly confident of from outside the record. I've kept those three kinds separate so you can weigh them differently. Priority order, not decision order.
+
+## 1. The record doesn't actually deliver the third leg of the goal (critical)
+
+The goal line asked for three things: delivery mechanism, escalation policy, and what we owe a customer when a page fails to land. D1/D2/D4/D5 cover the mechanism. D6 covers escalation. Nothing covers the third leg. D3 and D8 are about *our* internal visibility into failures (status rows, nightly reconciliation) — neither commits to anything a customer receives: no notification that a page failed, no credit/SLA remedy, no defined worst case (D6's chain ends at "pages the incident commander" — what happens if the IC doesn't ack either is undefined, and that's exactly the scenario where a customer-facing commitment would matter).
+
+"Open threads: None recorded" reads as wrong given this — the third leg isn't an open thread that got logged and deferred, it's just absent. Worth deciding whether that's an oversight in the freeze or a scope cut that should have been written down as a decision (even if the decision is "we owe nothing formal in v1").
+
+## 2. D4's technical premise looks factually wrong, and D2 leans on it (critical)
+
+D4 claims FCM's high-priority messages wake a backgrounded iOS app "without us holding a separate APNs entitlement." To my knowledge that's not how FCM-to-iOS delivery works: Firebase forwards iOS messages through APNs under the hood, and you still have to upload an APNs authentication key/certificate to the Firebase project for delivery to iOS devices to work at all. If that's right, "one integration covers both platforms" is false as stated — you're going to need the APNs credential regardless, and someone will discover that mid-implementation rather than at decision time.
+
+D4 also asserts FCM "guarantees delivery inside five seconds." I'm not aware of any such published SLA from FCM — high-priority messages are best-effort/immediate-attempt, not a guaranteed delivery window.
+
+Both of these are marked "Confident," and D2's rationale ("the five-minute fallback is generous against that guarantee") directly inherits the second claim. If the guarantee doesn't exist, the "generous" framing for the SMS fallback timing loses its stated justification, though the 5-minute number might still be fine on other grounds. Worth having someone confirm against current Firebase/Apple docs before this is load-bearing.
+
+## 3. D2 and D6 don't reconcile at the 3–5 minute boundary (high)
+
+D6: unacknowledged for 3 minutes → escalates to the next responder in rotation. D2: unacknowledged for 5 minutes → SMS to "the same responder." Same responder as what — the original one, even though the incident has already handed off to responder #2 by minute 3? If so, the original responder gets a late, seemingly pointless SMS for a page they're no longer the acknowledging party for. If the intent was actually "each responder gets push, then SMS 2 minutes later, then hands off," that's a different (and reasonable) design, but it's not what D2's text says, and neither decision references the other despite governing the same timeline. This reads like it was decided in two separate passes without being laid on one timeline together.
+
+## 4. No voice/call channel at all (medium)
+
+Push and SMS are both silenced by iOS Focus modes / Android Do Not Disturb the same way — a ringing phone call is the one channel that reliably bypasses silent mode on most devices, which is why it's the default primary in most paging tools for anything above low severity. The record doesn't address whether phone-off/DND (not just phone-off/app-force-quit, which is what D2's rationale cites) is a scenario you're accepting risk on, or whether it's out of scope for a reason not stated. Worth a line either way rather than silence.
+
+## 5. D7 vs D8 apply inconsistent standards for what needs evidence before you build it (medium)
+
+D7 defers a comparatively cheap thing (a preferences toggle) explicitly until "we hold a quarter of real paging data" — a deliberate wait-for-evidence stance, flagged Contested. D8 commits up front to building a new standalone reconciliation service, on a rationale that's just "we want a second source of truth" — no data behind it, confidence marked Assumed, and no cost/benefit discussion of build effort. If the ship-first philosophy from D7 is a real principle for this v1, it doesn't obviously exempt D8, which is the more expensive of the two builds. Worth either applying the same bar to D8 or stating explicitly why it's exempt (e.g., audit trail is a compliance requirement, not a nice-to-have).
+
+## 6. Claims the record itself can't be checked against (low, flagged not scored)
+
+- D1's "SMS would become the third-largest line item in infrastructure spend" — no cost data present to verify; D1 is marked Confident despite this being an unverifiable-from-here business projection.
+- D3's 30-day retention is honestly self-flagged as "Assumed... sounds about right," which is fine as far as it goes, but if any customer contract or compliance posture requires a longer incident audit trail, this is the one line likely to get renegotiated later. Worth a sentence on whether that was checked.
+
+## 7. Minor ambiguity
+
+D6 doesn't say what channel an escalation hop uses (push only, restart the SMS clock too?). Small, but it's adjacent to the same ambiguity as #3 and would be free to resolve at the same time.

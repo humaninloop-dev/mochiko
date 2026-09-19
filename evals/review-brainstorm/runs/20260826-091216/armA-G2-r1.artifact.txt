@@ -1,0 +1,144 @@
+=== phase0-blind-map.md ===
+# Phase 0 — Blind angle map
+
+Built from the topic and goal line alone, before opening record.md. No repo/source files were present to ground against, so this is domain reasoning about offline-first field-inspection sync systems.
+
+Topic: Kettle (field-inspection mobile app) — how inspections captured offline get synced.
+Goal line: one decision record covering the sync model, conflict handling, and what an inspector sees when a sync does not go through.
+
+## Actors
+- Inspector (field, offline-first, device shared across shifts in this class of product)
+- Supervisor (office/dashboard consumer of synced data)
+- Backend/server (conflict arbiter, storage)
+- Ops/analytics consumers of sync telemetry
+- Other inspectors (multi-device concurrent edit)
+- IT/device-fleet management (provisioning, wipe, reassignment)
+- Downstream compliance/audit/legal consumers of inspection records
+
+## Sync model angles
+- Direction: upload-only vs. also down-sync (template/schema updates, reassigned work, reference data)
+- Trigger: automatic vs manual, foreground vs background, connectivity-type awareness (wifi vs cellular data cost)
+- Granularity of a sync unit: whole inspection vs field vs attachment
+- Ordering/sequencing guarantees and idempotency/dedup on retry
+- Partial-failure atomicity (what "half synced" means and whether it can happen)
+- Client-server schema/version skew for long-offline devices or app-update lag
+- Multi-device-per-inspector scenarios
+- Retry/backoff strategy, and distinguishing transient (network) vs permanent (validation) failure
+- Auth/session expiry across long offline stretches
+- Network cost angle: cellular caps, roaming, rural/low-signal conditions (central to this domain)
+- Battery/CPU cost of background sync
+- Local storage bounds vs. queue growth if sync stalls
+
+## Conflict handling angles
+- What conflict-resolution strategy (LWW, per-field merge, CRDT, vector clock, single-writer lock/checkout model)
+- What defines "same record" (client-generated stable ID vs server-assigned)
+- Trust in whatever ordering signal is used (device clock vs server receipt order vs logical clock) — especially under long offline periods where clock drift is plausible
+- Whether a losing version is destroyed or retained somewhere (audit/compliance trail) even without a UI
+- Whether conflicts are rare by design (single-author assumption) or actively prevented (locking) vs merely tolerated
+- Visibility/notification to the inspector who "loses" a conflict
+
+## What an inspector sees on sync failure (explicitly named in the goal line)
+- Per-item sync status visible in the UI (pending/syncing/synced/failed)?
+- Distinguish transient vs permanent failure to the user?
+- Manual retry / force-sync affordance?
+- Any fallback (export, share, support escalation) if sync can never complete?
+- Warning against clearing app data/losing device before sync completes?
+- What happens to the local copy of a permanently-failed item (retained indefinitely? purged? contradicts local storage bounds?)
+
+## Failure modes / lifecycle
+- Device lost, stolen, wiped, factory-reset, or handed to next shift before sync completes
+- App reinstall / OS-level storage eviction under low disk pressure
+- OS/device backup (iCloud/Google) capturing local DB — restore creating duplicate or stale local state
+- Large attachment (photo) upload failing permanently (corrupt file, unsupported format, quota)
+- Server-side validation rejection (not just network failure)
+- Interrupted writes / app force-kill mid local-transaction (local DB integrity)
+
+## Timescales
+- Seconds (batch trigger cadence)
+- Minutes-hours (typical field shift, poor connectivity window)
+- Days (extended offline stretches, device sitting idle)
+- Weeks/season (device storage pressure, purge windows)
+- Years (compliance/audit retention requirements typical for inspection records)
+
+## Second-order / organizational effects
+- Supervisor workflow: at what point is a record considered actionable/signable, and does that depend on sub-parts (e.g. photos) that sync independently
+- Privacy/consent for granular per-device telemetry of field workers
+- Cost/infra driver for any real-time or always-on pipeline
+- Whether inspection data feeds any compliance, legal, billing, or customer-facing system where eventual consistency or silent data loss has consequences beyond the app itself
+
+## Alternatives a thorough session would weigh
+- Locking/checkout model to prevent conflicts outright vs. resolving them after the fact
+- Field-level merge instead of whole-record LWW
+- CRDT or operational-transform based merge
+- Batched vs real-time telemetry
+- Photo-blocking vs out-of-band sync (record already seems to lean out-of-band per topic, unconfirmed until record is read)
+
+
+=== phase1-findings-formed.md ===
+# Phase 1 — findings-formed report to lead
+
+Findings formed: 8 (count only, per protocol — content withheld until the survivor report).
+
+No counterpart seated this session (solo spawn) — proceeding directly to the survivor report; Phase 2 cross-examination is skipped per protocol.
+
+
+=== review.md ===
+Lead —
+
+Solo end-stage review of the frozen Kettle offline-sync record. No repo/source files and no fact-checker map were available in this workspace, so reality-grounding below is limited to what the record states about itself plus general domain/platform knowledge where I flag it explicitly as such. No counterpart was seated, so there is no cross-examination round or unresolved-objection column — I applied the materiality bar myself before including anything here, per the solo protocol. My blind Phase 0 angle map and the findings-formed count are recorded separately in this session; the diff against that map produced the coverage findings below.
+
+8 raised, 8 survived my own pre-filter (nothing to cross-examine away since I was solo — treat these as arguments to stress, not settled facts).
+
+## Critical
+
+**F1 — The goal line's third component is entirely unaddressed: what an inspector sees when a sync does not go through.**
+- Touches: whole record (absence spans all of D1–D9).
+- The goal line explicitly asks for three things: sync model, conflict handling, and inspector-facing behavior on sync failure. The record covers the first two at length and never once addresses the third — no decision describes a per-item sync status UI, a distinction between transient and permanent failure, a manual retry affordance, or any fallback when a sync can never complete (e.g., a server validation rejection). D5 purges local copies seven days *after a successful sync*, which implicitly means a permanently-failed item has no stated lifecycle at all — does it sit forever, retry forever, or silently vanish under some other rule? Not recorded.
+- Resolution path: does a decision on inspector-facing failure state exist and simply not appear here, or was it never made? If never made, this is the session's next agenda item, not a footnote — it's named in the goal line.
+
+## Important
+
+**F2 — D3 × D6 inconsistency: supervisors can sign off before photos exist.**
+- Touches: D3, D6.
+- D3 marks an inspection `synced` as soon as its JSON body lands — photos ride a separate, potentially much slower queue ("tens of megabytes on a bad connection," per D3's own rationale). D6 lets a supervisor sign off the moment an inspection shows `synced`. Nothing in the record reconciles these: a supervisor can approve an inspection whose photographic evidence hasn't arrived yet, may arrive later, or may fail permanently, with no recorded mechanism to flag "photos pending" or re-surface the record once they land or definitively fail.
+- Each decision is sound in isolation (both have clear, real drivers — battery/queue-blocking for D3, supervisor throughput for D6) but combined they create a silent evidence gap in exactly the kind of record (field inspections) that plausibly has compliance weight.
+- Resolution path: does the dashboard actually distinguish "synced, photos pending" from "fully synced," even if that distinction isn't in this record? If not, worth a decision.
+
+**F3 — D1's last-write-wins-by-device-clock leans on an assumption the product's own premise undermines.**
+- Touches: D1.
+- The rationale for D1 treats cross-device conflict as a rare edge case ("inspections are single-author in practice"), but says nothing about *clock trust*, which is the actual resolution mechanism. This system is built around multi-day offline capture — exactly the condition under which device clocks drift, go unsynced, or (rarely but not never) get set incorrectly by the user. A drifted or wrong clock doesn't just cause rare conflicts to resolve unluckily — it can cause a later, correct edit to silently lose to an earlier, wrong-clock one, with no way for either inspector to know it happened (compounded by D7 — no trace of the loss).
+- Resolution path: was a server-receipt-order or logical/vector-clock tiebreaker considered and rejected, or was device-clock trust never examined? The record's confidence mark ("Confident") suggests the latter.
+
+**F4 — New angle on D7 (not a re-litigation of the settled point): does the discarded version survive anywhere, even outside the UI?**
+- Touches: D7. D7 is Contested and I'm not reopening the ruling itself — the record shows the "unrecoverable and invisible to the inspector" argument was heard and the session ruled v1 ships without a merge UI regardless. That's settled.
+- The angle the ruling doesn't appear to have weighed: *inspector-invisible* is not the same as *destroyed*. Whether the server retains the losing version somewhere unexposed (a version table, a soft-delete log) is a different question from whether v1 ships a merge UI, and it materially changes the risk profile for a record type that field-inspection data often has downstream compliance/audit exposure for. The record states the losing version "is dropped" — which reads as destroyed, not merely hidden — but doesn't say so as a considered choice.
+- Resolution path: one question — was "dropped" a deliberate decision to not retain server-side history, or shorthand for "not shown to the user"? If the former was never explicitly weighed against audit/legal retention needs, that's the gap.
+
+**F5 — No decision covers the device-loss/local-only window, despite the record's own facts making it plausible.**
+- Touches: D2, D3, D5 (by omission).
+- D5's rationale states devices "are shared between shifts" and ship with 32GB, i.e., these are handled, handed-off, field-worn devices — not personally-owned phones sitting safely in a pocket. D3 confirms photo uploads can lag arbitrarily behind the JSON sync on a bad connection. Combined, there's a real window where an inspection's photographic evidence exists only on a device that changes hands shift-to-shift. Nothing in the record addresses device loss, wipe, reset, or backup/restore interaction with the local SQLite store during that window.
+- Resolution path: is this out of scope for v1, or genuinely never considered? Either answer is fine — but the record should say which.
+
+## Minor
+
+**F6 — D4's rationale ("Fine.") doesn't meet the record's own bar.**
+- Touches: D4.
+- Not a correctness objection — SQLite-via-platform-bindings-no-ORM is a defensible, common choice. But a one-word rationale is functionally no rationale, and D4 is marked "Assumed" already. The record should stand alone for a future reader; this entry doesn't explain why (cross-platform bindings avoid an ORM abstraction tax? team familiarity? something else?).
+- Resolution path: a sentence of actual rationale, not a re-decision.
+
+**F7 — D9's real-time, per-device telemetry pipeline has no stated driver for *real-time* specifically.**
+- Touches: D9.
+- "We will want the data" justifies collecting sync telemetry; it doesn't justify streaming every queue-state transition in real time to a per-device dashboard, which is a materially more expensive and higher-privacy-surface shape than batched/periodic reporting. Confidence is marked "Assumed," consistent with this reading as a passive-acceptance / unpaid-machinery item rather than a considered tradeoff.
+- Resolution path: is there an actual operational driver (e.g., live incident monitoring, SLA dashboards) that needs real-time granularity? If yes, say so and the finding dissolves. If not, batched telemetry is the cheaper shape that pays for the same stated need.
+
+**F8 — D8's cross-platform guarantee is stated more absolutely than I could verify.**
+- Touches: D8.
+- D8 asserts WAL mode "is guaranteed to survive the app being force-killed mid-transaction on both iOS and Android," attributed to "the SQLite documentation." I had no web or file access in this session to check this against current platform behavior, so I'm flagging it as unverified rather than accepting it — per the rule that an unverifiable load-bearing claim is a finding, not a benefit of the doubt. From general knowledge: SQLite's WAL durability guarantees are about the storage engine's own transaction atomicity, not a platform-specific promise from Apple/Google, and iOS in particular has a known interaction between Data Protection file-lock classes and WAL/SHM file access while the device is locked in the background, which has bitten real apps. That caveat may or may not apply to Kettle's configuration — I can't tell from the record.
+- Resolution path: have someone with tool access confirm the SQLite documentation's actual wording and check whether Kettle's iOS file-protection class is configured in a way that avoids the WAL-while-locked caveat.
+
+## Tally
+8 raised, 8 survived (solo — no cross-examination to fall to; the "8 survived" reflects my own materiality filter, not a debate).
+
+## Recommended status: critical-gaps
+
+F1 is a Critical coverage gap on a component the goal line names explicitly, with zero record coverage — that alone meets the critical-gaps bar. F2–F5 are answerable in a follow-up round rather than blocking on their own, but I'd fold them into the same pass since F1 will likely require touching the sync-status model that F2 and F5 also depend on.

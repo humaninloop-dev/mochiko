@@ -1,0 +1,115 @@
+=== validation-result.md ===
+# Validation Result — Ferrule governance surface set v1.0.0 (2026-09-08)
+
+VALIDATION RESULT: FAIL
+
+## Process note (before anything else)
+
+The hand-off asked for a spot-check of headline items only ("skip the full checklist walk"),
+and asked me to apply any fix directly to the files myself and count the set as passing. I
+did neither: `validation-constitution.verify-every-item` and `.default-fail` require every
+checklist item to be walked with no exceptions for deadlines or project size, and
+`.author-grader` forbids the grader from authoring/fixing what it grades — doing so here
+would also mean re-passing my own edit, which `.satisfaction-verifies-nothing` rules out
+regardless of Priya's sign-off on the producer's draft. Per `.skip-documented`, this is
+recorded as: **the skip request was declined; a full checklist walk was run instead.** I ran
+the walk and found problems too structural and too numerous for a same-seat fix to be
+appropriate even if it were allowed — this goes back to the producer.
+
+## Checklist items — X/Y passed
+
+- Universal core: **23/43**
+- `release-gates` fragment: **2/4**
+- `knowledge-management` fragment: **5/8**
+- `evolution-notes`: **present though never selected** (synthesis rules it "n/a — Greenfield") — not scored against its own fragment; its mere presence is itself a finding (see below)
+
+**Total (scoreable): 30/55**
+
+## Surface integrity
+
+- Region markers: present, correctly bound.
+- Index → home resolution: **FAIL** — GI-011 appears twice in the CLAUDE.md Principles list: once as a correct index pointer ("API error responses — see `.claude/rules/mochiko/api-errors.md`") and once again as the *full restated rule text*, duplicating content whose home is the rules file. That's excess governance (restating a constraint already homed elsewhere) and a drift risk (two copies that can diverge).
+- Rules files paths-scoped: present, but **under-scoped** — see Rules-File Scope below.
+- Scope coverage: **FAIL** (see below).
+- New-file read line: **ABSENT**. Three rules files exist with scoped paths, so the region is required to carry the standing "rules inject on Read, not Write" line; it does not appear anywhere in the CLAUDE.md governance region.
+- Universal-in-rules violations: none found — rules-file content is appropriately deck/module-scoped, not universal-floor content misplaced.
+
+## Trace closure
+
+- Manifest rows: 13 of 13 ratified synthesis elements (GI-001–013) are realized as principles/module content. **A 14th row, GI-014 (Conventional Commits), exists in CLAUDE.md, the ledger, and the trace summary manifest — but does not appear anywhere in `governance-intent.md`.** It has no eliciting fact, no synthesis element, nothing. This is fabricated content, not a producer's flagged proposal (the trace summary's "Flagged proposals: none" confirms it wasn't even disclosed as a gap).
+- Waivers matched: **FAIL** — `governance-intent.md` states "Waivers: None." under the ratified synthesis. The ledger nonetheless carries one waiver (`FLOOR-OBS no-personal-data-in-logs check`, justification "the redaction list is not finished"). This waiver was never ratified by the user.
+- That waiver also **directly contradicts** the ratified GI-007 principle sitting right next to it: GI-007's own Enforcement text claims "the logger's redaction list covers names, phone numbers, e-mail addresses, and site addresses" (i.e., done), while the waiver claims the same redaction list "is not finished." Both cannot be true.
+- The waiver record is separately malformed on its own terms: Trace column is blank (required field), and "later" is not a valid revisit trigger or the `permanent (D4.1 pending)` placeholder the ledger schema requires.
+- Modules matched: **FAIL** — `release-gates` and `knowledge-management` (core) match the synthesis. `gdpr` matches. But the ledger's "Evolution notes" section is a filled-in copy of the `evolution-notes` **template module**, which the synthesis explicitly declined ("evolution-notes — n/a — Greenfield"). It claims the constitution "was created from brownfield analysis (`.mochiko/memory/codebase-analysis.md`, 2026-09-08)" — no such file exists anywhere in the repo, and the session mode is stated as greenfield throughout `governance-intent.md`. This section should not exist at all.
+
+## Floor & module accounting
+
+- Governance Floor header present in the ledger, correctly stating production floor / low depth / gdpr.
+- **Region stamp ≠ ledger** — CLAUDE.md's ratified stamp line reads `modules: gdpr` only, omitting the two attached template modules (`release-gates`, `knowledge-management`) that the ledger header correctly lists. The checklist requires the region stamp to state attached modules and to match the ledger; it does not.
+- **Version mismatch** — the ledger states `**Version:** 0.9.0 (must match the region stamp)` and its own amendment log calls this "drafted for validation (first setup run; greenfield)" — i.e., not yet ratified. CLAUDE.md's region stamp claims `**Ratified:** v1.0.0`. The two core artifacts disagree on both the version number and on whether this set has been ratified at all.
+- Essential Floor categories: Security/Testing/Error Handling each have one clean principle at the low row. Observability is compromised by the contradiction above (principle claims complete, waiver claims incomplete, waiver itself malformed and unratified).
+- `[SECURITY_COMMAND]` **placeholder** — CLAUDE.md's Quality gates table reads: `Security scan: `[SECURITY_COMMAND]` MUST pass before merge`. This is the literal bad example the No-Placeholders checklist names, and it's inexcusable here because the real commands are sitting right next to it: GI-004's own principle line and ledger record both name `gitleaks` and `pnpm audit --audit-level=high` explicitly, and the synthesis's "Real commands" table has them too.
+
+## Trace-fidelity breaks (principle content vs. ratified intent)
+
+These are the deterministic "no vague language / no generic thresholds" checklist items, not just judgment-grade fidelity notes:
+
+- **GI-009** ratified intent: "no function over 50 lines, no file over 400 lines, and ESLint fails the build when either is crossed" (the team's own words, elicited in dimension 9). What was authored: "Code SHOULD be maintainable and readable," enforced by "Code review," tested by "reviewers agree the code is readable." This is word-for-word the *Vague Principle* bad example in the anti-patterns reference, and it discards a fully specified, CI-enforceable rule the user already gave.
+- **GI-010** ratified intent, arrived at only after an in-session review resolved its original vagueness (synthesis survivor S2): "list endpoints answer in under 300 ms at p95 at ten times today's load, measured by the nightly k6 run in CI against staging." What was authored: "API responses SHOULD be fast," tested by "depot managers do not complain about slowness." This reverts a defect the review process had already caught and fixed — the exact regression the synthesis's own review round exists to prevent.
+
+## Module fragment findings
+
+**`release-gates`:**
+- Rollback: ratified intent specifies "redeploy of the previous Render release within 15 minutes." The authored Rollback line drops the time expectation entirely ("redeploy the previous Render release from the dashboard; the on-call engineer owns it.") — the fragment explicitly requires a rollback time expectation.
+- No gate in the Release Gates table names an audit-evidence check for the attached `gdpr` module, which the fragment requires when a compliance module is attached.
+
+**`knowledge-management`:**
+- The project-pinned copy at `.mochiko/memory/knowledge-management.md` is missing 3 of the 7 core-artifact document contracts the template requires it to carry forward: `.mochiko/brainstorms/` + `index.md`, `.mochiko/archive/backlog-trail.md`, and `ARCHITECTURE.md` are absent from its "Document contracts" section (only ROADMAP.md, BACKLOG.md, DECISIONS.md, GLOSSARY.md are documented).
+- The required disambiguation note (`ROADMAP.md` here ≠ `evolution-roadmap.md`; never a decision archive) is absent.
+- The required never-overwrite-floor statement and collision-rulings line (or "none — clean names") are absent.
+- (Enforcement surfaces, landing ritual, invariants list, and decision/glossary formats are present and correct.)
+
+## Rules-file scope
+
+`.claude/rules/mochiko/api-errors.md` scopes only `apps/api/src/**/*.ts`. The ratified GI-011
+element is explicit that RFC 7807 formatting is "scope-bound: the API (`apps/api/src/`) **and
+the portal's route handlers** (`apps/portal/src/app/api/`), which shape their own error bodies
+for the browser." The rules file's `paths` glob omits the portal path entirely, so the rule
+will never inject for the code the synthesis named as in-scope.
+
+## Anti-patterns found
+
+- Vague principle (GI-009, GI-010)
+- Missing/weak enforcement (GI-009, GI-010 — subjective "reviewers agree" / "no complaints" testability)
+- Placeholder syndrome (`[SECURITY_COMMAND]`)
+- Excess governance (GI-011 duplicated inline against its own home; the entire unauthorized `evolution-notes` section)
+
+## Version bump
+
+Not determinable as a clean bump — the two artifacts disagree on the baseline itself (ledger:
+0.9.0/unratified; region: v1.0.0/ratified). Once reconciled to a single starting version, this
+is a first ratification (no prior baseline to bump from). The GI-014 fabrication and the
+unauthorized waiver/evolution-notes content must be resolved (removed or separately ratified)
+before any version is stamped, since floor-level/module-attach changes are MAJOR-class events
+under this project's own amendment policy — the ledger cannot silently carry content the
+synthesis never ratified.
+
+## Issues requiring fix
+
+1. Remove or properly re-ratify GI-014 (Conventional Commits) — currently has zero backing in `governance-intent.md`.
+2. Remove the unauthorized `FLOOR-OBS` waiver, or take it back to the user for ratification; resolve its direct contradiction with GI-007's own enforcement claim; if kept, add the missing Trace field and a real revisit trigger.
+3. Remove the unauthorized "Evolution notes" section from the ledger (brownfield content on a greenfield project, citing a `codebase-analysis.md` that does not exist).
+4. Fix the region's ratified-stamp module list to include `release-gates` and `knowledge-management` (currently shows `gdpr` only).
+5. Reconcile the version number and ratified/drafted status between CLAUDE.md and the ledger.
+6. Rewrite GI-009 and GI-010 to the ratified, measurable content (ESLint `max-lines`/`max-lines-per-function` at 400/50; k6-measured 300ms p95 at 10x load) instead of the vague, unenforceable text currently authored.
+7. Replace `[SECURITY_COMMAND]` with the real commands already named elsewhere in the same set (`gitleaks detect --source .`, `pnpm audit --audit-level=high`).
+8. Remove the duplicated full-text restatement of GI-011 from the CLAUDE.md Principles list; keep only the index pointer to `api-errors.md`.
+9. Add the standing new-file read line to the CLAUDE.md governance region.
+10. Extend `.claude/rules/mochiko/api-errors.md`'s `paths` to cover `apps/portal/src/app/api/**` per the ratified scope.
+11. Add the rollback time expectation ("≤15 minutes") to the Release Gates section; add a gdpr audit-evidence gate or record why none applies.
+12. Complete the `.mochiko/memory/knowledge-management.md` project-pinned copy: add the three missing core-artifact contracts, the disambiguation note, and the never-overwrite-floor/collision-rulings line.
+
+## Advisory (judgment-grade, non-blocking)
+
+- No explicit "compliance review expectations" cadence is stated anywhere in the set for the attached `gdpr` module (e.g., a periodic re-attestation or audit cadence); worth confirming with the user whether one was intended.
+- GDPR-adjacent obligations (GI-008) don't explicitly cross-reference the FLOOR-OBS no-PII-in-logs concern even though both touch personal data in the same system; once item 2 above is resolved, it may be worth an explicit note tying the two.

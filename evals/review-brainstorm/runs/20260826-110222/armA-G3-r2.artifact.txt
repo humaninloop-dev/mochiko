@@ -1,0 +1,130 @@
+=== blind-angle-map.md ===
+# Blind angle map — Phase 0
+
+Built from topic + goal line only, before opening the record. No repo present to ground against, so this is topic-reasoning only.
+
+Topic: Threadline (team chat product) — moving 4,000 teams from invoiced annual contracts onto self-serve card billing.
+Goal line: one decision record covering the migration path, price continuity, and what happens to a team that does not act.
+
+## Actors
+- Team admin / billing contact
+- Finance / AP at the customer org (invoiced-annual customers often run PO or approval-cycle procurement)
+- Customer's own procurement policy (some orgs structurally cannot pay by card)
+- Sales / account management (renewal ownership, comp tied to annual renewals)
+- Threadline support (ticket volume, overrides)
+- Threadline finance/revenue-ops (rev-rec pattern change, ARR forecasting)
+- Legal/compliance (contract terms attached to invoiced deals: MSA, DPA, security addenda)
+- Payment processor as dependency (Stripe)
+- Tax authorities (US state, and non-US VAT/GST if any team is international)
+- Non-admin end users of a suspended team (access loss, not billing-facing)
+
+## Cost
+- Card processing fees vs. invoice/ACH cost delta at 4,000-team scale
+- Support cost/staffing for a year-long staggered migration
+- Revenue at risk from teams that don't act (churn quantification)
+- Custom/negotiated pricing on existing invoiced deals (minimums, volume tiers, discounts) vs. flat self-serve per-seat pricing
+- Cost of running two billing systems in parallel during the wave period
+- Dunning/failed-payment cost
+
+## Failure modes
+- Card decline / expired card cycles
+- Orgs whose internal policy forbids card payment for SaaS at this spend level (no fallback rail)
+- Data loss or ambiguity for a suspended team (retention, export, deletion timeline)
+- Fraud/chargebacks under card billing
+- Wrong or stale admin contact — comms never reach a human
+- Legal exposure if invoiced contracts carried negotiated terms that self-serve ToS silently drops
+- Tax miscompliance (registration/filing gaps, international VAT/GST)
+- Seat-count disputes from reconciliation
+
+## Timescales
+- Migration spans up to 12 months if paced by renewal date
+- Time to build the billing integration/console before any wave starts
+- Post-suspension: is there an end-state, or does it hang open indefinitely
+- Second price event at month 12 (rate hold expiring) — separate from the migration-moment communications
+
+## Alternatives to "self-serve card billing" as the single rail
+- ACH / bank transfer as a parallel self-serve payment method
+- Segmentation: small accounts auto-migrate, large accounts stay invoiced
+- Opt-in rather than forced migration
+- Grandfathering top-tier accounts
+
+## Second-order effects
+- Sales comp / renewal-ownership disruption if renewals become automatic and bypass sales
+- Loss of the renewal call as an expansion/upsell touchpoint
+- Revenue recognition pattern shift (annual upfront vs. monthly card charges)
+- Customer-side compliance: self-serve card charges may not satisfy the customer's own AP/vendor-record requirements
+- International: VAT invoicing requirements, currency/payment-method availability
+- Regulatory scrutiny on cancellation ease (distinct from downgrade ease)
+
+## Things a complete record should state about "a team that does not act"
+- What billing/access state they end up in (record covers this)
+- What happens to their data during and after that state
+- Whether the end-state is permanent or reversible, and how
+- Whether they were make-aware of the approaching deadline throughout, not just at the start
+
+
+=== review.md ===
+To: session lead, Threadline self-serve billing migration
+From: end-stage reviewer (solo — no counterpart, no cross-exam ran)
+Re: record.md, frozen for review
+
+Working conditions on my end: no repository, no source files, and no fact-checker claim map were available in this workspace. This record is a business/policy decision set, not code, so the absence of a repo mostly doesn't bite — but it means the one genuinely load-bearing outside-repo factual claim (D8) I could only check against general domain knowledge, not against a citation trail. Flagging that up front rather than presenting it as verified-and-clean.
+
+I built a blind angle map from the topic and goal line before opening the record (kept separately in blind-angle-map.md, written first per protocol). Below is the cold read against that map plus the six hunt classes, self-skepticism already applied since there was no counterpart to do it for me — I raised 13 candidate findings internally and cut 3 that didn't survive my own re-check (noted at the bottom). Recommended status: **critical-gaps**.
+
+## Critical
+
+**1. D8's central factual claim about Stripe Tax is wrong, and the decision is load-bearing on it.**
+Stripe Tax calculates and collects tax at the correct rate and helps you monitor when you cross a state's economic-nexus threshold. It does not register your business in a state and does not file returns on your behalf — registration and filing are either a manual obligation or require a separate filing service. D8's statement — "we carry no filing obligation of our own and need no tax counsel for the migration" — does not follow from enabling Stripe Tax. Because self-serve card billing plus this migration is what creates nexus exposure across many more states/teams than the invoiced-annual model likely did, this isn't a cosmetic error: acting on D8 as written means the company registers and files nowhere.
+*Resolution path:* confirm with Stripe's current product scope (or tax counsel) whether registration/filing is automated anywhere in the stack; if not, D8 needs a second decision — who registers/files, and when.
+
+**2. D2's own rationale is defeated by D6's comms cutoff — the month-12 price step-up is unannounced.**
+D2's stated reason for holding price for 12 months is explicitly shock-avoidance: "the second [shock] is the one they remember." D6 caps all migration email at 3 days before renewal and states "after the renewal date we stop emailing" — and D6's comms are scoped to the migration event itself, not to the later list-price transition. Nothing in the record schedules a notice near month 12. As written, the record guarantees the exact uncommunicated price shock D2 exists to prevent — just deferred a year.
+*Resolution path:* does a second comms sequence fire ahead of the list-price transition, yes or no? If no, this is a gap in D6, not just an oversight in D2.
+
+**3. Card-only billing has no fallback for teams that structurally cannot pay by card — unexamined in D1/D3.**
+Orgs large enough to have been on invoiced annual contracts commonly have procurement policy that prohibits paying SaaS spend by credit card above some threshold — this is not an edge case at this segment, it's routine. D1 and D3 treat "no card on file" as a willingness/attention problem solvable with grace period and reminders. For a card-incapable org, thirty days of reminders changes nothing; they go read-only, then suspended, regardless of intent to pay. No ACH/bank-transfer rail or any alternative is mentioned anywhere in the record.
+*Resolution path:* is there an alternate payment rail for this segment, or is forced churn of card-incapable accounts an accepted (and quantified) consequence of D1/D3? Either answer is defensible, but the record currently doesn't know it made this choice.
+
+**4. "What happens to a team that does not act" — one of the record's three named goals — is only half-answered.**
+The record specifies the *access* state machine (read-only → suspended) but says nothing about the *data* state: is a suspended team's message history retained, exportable, or on a deletion clock? It also doesn't specify what happens after the 30-day suspension window — is suspension permanent, or can the team reactivate later by adding a card, and if so is data still there to reactivate into? Given this is explicitly one of the three things the goal line asked the record to cover, leaving it half-specified is a direct miss against the session's own brief, not a nice-to-have.
+*Resolution path:* what is data retention/export policy through and after suspension, and is the post-suspension state reversible?
+
+## Important
+
+**5. D2 doesn't say whether the 12-month rate hold covers seats added after migration.**
+D5 establishes that seat counts change continuously and are billed monthly in arrears. D2 says the team "keeps its current per-seat rate for twelve months" but never states whether that rate applies to seats added during the hold period or only to the headcount at the migration moment. Given seat changes are the normal case (D5's own rationale — "teams add and remove seats constantly"), this ambiguity will surface on essentially every account, not as an edge case.
+*Resolution path:* does the held rate apply to all seats billed during the 12 months, or only to the seat count present at migration?
+
+**6. "Price continuity," a named goal-line pillar, is answered only for the flat per-seat rate — not for negotiated deal structure.**
+Invoiced-annual enterprise contracts typically carry more than a per-seat number: minimum seat/spend commitments, volume-tier discounts, multi-year discount schedules. D2 only speaks to the per-seat rate. For any team whose actual contract value comes from those other structures, migrating to a flat monthly per-seat model is not price continuity even if the rate matches — it's a different pricing shape.
+*Resolution path:* does migration preserve non-per-seat contract terms in any form, or is that segment's real price change simply out of scope for this record?
+
+**7. Contract/legal continuity (MSA, DPA, security addenda) tied to invoiced contracts is not addressed anywhere.**
+Self-serve card billing typically implies standard clickwrap terms. Accounts large enough to have negotiated invoiced-annual deals frequently also negotiated legal terms attached to that contract. The record is silent on whether those terms survive a switch to self-serve, or who is responsible for confirming that.
+*Resolution path:* does legal/compliance sign off that migrating billing method doesn't silently void or replace negotiated contract terms?
+
+**8. No stated voluntary cancellation path — a genuinely different angle from D7's downgrade debate.**
+D7 (Contested, already ruled) is specifically about *downgrading* to a smaller plan, and I'm not reopening that. But the record never states whether a team that wants to leave entirely has any path — self-serve or support-mediated — distinct from D3's involuntary non-payment suspension. Given regulatory attention on cancellation ease is a live area for subscription products, an explicit gap here (not merely "contact support," which is stated for downgrade but never stated for cancellation) is worth a line in the record even if the answer is "same as downgrade."
+*Resolution path:* is there a stated cancellation path, and does it equal or differ from the downgrade path?
+
+**9. D8 scopes only US filing; the record has nothing on international tax (VAT/GST) for non-US teams.**
+D8's title is explicit about "US filing obligation," which at least means the gap is self-declared rather than silent — but a team-chat product moving 4,000 teams onto card billing plausibly includes non-US customers, and nothing in the record indicates whether that's true or handled.
+*Resolution path:* are all 4,000 teams US-domiciled? If not, does international tax need its own decision, or is it already covered by something not in this record?
+
+**10. D9's operator override has no stated audit trail or approval control, on a decision already marked thin ("Support will want it").**
+An override that "can force any team into any billing state" is a reasonable support tool, but as specified it's also a mechanism for a single operator to quietly waive a bill, reverse a suspension, or grant free access with no logged justification — a real financial-controls gap at 4,000-team scale, and the kind of thing that shows up in an audit.
+*Resolution path:* is any audit logging or dual-control planned for the override, or is that considered acceptable residual risk?
+
+## Dropped on self-check (not included above)
+- A concern about multi-year contract terms under D1 — killed itself: the topic explicitly scopes these as "invoiced *annual* contracts," so "next renewal" is bounded to ≤12 months by definition. Raised, then discarded as not applicable.
+- D4's rationale ("Obvious.") is thin (passive-acceptance pattern) but the underlying decision — buy Stripe Billing rather than build invoicing — is sound on its face and I couldn't construct a concrete failure scenario, only a documentation complaint. Didn't meet the bar.
+- Post-suspension reactivation was originally a separate item; folded into finding #4 since it's the same underlying gap (team-that-doesn't-act end-state) rather than two.
+
+## Tally
+13 raised, 10 survived my own cross-check (no counterpart was seated to challenge these further).
+
+## Recommended status: critical-gaps
+Two independent things push this past needs-revision: D8 rests on a factual claim about tax filing that I believe is simply incorrect and is directly actionable as written (finding 1), and the goal line's own third pillar — what happens to a team that doesn't act — is only partially specified (finding 4). Both are answerable by the session (this isn't a "record too thin to review" situation, it's a converged record with real, specific holes), so I'd expect this to come back to needs-revision quickly once those two are addressed, with 3, 5, 6, 7 taken in the same pass since they cluster around the same "what actually survives migration" question.
+
+One process note: "Open threads: None recorded" reads differently after this pass — most of the above are threads the session apparently didn't recognize as open rather than ones it consciously deferred. Worth checking whether that section reflects "we decided everything" or "we didn't think to flag what we hadn't decided."

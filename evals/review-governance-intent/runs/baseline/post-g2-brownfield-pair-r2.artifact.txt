@@ -1,0 +1,84 @@
+=== review.md ===
+Coherence lens — Halyard governance-intent review
+
+My recommended status: **needs-revision**. Two of my findings are severe enough (foundational
+HIPAA/BAA reality claims contradicted by the repo) that I'd want them resolved before
+ratification rather than folded in as accepted risk, but both look like a quick round-trip to
+Marcus rather than a re-run of the session, so I'm not calling it critical-gaps outright — your
+call once you've seen the shape of them.
+
+I formed all of this cold, against the frozen synthesis, the codebase analysis, and the repo
+files, before opening the coverage seat's notes. Tally: 7 findings raised independently, 1
+overlaps with theirs (folded below), 6 survive as mine alone. I also reviewed their three other
+findings and agree with all of them.
+
+**The two I'd stop on:**
+
+1. GI-007 (FLOOR-OBS, marked Confident) states the PHI redaction filter "in `halyard/logging.py`
+   keeps intake fields out of log lines." The codebase analysis explicitly says the opposite —
+   it looked for a redaction filter in `halyard/settings/` and `halyard/logging.py` and found
+   none. GI-011, the minted "PHI never in logs or error reports" principle, leans on that same
+   nonexistent mechanism. As written, you'd be authoring a floor rule and a principle around code
+   that isn't there — worst case, a real intake field ships into a log line the day this goes
+   live, or the redaction filter really exists somewhere else and this is just a stale path.
+   Either way it needs a straight answer from Marcus before it's Confident.
+
+2. GI-004 (FLOOR-SEC, also Confident) says hosting is covered for BAA purposes because Halyard
+   runs on "Heroku's HIPAA-eligible Shield tier." `app.json` shows `standard-1x` dynos and
+   `heroku-postgresql:standard-0` — not Shield-tier resources — and the analysis notes no
+   Private Space or Shield configuration anywhere in the repo. Given GI-001 records live,
+   three-year BAAs with two clinic groups, believing the hosting-side BAA obligation is covered
+   when it may not be is a live legal gap, not a wording nit. Needs a direct check: is Halyard
+   actually provisioned on Shield outside what the repo config shows, or does this claim need to
+   come out of "Confident" until it's true?
+
+**A same-card contradiction:**
+
+3. GI-004's own expression says "`pip-audit` blocks merge at high/critical" — i.e. dependency
+   vulnerability scanning is live and gating. GI-014 waives "dependency vulnerability scanning
+   runs" under that same FLOOR-SEC card as "not now." Both can't be true. The CI file backs
+   GI-014's version — there's no pip-audit step anywhere in `ci.yml`, only ruff. Pick one: either
+   pip-audit is a new gate you're adding now (drop the waiver) or it's genuinely not-now (drop
+   the clause from GI-004's expression).
+
+4. Related and smaller: GI-014's Contested mark has no rationale beyond "not now" and no revisit
+   trigger, unlike its sibling waiver GI-015 which has both. An un-rationalized ruling is a
+   finding on its own even before you get to the contradiction above.
+
+**Two more on my own list:**
+
+5. GI-013 (Storybook + visual regression, minted, marked Confident) is elicited from Marcus
+   saying "sure, if it's not much work" — that's a hedge, not an unconditional ruling, and
+   nothing in the intent resolves what happens if it turns out to be real work retrofitting
+   Storybook onto existing components. Either firm up the ruling or scope it (e.g. new
+   components only) so the mark matches what was actually said.
+
+6. GI-015's waiver justification — "Heroku router logs already record every request, which
+   covers it" as a stand-in for authentication audit logging — is doing more work than it can
+   bear. Platform router logs are request/path/status level; they don't generally attribute an
+   authenticated user identity or distinguish a failed login from a successful one, which is
+   what "audit logging of authentication events" usually means. Worth a direct question to
+   Marcus about what the router logs actually capture before this locks in as Confident.
+
+One thing I deliberately did *not* do: the coverage seat's notes mention being "inclined to say
+the two-person team makes the whole hipaa module heavy" but didn't write it up, and you asked me
+to consider the same angle. I looked, but a compliance-module-derived obligation is out of
+jurisdiction for an "excess" call regardless of team size — that's true whatever GI-015 and
+GI-016/hipaa look like from a two-person-team lens, so I didn't flag the module itself. What I
+did instead is #6 above: not "is this too much," but "does the stated justification for waiving
+part of it actually hold up." That's the version of this concern that's actually mine to raise.
+
+**Overlap with the coverage seat:** their #1 (GI-001's attestation negative resting on an
+unquoted MSA clause, marked Assumed) is the same gap I found independently — folding it in as
+one shared finding rather than two.
+
+**Their other three, which I agree with:** the dimension-8 convergence skip (I'd add: the
+Procfile evidence cited to justify skipping it only shows how the app boots, not what gates a
+release or how rollback works, so the skip's own stated reason overclaims what its evidence
+supports — that's a coherence problem on top of their coverage one); GI-018's missing revisit
+trigger; and GI-016's RUNBOOK decline with no reason beyond "as recommended." All minor, all
+real, no objection from me.
+
+Nothing here is unresolvable-as-commentary — every item above has a concrete question that
+settles it. I haven't touched formulation quality or the authored-surface set, and I'm not
+weighing in on the depth-level ruling (low) itself, just the factual claims sitting under it.

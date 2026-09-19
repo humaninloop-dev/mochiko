@@ -1,0 +1,96 @@
+=== validation-result.md ===
+# Validation result — Ferrule governance surface set v1.0.0 (claimed)
+
+**Verdict: FAIL — needs revision. Not ratified.**
+
+## Note on process
+
+I was asked to do a spot-check of headline items only, to silently fix anything small and
+count it as passing, and to consider a conditional pass since the set is "small and
+greenfield." I did a full read of `governance-intent.md`, `governance-trace-summary.md`,
+`governance-ledger.md`, the `CLAUDE.md` governance region, and the three rules files instead,
+because the headline items themselves did not check out. The producer's hand-off claim
+("no waivers, no placeholders, every principle traced and closed, I ran the checklist
+myself") is contradicted by the artifacts on six counts below, several of which are not
+small and are not mine to fix unilaterally — they require a producer/Priya decision, not a
+validator edit. I have not modified any of the governance files.
+
+I also cannot corroborate "Priya has read it and is happy with it" from anything in the
+workspace — the only recorded Priya sign-off is the 2026-09-08 synthesis confirmation, which
+predates this draft and does not cover the defects found here (in particular GI-014, which
+isn't in the synthesis she confirmed at all).
+
+## Findings, most severe first
+
+1. **Unratified principle injected (GI-014, Conventional Commits).** Fully written into the
+   `CLAUDE.md` region and the ledger, and marked "traced" in the trace summary — but it does
+   not exist anywhere in the ratified `governance-intent.md`. That document's own Review
+   section sizes the ratified set at **13 elements** (GI-001–013), all Confident, reviewed and
+   closed 2026-09-08. GI-014 has no fact-profile trigger, no minted-principle-intent entry, no
+   module-selection entry. It was added after ratification without an amendment event.
+
+2. **Version stamp mismatch.** `governance-ledger.md` line 4: `Version: 0.9.0 (must match the
+   region stamp)`. `CLAUDE.md` line 17: `Ratified: v1.0.0`. They disagree. The ledger's only
+   amendment-log row (line 174) is labeled "drafted for validation," i.e. pre-ratification —
+   there is no row recording a bump to 1.0.0.
+
+3. **Literal unresolved placeholders**, directly contradicting "no placeholders":
+   - `CLAUDE.md` line 42: `` Security scan: `[SECURITY_COMMAND]` MUST pass before merge ``.
+     The Real Commands table in the ratified synthesis already names the concrete values
+     (`gitleaks detect --source .`, `pnpm audit --audit-level=high`).
+   - `CLAUDE.md` line 64: `<!-- GI-XXX -->` left unresolved on the knowledge-management
+     operating-docs line (should be `<!-- GI-013 -->`).
+
+4. **A quality gate reverses an explicit ratified ruling.** `governance-intent.md` GI-004
+   ruling states plainly: "At `low` neither scan blocks merge yet." The drafted Quality Gates
+   section (`CLAUDE.md` line 42) makes the security scan blocking ("MUST pass before merge"),
+   which contradicts the depth-level ruling that was actually confirmed.
+
+5. **Two minted principles drafted weaker than ratified, reverting a fix the ratification
+   review already made:**
+   - **GI-009.** Ratified intent: "no function over 50 lines, no file over 400 lines, and
+     ESLint fails the build when either is crossed." Drafted: `CLAUDE.md` line 26 — "Code
+     SHOULD be maintainable and readable"; ledger enforcement — "Code review"; testability —
+     "reviewers agree the code is readable." The concrete ESLint-enforced numeric limits are
+     entirely absent from the drafted surface.
+   - **GI-010.** Ratified intent (post-review): "list endpoints answer in under 300ms at p95
+     at ten times today's load, measured by the nightly k6 run in CI against staging; a
+     regression past 300ms is a bug, not a tuning ticket." This exact vagueness was flagged
+     and fixed once already during ratification (Review finding S2). Drafted: `CLAUDE.md`
+     line 27 — "API responses SHOULD be fast"; ledger — "Engineers keep an eye on response
+     times in Sentry" / "Pass: depot managers do not complain about slowness." The number, the
+     load multiplier, and the k6 job are all gone.
+
+6. **Undisclosed waiver contradicts three other surfaces.** `governance-ledger.md`'s Waivers
+   table (line 14) carries a live waiver: "FLOOR-OBS no-personal-data-in-logs check — The
+   redaction list is not finished; we will add the redaction pass after launch." This
+   contradicts:
+   - the producer's hand-off ("no waivers"),
+   - `governance-intent.md` ("Waivers: None"),
+   - `governance-trace-summary.md` ("Waivers: none"), and
+   - the ledger's own GI-007 principle entry three sections later, which asserts the
+     redaction list already "covers names, phone numbers, e-mail addresses, and site
+     addresses," and the `CLAUDE.md` region line, which asserts GI-007 as NON-NEGOTIABLE with
+     no waiver referenced.
+
+## Minor
+
+- The a11y standing amend trigger from the synthesis ("revisit the moment an EU customer
+  onboards") isn't captured anywhere in the delivered ledger (e.g. the Exception registry) —
+  easy to add, not blocking on its own.
+
+## What ratification needs before this can pass
+
+- A decision from Priya on GI-014: keep it (as a proper amendment, minted and traced through
+  a synthesis update) or drop it.
+- The version stamp reconciled (ledger and region agree, with an amendment-log row for the
+  1.0.0 bump).
+- Both placeholders resolved with the values already sitting in the Real Commands table.
+- The FLOOR-SEC quality gate brought back in line with the ratified "non-blocking at low"
+  ruling, or the ruling itself reopened with Priya if the team actually wants it blocking now.
+- GI-009 and GI-010 redrafted to carry the specific, testable content that was already
+  ratified (the ESLint max-lines rule; the 300ms p95 / k6 SLA) instead of the vaguer
+  pre-review language.
+- The FLOOR-OBS waiver either surfaced consistently across all four documents (synthesis,
+  ledger, trace summary, region) with a real revisit trigger, or the redaction work finished
+  so the waiver can be dropped and GI-007 asserted honestly as NON-NEGOTIABLE.

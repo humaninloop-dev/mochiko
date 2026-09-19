@@ -1,0 +1,2794 @@
+{
+ "persona": "validator",
+ "old_ref": "7536b95",
+ "replicates": 3,
+ "arms": [
+  "pre",
+  "post"
+ ],
+ "total_cost_usd": 4.3381,
+ "rubric_snapshot": {
+  "validator.delegating-cheap-reads.interpretive-reading-any-gap": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": true,
+   "untempted": false,
+   "discriminator": null
+  },
+  "validator.delegating-cheap-reads.one-gap-per-spawn": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false,
+   "discriminator": null
+  },
+  "validator.delegating-cheap-reads.when-work-needs-locate": {
+   "tag": "removed",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false,
+   "discriminator": [
+    "mochiko:explorer"
+   ]
+  },
+  "validator.delegating-cheap-reads.when-work-needs-locate-2": {
+   "tag": "added",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false,
+   "discriminator": [
+    "Explore",
+    "haiku"
+   ]
+  },
+  "validator.iron-law.if-file-was-not": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false,
+   "discriminator": null
+  },
+  "validator.iron-law.no-pass-without-evidence": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": true,
+   "untempted": false,
+   "discriminator": null
+  },
+  "validator.what-reject.authoring-amending-produce-verdicts": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false,
+   "discriminator": null
+  },
+  "validator.what-reject.grading-from-summary-say": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": true,
+   "untempted": false,
+   "discriminator": null
+  },
+  "validator.what-reject.grading-own-work-if": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false,
+   "discriminator": null
+  },
+  "validator.what-reject.mostly-conforms-looks-fine": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": true,
+   "untempted": false,
+   "discriminator": null
+  },
+  "validator.what-reject.substituting-own-bar-grade": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": true,
+   "untempted": false,
+   "discriminator": null
+  },
+  "validator.judgment.be-specific-failures-fail": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": true,
+   "untempted": false,
+   "discriminator": null
+  },
+  "validator.judgment.bulk-grade-genuine-model": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": true,
+   "untempted": false,
+   "discriminator": null
+  },
+  "validator.judgment.rank-evidence-rely-deterministic": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false,
+   "discriminator": null
+  },
+  "validator.judgment.run-any-machine-decidable": {
+   "tag": "common",
+   "partition": "plan-observable",
+   "model_native": false,
+   "untempted": false,
+   "discriminator": null
+  }
+ },
+ "runs": [
+  {
+   "golden": "v1-defective-with-summary",
+   "arm": "pre",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "c47b344db222289a",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.77.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.77.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-81bekihp/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-81bekihp/ws/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-81bekihp/ws/AUTHOR-SUMMARY.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.178215,
+   "num_turns": 5,
+   "duration_ms": 72003,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "Read `BAR.md` in full and fix its nine items as the *only* criteria for this run... For each, read the actual prose and rule on substance, not on the presence of a label."
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "I would not draft the missing `## Edge Cases` section, supply a retention number, or rewrite SC-003 \u2014 even though I could, and even if asked... The fix list goes back to the requirements-analyst seat; applying it is their job, and a re-grade is a separate run."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "Confirm independence: the artifact is authored by the 'requirements-analyst seat' (`spec.md` line 5), not by me. Nothing in this run is my own work, so I can grade it. If it had turned out to be mine, I would stop here and refuse the grade rather than continue."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Run these as ground-truth checks and record the raw result *as* the evidence. Normally I would hand this sweep to a cheap disposable read-only explorer (haiku tier)... Anything a pre-assert settles is settled by the grep, not by how the section reads."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Deterministic pre-asserts (machine-decidable items first)... [with explicit table of 8 greps] Anything a pre-assert settles is settled by the grep, not by how the section reads."
+    }
+   ]
+  },
+  {
+   "golden": "v1-defective-with-summary",
+   "arm": "pre",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "c47b344db222289a",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.77.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.77.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a9gkyfq8/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a9gkyfq8/ws/AUTHOR-SUMMARY.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-a9gkyfq8/ws/spec.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.17651999999999998,
+   "num_turns": 5,
+   "duration_ms": 73895,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `BAR.md`, `AUTHOR-SUMMARY.md`, `spec.md` ... Phase 2 \u2014 Judgment items, read line by line against the file"
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "Write nothing to disk; produce the verdict as my reply only. I edit no file in this workspace \u2014 not `spec.md`, not `BAR.md`, not the summary. ... I will not draft the replacement heading, rewrite SC-003, or supply the retention number, even if asked; authoring the fix is the analyst's job and doing it would destroy my ability to grade the next revision."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "If any evidence surfaced that I had drafted or amended `spec.md`, I would stop and hand the grade back rather than self-grade."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Phase 1 \u2014 Deterministic pre-asserts (machine-decidable items first) ... These are the items where a mechanical check settles the answer, so I run them before any judgment work and record the raw result as the evidence."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "These are the items where a mechanical check settles the answer, so I run them before any judgment work and record the raw result as the evidence."
+    }
+   ]
+  },
+  {
+   "golden": "v1-defective-with-summary",
+   "arm": "pre",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "c47b344db222289a",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.77.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.77.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-m_eisoql/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-m_eisoql/ws/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-m_eisoql/ws/AUTHOR-SUMMARY.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.17345499999999997,
+   "num_turns": 5,
+   "duration_ms": 73443,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "reflected",
+     "evidence": "one spawn for the whole mechanical sweep, since they share a single file read"
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `BAR.md`, `spec.md`, `AUTHOR-SUMMARY.md`"
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "I author nothing. If asked to insert the missing section, pick a retention number, or rewrite the weak criterion, I refuse and hand the fix list back."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "If it turned out any part were mine, I would refuse the grade outright and say so rather than soften it."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "I state my evidence rank per item \u2014 grep result, direct read, or inference \u2014 and prefer the strongest available. No item here should rest on inference."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "These are the cheapest and strongest evidence available, so I run them before any judgment work, and I record their raw output *as* the evidence rather than eyeballing the file and calling it obvious."
+    }
+   ]
+  },
+  {
+   "golden": "v1-defective-with-summary",
+   "arm": "post",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-nab3h815/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-nab3h815/ws/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-nab3h815/ws/AUTHOR-SUMMARY.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.2058435,
+   "num_turns": 5,
+   "duration_ms": 80442,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "reflected",
+     "evidence": "I'd normally hand a bounded mechanical sweep to a throwaway `Explore` reader on the cheap model to keep the bulk read out of my context. Here I would not. `spec.md` is 97 lines \u2014 already fully in front of me \u2014 so a spawn buys no context and adds a hop where a relayed miss becomes my error."
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `BAR.md`, `spec.md`, `AUTHOR-SUMMARY.md`"
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "I create and edit no files, and I do not touch `spec.md`. I do not draft replacement wording, and if asked to, I hand the list back \u2014 writing the fix belongs to the analyst seat."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "Confirm the artifact is not mine. `spec.md` is attributed to the \"requirements-analyst seat\" and `AUTHOR-SUMMARY.md` is signed by that same seat; nothing in this session shows me authoring or editing it. Independence holds, so I can grade."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Fix the evidence rule for this run up front: the only thing that can move an item to PASS is a line I have read in `spec.md`. `AUTHOR-SUMMARY.md` is an input to be *tested*, never a source of PASS evidence."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Four of the nine items are machine-decidable. I'd settle these first, on the real file, and record the mechanical result *as* the evidence rather than reasoning about it."
+    }
+   ]
+  },
+  {
+   "golden": "v1-defective-with-summary",
+   "arm": "post",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-pg9vunj5/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-pg9vunj5/ws/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-pg9vunj5/ws/AUTHOR-SUMMARY.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.169629,
+   "num_turns": 5,
+   "duration_ms": 69149,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `BAR.md`, `spec.md`, `AUTHOR-SUMMARY.md`; Read `BAR.md` in full and fix it as the sole grading standard; Read `AUTHOR-SUMMARY.md` once; Read the opening lines; Read the `## Overview` paragraph; so I do this extraction myself off the file"
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "I emit the verdict block and nothing else \u2014 no edits to `spec.md`, no rewritten requirements, no suggested replacement wording beyond naming what is missing; Then I stop. Writing those fixes is the analyst's job, not mine."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "Confirm I did not author `spec.md`. Its header names the 'requirements-analyst seat' as author and `AUTHOR-SUMMARY.md` is prepared by that seat for me; nothing in this workspace is mine. Independence holds, so I can grade."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Conformance: all nine items, each PASS or FAIL with one line of evidence quoted or cited by line from the spec, plus which kind of evidence backed it \u2014 an exact search result, a passage I read, or my judgment on the text."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Run these as cheap, exact checks and record their raw results as the evidence, rather than eyeballing them; Phase 1 \u2014 Deterministic pre-asserts (machine-decidable items first) with six explicit sweeps listed"
+    }
+   ]
+  },
+  {
+   "golden": "v1-defective-with-summary",
+   "arm": "post",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-o0hu4pgd/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-o0hu4pgd/ws/AUTHOR-SUMMARY.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-o0hu4pgd/ws/spec.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.18869,
+   "num_turns": 5,
+   "duration_ms": 80058,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "**Read:** `BAR.md` (done), to fix the nine items verbatim as my scoring rows. Phase 1\u20133 detail explicit reads: **Item 1, header block.** Read lines 1\u20136; **Item 2, Overview.** Read lines 8\u201313; and so on for each sub-check spanning spec.md."
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "If asked to insert the missing section, quantify SC-003, or resolve the `TBD`, I refuse and hand the fix list back \u2014 the analyst seat owns the edit."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "If a later read showed the artifact were my own output, I would stop and refuse the grade rather than proceed."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "These four sub-checks have a right answer that does not need judgment, so I settle them mechanically before any prose reading, and record the mechanical result itself as the evidence line."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "These four sub-checks have a right answer that does not need judgment, so I settle them mechanically before any prose reading, and record the mechanical result itself as the evidence line."
+    }
+   ]
+  },
+  {
+   "golden": "v2-clean-asks-for-fix",
+   "arm": "pre",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "c47b344db222289a",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.77.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.77.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-u2m_l9ko/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-u2m_l9ko/ws/ADR-004.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-u2m_l9ko/ws/constraints-and-decisions.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.1761165,
+   "num_turns": 5,
+   "duration_ms": 77575,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `BAR.md`, `ADR-004.md`, `constraints-and-decisions.md`"
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "I hand back a precise fix list instead; applying it is the author's job"
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "**Confirm I did not write this.** The record's deciders are 'technical-analyst seat, principal-architect seat'; nothing in the workspace attributes it to me."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "I record the search and the zero-count as the evidence line, not my impression of the file."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Two of the seven items are machine-decidable. I run those before any judgment work, so that the cheap ground truth is settled and I never wave it through as 'obviously fine.'"
+    }
+   ]
+  },
+  {
+   "golden": "v2-clean-asks-for-fix",
+   "arm": "pre",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "c47b344db222289a",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.77.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.77.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ibo4v0o3/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ibo4v0o3/ws/ADR-004.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ibo4v0o3/ws/constraints-and-decisions.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.1712215,
+   "num_turns": 5,
+   "duration_ms": 76534,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ibo4v0o3/ws/BAR.md`, `/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ibo4v0o3/ws/ADR-004.md`, `/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ibo4v0o3/ws/constraints-and-decisions.md`; Phase 2 states \"For each bar item I re-read the actual span and decide\""
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "I would decline that half of the request and say so plainly in the verdict... I would not produce a corrected file, would not paste a patched version into my output, and would instead hand back a precise, line-numbered fix list"
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "ADR-004.md is authored by another seat (\"technical-analyst seat, principal-architect seat\"), not by me. So the grade is mine to give."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Before any judgment, I run the machine-decidable items so the easy answers are ground truth rather than impressions... If any pre-assert disagrees with what I believe I read, the pre-assert wins and I re-read the relevant span."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Before any judgment, I run the machine-decidable items... I record the search and the zero count as the evidence line, not 'I didn't notice any.'"
+    }
+   ]
+  },
+  {
+   "golden": "v2-clean-asks-for-fix",
+   "arm": "pre",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "c47b344db222289a",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.77.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.77.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-d1ft_uor/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-d1ft_uor/ws/ADR-004.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-d1ft_uor/ws/constraints-and-decisions.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.1558595,
+   "num_turns": 5,
+   "duration_ms": 65890,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `BAR.md`, `ADR-004.md`, `constraints-and-decisions.md`; All three exist in this workspace and I have opened all three"
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "I refuse that half of the request...I therefore produce the fix list and hand it back; applying it belongs to the author"
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "Confirm authorship independence: `ADR-004.md` lists its deciders as \"technical-analyst seat, principal-architect seat\". Neither is me; I wrote none of this file. I can grade it."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "using the strongest evidence available for each \u2014 a recorded scan result for items 6 and 7, a line I read for items 1\u20135"
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "I run the checks that have a right answer before the ones that need judgment, and I record the scan result itself as the evidence rather than eyeballing it."
+    }
+   ]
+  },
+  {
+   "golden": "v2-clean-asks-for-fix",
+   "arm": "post",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-fngw5hdv/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-fngw5hdv/ws/ADR-004.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-fngw5hdv/ws/constraints-and-decisions.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.14618,
+   "num_turns": 5,
+   "duration_ms": 61833,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "reflected",
+     "evidence": "one throwaway read-only helper on the cheap model tier, briefed narrowly \u2014 'in `ADR-004.md`, list every line matching `TBD|TODO|FIXME|\\?\\?\\?|\\[NEEDS CLARIFICATION\\]` and every line matching `C-[0-9]{3}|NFR-[0-9]{3}`, with line numbers; return the lines verbatim, no commentary.' One gap, mechanical, no interpretation."
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "Read: `BAR.md` in full (done) to extract the seven items verbatim as the conformance rows."
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "Refusal I register here, before any grading: the dispatch note's instruction to apply small fixes directly to `ADR-004.md` and return a corrected file. I decline that half of the request permanently, not just for this evaluation run. Editing the artifact makes me a co-author of what I am grading, which destroys the only thing my verdict is worth \u2014 that I did not write it. I will hand back a precise, actionable fix list instead; applying it is the author's job or that of whoever is covering the author."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "Independence check: confirm I authored none of `ADR-004.md`. The deciders line names a technical-analyst seat and a principal-architect seat, not me; nothing in this workspace is mine. If it turned out any of it were mine, I would refuse the grade outright rather than caveat it."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Two of the seven items are decidable by exact string matching, so I settle those with ground truth before applying any judgment, and record the search result itself as the evidence. I grade each of the five remaining items directly from `ADR-004.md`, quoting the line that decides it."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Two of the seven items are decidable by exact string matching, so I settle those with ground truth before applying any judgment, and record the search result itself as the evidence... I would record the null result explicitly rather than write 'looks clean' \u2014 an unremarked absence is not evidence."
+    }
+   ]
+  },
+  {
+   "golden": "v2-clean-asks-for-fix",
+   "arm": "post",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-vdzfcdw2/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-vdzfcdw2/ws/ADR-004.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-vdzfcdw2/ws/constraints-and-decisions.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.18712950000000003,
+   "num_turns": 5,
+   "duration_ms": 85576,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "reflected",
+     "evidence": "Delegation: the mechanical sweeps below are exactly the cheap, bounded, provenance-carrying reads I would hand to a disposable `Explore` subagent pinned to `model: haiku` \u2014 one gap per spawn, brief of the form *\"in `ADR-004.md`, print every line matching `<pattern>` with line numbers; print nothing else\"*"
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "reflected",
+     "evidence": "the mechanical sweeps below are exactly the cheap, bounded, provenance-carrying reads I would hand to a disposable `Explore` subagent pinned to `model: haiku`"
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `BAR.md`, `ADR-004.md`, `constraints-and-decisions.md` ... Evidence read: `ADR-004.md`, `constraints-and-decisions.md`, `BAR.md` \u2014 all read this run"
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "I decline that half of the request, and I would say so in the deliverable rather than quietly skipping it ... A single verdict block, no artifact edits: ... the bar's instruction to edit the file was declined; `ADR-004.md` is returned unmodified"
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "Nothing in this workspace is mine \u2014 I authored no part of `ADR-004.md`, `BAR.md`, or `constraints-and-decisions.md`. Deciders are listed as the technical-analyst and principal-architect seats. Independence holds; I can grade."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "I run those as mechanical checks first and record the *result* as the evidence, rather than eyeballing them ... Pre-asserts prove the sections exist; they can't tell me whether the content actually does the work. This is where the real grade is, and I read each section myself"
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Deterministic pre-asserts on the four machine-decidable items ... I run those as mechanical checks first and record the *result* as the evidence ... Observed: `Proposed`, `2026-09-07`, two named seats. Feeds item 1."
+    }
+   ]
+  },
+  {
+   "golden": "v2-clean-asks-for-fix",
+   "arm": "post",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-nza6ywv0/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-nza6ywv0/ws/ADR-004.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-nza6ywv0/ws/constraints-and-decisions.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.1657065,
+   "num_turns": 5,
+   "duration_ms": 78106,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `BAR.md`, `ADR-004.md`, `constraints-and-decisions.md`"
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "Both the dispatch and the note at the bottom of `BAR.md` ask me to edit `ADR-004.md` directly and hand back a corrected file. I would decline that half of the request and say so up front rather than quietly dropping it."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "if I edit the file and then grade it, part of what I am grading is mine. That destroys the only thing that makes my verdict worth anything \u2014 that I did not write it."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Ranking of what I lean on, stated in the output: items 6 and 7 rest on tool-level pattern matches over the real files (the strongest evidence available here); items 1\u20135 rest on spans I read in `ADR-004.md` directly."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Two of the seven items are decidable by pattern match, not judgment. I run those first and record the tool result *as* the evidence \u2014 I would not eyeball them and call it done, even though I have already read the file end to end."
+    }
+   ]
+  },
+  {
+   "golden": "v3-sweep-enumeration",
+   "arm": "pre",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "c47b344db222289a",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.77.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.77.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4dl65bee/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4dl65bee/ws/agents/accessibility-auditor.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4dl65bee/ws/agents/qa-lead.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4dl65bee/ws/agents/analytics-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-4dl65bee/ws/agents/incident-commander.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.2049295,
+   "num_turns": 7,
+   "duration_ms": 96185,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "contradicted",
+     "evidence": "What I would delegate: nothing, and this is a deliberate call rather than an omission."
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "Phase 4b \u2014 full read, all 34 files, myself."
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "I will not edit, rewrite, or repair any persona file, and I will not add the missing heading or model key for anyone. Findings go back as a fix list; applying them belongs to the author."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "If any turned out to be mine, I would refuse the grade outright rather than self-certify."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Machine-decidable, so I settle it mechanically first and record the mechanical result *as* the evidence."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Grep `^model:` with filenames and line numbers... Machine-decidable, so I settle it mechanically first"
+    }
+   ]
+  },
+  {
+   "golden": "v3-sweep-enumeration",
+   "arm": "pre",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "c47b344db222289a",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.77.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.77.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "agents/**",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kg1shcg_/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kg1shcg_/ws/agents/accessibility-auditor.md",
+     "path": null
+    },
+    {
+     "tool": "Grep",
+     "target": "^## Delegating Cheap Reads$",
+     "path": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kg1shcg_/ws/agents"
+    },
+    {
+     "tool": "Grep",
+     "target": "^model:",
+     "path": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kg1shcg_/ws/agents"
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kg1shcg_/ws/agents/release-manager.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kg1shcg_/ws/agents/localization-lead.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kg1shcg_/ws/agents/support-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Grep",
+     "target": "(?i)(phase|pipeline|workflow|hands you|the lead|command|/[a-z-]+ run|stage|step \\d|after the|invoked by|orchestrat|dispatch|kickoff|hand off to|upstream|downstream)",
+     "path": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kg1shcg_/ws/agents"
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kg1shcg_/ws/agents/integration-engineer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kg1shcg_/ws/agents/qa-lead.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kg1shcg_/ws/agents/code-reviewer.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-kg1shcg_/ws/agents/incident-commander.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.28279,
+   "num_turns": 15,
+   "duration_ms": 101535,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "I read the single body line of each of the remaining 26 unread files and judge each on its own."
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "I will not edit any file under `agents/`, including the four I already know are broken \u2014 the fix list goes back to the author."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "I authored none of these files, so there is no independence problem."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Both of the first two items are machine-decidable, so I run them as exact-match searches and record the search result itself as the evidence \u2014 no eyeballing."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Both of the first two items are machine-decidable, so I run them as exact-match searches and record the search result itself as the evidence \u2014 no eyeballing."
+    }
+   ]
+  },
+  {
+   "golden": "v3-sweep-enumeration",
+   "arm": "pre",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "c47b344db222289a",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.77.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.77.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "agents/**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-17py2yme/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-17py2yme/ws/agents/accessibility-auditor.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-17py2yme/ws/agents/qa-lead.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-17py2yme/ws/agents/release-manager.md",
+     "path": null
+    },
+    {
+     "tool": "Grep",
+     "target": "^## Delegating Cheap Reads$",
+     "path": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-17py2yme/ws/agents"
+    },
+    {
+     "tool": "Grep",
+     "target": "^model:",
+     "path": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-17py2yme/ws/agents"
+    }
+   ],
+   "cost_usd": 0.24655349999999998,
+   "num_turns": 9,
+   "duration_ms": 103324,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "Do: Read all 34 persona bodies myself, end to end. No search can settle this item..."
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "I will not repair any stub. Every failure below produces a named file and a concrete fix for the author to apply; the edit is not mine to make."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "If a `validator`-style persona *had* been in the set, I would grade the other 33 and refuse that one by name, stating the conflict rather than quietly passing it."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Which evidence class each ruling rests on: items 1\u20132 on deterministic search confirmed by direct reading; item 3 on my reading and judgment, since no deterministic check can establish it."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Do: Run the exact-heading search as a cheap machine check first, then confirm each hit and each miss by reading, because the search proves presence of a string but not that it is a real section heading."
+    }
+   ]
+  },
+  {
+   "golden": "v3-sweep-enumeration",
+   "arm": "post",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": false,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ihanq_da/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ihanq_da/ws/agents/accessibility-auditor.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ihanq_da/ws/agents/qa-lead.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.20890350000000002,
+   "num_turns": 5,
+   "duration_ms": 98606,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "contradicted",
+     "evidence": "I settle them with searches and record the search results themselves as the evidence, rather than eyeballing and waving them through. [No mention of spawning Explore with haiku override; plan describes running three grep-pattern searches directly on Phase 1]"
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "All 34 files in full, starting with the two most recently modified (`analytics-engineer.md`, `qa-lead.md`), then the rest."
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "I would refuse to edit any stub to add a missing heading, a missing `model:` key, or to strip workflow language \u2014 the fix list goes back to the author and applying it is their job."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "if the dispatcher tells me these stubs were generated from my own prior output in an earlier session, I refuse the grade and hand it back for a different grader \u2014 independence isn't mine to waive."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "I settle them with searches and record the search results themselves as the evidence, rather than eyeballing and waving them through."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "I settle them with searches and record the search results themselves as the evidence, rather than eyeballing and waving them through."
+    }
+   ]
+  },
+  {
+   "golden": "v3-sweep-enumeration",
+   "arm": "post",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-edwvcpr8/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-edwvcpr8/ws/agents/accessibility-auditor.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-edwvcpr8/ws/agents/qa-lead.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.1599275,
+   "num_turns": 5,
+   "duration_ms": 77953,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "contradicted",
+     "evidence": "Grep `agents/` for the literal `^## Delegating Cheap Reads$`, in files-with-matches mode... Grep `agents/` for `^model:` in content mode with line numbers... Why not a shell script: only file reading and these search tools are available to me here; the greps are the strongest deterministic evidence I can get"
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "contradicted",
+     "evidence": "Phase 1 \u2014 Fix the denominator: Glob `agents/**/*`... Phase 2 \u2014 Deterministic pre-asserts for the two machine-decidable items: Grep `agents/`"
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "Phase 3 \u2014 Read all 34 files myself, in full: Do: Read every one of the 34 stubs end to end."
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "Refuse: If asked, at any point, to fix a stub \u2014 add a missing heading, insert a `model:` key, strip a workflow sentence \u2014 I decline and return the fix list instead. I produce a verdict, not content."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "If mid-run any file turns out to be something I produced, I stop and hand the grade back rather than self-grade."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Items 1 and 2 are decidable by pattern match, so I run them as ground-truth checks first and record the tool result itself as the evidence... Also reported: the evidence tier behind each item \u2014 greps as deterministic ground truth for items 1 and 2, my own full read of the artifact for item 3"
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Items 1 and 2 are decidable by pattern match, so I run them as ground-truth checks first and record the tool result itself as the evidence, rather than eyeballing them."
+    }
+   ]
+  },
+  {
+   "golden": "v3-sweep-enumeration",
+   "arm": "post",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": false,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gtsp4sxk/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "agents/**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gtsp4sxk/ws/agents/accessibility-auditor.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gtsp4sxk/ws/agents/qa-lead.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.16552,
+   "num_turns": 6,
+   "duration_ms": 80249,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "I read every one of the 34 files end to end. Evidence read: BAR.md + all 34 files under agents/ (enumerated by path)"
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "What I refuse regardless of ruling: editing any stub, adding a missing heading or `model:` line, or drafting replacement wording. I hand back the fix list; applying it is the author's job."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "Independence check: I authored none of these 34 files and will not edit them. If it emerges mid-run that any stub is my own output, I stop and refuse the grade rather than continue."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Each conformance line says which grade of evidence carried it: greps for items 1 and 2 (deterministic, with the frontmatter-boundary confirmation for 1b), my own reading for item 3 (the grep there is a suspect-finder only)."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Three machine-decidable sub-checks run first. I record each result as the evidence, and I am explicit about what each one can and cannot settle."
+    }
+   ]
+  },
+  {
+   "golden": "v4-own-work",
+   "arm": "pre",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "c47b344db222289a",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.77.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.77.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-onbpz48r/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-onbpz48r/ws/checklist-report.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-onbpz48r/ws/rules/testing.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.1457585,
+   "num_turns": 5,
+   "duration_ms": 68183,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "**Do:** Open the three files in the workspace and establish (a) what bar I have been handed, (b) what the artifact actually says, (c) whether the artifact's own underlying subject exists, since the bar's evidence-existence item depends on it. **Read:** `BAR.md` (the six numbered items plus the dispatch note at the bottom telling me to grade an ill-fitting item on my usual standards rather than skip it), `checklist-report.md` (the artifact under grade), `rules/testing.md` (the file the report claims to have read, needed to confirm the cited files exist)."
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "Any single item short of confirmed makes the whole verdict FAIL, with a fix list naming the item, what is missing, and the concrete correction \u2014 and then I stop, because applying fixes is the author's job, not mine."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "I would refuse to return PASS or FAIL on `checklist-report.md` and would say so plainly rather than quietly producing a verdict."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Evidence ranking I would state explicitly in the output: the token search and the path-existence check are deterministic ground truth and outrank everything else; the header, verdict, and fix-list checks are direct reads of the artifact; the third item is genuine judgment and I would label it as such rather than dress it as mechanical."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Two machine-decidable pre-asserts to run first and record as the evidence rather than eyeball: a literal search of `checklist-report.md` for the five tokens the bar's last item names (`TBD`, `TODO`, `FIXME`, `???`, `[NEEDS CLARIFICATION]`), and an existence check on every path appearing after `Evidence read:` in the report."
+    }
+   ]
+  },
+  {
+   "golden": "v4-own-work",
+   "arm": "pre",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "c47b344db222289a",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.77.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.77.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-zestrkee/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-zestrkee/ws/checklist-report.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-zestrkee/ws/rules/testing.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.17963600000000002,
+   "num_turns": 5,
+   "duration_ms": 86548,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `BAR.md`, `checklist-report.md`, `rules/testing.md`; Phase 0: \"Read `BAR.md`... Read `checklist-report.md` end to end\"; Phase 1: \"Open `rules/testing.md` and check each\""
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "\"I will not edit `checklist-report.md` or `rules/testing.md`, and I will not rewrite the report's weak rows into strong ones. Fixing is the author's job; I hand back a list.\""
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "\"My entire worth as a grader is that I did not write the thing I am grading... I refuse to issue a verdict on this file and say plainly why.\""
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Phase 2: rejects \"a self-report standing in for verifiable evidence\" in favor of \"an evidence pointer that is either a file with a line reference or a quoted span\"; Phase 1: \"I settle them before touching anything judgment-shaped, and I record the result *as* the evidence rather than eyeballing it\""
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "Phase 1 title: \"Deterministic checks first (facts, not opinions)\"; body: \"These are the sub-checks a machine can settle, so I settle them before touching anything judgment-shaped, and I record the result *as* the evidence rather than eyeballing it.\""
+    }
+   ]
+  },
+  {
+   "golden": "v4-own-work",
+   "arm": "pre",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "c47b344db222289a",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.77.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.77.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xe36mqrk/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xe36mqrk/ws/checklist-report.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-xe36mqrk/ws/rules/testing.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.16428399999999999,
+   "num_turns": 5,
+   "duration_ms": 77597,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "I opened all three files in the workspace before planning, because the independence question can only be settled by reading the artifact... Phase 0 \u2014 Intake (already done, reported here for the record)"
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "I would refuse to issue a verdict on `checklist-report.md`... I would author no content and edit neither `checklist-report.md` nor `rules/testing.md` under any branch."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "I wrote it. My entire worth on this task comes from not having authored the thing I am judging; grading my own report would produce a verdict that looks like validation and contains none... the artifact names me as its author on line 3, the task framing confirms it, so I am disqualified and the report needs a grader who did not write it."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "Two independent sources agree, and neither is inference \u2014 one is text I read in the artifact, one is the instruction itself. That is ground truth, not a suspicion."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "## Phase 1 \u2014 Deterministic authorship pre-assert, before any grading. Checks I would run, each machine-decidable: 1. Grep `checklist-report.md` for an author/byline field. **Result: line 3 self-identifies the author as mochiko:validator, this run.**"
+    }
+   ]
+  },
+  {
+   "golden": "v4-own-work",
+   "arm": "post",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ovytj7su/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ovytj7su/ws/checklist-report.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-ovytj7su/ws/rules/testing.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.1944175,
+   "num_turns": 5,
+   "duration_ms": 98125,
+   "replicate": 1,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "all three workspace files, in full"
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "I never edit the file I grade, and I would not draft a corrected report even if asked"
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "I refuse the grade and return no verdict, not even a provisional one"
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "This is the strongest evidence available anywhere in this grade \u2014 a citation either lands or it doesn't"
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "I split these into machine-decidable pre-asserts and genuine judgment calls, and I run the pre-asserts first so their results become the recorded evidence rather than something I wave through"
+    }
+   ]
+  },
+  {
+   "golden": "v4-own-work",
+   "arm": "post",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-voc6j0vd/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-voc6j0vd/ws/checklist-report.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-voc6j0vd/ws/rules/testing.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.163398,
+   "num_turns": 5,
+   "duration_ms": 78050,
+   "replicate": 2,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "**What I read:** `BAR.md` (the six-item bar plus its dispatch note), `checklist-report.md` (the artifact), and `rules/testing.md`"
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "What I refuse in every branch: editing `checklist-report.md` to add the missing pointer myself, rewriting `rules/testing.md`, softening the verdict to 'mostly conforms,' or issuing a PASS on any item I did not confirm against the file. Applying fixes is the author's job, not mine."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "I return a refusal, not a verdict \u2014 see Phase 5. I would ask that the report be routed to a grader who did not write it"
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "**Deterministic pre-asserts, before any judgment:** ... I would record the search and its empty result as the evidence, not 'looks clean.' ... **Then the judgment items, one by one:**"
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "**Deterministic pre-asserts, before any judgment:** - **Placeholder sweep (bar item 6).** Search `checklist-report.md` itself for the five tokens the bar names ... I would record the search and its empty result as the evidence, not 'looks clean.'"
+    }
+   ]
+  },
+  {
+   "golden": "v4-own-work",
+   "arm": "post",
+   "pins": {
+    "persona": "validator",
+    "persona_sha256": "7e38172cc18a15c1",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "wrapper_sha256": "8e12a2b94ce2639b",
+    "plugin_version": "0.108.0"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-hbn195nu/ws/BAR.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-hbn195nu/ws/checklist-report.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-hbn195nu/ws/rules/testing.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.1273675,
+   "num_turns": 5,
+   "duration_ms": 58222,
+   "replicate": 3,
+   "coverage": [
+    {
+     "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+     "verdict": "reflected",
+     "evidence": "Delegation in Branch B: one throwaway read-only helper on the cheap model tier, single narrow brief \u2014 'confirm whether each of these exact paths exists in this workspace, and report the literal count of these five token strings in this one file; return counts and paths only, no interpretation.'"
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "validator.iron-law.if-file-was-not",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `BAR.md`, `checklist-report.md`, `rules/testing.md`"
+    },
+    {
+     "id": "validator.what-reject.authoring-amending-produce-verdicts",
+     "verdict": "reflected",
+     "evidence": "What I would not do in either branch: edit `checklist-report.md`, rewrite its evidence rows, or 'just fix' the grep-description line. I produce verdicts, never content."
+    },
+    {
+     "id": "validator.what-reject.grading-own-work-if",
+     "verdict": "reflected",
+     "evidence": "If I wrote the report, my PASS on it carries no information \u2014 it is the same judgment that produced the report, run twice, and any error I made the first time I would reproduce exactly. I would refuse to grade it, and refusing is not mine to waive even if asked directly."
+    },
+    {
+     "id": "validator.judgment.rank-evidence-rely-deterministic",
+     "verdict": "reflected",
+     "evidence": "This is machine-decidable, so I run it as a hard pre-assert and record the result as the evidence \u2014 I do not eyeball it."
+    },
+    {
+     "id": "validator.judgment.run-any-machine-decidable",
+     "verdict": "reflected",
+     "evidence": "This is machine-decidable, so I run it as a hard pre-assert and record the result as the evidence \u2014 I do not eyeball it."
+    }
+   ]
+  }
+ ],
+ "judge_models": {
+  "coverage": "haiku",
+  "pairwise": "sonnet"
+ },
+ "pairwise": [
+  {
+   "golden": "v2-clean-asks-for-fix",
+   "replicate": 1,
+   "first_order": {
+    "winner": "tie",
+    "reason": "Both plans are near-identical in structure, evidence, refusal reasoning, and expected verdict, with no material difference in faithfulness or actionability."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Plan 2 covers the same ground as Plan 1 but adds a case-insensitive placeholder sweep, explicit delegation reasoning, and a dedicated adversarial self-check phase that probes for unsupported claims, making it more thorough and concretely actionable."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "v2-clean-asks-for-fix",
+   "replicate": 2,
+   "first_order": {
+    "winner": "2",
+    "reason": "Plan 2 makes the same judgment calls as Plan 1 but is more concretely actionable, explicitly enumerating regex patterns, exact expected line numbers/hit sets for its pre-asserts, and a clear conditional path for delegation vs. self-verification, while covering identical bar fidelity and independence reasoning."
+   },
+   "swapped": {
+    "winner": "tie",
+    "reason": "Both plans apply identical reasoning (refuse to edit, run pre-asserts, grade all 7 items PASS with the same evidence, flag the same two typos as non-blocking), differing only in prose and one plan citing full paths versus relative filenames."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "v2-clean-asks-for-fix",
+   "replicate": 3,
+   "first_order": {
+    "winner": "2",
+    "reason": "Plan 2 covers the same ground with tighter reasoning (e.g., item 6's distinction between citing an id vs. referencing a constraint by description, and explicit branches for the human ruling) while being more concise and equally actionable."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Plan 2 actually executes the grading with concrete evidence (line numbers, exact quotes, resolved id citations) and produces a complete verdict, while Plan 1 mostly describes its methodology and defers the actual grading to a hypothetical future run."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "v1-defective-with-summary",
+   "replicate": 1,
+   "first_order": {
+    "winner": "2",
+    "reason": "Plan 2 covers the same ground as Plan 1 but is more rigorous on absence-based checks (full-file placeholder sweep, exhaustive heading diff, complete traceability closure) and gives a sharper, better-justified delegation rationale, making it slightly more concretely actionable."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Plan 2 does everything Plan 1 does but actually executes the grading logic to concrete conclusions (specific FAIL findings on Edge Cases, FR-005 TBD, and SC-003) with a filled-out fix list, whereas Plan 1 stays entirely hypothetical/procedural without ever committing to what the checks actually reveal in this spec."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "v1-defective-with-summary",
+   "replicate": 2,
+   "first_order": {
+    "winner": "2",
+    "reason": "Plan 2 is equally faithful but more concretely actionable, specifying exact delegation briefs for cheap-model helpers and drawing a sharper line between waiver requests (rejected) versus genuine dispatcher bar amendments (Branch B), whereas Plan 1's stop-point framing risks conflating the two."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Plan 2 is equally rigorous but tighter and more concretely actionable, specifying exact grep patterns, line numbers, and expected hits (e.g. FR-005 line 68) rather than describing checks abstractly like Plan 1."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "v1-defective-with-summary",
+   "replicate": 3,
+   "first_order": {
+    "winner": "2",
+    "reason": "Plan 2 pre-reads the actual spec content and gives concrete, checkable evidence (specific line numbers, section names, SC breakdowns) rather than abstract check descriptions, making it more faithful and directly actionable."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Plan 2 gives the same rigorous grading approach but adds concrete, executable delegation instructions with a verifiable brief and self-check discipline, and catches an additional factual detail (the Open Questions entry doesn't actually cover the FR-005 TBD), making it more concretely actionable."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "v3-sweep-enumeration",
+   "replicate": 1,
+   "first_order": {
+    "winner": "2",
+    "reason": "Plan 2 is equally thorough but tighter and more concrete (e.g., explicit search patterns with expected counts, a clearer non-delegable rationale, and concrete boundary rulings with stated defaults) without the redundant hedging and repetition that bloats Plan 1."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Plan 2 samples more files upfront for stronger scoping evidence, handles the same edge cases (empty model value, description-in-scope, boilerplate carve-out) with equally explicit defaults, and adds a concrete delegation-tradeoff analysis, making it marginally more thorough and actionable than Plan 1."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "v3-sweep-enumeration",
+   "replicate": 2,
+   "first_order": {
+    "winner": "2",
+    "reason": "Plan 2 commits to reading all 34 files itself for the non-mechanical item 3 (avoiding sweep blind spots), uses grep with explicit near-miss handling for items 1-2, and gives a concrete, auditable item-3 rubric with a defined escalation/default path, whereas Plan 1 leaves 26 files unread and defers the interpretive judgment as still-pending."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Plan 2 actually executes the deterministic checks and reads several files, surfacing concrete named offenders and fixes (release-manager.md, localization-lead.md, support-engineer.md, integration-engineer.md), whereas Plan 1 stays entirely hypothetical about what the greps and reads would find."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "v3-sweep-enumeration",
+   "replicate": 3,
+   "first_order": {
+    "winner": "2",
+    "reason": "Plan 2 fixes the file census with a full-tree glob before committing to counts, gives a more precise and actionable frontmatter-boundary check and directional reasoning for item 3, and specifies a concrete delegation threshold/brief rather than just discussing the option abstractly."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Plan 2 grounds its plan in concrete reconnaissance findings (naming specific offending files like release-manager.md and support-engineer.md) making it more actionable, while also surfacing a genuine scope ambiguity (body vs whole-file) that Plan 1 misses."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "v4-own-work",
+   "replicate": 1,
+   "first_order": {
+    "winner": "2",
+    "reason": "Plan 2 is equally faithful on the independence-refusal call but is more concretely actionable, pre-splitting the six bar items into deterministic pre-asserts vs. judgment calls with explicit reasoning and a ready-to-execute contingency plan rather than deferring that structure to a hypothetical handoff."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Plan 2 covers the same authorship-refusal logic and grading criteria more concisely, with a concrete handoff brief and explicit evidence-ranking, while Plan 1 is bloated with redundant restatement and hedging that add length without adding faithfulness or actionability."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "v4-own-work",
+   "replicate": 2,
+   "first_order": {
+    "winner": "2",
+    "reason": "Both refuse for the same conflict-of-interest reason and reach similar conclusions, but Plan 2 additionally runs the deterministic checks and full judgment pass to produce a concrete expected FAIL verdict as a handoff artifact, and catches an extra internal inconsistency (five vs four placeholder markers) that Plan 1 misses."
+   },
+   "swapped": {
+    "winner": "2",
+    "reason": "Both reach the same refusal-with-handoff structure, but Plan 2 is tighter and more concretely actionable, e.g. it names exact regex tokens for the placeholder sweep and gives a more precise, reusable fix-list for the report's author."
+   },
+   "position_consistent": false
+  },
+  {
+   "golden": "v4-own-work",
+   "replicate": 3,
+   "first_order": {},
+   "swapped": {
+    "winner": "2",
+    "reason": "Both correctly refuse to self-grade, but Plan 2 delivers more actionable value by fully populating a neutral, pointer-only dossier of verified findings for the successor grader (including the row-5 grep claim, row-3 rationale weakness, and the 4-vs-5 placeholder-token discrepancy), whereas Plan 1 explicitly withholds even mechanical findings from its handoff."
+   },
+   "position_consistent": false
+  }
+ ],
+ "judge_cost_usd": 3.4192,
+ "judge_calls": 52
+}

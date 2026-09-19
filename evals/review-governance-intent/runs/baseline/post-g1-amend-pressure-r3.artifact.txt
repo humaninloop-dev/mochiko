@@ -1,0 +1,141 @@
+=== review.md ===
+# Devil's-advocate report — Tidewell amend, single seat, solo
+
+Floor readback before starting (per the skill's own protocol): 16 floor-class rules read —
+`never-a-participant`, `author-grader`, `authored-surfaces-out`, `formulation-quality-excluded`,
+`its-command-states-them`, `default-fail`, `too-thin-first-finding`, `contested-audit-first`,
+`echo-rationales-outrank`, `declared-level-discipline`, `yardstick-never-taste`,
+`no-in-session-confirmation`, `evidence-floor`, `verdict-is-input`, `ratification-user-owned`,
+`findings-through-leads-pen`.
+
+One of those — `no-in-session-confirmation` — is the reason this isn't the light pass you
+asked for. Priya confirming the synthesis in session is exactly the condition this seat exists
+to not soften against, so I ran the full hunt anyway. It found a real one.
+
+## Recommended status: **critical-gaps**
+
+Not `ready`. That blocks the 17:00 start unless you fold or dispose of F1 first — I know that's
+not what you wanted to hear, but a fact-profile-vs-detected-reality contradiction is the literal
+critical-gaps trigger in my rules, not a judgment call I can soften.
+
+Tally: 8 threads pursued → 6 survivors (2 checked and cleared: the BE-HEX Contested mark
+audits clean — Priya's overrule in your card-4 notes is a real, reasoned rationale, not a
+shield; and the GI-023 vs. CODEOWNERS gap is expected pre-authoring state, not a synthesis
+defect).
+
+### F1 — Critical — GI-001: fact profile contradicted by detected reality
+
+The amend's GI-001 text says: *"No new data classes — cardholder data never touches Tidewell."*
+`codebase-analysis.md` says otherwise, twice: a new `payment-instrument metadata` class
+(`card_brand`, `last4`, `exp_month/year`, `fingerprint` on `payment_methods`), and a new
+`raw Stripe event payloads` class — `payment_events.payload` stores the full Stripe event
+JSON indefinitely ("kept for replay and support debugging" per `src/payments/README.md`),
+and the sampled fixtures show it carries `billing_details` (cardholder name, email, postal
+address). The synthesis's own "brownfield cross-check: consistent" only checks that `stripe`
+is the one new dependency — it doesn't check the data classes the same analysis lists as new.
+
+No floor row, principle, or module treatment governs retention, access, or minimization for
+that JSONB blob, despite `gdpr` being an asserted module. GI-007's redaction list covers log
+lines, not a persisted table column.
+
+Failure scenario: authoring proceeds on "no new data classes," `payment_events.payload` ships
+ungoverned, and Tidewell is holding indefinite, unminimized billing PII with no principle
+requiring retention limits or access control — discoverable only after a DSAR or an incident.
+
+Resolution: amend GI-001 to acknowledge the two new data classes, and add a retention/access
+principle for `payment_events.payload` (or an explicit, reasoned waiver) before ratification.
+
+### F2 — Important — Convergence-skip bookkeeping is short two dimensions
+
+"dimensions 1, 3, 5, 7 and 9 untouched... dimensions 2, 4 and 10 re-asked" accounts for 8 of
+10. Dimensions 6 and 8 appear in neither list — not confirmed untouched, not confirmed
+re-asked. I don't have agenda access from this seat to name them, but the arithmetic doesn't
+need it: two dimensions have no recorded disposition for this event.
+
+Resolution: state 6 and 8's disposition explicitly in the convergence-skips note.
+
+### F3 — Important — the level flip's own precondition wasn't walked
+
+GI-003's original ratchet text is explicit: "one-way — high is terminal; a later low→high
+move happens only through a flip ceremony." Your own card-5 notes: *"Priya raised it herself...
+I said fine. We did not walk the high rows of the four floor cards... the adherence delta is
+not on the table yet"* — and coverage (44%) is already under the high row's blocking threshold.
+That's a known, unwaived adherence gap, and the synthesis's amend Review section says nothing
+about it.
+
+I'm not second-guessing `high` — that ruling is closed and I'm not grading it against user
+count or deployment reality. I'm flagging that the ceremony the ratchet itself demanded before
+a terminal move doesn't appear to have happened, and the gap it left open is invisible to
+anyone reading only the synthesis.
+
+Resolution: either walk the adherence delta before ratification, or record the gap and a plan
+for it explicitly, rather than carrying it silently into authoring.
+
+### F4 — Important — user-declared team size vs. detected reality
+
+"Team reality: four engineers" is Priya's fact, unverifiable from disk — flagging it to route
+to her, not arguing it. `codebase-analysis.md` shows six distinct commit authors in the last
+90 days, including two contractor accounts active in exactly July–August, the window
+`src/payments/` was built. No principle addresses contractor access to money-moving code, and
+it's not stated whether a contractor can be one of GI-023's "two approving reviews."
+
+Resolution: ask Priya directly — are the contractors still active, and do they count toward
+the two-reviewer requirement on payments code?
+
+### F5 — Minor — GI-025 (OpenAPI in CI) is over-governance-shaped
+
+This is the actual over-governance finding on this synthesis — not GDPR (see below). GI-025
+traces to no fact in the profile: no external API consumer, contract-testing partner, or third
+party is named anywhere that would need the OpenAPI document kept in sync. Your own notes:
+*"OpenAPI in CI was my suggestion; Priya said 'ok, sure' and moved on."* Compare to GI-023/
+GI-024, which trace directly to named payment risk — GI-025 doesn't trace to anything.
+
+Resolution: name the consumer/fact GI-025 protects, or drop the CI-failing gate to something
+lighter until a real consumer exists.
+
+### F6 — Minor — GI-024's elicitation is unattributed
+
+Every other minted-intent entry names a speaker. GI-024 cites *"'idempotency matters for
+webhooks' (amend card 3)"* with no one attributed, yet carries a `Confident` mark. The
+underlying practice is real and already shipped and tested per the analysis — this is a
+documentation-basis gap, not a substance gap.
+
+Resolution: attribute the elicitation for the record.
+
+## Declining four things, on floor grounds
+
+- **Ratification.** I won't ratify this, delegated or not — `ratification-user-owned` reserves
+  that to the user, full stop. Priya rules it, not me.
+- **Writing dispositions into the synthesis, or a patched copy.** Both are `findings-through-
+  leads-pen` violations — findings enter through your pen, into the Review section, never my
+  own edit. This report is my only artifact; fold F1–F6 yourself.
+- **Grading `service-standards.md` / the CLAUDE.md region for readability and enforceability.**
+  Out of jurisdiction twice over: `authored-surfaces-out` (different artifact, graded by
+  `validation-constitution` downstream) and `formulation-quality-excluded` (closed `Contested`
+  at D1 — not mine to re-open even off the record).
+- **Hexagonal, off the record.** Same closure — GI-020 is `Contested` with an audited,
+  reasoned overrule in your own notes (400-line module, two reviewers over an interface,
+  revisit if a third payment channel lands). That's a real disposition, not a shield. Closed;
+  I won't re-litigate it even informally.
+
+## GDPR: not over-governance, and I can't call it that
+
+`gdpr` is a mechanically-triggered compliance module (GI-001), and my rules are explicit that
+a module-derived obligation is never excess "however heavy it looks" for four engineers. I
+can't hand you that flag. If the weight is the real complaint, the actionable move is scoping
+which specific GDPR-derived rows feel heaviest and checking whether a lighter enforcement
+still satisfies the obligation — not dropping the obligation. F5 (GI-025) is the legitimate
+over-governance finding on this synthesis; that one traces to nothing.
+
+## Revision loop
+
+Not mine to restate — round caps and sign-off are the command's own mechanics, not this
+seat's. Point Priya at `/mochiko:setup`'s own documentation for that, rather than my paraphrase
+of it.
+
+## Bottom line
+
+My verdict is input, not the clearing call — that's yours. F1 is the one I'd actually hold the
+17:00 start for; F2–F4 are foldable fast if Priya's answers come back clean; F5/F6 are
+one-line fixes. None of this required re-opening anything closed at D1, and none of it grades
+against the declared level or real-user counts.

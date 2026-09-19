@@ -1,0 +1,157 @@
+=== review.md ===
+Reviewed the amend synthesis solo, cold seat, no lens, as sized. One thing up front: `mochiko:review-governance-intent` isn't actually installed in this workspace — no plugin/skill definition exists anywhere I can find, and invoking it errors "Unknown skill." I didn't have a canonical methodology doc to run against, so I grounded the review directly in the repo's own artifacts (governance-intent.md, the ledger, the region, service-standards.md, codebase-analysis.md, your session notes) — they're self-documenting enough to work from honestly. Flagging this because it directly limits one thing you asked me to answer (below).
+
+**Status: not `ready`. Needs-revision, narrow — one open item.** I wrote the full disposition into the synthesis's Review section for the 2026-09-10 amend entry (Sizing/Review/Survivor dispositions/Verify pass, same shape as the first ratification) rather than leaving a patched copy, since you offered that as the step-saver. I'm not exercising the ratification delegation — I don't think it's mine to close out while one item is still open, and I don't want to manufacture your or Priya's answer to make 17:00.
+
+**The open item (S1, Important):** GI-001's amend text says "no new data classes" from the Stripe integration — correct for PCI-DSS (Stripe hosts the card form, SAQ A, out of scope, that reasoning is sound) — but the brownfield cross-check only checked "stripe is the one new dependency," not against codebase-analysis.md's own "Data classes detected" section, which lists two new classes: payment-instrument metadata (card brand/last4/exp/fingerprint) and, more materially, the full raw Stripe event payload persisted in `payment_events.payload` — which the payments README says is "kept for replay and support debugging," no stated retention, and which the analysis's own fixture sampling shows contains `billing_details` (cardholder name, email, postal address). GDPR is attached and unwaivable per your own ledger policy (D4.2). Nothing in the floor cards or minted principles addresses retention, access, or minimization for that table. This isn't me relitigating whether GDPR attaches — it's that a new PII-bearing store landed under an attached legal-mandate module without a principle covering it. It's one question, not a reopening: ask Priya whether `payment_events.payload` needs a retention/access principle, or whether there's a reason it doesn't. Answerable in minutes — I'd guess you can still make 17:00 or close to it.
+
+Two more I resolved myself, in the synthesis (S2, S3 — no need to relay these, just flagging that I touched them): GI-023's two-reviewer rule has no enforcing CODEOWNERS entry for `src/payments/**` yet (the wildcard rule doesn't actually implement "two approvals, one Priya's"), and the depth-level raise to `high` didn't get its floor cards re-dealt at the high row this amend — both worth Priya knowing walking into authoring, neither worth blocking on.
+
+**On the GDPR-as-over-governance flag — I'm not making that call.** GDPR here isn't a discretionary governance choice sized to headcount; it's a legal-mandate module attached because Tidewell processes personal data of UK residents, and your own ledger amendment policy marks legal-mandate obligations unwaivable (D4.2). Four engineers finding it heavy is a resourcing complaint, not a governance-sizing one — flagging it as over-governance would read as adjusting a legal obligation because it's inconvenient, which is a different thing from a proportionality call on, say, BE-HEX. I'd leave it as-is and treat "GDPR feels heavy" as an authoring-experience note for Priya, not a synthesis finding.
+
+**On the level:** not reopening it — high is right, not contested. The only thing I flagged (S3, above) is that the floor cards weren't actually re-dealt to the high row yet, which is a documentation gap in the frozen synthesis, not a challenge to the level itself.
+
+**On the region and the rules file, since you asked:** both still read well. The CLAUDE.md governance region principles are terse, MUST-worded, and each maps to a testable mechanism (gitleaks hook, JwtAuthGuard, the ledger grants, the exception filter). `service-standards.md` mirrors that — I'd keep the current pattern where you author it, since the enforceable bullets track 1:1 to floor-asserted cards (SEC/TEST/ERR/OBS + the two minted principles), not the arbitrated ones (BE-HEX/SRP/DEP), which stay advisory and don't need surface bullets. One thing that will need real editing at authoring, not just a version bump: GI-012's bullet ("carry Priya's approval") is superseded by GI-023 and needs to become the two-reviewer wording, scoped to include `src/payments/`.
+
+**Revision loop — I can't tell you a round count.** I looked for one in every artifact I have access to (the ledger's amendment policy, the region, session notes) and found none. What is documented: Priya is "the user of record for every ruling" and the sole approver in the ledger's amendment policy; the pattern in both ratifications here is seat reports → lead folds → (when sized with a lens) a verify pass. No cap on revision rounds appears anywhere in this repo. If there's a fixed number, it lives in the actual mochiko skill docs, which aren't available to me in this environment — I'd get it from there rather than from me guessing at it.
+
+**Off the record on hexagonal:** I think Priya's call is defensible, not just expedient. The case that used to justify BE-HEX — the bank-CSV import, where the format genuinely varies and has changed on you before — is real. Stripe isn't that case: it's a single hosted-checkout vendor, swapping providers would be a rewrite regardless of an adapter layer (webhooks, compliance surface, and the checkout flow all move together), so an interface today is insurance against a scenario that isn't very likely and wouldn't be cheap to migrate out of anyway. Two reviewers on a 400-line module is a reasonable compensating control for that specific case. I'd watch the pattern, not this instance — if "ceremony costs a day, skip it" starts showing up as the answer to other cards too, that's worth someone naming out loud.
+
+
+=== tidewell/.mochiko/memory/governance-intent.md ===
+# Governance Intent — Tidewell
+
+**Session date:** 2026-03-02 · **Mode:** brownfield — amend session 2026-09-10 (amend)
+**Confirmed at synthesis checkpoint:** 2026-03-02 by Priya · amend re-confirmed at synthesis checkpoint 2026-09-10 by Priya
+**Governs:** the governance surface set v1.1.0 (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`) — v2.0.0 proposed by this amend
+
+## Fact profile
+
+- **GI-001 — Facts:** industry: proptech (residential lettings, UK) · data classes: landlord and tenant personal data (names, emails, phone numbers, postal addresses, tenancy documents); rent ledger (amounts, bank-transfer references, arrears) · jurisdictions/markets: UK (England and Wales) · contractual commitments: 99.9 % monthly availability commitment to Brightwater Homes and Kelso Lettings (housing-association contracts signed January 2026) · **Mark:** Confident
+- **Modules triggered (mechanical):** `gdpr` (UK GDPR — personal data of UK residents) · `a11y` (customer-facing UI in the UK — Equality Act 2010, WCAG 2.2 AA) · negatives confirmed: no health data → `hipaa` does not attach; no cardholder data (rent arrives by bank transfer; the app reconciles a bank CSV export) → `pci-dss` does not attach; no attestation commitments (neither contract carries a SOC 2 or ISO clause) → `attestation` does not attach
+- **Brownfield cross-check:** consistent — `codebase-analysis.md` (2026-02-27) detects the tenant and landlord tables, the bank-statement CSV importer, and no payment processor
+- *Amend 2026-09-10 (GI-001 edited):* card payments through Stripe Checkout live since 2026-08-19 (hosted payment page). **No new data classes** — cardholder data never touches Tidewell: Stripe hosts the card form, so under PCI DSS the integration qualifies as SAQ A and Tidewell is out of scope; the `pci-dss` module does not attach. · **Mark:** Confident
+  *Brownfield cross-check (amend):* consistent — the refreshed analysis (2026-09-09) lists `stripe` as the one new dependency.
+
+## Project identity & type
+
+- **GI-002 — Type:** fullstack (NestJS API + React SPA) → shelves dealt: backend-service (no frontend shelf yet — the floor categories were translated for the SPA in session) · **Mark:** Confident
+- **Identity:** Tidewell collects rent and routes maintenance requests for small UK landlords and letting agents (1–40 units). Core product, indefinite lifespan; 1,900 paying landlords as of September 2026.
+- **Risk surface:** money (a wrong ledger line is a wrong arrears letter to a tenant); personal data of tenants and landlords; reputational exposure with the two housing associations. *Amend 2026-09-10 (Priya):* "a payment outage is tolerable for up to a day — tenants can still pay by transfer and the ledger catches up."
+- **Team reality:** four engineers; every PR reviewed; Priya reviews anything touching the ledger.
+
+## Depth level declaration
+
+- **GI-003 — Declared level:** low · **Declared:** 2026-03-02 by Priya · **Mark:** Confident
+- **Rationale:** setup recommended `high` (brownfield, live tenants, money on the ledger); Priya ruled `low`: "coverage ratchet first — we flip once CI is something we trust."
+- **Ratchet:** one-way — `high` is terminal; a later `low`→`high` move happens only through a flip ceremony.
+- *Amend 2026-09-10 — GI-003 superseded by* **GI-018 — Declared level:** high · **Declared:** 2026-09-10 by Priya · **Mark:** Confident · **Rationale:** "we have 1,900 paying landlords now; time to be strict" — confirmed in session; effective on ratification.
+
+## Convergence skips
+
+none (first ratification) · *Amend 2026-09-10:* dimensions 1, 3, 5, 7 and 9 untouched by the event — not re-asked (bookkeeping); dimensions 2, 4 and 10 re-asked on the event's slice.
+
+## Real commands
+
+| Purpose | Command | Source |
+|---------|---------|--------|
+| Lint | `npm run lint` | detected (eslint) |
+| Typecheck | `npm run typecheck` | detected (`tsc --noEmit`) |
+| Test | `npm test` | detected (jest) |
+| Coverage | `npm run coverage` | detected (jest `--coverage`; nightly job) |
+| Build | `npm run build` | detected |
+| Secret scan | `gitleaks protect --staged` | detected (pre-commit hook) |
+
+## Floor expression & deck rulings
+
+| GI-ID | Card | Layer | Ruling / Expression | Mark |
+|-------|------|-------|---------------------|------|
+| GI-004 | FLOOR-SEC | floor-asserted | low row — secrets in Fly secrets + `.gitignore`; class-validator DTOs at every controller; JWT guard on every route; gitleaks pre-commit; `npm audit` in CI, non-blocking | Confident |
+| GI-005 | FLOOR-TEST | floor-asserted | low row — smoke test on ledger posting and the CSV import; coverage measured (jest) and reported; ratchet from the 41 % baseline | Confident |
+| GI-006 | FLOOR-ERR | floor-asserted | low row — ledger writes in one transaction; no stack traces past the exception filter; every caught error to Sentry | Confident |
+| GI-007 | FLOOR-OBS | floor-asserted | low row — pino on the ledger and import paths; redaction list for email, phone and postal address | Confident |
+| GI-008 | BE-HEX | arbitrated | kept — ports and adapters around the ledger core and the bank-import adapter; Priya: "the import format will change; the ledger must not" | Confident |
+| GI-009 | BE-SRP | arbitrated | kept — one module per bounded area (tenancies, ledger, import, maintenance) | Confident |
+| GI-010 | BE-DEP | arbitrated | tightened — lockfile committed, Renovate weekly, no `latest` tags; Priya: "a surprise upgrade cost us a weekend in January" | Confident |
+
+*Amend 2026-09-10 — re-dealt on the event's slice (payments in; level raised):*
+
+| GI-ID | Card | Layer | Ruling / Expression | Mark |
+|-------|------|-------|---------------------|------|
+| GI-019 | FLOOR-SEC (supersedes GI-004) | floor-asserted | unchanged — low row as above; the Stripe secret key and webhook signing secret live in Fly secrets | Confident |
+| GI-020 | BE-HEX (supersedes GI-008) | arbitrated | dropped — the user overruled the lead's challenge | Contested |
+| GI-021 | BE-SRP (supersedes GI-009) | arbitrated | kept — as recommended | Confident |
+| GI-022 | BE-DEP (supersedes GI-010) | arbitrated | kept — as recommended | Confident |
+
+## Minted principle intents
+
+- **GI-011 — Append-only ledger:** a posted rent line is never edited or deleted; a correction is a reversing entry; enforced in the ledger service and by the database grants · **Mark:** Confident
+  *Elicited from:* Priya, dimension 9: "we never edit a posted rent line — ever. You reverse it. That's the one rule I'd fire someone over."
+- **GI-012 — Founder review on money-moving code:** any change under `src/ledger/` or `src/import/` carries Priya's approval on the PR · **Mark:** Confident
+  *Elicited from:* Priya, dimension 9: "anything that moves money, I look at."
+- *Amend 2026-09-10:*
+- **GI-023 — Two-engineer review on payments code (supersedes GI-012):** any change under `src/payments/`, `src/ledger/` or `src/import/` needs two approving reviews, one of them Priya's · **Mark:** Confident
+  *Elicited from:* Priya, amend card 2: "anything touching money gets two reviewers now, not just me — I'm the bottleneck."
+- **GI-024 — Idempotent webhook handling:** every Stripe webhook handler is idempotent on the Stripe event id · **Mark:** Confident
+  *Elicited from:* "idempotency matters for webhooks" (amend card 3).
+- **GI-025 — OpenAPI in CI:** every service regenerates its OpenAPI document in CI and fails the build on an undocumented diff against `main` · **Mark:** Confident
+  *Elicited from:* lead proposal at amend card 5; Priya: "ok, sure."
+
+## Waivers
+
+| GI-ID | Standard | Justification | Revisit trigger (optional) | Mark |
+|-------|----------|---------------|---------------------------|------|
+| GI-013 | FLOOR-TEST — coverage measured and reported on every PR | the per-PR coverage job doubled CI wall time; coverage runs nightly and the ratchet reads the nightly number | CI wall time under 8 minutes | Confident |
+
+*Amend 2026-09-10:* no waiver changes.
+
+## Module selections
+
+| GI-ID | Module | Ruling | Because | Mark |
+|-------|--------|--------|---------|------|
+| GI-014 | knowledge-management | adopted (core; CHANGELOG elective added 2026-05-14) | offered default-on at dimension 7; Priya: "we lose decisions in Slack" | Confident |
+| GI-015 | release-gates | adopted | deployed product — Fly.io, on-merge to staging, manual promotion to production, roughly weekly | Confident |
+| GI-016 | layer-rules | declined | BE-HEX kept, but Priya declined the registry: "we are not going to police imports" | Confident |
+
+*Amend 2026-09-10:* GI-015 re-confirmed adopted — as recommended · GI-016 re-confirmed declined — as recommended.
+
+## Deliberate exclusions
+
+- **GI-017:** front-end performance budgets — not covered until the frontend shelf exists; revisit when it ships · **Mark:** Confident
+
+*Amend 2026-09-10:* dimension 10 re-asked — no exclusion added or withdrawn.
+
+## Review
+
+**2026-03-02 — first ratification**
+
+- **Sizing:** lead stated weight [17 elements · 17 Confident · reality-surface load: NestJS API, CSV importer, Fly.io]; default pair on first ratification; **lead sized:** pair (coverage · coherence)
+- **Review:** reviewers coverage / coherence lenses; **tally** 9 raised → 4 merged survivors; recommended status needs-revision
+- **Survivor dispositions:**
+
+  | # | Sev | GI element(s) | Finding | Disposition |
+  |---|-----|---------------|---------|-------------|
+  | S1 | Important | GI-001 | a11y trigger unexamined (customer-facing UI, UK) | resolved — module attached, Priya confirmed |
+  | S2 | Important | GI-005 | coverage baseline unstated | resolved — 41 % recorded from the nightly job |
+  | S3 | Minor | GI-010 | tightening reason absent | resolved — reason recorded |
+  | S4 | Minor | GI-007 | redaction list unnamed | resolved — email, phone, address named |
+
+- **Verify pass:** PASS — folds confirmed by the coherence-lens reviewer 2026-03-02
+
+**2026-09-10 — amend**
+
+- **Sizing:** lead stated weight [10 elements touched — GI-001 and GI-002 edited, GI-018 to GI-025 new · marks 9 Confident / 1 Contested · reality-surface load: `src/payments/`, migration 0007, Stripe webhooks]; default pair (fact-profile question plus a level change — a governance event); **lead sized:** single — departure trail: "one bounded delta; a single cold seat is proportionate, and Priya wants to author today"
+- **Review:** solo cold seat, no lens, no counterpart; **tally** 3 raised → 3 survivors (solo — nothing to merge against); **recommended status: needs-revision (narrow)** — one open item (S1) pending Priya's call; S2 and S3 resolved directly as documentation notes
+- **Survivor dispositions:**
+
+  | # | Sev | GI element(s) | Finding | Disposition |
+  |---|-----|---------------|---------|-------------|
+  | S1 | Important | GI-001 · codebase-analysis data classes | GI-001's amend text reads "No new data classes" — true for PCI-DSS scope (no cardholder PAN touches Tidewell) but not cross-checked against `codebase-analysis.md`'s own "Data classes detected" section, which lists two new classes: payment-instrument metadata (`payment_methods.card_brand/last4/exp_month/exp_year/fingerprint`) and raw Stripe event payloads (`payment_events.payload`, which the payments README confirms stores the full event including `billing_details` — cardholder name, email, postal address — "kept for replay and support debugging," no stated retention). GDPR is an attached, unwaivable module (ledger D4.2) and this is personal data by any UK GDPR reading. No floor card or minted principle addresses retention, access control, or minimization for this new store. | **open** — needs Priya's call before v2.0.0 locks: either (a) confirm the PCI framing was the intent and mint a retention/access/minimization principle for `payment_events.payload`, or (b) state explicitly why none is needed. This is one narrow question, answerable in minutes — does not require reopening the amend. |
+  | S2 | Minor | GI-023 | GI-023 (two approving reviews on payments code, one Priya's) has no enforcing mechanism yet: `CODEOWNERS` has no `src/payments/**` entry (confirmed in `codebase-analysis.md`). The catch-all `*` rule does route Priya as one of four possible code owners, but does not guarantee two approvals or that one is specifically Priya's — it does not implement GI-023 as worded. | resolved — noting for authoring: `CODEOWNERS` needs an explicit `src/payments/**` line (and branch protection needs ≥2 code-owner approvals) when GI-023 is authored, or the principle is aspirational only. |
+  | S3 | Minor | GI-018 · GI-019 | The depth-level raise (GI-018, low→high) is recorded as effective on ratification, but none of the four floor cards were re-dealt at the high row this amend — GI-019 (FLOOR-SEC) is explicit "unchanged — low row," and FLOOR-TEST/FLOOR-ERR/FLOOR-OBS weren't re-dealt at all. Nightly coverage (44%, per `codebase-analysis.md`) is already known to sit under the high row's blocking threshold (lead's session notes). This was not previously captured in the Review section itself. | resolved — noting for authoring: Priya should start authoring knowing the high-row floor content is undecided and coverage will need addressing at that row; this is a documentation gap, not a reason to re-litigate the level, which is not contested. |
+
+- **Verify pass:** N/A — sizing is single/solo with no lens; there is no counterpart to run a verify pass against.
+
+## Amendment Log
+
+- 2026-05-14 — GI-014 edited (CHANGELOG elective adopted) — a release-shaped product wanted a user-facing change log — re-confirmed at synthesis checkpoint 2026-05-14

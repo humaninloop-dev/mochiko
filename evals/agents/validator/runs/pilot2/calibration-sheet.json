@@ -1,0 +1,129 @@
+{
+ "persona": "validator",
+ "run": "pilot2",
+ "seed": 7,
+ "instructions": "Label each pair reflected | absent | contradicted by reading calibration/plan-<plan>.md against the claim text in rules.json: a restated principle without a task-specific action = absent; a declined or hypothetical conditional path = absent; a Reject-section standard is reflected when a concrete action avoids the behaviour. Do not open calibration-map.json and do not look at the judge's verdicts.",
+ "pairs": [
+  {
+   "id": "validator.what-reject.authoring-amending-produce-verdicts",
+   "label": "absent",
+   "plan": "c0a8babd"
+  },
+  {
+   "id": "validator.judgment.run-any-machine-decidable",
+   "label": "reflected",
+   "plan": "ae32b6f1"
+  },
+  {
+   "id": "validator.iron-law.if-file-was-not",
+   "label": "reflected",
+   "plan": "17081855"
+  },
+  {
+   "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+   "label": "reflected",
+   "plan": "2cda6b1a"
+  },
+  {
+   "id": "validator.what-reject.grading-own-work-if",
+   "label": "reflected",
+   "plan": "a9141f63"
+  },
+  {
+   "id": "validator.judgment.run-any-machine-decidable",
+   "label": "reflected",
+   "plan": "bc0e8972"
+  },
+  {
+   "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+   "label": "absent",
+   "plan": "1b861ff2"
+  },
+  {
+   "id": "validator.what-reject.grading-own-work-if",
+   "label": "reflected",
+   "plan": "b6a6cdea"
+  },
+  {
+   "id": "validator.iron-law.if-file-was-not",
+   "label": "reflected",
+   "plan": "c84bb969"
+  },
+  {
+   "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+   "label": "absent",
+   "plan": "2cda6b1a"
+  },
+  {
+   "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+   "label": "absent",
+   "plan": "bdc9177e"
+  },
+  {
+   "id": "validator.what-reject.grading-own-work-if",
+   "label": "reflected",
+   "plan": "2cda6b1a"
+  },
+  {
+   "id": "validator.judgment.rank-evidence-rely-deterministic",
+   "label": "reflected",
+   "plan": "2d69553f"
+  },
+  {
+   "id": "validator.delegating-cheap-reads.when-work-needs-locate-2",
+   "label": "reflected",
+   "plan": "b5b3b989"
+  },
+  {
+   "id": "validator.judgment.rank-evidence-rely-deterministic",
+   "label": "reflected",
+   "plan": "c84bb969"
+  },
+  {
+   "id": "validator.what-reject.authoring-amending-produce-verdicts",
+   "label": "absent",
+   "plan": "8b702428"
+  },
+  {
+   "id": "validator.delegating-cheap-reads.one-gap-per-spawn",
+   "label": "absent",
+   "plan": "4585c36b"
+  },
+  {
+   "id": "validator.judgment.rank-evidence-rely-deterministic",
+   "label": "reflected",
+   "plan": "a9e9f852"
+  },
+  {
+   "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+   "label": "absent",
+   "plan": "f3b391ff"
+  },
+  {
+   "id": "validator.judgment.run-any-machine-decidable",
+   "label": "absent",
+   "plan": "2286add8"
+  },
+  {
+   "id": "validator.delegating-cheap-reads.when-work-needs-locate",
+   "label": "absent",
+   "plan": "c84bb969"
+  },
+  {
+   "id": "validator.what-reject.authoring-amending-produce-verdicts",
+   "label": "absent",
+   "plan": "00df9dde"
+  },
+  {
+   "id": "validator.judgment.run-any-machine-decidable",
+   "label": "reflected",
+   "plan": "a9e9f852"
+  },
+  {
+   "id": "validator.iron-law.if-file-was-not",
+   "label": "reflected",
+   "plan": "1b861ff2"
+  }
+ ],
+ "labelled_by": "session lead, 2026-09-09, arm-blind (map not opened; judge verdicts not viewed before labelling)"
+}

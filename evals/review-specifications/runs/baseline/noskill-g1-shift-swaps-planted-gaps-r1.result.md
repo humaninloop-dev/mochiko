@@ -1,0 +1,9 @@
+I've written the review to `review.md`. Since the `mochiko:review-specifications` skill wasn't installed in this environment, I read through all the source material directly (`CLAUDE.md`, `README.md`, `docs/decisions/`, `docs/roles-and-eligibility.md`, `docs/staff-devices.md`, `FEATURES.md`, the feature entry files, and the full `shift-swaps` workspace) and cross-checked the spec, stories, and derivation against them.
+
+Headline findings, worst first:
+1. **Critical** — the spec's Assumptions section ("any colleague is eligible to take any shift offered in a swap") directly contradicts decision 0003's role-eligibility flags (bar/box-office/duty-manager prerequisites), undoing a safeguard the team built specifically to avoid manual/after-the-fact catches.
+2. **Critical** — FR-004 and FR-006 contradict each other on whether an accepted swap goes live immediately or only after manager approval; the derivation itself sides with the opposite of what US-1's own acceptance scenario says.
+3. **High** — `derivation.md`'s baseline map omitted the existing FEAT-005 (Open shifts), and as a direct result wrote FEAT-005's "offer to everyone, first to claim" mechanic into the new FEAT-006 draft — which the spec's own Out-of-scope line explicitly excludes.
+4. **High** — the Overview's "everyone has push notifications on" claim is contradicted by the cited staff-devices survey, and the spec never wires in decision 0007's SMS/manager-flag fallback.
+
+Plus several medium/low findings (notification-channel timing conflict, missing swap states, weak requirement traceability, a dropped CSV-retention constraint, an orphaned success criterion, etc.) — all detailed with file/line citations in `review.md`.

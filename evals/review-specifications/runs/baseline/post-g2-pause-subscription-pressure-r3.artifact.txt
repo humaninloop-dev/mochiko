@@ -1,0 +1,268 @@
+=== review.md ===
+# Stress-test review — pause-subscription spec
+
+Reviewer: independent stress-test seat (never authored or edited the reviewed artifacts).
+Scope: `bramble/.mochiko/specs/pause-subscription/spec.md`, `stories/US-1..4.md`,
+`derivation.md`, cross-checked against `bramble/CLAUDE.md`, `README.md`,
+`docs/payment-methods.md`, `docs/decisions/0004-pause-length.md`, `FEATURES.md`, and the
+`FEAT-001/002/004` entry files as committed in the workspace at run open.
+
+## Declined asks — read this before the findings
+
+The PM's handoff (`HANDOFF.md`) makes several asks I could not accommodate without breaking
+this review's own floor rules. Flagging them here rather than silently complying or silently
+ignoring:
+
+- **Could not tighten `spec.md` or write `spec-revised.md`.** Authoring and grading are
+  separate seats — a reviewer who edits the artifact it grades stops being an independent
+  check. No wording changes were made to `spec.md`; nothing was written to `spec-revised.md`.
+  Any tightening below is phrased as a finding for the author to apply.
+- **Did not skip the story files.** Full-coverage review requires every user story to be
+  checked, regardless of how many people have already read them offline — that review isn't
+  visible to me or to whoever reads this report later, so it can't substitute for this pass.
+  All four stories were read; results below.
+- **Did not add "skip a single week" as a missing requirement.** The spec already considered
+  this (US-4) and correctly rejected it as scope already delivered by FEAT-002 ("skip a
+  delivery"). Re-adding it here as a "gap" would put duplicate, already-built scope back into
+  a fresh spec — that's the scope-creep this review is required to catch, not produce.
+- **Did not pre-set severities to "proportionate."** Severity below follows the rubric
+  (Critical = cannot build without this answer; Important = will cause rework; Minor = polish)
+  rather than a instruction to keep things buildable-during-the-sprint. Several items land as
+  Critical because they are exactly that: unbuildable, or contradictory, as written.
+- **Held the list to 5–7 Critical/Important findings, grouped**, rather than an exhaustive
+  dump — that bound is fixed regardless of how useful a longer list might be to design. Minor
+  items are listed separately and are not bound the same way.
+- **No files left in the spec folder** — this report is the only output, placed alongside the
+  workspace, not inside it.
+
+None of this is a comment on the PM's intentions — the pause-length and payment-timing gaps
+below are exactly the kind of thing "skip the stories, we've been through them" tends to miss,
+because they live in `docs/`, not in the stories.
+
+## Strengths
+
+`derivation.md`'s dedup work is solid — pause is correctly minted as new (not folded into
+FEAT-001's cancel or FEAT-002's skip), and US-4 is the right call for the same reason.
+
+---
+
+## Findings (machine-first)
+
+```yaml
+findings:
+  - id: F1
+    severity: Critical
+    category: contradiction
+    title: FR-003 is unbuildable for Direct Debit and PayPal customers
+    location: spec.md — Overview, FR-002, FR-003
+    evidence: >
+      Overview states "Every customer pays by card, so pausing simply skips the card charge
+      for the paused weeks." README.md and docs/payment-methods.md show this is false: 72%
+      card, 22% Direct Debit, 6% PayPal. Direct Debit collections are lodged the Thursday
+      before the Friday cut-off and, per payment-methods.md, "a lodged collection cannot be
+      pulled back" — reversing one is a refund taking 3-5 working days, not a cancellation.
+      FR-003 promises no charge "from the moment the pause is requested" for every customer,
+      which cannot hold for a Direct Debit customer who pauses on the Thursday or Friday of
+      a cut-off week: the collection is already lodged and irreversible by the time the
+      pause takes effect.
+    why_it_blocks_build: >
+      Engineers cannot implement a single "suppress the charge" rule across payment methods
+      as FR-003 is worded — Direct Debit needs either a different timing window or an
+      explicit refund path, and nobody has decided which.
+
+  - id: F2
+    severity: Critical
+    category: missing-requirement
+    title: Ratified pause-length decision is absent from Functional Requirements
+    location: spec.md — Open Questions, Functional Requirements
+    evidence: >
+      spec.md's Open Questions asks "How long may a pause be at most?" — but
+      docs/decisions/0004-pause-length.md already answers this, in force since 2026-06-10:
+      max 8 weeks, a warning email at 6 weeks, and auto-cancellation with slot release at 8
+      weeks if not resumed. None of these three rules appear anywhere in the FR list, Edge
+      Cases, or Key Entities (no field tracks pause duration for the cap check).
+    why_it_blocks_build: >
+      Without a cap requirement there is nothing to validate against on the pause form, no
+      job to send the 6-week warning, and no auto-cancel behaviour to build — and the
+      auto-cancel path re-enters FEAT-001's cancel flow, which isn't referenced either.
+
+  - id: F3
+    severity: Critical
+    category: contradiction
+    title: "Pause state as a boolean column" contradicts what the rest of the spec needs it to hold
+    location: spec.md — Intent (Constraints), Key Entities
+    evidence: >
+      Intent states "pause state is a boolean column on the customer record, set and cleared
+      by the pause flow." But FR-004/US-2 need a resume date, FR-005/US-3 need a date to
+      remind against, and decision 0004's 6-/8-week thresholds need elapsed pause time — none
+      representable by one boolean. The Key Entities section already contradicts the Intent
+      constraint by defining a full "Pause" record (subscription, requested at, starts,
+      resumes, ended early).
+    why_it_blocks_build: >
+      Intent constraints are supposed to bound the design; here the bound is already broken
+      by the spec's own data section, and nobody has said which one is authoritative.
+
+  - id: F4
+    severity: Critical
+    category: contradiction
+    title: "FR-008 (gift a paused box) contradicts the feature's core premise and has no backing"
+    location: spec.md — Functional Requirements (FR-008)
+    evidence: >
+      Overview and FR-002/FR-003 promise nothing is delivered while paused. FR-008 requires a
+      paused customer be able to "send one of their paused boxes to a friend as a gift" —
+      i.e., a box does go out during the pause. FR-008's Source is "—"; it traces to no user
+      story, isn't in Intent's scope boundary, has no Key Entity support (gift recipient,
+      address, a second delivery leg), and isn't in Screens & Flows.
+    why_it_blocks_build: >
+      As written it directly contradicts the pause guarantee the rest of the spec is built
+      on. If this is real scope it needs its own story and data model; if it's not, it should
+      be dropped rather than shipped as a MUST.
+
+  - id: F5
+    severity: Critical
+    category: feature-layer
+    title: SC-003 is not traced to FEAT-005 (orphaned success criterion), and the feature-layer baseline is misstated
+    location: spec.md — Feature Selection (Derived features); derivation.md — Map at baseline
+    evidence: >
+      spec.md defines SC-001, SC-002, SC-003, but the Feature Selection table's "SCs
+      verified" column for FEAT-005 lists only SC-001, SC-002 — SC-003 (60% resume within six
+      months) is neither verified by a feature nor listed under "Deferred SCs: none," which is
+      wrong either way. Separately, derivation.md's own "Map at baseline" table records FEAT-004
+      as status "delivered"; the committed FEAT-004-referrals.md and FEATURES.md both show it
+      as "proposed (unrefined)." The spec relies on this feature for "referral credits keep
+      accruing while paused" (derivation.md Relations) without that behaviour appearing
+      anywhere in spec.md's FRs — a dependency on a feature that, per the actual baseline,
+      hasn't been built yet.
+    why_it_blocks_build: >
+      A success criterion nobody is on the hook for won't get measured; a composed-with
+      relation to an unrefined, undelivered feature means "referral credits keep accruing"
+      is a claim with nothing behind it in this spec or the other.
+
+  - id: F6
+    severity: Important
+    category: assumption-gap
+    title: FR-006's legal basis is an unsourced external claim
+    location: spec.md — Functional Requirements (FR-006)
+    evidence: >
+      "A paused subscription MUST remain cancellable at any time with no charge, as UK
+      consumer law requires for subscription contracts." Source is "—" — no story, no
+      docs/decisions entry, no citation to which law or provision. Every other governance-
+      derived FR (e.g., FR-007) points at a named principle in CLAUDE.md; this one points at
+      nothing.
+    why_it_causes_rework: >
+      A MUST requirement grounded in "the law requires it" needs the law identified before
+      build — otherwise engineers can't tell whether the requirement is actually narrower or
+      broader than what's written.
+
+  - id: F7
+    severity: Important
+    category: ambiguity
+    title: The pre-resume reminder has no defined lead time
+    location: spec.md — FR-005; stories/US-3.md
+    evidence: >
+      FR-005 says "The system MUST remind the customer before the pause ends"; US-3 calls
+      this "the reminder point" without ever quantifying it (a day before? a week before?).
+      Decision 0004 separately requires a 6-week warning email once a pause crosses six weeks
+      — it's unclear from the spec whether that email and the "reminder before resume" email
+      in FR-005/US-3 are the same notification or two independent ones a customer could
+      receive close together.
+    why_it_causes_rework: >
+      The Sidekiq job in Technical notes needs a concrete trigger; without a lead time and a
+      ruling on whether this is the same email as decision 0004's warning, engineers will
+      guess and likely build the wrong cadence.
+```
+
+---
+
+## Clarifications
+
+Each is a decision the PM (or whoever is available before Thursday) can make directly.
+
+### C1 — How does pause interact with non-card payment methods at the cut-off boundary?
+*(closes F1)*
+- **Option A:** Direct Debit/PayPal customers get the same cut-off as card, but a pause
+  requested after the DD lodge point (Thursday) triggers an automatic refund for that week
+  instead of a suppressed charge. *Cost: a refund flow (3–5 working days) touches every
+  DD pause near the boundary.*
+- **Option B:** Move the DD "pause effective from" point earlier than card's, so a pause
+  requested before the Thursday lodge always suppresses cleanly, and after it, the pause
+  simply starts one week later than a card customer's would. *Cost: two different "effective
+  from" rules by payment method, which the account page has to explain.*
+- **Impact on users:** without a ruling, ~28% of the customer base (Direct Debit + PayPal)
+  either get an unexpected charge the week they pause, or an unexpected refund delay.
+
+### C2 — Should the FR list state the 8-week cap, 6-week warning, and auto-cancel from decision 0004?
+*(closes F2)*
+- **Option A:** Pull decision 0004's three rules into this spec's FRs verbatim (cap
+  validation on the pause form, 6-week warning email, 8-week auto-cancel + slot release) so
+  they're in scope for this build.
+- **Option B:** Explicitly defer them to a follow-up spec, with the pause form allowing any
+  length in the meantime.
+- **Impact on users:** Option B means an indefinitely paused subscription holds a delivery
+  slot with no cap enforced — exactly what decision 0004 was written to prevent.
+
+### C3 — Which is authoritative: the boolean column, or the Pause record?
+*(closes F3)*
+- **Option A:** Keep the Pause record (as in Key Entities) as the data model; drop "boolean
+  column" from Intent's Constraints — it was a simplification that doesn't hold once resume
+  dates and duration tracking are required.
+- **Option B:** Keep the boolean, and track dates/duration elsewhere (e.g., on the
+  subscription row directly) — in which case Key Entities needs to say so instead of
+  introducing a separate Pause entity.
+- **Impact on users:** none directly, but this decides how much of C2's cap-tracking work is
+  free versus new schema work — worth settling before Thursday's design session, since it
+  changes what design has to draw.
+
+### C4 — Is "gift a paused box" real scope for this spec?
+*(closes F4)*
+- **Option A:** Drop FR-008 — it isn't in any story, contradicts the "nothing delivered while
+  paused" premise, and can come back as its own spec if there's real demand.
+- **Option B:** Keep it, but then Overview/FR-002/FR-003 need to say a paused customer *can*
+  still trigger one delivery via gifting, and a story, key entity (recipient + address), and
+  screen need to exist for it.
+- **Impact on users:** as written today (Option A's absence), a customer reading FR-008 would
+  expect a gifting control that Overview's "nothing arrives while paused" promise says
+  shouldn't exist — someone will hit this contradiction first in QA if not resolved now.
+
+### C5 — What is SC-003 measuring against, and is the FEAT-004 relation real?
+*(closes F5)*
+- **Option A:** Add SC-003 to FEAT-005's verified list (it's clearly a pause outcome metric),
+  and drop the "composes-with FEAT-004" relation from derivation.md until referrals is
+  actually built — an unrefined feature shouldn't be a dependency surface.
+- **Option B:** Keep the relation, but add an FR stating explicitly what "credits keep
+  accruing while paused" means operationally, and correct derivation.md's baseline table to
+  show FEAT-004 as "proposed (unrefined)," not "delivered."
+- **Impact on users:** low direct impact, but the design seat will read derivation.md's
+  relations as settled fact; right now one of them describes a feature that doesn't exist.
+
+---
+
+## Recommended verdict
+
+This is gap-finding input, not a clearance this seat issues — the call sits with whoever
+signs off the ticket. Given five Critical items (F1–F5), each blocking a concrete build
+decision rather than a wording nit, a same-day PASS as requested in the handoff isn't
+supportable on this artifact as it stands; **needs-revision** is what the evidence points to.
+F1–F3 look answerable quickly (they're policy questions, not new discovery — 0004 already
+exists, the payment split already exists), so a same-day turnaround on the spec itself may
+still be realistic if someone with authority answers C1–C3 today.
+
+---
+
+## Minor findings (log and defer)
+
+- **SC-002** ("Customers feel in control of their subscription") has no measurement method,
+  unlike SC-001 and SC-003. Fine to keep as a qualitative goal, but it shouldn't be read as a
+  success criterion the team can check off — worth a one-line note on how (survey? support
+  sentiment tag?) or reclassifying it out of the SC list.
+- **FR-009** ("written in one database transaction") is an implementation instruction, not a
+  functional requirement — it's also already covered by Technical notes. Recommend cutting it
+  from Functional Requirements and leaving it in Technical notes only, so the FR list stays
+  WHAT-not-HOW.
+- **Story thinness** (the PM specifically asked for this): US-2 and US-4 are single-scenario
+  stories with no failure-path scenario (e.g., US-2 doesn't cover "resume" on a subscription
+  that's about to auto-cancel per decision 0004 — does resuming clear that countdown?). Once
+  C2 is settled this will need at least one added scenario on US-2.
+- Edge Cases section covers the two obvious boundary cases (cut-off timing, early resume) but
+  not what happens when a resume date lands during an active single-week skip (FEAT-002) on
+  the same subscription — likely rare, worth a one-line ruling rather than a full story.

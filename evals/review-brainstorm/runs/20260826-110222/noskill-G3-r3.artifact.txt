@@ -1,0 +1,27 @@
+=== review.md ===
+Lead —
+
+Cold end-stage pass on record.md, solo, no cross-exam. No repo/claim map in this workspace, so I could only verify internal consistency of the record against itself and against the goal line (migration path / price continuity / what happens if a team doesn't act). External factual claims I can't check, I've flagged as unverified rather than asserted wrong. Ranked by severity.
+
+1. D3 and D6 work against each other during the exact window that matters most.
+D3's own rationale for the 30-day read-only grace period is "long enough for a finance approval to come through" — i.e., it assumes silence often means an internal admin/procurement delay, not a decision to leave. D6 then stops all email the moment the renewal date passes, on the stated logic that continued contact would be "nagging a customer who has chosen to leave." Those are contradictory readings of the same silence. As written, the team gets zero communication during the 30 days D3 is explicitly counting on to let a stuck approval catch up — no "you're now read-only, N days until suspension" nudge. That's the population D3 says it exists to save, and D6 leaves it dark. This directly undercuts the "what happens to a team that doesn't act" goal line item — worth resolving whether the "stop emailing after renewal" cutoff in D6 was meant to include the grace-period window, or whether that's an oversight.
+
+2. D8's confidence looks miscalibrated for what it's deciding.
+"Confident" is being used to conclude Stripe Tax fully covers US filing obligations and that "no tax counsel" is needed for the migration — a legal/compliance conclusion, at multi-state 4,000-team scale, resting on a claim about Stripe's product behavior (that it auto-registers and auto-files per state once nexus is crossed) that the record doesn't source. I can't verify that claim here, but I'd flag the pattern regardless: D4, a much lower-stakes build-vs-buy tooling call, is marked "Assumed," while D8, a compliance call that explicitly waives legal review, is marked "Confident." That's backwards for risk. Worth a gut-check with whoever actually knows Stripe Tax's filing scope before this ships as "Confident."
+
+3. D2's own logic isn't applied to the month-12 transition.
+D2's rationale for holding price for 12 months is explicitly "a price rise landing at the same moment as a billing-method change is two shocks at once." But nothing in the record establishes any warning before the list-price jump at month 12 — D6's email sequence is anchored to the renewal/migration event only, and stops after. Post-migration billing also becomes monthly-in-arrears (D5), which suggests there's no natural annual "renewal" moment left to hang a heads-up on. As written, the record protects against shock #1 (method change) and is silent on shock #2 (the price rise D2 itself is deferring) — the thing D2's rationale says it doesn't want to happen. This is a direct gap against the "price continuity" goal line item.
+
+4. "Suspension" (end state of D3) is never defined.
+The record says a team with no card goes read-only for 30 days, "then is suspended," and stops there. Suspended meaning what — data retained or deleted, exportable, reversible if a card shows up later, or does it require a support ticket to ever recover? Given this is the terminal state for the "what happens if a team doesn't act" goal line item, leaving it undefined is a real gap, not just a nice-to-have detail.
+
+5. D9's operator override has no stated guardrail.
+An override that can force any team into any billing state, with Stripe as the actual billing system of record (D4), and no mention of audit logging or reconciliation between console state and Stripe state — this is a plausible source of silent drift (comped team stays comped, suspended team stays live) that nobody would notice until a support escalation or a revenue review. Lower severity than 1–4, but worth a line before build.
+
+6. Minor: D5 doesn't say what rate mid-cycle seat additions bill at during a team's 12-month held-rate window (D2). Presumably the held rate, but it's not stated.
+
+7. "Open threads: None recorded" is itself worth a second look. Given 1–4 above touch the record's own stated rationales, it's a little surprising nothing was left open — either these were raised and resolved verbally and just didn't make it into the record, or they were genuinely missed. Worth confirming which, since a record that's about to ship for 4,000 teams shouldn't have "no open threads" be a documentation gap rather than a true statement.
+
+Nothing here is a reason to unfreeze the whole record — D1, D5's core mechanic, D6's cadence, and D7's handling as contested are all in good shape and don't need rework. Items 1, 3, and 4 sit directly on the three things this record was supposed to cover, though, so I'd want those closed (or explicitly accepted as-is) before this goes out as final.
+
+— reviewer

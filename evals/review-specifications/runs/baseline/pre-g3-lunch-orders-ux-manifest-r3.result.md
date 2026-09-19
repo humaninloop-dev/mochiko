@@ -1,0 +1,8 @@
+I've completed the stress-test review and written it to `review.md` in the working directory (not inside `tally/`, and no other files were touched).
+
+Headline findings (both critical, both blocking):
+
+1. **The charging model has no path for funded/free-school-meal pupils** — the spec assumes every family has a card on file, but `docs/free-school-meals.md` and `CLAUDE.md`'s own wallet governance principle both carve out funded meals (~59% of the pilot schools' pupils). As written, a funded child's order gets stuck in "top up and hold" forever.
+2. **FR-002 directly contradicts the already-accepted `menu-admin` spec** — lunch-orders wants parents to see hidden menu items; menu-admin (in-flight, safety-motivated, recall-driven) requires hidden items *never* reach parents, enforced by a contract-suite test.
+
+Beyond those, I found a `delivered`→`proposed` status regression on FEAT-003 in the staged map delta (illegal per delta grammar), a cut-off time that contradicts itself between FR-005 and a story's acceptance scenario, two untraceable "extras" smuggled into the derivation (meal ratings, multi-child single payment), and — from actually clicking through the prototype — dead links to a nonexistent order-history screen and a nonexistent confirmation screen on the flagship P1 flow, plus zero screen/flow coverage for the P1 "change or cancel an order" story. Full detail, evidence, and clarifying options are in `review.md`.

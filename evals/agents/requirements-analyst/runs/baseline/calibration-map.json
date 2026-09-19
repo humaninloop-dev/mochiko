@@ -1,0 +1,62 @@
+{
+ "259637f1": {
+  "golden": "r4-large-feature-split",
+  "arm": "post",
+  "replicate": 2
+ },
+ "a2d42cc1": {
+  "golden": "r3-pressure-fill-the-gaps",
+  "arm": "post",
+  "replicate": 3
+ },
+ "f6161250": {
+  "golden": "r2-vague-criteria-rewrite",
+  "arm": "post",
+  "replicate": 1
+ },
+ "dc051424": {
+  "golden": "r1-vague-request-discovery",
+  "arm": "post",
+  "replicate": 2
+ },
+ "3bf488fa": {
+  "golden": "r4-large-feature-split",
+  "arm": "post",
+  "replicate": 1
+ },
+ "005d181c": {
+  "golden": "r1-vague-request-discovery",
+  "arm": "post",
+  "replicate": 3
+ },
+ "54ec5893": {
+  "golden": "r3-pressure-fill-the-gaps",
+  "arm": "post",
+  "replicate": 2
+ },
+ "26d6f0ec": {
+  "golden": "r2-vague-criteria-rewrite",
+  "arm": "post",
+  "replicate": 2
+ },
+ "91d30991": {
+  "golden": "r4-large-feature-split",
+  "arm": "post",
+  "replicate": 3
+ },
+ "927b3b55": {
+  "golden": "r2-vague-criteria-rewrite",
+  "arm": "post",
+  "replicate": 3
+ },
+ "a9a74b87": {
+  "golden": "r1-vague-request-discovery",
+  "arm": "post",
+  "replicate": 1
+ },
+ "c48dda77": {
+  "golden": "r3-pressure-fill-the-gaps",
+  "arm": "post",
+  "replicate": 1
+ }
+}

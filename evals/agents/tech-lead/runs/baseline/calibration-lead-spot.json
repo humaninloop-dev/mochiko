@@ -1,0 +1,125 @@
+{
+ "persona": "tech-lead",
+ "run": "baseline",
+ "pairs": 10,
+ "agreement": 0.9,
+ "contradicted_pairs": 0,
+ "contradicted_agreement": null,
+ "confusion": {
+  "label=absent judge=absent": 2,
+  "label=reflected judge=absent": 1,
+  "label=reflected judge=reflected": 7
+ },
+ "rows": [
+  {
+   "id": "tech-lead.quality-standards.enforceable-every-must-write",
+   "label": "reflected",
+   "plan": "2b138848",
+   "evidence": "Security \u2014 input: no enforcement mechanism; name a lint (banned-call rule on request.json()) or an import-time check",
+   "golden": "t1-governance-draft",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "tech-lead.quality-standards.justified-every-constraint-carries",
+   "label": "reflected",
+   "plan": "f69f64da",
+   "evidence": "AX-008 rationale is \"team preference; agreed on the call,\" a record of who agreed, not why; maintainer in 2028 has nothing to evaluate",
+   "golden": "t3-store-stance-batch",
+   "arm": "post",
+   "replicate": 2,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.every-project-s-governance",
+   "label": "absent",
+   "plan": "5cb4ea69",
+   "evidence": "feasibility review of a design package; no governance floor step taken",
+   "golden": "t2-feasibility-package",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "absent",
+   "agree": true
+  },
+  {
+   "id": "tech-lead.feasibility-review.never-review-own-artifact",
+   "label": "reflected",
+   "plan": "5cb4ea69",
+   "evidence": "Authorship: I authored none of them, so I am clear to grade all four",
+   "golden": "t2-feasibility-package",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "tech-lead.essential-floor-knowledge.four-categories-non-negotiable",
+   "label": "reflected",
+   "plan": "2b138848",
+   "evidence": "Observability is simply absent from the draft \u2014 blocking; a baseline category cannot be deferred",
+   "golden": "t1-governance-draft",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "tech-lead.judgment.justified-if-can-t",
+   "label": "reflected",
+   "plan": "f69f64da",
+   "evidence": "If the honest answer is \"we guessed at roughly 10x observed peak,\" write that; question to the architect: what were the numbers derived from?",
+   "golden": "t3-store-stance-batch",
+   "arm": "post",
+   "replicate": 2,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+   "label": "reflected",
+   "plan": "f69f64da",
+   "evidence": "AX-009: there is no mechanism that catches a violation; needs a test asserting a valid X-Notify-Signature on every outbound webhook",
+   "golden": "t3-store-stance-batch",
+   "arm": "post",
+   "replicate": 2,
+   "judge": "absent",
+   "agree": false
+  },
+  {
+   "id": "tech-lead.feasibility-review.never-review-own-artifact",
+   "label": "reflected",
+   "plan": "f69f64da",
+   "evidence": "AX-011 is signed by my seat; I authored it; I cannot clear it; excluded, unratified",
+   "golden": "t3-store-stance-batch",
+   "arm": "post",
+   "replicate": 2,
+   "judge": "reflected",
+   "agree": true
+  },
+  {
+   "id": "tech-lead.three-part-rule.enforcement-how-compliance-verified",
+   "label": "absent",
+   "plan": "5cb4ea69",
+   "evidence": "feasibility review; no enforcement-mechanism read on any standard",
+   "golden": "t2-feasibility-package",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "absent",
+   "agree": true
+  },
+  {
+   "id": "tech-lead.judgment.justified-if-can-t",
+   "label": "reflected",
+   "plan": "2b138848",
+   "evidence": "Data \u2014 time: no rationale at all; must fix before adoption",
+   "golden": "t1-governance-draft",
+   "arm": "post",
+   "replicate": 3,
+   "judge": "reflected",
+   "agree": true
+  }
+ ]
+}

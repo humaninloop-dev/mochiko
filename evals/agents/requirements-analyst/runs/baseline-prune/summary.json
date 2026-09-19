@@ -1,0 +1,1734 @@
+{
+ "persona": "requirements-analyst",
+ "pass": "nopersona-prune",
+ "arm_model": "opus",
+ "replicates": 3,
+ "judged": [
+  "requirements-analyst.quality-standards.criterion-covers-requirement-fully",
+  "requirements-analyst.quality-standards.criterion-verifiable-pass-fail",
+  "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+  "requirements-analyst.quality-standards.measurable-over-vague-every",
+  "requirements-analyst.what-embrace.asking-what-happens-when",
+  "requirements-analyst.what-embrace.breaking-large-features-into",
+  "requirements-analyst.what-embrace.connecting-requirements-user-value",
+  "requirements-analyst.what-embrace.making-implicit-assumptions-explicit",
+  "requirements-analyst.what-reject.ambiguous-terms-without-quantification",
+  "requirements-analyst.what-reject.assumptions-hidden-requirements",
+  "requirements-analyst.what-reject.feature-requests-without-clear",
+  "requirements-analyst.what-reject.requirements-can-t-be",
+  "requirements-analyst.judgment.flag-critical-gaps-could",
+  "requirements-analyst.judgment.guess-security-data-user",
+  "requirements-analyst.judgment.make-reasonable-defaults-minor",
+  "requirements-analyst.judgment.state-assumption-explicitly",
+  "requirements-analyst.process.consider-edges-what-can",
+  "requirements-analyst.process.define-success-how-do",
+  "requirements-analyst.process.extract-core-need-what",
+  "requirements-analyst.process.identify-actors-who-interacts",
+  "requirements-analyst.process.map-happy-path-what"
+ ],
+ "model_native": [
+  "requirements-analyst.judgment.flag-critical-gaps-could",
+  "requirements-analyst.judgment.guess-security-data-user",
+  "requirements-analyst.judgment.make-reasonable-defaults-minor",
+  "requirements-analyst.judgment.state-assumption-explicitly",
+  "requirements-analyst.process.consider-edges-what-can",
+  "requirements-analyst.process.define-success-how-do",
+  "requirements-analyst.process.extract-core-need-what",
+  "requirements-analyst.process.identify-actors-who-interacts",
+  "requirements-analyst.process.map-happy-path-what",
+  "requirements-analyst.quality-standards.criterion-covers-requirement-fully",
+  "requirements-analyst.quality-standards.criterion-verifiable-pass-fail",
+  "requirements-analyst.quality-standards.measurable-over-vague-every",
+  "requirements-analyst.what-embrace.asking-what-happens-when",
+  "requirements-analyst.what-embrace.breaking-large-features-into",
+  "requirements-analyst.what-embrace.connecting-requirements-user-value",
+  "requirements-analyst.what-embrace.making-implicit-assumptions-explicit",
+  "requirements-analyst.what-reject.ambiguous-terms-without-quantification",
+  "requirements-analyst.what-reject.feature-requests-without-clear"
+ ],
+ "total_cost_usd": 3.5186,
+ "judge_cost_usd": 1.0252,
+ "judge_calls": 16,
+ "runs": [
+  {
+   "golden": "r1-vague-request-discovery",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "requirements-analyst",
+    "persona_sha256": "099c3eef5113b34d",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-062ivfqy/ws/requests/2026-09-03-reporting.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-062ivfqy/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-062ivfqy/ws/specs/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-062ivfqy/ws/specs/expense-submission/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-062ivfqy/ws/docs/roles.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-062ivfqy/ws/docs/glossary.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-062ivfqy/ws/docs/data-notes.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-062ivfqy/ws/docs/feature-map.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-062ivfqy/ws/support/tickets-2026-q3-reporting.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.2695105,
+   "num_turns": 11,
+   "duration_ms": 91037,
+   "coverage": [
+    {
+     "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+     "verdict": "absent",
+     "evidence": ""
+    },
+    {
+     "id": "requirements-analyst.what-embrace.asking-what-happens-when",
+     "verdict": "reflected",
+     "evidence": "Scenarios cover a month with zero expenses (`docs/data-notes.md` says seasonal businesses have them), archived categories, and mixed-currency companies."
+    },
+    {
+     "id": "requirements-analyst.what-embrace.breaking-large-features-into",
+     "verdict": "reflected",
+     "evidence": "**User Stories** (priority reflects the ticket volume, not the loudest voice):\n- `US-001` Finance: monthly totals... \n- `US-002` Finance: export...\n- `US-003` Finance: reconcile...\n- `US-004` Finance: see pending...\n- `US-005` Manager: team spend...\n- `US-006` Manager: approvals waiting...\n- `US-007` Employee: my claimed and reimbursed totals...\n- `US-008` Charts: spend by category and by month"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.connecting-requirements-user-value",
+     "verdict": "reflected",
+     "evidence": "I'd write the spec around the evidence, keep charts in scope at a lower priority... Nine of fourteen are finance admins trying to close the month, and what they need is **totals by cost center and by category that reconcile to the reimbursement run to the penny**... **Functional Requirements** \u2014 roughly `FR-001`\u2013`FR-014`, each with `Source:` naming its story"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.making-implicit-assumptions-explicit",
+     "verdict": "reflected",
+     "evidence": "**Assumptions I would take myself** (each written as `A-XXX` with its reasoning, so a reviewer can overturn it in one line)"
+    },
+    {
+     "id": "requirements-analyst.what-reject.feature-requests-without-clear",
+     "verdict": "reflected",
+     "evidence": "No budget data is stored anywhere; the manager ticket \"against the budget finance gave me\" cannot be built without a new budgets concept"
+    },
+    {
+     "id": "requirements-analyst.judgment.guess-security-data-user",
+     "verdict": "reflected",
+     "evidence": "Three questions in the tickets are genuinely undecidable by me and get recorded as Open Questions with owners, not invented answers"
+    },
+    {
+     "id": "requirements-analyst.judgment.state-assumption-explicitly",
+     "verdict": "reflected",
+     "evidence": "Assumptions I would take myself (each written as `A-XXX` with its reasoning, so a reviewer can overturn it in one line)"
+    },
+    {
+     "id": "requirements-analyst.process.consider-edges-what-can",
+     "verdict": "reflected",
+     "evidence": "Scenarios cover a month with zero expenses (`docs/data-notes.md` says seasonal businesses have them), archived categories, and mixed-currency companies."
+    },
+    {
+     "id": "requirements-analyst.process.define-success-how-do",
+     "verdict": "reflected",
+     "evidence": "**Success Criteria** \u2014 `SC-001` report total equals run total to the penny for the same set of expenses, checked on real company data before launch; `SC-002` finance month-end hand-totalling time drops from two-to-three hours to under fifteen minutes, measured by asking the three ticket-filing companies; `SC-003` reporting-tagged support tickets fall to zero in the quarter after launch"
+    },
+    {
+     "id": "requirements-analyst.process.extract-core-need-what",
+     "verdict": "reflected",
+     "evidence": "the actual job is narrower and harder: nine of fourteen are finance admins trying to close the month, and what they need is **totals by cost center and by category that reconcile to the reimbursement run to the penny**"
+    },
+    {
+     "id": "requirements-analyst.process.identify-actors-who-interacts",
+     "verdict": "reflected",
+     "evidence": "finance admins closing a month by hand in a spreadsheet (two to three hours, per three near-identical tickets); managers and employees who currently have no way to see their own history"
+    },
+    {
+     "id": "requirements-analyst.process.map-happy-path-what",
+     "verdict": "reflected",
+     "evidence": "`US-001` Finance: monthly totals by cost center and by category, on screen, for a chosen month (P1)... `US-002` Finance: export those totals as CSV (P1)... `US-003` Finance: reconcile a report against a reimbursement run (P1)"
+    }
+   ]
+  },
+  {
+   "golden": "r1-vague-request-discovery",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "requirements-analyst",
+    "persona_sha256": "099c3eef5113b34d",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dnax27f7/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dnax27f7/ws/specs/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dnax27f7/ws/specs/expense-submission/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dnax27f7/ws/requests/2026-09-03-reporting.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dnax27f7/ws/docs/roles.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dnax27f7/ws/docs/glossary.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dnax27f7/ws/docs/data-notes.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dnax27f7/ws/docs/feature-map.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-dnax27f7/ws/support/tickets-2026-q3-reporting.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.3017215,
+   "num_turns": 11,
+   "duration_ms": 108543,
+   "coverage": [
+    {
+     "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+     "verdict": "reflected",
+     "evidence": "Each user story grounded in evidence with value named: 'Approved spend totalled by cost center and category for a month | 5 finance tickets, incl. \"two or three hours every month\" | US-001, P1.' Success Criteria explicitly state value: 'SC-001 finance month-close hand-totalling time from 2\u20133 hours to under 15 minutes.'"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.asking-what-happens-when",
+     "verdict": "reflected",
+     "evidence": "Plan specifies: 'Each gets Given/When/Then including the awkward cases \u2014 an expense incurred July approved August, a pending expense at month close, a zero-expense month, an archived category.' Phase 2 explicitly maps contradictions: 'Two tickets collide: \"If an expense was incurred in July but approved in August, which month is it in?\"'"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.breaking-large-features-into",
+     "verdict": "reflected",
+     "evidence": "Feature broken into six prioritized user stories: 'US-001 period totals (P1), US-002 run reconciliation (P1), US-003 CSV export (P1), US-004 dashboard charts (P2), US-005 manager team spend (P2), US-006 employee annual statement (P3).'"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.connecting-requirements-user-value",
+     "verdict": "reflected",
+     "evidence": "Demand table maps each story to evidence. Phase 3 specifies FRs will have 'Source: line.' Success Criteria are user-centric: 'SC-001 finance month-close hand-totalling time from 2\u20133 hours to under 15 minutes; SC-004 the export is downloaded by a majority of finance admins in the first month.'"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.making-implicit-assumptions-explicit",
+     "verdict": "reflected",
+     "evidence": "Dedicated Assumptions section: 'A-001 to A-005 as settled in Phase 2, each stating what the input did not say.' Example: 'Default I take: approved, paid, and pending (filed-but-undecided) are shown as three separate figures... Recorded as A-002, and the display choice is put to finance as an open question.'"
+    },
+    {
+     "id": "requirements-analyst.what-reject.feature-requests-without-clear",
+     "verdict": "reflected",
+     "evidence": "Plan visibly refuses requests without clear benefit or that belong elsewhere: 'Manager sees approvals sitting > 1 week | Out of Scope \u2014 this is an approval-queue fix, not reporting.' Acknowledges request-only features but ranks them lower: 'Charts by category and by month | Priya + Tom, no ticket | US-004, P2.' Framing states: 'I will say plainly in the report that charts are the requested surface while totals-that-reconcile are the demonstrated need.'"
+    },
+    {
+     "id": "requirements-analyst.judgment.guess-security-data-user",
+     "verdict": "reflected",
+     "evidence": "Plan escalates rather than guesses on data behavior: 'OQ-001 manager visibility beyond 30 days (finance/Tom, blocks US-005); OQ-002 period keyed on date_incurred (finance); OQ-003 how pending is presented at month close (finance).' Phase 2c: 'What I would stop and confirm: whether managers may see their direct reports' approved spend beyond the existing 30-day window... I will not decide it inside a spec.'"
+    },
+    {
+     "id": "requirements-analyst.judgment.state-assumption-explicitly",
+     "verdict": "reflected",
+     "evidence": "Phase 2 settlement process records assumptions: 'I resolve this by specifying two reports, not one... This is a design call I will make and record as an assumption (A-001).' Plan includes 'Assumptions \u2014 A-001 to A-005 as settled in Phase 2, each stating what the input did not say.'"
+    },
+    {
+     "id": "requirements-analyst.process.consider-edges-what-can",
+     "verdict": "reflected",
+     "evidence": "Systematically identifies and handles edge cases: 'Each gets Given/When/Then including the awkward cases \u2014 an expense incurred July approved August, a pending expense at month close, a zero-expense month, an archived category.' Phase 2 explicitly resolves collisions: 'Two tickets collide...' and handles empty state: 'Empty months... Becomes a Given/When/Then scenario \u2014 an empty state showing zero, not an error or a blank page.'"
+    },
+    {
+     "id": "requirements-analyst.process.define-success-how-do",
+     "verdict": "reflected",
+     "evidence": "Phase 3 includes explicit Success Criteria: 'SC-001 finance month-close hand-totalling time from 2\u20133 hours to under 15 minutes; SC-002 run report matches run CSV exactly for 100% of runs; SC-003 reporting-tagged tickets about totals drop to near zero in the quarter after launch; SC-004 the export is downloaded by a majority of finance admins in the first month.'"
+    },
+    {
+     "id": "requirements-analyst.process.extract-core-need-what",
+     "verdict": "reflected",
+     "evidence": "Framing identifies core need: 'The pasted thread asks for one thing: \"a dashboard with charts, exportable to Excel.\" The fourteen support tickets describe a different centre of gravity: 9 of 14 are finance admins trying to close a month and post totals to their accounting system.' Phase 3 Overview will state core problem: 'finance admins hand-totalling exports for two to three hours a month.'"
+    },
+    {
+     "id": "requirements-analyst.process.identify-actors-who-interacts",
+     "verdict": "reflected",
+     "evidence": "Plan identifies actor groups: finance admins, managers, employees. Demand table maps actors to stories; Phase 3 Overview states: 'finance admins hand-totalling exports for two to three hours a month; managers and employees with narrower needs.' docs/roles.md and docs/data-notes.md explicitly read to identify actors and their constraints."
+    },
+    {
+     "id": "requirements-analyst.process.map-happy-path-what",
+     "verdict": "reflected",
+     "evidence": "Each user story to be written with Given/When/Then: 'Each gets Given/When/Then including the awkward cases \u2014 an expense incurred July approved August, a pending expense at month close, a zero-expense month, an archived category.' This structure maps primary flows and branches systematically."
+    }
+   ]
+  },
+  {
+   "golden": "r1-vague-request-discovery",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "requirements-analyst",
+    "persona_sha256": "099c3eef5113b34d",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-poi2uvw2/ws/requests/2026-09-03-reporting.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-poi2uvw2/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-poi2uvw2/ws/specs/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-poi2uvw2/ws/specs/expense-submission/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-poi2uvw2/ws/docs/roles.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-poi2uvw2/ws/docs/glossary.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-poi2uvw2/ws/docs/data-notes.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-poi2uvw2/ws/docs/feature-map.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-poi2uvw2/ws/support/tickets-2026-q3-reporting.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.273459,
+   "num_turns": 11,
+   "duration_ms": 94458,
+   "coverage": [
+    {
+     "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+     "verdict": "reflected",
+     "evidence": "each story traces to a ticket group"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.asking-what-happens-when",
+     "verdict": "reflected",
+     "evidence": "Scenarios cover: mixed currencies totalling in company currency; pending shown separately from approved; an archived category still appearing; a month with zero expenses."
+    },
+    {
+     "id": "requirements-analyst.what-embrace.breaking-large-features-into",
+     "verdict": "reflected",
+     "evidence": "Stories I would write: US-001 (P1)... US-002 (P1)... US-003 (P1)... US-004 (P2)... US-005 (P2)... US-006 (P3)"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.connecting-requirements-user-value",
+     "verdict": "reflected",
+     "evidence": "the load-bearing complaint is 'two or three hours every month' of hand-totalling... finance month-end totalling time drops from the reported two-to-three hours to under fifteen minutes"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.making-implicit-assumptions-explicit",
+     "verdict": "reflected",
+     "evidence": "I would settle each as an assumption (`A-XXX`) rather than leave the engineer to guess"
+    },
+    {
+     "id": "requirements-analyst.what-reject.feature-requests-without-clear",
+     "verdict": "reflected",
+     "evidence": "The budget half of the manager ask goes to Out of Scope regardless: Tally stores no budgets anywhere in `data-notes.md`, so 'spend against budget' cannot be built without a budget feature first."
+    },
+    {
+     "id": "requirements-analyst.judgment.guess-security-data-user",
+     "verdict": "reflected",
+     "evidence": "I cannot grant a manager new sight of other people's approved expenses on my own authority; that is a data-access policy call, not a spec detail."
+    },
+    {
+     "id": "requirements-analyst.judgment.state-assumption-explicitly",
+     "verdict": "reflected",
+     "evidence": "Assumptions: the six from Phase 3, each stating what the input did not say and what I chose."
+    },
+    {
+     "id": "requirements-analyst.process.consider-edges-what-can",
+     "verdict": "reflected",
+     "evidence": "Scenarios cover: mixed currencies totalling in company currency; pending shown separately from approved; an archived category still appearing; a month with zero expenses."
+    },
+    {
+     "id": "requirements-analyst.process.define-success-how-do",
+     "verdict": "reflected",
+     "evidence": "Success criteria: finance month-end totalling time drops from the reported two-to-three hours to under fifteen minutes; report totals equal run totals to the penny on every reconciliation; the reporting-tagged ticket volume falls; some share of finance admins use the export each month-end."
+    },
+    {
+     "id": "requirements-analyst.process.extract-core-need-what",
+     "verdict": "reflected",
+     "evidence": "The finding I would carry into the spec: nine of fourteen tickets are one finance job \u2014 a reconciled month-end total \u2014 and the load-bearing complaint is 'two or three hours every month' of hand-totalling"
+    },
+    {
+     "id": "requirements-analyst.process.identify-actors-who-interacts",
+     "verdict": "reflected",
+     "evidence": "| Who | Job to be done | Tickets | |---|---| | Finance admin | Month-end totals by cost center and by category... | 6 of 9 | | Finance admin | Answer three ambiguity questions... | 3 of 9 | | Manager | Team spend this month/quarter vs budget | 2 of 3 | | Manager | Approvals aging past a week | 1 of 3 | | Employee | My total and my list for the tax year | 2 |"
+    },
+    {
+     "id": "requirements-analyst.process.map-happy-path-what",
+     "verdict": "reflected",
+     "evidence": "US-001 (P1) Finance sees a month's totals by cost center and by category, on screen... US-002 (P1) Finance exports those totals as CSV... US-003 (P1) Finance reconciles a report against a reimbursement run to the penny."
+    }
+   ]
+  },
+  {
+   "golden": "r2-vague-criteria-rewrite",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "requirements-analyst",
+    "persona_sha256": "099c3eef5113b34d",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-oqm2ved2/ws/specs/ticket-attachments/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-oqm2ved2/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-oqm2ved2/ws/specs/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-oqm2ved2/ws/docs/platform-limits.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-oqm2ved2/ws/docs/browser-support.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-oqm2ved2/ws/docs/security-baseline.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-oqm2ved2/ws/analytics/attachments-2026-08.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.301797,
+   "num_turns": 9,
+   "duration_ms": 117133,
+   "coverage": [
+    {
+     "id": "requirements-analyst.quality-standards.criterion-covers-requirement-fully",
+     "verdict": "reflected",
+     "evidence": "SC-001 \u2014 within 90 days of launch, at least 15% of tickets opened in the portal carry an attachment. Baseline: 0% today; the email path runs at 23%."
+    },
+    {
+     "id": "requirements-analyst.quality-standards.criterion-verifiable-pass-fail",
+     "verdict": "reflected",
+     "evidence": "within 90 days of launch, at least 15% of tickets opened in the portal carry an attachment. Baseline: 0% today... support tickets tagged attachments fall from 38/month... to 5 or fewer within 60 days... at least 95% of upload attempts for files under the cap succeed on first try"
+    },
+    {
+     "id": "requirements-analyst.quality-standards.measurable-over-vague-every",
+     "verdict": "reflected",
+     "evidence": "a 1.2 MB file (median) completes in \u22643 s and a 4 MB file (p95) in \u226410 s... Default I'd write: 25 MB per file... I'd write 120/minute sustained... Phase 9: I'd grep the finished file for fast, secure, seamless, large, many, easy, quickly, robust, user-friendly and confirm each surviving instance sits next to a number or a named behaviour."
+    },
+    {
+     "id": "requirements-analyst.what-embrace.making-implicit-assumptions-explicit",
+     "verdict": "reflected",
+     "evidence": "Every decision I took above where the input didn't say, written as A-XXX per the house format: the 25 MB cap and its 20 MB fallback; one file per request; 10 files per message; the 3\u00d7 headroom multiplier behind FR-010; images-inline / PDF-in-new-tab; link-not-attach for outbound email; 24 h orphan disposal; newest-first attachment ordering."
+    },
+    {
+     "id": "requirements-analyst.what-reject.ambiguous-terms-without-quantification",
+     "verdict": "reflected",
+     "evidence": "Phase 9: I'd grep the finished file for fast, secure, seamless, large, many, easy, quickly, robust, user-friendly and confirm each surviving instance sits next to a number or a named behaviour."
+    },
+    {
+     "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+     "verdict": "reflected",
+     "evidence": "Every decision I took above where the input didn't say, written as A-XXX per the house format... The point of this section is that each of these is contestable in one place rather than buried in an FR."
+    },
+    {
+     "id": "requirements-analyst.what-reject.requirements-can-t-be",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "requirements-analyst.judgment.guess-security-data-user",
+     "verdict": "reflected",
+     "evidence": "split into concrete requirements drawn from docs/security-baseline.md, so the new path matches the email path... I'd flag this as the second item needing a PM ruling... this reverses a PM statement, so I'd flag it at the top of the revision note and in a comment on the FR itself... I would not block on it."
+    },
+    {
+     "id": "requirements-analyst.judgment.make-reasonable-defaults-minor",
+     "verdict": "reflected",
+     "evidence": "Nobody having an opinion means the author decides. Newest first, matching the conversation's recency ordering. Moves to an assumption."
+    },
+    {
+     "id": "requirements-analyst.judgment.state-assumption-explicitly",
+     "verdict": "reflected",
+     "evidence": "Every decision I took above where the input didn't say, written as A-XXX per the house format... Phase 9: Every number in the spec traces to docs/platform-limits.md, docs/browser-support.md, docs/security-baseline.md, or analytics/attachments-2026-08.md, or is listed in Assumptions as mine."
+    },
+    {
+     "id": "requirements-analyst.process.define-success-how-do",
+     "verdict": "reflected",
+     "evidence": "Phase 4 \u2014 Rewrite Success Criteria against real baselines... SC-001 \u2014 within 90 days of launch, at least 15% of tickets opened in the portal carry an attachment. SC-002 \u2014 support tickets tagged attachments fall from 38/month... to 5 or fewer within 60 days. SC-003 \u2014 at least 95% of upload attempts for files under the cap succeed on first try, and the FR-002 time budgets hold at p95"
+    }
+   ]
+  },
+  {
+   "golden": "r2-vague-criteria-rewrite",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "requirements-analyst",
+    "persona_sha256": "099c3eef5113b34d",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-lahtuyjw/ws/specs/ticket-attachments/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-lahtuyjw/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-lahtuyjw/ws/specs/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-lahtuyjw/ws/docs/platform-limits.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-lahtuyjw/ws/docs/browser-support.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-lahtuyjw/ws/docs/security-baseline.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-lahtuyjw/ws/analytics/attachments-2026-08.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.351428,
+   "num_turns": 9,
+   "duration_ms": 145756,
+   "coverage": [
+    {
+     "id": "requirements-analyst.quality-standards.criterion-covers-requirement-fully",
+     "verdict": "reflected",
+     "evidence": "Traceability, both directions. Every FR's `Source:` names a story that actually contains that behavior (this is how the draft's FR-006/US-003 PDF mismatch got through), and every story has at least one FR serving it. Done by reading the finished file end to end."
+    },
+    {
+     "id": "requirements-analyst.quality-standards.criterion-verifiable-pass-fail",
+     "verdict": "reflected",
+     "evidence": "SC-001 ('users are happy' \u2014 no instrument exists) \u2192 the 29 August 'how do I send a file from the portal' tickets fall to near zero within two months of launch. Vague-language sweep. Grep the revised file for `fast|seamless|secure|user-friendly|large|many|all browsers|meaningful|happy|appropriate|robust`. Expected result: zero hits in the Functional Requirements and Success Criteria."
+    },
+    {
+     "id": "requirements-analyst.quality-standards.measurable-over-vague-every",
+     "verdict": "reflected",
+     "evidence": "FR-002 'fast' \u2192 p95-sized file (4 MB) completes in under 5 s on the reference profile, and every accepted file must complete inside the 30 s gateway cutoff. FR-003 'large files' \u2192 the specific per-file and per-message limits from Stop 2, with the 30 s/1.25 MB/s derivation stated inline. FR-004 'secure' \u2192 split into the concrete baseline items: malware scan before the file is available, allowed content types enumerated, signed URL with 1 h expiry issued only after the ticket permission check, download audit log, encryption at rest, HTTPS only."
+    },
+    {
+     "id": "requirements-analyst.what-embrace.making-implicit-assumptions-explicit",
+     "verdict": "reflected",
+     "evidence": "Assumptions \u2014 currently 'None recorded', which is untrue of the draft. I'd record each as A-XXX: the 25 MB limit derivation; allowed types mirroring email ingestion; retention defaulting to current behaviour pending Legal; the 2\u00d7 concurrency figure; newest-first ordering; filename truncation; mobile agent support per Stop 1."
+    },
+    {
+     "id": "requirements-analyst.what-reject.ambiguous-terms-without-quantification",
+     "verdict": "reflected",
+     "evidence": "Vague-language sweep. Grep the revised file for `fast|seamless|secure|user-friendly|large|many|all browsers|meaningful|happy|appropriate|robust`. Expected result: zero hits in the Functional Requirements and Success Criteria. Any survivor is a requirement I failed to make testable."
+    },
+    {
+     "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+     "verdict": "reflected",
+     "evidence": "Open Questions \u2014 each gets an owner, which the house format demands and the draft omits entirely. I'd record each as A-XXX in a dedicated Assumptions section; the revision is written so assumptions are visible, not embedded in requirements."
+    },
+    {
+     "id": "requirements-analyst.what-reject.requirements-can-t-be",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "requirements-analyst.judgment.guess-security-data-user",
+     "verdict": "reflected",
+     "evidence": "I would not invent a retention period on Legal's behalf. For file size, data-driven: My default: 25 MB per file and 25 MB total per message, matching email ingestion so a requester gets the same answer on both paths, and covering p99 (18 MB) and the largest ever accepted (24.6 MB). For mobile, analytics-driven: 12% of agent workspace sessions are phone-sized (17% weekends)."
+    },
+    {
+     "id": "requirements-analyst.judgment.make-reasonable-defaults-minor",
+     "verdict": "reflected",
+     "evidence": "The two trivial open questions I'd just decide, because 'nobody has an opinion' is not a reason to hold a spec: attachment list newest first (matches the conversation's own ordering), and filename truncation with a middle ellipsis that preserves the extension. Both go to Assumptions marked as cheap to reverse."
+    },
+    {
+     "id": "requirements-analyst.judgment.state-assumption-explicitly",
+     "verdict": "reflected",
+     "evidence": "I'd record each as A-XXX: the 25 MB limit derivation; allowed types mirroring email ingestion; retention defaulting to current behaviour pending Legal; the 2\u00d7 concurrency figure; newest-first ordering; filename truncation; mobile agent support. I'd state my default, write the spec on that default so it is complete either way, and put the question where Maya will see it."
+    },
+    {
+     "id": "requirements-analyst.process.define-success-how-do",
+     "verdict": "reflected",
+     "evidence": "Success Criteria \u2014 all three replaced with measurable versions off the August baselines. SC-001... SC-002... SC-003... New SC on upload success rate, since a spec that only measures adoption can't tell a working feature from a broken one."
+    }
+   ]
+  },
+  {
+   "golden": "r2-vague-criteria-rewrite",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "requirements-analyst",
+    "persona_sha256": "099c3eef5113b34d",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-vpffczqy/ws/specs/ticket-attachments/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-vpffczqy/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-vpffczqy/ws/specs/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-vpffczqy/ws/docs/platform-limits.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-vpffczqy/ws/docs/browser-support.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-vpffczqy/ws/docs/security-baseline.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-vpffczqy/ws/analytics/attachments-2026-08.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.303691,
+   "num_turns": 9,
+   "duration_ms": 117307,
+   "coverage": [
+    {
+     "id": "requirements-analyst.quality-standards.criterion-covers-requirement-fully",
+     "verdict": "reflected",
+     "evidence": "Phase 5: 'Rewrite Success Criteria against the August baselines' with explicit replacement of unmeasurable criteria (users are happy, fewer, meaningful share) with specific measurable targets: 'Share of portal-opened tickets carrying at least one attachment reaches 15% within 90 days of launch'; 'Upload success rate of 99% or better'; 'p95 upload time under 5 s for a 4 MB file.'"
+    },
+    {
+     "id": "requirements-analyst.quality-standards.criterion-verifiable-pass-fail",
+     "verdict": "reflected",
+     "evidence": "Phase 3: 'Each requirement becomes something a QA engineer can pass or fail'; Phase 5: 'All three current criteria are unmeasurable (users are happy, fewer, meaningful share). Replaced with figures anchored to numbers'; Phase 4: 'make each one executable with real numbers (open a portal ticket with a 4 MB PNG attached; the agent sees it inline within one page load and the upload completed in under 5 s).'"
+    },
+    {
+     "id": "requirements-analyst.quality-standards.measurable-over-vague-every",
+     "verdict": "reflected",
+     "evidence": "Phase 3: 'FR-002 Uploads MUST be fast \u2192 a 4 MB file (the p95) completes in under 5 s on the reference connection'; 'FR-003 large files \u2192 the 25 MB / 25 MB / 10-file caps'; Phase 5: 'Share of portal-opened tickets... reaches 15% within 90 days of launch... p95 upload time under 5 s for a 4 MB file... Upload success rate of 99% or better.'"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.making-implicit-assumptions-explicit",
+     "verdict": "reflected",
+     "evidence": "Phase 2: 'Every decision below moves out of Open Questions into `Assumptions` with its reasoning, so engineering isn't blocked and the PM can see and overturn each one'; 'Max file size \u2192 25 MB per file, 25 MB total per message, 10 files per message. Rationale written into the spec'; 'Attachment list ordering \u2192 chronological, oldest first... The draft says nobody has an opinion, which makes it mine to decide rather than a blocker.'"
+    },
+    {
+     "id": "requirements-analyst.what-reject.ambiguous-terms-without-quantification",
+     "verdict": "reflected",
+     "evidence": "Phase 3: 'FR-002 Uploads MUST be fast \u2192 a 4 MB file (the p95) completes in under 5 s'; 'FR-004 MUST be secure \u2192 splits into five separately testable requirements'; Phase 5: 'All three current criteria are unmeasurable (users are happy, fewer, meaningful share). Replaced with figures anchored to numbers.'"
+    },
+    {
+     "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+     "verdict": "reflected",
+     "evidence": "Phase 4: 'I would not silently discard Maya's FR-008, and I would not invent a retention rule that Legal hasn't ruled on; both go through Phase 4's stop points or stay open with an owner'; 'I would not delete a PM's scope decision on my own reading of the data'; Phase 2: the draft's 'empty Assumptions section' will be filled with explicitly recorded decisions rather than buried in requirements."
+    },
+    {
+     "id": "requirements-analyst.what-reject.requirements-can-t-be",
+     "verdict": "reflected",
+     "evidence": "Phase 3 ensures testability as a principle: 'Each requirement becomes something a QA engineer can pass or fail'; Phase 6 mandates concrete test scenarios: 'Independent tests: make each one executable with real numbers (\"open a portal ticket with a 4 MB PNG attached; the agent sees it inline within one page load and the upload completed in under 5 s\") rather than \"confirm the agent sees it.\"'"
+    },
+    {
+     "id": "requirements-analyst.judgment.guess-security-data-user",
+     "verdict": "reflected",
+     "evidence": "Phase 1: 'Re-read the four reference files as the authority for anything the spec asserts about limits, browsers, or security'; Phase 4: 'What I'd confirm with Maya: whether the desktop-only claim was a considered tradeoff or an untested assumption'; 'What I'd confirm: PM plus whoever owns email infrastructure'; Phase 1: 'Analytics gives real sizing: median 1.2 MB, p95 4 MB, p99 18 MB, largest accepted 24.6 MB.'"
+    },
+    {
+     "id": "requirements-analyst.judgment.make-reasonable-defaults-minor",
+     "verdict": "reflected",
+     "evidence": "Phase 2: 'Filename truncation \u2192 not an engineering blocker. Record as an assumption (truncate in the middle, preserve the extension, full name available on hover/long-press) and hand the pixel decision to design'; 'Retention stays an open question... But I would attach a default so the build can proceed... with a note that... an unbounded default has a cost consequence.'"
+    },
+    {
+     "id": "requirements-analyst.judgment.state-assumption-explicitly",
+     "verdict": "reflected",
+     "evidence": "Phase 2: 'Every decision below moves out of Open Questions into `Assumptions` with its reasoning, so engineering isn't blocked and the PM can see and overturn each one'; 'Max file size \u2192 25 MB per file, 25 MB total per message, 10 files per message. Rationale written into the spec: parity with the existing email path...'"
+    },
+    {
+     "id": "requirements-analyst.process.define-success-how-do",
+     "verdict": "reflected",
+     "evidence": "Phase 5: 'Rewrite Success Criteria against the August baselines' with 'Share of portal-opened tickets carrying at least one attachment reaches 15% within 90 days of launch'; 'Upload success rate of 99% or better, excluding files the user was told upfront were too large or the wrong type'; Phase 6: 'Verify the final file carries the eight house-format sections in the prescribed order, every FR has a `Source:` line, and every assumption is numbered `A-XXX`.'"
+    }
+   ]
+  },
+  {
+   "golden": "r3-pressure-fill-the-gaps",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "requirements-analyst",
+    "persona_sha256": "099c3eef5113b34d",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-y4gt5rf7/ws/requests/cancel-flow.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-y4gt5rf7/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-y4gt5rf7/ws/specs/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-y4gt5rf7/ws/specs/member-signup/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-y4gt5rf7/ws/docs/plans-and-billing.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-y4gt5rf7/ws/docs/glossary.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-y4gt5rf7/ws/support/cancellation-tickets-2026-q3.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.273539,
+   "num_turns": 9,
+   "duration_ms": 101333,
+   "coverage": [
+    {
+     "id": "requirements-analyst.quality-standards.measurable-over-vague-every",
+     "verdict": "reflected",
+     "evidence": "Success Criteria \u2014 `charged after cancelling` tickets \u2192 zero per quarter (from ticket tags, was 9 in Q3); at least 80% of cancellations self-serve within two months at portal studios; median time from opening the account screen to confirmed under 60 seconds; zero charges dated after a stored end date (billing audit)"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.asking-what-happens-when",
+     "verdict": "reflected",
+     "evidence": "End-date rule (one rule, three cases). Rolling + notice period configured: end date = end of the first billing period that ends on or after (today + notice days)... Rolling + no notice: end date = the day before the next billing day... Annual prepaid: end date = the paid-through date; no further charge, no automatic refund"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.making-implicit-assumptions-explicit",
+     "verdict": "reflected",
+     "evidence": "Assumptions \u2014 every gap-fill above as `A-XXX`, each phrased as a decision plus the simplest-thing rationale, including the notice-period reading of 'ends the membership', the no-auto-refund annual default, the one-line freeze mention, and time zone = studio local time for end-date maths"
+    },
+    {
+     "id": "requirements-analyst.what-reject.ambiguous-terms-without-quantification",
+     "verdict": "reflected",
+     "evidence": "take the simplest contract-respecting reading \u2014 *cancel is irrevocable at the moment the member presses it; what varies is the end date, computed by the system, never typed by anyone*"
+    },
+    {
+     "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+     "verdict": "reflected",
+     "evidence": "put the resolution in Assumptions where Dan can overrule it in one line; Assumptions \u2014 every gap-fill above as `A-XXX`, each phrased as a decision"
+    },
+    {
+     "id": "requirements-analyst.judgment.flag-critical-gaps-could",
+     "verdict": "reflected",
+     "evidence": "I'd flag both points in my report-back, not as blockers; Two rulings would change the spec, so I'd name them in the report"
+    },
+    {
+     "id": "requirements-analyst.judgment.guess-security-data-user",
+     "verdict": "reflected",
+     "evidence": "FILES-READ: `README.md`, `specs/README.md`, `specs/member-signup/spec.md`, `docs/plans-and-billing.md`, `docs/glossary.md`, `requests/cancel-flow.md`, `support/cancellation-tickets-2026-q3.md`"
+    },
+    {
+     "id": "requirements-analyst.judgment.make-reasonable-defaults-minor",
+     "verdict": "reflected",
+     "evidence": "Two entries, each with an owner **and a default already in force so nothing blocks Monday**; default until then is no automatic refund, owner refunds by hand as today"
+    },
+    {
+     "id": "requirements-analyst.judgment.state-assumption-explicitly",
+     "verdict": "reflected",
+     "evidence": "Assumptions \u2014 every gap-fill above as `A-XXX`, each phrased as a decision plus the simplest-thing rationale; I'd say plainly in the report"
+    },
+    {
+     "id": "requirements-analyst.process.consider-edges-what-can",
+     "verdict": "reflected",
+     "evidence": "End-date rule (one rule, three cases)... Idempotent. Once cancelled, a second cancel (portal, desk, or email-driven staff action) shows the existing end date and cannot move it later... Lapsed and frozen memberships can still be cancelled"
+    },
+    {
+     "id": "requirements-analyst.process.define-success-how-do",
+     "verdict": "reflected",
+     "evidence": "Success Criteria \u2014 `charged after cancelling` tickets \u2192 zero per quarter (from ticket tags, was 9 in Q3); at least 80% of cancellations self-serve within two months at portal studios; median time from opening the account screen to confirmed under 60 seconds; zero charges dated after a stored end date (billing audit)"
+    },
+    {
+     "id": "requirements-analyst.process.extract-core-need-what",
+     "verdict": "reflected",
+     "evidence": "21 tickets that tell me what the spec must prevent: 9 'charged after cancelling', 5 'couldn't find the button', 4 'wanted to pause', 2 Family-plan, 1 annual refund"
+    },
+    {
+     "id": "requirements-analyst.process.identify-actors-who-interacts",
+     "verdict": "reflected",
+     "evidence": "User Stories \u2014 US-001 (P1) Cancel a rolling membership from the portal... US-002 (P1) Get a confirmation email... US-005 (P2) Family: payer cancels the plan; linked member cancels only themselves... US-007 (P2) Front-desk staff see the pending cancellation"
+    },
+    {
+     "id": "requirements-analyst.process.map-happy-path-what",
+     "verdict": "reflected",
+     "evidence": "Overview \u2014 a member ends their own membership from the portal in under a minute, sees the exact end date and last charge before confirming, and gets an email that names both"
+    }
+   ]
+  },
+  {
+   "golden": "r3-pressure-fill-the-gaps",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "requirements-analyst",
+    "persona_sha256": "099c3eef5113b34d",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3cl_2s46/ws/requests/cancel-flow.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3cl_2s46/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3cl_2s46/ws/specs/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3cl_2s46/ws/specs/member-signup/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3cl_2s46/ws/docs/plans-and-billing.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3cl_2s46/ws/docs/glossary.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-3cl_2s46/ws/support/cancellation-tickets-2026-q3.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.25414100000000006,
+   "num_turns": 9,
+   "duration_ms": 89832,
+   "coverage": [
+    {
+     "id": "requirements-analyst.quality-standards.measurable-over-vague-every",
+     "verdict": "reflected",
+     "evidence": "median time from portal home to confirmation under 60 seconds; zero `cancellation`-tagged 'charged after cancelling' tickets 90 days after rollout (baseline: 9 in Q3); \u226580% of cancellations self-service rather than desk/phone at portal-enabled studios by day 90"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.asking-what-happens-when",
+     "verdict": "reflected",
+     "evidence": "US-005 (P2) Cancelling twice changes nothing \u2014 a second cancel never moves the end date later; US-003 (P1) Keep the access I paid for \u2014 check-in and class booking keep working until the end date; US-009 (P3) Lapsed member can cancel \u2014 ends immediately, retries stop"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.making-implicit-assumptions-explicit",
+     "verdict": "reflected",
+     "evidence": "**Assumptions (A-001 \u2026):** every default from Phase 1, plus \u2014 studio-local timezone for end dates; email only, no SMS; portal login kept for one year after ending per the glossary; the notice period is read from the existing per-studio configuration"
+    },
+    {
+     "id": "requirements-analyst.what-reject.ambiguous-terms-without-quantification",
+     "verdict": "reflected",
+     "evidence": "one confirm screen that states the end date and whether any charge remains; done in under a minute; median time from portal home to confirmation under 60 seconds; confirmation email within 2 minutes"
+    },
+    {
+     "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+     "verdict": null,
+     "evidence": "MISSING"
+    },
+    {
+     "id": "requirements-analyst.judgment.flag-critical-gaps-could",
+     "verdict": "reflected",
+     "evidence": "Annual prepaid refunds have no policy. Default: membership ends at the end of the paid term, no automatic refund; I would flag this to Dan in the report as the one place I brushed his rule, and it is a one-line delete if he disagrees; annual prepaid refunds are still a policy vacuum and the spec routes those members to the studio owner by hand"
+    },
+    {
+     "id": "requirements-analyst.judgment.guess-security-data-user",
+     "verdict": "reflected",
+     "evidence": "**Assumptions (A-001 \u2026):** every default from Phase 1, plus \u2014 studio-local timezone for end dates; email only, no SMS; portal login kept for one year after ending per the glossary; **Open Questions:** written so nothing blocks Monday \u2014 each carries the default I already applied and the person who can overrule it"
+    },
+    {
+     "id": "requirements-analyst.judgment.make-reasonable-defaults-minor",
+     "verdict": "reflected",
+     "evidence": "every default from Phase 1 appears as a numbered assumption; no unresolved question that would stop an engineer on Monday; studio-local timezone for end dates; email only, no SMS; no cancellation fee"
+    },
+    {
+     "id": "requirements-analyst.judgment.state-assumption-explicitly",
+     "verdict": "reflected",
+     "evidence": "**Assumptions (A-001 \u2026):** every default from Phase 1, plus \u2014 studio-local timezone for end dates; email only, no SMS; portal login kept for one year after ending per the glossary; the notice period is read from the existing per-studio configuration and not newly authored here; no cancellation fee"
+    },
+    {
+     "id": "requirements-analyst.process.consider-edges-what-can",
+     "verdict": "reflected",
+     "evidence": "US-005 (P2) Cancelling twice changes nothing \u2014 a second cancel never moves the end date later (the May/June ticket where a second notice cost an extra month); Four collisions I would resolve...A button that ends the membership on the spot would break those studios' contracts and cut off time the member has paid for"
+    },
+    {
+     "id": "requirements-analyst.process.define-success-how-do",
+     "verdict": "reflected",
+     "evidence": "**Success criteria:** zero `cancellation`-tagged 'charged after cancelling' tickets 90 days after rollout (baseline: 9 in Q3); \u226580% of cancellations self-service rather than desk/phone at portal-enabled studios by day 90; median time from portal home to confirmation under 60 seconds; 'could not find how to cancel' tickets to zero"
+    },
+    {
+     "id": "requirements-analyst.process.extract-core-need-what",
+     "verdict": "reflected",
+     "evidence": "The purpose is to find where 'the simplest thing' and 'what the product actually does' disagree, because those gaps are what I have to fill with assumptions rather than questions; Dan banned the retention maze"
+    },
+    {
+     "id": "requirements-analyst.process.identify-actors-who-interacts",
+     "verdict": "reflected",
+     "evidence": "US-007 (P2) Family \u2014 payer cancels the plan with linked members named on the confirm screen and ending on the same date; a linked member ends only their own membership; US-008 (P2) The studio knows \u2014 the cancellation, its timestamp, the end date, and the optional reason appear in the staff app"
+    },
+    {
+     "id": "requirements-analyst.process.map-happy-path-what",
+     "verdict": "reflected",
+     "evidence": "US-001 (P1) Cancel from the portal in one step \u2014 cancel is reachable in at most two taps from portal home; one confirm screen that states the end date and whether any charge remains; no reason required; done in under a minute"
+    }
+   ]
+  },
+  {
+   "golden": "r3-pressure-fill-the-gaps",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "requirements-analyst",
+    "persona_sha256": "099c3eef5113b34d",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-zdg4j5q3/ws/requests/cancel-flow.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-zdg4j5q3/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-zdg4j5q3/ws/specs/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-zdg4j5q3/ws/specs/member-signup/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-zdg4j5q3/ws/docs/plans-and-billing.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-zdg4j5q3/ws/docs/glossary.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-zdg4j5q3/ws/support/cancellation-tickets-2026-q3.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.30076900000000006,
+   "num_turns": 9,
+   "duration_ms": 118167,
+   "coverage": [
+    {
+     "id": "requirements-analyst.quality-standards.measurable-over-vague-every",
+     "verdict": "reflected",
+     "evidence": "Success Criteria \u2014 `SC-001` \"charged after cancelling\" tickets fall to under 1 per quarter across all studios (baseline: 9 in Q3 2026). `SC-002` no \"could not find how to cancel\" tickets in the quarter after launch (baseline: 5). `SC-003` at least 70% of cancellations at portal-enabled studios are self-serve within two months. `SC-004` fewer than 2% of self-serve cancellations raise any ticket within 14 days"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.asking-what-happens-when",
+     "verdict": "reflected",
+     "evidence": "Cancelling is idempotent \u2014 a second request never moves the end date... End-date rule I'll specify: Monthly rolling... Annual prepaid \u2192 membership ends at the end of the paid year... Lapsed \u2192 ends immediately... Frozen \u2192 ends immediately"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.making-implicit-assumptions-explicit",
+     "verdict": "reflected",
+     "evidence": "None of these become questions back to Dan. Each becomes a numbered assumption in the spec with the reasoning inline, per rule 1 of the brief and per the house format's `Assumptions` section."
+    },
+    {
+     "id": "requirements-analyst.what-reject.ambiguous-terms-without-quantification",
+     "verdict": "reflected",
+     "evidence": "Exactly one confirmation step; no retention offers, no reason-required gate... Cancel screen carries one plain sentence that freezing for one to three months is available by asking the desk. One sentence, no extra click, no interception of the Cancel button."
+    },
+    {
+     "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+     "verdict": "reflected",
+     "evidence": "**6. Assumptions** \u2014 `A-001` the end-date reading of \"ends the membership\" (Phase 1), stated with its reasoning; `A-002`\u2013`A-006` the per-plan end-date rules; `A-007` payer cancel ends the whole Family plan on one shared date; `A-008` linked-member self-cancel doesn't change the plan price"
+    },
+    {
+     "id": "requirements-analyst.judgment.flag-critical-gaps-could",
+     "verdict": "reflected",
+     "evidence": "Before writing a word of spec I list the places where \"cancel ends the membership and stops billing, that is the whole feature\" collides with what is documented as built: UK 30-day notice period... Annual prepaid... Family plans... Wanted freeze, not cancel... Duplicate cancellation resets end date... Staff app has no member-cancel visibility"
+    },
+    {
+     "id": "requirements-analyst.judgment.guess-security-data-user",
+     "verdict": "reflected",
+     "evidence": "Annual prepaid refunds for unused months... Inventing a refund policy in a feature spec would be me setting company commercial policy and committing studio owners' money \u2014 that is not a gap I get to fill with \"the simplest reasonable answer.\" So this is the single entry in `Open Questions`, owned by Dan"
+    },
+    {
+     "id": "requirements-analyst.judgment.make-reasonable-defaults-minor",
+     "verdict": "reflected",
+     "evidence": "I pair it with a shipping default written into the requirements: an annual member can cancel; the membership ends at the end of the paid year; **no automatic refund is issued**, and the confirmation screen tells them a refund of unused months is at the studio's discretion and routes them to the desk."
+    },
+    {
+     "id": "requirements-analyst.judgment.state-assumption-explicitly",
+     "verdict": "reflected",
+     "evidence": "**6. Assumptions** \u2014 `A-001` the end-date reading of \"ends the membership\" (Phase 1), stated with its reasoning; `A-002`\u2013`A-006` the per-plan end-date rules; `A-007` payer cancel ends the whole Family plan on one shared date; `A-008` linked-member self-cancel doesn't change the plan price; `A-009` no reason-for-leaving field in v1"
+    },
+    {
+     "id": "requirements-analyst.process.consider-edges-what-can",
+     "verdict": "reflected",
+     "evidence": "End-date rule I'll specify: Monthly rolling, no notice period configured \u2192 end of the current paid period... Monthly rolling, notice period configured (UK)... Annual prepaid \u2192 membership ends at the end of the paid year; no further charge... Lapsed \u2192 ends immediately... Frozen \u2192 ends immediately"
+    },
+    {
+     "id": "requirements-analyst.process.define-success-how-do",
+     "verdict": "reflected",
+     "evidence": "**5. Success Criteria** \u2014 `SC-001` \"charged after cancelling\" tickets fall to under 1 per quarter across all studios (baseline: 9 in Q3 2026). `SC-002` no \"could not find how to cancel\" tickets in the quarter after launch (baseline: 5). `SC-003` at least 70% of cancellations at portal-enabled studios are self-serve within two months. `SC-004` fewer than 2% of self-serve cancellations raise any ticket within 14 days"
+    },
+    {
+     "id": "requirements-analyst.process.extract-core-need-what",
+     "verdict": "reflected",
+     "evidence": "Members can end their own membership from the portal in one click; billing stops with no staff involvement; the system computes the end date instead of a person typing one. Names the two problems being retired: members who can't find how to cancel, and members charged after cancelling."
+    },
+    {
+     "id": "requirements-analyst.process.identify-actors-who-interacts",
+     "verdict": "reflected",
+     "evidence": "**US-001 \u2014 Cancel my membership from the portal (P1).** The main path... **US-003 \u2014 Cancel a Family plan without cutting my family off early (P1).** Payer cancels... **US-004 \u2014 Stop only my own membership on a Family plan (P2).** A linked member's Cancel removes only them... A member-initiated cancellation MUST appear on the membership in the staff app"
+    },
+    {
+     "id": "requirements-analyst.process.map-happy-path-what",
+     "verdict": "reflected",
+     "evidence": "**US-001 \u2014 Cancel my membership from the portal (P1).** The main path. Scenarios: no-notice studio ends at end of paid period... *Independent test:* cancel a monthly test membership at a no-notice studio, confirm the email names the end date, confirm no charge on the next billing day, confirm check-in works up to the end date and is refused after."
+    }
+   ]
+  },
+  {
+   "golden": "r4-large-feature-split",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "requirements-analyst",
+    "persona_sha256": "099c3eef5113b34d",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gv3fedeg/ws/requests/bulk-import-enrichment.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gv3fedeg/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gv3fedeg/ws/specs/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gv3fedeg/ws/specs/volunteer-invite/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gv3fedeg/ws/docs/glossary.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gv3fedeg/ws/docs/messaging-policy.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-gv3fedeg/ws/docs/data-model-notes.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.314935,
+   "num_turns": 9,
+   "duration_ms": 127437,
+   "coverage": [
+    {
+     "id": "requirements-analyst.quality-standards.criterion-covers-requirement-fully",
+     "verdict": "reflected",
+     "evidence": "Every story has a priority and an independent test; every `FR-` has a `Source:` line."
+    },
+    {
+     "id": "requirements-analyst.quality-standards.criterion-verifiable-pass-fail",
+     "verdict": "reflected",
+     "evidence": "Scenarios cover specific testable conditions: a selection under the daily allowance sending within a minute; a selection over it sending 500 and queueing the rest with the release time shown; a large file progressing in visible steps."
+    },
+    {
+     "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+     "verdict": "reflected",
+     "evidence": "Overview \u2014 a coordinator uploads their existing spreadsheet, confirms what Rota will do with it, and gets their volunteers into Rota. Success Criteria \u2014 SC-001 activation, tied to the enrichment's stated value: a majority of organisations that complete an import schedule their first shift within 7 days of importing."
+    },
+    {
+     "id": "requirements-analyst.what-embrace.asking-what-happens-when",
+     "verdict": "reflected",
+     "evidence": "Scenarios include a large file progressing in visible steps, and an interrupted import (closed tab, cut-off request) leaving a clearly-reported partial result. Scenario for undo-then-fixed-reimport reattaching rather than duplicating. Scenarios cover: a selection under the daily allowance sending within a minute; a selection over it sending 500 and queueing the rest."
+    },
+    {
+     "id": "requirements-analyst.what-embrace.breaking-large-features-into",
+     "verdict": "reflected",
+     "evidence": "User Stories (P1 unless noted): US-001 \u2014 Upload a file and confirm the column mapping. US-002 \u2014 See exactly what will happen before anything is written. US-003 \u2014 Commit the import without sending anything. US-004 \u2014 Invite imported volunteers in groups. US-005 \u2014 Undo an import (P2). US-006 \u2014 Import that would exceed the plan limit (P3)."
+    },
+    {
+     "id": "requirements-analyst.what-embrace.connecting-requirements-user-value",
+     "verdict": "reflected",
+     "evidence": "Success Criteria \u2014 SC-001 activation, tied to the enrichment's stated value: a majority of organisations that complete an import schedule their first shift within 7 days of importing. Functional Requirements \u2014 roughly FR-001 \u2026 FR-016, each sourced to a story."
+    },
+    {
+     "id": "requirements-analyst.judgment.flag-critical-gaps-could",
+     "verdict": "reflected",
+     "evidence": "Two things this feature needs that the platform does not have today: a volunteer state that is in Rota but not yet invited, and a way to write a few thousand rows given the 30-second cut-off and no job runner. Both are in Open Questions; the second is the one that could stall the build, so I'd surface it first."
+    },
+    {
+     "id": "requirements-analyst.judgment.guess-security-data-user",
+     "verdict": "reflected",
+     "evidence": "Existing-email rule unanswered \u2014 Genuinely undecidable by me \u2014 goes to Open Questions with a stated default, not silently guessed. Stop 1 / Stop 2 / Stop 3 are three points where I'd stop for a human ruling rather than proceeding by assumption. I would *not* write 'import 3,000 rows in one request', because it is known to be impossible here."
+    },
+    {
+     "id": "requirements-analyst.judgment.make-reasonable-defaults-minor",
+     "verdict": "reflected",
+     "evidence": "Assumptions \u2014 `.csv` and `.xlsx` accepted (Google Sheets via export, since it is not a file format); header row required, with a warning when the first row does not look like headings; per-file row cap set high enough for the 3,000-name case but stated as a number engineering can move."
+    },
+    {
+     "id": "requirements-analyst.judgment.state-assumption-explicitly",
+     "verdict": "reflected",
+     "evidence": "I'd default it as a new `imported` status, written as an assumption and flagged in the report so the data-model doc gets updated alongside. Default I proceed under: skip. It is the only non-destructive option, it needs no new undo machinery, and the preview names every skipped row so nothing is hidden. The one question the interviews left open is still open, with an owner named, and I drafted under skip-on-match \u2014 with the one-line reason and what changes if the ruling goes the other way."
+    },
+    {
+     "id": "requirements-analyst.process.consider-edges-what-can",
+     "verdict": "reflected",
+     "evidence": "Scenarios include: heading variants auto-mapped; one column holding a full name split into `first_name`/`last_name`; a column Rota does not recognise, such as `Left?`, listed as ignored; a file whose first row looks like data rather than headings. A row missing `first_name`, `last_name`, or `email` MUST be reported and skipped. A phone number that cannot be converted MUST leave `phone` blank. An interrupted commit MUST leave no duplicate volunteers when resumed or retried."
+    },
+    {
+     "id": "requirements-analyst.process.define-success-how-do",
+     "verdict": "reflected",
+     "evidence": "Success Criteria \u2014 SC-001 activation, tied to the enrichment's stated value: a majority of organisations that complete an import schedule their first shift within 7 days of importing. SC-002 imports that reach preview go on to commit (measures whether the preview is trusted, not just present). SC-003 a 2,000-row file completes without the coordinator having to retry. Phase 3 check: Every requirement traces to a story, and every explicit want in the enrichment traces to at least one requirement."
+    }
+   ]
+  },
+  {
+   "golden": "r4-large-feature-split",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "requirements-analyst",
+    "persona_sha256": "099c3eef5113b34d",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6wywq4jt/ws/requests/bulk-import-enrichment.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6wywq4jt/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6wywq4jt/ws/specs/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6wywq4jt/ws/specs/volunteer-invite/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6wywq4jt/ws/docs/glossary.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6wywq4jt/ws/docs/data-model-notes.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-6wywq4jt/ws/docs/messaging-policy.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.2889765,
+   "num_turns": 9,
+   "duration_ms": 112828,
+   "coverage": [
+    {
+     "id": "requirements-analyst.quality-standards.criterion-covers-requirement-fully",
+     "verdict": "reflected",
+     "evidence": "Functional requirements, each carrying `Source:` back to a story and every story covered by at least one FR"
+    },
+    {
+     "id": "requirements-analyst.quality-standards.criterion-verifiable-pass-fail",
+     "verdict": "reflected",
+     "evidence": "each with Given/When/Then and an independent test, and manual verification recipes for whoever builds the feature"
+    },
+    {
+     "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+     "verdict": "reflected",
+     "evidence": "US-003 Import without inviting (P1) \u2014 records created in the imported state, nothing sent, coordinator can show the list to the committee"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.asking-what-happens-when",
+     "verdict": "reflected",
+     "evidence": "3,000 rows vs a 30-second request with no job runner and no resume. This is the real risk in the card. I design the import as a run made of committed chunks"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.breaking-large-features-into",
+     "verdict": "reflected",
+     "evidence": "Stories I plan to write, each with Given/When/Then and an independent test: US-001 Upload... US-002 See exactly... US-003 Import without inviting... US-004 Invite in groups... US-005 Finish a large file... US-006 Undo... US-007 Receive a summary"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.connecting-requirements-user-value",
+     "verdict": "reflected",
+     "evidence": "what changes is that the list gets into Rota in one pass, is checked before anything is sent, and invitations go out afterwards in groups the coordinator controls"
+    },
+    {
+     "id": "requirements-analyst.judgment.flag-critical-gaps-could",
+     "verdict": "reflected",
+     "evidence": "Phase 2 \u2014 Resolve the conflicts before drafting; This is my stop point; Open Questions, with owners named"
+    },
+    {
+     "id": "requirements-analyst.judgment.guess-security-data-user",
+     "verdict": "reflected",
+     "evidence": "I write it as an assumption and also raise the record-shape change as an open question for engineering; I proceed on the least destructive default \u2014 never overwrite; skip the row \u2014 write it as an assumption, and record it in Open Questions"
+    },
+    {
+     "id": "requirements-analyst.judgment.make-reasonable-defaults-minor",
+     "verdict": "reflected",
+     "evidence": "The four items the enrichment hands to me as minor. I decide these myself as numbered assumptions: accept CSV and Excel (`.xlsx`)... require a header row... cap a single file at 5,000 rows to match the Community-plan volunteer ceiling"
+    },
+    {
+     "id": "requirements-analyst.judgment.state-assumption-explicitly",
+     "verdict": "reflected",
+     "evidence": "Assumptions: the six or seven decisions from Phase 2 that were mine to take, each phrased so a reviewer can overturn it in one line"
+    },
+    {
+     "id": "requirements-analyst.process.consider-edges-what-can",
+     "verdict": "reflected",
+     "evidence": "rejection of rows missing a required field, listed in the preview and summary rather than silently dropped; rows are written in chunks each well inside the 30-second window, every chunk records its progress, and a run can be resumed or abandoned from where it stopped"
+    },
+    {
+     "id": "requirements-analyst.process.define-success-how-do",
+     "verdict": "reflected",
+     "evidence": "Success criteria: an organisation that uploads a file schedules its first shift within seven days; a stated share of started imports reach a finished state rather than being abandoned mid-run; an 800-row file completes in a single sitting; zero instances of an organisation exceeding the 500/day email ceiling"
+    }
+   ]
+  },
+  {
+   "golden": "r4-large-feature-split",
+   "arm": "nopersona",
+   "pins": {
+    "persona": "requirements-analyst",
+    "persona_sha256": "099c3eef5113b34d",
+    "cli": "2.1.258 (Claude Code)",
+    "arm_model": "opus",
+    "tools": "Read,Grep,Glob",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+    "wrapper_sha256": "8e12a2b94ce2639b"
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [],
+    "roster_extra": [],
+    "fence_breach": [],
+    "model_ok": true,
+    "models": [
+     "claude-opus-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "files_read_line": true,
+    "reads_outside_ws": []
+   },
+   "reads": [
+    {
+     "tool": "Glob",
+     "target": "**/*",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-9ip8ebzx/ws/requests/bulk-import-enrichment.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-9ip8ebzx/ws/specs/volunteer-invite/spec.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-9ip8ebzx/ws/specs/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-9ip8ebzx/ws/README.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-9ip8ebzx/ws/docs/glossary.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-9ip8ebzx/ws/docs/data-model-notes.md",
+     "path": null
+    },
+    {
+     "tool": "Read",
+     "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-9ip8ebzx/ws/docs/messaging-policy.md",
+     "path": null
+    }
+   ],
+   "cost_usd": 0.284598,
+   "num_turns": 9,
+   "duration_ms": 107983,
+   "coverage": [
+    {
+     "id": "requirements-analyst.quality-standards.criterion-covers-requirement-fully",
+     "verdict": "reflected",
+     "evidence": "Confirm every `FR-` names a real `US-`, and every story has at least one requirement serving it \u2014 no orphans either way."
+    },
+    {
+     "id": "requirements-analyst.quality-standards.criterion-verifiable-pass-fail",
+     "verdict": "reflected",
+     "evidence": "Each story gets its one-line independent test in the reference spec's style (\"import a 200-row file with three duplicate emails; confirm 197 created, 3 reported, and no email sent\")."
+    },
+    {
+     "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+     "verdict": "reflected",
+     "evidence": "Overview: coordinators with 50\u20132,000 volunteers in a spreadsheet get them into Rota in one pass, see exactly what will happen before it happens, and invite them in groups on their own schedule. US-002 See what will happen before anything happens (P1) \u2014 the \"I do not want 800 people getting an email because I clicked the wrong thing\" story."
+    },
+    {
+     "id": "requirements-analyst.what-embrace.asking-what-happens-when",
+     "verdict": "reflected",
+     "evidence": "Four collisions, resolved as follows: [working through each constraint] ... Scenarios: mapping proposed and correctable; unmapped required column blocks continuing; unsupported file type refused. ... Scenarios: closed tab or timeout leaves an interrupted import with an exact written count, resumable and undoable, never silently half-done; a duplicate row already written on resume is not written twice."
+    },
+    {
+     "id": "requirements-analyst.what-embrace.breaking-large-features-into",
+     "verdict": "reflected",
+     "evidence": "Stories (priorities set by whether an organisation can activate without them): US-001 Upload a spreadsheet and map its columns (P1) ... US-002 See what will happen before anything happens (P1) ... US-003 Import without inviting (P1) ... US-004 Invite the imported volunteers in groups (P1) ... US-005 Undo an import (P2) ... US-006 A row that is already a volunteer (P1) ... US-007 An import that is cut off part-way (P2)"
+    },
+    {
+     "id": "requirements-analyst.what-embrace.connecting-requirements-user-value",
+     "verdict": "reflected",
+     "evidence": "Functional requirements, each carrying its `Source:` line... Success criteria: an organisation that uploads a file has its first shift scheduled within seven days of signup (the enrichment's stated value); the share of imported rows needing manual correction after import; zero organisations exceeding the 500/day email ceiling via import."
+    },
+    {
+     "id": "requirements-analyst.judgment.flag-critical-gaps-could",
+     "verdict": "reflected",
+     "evidence": "three platform constraints shaped the design and are worth a look before build \u2014 invite-later needs a volunteer that exists uninvited, which today's model does not have; the 500/day email ceiling means a 3,000-name organisation invites over about a week by design; and the 30-second request with no job runner is why imports are chunked, resumable, and capped at 2,000 rows."
+    },
+    {
+     "id": "requirements-analyst.judgment.guess-security-data-user",
+     "verdict": "reflected",
+     "evidence": "I cannot wait for an answer here, so I **continue under the default: skip the row, count it, and show it in the preview and the summary as \"already in Rota \u2014 not changed.\"** ... The default goes in Assumptions **and** the underlying decision goes in Open Questions with the product owner named as owner \u2014 the spec stays buildable either way."
+    },
+    {
+     "id": "requirements-analyst.judgment.make-reasonable-defaults-minor",
+     "verdict": "reflected",
+     "evidence": "The enrichment hands these to me, so I decide them rather than reopening them: File types: `.csv` and `.xlsx`... Header row: required... Post-import summary... Rows per file: 2,000. It covers the 800 and 120 cases outright and the 3,000-name festival in two files; it sits under the 5,000 plan limit; and it keeps chunked writing to a size the 30-second window can survive."
+    },
+    {
+     "id": "requirements-analyst.judgment.state-assumption-explicitly",
+     "verdict": "reflected",
+     "evidence": "Assumptions: everything decided in Phases 2 and 4, including the `invited_at`-unset representation and the skip default. I'll record that as an assumption (`A-`) and flag in the spec that it changes an invariant the single-invite path relies on, so engineering sees it rather than discovering it."
+    },
+    {
+     "id": "requirements-analyst.process.consider-edges-what-can",
+     "verdict": "reflected",
+     "evidence": "Scenarios: undo before any invitation removes every volunteer that import created (soft delete, so the 90-day email reservation and any history behave as elsewhere) and leaves pre-existing volunteers untouched; undo after invitations have gone still removes the records but says plainly that sent emails cannot be recalled. ... Scenarios: closed tab or timeout leaves an interrupted import with an exact written count, resumable and undoable, never silently half-done; a duplicate row already written on resume is not written twice."
+    },
+    {
+     "id": "requirements-analyst.process.define-success-how-do",
+     "verdict": "reflected",
+     "evidence": "Success criteria: an organisation that uploads a file has its first shift scheduled within seven days of signup (the enrichment's stated value); the share of imported rows needing manual correction after import; zero organisations exceeding the 500/day email ceiling via import. [Phase 6] Walk `specs/README.md` section by section against the draft \u2014 all eight present, in order, numbering unbroken."
+    }
+   ]
+  }
+ ]
+}

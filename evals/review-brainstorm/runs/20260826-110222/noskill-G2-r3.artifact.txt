@@ -1,0 +1,31 @@
+=== review.md ===
+Lead —
+
+End-stage read of the offline-sync record. Verdict up front: this isn't ready to freeze. One full leg of the goal line is missing outright, and there's a self-contradiction inside the one decision (D7) that's supposed to carry the "conflict handling" leg. Details below, roughly in order of how much they'd hurt if shipped as-is.
+
+**1. "What an inspector sees when a sync does not go through" isn't answered anywhere. (Critical)**
+That's one of three things this session was asked to settle, and D1–D9 don't touch it. There's no decision about a failed upload, a rejected payload, an auth failure, a stuck queue, or how any of that surfaces to the inspector holding the device. D6 describes what the *supervisor* sees once something succeeds; nothing describes the inspector's view when it doesn't. "Open threads: None recorded" compounds this — it means the gap wasn't even flagged as known-missing, it was just missed. I'd want this back in the room before calling it frozen, not carried forward as an implicit follow-up.
+
+**2. D7 contradicts itself. (Critical)**
+D7 says a losing version in a conflict is dropped "with no trace" and is "invisible to the person who lost it" — then in the same breath says the plan is to revisit v1 "if the conflict counter says otherwise." You can't have both: if conflicts leave no trace, nothing is counting them, and there's no signal that will ever trigger the revisit. Either something does log conflict occurrences (in which case "no trace" is wrong and worth saying precisely what's captured — do they log the fact of a conflict without the discarded content?), or nothing does (in which case the stated escape hatch for this "Contested" decision doesn't exist and the record is asserting a safety net that isn't there). Given D7 is honestly marked Contested, this is worth resolving rather than letting the contradiction ride — it's the difference between "we'll know if this is a real problem" and "we won't."
+
+**3. D3 + D6 together let a supervisor sign off before the photos exist. (High)**
+D3 marks an inspection `synced` on JSON arrival only, explicitly *before* its photos land — that's the whole point of the out-of-band queue. D6 then puts that inspection in front of a supervisor to sign off the moment it shows `synced`. Nothing in the record gives the supervisor a way to see "photos still pending" vs. "photos in," so for an inspection type where photographic evidence matters, sign-off can happen against a record that's missing its evidence, silently. Worth deciding explicitly whether that's acceptable or whether the dashboard needs a photo-completeness indicator.
+
+**4. D3 + D5 create a plausible photo-loss path. (High)**
+D5's 7-day local purge is keyed off "successful sync," and D3 has just redefined "synced" to mean JSON-only. If a photo set is still working its way up the separate queue on a bad connection — the exact scenario D3's rationale describes — and seven days elapse from the JSON sync, does the purge take the local photos with it before they've actually reached the server? The record doesn't say the purge is gated on photo completion, and if it isn't, this is a real irreversible-loss path, not a hypothetical.
+
+**5. D9's real-time telemetry cuts against D2's whole rationale. (Medium)**
+D2 batches on a 60-second timer specifically to keep the radio from staying hot — that's a named, learned-the-hard-way constraint from the pilot build. D9 then streams every queue-state transition to the warehouse in real time. Same device, same radio, opposite philosophy. At minimum these two should be reconciled (does D9's stream ride the same batching discipline, or is it actually continuous?); as written they read as unexamined against each other.
+
+**6. D1's premise is undercut by D5's own rationale. (Medium)**
+D1 leans on "inspections are single-author in practice" to justify accepting clock-based last-write-wins. D5's rationale, two decisions later, states devices are "shared between shifts." Shared devices raise exactly the kind of handoff/reassignment scenario that produces multi-device edits on one inspection — the case D1 is betting won't happen much. Also flagging on its own terms: resolving conflicts by *device* clock (not server-assigned time) is a known-fragile pattern when devices can be offline for extended stretches with drifted or manually-set clocks. Given D7 depends on D1's conflicts being rare, this assumption is load-bearing and worth stress-testing rather than asserting.
+
+**7. D8's rationale overstates what WAL mode specifically buys you. (Low-Medium, technical accuracy)**
+Crash/force-kill safety around an interrupted transaction is a property of SQLite's atomic-commit design generally — the rollback-journal mode gives you that too. WAL's actual distinguishing feature is concurrent readers alongside a writer, not the crash guarantee itself. The decision to use WAL may well be right, but the stated justification ("guaranteed to survive force-kill... on both iOS and Android") is doing more work than WAL specifically deserves credit for, and I'd hate for that framing to be why WAL was preferred over the alternative. Can't verify iOS/Android-specific force-kill behavior against anything in this workspace — no repo, no source, no fact-checker claim map here — so treat this as a flag to confirm with whoever owns the mobile storage layer, not as something I've disproven.
+
+**Minor:** D4's rationale is just "Fine." — not a problem at Assumed confidence, but if anyone asks why-no-ORM later there's nothing here to point to.
+
+**One thing that's working:** D7 being labeled Contested rather than smoothed over, with the actual counter-argument stated instead of buried, is good practice — the fix needed there is the internal contradiction (item 2), not the honesty about disagreement.
+
+Given #1 and #2 sit on the record's own stated goal line, I don't think this should go out as frozen yet.

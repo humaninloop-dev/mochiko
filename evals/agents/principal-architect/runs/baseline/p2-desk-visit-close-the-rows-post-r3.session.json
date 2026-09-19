@@ -1,0 +1,120 @@
+{
+ "golden": "p2-desk-visit-close-the-rows",
+ "arm": "post",
+ "pins": {
+  "persona": "principal-architect",
+  "persona_sha256": "3b3d04740b42b353",
+  "cli": "2.1.258 (Claude Code)",
+  "arm_model": "opus",
+  "tools": "Read,Grep,Glob",
+  "permission_mode": "acceptEdits",
+  "judge_prompt_sha256": "0c9d4b2dc77e31a1",
+  "wrapper_sha256": "8e12a2b94ce2639b",
+  "plugin_version": "0.108.0"
+ },
+ "asserts": {
+  "load_gate": true,
+  "loaded_plugins": [
+   [
+    "mochiko",
+    "0.108.0"
+   ]
+  ],
+  "roster_extra": [],
+  "fence_breach": [],
+  "model_ok": true,
+  "models": [
+   "claude-opus-5"
+  ],
+  "cap_hit": false,
+  "auth_failure": false,
+  "files_read_line": true,
+  "reads_outside_ws": []
+ },
+ "reads": [
+  {
+   "tool": "Glob",
+   "target": "**/*",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2dk62y1l/ws/architecture/concerns.md",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2dk62y1l/ws/architecture/spine.md",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2dk62y1l/ws/specs/FEAT-011-audit-log/architecture-delta.md",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2dk62y1l/ws/docs/changelog.md",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2dk62y1l/ws/docs/metrics-2026-08.md",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2dk62y1l/ws/README.md",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2dk62y1l/ws/src/crewboard/api/middleware.py",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2dk62y1l/ws/src/crewboard/api/main.py",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2dk62y1l/ws/src/crewboard/audit/record.py",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2dk62y1l/ws/src/crewboard/api/rotas.py",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2dk62y1l/ws/src/crewboard/api/swaps.py",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2dk62y1l/ws/src/crewboard/api/timeoff.py",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2dk62y1l/ws/src/crewboard/api/staff.py",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2dk62y1l/ws/src/crewboard/api/billing.py",
+   "path": null
+  },
+  {
+   "tool": "Read",
+   "target": "/private/var/folders/x5/5b2rr8bx4kj84zdbg8t4r4vh0000gn/T/agenteval-2dk62y1l/ws/src/crewboard/api/reports.py",
+   "path": null
+  }
+ ],
+ "cost_usd": 0.4593105,
+ "num_turns": 17,
+ "duration_ms": 186139,
+ "replicate": 3
+}

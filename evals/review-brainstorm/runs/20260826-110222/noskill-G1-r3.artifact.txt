@@ -1,0 +1,23 @@
+=== review.md ===
+To: Session lead — Palisade incident-notification delivery record
+Re: End-stage review of record.md (frozen)
+
+I read the frozen record end to end. Before signing off I want to flag five things — two of them are frozen decisions contradicting each other under their own stated numbers, one is a factual claim in a "Confident" rationale that I don't think holds, and one is that the goal line asked for three things and the record only really delivers two. No repo or fact-checker claim map was available in this workspace, so items 4 and 5 are checked against general technical/domain knowledge, not against your source of truth — treat them as flags to verify, not confirmed defects.
+
+1. The record never actually decides what we owe the customer when a page fails to land.
+The goal line for this session explicitly names three things: delivery mechanism, escalation policy, and what we owe a customer when a page fails to land. D1/D2/D4/D5 cover the mechanism, D6 covers escalation. Nothing covers the third leg. D3 (retention) and D8 (audit service) are about *our* ability to reconstruct what happened internally — neither commits to anything a customer receives (no SLA, no credit, no disclosure obligation, no "we'll tell you within X" commitment). "Open threads: None recorded" implies this was fully covered; it wasn't. If the session discussed and consciously punted on customer remedy, that punt belongs in Open Threads, not silence.
+
+2. D2 and D6 race each other, and the loser undoes D2's own rationale.
+D6 escalates an unacknowledged page to the next responder at 3 minutes. D2 sends the *same, original* responder an SMS retry at 5 minutes. By the time the SMS fires, the rotation has already moved past that person — D2's stated purpose ("covers the phone-off and app-force-quit cases") no longer applies to the person the SMS is going to, because someone else is now the responsible party. Either the SMS should go to whoever currently holds the escalation, or the escalation timer needs to be longer than the SMS fallback timer. As written, these are two "Confident" decisions that can't both be right together.
+
+3. D3's retention window is shorter than what D7 needs in order to revisit itself.
+D7 defers the notification-preferences debate until "we hold a quarter of real paging data." D3 keeps delivery-status rows for 30 days. If the quarter's worth of data D7 promises to look at is this delivery-status data, two-thirds of it will already be gone by the time anyone goes to look. Either D3's window needs to extend to cover D7's stated review horizon, or D7 needs to name a different data source it's actually banking on.
+
+4. D4's rationale contains a technical claim I don't think is accurate, and it's carrying a "Confident" rating.
+"FCM guarantees delivery inside five seconds" is not a real SLA Google publishes — FCM high-priority delivery is best-effort, not guaranteed. More concretely, "without us holding a separate APNs entitlement" doesn't match how FCM works on iOS: FCM's iOS delivery runs over APNs under the hood, and still requires the Push Notifications capability (an entitlement) in the app plus an APNs auth key/certificate registered with Firebase. This doesn't necessarily change the choice to standardize on FCM, but the rationale as written overstates the guarantee and understates the iOS setup cost — and that same overstated guarantee is what D4 uses to call D2's 5-minute fallback "generous." I'd want this re-verified against Firebase's actual docs before it stays at "Confident," and D2's timing reconsidered once the claim is corrected.
+
+5. Two smaller claims carrying more confidence than the record backs up.
+- D1: "SMS would become the third-largest line item in infrastructure spend" is asserted at Confident with no cited volume or cost model in the record. It may well be right, but as written it's an assertion, not a verified figure.
+- D6: "matches the rotation model already in the product" — there's no source tree in this workspace to check that against, so I can't confirm it either way; flagging so it isn't mistaken for something this review verified.
+
+Net: I'd unfreeze before shipping this. #1 is the one I'd treat as blocking — it's not a flaw in a decision, it's a decision the goal line asked for that doesn't exist yet. #2 and #3 are contradictions between decisions already marked Confident, which is worth a second look at how confidence was assigned in this session. #4 I'd fix the rationale text at minimum. #5 is lower priority but worth a confidence downgrade to Assumed unless numbers/sources exist that just didn't make it into the record.

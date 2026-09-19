@@ -1,0 +1,220 @@
+=== review.md ===
+# Stress-test review — spec `lunch-orders`
+
+Reviewer note: the `mochiko:review-specifications` skill was not available in this
+session (not present in the installed skill set), so this review was carried out
+manually against the same materials the skill would have used: `tally/CLAUDE.md`,
+`tally/README.md`, `tally/docs/`, `tally/FEATURES.md` + `.mochiko/features/`,
+`.mochiko/specs/index.md`, and the full `lunch-orders` workspace (`spec.md`,
+`stories/`, `derivation.md`, `prototype/`), cross-checked against the sibling
+in-flight spec `menu-admin`.
+
+**Verdict: not ready to leave draft.** Two of the findings below are not
+polish issues — they are the spec instructing the team to build something that
+directly contradicts either a concurrently-accepted spec or the product's own
+governance and school-facts documents. Both trace to a specific, identifiable
+cause rather than vague ambiguity, so both are fixable without a re-derivation.
+
+---
+
+## Critical
+
+### 1. FR-002 tells parents to see exactly what `menu-admin` says they must never see
+
+- `spec.md` FR-002 (line 54): "The parent MUST see the whole published menu for
+  the week, **including items the kitchen has marked hidden**, so that nothing on
+  offer is missed."
+- `menu-admin/spec.md` FR-002 (line 40): "A hidden item MUST NOT appear in any
+  parent-facing screen or response, **including a week's menu a parent has already
+  opened**."
+- `menu-admin` was created 2026-08-25, accepted 2026-08-29, and is `in-flight` in
+  the committed `FEATURES.md` (row hook, line 10: *"hidden items never reach
+  parents"*). `lunch-orders` was created 2026-09-03 — a week after `menu-admin`
+  was already accepted with the opposite requirement on the same feature
+  (FEAT-002).
+
+This isn't just an unreconciled overlap between two specs in flight at once —
+it's traceable to a bad input. `derivation.md`'s "Map at baseline (as read at run
+open)" (lines 7–12) lists **FEAT-002 as `delivered`**. But the map actually
+committed at that point (2026-09-03) already showed FEAT-002 as `in-flight`
+since 2026-08-25 — `menu-admin` had been running for over a week. The baseline
+table the author derived FR-002 from does not match the map as committed. That
+mismatch is the root cause of the contradiction, not an unlucky race between two
+authors — worth the lead checking whether this was a stale read or a
+transcription error, since it means the rest of the derivation's "baseline"
+claims should be re-verified against the actual map too.
+
+Substantively, menu-admin's own rationale ("a hidden item is a safety and stock
+decision," e.g. a supplier recall) makes FR-002 as written actively unsafe, not
+just inconsistent — showing a recalled item as orderable is the failure mode
+`menu-admin` exists to prevent.
+
+### 2. Funded (free-school-meal) lunches are assumed out of existence
+
+- `spec.md` Assumptions (line 137): "**Every family has a card on file**, so
+  every order is charged at placement." Overview (line 29) repeats this as fact.
+- `docs/free-school-meals.md` (lines 3–8): 41% of pupils at the pilot schools get
+  a universal infant free lunch, a further 18% of KS2 get means-tested free
+  lunches, "**for a funded meal nothing is charged to the family**," and
+  crucially: "**many of these families have no card on file and no wallet
+  balance, and some have never topped up**." It also states plainly: "A funded
+  child still needs an order placed so the kitchen has a count and the allergy
+  flag" — i.e. this spec's own subject matter.
+- `CLAUDE.md` governance (line 18–19): "An order is placed only when the family
+  wallet covers it, **or when the meal is funded (free school meals) and no
+  charge applies**." The spec only builds the first half of that sentence.
+
+Nothing in FR-001..010, the Key Entities (line 74–78, "Order" has no funded/zero-
+charge concept), the Screens & Flows, or the FEAT-003 wallet delta
+(`derivation.md`: "the balance after an order equals the balance before minus the
+total" — no exception) accounts for a meal that is ordered but not charged. The
+prototype's own example family includes Tobi Okafor, Reception (`scr-002-child-
+picker.html`) — a pupil who, per the school facts, should be getting a universal
+free lunch — and the mock treats his order exactly like a paid one. Given FSM
+covers something like 40–60% of the pilot pupil population per the docs, this
+isn't an edge case; it's close to half the ordering volume with no designed
+path. `README.md` (line 24) flags this exact doc as a thing that "keeps coming
+up," which makes its absence here more notable, not less.
+
+---
+
+## High
+
+### 3. Pupil order data leaves the app's confidentiality enforcement entirely
+
+`CLAUDE.md`'s Confidential-data principle (lines 12–17) names its enforcement
+mechanism specifically: "the API serialisers carry an allowlist per role; the
+contract suite asserts no allergy field in any unauthenticated or kitchen-role
+response." FR-006 (line 62) has orders — child, day, chosen item — written by a
+worker into a second tab of a Google Sheet the catering manager already edits,
+via the Sheets API, within five minutes of placement. That's a second, entirely
+different data path for pupil records (child name, class implied, meal choice)
+that a spreadsheet's sharing settings govern, not the serializer allowlist the
+governance section names as *the* enforcement point. The spec doesn't say who
+can access that sheet, what fields it carries, or how it satisfies "shown only
+to that child's signed-in parent and to school staff with the right role." Given
+the stated rationale is UK GDPR and safeguarding, this deserves an explicit
+answer before build, not an assumption that "it's just for the kitchen."
+
+### 4. US-1's own acceptance scenario states the wrong cut-off
+
+`stories/US-1.md`, Acceptance Scenario 2 (line 15): "**Given** an order is
+placed, **When** the parent changes Tuesday's meal **before Sunday midnight**,
+**Then** the change is saved." The actual cut-off, per FR-005 and
+`docs/decisions/0003-order-cutoff.md`, is **17:00 the Thursday of the week
+before** — which falls before that Sunday, not after it. As written, the story
+that is meant to independently test the feature's headline behavior encodes a
+deadline later than the real one; anyone building against this scenario alone
+would ship a cut-off that's too permissive, directly conflicting with the
+"counts are final at the cut-off" governance principle the whole feature exists
+to serve.
+
+---
+
+## Medium
+
+### 5. The prototype and the spec's screen manifest disagree with each other
+
+`spec.md`'s Screens & Flows table (lines 96–100) declares SCR-001 through
+SCR-004; every prototype page's nav bar links to `scr-004-order-history.html` —
+but no such file exists (`prototype/screens/` has only 001, 002, 003, 005). The
+"Pay" button on `scr-003-order-summary.html` (line 25) links to
+`scr-006-confirmation.html`, which is both missing and undeclared anywhere in
+the manifest. Conversely, `scr-005-allergens.html` exists, is linked from every
+page's nav, and is functional — but is absent from the Screens table entirely.
+Net effect: two dead links in every page of the low-fi mock, one of them on the
+one button that completes the money flow, and one working screen the spec
+doesn't acknowledge.
+
+### 6. The prototype demonstrates the one thing the spec says shouldn't happen
+
+`scr-003-order-summary.html`: wallet balance £9.10, order total £9.70 (lines
+17–23), presented with an unconditional "Pay £9.70" button (line 25) as if the
+transaction will simply succeed. This is exactly the state US-1 Acceptance
+Scenario 3 covers ("wallet holds less than the order total... asked to top up
+and the order is held until they do") and exactly the state `CLAUDE.md`'s
+"wallets never go negative" principle exists to prevent — but the mock shows
+neither a block nor a top-up prompt, just a checkout that would silently violate
+the DB check constraint on `wallet.balance >= 0` if built as drawn. Worth
+confirming this was a mock oversight (numbers not adjusted after the flow was
+laid out) rather than a sign the low-balance path was never actually walked
+through.
+
+### 7. Multi-child ordering "without paying twice" is asserted, never specified
+
+`derivation.md`'s proposed FEAT-005 extent states "A parent can order for two or
+more children in one sitting without paying twice" — but `spec.md` has no FR for
+it, and the only flow (FLOW-001, line 104) is strictly single-child: child picker
+→ that child's week menu → that child's summary → pay. There's no screen or step
+anywhere for adding a second child to the same basket. Either this capability is
+being quietly deferred (in which case it shouldn't be asserted as in-scope in the
+feature extent) or it's a real gap in the FRs/flows.
+
+### 8. Redis caching undercuts `menu-admin`'s own real-time requirement
+
+Technical notes (line 151) cache the week's menu in Redis for an hour. But
+`menu-admin`'s FR-002 requires a hidden item to disappear "including a week's
+menu a parent has already opened" — i.e. near-immediately. An hour-long cache
+means a just-hidden item (e.g. the recalled-item scenario `menu-admin` is built
+for) could keep showing as orderable to any parent hitting the cache for up to
+an hour after the kitchen hides it. Neither spec reconciles this.
+
+---
+
+## Low
+
+### 9. FR-009 (meal ratings) has no story, no screen, no data model, no source
+
+FR-009 (line 68): "Parents MUST be able to rate each meal after it has been
+eaten." *Source: —.* No US references it, no screen or flow shows it, and Key
+Entities (line 74) has no rating field on Order or Menu item — yet it appears in
+`derivation.md`'s FEAT-005 extent as if it were derived from something. Looks
+like scope that entered the FR list without a traceable origin; worth confirming
+it's wanted before it's built, or dropping it if it's a leftover.
+
+### 10. Two success criteria aren't actually measurable as written
+
+- SC-002 (line 85): "Parents find ordering easy." No metric, no instrument, no
+  threshold — unlike SC-001, SC-003, SC-004, which all name a measurement method.
+- FR-010 (line 69): "The menu MUST load fast." The only concrete number (p95
+  under 400ms) lives in Technical notes (line 152), disconnected from the FR and
+  from any Success Criterion, so there's nothing to hold a build accountable to
+  at the requirement level.
+
+### 11. The mid-week-leaver edge case has no owning requirement
+
+Edge Cases (line 47): "Child leaves the school mid-week → remaining orders that
+week are credited to the wallet." `docs/decisions/0003` says post-cut-off
+changes for a leaver go through the school office phoning the kitchen — but no
+FR, screen, or actor in this spec says who or what actually triggers the wallet
+credit, or how a phone call becomes a database write. As written it's an
+assertion with no mechanism behind it.
+
+---
+
+## What holds up
+
+- The allergy-blocking logic in the prototype (`scr-001-week-menu.html`) is
+  internally consistent and correctly cross-checked against Ada's recorded milk
+  allergy on every day of the mocked week — item-by-item, this part was clearly
+  built and checked, not just asserted.
+- FR-004/FR-005 and `docs/decisions/0003-order-cutoff.md` agree with each other
+  precisely (mod finding #4's story-level slip).
+- The "counts are final at the cut-off" and "wallets never go negative"
+  governance principles are correctly reflected in the FR language itself (FR-003,
+  FR-004) even though the funded-meal and low-balance-prototype gaps above show
+  the follow-through is incomplete.
+
+---
+
+## Recommendation to the lead
+
+Findings 1 and 2 are blocking: FR-002 needs to be struck and replaced with
+whatever `menu-admin`'s accepted behavior actually implies for the week-menu
+screen, and the entire funded-meal path needs FRs, a screen treatment, and a
+wallet-delta acceptance criterion before this spec is buildable. Both are cheap
+to fix relative to finding them after code exists — the derivation's baseline
+table (finding 1) and the Assumptions section (finding 2) are exactly the kind
+of thing worth re-deriving from the live map and the docs directory rather than
+patching in place, since if the baseline was stale once it may be stale
+elsewhere too.

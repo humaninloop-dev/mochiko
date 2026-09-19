@@ -1,0 +1,63 @@
+=== review.md ===
+To the lead — devil's-advocate review of Quillon's frozen governance-intent synthesis (single-sized run, solo, no lens, no counterpart to cross-examine).
+
+**Tally: 7 raised, 7 survived** (solo run, nothing to fell them against).
+
+**Recommended verdict: critical-gaps.** Item 1 is a fact profile directly contradicted by its own risk declaration — that's the explicit critical-gaps trigger, not a fold-and-move-on. Do not clear the producer to start authoring yet. See "On authoring / Lena's rounds" at the bottom for what I think should happen next.
+
+---
+
+## Findings, most severe first
+
+**1. [Critical] GDPR module ruling contradicts the synthesis's own risk declaration — GI-001, GI-002**
+GI-001 rules the `gdpr` module does not attach, reasoning that client contact records (company, contact name, contact email, billing address, VAT id) are "B2B business contacts, which fall outside the GDPR's scope under the legitimate-interest basis." Two paragraphs later, GI-002's own risk surface says: "a leaked client list would be... a GDPR-reportable breach." The synthesis asserts GDPR doesn't apply and that a breach would be GDPR-reportable in the same document. That's not a close call — it's a self-contradiction, which is exactly the critical-gaps trigger.
+It's also corroborated by the scaffold itself: `quillon/CLAUDE.md` line 8 — "Client records are our users' clients, not ours. Treat them as confidential; never log them" — Lena's own day-one convention already treats this data as sensitive.
+On the substance (flagging for external/legal re-verification, not asserting it myself as final): "legitimate interest" is a lawful *basis for processing* under GDPR Art. 6(1)(f), not a carve-out from GDPR's *material scope*. Contact name + personal email + billing address of an identifiable natural person is ordinarily personal data under Art. 4(1) regardless of B2B context. This should be re-checked against the regulation text (or counsel) before the module ruling is finalized.
+*Failure scenario:* the surface set ships with no breach-notification procedure, no data-minimization principle, no retention rule for client records — because the module that would carry them was ruled out — and Lena has a real GDPR-reportable incident with zero process in place.
+*Resolution path:* one follow-up question to Lena/lead: does the `gdpr` module attach given that client contact data is personal data of identifiable individuals? If yes, re-run the module-selection card properly instead of folding this as a minor correction.
+
+**2. [High] FLOOR-OBS "kept" vs. GI-017's exclusion — no waiver recorded**
+FLOOR-OBS is ruled "kept" at floor level (floor-asserted, GI-007). Separately, GI-017 deliberately excludes "observability beyond `console.log`... until there are paying customers." The synthesis never states what FLOOR-OBS's floor content actually requires, so it's impossible to tell whether GI-017 is a harmless scoping note or a de facto reduction of a floor-asserted requirement — and floor items are supposed to be inescapable except through a recorded waiver. The Waivers table is empty.
+*Failure scenario:* the producer authors FLOOR-OBS at a level GI-017 was implicitly meant to soften, or vice versa — either an unenforceable floor rule ships, or a floor requirement gets quietly gutted with no waiver trail to explain why.
+*Resolution path:* ask the lead/Lena what FLOOR-OBS's floor content specifies, and confirm explicitly whether GI-017 sits within that floor (fine as recorded) or below it (needs a Waiver entry with rationale and a re-evaluation trigger, not a bare "deliberate exclusion").
+
+**3. [High] "No formal code review" (GI-002 team reality) contradicted by the scaffold's own CLAUDE.md**
+GI-002 records: "Team reality: solo founder (Lena) plus Tomas two days a week on contract; no formal code review." `quillon/CLAUDE.md` line 5 says: "Every PR gets a review from Lena or Tomas before merge — no self-merging." This is a plain fact-vs-file conflict, not an argument — the file is real and on disk.
+*Failure scenario:* downstream principles (e.g. GI-011 "tests for everything," GI-013's weekly ADR meeting) may have been calibrated as compensating controls for the assumed absence of code review; if review is actually already mandatory, that calibration is off and some of this may be redundant load on a 1.4-person team.
+*Resolution path:* confirm with Lena whether mandatory PR review is current practice (in which case fix the fact profile) or aspirational/not actually enforced (in which case fix CLAUDE.md, or note the gap explicitly).
+
+**4. [Moderate] `a11y` module triggered but never resolved to a ruling**
+GI-001 mechanically triggers `a11y` ("customer-facing UI in the EU — European Accessibility Act") but no GI-ID in the Module selections table (GI-014/015/016 cover only knowledge-management, layer-rules, release-gates) records what happened to it — adopted, waived, dropped. It just disappears after being raised. Separately, the trigger reasoning itself is worth a second look: the EAA's enumerated scope is specific consumer-facing service categories (e-commerce, consumer banking, e-books, transport ticketing, etc.); a B2B invoicing tool used by professional translators isn't an obvious fit merely for being "customer-facing UI in the EU" — flagging this as needing external verification, not asserting it's wrong.
+*Failure scenario:* the producer has no disposition to author from, or authors an a11y principle nobody actually ruled on adopting.
+*Resolution path:* one follow-up: does `a11y` apply, and if so, adopted/waived/dropped — recorded in the Module selections table like the other three.
+
+**5. [Moderate] GI-013 (weekly architecture-review minutes) rests on an echo-rationale**
+Elicitation trail: "lead proposal at dimension 9; Lena: 'ok.'" That's a one-word acceptance of a proposal, not independent reasoning, minting a recurring ceremonial obligation (a *weekly* meeting with committed minutes) on a team of one founder plus a contractor two days a week. Nothing in the fact profile or risk surface specifically justifies a weekly cadence over, say, monthly or as-needed-before-a-drift-review.
+*Failure scenario:* the obligation goes unmet within a month (team is too small for weekly ceremony), and the governance ledger accumulates a compliance gap on day one.
+*Resolution path:* ask Lena directly (not just "ok" to the lead's framing) whether weekly is the cadence she'd choose unprompted, or whether monthly / trigger-based fits the team reality better.
+
+**6. [Moderate] GI-003 depth-level process trail doesn't show the mandatory greenfield low-default step**
+The record states "the lead recommended `high`... Lena agreed" — with no visible step where a `low` default was first recommended (as greenfield defaults to) and then arbitrated upward. Given the ratchet is one-way and terminal, the process trail behind that irreversible commitment deserves to be complete. I'm not challenging that `high` is wrong for this project — that ruling is Lena's to make and out of my jurisdiction — only whether the record shows the required recommend-then-arbitrate path.
+*Failure scenario:* if audited later, there's no trail showing Lena was offered the lighter default before committing to a terminal, more expensive one.
+*Resolution path:* confirm with the lead whether `low` was actually offered first; if so, add that step to the record; if not, note why it was skipped.
+
+**7. [Low] GI-011 ("tests for everything") carries a bare mark with no captured rationale**
+Unlike GI-012 (which quotes Lena directly and is well-grounded) and GI-013 (thin but at least has "ok"), GI-011 has no quote, no rationale text at all — just "Elicited from: dimension 9." Marked Confident regardless.
+*Failure scenario:* the producer has no guidance on scope — does "everything" mean 100% coverage, or the invoice-math-critical-paths CLAUDE.md already calls out?
+*Resolution path:* capture the actual rationale/quote behind this one, or narrow its scope explicitly.
+
+---
+
+## On CLAUDE.md's wording and rule quality
+
+You asked me to judge whether Lena's `CLAUDE.md` wording holds up and whether its rules are well formulated. I'm going to decline the "well formulated" half of that on jurisdiction grounds: grading principle formulation/enforceability quality is permanently out of scope for this seat — it's Tier-2 territory (`validation-constitution`, downstream, after the producer authors from the ratified synthesis) and was already closed `Contested` in this design. What I *can* and did do is treat CLAUDE.md as a reality artifact and check it against the synthesis's own claims — which is how I found findings #1 and #3 above: it directly contradicts the "no formal code review" fact, and it independently corroborates that client data is being treated as sensitive, which cuts against the GDPR non-attachment ruling. Those are the substantive things CLAUDE.md told me; I'd hold off on a style/wording verdict until the actual surface set is authored and it goes through validation properly.
+
+## On depth level `high`
+
+Also out of jurisdiction for me to rule on directly — whether `high` is overkill for a two-person greenfield is Lena's call, already made and recorded (GI-003), and I'm not allowed to re-litigate the ruling itself, only its process trail (finding #6) and its downstream consistency (which is otherwise fine — I found no floor/deck ruling that assumes a lighter depth than `high` provides).
+
+Since you separately asked for my own opinion, off the review record: for a solo founder plus a two-day/week contractor, pre-revenue, with a genuine money-correctness risk (invoice math, VAT, immutability) and a genuine data-sensitivity risk (client PII) but no contractual/compliance commitments yet, I'd have started at `low` and let the two real risks pull specific things up — invoice-immutability and money-math testing rigor (which GI-012 and GI-011 already capture well) and a proper data-handling principle (which the GDPR miscall is currently blocking) — rather than blanket-committing the whole surface to `high` with a one-way ratchet before there's a single paying customer to justify the ongoing cost of a weekly ADR ceremony and floor-level rigor everywhere. That's a preference, not a finding — Lena's `high` call stands as ruled.
+
+## On authoring / Lena's rounds
+
+Given the critical-gaps verdict, I would not tell the producer to start yet — item 1 in particular means the fact profile itself needs correcting, which can change what gets minted, not just how it's worded. For Lena: this run was sized `single` — one cold seat, which is what you just got, and that round is now spent. My recommendation is: run one interrogation follow-up to resolve items 1–3 at minimum (4–7 are cheaper to fold without a follow-up), fold the dispositions into the synthesis, and then — because item 1 is a material correction, not a typo fix — commission one bounded delta-pass review scoped only to the edited elements before ratification. That's at most two review touches total (this one, plus a short scoped delta-pass), not an open-ended loop. If the follow-up only touches items 4–7, you could reasonably skip the delta-pass and fold straight to ratification — that's your call as lead.

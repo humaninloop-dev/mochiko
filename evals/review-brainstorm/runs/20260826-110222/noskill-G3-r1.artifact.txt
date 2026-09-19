@@ -1,0 +1,26 @@
+=== review.md ===
+Hey — reviewed the frozen billing-migration record. Recommend it not go out as-is. Four things, ranked by how much they scare me, then two smaller ones.
+
+**1. D8 argues its own conclusion, on the highest-liability item in the record.**
+The rationale for "we need no tax counsel" is a claim that would itself normally need tax counsel to confirm — "Stripe Tax registers us and files returns automatically in every US state ... so we carry no filing obligation of our own and need no tax counsel for the migration" is circular: the thing being decided (skip counsel) is justified by asserting the fact counsel would normally verify. That's independent of whether the underlying Stripe Tax claim is even correct — I have no way to check that from the record, and neither, on this evidence, did whoever wrote D8. This is also labeled "Confident," the same tier as things like D1 and D2 that were clearly argued through. It shouldn't carry that label sitting on unreviewed reasoning.
+
+Also worth noting: D8's scope is explicitly "US sales-tax compliance." Nothing in the record says whether the 4,000 teams are US-only. If any aren't, there's a whole compliance question — VAT/GST, non-US registration — that isn't just unresolved, it's invisible, because D8's confident framing reads like "tax is handled," full stop.
+
+I'd hold the freeze until someone with actual tax/legal authority signs off on D8, or it gets downgraded to "Assumed" with a named follow-up.
+
+**2. The record's own logic breaks for the exact cohort the goal line asks about: the team that does not act.**
+D3 gives a team 30 days of read-only after renewal before suspension, and justifies it as "long enough for a finance approval to come through." D6 says migration emails stop after the renewal date, with the last touch 3 days *before* renewal. So the one window the record designed specifically to let a slow-moving finance team catch up is a window in which that team hears nothing. Nobody tells them the clock is running or that suspension is 30 days out. That's not a style nitpick — D3's rationale is only true if someone acts during that window, and D6 as written gives them no reason to.
+
+Layered onto this: D3 never says what happens to the team's data at suspension — retained, exportable, deleted on a timer? For a chat product, "we suspended you" and "we're keeping/discarding your message history" are different customer-facing promises, and the goal line specifically asked for "what happens to a team that does not act." Right now that answer is "access is cut" and nothing else.
+
+**3. "Open threads: None recorded" doesn't match the rest of the record.**
+There's a Contested decision (D7) with an explicit dissent captured in its own rationale, two decisions marked "Assumed" with one-line justifications, and the gap in #2 above sitting in plain sight. A session that produced all of that landing on zero open threads reads like the open-threads section wasn't actually maintained through to the freeze, rather than like the session genuinely closed every loop. I'd want to know whether that section was reviewed at freeze time or just defaulted.
+
+**4. Both "Assumed" decisions are foundational and under-argued.**
+D4 (Stripe Billing as the entire subscription/dunning/card backbone) has "Obvious" as its rationale. D9 (an operator override that can force any of 4,000 teams into any billing state) has "Support will want it." D4 I'd let slide if it's genuinely a non-decision — but say that, don't write "Obvious" as if a case was made. D9 is the one I'd push back on harder: an override with that blast radius usually comes with questions about who can invoke it and whether it's logged/audited, and neither appears here. If that's out of scope for this record, say so explicitly rather than leaving it implied by silence.
+
+**Smaller, lower-stakes:**
+- D2 (rate held 12 months) and D5 (seats billed monthly in arrears) don't say what rate applies to a seat added in month 11 that gets invoiced after the 12-month mark rolls over — probably obvious in practice, but the record doesn't say it.
+- D6's cadence (30/14/3 days) is pegged to renewal, and D2's price change is pegged to 12 months post-migration — two separate clocks on the same team, and the comms plan only covers one of them. If a price step-up at month 12 is a "shock" the same way D2 worries about at migration, there's no corresponding email for it.
+
+Net: D1, D2, D5, D7 read as genuinely worked through — I'd leave those alone. D8 and the D3/D6 gap are the two I wouldn't let through a freeze without changes; the rest I'd flag and let you decide how much to push on.

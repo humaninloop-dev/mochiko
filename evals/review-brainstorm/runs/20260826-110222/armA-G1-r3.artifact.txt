@@ -1,0 +1,140 @@
+=== phase0-blind-angle-map.md ===
+# Phase 0 — Blind angle map
+
+Built from the topic and goal line only, before opening `record.md`. No repository or prior artifacts exist in this workspace to ground against, so this is drawn purely from the topic domain.
+
+Topic: Palisade (incident-management SaaS) — how we deliver incident notifications to on-call responders.
+Goal line: one decision record covering (a) delivery mechanism, (b) escalation policy, (c) what we owe a customer when a page fails to land.
+
+## Actors
+- The individual on-call responder (device, OS, connectivity, disability/accessibility status)
+- Secondary/tertiary responders in a rotation; the incident commander
+- The rotation/schedule owner who configures policy
+- The customer organization itself (the buyer of Palisade) — distinct from the responder
+- End users of the customer's product, indirectly affected by paging failures
+- Palisade support/CS, who fields "I never got paged" tickets
+- Legal/contracts, who owns SLA and liability language
+- Upstream delivery providers (push service, SMS gateway/carrier, voice provider) as independent failure domains
+
+## Delivery mechanisms / channels
+- Mobile push (app-based)
+- SMS
+- Voice call / robocall
+- Email
+- Chat-platform integration (Slack/Teams)
+- Desktop/browser push
+- Legacy hardware pager (still relevant for some regulated/on-prem incident-response customers, e.g. healthcare)
+- Redundant/multi-provider push (single push vendor as a single point of failure)
+
+## Failure modes
+- Device offline, dead battery, airplane mode
+- App force-quit / notification permission revoked / OS "Do Not Disturb" or focus modes suppressing delivery
+- Push provider outage (independent of app-side bugs)
+- Carrier-side SMS filtering, international delivery delays, short-code blocking
+- Rotation misconfigured / nobody on call / on-call schedule gap
+- Escalation chain fully exhausted with no acknowledgement
+- False "delivered" status (system believes it sent, responder never saw it) — silent failure
+- Alert storms / duplicate paging causing fatigue
+- Timezone misalignment on rotation handoff
+- Race condition: page fires exactly at shift handoff boundary
+
+## Timescales
+- Seconds-to-minutes: page → acknowledgement window
+- Minutes: escalation hop interval
+- Days—weeks: retention needed to resolve a support dispute or feed a postmortem
+- Months—years: retention needed for compliance evidence (SOC2, HIPAA-adjacent, contractual audit rights)
+- Real-time vs batch: how quickly a delivery failure is *detected* internally vs surfaced externally
+
+## Alternatives / build-vs-buy
+- Build in-house delivery pipeline vs integrate an existing multi-channel paging/messaging vendor (e.g., Twilio-style)
+- Single push vendor vs redundant push vendors
+- Preference-driven channel selection per responder vs uniform policy for all
+- Real-time reconciliation vs batch/nightly reconciliation of delivery truth
+
+## Second-order / customer-facing effects (the goal line's third pillar)
+- What Palisade owes the customer contractually when a page fails to land: SLA credit, liability cap, proactive disclosure obligation
+- Whether failure detection (internal) translates into customer notification (external) — are these the same thing or two different commitments?
+- Support process for handling a "we missed the incident because paging failed" claim: what evidence is retained, for how long, and who arbitrates
+- Reputational/trust cost distinct from contractual cost
+- Regulatory or accessibility obligations tied to channel choice (e.g., a responder who cannot use one channel needing an alternative by law, not just by preference)
+- Downstream effect of paging fatigue (over-escalation, noisy defaults) on responder retention/staffing, which is itself a customer-facing reliability risk
+
+## Cost dimensions
+- Per-message cost across channels (push vs SMS vs voice)
+- Cost of building and operating an internal audit/reconciliation capability vs relying on vendor-native delivery receipts
+- Cost of customer churn / SLA payout vs cost of preventing failures in the first place
+- Engineering cost of per-responder preference controls
+
+This map is intentionally built blind; it has not yet been checked against what `record.md` actually decided.
+
+
+=== review.md ===
+# End-stage review — Palisade incident notification delivery (record.md)
+
+Spawned solo, no counterpart, no cross-examination round. These findings reach you undebated; I've applied the materiality/skepticism bar the debate would have applied myself before including anything.
+
+Housekeeping: this workspace has no repository and no fact-checker claim map, so there is no file substrate to check load-bearing claims against. I built the Phase 0 blind angle map before opening the record (saved separately as `phase0-blind-angle-map.md`) and diffed it against the record afterward. I also attempted to verify one load-bearing external technical claim (FCM's delivery guarantee) via WebSearch, but tool access was denied in this session — that claim is reported below as unverified, per the rule that an unverifiable load-bearing claim is a finding, not a benefit of the doubt.
+
+## Critical
+
+**1. The record's third required pillar — "what we owe a customer when a page fails to land" — has no decision that actually answers it.**
+D8 builds an internal delivery-audit service that reconciles nightly against D3's status rows and alerts on divergence. That is detection tooling for Palisade's own engineers. Nowhere does the record state what happens *externally*: no SLA credit, no disclosure commitment, no defined process for a customer dispute, not even a statement that failures are proactively surfaced to the affected customer versus only caught internally. The goal line named this as one of three things the record must cover; as written, it's the one pillar without a decision behind it.
+- Failure scenario: a page fails to land, D8's nightly job catches the divergence the next night, and the record gives no instruction on what Palisade does next — whether the customer is told, whether anything is owed, or whether this is purely a support-ticket-driven process that only activates if the customer notices and complains first.
+- Resolution path: the session needs to add a decision (or amend D8) stating the customer-facing obligation — disclosure, credit, or an explicit "we owe nothing beyond investigation" — and who owns triggering it.
+
+**2. D4's central technical claim — "FCM guarantees delivery inside five seconds" — is unverified and is likely false, and it's load-bearing for two other decisions' timing.**
+D4 uses this claimed guarantee to justify that D2's five-minute SMS fallback is "generous," and D6's three-minute escalation interval is set independent of D4 but coexists with it as if push delivery is near-instant and reliable. In my working knowledge, FCM's high-priority delivery is a best-effort hint to the OS/device, not a contractual delivery-time guarantee — it is well documented to be materially delayed or dropped under OS battery optimization (Android Doze), backgrounded-app restrictions, or poor connectivity, and Google does not publish a 5-second SLA. I could not confirm or refute this live (WebSearch access was denied), so I'm reporting it as unverified rather than assuming it's true.
+- Also within the same decision: the claim that FCM avoids "holding a separate APNs entitlement" is misleading — delivering push to iOS via FCM still requires an APNs authentication key/certificate registered in the Firebase console; FCM brokers to APNs, it doesn't replace the need for APNs credentials.
+- Failure scenario: if the guarantee is false, D2's "five minutes is generous" framing is wrong, meaning responders with backgrounded/Doze-restricted phones could sit unpaged well past the fallback window on a false premise that push would have already reached them.
+- Resolution path: pull Firebase's actual documentation on delivery-time guarantees (there isn't a hard SLA, to my knowledge) and re-derive D2/D6's timing off real delivery-latency data instead of an assumed guarantee.
+
+**3. D2 and D6 run two unreconciled clocks on the same page, and the record never states how they interact.**
+D6: unacknowledged for three minutes → escalate to the next responder (two hops → incident commander). D2: unacknowledged for five minutes → same responder gets an SMS. Since escalation already happens at minute 3, by minute 5 the incident has moved to a different responder — but D2 still says "the same responder is sent the page again over SMS." The record doesn't say whether the 5-minute SMS clock is per-hop (restarting the responder's own contact attempt) or a single global clock from initial page, and either reading is broken:
+- If per-responder: a bypassed responder gets a fallback SMS for an incident already reassigned to someone else — confusing, and it burns the exact SMS cost D1 was written to avoid.
+- If global: the SMS lands two minutes after escalation already moved on, and depending on ack speed downstream may arrive after the incident commander has already been paged.
+- Failure scenario: an on-call engineer whose phone silently missed the push gets a "you have an incident" SMS for something that was handled or reassigned minutes earlier — the exact "phone-off" case D2 exists to cover is undermined by D6 racing ahead of it.
+- Resolution path: one clarifying decision — does escalation suppress the original responder's pending SMS fallback, or do both run independently? Pick one and state it.
+
+## Important
+
+**4. Escalation chain exhaustion (IC doesn't acknowledge either) is undefined.**
+D6 stops at "two hops it pages the incident commander." There's no decision for what happens if the IC also doesn't acknowledge. This is directly relevant to the missing pillar in finding #1 — a fully-exhausted, fully-unacknowledged chain *is* the scenario in which Palisade owes the customer something, and it isn't named as a trigger for anything.
+- Resolution path: name the terminal behavior (broadcast to a full team, break-glass contact, or explicit "this state page's out to nothing further" acknowledgment) and connect it to whatever the session decides for finding #1.
+
+**5. D1's channel choice is argued on cost alone; reliability between push and SMS is never weighed.**
+The rationale for making push primary and excluding SMS is entirely a margin/spend argument ("SMS would become the third-largest line item"). For a page-delivery decision in an incident-management product, no comparison of actual delivery reliability or latency between the two channels appears anywhere in the record — which is a striking omission given finding #2 already casts doubt on push's assumed reliability.
+- Resolution path: the session should either cite delivery-reliability data for push vs. SMS at the point of D1, or fold the reliability discussion from D4 back into D1's rationale explicitly.
+
+**6. D3's 30-day retention (marked Assumed, "sounds about right") may not cover the timescale the "what we owe" pillar implies.**
+The stated driver for D3 is support tickets ("I never got paged"). But disputes serious enough to reach an SLA-credit or liability conversation — the subject of the missing pillar in finding #1 — commonly surface weeks after the incident, during a postmortem or a contract renewal conversation, not within 30 days.
+- Resolution path: tier retention (e.g., short window for routine support, longer window tied to whatever obligation finding #1 produces) rather than one flat 30-day cutoff, or explicitly justify why 30 days is sufficient for both purposes.
+
+**7. Push delivery is single-vendor (FCM) with no redundancy considered, and D2's fallback delay means an FCM outage stalls paging platform-wide.**
+D4 commits both platforms to one provider. If FCM itself has an outage — a real, recorded failure mode for any single cloud messaging provider — every customer's pages are silently delayed until D2's five-minute SMS fallback engages, with no faster detection or bypass discussed anywhere in the record.
+- Resolution path: at minimum, decide whether an FCM outage is detectable quickly enough to short-circuit the five-minute wait and go straight to SMS, rather than relying on the same fixed timer used for individual non-acknowledgement.
+
+**8. D8's necessity is unclear, and its nightly cadence doesn't serve the driver named for D3.**
+The record never states whether D3's own status rows are already populated from provider delivery webhooks (in which case D8 duplicates that signal) or from application-side send events only (in which case D8 is the only real confirmation channel — but the record doesn't say this is why it exists). Separately, D3's stated purpose is resolving same-day support tickets, but D8 only reconciles once per night, so it can't be the thing that answers today's ticket.
+- Resolution path: state where D3's status data originates, and if D8 is meant to backstop it, name a cadence that matches the driver it's supposed to serve (or clarify it's a compliance/postmortem tool, not a support tool, and retarget the rationale).
+
+**9. D5 restricts the push payload for lock-screen exposure reasons; D2's SMS fallback payload is never specified.**
+D5's whole argument is that lock-screen previews are readable by anyone holding the phone, so the push payload is capped to title/severity/ID. SMS previews are exposed on the lock screen the same way — arguably with less control, since SMS has no equivalent to a "collapse the preview" app setting — but the record never says what content the fallback SMS in D2 actually carries.
+- Resolution path: extend D5's content rule to explicitly cover the SMS fallback payload, or state why it's exempt.
+
+## Minor
+
+**10. D7 was ruled on a noise/mute tradeoff; accessibility/regulatory channel needs are a different axis the ruling never saw.**
+I'm not reopening D7's contested debate — the noise-vs-mute tradeoff was argued and ruled with eyes open. But a responder who cannot reliably use the assigned channel for a disability-related reason (e.g., needs text over voice, or vice versa) is a different question from "responders will mute a noisy app," and nothing in the record indicates this axis was considered before shipping v1 with no preference UI at all.
+- Resolution path: confirm whether accessibility/reasonable-accommodation obligations were considered and explicitly out-of-scope for v1, or whether this is genuinely new ground.
+
+**11. "Open threads: None recorded" is hard to square with two Assumed decisions and one Contested decision.**
+D3 and D8 are marked Assumed and D7 Contested-and-deferred-to-a-quarter-of-data; conventionally each of those should leave at least one open thread (validate retention window, validate audit-service necessity, revisit preferences after data). Their absence is a minor record-fitness gap rather than a content problem.
+- Resolution path: either populate open threads from the Assumed/Contested decisions, or confirm their absence is intentional.
+
+## Tally
+
+11 raised, 11 survived my own pre-filter (I dropped none — each has a concrete resolution path and none re-litigates D7's actual ruling).
+
+## Recommended status: critical-gaps
+
+Grounds: a broken/unverified load-bearing claim (finding 2) feeding two other decisions' timing, a direct unreconciled inconsistency between two live decisions (finding 3), and a Critical coverage gap on a pillar the goal line explicitly required (finding 1) that no decision in the record actually answers.

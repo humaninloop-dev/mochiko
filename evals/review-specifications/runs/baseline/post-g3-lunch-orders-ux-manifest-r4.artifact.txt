@@ -1,0 +1,83 @@
+=== review.md ===
+---
+report: review
+feature: lunch-orders
+round: 1
+incremental: false
+verdict: critical-gaps
+verdict_basis: "Free-school-meal charging is unaddressed against a governance floor and contradicts docs/free-school-meals.md; FR-002 contradicts FEAT-002's in-flight hidden-item behavior; the FEAT-003 delta illegally regresses a delivered capability; the Screens & Flows manifest has dead links, an orphan screen, and a mis-cited flow trace — these are foundation-level, not fixable polish."
+strengths: "cut-off and wallet-charge rules trace cleanly to 0003-order-cutoff.md and the governance floor; every story carries concrete Given/When/Then scenarios and an independent test; the low-fi prototype's own demo data (wallet £9.10 vs a £9.70 order) honestly exercises the insufficient-funds case even though the flow doesn't handle it yet."
+findings:
+  - {id: G1, type: Contradiction, sev: Critical,
+     at: "spec.md Overview/Assumptions, FR-003 · docs/free-school-meals.md · CLAUDE.md governance (Wallets never go negative)",
+     gap: "The spec assumes every family has a card on file and charges every order to the wallet at confirmation (FR-003); docs/free-school-meals.md says FSM families often have no card and no wallet balance, and the governance floor already carves out a funded/no-charge path this spec never implements — leaving 41% (universal infant FSM) plus 18% (means-tested KS2) of pilot pupils unable to place an order as specified.",
+     fix: "Add an FR for funded-order placement (no wallet charge, no top-up prompt, order still recorded for the kitchen count and allergy flag) and a funded flag sourced from FEAT-001's free-school-meal status."}
+  - {id: G2, type: Contradiction, sev: Critical,
+     at: "FR-002 · FEAT-002-menu-publishing.md `live` work row (in-flight, menu-admin) · derivation.md baseline table",
+     gap: "FR-002 requires parents to see items the kitchen marked hidden ('so that nothing on offer is missed'), directly contradicting FEAT-002's in-flight acceptance criterion that a hidden item never appears in any parent-facing response. derivation.md's own baseline table lists FEAT-002 as `delivered`, but the live FEATURES.md already shows it `in-flight` since 2026-08-25 (before this run opened) — the existing in-flight work was not checked before deriving.",
+     fix: "Resolve which behavior wins (most likely drop FR-002's hidden-items clause) and re-read FEATURES.md's current state before re-deriving FEAT-005/FEAT-006."}
+  - {id: G3, type: Contradiction, sev: Critical,
+     at: "derivation.md § Delta — FEAT-003 Wallet",
+     gap: "The derivation proposes regressing FEAT-003 from `delivered` to `proposed` map-wide for the order-time-charging rework, but only the charge-at-confirmation behavior is changing — top-up and balance display are untouched. Regressing a delivered capability overstates the blast radius and breaks the map-authoring rule that a delivered status is never rolled back.",
+     fix: "Keep FEAT-003 `delivered`; land the change as an in-flight work row (mirroring FEAT-002's `live` row) scoped to charge-at-order-time and named to the lunch-orders spec."}
+  - {id: G4, type: EdgeCase, sev: Critical,
+     at: "spec.md Screens & Flows table (SCR-001..004, FLOW-001..003) · prototype/index.html and every screen nav · prototype/screens/scr-003-order-summary.html · prototype/screens/scr-005-allergens.html",
+     gap: "Manifest/prototype integrity breaks in four places: (a) SCR-004 (order history) has a table row and is linked from every screen's nav plus FLOW-002, but `scr-004-order-history.html` does not exist — a dead end, and since FEAT-006 is deferred it should be greyed-but-reachable, not broken; (b) SCR-003's 'Pay £9.70' button links to `scr-006-confirmation.html`, which has no SCR-XXX row anywhere and no file — the demo data (wallet £9.10 vs total £9.70) actively exercises the insufficient-funds path from US-1 scenario 3, and the prototype just dead-ends instead of showing the top-up/held state; (c) SCR-005 (allergen key) has a file and is linked from the home page, but has no SCR-XXX row and appears in no FLOW; (d) FLOW-003 ('Order for a child with an allergy') cites 'US-3 / scenario 3' — US-3 only has two scenarios and covers order history (FEAT-006), not allergies; the allergy story is US-4.",
+     fix: "Build or explicitly grey/cut SCR-004 and the confirmation screen consistent with their FEAT status, give the confirmation screen an SCR-ID and render the held/top-up state, give SCR-005 a row (or fold it into SCR-001), and repoint FLOW-003 at US-4."}
+  - {id: G5, type: Assumption, sev: Important,
+     at: "FR-009 · derivation.md FEAT-005 Extent ('A meal can be rated by the parent after it has been eaten')",
+     gap: "FR-009 (meal rating) cites `Source: —` — no user story supports it, and it appears on no prototype screen — yet it rode uncut into the derived FEAT-005 extent, inflating the capability beyond what US-1/US-2/US-4 actually ask for.",
+     fix: "Cut FR-009 and the matching extent line, or write the missing story and screen it would need."}
+  - {id: G6, type: Ambiguous, sev: Important,
+     at: "SC-002 · FR-010 · SC-003 · FR-007",
+     gap: "SC-002 ('Parents find ordering easy') has no metric or measurement method; FR-010 ('the menu MUST load fast') is unquantified even though Technical notes states a p95 target separately — the two should be one traceable SC; SC-003 (kitchen per-day counts reconciliation) is listed as verified by FEAT-005, but kitchen counts is FEAT-004's job, out of this spec's scope and still `proposed (unrefined)`; FR-007 asserts a regulatory driver ('as the School Food Standards require') with no `verified:`/`memory-asserted` disclosure line — live verification was attempted this round and could not be completed (WebSearch access was not granted), so the claim remains unverified.",
+     fix: "Quantify SC-002 and fold FR-010 into a measurable SC using the Technical-notes figure, re-home or defer SC-003 to FEAT-004, and add the disclosure line to FR-007 (get it checked before build)."}
+  - {id: G7, type: Missing, sev: Important,
+     at: "spec.md Key Entities → Order · US-1 scenario 3",
+     gap: "The Order entity carries no status/state field, yet US-1 scenario 3 introduces a 'held' order (wallet short, order held until top-up) with no rule for whether a held order counts toward the kitchen's per-day count, what happens if the cut-off passes while it's still held, or whether the parent is notified.",
+     fix: "Add an order status field (e.g. held / placed / cancelled) and an FR covering held-order resolution against the cut-off."}
+---
+
+## Clarifications needed
+
+### C1: Charging a funded (free-school-meal) order (G1)
+
+**Question**: How should a funded child's order be charged, given the family may have no card on file and no wallet balance?
+**Options**: 1. Funded orders skip the wallet entirely — zero charge, order still recorded for the kitchen and allergy flag, funding claimed by the school outside Tally · 2. Funded orders still post against a wallet that can sit at exactly £0.00, backed by a school-level fund the office tops up · 3. Funded status is per-meal, so a family with both funded and paid children is charged only for the paid ones
+**Why it matters**: Without this, roughly 59% of pilot-school pupils (universal infant FSM plus means-tested KS2) cannot place an order under FR-003 as written, and the governance floor's "or when the meal is funded... no charge applies" clause has no implementation.
+
+### C2: Are hidden menu items ever shown to parents? (G2)
+
+**Question**: Should a parent ever see a menu item the kitchen has marked hidden?
+**Options**: 1. No — drop FR-002's "including hidden items" clause; parents see only the non-hidden published menu, matching menu-admin's in-flight guarantee · 2. Yes — redefine "hidden" as hidden from the default view only, and amend FEAT-002's acceptance criterion to match · 3. Split by reason (e.g. sold-out items shown greyed, discontinued items fully hidden)
+**Why it matters**: menu-admin is being built right now specifically to guarantee hidden items never reach parents; shipping FR-002 as written breaks that guarantee the moment lunch-orders lands.
+
+### C3: Does the wallet capability really go back to `proposed`? (G3)
+
+**Question**: Should FEAT-003 (Wallet) regress to `proposed` for this rework, or stay `delivered` with a scoped delta?
+**Options**: 1. Keep `delivered`, add an in-flight work row scoped to "charge at order confirmation" (mirrors FEAT-002's `live` row) · 2. Regress to `proposed` map-wide, as derivation.md currently proposes · 3. Split: keep top-up/balance `delivered`, mint a dependent FEAT for order-time charging
+**Why it matters**: top-up and balance display aren't being rebuilt; rolling the whole capability back to `proposed` overstates what's unbuilt and could stall unrelated work that reasonably assumes "wallet is delivered."
+
+### C4: Squaring up the Screens & Flows manifest before build (G4)
+
+**Question**: The prototype has dead links (order history, payment confirmation) and an orphan screen (allergen key) with a mis-cited flow. How should this be resolved before build?
+**Options**: 1. Build the missing pieces now — a greyed-but-reachable order-history screen (per FEAT-006's deferred status), a real confirmation screen with an SCR-ID rendering the held/top-up state, a manifest row for the allergen key (or fold it into SCR-001) — and repoint FLOW-003 at US-4 · 2. Strip the dangling nav links and rows out of the prototype and spec until FEAT-006 and the confirmation step are actually in scope · 3. Accept the gaps as known debt and proceed
+**Why it matters**: no P1 scenario can be confirmed walkable end-to-end while the confirmation step and order history dead-end, and the prototype's own wallet-short demo data silently disappears instead of demonstrating the one flow (insufficient funds) the story set calls out by name.
+
+### C5: Is meal rating in scope? (G5)
+
+**Question**: Should meal rating stay in this spec?
+**Options**: 1. Cut FR-009 and the matching FEAT-005 extent line — no story supports it · 2. Write the missing user story and screen for it now · 3. Move it to Open Questions as a future-spec candidate instead of a MUST requirement
+**Why it matters**: an untraceable MUST requirement with no story or screen either gets built off-spec or silently dropped, and currently overstates FEAT-005's extent on the map.
+
+### C6: Tightening the unmeasurable criteria (G6)
+
+**Question**: How should SC-002, FR-010, and SC-003 be made measurable and correctly homed, and should FR-007's regulatory claim be verified before build?
+**Options**: 1. Fold FR-010 into a measurable SC using the Technical-notes p95 figure, replace SC-002 with a concrete proxy metric, re-home SC-003 to FEAT-004 (deferred), and add a `verified:`/`memory-asserted` line to FR-007 · 2. Keep SC-002/FR-010 qualitative for now and tighten at build time · 3. Drop SC-003 from this spec's success criteria entirely until FEAT-004 ships
+**Why it matters**: an unmeasurable SC can't gate release, SC-003 asks this spec to prove something an unbuilt sibling feature owns, and an unverified regulatory claim ("School Food Standards require...") is a floor-class external claim this round could not confirm or refute.
+
+### C7: What happens to a held order? (G7)
+
+**Question**: What is the rule for an order held on insufficient wallet balance (US-1 scenario 3)?
+**Options**: 1. A held order auto-cancels if not topped up by the weekly cut-off, freeing the kitchen count · 2. A held order counts toward the kitchen's count optimistically until the cut-off, then cancels (with a parent notification) if still unfunded · 3. A held order is never counted or sent to the kitchen sheet until actually paid, even if that means it silently disappears if the parent forgets
+**Why it matters**: the kitchen buys stock from the cut-off counts (`0003-order-cutoff.md`); an uncounted or double-counted held order either wastes food or leaves a child without a meal.

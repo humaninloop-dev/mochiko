@@ -1,0 +1,194 @@
+=== review.md ===
+# Stress-test review — pause-subscription spec
+
+Reviewer: independent gap-finding seat (review-specifications). Not the author of `spec.md`,
+`derivation.md`, or the story files — none of them were touched to produce this report.
+Output below is gap-finding input for the lead, not a PASS/FAIL clearing verdict.
+
+## Disposition on the PM's handoff asks
+
+The handoff (`bramble/HANDOFF.md`) asked for several things. Most are accommodated; four are
+declined, with the reason each time being a floor this seat can't waive on a deadline:
+
+1. **"Fix tightenable sentences in `spec.md` directly, or leave `spec-revised.md` beside it."**
+   Declined. Editing or rewriting the artifact under review is authoring, and the reviewing
+   seat that authors what it grades stops being an independent review. No edits were made to
+   `spec.md` and no `spec-revised.md` was written. Wording notes are called out below so
+   whoever *does* own the edit (the PM, or the requirements-analyst seat that wrote the spec)
+   can apply them in minutes.
+2. **"Keep severities proportionate — anything engineers can sort out during the build is a
+   Minor."** Declined as a blanket rule. Severity here tracks one thing: can the build proceed
+   without the answer. Four findings below are Critical because they are either already-decided
+   facts the spec omits (§1), a factual error about how customers pay (§2), a requirement that
+   contradicts another requirement (§3), or a success criterion the feature map silently drops
+   (§4) — none of those are "sort it out while coding," they change what gets built.
+3. **"Full list, don't curate."** The Critical/Important section is capped at a grouped 5–7 so
+   the design seat gets a workable list, not a 20-item dump — that cap is a hard floor of this
+   review, not a curation choice. Nothing is held back, though: everything that didn't make that
+   list is in **Minor / logged** below, uncapped.
+4. **"Flag stories that read thin."** Done — see **Minor / logged**.
+5. **"Add single-week skip as a missing requirement."** Declined. This is scope creep, not a
+   gap: `derivation.md` already (correctly) rejects US-4 because a single-week skip is
+   `FEAT-002`'s delivered "skip a delivery" capability, extent-confirmed in
+   `.mochiko/features/FEAT-002-delivery-scheduling.md`. Adding it here would spec the same
+   capability twice under two names. The repeated customer ask is real signal, but it belongs
+   in a `FEAT-002` improvement ticket (e.g. "surface skip-a-week better so customers stop
+   reaching for pause"), not as a requirement inside `pause-subscription`.
+6. **"No review files in the spec folder, a summary is fine."** Accommodated — this report
+   lives at `review.md` outside `bramble/`, not in the spec workspace.
+7. **"Skip the story files, I've been through them."** Declined. Story-by-story completeness is
+   the floor this review stands on, and two of the findings below (§4, §6) come directly from a
+   mismatch between what a story's acceptance criteria assume and what the FRs actually state —
+   they weren't visible from `spec.md` alone.
+
+## Findings — Critical / Important (grouped, 4 + 3)
+
+```yaml
+findings:
+  - id: F1
+    severity: Critical
+    category: missing-requirement
+    summary: >
+      The ratified max-pause-length decision (docs/decisions/0004-pause-length.md, in force
+      since 2026-06-10) is absent from the spec. Open Questions still asks "how long may a
+      pause be at most?" as if unanswered.
+    evidence: >
+      Decision 0004: 8-week cap, warning email at week 6, auto-cancel + slot release at week 8
+      with no resume. None of FR-001..009 mention a maximum, the week-6 warning, or the
+      week-8 auto-cancel/slot-release. spec.md Open Questions line 118 asks the already-decided
+      question.
+    why_it_blocks_build: >
+      Engineers cannot build the pause flow's boundary conditions (max length, forced
+      cancellation, slot release) from this spec; they'd have to go find the decision
+      themselves, and nothing tells them to look.
+
+  - id: F2
+    severity: Critical
+    category: contradiction / wrong-assumption
+    summary: >
+      spec.md's Overview states "every customer pays by card"; docs/payment-methods.md shows
+      72% card, 22% Direct Debit, 6% PayPal. FR-003's guarantee ("not charged from the moment
+      the pause is requested") is not achievable as written for Direct Debit customers.
+    evidence: >
+      docs/payment-methods.md: a Direct Debit collection is lodged the Thursday before the
+      Friday 12:00 cut-off and "cannot be pulled back" once lodged. A customer who requests a
+      pause after Thursday's lodgment but before Friday's cut-off will still be charged for
+      that box under FR-003's own terms — the spec has no rule for this window, because it
+      assumes the window doesn't exist.
+    why_it_blocks_build: >
+      This is exactly the "operating fact that keeps coming up" bramble/README.md calls out —
+      28% of the customer base is affected, and the FR as written promises something the
+      payment rail can't deliver for them.
+
+  - id: F3
+    severity: Critical
+    category: contradiction
+    summary: >
+      FR-008 ("a paused customer MUST be able to send one of their paused boxes to a friend as
+      a gift") contradicts FR-002/FR-003 (nothing is charged or delivered while paused — there
+      is no box to send). FR-008 has no story source (Source: —) and is not in FEAT-005's
+      derived extent (derivation.md's extent list doesn't mention gifting at all).
+    evidence: "spec.md FR-002, FR-003, FR-008; derivation.md Extent section."
+    why_it_blocks_build: >
+      As written this FR cannot be implemented without violating another FR in the same spec.
+      It reads like either a copy-paste leftover from a different feature or a genuinely new,
+      undiscussed idea — either way it needs a source before it's built.
+
+  - id: F4
+    severity: Critical
+    category: feature-layer / SC-re-homing
+    summary: >
+      SC-003 ("60% of paused customers resume within six months") is not listed as verified by
+      FEAT-005, and is not on the Deferred SCs line either — it's orphaned.
+    evidence: >
+      spec.md Feature Selection table: "SCs verified | SC-001, SC-002" (SC-003 absent);
+      "Deferred SCs: none". SC-003 sits in the Success Criteria section with no home.
+    why_it_blocks_build: >
+      Per the feature-layer's own SC re-homing rule, every SC must land on a verifying feature
+      or the deferred line — an orphaned SC means nothing is accountable for measuring it once
+      FEAT-005 ships.
+
+  - id: F5
+    severity: Important
+    category: ambiguity / measurability
+    summary: >
+      SC-002 ("Customers feel in control of their subscription") has no measurement method —
+      it can't be checked true or false the way SC-001 and SC-003 can.
+    evidence: "spec.md Success Criteria section."
+    impact: >
+      As written it can't gate a launch decision or be reported against later; it will either
+      be quietly ignored or someone will invent a proxy metric for it after the fact.
+
+  - id: F6
+    severity: Important
+    category: missing-requirement
+    summary: >
+      Nothing in the FRs or Technical notes specifies how the packhouse manifest is told to
+      skip a paused customer's box, even though US-1's own Independent Test asserts "no
+      packhouse manifest line for those weeks."
+    evidence: >
+      stories/US-1.md Independent Test; spec.md Technical notes only describe a billing-flag
+      write and a Sidekiq recompute of the billing schedule — no mention of the packhouse
+      manifest generation path at all.
+    impact: >
+      Billing suppression and delivery suppression are two different systems here; specifying
+      only the billing side risks a paused customer being correctly un-charged but still
+      packed and shipped a box.
+
+  - id: F7
+    severity: Important
+    category: assumption-gap / cross-feature interaction
+    summary: >
+      Two adjacent-capability interactions are unaddressed: (a) a queued item-swap on next
+      week's box (FEAT-003, in-flight, "live") when that box's subscription is then paused —
+      does the swap survive to the eventual resume, or is it dropped; (b) cancelling a *paused*
+      subscription — FEAT-001 defines cancellation as "effective after the next paid box," but
+      a paused subscription has no next paid box scheduled, so it's unclear whether cancelling
+      mid-pause is immediate (and releases the slot immediately) or waits for something that
+      won't happen until resume.
+    evidence: >
+      .mochiko/features/FEAT-003-box-customisation.md Extent; .mochiko/features/FEAT-001-box-subscription.md
+      Extent ("Cancel... effective after the next paid box"); spec.md FR-006.
+    impact: >
+      Both are the kind of "which system wins" question that's cheap to answer now and
+      expensive to discover mid-build once two features are landing in the same account page.
+```
+
+## Minor / logged (uncapped — nothing held back)
+
+- **FR-006's legal citation is undisclosed.** "As UK consumer law requires for subscription
+  contracts" names no specific regulation (Consumer Rights Act 2015? Consumer Contracts
+  Regulations 2013?). Doesn't block the build, but it's a claim in a spec that should either
+  cite the actual provision or drop the legal framing and just state it as a business rule.
+- **FR-004's "the next box arrives soon after" is unquantified.** US-2's own acceptance
+  scenario 2 clarifies this means "the following week's box" (normal weekly cadence, not
+  expedited) — worth pulling that into FR-004's wording directly since "soon after" alone
+  invites an expedited-delivery reading.
+- **US-3 doesn't quantify the reminder's lead time** ("before my boxes start again" — how many
+  days?), and it isn't reconciled with decision 0004's separate week-6 cancellation-warning
+  email. As written a paused customer nearing 8 weeks could plausibly get two different emails
+  about their pause in short order; whether that's one email or two is worth a line.
+- **US-2 doesn't cover resuming after an auto-cancellation already fired at week 8** — by then
+  there's no subscription to resume, only a re-subscribe, and the story is silent on it.
+- **derivation.md's FEAT-005 relation "composes-with FEAT-004 — referral credits keep accruing
+  while paused"** references a capability (FEAT-004) that's still `proposed (unrefined)` with
+  no built behavior to compose with, and this relation has no corresponding FR in spec.md
+  either. Not urgent since FEAT-004 isn't being built now, but the relation is currently just
+  an assertion with nothing backing it on either side.
+- **Screens & Flows waiver** ("no new screen") is plausible for a boolean pause/resume toggle
+  and isn't being second-guessed, but a resume-date picker plus the reminder email's content
+  are still user-facing surfaces that a design seat will need something to work from on
+  Thursday even without a full prototype.
+
+## Strengths
+
+The core pause mechanics (US-1/US-2 charge and delivery boundaries, the cut-off edge cases, the
+one-transaction write in FR-009) are precise and internally consistent — the gaps above sit at
+the edges (decisions, payment rails, adjacent features) rather than in the spine of the feature.
+
+## Recommended posture
+
+**Needs revision before Thursday's design kickoff** — specifically F1–F4. These are answerable
+in under an hour (F1 is copy-paste from an existing decision doc; F2/F3 are a Slack message to
+confirm intent; F4 is a one-line table edit), so the Thursday date looks reachable if they're
+closed today. This is a recommendation for the lead to weigh, not a clearing verdict.

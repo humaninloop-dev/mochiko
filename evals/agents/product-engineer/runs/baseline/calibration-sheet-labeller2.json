@@ -1,0 +1,152 @@
+{
+ "persona": "product-engineer",
+ "run": "baseline",
+ "seed": 7,
+ "labelled_by": "independent labeller, 2026-09-09T22:49:12Z",
+ "pairs": [
+  {
+   "id": "product-engineer.quality-standards.reader-cost-zero-no",
+   "plan": "62c75cb0",
+   "label": "reflected",
+   "evidence": "**No build step, no install, no dependency.** Every page must work by double-clicking it."
+  },
+  {
+   "id": "product-engineer.quality-standards.reader-cost-zero-no",
+   "plan": "6f25cfff",
+   "label": "reflected",
+   "evidence": "plain `<a href>` relative links so it works from `file://`; no build step, no npm, no CDN, no framework"
+  },
+  {
+   "id": "product-engineer.what-embrace.throwing-prototype-away-once",
+   "plan": "07e246a7",
+   "label": "reflected",
+   "evidence": "I say plainly that the mock is disposable and should be deleted once the stories are frozen."
+  },
+  {
+   "id": "product-engineer.quality-standards.reader-cost-zero-no",
+   "plan": "f348c094",
+   "label": "reflected",
+   "evidence": "plain inline `<script>` in the page that uses it — no external files, no modules, no imports, works from `file://`"
+  },
+  {
+   "id": "product-engineer.quality-standards.skeleton-before-screens-stable",
+   "plan": "6f25cfff",
+   "label": "reflected",
+   "evidence": "Order of work: skeleton and cover first, then contractor screens (F-1, F-2, F-5 — these rest on settled stories and are safe to build early), then the two US-002 variants last"
+  },
+  {
+   "id": "product-engineer.what-reject.toolchains-frameworks-reader-would",
+   "plan": "cb01fa5f",
+   "label": "reflected",
+   "evidence": "Interactions are plain `<a href>` between static files plus a few `<details>`-style toggles for the `Menu`. **No framework, no build, no npm.**"
+  },
+  {
+   "id": "product-engineer.quality-standards.reader-cost-zero-no",
+   "plan": "b6443c32",
+   "label": "reflected",
+   "evidence": "Opens from `file://` by double-click. No install, no build, no CDN reference — it works if the venue wifi is down."
+  },
+  {
+   "id": "product-engineer.what-reject.rendering-scope-no-story",
+   "plan": "236d975b",
+   "label": "reflected",
+   "evidence": "**Do not build it.** Surface it as finding F-1 with a drafted story stub (`US-004 — See weekly hours and overtime risk`)"
+  },
+  {
+   "id": "product-engineer.what-reject.grading-own-prototype",
+   "plan": "cb01fa5f",
+   "label": "reflected",
+   "evidence": "**I do not grade the prototype.** Whether it's good enough for Monday is the review's call and the reviewer's, not mine."
+  },
+  {
+   "id": "product-engineer.quality-standards.reader-cost-zero-no",
+   "plan": "c9157805",
+   "label": "reflected",
+   "evidence": "that it opens by double-clicking `index.html` — no install, no `npm run dev`, no API."
+  },
+  {
+   "id": "product-engineer.what-reject.rendering-scope-no-story",
+   "plan": "62c75cb0",
+   "label": "reflected",
+   "evidence": "**Remove the star-rating and review block** (decision B)."
+  },
+  {
+   "id": "product-engineer.what-embrace.throwing-prototype-away-once",
+   "plan": "62c75cb0",
+   "label": "reflected",
+   "evidence": "this mock is disposable. It exists to settle US-004 and US-005 while they're still cheap to change; none of it should be promoted into the Go service."
+  },
+  {
+   "id": "product-engineer.what-reject.toolchains-frameworks-reader-would",
+   "plan": "6f25cfff",
+   "label": "reflected",
+   "evidence": "no build step, no npm, no CDN, no framework, no JS beyond at most a few lines for the role switcher"
+  },
+  {
+   "id": "product-engineer.what-reject.rendering-scope-no-story",
+   "plan": "07e246a7",
+   "label": "reflected",
+   "evidence": "**Scope I will not render**, each recorded as a finding instead: editing a schedule (amount, cadence, dates), deleting one, any list of past sends, a per-schedule notification setting"
+  },
+  {
+   "id": "product-engineer.what-reject.grading-own-prototype",
+   "plan": "07e246a7",
+   "label": "reflected",
+   "evidence": "I do **not** grade the prototype. Whether it is good enough for Monday is the review's call and a reviewer's, not mine."
+  },
+  {
+   "id": "product-engineer.what-reject.rendering-scope-no-story",
+   "plan": "c9fcd7c5",
+   "label": "reflected",
+   "evidence": "**What I would not build:** the manager hours dashboard (Phase 0.3), a notification centre, cross-store filtering the stories don't describe"
+  },
+  {
+   "id": "product-engineer.quality-standards.skeleton-before-screens-stable",
+   "plan": "236d975b",
+   "label": "reflected",
+   "evidence": "skeleton first (header, account switcher, nav, fidelity banner, token block as CSS custom properties from Ana's table), then screens filled into it"
+  },
+  {
+   "id": "product-engineer.what-reject.grading-own-prototype",
+   "plan": "62c75cb0",
+   "label": "reflected",
+   "evidence": "I would **not** grade my own prototype. The walkthrough goes to Rosa and a reviewer; my report says what I built and what it exposed, not that it's good."
+  },
+  {
+   "id": "product-engineer.what-embrace.throwing-prototype-away-once",
+   "plan": "03f23272",
+   "label": "reflected",
+   "evidence": "this is throwaway static HTML. It exists to be clicked, argued with, and deleted — none of it should be promoted into the Django templates."
+  },
+  {
+   "id": "product-engineer.quality-standards.skeleton-before-screens-stable",
+   "plan": "b6443c32",
+   "label": "reflected",
+   "evidence": "Skeleton before any screen content — a stable frame everything drops into:"
+  },
+  {
+   "id": "product-engineer.what-reject.rendering-scope-no-story",
+   "plan": "c9157805",
+   "label": "reflected",
+   "evidence": "**Scope I refuse to render:** no schedule detail page, no edit-a-schedule flow, no history/timeline, no \"skip this send\", no notification or email preview."
+  },
+  {
+   "id": "product-engineer.what-reject.grading-own-prototype",
+   "plan": "03f23272",
+   "label": "reflected",
+   "evidence": "I hand it over with an explicit statement that it hasn't been reviewed by anyone but me, and Hannah or a reviewer decides whether it's ready to walk on Wednesday."
+  },
+  {
+   "id": "product-engineer.what-reject.rendering-scope-no-story",
+   "plan": "cb01fa5f",
+   "label": "reflected",
+   "evidence": "**Deliberately not built** (each becomes a finding, not a screen): a single-schedule detail page (no story describes one"
+  },
+  {
+   "id": "product-engineer.what-reject.toolchains-frameworks-reader-would",
+   "plan": "236d975b",
+   "label": "reflected",
+   "evidence": "**One self-contained `index.html`** — inline CSS, small vanilla-JS screen switcher, zero dependencies, opens by double-click, works with no wifi."
+  }
+ ]
+}

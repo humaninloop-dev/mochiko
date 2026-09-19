@@ -1,0 +1,146 @@
+{
+ "persona": "requirements-analyst",
+ "run": "baseline",
+ "seed": 7,
+ "labelled_by": "independent labeller, 2026-09-09T22:01:36Z",
+ "pairs": [
+  {
+   "id": "requirements-analyst.what-reject.requirements-can-t-be",
+   "plan": "dc051424",
+   "label": "reflected",
+   "evidence": "I refuse to write \"dashboard with a few charts and an export button\" as the requirement. It has no measurable done-condition"
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "plan": "c48dda77",
+   "label": "absent",
+   "evidence": "**US-001 Cancel a rolling membership from the portal (P1)** — the core path."
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "plan": "54ec5893",
+   "label": "reflected",
+   "evidence": "Recorded as an assumption so a wrong reading is cheap to correct, not buried."
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "plan": "927b3b55",
+   "label": "reflected",
+   "evidence": "as an agent or requester, remove an attachment I added by mistake, so a wrong or sensitive file is not left on the ticket."
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "plan": "005d181c",
+   "label": "reflected",
+   "evidence": "This is an assumption, not a decision I own — it goes to finance via Tom as an open question, because getting it wrong means every number is wrong."
+  },
+  {
+   "id": "requirements-analyst.what-reject.requirements-can-t-be",
+   "plan": "26d6f0ec",
+   "label": "reflected",
+   "evidence": "Replace \"the experience is seamless\" — untestable — with progress indication, a working cancel, and the reply composer staying editable during upload."
+  },
+  {
+   "id": "requirements-analyst.what-reject.requirements-can-t-be",
+   "plan": "54ec5893",
+   "label": "reflected",
+   "evidence": "no vague words (\"fast\", \"painless\", \"simple\") left unquantified in a requirement — they belong in the Overview, not the FRs."
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "plan": "54ec5893",
+   "label": "absent",
+   "evidence": "US-003 (P1) cancelling where a notice period applies, with the computed end date shown up front"
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "plan": "005d181c",
+   "label": "absent",
+   "evidence": "**US-002 (P1)** Finance: totals by category for a chosen period, downloadable as CSV."
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "plan": "c48dda77",
+   "label": "reflected",
+   "evidence": "anything I could reasonably decide, I decided and put in Assumptions instead."
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "plan": "26d6f0ec",
+   "label": "reflected",
+   "evidence": "It is not a requirement — it is an assumption (\"agents always work from a desktop browser\") wearing a requirement's clothes"
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "plan": "927b3b55",
+   "label": "reflected",
+   "evidence": "I will not carry FR-008 forward as a requirement, because it is an assumption, and one the workspace's own numbers contradict."
+  },
+  {
+   "id": "requirements-analyst.what-reject.requirements-can-t-be",
+   "plan": "005d181c",
+   "label": "reflected",
+   "evidence": "I would not accept \"like the big expense tools\" as a requirement — it is unbuildable and untestable."
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "plan": "a9a74b87",
+   "label": "reflected",
+   "evidence": "Confirm every story stands alone — `US-002` must not be meaningless without `US-003`."
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "plan": "f6161250",
+   "label": "reflected",
+   "evidence": "**The three story statements themselves** (US-001, US-002, US-003) — correct role/capability/benefit, correct priorities, and each has a real independent test."
+  },
+  {
+   "id": "requirements-analyst.what-reject.requirements-can-t-be",
+   "plan": "f6161250",
+   "label": "reflected",
+   "evidence": "Delete \"the experience is seamless\" outright; it cannot be verified."
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "plan": "dc051424",
+   "label": "absent",
+   "evidence": "**US-001 (P1)** finance admin sees a period's approved spend totalled by cost center and by category."
+  },
+  {
+   "id": "requirements-analyst.what-reject.requirements-can-t-be",
+   "plan": "927b3b55",
+   "label": "reflected",
+   "evidence": "I will not write \"fast\", \"secure\", \"seamless\", or \"user-friendly\" back into the spec in any form"
+  },
+  {
+   "id": "requirements-analyst.what-reject.requirements-can-t-be",
+   "plan": "a9a74b87",
+   "label": "reflected",
+   "evidence": "Confirm no requirement contains \"fast\", \"easy\", or \"useful\" without a number or a pass/fail condition behind it."
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "plan": "a9a74b87",
+   "label": "reflected",
+   "evidence": "I take **month incurred** as the reporting basis and record it as an assumption."
+  },
+  {
+   "id": "requirements-analyst.quality-standards.independent-benefit-anchored-every",
+   "plan": "26d6f0ec",
+   "label": "reflected",
+   "evidence": "but never states that a requester can open a file an agent sent — yet US-002's whole benefit (\"send the requester a document\") depends on it."
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "plan": "dc051424",
+   "label": "reflected",
+   "evidence": "I expect two or three requirements to need a number I have to choose rather than derive — those become assumptions rather than being left vague."
+  },
+  {
+   "id": "requirements-analyst.what-reject.assumptions-hidden-requirements",
+   "plan": "f6161250",
+   "label": "reflected",
+   "evidence": "**Reject outright, and say why in the spec.** This is not a requirement, it is an assumption — and the analytics contradict it"
+  }
+ ]
+}

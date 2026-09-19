@@ -1,0 +1,1303 @@
+{
+ "runs": [
+  {
+   "arm": "armA",
+   "golden": "G1",
+   "replicate": 1,
+   "plugin_errors": null,
+   "assertions": [
+    {
+     "type": "file_exists",
+     "path": "review.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(needs[- ]revision|critical[- ]gaps|\\bready\\b)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(critical|important|minor)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(tally|raised|surviv)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "\\bD[1-9]\\b",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(resolution|would settle|to settle|next check)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(coverage|angle)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?i)(here is the (revised|updated|corrected|fixed) record|rewritten record)",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "checklist": [
+    {
+     "id": "R-001",
+     "passed": true,
+     "evidence": "Built before opening record.md, from the topic/goal line only."
+    },
+    {
+     "id": "R-002",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "R-003",
+     "passed": true,
+     "evidence": "From: end-stage reviewer (solo \u2014 no counterpart, no cross-examination ran)"
+    },
+    {
+     "id": "R-004",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "R-005",
+     "passed": true,
+     "evidence": "Recommended status: **critical-gaps**"
+    },
+    {
+     "id": "R-006",
+     "passed": true,
+     "evidence": "To the best of my domain knowledge, both are wrong: FCM is documented as best-effort with no delivery-time SLA (subject to OS Doze/App Standby throttling), and FCM's iOS transport runs *through* APNs"
+    },
+    {
+     "id": "R-007",
+     "passed": true,
+     "evidence": "11 raised, 11 survived my own materiality filter (solo \u2014 no cross-examination to have killed any further; nothing here is manufactured to pad the list, and each carries a concrete scenario or a cited contradiction, not just 'this could be more thorough')"
+    },
+    {
+     "id": "R-008",
+     "passed": true,
+     "evidence": "full six-hunt-class pass run on all eight decisions"
+    },
+    {
+     "id": "R-009",
+     "passed": true,
+     "evidence": "Phase 0 blind angle map built and diffed before/against the record"
+    },
+    {
+     "id": "R-010",
+     "passed": true,
+     "evidence": "Voice/phone calls, the traditional highest-reliability paging channel in this industry, are never mentioned anywhere in the record"
+    },
+    {
+     "id": "R-011",
+     "passed": true,
+     "evidence": "## A. Delivery mechanism / channel angles ... ## B. Escalation policy angles ... ## C. What we owe the customer when a page fails to land ... ## D. Second-order / systemic angles"
+    },
+    {
+     "id": "R-012",
+     "passed": true,
+     "evidence": "Built before opening record.md, from the topic/goal line only. No repo exists in this workspace to ground against."
+    },
+    {
+     "id": "R-013",
+     "passed": true,
+     "evidence": "At minute 3, the incident has already escalated to the *next* responder per D6. At minute 5, the *original* responder's SMS fallback fires \u2014 two minutes after the system already gave up on them."
+    },
+    {
+     "id": "R-014",
+     "passed": true,
+     "evidence": "FCM's high-priority messages wake a backgrounded iOS app 'without us holding a separate APNs entitlement.' To the best of my domain knowledge, both are wrong; Using a responder's personal phone number for work SMS paging (D2) has no stated consent/BYOD posture"
+    },
+    {
+     "id": "R-015",
+     "passed": true,
+     "evidence": "D1 decides channel primacy on cost alone; reliability/deliverability of push vs. SMS as a wake mechanism is never weighed; Escalation cadence (3-minute timer, 2-hop cap) is uniform regardless of incident severity"
+    },
+    {
+     "id": "R-016",
+     "passed": true,
+     "evidence": "Finding #9 explicitly states 'This isn't a rejected-road (never discussed, so not a ruling)' regarding voice channels, correctly classifying the never-visited dimension as a coverage gap rather than a class-2 missing decision. Critical #1 similarly treats the unaddressed goal-line item C as a coverage gap."
+    },
+    {
+     "id": "R-017",
+     "passed": true,
+     "evidence": "Important #5 on D8 states: 'D8's entire rationale is one line, no named incident, customer complaint, audit requirement, or regulatory driver behind building an independent webhook-ingesting, state-rederiving, nightly-reconciling service.' This identifies a decision adopted on thin rationale with no pushback."
+    },
+    {
+     "id": "R-018",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-019",
+     "passed": true,
+     "evidence": "Important #3 states: 'D2's SMS-fallback timer (5 min) and D6's escalation timer (3 min) are ordered so escalation outruns the fallback it's supposed to precede. At minute 3, the incident has already escalated to the next responder per D6. At minute 5, the original responder's SMS fallback fires \u2014 two minutes after the system already gave up on them.'"
+    },
+    {
+     "id": "R-020",
+     "passed": true,
+     "evidence": "Important #5 on D8: 'D8's entire rationale is we want a second source of truth on whether pages actually landed \u2014 one line, no named incident, customer complaint, audit requirement, or regulatory driver.'"
+    },
+    {
+     "id": "R-021",
+     "passed": true,
+     "evidence": "Important #5 names both the unpaid driver ('no stated session driver') and the cheaper shape ('have provider webhooks write into or reconcile against the same D3 status rows with a lightweight staleness/mismatch alert'). No compliance or floor obligations are labeled excess."
+    },
+    {
+     "id": "R-022",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-023",
+     "passed": true,
+     "evidence": "The preamble states: 'reality-grounding was done against domain knowledge for the one load-bearing external claim, and against the record's own text for internal consistency.' Finding #2 explicitly identifies the FCM claims checked and their substrate: 'To the best of my domain knowledge, both are wrong: FCM is documented as best-effort with no delivery-time SLA.'"
+    },
+    {
+     "id": "R-024",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-025",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-026",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-027",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-028",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-029",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-030",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-031",
+     "passed": true,
+     "evidence": "Minor #9: 'Voice/phone calls, the traditional highest-reliability paging channel in this industry, are never mentioned anywhere in the record \u2014 not adopted, not rejected. This isn't a rejected-road (never discussed, so not a ruling)' \u2014 flags the absence of voice as an alternative never considered"
+    },
+    {
+     "id": "R-032",
+     "passed": true,
+     "evidence": "Critical #1: 'Open threads: None recorded' asserts closure on a scope item the record never opened'; Important #4: 'The \"no open threads\" claim hides it' and 'contradicts the record's own \"Open threads: None recorded.\"' \u2014 both flag false closure on undecided threads"
+    },
+    {
+     "id": "R-033",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-034",
+     "passed": true,
+     "evidence": "Critical #2: severity (Critical), touches decisions (D4, D1, D2), failure scenario (FCM claims about delivery guarantee and iOS entitlement are false), resolution path (verify against documentation before re-marking Confident). All eleven findings carry all four fields consistently throughout."
+    },
+    {
+     "id": "R-035",
+     "passed": true,
+     "evidence": "Each finding terminates in a resolvable question or check: Critical #2: 'verify D4's two claims against Firebase's current official documentation'; Important #3: 'either resequence (SMS fallback should fire before or at the same time as the first escalation hop) or add an explicit rationale for why the current order is intentional'"
+    },
+    {
+     "id": "R-036",
+     "passed": true,
+     "evidence": "Review header: 'Phase 0 blind angle map built and diffed before/against the record'; Critical #1 surface as the goal line's third requirement having zero decisions; Minor #9 surfaces voice calls angle as never mentioned in record \u2014 coverage gaps reported first-class in the findings list"
+    },
+    {
+     "id": "R-037",
+     "passed": true,
+     "evidence": "Critical #1 (coverage finding): evidenced by 'D3 stores delivery status internally for 30 days; D8 builds an internal reconciliation service. Neither decision, nor any other, states an SLA' (diff evidence) plus materiality 'A ruling here would almost certainly differ from nothing' \u2014 no concrete failure scenario, relief from that bar applied"
+    },
+    {
+     "id": "R-038",
+     "passed": false,
+     "evidence": "Minor #9: described as 'the traditional highest-reliability paging channel in this industry, are never mentioned' \u2014 the materiality strongly suggests a ruling would PLAUSIBLY change (missing the highest-reliability channel), yet is labeled Minor (completeness only, no ruling turns on it), contradicting the severity classification rule"
+    },
+    {
+     "id": "R-039",
+     "passed": true,
+     "evidence": "'I applied the materiality bar myself since there was no debate to apply it for me \u2014 the list below is what survived that self-filter, not the raw hunt output' \u2014 solo reviewer explicitly applies materiality gate and reports filtered results, not raw diff"
+    },
+    {
+     "id": "R-040",
+     "passed": true,
+     "evidence": "Minor #9: 'This isn't a rejected-road (never discussed, so not a ruling)' \u2014 correctly applies the check that a ruled-out angle (if discussed and rejected) would be a ruling, whereas voice calls being entirely undiscussed remain a coverage gap, not a rejected road"
+    },
+    {
+     "id": "R-041",
+     "passed": true,
+     "evidence": "'Tally: 11 raised, 11 survived my own materiality filter' \u2014 findings-formed reported as count only (both numbers stated separately from the content of the eleven findings)"
+    },
+    {
+     "id": "R-042",
+     "passed": true,
+     "evidence": "'end-stage reviewer (solo \u2014 no counterpart, no cross-examination ran)' \u2014 solo reviewer explicitly skips cross-examination, does not stage four-message exchange or invent a counterpart reviewer"
+    },
+    {
+     "id": "R-043",
+     "passed": true,
+     "evidence": "Critical #1: severity (Critical), decision touched (goal line C, D3, D8), failure scenario/diff (D3 and D8 have zero SLA/remedy decisions), resolution path (send session back to decide); same structure for all eleven survivors"
+    },
+    {
+     "id": "R-044",
+     "passed": true,
+     "evidence": "'Tally: 11 raised, 11 survived my own materiality filter' \u2014 both numbers explicitly stated; fallen findings retrievable note N/A since 11=11, no survivors discarded"
+    },
+    {
+     "id": "R-045",
+     "passed": true,
+     "evidence": "'11 raised, 11 survived my own materiality filter' \u2014 scoped to 'my own' findings; no cross-set merge or combined count across other reviewers attempted; tally covers this reviewer's survivors alone"
+    },
+    {
+     "id": "R-046",
+     "passed": true,
+     "evidence": "Recommended status: **critical-gaps**"
+    },
+    {
+     "id": "R-047",
+     "passed": true,
+     "evidence": "Recommended status: **critical-gaps**; critical findings prevent ready award"
+    },
+    {
+     "id": "R-048",
+     "passed": true,
+     "evidence": "Two Critical items requiring session-level resolution, not fixable-fold revision"
+    },
+    {
+     "id": "R-049",
+     "passed": true,
+     "evidence": "Critical #1: goal line's third requirement has no decision; Critical #2: load-bearing technical claim appears false; Finding #6: no stated owner/accountable party"
+    },
+    {
+     "id": "R-050",
+     "passed": true,
+     "evidence": "11 raised, 11 survived my own materiality filter (solo \u2014 no cross-examination to have killed any further; nothing here is manufactured to pad the list, and each carries a concrete scenario or a cited contradiction"
+    },
+    {
+     "id": "R-051",
+     "passed": true,
+     "evidence": "Record has 8 decisions with statements and rationales; artifact substantively reviews without declaring unreviewable"
+    },
+    {
+     "id": "R-052",
+     "passed": true,
+     "evidence": "Resolution path: send the session back to decide... the reviewer hands up proposals and never writes the file itself"
+    },
+    {
+     "id": "R-053",
+     "passed": true,
+     "evidence": "=== review.md === contains all findings with verdict, evidence, materiality, and disposition in durable file form"
+    },
+    {
+     "id": "R-054",
+     "passed": true,
+     "evidence": "Recommended status: **critical-gaps**; status framed as recommendation; Resolution path: indicates action without commanding"
+    },
+    {
+     "id": "R-055",
+     "passed": true,
+     "evidence": "Critical #2: load-bearing technical claim underpinning a Confident architectural decision (D4) appears to be factually wrong; Important #4 contradicts record's own Open threads: None recorded"
+    },
+    {
+     "id": "R-056",
+     "passed": true,
+     "evidence": "Recommended status: **critical-gaps**"
+    },
+    {
+     "id": "R-057",
+     "passed": true,
+     "evidence": "## Critical, ## Important, ## Minor section headers with findings classified by exactly these three severity words"
+    },
+    {
+     "id": "R-058",
+     "passed": false,
+     "evidence": "Findings listed uniformly under severity headers without distinguishing coverage findings as separate kind from hunt-class findings"
+    },
+    {
+     "id": "R-059",
+     "passed": true,
+     "evidence": "# Phase 0 \u2014 Blind angle map; blind-angle-map.md filename"
+    },
+    {
+     "id": "R-060",
+     "passed": true,
+     "evidence": "## Tally: 11 raised, 11 survived my own materiality filter"
+    },
+    {
+     "id": "R-061",
+     "passed": true,
+     "evidence": "two Confident/Confident decisions lean on them"
+    },
+    {
+     "id": "R-062",
+     "passed": false,
+     "evidence": "To the best of my domain knowledge, both are wrong: FCM is documented as best-effort with no delivery-time SLA"
+    },
+    {
+     "id": "R-063",
+     "passed": true,
+     "evidence": "full six-hunt-class pass run on all eight decisions"
+    },
+    {
+     "id": "R-064",
+     "passed": false,
+     "evidence": "I applied the materiality bar myself since there was no debate to apply it for me"
+    },
+    {
+     "id": "R-065",
+     "passed": true,
+     "evidence": "solo \u2014 no counterpart, no cross-examination ran"
+    },
+    {
+     "id": "R-066",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "R-067",
+     "passed": true,
+     "evidence": "solo \u2014 no counterpart, no cross-examination ran"
+    }
+   ],
+   "cost_usd": 0.502707,
+   "artifact_truncated": false
+  },
+  {
+   "arm": "armA",
+   "golden": "G2",
+   "replicate": 1,
+   "plugin_errors": null,
+   "assertions": [
+    {
+     "type": "file_exists",
+     "path": "review.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(needs[- ]revision|critical[- ]gaps|\\bready\\b)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(critical|important|minor)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(tally|raised|surviv)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "\\bD[1-9]\\b",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(resolution|would settle|to settle|next check)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(coverage|angle)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?i)(here is the (revised|updated|corrected|fixed) record|rewritten record)",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "checklist": [
+    {
+     "id": "R-001",
+     "passed": true,
+     "evidence": "Built from the topic and goal line alone, before opening record.md. No repo/source files were present to ground against, so this is domain reasoning about offline-first field-inspection sync systems. Sections enumerate Actors, Sync model angles, Conflict handling angles, Failure modes, Timescales, Second-order effects, Alternatives\u2014all topic-level, not record decisions."
+    },
+    {
+     "id": "R-002",
+     "passed": true,
+     "evidence": "No record.md file in the output. Findings presented with 'Resolution path:' language, proposing actions for the lead to land, not applied or patched."
+    },
+    {
+     "id": "R-003",
+     "passed": true,
+     "evidence": "Solo end-stage review of the frozen Kettle offline-sync record. I applied the materiality bar myself before including anything here. Consistent use of 'I' and external voice; no 'we decided' or softening on participants' apparent consideration."
+    },
+    {
+     "id": "R-004",
+     "passed": true,
+     "evidence": "D7 is Contested and I'm not reopening the ruling itself \u2014 the record shows the 'unrecoverable and invisible to the inspector' argument was heard and the session ruled v1 ships without a merge UI regardless. That's settled. The angle the ruling doesn't appear to have weighed: *inspector-invisible* is not the same as *destroyed*."
+    },
+    {
+     "id": "R-005",
+     "passed": true,
+     "evidence": "Recommended status: critical-gaps. F1 is a Critical coverage gap on a component the goal line names explicitly, with zero record coverage \u2014 that alone meets the critical-gaps bar."
+    },
+    {
+     "id": "R-006",
+     "passed": true,
+     "evidence": "D8 asserts WAL mode is guaranteed to survive force-kill on both iOS and Android. I had no web or file access in this session to check this against current platform behavior, so I'm flagging it as unverified rather than accepting it \u2014 per the rule that an unverifiable load-bearing claim is a finding, not a benefit of the doubt."
+    },
+    {
+     "id": "R-007",
+     "passed": true,
+     "evidence": "8 raised, 8 survived my own pre-filter. Findings address concrete contradictions (F2), logical breaks in reasoning (F3), plausible but unaddressed scenarios (F5), and unverifiable claims (F8)\u2014none are speculative."
+    },
+    {
+     "id": "R-008",
+     "passed": true,
+     "evidence": "Solo end-stage review of the frozen Kettle offline-sync record. No lens was briefed, making this rule vacuous per its own exception clause."
+    },
+    {
+     "id": "R-009",
+     "passed": true,
+     "evidence": "My blind Phase 0 angle map and the findings-formed count are recorded separately in this session; the diff against that map produced the coverage findings below. phase0-blind-map.md exists; F1 is explicitly marked Critical coverage gap."
+    },
+    {
+     "id": "R-010",
+     "passed": true,
+     "evidence": "The goal line explicitly asks for three things: sync model, conflict handling, and inspector-facing behavior on sync failure. The record covers the first two at length and never once addresses the third. The Phase 0 map includes What an inspector sees on sync failure and Failure modes / lifecycle\u2014angles the record never visits."
+    },
+    {
+     "id": "R-011",
+     "passed": true,
+     "evidence": "The Phase 0 map enumerates angles across multiple dimensions: ## Actors, ## Sync model angles, ## Conflict handling angles, ## Failure modes / lifecycle, ## Timescales, ## Second-order / organizational effects, ## Alternatives\u2014covering cost, failure modes, timescales, actors, alternatives as required."
+    },
+    {
+     "id": "R-012",
+     "passed": true,
+     "evidence": "Built from the topic and goal line alone, before opening record.md. No repo/source files were present to ground against. No citation of the record, its index, or session directory artifacts."
+    },
+    {
+     "id": "R-013",
+     "passed": true,
+     "evidence": "F2: supervisor can approve an inspection whose photographic evidence hasn't arrived yet, may arrive later, or may fail permanently. F3: A drifted or wrong clock can cause a later, correct edit to silently lose to an earlier, wrong-clock one. F5: there's a real window where an inspection's photographic evidence exists only on a device that changes hands shift-to-shift."
+    },
+    {
+     "id": "R-014",
+     "passed": true,
+     "evidence": "F3: The rationale for D1 treats cross-device conflict as a rare edge case but says nothing about *clock trust*, which is the actual resolution mechanism. Was device-clock trust never examined? The record's confidence mark (Confident) suggests the latter. F7: D9's real-time telemetry has no stated driver for *real-time* specifically\u2014an unexamined assumption."
+    },
+    {
+     "id": "R-015",
+     "passed": true,
+     "evidence": "F2: D3 and D6 are sound in isolation but combined they create a silent evidence gap. F4: The record doesn't weigh whether the losing version survives server-side, which materially changes risk profile for compliance-exposed records. F7: D9 collects telemetry but never weighs real-time streaming cost versus batched reporting as a missing dimension of the decision."
+    },
+    {
+     "id": "R-016",
+     "passed": true,
+     "evidence": "Critical coverage gap on a component the goal line names explicitly, with zero record coverage."
+    },
+    {
+     "id": "R-017",
+     "passed": true,
+     "evidence": "Confidence is marked 'Assumed,' consistent with this reading as a passive-acceptance / unpaid-machinery item rather than a considered tradeoff."
+    },
+    {
+     "id": "R-018",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-019",
+     "passed": true,
+     "evidence": "Each decision is sound in isolation (both have clear, real drivers \u2014 battery/queue-blocking for D3, supervisor throughput for D6) but combined they create a silent evidence gap"
+    },
+    {
+     "id": "R-020",
+     "passed": true,
+     "evidence": "D9's real-time, per-device telemetry pipeline has no stated driver for *real-time* specifically."
+    },
+    {
+     "id": "R-021",
+     "passed": true,
+     "evidence": "batched telemetry is the cheaper shape that pays for the same stated need."
+    },
+    {
+     "id": "R-022",
+     "passed": true,
+     "evidence": "Touches: whole record (absence spans all of D1\u2013D9)... Touches: D3, D6... Touches: D1... Touches: D7... Touches: D2, D3, D5 (by omission)... Touches: D4... Touches: D9... Touches: D8"
+    },
+    {
+     "id": "R-023",
+     "passed": true,
+     "evidence": "so reality-grounding below is limited to what the record states about itself plus general domain/platform knowledge where I flag it explicitly as such."
+    },
+    {
+     "id": "R-024",
+     "passed": true,
+     "evidence": "I had no web or file access in this session to check this against current platform behavior, so I'm flagging it as unverified"
+    },
+    {
+     "id": "R-025",
+     "passed": true,
+     "evidence": "I'm flagging it as unverified rather than accepting it \u2014 per the rule that an unverifiable load-bearing claim is a finding, not a benefit of the doubt."
+    },
+    {
+     "id": "R-026",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-027",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-028",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-029",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-030",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "R-031",
+     "passed": false,
+     "evidence": "The blind map lists alternatives (locking/checkout vs conflict resolution, field-level merge, CRDT, OT, batched vs real-time telemetry, photo-blocking vs out-of-band sync) but the review does not comprehensively show which alternatives the record considered and rejected with their reasoning. F3 asks 'was a server-receipt-order or logical/vector-clock tiebreaker considered and rejected' rather than confirming these as settled rejections from the record."
+    },
+    {
+     "id": "R-032",
+     "passed": true,
+     "evidence": "Undecided threads are framed as open questions with resolution paths: F1 ends with 'does a decision on inspector-facing failure state exist and simply not appear here, or was it never made?' F3 asks 'was a server-receipt-order or logical/vector-clock tiebreaker considered and rejected.' F4 states 'That's settled' for D7 while framing the retained-history question as unresolved."
+    },
+    {
+     "id": "R-033",
+     "passed": false,
+     "evidence": "No dedicated provenance line stating who and when. The review begins 'Solo end-stage review of the frozen Kettle offline-sync record' and later notes 'No counterpart was seated' but lacks a formal provenance statement such as 'Review conducted by [identifier] on [date], solo review.'"
+    },
+    {
+     "id": "R-034",
+     "passed": true,
+     "evidence": "All eight findings carry severity (Critical/Important/Minor), decisions touched (e.g., 'Touches: D3, D6'), concrete failure scenario or contradiction (e.g., F2: 'supervisor can approve an inspection whose photographic evidence hasn't arrived yet'), and resolution path (e.g., F2: 'does the dashboard actually distinguish \"synced, photos pending\" from \"fully synced\"?')"
+    },
+    {
+     "id": "R-035",
+     "passed": true,
+     "evidence": "Every finding names something a question or check could settle. F1: 'does a decision on inspector-facing failure state exist.' F3: 'was device-clock trust never examined?' F5: 'is this out of scope for v1, or genuinely never considered?' F8: 'have someone with tool access confirm the SQLite documentation's actual wording.'"
+    },
+    {
+     "id": "R-036",
+     "passed": false,
+     "evidence": "The review mentions 'the diff against that map produced the coverage findings below' but does not show the map-vs-record diff as a distinct reported output. The diff is referenced in prose only; coverage finding F1 is intermixed with hunt-class findings F2\u2013F8 without a separate diff table or structured coverage-findings section."
+    },
+    {
+     "id": "R-037",
+     "passed": true,
+     "evidence": "F1 (coverage finding) is evidenced by the map-vs-record diff ('The record covers the first two [sync model, conflict handling] at length and never once addresses the third') plus materiality argument ('it's named in the goal line') rather than a concrete failure scenario. It does not assert a specific software failure."
+    },
+    {
+     "id": "R-038",
+     "passed": true,
+     "evidence": "F1 (the coverage finding) is marked Critical with the materiality argument: 'it's named in the goal line,' meeting the 'LIKELY to change a ruling' bar. No coverage findings are marked as Minor or Important, but F1 is correctly severity-labeled per the three-label test."
+    },
+    {
+     "id": "R-039",
+     "passed": true,
+     "evidence": "'I applied the materiality bar myself before including anything here, per the solo protocol.' The review explicitly states the bar was applied, and all reported findings carry sufficient materiality for inclusion (gaps or issues that touch decisions or the goal line)."
+    },
+    {
+     "id": "R-040",
+     "passed": false,
+     "evidence": "The review does not show the rejected-roads check being performed. F3 asks whether alternatives were considered ('was a server-receipt-order or logical/vector-clock tiebreaker considered and rejected, or was device-clock trust never examined?') implying these alternatives are not shown in the record as considered/rejected, rather than confirming them as settled rejections routed to hunt class 4."
+    },
+    {
+     "id": "R-041",
+     "passed": true,
+     "evidence": "'Findings formed: 8 (count only, per protocol \u2014 content withheld until the survivor report).' The count is reported without content, as required."
+    },
+    {
+     "id": "R-042",
+     "passed": true,
+     "evidence": "'No counterpart was seated, so there is no cross-examination round or unresolved-objection column \u2014 I applied the materiality bar myself before including anything here, per the solo protocol.' The review explicitly skips cross-examination and does not simulate a four-message exchange."
+    },
+    {
+     "id": "R-043",
+     "passed": true,
+     "evidence": "Each finding carries severity classification (Critical/Important/Minor), decision references, failure scenario or contradiction (e.g., F2: 'D3 marks synced as soon as JSON body lands... D6 lets supervisor sign off the moment synced'), and resolution path (e.g., F2: 'does the dashboard actually distinguish...?'). Coverage finding F1 carries diff + materiality instead of concrete scenario."
+    },
+    {
+     "id": "R-044",
+     "passed": false,
+     "evidence": "The tally states '8 raised, 8 survived' with explanation, but omits the required note that 'the fallen findings stay retrievable on ask.' The review includes '(solo \u2014 no cross-examination to fall to; the '8 survived' reflects my own materiality filter, not a debate)' but does not explicitly note that any findings not surviving would be kept retrievable."
+    },
+    {
+     "id": "R-045",
+     "passed": true,
+     "evidence": "'8 raised, 8 survived (solo \u2014 no cross-examination to fall to; the '8 survived' reflects my own materiality filter, not a debate).' The tally is explicitly scoped to the solo reviewer's own findings and materiality filter; no cross-set merge or combined count is asserted."
+    },
+    {
+     "id": "R-046",
+     "passed": true,
+     "evidence": "## Recommended status: critical-gaps"
+    },
+    {
+     "id": "R-047",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "R-048",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "R-049",
+     "passed": true,
+     "evidence": "F1 is a Critical coverage gap on a component the goal line names explicitly, with zero record coverage \u2014 that alone meets the critical-gaps bar."
+    },
+    {
+     "id": "R-050",
+     "passed": true,
+     "evidence": "F1 \u2014 The goal line's third component is entirely unaddressed: what an inspector sees when a sync does not go through... the record covers the first two at length and never once addresses the third"
+    },
+    {
+     "id": "R-051",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "R-052",
+     "passed": true,
+     "evidence": "Lead \u2014 ... Resolution path: does a decision on inspector-facing failure state exist and simply not appear here, or was it never made?"
+    },
+    {
+     "id": "R-053",
+     "passed": true,
+     "evidence": "=== phase0-blind-map.md === ... phase1-findings-formed.md ... review.md"
+    },
+    {
+     "id": "R-054",
+     "passed": true,
+     "evidence": "## Recommended status: critical-gaps"
+    },
+    {
+     "id": "R-055",
+     "passed": true,
+     "evidence": "F3 \u2014 D1's last-write-wins-by-device-clock leans on an assumption the product's own premise undermines. The rationale for D1 treats... but says nothing about *clock trust*"
+    },
+    {
+     "id": "R-056",
+     "passed": true,
+     "evidence": "critical-gaps"
+    },
+    {
+     "id": "R-057",
+     "passed": true,
+     "evidence": "## Critical ... ## Important ... ## Minor"
+    },
+    {
+     "id": "R-058",
+     "passed": false,
+     "evidence": "the diff against that map produced the coverage findings below. [All 8 findings listed together under severity headings without distinguishing coverage findings from hunt-class findings; F1 and F5 appear to be map-diff findings but are merged into undifferentiated list]"
+    },
+    {
+     "id": "R-059",
+     "passed": true,
+     "evidence": "# Phase 0 \u2014 Blind angle map"
+    },
+    {
+     "id": "R-060",
+     "passed": true,
+     "evidence": "## Tally\n8 raised, 8 survived (solo \u2014 no cross-examination to fall to; the \"8 survived\" reflects my own materiality filter, not a debate)."
+    },
+    {
+     "id": "R-061",
+     "passed": true,
+     "evidence": "The record's confidence mark (\"Confident\") suggests\"; \"D4 is marked \"Assumed\" already\"; \"Confidence is marked \"Assumed\"; \"D7 is Contested"
+    },
+    {
+     "id": "R-062",
+     "passed": false,
+     "evidence": "\"I had no web or file access in this session to check this against current platform behavior, so I'm flagging it as unverified rather than accepting it\" \u2014 uses informal phrasing rather than the prescribed `verified: <source>` or `memory-asserted` format"
+    },
+    {
+     "id": "R-063",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "R-064",
+     "passed": true,
+     "evidence": "\"Lead \u2014\"; \"I applied the materiality bar myself before including anything here, per the solo protocol\"; \"Recommended status: critical-gaps\" (framed as recommendation to lead, not reviewer authorship)"
+    },
+    {
+     "id": "R-065",
+     "passed": true,
+     "evidence": "\"=== phase1-findings-formed.md ===\"; \"Findings formed: 8 (count only, per protocol \u2014 content withheld until the survivor report)\""
+    },
+    {
+     "id": "R-066",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "R-067",
+     "passed": true,
+     "evidence": "\"No counterpart was seated this session (solo spawn) \u2014 proceeding directly to the survivor report; Phase 2 cross-examination is skipped per protocol\" (solo exception: skip is stated, no inline restatement)"
+    }
+   ],
+   "cost_usd": 0.5610769,
+   "artifact_truncated": false
+  },
+  {
+   "arm": "armA",
+   "golden": "G3",
+   "replicate": 1,
+   "plugin_errors": null,
+   "assertions": [
+    {
+     "type": "file_exists",
+     "path": "review.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(needs[- ]revision|critical[- ]gaps|\\bready\\b)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(critical|important|minor)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(tally|raised|surviv)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "\\bD[1-9]\\b",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(resolution|would settle|to settle|next check)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "review.md",
+     "pattern": "(?i)(coverage|angle)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "review.md",
+     "pattern": "(?i)(here is the (revised|updated|corrected|fixed) record|rewritten record)",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "checklist": [
+    {
+     "id": "R-001",
+     "passed": true,
+     "evidence": "blind-angle-map.md exists as a separate deliverable containing topic-level angles (Actors, Cost dimensions, Failure modes, Timescales, Alternatives, Second-order effects) built 'from the topic statement and goal line only, before opening `record.md`'"
+    },
+    {
+     "id": "R-002",
+     "passed": true,
+     "evidence": "No record.md file produced. review.md contains proposed findings with 'Resolution path' sections suggesting what to check (e.g., 'does Threadline currently have any teams under PO-only...'), never applying fixes to the record"
+    },
+    {
+     "id": "R-003",
+     "passed": true,
+     "evidence": "'Spawned solo, no counterpart, no cross-examination round.' No phrases like 'we decided' or 'as we discussed'. Finding #2 explicitly challenges D8's confidence rather than deferring to the participants' consideration: 'rated Confident with essentially no scrutiny'"
+    },
+    {
+     "id": "R-004",
+     "passed": true,
+     "evidence": "'D7 (self-serve downgrade) is Contested and was already ruled with the steelman in view \u2014 I did not find a genuinely new angle against it, so it's excluded per protocol.'"
+    },
+    {
+     "id": "R-005",
+     "passed": true,
+     "evidence": "Recommended status is 'critical-gaps', not 'ready'. Basis provided: 'a load-bearing claim that looks broken on inspection (D8, finding #2), and a Critical coverage gap...'"
+    },
+    {
+     "id": "R-006",
+     "passed": true,
+     "evidence": "Finding #2: D8's claim 'Stripe Tax carries the whole US filing obligation... we need no tax counsel' is unverifiable and raised as a finding: 'automatic multi-state registration and return filing is a separate, opt-in capability, and merchant tax liability for registration/filing typically isn't fully absorbed by default configuration'"
+    },
+    {
+     "id": "R-007",
+     "passed": true,
+     "evidence": "'Tally: ~20 candidate angles/hunt-class items raised internally during the cold read; 9 survived my own materiality filter. The rest died at the diff (no plausible ruling change)...D4 (Stripe Billing, \"Obvious\") and D9's overall build-vs-buy framing are thin-rationale but I judged the underlying calls sound enough not to block on'"
+    },
+    {
+     "id": "R-008",
+     "passed": true,
+     "evidence": "No lens is briefed in the dispatch. Map states 'from the topic statement and goal line only', and review reports findings without lens constraints, making this rule inapplicable per its own caveat ('Vacuous when the dispatch briefs no lens')"
+    },
+    {
+     "id": "R-009",
+     "passed": true,
+     "evidence": "Phase 0 blind angle map produced in blind-angle-map.md. Coverage diff explicitly stated: 'the coverage findings below are the diff between that map and what the record actually decided'. Findings #7 and #8 labeled as coverage gaps"
+    },
+    {
+     "id": "R-010",
+     "passed": true,
+     "evidence": "Map names 'Data handling during read-only/suspended state (retention, export, deletion, GDPR)' and 'What communication, if any, happens *during* a grace/suspension window' \u2014 Finding #7 and #3 confirm the record never visits these angles"
+    },
+    {
+     "id": "R-011",
+     "passed": true,
+     "evidence": "Map enumerates Actors, Cost dimensions, Failure modes, Timescales, Alternatives / rejected roads, Second-order effects, and Open questions\u2014multi-dimensional coverage across stakeholder, economic, technical, and temporal kinds"
+    },
+    {
+     "id": "R-012",
+     "passed": true,
+     "evidence": "'Built from the topic statement and goal line only, before opening `record.md`. No repo exists in this workspace, so no repo-grounding reading was available.' Cites topic and goal line, not the record"
+    },
+    {
+     "id": "R-013",
+     "passed": true,
+     "evidence": "Finding #1 failure scenario: 'a state-university team in good standing for 3 years hits renewal, has no card in 30 days (can never legally add one), and is suspended purely for a payment-mechanism mismatch, not non-payment'. Finding #5 names discount magnitude as a concrete break condition"
+    },
+    {
+     "id": "R-014",
+     "passed": true,
+     "evidence": "Finding #2 names unchallenged assumption: 'automatic multi-state registration and return filing is a separate, opt-in capability' (unscrutinized in D8). Finding #5 names assumption about discount distribution. Finding #9 names 'assumes roughly uniform renewal-date distribution'"
+    },
+    {
+     "id": "R-015",
+     "passed": true,
+     "evidence": "Finding #4: 'D5 states the seat-addition billing path but never states the seat-removal path...whether removed seats generate any credit, and on what cadence, is unaddressed.' Finding #6: D9 operator override 'has no stated audit or access control...nothing said about logging, role-gating, or approval'"
+    },
+    {
+     "id": "R-016",
+     "passed": true,
+     "evidence": "Finding #7 and #8 labeled 'Coverage gap' correctly separate unvisited dimensions; findings #1-6, #9 name specific decisions (D1-D9) and address class-2/3/5/6 issues within reached decisions."
+    },
+    {
+     "id": "R-017",
+     "passed": false,
+     "evidence": "D4 (Stripe Billing, 'Obvious') and D9's overall build-vs-buy framing are thin-rationale but I judged the underlying calls sound enough not to block on; flagging here only for visibility, not as a survivor."
+    },
+    {
+     "id": "R-018",
+     "passed": false,
+     "evidence": "D7 (self-serve downgrade) is Contested and was already ruled with the steelman in view \u2014 I did not find a genuinely new angle against it, so it's excluded per protocol. Verdict on whether chosen road wins is not stated in output."
+    },
+    {
+     "id": "R-019",
+     "passed": true,
+     "evidence": "Finding #3: 'Inconsistency between D3 and D6: zero communication during the very grace window D3 relies on.' Names both decisions and states how they collide."
+    },
+    {
+     "id": "R-020",
+     "passed": true,
+     "evidence": "Finding #6: 'D9's operator override has no stated audit or access control.' Names the decision and the unpaid apparatus."
+    },
+    {
+     "id": "R-021",
+     "passed": true,
+     "evidence": "Finding #6 identifies specific missing apparatus (audit, role-gating, approval) rather than calling an inherent compliance obligation excess."
+    },
+    {
+     "id": "R-022",
+     "passed": true,
+     "evidence": "Findings touch D1, D2, D3, D5, D6, D8, D9; tally states '~20 candidate angles raised internally during the cold read; 9 survived' indicating broad hunt across record."
+    },
+    {
+     "id": "R-023",
+     "passed": false,
+     "evidence": "Artifact states 'no repo exists in this workspace, so no repo-grounding reading was available' but does not disclose which load-bearing claims it checked or against what substrate (e.g., 'verified against Stripe documentation that...')."
+    },
+    {
+     "id": "R-024",
+     "passed": false,
+     "evidence": "Findings assert facts about Stripe Tax and regulatory policies without marking them as external claims or citing fetched quotable text; states 'Stripe Tax carries...is a separate, opt-in capability' as assertion rather than cited quotable."
+    },
+    {
+     "id": "R-025",
+     "passed": false,
+     "evidence": "No separate finding reports an undisclosed external claim in the record. Finding #2 critiques D8's claim accuracy ('overstated') rather than reporting the claim itself as carried without disclosure-line or verification."
+    },
+    {
+     "id": "R-026",
+     "passed": false,
+     "evidence": "Artifact lacks a structured fitness checklist with evidence for each item. No section runs through self-contained, attackable, decision-trail, or confidence-marks criteria with cited evidence from record."
+    },
+    {
+     "id": "R-027",
+     "passed": false,
+     "evidence": "Artifact does not explicitly judge whether a cold reader could reconstruct decisions, why, and rejections from record alone. No evidence-cited assessment of self-containedness."
+    },
+    {
+     "id": "R-028",
+     "passed": false,
+     "evidence": "Artifact does not comprehensively judge whether every decision carries attackable rationale or name bare assertions. Notes D4 'Obvious' and D9 'thin-rationale' but does not assess all decisions against this criterion with evidence."
+    },
+    {
+     "id": "R-029",
+     "passed": false,
+     "evidence": "Artifact does not judge whether each decision shows its testing/trial or is visibly untouched. Mentions D7 'was already ruled' but does not systematically assess decision-trail for all decisions."
+    },
+    {
+     "id": "R-030",
+     "passed": false,
+     "evidence": "Artifact does not comprehensively judge confidence-mark honesty across decisions. Identifies D8 'rated Confident with essentially no scrutiny' but does not assess all confidence marks or flag silent upgrades per this criterion."
+    },
+    {
+     "id": "R-031",
+     "passed": false,
+     "evidence": "Alternatives are listed in blind-angle-map.md ('Single global cutover vs. wave-by-renewal', 'Immediate price move to list vs. held rate', etc.) but the review does not systematically explain why the record rejected each one. Only D7 and D4/D9 are discussed; most alternatives have no explicit connection drawn to decisions."
+    },
+    {
+     "id": "R-032",
+     "passed": true,
+     "evidence": "Undecided threads are explicitly surfaced: 'Spawned solo, no counterpart, no cross-examination round. Findings below are self-filtered against the materiality bar the debate would normally apply, but they are undebated.' Coverage gaps #7 and #8 are labeled as such. Resolution paths are framed as open questions ('clarify whether...', 'confirm whether...', 'check the distribution...')."
+    },
+    {
+     "id": "R-033",
+     "passed": false,
+     "evidence": "No author name or date is stated. The review header reads 'Message to lead \u2014 solo end-stage review of record.md' but supplies neither who conducted it nor when."
+    },
+    {
+     "id": "R-034",
+     "passed": true,
+     "evidence": "Each of findings 1\u20136 and 9 carries: severity (section heading), decision(s) touched (D3, D8, etc.), concrete failure scenario ('a state-university team in good standing for 3 years hits renewal, has no card in 30 days...'), and resolution path ('does Threadline currently have any teams under PO-only/procurement payment terms? If yes, this decision needs...'). Coverage findings 7\u20138 are subject to R-037 instead."
+    },
+    {
+     "id": "R-035",
+     "passed": true,
+     "evidence": "All findings name a resolvable path. Examples: finding 1 asks 'does Threadline currently have any teams under PO-only...?'; finding 3 asks 'clarify whether 'nothing after' in D6 was meant to include the grace window...'; finding 9 asks 'check the actual renewal-date histogram...'. None are unresolvable commentary."
+    },
+    {
+     "id": "R-036",
+     "passed": true,
+     "evidence": "'Blind angle map was built first (see `blind-angle-map.md`) from the topic and goal line alone; the coverage findings below are the diff between that map and what the record actually decided.' Findings 7 and 8 are explicitly surfaced as coverage gaps differing from the map."
+    },
+    {
+     "id": "R-037",
+     "passed": true,
+     "evidence": "Coverage findings 7 and 8 are evidenced by map-vs-record diff plus materiality: finding 7 notes the blind map lists 'Data handling during read-only/suspended state (retention, export, deletion, GDPR)' as a failure mode while 'The record is silent on this entirely,' with materiality argument 'with GDPR-shaped stakes if any customers are in the EU/UK.' Finding 8 similarly cites the diff (D8 'explicitly scopes to US filing obligation') plus materiality ('This compounds finding #2')."
+    },
+    {
+     "id": "R-038",
+     "passed": true,
+     "evidence": "Coverage findings 7 and 8 are placed under the Important section and justified at that severity. Finding 7 invokes GDPR stakes (plausible ruling change). Finding 8 states VAT/GST compliance would differ if non-US teams were known (plausible). Neither is marked Critical (would need LIKELY ruling change) nor Minor (would need to be completeness-only)."
+    },
+    {
+     "id": "R-039",
+     "passed": true,
+     "evidence": "'Tally: ~20 candidate angles/hunt-class items raised internally during the cold read; 9 survived my own materiality filter. The rest died at the diff (no plausible ruling change) or were rejected-roads already visited by the record.' Materiality bar is explicitly applied; non-surviving angles are not shipped as findings."
+    },
+    {
+     "id": "R-040",
+     "passed": true,
+     "evidence": "'D7 (self-serve downgrade) is Contested and was already ruled with the steelman in view \u2014 I did not find a genuinely new angle against it, so it's excluded per protocol.' D7, D4, D9 are treated as rulings already made by the record, not as coverage gaps."
+    },
+    {
+     "id": "R-041",
+     "passed": true,
+     "evidence": "The tally reports counts at the point of handoff: '~20 candidate angles/hunt-class items raised internally during the cold read; 9 survived my own materiality filter.' The count is given with explanation of filtering, then survivors are detailed below\u2014count precedes content."
+    },
+    {
+     "id": "R-042",
+     "passed": true,
+     "evidence": "'Spawned solo, no counterpart, no cross-examination round.' No simulated exchange, no invented reviewer, no attributed objections to a non-existent counterpart."
+    },
+    {
+     "id": "R-043",
+     "passed": true,
+     "evidence": "Each survivor carries severity (via section headers Critical/Important/Minor), decision(s) touched (D3, D8, D2, etc.), failure scenario or materiality argument (e.g., finding 1: 'a state-university team... hits renewal, has no card in 30 days... is suspended purely for a payment-mechanism mismatch'), and resolution path (e.g., 'does Threadline currently have any teams under PO-only/procurement payment terms?')."
+    },
+    {
+     "id": "R-044",
+     "passed": false,
+     "evidence": "Tally states 'N raised, M survived' with both numbers ('~20... 9 survived') but does not explicitly note that fallen findings remain retrievable on ask. It mentions where some went ('died at the diff', 'rejected-roads already visited') but does not state the retrievability commitment."
+    },
+    {
+     "id": "R-045",
+     "passed": true,
+     "evidence": "Tally is explicitly scoped: '9 survived my own materiality filter.' The review makes no cross-set merge claim and does not assert a combined count with other reviewers."
+    },
+    {
+     "id": "R-046",
+     "passed": true,
+     "evidence": "Recommended status: **critical-gaps**"
+    },
+    {
+     "id": "R-047",
+     "passed": true,
+     "evidence": "The rest are Important/Minor and would normally not block alone, but the two Criticals do."
+    },
+    {
+     "id": "R-048",
+     "passed": true,
+     "evidence": "The rest are Important/Minor and would normally not block alone, but the two Criticals do."
+    },
+    {
+     "id": "R-049",
+     "passed": true,
+     "evidence": "Basis: a load-bearing claim that looks broken on inspection (D8, finding #2), and a Critical coverage gap where a plausible in-scope decision (an exemption path for card-incapable orgs) would likely have been reached had the angle been visited (finding #1)."
+    },
+    {
+     "id": "R-050",
+     "passed": true,
+     "evidence": "Tally: ~20 candidate angles/hunt-class items raised internally during the cold read; **9 survived** my own materiality filter."
+    },
+    {
+     "id": "R-051",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "R-052",
+     "passed": true,
+     "evidence": "Message to lead \u2014 solo end-stage review of record.md (Threadline self-serve billing migration)"
+    },
+    {
+     "id": "R-053",
+     "passed": true,
+     "evidence": "Resolution path: does Threadline currently have any teams under PO-only/procurement payment terms? If yes, this decision needs an exemption or manual-invoicing carve-out before it ships"
+    },
+    {
+     "id": "R-054",
+     "passed": true,
+     "evidence": "Message to lead \u2014 solo end-stage review"
+    },
+    {
+     "id": "R-055",
+     "passed": true,
+     "evidence": "Findings 1-2 clearly marked Critical; findings 3-9 marked Important or Minor with explicit severity labels"
+    },
+    {
+     "id": "R-056",
+     "passed": true,
+     "evidence": "Recommended status: **critical-gaps**"
+    },
+    {
+     "id": "R-057",
+     "passed": true,
+     "evidence": "## Critical, ## Important, ## Minor section headers with all findings properly severity-classified"
+    },
+    {
+     "id": "R-058",
+     "passed": true,
+     "evidence": "**7. Coverage gap: no decision addresses data retention/export/deletion for a team in read-only or suspended state.** **8. Coverage gap: non-US tax obligation is entirely unaddressed.**"
+    },
+    {
+     "id": "R-059",
+     "passed": true,
+     "evidence": "# Phase 0 \u2014 Blind Angle Map"
+    },
+    {
+     "id": "R-060",
+     "passed": true,
+     "evidence": "Tally: ~20 candidate angles/hunt-class items raised internally during the cold read; **9 survived** my own materiality filter."
+    },
+    {
+     "id": "R-061",
+     "passed": false,
+     "evidence": "D4 (Stripe Billing, \"Obvious\") and D9's overall build-vs-buy framing are thin-rationale but I judged the underlying calls sound enough not to block on"
+    },
+    {
+     "id": "R-062",
+     "passed": false,
+     "evidence": "Stripe Tax's base product calculates and collects tax; automatic multi-state registration and return filing is a separate, opt-in capability, and merchant tax liability for registration/filing typically isn't fully absorbed by default configuration."
+    },
+    {
+     "id": "R-063",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "R-064",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "R-065",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "R-066",
+     "passed": true,
+     "evidence": ""
+    },
+    {
+     "id": "R-067",
+     "passed": true,
+     "evidence": ""
+    }
+   ],
+   "cost_usd": 0.4429043,
+   "artifact_truncated": false
+  }
+ ],
+ "skill": "review-brainstorm",
+ "arms": [
+  "armA"
+ ],
+ "replicates": 1,
+ "rules_total": 67,
+ "rules_pruned_by_noskill": [],
+ "rules_lost_per_arm": {
+  "armA": []
+ },
+ "floor_rules_lost_per_arm": {
+  "armA": []
+ },
+ "baseline_assertion_failures": [],
+ "judge_parse_failures": 0,
+ "artifact_truncations": 0,
+ "held": {
+  "armA:R-001": true,
+  "armA:R-002": true,
+  "armA:R-003": true,
+  "armA:R-004": true,
+  "armA:R-005": true,
+  "armA:R-006": true,
+  "armA:R-007": true,
+  "armA:R-008": true,
+  "armA:R-009": true,
+  "armA:R-010": true,
+  "armA:R-011": true,
+  "armA:R-012": true,
+  "armA:R-013": true,
+  "armA:R-014": true,
+  "armA:R-015": true,
+  "armA:R-016": true,
+  "armA:R-017": false,
+  "armA:R-018": false,
+  "armA:R-019": true,
+  "armA:R-020": true,
+  "armA:R-021": true,
+  "armA:R-022": false,
+  "armA:R-023": false,
+  "armA:R-024": false,
+  "armA:R-025": false,
+  "armA:R-026": false,
+  "armA:R-027": false,
+  "armA:R-028": false,
+  "armA:R-029": false,
+  "armA:R-030": false,
+  "armA:R-031": false,
+  "armA:R-032": true,
+  "armA:R-033": false,
+  "armA:R-034": true,
+  "armA:R-035": true,
+  "armA:R-036": false,
+  "armA:R-037": true,
+  "armA:R-038": false,
+  "armA:R-039": true,
+  "armA:R-040": false,
+  "armA:R-041": true,
+  "armA:R-042": true,
+  "armA:R-043": true,
+  "armA:R-044": false,
+  "armA:R-045": true,
+  "armA:R-046": true,
+  "armA:R-047": true,
+  "armA:R-048": true,
+  "armA:R-049": true,
+  "armA:R-050": true,
+  "armA:R-051": true,
+  "armA:R-052": true,
+  "armA:R-053": true,
+  "armA:R-054": true,
+  "armA:R-055": true,
+  "armA:R-056": true,
+  "armA:R-057": true,
+  "armA:R-058": false,
+  "armA:R-059": true,
+  "armA:R-060": true,
+  "armA:R-061": false,
+  "armA:R-062": false,
+  "armA:R-063": true,
+  "armA:R-064": false,
+  "armA:R-065": true,
+  "armA:R-066": true,
+  "armA:R-067": true
+ },
+ "est_total_cost_usd": 1.51,
+ "skill_chars_per_arm": {
+  "armA": {
+   "body": 12291,
+   "references": 9799
+  }
+ },
+ "pairwise": []
+}

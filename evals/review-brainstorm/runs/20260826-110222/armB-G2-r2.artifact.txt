@@ -1,0 +1,77 @@
+=== blind-angle-map.md ===
+# Blind angle map — produced before record contact
+
+Topic given: Kettle (field-inspection mobile app) — how inspections captured offline get synced.
+Goal line given: sync model, conflict handling, what an inspector sees when a sync does not go through.
+
+Angles I'd expect a competent session on this topic to have to rule on, reasoned from the topic/goal line alone:
+
+1. Sync trigger model — real-time vs batched, connectivity-triggered vs timed, push vs pull.
+2. Conflict handling model — detection (how a conflict is even recognized), resolution strategy (LWW, merge, versioning), and what happens to the side that loses.
+3. Local storage engine and crash/interruption safety for queued-but-unsynced data.
+4. Attachment/media handling (photos, video, signatures) as distinct from the core record payload — size and bandwidth pressure is the obvious reason these would need separate treatment.
+5. Local data retention/purge lifecycle once synced (device storage is finite, especially on rugged/shared field hardware).
+6. **Inspector-facing sync status and failure visibility** — queued/syncing/synced/failed states, whether a failure is silent or surfaced, whether the inspector can force-retry, what happens to their edits if a sync never lands.
+7. Supervisor/reviewer-facing workflow — when does a synced inspection become actionable for sign-off, and does that gate on full completeness (incl. attachments) or partial state.
+8. Failure/retry semantics — transient network failure vs a hard rejection (e.g. validation error, auth expiry, conflict) and whether these are handled the same way.
+9. Observability/telemetry of the sync pipeline for the operations side.
+10. Battery/network-cost tradeoffs of whatever sync cadence is chosen.
+11. Data-at-rest/in-transit security during the offline-to-server hop (less central to the stated goal line, but adjacent).
+12. Identity/authorship implications if devices are shared across users (who owns a queued record if the device changes hands mid-queue).
+
+Angle 6 is called out directly in the session's own goal line ("what an inspector sees when a sync does not go through") and is treated here as load-bearing, not optional.
+
+
+=== review.md ===
+Lead — end-stage solo review of the Kettle offline-sync record. No counterpart reviewer in this session, so no cross-examination round ran; this is a single cold pass against the six hunt classes plus a blind-angle-map diff. No fact-checker map and no repo/files were available to me, so "verification" below is internal-consistency-only — I could not corroborate any claim against source. Treat the SQLite citation note accordingly.
+
+Blind angle map (topic-only, written before I engaged with the record) is in blind-angle-map.md alongside this file, for your own audit of my coverage.
+
+## Survivors
+
+**1. [Critical] The goal line's third requirement — what an inspector sees when a sync does not go through — has no decision at all.**
+Decisions touched: none directly; this is an absence, not a flaw in D1–D9.
+Failure scenario: an inspector finishes a site visit, the device never manages to sync (bad signal, server rejects it, whatever), and the record has nothing to say about whether they see a queued/failed indicator, whether they can tell their work didn't land, or whether they can force a retry. "Open threads: None recorded" reads as wrong given this — the record answers "sync model" (D2/D3/D8) and half of "conflict handling" (D1/D7), but the third named goal is untouched.
+Resolution path: this needs a new decision, not a revision — surface it as a gap to close before calling the record complete, since a ruling here adds content rather than adjusting existing content.
+
+**2. [Important] D9's real-time telemetry stream contradicts D2's own stated rationale.**
+Decisions touched: D2, D9.
+Failure scenario: D2 batches sync to a 60-second timer specifically because keeping the radio hot drained batteries on the pilot build. D9 then streams every queue-state transition to the warehouse in real time. That's the same "radio stays hot" cost D2 was written to eliminate, just moved to a different data stream — nothing in the record explains why telemetry is exempt from the battery constraint that governs the sync traffic itself.
+Resolution path: a ruling would plausibly fold telemetry into the existing 60-second batch cadence rather than keep it real-time, unless there's a reason (not currently recorded) that per-event timing has to be live.
+
+**3. [Important] D6's sign-off trigger doesn't account for D3's definition of "synced."**
+Decisions touched: D3, D6.
+Failure scenario: D3 marks an inspection `synced` as soon as its JSON lands — photos are explicitly on a separate, slower queue. D6 lets a supervisor sign off "the moment an inspection shows as synced." So a supervisor can approve a site visit off the dashboard before its photos have arrived, with no distinct state for "synced, photos still pending" visible anywhere in the record.
+Resolution path: a ruling would plausibly add a dashboard state distinguishing text-complete from fully-complete (with photos), or explicitly decide sign-off doesn't need to wait on photos — but that should be a stated choice, not a side effect of two decisions never being checked against each other.
+
+**4. [Important] D1's clock-based conflict resolution is undercut by a fact D5 introduces.**
+Decisions touched: D1, D5.
+Failure scenario: D1 leans on "inspections are single-author in practice" to justify raw device-clock LWW. D5's own rationale states devices are shared between shifts. Shared hardware raises exactly the multi-editor scenario D1 is betting against, and separately, device-clock LWW is a known failure mode on its own (drift, wrong timezone, no enforced NTP) — a device with a bad clock can systematically win or lose regardless of true edit order. Neither risk is acknowledged, and the two decisions' framings of usage pattern aren't reconciled.
+Resolution path: a ruling would plausibly at minimum require a server-received-time or monotonic/logical tiebreaker instead of trusting raw device clocks, given the record itself supplies the reason to distrust them.
+
+**5. [Important] D7's stated revisit trigger ("the conflict counter") isn't backed by any committed instrument.**
+Decisions touched: D7, D9.
+Failure scenario: D7 is Contested and explicitly deferred on the promise that "we revisit if the conflict counter says otherwise." D9's telemetry scope is stated as "queue state transitions" — conflict-resolution events aren't named as part of that scope. If nothing actually counts conflicts, the condition that's supposed to reopen a contested, work-destroying decision can never fire.
+Resolution path: a ruling would plausibly make conflict-event counting an explicit, named part of D9 (or its own line item), since otherwise D7's safety valve is aspirational.
+
+**6. [Minor] D5 and D7 leave the losing device's local state after a conflict unspecified.**
+Decisions touched: D5, D7.
+Failure scenario: D7's rationale calls a discarded losing version "unrecoverable." D5 says local copies persist 7 days after a successful sync. It's not stated whether a losing device's local copy is overwritten as soon as it learns the server holds a different version, or sits untouched until its own 7-day clock runs out — which would make "unrecoverable" overstated (recoverable by hand, just invisible through any product surface). Either behavior is plausible; the record just doesn't say which.
+Resolution path: worth a one-line clarification in D5 or D7, low cost either way — flagging for completeness rather than as a decision-changing gap.
+
+**7. [Minor] D4 and D9 carry rationale fields that aren't reasoning.**
+Decisions touched: D4 ("Fine"), D9 ("We will want the data.").
+Neither is necessarily the wrong call, but neither gives a future reader anything to evaluate — D9 in particular is real infrastructure (streaming pipeline + dedicated dashboard) for a v1 product, justified by a placeholder. Flagging as a record-fitness gap, not a technical objection beyond what's already covered in #2.
+
+**8. [Minor] D8's citation can't be verified here.**
+"Per the SQLite documentation... guaranteed to survive the app being force-killed mid-transaction on both iOS and Android" is plausible as a general WAL property but the specific platform-guarantee framing isn't something I can check without repo/web access in this session. Not asserting it's wrong — flagging it as unverified per the working conditions, since the record states it with a documentation citation as though checked.
+
+**9. [Minor] Shared-device fact (from D5) opens an authorship question D1 doesn't address.**
+If a device is handed to a different inspector mid-shift with unsynced work still queued, the record doesn't say what happens to authorship/attribution of that queued data, or whether the app forces a sync-or-discard checkpoint on user switch. Adjacent to finding #4; noting separately since it's a distinct question (identity, not clock trust).
+
+## Tally
+1 Critical, 4 Important, 4 Minor. 9 findings formed, 9 survive (solo pass — no cross-examination to filter against).
+
+## Recommended status: critical-gaps
+
+The Critical finding is a named piece of the session's own goal line with zero coverage, not a refinement of an existing decision — that's the bar for critical-gaps rather than needs-revision. The Important findings are independent of that gap and would still need rulings even once inspector-facing failure UX is added: two are cross-decision contradictions already inside the frozen record (D2/D9 on battery, D3/D6 on sign-off timing), and two concern whether existing "Confident" decisions (D1, D7's revisit path) rest on premises the record itself undermines. Recommend the goal-line gap gets a decision before anything else here is called done — the rest can land as revisions to D1, D2/D9, D3/D6, and D7 without reopening them as Contested from scratch, since none of the new angles were before the room.

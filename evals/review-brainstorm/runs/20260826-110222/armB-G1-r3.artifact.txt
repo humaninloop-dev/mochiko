@@ -1,0 +1,193 @@
+=== angle-map.md ===
+# Blind angle map — Palisade incident notification delivery
+
+Produced from the topic statement alone, before record contact:
+"Palisade (incident-management SaaS) — how we deliver incident notifications to
+on-call responders. Delivery mechanism, escalation policy, what we owe a customer
+when a page fails to land."
+
+No repo, no prior session artifacts consulted for this map.
+
+## Delivery mechanism
+- Channel set: push vs SMS vs voice call vs email vs chat-ops (Slack/Teams). Industry
+  baseline for critical paging treats **phone calls** as the most reliable wake channel —
+  push/SMS are both easy to sleep through (silent mode, Do Not Disturb, dead battery,
+  no data signal, notification permission revoked, app force-quit/background-killed).
+- iOS-specific: bypassing silent mode / Focus / Do Not Disturb requires Apple's
+  **Critical Alerts entitlement**, a distinct, selectively-granted capability — not the
+  same problem as "waking a backgrounded app."
+- Whether push delivery is federated through a single vendor (single point of failure
+  if that vendor has an outage) vs multi-provider redundancy.
+- Total-connectivity-loss case: if the phone has no signal at all, no channel lands —
+  does the policy assume this can't happen, or account for it?
+- Payload sensitivity / lock-screen exposure of incident data.
+- Delivery observability: receipts, webhooks, audit trail.
+- Notification-storm handling during mass-incident (rate limiting, dedup).
+- Cost model: push (near-free) vs SMS (per-segment) vs voice (per-minute) at scale.
+
+## Escalation policy
+- Timing: how long unacknowledged before next hop; whether this is uniform or
+  configurable per rotation/severity.
+- Chain depth and terminal behavior: what happens if every hop, including the final
+  one, fails to acknowledge — is there a floor, or does escalation just stop?
+- Interaction between multiple channels *within* one hop (e.g. push then SMS fallback
+  for the same responder) and escalation to the *next* responder — do these timers
+  race, and which wins?
+- Claim/ack race conditions across simultaneous responders.
+- Schedule/rotation edge cases: shift handoff mid-page, overrides, holidays.
+- Manual override / snooze.
+
+## What we owe the customer when a page fails to land
+- Definition of "failed to land": undelivered vs delivered-but-unacknowledged vs
+  acknowledged-but-late — these are different failure modes with different owed
+  responses.
+- Real-time customer-facing signal (do they find out during the incident, or only via
+  a support ticket after the fact?).
+- SLA / credit commitments tied to plan tier.
+- Liability boundary: Palisade's infra fault vs. carrier/push-vendor outage.
+- Retention window for evidence backing "I never got paged" disputes, and whether it
+  matches any stated support/SLA commitment window.
+- Postmortem or root-cause obligation.
+
+This map is the pre-registered coverage baseline for diffing against the frozen record.
+
+
+=== review.md ===
+To: session lead, Palisade incident-notification-delivery session
+From: cold end-stage reviewer (solo — no counterpart, no cross-exam round ran)
+Re: record.md, frozen for end-stage review
+
+Working conditions on my end: no repo, no source files, no fact-checker claim map in
+this workspace. I pre-registered a blind angle map from the topic alone before reading
+the record (angle-map.md, same directory) and diffed it against the frozen text. Where
+I make a technical claim below (FCM/APNs behavior) I'm relying on general domain
+knowledge, not a verified source — flagged as such, treat accordingly. I did not touch
+record.md.
+
+Findings formed: 9. Surviving after self-check: 7. Below, most severe first.
+
+---
+
+**1. [Critical] The goal line's third pillar — "what we owe a customer when a page
+fails to land" — has zero decisions and zero open threads.**
+Decisions touched: none directly; this is an absence.
+The record covers delivery mechanism (D1, D2, D4, D5) and escalation (D6, D7) and
+internal observability (D3, D8), but nothing customer-facing: no definition of what
+"failed to land" means (undelivered vs. unacknowledged vs. late), no SLA or credit
+commitment, no statement of whether the customer is told during the incident or only
+discovers it later via a support ticket. "Open threads: None recorded" compounds this —
+if this pillar had been discussed and deferred, I'd expect it to show up there. A
+ruling almost certainly changes the record here, at minimum by adding an open thread.
+Resolution: either point me to where this was decided and dropped from the freeze, or
+add the decision/open thread before this record ships.
+
+**2. [Critical] D2's SMS fallback (5 min) and D6's escalation (3 min) race, and D6 wins
+first — undermining D2's own rationale.**
+Decisions touched: D2, D6.
+D2's stated purpose is to reach a responder whose push failed silently (phone off,
+app force-quit) via SMS, "without paying for SMS on the happy path." But D6 escalates
+the page to the *next* responder at 3 minutes — two minutes before D2's SMS fallback
+would ever fire for the original responder. So in exactly the phone-off scenario D2
+exists to cover, the incident has already moved to someone else by the time the SMS
+would go out. Neither decision says whether the original responder's SMS still fires
+after they've been superseded, whether escalation channel-hops restart their own
+3-min/5-min clocks per hop, or whether there's a single global timer. As written, the
+two mechanisms don't compose — a ruling either re-times one of them or defines how they
+interact.
+Resolution: pick one — SMS fallback fires before the first escalation hop (i.e. push
+timeout < 3 min), or the two are declared to run in parallel with escalation-supersedes
+semantics made explicit.
+
+**3. [Critical] D4's rationale rests on two vendor claims I believe are inaccurate,
+under a workspace with no fact-checker map to confirm against — flagging as
+unverifiable/likely-wrong rather than settled.**
+Decision touched: D4 (and by extension D2, which calls the 5-min fallback "generous"
+against D4's guarantee).
+- "FCM ... its high-priority messages wake a backgrounded iOS app without us holding a
+  separate APNs entitlement" — to my knowledge FCM does not remove the APNs
+  dependency on iOS; you still register an APNs auth key with Firebase, and FCM routes
+  iOS delivery through APNs under the hood. Separately, and not addressed at all: making
+  a page audible through silent mode / Focus / Do Not Disturb — the actual failure mode
+  that matters for waking a sleeping on-call responder — requires Apple's Critical
+  Alerts entitlement, which is a distinct, selectively-granted capability, not a
+  byproduct of "backgrounded app wake." The record conflates "app receives the push in
+  background" with "phone makes noise despite DND," which are different problems.
+- "FCM guarantees delivery inside five seconds" — I'm not aware of any such published
+  SLA from FCM; it's a best-effort service. If that guarantee doesn't exist, D2's "the
+  five-minute fallback is generous against that guarantee" loses its justification too.
+If a "Confident" architecture decision is standing on claims that don't hold up, and I
+can't check them against a source in this workspace, that's exactly what should go back
+to whoever can verify against Firebase's/Apple's actual docs before D4 stays Confident.
+Resolution: verify both claims against current FCM/APNs documentation; if either is
+wrong, D4 and D2's "generous" framing need to be re-argued, and DND-bypass behavior
+needs its own explicit decision.
+
+**4. [Important] No voice/phone-call channel appears anywhere, and it's never
+explicitly rejected — unlike D7, which shows an actual weighed trade-off.**
+Decisions touched: D1 (by omission).
+Standard practice for critical on-call paging treats phone calls as the most reliable
+wake channel precisely because push and SMS are both easy to sleep through. D1 argues
+push-over-SMS on cost grounds but never mentions voice as an option considered and
+declined — contrast with D7, which explicitly names the counterargument it overrode.
+The absence here reads as unconsidered rather than ruled out. This may be legitimate
+v1 scope-cutting, but as written there's no record of that judgment having been made.
+Resolution: either confirm voice was considered and out of scope (worth one sentence in
+D1's rationale or a new open thread), or treat this as a live gap.
+
+**5. [Important] Escalation has no defined terminal behavior — if the incident
+commander (final hop) also doesn't acknowledge, nothing in the record says what
+happens next.**
+Decision touched: D6.
+This is a concrete instance of goal-line pillar 3 (finding 1): "a page fails to land"
+most sharply means every hop failed, and the record is silent on it precisely where the
+customer-owed answer matters most.
+Resolution: define the floor — repeat the chain, alert a broader group, or something
+else — and state it, even provisionally, as an open thread if not resolved.
+
+**6. [Important] D8 is more machinery than the stated goal requires, and its cadence
+undercuts any real-time customer commitment.**
+Decision touched: D8 (and D3, which it reconciles against).
+The stated goal is "a second source of truth on whether pages actually landed." Cheaper
+shape: have D3's status rows populated directly from provider webhooks (which D8 is
+already ingesting) with real-time alerting on stuck/non-terminal states, rather than
+standing up a second independent state-derivation pipeline that only reconciles once a
+night. As designed, D8 can't support any real-time "we owe you an answer during the
+incident" commitment (see finding 1) — a divergence found at 2am is reported the
+following night. If nightly batch reconciliation is genuinely the intent, that's fine,
+but it should be named as a deliberate limitation, not left implicit under "Assumed."
+Resolution: either fold D8's webhook ingestion directly into D3 with real-time
+alerting, or keep D8 as designed but state explicitly that it's a slow-lane audit, not
+part of any customer-facing failure response.
+
+**7. [Minor] D1's "SMS would become the third-largest line item in infrastructure
+spend" is asserted with specific-sounding weight but no figure or source is given, and
+nothing in this workspace lets me check it.**
+Decision touched: D1.
+Doesn't change the directional call (push-over-SMS-as-primary is sound on general cost
+grounds regardless), but a "Confident" rating resting partly on an unverified specific
+claim is worth a footnote or the actual number, if it exists somewhere outside this
+record.
+
+---
+
+Two more I formed and am not raising as separate findings, noting per protocol rather
+than dropping silently:
+- D7 (Contested, no-preference-UI-in-v1): there's an accessibility/compliance angle
+  (responders without reliable smartphone data access, or org-level channel mandates)
+  that's distinct from the "muting the app" trade-off already weighed — genuinely a new
+  angle, not a re-litigation, but speculative enough for this product's likely B2B
+  on-call audience that I'm surfacing it as a note rather than a finding. Your call on
+  whether it's live.
+- D3 vs D8 retention windows: D3 keeps 30 days, D8's own retention isn't stated. If
+  they diverge, older reconciliation history could silently disappear. Low stakes
+  unless D8 is scoped up per finding 6.
+
+Tally: 3 Critical, 3 Important, 1 Minor (7 findings) + 2 notes.
+
+Recommended status: **critical-gaps** — the goal line named three deliverables and one
+of them (customer-owed remedy) is entirely absent from both decisions and open threads,
+and a foundational "Confident" delivery decision (D4) rests on vendor claims I believe
+don't hold up and couldn't verify here. I'd want at least findings 1–3 addressed before
+this moves past frozen.
+
+This status is a recommendation — it's your record and your call.

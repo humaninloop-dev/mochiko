@@ -1,0 +1,189 @@
+=== phase0-blind-map.md ===
+# Phase 0 — Blind angle map (solo reviewer)
+
+Built from topic + goal line only, before opening record.md. No repository exists in this
+workspace, so there is no free repo grounding to draw on beyond the topic statement itself.
+
+Topic: Kettle (field-inspection mobile app) — how inspections captured offline get synced.
+Goal line: one decision record covering (a) the sync model, (b) conflict handling, and
+(c) what an inspector sees when a sync does not go through.
+
+## Angles a thorough treatment of this topic should visit
+
+**Sync model / mechanics**
+- Trigger conditions: connectivity regained, timer, manual pull, app foreground/background transition
+- Batch vs. streaming; ordering guarantees within a batch
+- Idempotency / dedup on retry (duplicate submission if ack is lost after a force-kill or timeout)
+- Partial-batch failure (some records in a batch succeed, others fail)
+- Platform background-execution limits (iOS/Android throttle background timers and network work)
+- Large-attachment handling (photos, signatures, GPS tracks) vs. small structured payloads
+- Bandwidth/data-cost constraints on cellular connections
+- Auth/session validity across long offline stretches
+- Local storage limits, eviction/retention policy, and shared-device implications
+- App/schema version skew between an offline queue built on an old build and a newer server schema
+
+**Conflict handling**
+- How a conflict is even detected (version stamps, vector clocks, server ETags) and at what granularity (whole record vs. field)
+- Resolution strategy and its trust assumptions (e.g., whose clock, whose authority)
+- Multi-author scenarios: shift handoff, supervisor edits, shared devices
+- Traceability/audit trail of what was overwritten or dropped
+- Compliance angle: field inspections are often audit-relevant records; silent loss has a different weight than in a typical CRUD app
+
+**What the inspector sees on sync failure**
+- Visible queue/status state (pending, syncing, failed, synced) and at what granularity (whole inspection vs. per-attachment)
+- Differentiated failure causes surfaced to the user: network vs. server validation vs. conflict-loss vs. auth expiry
+- Retry affordance: automatic vs. manual, and whether the inspector can tell retries are happening
+- Whether the inspector is ever told their edit was the one discarded in a conflict
+- Long-offline-duration UX (device offline for many days/weeks — common in remote field work)
+
+**Second-order / operational**
+- Observability: what's actually instrumented, and whether the instrumentation matches a real decision driver
+- Security: at-rest encryption, access control on a device that is shared between users/shifts
+- Testing offline/conflict/partial-failure scenarios
+- Cost/scale: server load, storage cost of the sync/telemetry pipeline
+
+This map is intentionally broad; materiality against what the record actually decided is
+assessed in the cold read, not here.
+
+
+=== review.md ===
+To: lead, Kettle offline-sync session
+From: end-stage reviewer (solo — no counterpart, no cross-examination round ran)
+
+Phase 0 blind angle map was built and filed separately (phase0-blind-map.md) before this
+record was opened. No repository exists in this workspace and the record carries no
+fact-checker claim map, so every load-bearing claim below was checked either against the
+record's own internal consistency or, where it reaches outside the record (the SQLite/WAL
+claim), against general technical knowledge — flagged explicitly where that's the basis.
+
+Recommended status: **critical-gaps**
+
+Two Critical findings below. One is structural: the record's own stated goal line has three
+required parts, and the third — what an inspector sees when a sync does not go through —
+is essentially undecided. The other is a concrete data-loss chain across three "Confident"
+decisions that, read together, contradict each other. Neither is resolvable by a wording
+tweak; both need the session to actually decide something new or reconcile decisions that
+currently assume incompatible things about each other.
+
+## Critical
+
+**C1 — The record does not decide what an inspector sees when a sync fails.**
+The goal line names three deliverables: sync model, conflict handling, and inspector-facing
+behavior on sync failure. D1–D9 cover the first two at length. The third is not decided
+anywhere. The nearest the record comes is D7's rationale, which *states as an accepted cost*
+that a dropped conflict-losing version is "unrecoverable and invisible to the person who
+lost it" — i.e., the one place the record touches this angle, it explicitly chooses
+invisibility rather than deciding a UX for it. Nothing addresses status indicators (pending
+/ syncing / failed / synced), differentiated failure causes (network vs. validation vs.
+conflict-loss vs. auth expiry), or retry affordance.
+Failure scenario: an inspector completes a site visit offline, drives out of coverage for
+several days, and has no way to know — from the device — whether their inspection ever
+left the phone, or if it did, whether it later lost a conflict and was silently dropped.
+Resolution path: the session needs to actually make this decision (it appears to be an
+omission, not a considered deferral — no rationale or confidence mark exists for it, so it
+isn't even a `Deferred` entry).
+
+**C2 — D3 × D5 × D6 chain: photos can be locally purged before they ever sync, and
+supervisors can sign off before photos exist server-side.**
+D3 marks an inspection `synced` once its JSON lands, with photos uploading independently and
+explicitly expected to be slow ("tens of megabytes on a bad connection"). D5 starts a 7-day
+local-purge countdown on "a successful sync" — and the only `synced` state the record
+defines is D3's JSON-only one. D6 lets a supervisor sign off the moment that same `synced`
+flag flips, with no mention of a separate "photos confirmed" state on the dashboard.
+Failure scenario: an inspector is on the exact bad connection D3's own rationale describes.
+JSON syncs immediately (small payload); the photo queue takes materially longer than 7 days
+to drain (plausible given "tens of megabytes on a bad connection" and D2's radio-conserving,
+opportunistic — not urgent — upload cadence). The 7-day timer, keyed to the JSON sync, fires
+and deletes the local copy — including the only remaining copy of unsent photos — before
+the photo queue finishes. Simultaneously, a supervisor may have already signed off the
+inspection days earlier, believing it complete, with no recorded way to distinguish "synced
+with photos" from "synced, photos still in flight."
+Resolution path: does the D5 clock key off JSON-sync or off all-attachments-confirmed? Does
+the D6 dashboard state distinguish the two? Both are answerable questions, not new research.
+
+## Important
+
+**I1 — D1's last-write-wins trusts the device clock with no discussion of clock reliability.**
+D1 orders conflicting edits by device-clock timestamp and treats the risk as low because
+inspections are "single-author in practice." It never weighs that device clocks drift, can
+be set incorrectly by the user, or go uncorrected (no NTP) for the multi-day offline
+stretches the rest of the record treats as normal (D5's 7-day retention window implies
+sync gaps of that order are expected). A device whose clock reads behind will have its
+genuinely later edit silently lose to an actually-earlier edit from a correctly-clocked
+device, per D7's drop-with-no-trace rule.
+Resolution path: was server-receive-time or a monotonic/logical clock evaluated and rejected
+for this, or never considered? If never considered, that's the gap to close.
+
+**I2 — D7's stated revisit trigger is not backed by any decision that would produce it.**
+D7's rationale commits to revisiting the no-merge-UI decision "if the conflict counter says
+otherwise." No decision in the record establishes that conflicts are counted, logged, or
+surfaced anywhere; D9's telemetry describes queue *state transitions* to a per-device
+dashboard, not conflict events specifically. "Open threads: None recorded" compounds this —
+the one forward commitment the record makes to itself isn't tracked as one. This isn't a
+re-litigation of D7's merge-UI ruling (which stands); it's that the ruling's own escape
+hatch currently has nothing wired to it.
+Resolution path: confirm conflict-rate is in scope of D9's pipeline, or add it as an open
+thread — either resolves this in one line.
+
+**I3 — D8 extends SQLite WAL's guarantee further than it goes.**
+The claim "a WAL database is guaranteed to survive the app being force-killed mid-transaction
+... so an interrupted sync can never leave a half-written inspection on the device" conflates
+two different things. WAL mode (per SQLite's documentation) protects the *local database
+file* from corruption across a crash — that part is accurate. But "sync" as described in
+D2/D3 is a multi-step process spanning a local DB write *and* a network round-trip; those
+cannot share one SQLite transaction. A force-kill between "server acknowledged receipt" and
+"local queue state updated" is a real gap WAL does nothing for, and nothing in D1–D9
+mentions an idempotency key or dedup mechanism for retried uploads — so the likely failure
+mode of that gap is a duplicate submission on retry, not a half-written row.
+Resolution path: verify whether the "mark synced" step is committed in the same transaction
+as anything network-related (it structurally can't be), and whether server-side upload is
+idempotent under retry.
+
+**I4 — D2's 60-second timer doesn't weigh platform background-execution limits.**
+The decision reads as "opportunistic sync on a 60-second cadence" without noting that
+iOS (and to a lesser extent Android) restrict what a backgrounded app can do on a timer;
+sustained 60-second background sync typically requires OS-scheduled background modes whose
+actual interval is system-controlled and often much coarser than 60 seconds. This doesn't
+break the model when the app is foregrounded, but the "Confident" mark implies a cadence
+guarantee the record never checks against the two platforms it targets.
+Resolution path: confirm whether 60s is achievable only in foreground, with a different
+(and currently undocumented) background cadence — this changes what "opportunistic" means
+in practice.
+
+**I5 — Shared-device data exposure is unaddressed.**
+D5's own rationale states devices are "shared between shifts." Nothing in the record
+addresses per-user data isolation, at-rest encryption, or access control for the locally
+cached inspection data that D5 keeps around for up to 7 days post-sync — meaning a second
+inspector using the same device within that window has no stated barrier to another
+inspector's cached site data. This passes the materiality bar precisely because the record
+itself establishes the shared-device fact that makes it relevant; it isn't a generic
+security angle.
+Resolution path: is there an existing app-level access-control layer this defers to (in
+which case say so), or is this a genuine gap in the offline store?
+
+## Minor
+
+**M1 — D4 and D9 carry no real rationale.**
+D4's rationale is "Fine." and D9's is "We will want the data." Neither states an actual
+driver. This is low-stakes for D4 (SQLite-without-ORM is a reasonable default that doesn't
+need much justifying), but D9 commits to real infrastructure — a real-time streaming
+pipeline plus a per-device dashboard — on the same non-rationale, which is a heavier claim
+to leave unsupported. Related: D9's scope (real-time, per-device) looks disproportionate to
+the one concrete need the record identifies for it, I2's conflict counter, which would be
+satisfied by a much cheaper batched metric. Flagging here rather than as its own finding
+since it's a proportionality observation riding on M1's thinner root cause, not a separate
+failure scenario.
+Resolution path: state the actual driver for D9, and size the pipeline to that driver rather
+than to "we will want the data."
+
+## Tally
+6 findings raised (2 Critical, 4 Important — I've folded the D9-proportionality note into M1
+rather than double-counting it), all reported above as survivors (solo review: no cross-exam
+round, no counterpart to fell any of these — I dropped two candidate angles myself before
+they reached this list: app-schema-version skew in the offline queue across app updates, and
+auth/session expiry during long offline stretches, both plausible but not tied to anything
+concrete enough in this record to clear the materiality bar).
+
+D7 (no-merge-UI) is Contested and I did not reopen it — the rationale shows the discarded
+argument was heard and ruled on with eyes open; I2 above is about the ruling's own escape
+hatch, not the ruling itself.

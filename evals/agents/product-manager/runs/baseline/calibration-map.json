@@ -1,0 +1,62 @@
+{
+ "3b8c9a69": {
+  "golden": "p2-filter-and-select",
+  "arm": "post",
+  "replicate": 2
+ },
+ "a1577297": {
+  "golden": "p1-derive-from-task-stories",
+  "arm": "post",
+  "replicate": 2
+ },
+ "62d4f549": {
+  "golden": "p3-demo-pressure",
+  "arm": "post",
+  "replicate": 2
+ },
+ "9a7f73e4": {
+  "golden": "p1-derive-from-task-stories",
+  "arm": "post",
+  "replicate": 3
+ },
+ "ff497d2d": {
+  "golden": "p2-filter-and-select",
+  "arm": "post",
+  "replicate": 3
+ },
+ "121f4282": {
+  "golden": "p4-groom-map-and-remit",
+  "arm": "post",
+  "replicate": 1
+ },
+ "cb875c52": {
+  "golden": "p1-derive-from-task-stories",
+  "arm": "post",
+  "replicate": 1
+ },
+ "9e522a26": {
+  "golden": "p2-filter-and-select",
+  "arm": "post",
+  "replicate": 1
+ },
+ "98e3c1e4": {
+  "golden": "p4-groom-map-and-remit",
+  "arm": "post",
+  "replicate": 2
+ },
+ "b060e1fc": {
+  "golden": "p3-demo-pressure",
+  "arm": "post",
+  "replicate": 3
+ },
+ "5e8862a2": {
+  "golden": "p4-groom-map-and-remit",
+  "arm": "post",
+  "replicate": 3
+ },
+ "846983a5": {
+  "golden": "p3-demo-pressure",
+  "arm": "post",
+  "replicate": 1
+ }
+}

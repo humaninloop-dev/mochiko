@@ -1,0 +1,104 @@
+=== angle-map.md ===
+# Phase 0 — Blind Angle Map (topic only, pre-record)
+
+Topic: Threadline — moving 4,000 teams from invoiced annual contracts onto self-serve card billing.
+Goal line: migration path, price continuity, non-action path.
+
+Produced from the topic/goal line alone, before weighing record specifics, so record contact doesn't retroactively shape which angles were considered in scope.
+
+## A. Migration mechanics
+- A1 Trigger mechanism: cutover date vs rolling vs renewal-anchored
+- A2 Contractual constraints: do existing invoiced contracts permit a unilateral billing-method change at renewal (notice periods, auto-renewal clauses)
+- A3 Payment capture flow: when/how card is collected, decline/retry handling
+- A4 Billing engine: build vs buy, who owns PCI scope
+- A5 Seat-count changes mid-cycle: proration policy, both directions (add and remove)
+- A6 Currency / international teams: non-USD pricing, FX exposure
+- A7 Enterprise / custom-contract carve-outs: do all 4,000 get identical treatment
+- A8 Reversibility: can a migrated team go back to invoiced billing
+- A9 Internal tooling: support/ops visibility, override capability, audit trail
+- A10 Success metrics: how migration health is measured, rollback trigger for the rollout itself
+
+## B. Price continuity
+- B1 Is price held flat, for how long
+- B2 What happens at the end of the hold — automatic list-price jump vs renegotiation
+- B3 Communication of the price-change timeline (including the *end* of any hold)
+- B4 Discount/negotiated-rate treatment — do teams below list price stay below list after the hold
+- B5 Tax treatment — additive to quoted price, who owns compliance
+
+## C. Non-action path
+- C1 What state an inactive team enters (read-only, full lockout, degraded)
+- C2 Grace-period length before consequences escalate
+- C3 Data retention/export rights during and after suspension
+- C4 Reactivation path after suspension
+- C5 Communication cadence *during* the grace/save window specifically
+- C6 Downgrade as an alternative to full non-action — cheaper-plan escape hatch
+- C7 Differentiated handling for high-value non-acting accounts
+
+## D. Cross-cutting
+- D1 Legal/compliance sign-off before rollout
+- D2 Equity — are all 4,000 teams actually getting comparable treatment
+- D3 Rollout reversibility if wave 1 reveals a serious problem
+
+This map is deliberately produced before scoring the record against it; the diff is taken in the coverage step below.
+
+
+=== review.md ===
+To: session lead
+From: cold end-stage reviewer (solo — no counterpart in this pass, no cross-examination round ran)
+Re: Threadline self-serve billing migration — record.md, frozen
+
+Working conditions on my end: no repo, no source files, no fact-checker claim map was available to me. I verified what the record's own text lets me verify (internal contradictions between decisions) and treated everything else — including one load-bearing external factual claim — as unverifiable-from-here, which per protocol I'm surfacing as a finding rather than waving through. A blind angle map built from the topic line alone (before re-engaging record specifics) is in `angle-map.md` alongside this file; the findings below are the diff between that map and what the record actually rules on, plus the standard hunt classes applied decision-by-decision.
+
+Coverage note up front: the record's "Open threads" section is empty. Given the density of gaps below, on a topic this size, I'd treat that blank section itself as a signal worth checking — either the session genuinely closed every angle it raised, or some angles never got raised in the room and so had nothing to defer.
+
+## Survivors
+
+**1. [Critical] D3's save window is silent by construction — D6 contradicts D3's own stated purpose.**
+Touches: D3, D6.
+D3's rationale for the 30-day read-only grace period is explicit: "thirty days is long enough for a finance approval to come through" — i.e., this window exists to recover teams that are still trying to pay. D6 states admin emails stop at the renewal date and gives the reason: "we do not want to nag a customer who has chosen to leave." But a team sitting in D3's read-only state at day 5 or day 20 has not necessarily chosen to leave — by D3's own logic, some fraction of them are mid-approval and would act on a reminder. As written, those teams get zero communication for the entire 30-day window that exists specifically to save them. This isn't a matter of judgment call — it's the record's two rationales directly working against each other, provable from the text alone. A ruling here would almost certainly change the record (at minimum, carve out grace-period reminders from D6's post-renewal silence).
+
+**2. [Critical] D8's central claim about Stripe Tax is very likely wrong, and it's the one thing in the record I could partially check without a repo.**
+Touches: D8.
+D8 states Stripe Tax "registers us and files returns automatically in every US state once revenue crosses that state's economic-nexus threshold, so we carry no filing obligation of our own and need no tax counsel for the migration" — rated Confident. To the best of my knowledge, Stripe Tax's default behavior is to calculate tax and monitor nexus thresholds; automatic *filing and remittance* in every state is not a default, no-setup guarantee — it requires an explicit filing capability/partner integration, and coverage has historically been partial by state. If that's still accurate, the decision is resting a "no tax counsel needed" conclusion on a premise that doesn't hold, which is real exposure at 4,000-team, multi-state scale. I can't verify current Stripe Tax filing coverage from this workspace — no repo, no fact-checker map — so I'm flagging this as unverified rather than asserting it's false. Given the stakes, I'd want this checked against Stripe's current docs (or actual tax counsel, which the decision explicitly waives) before the record ships as Confident.
+
+**3. [Important] D2's "two shocks" rationale is only half-solved — the 12-month price-hold cliff has no warning built into D6.**
+Touches: D2, D6.
+D2 exists to avoid stacking a price rise on top of a billing-method change. It succeeds at that for the migration moment, but D6's email schedule is entirely anchored to the renewal/migration event (30/14/3 days pre-renewal, stop after renewal) — nothing is anchored to the 12-month mark when price actually moves to list. That reproduces the exact "shock they remember" D2 was written to avoid, just deferred a year and with no announcement at all. Plausibly changes the record: add a communication point tied to the price-hold expiry, independent of D6's renewal-anchored schedule.
+
+**4. [Important] No carve-out decision for large/strategic accounts inside a uniform, renewal-triggered, 30-day-then-suspend policy.**
+Touches: D1 (cross-cutting).
+The record applies one mechanism to all 4,000 teams — wave-by-renewal, price hold, read-only-then-suspend — with no decision addressing whether the largest accounts get differentiated handling (extended grace, account-manager outreach before suspension, etc.). For a B2B product where account size is likely to be highly skewed, silently suspending a top account on the same clock as a five-seat team is a real business-risk angle that the record doesn't rule on either way. Absent from "Open threads" too.
+
+**5. [Important] No decision addresses whether existing invoiced contracts actually permit this.**
+Touches: D1.
+D1 assumes Threadline can move a team to card billing at renewal unilaterally. Whether the underlying annual contracts contain terms (notice periods, auto-renewal-on-existing-terms clauses) that constrain this is a legal question the record never rules on or defers to "Open threads." This is unverifiable from what I have, which per the review floor makes it a finding rather than something to wave through, not a claim that it's actually a problem.
+
+**6. [Important] D7 (no self-serve downgrade) interacts with D3 (suspend-the-non-acting) in a way the record's own Contested discussion didn't reach.**
+Touches: D7, D3. This is a new angle, not a re-litigation of the dark-pattern objection already ruled on in D7.
+A cost-sensitive team that would downgrade if it could self-serve, but won't go through a support call to spend less, has no on-ramp under D7 — its only path is to do nothing, ride into D3's read-only state, and get suspended. That's the opposite of D3's stated win-back intent, and it means D7's "support can absorb v1 volume" reasoning may be undercounting: some of the volume that should be downgrade-support tickets will instead surface as D3 suspensions and support-mediated win-backs. Worth a ruling on whether that's an acceptable outcome for v1 or whether it changes the 500-team revisit trigger in D7.
+
+**7. [Important] D9's operator override has no stated audit trail, permissioning, or approval workflow.**
+Touches: D9.
+"An operator override that can force any team into any billing state" is powerful — it can presumably move a team out of read-only/suspension without payment, which is a revenue-leakage and abuse surface. The rationale ("Support will want it") justifies building the tool but says nothing about who can use the override, whether use is logged, or whether it requires approval above a single support seat. For a control this broad, that's a real gap, not a nice-to-have.
+
+**8. [Minor] D5 covers seat additions but is silent on seat removals.**
+Touches: D5.
+The rationale addresses billing noise from mid-cycle *additions*; there's no stated credit/refund policy for seats removed mid-cycle. Not necessarily wrong to bill through the month, but the record doesn't rule on it either way, and downsizing behavior is disproportionately likely from teams already unhappy about the migration.
+
+**9. [Minor] D3 doesn't define what "suspension" does to data.**
+Touches: D3.
+Read-only-then-suspended is a two-stage access model, but there's no statement of whether suspension means access lockout with data intact and a reactivation path, or eventual deletion. Matters for both customer trust and data-retention obligations at this scale.
+
+**10. [Minor] D4 and D9 are both foundational infrastructure decisions resting on placeholder rationales.**
+Touches: D4, D9.
+"Obvious" and "Support will want it" are both honestly marked Confidence: Assumed, so the record isn't hiding the thinness — but for the vendor that will run all subscription/dunning state for 4,000 teams (D4) and the tool with blanket override power (D9, see #7), I'd expect at least one line on the alternative considered or the risk being accepted.
+
+## Tally
+Findings formed: 10. Critical: 2. Important: 5. Minor: 3.
+Cross-examination: none — solo session, no counterpart to test survivors against.
+
+## Recommended status: needs-revision
+
+Nothing here says the migration shape is wrong — waves-by-renewal, a price hold, and a graduated non-action path are all reasonable choices. But #1 and #2 are both things I'd want closed before this ships as Confident: #1 is a self-contradiction provable from the record's own text, and #2 is a Confident-rated claim carrying real compliance exposure that the decision itself declines to have checked by tax counsel. The Important items (#3–#7) are the kind of thing I'd expect either a ruling or an explicit "Open thread" entry for — right now they're neither decided nor deferred, just absent.
+
+Status is my input, not the verdict — that's yours to set.

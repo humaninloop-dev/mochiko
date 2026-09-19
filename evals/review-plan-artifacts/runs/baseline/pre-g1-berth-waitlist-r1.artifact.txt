@@ -1,0 +1,103 @@
+=== review.md ===
+---
+report: review
+feature: FEAT-031
+round: 1
+incremental: false
+verdict: critical-gaps
+verdict_basis: "8 Critical issues: an inverted test oracle that would certify a P1-violating decline path, an undisclosed Redis addition that falsely claims to reuse existing infra and skips the AX-002 datastore sign-off, a P2 story (US-4) with zero endpoint/cycle coverage, an invented US-5/FR-009 with no spec grounding, unmarked PII, an unresolved [NEEDS CLARIFICATION] marker, a single-option locking decision with no adopt-first disclosure, and a payment-decline path with no documented failure response."
+strengths: "clean ID indexing and traceability tables, sound vertical slicing on Cycles 1-3, D-005's mechanism (Redis TTL) is technically reasonable once the sign-off gap is closed, sensitivity handling done correctly for stripePaymentIntentId."
+findings:
+  - {id: G1, type: Contradiction, sev: Critical,
+     at: "tasks.md / Cycle 3 TEST 'Declining an open offer issues the next entrant's offer'",
+     gap: "The Assert expects the second entrant's offer issuedAt at T+24h ('after the declined offer's hold elapses'), but FR-005 and US-3 both require immediate reissue on decline, not after the original hold ends — US-3's own Independent Test says 'within 60 s of the decline'. Built to pass this card, the code would violate a P1 requirement while showing green.",
+     fix: "Rewrite the Assert to require the second offer's issuedAt within ~60s of the decline call, matching US-3 and its Independent Test."}
+  - {id: G2, type: Contradiction, sev: Critical,
+     at: "constraints-and-decisions.md / D-005, IP-003; design-disclosure.md rung claim for D-005",
+     gap: "D-005 adds a Redis instance (IP-003) and its rationale claims 'Redis is already in the stack for sessions' — but AX-001 rules sessions live in PostgreSQL, and spine.md's container diagram has no Redis element anywhere. This is a genuinely new datastore, which AX-002 requires a platform sign-off for 'before any code' (Sign-offs recorded: none). It also contradicts sufficiency-report.md's no_delta_claim ('rides the existing api, worker, and db containers; no new container').",
+     fix: "Either get the AX-002 sign-off and author a real architecture delta (new SPN element, sequence diagram for the offer-issue/expiry flow) before this proceeds, or pick D-005's other tabled option (pg-boss delayed job, D-001) which needs no new infra and matches the no-delta claim."}
+  - {id: G3, type: Missing, sev: Critical,
+     at: "contracts/api.yaml (no staff-queue endpoint); tasks.md Overview ('Stories covered: US-1, US-2, US-3')",
+     gap: "US-4 (P2) / FR-006 — marina staff seeing the queue per berth class — has no endpoint in the contract and no cycle card; tasks.md's own overview table omits it outright.",
+     fix: "Add a GET endpoint (e.g. GET /marinas/{marinaId}/waitlist?berthClass=) exposing position, date range, vessel length, and offer-open state, and a cycle card covering US-4/FR-006."}
+  - {id: G4, type: Assumption, sev: Critical,
+     at: "contracts/api.yaml GET /berths/{berthId}/availability-forecast; data traceability to 'US-5'/'FR-009'; tasks.md Cycle 4; design-disclosure.md rung-4 claim",
+     gap: "A full endpoint, schema, and cycle card are built for 'US-5'/FR-009 (a 90-day availability forecast) — neither exists in spec.md (stories run US-1..US-4, FRs run FR-001..FR-006) nor under stories/. design-disclosure.md sources it to 'marina ops asked for it at kickoff,' not the ratified spec.",
+     fix: "Pull this endpoint/entity/cycle out of the FEAT-031 package until a US-5 story and FR-00x exist in the accepted spec, or get the requirements analyst/PM to formally amend the spec first."}
+  - {id: G5, type: Missing, sev: Critical,
+     at: "data-model.md, WaitlistEntry.contactEmail row; Data Sensitivity Summary index",
+     gap: "contactEmail is an e-mail address, and DS-002 explicitly declares it sensitivity-relevant ('MUST be classified and protected'), but its Sensitivity column in the entity table is blank and it never appears in the Data Sensitivity Summary index. Confirmed by the deterministic checker (pii_markers: Line 41 'email' field may need [PII] annotation).",
+     fix: "Classify contactEmail (Confidential, most likely, given it's a contact channel tied to a real person) and add it to the Data Sensitivity Summary index with a Sensitivity Details row."}
+  - {id: G6, type: Ambiguous, sev: Critical,
+     at: "constraints-and-decisions.md, C-006",
+     gap: "C-006 carries an unresolved [NEEDS CLARIFICATION] marker ('does marketing consent gate the offer e-mail, or is it transactional?'). Confirmed by the deterministic checker.",
+     fix: "Resolve before this round closes — the answer shapes the Postmark template and whether unsubscribed owners still receive offer notices."}
+  - {id: G7, type: Missing, sev: Critical,
+     at: "constraints-and-decisions.md, D-004",
+     gap: "D-004's options table lists exactly one option (the hand-rolled offer_locks table) — no second alternative, and no off-the-shelf candidate is named (e.g. Postgres advisory locks, trivially available since AX-002 already runs locks on the same Postgres instance) nor is a 'no shelf candidate exists' line present. design-disclosure.md's 'shelf_named: no, note: small enough to own' is a custom-wins rationale, not the required disclosure line.",
+     fix: "Add the advisory-lock alternative (or another real candidate) to the table and argue against it by name, or write the explicit 'no shelf candidate exists' line if that's genuinely the case."}
+  - {id: G8, type: Missing, sev: Critical,
+     at: "contracts/api.yaml, POST /offers/{offerId}/accept",
+     gap: "The spec's edge case and US-2's third Given/When/Then both describe the saved payment method being declined on accept (offer stays open, owner told to retry) — but the endpoint documents only 200 and 404, with no response for a declined charge, and its Stripe x-integration block has no failure-modes/fallbacks field at all.",
+     fix: "Add a documented response (e.g. 402, or 200 with a declined-charge Problem-typed body) for the decline-on-charge case, and fill in failure modes/fallbacks under x-integration for the Stripe boundary."}
+  - {id: G9, type: EdgeCase, sev: Important,
+     at: "data-model.md, Offer state machine and status enum",
+     gap: "Offer.status is Enum(open, accepted, declined) — no lapsed or withdrawn value — yet FR-005/US-3 require a lapse path (24h timeout) and the spec's Edge Cases require a withdrawn path (entrant leaves while holding an open offer). tasks.md never tests the lapse path either (Cycle 3 only exercises decline).",
+     fix: "Add lapsed and withdrawn to the enum and the state machine, and add a TEST case for the 24h lapse path."}
+  - {id: G10, type: Assumption, sev: Important,
+     at: "tasks.md, Cycle 2 'Tasks:' list",
+     gap: "Cycle 2 carries a pre-written task/file-path list (src/waitlist/offer.service.ts, accept.controller.ts, migration file, mail template) — the cycle-card grammar reserves decomposition for build time. design-disclosure.md itself flags this as rung 5, 'builder's room,' its own worst rung.",
+     fix: "Drop the Tasks: list; let the builder decompose Cycle 2 at build time from the TEST cases and brownfield-exposure note alone."}
+  - {id: G11, type: Missing, sev: Important,
+     at: "architecture/concerns.md AX-009; constraints-and-decisions.md (FEAT-031 delta)",
+     gap: "sufficiency-report.md's G-04 explicitly asked this design phase to put a numeric target for SC-002 (first offer within 60s p95) on a concern row (AX-009 or elsewhere). No NFR-XXX row for it exists anywhere in the reviewed package.",
+     fix: "Add an NFR row (target, measurement method, source: SC-002) to AX-009 or a new row, same shape as AX-004/NFR-002 and AX-007/NFR-003."}
+  - {id: G12, type: EdgeCase, sev: Important,
+     at: "tasks.md, Cycle 2 TEST 'Releasing a booked berth issues an offer within 60 s'",
+     gap: "The Action sleeps the full 60s and then checks the offer exists — this passes identically whether the offer was issued in 1s or 59.9s, so it doesn't actually exercise the p95 ≤ 60s claim it cites (SC-002).",
+     fix: "Capture the offer's issuedAt and the release commit time and assert the delta, rather than sleeping to the boundary and checking existence."}
+  - {id: G13, type: Missing, sev: Important,
+     at: "data-model.md, Validation Rules",
+     gap: "C-007 states two invariants ('at most one open offer per berth, and one entrant never holds two offers'); Validation Rules only captures the first ('At most one open Offer per berthId at a time').",
+     fix: "Add a validation rule for 'at most one open Offer per waitlistEntryId at a time.'"}
+  - {id: G14, type: Missing, sev: Important,
+     at: "data-model.md, WaitlistEntry.contactEmail",
+     gap: "Downstream of G5's blank classification, contactEmail carries no retention policy, no encryption standard, and no GDPR-driven deletion policy, despite C-006 citing UK GDPR for this same data.",
+     fix: "Once contactEmail is classified (G5), add retention/encryption rows consistent with its level, same shape as the Offer.stripePaymentIntentId Sensitivity Details row."}
+  - {id: G15, type: Missing, sev: Minor,
+     at: "contracts/api.yaml",
+     gap: "No endpoint carries a realistic request/response example.",
+     fix: "Add one example per operation when the contract next gets a pass."}
+---
+
+## Clarifications needed
+
+### C1: Does the offer e-mail need marketing consent, or is it transactional? (G6)
+
+**Question**: C-006 leaves this open with a live [NEEDS CLARIFICATION] marker. Does an owner who has opted out of marketing e-mail still receive offer notices?
+**Options**: 1. Treat as transactional — always sent regardless of marketing consent · 2. Gate on marketing consent · 3. Add a separate, non-optional "service notice" consent class
+**Why it matters**: shapes the Postmark template and whether FR-003's offer notice can be legally sent to every entrant.
+
+### C2: Is the availability-forecast capability actually in scope for FEAT-031? (G4)
+
+**Question**: The design package built a full endpoint/entity/cycle for a 90-day berth availability forecast sourced to a verbal "kickoff" ask, with no US-5/FR-009 in the accepted spec.
+**Options**: 1. Pull it from this package; let the PM/analyst decide if and when it becomes its own story · 2. Retroactively amend spec.md with a real US-5/FR-009 and re-run this design round against it · 3. Confirm it was approved out-of-band and have the lead attach that record to the package
+**Why it matters**: as it stands this is unauthorized scope — it consumed design-phase budget FR-006/US-4 (a real P1-adjacent P2 story) didn't get.
+
+---
+
+## Cross-Artifact Concerns
+
+- **G1 + G9 together**: the missing `lapsed`/`withdrawn` states and the inverted decline-test oracle both point at the same underlying gap — the design phase never worked through the full Offer lifecycle beyond the happy path (open→accepted). The lapse/decline/withdraw trio deserves one pass, not three separate patches.
+- **G2 + G11**: if D-005's Redis path is kept, the AX-002 sign-off and a real NFR-XXX target for SC-002 should land on the *same* store consult, not two separate follow-ups — they're both consequences of finally admitting this round is not no-delta.
+- **G3 vs G4**: the package spent full design attention (endpoint, schema, disclosure entry, cycle card) on invented scope (US-5) while dropping a real, in-spec P2 story (US-4) to zero coverage. Worth the lead asking directly how that trade happened.
+- Feasibility-flavored observations handed off, not graded here: whether the `offer_locks` polling approach (D-004) can actually hold to SC-002's 60s p95 once the sweeper and 500ms poll interval are accounted for, and whether Redis keyspace-notification "at-most-once" delivery (D-005's own stated consequence) can meet a hold-expiry requirement that money depends on, are buildability questions for `mochiko:review-feasibility`, not this review.
+
+---
+
+## Gaps noted in the spec itself (for the requirements analyst, not scored above)
+
+1. US-2 requires the entrant be "notified" when an offer issues, and the design phase built a Notification entity against it, but cited it to **FR-007** — a requirement that doesn't exist in spec.md (FRs stop at FR-006). If a notification is genuinely required behavior, it's worth promoting to a real FR rather than leaving it implicit in story prose.
+2. The Edge Case "entrant leaves while holding an open offer → offer withdrawn" has no FR backing either — FR-005 only names "declined or lapsed." Worth deciding whether "withdrawn" is a third first-class outcome or a special case of one of the other two, since that decision is what the data model got wrong (G9).
+3. SC-002's measurement ("from the booking release commit to the offer row's issuedAt") doesn't say what happens when two berths free in the same minute (the spec's own edge case) — is the p95 measured per release event, or could a legitimately-serialized second offer under C-007 count against the same window as a false negative? Tightening this would remove some of the ambiguity the design phase inherited into D-004.
+4. If the availability-forecast capability (see C2 above) is a real product need, it has no home anywhere in spec.md's scope boundary or out-of-scope list — right now it's neither explicitly included nor excluded, which is exactly the gap that let it get built without a story.

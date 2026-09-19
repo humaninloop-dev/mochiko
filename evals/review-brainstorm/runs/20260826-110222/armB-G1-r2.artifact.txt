@@ -1,0 +1,72 @@
+=== blind-angle-map.md ===
+# Phase 0 — Blind angle map
+
+Topic only: Palisade (incident-management SaaS) — delivery of incident notifications to on-call responders. Goal line: delivery mechanism, escalation policy, what's owed to a customer when a page fails to land. Written from domain knowledge of paging systems (PagerDuty/Opsgenie-class products) before engaging with the record's specific choices.
+
+## Delivery mechanism
+- Channel menu: push, SMS, voice call, email, chat-ops (Slack/Teams) — and whether channels fire simultaneously or in sequence.
+- **Do Not Disturb / silent-mode bypass.** This is the load-bearing requirement for any paging product: a normal push or SMS produces no sound on a silenced phone. Real systems need iOS Critical Alerts entitlement, Android full-screen intents, or a phone call (which rings through common DND configs) to actually wake someone.
+- Which platform-specific entitlements/certs are needed, and whether "one integration" claims are actually true given iOS push is APNs-based under the hood even when routed through a third party.
+- Delivery-confirmation semantics: sent vs delivered vs acknowledged differ meaningfully by channel; a channel's "guarantee" claims should be scrutinized.
+- Single-vendor dependency risk (one push provider outage = every page silently fails).
+- Cost model per channel and interaction with plan tiers.
+- Payload content/privacy on lock screens.
+- International/roaming SMS delivery reliability.
+
+## Escalation policy
+- Timer values and how they compose across hops (does a per-responder retry clock interact with the rotation-advance clock, or do they race each other).
+- Rotation depth and terminal state: what happens when the last hop (often "page the whole team" or repeat-loop) also gets no ack — an escalation chain needs a defined floor, not just a defined ceiling.
+- Severity-based timer variation (a SEV1 vs SEV4 probably shouldn't share the same escalation cadence).
+- Manual overrides, snoozes, schedule exceptions (PTO/on-call swaps).
+- Whether escalating to the next person cancels or coexists with the original responder's still-pending retry.
+
+## What's owed to the customer on a failed page
+- Is "failed to land" defined by delivery confirmation, or only inferred by no-ack — these are different claims to make to a customer.
+- Customer-facing commitment: SLA credit, proactive notification, or just an internal audit trail available on request. Internal audit ≠ owed remedy.
+- Evidence retention window long enough to cover the realistic delay before a customer notices and files a ticket (which is often not same-day).
+- Real-time failure detection vs after-the-fact batch reconciliation — the two answer different questions ("did this page fail right now, while the incident is still live" vs "did pages fail last night, on average").
+- Whether the audit/reconciliation mechanism duplicates a simpler event-driven design (webhook-fed status table) rather than justifying a whole parallel service.
+
+This map is compared against the record in the cold read; gaps become coverage findings, not assumptions the record must have missed.
+
+
+=== review.md ===
+To the lead — cold end-stage review of the Palisade incident-notification record (solo pass, no counterpart, no cross-examination round run; no fact-checker map existed for me to check claims against, and this workspace has no repo/source to ground anything in — several findings below are therefore reported as *unverified external claims*, not confirmed errors).
+
+Blind angle map produced before I engaged with the record's specifics is in `blind-angle-map.md` alongside this file. Findings below are the diff between that map and the frozen record, plus the standard hunt classes, ranked by whether a ruling would likely / plausibly / not change something.
+
+## Critical
+
+**1. D4's technical justification is very likely wrong, and it's load-bearing for D1 and D2 as well as itself.**
+D4 claims FCM "guarantees delivery inside five seconds" and wakes a backgrounded iOS app "without us holding a separate APNs entitlement." Neither matches how FCM actually works, to the best of my domain knowledge (I could not run this against a fact-checker map or a search tool in this session, so treat it as a strong "please verify" rather than a confirmed defect): FCM has no formal delivery-time SLA, it's best-effort with priority hints; and FCM's iOS path still runs over APNs under the hood — Firebase needs an APNs auth key/cert registered regardless. More importantly, the claim conflates ordinary push delivery with *Critical Alerts*, the distinct, separately-approved iOS entitlement required to sound/vibrate through Do Not Disturb and silent mode. Nothing in D1–D8 mentions DND/silent-mode bypass at all, and for a paging product that's usually the whole point of the channel choice — an unacknowledged normal push on a silenced phone at 2am is indistinguishable from no page at all.
+Failure scenario: on-call responder has phone on silent overnight (common, not edge-case); ordinary FCM push arrives silently; the "5-minute window before SMS fallback" in D2 fires for a large fraction of real pages, not just the "phone-off/force-quit" cases D2 was scoped for — which also quietly invalidates part of D1's cost model (SMS volume assumed rare, D1's rationale explicitly leans on that).
+Would a ruling likely change something: yes — either D4 needs the Critical Alerts entitlement path (real added iOS work, App Store review implications) explicitly decided on, or the team accepts silent pages as a known gap and that should be a stated decision, not an implicit one riding on an incorrect technical premise.
+
+**2. The goal line asks what Palisade owes the customer when a page fails to land, and no decision answers it.**
+D3 (30-day status retention) and D8 (nightly reconciliation) are internal detection/audit machinery. Neither is a customer-facing commitment — no SLA, no credit, no proactive notification, no support-response commitment is decided anywhere. "We can look up what happened if asked" is not the same claim as "here is what we owe you if it happened." This is a direct gap against the session's own stated goal line, not an incidental omission — worth confirming whether it was discussed and simply not written down, or genuinely never addressed.
+
+## Important
+
+**3. D2 (5-min SMS retry to the same responder) and D6 (3-min escalation to the next responder) aren't reconciled with each other.**
+At minute 3 the rotation moves on to the next responder (D6). At minute 5 the *original, already-bypassed* responder still gets an SMS retry for the same page (D2). Neither decision's rationale acknowledges the other's clock. Net effect: two people can be independently acting on the same page two minutes apart, and SMS spend (the very cost D1 is protecting) fires in a case D1/D2 didn't model — every unacknowledged page that escalates on schedule generates an SMS a rotation has already moved past.
+
+**4. D8's nightly cadence answers a different question than the one the goal line needs answered, and may be more machinery than the job requires.**
+Reconciliation runs long after D6's escalation chain (3–9 min) has already exhausted for any given incident — it's necessarily retrospective, not a live-incident signal. If the intent is "know whether a page actually failed while the incident is still live," nightly batch reconciliation against D3 doesn't do that. Cheaper shape, if the goal is just a second source of truth on delivery state: have the provider webhooks write into the same D3 status rows as they arrive (event-driven), rather than standing up a separate independent service that re-derives state and diverges nightly — that removes both the latency problem and a second system to keep in sync with the first.
+
+**5. D3's 30-day retention is self-flagged weak ("Assumed," rationale is literally "sounds about right") and that weakness now has a specific consequence.**
+Given finding #2, if any customer commitment ever gets attached to delivery evidence, 30 days needs to be long enough to cover the realistic gap between "page failed" and "customer complains" — which for a support ticket is often not same-week, let alone same-day. Worth revisiting together with #2 rather than in isolation.
+
+## Minor
+
+**6. Voice/phone call as a channel is never considered or explicitly rejected.** It's the classic mechanism that rings through silent/DND on many devices, which ties directly to finding #1. Not necessarily wrong to exclude — D1's cost logic would likely apply even harder to voice — but there's no rationale on record, so it reads as unconsidered rather than ruled out.
+
+**7. D6's escalation chain has no defined terminal state, and that's a real open thread the record logs as none.** After the incident-commander hop also goes unacknowledged, nothing further is specified. "Open threads: None recorded" doesn't hold up next to this.
+
+## Tally
+7 survivors: 2 Critical, 3 Important, 2 Minor.
+
+## Recommended status: needs-revision
+
+Reasoning: the two Critical items sit on the goal line itself (delivery mechanism's core reliability premise, and the explicit "what do we owe the customer" clause), not on peripheral decisions. Everything else is fixable without re-opening the whole record, but I'd want the FCM/Critical-Alerts claim in D4 checked against real Firebase/Apple docs before this ships — I had no search access and no fact-checker map to lean on in this session, so that one specifically needs an external check I couldn't perform, not just a re-read.
+
+Floors observed: D7 (Contested) not re-litigated — nothing here is new to that ruling. Nothing in record.md touched or completed by me.
