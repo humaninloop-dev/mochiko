@@ -338,3 +338,70 @@ third to a half of runs" finding above may be this defect rather than the skill'
 `noskill` sessions stand (no plugin, nothing to read); the pre and post arms are re-run under the
 fixed runner once the user rules on the session cap (18 sessions ≈ US$ 10; total spend then ≈ US$ 24
 of 25). Kit status until then: **VOID pending re-run** (supersedes HALTED above).
+
+### Addendum — re-run under the fixed runner, filled 2026-09-19
+
+Fills the **VOID** above. The `pre` and `post` arms were re-run on the same `runs/baseline`
+after the permission defect was fixed; the nine `noskill` sessions carried over unchanged, as
+that entry said they would. The run was interrupted once by an outside stop and resumed by
+stored entry, and the binary was rebuilt between the two halves — the pins below are identical
+across every session of each arm, which is what rules that out as a contaminant.
+
+- provenance: `pre` at `475c955` (plugin 0.86.0; no `mochiko-cli` delivery lines at that ref,
+  so rendered-rules sha is null by design) · `post` pinned to `7ac0b9c` (plugin 0.108.0,
+  rendered rules `feeea1b6576242b4`, 11,523 chars) · judge `ed46faa8c200be51` · session model
+  sonnet · 27 sessions, replicates 3.
+- validity: **27/27 valid, 0 invalid**; judge parse failures 0; artifact truncations 0. The
+  checklist-read defect that voided the previous fill does not recur.
+- coverage read — live rules held (pass^k over 25 live of 26, one pruned by the control):
+  **`post` 19/25 · `pre` 16/25**. Floors: **`post` 13/14 · `pre` 11/14**.
+- **rules lost `post` vs `pre`: none. Floors lost: none.** The cut body holds everything the
+  pre-cut body holds and three rules more, two of them floors.
+- scripted layer (`validation-result.md` contains-assertions and `fixture_unchanged`):
+  **`post` 8/9 · `pre` 7/9 · `noskill` 0/9**. The one `post` miss is g3 r2, a single contains
+  line; `pre` misses g3 r1 and r2 the same way. Every control session fails the layer, two of
+  them also editing the fixture — the dead-zone reading the arm exists to give.
+- band (invited pairs; all-pairs in parentheses): **`post` 11/67 = 16.4 %** (13/75) · `pre`
+  12/67 = 17.9 % (14/75) · `noskill` 30/67. Both skill arms sit under the 20 % cap and above
+  the kit's own 15 % bar.
+- budget: **US$ 16.70** (client-side estimate) for the re-run; judge spend unmetered.
+- ship bar (a) floors / (b) ≤ 1 must lost, not `validation-result-block` / (c) ≤ 15 % /
+  (d) 14/14 tempted: **met (0 floors lost, and `post` gains two)** / **met (0 musts lost)** /
+  **NOT met (16.4 %)** / met at authoring.
+
+**Kit status: the (c) breach is the only bar standing, and it gates nothing this run needs.**
+A noise-dominated arm means no `pre`/`post` difference may be *read* — but the difference here
+is in the cut body's favour and no loss exists to adjudicate, so the breach withholds a claim
+of improvement rather than protecting against a missed regression. Nothing goes to the strips
+path: **no re-add decisions, none taken.**
+
+Two readings are available to the user, and the choice is the spend:
+
+- **Accept as read** — the floors and the deterministic layer carry it (13/14 against 11/14,
+  8/9 against 7/9 against 0/9), the gain stays unclaimed as a measured difference, and the kit
+  closes here at US$ 16.70.
+- **Spend the pre-registered remedy** — one extra replicate per arm, once (18 sessions, ≈ US$
+  10), which is the only move that could bring `post` under 15 % and let the gain be claimed.
+  On the review-specifications kit the same remedy raised both shares rather than lowering
+  them; it is not a reliable way down.
+
+Standing finding either way, carried from the voided fill and unchanged by this run: both arms
+drop VALIDATION RESULT accounting lines on a minority of runs, `post` on one of nine.
+
+### Ruling — user, 2026-09-19
+
+**Accepted as read; no extra replicate.** The user accepted the re-run and declined the
+pre-registered remedy, so the kit closes here at US$ 16.70.
+
+- Ship bars (a), (b) and (d) are met and stand as met: no floor lost, no must lost, coverage
+  as authored.
+- Bar (c) stays recorded as NOT met at 16.4 %. The gain — 19/25 live rules against 16/25, and
+  13/14 floors against 11/14 — is **kept as the run's result but not claimed as a measured
+  pre/post difference**, because the band rule forbids reading a difference from an arm above
+  its bar. Nothing turns on the distinction here: there is no loss to adjudicate in either
+  direction, and **no re-add decision arises; none taken.**
+- The standing finding carries forward unchanged: both arms drop VALIDATION RESULT accounting
+  lines on a minority of runs, `post` on one of nine.
+
+Status: **accepted — closed.**
+

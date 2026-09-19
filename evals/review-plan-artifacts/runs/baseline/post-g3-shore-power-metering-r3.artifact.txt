@@ -4,122 +4,72 @@ report: review
 feature: FEAT-027
 round: 2
 incremental: true
-seat: devils-advocate
-verdict: critical-gaps
-verdict_basis: "material divergence (an added endpoint traces to a story that does not exist and closes no gap) plus two independent Critical contradictions/defects in the re-issued set; per review-plan-artifacts.material-divergence-autofail this overrides the ordinary issue-count mapping"
-strengths: "all four round-1 issues were genuinely worked: cursor+limit pagination landed on the consumption list, a real cycle card (C5) now covers US-3 with both its acceptance scenarios, the Reading schema has an example, and D-004's rationale no longer just restates the choice"
-full_review: [tasks.md, contracts/api.yaml, constraints-and-decisions.md, design-disclosure.md]
-consistency_only: [data-model.md, store-delta.md, quickstart.md]
+scope:
+  full_review: [tasks.md, "contracts/api.yaml", constraints-and-decisions.md]
+  consistency_only: [data-model.md, store-delta.md, quickstart.md]
 consistency_checks:
-  entity_names: pass
+  entity_names: fail
   schemas: fail
   decisions_honored: fail
-  architecture_conformance: fail
+  architecture_conformance: pass
   sensitivity_annotations: pass
   integration_boundaries: fail
-methodology_note: >
-  Two files this skill's rules point to for the canonical checklist/severity/verdict grammar
-  (references/ARTIFACT-CHECKLISTS.md, references/ISSUE-TEMPLATES.md), the advocate-report-template,
-  and the Tier-1 check-artifacts.py pre-assert script were not reachable from this sandboxed
-  working directory (Read, Bash, and a sandbox override were all refused for paths outside it).
-  No Tier-1 exit code is folded in below. Severity labels (Critical/Important/Minor) and the
-  3-state verdict below are applied by ordinary convention, not the canonical mapping — the lead
-  should confirm the verdict against the real ISSUE-TEMPLATES.md thresholds before acting on it.
-  Everything else below — the conformance read against the gap list, the adopt-first and
-  rung-honesty lenses, and every specific finding — is a direct read of the named artifacts, not
-  a fallback.
+verdict: critical-gaps
+verdict_basis: "6 Critical issues (a load-bearing push/pull contradiction between the re-issued constraints and the signed store delta, an unscoped endpoint citing a non-existent story, a P2 story with zero cycle coverage, an unresolved [TODO] marker, an unclosed adopt-first gap, and a TEST gate that re-runs a test suite instead of hitting real infrastructure), plus 3 Important issues — unrecoverable in one round, and the material-divergence floor auto-fails the package independent of the count"
+strengths: "round-1 fixes G1/G2/G4 (pagination, US-3 card, Reading example) are genuinely closed; D-004's rationale now explains WHY instead of restating the choice; tariff overlap (409) and invoice-tariff-at-reading-time (Cycle 4) are well-specified"
 findings:
-  - id: G5
-    type: Contradiction
-    sev: Critical
-    at: "constraints-and-decisions.md C-005/D-004 vs. store-delta.md (signed) SPN-007/008/009 and AX-013, vs. contracts/api.yaml POST /gateway/readings, vs. tasks.md Cycle 1"
-    gap: "The re-issued C-005 asserts 'there is no per-reading push and no sub-hourly reading' from Enerlink, and D-004's rewritten rationale chooses 'hourly pull by the worker' because 'the gateway cannot push.' The signed store delta rules the opposite: SPN-008 'pushes readings,' SPN-007 'receives gateway pushes,' AX-013's ruling is 'push-based ingest through meter-ingest,' and the ruling text is explicit — 'push over pull: the 5-minute visibility target (FR-002) needs the gateway to tell us, not us to ask.' contracts/api.yaml then implements a push endpoint (gateway POSTs to Halyard, HMAC-signed) and tasks.md Cycle 1's walking-skeleton TEST simulates exactly that push. Four artifacts split 3-vs-1 on the single foundational fact of how readings arrive, and the round-1 fix instruction (G3, 'state why pull beats push against C-005') is what produced the 1. This is design-vs-decided: the constraints doc contradicts a store delta the user already signed."
-    fix: "Pick one side and make every artifact agree. If Enerlink genuinely cannot push (verify against the real v3 API, since C-005 is only memory-asserted), C-005/D-004 stand and the signed store-delta ruling, SPN-007/008/009, AX-013, contracts/api.yaml, and Cycle 1 all need to be reworked into a pull model — including redoing the 5-min-visibility argument the push ruling was built on. If push is actually correct (as signed), C-005 and D-004 must be struck or rewritten, and the round-1 fix's premise (G3) was wrong from the start."
-  - id: G6
-    type: Ambiguous
-    sev: Critical
-    at: "tasks.md Cycle 4, second Assert"
-    gap: "The card asserts the shore-power line totals 600, described as '20 kWh at the tariff current at generation, 30p.' The setup is 10 kWh on 10 September (20p in force) and 10 kWh on 20 September (30p in force) — per FR-003 and US-2's own worked example with the same numbers, the correct total is 500 (10×20p + 10×30p), and US-2 states explicitly the wrong answer is 'never 20 × 30p.' The card's assert computes and validates exactly the forbidden calculation. Built to this card, the system would ship the billing bug US-2 exists to prevent, and the test would pass."
-    fix: "Change the assert to 500 (£5.00), matching FR-003/US-2's per-reading-tariff semantics, or fix whatever produced 600 if it reflects a real implementation bug rather than a typo in the card."
-  - id: G7
-    type: Missing
-    sev: Critical
-    at: "contracts/api.yaml GET /marinas/{marinaId}/consumption-export; tasks.md Overview"
-    gap: "This endpoint was added in round 2 (design-disclosure.md: 'consumption export added') citing 'US-6' — no such story exists; spec.md and stories/ only go to US-4. It closes none of sufficiency-report.md's G-01..G-05, sits outside spec.md's stated scope boundary (owner consumption, invoice lines, tariffs, outage handling — no finance export), and has zero cycle-card coverage (tasks.md Overview lists only US-1, US-2, US-3). A capability with no story, no gap, and no test card is new scope smuggled into a design-phase package that was scoped to close named gaps."
-    fix: "Drop the endpoint from this round, or open it properly: a real user story with acceptance scenarios, a sufficiency gap or an explicit request from the lead to add scope, and a cycle card. Don't ship a contract surface with nothing behind it."
-  - id: G8
-    type: Ambiguous
-    sev: Important
-    at: "contracts/api.yaml POST /gateway/readings summary vs. store-delta.md SPN-007"
-    gap: "The summary reads 'served by the api container,' but the signed delta creates SPN-007 meter-ingest as a container isolated from api specifically 'so a burst never holds an api machine' — that isolation is the entire ruling for SPN-007's existence, and design-disclosure.md's own rung claim repeats it ('one listener beats retrofitting burst handling into api'). Routing the operation through api contradicts the ratified topology."
-    fix: "Correct the summary (and any routing it implies) to name meter-ingest as the serving container, or explain in the delta why the ruling changed."
-  - id: G9
-    type: Missing
-    sev: Important
-    at: ".mochiko/features/FEAT-027/ (whole directory)"
-    gap: "sufficiency-report.md marks quickstart as 'required — the Enerlink gateway is an external integration surface (x-integration on the ingest operation).' No quickstart.md exists anywhere under .mochiko/features/FEAT-027/, despite being described to this reviewer as part of the already-signed-off prior set. Confirmed absent by directory listing, not just unread."
-    fix: "Author the quickstart covering the Enerlink integration surface, or if it was dropped deliberately, record that call against the sufficiency report rather than leaving the required artifact silently missing."
-  - id: G10
-    type: Ambiguous
-    sev: Important
-    at: "tasks.md Cycle 2"
-    gap: "Cycle 2's **TEST:** action is `npm test -- readings.repository` — a test-suite re-run against an internal repository layer, not an observable end-to-end behavior against real infrastructure the way every other cycle (curl against a live endpoint, or the invoice CLI) demonstrates. The card itself says why: 'Case: Split — storage is its own concern' — an explicit horizontal slice, which the cycle-card grammar (vertical integrity; **TEST:** is real infrastructure, never a test-suite re-run) rules out."
-    fix: "Fold storage into the vertical cycle that needs it (C1 or C3) and prove it through an observable behavior, or if storage genuinely must land first, gate it on a real-infrastructure behavior (e.g., a seeded read through the union view via the actual API) rather than an `npm test` invocation."
-  - id: G11
-    type: Ambiguous
-    sev: Important
-    at: "design-disclosure.md D-005 rung claim vs. its own adopt_first block; constraints-and-decisions.md D-005 options table"
-    gap: "The rung-2 claim for D-005 says 'twelve plain tables beat a partitioning extension nobody here has run' — naming a real shelf candidate (native Postgres partitioning). The adopt_first block for the same decision says 'shelf_named: no ... nothing to adopt.' Those two lines contradict each other in the same document. constraints-and-decisions.md's D-005 options table lists only one option, so the alternative the disclosure admits was actually weighed never appears in the decision record."
-    fix: "Either the shelf candidate is real (fix adopt_first to name it and justify rejecting it) or it isn't (fix the rung-2 claim). Add the partitioning alternative to D-005's options table so the record matches what was actually decided."
-  - id: G12
-    type: Missing
-    sev: Important
-    at: "constraints-and-decisions.md C-006"
-    gap: "C-006 ships with an inline '[TODO] confirm the marina-admin role name' on a blocking-adjacent authorization constraint. No marina-admin or marina-staff role appears anywhere in the product baseline (data-model.md, constraints-and-decisions.md) or in this feature's own data-model.md — the PUT /marinas/{marinaId}/tariffs 403 behavior rests on a role that doesn't exist yet in the modeled system."
-    fix: "Resolve the TODO: name the role, and if it doesn't exist yet, add it to the data model (or the relevant baseline) rather than leaving the authorization boundary undefined in a design package headed to the builder."
-  - id: G13
-    type: Ambiguous
-    sev: Minor
-    at: "data-model.md MeterReading.kwh vs. contracts/api.yaml Reading.energyKwh"
-    gap: "Same value, different name across the entity model (prior set) and the wire schema (new set), with no mapping stated."
-    fix: "Rename one to match the other, or note the mapping explicitly in the contract delta's header."
-  - id: G14
-    type: Ambiguous
-    sev: Minor
-    at: "review-round-1.md G1 fix vs. .mochiko/product/contracts/api.yaml"
-    gap: "Round 1's fix for G1 pointed to 'cursor + limit as the baseline's list endpoints,' but the product baseline contract has no cursor/limit pagination anywhere (grepped clean). The new pagination shape isn't actually validated against an existing convention, contrary to what the fix instruction claimed."
-    fix: "Either point to where the convention really lives, or, if there isn't one, say so and record the cursor/limit shape as this feature's own precedent rather than an inherited one."
+  - {id: G1, type: Contradiction, sev: Critical,
+     at: "constraints-and-decisions.md C-005/D-004 vs store-delta.md AX-013/SPN-009",
+     gap: "the re-issued C-005 asserts the Enerlink gateway 'has no per-reading push' and D-004 chooses hourly worker-pull (freshness up to 60 min), directly contradicting the signed store delta's decided AX-013 ruling ('push-based ingest through meter-ingest'), the SPN-009 sequence diagram ('push over pull: the 5-minute visibility target needs the gateway to tell us'), and NFR-005's p95≤5min target — and contradicting the sibling re-issued artifacts in this same round: contracts/api.yaml still exposes POST /gateway/readings as a gateway-initiated HMAC-signed push, and tasks.md Cycle 1 is literally titled 'a pushed reading round-trips'",
+     fix: "resolve at the source: confirm with Enerlink whether push is actually unavailable; if it is, retract/rework the signed store delta (SPN-007/009, AX-013, NFR-005) and rewrite contracts/api.yaml + tasks.md Cycle 1 for polling — if it isn't, drop C-005/D-004 and keep the push design. Either way this cannot stand as currently written across three round-2 artifacts"}
+  - {id: G2, type: Contradiction, sev: Critical,
+     at: "contracts/api.yaml GET /marinas/{marinaId}/consumption-export",
+     gap: "a new endpoint 'for finance (US-6)' was added in round 2; US-6 does not exist anywhere in spec.md or stories/ (only US-1–US-4), the capability was never named in sufficiency-report.md's gap list (G-01–G-05) or round-1's findings (G1–G4), and no cycle in tasks.md builds or tests it — an orphaned, unscoped contract surface with a fabricated requirement citation",
+     fix: "remove the endpoint from this round's package, or get a real story minted and threaded through sufficiency + a cycle card before it ships; correct or remove the '(US-6)' citation regardless"}
+  - {id: G3, type: Missing, sev: Critical,
+     at: "tasks.md Overview / Cycle list",
+     gap: "US-4 (P2, 'After a gateway outage, readings are backfilled and I see a gap notice', FR-005) has zero cycle cards — Overview lists only US-1, US-2, US-3 as covered. The spec's stated delivery is 'whole feature in one batch,' and contracts/api.yaml carries no field or endpoint surfacing a gap notice to the owner either",
+     fix: "add a cycle card demonstrating backfill + gap-notice end-to-end, and add the supporting contract surface (e.g. a gap/backfill marker on the Consumption or Reading schema)"}
+  - {id: G4, type: Missing, sev: Critical,
+     at: "constraints-and-decisions.md D-005",
+     gap: "sufficiency-report.md's G-04 required the design phase to weigh time-series storage against a real shelf candidate and record the outcome. D-005's option table lists exactly one option (violates the ≥2-alternatives check), and the only adopt-first reasoning anywhere — in design-disclosure.md, not the decision itself — dismisses 'a partitioning extension nobody here has run,' which mischaracterizes native PostgreSQL declarative partitioning (built into the already-running Postgres 16 HA pair, IP-002) as an untried extension. G-04 is not credibly closed",
+     fix: "add a genuine second option (native Postgres partitioning, evaluated against the actual constraint C-003) to D-005's table with real pros/cons, or state explicitly why it's disqualified"}
+  - {id: G5, type: Contradiction, sev: Critical,
+     at: "tasks.md Cycle 2 TEST",
+     gap: "'Repository suite passes against the partitioned tables' runs `npm test -- readings.repository` and asserts 'Console contains \"passing\"' — this is a bare test-suite re-run, the one form the TEST-gate grammar explicitly excludes (real infrastructure, never a test-suite re-run)",
+     fix: "replace with a TEST that exercises real infrastructure directly — e.g. write readings across a month boundary and query the union view / repository through an actual call, asserting on the returned rows"}
+  - {id: G6, type: Missing, sev: Critical,
+     at: "constraints-and-decisions.md line 24 (C-006 Impact)",
+     gap: "Tier-1 pre-assert (scripts/check-artifacts.py) fails on an unresolved '[TODO] confirm the marina-admin role name' marker — ground truth, folded in directly",
+     fix: "resolve the marina-admin role name and remove the marker before this round clears"}
+  - {id: G7, type: Ambiguous, sev: Important,
+     at: "contracts/api.yaml Reading schema vs data-model.md MeterReading",
+     gap: "the contract schema is named 'Reading' with fields energyKwh/recordedAt, while data-model.md names the entity 'MeterReading' with fields kwh/readAt — both the schema name and two field names diverge from the data model with no documented mapping",
+     fix: "align the schema name and field names to the data model (or document the translation explicitly if intentional)"}
+  - {id: G8, type: Contradiction, sev: Important,
+     at: "data-model.md Entity: Tariff — Traceability line",
+     gap: "cites 'D-009' as a traceability source; no D-009 exists in either constraints-and-decisions.md file (feature rows run D-004–D-005, baseline rows D-001–D-003) — a dangling decision reference, caught in the prior-set consistency spot-check",
+     fix: "correct or remove the D-009 citation"}
+  - {id: G9, type: Ambiguous, sev: Important,
+     at: "tasks.md Cycle 3",
+     gap: "marked `[P]` depending only on C1, but its TEST reads consumption via the repository/union view that Cycle 2 states it builds ('the repository methods the later cycles read through') — C3 looks like a later cycle that needs C2, not a true C1-only parallel",
+     fix: "either change Cycle 3's dependency to C2 and drop `[P]`, or clarify what storage path C1's walking skeleton already provides that C3 can read from independently of C2"}
+  - {id: G10, type: Missing, sev: Important,
+     at: "quickstart.md (absent)",
+     gap: "sufficiency-report.md marks quickstart 'required — the Enerlink gateway is an external integration surface'; the file does not exist anywhere in the workspace (checked, no hits) despite being carried in the package description as an unchanged prior artifact",
+     fix: "author quickstart.md per the conditional-artifact requirement, or record its null path if the integration-surface judgment has changed"}
 ---
 
-## Notes for the lead
+## Clarifications needed
 
-**On scope.** Per the incremental protocol, `tasks.md`, `contracts/api.yaml`,
-`constraints-and-decisions.md`, and `design-disclosure.md` got the full walk; `data-model.md` and
-`store-delta.md` (the tech lead's round-1 territory, the latter user-signed) got the
-consistency-only spot-check the protocol allows — entity names, schemas, decisions-honored,
-architecture conformance. That spot-check is what surfaced G5 and G8: the signed store delta
-disagrees with the re-issued constraints doc on the one fact the whole ingest design turns on.
-Per `review-plan-artifacts.escalate-full-reread`, two or more consistency issues in one prior
-artifact escalate it to a full re-read — `store-delta.md` has taken two hits here (G5, G8) from
-two different new-set artifacts, so I'd treat it as needing that full re-read next round even
-though it's signed, rather than continuing to spot-check it. `quickstart.md` couldn't be
-spot-checked at all — it isn't there (G9).
+### C1: Can the Enerlink gateway actually push readings? (G1)
 
-**On the verdict.** G7 (the consumption-export endpoint) is textbook material divergence — new
-capability tracing to a story that doesn't exist, closing no named gap, covered by no cycle card
-— which auto-fails the package under this skill's own floor regardless of how the rest scores.
-G5 and G6 would each independently push toward `critical-gaps` on their own: G5 because the
-package can't be built as written (three artifacts assume push, one says push is impossible),
-G6 because the one billing acceptance test in the whole package validates the exact wrong
-arithmetic the story it cites was written to rule out. None of these are close calls or matters
-of taste.
+**Question**: The signed store delta (round 1, still binding) rules an AX-013 push-based ingest with a 5-minute visibility NFR built on it. The round-2 constraints re-issue asserts the opposite — the gateway cannot push at all. Both can't be true, and this determines the shape of SPN-007/009, the ingest endpoint, and Cycle 1's walking-skeleton test.
+**Options**: 1. The gateway can push — retract C-005/D-004, keep the current push design as-is. 2. The gateway genuinely cannot push — reopen and rework the signed store delta, the contract's `/gateway/readings` endpoint, and Cycle 1, and revisit whether NFR-005's 5-min target survives an hourly-pull model. 3. Verify directly against Enerlink's actual v3 API docs/contact before ruling either way — C-005 is currently memory-asserted, not verified.
+**Why it matters**: this is the ingest architecture for the whole feature; building against the wrong assumption here is the most expensive kind of rework.
 
-**On what's genuinely better.** The round-1 fixes were real, not cosmetic — G1-G4 all landed
-correctly on their own terms (see `strengths`). The problems above are new or newly surfaced by
-this round's changes, not a rehash of round 1.
+### C2: Is the finance CSV export in scope for this round? (G2)
 
-**Honesty caveat, repeated from the frontmatter:** the canonical checklist/severity/verdict files
-this skill points to, and the Tier-1 pre-assert script, were not reachable from this sandbox.
-Every finding above is a direct citation against the named artifacts; only the severity labels
-and the exact verdict thresholds are this reviewer's best-effort substitute for the canonical
-grammar. Recommend re-confirming the verdict mapping once those files are reachable.
+**Question**: `GET /marinas/{marinaId}/consumption-export` was added in round 2 against a story (US-6) that doesn't exist in the spec, wasn't named in the sufficiency gap list, and isn't built by any cycle.
+**Options**: 1. Drop it from this round's package; revisit as a separate, properly specified feature. 2. Mint the story now, thread it through sufficiency and a cycle card in this same round. 3. Confirm it actually came from a real ask (the summary says "finance asked") and backfill the story record for traceability.
+**Why it matters**: shipping a contract surface with no story, no cycle, and an invented citation sets a precedent for scope entering through the contract layer unchecked.

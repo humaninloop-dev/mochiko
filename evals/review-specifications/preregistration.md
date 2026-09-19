@@ -308,3 +308,31 @@ replicates on the two skill arms, so every figure below is stricter than the 202
   must losses stay recorded), or re-key — a kit-readings channel for the skill judge (the persona
   judge gained one under ADR 2026-09-11) or re-cut goldens with the two Important-check rules
   tempted on every golden — before any re-add through the strips path.
+
+### Ruling — user, 2026-09-19
+
+**Accepted as read; no re-key.** The user accepted the r4 read and declined both re-key options
+(the skill-judge kit-readings channel, and re-cutting the goldens to tempt the two Important-check
+rules on every golden). The kit closes here: no further sessions are authorised for it, and
+`review-specifications` needs no re-run to be readable.
+
+What the acceptance carries:
+
+- The ship decision rests on the layers that are not band-bound — floors 8/8 on the cut body
+  against 4/8 on the pre-cut body, the scripted layer at 9/12 against 1/12, and
+  `fixture_unchanged` holding on all twelve `post` runs. On those, the cut body is the better
+  instrument and the cut ships.
+- Ship bars (b) and (c) stay recorded as NOT met. The five must losses stay on the record as
+  losses, not as a measured pre/post difference: the `post` arm is noise-dominated at 22.8 %
+  against its 20 % cap, and the once-only extra replicate is spent. Nothing here licenses a re-add
+  through the strips path, and nothing here licenses calling the losses noise either — they are
+  unread, which is a different thing.
+- The two substantively weak rules, `feature-important-checks` (5/12) and `sf-important-checks`
+  (5/12), carry forward as calibration for whoever next edits this skill. A future edit that means
+  to restore either one needs its own instrument, because this kit cannot resolve them.
+- The band exceedance is a property of this kit, not a verdict on the harness. The skill target
+  still has no kit-readings channel; that gap is now a standing limitation of the skill judge
+  rather than an open task for this kit.
+
+Status: **accepted — closed.** Supersedes the two HALTED lines above; neither the 2026-09-13 nor
+the 2026-09-18 addendum is otherwise amended.

@@ -1,11 +1,11 @@
-Review complete — written to `./review.md`, no other files touched.
+Review complete. `review.md` is written at the workspace root as the deliverable — no handed files were edited.
 
-**Verdict: `critical-gaps`.** Ten findings (3 Critical, 5 Important, 2 Minor), most severe:
+**Verdict: critical-gaps** (6 Critical, 3 Important findings; the material-divergence floor also auto-fails independently of the count).
 
-- **G7 (Critical, material divergence):** round 2 quietly added a `consumption-export` endpoint citing "US-6" — a story that doesn't exist anywhere in this spec (only US-1..US-4), closes none of the sufficiency report's named gaps, and has zero cycle-card coverage. That alone auto-fails the package under this skill's own floor.
-- **G5 (Critical, design-vs-decided contradiction):** the re-issued `constraints-and-decisions.md` now asserts Enerlink *cannot* push readings and chose an hourly-pull worker — directly contradicting the **user-signed** `store-delta.md` (push-based ingest, ratified for FR-002's 5-minute target), the contract (a gateway-push endpoint), and `tasks.md` Cycle 1 (which tests that push). Four artifacts split 3-vs-1 on the single foundational fact of how readings arrive.
-- **G6 (Critical, wrong test oracle):** Cycle 4's acceptance test asserts a £6.00 invoice line computed at "the tariff current at generation" — which is exactly the wrong math US-2's own worked example (with the same numbers) says must never happen (correct answer is £5.00). As written, the test would pass while validating the billing bug the story exists to prevent.
+Headline problems:
+1. **A load-bearing architecture contradiction** — the re-issued `constraints-and-decisions.md` now asserts the Enerlink gateway *cannot* push readings and must be polled hourly, directly reversing the signed, round-1 store delta's push-based AX-013 ruling — while the re-issued `contracts/api.yaml` and `tasks.md` (same round, same package) still implement and test the push design. Three sibling round-2 artifacts disagree on the feature's core ingest mechanism.
+2. **Scope creep with a fabricated citation** — a new CSV export endpoint cites a nonexistent "US-6," was never in the sufficiency gap list or round-1 findings, and has no cycle building it.
+3. **US-4 (P2) has zero cycle coverage** despite the spec calling for whole-feature delivery in one batch.
+4. An unresolved `[TODO]` marker (Tier-1 ground truth), an unclosed adopt-first gap on the storage decision, and a cycle TEST that just re-runs a test suite instead of hitting real infrastructure.
 
-The four round-1 issues (pagination, missing US-3 card, D-004 rationale, missing schema example) were genuinely fixed — that's noted as a strength. But the D-004 rewrite is what produced G5.
-
-One methodology caveat worth flagging: the skill's pointed-to canonical files (`ARTIFACT-CHECKLISTS.md`, `ISSUE-TEMPLATES.md`, the report template, and the Tier-1 `check-artifacts.py` script) were outside this sandbox and unreadable by any method I tried, so severity labels and the exact verdict thresholds are my best-effort substitute rather than the canonical mapping — I disclosed this plainly in the report rather than fabricating conformance to files I couldn't see. Also confirmed on disk: `quickstart.md`, which the sufficiency report marks required, doesn't actually exist in the feature directory despite being described as already-signed prior work (G9).
+Also flagged from the light prior-set spot-check (not a full re-read): a dangling `D-009` reference in `data-model.md`, and `quickstart.md` — marked required by the sufficiency report — is absent from the workspace entirely. Two clarifying questions for the lead are included for the push/pull and export-scope issues.

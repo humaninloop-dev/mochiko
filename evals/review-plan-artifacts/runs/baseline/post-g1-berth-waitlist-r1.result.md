@@ -1,11 +1,12 @@
-The review is written to `review.md`. Verdict: **critical-gaps**.
+Review complete — written to `review.md`, no other files touched or edited.
 
-Key findings, in order of severity:
+**Verdict: critical-gaps** — 9 Critical, 8 Important, 2 Minor findings.
 
-- **Two auto-fail triggers on their own**: an entirely undisclosed feature surface (availability-forecast, tracing to a US-5/FR-009 that don't exist anywhere in the spec) rode into the contract, data model, and tasks; and D-005's Redis TTL choice breaks the product's *blocking* one-datastore constraint (C-003/AX-002 requires a platform sign-off — none recorded), while its own "already exists" justification is contradicted by the same package's IP-003 row provisioning a brand-new Redis instance.
-- Two of G-01/G-02/G-04's named gaps aren't actually closed: no API endpoint exists for the marina queue view (US-4/FR-006), and no NFR target was ever recorded for SC-002.
-- US-4 has zero cycle-card coverage, `tasks.md` Cycle 2 illegally pre-writes file paths, the adopt-first disclosure for D-004 falsely claims "no shelf" against a shelf the sufficiency report named by name, a test assertion in Cycle 3 contradicts the FR it cites, and two of the spec's three named edge cases have no test coverage at all.
+The headline problems:
+- **Two named sufficiency gaps unclosed**: G-01's marina-queue endpoint (FR-006/US-4, P2) was never built — no endpoint, no cycle card, nothing. G-04's offer-issue latency NFR target was never recorded.
+- **Material divergence past the gap list**: the package invents an entire unscoped feature (US-5/FR-009, a "availability-forecast" endpoint, schema, and cycle) that exists nowhere in the spec, plus a `Notification` entity traced to a nonexistent FR-007.
+- **A constraint violation dressed up with a false claim**: D-005 introduces Redis as a second datastore, justified by "Redis is already in the stack for sessions" — which is false; the baseline explicitly put sessions in PostgreSQL to avoid a second datastore. This also breaks the sufficiency report's own no-delta claim and has no AX-002 sign-off.
+- **A wrong test oracle**: Cycle 3's decline test asserts the next offer issues at T+24h "after the hold elapses" — the exact opposite of what FR-005/US-3 require (immediate reissue on decline).
+- Plus a blank sensitivity classification on `contactEmail`, an unresolved `[NEEDS CLARIFICATION]` marker, and a missing declined-charge error path on `/offers/{offerId}/accept` — all confirmed by the Tier-1 checker or direct reading.
 
-I also flagged a side-note for the requirements analyst on spec-level gaps (US-4 missing a success criterion, unaddressed concurrent-entry and offer/expiry interactions, the open `[NEEDS CLARIFICATION]` on C-006), kept clearly separate from the verdict.
-
-One transparency note included in the report: this session's sandbox blocked access to the skill's own reference files (`ARTIFACT-CHECKLISTS.md`, `ISSUE-TEMPLATES.md`) and the report template, and the Tier-1 pre-assert script wasn't present in the workspace — I disclosed that and reconstructed severity/verdict logic from the floor rules that were actually delivered, so the findings stand on their own evidence rather than on a checklist citation I couldn't verify.
+I also added a short section for the requirements analyst noting three spec-level gaps I ran into (an FR-006/US-4 field mismatch, no FR/SC for waitlist-entry auto-expiry, and silence on vessel edits after joining), clearly separated from the formal verdict.

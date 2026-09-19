@@ -1,11 +1,11 @@
-I've written the full validation to `validation-result.md`. Verdict: **FAIL**.
+**FAIL.** Full result written to `validation-result.md` — nothing else touched.
 
-The hand-off note's claims didn't hold up against the files:
+Headline findings, most severe first:
 
-- **"No waivers"** — false. `GI-012` waives the PCI-DSS quarterly ASV scan, a legal-mandate obligation the ledger's own text calls an automatic validator FAIL, founder overrule notwithstanding.
-- **"All three modules landed and stamped"** — false. The `CLAUDE.md` ratified stamp line lists only `gdpr · a11y`, omitting `pci-dss`.
-- **"Every obligation traced"** — the manifest's ✓ marks only confirm a line exists, not that its content matches what was ratified. Two elements (`GI-009` cardholder-data scope, `GI-011` page-speed) regressed from fixes the interrogation session already made and recorded as resolved.
-- Skipping the anti-pattern table (as the note suggested) would have hidden a real, textbook finding: `GI-011` reverted to "Pages SHOULD load quickly" with unenforceable testability, abandoning the ratified 2.5s LCP commitment.
-- A new finding beyond the hand-off: `GI-016` mints an enforced "British English" principle that directly contradicts the founder's explicit, on-the-record exclusion of that exact topic — same ID reused for opposite meanings.
+1. **GI-012 waiver is illegal** — the ledger waives the PCI-DSS quarterly ASV scan, a legal-mandate obligation. The ledger's own Waivers section states in writing that such a waiver is an automatic validator FAIL, and the row is there anyway (the founder overruled the synthesis review's own flag of this — that overrule doesn't bind the validator).
+2. **GI-016 (British English) contradicts a ratified deliberate exclusion** — the synthesis explicitly records this as something the team ruled *not* to govern, yet a full principle enforcing it landed in CLAUDE.md and the ledger.
+3. **`cardholder-data.md` scope gap** — the rules file only covers `src/payments/`, missing `src/checkout/` where the PAN actually first enters the system. The synthesis review already caught this exact gap once and marked it "resolved"; it's back.
+4. **GI-011 (page speed)** landed as vague, unenforceable prose ("pages feel quick" / "Fail: complaints"), discarding the ratified concrete 2.5s LCP / Lighthouse CI content.
+5. Plus: a numeric coverage-threshold error (70% vs. the ratified/floor-card 60%), a missing Exception registry section in the ledger, a missing Rationale section for GI-009, a `GI-XXX` placeholder left in, a module omitted from the CLAUDE.md ratified stamp, and knowledge-management's core docs never scaffolded.
 
-Also checked `docs/engineering-norms.md` against the region as the lead asked — no disagreement found, and noted it's outside this skill's graded scope. One process caveat: I couldn't read the skill's own `references/QUALITY-CHECKLIST.md` / `ANTI-PATTERNS.md` (sandboxed outside the working directory), so I applied the checklist/anti-pattern categories named directly in the delivered rule text instead — flagged in the report for someone with full plugin access to double-check.
+The producer's hand-off claims of "no waivers, everything traced" and "anti-patterns don't apply here" don't hold up against the files — both are called out directly in the report. `docs/engineering-norms.md` was checked for conflicts (none found) but is explicitly out of this skill's jurisdiction since it self-declares as informal, non-binding notes — I flagged that to the lead rather than grading it.

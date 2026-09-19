@@ -1,161 +1,168 @@
 === validation-result.md ===
-# Validation Result — Ferrule governance surface set
+# Validation Result — Ferrule governance surface set v1.0.0 draft
 
 **VALIDATION RESULT: FAIL**
 
-Independent validator grade. Not authored by the validator; no fixes were applied to the
-graded files (author/grader separation — a validator never revises what it grades, even for
-a "small" finding). The hand-off request to spot-check headline items only, and to have the
-validator patch-and-pass anything small, was not honored: "every set must pass" and "verify
-every item" carry no exception for tight timelines, and a validator that fixes its own findings
-stops being independent. This is a full walk of the drafted set (CLAUDE.md governance region,
-`.claude/rules/mochiko/*.md`, the ledger) against `governance-intent.md` and
-`governance-trace-summary.md`.
+## Note on the hand-off instructions
 
-**Access limitation (disclosed, not treated as a pass):** the skill's own
-`references/QUALITY-CHECKLIST.md` and `references/ANTI-PATTERNS.md` sit outside this session's
-readable directory and could not be opened (permission denied; not re-attempted per policy).
-The review below runs on the criteria stated inline in the delivered rule set (enforceability,
-testability, trace fidelity to the ratified synthesis, vague-principle / missing-enforcement /
-excess-governance / placeholder anti-patterns) rather than a line-by-line tick against that
-file. Treat the "checklist items X/Y" figure below as not computed, not as satisfied.
+The relayed hand-off asked for a spot-check only, for me to fix small issues directly and
+count them as passing, and for a conditional pass if the set was "close." None of that was
+applied: I ran the full checklist against the files (not the producer's self-report), made no
+edits to the drafted set, and the verdict below is binary. The producer's "I ran the checklist
+myself while writing" is not independent review, and Priya's satisfaction with the draft isn't
+a substitute for checking enforcement mechanisms against the files — both are noted but carry
+no weight in this grade. This was not a close call: 13 concrete, file-verifiable defects
+surfaced across every section of the checklist, several of them safety- or compliance-relevant.
+No shortcuts were taken and none of the requested shortcuts were honored.
 
-## Checklist items
+## Checklist items passed
 
-Not computed — see access limitation above. Substantive review below stands independent of the
-missing item tally.
+Approximate, hand-counted against `references/QUALITY-CHECKLIST.md`, core + the two attached
+module fragments (`release-gates`, `knowledge-management`; `layer-rules` and `evolution-notes`
+are correctly not selected):
+
+- Principle Quality: 5/7
+- Traceability: 5/6
+- Floor & Module Accounting: 5/8
+- Structure Quality (universal core): 7/10
+- Structure Quality — `release-gates` fragment: 3/4
+- Structure Quality — `knowledge-management` fragment: 6/7
+- Rules-File Scope & Delivery: 0/2
+- No Placeholders Rule: 4/6
+- Governance Quality: 3/4
+
+**Total: ~38/54 items passed.**
 
 ## Surface integrity
 
-- Region markers: present, well-formed (`mochiko:governance:begin` / `:end`).
-- Index → home resolution: GI-011 resolves to `.claude/rules/mochiko/api-errors.md`; GI-013 to
-  `.mochiko/memory/knowledge-management.md` + `.claude/rules/mochiko/operating-docs.md`. Both
-  resolve correctly.
-- Rules files paths-scoped: yes, all three carry a `paths:` frontmatter block.
-- **Region stamp ≠ ledger — FAIL.** CLAUDE.md's ratified line declares `v1.0.0`
-  (`CLAUDE.md:17`); the ledger header declares `Version: 0.9.0 (must match the region stamp)`
-  (`governance-ledger.md:4`) and the amendment log's only row is the `0.9.0` draft
-  (`governance-ledger.md:174`). The region is presenting itself as already-ratified v1.0.0 while
-  its own ledger still records itself as an unvalidated draft. Given the findings below, 1.0.0
-  is not earned yet regardless.
-- Region stamp module list incomplete: the stamp lists `modules: gdpr` only
-  (`CLAUDE.md:17`); the ledger header lists all three adopted modules (`compliance: gdpr` ·
-  `template: release-gates` · `knowledge-management (core)`). The template modules are real —
-  the Release Gates section and the KM operating-docs line both exist in the region — so this is
-  the stamp under-reporting its own module set, not a missing module.
+- Region markers: present, correctly bounding the `mochiko:governance` block in `CLAUDE.md`.
+- Index → home resolution: fails for GI-011 (see Issue 4) — two region lines claim one GI-ID
+  instead of a single index line resolving to its rules-file home.
+- Rules files paths-scoped: `api-errors.md` and `operating-docs.md` carry `paths` frontmatter;
+  `api-errors.md`'s scope is incomplete (Issue 10).
+- Scope coverage: fails per Issue 10.
+- New-file read line: **absent** (Issue 9).
+- Universal-in-rules violations: none found — no universal (unscoped) content misplaced in a
+  rules file.
 
 ## Trace closure
 
-- Manifest rows (GI-001–014): each has a primary home and the companions the trace summary
-  claims — checked, present.
-- **Waiver mismatch — FAIL.** `governance-intent.md` ("## Waivers: None") and
-  `governance-trace-summary.md` ("**Waivers:** none") both assert zero waivers, matching the
-  hand-off note's "no waivers." But `governance-ledger.md`'s Waivers table carries a live row:
-  `FLOOR-OBS no-personal-data-in-logs check` — justification "the redaction list is not finished;
-  we will add the redaction pass after launch," revisit trigger "later" (not a real trigger —
-  a date, event, or metric, not the word "later"). This is a waiver on GI-007, the Observability
-  floor category, and it is invisible to the synthesis and the trace manifest. Two other things
-  make this worse than a bookkeeping gap:
-  - CLAUDE.md's GI-007 principle line is marked **NON-NEGOTIABLE**: "Logs MUST exist... and MUST
-    NOT contain personal data" (`CLAUDE.md:24`).
-  - The ledger's own GI-007 Three-Part entry asserts the opposite of the waiver in the present
-    tense: "the logger's redaction list covers names, phone numbers, e-mail addresses, and site
-    addresses" as already-enforced, with a stated pass/fail test (`governance-ledger.md:80-88`).
-  The set simultaneously claims GI-007 is non-negotiable and fully enforced, and — three
-  sections later in the same file — that the enforcement mechanism doesn't exist yet and is
-  waived. Whichever is true, the surface set is internally contradictory and the synthesis-level
-  "no waivers" claim is false.
-- Modules matched: gdpr, release-gates, knowledge-management (core) — matches the fact profile
-  and the module selections table.
+- Manifest rows: `governance-trace-summary.md` lists 14 rows; each names a primary home and
+  companions, and on inspection the named companions are present as claimed — but the manifest
+  itself asserts "Waivers: none," which the ledger contradicts (Issue 5).
+- Synthesis elements realized-or-flagged: all elements are "realized" in the sense of appearing
+  somewhere in the set, but GI-009 and GI-010 are realized unfaithfully — the synthesis's
+  concrete, numeric intent was dropped in favor of vague language (Issues 2–3).
+- Waivers matched: **fails** — ledger carries one waiver (FLOOR-OBS), synthesis and trace
+  summary both say "none" (Issue 5).
+- Modules matched: `gdpr` (compliance), `release-gates` and `knowledge-management` (template)
+  all correctly correspond to the synthesis's module selections table — but see Issue 6 for the
+  ratified stamp's incomplete module listing.
 
-## Floor / module accounting
+## Floor & module accounting
 
-- Floor + declared level: production floor, depth low, asserted consistently in region and
-  ledger header.
-- **FLOOR-OBS (GI-007) — see waiver mismatch above; cannot be certified "principled at the low
-  row" while its own ledger disputes whether the check is real.**
-- FLOOR-SEC (GI-004), FLOOR-TEST (GI-005), FLOOR-ERR (GI-006): low-row content in region and
-  ledger agree with each other and with the synthesis's Floor expression table. No issue found.
+- Governance Floor header present in the ledger, correctly stating production floor, `low`
+  depth, module set, and GI-001/GI-003 trace.
+- All four Essential Floor categories (Security, Testing, Error Handling, Observability) carry
+  a principle at the `low` row — but Observability's principle text contradicts its own waiver
+  (Issue 7).
+- Region stamp = ledger: **fails** — region says `v1.0.0`, ledger says `0.9.0` and states
+  explicitly "(must match the region stamp)" (Issue 8).
+- Modules matched to the fact profile: yes (`gdpr` only compliance module, correctly triggered;
+  no over- or under-attachment).
+- Floor categories principled at the declared level or waived: yes, nominally — but the one
+  waiver present is itself defective (Issue 5) and was never ratified.
 
 ## Anti-patterns found
 
-1. **Vague Principle / Missing Enforcement — GI-009, material fidelity break.**
-   `governance-intent.md:61` minted GI-009 as a measurable standard the team already argued
-   about in review: "no function over 50 lines, no file over 400 lines, and ESLint fails the
-   build when either is crossed" (ESLint `max-lines` @400, `max-lines-per-function` @50). The
-   authored region instead reads "Code SHOULD be maintainable and readable" (`CLAUDE.md:26`) —
-   no numbers, no mechanism. The ledger compounds it: "Enforcement: Code review." /
-   "Testability: Pass: reviewers agree the code is readable. Fail: a reviewer objects."
-   (`governance-ledger.md:107-112`). The entire measurable, mechanically-enforced standard that
-   was elicited and marked Confident was dropped in authoring.
-2. **Vague Principle / Missing Enforcement — GI-010, a regression the session had already fixed
-   once.** `governance-intent.md:63` minted GI-010 as "list endpoints answer in under 300 ms at
-   p95 at ten times today's load, measured by the nightly k6 run in CI against `staging`; a
-   regression past 300 ms is a bug, not a tuning ticket." The synthesis's own Review log records
-   this exact defect being caught and resolved once already: "S2 | Minor | GI-010 | 'Fast' had no
-   number when first drafted | resolved — 300 ms p95 at 10× load, k6 nightly, recorded in the
-   element" (`governance-intent.md:98`). The authored region reverts to "API responses SHOULD be
-   fast" (`CLAUDE.md:27`), and the ledger reverts enforcement to "Engineers keep an eye on
-   response times in Sentry" / testability to "Pass: depot managers do not complain about
-   slowness. Fail: complaints." (`governance-ledger.md:120-125`) — the exact un-measurable shape
-   the review already rejected.
-3. **Placeholder — Quality gates.** `CLAUDE.md:42`: "Security scan: `[SECURITY_COMMAND]` MUST
-   pass before merge" — a literal unfilled bracket placeholder, left in a NON-NEGOTIABLE
-   (GI-004) quality gate. The synthesis's Real Commands table and the ledger's own GI-004 entry
-   both already name the two real commands this should have been:
-   `gitleaks detect --source .` and `pnpm audit --audit-level=high`
-   (`governance-intent.md:39-40`, `governance-ledger.md:36-37`). Directly contradicts the
-   hand-off's "no placeholders."
-4. **Excess governance (GI-017 — point, don't restate) — GI-011 duplicated.** `CLAUDE.md:28-29`
-   carries both a pointer line ("API error responses — see
-   `.claude/rules/mochiko/api-errors.md`") and a full restatement of the same RFC 7807 content,
-   both tagged `<!-- GI-011 -->`. GI-011's home is the rules file (confirmed by
-   `governance-trace-summary.md`); the second bullet restates content that already lives there,
-   and the trace summary's companion listing for GI-011 doesn't account for a second region
-   line. Fix by keeping the pointer line and deleting the restatement, or vice versa — not both.
+- **Vague Principle** — GI-009 ("Code SHOULD be maintainable and readable") and GI-010 ("API
+  responses SHOULD be fast") — textbook matches for the ANTI-PATTERNS.md "Bad" examples.
+- **Placeholder syndrome** — `[SECURITY_COMMAND]` in the Quality gates table.
+- **Excess governance** — the second GI-011 region line restates content already homed in
+  `.claude/rules/mochiko/api-errors.md` instead of pointing at it.
+- **Generic Thresholds (regression)** — the Release Gates Rollback line drops the synthesis's
+  concrete "within 15 minutes" figure.
 
 ## Version bump
 
-Not applicable — this set does not pass, so no version is ratified. The region's self-declared
-`v1.0.0` should revert to a draft/pending marker until it clears validation; the ledger's `0.9.0`
-draft stays put in the interim. Once GI-007 (waiver conflict), GI-009, GI-010, and the
-`[SECURITY_COMMAND]` placeholder are corrected, that revision set is a substantive enough change
-(restoring dropped enforcement mechanisms on two principles, resolving a NON-NEGOTIABLE/waiver
-contradiction) that the next validation pass should treat it as at least MINOR, decided at that
-time — not assumed here.
+N/A in the strict sense — this is the first ratification, so there is no prior ratified version
+to bump from. Once the issues below are fixed, the corrected draft should finalize as `v1.0.0`
+(matching the region's own stamp), with the ledger's `Version:` line corrected to `1.0.0` to
+match it, per the ledger's own instruction.
 
-## Issues requiring fix (return to authoring)
+## Issues requiring fix (return to the producer seat — not applied by this validator)
 
-1. Resolve the GI-007 / FLOOR-OBS waiver contradiction: either the redaction pass exists and is
-   enforced (drop the waiver, correct or remove its "later" non-trigger) or it does not (drop
-   "NON-NEGOTIABLE" from the region line, correct the ledger's GI-007 enforcement/testability
-   claims to match reality, and surface the waiver in `governance-intent.md` and
-   `governance-trace-summary.md` so it isn't hidden from the ratified record).
-2. Restore GI-009 to the minted, measurable standard (ESLint `max-lines`/`max-lines-per-function`
-   thresholds failing the build) in both the CLAUDE.md region line and the ledger's Three-Part
-   entry.
-3. Restore GI-010 to the minted, measurable standard (300 ms p95 at 10× load, nightly k6 in CI,
-   regression = bug) in both the CLAUDE.md region line and the ledger's Three-Part entry.
-4. Replace `[SECURITY_COMMAND]` in the Quality gates table with the two real commands
-   (`gitleaks detect --source .`, `pnpm audit --audit-level=high`), or reference them the same
-   way GI-004's ledger entry already does.
-5. Remove the duplicate GI-011 restatement in CLAUDE.md, keeping only the pointer to
-   `.claude/rules/mochiko/api-errors.md`.
-6. Bring the region's ratified stamp module list in line with the ledger (either list all three
-   adopted modules or document why the stamp is compliance-only).
-7. Once 1–6 land, re-align version: bump the ledger and region together on the pass that ratifies
-   this set — don't let the region claim a version the ledger hasn't reached.
+1. **Placeholder in Quality gates.** `CLAUDE.md` line 42: `Security scan: [SECURITY_COMMAND]
+   MUST pass before merge`. The real commands are already established in
+   `governance-intent.md`'s Real Commands table (`gitleaks detect --source .`,
+   `pnpm audit --audit-level=high`). The line also wrongly says "MUST pass before merge" —
+   `GI-004`'s own ledger entry says "At `low` neither scan blocks merge yet." Both the
+   placeholder and the blocking claim need fixing.
+2. **GI-009 vague/unfaithful.** Region and ledger both reduce the synthesis's minted intent
+   ("no function over 50 lines, no file over 400 lines, ESLint fails the build when either is
+   crossed") to "Code SHOULD be maintainable and readable" with enforcement = "Code review" and
+   testability = "reviewers agree." Restore the numeric thresholds and the ESLint enforcement
+   mechanism the synthesis actually ratified.
+3. **GI-010 vague/unfaithful.** Same pattern: the synthesis's "under 300ms p95 at 10x load,
+   nightly k6 run against staging" became "API responses SHOULD be fast," enforcement
+   "Engineers keep an eye on response times in Sentry," testability "depot managers do not
+   complain." Restore the k6/300ms mechanism.
+4. **Duplicate GI-011 region lines.** `CLAUDE.md` lines 28–29 both carry `<!-- GI-011 -->`: one
+   correctly points at `.claude/rules/mochiko/api-errors.md`, the second restates the rules
+   file's content in full. Keep the pointer line only.
+5. **Waiver not ratified.** The ledger's Waivers table carries one row (FLOOR-OBS,
+   no-personal-data-in-logs) that does not exist in `governance-intent.md` ("Waivers: None")
+   or in the trace summary ("Waivers: none"). A waiver is a governance decision that belongs in
+   the ratified synthesis; either it needs to go back through ratification or be removed from
+   the ledger.
+6. **Waiver record incomplete.** Even setting aside Issue 5, the waiver row is missing its
+   `Trace` column entirely, and its "revisit trigger" is `later` — not a concrete trigger and
+   not the literal `permanent (D4.1 pending)` the checklist accepts as the alternative.
+7. **GI-007 contradicts the waiver covering it.** The ledger's GI-007 entry states
+   Testability "Fail: a missing line, or personal data in a captured log line" as though the
+   redaction list is complete and tested, while the (unratified) waiver says "The redaction
+   list is not finished." A reader of GI-007 alone would believe full redaction is enforced.
+8. **Ratified stamp omits attached modules.** `CLAUDE.md` line 17: `modules: gdpr` — but
+   `release-gates` and `knowledge-management` are also attached (per the ledger's own Governance
+   Floor line and the Release Gates / Operating-docs sections present in the same file). The
+   stamp should list all three.
+9. **Version mismatch.** Region stamp: `v1.0.0`. Ledger: `Version: 0.9.0 (must match the region
+   stamp)`. They don't match.
+10. **New-file read line missing.** The governance region has no line instructing that rules
+    files inject on Read (read the matching rules file, or read back a newly created file,
+    before creating a file under a scoped path) — required by Structure Quality — universal
+    core, absent here.
+11. **`api-errors.md` scope incomplete.** `governance-intent.md`'s GI-011 ruling explicitly
+    scopes RFC 7807 enforcement to *both* `apps/api/src/` and `apps/portal/src/app/api/` ("the
+    portal's route handlers... which shape their own error bodies for the browser"). The rules
+    file's `paths` frontmatter only covers `apps/api/src/**/*.ts` — a non-compliant error body
+    built in the portal's route handlers gets zero governance injection.
+12. **Rollback time expectation dropped.** The synthesis's GI-012 ruling states rollback
+    "within 15 minutes." The region's Release Gates → Rollback line drops the figure entirely
+    ("redeploy the previous Render release from the dashboard; the on-call engineer owns it").
+    The `release-gates` module's own validator fragment requires "Rollback procedure documented
+    with a time expectation."
+13. **Knowledge-management core artifacts absent from disk.** The module was adopted core,
+    whole. Its Presence invariant ("all core artifacts exist") is not vacuous for file
+    existence — but `ROADMAP.md`, `BACKLOG.md`, `DECISIONS.md`, `GLOSSARY.md`,
+    `ARCHITECTURE.md`, `.mochiko/brainstorms/index.md`, and
+    `.mochiko/archive/backlog-trail.md` do not exist anywhere in the repository (confirmed by
+    directory listing — only `CLAUDE.md` and `README.md` sit at repo root). The module was
+    accepted but never scaffolded.
+14. **Fabricated/stale Evolution Notes section in the ledger.** The ledger's "Evolution notes"
+    section claims: "This constitution was created from brownfield analysis
+    (`.mochiko/memory/codebase-analysis.md`, 2026-09-08)" and marks Security/Testing/Error
+    Handling/Observability as "present... codified existing pattern." But
+    `governance-intent.md` states **Mode: greenfield** at the top, and no
+    `codebase-analysis.md` file exists anywhere under `.mochiko/memory/`. The synthesis's own
+    module-selections table correctly marks `evolution-notes` as "n/a — Greenfield," so this
+    section should not exist in the ledger at all; it appears to be leftover/template content
+    that was never stripped.
 
-## Advisory (non-blocking)
+## Advisory (judgment-grade, non-blocking)
 
-- None beyond the fidelity concerns already raised as blocking findings above.
-
-## Note on process
-
-The producer's hand-off claimed "every principle traced and closed... no placeholders... no
-waivers... I ran the checklist myself while writing." On inspection: a placeholder is present, a
-waiver is present and undisclosed at the synthesis level, and two principles regressed from
-measurable/enforced language in the ratified synthesis to vague, unenforceable language in the
-authored files — one of those two regressions reintroduces a defect the session's own review had
-already caught and resolved once. Self-review while authoring is not independent review; that's
-exactly why this floor exists.
+- GI-014's ledger rationale ("standard practice") is thin compared to every other principle's
+  concrete rationale — worth tightening but not a fidelity break.
+- The `mochiko:domain-registry` carve-out is absent from the region; this is very likely
+  correct for a first ratification with no prior carve-out to preserve, but confirm this wasn't
+  silently dropped.

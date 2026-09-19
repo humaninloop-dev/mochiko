@@ -1,14 +1,13 @@
-I've completed the devils-advocate completeness review and written it to `review.md`.
+I've completed the review and written it to `review.md`. Summary of what I found:
 
-**Verdict: critical-gaps.** Key findings, most severe first:
+**Verdict: critical-gaps** (11 Critical, 5 Important findings)
 
-- **Material divergence (auto-FAIL trigger):** the package invents a whole unproposed capability — an availability-forecast endpoint, a `Notification` entity, and references to "US-5"/"FR-009" — none of which exist in the spec or the sufficiency report's approved gaps.
-- **G-01 missing:** no endpoint for the marina queue view (US-4/FR-006) — and US-4 has zero cycle coverage in tasks.md, which even admits it ("Stories covered: US-1, US-2, US-3").
-- **G-04 missing:** no NFR target was ever recorded for the SC-002 offer-issue latency, despite the sufficiency report requiring it.
-- **Constraint violation:** D-005 picks Redis for hold-expiry, justified by a false claim ("Redis already in the stack for sessions" — sessions are actually PostgreSQL per D-002/AX-001), and this directly violates the blocking one-datastore constraint (C-003) with no AX-002 sign-off.
-- **Adopt-first failure:** D-004 (locking) names no shelf candidate at all and compares against zero real alternatives.
-- **Broken test oracle:** Cycle 3's assert requires the *wrong* behavior — it expects the next offer 24h after decline, when FR-005/US-3 require it immediately.
-- **Format violation:** Cycle 2 embeds a pre-written file-path task list, which the cycle-card grammar forbids regardless of its rung-5 self-disclosure.
-- Also flagged: an unclassified PII field (`contactEmail`), two "required" sweeper jobs with no build traceability, missing FR-002 (leave) test coverage, and a missing accept-offer failure-mode/error-response set.
+The most significant issues:
+- **Scope swap**: the P2 story US-4 (marina staff queue view, explicitly named in the sufficiency report's G-01 gap) was dropped entirely, while an unsourced capability — a "US-5"/"FR-009" availability-forecast endpoint that appears nowhere in the spec — was added in its place.
+- **Constraint violation**: D-005 introduces a new Redis instance for hold-expiry, violating the blocking one-datastore constraint (C-003) without the required AX-002 sign-off — and its rationale ("Redis is already in the stack for sessions") is factually false against the baseline (sessions live in Postgres).
+- **Adopt-first failure**: D-004's locking decision names zero alternatives and claims no shelf candidate exists, directly contradicting the sufficiency report's own note that pg-boss singleton keys were already an adopt-first-answerable option.
+- **Core mechanism gap**: the entire "berth frees" trigger (FR-003) has no modeled path, since the product baseline explicitly has no cancellation flow yet (FEAT-034 pending) — Cycle 2's test simulates this with a raw SQL hack.
+- **Unresolved sufficiency gap**: G-04 (the SC-002 60s latency target) was never given a concrete NFR row as directed.
+- Plus PII/sensitivity gaps, missing 402/409 responses and failure-mode docs on the accept endpoint, an unresolved `[NEEDS CLARIFICATION]` marker, and a pre-written task list in tasks.md.
 
-I also added a separate, clearly-marked informational section for the requirements analyst noting spec-level gaps (e.g., no FR backs the "notified" clause in US-2, no handling for a missing saved payment method, the marketing-consent question surfacing only at design time).
+I also flagged four spec-level gaps for the requirements analyst (release-trigger ambiguity, missing notification FR, unstated concurrent-entry rules, unspecified expiry notice) in a separate section, without folding them into the verdict.

@@ -1,5 +1,15 @@
-I've written the full validation to `validation-result.md`. Verdict: **FAIL**.
+I've completed the independent validation and written the full result to `validation-result.md`. Verdict: **FAIL** (33/55 checklist items passed).
 
-The set has six critical, cross-artifact-verifiable defects — most urgently for a two-week launch: the PCI-evidence release gate and the ASV-scan waiver directly contradict each other (the launch promotion can't pass its own gate), an unwaivable legal-mandate obligation sits in the waiver table despite the ledger's own text banning exactly that, the ratified stamp drops pci-dss from its module list, a principle (British English) was minted that the ratified synthesis explicitly excluded, the founder's own quantified page-speed requirement was shipped as an unenforceable "SHOULD load quickly," and the cardholder-data rules file doesn't cover `src/checkout/` — the path where the raw card number actually lives.
+Key findings, in order of severity:
 
-Notably, two of the four anti-patterns found fall exactly in the category the producer's hand-off note said not to bother checking. `docs/engineering-norms.md` has no conflict with the governance region and needs no changes. Full findings and a priority-ordered fix list are in the file for the lead.
+1. **Illegal waiver** — GI-012 waives the PCI-DSS quarterly ASV scan, but pci-dss is a legal-mandate module and such obligations are unwaivable (D4.2). The set even contradicts itself: the ledger and release-gates table both describe that same ASV report as actively enforced elsewhere.
+2. **False "no waivers" claim** — the producer's own trace-summary manifest says "Waivers: none," which is false against its own ledger. This directly contradicts the hand-off note.
+3. **pci-dss missing from the ratified stamp** in `CLAUDE.md`, despite being attached in the ledger and synthesis — contradicts "all three modules landed and stamped."
+4. **A minted principle (GI-016, British English) traces to something the founder explicitly excluded from governance** — inverts a ruling rather than realizing one.
+5. **Unfilled placeholder trace ID** (`GI-XXX`) on the accessibility principle, and a **duplicate GI-004** used on two separate principle lines.
+6. **The cardholder-data rules file doesn't cover `src/checkout/`**, where the PAN first lands — a gap the session review already caught and claimed to fix, but which never reached the actual rules file.
+7. **Coverage threshold drift** (70% blocking vs. the ratified "≥60%, no session override").
+8. **Knowledge-management's core documents were never scaffolded** — no `BACKLOG.md`, `ROADMAP.md`, `DECISIONS.md`, `ARCHITECTURE.md`, `GLOSSARY.md`, or brainstorms index exist, though a rules file already injects rules pointing at them.
+9. A missing **Exception registry** section and a missing **Rationale** on the PCI-DSS ledger entry.
+
+I also reviewed the producer's dismissal of the anti-pattern table and found it wrong on the merits (a vague principle and excess governance both turned up), and checked `docs/engineering-norms.md` — it's correctly out of scope as informal notes, and has no conflicts with the ratified governance.

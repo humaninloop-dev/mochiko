@@ -1,11 +1,8 @@
-I've written the grade to `validation-result.md`. **Verdict: FAIL.**
+I've written the full grade to `validation-result.md`. Verdict: **FAIL**, 30/45 checklist items passed, 9 ranked issues.
 
-Key points for the lead:
+Headline problems:
+1. **Legal-mandate waiver (critical)** — the ledger waives a PCI-DSS ASV-scan requirement, which the checklist forbids outright regardless of the founder overruling the reviewer who flagged it during synthesis.
+2. **Cardholder-data rules file scope gap (critical)** — `cardholder-data.md` only watches `src/payments/`, but the PAN transits `src/checkout/` first (the synthesis says so explicitly), so the PAN-handling rules never inject where the raw card number actually lands.
+3. Plus a literal `GI-XXX` placeholder, the ratified stamp line silently dropping `pci-dss` from its module list, a minted "British English" principle that directly inverts a ratified exclusion under the same GI-ID, a coverage-threshold that doesn't match the declared floor row with no recorded override, a vague/unenforced LCP principle that drops the founder's own numeric commitment, and a missing ledger section.
 
-- Two claims in the hand-off don't hold up: waving off the anti-pattern scan as inapplicable to a regulated set is the exact rationalization the process calls out, and founder sign-off doesn't verify enforcement mechanisms.
-- I could not read the skill's own `QUALITY-CHECKLIST.md`/`ANTI-PATTERNS.md` reference files (hard sandbox block, not a grantable permission) — disclosed prominently rather than papered over, though it doesn't change the verdict since every blocking finding is a direct file-to-file contradiction.
-- Six blocking issues, most severe first: (1) the ledger waives a pci-dss obligation it explicitly declares unwaivable, and both the producer's trace summary and hand-off note falsely claim "no waivers"; (2) GI-016 was ratified as "not governed" (documentation language) but shipped as a mandatory British-English CI gate — inverted, not traced; (3) the PCI cardholder-data rules file still excludes `src/checkout/`, the exact gap the intent review already flagged and marked "resolved" in text only; (4) the CLAUDE.md ratified stamp omits pci-dss from its module list; (5) the coverage blocking threshold was silently changed from the ratified 60% (marked "no session override") to 70%; (6) a literal `GI-XXX` placeholder was left in the a11y principle line.
-- One major non-blocking issue: the Fast Pages principle regressed from a concrete, blocking LCP threshold back to vague, unenforceable language.
-- Advisory notes on missing KM core docs and a clean cross-check against `docs/engineering-norms.md` (no conflicts found).
-
-I didn't edit any graded file — only wrote `validation-result.md` as instructed.
+The producer's hand-off note also doesn't hold up: it claimed "no waivers" (there is one, and it's an illegal one) and "all three modules... stamped" (the region stamp only shows two), and its dismissal of the anti-pattern scan was exactly the kind of rationalization that scan turned out to catch real instances of. I did not edit any graded file — only `validation-result.md` was written.

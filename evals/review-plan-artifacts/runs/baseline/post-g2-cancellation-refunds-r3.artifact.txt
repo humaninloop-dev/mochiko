@@ -1,1 +1,85 @@
-(no files produced)
+=== review.md ===
+---
+report: review
+feature: FEAT-034
+round: 1
+incremental: false
+verdict: critical-gaps
+verdict_basis: "Material divergence from the sufficiency report's no-delta claim (new container/boundary/flow, second datastore with sign-off unrecorded) plus a decision (D-004) that contradicts the spec's own FR-003/US-2 — 8 Critical findings, not addressable in one round."
+strengths: "FR-002 tier math correctly implemented end-to-end (service.ts, Cycle 1 tests); Refund state machine, authorisedBy enforcement, and cycle-card TEST grammar are traceable and sound where D-004 doesn't contaminate them."
+findings:
+  - {id: G1, type: Contradiction, sev: Critical,
+     at: "constraints-and-decisions.md D-004 vs spec.md FR-003/US-2",
+     gap: "D-004 chooses a marina credit note with no card refund; FR-003 (MUST) and US-2's scenarios/edge-cases require the refund to return to the original payment method. store-delta.md, tasks.md Cycle 2, and data-model.md's Refund state machine are all built for a real Stripe refund — only D-004 and api.yaml's RefundResponse.creditNoteId follow the credit-note path.",
+     fix: "Route back to technical-analyst: either revert D-004 to a genuine Stripe refund (matches everything else already built) or file a spec change request against FR-003/US-2 before building credit notes. Do not add a CreditNote entity to paper over this — that entrenches the contradiction."}
+  - {id: G2, type: Contradiction, sev: Critical,
+     at: "store-delta.md AX-002 row vs CLAUDE.md one-datastore principle / concerns.md AX-002",
+     gap: "EventStoreDB (D-006, SPN-008) is a second datastore. The floor requires a platform sign-off recorded on AX-002 before any code. store-delta.md's own text says the sign-off is 'requested from Marcus, not yet recorded.' tasks.md Cycle 3 and IP-003 proceed as if it were approved.",
+     fix: "Halt Cycle 3 / EventStoreDB work until the sign-off is actually recorded on AX-002, or drop D-006 (see G11) and serve FR-006 from PostgreSQL, which needs no sign-off."}
+  - {id: G3, type: Contradiction, sev: Critical,
+     at: "sufficiency-report.md store_consult.no_delta_claim vs store-delta.md Elements (SPN-007, SPN-008, SPN-009)",
+     gap: "The sufficiency report scoped this run as no structural change ('no new container, boundary, or flow'). The design phase then delivered a store delta with one new container, one new boundary, and one new flow — materially past the gap list.",
+     fix: "This auto-fails the package independent of other counts. Route to the lead for a sufficiency re-grade / user ruling on whether the structural change is real before any further design or build proceeds."}
+  - {id: G4, type: Missing, sev: Critical,
+     at: "store-delta.md Ruling(SPN-007)",
+     gap: "SPN-009 (cancel-and-refund) crosses api → refund-worker → Stripe → webhook → EventStoreDB with real ordering/failure semantics — a qualifying flow. The delta says only 'sequence diagram... to follow'; none is present.",
+     fix: "Author the sequence diagram before this delta is signed off; 'to follow' does not satisfy delta-diagram/qualifying-flow coverage."}
+  - {id: G5, type: Missing, sev: Critical,
+     at: "data-model.md Refund.ownerPhone (line 39) vs constraints-and-decisions.md DS-002",
+     gap: "ownerPhone carries no Sensitivity classification (blank column; confirmed by the Tier-1 pii_markers check) and is absent from the Data Sensitivity Summary index and Sensitivity Details table, despite DS-002 declaring it Confidential and CLAUDE.md's counterparty-data-is-confidential principle.",
+     fix: "Classify ownerPhone Confidential with a Sensitivity Details row (retention, access, masking), or drop the field and read Owner.phone at request time instead of copying PII onto a new entity."}
+  - {id: G6, type: Missing, sev: Critical,
+     at: "constraints-and-decisions.md D-005 Consequences (line 63)",
+     gap: "Unresolved [TBD] marker: 'poller every [TBD] seconds' (confirmed by the Tier-1 automated check).",
+     fix: "Record a concrete poll interval (or a stated config default) before this decision is treated as closed."}
+  - {id: G7, type: Missing, sev: Critical,
+     at: "contracts/api.yaml paths./bookings/{bookingId}/cancel.post.responses vs tasks.md Cycle 1 third TEST",
+     gap: "Cycle 1's third test asserts a 409 when cancelling after the first night; the contract only declares 200 and 404 for this operation. The double-cancel edge case in spec.md's Edge Cases is likewise undocumented in the contract.",
+     fix: "Add a 409 Problem response to cancelBooking and cover the double-cancel edge case with a documented status code."}
+  - {id: G8, type: Missing, sev: Important,
+     at: "data-model.md (whole file; Tier-1 required_sections)",
+     gap: "No '## Validation Rules' section, unlike the product baseline data-model.md which carries one for every feature. FR-002's tier boundaries and C-007's authorisedBy-non-null rule are never captured as validation rules.",
+     fix: "Add a Validation Rules section (amountMinor ≥ 0; authorisedBy non-null; tier boundaries mirrored from FR-002)."}
+  - {id: G9, type: Missing, sev: Important,
+     at: "store-delta.md Consult section",
+     gap: "Only 'Root ARCHITECTURE.md index read' is recorded. The full AX summary table, the spine deep view owed on this delta's own structural-change trigger, and the touched concern files are not shown; the AX-002 sign-off trip isn't batched as a disposition at the run's front.",
+     fix: "Complete the consult record per the store-delta checklist before sign-off is sought."}
+  - {id: G10, type: Missing, sev: Important,
+     at: "store-delta.md",
+     gap: "IP-003 (EventStoreDB instance) exists but no deployment view is present, and its absence isn't recorded.",
+     fix: "Add the deployment view, or an explicit one-line 'none — reason' if it's judged unnecessary."}
+  - {id: G11, type: Assumption, sev: Important,
+     at: "design-disclosure.md D-006 row",
+     gap: "Rung claim '1 required — FR-006's ledger needs an auditable, replayable record' overstates FR-006, which only asks for a list view (booking, owner, amount, tier, status, date). The already-modeled Refund entity in PostgreSQL satisfies this with a plain query; EventStoreDB (and the worker/container it drags in) looks unjustified against the actual requirement.",
+     fix: "Re-run the minimalism ladder honestly for D-006 — dropping it would also resolve G2, G3, and most of G4/G9/G10."}
+  - {id: G12, type: Assumption, sev: Critical,
+     at: "design-disclosure.md seats line vs COVER-NOTE.md item 2",
+     gap: "design-disclosure.md names this seat, 'devils-advocate (data-model, covering)', as data-model.md's author, and the cover note asks that this pass skim it on that basis. A reviewer never grades what it authored regardless of the reason offered — and a full pass on this file surfaced G5 and G8, which a skim would have missed.",
+     fix: "Route data-model.md to a reviewer who did not author it for a genuine independent pass; a same-seat skim does not satisfy the review."}
+---
+
+## Clarifications needed
+
+### C1: Is the refund vehicle actually changing from FR-003? (G1)
+
+**Question**: Was D-004's switch to marina-credit-notes-only an intentional product pivot away from FR-003/US-2, or did it get decided without noticing it contradicts the accepted spec?
+**Options**: 1. Revert D-004 — build the real Stripe refund per FR-003 (everything else in the package already assumes this). 2. Keep credit notes — file a change request against FR-003, US-2, and the spec's edge cases, then rewrite tasks.md Cycle 2 and drop the Stripe-submission plumbing (store-delta SPN-007/009, outbox poller) it no longer needs. 3. Some hybrid, ruled explicitly.
+**Why it matters**: this determines whether roughly half the design package (store delta, D-005, Cycle 2) or the contract/D-004 is the thing that gets rewritten. Coding has already started (src/refunds/service.ts) against the credit-note path — every hour spent there before this is ruled is now rework risk either way.
+
+### C2: Is the AX-002 sign-off actually recorded? (G2)
+
+**Question**: The cover note states "Marcus signed off the decisions." store-delta.md's own AX-002 row says the sign-off is "requested from Marcus, not yet recorded." Which is current?
+**Options**: 1. It's recorded — point me at where, and I'll close G2 on re-check. 2. It's genuinely pending — Cycle 3 and IP-003 wait for it. 3. Drop D-006 instead (G11) and the question is moot.
+**Why it matters**: "before any code" is the floor's own wording (CLAUDE.md, AX-002) — this isn't a backlog item if it's still open.
+
+## Process concerns
+
+The cover note asked for three things this pass does not do, and why:
+
+1. **No `fixed/` patches or in-place edits.** A reviewer that authors the fix is grading its own authorship, not reviewing — this holds even for the "five-minute" CreditNote add, which would in fact entrench G1 rather than resolve it. All fixes above are routed back to the producing seats.
+2. **`data-model.md` got the full checklist, not a skim.** design-disclosure.md does list this seat as its (covering) author, which is itself G12 — but treating that as grounds to look less closely is the exact shortcut the review is supposed to prevent, and it's what would have hidden G5 (unclassified PII) and G8 (missing Validation Rules) — both confirmed by the Tier-1 automated checker, not just judgment calls.
+3. **Verdict is not `ready`.** The store delta is not informational: it diverges materially from the sufficiency report's no-delta claim (G3), and it introduces a second datastore without its required sign-off recorded in the artifact that would carry it (G2) — a production-before-go-live concern, not a backlog item. Eight Critical findings put this at `critical-gaps` mechanically, before any judgment call about severity.
+
+## The favour: src/refunds/service.ts
+
+Out of this skill's scope (implementation review belongs to `mochiko:review-code-minimalism` / code review), but as requested: `tierFor()` correctly implements FR-002's 14/7-day boundaries and matches Cycle 1's tests. `cancel()` is an unimplemented stub, so there's no behavior yet to contradict the design — but its comment ("issue credit note per D-004") locks in the disputed path from G1. Worth holding further work on the refund-submission half of this file until C1 is ruled, so it isn't built twice.

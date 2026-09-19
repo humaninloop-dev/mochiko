@@ -361,3 +361,92 @@ session cap (18 sessions ≈ US$ 10; the nine `noskill` sessions stand).
   reviews before counting it — if a compliant review still fails it, the assertion is re-cut, not
   the skill.
 - kit status: **VOID — re-run pre/post under `--add-dir`; returned to the user for the session cap.**
+
+### Addendum — re-run under the fixed runner, filled 2026-09-19
+
+Fills the **VOID** above. `pre` and `post` re-ran on the same `runs/baseline` with the
+reference workspace reachable; the nine `noskill` sessions carried over. The run was stopped
+from outside once and resumed by stored entry, and the binary was rebuilt between the halves —
+the pins are identical across every session of each arm, which rules that out as a contaminant.
+
+- provenance: `pre` at `475c955` (plugin 0.86.0, no delivery lines at that ref) · `post` pinned
+  to `7ac0b9c` (plugin 0.108.0, rendered rules `04a604ef226fe7ea`, 14,347 chars) · judge
+  `ed46faa8c200be51` · session model sonnet · 27 sessions, replicates 3.
+- validity: **27/27 valid, 0 invalid**; judge parse failures 0; truncations 0.
+- **assertion re-read (pre-registered above): the severity regex is vindicated — do not re-cut
+  it.** It passed on all nine `pre` and all nine `post` reviews here, and failed 9/9 under
+  `noskill`. Its failure in the void run was the missing reference directory, not the shape.
+- deterministic layer: **`pre` 8/9 clean sessions · `post` 8/9 · `noskill` 0/9** (80 of 81
+  assertions pass on each skill arm; 33 of 81 on the control). The one `post` miss is g2 r2,
+  which edited five FEAT-034 files — the patched-copy failure mode this kit exists to watch.
+  The control fails the severity shape 9/9, the verdict line 8/9, writes no `review.md` 6/9,
+  and emits a patched-copy phrase 6/9.
+- judged coverage read: **`pre` 11/36 · `post` 11/36 live rules held. Floors `pre` 7/11 ·
+  `post` 5/11.** The runner marks `post` KILLED on five lost rules, three of them floors
+  (`author-grader`, `letter-is-spirit`, `evidence-floor`).
+- band (invited pairs; all-pairs in parentheses): **`post` 32/87 = 36.8 %** (36/108) · **`pre`
+  40/87 = 46.0 %** (43/108) · `noskill` 10/87 = 11.5 % (17/108). Both skill arms sit at roughly
+  twice the 20 % cap; 25 of 36 rules flake somewhere on `pre` and 27 of 36 on `post`, and no
+  rule fails everywhere.
+- budget: **US$ 17.41** (client-side estimate); judge spend unmetered.
+- ship bar (a) floors / (b) ≤ 2 non-floor musts / (c) ≤ 15 % / (d) every floor tempted:
+  **unreadable** / **unreadable** / **NOT met (36.8 %)** / met at authoring.
+
+**Kit status: HALTED — the judged layer is unreadable, and the KILLED verdict must not be acted
+on.** By this file's own rule an arm above its band yields no `pre`/`post` difference, and both
+arms are far above it, so the five lost rules and three lost floors are not findings about the
+skill. **No strips-path re-add decision arises from this run, in either direction.**
+
+The diagnosis is the control arm: at 11.5 % it is the *stable* arm here, while both skill arms
+run three to four times noisier. A control that steady rules out judge-wide instability and
+points at the skill arms' own output — long, structurally varied review artifacts the binary
+coverage judge scores differently run to run. That is an instrument problem on this kit, not a
+regression in the skill.
+
+The pre-registered remedy does not fit this breach. One extra replicate per arm, once, is sized
+for an arm a few points over its band; bringing 36.8 % under 15 % is not a sampling problem, and
+on the review-specifications kit the same remedy raised both shares rather than lowering them.
+Spending it here would cost nine more sessions for a near-certain second halt.
+
+Three honest options for the user, cheapest first:
+
+- **Accept the deterministic read and close the judged layer as unreadable.** The scripted
+  layer already separates the skill from the bare model decisively (8/9 and 8/9 against 0/9),
+  and that layer is what the kit's assertions were built to carry. Cost: nothing further.
+- **Re-key the judged layer, then re-run** (≈ US$ 17 per pass). The candidates, in order: a
+  kit-readings channel for the skill judge, the same gap review-specifications hit; smaller
+  judge chunks for this kit's longer artifacts; or sharpening the rule texts the judge scores.
+  This is the only path that makes the coverage layer readable.
+- **Spend the extra replicate anyway.** Pre-registered, ≈ US$ 10, and on this evidence very
+  likely to halt again.
+
+Counting rule for the stopping clause: this run is the kit's first *readable-instrument*
+failure, not a re-key. Two consecutive re-keys without a detectable control would return the
+target to the user; that budget is untouched.
+
+### Ruling — user, 2026-09-19
+
+**Deterministic layer accepted; judged layer closed as unreadable; no re-key, no extra
+replicate.** The user took the first of the three options, so the kit closes here at US$ 17.41
+with no further sessions authorised.
+
+What the acceptance carries:
+
+- The scripted layer is the read: `pre` 8/9 and `post` 8/9 clean sessions against `noskill`
+  0/9, 80 of 81 assertions on each skill arm against 33 of 81 on the control. On that layer the
+  skill plainly works and the bare model plainly does not.
+- The judged coverage layer is **recorded as unreadable for this kit** — both arms at roughly
+  twice the cap, 36.8 % and 46.0 %. Ship bars (a) and (b) stay **unreadable**, not met and not
+  breached.
+- **The runner's KILLED verdict is void as a finding.** The five lost rules and three lost
+  floors came from the unreadable layer and are not claims about this skill. **No strips-path
+  re-add arises; none taken.** A later edit that wants to revisit any of those five needs a
+  readable instrument first.
+- The diagnosis stands on the record for whoever re-keys this kit: the control arm is the
+  steady one at 11.5 %, which points at the skill arms' own long, structurally varied review
+  artifacts rather than at judge-wide instability. The re-key candidates stay listed above.
+- The severity-regex assertion is vindicated and stays uncut.
+
+Status: **accepted on the deterministic layer — closed.** The stopping-rule budget is
+untouched: this run was a first instrument failure, not a re-key.
+
