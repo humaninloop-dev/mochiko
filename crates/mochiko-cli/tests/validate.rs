@@ -1097,8 +1097,9 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     let state = shipped_state();
     // 50 through wave 6; `0005-artifact-homes` added twenty `home` documents and three templates;
     // `0008-gate-form` imported the `validation-primitive-edit` skill (2026-09-19
-    // author-grader-consolidation D7).
-    assert_eq!(state.docs.len(), 74, "the schema class is 74 files");
+    // author-grader-consolidation D7); `0009-plan-qa-leg` imported `review-seat-plan`
+    // (2026-09-03 producer-plan-enforcement D8).
+    assert_eq!(state.docs.len(), 75, "the schema class is 75 files");
 
     let census = census(&state);
     let (command_rules, command_floors) =
@@ -1115,11 +1116,15 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // twenty-two skill rules — one on `patterns-model-tiering` and twenty-one in the imported
     // `validation-primitive-edit` document, eleven of those floors. `common.gate-loop-bound` is a
     // block in the existing command-common library, so it mints no document and falls outside both
-    // rule counts. The fail set does not move.
+    // rule counts. The fail set does not move. `0009` (the plan-QA leg, 2026-09-03
+    // producer-plan-enforcement D8) imports one skill document, `review-seat-plan`, carrying
+    // fifteen rules of which five are floors; every other op it carries is a `reword-rule`,
+    // which keeps its rule's id, class and section and so mints nothing. The command figures
+    // and the fail set hold; only the skill side moves.
     assert_eq!(command_rules, 329, "live command rules");
-    assert_eq!(skill_rules, 738, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1067, "live rules in total");
-    assert_eq!(skill_floors, 252, "skill floors");
+    assert_eq!(skill_rules, 753, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1082, "live rules in total");
+    assert_eq!(skill_floors, 257, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
     // sentence), so the declared floors were 110 — the same figure the shipped checker reported —

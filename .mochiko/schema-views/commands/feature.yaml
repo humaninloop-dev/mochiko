@@ -276,8 +276,9 @@ sections:
         class: must
         text: >-
           Wherever a seat produces (delta card, baseline-delta.md, grooming proposal), no output
-          is cleared by its author; a producing seat plans first and works only on a plan you
-          approved.
+          is cleared by its author; a producing seat plans first, read-only, in a plan-only
+          dispatch, and works only on a plan a fresh peer of its persona type passed per
+          `mochiko:review-seat-plan` and you approved.
       - id: feat.advisory-front-door
         labels: [scope-entry]
         class: must
@@ -392,11 +393,11 @@ sections:
         class: floor
         text: >-
           A judgment-authored write to a governing surface obliges the loop: a seat produces on a
-          plan you approved, an independent non-author seat reviews before the user's gate — the
-          user's ruling alone never substitutes for the review leg — and every desk delta card,
-          bug and improvement alike, takes that review leg before dispatch. Trigger test,
-          exemptions, seat wiring, and disclosure: mochiko:patterns-sound-loop, referenced never
-          restated.
+          plan a fresh peer passed and you approved, an independent non-author seat reviews before
+          the user's gate — the user's ruling alone never substitutes for the review leg — and
+          every desk delta card, bug and improvement alike, takes that review leg before dispatch.
+          Trigger test, exemptions, seat wiring, and disclosure: mochiko:patterns-sound-loop,
+          referenced never restated.
         pointer: mochiko:patterns-sound-loop
         anchor: 2026-08-13 charter-ritual-balance
       - id: feat.transport-floor

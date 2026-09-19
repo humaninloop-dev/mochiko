@@ -508,6 +508,12 @@ PROBE_ARGUMENTS = {
         ".mochiko/specs/probe/",
         "Completeness grader over the design-phase output package the caller supplies.",
     ),
+    "review-seat-plan": (
+        "the P1 schema seat's plan",
+        "Grades a producing seat's plan before its work is spent. The plan arrives verbatim in "
+        "the grader's brief rather than as a file (producer-plan-enforcement D2), so there is no "
+        "artifact path to name and the argument is free text identifying the seat.",
+    ),
     "review-specifications": (
         ".mochiko/specs/probe/spec.md",
         "Gap-finder over an already-drafted spec; the argument is that spec.",

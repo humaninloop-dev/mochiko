@@ -157,7 +157,8 @@ log by construction, so schema-content edits take no strip entry. The human-read
      (`protected-exit`, `anchor-format`), **[judgment]** for whether the cited ruling covers it. A
      `floor`-class rule leaves only by recorded
      supersession-by-ruling; an `advisory`-class rule may change without the ceremony.
-  6. **Substance across the pair** — **[judgment]**. Plan approval before any producing seat works ·
+  6. **Substance across the pair** — **[judgment]**. A producing seat's plan graded by a fresh peer
+     per `mochiko:review-seat-plan` and approved by the lead only on PASS before it works ·
      author ≠ grader independence (no self-grading seat row) · decisions reserved to the
      user, carried in `<cmd>.sec.reserved` · bindings complete — paths, templates, entry
      condition — in `<cmd>.sec.tools` and the Entry step · the non-waivable floor in

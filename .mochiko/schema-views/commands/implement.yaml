@@ -119,8 +119,8 @@ sections:
         labels: [independence, scope-entry]
         class: must
         text: >-
-          Design seats author exactly the named gaps, nothing more, each on a plan you approved
-          — rung-justified per the pointer skill.
+          Design seats author exactly the named gaps, nothing more, each on a plan a fresh peer
+          passed and you approved — rung-justified per the pointer skill.
         pointer: mochiko:patterns-plan-minimalism
       - id: impl.builder-never-designs
         labels: [independence, seats]
@@ -137,7 +137,7 @@ sections:
         class: must
         text: >-
           Builders decompose each card into concrete tasks at build time, disclosed in the cycle
-          report, and build test-first — on a plan you approved.
+          report, and build test-first — on a plan a fresh peer passed and you approved.
       - id: impl.seat-verification-independence
         labels: [independence, seats]
         class: must
@@ -613,8 +613,11 @@ sections:
         labels: [seats, independence]
         class: must
         text: >-
-          Every seat that writes code or artifacts plans first and works only on a plan you
-          approved; grading, verification, and fact-finding seats are exempt.
+          Every seat that writes code or artifacts plans first, read-only, in a plan-only
+          dispatch, and stops; a fresh peer of its persona type — a generic seat for a
+          persona-less producer — grades the plan per `mochiko:review-seat-plan`, and you
+          approve only a passed plan and resume the seat to work; grading, verification, and
+          fact-finding seats are exempt.
       - id: impl.escalation-batching
         labels: [user-gate, reporting]
         class: must
@@ -771,9 +774,10 @@ sections:
         class: floor
         text: >-
           A judgment-authored write to a governing surface obliges the sound loop: a seat produces
-          on a plan you approved, an independent non-author seat reviews, the user rules. This
-          run's seat wiring already carries it end to end.
+          on a plan a fresh peer passed and you approved, an independent non-author seat reviews,
+          the user rules. This run's seat wiring already carries it end to end.
         pointer: mochiko:patterns-sound-loop
+        anchor: 2026-09-03 producer-plan-enforcement D8
       - id: impl.transport-floor
         class: floor
         when: {seats: multi}

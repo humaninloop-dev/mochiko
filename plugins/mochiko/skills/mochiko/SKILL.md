@@ -124,6 +124,11 @@ human adjudicates; the reviewer's verdict never clears anything by itself.
 |-------|------------|
 | `validation-primitive-edit` | running the **primitive-edit gate audit** — the binary PASS/FAIL a shipped `plugins/mochiko/` primitive takes before the `plugin.json` bump that ships it (GI-004). The unit is keyed by kind (command pair · skill pair · prose primitive · schema content) and the judgment items follow it; the deterministic pre-pass is run first-hand by the grader and quoted, never relayed from the brief; the verdict block carries the evidence-read line (absent ⇒ FAIL) and one outcome line goes into the record of the landing. Carried by a **plain fresh seat with an explicit `model:` alias**, never the editor, one seat per wave; a FAIL allows one fix and one re-audit by the same seat resumed, a second FAIL goes to the user. Not the input-job `review-*` families, and not setup's governance surface set (`validation-constitution`) |
 
+### Seat-plan QA (model-invoked — every producing seat's plan-only dispatch, all six commands)
+| Skill | Reach when |
+|-------|------------|
+| `review-seat-plan` | grading a **producing seat's plan** before the lead approves it and resumes that seat to work — the plan-only dispatch of sound-loop leg 1. The plan arrives verbatim in the grader's brief, never a summary and never a persisted file; every claim it makes about the tree is checked against the tree. Seven items: scope fidelity · write set declared and disjoint · reads named · rung claims present (design seats) or the test named first (builders) · stops and hand-offs named · no self-clearing step · size bound (advisory) — 1–6 blocking, and a FAIL cites the item and gives the fix. Carried by a **fresh peer of the author's persona type** — a fresh generic seat for a persona-less producer — never the author's context, never the lead; after a FAIL the same grader seat is resumed to re-grade. The verdict returns as `PLAN GRADE: <seat> · PASS|FAIL · <items failed: fixes>` and the lead carries it into the disclosure line's `plans:` segment. Approval is the lead's, and the grade is additive to sound-loop leg 2, never a substitute |
+
 ### Entry point (user-invoked — you run it)
 | Command | Reach when |
 |---------|------------|

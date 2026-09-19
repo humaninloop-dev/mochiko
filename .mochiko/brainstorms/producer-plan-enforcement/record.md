@@ -6,7 +6,7 @@ Delivery Manager reviewing the plan. Driver ask (user, 2026-09-03): "how we can 
 author to use native plan mode that claude provides to plan and the grader and delivery
 manager to QA the plan."
 
-**Status:** accepted (2026-09-03) — build pending: wave 1 (plan-QA leg) · wave 2 (validator retirement, gated on wave-1 figures)
+**Status:** accepted (2026-09-03) — **wave 1 (plan-QA leg) BUILT 2026-09-19 at v0.112.0** as `author-grader-consolidation` wave 2 (its D10 re-sequencing; migration `0009-plan-qa-leg`, skill `review-seat-plan`, `plans: P1:PASS(1) · P2:PASS(0) · P3:PASS(1)`; log and reports in that session's home; trail) · wave 2 (validator retirement) next as that path's wave 3, gate satisfied on the wave-1 figures
 **Opened:** 2026-09-03
 **Lead:** session lead (brainstorm charter, run inline in-conversation)
 

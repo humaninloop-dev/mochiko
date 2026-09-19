@@ -5,6 +5,58 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.112.0] — 2026-09-19
+
+**The plan-QA leg** (record `.mochiko/brainstorms/producer-plan-enforcement/record.md` D1–D9,
+landing set D8 items 0–4, 5′, 6–10; `DECISIONS.md` 2026-09-03 and 2026-09-19; sequenced by
+`author-grader-consolidation` D10 as its wave 2). Sound-loop leg 1 said the producing seat plans
+first and the lead approves, which let the lead clear a plan nobody else had read. It now reads:
+the seat plans read-only in a plan-only dispatch and stops, a fresh peer of its persona type
+grades the plan, and the lead approves only a passed plan and resumes the seat to work. The plan
+grade is **additive** to leg 2, never a substitute — the artifact the seat then produces is
+still graded by a non-author seat before the user's gate.
+
+New skill **`review-seat-plan`** (D4) — the plan-QA criteria as rules on the review six-set.
+Seven items (D5): scope fidelity · write set declared and disjoint · reads named · rung claims
+present for design seats, or the test named first for builders · stops and hand-offs named · no
+self-clearing step · size bound; 1–6 blocking, 7 advisory, and a FAIL cites the item and gives
+the fix. The plan is transient (D2) — it reaches the grader verbatim in the brief and is never
+persisted; the verdict returns as `PLAN GRADE: <seat> · PASS|FAIL · <items failed: fixes>` and
+the lead carries it into the disclosure line's new `plans:` segment. Delivery runs two ways
+(D4): the description triggers the skill, and every grader brief names it besides, because the
+grader's persona varies and a persona's preloaded `skills:` cannot carry it. After a FAIL the
+same grader seat is resumed to re-grade; the re-plan bound and the escalation stay the command's.
+
+Migration **`0009-plan-qa-leg.yaml`** (sequence 9) rewords `patterns-sound-loop.leg-1-seat-produces`
+(floor; id and pin unchanged, the verbatim prior text and the ruling anchor carried in the log as
+the supersession record), the disclosure-line grammar, `common.plan-approval-producers` and its
+three stubs, the command-local restatements on `architecture` · `feature` · `implement`, and
+`patterns-plan-minimalism.grading-routing`; it mints the `review-seat-plan` document.
+`.claude/rules/mochiko/primitive-edits.md` criterion 6 moves to the peer-graded standard (D8 item
+5′), so gate audits never grade against the retired rule. The router gains a Seat-plan QA table.
+Budget: birth-seed rows for the new skill on the ledger's fourth path — payload 12,701 (body
+3,534 + render 9,167), no headroom; description 839, disclosed above the ~500 family norm.
+
+This wave ran **under the leg it ships** (D9): every producer seat was spawned once with a
+plan-only brief, the tree snapshotted before and diffed after, a fresh peer graded each plan
+default-FAIL against D5's seven items, and the lead approved only a PASS before resuming the
+seat. Audited under the new gate form (`author-grader-consolidation` D3/D6/D7/D11) — one plain
+`general-purpose` seat with an explicit `model:` alias over every unit — and the
+`review-seat-plan` pair double-graded by a fresh `mochiko:validator` under the old form. Results:
+14 units, 14 PASS after one fix round (a `patterns-sound-loop` budget overage from the two floor
+rewords, restamped ruled-HOLDS); the double-graded pair PASS under both forms — old form 4
+non-blocking findings, new form 0 — and first-turn cache-creation 22,404 (persona, one unit) vs
+27,634 (plain seat, 13 units): no instantiation saving from dropping the persona; the saving is
+one seat per wave (D11). Plan-QA figures: three producers, two first-round FAILs (both traced to
+late lead rulings), each repaired in the one re-plan round; no dirty tree; the D8 item-7 watch
+tripped on the count and the user ruled continue. Gates: `mochiko-cli migrate validate` 0
+rejecting · 106 advisory (+1, the new skill's budget line) · views ≡ replay (content hash
+identical across a fresh emit) · `cargo test -p mochiko-cli` 472 green (fixtures re-keyed to
+sequence 9) · fmt · clippy · audit · full-corpus similarity sweep 48/48 (four allowlist rows) ·
+**contract suite 91/91** (one full sandbox run, 91 ran, 303 measurements recorded and not
+asserted) · char-budget pre-assert (`patterns-sound-loop` restamped ruled-HOLDS 12,581, the
+`review-seat-plan` birth seed) · `plugin.json` and `marketplace.json` synced at 0.112.0.
+
 ## [0.111.0] — 2026-09-19
 
 **The primitive-edit gate form** (record

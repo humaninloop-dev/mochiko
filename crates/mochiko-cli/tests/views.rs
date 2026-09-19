@@ -265,8 +265,9 @@ fn every_emitted_view_matches_the_committed_one() {
     let state = replayed_state();
     let views = views::emit(&state);
     // 73 through `0007`; `0008-gate-form` imported the `validation-primitive-edit` skill
-    // (2026-09-19 author-grader-consolidation D7).
-    assert_eq!(views.len(), 74, "the corpus is 74 documents");
+    // (2026-09-19 author-grader-consolidation D7), and `0009-plan-qa-leg` imported
+    // `review-seat-plan` (2026-09-03 producer-plan-enforcement D8).
+    assert_eq!(views.len(), 75, "the corpus is 75 documents");
 
     let mut divergences: Vec<String> = Vec::new();
     for (relative, text) in &views {
@@ -295,7 +296,7 @@ fn every_emitted_view_matches_the_committed_one() {
     }
     assert!(
         divergences.is_empty(),
-        "{} of 73 views diverged — regenerate with `mochiko-cli views emit`:\n{}",
+        "{} of 75 views diverged — regenerate with `mochiko-cli views emit`:\n{}",
         divergences.len(),
         divergences.join("\n")
     );
@@ -337,9 +338,9 @@ fn the_committed_views_tree_holds_no_file_the_emitter_does_not_write() {
         "the committed views tree carries files the emitter does not write:\n{}",
         orphans.join("\n")
     );
-    // 74 since `0008-gate-form` (2026-09-19 author-grader-consolidation D7) — the count only
+    // 75 since `0009-plan-qa-leg` (2026-09-03 producer-plan-enforcement D8) — the count only
     // holds once the new skill's view is committed alongside the migration.
-    assert_eq!(found.len(), 74, "the committed tree is 74 views");
+    assert_eq!(found.len(), 75, "the committed tree is 75 views");
 }
 
 #[test]
@@ -443,8 +444,8 @@ fn emit_to_writes_only_under_the_out_directory() {
     let state = replayed_state();
     let written = views::emit_to(&state, &out).expect("the views write");
 
-    // 74 since `0008-gate-form` (2026-09-19 author-grader-consolidation D7).
-    assert_eq!(written.len(), 74);
+    // 75 since `0009-plan-qa-leg` (2026-09-03 producer-plan-enforcement D8).
+    assert_eq!(written.len(), 75);
     for path in &written {
         assert!(path.starts_with(&out), "{} escaped --out", path.display());
         assert!(path.is_file(), "{} was not written", path.display());

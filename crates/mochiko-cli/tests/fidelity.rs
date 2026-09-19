@@ -167,13 +167,13 @@ fn the_log_replays_into_a_deliverable_state() {
             .collect();
         panic!("the log is deliverable:\n{}", lines.join("\n"));
     });
-    assert_eq!(replay.state.docs.len(), 74);
+    assert_eq!(replay.state.docs.len(), 75);
     assert_eq!(
         replay.sequences(),
-        vec![1, 2, 3, 4, 5, 6, 7, 8],
+        vec![1, 2, 3, 4, 5, 6, 7, 8, 9],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
-         default key, 0008's gate form"
+         default key, 0008's gate form, 0009's plan-QA leg"
     );
 }
 
@@ -621,10 +621,16 @@ fn the_corpus_census_holds_through_the_log() {
     // and twenty-one in the imported `validation-primitive-edit` document, eleven of those
     // floors. `common.gate-loop-bound` is a block in the existing command-common library, so it
     // mints no document and falls outside both rule counts. The fail set does not move.
+    // `0009` (the plan-QA leg, 2026-09-03 producer-plan-enforcement D8) imports one skill
+    // document, `review-seat-plan`, carrying fifteen rules of which five are floors. Everything
+    // else it does is a `reword-rule` — on `patterns-sound-loop`, `patterns-plan-minimalism`,
+    // `common`, and six command-local rules — and a reword keeps its id, its class and its
+    // section, so it mints nothing. Both command figures and the fail set therefore hold, and
+    // only the skill side moves.
     assert_eq!(command_rules, 329, "live command rules");
-    assert_eq!(skill_rules, 738, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1067, "live rules in total");
-    assert_eq!(skill_floors, 252, "skill floors");
+    assert_eq!(skill_rules, 753, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1082, "live rules in total");
+    assert_eq!(skill_floors, 257, "skill floors");
     assert_eq!(command_floors, 117, "declared command floors");
     assert_eq!(fail_nodes, 36, "command fail nodes");
 }

@@ -40,8 +40,9 @@ sections:
         class: must
         kind: routing
         text: >-
-          `mochiko:review-plan-artifacts` grades the disclosed rung claims at review —
-          rung-honesty advisory, gap-list conformance blocking.
+          `mochiko:review-seat-plan` grades a seat plan's rung-claim presence — blocking on
+          presence; `mochiko:review-plan-artifacts` grades the design package's disclosed rung
+          honesty at review — advisory, gap-list conformance blocking.
   - id: patterns-plan-minimalism.sec.discipline
     title: Discipline — the walk's binding rules
     intent: >-

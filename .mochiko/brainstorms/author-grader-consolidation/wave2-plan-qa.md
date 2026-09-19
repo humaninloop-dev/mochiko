@@ -108,10 +108,11 @@ approve → execute · §4 audits · §5 gates · §6 landing.
    - `sec.reserved`: `.approval-is-the-leads` (floor, reservation, `[user-gate]`, anchor D6: the
      lead approves only a PASS and may bounce a PASS with feedback; a second consumption of the
      re-plan bound goes to the user — re-plan, re-staff, or narrow — never the grader's call).
-   Floors by construction: **6** (`author-grader` · `fresh-peer-grader` · `plan-verbatim` ·
-   `default-fail` · `approval-is-the-leads` + `evidence-floor`? — **no**: the plan is transient, so
-   `review-common.evidence-floor` is NOT extended; the verdict lands with the lead and in the
-   disclosure line). P1 confirms the pin from the render.
+   Floors by construction: **5** — `author-grader` · `fresh-peer-grader` · `plan-verbatim` ·
+   `default-fail` · `approval-is-the-leads`. `review-common.evidence-floor` is deliberately NOT
+   extended: the plan is transient, so the verdict lands with the lead and in the disclosure
+   line, not in a reviewed artifact. P1 confirms the pin from the render. *(Line corrected at the
+   P3 peer grade, which flagged the earlier self-contradictory count.)*
 7. stamp → validate --report (0 rejecting; clusters block) → views emit → `rules review-seat-plan
    --section preamble` (pin) → status → pre-registration edits → allowlist rows if reported.
 

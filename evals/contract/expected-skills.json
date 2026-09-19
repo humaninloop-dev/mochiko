@@ -1,5 +1,5 @@
 {
-  "provenance": "wave5-plan.md \u00a74.2 and cli-schema-delivery/wave5-p3-skills-plan.md \u00a73. Frozen from the render and the working tree before P2 converted any skill and before the wave's first session. Never edited after; a floor rule added or renamed later breaks the cross-check in `converted-shape` rather than regrading quietly. Re-keyed once since, and only for ids the log determines: the 2026-09-13 hook-enforced-artifact-schema wave added one `artifact-home` floor to each of eleven skills (`floor_ids` plus `floor_pin`), on the lead's licence, with the same move recorded in this directory's README floor-ids row. Re-keyed again by the 2026-09-19 author-grader-consolidation wave-1 ruling (D7): `patterns-model-tiering` gained one floor, and `validation-primitive-edit` joins the review family as a post-freeze member — born after this freeze, so no pre-conversion baseline exists for it and its four byte columns are 0 rather than measured. Every byte-size field of every pre-freeze row is still the freeze's own, and no other field has been touched.",
+  "provenance": "wave5-plan.md \u00a74.2 and cli-schema-delivery/wave5-p3-skills-plan.md \u00a73. Frozen from the render and the working tree before P2 converted any skill and before the wave's first session. Never edited after; a floor rule added or renamed later breaks the cross-check in `converted-shape` rather than regrading quietly. Re-keyed once since, and only for ids the log determines: the 2026-09-13 hook-enforced-artifact-schema wave added one `artifact-home` floor to each of eleven skills (`floor_ids` plus `floor_pin`), on the lead's licence, with the same move recorded in this directory's README floor-ids row. Re-keyed again by the 2026-09-19 author-grader-consolidation wave-1 ruling (D7): `patterns-model-tiering` gained one floor, and `validation-primitive-edit` joins the review family as a post-freeze member — born after this freeze, so no pre-conversion baseline exists for it and its four byte columns are 0 rather than measured. Re-keyed again by the wave-2 landing of the 2026-09-03 producer-plan-enforcement ruling (D4): `review-seat-plan` joins the review family on the same post-freeze terms, five floors and four zeroed byte columns. Every byte-size field of every pre-freeze row is still the freeze's own, and no other field has been touched.",
   "frozen_utc": "2026-09-04T10:49:47+00:00",
   "binary": "mochiko-cli 0.1.0 \u00b7 grammar 1..1",
   "plugin_version": "0.105.0",
@@ -17,6 +17,7 @@
         "review-feasibility",
         "review-governance-intent",
         "review-plan-artifacts",
+        "review-seat-plan",
         "review-specifications",
         "review-sufficiency",
         "validation-constitution",
@@ -556,6 +557,23 @@
       "baseline_bytes": 16454,
       "baseline_source": "wc -c of skills/review-plan-artifacts/schema.yaml + schemas/skill-review-common.yaml",
       "body_bytes_pre": 3853
+    },
+    "review-seat-plan": {
+      "family": "review",
+      "floor_ids": [
+        "review-seat-plan.approval-is-the-leads",
+        "review-seat-plan.author-grader",
+        "review-seat-plan.default-fail",
+        "review-seat-plan.fresh-peer-grader",
+        "review-seat-plan.plan-verbatim"
+      ],
+      "floor_pin": 5,
+      "schema_bytes": 0,
+      "common": "schemas/skill-review-common.yaml",
+      "common_bytes": 0,
+      "baseline_bytes": 0,
+      "baseline_source": "post-freeze member, 2026-09-03 producer-plan-enforcement D4 — no pre-conversion baseline exists, never measured",
+      "body_bytes_pre": 0
     },
     "review-specifications": {
       "family": "review",

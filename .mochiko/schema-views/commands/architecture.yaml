@@ -111,8 +111,9 @@ sections:
         class: must
         text: >-
           ${producer_seat} is the producing seat: baseline authoring, shelf-walk stance batches,
-          amendments, and delta authoring. Recommends with reasons; never rules. Plans first and
-          works only on a plan you approved.
+          amendments, and delta authoring. Recommends with reasons; never rules. Plans first,
+          read-only, in a plan-only dispatch, and works only on a plan a fresh peer passed and you
+          approved.
       - id: arch.seat-tech-lead-grader
         labels: [seats, independence]
         class: must
@@ -272,8 +273,10 @@ sections:
         class: floor
         text: >-
           Author ≠ grader — wherever a seat produces (baseline, stance batch, amendment,
-          delta), no output is cleared by its author; a producing seat plans first and works only
-          on a plan you approved.
+          delta), no output is cleared by its author; a producing seat plans first, read-only, in
+          a plan-only dispatch, and works only on a plan a fresh peer of its persona type passed
+          per `mochiko:review-seat-plan` and you approved.
+        anchor: 2026-09-03 producer-plan-enforcement D8
       - id: arch.recommend-then-arbitrate
         labels: [user-gate]
         class: must
@@ -409,11 +412,11 @@ sections:
         class: floor
         text: >-
           A judgment-authored write to a governing surface obliges the loop: a seat produces on a
-          plan you approved, an independent non-author seat reviews before the user's gate — the
-          user's ruling alone never substitutes for the review leg — and every baseline, stance
-          batch, and amendment takes that review leg. Status flips and orphan cleanup are
-          transcription and ride the landing audit. Trigger test, exemptions, seat wiring, and
-          disclosure: mochiko:patterns-sound-loop, referenced never restated.
+          plan a fresh peer passed and you approved, an independent non-author seat reviews before
+          the user's gate — the user's ruling alone never substitutes for the review leg — and
+          every baseline, stance batch, and amendment takes that review leg. Status flips and
+          orphan cleanup are transcription and ride the landing audit. Trigger test, exemptions,
+          seat wiring, and disclosure: mochiko:patterns-sound-loop, referenced never restated.
         pointer: mochiko:patterns-sound-loop
         anchor: 2026-08-13 charter-ritual-balance
       - id: arch.transport-floor

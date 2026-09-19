@@ -74,8 +74,10 @@ sections:
         labels: [ladder, independence]
         class: floor
         text: >-
-          Leg 1 — production sits with a seat, never the lead: the producing seat plans first;
-          the lead gives feedback, approves the plan, and distributes work to seats.
+          Leg 1 — production sits with a seat, never the lead: the producing seat plans first,
+          read-only, in a plan-only dispatch, and stops; a fresh peer of its persona type grades
+          the plan per `mochiko:review-seat-plan`; the lead approves only a passed plan and
+          resumes the seat to work. The plan grade is additive to leg 2, never a substitute.
         when: {trigger: fired}
         anchor: 2026-08-13 charter-ritual-balance
       - id: patterns-sound-loop.leg-2-non-author-review
@@ -149,8 +151,11 @@ sections:
         kind: duty
         text: >-
           Every visit/run close report carries one line, pinned grammar: `floor: tripped|clear ·
-          seats: <who produced> / <who reviewed>`. When clear: `floor: clear` alone — no seats
-          segment, since no seats existed to name.
+          seats: <who produced> / <who reviewed> · plans: <seat>:PASS|FAIL(n)[ dirty]…`. The
+          `plans:` segment carries one entry per producing seat — `n` the re-plan rounds
+          consumed on the run's one shared counter, and `dirty` appended where the seat changed
+          the tree while planning. When clear: `floor: clear` alone — no seats segment and no
+          plans segment, since no seats existed to name.
         anchor: 2026-08-13 charter-ritual-balance
       - id: patterns-sound-loop.only-real-seats
         labels: [reporting, evidence]

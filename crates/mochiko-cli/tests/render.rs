@@ -1050,7 +1050,7 @@ fn no_shipped_section_renders_past_the_inline_ceiling() {
         }
     }
 
-    assert!(measured > 200, "the corpus should carry 36 primitives");
+    assert!(measured > 200, "the corpus should carry 38 primitives");
     assert!(
         largest.1 < CEILING,
         "the largest section render ({}) is {} chars, past the {CEILING} ceiling",
@@ -1165,8 +1165,10 @@ fn every_shipped_floor_index_matches_its_pin() {
         checked += 1;
     }
     // Thirty skills through `0007`; `0008-gate-form` imported `validation-primitive-edit`
-    // (2026-09-19 author-grader-consolidation D7), which carries its own eleven-floor index.
-    assert_eq!(checked, 37, "six commands and thirty-one skills");
+    // (2026-09-19 author-grader-consolidation D7), which carries its own eleven-floor index,
+    // and `0009-plan-qa-leg` imported `review-seat-plan` (2026-09-03
+    // producer-plan-enforcement D8), whose index carries five.
+    assert_eq!(checked, 38, "six commands and thirty-two skills");
 }
 
 /// The index's own size at its widest, pinned the way the legend's is: every converted primitive

@@ -8,7 +8,13 @@ re-sequenced · ROADMAP Next "Floor builds" row touched · **wave 1 BUILT 2026-0
 `validation-primitive-edit`, `common.gate-loop-bound` the corpus's first anchored common block,
 `primitive-edits.md` Check section rewritten, crate 0.2.0 with the `mint-rule` grammar widening
 the wave's one §7 halt produced — user-ruled; 12 audit units / 17 rounds / 8 blocking caught,
-gates green, contract suite 89/89 across two runs — see the log); commit pending the user
+gates green, contract suite 89/89 across two runs — see the log; committed `2ec189b`) ·
+**wave 2 BUILT 2026-09-19 at v0.112.0** (plan `wave2-plan-qa.md`; migration `0009-plan-qa-leg`,
+new skill `review-seat-plan`, sound-loop leg 1 reworded and the wave run under the leg it ships,
+`primitive-edits.md` criterion 6 to the peer-graded standard; plans P1:PASS(1) · P2:PASS(0) ·
+P3:PASS(1); 14 gate units / 1 fix round under the new form, the `review-seat-plan` pair
+double-graded as the D9 baseline, D7 cost limb Measured; gates green, contract suite 91/91 — see
+the log); commit pending the user
 **Opened:** 2026-09-19
 **Supersedes:** `author-grader-value-tiering` (opened 2026-08-26, stalled at Q1 with
 ground facts F1–F6 and no decisions). This session carries that record's facts forward, adds the
@@ -307,8 +313,14 @@ checklist grading is one persona too many" — which carries it alone. The cost 
 project context every seat pays, so the persona-attributable share is unknown and the rendered
 skill adds tokens back; the limb is `Assumed` until the wave-2 double-grade spawn (D9) is read
 the F13 way. The explicit pin is what stops the plain seat being dearer (F12).
-**Confidence:** Confident on the shape (user: "as recommended"; C3 fold user-ruled) · **Assumed**
-on the cost limb (I2). *Adoption streak: 3 — flagged; Q9 runs recommendation-free.*
+**Confidence:** Confident on the shape (user: "as recommended"; C3 fold user-ruled) · cost limb
+**Measured 2026-09-19 (wave 2 double-grade, F13 method, both seats `claude-opus-5`, same cached
+project context 27,111):** the plain gate seat carrying the pasted render and 13 units cost
+27,634 cache-creation tokens at first turn; the `validator` persona with its skill preload and
+one unit cost 22,404 — **no instantiation saving from dropping the persona**; the saving the path
+delivers is D11's one-seat-per-wave (one instantiation for 14 units against one per cluster).
+The I2 `Assumed` mark is discharged by that reading; the shape stands on the prior user ruling.
+*Adoption streak: 3 — flagged; Q9 runs recommendation-free.*
 
 ### D8 — Input-job conditions stand as they are
 **Statement:** For the input job (D2) nothing changes: the headline verdict word, the

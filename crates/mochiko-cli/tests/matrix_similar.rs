@@ -968,7 +968,17 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
         // block is not a rule, so it does not enter this scan; the +2 here is `setup`'s two
         // mints, `setup.gate-loop-bound` and `setup.validate-seat-form`. The suppressed count
         // holds at 60 because all three allowlist rows `0008` added are skill-side.
-        (329, 12_607, 0, 60),
+        // Re-measured after `0009-plan-qa-leg` (2026-09-03 producer-plan-enforcement D8): the
+        // scan and the pair count are unmoved, because `0009` mints no command rule — every
+        // command-side op it carries is a `reword-rule`. The suppressed count *falls*, 60 to 56,
+        // and that direction is the point. An allowlisted edge is suppressed only while its two
+        // rules still score as near-identical, so rewording one side can retire a row's hit
+        // without touching the allowlist: `0009`'s plan-approval and sound-loop rewords did that
+        // to five command-family pairs, and P1's one new command-side row
+        // (`feat.sound-loop-floor` / `impl.sound-loop-floor`) adds one back. The zero beside it
+        // is a SUPPRESSED zero: with an empty allowlist this family reports 29 clusters over 56
+        // edges, and the repository allowlist suppresses all 56, leaving 0 edges unsuppressed.
+        (329, 12_607, 0, 56),
         "rules scanned · in-kind pairs scored · clusters · allowlist-suppressed edges"
     );
 }
@@ -1038,10 +1048,21 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // adjudication between two local texts with different read boundaries. Drop or reword any of
     // those three rows and this assertion fails looking like a detector regression when it is an
     // allowlist edit.
-    assert_eq!(report.scanned, 1067, "rules scanned");
-    assert_eq!(report.scored, 156_764, "in-kind pairs scored");
+    // Re-measured after `0009-plan-qa-leg` (2026-09-03 producer-plan-enforcement D8): the scan
+    // moves 1,067 to 1,082 on the fifteen rules of the imported `review-seat-plan` document, and
+    // `scored` rises with it since `0009` retires nothing. `suppressed_hits` moves 171 to 170 —
+    // it does not simply gain P1's four new rows, because the same reword mechanism described in
+    // the command-family pin above retires the hits of rows whose two texts no longer score as
+    // near-identical. The zero is again a SUPPRESSED zero, and a large one: with an empty
+    // allowlist the corpus reports 77 clusters over 170 edges, and the repository allowlist
+    // suppresses exactly 170, leaving 0 unsuppressed. Both figures were read from a raw-versus-
+    // pinned pair of runs over the same state, which is the only way to tell this zero from a
+    // naive one. Drop an allowlist row and this assertion fails looking like a detector
+    // regression when it is an allowlist edit.
+    assert_eq!(report.scanned, 1082, "rules scanned");
+    assert_eq!(report.scored, 161_376, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
-    assert_eq!(report.suppressed_hits, 171, "allowlist-suppressed edges");
+    assert_eq!(report.suppressed_hits, 170, "allowlist-suppressed edges");
 }
 
 // ---------------------------------------------------------------------------

@@ -50,6 +50,19 @@ suppressions:
     reason: RB keeps local text — protected tail, same adjudication as its five rows above; VPE binds the block
   - ids: [review-code-minimalism.diff-and-report-both-read, validation-primitive-edit.from-file-floor]
     reason: keep-distinct — different read boundaries, RCM binds a cycle's diff plus its report, VPE binds the edited primitive plus its render and view diff; the shared frame is "read the artifact, never a relay of it"
+  # === author-grader-consolidation wave 2, v0.112.0 (migration 0009-plan-qa-leg). The three
+  # edges `review-seat-plan` forms on arrival. The first two are CROSS-PAIR + EXTEND-GAP — the
+  # stub-versus-local shape already adjudicated above, where the new skill binds a review-common
+  # block and the counterparty keeps protected local text. The third is a plain CROSS-PAIR: both
+  # sides carry local text and neither binds a block. No extraction is proposed by any of them;
+  # RSP extends no `evidence-floor` by ruling (producer-plan-enforcement D2, the plan is
+  # transient), so it forms none of the C1 edges its siblings do. ----------------------------
+  - ids: [review-brainstorm.never-default-ready, review-seat-plan.default-fail]
+    reason: RB keeps local text — protected tail, same adjudication as its five rows above; RSP binds the block
+  - ids: [review-seat-plan.verdict-is-input, review-specifications.input-not-verdict]
+    reason: RSPEC keeps local text — its floor names the gap-finding output's own kind ("never a clearing PASS/FAIL verdict of its own"), which the block deliberately does not carry; RSP binds the block, same shape as the census J2-5 verdict-is-input rows
+  - ids: [review-seat-plan.fail-cites-fix, validation-primitive-edit.tamper-proof-clause]
+    reason: keep-distinct — different obligations sharing the automatic-FAIL frame; RSP binds what a FAIL must carry to be revisable (the item and the fix), VPE binds what makes a verdict void whatever it says (no evidence-read line naming the run's own files)
   - ids: [review-brainstorm.external-claims-binding, review-brainstorm.record-fitness-binding]
     reason: two different reference bindings sharing the referenced-never-restated frame
   - ids: [review-brainstorm.external-claims-binding, review-feasibility.external-claims-binding]
@@ -212,6 +225,8 @@ suppressions:
     reason: parallel integrity duties over different artifacts (store vs map)
   - ids: [arch.sound-loop-floor, feat.sound-loop-floor]
     reason: below bar (2 commands); sound-loop pointer floor is per-command by charter (D3 scope)
+  - ids: [feat.sound-loop-floor, impl.sound-loop-floor]
+    reason: below bar (2 commands); same adjudication as the arch/feat row — the producer-plan-enforcement D8 reword gave the three pointer floors one shared opening clause, and each keeps its command-specific tail (desk delta cards vs this run's seat wiring), so the trio stays local rather than converging (author-grader-consolidation wave 2, v0.112.0)
   - ids: [impl.briefs-name-rules-files, spec.governance-briefs]
     reason: parallel brief obligations over different rule surfaces
   - ids: [arch.dispatch-feature-growth-door, feat.architecture-intake]

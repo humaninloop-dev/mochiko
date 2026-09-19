@@ -373,23 +373,25 @@ trail). Open residual:
   half against the F3 baseline with no independent escape signal, or any defect reaches a
   release a full-read audit would have caught. **Revert:** the gate form returns to a full read
   by recorded ruling, one migration entry. Read at five lines; OQ4 (a `sonnet` producer on a
-  gate artifact) rides the same touch.
-- [ ] **Producer-plan enforcement build — wave 1 (plan-QA leg) · wave 2 (validator retirement)**
-  (2026-09-03; provenance:
-  [producer-plan-enforcement](.mochiko/brainstorms/producer-plan-enforcement/record.md) D8–D9;
-  **re-sequenced 2026-09-19** by `author-grader-consolidation` D10 — these run as that path's
-  waves 2 and 3, after the gate-form wave above; wave 2 is audited under the new gate form and
-  carries the D9 double-grade of one unit; the retirement gate is satisfied on wave-1 figures
-  alone, the default-FAIL carrier now named — D7) — wave 1: sound-loop leg 1 amended (ID kept,
-  floor pin 6) · plan-approval restatement sites swept across the six schemas + `common.yaml` ·
-  disclosure `plans:` segment · new `review-seat-plan` pair + router row + first-seed budget ·
-  `primitive-edits.md` criterion 6 rewritten · `patterns-plan-minimalism.grading-routing`
-  re-pointed · install refresh gate · runs under the leg (plan-only dispatch → peer grade → lead
-  approves on PASS → resume), stop condition (FAIL rate > ½, any second re-plan, any dirtied
-  tree → halt). Wave 2: `validator` agent/plugin entry/router lines retired, CLAUDE.md (3
-  mentions + axis 5 reword), `validation-constitution`, ledgers, supersession rows (the
-  `author-grader-value-tiering` row is the gate-form landing's, not this wave's). Open after
-  acceptance: OQ3 cost watch · OQ4 devils-advocate re-entry (no trigger).
+  gate artifact) rides the same touch. **Baseline landed 2026-09-19 (wave 2, `review-seat-plan`
+  pair):** old form PASS · 0 blocking · 4 non-blocking vs new form PASS · 0 blocking · 0 notes;
+  first-turn cache-creation 22,404 (persona) vs 27,634 (plain seat, 13 units) — no instantiation
+  saving; D11 batching is the lever. Wave-2 lines: 14 units · 15 lines · 1 fix round.
+- [ ] **Producer-plan enforcement build — wave 2 (`validator` retirement)** (2026-09-03;
+  provenance: [producer-plan-enforcement](.mochiko/brainstorms/producer-plan-enforcement/record.md)
+  D3, D8 item 5, D9; **re-sequenced 2026-09-19** by `author-grader-consolidation` D10 as that
+  path's wave 3; wave 1, the plan-QA leg, BUILT 2026-09-19 at v0.112.0 — trail) — gate satisfied:
+  the default-FAIL carrier `validation-primitive-edit` is live and the plan-grade figures are in
+  (3 producers, 2 first-round FAILs repaired in one round, no dirty tree). Scope: `validator`
+  agent file + `plugin.json` entry retired · router's three validator-bearing lines + mount
+  doctrine reword · CLAUDE.md three mentions + axis 5 reword · `primitive-edits.md` grader
+  wording · `validation-constitution` grader identity · `authoring-constitution` schema text ·
+  budget + governance ledgers (GI-004 detail) · contract-suite `preload` case re-pointed ·
+  supersession rows for the older validator rulings (`validator-scope-and-verbosity` ·
+  `validator-worktree-isolation` · ADR `2026-08-26-validator-router-indexed-checklists`; the
+  `author-grader-value-tiering` row is the gate-form landing's). Audited under the gate form, one
+  gate grader, no double-grade. Open after acceptance: OQ3 cost watch · OQ4 devils-advocate
+  re-entry (no trigger).
 
 - [ ] **D5 rules-file leg (first-miss trigger) + first-live-run watch** (2026-08-13; provenance:
   [charter-ritual-balance](.mochiko/brainstorms/charter-ritual-balance/record.md) D5 `Contested` +

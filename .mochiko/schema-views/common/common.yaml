@@ -42,8 +42,10 @@ rules:
   - id: common.plan-approval-producers
     labels: [seats, independence]
     text: >-
-      Any seat that writes artifacts plans first and works only on a plan you approved; grading
-      and fact-finding seats are exempt.
+      Any seat that writes artifacts plans first, read-only, in a plan-only dispatch, and stops; a
+      fresh peer of its persona type — a generic seat for a persona-less producer — grades the
+      plan per `mochiko:review-seat-plan`; the lead approves only a passed plan and resumes the
+      seat to work; grading and fact-finding seats are exempt.
   - id: common.gate-loop-bound
     labels: [user-gate, independence]
     text: >-
