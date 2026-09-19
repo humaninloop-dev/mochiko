@@ -242,4 +242,16 @@ log's one-entry-per-event grammar.)*
   `general-purpose` at explicit `model: opus`; lead wrote only plans, logs, the mechanical binary
   reinstalls, and the landing transcription.
 - **Landing:** record Status + index → BUILT · BACKLOG gate-form item → trail · ROADMAP row ·
-  DECISIONS status · commit suggested, never run.
+  DECISIONS status · commit suggested, never run. **Committed by the user as `2ec189b` on `main`.**
+
+## Wave 2 — the plan-QA leg — opened 2026-09-19
+
+Plan: [wave2-plan-qa.md](wave2-plan-qa.md). Target 0.112.0. `producer-plan-enforcement` D8 items
+0–4, 5′, 6–10 under the NEW gate form + the D9 double-grade of the `review-seat-plan` pair. Sequence
+allocated: `0009-plan-qa-leg.yaml`. Seats: P1 schema · P2 prose · P3 crate tests (persona-less,
+`model: opus`); per-producer fresh generic peer graders on PPE D5; one plain gate grader for every
+unit; one old-form `mochiko:validator` for the double-grade. Watch: PPE D8 item 7 stop condition.
+
+- **Install-refresh gate (PPE D9 abort gate) open:** installed copy 0.110.0, marketplace checkout at
+  `9f256f0`; repo at 0.111.0 (`2ec189b`, unpushed). User asked to push + refresh, or to waive with
+  the pre-install path (PPE D4/X15) recorded per grade. No planning dispatch until ruled.
