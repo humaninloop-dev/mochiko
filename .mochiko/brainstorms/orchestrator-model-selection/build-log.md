@@ -71,3 +71,42 @@ Append-only. One `##` entry per event; the wave plan is `wave1-build.md`.
   per-persona default — carried in the dogfood-watch item for the `primitive-evals-v2` merge.
 - **Disclosure.** `floor: tripped · seats: P1 + P2 (staff-engineer) produced / V1 + V2 (validator)
   reviewed`. Wave closed.
+
+## 2026-09-19 — CI fix (PR #37): three crate test files stale against 0007
+
+- **Trigger.** PR #37 CI failed at the `Test` step — four `fidelity.rs` assertions frozen before
+  migration `0007-seat-default-key.yaml` landed; census counts, a needle string, and a floor pin
+  all stale. Governed by `.claude/rules/mochiko/rust-cli.md` — lead-approved plan
+  (`wave2-ci-fix.md`), producer plans first, independent non-author review before commit.
+- **P3 (crate fix).** Original plan's four `fidelity.rs` edits applied and green; read-back
+  surfaced two more stale-pin files outside the plan's named scope (`validate.rs`,
+  `matrix_similar.rs`) carrying the identical drift class — P3 correctly stopped rather than
+  silently widening its own mandate.
+- **Scope widening (lead, mid-wave).** `validate.rs`'s three-number census fix approved as
+  mechanical (identical evidence already vetted for `fidelity.rs`). `matrix_similar.rs`'s full
+  similarity-sweep constants gated on an explicit condition: verify `clusters == 0`
+  independently before writing a number, hard-stop and escalate to the lead under the
+  near-dup-convergence doctrine if a real cluster surfaced instead.
+- **P3 (widened scope).** Both files fixed. `clusters` reproduced independently at `0` — a
+  fixture refresh, not a near-dup finding; the coincident `scored` drop explained and recorded
+  in the test comment (pairs bucket by `kind:`, the retired rule was kind-less in the large
+  `constraint` bucket, 0007's five mints land in small typed buckets).
+- **V3 → PASS.** All seven checks independently re-derived from source, none taken from P3's
+  say-so: census re-derived by a standalone log replay (705/229, corrected the plan's own
+  floor-count hedge — the superseded rule was itself a floor); both reworded needles confirmed
+  live; `RETIRED_SIDECAR_ANCHORS` confirmed exactly one id, fixed-length array so silent growth
+  is a compile error; a full-tree grep confirmed no other file references the stale numbers
+  outside the frozen `tests/fixtures/genesis-corpus/` input (must not be touched); `cargo fmt`,
+  `cargo clippy`, `MOCHIKO_FULL_SIMILAR=1 cargo test --all` all run independently and green (351
+  passed); `matrix_similar`'s four numbers reproduced on both the source build and the installed
+  binary, identical; the `scored`-count mechanism and magnitude both verified against
+  `src/similar.rs` source. One non-blocking advisory: `evals/contract/README.md:266`'s prose
+  floor-id count was stale (228 → 229, and the 4→6 ruling chain missing its 4→6→7 hop) — no
+  live pin depends on it, fixed on sight as a fix-on-sight integrity repair (transcription, not
+  judgment — `mochiko:patterns-sound-loop` exemption).
+- **Gates.** `cargo fmt --all --check`, `cargo clippy --all-targets -- -D warnings`,
+  `MOCHIKO_FULL_SIMILAR=1 cargo test --all`: 351 passed, 0 failed, exit 0 across all three.
+- **Files.** `crates/mochiko-cli/tests/{fidelity,validate,matrix_similar}.rs` — no schema,
+  migration, strip, or view touched; not a `plugin.json`-bump-class change.
+- **Disclosure.** `floor: tripped · seats: P3 (staff-engineer) produced / V3 (validator)
+  reviewed`. Wave closed.

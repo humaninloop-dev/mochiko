@@ -170,9 +170,9 @@ fn the_log_replays_into_a_deliverable_state() {
     assert_eq!(replay.state.docs.len(), 50);
     assert_eq!(
         replay.sequences(),
-        vec![1, 2, 3, 4],
+        vec![1, 2, 3, 4, 7],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
-         worker rung"
+         worker rung, 0007's seat default key"
     );
 }
 
@@ -529,7 +529,28 @@ fn the_sidecar_anchors_ride_their_rules() {
             live_rules.insert(rule.id.as_str(), rule);
         }
     }
+    /// Sidecar-anchored rules retired by a recorded ruling since genesis — each entry is a
+    /// protected exit the log's own anchor rule required (`supersede-rule` under an anchor,
+    /// `plugins/mochiko/migrations/README.md` "The anchor rule"). A rule listed here MUST be
+    /// genuinely absent from the live state, or the walk below still fails — this list only
+    /// narrows which absence is expected, never which text is skipped.
+    const RETIRED_SIDECAR_ANCHORS: [(&str, &str); 1] = [(
+        "patterns-model-tiering.rostered-seats-never-retier",
+        "0007-seat-default-key.yaml, 2026-09-19 orchestrator-model-selection D1",
+    )];
+
     for (id, expected) in &anchors {
+        if RETIRED_SIDECAR_ANCHORS
+            .iter()
+            .any(|(retired_id, _)| retired_id == id)
+        {
+            assert!(
+                !live_rules.contains_key(id.as_str()),
+                "{id}: listed in RETIRED_SIDECAR_ANCHORS but still live — update the list or \
+                 the migration"
+            );
+            continue;
+        }
         let rule = live_rules
             .get(id.as_str())
             .unwrap_or_else(|| panic!("{id}: the sidecar's rule is no longer live"));
@@ -587,11 +608,14 @@ fn the_corpus_census_holds_through_the_log() {
     }
 
     // `0004` (the sonnet worker rung, 2026-09-05) minted six skill rules on
-    // `patterns-model-tiering`, two of them floors; the command side is untouched.
+    // `patterns-model-tiering`, two of them floors; `0007` (the seat default key,
+    // 2026-09-19) nets +4 on the same skill — one `supersede-rule` (−1) and five
+    // `mint-rule`s (+5), two of the five floors; the command side is untouched throughout.
+    // The superseded rule was itself a floor, so the skill's floor count nets +1.
     assert_eq!(command_rules, 321, "live command rules");
-    assert_eq!(skill_rules, 701, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1022, "live rules in total");
-    assert_eq!(skill_floors, 228, "skill floors");
+    assert_eq!(skill_rules, 705, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1026, "live rules in total");
+    assert_eq!(skill_floors, 229, "skill floors");
     assert_eq!(command_floors, 110, "declared command floors");
     assert_eq!(fail_nodes, 36, "command fail nodes");
 }
@@ -863,8 +887,10 @@ fn no_rule_points_at_a_schema_file() {
 
 /// The `0004` migration (`2026-09-05 sonnet-worker-rung`) landed where it said it would: six
 /// minted rules on `patterns-model-tiering`, two of them floors, each carrying the ruling anchor;
-/// the two reworded floors still floors, naming both rungs and the D5 clause; the floor pin at
-/// six; the reserved section's note naming its new reservation.
+/// the two reworded floors still floors, naming both rungs (D5's text since superseded by
+/// `0007`'s seat default key — this test reads the full log, so the current wording is what it
+/// checks); the floor pin now seven after `0007`; the reserved section's note still naming its
+/// new reservation.
 #[test]
 fn the_fourth_migration_added_the_worker_rung_to_the_tiering_floor() {
     const ANCHOR: &str = "2026-09-05 sonnet-worker-rung";
@@ -932,7 +958,7 @@ fn the_fourth_migration_added_the_worker_rung_to_the_tiering_floor() {
             &[
                 "never tiered down",
                 "sonnet-worker-rung",
-                "model-tiered-seats D5",
+                "orchestrator-model-selection D1/D3",
             ],
         ),
         (
@@ -952,7 +978,7 @@ fn the_fourth_migration_added_the_worker_rung_to_the_tiering_floor() {
     }
 
     let floors = schema.rules().filter(|rule| rule.is_floor()).count();
-    assert_eq!(floors, 6, "the skill's floor pin");
+    assert_eq!(floors, 7, "the skill's floor pin");
 
     let reserved = schema
         .find_section("patterns-model-tiering.sec.reserved")

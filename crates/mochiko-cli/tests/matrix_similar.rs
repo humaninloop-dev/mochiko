@@ -990,8 +990,15 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // `patterns-model-tiering` move the scan from 1,016 to 1,022 and the in-kind pair count with
     // it; no new cluster surfaced and the suppressed set is unchanged — the allowlist was not
     // touched.
-    assert_eq!(report.scanned, 1022, "rules scanned");
-    assert_eq!(report.scored, 148_353, "in-kind pairs scored");
+    // Re-measured after `0007` (the seat default key): the scan moves from 1,022 to 1,026 — one
+    // rule superseded, five minted. The pair count falls while the rule count rises because pairs
+    // are scored within a kind: the retired rule declared no kind and so sat in the large
+    // `constraint` bucket, while the five mints land in the small `binding`, `latitude`, `bound`
+    // and `duty` buckets, so the pairs lost from the big bucket outnumber the pairs gained in the
+    // small ones. No new cluster surfaced and the suppressed set is unchanged — the allowlist was
+    // not touched.
+    assert_eq!(report.scanned, 1026, "rules scanned");
+    assert_eq!(report.scored, 148_160, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
     assert_eq!(report.suppressed_hits, 169, "allowlist-suppressed edges");
 }
