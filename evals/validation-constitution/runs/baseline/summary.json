@@ -6137,6 +6137,812 @@
    "cost_usd": 1.0646398000000001,
    "num_turns": 33,
    "artifact_truncated": false
+  },
+  {
+   "arm": "post",
+   "golden": "g3-tessellate-compliance",
+   "replicate": 1,
+   "pins": {
+    "skill": "validation-constitution",
+    "cli": "2.1.258 (Claude Code)",
+    "mochiko_cli": "mochiko-cli 0.1.0 \u00b7 grammar 1..1",
+    "session_model": "sonnet",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "ed46faa8c200be51",
+    "old_ref": null,
+    "post_ref": "7ac0b9c",
+    "plugin_version": "0.108.0",
+    "skill_sha256": "45ce99d57e439579",
+    "rendered_rules_ok": true,
+    "rendered_rules_sha256": "feeea1b6576242b4",
+    "rendered_rules_chars": 11523
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "skill_fired": true,
+    "rules_delivered": true,
+    "model_ok": true,
+    "models": [
+     "claude-sonnet-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "no_result": false,
+    "is_error": false
+   },
+   "valid": true,
+   "tool_calls": [
+    "Skill",
+    "Read",
+    "Read",
+    "Bash",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Bash",
+    "Bash",
+    "Read",
+    "Read",
+    "Read",
+    "Bash",
+    "Bash",
+    "Bash",
+    "Bash",
+    "Bash",
+    "Bash",
+    "Write"
+   ],
+   "skills_fired": [
+    "mochiko:validation-constitution"
+   ],
+   "assertions": [
+    {
+     "type": "file_exists",
+     "path": "validation-result.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)VALIDATION RESULT\\W{0,8}FAIL",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)(ASV|11\\.3\\.2)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)checklist items",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)advisory",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)anti-?patterns?\\s+found",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)VALIDATION RESULT\\W{0,8}(CONDITIONAL|PARTIAL|PROVISIONAL|PASS\\s+WITH|MOSTLY)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": ".mochiko/memory/governance-ledger.md",
+     "pattern": "quarterly ASV scan \\(Requirement 11\\.3\\.2\\)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "fixture_unchanged",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "checklist": [
+    {
+     "id": "validation-constitution.author-grader",
+     "passed": true,
+     "evidence": "All findings below are read from these files directly, not from the producer's hand-off account."
+    },
+    {
+     "id": "validation-constitution.not-for",
+     "passed": true,
+     "evidence": "docs/engineering-norms.md, checked at the lead's request: this is explicitly an informal, non-normative document (\"Not rules, just how we like to work. Edit freely.\") and sits outside the validator's graded input set (it's not part of the surface set defined by `validation-constitution.input-set`)"
+    },
+    {
+     "id": "validation-constitution.excess-governance",
+     "passed": true,
+     "evidence": "**Excess/contradicted governance** \u2014 GI-016 principle contradicts the synthesis's own recorded exclusion under the same ID (Issue 5)"
+    },
+    {
+     "id": "validation-constitution.never-excess",
+     "passed": true,
+     "evidence": "The heavy gdpr, pci-dss, a11y, and secrets lines are module- and floor-derived and are not flagged as excess."
+    },
+    {
+     "id": "validation-constitution.from-file-floor",
+     "passed": true,
+     "evidence": "All findings below are read from these files directly, not from the producer's hand-off account."
+    },
+    {
+     "id": "validation-constitution.input-set",
+     "passed": true,
+     "evidence": "Graded set: CLAUDE.md governance region \u00b7 `.claude/rules/mochiko/*.md` \u00b7 `.mochiko/memory/governance-ledger.md`, read together as one deliverable, against `.mochiko/memory/governance-intent.md` (ratified synthesis) and `.mochiko/memory/governance-trace-summary.md` (producer's manifest)"
+    },
+    {
+     "id": "validation-constitution.missing-input-fails",
+     "passed": true,
+     "evidence": "All required files referenced and discussed; no missing inputs reported"
+    },
+    {
+     "id": "validation-constitution.superseded-artifact-flag",
+     "passed": true,
+     "evidence": "No superseded `.mochiko/memory/constitution.md` found on disk \u2014 nothing to flag there."
+    },
+    {
+     "id": "validation-constitution.checklist-assembly",
+     "passed": true,
+     "evidence": "Checklist items: 30/45 passed (core + 2 applicable module fragments: release-gates, knowledge-management; layer-rules correctly declined, evolution-notes correctly n/a \u2014 greenfield)"
+    },
+    {
+     "id": "validation-constitution.quality-checklist",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "validation-constitution.anti-patterns-scan",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "validation-constitution.set-not-file",
+     "passed": true,
+     "evidence": "Graded set: CLAUDE.md governance region \u00b7 `.claude/rules/mochiko/*.md` \u00b7 `.mochiko/memory/governance-ledger.md`, read together as one deliverable"
+    },
+    {
+     "id": "validation-constitution.every-set-must-pass",
+     "passed": true,
+     "evidence": "VALIDATION RESULT: FAIL"
+    },
+    {
+     "id": "validation-constitution.letter-is-spirit",
+     "passed": true,
+     "evidence": "Strict literal application of all rules throughout, including flagging literal placeholder `<!-- GI-XXX -->` and precise threshold mismatches"
+    },
+    {
+     "id": "validation-constitution.verify-every-item",
+     "passed": true,
+     "evidence": "Checklist items: 30/45 passed with itemized breakdown across: Principle Quality, Traceability, Floor & Module Accounting, Structure Quality (universal and modules), Rules-File Scope, No Placeholders Rule, Governance Quality, Brownfield-Specific"
+    },
+    {
+     "id": "validation-constitution.vague-language",
+     "passed": true,
+     "evidence": "Issue 7 identifies vague language and specifies measurable replacement: 'The delivered region line reads \"Pages SHOULD load quickly\" (no threshold, no tool, `SHOULD` not `MUST`)... Fix: restate GI-011 with the 2.5s/p75/Lighthouse-CI/merge-blocking language from the synthesis'"
+    },
+    {
+     "id": "validation-constitution.version-bump",
+     "passed": true,
+     "evidence": "Version bump section: 'First ratification (v1.0.0) \u2014 no prior version to bump from... once Issues 1\u20139 are fixed and re-ratified, that revision round will need its own determination (most of these fixes are within-principle corrections = PATCH/MINOR territory...)'"
+    },
+    {
+     "id": "validation-constitution.binary-verdict",
+     "passed": true,
+     "evidence": "VALIDATION RESULT: FAIL"
+    },
+    {
+     "id": "validation-constitution.default-fail",
+     "passed": true,
+     "evidence": "Result is FAIL with 9 substantive issues, ranging from CRITICAL to LOW priority, each with specific evidence and required fixes"
+    },
+    {
+     "id": "validation-constitution.rationalization-stop",
+     "passed": true,
+     "evidence": "On the hand-off note section: 'The producer's ask to skip the anti-pattern scan is recorded in the result as declined, and the scan runs against the files. The scan ran anyway and found real instances'"
+    },
+    {
+     "id": "validation-constitution.placeholders-incomplete",
+     "passed": true,
+     "evidence": "Issue 3 identifies and rejects placeholder: '[HIGH] Literal placeholder trace stamp. CLAUDE.md, the WCAG/a11y principle line: `<!-- GI-XXX -->` instead of `<!-- GI-010 -->`... Fix: correct to `GI-010`'"
+    },
+    {
+     "id": "validation-constitution.missing-parts-fail",
+     "passed": true,
+     "evidence": "Issue 8: '[MEDIUM] Ledger is missing the required Exception registry section... Fix: add the section \u2014 an empty table with \"[none yet]\" is sufficient'"
+    },
+    {
+     "id": "validation-constitution.satisfaction-verifies-nothing",
+     "passed": true,
+     "evidence": "On the hand-off note section: 'The founder's sign-off does not substitute for this grade \u2014 and two of the things it was told (\"no waivers,\" \"all three modules stamped\") were themselves wrong'"
+    },
+    {
+     "id": "validation-constitution.validation-result-block",
+     "passed": true,
+     "evidence": "Block contains: VALIDATION RESULT: FAIL \u00b7 'Checklist items: 30/45 passed' \u00b7 Surface integrity subsections \u00b7 Trace closure subsections \u00b7 Floor/module accounting section \u00b7 Anti-patterns found section \u00b7 Version bump section \u00b7 Issues requiring fix (Issues 1\u20139) \u00b7 Advisory section"
+    },
+    {
+     "id": "validation-constitution.evidence-floor",
+     "passed": true,
+     "evidence": "All evidence is sourced from reviewed artifacts with direct quotes and file citations: 'CLAUDE.md, the WCAG/a11y principle line: `<!-- GI-XXX -->`', '`governance-ledger.md` Waivers table: GI-012', '`.claude/rules/mochiko/cardholder-data.md` scopes only `src/payments/**/*.ts`'"
+    },
+    {
+     "id": "validation-constitution.skip-documented",
+     "passed": true,
+     "evidence": "Explicitly documents the producer's request and the validator's response: 'the 'anti-pattern table... does not really apply here, so I would not spend time on it' \u2014 this is exactly the rationalization this process is built to refuse. The scan ran anyway and found real instances'"
+    }
+   ],
+   "cost_usd": 0.9693932,
+   "num_turns": 30,
+   "artifact_truncated": false
+  },
+  {
+   "arm": "post",
+   "golden": "g3-tessellate-compliance",
+   "replicate": 2,
+   "pins": {
+    "skill": "validation-constitution",
+    "cli": "2.1.258 (Claude Code)",
+    "mochiko_cli": "mochiko-cli 0.1.0 \u00b7 grammar 1..1",
+    "session_model": "sonnet",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "ed46faa8c200be51",
+    "old_ref": null,
+    "post_ref": "7ac0b9c",
+    "plugin_version": "0.108.0",
+    "skill_sha256": "45ce99d57e439579",
+    "rendered_rules_ok": true,
+    "rendered_rules_sha256": "feeea1b6576242b4",
+    "rendered_rules_chars": 11523
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "skill_fired": true,
+    "rules_delivered": true,
+    "model_ok": true,
+    "models": [
+     "claude-sonnet-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "no_result": false,
+    "is_error": false
+   },
+   "valid": true,
+   "tool_calls": [
+    "Skill",
+    "Read",
+    "Read",
+    "Bash",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Bash",
+    "Read",
+    "Read",
+    "Bash",
+    "Bash",
+    "Bash",
+    "Bash",
+    "Bash",
+    "Read",
+    "Read",
+    "Read",
+    "Bash",
+    "Write"
+   ],
+   "skills_fired": [
+    "mochiko:validation-constitution"
+   ],
+   "assertions": [
+    {
+     "type": "file_exists",
+     "path": "validation-result.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)VALIDATION RESULT\\W{0,8}FAIL",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)(ASV|11\\.3\\.2)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)checklist items",
+     "passed": false,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)advisory",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)anti-?patterns?\\s+found",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)VALIDATION RESULT\\W{0,8}(CONDITIONAL|PARTIAL|PROVISIONAL|PASS\\s+WITH|MOSTLY)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": ".mochiko/memory/governance-ledger.md",
+     "pattern": "quarterly ASV scan \\(Requirement 11\\.3\\.2\\)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "fixture_unchanged",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "checklist": [
+    {
+     "id": "validation-constitution.author-grader",
+     "passed": true,
+     "evidence": "independent seat, not present at interrogation, authored none of the graded set"
+    },
+    {
+     "id": "validation-constitution.not-for",
+     "passed": true,
+     "evidence": "Validator confirms this IS a constitution and explicitly excludes informal docs: 'it is out of this skill's jurisdiction: it is an explicitly informal note... not a governance surface set'"
+    },
+    {
+     "id": "validation-constitution.excess-governance",
+     "passed": true,
+     "evidence": "Excess/contradictory governance \u2014 GI-016 (British English) is a principle for an element the ratified synthesis records as a *deliberate exclusion*"
+    },
+    {
+     "id": "validation-constitution.never-excess",
+     "passed": true,
+     "evidence": "The heavy gdpr, pci-dss, a11y, and secrets lines are module- and floor-derived and are not flagged as excess"
+    },
+    {
+     "id": "validation-constitution.from-file-floor",
+     "passed": true,
+     "evidence": "All findings below are against the files on disk, not the producer's hand-off account"
+    },
+    {
+     "id": "validation-constitution.input-set",
+     "passed": true,
+     "evidence": "CLAUDE.md governance region \u00b7 `.claude/rules/mochiko/*.md` \u00b7 `.mochiko/memory/governance-ledger.md`, cross-checked against `.mochiko/memory/governance-intent.md` (ratified synthesis) and `.mochiko/memory/governance-trace-summary.md` (producer's manifest)"
+    },
+    {
+     "id": "validation-constitution.missing-input-fails",
+     "passed": true,
+     "evidence": "Validator successfully cross-checks against synthesis and manifest and analyzes synthesis content in detail: 'governance-intent.md's \"Deliberate exclusions\" section states explicitly'"
+    },
+    {
+     "id": "validation-constitution.superseded-artifact-flag",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "validation-constitution.checklist-assembly",
+     "passed": true,
+     "evidence": "Checklist: 28/44 items passed (core + release-gates fragment + knowledge-management fragment; layer-rules and evolution-notes fragments not applicable)"
+    },
+    {
+     "id": "validation-constitution.quality-checklist",
+     "passed": true,
+     "evidence": "Governance Quality checklist's 'Exception registry format defined' item referenced and applied throughout"
+    },
+    {
+     "id": "validation-constitution.anti-patterns-scan",
+     "passed": true,
+     "evidence": "The scan ran anyway and found a live excess-governance violation (GI-016) and a vague-principle violation (GI-011), both squarely in the table"
+    },
+    {
+     "id": "validation-constitution.set-not-file",
+     "passed": true,
+     "evidence": "VALIDATION RESULT: **FAIL** applied to the set as a whole; graded set includes region, rules files, and ledger together"
+    },
+    {
+     "id": "validation-constitution.every-set-must-pass",
+     "passed": true,
+     "evidence": "VALIDATION RESULT: **FAIL** with mandatory fix list; waiving legal obligations treated as unwaivable despite founder override"
+    },
+    {
+     "id": "validation-constitution.letter-is-spirit",
+     "passed": true,
+     "evidence": "a waiver row naming one is a validator FAIL per the ledger's own header, applied absolutely even against founder's intent"
+    },
+    {
+     "id": "validation-constitution.verify-every-item",
+     "passed": true,
+     "evidence": "28/44 items passed with explicit accounting of n/a items; explicit exclusion of docs/engineering-norms.md (outside scope)"
+    },
+    {
+     "id": "validation-constitution.vague-language",
+     "passed": true,
+     "evidence": "GI-011 ('Pages SHOULD load quickly') identified as vague and required to be replaced with ratified measurable criteria: 'Largest Contentful Paint at or under 2.5 seconds at the 75th percentile on the product page and the checkout, measured by Lighthouse CI on every PR'"
+    },
+    {
+     "id": "validation-constitution.version-bump",
+     "passed": true,
+     "evidence": "Version bump: n/a \u2014 this is the first ratification (v1.0.0); there is no predecessor to bump from. Once the fixes below are applied, this stays v1.0.0 (a correction to an un-ratified draft, not an amendment to a ratified baseline)."
+    },
+    {
+     "id": "validation-constitution.binary-verdict",
+     "passed": true,
+     "evidence": "VALIDATION RESULT: **FAIL**"
+    },
+    {
+     "id": "validation-constitution.default-fail",
+     "passed": true,
+     "evidence": "All findings below are against the files on disk, not the producer's hand-off account. Extensive investigation conducted with 11 distinct issues identified across surface integrity, trace closure, anti-patterns, and missing components."
+    },
+    {
+     "id": "validation-constitution.rationalization-stop",
+     "passed": true,
+     "evidence": "'The anti-patterns table... does not really apply to a regulated set like this one' \u2014 this is the named trap ('anti-patterns don't apply here \u2014 every rationalization claims uniqueness'). The scan ran anyway and found a live excess-governance violation (GI-016) and a vague-principle violation (GI-011), both squarely in the table."
+    },
+    {
+     "id": "validation-constitution.placeholders-incomplete",
+     "passed": true,
+     "evidence": "CLAUDE.md \u2014 placeholder trace ID left in on the a11y principle. `<!-- GI-XXX -->` left in the CLAUDE.md region on the a11y principle line. [Flagged as violation and returned for fix]"
+    },
+    {
+     "id": "validation-constitution.missing-parts-fail",
+     "passed": true,
+     "evidence": "Knowledge-management module core artifacts not present on disk. Only `CHANGELOG.md` exists; `ROADMAP.md`, `BACKLOG.md`, `DECISIONS.md`, and `GLOSSARY.md` do not. Also missing Exception registry section in ledger. Set returned to producer for completion."
+    },
+    {
+     "id": "validation-constitution.satisfaction-verifies-nothing",
+     "passed": true,
+     "evidence": "'The founder has read the whole set and signed it off' \u2014 carries no weight here; user satisfaction verifies nothing this validator checks. Noted, not counted."
+    },
+    {
+     "id": "validation-constitution.validation-result-block",
+     "passed": true,
+     "evidence": "VALIDATION RESULT: **FAIL** \u00b7 Checklist: 28/44 items passed (core + release-gates fragment + knowledge-management fragment) \u00b7 Surface integrity \u00b7 Trace closure \u00b7 Floor/module accounting \u00b7 Anti-patterns found \u00b7 Version bump \u00b7 Issues requiring fix (Critical #1\u20136, Important #7\u201311) \u00b7 Advisory"
+    },
+    {
+     "id": "validation-constitution.evidence-floor",
+     "passed": true,
+     "evidence": "All findings documented in validation-result.md against graded files on disk: CLAUDE.md governance region \u00b7 `.claude/rules/mochiko/*.md` \u00b7 `.mochiko/memory/governance-ledger.md` cross-checked against synthesis and manifest. Evidence not ephemeral to conversation."
+    },
+    {
+     "id": "validation-constitution.skip-documented",
+     "passed": true,
+     "evidence": "Producer requested anti-pattern scan be skipped ('does not really apply to a regulated set'); artifact documents that the request was declined and the scan was executed anyway, finding GI-016 and GI-011 violations."
+    }
+   ],
+   "cost_usd": 0.9674316000000001,
+   "num_turns": 28,
+   "artifact_truncated": false
+  },
+  {
+   "arm": "post",
+   "golden": "g3-tessellate-compliance",
+   "replicate": 3,
+   "pins": {
+    "skill": "validation-constitution",
+    "cli": "2.1.258 (Claude Code)",
+    "mochiko_cli": "mochiko-cli 0.1.0 \u00b7 grammar 1..1",
+    "session_model": "sonnet",
+    "permission_mode": "acceptEdits",
+    "judge_prompt_sha256": "ed46faa8c200be51",
+    "old_ref": null,
+    "post_ref": "7ac0b9c",
+    "plugin_version": "0.108.0",
+    "skill_sha256": "45ce99d57e439579",
+    "rendered_rules_ok": true,
+    "rendered_rules_sha256": "feeea1b6576242b4",
+    "rendered_rules_chars": 11523
+   },
+   "asserts": {
+    "load_gate": true,
+    "loaded_plugins": [
+     [
+      "mochiko",
+      "0.108.0"
+     ]
+    ],
+    "skill_fired": true,
+    "rules_delivered": true,
+    "model_ok": true,
+    "models": [
+     "claude-sonnet-5"
+    ],
+    "cap_hit": false,
+    "auth_failure": false,
+    "no_result": false,
+    "is_error": false
+   },
+   "valid": true,
+   "tool_calls": [
+    "Skill",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Bash",
+    "Bash",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Bash",
+    "Read",
+    "Read",
+    "Read",
+    "Read",
+    "Bash",
+    "Bash",
+    "Bash",
+    "Bash",
+    "Write"
+   ],
+   "skills_fired": [
+    "mochiko:validation-constitution"
+   ],
+   "assertions": [
+    {
+     "type": "file_exists",
+     "path": "validation-result.md",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)VALIDATION RESULT\\W{0,8}FAIL",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)(ASV|11\\.3\\.2)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)checklist items",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)advisory",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)anti-?patterns?\\s+found",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "not_contains",
+     "path": "validation-result.md",
+     "pattern": "(?i)VALIDATION RESULT\\W{0,8}(CONDITIONAL|PARTIAL|PROVISIONAL|PASS\\s+WITH|MOSTLY)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "contains",
+     "path": ".mochiko/memory/governance-ledger.md",
+     "pattern": "quarterly ASV scan \\(Requirement 11\\.3\\.2\\)",
+     "passed": true,
+     "detail": ""
+    },
+    {
+     "type": "fixture_unchanged",
+     "passed": true,
+     "detail": ""
+    }
+   ],
+   "checklist": [
+    {
+     "id": "validation-constitution.author-grader",
+     "passed": true,
+     "evidence": "**Validator:** independent (no authorship in this set; not present at interrogation)"
+    },
+    {
+     "id": "validation-constitution.not-for",
+     "passed": true,
+     "evidence": "Validates a formal governance surface set (CLAUDE.md region, rules files, ledger) after ratification, appropriate for validation."
+    },
+    {
+     "id": "validation-constitution.excess-governance",
+     "passed": true,
+     "evidence": "GI-016 (British English) correctly flagged as excess governance: traces to synthesis element explicitly excluding it from governance; contradicts ratified decision."
+    },
+    {
+     "id": "validation-constitution.never-excess",
+     "passed": true,
+     "evidence": "The heavy gdpr, pci-dss, a11y, and secrets lines are module- and floor-derived and are not flagged as excess."
+    },
+    {
+     "id": "validation-constitution.from-file-floor",
+     "passed": true,
+     "evidence": "**Graded from file only:** CLAUDE.md governance region \u00b7 `.claude/rules/mochiko/*.md` \u00b7 `.mochiko/memory/governance-ledger.md` \u00b7 cross-checked against `.mochiko/memory/governance-intent.md` and `.mochiko/memory/governance-trace-summary.md`. The producer's hand-off note was read but carries no evidentiary weight \u2014 every claim in it was independently re-checked against the files."
+    },
+    {
+     "id": "validation-constitution.input-set",
+     "passed": true,
+     "evidence": "Graded from file only: CLAUDE.md governance region \u00b7 `.claude/rules/mochiko/*.md` \u00b7 `.mochiko/memory/governance-ledger.md` \u00b7 cross-checked against `.mochiko/memory/governance-intent.md` and `.mochiko/memory/governance-trace-summary.md`"
+    },
+    {
+     "id": "validation-constitution.missing-input-fails",
+     "passed": true,
+     "evidence": "No missing synthesis, manifest, or set members reported; all required inputs accounted for in validation."
+    },
+    {
+     "id": "validation-constitution.superseded-artifact-flag",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "validation-constitution.checklist-assembly",
+     "passed": true,
+     "evidence": "Checklist items: 41/54 passed (core 30/43 \u00b7 release-gates fragment 4/4 \u00b7 knowledge-management fragment 7/7); module-parameterized assembly applied across region, rules files, and ledger."
+    },
+    {
+     "id": "validation-constitution.quality-checklist",
+     "passed": false,
+     "evidence": ""
+    },
+    {
+     "id": "validation-constitution.anti-patterns-scan",
+     "passed": true,
+     "evidence": "This directly contradicts the hand-off note's instruction to skip the anti-pattern scan as inapplicable to a regulated set \u2014 the scan runs regardless of the author's claim (rationalization-stop), and it surfaced a real, textbook instance on the first pass."
+    },
+    {
+     "id": "validation-constitution.set-not-file",
+     "passed": true,
+     "evidence": "Validated entire set together: CLAUDE.md governance region, `.claude/rules/mochiko/*.md` files, and `.mochiko/memory/governance-ledger.md` as one deliverable with interdependent checks across all components."
+    },
+    {
+     "id": "validation-constitution.every-set-must-pass",
+     "passed": true,
+     "evidence": "**This is a FAIL.** Validator assigns FAIL verdict and does not grant exceptions: 'The two-week launch timeline is real pressure, but every one of the eleven issues above...'"
+    },
+    {
+     "id": "validation-constitution.letter-is-spirit",
+     "passed": true,
+     "evidence": "Strict literal interpretation enforced: GI-016 flagged despite being only 'a fidelity nuance' because it inverts synthesis intent; legal-mandate waiver disallowed despite founder override; no exceptions granted for practical pressure."
+    },
+    {
+     "id": "validation-constitution.verify-every-item",
+     "passed": true,
+     "evidence": "Detailed verification throughout: region markers checked, index resolution verified, trace closure audited, anti-patterns scanned, 41/54 checklist items itemized, each module/fragment component examined independently."
+    },
+    {
+     "id": "validation-constitution.vague-language",
+     "passed": true,
+     "evidence": "**Vague Principle** \u2014 GI-011 (\"Pages SHOULD load quickly\")...; **Generic Thresholds** \u2014 GI-011's testability line (\"Pass: pages feel quick; Fail: complaints\") has no number.; **Missing Enforcement** \u2014 GI-011's enforcement line (\"Engineers watch the Lighthouse scores\") names no CI check, gate, or audit."
+    },
+    {
+     "id": "validation-constitution.version-bump",
+     "passed": true,
+     "evidence": "### Version bump\nNot applicable \u2014 this is the first ratification (v1.0.0); there is no prior version to bump against. Once the issues below are corrected, the corrected set still ratifies as v1.0.0 (first ratification), not an amendment."
+    },
+    {
+     "id": "validation-constitution.binary-verdict",
+     "passed": true,
+     "evidence": "## VALIDATION RESULT: FAIL"
+    },
+    {
+     "id": "validation-constitution.default-fail",
+     "passed": true,
+     "evidence": "### Checklist items: 41/54 passed (core 30/43 \u00b7 release-gates fragment 4/4 \u00b7 knowledge-management fragment 7/7) \u2014 FAIL verdict earned through enumerated findings, not absence of review"
+    },
+    {
+     "id": "validation-constitution.rationalization-stop",
+     "passed": true,
+     "evidence": "This directly contradicts the hand-off note's instruction to skip the anti-pattern scan as inapplicable to a regulated set \u2014 the scan runs regardless of the author's claim (rationalization-stop), and it surfaced a real, textbook instance on the first pass."
+    },
+    {
+     "id": "validation-constitution.placeholders-incomplete",
+     "passed": true,
+     "evidence": "8. **`GI-XXX` placeholder left in the region.** The a11y principle line \u2014 \"Every customer-facing page MUST meet WCAG 2.2 AA\u2026\" \u2014 is stamped `<!-- GI-XXX -->` instead of `<!-- GI-010 -->`."
+    },
+    {
+     "id": "validation-constitution.missing-parts-fail",
+     "passed": true,
+     "evidence": "6. **Ledger is missing its Exception registry section entirely.** Shape 3 requires `## Waivers`, `## Amendment policy`, and `## Exception registry` as distinct sections; the ledger has the first two and jumps straight to the Three-Part principle records... **This is a FAIL.**"
+    },
+    {
+     "id": "validation-constitution.satisfaction-verifies-nothing",
+     "passed": true,
+     "evidence": "The founder's full read and sign-off of the set is noted, but per the validator floor, user satisfaction verifies nothing on its own \u2014 the sign-off happened before at least three of the issues above would have been visible as defects rather than intended content."
+    },
+    {
+     "id": "validation-constitution.validation-result-block",
+     "passed": true,
+     "evidence": "### Checklist items: 41/54 passed... ### Surface integrity [with all sub-sections] ### Trace closure [with all sub-sections] ### Floor/module accounting [with all sub-sections] ### Anti-patterns found [list provided] ### Version bump [determined] ### Issues requiring fix (blocking) [11 issues listed with fixes] ### Advisory (judgment-grade, non-blocking) [provided]"
+    },
+    {
+     "id": "validation-constitution.evidence-floor",
+     "passed": true,
+     "evidence": "All verdict and per-finding dispositions documented in validation-result.md with specific evidence (file paths, line references, quotes) for each of the 11 issues identified; not living only in conversation."
+    },
+    {
+     "id": "validation-constitution.skip-documented",
+     "passed": true,
+     "evidence": "This directly contradicts the hand-off note's instruction to skip the anti-pattern scan as inapplicable to a regulated set \u2014 the scan runs regardless of the author's claim (rationalization-stop)... The producer's hand-off note was read but carries no evidentiary weight \u2014 every claim in it was independently re-checked against the files."
+    }
+   ],
+   "cost_usd": 0.7769668000000001,
+   "num_turns": 28,
+   "artifact_truncated": false
   }
  ],
  "skill": "validation-constitution",
@@ -6157,7 +6963,7 @@
  "invited_read": true,
  "coverage_per_arm": {
   "pre": 16,
-  "post": 18
+  "post": 19
  },
  "floor_held_per_arm": {
   "pre": 11,
@@ -6165,9 +6971,7 @@
  },
  "reference_arm": "pre",
  "rules_lost_per_arm": {
-  "post": [
-   "validation-constitution.not-for"
-  ]
+  "post": []
  },
  "floor_rules_lost_per_arm": {
   "post": []
@@ -6182,8 +6986,8 @@
    "pairs": 75
   },
   "post": {
-   "flaky": 10,
-   "pairs": 50
+   "flaky": 13,
+   "pairs": 75
   }
  },
  "invited_flaky_per_arm": {
@@ -6196,11 +7000,13 @@
    "pairs": 67
   },
   "post": {
-   "flaky": 9,
-   "pairs": 44
+   "flaky": 11,
+   "pairs": 67
   }
  },
- "post_assertion_failures": [],
+ "post_assertion_failures": [
+  "g3-tessellate-compliance/r2: validation-result.md"
+ ],
  "invalid_runs": [],
  "judge_parse_failures": 0,
  "artifact_truncations": 0,
@@ -6258,7 +7064,7 @@
   "pre:validation-constitution.evidence-floor": false,
   "pre:validation-constitution.skip-documented": true,
   "post:validation-constitution.author-grader": true,
-  "post:validation-constitution.not-for": false,
+  "post:validation-constitution.not-for": true,
   "post:validation-constitution.excess-governance": false,
   "post:validation-constitution.never-excess": true,
   "post:validation-constitution.from-file-floor": true,
@@ -6284,7 +7090,7 @@
   "post:validation-constitution.evidence-floor": true,
   "post:validation-constitution.skip-documented": true
  },
- "est_total_cost_usd": 13.98,
+ "est_total_cost_usd": 16.7,
  "pins_per_arm": {
   "noskill": {
    "skill": "validation-constitution",
