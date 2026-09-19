@@ -36,15 +36,18 @@ edit to the pair is available as the first grid's edit under read: migration 000
 (`2026-09-13 hook-enforced-artifact-schema D1`, commit `5d8fc69`) added
 `brainstorm.artifact-home`. `--old-ref 794cea8` (the parent of that commit; the view file
 exists there) gives, per `uv run evals/commands/run.py partition brainstorm --old-ref 794cea8`
-run at authoring: **unchanged 29 (20 observable) · changed 0 · removed 0 · added 1
-(observable)**. Recompute before reading any grid — the buckets move with every edit — and
+run at authoring: **unchanged 29 (21 observable after the 2026-09-19 move; 20 at
+authoring) · changed 0 · removed 0 · added 1 (observable)**. Recompute before reading any grid — the buckets move with every edit — and
 name the SHA explicitly; `HEAD` is never the pre arm.
 
 ## Rubric shape (D8 partition, `observable.yaml`)
 
-30 rules: **21 plan-observable · 9 out-of-instrument** (2 latitude/register · 2
-conditional · 1 contingency · 4 fail-conditions). `check-rubric brainstorm` prints
-`rubric OK: 21 observable, 9 out-of-instrument, 30 total` at authoring.
+30 rules: **22 plan-observable · 8 out-of-instrument** (2 latitude/register · 2
+conditional · 4 fail-conditions). `check-rubric brainstorm` prints
+`rubric OK: 22 observable, 8 out-of-instrument, 30 total`. At authoring the split was
+21 · 9; the kit audit of 2026-09-19 moved `brainstorm.reopen-born-verify` to observable,
+emptying the contingency class, because the same reasoning would have condemned
+`brainstorm.coverage-survivor-routing`, which this kit grades observable.
 
 - **Condition gating.** `km_file` is planted both ways (present in s1 and s3, absent in s2):
   `brainstorm.km-close-ritual` is graded on s1 and s3, where a backlog item exists for the
@@ -52,10 +55,15 @@ conditional · 1 contingency · 4 fail-conditions). `check-rubric brainstorm` pr
   same in both arms and never a regression. `seats` resolves to multi on every path (the
   review seat is a second seat), so `brainstorm.transport-floor` is graded everywhere and
   `single` is unplanted (only the user's in-run waiver reaches it).
-- **Thin reads, named now:** `brainstorm.user-survivor-challenge` and
-  `brainstorm.user-pen-boundary` are graded on one described branch each at the disposition
-  and acceptance gates. They are the expected flaky candidates; a flaky pair on either is
-  read as one noise event, never as a command finding on its own.
+- **Thin reads, named now:** `brainstorm.user-survivor-challenge`,
+  `brainstorm.user-pen-boundary` and `brainstorm.reopen-born-verify` are graded on one
+  described branch each at the disposition and acceptance gates. They are the expected
+  flaky candidates; a flaky pair on any of them is read as one noise event, never as a
+  command finding on its own. `reopen-born-verify` (moved here from out-of-instrument on
+  2026-09-19) sits one hypothetical layer deeper than the other two — it bounds a decision
+  born from a reopen that itself only happens if a coverage survivor is routed — so expect
+  it flakier than its siblings, not their equal. An `absent` read on every replicate of
+  every golden is the one outcome that reopens it as a dead-rule finding.
 - **Co-moving pairs:** `record-review-independence` / `author-grader-default-fail` and
   `coverage-survivor-routing` / `non-coverage-survivors` describe one seat and one gate
   respectively; a disagreement on one member usually shows on the other. The band counts
@@ -99,7 +107,7 @@ one retires.
 
 - **Denominator: all pairs.** Command goldens carry no `tempts`; every observable rule is
   judged on every golden, so the band is the **all-pairs** flaky share per arm — pairs with
-  replicate disagreement over 3 goldens × 21 observable rules = **63 pairs per arm** (well
+  replicate disagreement over 3 goldens × 22 observable rules = **66 pairs per arm** (well
   above the 8-pair `UNDER-SAMPLED` mark; a rubric re-cut that drops an arm below 8 pairs
   carries the mark and takes the band as the cap). The persona kits' invited-only recount
   (`2026-09-09-persona-band-invited-only`) does not apply where no golden invites a subset;
@@ -111,7 +119,7 @@ one retires.
   combined pre-or-post flaky line per golden (`cmd_report`, "flaky rules (replicate
   disagreement — noise-guard input)"); the per-arm share the band needs is computed from
   `summary.json`'s per-run `coverage` verdicts — count, per arm, the (golden, rule) pairs
-  whose three replicate verdicts are not all equal, over 63. A per-arm band line in
+  whose three replicate verdicts are not all equal, over 66. A per-arm band line in
   `cmd_report` mirroring `agent-report`'s *Band input* section is the disclosed runner gap
   (a re-key candidate; no verdict depends on it).
 - **Guard:** an arm whose flaky share exceeds the band is noise-dominated: no pre/post
@@ -144,7 +152,7 @@ sessions' `total_cost_usd` (the command runner does not yet sum it; record it by
 The kit is ready if the first grid (a) passes the positive control on every golden, (b)
 localizes zero unchanged-bucket regressions or each one to a named rule id with evidence
 quotes, (c) keeps the `pre` all-pairs flaky share ≤ 15 % so the band it fixes binds
-uncapped (≤ 9 of 63 pairs), and (d) shows the branch is legible: the three goldens produce
+uncapped (≤ 9 of 66 pairs), and (d) shows the branch is legible: the three goldens produce
 visibly different coverage or evidence profiles on `lead-inline-questioning` (confirmations
 on s1 versus open probes on s2), `km-close-ritual` (s1/s3 versus s2), and `next-step-offer`
 (the s3 offer described as an option after acceptance). Identical profiles across the three
@@ -214,15 +222,16 @@ tripping twice, triggers the stopping rule.
 
 ## Fill log
 
-- band: **[measured at baseline]** — `pre` flaky pairs ___/63 = ___ % → +5 = ___ %
-  (capped 20 %); `post` ___/63 = ___ %. Filled from `runs/<grid>` on ____ (sessions $___;
+- band: **[measured at baseline]** — `pre` flaky pairs ___/66 = ___ % → +5 = ___ %
+  (capped 20 %); `post` ___/66 = ___ %. Filled from `runs/<grid>` on ____ (sessions $___;
   judges $___ / ___ calls).
 - positive control (`artifact-home`, `--old-ref 794cea8`): pre `absent` on s1 / s2 / s3
   ___; post pass^k `reflected` on s1 / s2 / s3 ___.
 - unchanged-bucket regressions per golden: s1 ___ · s2 ___ · s3 ___.
 - dead-zone (`nocmd`, first grid only): rules pass^k under `nocmd` per golden ___.
-- thin reads (`user-survivor-challenge`, `user-pen-boundary`): flaky on ___; co-moving
-  clusters observed ___.
+- thin reads (`user-survivor-challenge`, `user-pen-boundary`, `reopen-born-verify`):
+  flaky on ___; co-moving clusters observed ___; `reopen-born-verify` absent on every
+  replicate of every golden? ___ (yes = dead-rule finding, not noise).
 - branch legibility (ship bar d): `lead-inline-questioning` evidence on s1 vs s2 ___;
   `km-close-ritual` on s1/s3 vs s2 ___; `next-step-offer` on s3 ___.
 - cap-hit runs ___ · fence breaches ___ · unresolvable names ___.

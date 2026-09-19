@@ -11,6 +11,10 @@
 #   contingency    — fires only on a run-time event no forward plan contains
 #   conditional    — observable only under a condition no current scenario plants
 #                    (activating it = planting the condition, a scenario-design act)
+#   structural     — the command's own seat wiring never composes the condition in any
+#                    run, so no fixture can plant it without redesigning the command
+#                    (added 2026-09-19, kit audit re-grade: `conditional` invited a
+#                    reader to hunt for a fixture that cannot exist)
 #   latitude       — grants freedom; nothing falsifiable in a plan
 #   register       — prose-register meta-rule; not plan content
 #   fail-condition — end-state failure, not forward-plan content
@@ -36,6 +40,7 @@ observable:
   - {id: brainstorm.user-survivor-challenge, why: the disposition gate routes any survivor that challenges a user ruling to the user — never lead-resolved (thin read — see preregistration)}
   - {id: brainstorm.user-review-waiver, why: the waiver gate is described as the user's with the waiver recorded on the record when taken}
   - {id: brainstorm.user-pen-boundary, why: amendments to a ruled decision and any new decision are described as the user's word at the disposition and acceptance gates (thin read)}
+  - {id: brainstorm.reopen-born-verify, why: the explore-now branch of the disposition gate carries its bound — one verify round on the decision born there, no fresh cold read and no second reopen off it (thin read — described branch, same shape as brainstorm.coverage-survivor-routing)}
   # tools
   - {id: brainstorm.deliverable-record, why: a kebab-case slug is proposed at the start and the record path with its single decision namespace is named}
   - {id: brainstorm.record-as-you-go, why: the record is written as decisions settle during the questioning — never assembled at the end}
@@ -57,16 +62,22 @@ out_of_instrument:
   # latitude / register
   - {id: brainstorm.staffing-latitude, why: latitude}
   - {id: brainstorm.register, why: register}
-  # conditional (no fixture can plant the condition)
+  # conditional (plantable, unplanted) / structural (unplantable by design)
   - {id: brainstorm.pair-maps-independent, why: conditional — binds only when the lead's staffing call composes a review pair; staffing is latitude so no fixture plants a pair and the read would follow the lead's choice replicate by replicate}
-  - {id: brainstorm.plan-approval-producers, why: conditional — binds only when a seat other than the lead writes an artifact; the run's seats are the review seat (a grader and exempt) and fact-finding dispatches (exempt) so no scenario composes a producing seat}
-  # contingency (run-time events no forward plan contains)
-  - {id: brainstorm.reopen-born-verify, why: contingency — fires only after a coverage survivor exists and the user reopens it; a forward plan carries it at most as a hypothetical branch}
+  - {id: brainstorm.plan-approval-producers, why: structural — binds only when a seat other than the lead writes an artifact; the run's seats are the review seat (a grader and exempt) and fact-finding dispatches (exempt), so the command's own wiring never composes a producing seat and no fixture can plant one}
   # fail-conditions (all 4 — end-state failures, not forward-plan content; C1)
   - {id: brainstorm.fail.record-unaccepted, why: fail-condition}
   - {id: brainstorm.fail.unreviewed-no-waiver, why: fail-condition}
   - {id: brainstorm.fail.survivor-undispositioned, why: fail-condition}
   - {id: brainstorm.fail.index-mismatch, why: fail-condition}
+
+# Moved to observable 2026-09-19 (kit audit, one medium finding):
+#   brainstorm.reopen-born-verify — parked as a contingency on reasoning that would equally
+#     condemn brainstorm.coverage-survivor-routing, which the kit grades observable for the
+#     identical event chain. It is graded on the described branch, like the other thin reads;
+#     no scenario plants a taken reopen, so it reads `absent` on a plan that never routes a
+#     survivor, and the audit's alternative — planting the follow-on in s1 — stays a plant
+#     candidate rather than a change made without a measurement asking for it.
 
 # Declared unplanted branches (fixture-design record, not a partition class): plant
 # candidates if a later grid wants them graded.
