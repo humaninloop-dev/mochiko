@@ -44,6 +44,35 @@ provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
      pre-gate 0.103.0 pin, upgrade, dogfood, **D10 watch** (`wave5-plan.md` §3/§7).
   4. **Size survivors** — ruling owed on the recommendation: rewrite nothing, existing
      over-budget files ride D4e amnesty (mochiko 65 · kinako 102).
+- [ ] **Hook-enforcement field review build — four waves** (2026-09-23; provenance:
+  `.mochiko/brainstorms/hook-enforcement-field-review/record.md` D9d + § Build surface, as
+  review-amended; supersedes item 3 of the item above — the kinako pass is now a full inventory and
+  the "not released" line there stays, it records an unmet GI-012 gate). **Wave 1, crate:**
+  tree-root home resolution (nested fixtures never homes) · `home` resolves a directory · closed
+  world under `.mochiko/` · the `runs/<run-id>/` home (run-key name, ignore-guard, sniff on `.md`,
+  non-`.md` shell writes admitted) · write-position shell parse · per-entry budget kind · direct
+  dry-run form · matrices from the 13 real false positives · **publish gated on the two owed
+  supply-chain controls**. **Wave 2, migration:** census from the primitives' write sets; `archive/`,
+  `runs/`, `schema-views/`, `strips/` declared; epic `implement-log.md` withdrawn; store templates
+  with entry headings; the budget table re-keyed, contracts out — one user-ratified artifact (OQ1).
+  **Wave 3, prose + governance:** seven `*.artifact-home` rewords, `testing-end-user` scratch path +
+  dry-run rule, `SubagentStart` line, deny texts, the run-close step; `/mochiko:setup` amend run —
+  GI-019 reach/amnesty/reads paragraphs, C1 discharge annotated, the 0.109.0 exception (PATCH
+  proposed, MINOR if read as expanded). **Wave 4, kinako:** full-inventory pass · watch re-measured.
+- [ ] **Delta files retired — in-place baseline edits, riding the field review's waves** (2026-09-24;
+  provenance: `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D6d + § Build
+  surface; supersedes in part the item above — its wave-2 census also rules the `Lifecycle:` field
+  and per-baseline fields, takes the feature/epic/lane home sets from D4, and answers OQ1's fold
+  shape with "no fold"). **Migration (its wave 2):** two floors superseded by new ids (in place with
+  marker · sign-off flips `proposed` → `in-flight`), fail rules re-keyed (unmarked write · unreviewed
+  diff), `impl.graded-fold` → the pinned-base diff review, `impl.baseline-delta-grammar` → the entry
+  grammar, the ~25 rule sites D6d lists, `lifecycle-statuses` + `orphan-rule` + spine template for
+  `proposed` and the key set, three home sets in `0005`; **first** a full-text sweep of the log
+  ("delta" · "fold" · "appliable" · "in place" · "in-flight" · "FEAT-XXX") audited against the list.
+  **Prose (its wave 3):** the skills D6d lists, entry templates, strips, audits, bump. **Kinako
+  (its wave 4):** D5 in order — run 4's fold applied (`C-011`/`D-061`), ledgers to `archive/`,
+  copies deleted, fold blocks re-homed, 63 files' links re-pointed, each write diff-graded by a
+  non-author seat. Watch: OQ1 — the per-entry budget must admit the 177-line entry.
 
 ## CLI schema-delivery build
 
@@ -856,12 +885,12 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   before landing; a failing gate gets a ruled disposition or fails the run. (2)
   `impl.dm-landing-whole` / `impl.fail.ungraded-fold`: the budget deny blocks seats and lead on
   over-budget baselines, so graded fold text stayed "owed by the principal's pen" (run 3: the user
-  ran `APPLY.sh`) — carve the landing fold, or groom first. (3) `impl.baselines-never-in-place`:
-  the B116 spine groom (`f4c3ae5`, 646 → 227) edited the store mid-run — carve or forbid grooms.
-  (4) `impl.artifact-home`: `reports/evidence/` is undeclared, so 166 files went to ungoverned
-  `.mochiko/archive/evidence/FEAT-001-run4/`, and both runs minted `run-log-*.md`, not
-  `implement-log.md`. (5) `impl.no-git-mutations` lacks the per-run authorization carve both runs
-  used. (6) 8 of 9 run-4 plans failed their first `review-seat-plan` grade, the main time sink.
+  ran `APPLY.sh`) — **superseded 2026-09-23 by `hook-enforcement-field-review` D2**. (3)
+  `impl.baselines-never-in-place`: the B116 spine groom (`f4c3ae5`, 646 → 227) edited the store
+  mid-run — **dissolved 2026-09-24, `delta-files-vs-direct-baseline-edits` D6d**. (4)
+  `impl.artifact-home`: evidence and the run log — **superseded 2026-09-23 by that record's
+  D3/D4/D6**. (5) `impl.no-git-mutations` lacks the per-run authorization carve both runs used.
+  (6) 8 of 9 run-4 plans failed their first `review-seat-plan` grade, the main time sink.
 - [ ] **`primitive-cost-budgets.md`'s `review-governance-intent` row is stale, and the margin is
   thin** (2026-09-19, found by the audit of the lead's-pen reword) — the row predates v0.107.0's
   render-format change, and a rough remeasure puts the reworded rule about eight characters under
