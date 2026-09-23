@@ -106,7 +106,7 @@ Session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<t
 <!-- mochiko:governance:begin -->
 ## Governance
 
-**Ratified:** v3.1.1 · 2026-09-20 (AM-3 + the validator-retirement PATCH) · production floor · depth: high · modules: compliance none · knowledge-management (core + CHANGELOG) · release-gates <!-- GI-001 (fact profile) · GI-021 (depth level) -->
+**Ratified:** v3.1.2 · 2026-09-23 (AM-4) · production floor · depth: high · modules: compliance none · knowledge-management (core + CHANGELOG) · release-gates <!-- GI-001 (fact profile) · GI-021 (depth level) -->
 
 ### Principles
 
@@ -132,11 +132,11 @@ Session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<t
 ### Governance operations
 
 - Ledger (waivers · amendment policy · exceptions · Three-Part metadata): `.mochiko/memory/governance-ledger.md`
-- Amend via `/mochiko:setup` (fact-profile changes — module attach/detach — and un-waives are governance events); standing amend triggers: public-product transition · GLOSSARY.md content (the CI-arrival trigger fired and discharged at v0.76.0; the crate's first-public-release trigger fired at AM-2 — its discharge conditional on four named controls, two still owed — and those two are hard preconditions of the wave-4 hook ship, ledger); the transition clause expired at v3.0.3 (the pre-authorized wave-6 PATCH)
+- Amend via `/mochiko:setup` (fact-profile changes — module attach/detach — and un-waives are governance events); standing amend triggers: public-product transition (the CI-arrival trigger fired and discharged at v0.76.0; the crate's first-public-release trigger fired at AM-2 — its discharge conditional on four named controls, two still owed — and those two are hard preconditions of the wave-4 hook ship, ledger); the transition clause expired at v3.0.3 (the pre-authorized wave-6 PATCH)
 <!-- mochiko:output-style:begin -->
 - Writing style — conversation: `full` · reports: `ultra` *(internal agent hand-offs)* · documents: `full`. Terse and plain-English by default. Set any of the three to `off`, `lite`, `full`, or `ultra` and your choice is kept when this section is regenerated; "normal mode" turns it off for one session.
 <!-- mochiko:output-style:end -->
 - Path-scoped rules inject on **Read**, not Write (observed behavior, kinako dogfood 2026-07-19) — before creating a new file under `.mochiko/specs/`, `plugins/mochiko/`, `crates/mochiko-cli/`, `plugins/mochiko/migrations/`, `plugins/mochiko/hooks/`, `evals/contract/`, `.github/workflows/`, `.claude-plugin/` (both manifests), `CHANGELOG.md`, or the operating docs, read the matching `.claude/rules/mochiko/` file or read back the file you created
-- Operating docs (knowledge-management module): sessions in `.mochiko/brainstorms/` + `index.md`; rulings land in `DECISIONS.md`; open threads in `BACKLOG.md`; direction in `ROADMAP.md`; landing ritual + invariants at `.mochiko/memory/knowledge-management.md`; groom: `mochiko:grooming-operating-docs` <!-- GI-009 -->
+- Operating docs (knowledge-management module): sessions in `.mochiko/brainstorms/` + `index.md`; rulings land in `DECISIONS.md`; open threads in `BACKLOG.md`; direction in `ROADMAP.md`; terms in `GLOSSARY.md`; landing ritual + invariants at `.mochiko/memory/knowledge-management.md`; groom: `mochiko:grooming-operating-docs` <!-- GI-009 -->
 <!-- mochiko:governance:end -->
 

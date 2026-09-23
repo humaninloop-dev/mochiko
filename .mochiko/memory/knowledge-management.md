@@ -8,13 +8,16 @@ revisit trigger, now discharged). The adopted core set: brainstorms layer · ope
 `BACKLOG.md` + trail (`.mochiko/archive/backlog-trail.md`) · `ROADMAP.md` · `DECISIONS.md` +
 `.mochiko/decisions/` · `ARCHITECTURE.md` (deferral retired 2026-08-06 — doc gained content;
 the store's derived index from 2026-08-19, `product-architecture-schema` D4) ·
+`GLOSSARY.md` (AM-4, 2026-09-23; term format below) ·
 the `paths` rules file (`.claude/rules/mochiko/operating-docs.md`) · CLAUDE.md pointers.
 Elective adopted: `CHANGELOG.md` (GI-010, release-gated). Elective declined durable:
-`RUNBOOK.md` (GI-011). **Deviation carried (re-ratified 2026-08-06):** `GLOSSARY.md` deferred
-until it gains content; command-boundary compliance manual until more commands run in-repo.
+`RUNBOOK.md` (GI-011). **Deviation carried (re-ratified 2026-08-06):** command-boundary
+compliance manual until more commands run in-repo.
 (The `specify.md` no-KM-landing-step deviation was struck 2026-08-06 — the landing line
 shipped at v0.54.0, audit PASS; DECISIONS row + ADR `2026-08-06-specify-km-landing`.)
-**Revisit trigger:** GLOSSARY.md gains content → scaffold and fold in.
+(The `GLOSSARY.md` deferral and its revisit trigger — "GLOSSARY.md gains content → scaffold and
+fold in" — were discharged 2026-09-23: the trigger fired at plugin v0.114.0; AM-4, governance
+v3.1.2, ledger 3.1.2 row.)
 
 ## Document contracts
 

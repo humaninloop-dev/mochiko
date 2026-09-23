@@ -1,7 +1,7 @@
 # Governance Ledger
 
 **Governance Floor:** production (asserted) · **Depth level:** high (user-declared, one-way; `high` terminal — GI-021, minted at AM-1 discharging the legacy-default pointer; set up under the single floor pre-adaptive-depth, already conformed to full depth #7 fold 2026-08-11) · **Modules:** compliance: none (GI-001 negatives confirmed, incl. no-UI) · template: knowledge-management (core + CHANGELOG elective) · release-gates · **Trace:** GI-001 (fact profile) · GI-021 (depth level)
-**Version:** 3.1.1 (must match the region stamp)
+**Version:** 3.1.2 (must match the region stamp)
 
 ## Waivers
 
@@ -39,8 +39,11 @@ not read later as an unrecorded lapse.
   line) · GI-004/GI-007 inapplicability clauses re-expressed · GI-012 dormant gates activate
   (cargo test PASS + schema/binary consistency) · GLOSSARY.md gains content (GI-009 deviation) ·
   helper-script waiver trigger (GI-008). **The CI-arrives/crate-lands trigger fired and discharged
-  at v0.76.0** — its consequence set landed (see the 2.0.1 amendment-log row); public-product
-  transition, GLOSSARY.md content, and the helper-script waiver remain standing.
+  at v0.76.0** — its consequence set landed (see the 2.0.1 amendment-log row). **The
+  GLOSSARY.md-content trigger fired and discharged at AM-4** (v3.1.2, 2026-09-23) —
+  `GLOSSARY.md` gained content at plugin v0.114.0 and joined the knowledge-management module's
+  live operating docs (see the 3.1.2 row); it is struck from the standing set. Public-product
+  transition and the helper-script waiver remain standing.
 - **The crate's first-public-release trigger (GI-002) fired at AM-2 and its discharge is
   conditional** (2026-09-04, review I5, user-ruled): four controls are named — `cargo audit
   --deny warnings` in CI (present, `.github/workflows/ci.yml`) · sha256-published release assets
@@ -221,6 +224,10 @@ record for schema rules; driver `.mochiko/brainstorms/cli-schema-delivery/record
 - Pin status updated this run: **ratified as the ruled core** (revisit trigger discharged);
   ARCHITECTURE.md deferral retired (doc has content); GLOSSARY.md deferral carried — scaffold
   when it gains content.
+- *AM-4 (2026-09-23, v3.1.2):* the GLOSSARY.md deferral is **discharged** — the doc gained
+  content at plugin v0.114.0 and joins the module's live operating docs under the pinned term
+  format (`.mochiko/memory/knowledge-management.md`); the rules-file carrier already globs
+  `GLOSSARY.md`.
 
 **Testability**:
 - Pass: KM invariants (bijection · status-agreement · open-only · caps · bounds · dead-pointer ·
@@ -231,7 +238,7 @@ record for schema rules; driver `.mochiko/brainstorms/cli-schema-delivery/record
 codified from working reality, not imposed.
 
 **Trace**: GI-009 (module: knowledge-management-core; brownfield codification of the 2026-07-25
-pin)
+pin; AM-4 2026-09-23: GLOSSARY.md deviation discharged)
 
 ### GI-010 — CHANGELOG Elective · home: `CHANGELOG.md`
 
@@ -397,7 +404,7 @@ any rule is where drift starts. User ruling, dimension 9: "leave these out."
   adequacy — those stay with the review skills and the author≠grader ceremony. It is not
   sequencing: the gate names no seat, no order, no stage. It is not a pipeline gate: a denied
   write is re-emitted, the run continues, and the two-strike halt sentence is advisory (D9).
-  **Condition (review C1, user-ruled 2026-09-14, road (a)) — DISCHARGED 2026-09-15: the budget table was ratified by the user with the C1 amendment (record/synthesis unbounded · template-less pipeline deliverables and wave files 300 · entry-class 150 · `build-log.md` a log at 60 per entry); status flip transcribed at the wave-3 close, to be carried into the amendment log by the hook-wave's pre-authorized PATCH — still owed, now v3.1.2 (v3.1.1 recorded the `validator` retirement, 2026-09-20). As written at AM-3:** the clause holds on a
+  **Condition (review C1, user-ruled 2026-09-14, road (a)) — DISCHARGED 2026-09-15: the budget table was ratified by the user with the C1 amendment (record/synthesis unbounded · template-less pipeline deliverables and wave files 300 · entry-class 150 · `build-log.md` a log at 60 per entry); status flip transcribed at the wave-3 close, to be carried into the amendment log by the hook-wave's pre-authorized PATCH — still owed, now v3.1.3 (v3.1.1 recorded the `validator` retirement, 2026-09-20; v3.1.2 the AM-4 `GLOSSARY.md` discharge, 2026-09-23). As written at AM-3:** the clause holds on a
   user-ratified budget table (D6, wave 3's gate) that admits honest content. A bound honest
   content cannot meet is a table defect, corrected by ruling at the table and never by the hook;
   record OQ1 — whether a prose-shaped deliverable carries a budget or `max_lines: none` — is ruled
@@ -622,6 +629,7 @@ category is live in translated form; application-shaped machinery inapplicable i
 | 3.0.3 | 2026-09-05 | PATCH — the wave-6 landing (pre-authorized at AM-2): the GI-020 **transition clause expired** at plugin v0.107.0 — no schema file ships, the derived views live at `.mochiko/schema-views/`, the contract suite's run-wide no-Read assert holds it; `.claude/rules/mochiko/primitive-edits.md` re-keyed (schema content edits are migration files and take no strip; criterion 9's deterministic pre-pass is `mochiko-cli migrate validate --report`; anchors live on the log's rules, the provenance sidecar frozen at `.mochiko/archive/`; the converted-primitive clauses are now the only form); `rust-cli.md`'s clause struck; the three first-live-run delivery watches closed to the trail as superseded by record D10.6; the three Python checkers retired (GI-008's waived helper-script count falls). Mints no principle; no fresh `/mochiko:setup` amend | GI-004 · GI-005 · GI-008 · GI-020 |
 | 3.1.0 | 2026-09-14 | AM-3 — mechanical conformance gates on artifact writes (MINOR — a widened admission under an unchanged non-negotiable; user-ruled Card 1 with the MAJOR reading in view, re-put at review C6 and re-ruled MINOR as a **recorded departure** from the AM-1/AM-2 MAJOR precedents: those two redefined a principle, AM-3 widens an admission under a principle whose text does not change, and the GI-019 Testability inversion is read as re-keying a formulation narrower than the principle; the MINOR limb gains "principle significantly expanded" at this amend so policy and the validator's bump grammar agree). Driver: hook-enforced-artifact-schema D1–D11, wave-0 probe PROCEED, wave-1 crate built and accepted 2026-09-13 | GI-019 admission widened (clause iv: mechanical conformance ≠ judgment, its C1 budget-table condition standing open) · `cli-schema-delivery` D7 narrowly superseded, its judgment/sequencing decline standing · hook floor re-ratified + explicit-allow rule + first-touch amnesty + reach + what the gate reads + hooks-disabled scope reconciled with GI-020 · GI-019 Testability re-keyed · GI-012 gains the wave-4 hook-ship precondition (review C5) and the ≤ 60 s hook-cost watch (review C9) · amendment-policy MINOR limb and first-publish paragraph extended · `.claude/rules/mochiko/rust-cli.md` bright-line bullet superseded by ruling, prior text preserved in GI-019 · **fix round (validator B1/M1/M2):** GI-019 Testability re-keyed into two tiers, the conformance limb **dormant until the wave-4 hook ship** and activated at that `plugin.json` bump as a pre-authorized PATCH (the v2.0.1 / v3.0.1 / v3.0.3 idiom) · the wave-4 precondition's strike, once that bump has landed under it, is itself a pre-authorized PATCH recorded in the log row (M2, at both ledger homes) · `rust-cli.md` `paths` += `plugins/mochiko/.claude-plugin/plugin.json` · `.claude-plugin/marketplace.json` · `CHANGELOG.md` (FP-5, B1) |
 | 3.1.1 | 2026-09-20 | PATCH — the `validator` persona retired at plugin v0.113.0 by ruling (`producer-plan-enforcement` D3 · `author-grader-consolidation` D7, that path's wave 3; the row itself user-ruled): GI-004's two detail lines re-point the grader identity from the persona to a plain fresh seat running the rendered `mochiko:validation-primitive-edit` contract, an editorial note beside them; the ratchet, the audit-unit keys and the five schema-content criteria are unchanged. Mints no principle; no fresh `/mochiko:setup` amend (the v3.0.1–v3.0.3 idiom) | GI-004 |
+| 3.1.2 | 2026-09-23 | AM-4 — GI-009's carried `GLOSSARY.md` deviation discharged (PATCH — a recorded deviation discharged, no principle added, removed, or redefined; user-ruled). Driver: the standing amend trigger "GLOSSARY.md gains content" fired when `impeccable-design-integration` build item 10 scaffolded `GLOSSARY.md` with eight terms at plugin v0.114.0 (`18b533c`); stress test waived by user ruling (recorded in the synthesis) | GI-009 deviation discharged — `GLOSSARY.md` a live operating doc under the pinned term format · KM invariants' deferral clause + revisit trigger retired · standing amend trigger struck (amendment policy · region governance-operations line) · region operating-docs line gains `GLOSSARY.md` (FP-1, user-ruled at acceptance) · the hook wave's owed pre-authorized PATCH re-keyed v3.1.2 → v3.1.3 (GI-019 clause-iv pointer) |
 
 *AM-3 addendum (2026-09-14):* outside the governance region, and under the Card 2 ruling ratified
 2026-09-14, the `## Non-negotiable constraints` kernel-class paragraph's trace parenthetical in

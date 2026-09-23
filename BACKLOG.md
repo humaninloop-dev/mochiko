@@ -35,9 +35,10 @@ provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
      signed tags), then the `mochiko-cli-v*` tag. Gates 2 and 3 (GI-012 as amended, AM-3 C5).
   2. **Gate-6 full run** against the published binary (`MOCHIKO_GATE_VERSION=<tag>`; 87 cases,
      ≈155 sessions, $13–16, ≈1 h — `wave5-gate6-plan.md`), then the release commit + the
-     pre-authorized **PATCH v3.1.2** (`wave5-bump-patch.md`, graded by `validation-constitution`;
-     re-keyed 2026-09-20 — v3.1.1 was taken by the `validator` retirement row, so the ledger's
-     GI-019 clause-iv pointer and this line now read v3.1.2).
+     pre-authorized **PATCH v3.1.3** (`wave5-bump-patch.md`, graded by `validation-constitution`;
+     re-keyed 2026-09-20 — v3.1.1 was taken by the `validator` retirement row; re-keyed again
+     2026-09-23 — v3.1.2 was taken by AM-4, the `GLOSSARY.md` discharge; the ledger's GI-019
+     clause-iv pointer and this line now read v3.1.3).
   3. **Kinako violator pass** — evidence-tree ruling owed (161 files with no legal home under
      `.mochiko/`; recommend a repo-root `evidence/`), then 214 moves + 143 pointers on the
      pre-gate 0.103.0 pin, upgrade, dogfood, **D10 watch** (`wave5-plan.md` §3/§7).
@@ -583,7 +584,8 @@ mochiko's own migration executed same day (this file's shape is its result).
   boundaries (amend + plan) — the fresh-setup half and the seeded cap trip remain.
 - [ ] **Governance first-live-run watches** (2026-08-06, governance v1.0.0, DECISIONS row) —
   standing amend triggers to observe: public-product transition (GI-002) · CI arrival un-narrows
-  FLOOR-SEC scanning (GI-003) · GLOSSARY.md content → scaffold (GI-009) · helper-script waiver
+  FLOOR-SEC scanning (GI-003) · ~~GLOSSARY.md content → scaffold (GI-009)~~ fired and discharged
+  at AM-4, governance v3.1.2, 2026-09-23 · helper-script waiver
   trigger (GI-008) · evolution-notes/layer-rules remain offerable on amend (GI-013/014, FP-1).
   (Gates 4+5 executed first time at the v0.54.0 bump 2026-08-06 — `marketplace.json` synced
   0.10.0→0.54.0, CHANGELOG entry appended; the obligation is now routine per-bump, GI-012.)
@@ -598,6 +600,15 @@ mochiko's own migration executed same day (this file's shape is its result).
   rule: decide whether this re-opens the report-writer/scribe question or whether the fix is
   purely contractual (stamp = date + baseline figures only; per-bump detail lives in
   CHANGELOG). The 2026-08-06 groom compressed the stamp to contract shape either way.
+- [ ] **Governance follow-up amend — AM-4 validator residuals** (2026-09-23; provenance: AM-4
+  validate grade, `.mochiko/memory/governance-trace-summary.md` validator record A2/A3;
+  user-ruled to BACKLOG at acceptance) — three small items for the next setup amend, none in
+  AM-4's scope: (a) `GLOSSARY.md` has no named writer moment — the KM pin carries the term
+  format only, and the template's "spec landing when new terms mint" did not fit the brainstorm
+  build item that minted the first eight terms (candidate: "a ruling's landing when it mints a
+  term"); (b) the region's standing-amend-triggers line (`CLAUDE.md` governance region) omits
+  the helper-script waiver trigger the ledger still lists as standing; (c) GI-009 Testability
+  still names "in-flight agreement", which the KM pin records as superseded by the orphan rule.
 - [ ] **Brainstorm bookkeeping watch** (2026-07-17, carried) — on a KM project:
   read-index-before-open fires, entries land/update with named landings, close invariants catch
   a seeded defect, the no-module branch stays silent. Honest residual: drift on a session-less
