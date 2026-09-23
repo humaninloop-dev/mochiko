@@ -81,12 +81,20 @@ sections:
     contract: |
       Authored per mochiko:authoring-prototype from the Intent section's UX-bearing ruling. Not
       UX-bearing -> the single line "No UX surface — prototype waived at intent." and nothing
-      else. UX-bearing -> both tables + the prototype pointer, in full. The manifest is binding
+      else. UX-bearing -> one Direction block per surface (per mochiko:patterns-design-direction), both
+      tables, and the prototype pointer, in full. The manifest is binding
       (screens, data, actions); the prototype's pixels are advisory. Feature column lands at
       derivation as a re-tag pass (FEAT-XXX per row); screens of unselected features greyed
       coming-soon; a filter-rejected story's screens kept, greyed, marked rejected.
     good: |
       UX-bearing form:
+
+      ### Direction — [surface] ([SCR range])
+      - **Mode:** [Persuade | Operate | Read | Experience]
+      - **Register:** [bolder | quieter | distill | held] — [why, one clause]
+      - **Contract:** thesis — [...] · own world — [...] · story — [...] · first viewport — [...] · viewports — [...]
+      - **Declared tokens (intent):** [type · color · spacing · motion, as intent] | none — honors the baseline
+      - **Incumbent world:** [preserve | expand | replace] — [evidence, one clause]
 
       | ID | Screen | Purpose | Data shown | Feature |
       |----|--------|---------|------------|---------|
@@ -100,11 +108,11 @@ sections:
       or open `prototype/index.html` directly. Flows and data are binding; layout and styling
       advisory.
     check: >-
-      If the spec is UX-bearing, are both the SCR-XXX and FLOW-XXX tables present with a Feature
-      column and the prototype pointer? If not UX-bearing, is the single waiver line present and
-      nothing else?
+      If the spec is UX-bearing, is a Direction block with its five fields present for each
+      surface, and are both the SCR-XXX and FLOW-XXX tables present with a Feature column and the
+      prototype pointer? If not UX-bearing, is the single waiver line present and nothing else?
     heading: Screens & Flows
-    max_lines: 30
+    max_lines: 44
   - name: Feature Selection
     required: true
     contract: |

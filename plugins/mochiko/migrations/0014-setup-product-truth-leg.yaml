@@ -1,0 +1,327 @@
+grammar: 1
+id: 0014-setup-product-truth-leg
+sequence: 14
+intent: >-
+  Give /mochiko:setup its product-truth leg — the lead's inline asks, the design baseline
+  written through a product-designer producer and a non-author grader, a third baselines-bootstrap
+  arm and an unconditional design-home scaffold — and give analysis-codebase the design-system
+  detection facts and the template sub-part they land in.
+anchor: 2026-09-19 impeccable-design-integration D6
+hash: sha256:91740ea658e41579163f65b1d5722b5d4de3d8d34f8f54bf194fd83f503f370f
+changes:
+  - op: mint-rule
+    schema: command/setup
+    section: setup.sec.roles
+    rule:
+      id: setup.product-truth-leg
+      labels: [seats]
+      class: must
+      kind: duty
+      text: >-
+        The product-truth leg is yours, inline, inside the interrogation stage
+        (setup.interrogation-inline): ask only what the repo, README, brand assets and,
+        brownfield, the analysis cannot answer, of five — platform, one of `web` · `ios` ·
+        `android` · `adaptive` · `desktop`, an unrecognized answer warned and never silently
+        defaulted · brand commitments and voice · design principles · the accessibility
+        standard of record, asked nothing: a pointer to the compliance module or floor line that
+        holds it · the evidence fence — no claim, testimonial, benchmark, customer or pricing
+        invented where evidence is absent. Audience and purpose are never asked; they live at the
+        product desk, and the design truth points there.
+      anchor: 2026-09-19 impeccable-design-integration D6
+  - op: mint-rule
+    schema: command/setup
+    section: setup.sec.roles
+    rule:
+      id: setup.design-truth-write
+      labels: [seats, independence]
+      class: must
+      kind: binding
+      text: >-
+        The design baseline, ${product_dir}/design/design.md, has one writer, the
+        `product-designer` seat — never you. Dispatch it as a producer with the leg's answers in
+        its brief; it writes the truth part and, brownfield, seeds the system part from the
+        analysis's design-system facts, shape from `mochiko-cli home
+        ${product_dir}/design/design.md` and `mochiko-cli template design-baseline`. A plain fresh
+        seat that authored none of it grades the write against `mochiko-cli template
+        design-baseline --check`, spawned with an explicit `model:` alias never below the
+        producer's tier; its FAIL→fix→re-grade loop is bounded by setup.gate-loop-bound.
+      pointer: mochiko:patterns-sound-loop
+      anchor: 2026-09-19 impeccable-design-integration D6
+  - op: reword-rule
+    schema: command/setup
+    id: setup.user-card-rulings
+    text: >-
+      Every interrogation card ruling, module ruling, and waiver is the user's — and so is every
+      product-truth answer (setup.product-truth-leg) and the ratification of the design baseline
+      the seat writes — its truth part and, brownfield, its code-seeded system part.
+  - op: reword-rule
+    schema: command/setup
+    id: setup.baselines-bootstrap
+    text: >-
+      `Assumed`: the brownfield analysis also bootstraps the product baselines — data-model.md
+      · contracts/ · constraints-and-decisions.md · quickstart.md — at ${product_dir}/
+      (ARCHITECTURE.md stays repo root, now as the store's derived index) — from the delivered
+      code; greenfield seeds those baselines at the first implement run's design phase instead.
+      The design baseline is the third arm: its truth part interrogation-sourced on every path
+      (setup.product-truth-leg), its system part code-seeded on brownfield and left absent on
+      greenfield (setup.design-scaffold-unconditional).
+  - op: mint-rule
+    schema: command/setup
+    section: setup.sec.tools
+    rule:
+      id: setup.design-scaffold-unconditional
+      labels: [binding]
+      class: must
+      text: >-
+        The design home's scaffold is unconditional — on every path,
+        ${product_dir}/design/design.md is created where missing, carrying its required truth
+        headings, inside the product-designer seat's write (setup.design-truth-write); it creates
+        only what is missing and never writes over a baseline that carries content. The optional
+        system sections stay absent until code seeds them — brownfield here, greenfield at the
+        first UX-bearing feature's landing fold.
+      anchor: 2026-09-19 impeccable-design-integration D6
+  - op: reword-rule
+    schema: skill/analysis-codebase
+    id: analysis-codebase.brownfield-quality-checklist
+    text: >-
+      Before finalizing the analysis: project identity complete (name, language, framework, entry
+      points) · directory structure documented with purposes · architecture pattern identified
+      with evidence · naming conventions documented (files, variables, functions, classes) · all
+      four Essential-Floor categories assessed present/partial/absent, file-cited · domain
+      entities extracted with relationships · external dependencies documented · design-system
+      facts inventoried — UI framework, CSS system, fonts, token files, component library —
+      file-cited, or `none detected` · strengths to preserve identified (minimum 2–3) ·
+      inconsistencies documented with severity · recommendations provided for constitution focus
+      · file paths cited for all findings · output written to
+      `.mochiko/memory/codebase-analysis.md`.
+  - op: mint-rule
+    schema: skill/analysis-codebase
+    section: analysis-codebase.sec.output
+    rule:
+      id: analysis-codebase.design-facts-seed
+      labels: [binding]
+      class: must
+      kind: binding
+      text: >-
+        Design-system facts (`detect-stack.sh`'s `design_system` key, code-verified) are facts,
+        never stances: they seed the design baseline's system part only through setup's
+        `product-designer` write, and later the frontend shelf.
+      anchor: 2026-09-19 impeccable-design-integration D6
+  - op: replace-document
+    kind: template
+    name: codebase-analysis
+    content:
+      template: codebase-analysis
+      title: Codebase Analysis (brownfield-setup)
+      form: artifact-format.md
+      register: full
+      overview: |
+        The structure for brownfield codebase-analysis output (.mochiko/memory/codebase-analysis.md).
+        Follows the deliverable envelope SLIMMED but legible: findings as file-cited table rows, one
+        line each; the judgment prose (strengths, recommendations) stays prose — the analysis
+        checkpoint's human reader needs it. Status values: `draft` (initial generation), `confirmed`
+        (user approved at checkpoint). Essential Floor statuses: `present` (fully implemented),
+        `partial` (some coverage, gaps exist), `absent` (not implemented). Severity levels: `low`
+        (cosmetic), `medium` (should fix), `high` (blocking). This is a reference structure — the
+        agent produces actual content following it.
+      sections:
+        - name: Header
+          required: true
+          contract: |
+            Title "# Codebase Analysis" plus Generated timestamp, Mode: brownfield-setup, and Status
+            (draft | confirmed).
+          check: >-
+            Is the header present with generated timestamp, Mode brownfield-setup, and a Status of
+            draft or confirmed?
+        - name: Part 1 — Inventory (Factual)
+          required: true
+          density: findings as file-cited table rows, one line each
+          contract: |
+            Factual inventory, file-cited. Sub-parts:
+            - Project Identity table (Name, Primary Language + version, Framework + version, Package
+              Manager, Entry Points) each with its Source.
+            - Directory Structure (tree with per-dir purpose comments).
+            - Detected Patterns: Architecture Pattern (pattern | evidence); Naming Conventions (Files/
+              Variables/Functions/Classes — convention + example); Error Handling Pattern (pattern |
+              evidence); Test Pattern (Framework, Location, Naming, Coverage Config).
+            - Domain Entities (Entity | File | Field Count | Relationships).
+            - External Dependencies (Service | Access Pattern | Config Location).
+            - Design System (Aspect | Value | Source): UI Framework, CSS System, Fonts, Token Files,
+              Component Library — each file-cited, or `none detected`.
+          check: >-
+            Is Part 1 a factual, file-cited inventory covering project identity, directory
+            structure, detected patterns (architecture, naming, error-handling, test), domain
+            entities, external dependencies, and the design system (UI framework, CSS system,
+            fonts, token files, component library, or `none detected`) — each finding one line
+            and sourced?
+          heading: 'Part 1: Inventory (Factual)'
+          max_lines: 50
+        - name: Part 2 — Assessment (Judgment)
+          required: true
+          contract: |
+            Judgment layer; prose where the human reader needs it. Sub-parts:
+            - Strengths to Preserve (numbered prose: strength -> why it matters).
+            - Inconsistencies Found (Area | Finding | Severity low|medium|high | Location).
+            - Essential Floor Status — the twelve-check table (Category | Check | Status present|
+              partial|absent | Evidence, file-cited, one line) across Security (Auth at boundaries,
+              Secrets from env, Input validation), Testing (Test framework configured, Test files
+              present, CI runs tests), Error Handling (Explicit error types, Context preservation,
+              Appropriate status codes), Observability (Structured logging, Correlation IDs, No PII in
+              logs) — followed by the Category rollup line (Security · Testing · Error Handling ·
+              Observability).
+            - Recommended Constitution Focus (numbered recommendations).
+          check: >-
+            Does Part 2 carry the strengths prose, the inconsistencies table with severities, the
+            twelve-row Essential Floor Status table (present/partial/absent, file-cited evidence)
+            with the category rollup, and the recommended constitution focus?
+          heading: 'Part 2: Assessment (Judgment)'
+          max_lines: 40
+        - name: Appendix — Detection Method
+          required: true
+          contract: |
+            Table (Aspect | Method Used): Tech Stack — `detect-stack.sh` script; Architecture —
+            Directory pattern matching; Entities — ORM/framework-specific patterns; Conventions —
+            File sampling and pattern inference; Design System — `detect-stack.sh` `design_system`
+            key, verified by file sampling.
+          check: >-
+            Is the Detection Method appendix present, naming the method per aspect
+            (detect-stack.sh, directory pattern matching, ORM patterns, file sampling, the
+            design_system key)?
+          heading: 'Appendix: Detection Method'
+          max_lines: 15
+      skeleton: |
+        # Codebase Analysis
+
+        > Generated: {{timestamp}}
+        > Mode: brownfield-setup
+        > Status: {{status}}
+
+        ---
+
+        ## Part 1: Inventory (Factual)
+
+        ### Project Identity
+
+        | Aspect | Value | Source |
+        |--------|-------|--------|
+        | Name | {{project_name}} | {{source_file}} |
+        | Primary Language | {{language}} {{version}} | {{source_file}} |
+        | Framework | {{framework}} {{version}} | {{source_file}} |
+        | Package Manager | {{package_manager}} | {{source_file}} |
+        | Entry Points | {{entry_points}} | {{detection}} |
+
+        ### Directory Structure
+
+        ```
+        {{project_root}}/
+        ├── {{dir_1}}/            # {{purpose_1}}
+        ├── {{dir_2}}/            # {{purpose_2}}
+        └── ...
+        ```
+
+        ### Detected Patterns
+
+        #### Architecture Pattern
+
+        | Pattern | Evidence |
+        |---------|----------|
+        | {{pattern_name}} | {{files_or_dirs_indicating_pattern}} |
+
+        #### Naming Conventions
+
+        | Element | Convention | Example |
+        |---------|------------|---------|
+        | Files | {{file_convention}} | {{example}} |
+        | Variables | {{var_convention}} | {{example}} |
+        | Functions | {{func_convention}} | {{example}} |
+        | Classes | {{class_convention}} | {{example}} |
+
+        #### Error Handling Pattern
+
+        | Pattern | Evidence |
+        |---------|----------|
+        | {{error_pattern}} | {{files_showing_pattern}} |
+
+        #### Test Pattern
+
+        | Aspect | Value |
+        |--------|-------|
+        | Framework | {{test_framework}} |
+        | Location | {{test_dir}} |
+        | Naming | {{test_naming_convention}} |
+        | Coverage Config | {{coverage_config_file}} |
+
+        ### Domain Entities
+
+        | Entity | File | Field Count | Relationships |
+        |--------|------|-------------|---------------|
+        | {{entity_name}} | {{file_path}} | {{count}} | {{relationship_list}} |
+
+        ### External Dependencies
+
+        | Service | Access Pattern | Config Location |
+        |---------|---------------|-----------------|
+        | {{service_name}} | {{how_accessed}} | {{config_file}} |
+
+        ### Design System
+
+        | Aspect | Value | Source |
+        |--------|-------|--------|
+        | UI Framework | {{ui_framework}} | {{source_file}} |
+        | CSS System | {{css_system}} | {{source_file}} |
+        | Fonts | {{fonts}} | {{source_file}} |
+        | Token Files | {{token_files}} | {{source_file}} |
+        | Component Library | {{component_library}} | {{source_file}} |
+
+        ---
+
+        ## Part 2: Assessment (Judgment)
+
+        ### Strengths to Preserve
+
+        1. **{{strength_1}}**: {{why_it_matters}}
+        2. **{{strength_2}}**: {{why_it_matters}}
+
+        ### Inconsistencies Found
+
+        | Area | Finding | Severity | Location |
+        |------|---------|----------|----------|
+        | {{area}} | {{what_inconsistent}} | low\|medium\|high | {{files}} |
+
+        ### Essential Floor Status
+
+        | Category | Check | Status | Evidence (file-cited, one line) |
+        |----------|-------|--------|--------------------------------|
+        | Security | Auth at boundaries | {{present\|partial\|absent}} | {{evidence}} |
+        | Security | Secrets from env | {{status}} | {{evidence}} |
+        | Security | Input validation | {{status}} | {{evidence}} |
+        | Testing | Test framework configured | {{status}} | {{evidence}} |
+        | Testing | Test files present | {{status}} | {{count}} files found |
+        | Testing | CI runs tests | {{status}} | {{evidence}} |
+        | Error Handling | Explicit error types | {{status}} | {{evidence}} |
+        | Error Handling | Context preservation | {{status}} | {{evidence}} |
+        | Error Handling | Appropriate status codes | {{status}} | {{evidence}} |
+        | Observability | Structured logging | {{status}} | {{evidence}} |
+        | Observability | Correlation IDs | {{status}} | {{evidence}} |
+        | Observability | No PII in logs | {{status}} | {{evidence}} |
+
+        **Category rollup:** Security {{status}} · Testing {{status}} · Error Handling {{status}} · Observability {{status}}
+
+        ### Recommended Constitution Focus
+
+        1. {{recommendation_1}}
+        2. {{recommendation_2}}
+
+        ---
+
+        ## Appendix: Detection Method
+
+        | Aspect | Method Used |
+        |--------|-------------|
+        | Tech Stack | `detect-stack.sh` script |
+        | Architecture | Directory pattern matching |
+        | Entities | ORM/framework-specific patterns |
+        | Conventions | File sampling and pattern inference |
+        | Design System | `detect-stack.sh` `design_system` key, verified by file sampling |
+      conformance:
+        extra_headings: deny

@@ -5,6 +5,11 @@
 the ledger's GI-019 clause-iv pointer, and the BACKLOG line now read v3.1.2; the `Ratified:` line
 and the ledger `**Version:**` field move 3.1.1 → 3.1.2 when this lands. Content unchanged.*
 
+*Re-keyed again 2026-09-23: this PATCH is now **v3.1.3**. v3.1.2 was taken by AM-4 (the
+`GLOSSARY.md` deviation discharge, user-ratified), so every "v3.1.2" above and below now reads
+v3.1.3, and the `Ratified:` line and ledger `**Version:**` field move 3.1.2 → 3.1.3 when this
+lands. Content unchanged.*
+
 **Authority:** the AM-3 ledger row (v3.1.0, 2026-09-14) pre-authorizes two PATCH amendments
 "recorded in the log row": (a) activation of GI-019's dormant conformance-testability limb at the
 `plugin.json` bump that ships the hooks (the v2.0.1 / v3.0.1 / v3.0.3 idiom); (b) the strike of the

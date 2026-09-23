@@ -14,6 +14,12 @@ conditions:
     values: presence
     resolution: surface-presence
     note: a stack-matched mutation tool available to the verification seat.
+  ux_bearing:
+    values:
+      - 'yes'
+      - 'no'
+    resolution: entry-derived
+    note: the spec's intent-stage UX-bearing ruling for the feature under validation.
 sections:
   - id: testing-gap-finding.sec.independence
     title: Independence — the blind seat and the split authorships
@@ -118,6 +124,24 @@ sections:
           seam — is not this run's rework. It routes to a `/mochiko:feature` delta card, cited
           in the report.
         anchor: 2026-08-19 qa-gap-finding-verification D6
+      - id: testing-gap-finding.critique-lens-ux-bearing
+        labels: [boundary]
+        class: must
+        text: >-
+          On a UX-bearing feature the pass carries the critique lens: the same blind seat, inside
+          the same fence, grades the built UI against the Screens & Flows Direction block, the
+          SCR/FLOW manifest, and the design baseline — at both depth levels.
+        when: {ux_bearing: 'yes'}
+        anchor: 2026-09-19 impeccable-design-integration D8
+      - id: testing-gap-finding.a11y-verification-routing
+        labels: [boundary]
+        class: must
+        kind: routing
+        text: >-
+          No accessibility probing in this pass or its critique lens. The a11y floor stays a
+          build-time standard; verifying it at final validation is the audit lens's `**TEST:**`
+          legs on `mochiko:qa-engineer`.
+        anchor: 2026-09-19 impeccable-design-integration D11
   - id: testing-gap-finding.sec.inputs
     title: Inputs — the blindness fence and the derivation duty
     intent: >-
@@ -137,8 +161,10 @@ sections:
           `contracts/` (`api.yaml` and any sibling contract documents) · the architecture store's
           concern rows only — their `NFR-XXX` targets
           (`.mochiko/product/architecture/concerns.md` plus any graduated
-          `concerns/AX-XXX-<slug>.md`). All define externally-observable promised behavior, so the
-          pass stays black-box.
+          `concerns/AX-XXX-<slug>.md`) · on a UX-bearing feature, the design baseline
+          (`.mochiko/product/design/`), whose design truth and as-built system are the promised
+          look and conduct of the rendered UI. All define externally-observable promised behavior,
+          so the pass stays black-box.
         anchor: 2026-08-19 qa-gap-finding-verification D3
       - id: testing-gap-finding.spine-outside-fence
         labels: [fence]
@@ -223,6 +249,23 @@ sections:
           honesty mechanism, not the finding tally; padding findings to avoid a zero corrupts the
           disclosure.
         anchor: 2026-08-19 qa-gap-finding-verification D8
+      - id: testing-gap-finding.critique-finding-split
+        labels: [verdict, evidence]
+        class: must
+        text: >-
+          Critique findings split by kind: a broken Direction-block or SCR/FLOW promise is a
+          spec-violation citing it; a departure from the design baseline blocks, citing the
+          baseline entry; a taste finding is advisory, carried to the landing fold — never
+          blocking.
+        anchor: 2026-09-19 impeccable-design-integration D8
+      - id: testing-gap-finding.critique-low-depth-advisory
+        labels: [verdict]
+        class: must
+        text: >-
+          Every critique finding is advisory — this overrides the blocking half of
+          `testing-gap-finding.critique-finding-split` — and no confirm round runs.
+        when: {depth: low, ux_bearing: 'yes'}
+        anchor: 2026-09-19 impeccable-design-integration D13
   - id: testing-gap-finding.sec.output
     title: Output — the disclosure, the noted skips, and the durable gate set
     intent: What the report states and where fold-back lands.
@@ -249,7 +292,8 @@ sections:
         kind: binding
         text: >-
           The final-validation report discloses the expectation count, the probed count, each
-          unprobeable expectation with its reason, and the findings by kind.
+          unprobeable expectation with its reason, the findings by kind, and — on a UX-bearing
+          feature — the critique findings by kind with their fix and confirm outcomes.
         anchor: 2026-08-19 qa-gap-finding-verification D8
       - id: testing-gap-finding.gates-artifact-contract
         labels: [binding]
@@ -269,9 +313,10 @@ sections:
         text: >-
           The pre-hand-up quality checklist mirrors this schema's rules one-for-one — scope and
           skip statement · fence-clean dispatch and delegation · numbered expectations before
-          probing · depth-bound lens or noted skip · kinds proposed with evidence ·
-          adjudication and routing honored · done condition met · disclosure complete ·
-          fold-back authored — each box checked against its rule, none beyond them.
+          probing · depth-bound lens or noted skip · critique lens run on a UX-bearing feature,
+          no accessibility probing · kinds proposed with evidence · critique split and bound
+          honored · adjudication and routing honored · done condition met · disclosure complete
+          · fold-back authored — each box checked against its rule, none beyond them.
   - id: testing-gap-finding.sec.reserved
     title: Reserved — the lead's confirmation and the user's rulings
     intent: Decisions the finder never takes alone.
@@ -302,3 +347,13 @@ sections:
           Bound exhaustion or a no-progress round halts the run; the disposition is reserved to
           the user.
         anchor: 2026-08-19 qa-gap-finding-verification D6
+      - id: testing-gap-finding.critique-fix-confirm-bound
+        labels: [verdict]
+        class: must
+        kind: bound
+        text: >-
+          Critique findings are batched: one fix round, then one confirm round that scores each
+          prior finding resolved, partial, or unresolved and names regressions the fix batch
+          introduced — no new hunt. Then stop; what stays open goes to the checkpoint.
+        when: {depth: high, ux_bearing: 'yes'}
+        anchor: 2026-09-19 impeccable-design-integration D8

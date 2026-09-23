@@ -196,7 +196,7 @@ silent); the user rules the **selection** — which work rows build now — with
 per-capability completeness view (pending rows · stubs · kills) visible at the moment of
 choice. The staged map delta executes as one atomic batch at spec acceptance. A UX-bearing
 spec carries a **Screens & Flows** section — the SCR/FLOW manifest plus a clickable low-fi
-prototype under `prototype/` (`product-engineer` × `authoring-prototype`), authored in story
+prototype under `prototype/` (`product-designer` × `authoring-prototype`), authored in story
 lockstep, the user clicking each story's screens as they land; not UX-bearing takes the
 waiver line.
 
@@ -204,7 +204,7 @@ waiver line.
 |---|---|
 | producer | `requirements-analyst` × `authoring-requirements`, `authoring-user-stories` — stories and FR/SC authored inside the PM's frame |
 | product manager | `product-manager` × `authoring-feature-map` (+ `patterns-map-minimalism` discipline) — capability frame at intent · confirm + work-row cutting + filter after stories · selection card |
-| prototype producer (UX-bearing) | `product-engineer` × `authoring-prototype` (Screens & Flows manifest + `prototype/` app, story lockstep with the analyst) |
+| prototype producer (UX-bearing) | `product-designer` × `authoring-prototype` (Screens & Flows manifest + `prototype/` app, story lockstep with the analyst) |
 | critic | `devils-advocate` × `review-specifications` (capability/work-row derivation + map-delta grade, Screens & Flows prototype walk included) |
 
 ```mermaid
@@ -213,7 +213,7 @@ flowchart LR
   lead["lead: /mochiko:specify"]
   pm["product-manager ×<br/>authoring-feature-map +<br/>patterns-map-minimalism"]
   producer["requirements-analyst ×<br/>authoring-requirements +<br/>authoring-user-stories"]
-  proto["product-engineer ×<br/>authoring-prototype"]
+  proto["product-designer ×<br/>authoring-prototype"]
   critic["devils-advocate ×<br/>review-specifications"]
   user <-->|"intent probes → confirmed synthesis<br/>(capability frame included)"| lead
   lead -->|"frame brief · derivation brief"| pm

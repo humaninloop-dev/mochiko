@@ -2,7 +2,7 @@
 
 **Session date:** 2026-08-06 · **Mode:** brownfield
 **Confirmed at synthesis checkpoint:** 2026-08-06 by Deepesh
-**Governs:** the governance surface set v3.0.3 (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`) — v2.0.0 at AM-1, v3.0.0 at AM-2 (2026-09-04), v3.0.1–v3.0.3 by the pre-authorized wave-3/4/6 PATCHes (2026-09-04/05, ledger amendment log); **v3.1.0 at AM-3 (2026-09-14)**
+**Governs:** the governance surface set v3.0.3 (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`) — v2.0.0 at AM-1, v3.0.0 at AM-2 (2026-09-04), v3.0.1–v3.0.3 by the pre-authorized wave-3/4/6 PATCHes (2026-09-04/05, ledger amendment log); **v3.1.0 at AM-3 (2026-09-14)** · v3.1.1 PATCH (2026-09-20, validator retirement, ledger amendment log) · **v3.1.2 at AM-4 (2026-09-23, PATCH)**
 
 ## Fact profile
 
@@ -89,7 +89,7 @@ Arbitrated deck: **empty by ruling** — no shelf dealt (GI-002); no architectur
 
 | GI-ID | Module | Ruling | Because | Mark |
 |-------|--------|--------|---------|------|
-| GI-009 | knowledge-management (core) | **adopted — pin ratified** | Offered default-on at dimension 7; core already hand-pinned 2026-07-25 and live; this run is the pin's recorded revisit trigger, now discharged: pinned core ratified as the ruled core. All four existing root docs (`ROADMAP.md` · `BACKLOG.md` · `DECISIONS.md` · `ARCHITECTURE.md`) codified into module roles — analysis confirms semantics fit; **no collisions**. ARCHITECTURE.md deferral in the pin is **retired** (doc gained content); GLOSSARY.md deferral **carried** as recorded deviation — scaffold when it gains content. | Confident |
+| GI-009 | knowledge-management (core) | **adopted — pin ratified** | Offered default-on at dimension 7; core already hand-pinned 2026-07-25 and live; this run is the pin's recorded revisit trigger, now discharged: pinned core ratified as the ruled core. All four existing root docs (`ROADMAP.md` · `BACKLOG.md` · `DECISIONS.md` · `ARCHITECTURE.md`) codified into module roles — analysis confirms semantics fit; **no collisions**. ARCHITECTURE.md deferral in the pin is **retired** (doc gained content); GLOSSARY.md deferral **carried** as recorded deviation — scaffold when it gains content. *AM-4 (2026-09-23):* the deviation's revisit trigger fired — `GLOSSARY.md` gained content at plugin v0.114.0 (eight terms minted by `impeccable-design-integration` build item 10); the deviation is **discharged**: `GLOSSARY.md` joins the module's live operating docs under the term format the pin already carries, and the standing amend trigger "GLOSSARY.md content" retires. | Confident |
 | GI-010 | knowledge-management elective: `CHANGELOG.md` | adopted | Release-shaped project (semver, marketplace) | Confident |
 | GI-011 | knowledge-management elective: `RUNBOOK.md` | **declined — durable** | Nothing deployed, nothing operated | Confident |
 | GI-012 | release-gates | adopted | User ruling at dimension 8 ("okay adopt, release gate"): codify what blocks a `plugin.json` bump — audits PASS · strip entries recorded · landing ritual complete · marketplace metadata synced (current 0.10.0-vs-0.53.0 lag becomes a tracked defect). *AM-1 (2026-08-16) dormant conditional:* when the template-schema Rust crate lands — `cargo test` PASS joins the blocking gates; schema-data/binary consistency joins the marketplace-sync gate; dormant until the crate exists (activated v0.76.0, ledger 2.0.1). *AM-2 (2026-09-04, Card 4):* gate 6 = `cargo test` PASS **plus the plugin contract suite's deterministic set green** (`python3 evals/contract/run.py`, sandbox, maintainer-side at every bump; GitHub CI keeps the crate layers only); gate 5's schema-data/binary clause becomes **derived view ≡ replay under the released binary range** (the crate's `views` + `fidelity` suites); the behavioural read-back metric is reported, never gating (record D8). **A SKIPPED suite (exit 3) is not green — it blocks the bump** until the suite runs (review I6, user-ruled). **Substrate caveat carried (review I7):** the suite runs on the Docker sandbox's stored consumer-subscription auth, a `Contested` ruling sustained against adverse Terms-of-Service evidence (kinako D8; record D8); the fact profile's "contractual commitments: none" stands — this is a third-party ToS exposure carried as a Contested mark on the gate's substrate, not a contractual commitment of the project and not a module trigger. **The crate's release train is gated too (review I8, user-ruled):** a `mochiko-cli-v*` tag MUST NOT land without the four crate layers green (`cargo test --all` · fmt · clippy `-D warnings` · `cargo audit --deny warnings`), the contract suite green against the tagged binary, and the render's head-and-tail output shape unchanged — or a coordinated `plugin.json` bump when it changes (the `.md` halt clauses key on that shape, which the grammar range does not version). | Confident (gates); the substrate mark Contested |
@@ -139,6 +139,38 @@ Not applicable — `layer-rules` not adopted.
 - **Verify pass:** PASS — all six folds confirmed by the sole reviewer from disk (2026-08-06); one sizing-line figure nit fixed post-verify.
 
 ## Amendment Log
+
+**AM-4 — 2026-09-23 — GLOSSARY.md deviation discharged (GI-009)** *(driver: the standing amend
+trigger "GLOSSARY.md gains content" fired when `impeccable-design-integration` build item 10
+scaffolded `GLOSSARY.md` with eight terms, plugin v0.114.0, commit `18b533c`; setup amend invoked
+by the user 2026-09-23 — "run the amend"; **synthesis ratified by the user 2026-09-23 — "ratified"**)*
+
+- **Scope (user-ruled 2026-09-23, "GLOSSARY only"):** GI-009's carried deviation discharges — the
+  knowledge-management module's live operating docs gain `GLOSSARY.md`, governed by the term
+  format and placement the pinned invariants already carry (`**<term>** — <definition> *(minted
+  <date>, <source>)*`); the pinned invariants file's "Deviation carried … `GLOSSARY.md` deferred"
+  clause and its revisit trigger retire; the standing amend trigger "GLOSSARY.md content" is
+  struck from the ledger's amendment policy and the CLAUDE.md governance region. Nothing else
+  moves: fact profile, modules, principles, waivers, floor, and depth unchanged; the hook wave's
+  owed PATCH (the C1 budget-table discharge note) is **not** folded here.
+- **Semver (user-ruled): PATCH, v3.1.1 → v3.1.2** — a recorded deviation discharged, no principle
+  added, removed, or redefined. v3.1.2 was pre-reserved for the hook wave's owed PATCH; that PATCH
+  **re-keys to v3.1.3** (the v3.1.1 precedent: the validator retirement took the reserved number
+  and re-keyed the hook PATCH).
+- **Stress test: waived, recorded (user-ruled 2026-09-23)** — no cold seat on this synthesis
+  (`setup.stress-test-cold-seat` waiver path); the authored surfaces still take the independent
+  validate grade (`setup.validate-seat-form`) before acceptance.
+- **Feature map (amend):** absent, surfaced not offered — GI-022 declined a repo-level feature
+  map for mochiko durably; the amend makes no map write.
+- **Out of scope, noted for the user:** `CLAUDE.md`'s "Recording brainstorm and design-session
+  outputs" paragraph (outside the governance region, user content) still reads "`ARCHITECTURE.md`
+  / `GLOSSARY.md` when they gain content"; the run never touches it (`setup.governance-region-ownership`).
+- **Mark:** Confident — a trigger-fired discharge the synthesis pre-ruled at v1.0.0 ("scaffold
+  when it gains content").
+- **Accepted by the user 2026-09-23 ("accept")** — surface set graded by a plain fresh
+  `validation-constitution` seat: FAIL (B1, trace manifest absent) → one fix → PASS 60/61;
+  FP-1 (region operating-docs line names `GLOSSARY.md`) kept; out-of-set hook-PATCH pointers
+  re-keyed to v3.1.3; validator residuals A2/A3 routed to BACKLOG.
 
 **AM-3 — 2026-09-14 — mechanical conformance gates on artifact writes: GI-019 admission
 widened (clause iv), `cli-schema-delivery` D7 narrowly superseded** *(driver: brainstorm

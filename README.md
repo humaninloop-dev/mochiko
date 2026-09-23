@@ -129,7 +129,7 @@ Four rules, no exceptions: a done-condition declared before the loop runs (defau
 | `/mochiko:setup` | Governance surface set (CLAUDE.md region, rules files, ledger) | interrogation → ratified intent → author ↔ independent grade |
 | `/mochiko:brainstorm` | `record.md` decision record | you + lead think; cold review at convergence |
 | `/mochiko:feature` | Map-health report, routed demands, work rows / delta cards dispatched to the pipeline | Delivery-Manager desk; every visit converges to an explicit done condition |
-| `/mochiko:specify` | `spec.md` (intent · stories · Screens & Flows · Feature Selection) + `prototype/` + the capability-map delta | intent stage → product-manager frames, requirements-analyst + product-engineer author ↔ devils-advocate |
+| `/mochiko:specify` | `spec.md` (intent · stories · Screens & Flows · Feature Selection) + `prototype/` + the capability-map delta | intent stage → product-manager frames, requirements-analyst + product-designer author ↔ devils-advocate |
 | `/mochiko:architecture` | The product architecture store at `.mochiko/product/architecture/` — baseline, per-row stances, amendments, drift dispositions | health view → one-line visit goal → principal-architect authors ↔ tech-lead grades ↔ you rule every stance |
 | `/mochiko:implement` | Working, verified code; design artifacts at `.mochiko/features/FEAT-XXX/` where the batch needed them; the acceptance landing folds delivered rows into the map | sufficiency check → conditional design phase (author ↔ independent grade ↔ your sign-off) → card confirm → staff-engineer ↔ qa-engineer, cycle by cycle |
 

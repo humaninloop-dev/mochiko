@@ -7,7 +7,7 @@
 - [ ] Are functional requirements present in FR-XXX form, one line each, technology-agnostic?
 - [ ] Are key entities listed conceptually and compactly?
 - [ ] Are success criteria present in SC-XXX form and measurable?
-- [ ] If the spec is UX-bearing, are both the SCR-XXX and FLOW-XXX tables present with a Feature column and the prototype pointer? If not UX-bearing, is the single waiver line present and nothing else?
+- [ ] If the spec is UX-bearing, is a Direction block with its five fields present for each surface, and are both the SCR-XXX and FLOW-XXX tables present with a Feature column and the prototype pointer? If not UX-bearing, is the single waiver line present and nothing else?
 - [ ] Does Feature Selection carry the derived-features table, the filter rejections (or none), and a Selection recording the user's ruling with deferred features and deferred SCs surfaced?
 - [ ] Are material assumptions recorded (or the section omitted when none)?
 - [ ] Are open questions recorded (or the section omitted when none)?

@@ -121,6 +121,28 @@ steps):
 - **Capture**: screenshot
 ```
 
+**UX-bearing audit legs** (measurable asserts on the rendered UI; each is a custom assertion
+the executor measures through the browser driver's computed styles and layout, then a human
+rules on at the checkpoint):
+```markdown
+**TEST:** SCR-004 settings screen meets the measurable UI floor at every Contract-declared viewport
+- **Setup**: `npm start` (background) (timeout 30s)
+- **Action**: Playwright: open localhost:3000/settings at each viewport the Direction block's Contract declares
+- **Assert**: Body and label text contrast ≥ 4.5:1 against its rendered background
+- **Assert**: Every tap target ≥ 44 × 44 px
+- **Assert**: Text on links, buttons, nav items, and labels renders ≥ 11 px (no tiny tap text)
+- **Assert**: Body text lines run ≤ 80 characters at the rendered width
+- **Assert**: Heading levels descend without a skip (no h1 → h3)
+- **Assert**: No horizontal scroll and no clipped or overlapping content at each of those viewports
+- **Assert**: The project's accessibility standard of record holds for this screen — the checks its attached `a11y` compliance module names, else the floor line `mochiko:patterns-code-minimalism` carries (cite it; never restate it here)
+- **Capture**: screenshot, console
+```
+
+These are examples in a grammar, not a required toolchain: a project without a browser
+driver states its own equivalent measurement in the case, and no dependency is added.
+Thresholds come from `pbakaus/impeccable` @ `e0881d2de397d5e9761d7b35ff5017d8f5ebf69b`
+(detector quality rules), Apache-2.0 — re-expressed; attribution in the repository `NOTICE`.
+
 ## Bad Verification Tasks
 
 ```markdown

@@ -266,11 +266,12 @@ sections:
         class: must
         kind: binding
         text: >-
-          The Screens & Flows section and prototype/ app per mochiko:authoring-prototype —
+          The Screens & Flows section and prototype/ app per mochiko:authoring-prototype — one
+          Direction block per surface, per mochiko:patterns-design-direction, at its head,
           SCR-XXX/FLOW-XXX manifest grammar, low-fi discipline (binding flows, advisory pixels),
-          bun-servable static HTML with the no-server degrade path, design system honored where
-          one exists; not UX-bearing takes the waiver line "No UX surface — prototype waived at
-          intent." instead.
+          bun-servable static HTML with the no-server degrade path, the design baseline and design
+          system honored where they exist; not UX-bearing takes the waiver line "No UX surface —
+          prototype waived at intent." instead.
         pointer: mochiko:authoring-prototype
         anchor: 2026-08-02 ux-mocking-in-specify D1
       - id: spec.governance-briefs
@@ -438,8 +439,9 @@ sections:
         class: floor
         kind: fail
         text: >-
-          A Screens & Flows section absent (the waiver line counts), or ruled UX-bearing with no
-          clickable prototype, or manifest↔prototype drift unresolved.
+          A Screens & Flows section absent (the waiver line counts), or ruled UX-bearing with a
+          surface lacking its Direction block or with no clickable prototype, or
+          manifest↔prototype drift unresolved.
         enforces: [spec.prototype-craft, spec.stress-test-prototype-walk]
         anchor: 2026-08-26 command-content-schema D10
       - id: spec.fail.selection-unruled

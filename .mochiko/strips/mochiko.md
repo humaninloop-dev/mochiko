@@ -18,6 +18,39 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the impeccable design-integration build (v0.114.0). Ruling for the
+[v0.114.0] entry below: `.mochiko/brainstorms/impeccable-design-integration/record.md` D3/D4
+(persona renamed and rewritten, no alias). Pre-edit verbatim text:
+`git show 6e4b264:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+## [v0.114.0] the `product-engineer` roster row — persona renamed `product-designer`
+
+- **Disposition:** superseded → the re-keyed roster row: `product-designer`, a specify-cluster
+  PRODUCER — staff-level product designer who sets each UX-bearing surface's design direction and
+  renders it as the clickable low-fi prototype + Screens & Flows manifest in story lockstep with
+  the analyst; the single writer of the design baseline; honors the brief and the design record
+  over its own taste; surfaces story gaps as findings; never grades its own output (skills:
+  authoring-prototype, patterns-design-direction).
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/impeccable-design-integration/record.md` D3 · D4; the persona's own
+  strip entry `.mochiko/strips/product-designer.md` [v0.114.0]).
+- **Content:** verbatim superseded row — "| `product-engineer` | specify-cluster PRODUCER —
+  staff-level engineer who authors the clickable low-fi prototype + Screens & Flows manifest in
+  story lockstep with the analyst (UX-bearing specs only); surfaces story gaps the screens expose
+  as findings; never grades its own output (skills: authoring-prototype) |".
+- **Kept deliberately:** the row's position, cluster, PRODUCER role, story-lockstep duty, the
+  story-gaps-as-findings duty, the never-grades-its-own-output line, and `authoring-prototype` in
+  its skills. "Staff-level engineer" becomes "staff-level product designer" per D4's naming; the
+  "(UX-bearing specs only)" parenthetical is carried by "each UX-bearing surface". Every other
+  edit this wave made to the router — the three new rows (`patterns-design-direction`,
+  `patterns-craft-floor`, `review-design-audit`), the design-leg clauses added to ten existing rows, and the
+  `staff-engineer` / `qa-engineer` skills lists — is a pure addition (punctuation reflowed around each inserted clause, no word removed; checked by a word-level diff against `6e4b264`) and needs no entry.
+- **Consumers assessed:** router-only text; the address `mochiko:product-engineer` has no
+  deprecation alias (D4, R22) — `plugin.json`, `README.md:132`, `ARCHITECTURE.md`, the budget
+  ledger, the eval kit, the contract pre-registration and the `patterns-model-tiering.seat-default-key`
+  floor (migration `0015-product-designer-rekey.yaml`) re-key in the same landing; `CHANGELOG.md`
+  [0.114.0] names the break.
+
 ## [v0.113.0] the router's five `validator`-bearing lines — persona retired
 
 - **Disposition:** superseded → the reworded lines: the two-families sentence now names a plain

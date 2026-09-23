@@ -15,6 +15,7 @@
 # - ORM/Database (prisma, typeorm, sqlalchemy, mongoose, etc.)
 # - Architecture pattern (layered, feature-based, mvc, clean)
 # - CI/CD (github-actions, gitlab-ci, jenkins, etc.)
+# - Design system (UI framework, CSS system, fonts, token files, component library)
 
 set -e
 
@@ -432,6 +433,143 @@ detect_files() {
 }
 
 # ============================================================================
+# Design System Detection
+# ============================================================================
+
+# Newline-separated list on stdin -> sorted, de-duplicated JSON array.
+lines_to_json() {
+    local items
+    items=$(grep -v '^$' | sort -u || true)
+    if [[ -z "$items" ]]; then
+        echo "[]"
+    else
+        printf '%s\n' "$items" | jq -R . | jq -s .
+    fi
+}
+
+# Project files up to a depth, skipping dependency and build output.
+find_project_files() {
+    local depth="$1"
+    shift
+    find . -maxdepth "$depth" \
+        \( -name node_modules -o -name .git -o -name dist -o -name build -o -name .next \
+           -o -name Pods -o -name vendor -o -name target \) -prune \
+        -o -type f \( "$@" \) -print 2>/dev/null | sed 's|^\./||' | sort || true
+}
+
+detect_design_system() {
+    local deps="" pkg
+    # Dependency names from every package.json near the root (monorepo apps included)
+    for pkg in $(find_project_files 3 -name package.json); do
+        deps+=$(jq -r '((.dependencies // {}) + (.devDependencies // {}) + (.peerDependencies // {})) | keys[]' "$pkg" 2>/dev/null || true)
+        deps+=$'\n'
+    done
+
+    has_dep() { grep -qx "$1" <<< "$deps"; }
+    has_dep_prefix() { grep -q "^$1" <<< "$deps"; }
+
+    local ui="" css="" fonts="" tokens="" components=""
+
+    # UI framework
+    has_dep "react" && ui+=$'react\n'
+    has_dep "vue" && ui+=$'vue\n'
+    has_dep "svelte" && ui+=$'svelte\n'
+    has_dep "@angular/core" && ui+=$'angular\n'
+    has_dep "solid-js" && ui+=$'solid\n'
+    has_dep "preact" && ui+=$'preact\n'
+    has_dep "lit" && ui+=$'lit\n'
+    has_dep "next" && ui+=$'nextjs\n'
+    has_dep "nuxt" && ui+=$'nuxt\n'
+    has_dep "@sveltejs/kit" && ui+=$'sveltekit\n'
+    has_dep "astro" && ui+=$'astro\n'
+    has_dep "@remix-run/react" && ui+=$'remix\n'
+    has_dep "react-native" && ui+=$'react-native\n'
+    has_dep "expo" && ui+=$'expo\n'
+    has_dep "electron" && ui+=$'electron\n'
+    has_dep_prefix "@tauri-apps/" && ui+=$'tauri\n'
+    if [[ -f "pubspec.yaml" ]] && grep -q "sdk: flutter" pubspec.yaml 2>/dev/null; then
+        ui+=$'flutter\n'
+    fi
+    local gradle_files
+    gradle_files=$(find_project_files 3 -name 'build.gradle' -o -name 'build.gradle.kts')
+    if [[ -n "$gradle_files" ]] && grep -q "androidx.compose" $gradle_files 2>/dev/null; then
+        ui+=$'jetpack-compose\n'
+    fi
+    local swift_files
+    swift_files=$(find_project_files 4 -name '*.swift')
+    if [[ -n "$swift_files" ]] && grep -q "^import SwiftUI" $swift_files 2>/dev/null; then
+        ui+=$'swiftui\n'
+    fi
+
+    # CSS system
+    has_dep "tailwindcss" && css+=$'tailwind\n'
+    has_dep "styled-components" && css+=$'styled-components\n'
+    has_dep_prefix "@emotion/" && css+=$'emotion\n'
+    { has_dep "sass" || has_dep "node-sass"; } && css+=$'sass\n'
+    has_dep "less" && css+=$'less\n'
+    has_dep_prefix "@vanilla-extract/" && css+=$'vanilla-extract\n'
+    has_dep_prefix "@stitches/" && css+=$'stitches\n'
+    has_dep "unocss" && css+=$'unocss\n'
+    has_dep "@pandacss/dev" && css+=$'panda\n'
+    has_dep "bootstrap" && css+=$'bootstrap\n'
+    has_dep "bulma" && css+=$'bulma\n'
+    [[ -n "$(find_project_files 5 -name '*.module.css' -o -name '*.module.scss')" ]] && css+=$'css-modules\n'
+
+    # Fonts: packaged families, next/font and Google Fonts families, pubspec families, font files
+    fonts+=$(grep -E '^@fontsource(-variable)?/' <<< "$deps" | sed -E 's|^@fontsource(-variable)?/||' || true)
+    fonts+=$'\n'
+    local src_files
+    src_files=$(find_project_files 5 -name '*.ts' -o -name '*.tsx' -o -name '*.js' -o -name '*.jsx' \
+        -o -name '*.html' -o -name '*.css' -o -name '*.scss' -o -name '*.vue' -o -name '*.svelte' | head -n 500)
+    if [[ -n "$src_files" ]]; then
+        fonts+=$(grep -hoE "import \{[^}]*\} from ['\"]next/font/google" $src_files 2>/dev/null \
+            | sed -E 's/import \{([^}]*)\}.*/\1/' | tr ',' '\n' | sed -E 's/^ +| +$//g; s/ as .*//' || true)
+        fonts+=$'\n'
+        fonts+=$(grep -hoE "fonts\.googleapis\.com/css2?\?family=[A-Za-z0-9+]+" $src_files 2>/dev/null \
+            | sed -E 's/.*family=//; s/\+/ /g' || true)
+        fonts+=$'\n'
+    fi
+    if [[ -f "pubspec.yaml" ]]; then
+        fonts+=$(grep -E '^[[:space:]]*- family:' pubspec.yaml 2>/dev/null | sed -E 's/.*family:[[:space:]]*//' || true)
+        fonts+=$'\n'
+    fi
+    fonts+=$(find_project_files 5 -name '*.woff2' -o -name '*.woff' -o -name '*.ttf' -o -name '*.otf' | head -n 20)
+
+    # Token files
+    tokens=$(find_project_files 5 -name 'tailwind.config.*' -o -name '*tokens*.json' -o -name '*tokens*.js' \
+        -o -name '*tokens*.ts' -o -name 'style-dictionary.config.*' -o -name 'panda.config.*' \
+        -o -name 'uno.config.*' -o -name 'theme.ts' -o -name 'theme.js' -o -name 'theme.dart' \
+        -o -name '_variables.scss' -o -name 'variables.css' | head -n 20)
+
+    # Component library
+    has_dep "@mui/material" && components+=$'mui\n'
+    has_dep "@chakra-ui/react" && components+=$'chakra\n'
+    has_dep "antd" && components+=$'antd\n'
+    has_dep_prefix "@radix-ui/" && components+=$'radix\n'
+    if [[ -f "components.json" ]] && grep -q "ui.shadcn.com" components.json 2>/dev/null; then
+        components+=$'shadcn\n'
+    fi
+    has_dep_prefix "@headlessui/" && components+=$'headlessui\n'
+    has_dep "@mantine/core" && components+=$'mantine\n'
+    has_dep "react-bootstrap" && components+=$'react-bootstrap\n'
+    has_dep "vuetify" && components+=$'vuetify\n'
+    has_dep "element-plus" && components+=$'element-plus\n'
+    has_dep "primevue" && components+=$'primevue\n'
+    has_dep "primereact" && components+=$'primereact\n'
+    has_dep "daisyui" && components+=$'daisyui\n'
+    has_dep "@shopify/polaris" && components+=$'polaris\n'
+    has_dep "react-native-paper" && components+=$'react-native-paper\n'
+
+    DESIGN_SYSTEM=$(jq -n \
+        --argjson ui "$(lines_to_json <<< "$ui")" \
+        --argjson css "$(lines_to_json <<< "$css")" \
+        --argjson fonts "$(lines_to_json <<< "$fonts")" \
+        --argjson tokens "$(lines_to_json <<< "$tokens")" \
+        --argjson components "$(lines_to_json <<< "$components")" \
+        '{ui_frameworks: $ui, css_systems: $css, fonts: $fonts, token_files: $tokens, component_libraries: $components}')
+}
+
+# ============================================================================
 # Main
 # ============================================================================
 
@@ -440,6 +578,7 @@ detect_frameworks
 detect_orms
 detect_architecture
 detect_cicd
+detect_design_system
 FILES_FOUND=$(detect_files)
 
 # Output JSON
@@ -451,6 +590,7 @@ cat <<EOF
   "orms": $ORMS,
   "architecture": $ARCHITECTURE,
   "ci_cd": $CI_CD,
+  "design_system": $DESIGN_SYSTEM,
   "files_found": $FILES_FOUND,
   "scanned_path": "$(pwd)"
 }

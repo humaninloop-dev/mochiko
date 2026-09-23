@@ -5,6 +5,69 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.114.0] — 2026-09-23
+
+**A design track lands, and `product-engineer` is renamed `product-designer` — MINOR, no
+alias** (`impeccable-design-integration` D1–D14, record
+`.mochiko/brainstorms/impeccable-design-integration/record.md`). **Breaking for saved addresses:**
+`mochiko:product-engineer` no longer resolves; agents dispatch through the router, and the persona
+is `mochiko:product-designer` from this version (D4, R22). The persona is rewritten to carry the
+design-director judgment ported from `pbakaus/impeccable` at
+`e0881d2de397d5e9761d7b35ff5017d8f5ebf69b` — the brief wins, refinement preserves and redesign
+replaces, visual authority is evidence, the mode is chosen per surface — as identity with no
+workflow trace (D3; strip `.mochiko/strips/product-designer.md`, pre-edit file at `6e4b264`). The
+port is mochiko-owned prose with no Impeccable plugin, binary or shell-out (D2); the root
+`LICENSE` (MIT) and `NOTICE` (the Apache-2.0 attribution, the pinned commit, and upstream's own
+`NOTICE.md` chain) are new, and each ported skill carries a provenance line (D14).
+
+Three skills are new. **`patterns-design-direction`**, on `product-designer` at specify: the mode
+per surface, the design laws, the shape checklist, platform-routed native guidance (`ios` and
+`android` references), and the **Direction block** at the head of Screens & Flows.
+**`patterns-craft-floor`**, on `staff-engineer`, loaded immediately before any edit on a
+UX-bearing card: the bans, reflexes, folds and register dial, all executed from the Direction
+block and never choosing taste of its own. **`review-design-audit`**, on `qa-engineer` at final
+validation: performance, `harden`, `polish` and the slop tells as an advisory `design-audit:`
+block, never a failing gate. `testing-gap-finding` gains the **critique lens** on the same blind
+seat, and its accessibility-probing decline is superseded for verification only (D11 — the
+standard of record is routed, never restated). `patterns-vertical-tdd`'s `TEST-GRAMMAR.md` gains
+UX-bearing audit-leg example asserts; `testing-end-user` measures a numeric UI assert through
+computed styles. A new product baseline, **`.mochiko/product/design/`** (the `product-design` home
+and the `design-baseline` template: design truth plus the as-built design system, one writer),
+is scaffolded at setup, fed by a bounded **product-truth leg** and `analysis-codebase`'s
+design-system detection, read by `review-sufficiency` and `review-specifications`, and folded at
+implement's landing, where the first system-part write is a user checkpoint (D5–D7, D13).
+
+Migrations **`0011`–`0018`**: `0011-design-direction-craft-floor` (D3), `0012-design-verification-lenses`
+(D8), `0013-design-baseline-home` (D5), `0014-setup-product-truth-leg` (D6), and
+`0015-product-designer-rekey` (D4 — one `reword-rule`: the
+`patterns-model-tiering.seat-default-key` floor's `down` list names `product-designer`; id, class,
+pin and anchor unchanged). The gate-fix round added three more, rewords and template
+replacements only: `0016-direction-per-surface` (D5 — the Direction block written per surface,
+the `spec` template's Screens & Flows bound 37 → 44 lines), `0017-critique-depth-precedence` (D13 —
+the low-depth advisory precedence of the critique lens), and `0018-design-baseline-platform-placeholder`
+(D6 — the design baseline's Platform placeholder). The log replays to 80 documents and 1,142 rules; command floors 117 →
+119 (`impl.design-first-write`, `impl.design-audit-advisory`), skill floors 257 → 264. The
+ripple: the router (three new rows, the persona row re-keyed — strip `.mochiko/strips/mochiko.md`
+— and the new legs named on ten existing rows), `staff-engineer` and `qa-engineer` `skills:`,
+`plugin.json`'s agents path, `README.md`, three `ARCHITECTURE.md` lines (hand re-keyed: the store
+is a scaffold stub that names no seat, so D4's re-render premise did not hold — lead ruling), the
+budget ledger (three ruled birth seeds, six ruled-HOLDS overages restamped at their measured
+figures, the persona row re-keyed at 449), 17 keep-distinct similarity-allowlist rows, the eval
+kit moved to `evals/agents/product-designer/` (its advisory grid skipped: the runner cannot read
+a pre-rename `pre` arm — recorded in the persona's strip), the contract suite's pre-registration
+(three post-freeze skill rows, implement's two floors, the `design-baseline` template, three
+probe arguments), and the crate's census and template fixtures (no crate source changed; `mochiko-cli`
+0.2.0 still suffices).
+
+Ran under the plan-QA leg with five mochiko seats: `plans: S1:PASS(1) · S2:PASS(1) · S3:PASS(1) ·
+S4:PASS(1) · S5:PASS(1)`, no dirty tree. Audited under the gate form by two plain seats (split for
+context): 29 units / 2 rounds / 4 blocking caught, all PASS. Gates: `mochiko-cli
+migrate validate` 0 rejecting · 112 advisory · views ≡ replay (idempotent emit, crate view test
+green) · `cargo test -p mochiko-cli` 472 green · fmt · clippy · audit (exit 0, 31 dependencies) ·
+full-corpus similarity sweep 48/48, 0 clusters, 186 allowlist-suppressed edges (17 rows added) ·
+**contract suite 97/97** · char-budget pre-assert (six rows restamped, three
+seeded) · `plugin.json` and `marketplace.json` synced at 0.114.0.
+
 ## [0.113.0] — 2026-09-20
 
 **The `validator` persona retires** (`producer-plan-enforcement` D3 and D8 item 5, `DECISIONS.md`

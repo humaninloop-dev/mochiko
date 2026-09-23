@@ -1,6 +1,6 @@
 ---
 name: authoring-prototype
-description: This skill MUST be invoked when authoring a clickable low-fidelity UX prototype for a feature specification — the static HTML app under `.mochiko/specs/<feature>/prototype/` and the spec's Screens & Flows section (SCR-XXX, FLOW-XXX). SHOULD also invoke on 'mock the UX', 'clickable prototype', 'screens and flows', 'SCR-XXX', or 'FLOW-XXX'. Boundary: authors the PROTOTYPE — NOT the user stories it renders (mochiko:authoring-user-stories), NOT production UI code; never grades its own output.
+description: This skill MUST be invoked when authoring a clickable low-fidelity UX prototype for a feature specification — the static HTML app under `.mochiko/specs/<feature>/prototype/` and the spec's Screens & Flows section (SCR-XXX, FLOW-XXX). SHOULD also invoke on 'mock the UX', 'clickable prototype', 'screens and flows', 'SCR-XXX', or 'FLOW-XXX'. Boundary: authors the PROTOTYPE — NOT the user stories it renders (mochiko:authoring-user-stories), NOT the Direction block it renders (mochiko:patterns-design-direction), NOT production UI code; never grades its own output.
 allowed-tools: Bash(mochiko-cli *)
 ---
 
@@ -69,4 +69,6 @@ the greying grammar the delivered re-tag and rejected-story rules bind.
 - [`artifact-format.md`](../../templates/artifact-format.md) — the deliverable envelope (ID grammar, citation rules)
 - `mochiko:review-specifications` — grades the prototype with the spec
 - `mochiko:authoring-user-stories` — upstream: the stories and acceptance scenarios the flows render
+- `mochiko:patterns-design-direction` — upstream: the Direction block (mode, register, contract, declared tokens, incumbent world) this prototype renders at low fidelity
+- `.mochiko/product/design/` — the design baseline read first for tokens (`mochiko-cli home .mochiko/product/design/design.md`)
 - `mochiko:authoring-feature-map` — the feature derivation whose FEAT tags the re-tag pass carries onto the manifest (single source of the map machinery)

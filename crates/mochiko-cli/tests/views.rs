@@ -266,8 +266,11 @@ fn every_emitted_view_matches_the_committed_one() {
     let views = views::emit(&state);
     // 73 through `0007`; `0008-gate-form` imported the `validation-primitive-edit` skill
     // (2026-09-19 author-grader-consolidation D7), and `0009-plan-qa-leg` imported
-    // `review-seat-plan` (2026-09-03 producer-plan-enforcement D8).
-    assert_eq!(views.len(), 75, "the corpus is 75 documents");
+    // `review-seat-plan` (2026-09-03 producer-plan-enforcement D8). 80 since the 2026-09-19
+    // impeccable-design-integration wave: `0011` imported `patterns-design-direction` and
+    // `patterns-craft-floor`, `0012` `review-design-audit`, and `0013` the `product-design` home
+    // and the `design-baseline` template.
+    assert_eq!(views.len(), 80, "the corpus is 80 documents");
 
     let mut divergences: Vec<String> = Vec::new();
     for (relative, text) in &views {
@@ -296,7 +299,7 @@ fn every_emitted_view_matches_the_committed_one() {
     }
     assert!(
         divergences.is_empty(),
-        "{} of 75 views diverged — regenerate with `mochiko-cli views emit`:\n{}",
+        "{} of 80 views diverged — regenerate with `mochiko-cli views emit`:\n{}",
         divergences.len(),
         divergences.join("\n")
     );
@@ -339,8 +342,9 @@ fn the_committed_views_tree_holds_no_file_the_emitter_does_not_write() {
         orphans.join("\n")
     );
     // 75 since `0009-plan-qa-leg` (2026-09-03 producer-plan-enforcement D8) — the count only
-    // holds once the new skill's view is committed alongside the migration.
-    assert_eq!(found.len(), 75, "the committed tree is 75 views");
+    // holds once the new skill's view is committed alongside the migration. 80 since `0013`
+    // (2026-09-19 impeccable-design-integration), the five design-wave documents committed.
+    assert_eq!(found.len(), 80, "the committed tree is 80 views");
 }
 
 #[test]
@@ -444,8 +448,9 @@ fn emit_to_writes_only_under_the_out_directory() {
     let state = replayed_state();
     let written = views::emit_to(&state, &out).expect("the views write");
 
-    // 75 since `0009-plan-qa-leg` (2026-09-03 producer-plan-enforcement D8).
-    assert_eq!(written.len(), 75);
+    // 75 since `0009-plan-qa-leg` (2026-09-03 producer-plan-enforcement D8); 80 since `0013`
+    // (2026-09-19 impeccable-design-integration).
+    assert_eq!(written.len(), 80);
     for path in &written {
         assert!(path.starts_with(&out), "{} escaped --out", path.display());
         assert!(path.is_file(), "{} was not written", path.display());

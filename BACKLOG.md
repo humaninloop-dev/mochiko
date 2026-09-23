@@ -35,9 +35,10 @@ provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
      signed tags), then the `mochiko-cli-v*` tag. Gates 2 and 3 (GI-012 as amended, AM-3 C5).
   2. **Gate-6 full run** against the published binary (`MOCHIKO_GATE_VERSION=<tag>`; 87 cases,
      ≈155 sessions, $13–16, ≈1 h — `wave5-gate6-plan.md`), then the release commit + the
-     pre-authorized **PATCH v3.1.2** (`wave5-bump-patch.md`, graded by `validation-constitution`;
-     re-keyed 2026-09-20 — v3.1.1 was taken by the `validator` retirement row, so the ledger's
-     GI-019 clause-iv pointer and this line now read v3.1.2).
+     pre-authorized **PATCH v3.1.3** (`wave5-bump-patch.md`, graded by `validation-constitution`;
+     re-keyed 2026-09-20 — v3.1.1 was taken by the `validator` retirement row; re-keyed again
+     2026-09-23 — v3.1.2 was taken by AM-4, the `GLOSSARY.md` discharge; the ledger's GI-019
+     clause-iv pointer and this line now read v3.1.3).
   3. **Kinako violator pass** — evidence-tree ruling owed (161 files with no legal home under
      `.mochiko/`; recommend a repo-root `evidence/`), then 214 moves + 143 pointers on the
      pre-gate 0.103.0 pin, upgrade, dogfood, **D10 watch** (`wave5-plan.md` §3/§7).
@@ -490,33 +491,22 @@ Ruling: DECISIONS.md row 2026-08-10 (D1–D22); build delivered 2026-08-10 at v0
   feature (open thread 1) and selection-UX presentation (thread 5) observed. Scale trigger:
   map at ~60 entries (thread 6) — far off.
 
-## Impeccable design-integration build
-
-Ruling: DECISIONS.md row 2026-09-19 (D1–D14 as review-amended); record
-`.mochiko/brainstorms/impeccable-design-integration/record.md` — build surface items 0–11,
-plan-minimalism ladder disclosed, cost line, evidence honesty.
-
-- [ ] **Design-integration wave** (2026-09-19; provenance: record § Build surface) — one wave,
-  plan-approved producers with disjoint ownership (≈4) + 3 fresh author≠grader validators, under
-  the sound-loop + transport floors. Item 0 first, **abort-gated**: pin the upstream SHA, add root
-  `LICENSE` + `NOTICE` (D14), census the three rewritten skills against the budget ledger — abort
-  to the user at > 25 % over the family band; measure descriptions ≤ 1,536. Then: rename
-  `product-engineer` → `product-designer` + persona rewrite (D3/D4, store re-render for
-  `ARCHITECTURE.md`, README, cost ledger, eval kit) · `patterns-design-direction` +
-  `patterns-craft-floor` + `review-design-audit` (schema pairs) · critique section in
-  `testing-gap-finding` + the D11 supersession strip · `**TEST:**` example asserts · design home
-  + template + setup leg + detection leg + `review-sufficiency` clause-8 re-key + specify re-keys
-  · migrations (item 8) · gates incl. derived view ≡ replay, MINOR bump, `GLOSSARY.md` scaffold
-  (standing trigger fires on the minted terms). Watches minted at landing (item 11).
-
 ## UX-prototype-stage watches
 
 Ruling: DECISIONS.md row 2026-08-02 (UX-D1–D9); built same day at v0.50.0. **Extended
 2026-09-19** by the Impeccable design-integration ruling (D1–D14): the first UX-bearing run also
 watches the critique lens's blocking/advisory line (D8 `Assumed`, both depths) · the first
 landing-fold system-part write and its user checkpoint (D7) · the setup leg on a brownfield repo
-with a real design system (D6) · the `desktop` platform value with no ported guidance (OQ3) · the
-shelf seam at the frontend shelf's first deal (D12).
+with a real design system (D6; the user signs the whole write, brownfield seed included) · the
+`desktop` platform value with no ported guidance (OQ3) · the shelf seam at the frontend shelf's
+first deal (D12). **Extended again 2026-09-23** by the design-integration build (v0.114.0,
+build log § close): the critique rides gap-finding's selection/epic scope, so a delta-scope
+UX-bearing card gets no critique · a pre-wave project with no design home (the truth part stays
+absent until a setup amend; `impl.absent-surfaces` not reworded) · `patterns-craft-floor` rides
+`staff-engineer`'s `skills:` preload although its rule says never for planning-only work · the
+Screens & Flows bound (44 lines) fits two surfaces' Direction blocks, a third overflows ·
+`review-design-audit` and the critique rule still say "the Direction block" in the singular ·
+`specify.md`'s Goal line does not list the Direction block (the template carries it).
 
 - [ ] **First live UX-bearing specify run** (2026-08-02; provenance:
   `.mochiko/brainstorms/ux-mocking-in-specify/record.md`, open threads 1–3) — watch the first
@@ -594,7 +584,8 @@ mochiko's own migration executed same day (this file's shape is its result).
   boundaries (amend + plan) — the fresh-setup half and the seeded cap trip remain.
 - [ ] **Governance first-live-run watches** (2026-08-06, governance v1.0.0, DECISIONS row) —
   standing amend triggers to observe: public-product transition (GI-002) · CI arrival un-narrows
-  FLOOR-SEC scanning (GI-003) · GLOSSARY.md content → scaffold (GI-009) · helper-script waiver
+  FLOOR-SEC scanning (GI-003) · ~~GLOSSARY.md content → scaffold (GI-009)~~ fired and discharged
+  at AM-4, governance v3.1.2, 2026-09-23 · helper-script waiver
   trigger (GI-008) · evolution-notes/layer-rules remain offerable on amend (GI-013/014, FP-1).
   (Gates 4+5 executed first time at the v0.54.0 bump 2026-08-06 — `marketplace.json` synced
   0.10.0→0.54.0, CHANGELOG entry appended; the obligation is now routine per-bump, GI-012.)
@@ -609,6 +600,15 @@ mochiko's own migration executed same day (this file's shape is its result).
   rule: decide whether this re-opens the report-writer/scribe question or whether the fix is
   purely contractual (stamp = date + baseline figures only; per-bump detail lives in
   CHANGELOG). The 2026-08-06 groom compressed the stamp to contract shape either way.
+- [ ] **Governance follow-up amend — AM-4 validator residuals** (2026-09-23; provenance: AM-4
+  validate grade, `.mochiko/memory/governance-trace-summary.md` validator record A2/A3;
+  user-ruled to BACKLOG at acceptance) — three small items for the next setup amend, none in
+  AM-4's scope: (a) `GLOSSARY.md` has no named writer moment — the KM pin carries the term
+  format only, and the template's "spec landing when new terms mint" did not fit the brainstorm
+  build item that minted the first eight terms (candidate: "a ruling's landing when it mints a
+  term"); (b) the region's standing-amend-triggers line (`CLAUDE.md` governance region) omits
+  the helper-script waiver trigger the ledger still lists as standing; (c) GI-009 Testability
+  still names "in-flight agreement", which the KM pin records as superseded by the orphan rule.
 - [ ] **Brainstorm bookkeeping watch** (2026-07-17, carried) — on a KM project:
   read-index-before-open fires, entries land/update with named landings, close invariants catch
   a seeded defect, the no-module branch stays silent. Honest residual: drift on a session-less

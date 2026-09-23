@@ -1,0 +1,15 @@
+grammar: 1
+id: 0017-critique-depth-precedence
+sequence: 17
+intent: >-
+  Make the low-depth critique precedence explicit: the low-depth rule overrides the blocking half
+  of the critique finding split, so no reader has to guess which of the two binds.
+anchor: 2026-09-19 impeccable-design-integration D13
+hash: sha256:83109776610b8172cebda7682feb5107f398fd9afe8637dcb9d107e66c03cc69
+changes:
+  - op: reword-rule
+    schema: skill/testing-gap-finding
+    id: testing-gap-finding.critique-low-depth-advisory
+    text: >-
+      Every critique finding is advisory — this overrides the blocking half of
+      `testing-gap-finding.critique-finding-split` — and no confirm round runs.

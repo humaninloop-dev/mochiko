@@ -22,6 +22,7 @@ vars:
   epics_dir: .mochiko/epics
   rules_dir: .claude/rules/mochiko
   tasks_schema: mochiko-cli template tasks
+  designer_seat: product-designer
 conditions:
   scope:
     values: [selection, delta, epic, lane]
@@ -48,6 +49,10 @@ conditions:
     resolution: standing-trigger
     note: >-
       fires the moment the run composes more than one seat, and re-fires on a seat added mid-run.
+  ux_bearing:
+    values: presence
+    resolution: surface-presence
+    note: the batch's spec carries a Screens & Flows SCR/FLOW manifest.
 moments:
   run-open: >-
     The confirmation that closes entry — batch, scope type, attempt bounds, done condition.
@@ -227,6 +232,18 @@ sections:
         text: >-
           Scope escalation is the user's: work bigger than the run was framed stays FAIL unless
           the user accepts it.
+      - id: impl.design-first-write
+        labels: [user-gate, landing]
+        class: floor
+        kind: reservation
+        text: >-
+          Where the design baseline's system part is still empty at landing, the fold's first
+          system-part write is the user's: at final acceptance the proposed write and every
+          critique-advisory finding are presented for the user's signature before the baseline
+          takes them; a finding the user declines to sign lands as Drift:, never as baseline. A
+          system part seeded at setup was signed there.
+        when: {ux_bearing: present}
+        anchor: 2026-09-19 impeccable-design-integration D7
   - id: impl.sec.tools
     title: Tools bindings
     intent: Paths, schemas, skills, and templates the run binds to.
@@ -360,7 +377,12 @@ sections:
           Per card: stories and feature rationale, dependencies, acceptance criteria by ID, a
           **TEST:** real-infrastructure gate, and the cycle's brownfield exposure — no task
           lists, no file paths; the builder decomposes at build time. A UX-bearing card's
-          **TEST:** gate names the FLOW-XXX paths it verifies.
+          **TEST:** gate names the FLOW-XXX paths it verifies, and carries the audit lens's
+          pass/fail legs — the accessibility standard of record by pointer, never restated ·
+          the measurable asserts · responsive checks at the viewports the Direction block's
+          Contract declares — authored by ${qa_seat} at design time, examples in
+          mochiko:patterns-vertical-tdd's references/TEST-GRAMMAR.md.
+        anchor: 2026-09-19 impeccable-design-integration D8
       - id: impl.zero-gap-map-assertion
         labels: [landing]
         class: must
@@ -406,9 +428,10 @@ sections:
           Design inputs are sufficiency-report.md and the design-phase deltas where they exist —
           including the signed store delta, the anchor for the deviation check and the
           built-vs-signed diff — at ${features_dir}/FEAT-XXX/; the product baselines at
-          ${product_dir}/ (data-model.md, contracts/, constraints-and-decisions.md, and the
-          architecture store, whose concern rows carry the NFR-XXX targets the built code must
-          meet); spec.md for the cards' cited acceptance criteria.
+          ${product_dir}/ (data-model.md, contracts/, constraints-and-decisions.md, the design
+          baseline at ${product_dir}/design/, and the architecture store, whose concern rows carry
+          the NFR-XXX targets the built code must meet); spec.md for the cards' cited acceptance
+          criteria.
       - id: impl.progress-surface
         labels: [evidence, reporting]
         class: must
@@ -466,10 +489,10 @@ sections:
         text: >-
           Gap-finding dispatch is two-message and blind. The first message carries only spec.md,
           the sufficiency report and design deltas where they exist, Screens & Flows, and the
-          baselines data-model.md, contracts/, and the store's NFR-XXX concern rows — never the
-          code, tasks.md, the **TEST:** cases, or any report. The seat states its derived
-          expectations; only then does probing begin. Its brief carries the model-tiering rule,
-          and its delegated reads stay inside the same fence.
+          baselines data-model.md, contracts/, the design baseline, and the store's NFR-XXX
+          concern rows — never the code, tasks.md, the **TEST:** cases, or any report. The seat
+          states its derived expectations; only then does probing begin. Its brief carries the
+          model-tiering rule, and its delegated reads stay inside the same fence.
         pointer: mochiko:testing-gap-finding
         anchor: 2026-08-19 qa-gap-finding-verification
       - id: impl.mutation-lens
@@ -587,10 +610,12 @@ sections:
           Every touched baseline folds exactly once, via a graded fold — a three-way diff
           (pre-fold baseline + delta vs folded result; delta applied whole, nothing else changed),
           checked by the landing verification seat. An epic's shared-baseline delta folds once
-          from the spine; a single-member baseline from its feature delta. One carve: the store's
+          from the spine; a single-member baseline from its feature delta. Two carves: the store's
           fold IS the store landing — status flips, graded As-built:/Drift: writes, and the
-          orphan check, not a three-way diff. A delta whose baseline file is absent folds into a
-          fresh ${product_dir}/ file (empty pre-fold side), the absence surfaced as a seeding gap.
+          orphan check, not a three-way diff; and the design baseline's system part folds per
+          impl.design-landing, as graded judgment, not a three-way diff — its truth part folds
+          by the three-way diff. A delta whose baseline file is absent folds into a fresh
+          ${product_dir}/ file (empty pre-fold side), the absence surfaced as a seeding gap.
       - id: impl.gates-fold
         labels: [landing]
         class: must
@@ -602,6 +627,48 @@ sections:
         class: must
         kind: binding
         extends: common.register
+      - id: impl.craft-floor-binding
+        labels: [floor-pointer]
+        class: must
+        kind: binding
+        text: >-
+          On a card carrying SCR-XXX/FLOW-XXX trace, ${builder_seat} loads the pointer skill
+          immediately before any edit, small refinements included, and never for planning-only
+          work.
+        when: {ux_bearing: present}
+        pointer: mochiko:patterns-craft-floor
+        anchor: 2026-09-19 impeccable-design-integration D8
+      - id: impl.design-finish
+        labels: [evidence]
+        class: must
+        kind: routing
+        text: >-
+          On a UX-bearing batch the final validation carries the design finish: the gap-finding
+          pass runs its critique lens, the run's depth level in the finder's brief, and ${qa_seat}
+          runs mochiko:review-design-audit. The pointer skill owns the lens's blocking/advisory
+          split and its depth keying. A blocking critique finding is spec-required under
+          impl.finding-kinds; an advisory one is its own kind, critique-advisory — neither
+          spec-required nor beyond-spec, it takes no beyond-spec disposition and rides to the
+          design landing fold; a disputed kind goes to the user as impl.finding-kind-disputed
+          routes it. Critique rework spends at most one fix round and one confirm round inside
+          impl.gap-rework-bound — never a bound beside it, never raising it.
+        when: {ux_bearing: present}
+        pointer: mochiko:testing-gap-finding
+        anchor: 2026-09-19 impeccable-design-integration D8
+      - id: impl.design-landing
+        labels: [landing]
+        class: must
+        text: >-
+          A UX-bearing landing folds the built UI into the design baseline: ${designer_seat}
+          derives the system part from shipped code, never from intent, reconciles it against the
+          direction contract's declared tokens, writes the shipped values, and marks each
+          divergence, each critique-advisory finding, and each accepted design-audit Drift:
+          candidate as Drift:. The write is judgment, graded by the landing verification seat.
+          ${designer_seat} is the design baseline's only writer, on exactly three paths: the setup
+          leg (the truth part, the brownfield system-part seed, the scaffold), a build-time
+          baseline-delta.md entry, and this fold.
+        when: {ux_bearing: present}
+        anchor: 2026-09-19 impeccable-design-integration D7
   - id: impl.sec.ways-of-working
     title: Ways of Working
     intent: How the run sequences, verifies, and reports; model routing for its seats.
@@ -782,6 +849,16 @@ sections:
         class: floor
         when: {seats: multi}
         extends: common.transport-floor
+      - id: impl.design-audit-advisory
+        labels: [evidence]
+        class: floor
+        text: >-
+          design-audit: findings stay advisory at any severity. They land in the final-validation
+          report's `design-audit:` block — a clean audit omits the block; only a declined or
+          skipped audit states its reason there. A finding that diverges from the design baseline
+          is a Drift: candidate at the design landing fold.
+        when: {ux_bearing: present}
+        anchor: 2026-09-19 impeccable-design-integration D8
   - id: impl.sec.fail-conditions
     title: Not done — default FAIL
     intent: >-
