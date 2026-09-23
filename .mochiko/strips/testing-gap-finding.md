@@ -20,6 +20,43 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/testing-gap-finding/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the impeccable design-integration build (v0.114.0) — the critique
+lens and the accessibility supersession, migration `0012-design-verification-lenses.yaml`.
+Ruling: `.mochiko/brainstorms/impeccable-design-integration/record.md` D8 · D11 · D13, with the
+`DECISIONS.md` 2026-09-19 row and that session's `wave1-design-integration.md`. Pre-edit verbatim
+text: `git show 6e4b264:plugins/mochiko/skills/testing-gap-finding/SKILL.md`. -->
+
+## [v0.114.0] "Accessibility probing — declined" superseded for verification only
+
+- **Disposition:** superseded → the delivered rule `testing-gap-finding.a11y-verification-routing`
+  (`sec.scope`, `kind: routing`, anchored `2026-09-19 impeccable-design-integration D11`): no
+  accessibility probing in this pass or its critique lens; the a11y floor stays a build-time
+  standard; verifying it at final validation is the audit lens's `**TEST:**` legs on
+  `mochiko:qa-engineer`. The body bullet is removed so the content has one home.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/impeccable-design-integration/record.md` D11; `DECISIONS.md` 2026-09-19).
+  The decline predates any design surface, and verifying a floor is what an audit lens is.
+- **Content (superseded, verbatim — `## When NOT to Use`):**
+  "- **Accessibility probing** — declined; the a11y floor stays a build-time standard."
+- **Kept deliberately:** "the a11y floor stays a build-time standard" — D11 keeps that half
+  verbatim, now in the rule text. The blind pass still probes no accessibility: the new critique
+  lens carries none (D11, and F5's lesson on taste content), so the verification leg lands on the
+  `qa-engineer` seat, never on the blind seat. The other `When NOT to Use` bullet
+  (property-based harnesses and metamorphic relations) is unchanged.
+- **Fence widening (addition riding the decision row, no strip):** the same migration rewords the
+  floor `testing-gap-finding.blindness-fence-inclusion-list` (id, class, and anchor kept) to admit,
+  on a UX-bearing feature only, the design baseline `.mochiko/product/design/`, the standard the
+  critique lens grades against (D8(iii)). Its design truth and as-built system are the promised look
+  and conduct of the rendered UI, so "All define externally-observable promised behavior" still
+  holds and the pass stays black-box. Nothing leaves; the prior text is in the log.
+- **Consumers assessed:** the router's `testing-gap-finding` row restates the inclusion list
+  verbatim and names no a11y decline — its re-key (baseline entry, critique lens, a11y routing) is
+  S5's in the same wave. `commands/implement` `impl.gap-finding-blind-dispatch` lists message 1's
+  contents and needs the baseline entry on UX-bearing features — S3's in the same wave.
+  `mochiko:devils-advocate` and `mochiko:qa-engineer` mount the skill without restating the decline
+  or the list. Grep for the decline text over `plugins/`, `.mochiko/schema-views/`, and `evals/`
+  found only this `SKILL.md` line.
+
 ## [v0.107.0] the fold-back paragraph's "live in the schema"
 
 - **Disposition:** superseded → "are delivered by `mochiko-cli`"

@@ -1098,8 +1098,10 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // 50 through wave 6; `0005-artifact-homes` added twenty `home` documents and three templates;
     // `0008-gate-form` imported the `validation-primitive-edit` skill (2026-09-19
     // author-grader-consolidation D7); `0009-plan-qa-leg` imported `review-seat-plan`
-    // (2026-09-03 producer-plan-enforcement D8).
-    assert_eq!(state.docs.len(), 75, "the schema class is 75 files");
+    // (2026-09-03 producer-plan-enforcement D8); the 2026-09-19 impeccable-design-integration
+    // wave imported three skills (`0011`, `0012`), the `product-design` home and the
+    // `design-baseline` template (`0013`).
+    assert_eq!(state.docs.len(), 80, "the schema class is 80 files");
 
     let census = census(&state);
     let (command_rules, command_floors) =
@@ -1125,15 +1127,23 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // `reword-rule` ops and nothing else — one on `patterns-model-tiering` and two on
     // `authoring-constitution`, each keeping its id, class, kind and section — so it mints and
     // retires nothing and every figure below holds unmoved.
-    assert_eq!(command_rules, 329, "live command rules");
-    assert_eq!(skill_rules, 753, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1082, "live rules in total");
-    assert_eq!(skill_floors, 257, "skill floors");
+    // `0011`–`0015` (the design-integration wave, 2026-09-19 impeccable-design-integration) mint
+    // and retire as follows: three imported skill documents carrying forty-three rules, seven of
+    // them floors (`patterns-design-direction` 15/3, `patterns-craft-floor` 12/2,
+    // `review-design-audit` 16/2); nine skill mints on the edited skills (`authoring-prototype`
+    // one, `testing-gap-finding` five, `testing-end-user`, `review-specifications` and
+    // `analysis-codebase` one each), none a floor; eight command mints (`implement` five, two
+    // of them floors; `setup` three). `0015` is a reword. Nothing retires and no fail node moves.
+    assert_eq!(command_rules, 337, "live command rules");
+    assert_eq!(skill_rules, 805, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1142, "live rules in total");
+    assert_eq!(skill_floors, 264, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
     // sentence), so the declared floors were 110 — the same figure the shipped checker reported —
-    // and `0005`'s six command mints carry it to 116, `0008`'s `setup.gate-loop-bound` to 117.
-    assert_eq!(command_floors, 117, "declared command floors");
+    // and `0005`'s six command mints carry it to 116, `0008`'s `setup.gate-loop-bound` to 117,
+    // and `0013`'s `impl.design-first-write` and `impl.design-audit-advisory` to 119.
+    assert_eq!(command_floors, 119, "declared command floors");
 
     let fail_nodes = state
         .docs

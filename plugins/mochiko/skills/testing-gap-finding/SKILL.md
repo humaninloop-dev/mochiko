@@ -1,6 +1,6 @@
 ---
 name: testing-gap-finding
-description: This skill MUST be invoked when running the final-validation gap-finding pass — the blind, spec-derived hunt for promised behavior the builder and the test author both missed — or when authoring or folding a feature's durable gate set `.mochiko/features/FEAT-XXX/gates.md`. SHOULD also invoke on 'gap-finding', 'black-box exploration', 'blind explorer', 'exploratory probing', or 'mutation lens'. Owns the blindness fence, two-message dispatch, probe kit, mutation lens, finding-kind split, and fold-back. Selection-scope and epic runs only. Boundary: deterministic `**TEST:**` execution is mochiko:testing-end-user; the `**TEST:**` grammar is owned by mochiko:patterns-vertical-tdd — consume, never redefine.
+description: This skill MUST be invoked when running the final-validation gap-finding pass — the blind, spec-derived hunt for promised behavior the builder and the test author both missed — or when authoring or folding a feature's durable gate set `.mochiko/features/FEAT-XXX/gates.md`. SHOULD also invoke on 'gap-finding', 'black-box exploration', 'blind explorer', 'exploratory probing', 'mutation lens', or 'design critique'. Owns the blindness fence, two-message dispatch, probe kit, mutation lens, the critique lens on UX-bearing features, finding-kind split, and fold-back. Selection-scope and epic runs only. Boundary: deterministic `**TEST:**` execution is mochiko:testing-end-user; the `**TEST:**` grammar is owned by mochiko:patterns-vertical-tdd — consume, never redefine.
 allowed-tools: Bash(mochiko-cli *)
 ---
 
@@ -49,7 +49,6 @@ halt and surface it.
 
 ## When NOT to Use
 
-- **Accessibility probing** — declined; the a11y floor stays a build-time standard.
 - **Property-based harnesses and metamorphic relations** — declined open threads.
 
 ## Expectation derivation
@@ -87,6 +86,27 @@ charter.
 A grey-box lens: a mutation tool mutates the built code and runs the builder's suite;
 surviving mutants are measured holes in that suite. **Tool class per stack:** cargo-mutants
 (Rust) · mutmut (Python) · Stryker (JS/TS and ports).
+
+## The critique lens
+
+On a UX-bearing feature the same blind hunt also grades the built UI as a design director
+would, from the rendered app alone:
+
+1. **The Direction block, promise by promise** — does the running surface keep each thing the
+   Contract promised, in the Mode and Register it names, with the Incumbent world preserved,
+   expanded, or replaced as it says?
+2. **Screens & Flows** — every SCR-XXX reachable and recognisable, every FLOW-XXX walkable as
+   drawn.
+3. **The design baseline** — shipped values against the baseline's tokens, type, and
+   components; brand and voice against its design truth.
+4. **Specificity** — could an unrelated product use this surface unchanged? A taste finding.
+
+Capture a screenshot per surface at each viewport the Direction block's Contract declares;
+the screenshot is the evidence.
+
+Critique lens ported from `pbakaus/impeccable` @ `e0881d2de397d5e9761d7b35ff5017d8f5ebf69b`
+(`skill/reference/critique.md`, `skill/agents/impeccable-finish-reviewer.md`), Apache-2.0 —
+re-expressed, not copied; attribution in the repository `NOTICE`.
 
 ## Fold-back — the durable gate set
 

@@ -53,7 +53,8 @@ Every run has a goal and an explicit done condition; a run is never goal-less.
    missing map surfaced and offered rather than scaffolded (feature-map rules:
    `setup.sec.tools`). `Assumed`: brownfield close also carries the bootstrapped product
    baselines at `.mochiko/product/`; greenfield leaves **the baselines** to seed at the first
-   implement run's design phase. The architecture store's `spine.md` stub and its `Scope:` line are
+   implement run's design phase. The architecture store's `spine.md` stub and its `Scope:` line,
+   and the design home's scaffold at `.mochiko/product/design/`, are
    outside that split — written on **every** path, creating only what is missing (store rules:
    `setup.sec.tools`).
 3. **Not done — default FAIL:** the `kind: fail` rules of `setup.sec.fail-conditions` — their

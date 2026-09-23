@@ -53,8 +53,8 @@ sections:
         text: >-
           Read the feature's `spec.md` (its Screens & Flows manifest included), the product
           architecture store, the product baselines (`data-model.md`, `contracts/`,
-          `constraints-and-decisions.md`), and the capability map entries at
-          `.mochiko/features/FEAT-XXX-<slug>.md`.
+          `constraints-and-decisions.md`, the design baseline at `.mochiko/product/design/`), and
+          the capability map entries at `.mochiko/features/FEAT-XXX-<slug>.md`.
         anchor: 2026-08-26 plan-stage-utility
       - id: review-sufficiency.fence-never-reads
         labels: [fence]
@@ -165,7 +165,12 @@ sections:
         text: >-
           UX trace — where the spec carries a Screens & Flows manifest: every FEAT-tagged
           SCR-XXX's data shown has a nameable serving contract surface, and every FLOW-XXX action
-          a mutation path. Existing = cited; new = gap. No manifest = n/a.
+          a mutation path. Existing = cited; new = gap. Each touched surface's Direction block
+          names a Mode, a Register, and a Contract a builder could honor without asking, else gap;
+          a Declared token that contradicts the design baseline's system part with no Incumbent
+          world of expand or replace stated = gap. An empty or absent system part, or an absent
+          design home, is never a gap — the Contract carries the intent until setup or the first
+          landing writes it. No manifest = n/a.
         when: {scope: selection}
         anchor: 2026-08-26 plan-stage-utility
       - id: review-sufficiency.clause-delivered-feature

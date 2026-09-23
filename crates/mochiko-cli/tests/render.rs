@@ -29,7 +29,7 @@ const FIXTURE_DIR: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/tests/fixtures/t
 
 /// The eight templates the log carries. This is the fixture's own manifest, not a production
 /// constant: the closed `TEMPLATE_NAMES` set left the crate when the templates became log data.
-const SHIPPED_TEMPLATES: [&str; 11] = [
+const SHIPPED_TEMPLATES: [&str; 12] = [
     "spec",
     "tasks",
     "feature-entry",
@@ -44,6 +44,9 @@ const SHIPPED_TEMPLATES: [&str; 11] = [
     "report-envelope",
     "architecture-spine",
     "architecture-concerns",
+    // `0013-design-baseline-home` (2026-09-19 impeccable-design-integration D5) imported the
+    // design baseline's template, bound by the `product-design` home.
+    "design-baseline",
 ];
 
 // ---------------------------------------------------------------------------
@@ -1070,10 +1073,13 @@ fn no_shipped_section_renders_past_the_inline_ceiling() {
 /// `implement`'s floor set, the corpus's largest, in render order. Written out rather than
 /// derived: a floor rule added, renamed or reordered should break a test here, because the
 /// converted `.md`'s read-back and the contract suite's frozen expectations both key on this set.
-const IMPLEMENT_FLOORS: [&str; 35] = [
+const IMPLEMENT_FLOORS: [&str; 37] = [
     "impl.gate-design-checkpoint",
     "impl.gate-card-confirm",
     "impl.gate-final-acceptance",
+    // `0013-design-baseline-home` minted this checkpoint floor and `impl.design-audit-advisory`
+    // below (2026-09-19 impeccable-design-integration D7 and D8).
+    "impl.design-first-write",
     "impl.graded-fold",
     "impl.author-grader-default-fail",
     // `0005-artifact-homes` minted this one into `ways-of-working`, which renders here between the
@@ -1093,6 +1099,7 @@ const IMPLEMENT_FLOORS: [&str; 35] = [
     "impl.lane-never-widens",
     "impl.sound-loop-floor",
     "impl.transport-floor",
+    "impl.design-audit-advisory",
     "impl.fail.sufficiency-unrecorded",
     "impl.fail.design-skipped",
     "impl.fail.card-independence",
@@ -1167,8 +1174,10 @@ fn every_shipped_floor_index_matches_its_pin() {
     // Thirty skills through `0007`; `0008-gate-form` imported `validation-primitive-edit`
     // (2026-09-19 author-grader-consolidation D7), which carries its own eleven-floor index,
     // and `0009-plan-qa-leg` imported `review-seat-plan` (2026-09-03
-    // producer-plan-enforcement D8), whose index carries five.
-    assert_eq!(checked, 38, "six commands and thirty-two skills");
+    // producer-plan-enforcement D8), whose index carries five. The 2026-09-19
+    // impeccable-design-integration wave imported three more: `patterns-design-direction` and
+    // `patterns-craft-floor` at `0011`, `review-design-audit` at `0012`.
+    assert_eq!(checked, 41, "six commands and thirty-five skills");
 }
 
 /// The index's own size at its widest, pinned the way the legend's is: every converted primitive
@@ -1191,8 +1200,10 @@ fn the_widest_shipped_floor_index_is_the_size_the_wave_recorded() {
     }
     assert_eq!(
         (widest.0.as_str(), widest.1, widest.2),
-        // Re-measured after `0005-artifact-homes` added `impl.artifact-home` to the set.
-        ("implement", 966, 1000),
+        // Re-measured after `0005-artifact-homes` added `impl.artifact-home` to the set, and
+        // again after `0013-design-baseline-home` added `impl.design-first-write` and
+        // `impl.design-audit-advisory`.
+        ("implement", 1021, 1057),
         "the widest floor index moved"
     );
 }

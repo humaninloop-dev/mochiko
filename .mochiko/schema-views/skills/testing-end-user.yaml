@@ -226,6 +226,17 @@ sections:
           fail; on failure keep the logs for debugging, report their locations, and clean up only
           after the human reviews.
         pointer: references/EVIDENCE-CAPTURE.md
+      - id: testing-end-user.measured-assert-evidence
+        labels: [evidence]
+        class: must
+        kind: duty
+        text: >-
+          An assert stating a numeric threshold on the rendered UI — contrast, target or text
+          size, line length, heading order, a viewport — is measured through the browser
+          driver's computed styles and layout where the project has one, and the measured value
+          captured as evidence. It stays a custom assertion for human evaluation; classification
+          is unchanged.
+        anchor: 2026-09-19 impeccable-design-integration D10
   - id: testing-end-user.sec.reserved
     title: Reserved — the human's gate
     intent: Decisions this skill never takes.

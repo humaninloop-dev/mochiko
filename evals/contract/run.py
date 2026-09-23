@@ -132,6 +132,9 @@ TEMPLATE_NAMES = (
     "architecture-spine",
     "architecture-store",
     "codebase-analysis",
+    # `0013-design-baseline-home` (2026-09-19 impeccable-design-integration D5) imported the
+    # design baseline's template, bound by the `product-design` home.
+    "design-baseline",
     "feature-entry",
     "features-index",
     "governance-intent",
@@ -277,6 +280,10 @@ EXPECTED = {
                 # `0005-artifact-homes` (2026-09-13) minted the authoring-time home
                 # floor on every producing primitive.
                 "impl.artifact-home",
+                # `0013-design-baseline-home` (2026-09-19 impeccable-design-integration D7/D8)
+                # minted the first-write checkpoint and the advisory design-audit floors.
+                "impl.design-first-write",
+                "impl.design-audit-advisory",
                 "impl.gate-design-checkpoint",
                 "impl.gate-card-confirm",
                 "impl.gate-final-acceptance",
@@ -494,6 +501,10 @@ PROBE_ARGUMENTS = {
         ".mochiko/specs/probe/cycle-report.md",
         "Reads a cycle's diff and its `cycle-report.md`; the argument names the report.",
     ),
+    "review-design-audit": (
+        ".mochiko/specs/probe/",
+        "Audits a UX-bearing feature's built UI; the argument names the feature directory, absent, so the lens's own missing-input branch runs.",
+    ),
     "review-feasibility": (
         ".mochiko/specs/probe/",
         "Grades a design-phase artifact package for cross-artifact feasibility; the argument is "
@@ -553,6 +564,8 @@ PROBE_ARGUMENTS = {
     "patterns-adopt-first": ("caching", "Runs the build-vs-buy ladder over a subject; free text."),
     "patterns-architecture-shelves": ("caching", "Deals a shelf for a surface; free text."),
     "patterns-code-minimalism": ("caching", "Runs the pre-code ladder over a task; free text."),
+    "patterns-craft-floor": ("caching", "Holds the floor at a UX-bearing edit; free text."),
+    "patterns-design-direction": ("caching", "Sets the direction for a UX-bearing surface; free text."),
     "patterns-map-minimalism": ("caching", "Runs the capability tests over a candidate; free text."),
     "patterns-model-tiering": ("caching", "Routes a read by its class key; free text."),
     "patterns-plan-minimalism": ("caching", "Runs the design ladder over an element; free text."),

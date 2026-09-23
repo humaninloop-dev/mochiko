@@ -1,0 +1,182 @@
+grammar: 1
+id: 0018-design-baseline-platform-placeholder
+sequence: 18
+intent: >-
+  Replace the design-baseline template's skeleton Platform value `web` with a placeholder naming
+  the five values or "not yet recorded", so a scaffold never carries a silent platform default.
+anchor: 2026-09-19 impeccable-design-integration D6
+hash: sha256:944447f89b21806ded82deb07d0b04504915503b794e586460c4de6df8befab7
+changes:
+  - op: replace-document
+    kind: template
+    name: design-baseline
+    content:
+      template: design-baseline
+      title: Design Baseline
+      form: artifact-format.md
+      register: full
+      overview: >-
+        `design.md` — the product's design baseline at `.mochiko/product/design/`, beside the
+        architecture store. Two parts in one file. The design truth part (platform, brand and
+        voice, design principles, the evidence fence, the accessibility pointer) is durable and
+        product-wide. The design system part (tokens, typography, components, motion) holds values
+        as built and is written only from shipped code at a landing fold, never from intent; where
+        it is still empty at landing, its first write is signed by the user at final acceptance.
+        One writer, `product-designer`, on exactly three graded paths: the setup leg (the truth
+        part, the brownfield system-part seed, the scaffold), a build-time `baseline-delta.md`
+        entry, and the landing fold. Mode and the direction contract are per surface and live in
+        the feature spec's Screens & Flows Direction block, never here; audience and purpose live
+        in the product desk and are pointed at, never restated. Values, not stances: rendering
+        strategy, state management, styling-system and component-library policy, and the a11y card
+        are stances the architecture store deals as AX-XXX rows; a store row that needs a value
+        points here, and this file never carries a stance. Where a stance and a value conflict,
+        the stance wins and the conflict is a Drift entry at the next landing fold. No derived
+        index.
+      conformance:
+        extra_headings: deny
+      sections:
+        - name: Header
+          required: true
+          contract: >-
+            Title "# Design Baseline" plus one line pointing at the product desk for audience and
+            purpose. Governs no heading of its own.
+          check: Is the title present with the product-desk pointer, and nothing restated from it?
+        - name: Platform
+          heading: Platform
+          required: true
+          max_lines: 5
+          contract: >-
+            Truth part. The product's platform in one value — web, ios, android, adaptive, or
+            desktop. Free text: an unrecognized value is recorded as given and warned, never
+            silently defaulted.
+          check: >-
+            Is the value one of web / ios / android / adaptive / desktop? An unrecognized value is
+            warned and recorded, never denied or silently defaulted — or is it stated as not yet
+            recorded?
+        - name: Brand and voice
+          heading: Brand and voice
+          required: true
+          max_lines: 15
+          contract: >-
+            Truth part. Brand commitments and the product's voice, each sourced from evidence the
+            repo, README, or brand assets hold or the user stated. One line per commitment.
+          check: >-
+            Is each commitment and voice line sourced, never invented — or is the section stated
+            as not yet recorded?
+        - name: Design principles
+          heading: Design principles
+          required: true
+          max_lines: 12
+          contract: >-
+            Truth part. The product's design principles, one line each, each a choice a builder
+            could honor or violate.
+          check: >-
+            Is each principle one line and decidable against a built screen — or is the section
+            stated as not yet recorded?
+        - name: Evidence fence
+          heading: Evidence fence
+          required: true
+          max_lines: 8
+          contract: >-
+            Truth part. The evidence on hand, and the fence: claims, testimonials, benchmarks,
+            customers, and pricing are never invented where evidence is absent.
+          check: >-
+            Does it list the evidence on hand and fence claims, testimonials, benchmarks,
+            customers and pricing as never invented where evidence is absent?
+        - name: Accessibility
+          heading: Accessibility
+          required: true
+          max_lines: 5
+          contract: >-
+            Truth part. A pointer to the accessibility standard of record — the `a11y`
+            compliance module where the project's governance attaches it, else the Essential Floor
+            line — and nothing else. The obligation is defined there, never restated here.
+          check: >-
+            Is it a pointer to the standard of record (the `a11y` compliance module where
+            governance attaches it, else the Essential Floor line), with no obligation restated?
+        - name: Tokens
+          heading: Tokens
+          required: false
+          max_lines: 30
+          contract: >-
+            System part. Color, spacing, radius, and elevation tokens as built, each with its
+            value and the source file it lives in. Absent until setup seeds it or the first
+            landing writes it.
+          check: Is every token a shipped value with its source file, never an intended one?
+        - name: Typography
+          heading: Typography
+          required: false
+          max_lines: 12
+          contract: >-
+            System part. Font families and the type scale as built, with their source files.
+          check: Are the families and the scale the shipped ones, with source files?
+        - name: Components
+          heading: Components
+          required: false
+          max_lines: 25
+          contract: >-
+            System part. The component inventory as built, one line each: name, source path,
+            variants. Values only — a component-library policy is a stance and lives in the
+            store.
+          check: Is each component one line with a source path, and no policy stated?
+        - name: Motion
+          heading: Motion
+          required: false
+          max_lines: 8
+          contract: >-
+            System part. Durations, easing, and motion rules as built, with their source files.
+          check: Is each motion rule a shipped value with its source?
+        - name: Drift
+          heading: Drift
+          required: false
+          max_lines: 15
+          contract: >-
+            Written by the landing fold only. One line per divergence — declared-versus-shipped,
+            an unsigned or advisory critique finding, a design-audit divergence, or a stance-value
+            conflict — keyed to the token or component and the FEAT-XXX that surfaced it.
+          check: Is each line one divergence, keyed to a token or component and a FEAT-XXX?
+      skeleton: |
+        # Design Baseline
+
+        Audience and purpose: see the product desk.
+
+        ## Platform
+
+        [web | ios | android | adaptive | desktop — or "not yet recorded"]
+
+        ## Brand and voice
+
+        - [commitment, with its source]
+
+        ## Design principles
+
+        - [principle a builder could honor or violate]
+
+        ## Evidence fence
+
+        - On hand: [evidence, with its source]
+        - Never invented where evidence is absent: claims, testimonials, benchmarks, customers, pricing.
+
+        ## Accessibility
+
+        Standard of record: [the `a11y` compliance module, or the Essential Floor line].
+
+        ## Tokens
+
+        - color.primary — [value] — [source file]
+
+        ## Typography
+
+        - [family] — scale [steps] — [source file]
+
+        ## Components
+
+        - [Name] — [source path] — [variants]
+
+        ## Motion
+
+        - [duration / easing rule] — [source file]
+
+        ## Drift
+
+        - color.primary — declared [value], shipped [value] (FEAT-012)

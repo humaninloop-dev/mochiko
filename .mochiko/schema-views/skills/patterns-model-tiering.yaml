@@ -64,7 +64,7 @@ sections:
           Each rostered persona pins its ruled default in its own frontmatter as a tier alias,
           never a full model id — `strong` = `opus`: devils-advocate · tech-lead · qa-engineer
           · staff-engineer · principal-architect; `down` = `sonnet`: requirements-analyst ·
-          technical-analyst · product-manager · product-engineer. The two rows held `strong`
+          technical-analyst · product-manager · product-designer. The two rows held `strong`
           against the criterion — staff-engineer and principal-architect — are argued in the
           ruling and never re-argued in a run. A persona carrying `inherit` or no `model:` has
           failed this floor.

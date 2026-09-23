@@ -1,6 +1,81 @@
-# Strip notes — `agents/product-engineer.md`
+# Strip notes — `agents/product-designer.md`
 
-Entry formats: `strips/README.md`.
+Entry formats: `strips/README.md`. Renamed from `agents/product-engineer.md` at v0.114.0 (entry
+below); the entries after it were written against the old name and are kept as written.
+
+## [v0.114.0] `product-engineer` renamed `product-designer`; design-director judgment added
+
+- **Disposition:** superseded → `plugins/mochiko/agents/product-designer.md` (`git mv` of the
+  same file, then reworded). The persona now carries the design-director judgment the
+  Impeccable port puts on it — the brief wins · refinement preserves, redesign replaces ·
+  visual authority is evidence · mode chosen per surface — as identity and taste, with no
+  workflow trace. Procedure sits in the new `mochiko:patterns-design-direction` skill, now
+  mounted beside `authoring-prototype`.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/impeccable-design-integration/record.md` D3 — the judgment's home on
+  this persona, the `ui-designer` Design track superseded; D4 — the rename, this wave, MINOR,
+  no deprecation alias, revert only as a second supersession by ruling; `DECISIONS.md`
+  2026-09-19 row). Wave: `wave1-design-integration.md`, seat S1.
+- **Content:** verbatim, each line that left or changed —
+  - `name: product-engineer`
+  - `description:` "Staff-level Product Engineer who makes intended user experiences tangible
+    before they are built — authoring clickable low-fidelity prototypes that render user
+    stories as screens and walkable flows, honoring an existing design system, and keeping
+    fidelity honest: structure and flows precise, pixels deliberately rough. Produces the
+    prototype and its manifest; does not grade its own output." (v0.63.0 protected prose
+    framing; re-cut for the new judgment, 392 → 449 chars by the canonical snippet, under the
+    490 budget)
+  - `skills: authoring-prototype` (now `authoring-prototype, patterns-design-direction`)
+  - "You are the **Product Engineer** — a staff-level engineer who makes intended user
+    experiences tangible before they are built."
+  - "You think like an engineer who has:" (now "a design director")
+  - "Shipped products with design systems and watched mocks that ignored them create surprise
+    twice — so where a system exists, you build from its tokens and components, at rough
+    fidelity" (re-homed: the baseline-first design-system read now lives in
+    `authoring-prototype.design-system-honored`, reworded by migration
+    `0011-design-direction-craft-floor.yaml`; the persona keeps the taste as "visual authority
+    is evidence" and "the product's own design language where one exists")
+  - What You Produce items 1–3, renumbered 2, 3, 5 around the two new items (a direction per
+    surface · the product's design record, as shipped)
+  - "The concrete procedure lives in your skill, which is the single source of truth:" (now
+    "skills, which are")
+  - "Grading your own prototype" (now "Grading your own work" — the persona now produces a
+    direction and design-record entries besides the prototype)
+  - "A design system's language where one exists — at low fidelity, not reproduction" (now
+    "The product's own design language where one exists — …")
+- **Kept deliberately:** `model: sonnet` (the seat default key, `orchestrator-model-selection`
+  D3 — S1 ran deviated at `opus` for this wave only, disclosed in the roster line), `color:
+  green`, the Skills Available framing, the five remaining Core Identity bullets (build-time
+  discovery, fidelity honesty, honest data shape, scope invention, disposable code), the
+  Quality Standards and Reject/Embrace lines not listed above, and the Delegating Cheap Reads
+  section verbatim. No accessibility content was added to the persona (D11 — the standard of
+  record is routed, never restated, and design-time taste carries none of it).
+- **Consumers assessed:** the address `mochiko:product-engineer` — router
+  `skills/mochiko/SKILL.md:155`, `plugin.json` agents list, `README.md:132`,
+  `.mochiko/memory/primitive-cost-budgets.md` persona row, `evals/agents/product-engineer/`,
+  the contract-suite pre-registration, the live `patterns-model-tiering.seat-default-key`
+  floor, `ARCHITECTURE.md:195,203,212` (store re-render) — all re-keyed by seat S5 in
+  `0015-product-designer-rekey.yaml` and its ripple, not here. Historical migrations
+  `0007`/`0010`, `.mochiko/benchmarks/**`, the trail, session records, and DECISIONS rows are
+  frozen and not rewritten (D4). The persona-edit advisory grid is S5's to attempt.
+- **Wave deviation (disclosed, lead-ruled):** the `patterns-design-direction` skill this persona now
+  mounts routes the `adaptive` platform value to BOTH `references/ios.md` and
+  `references/android.md` (rules `patterns-design-direction.platform-routing` and
+  `patterns-craft-floor.platform-native`, migration `0011-design-direction-craft-floor.yaml`);
+  the approved S1 plan text routed `adaptive` to none. Accepted by the wave lead as faithful to
+  D6 ("loaded … on the platform value") and to upstream's ported behavior.
+- **Persona-edit advisory grid — skipped (S5, 2026-09-23; advisory only, never a gate):** the kit
+  was re-keyed to `evals/agents/product-designer/` (stamped in its `preregistration.md`) and the
+  pre-flight `uv run evals/run.py agent check product-designer` was run before any session. It
+  halted with `error: git show b9efb59:plugins/mochiko/agents/product-designer.md failed: fatal:
+  path 'plugins/mochiko/agents/product-designer.md' exists on disk, but not in 'b9efb59'`.
+  Reason: the runner keys the `pre` arm's persona text by the persona's current name at the old
+  ref (`evals/plan/agents.py:89-99`, `persona_text`), and before this rename the file was
+  `product-engineer.md`, so no `pre` arm can be read under the new name; the rubric in
+  `rules.json` is also stale against the D3 body rewrite. The grid (`agent grid product-designer
+  --arms pre,post`) was therefore not run and no metered session was spent. Owed: a runner
+  change that lets the `pre` arm name a pre-rename path, then a re-mint (`agent mint
+  product-designer --old-ref <pre-rename ref>`) and the pilot-form grid with a positive control.
 
 ## [v0.110.0] Frontmatter `model: opus` superseded — the seat default key sends this seat to `sonnet`
 

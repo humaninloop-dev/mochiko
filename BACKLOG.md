@@ -490,33 +490,22 @@ Ruling: DECISIONS.md row 2026-08-10 (D1–D22); build delivered 2026-08-10 at v0
   feature (open thread 1) and selection-UX presentation (thread 5) observed. Scale trigger:
   map at ~60 entries (thread 6) — far off.
 
-## Impeccable design-integration build
-
-Ruling: DECISIONS.md row 2026-09-19 (D1–D14 as review-amended); record
-`.mochiko/brainstorms/impeccable-design-integration/record.md` — build surface items 0–11,
-plan-minimalism ladder disclosed, cost line, evidence honesty.
-
-- [ ] **Design-integration wave** (2026-09-19; provenance: record § Build surface) — one wave,
-  plan-approved producers with disjoint ownership (≈4) + 3 fresh author≠grader validators, under
-  the sound-loop + transport floors. Item 0 first, **abort-gated**: pin the upstream SHA, add root
-  `LICENSE` + `NOTICE` (D14), census the three rewritten skills against the budget ledger — abort
-  to the user at > 25 % over the family band; measure descriptions ≤ 1,536. Then: rename
-  `product-engineer` → `product-designer` + persona rewrite (D3/D4, store re-render for
-  `ARCHITECTURE.md`, README, cost ledger, eval kit) · `patterns-design-direction` +
-  `patterns-craft-floor` + `review-design-audit` (schema pairs) · critique section in
-  `testing-gap-finding` + the D11 supersession strip · `**TEST:**` example asserts · design home
-  + template + setup leg + detection leg + `review-sufficiency` clause-8 re-key + specify re-keys
-  · migrations (item 8) · gates incl. derived view ≡ replay, MINOR bump, `GLOSSARY.md` scaffold
-  (standing trigger fires on the minted terms). Watches minted at landing (item 11).
-
 ## UX-prototype-stage watches
 
 Ruling: DECISIONS.md row 2026-08-02 (UX-D1–D9); built same day at v0.50.0. **Extended
 2026-09-19** by the Impeccable design-integration ruling (D1–D14): the first UX-bearing run also
 watches the critique lens's blocking/advisory line (D8 `Assumed`, both depths) · the first
 landing-fold system-part write and its user checkpoint (D7) · the setup leg on a brownfield repo
-with a real design system (D6) · the `desktop` platform value with no ported guidance (OQ3) · the
-shelf seam at the frontend shelf's first deal (D12).
+with a real design system (D6; the user signs the whole write, brownfield seed included) · the
+`desktop` platform value with no ported guidance (OQ3) · the shelf seam at the frontend shelf's
+first deal (D12). **Extended again 2026-09-23** by the design-integration build (v0.114.0,
+build log § close): the critique rides gap-finding's selection/epic scope, so a delta-scope
+UX-bearing card gets no critique · a pre-wave project with no design home (the truth part stays
+absent until a setup amend; `impl.absent-surfaces` not reworded) · `patterns-craft-floor` rides
+`staff-engineer`'s `skills:` preload although its rule says never for planning-only work · the
+Screens & Flows bound (44 lines) fits two surfaces' Direction blocks, a third overflows ·
+`review-design-audit` and the critique rule still say "the Direction block" in the singular ·
+`specify.md`'s Goal line does not list the Direction block (the template carries it).
 
 - [ ] **First live UX-bearing specify run** (2026-08-02; provenance:
   `.mochiko/brainstorms/ux-mocking-in-specify/record.md`, open threads 1–3) — watch the first

@@ -212,6 +212,22 @@ sections:
           substance, never prose style; undisclosed overage past the envelope's size defaults is
           advisory per its rule 8.
         anchor: 2026-08-22 verbosity-envelope-enforcement
+      - id: review-specifications.sf-direction-checks
+        labels: [verdict]
+        class: must
+        kind: duty
+        text: >-
+          Screens & Flows direction checks, per surface's Direction block: Mode chosen from the
+          surface itself (Persuade · Operate · Read · Experience — per surface, never per
+          product) · Register named · Contract concrete (visual world, type and color intent
+          named, not adjectives) · Declared tokens marked as intent · Incumbent world stated as
+          preserve, expand, or replace against the design baseline where a system part exists ·
+          platform read from the baseline, never restated in the block · the brief wins — a
+          Contract that deliberately departs from a saturated pattern is no finding for departing.
+          Graded on the block's text, never the prototype's pixels. A missing block or Mode is
+          Critical; a vague Contract or a missing Incumbent world is Important.
+        when: {manifest-present: present}
+        anchor: 2026-09-19 impeccable-design-integration D5
   - id: review-specifications.sec.output
     title: Output — questions and report contracts
     intent: The question craft and the shapes the findings land in.

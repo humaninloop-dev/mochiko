@@ -128,10 +128,11 @@ sections:
           identified with evidence · naming conventions documented (files, variables, functions,
           classes) · all four Essential-Floor categories assessed present/partial/absent,
           file-cited · domain entities extracted with relationships · external dependencies
-          documented · strengths to preserve identified (minimum 2–3) · inconsistencies
-          documented with severity · recommendations provided for constitution focus · file
-          paths cited for all findings · output written to
-          `.mochiko/memory/codebase-analysis.md`.
+          documented · design-system facts inventoried — UI framework, CSS system, fonts, token
+          files, component library — file-cited, or `none detected` · strengths to preserve
+          identified (minimum 2–3) · inconsistencies documented with severity ·
+          recommendations provided for constitution focus · file paths cited for all findings ·
+          output written to `.mochiko/memory/codebase-analysis.md`.
       - id: analysis-codebase.capability-signals-seed-feature-map
         labels: [binding]
         class: must
@@ -151,6 +152,15 @@ sections:
           codebase-analysis` — the three parts and the appendix are the kind's headings, and the
           detection layer's output belongs inside them, not in a file of its own.
         anchor: 2026-09-13 hook-enforced-artifact-schema D1
+      - id: analysis-codebase.design-facts-seed
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          Design-system facts (`detect-stack.sh`'s `design_system` key, code-verified) are facts,
+          never stances: they seed the design baseline's system part only through setup's
+          `product-designer` write, and later the frontend shelf.
+        anchor: 2026-09-19 impeccable-design-integration D6
   - id: analysis-codebase.sec.reserved
     title: Reserved — interpretation is the session's
     intent: What this analysis never decides.

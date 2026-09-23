@@ -34,12 +34,15 @@ sections:
         evidence); Test Pattern (Framework, Location, Naming, Coverage Config).
       - Domain Entities (Entity | File | Field Count | Relationships).
       - External Dependencies (Service | Access Pattern | Config Location).
+      - Design System (Aspect | Value | Source): UI Framework, CSS System, Fonts, Token Files,
+        Component Library — each file-cited, or `none detected`.
     check: >-
       Is Part 1 a factual, file-cited inventory covering project identity, directory structure,
-      detected patterns (architecture, naming, error-handling, test), domain entities, and
-      external dependencies — each finding one line and sourced?
+      detected patterns (architecture, naming, error-handling, test), domain entities, external
+      dependencies, and the design system (UI framework, CSS system, fonts, token files, component
+      library, or `none detected`) — each finding one line and sourced?
     heading: 'Part 1: Inventory (Factual)'
-    max_lines: 40
+    max_lines: 50
   - name: Part 2 — Assessment (Judgment)
     required: true
     contract: |
@@ -65,10 +68,11 @@ sections:
     contract: |
       Table (Aspect | Method Used): Tech Stack — `detect-stack.sh` script; Architecture —
       Directory pattern matching; Entities — ORM/framework-specific patterns; Conventions —
-      File sampling and pattern inference.
+      File sampling and pattern inference; Design System — `detect-stack.sh` `design_system`
+      key, verified by file sampling.
     check: >-
       Is the Detection Method appendix present, naming the method per aspect (detect-stack.sh,
-      directory pattern matching, ORM patterns, file sampling)?
+      directory pattern matching, ORM patterns, file sampling, the design_system key)?
     heading: 'Appendix: Detection Method'
     max_lines: 15
 skeleton: |
@@ -145,6 +149,16 @@ skeleton: |
   |---------|---------------|-----------------|
   | {{service_name}} | {{how_accessed}} | {{config_file}} |
 
+  ### Design System
+
+  | Aspect | Value | Source |
+  |--------|-------|--------|
+  | UI Framework | {{ui_framework}} | {{source_file}} |
+  | CSS System | {{css_system}} | {{source_file}} |
+  | Fonts | {{fonts}} | {{source_file}} |
+  | Token Files | {{token_files}} | {{source_file}} |
+  | Component Library | {{component_library}} | {{source_file}} |
+
   ---
 
   ## Part 2: Assessment (Judgment)
@@ -194,5 +208,6 @@ skeleton: |
   | Architecture | Directory pattern matching |
   | Entities | ORM/framework-specific patterns |
   | Conventions | File sampling and pattern inference |
+  | Design System | `detect-stack.sh` `design_system` key, verified by file sampling |
 conformance:
   extra_headings: deny

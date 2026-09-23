@@ -25,6 +25,8 @@ Factual inventory, file-cited. Sub-parts:
   evidence); Test Pattern (Framework, Location, Naming, Coverage Config).
 - Domain Entities (Entity | File | Field Count | Relationships).
 - External Dependencies (Service | Access Pattern | Config Location).
+- Design System (Aspect | Value | Source): UI Framework, CSS System, Fonts, Token Files,
+  Component Library — each file-cited, or `none detected`.
 
 _Density:_ findings as file-cited table rows, one line each
 
@@ -46,7 +48,8 @@ Judgment layer; prose where the human reader needs it. Sub-parts:
 
 Table (Aspect | Method Used): Tech Stack — `detect-stack.sh` script; Architecture —
 Directory pattern matching; Entities — ORM/framework-specific patterns; Conventions —
-File sampling and pattern inference.
+File sampling and pattern inference; Design System — `detect-stack.sh` `design_system`
+key, verified by file sampling.
 
 ## Conformance
 
@@ -55,7 +58,7 @@ Checked mechanically before the write lands. Each line is a string or a count, n
 - Required headings, in order: `## Part 1: Inventory (Factual)`, `## Part 2: Assessment (Judgment)`, `## Appendix: Detection Method`
 - An undeclared `##` heading is denied. `###` and deeper are yours.
 - Line budgets, each counted from its `##` line to the next `##`, nested content included:
-  - `## Part 1: Inventory (Factual)` — 40 lines
+  - `## Part 1: Inventory (Factual)` — 50 lines
   - `## Part 2: Assessment (Judgment)` — 40 lines
   - `## Appendix: Detection Method` — 15 lines
 
@@ -134,6 +137,16 @@ Checked mechanically before the write lands. Each line is a string or a count, n
 |---------|---------------|-----------------|
 | {{service_name}} | {{how_accessed}} | {{config_file}} |
 
+### Design System
+
+| Aspect | Value | Source |
+|--------|-------|--------|
+| UI Framework | {{ui_framework}} | {{source_file}} |
+| CSS System | {{css_system}} | {{source_file}} |
+| Fonts | {{fonts}} | {{source_file}} |
+| Token Files | {{token_files}} | {{source_file}} |
+| Component Library | {{component_library}} | {{source_file}} |
+
 ---
 
 ## Part 2: Assessment (Judgment)
@@ -183,5 +196,6 @@ Checked mechanically before the write lands. Each line is a string or a count, n
 | Architecture | Directory pattern matching |
 | Entities | ORM/framework-specific patterns |
 | Conventions | File sampling and pattern inference |
+| Design System | `detect-stack.sh` `design_system` key, verified by file sampling |
 
 ---

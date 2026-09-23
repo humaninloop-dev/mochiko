@@ -1,0 +1,15 @@
+# Design Baseline — checklist
+
+- [ ] Is the title present with the product-desk pointer, and nothing restated from it?
+- [ ] Is the value one of web / ios / android / adaptive / desktop? An unrecognized value is warned and recorded, never denied or silently defaulted — or is it stated as not yet recorded?
+- [ ] Is each commitment and voice line sourced, never invented — or is the section stated as not yet recorded?
+- [ ] Is each principle one line and decidable against a built screen — or is the section stated as not yet recorded?
+- [ ] Does it list the evidence on hand and fence claims, testimonials, benchmarks, customers and pricing as never invented where evidence is absent?
+- [ ] Is it a pointer to the standard of record (the `a11y` compliance module where governance attaches it, else the Essential Floor line), with no obligation restated?
+- [ ] Is every token a shipped value with its source file, never an intended one?
+- [ ] Are the families and the scale the shipped ones, with source files?
+- [ ] Is each component one line with a source path, and no policy stated?
+- [ ] Is each motion rule a shipped value with its source?
+- [ ] Is each line one divergence, keyed to a token or component and a FEAT-XXX?
+
+---

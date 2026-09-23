@@ -167,13 +167,17 @@ fn the_log_replays_into_a_deliverable_state() {
             .collect();
         panic!("the log is deliverable:\n{}", lines.join("\n"));
     });
-    assert_eq!(replay.state.docs.len(), 75);
+    assert_eq!(replay.state.docs.len(), 80);
     assert_eq!(
         replay.sequences(),
-        vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+        vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
-         default key, 0008's gate form, 0009's plan-QA leg, 0010's validator retirement"
+         default key, 0008's gate form, 0009's plan-QA leg, 0010's validator retirement, \
+         0011's design direction and craft floor, 0012's design verification lenses, 0013's \
+         design baseline home, 0014's setup product-truth leg, 0015's product-designer re-key, \
+         0016's direction per surface, 0017's critique depth precedence, 0018's design-baseline \
+         platform placeholder"
     );
 }
 
@@ -633,11 +637,26 @@ fn the_corpus_census_holds_through_the_log() {
     // named the persona's mechanism re-point to the plain fresh grading seat. Each keeps its id,
     // class, kind and section, so every figure below holds — this migration moves the sequence
     // list and nothing else in this census.
-    assert_eq!(command_rules, 329, "live command rules");
-    assert_eq!(skill_rules, 753, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1082, "live rules in total");
-    assert_eq!(skill_floors, 257, "skill floors");
-    assert_eq!(command_floors, 117, "declared command floors");
+    // The 2026-09-19 impeccable-design-integration wave carries five migrations. `0011` imports
+    // two skill documents, `patterns-design-direction` (fifteen rules, three floors) and
+    // `patterns-craft-floor` (twelve rules, two floors), and mints one rule on
+    // `authoring-prototype`: +28 skill rules, +5 skill floors. `0012` imports
+    // `review-design-audit` (sixteen rules, two floors) and mints six rules on the verification
+    // skills — five on `testing-gap-finding`, one on `testing-end-user`: +22 and +2. `0013`
+    // imports the `product-design` home and the `design-baseline` template (two documents, no
+    // rules) and mints five `implement` rules, two of them floors, and one on
+    // `review-specifications`. `0014` mints three `setup` rules and one on `analysis-codebase`,
+    // none of them floors. `0015` is one `reword-rule` and moves nothing here. Every other op
+    // across the five is a reword, a field set or a condition, so it mints nothing, and no fail
+    // node is minted or retired: command 329 → 337, skill 753 → 805, floors 117 → 119 and
+    // 257 → 264, the fail set unmoved at 36. The wave's gate-fix round added `0016`–`0018`:
+    // seven `reword-rule`s and the `spec` template replaced (`0016`), one reword (`0017`), and the
+    // `design-baseline` template replaced (`0018`) — no mint, no retirement, so nothing here moves.
+    assert_eq!(command_rules, 337, "live command rules");
+    assert_eq!(skill_rules, 805, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1142, "live rules in total");
+    assert_eq!(skill_floors, 264, "skill floors");
+    assert_eq!(command_floors, 119, "declared command floors");
     assert_eq!(fail_nodes, 36, "command fail nodes");
 }
 

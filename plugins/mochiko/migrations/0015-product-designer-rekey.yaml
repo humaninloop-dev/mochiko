@@ -1,0 +1,22 @@
+grammar: 1
+id: 0015-product-designer-rekey
+sequence: 15
+intent: >-
+  Re-key the seat default key's roster to the renamed persona: `product-engineer` becomes
+  `product-designer` in the `down` list, and nothing else in the rule moves.
+anchor: 2026-09-19 impeccable-design-integration D4
+hash: sha256:494f04a6d4f26b2efc7fafc3fe57cf761cd4e4f7aeb24c8023a565ece847ef7b
+changes:
+  - op: reword-rule
+    schema: skill/patterns-model-tiering
+    id: patterns-model-tiering.seat-default-key
+    text: >-
+      The seat default key — sibling of the class key, keyed on one question: does a
+      structurally independent seat stand between this seat's output and the run's verdict? Where
+      one does, the seat's default is `down`; where the seat IS that check, `strong`. Each
+      rostered persona pins its ruled default in its own frontmatter as a tier alias, never a full
+      model id — `strong` = `opus`: devils-advocate · tech-lead · qa-engineer ·
+      staff-engineer · principal-architect; `down` = `sonnet`: requirements-analyst ·
+      technical-analyst · product-manager · product-designer. The two rows held `strong` against
+      the criterion — staff-engineer and principal-architect — are argued in the ruling and
+      never re-argued in a run. A persona carrying `inherit` or no `model:` has failed this floor.

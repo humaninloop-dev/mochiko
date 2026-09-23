@@ -10,4 +10,4 @@ deliverables:
     max_lines: 300
   - file: quickstart.md
     max_lines: 300
-subdirs: [architecture, contracts]
+subdirs: [architecture, contracts, design]

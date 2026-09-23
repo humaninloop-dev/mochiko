@@ -1,0 +1,395 @@
+grammar: 1
+id: 0013-design-baseline-home
+sequence: 13
+intent: >-
+  Declare the design baseline at .mochiko/product/design/ with its template, and wire it into the
+  implement run (craft-floor binding, design finish, audit advisories, landing fold with its
+  single writer and first-write reservation), the sufficiency check's UX-trace clause and read
+  fence, and the spec review's direction checks.
+anchor: 2026-09-19 impeccable-design-integration D5
+hash: sha256:52cc6ac8854488f1bb76cc37ff7dc22b815ec34f02fd131bf9ed9288a27f1ca4
+changes:
+  - op: import-document
+    kind: template
+    name: design-baseline
+    content:
+      template: design-baseline
+      title: Design Baseline
+      form: artifact-format.md
+      register: full
+      overview: >-
+        `design.md` — the product's design baseline at `.mochiko/product/design/`, beside the
+        architecture store. Two parts in one file. The design truth part (platform, brand and
+        voice, design principles, the evidence fence, the accessibility pointer) is durable and
+        product-wide. The design system part (tokens, typography, components, motion) holds values
+        as built and is written only from shipped code at a landing fold, never from intent; where
+        it is still empty at landing, its first write is signed by the user at final acceptance.
+        One writer, `product-designer`, on exactly three graded paths: the setup leg (the truth
+        part, the brownfield system-part seed, the scaffold), a build-time `baseline-delta.md`
+        entry, and the landing fold. Mode and the direction contract are per surface and live in
+        the feature spec's Screens & Flows Direction block, never here; audience and purpose live
+        in the product desk and are pointed at, never restated. Values, not stances: rendering
+        strategy, state management, styling-system and component-library policy, and the a11y card
+        are stances the architecture store deals as AX-XXX rows; a store row that needs a value
+        points here, and this file never carries a stance. Where a stance and a value conflict,
+        the stance wins and the conflict is a Drift entry at the next landing fold. No derived
+        index.
+      conformance:
+        extra_headings: deny
+      sections:
+        - name: Header
+          required: true
+          contract: >-
+            Title "# Design Baseline" plus one line pointing at the product desk for audience and
+            purpose. Governs no heading of its own.
+          check: Is the title present with the product-desk pointer, and nothing restated from it?
+        - name: Platform
+          heading: Platform
+          required: true
+          max_lines: 5
+          contract: >-
+            Truth part. The product's platform in one value — web, ios, android, adaptive, or
+            desktop. Free text: an unrecognized value is recorded as given and warned, never
+            silently defaulted.
+          check: >-
+            Is the value one of web / ios / android / adaptive / desktop? An unrecognized value is
+            warned and recorded, never denied or silently defaulted — or is it stated as not yet
+            recorded?
+        - name: Brand and voice
+          heading: Brand and voice
+          required: true
+          max_lines: 15
+          contract: >-
+            Truth part. Brand commitments and the product's voice, each sourced from evidence the
+            repo, README, or brand assets hold or the user stated. One line per commitment.
+          check: >-
+            Is each commitment and voice line sourced, never invented — or is the section stated
+            as not yet recorded?
+        - name: Design principles
+          heading: Design principles
+          required: true
+          max_lines: 12
+          contract: >-
+            Truth part. The product's design principles, one line each, each a choice a builder
+            could honor or violate.
+          check: >-
+            Is each principle one line and decidable against a built screen — or is the section
+            stated as not yet recorded?
+        - name: Evidence fence
+          heading: Evidence fence
+          required: true
+          max_lines: 8
+          contract: >-
+            Truth part. The evidence on hand, and the fence: claims, testimonials, benchmarks,
+            customers, and pricing are never invented where evidence is absent.
+          check: >-
+            Does it list the evidence on hand and fence claims, testimonials, benchmarks,
+            customers and pricing as never invented where evidence is absent?
+        - name: Accessibility
+          heading: Accessibility
+          required: true
+          max_lines: 5
+          contract: >-
+            Truth part. A pointer to the accessibility standard of record — the `a11y`
+            compliance module where the project's governance attaches it, else the Essential Floor
+            line — and nothing else. The obligation is defined there, never restated here.
+          check: >-
+            Is it a pointer to the standard of record (the `a11y` compliance module where
+            governance attaches it, else the Essential Floor line), with no obligation restated?
+        - name: Tokens
+          heading: Tokens
+          required: false
+          max_lines: 30
+          contract: >-
+            System part. Color, spacing, radius, and elevation tokens as built, each with its
+            value and the source file it lives in. Absent until setup seeds it or the first
+            landing writes it.
+          check: Is every token a shipped value with its source file, never an intended one?
+        - name: Typography
+          heading: Typography
+          required: false
+          max_lines: 12
+          contract: >-
+            System part. Font families and the type scale as built, with their source files.
+          check: Are the families and the scale the shipped ones, with source files?
+        - name: Components
+          heading: Components
+          required: false
+          max_lines: 25
+          contract: >-
+            System part. The component inventory as built, one line each: name, source path,
+            variants. Values only — a component-library policy is a stance and lives in the
+            store.
+          check: Is each component one line with a source path, and no policy stated?
+        - name: Motion
+          heading: Motion
+          required: false
+          max_lines: 8
+          contract: >-
+            System part. Durations, easing, and motion rules as built, with their source files.
+          check: Is each motion rule a shipped value with its source?
+        - name: Drift
+          heading: Drift
+          required: false
+          max_lines: 15
+          contract: >-
+            Written by the landing fold only. One line per divergence — declared-versus-shipped,
+            an unsigned or advisory critique finding, a design-audit divergence, or a stance-value
+            conflict — keyed to the token or component and the FEAT-XXX that surfaced it.
+          check: Is each line one divergence, keyed to a token or component and a FEAT-XXX?
+      skeleton: |
+        # Design Baseline
+
+        Audience and purpose: see the product desk.
+
+        ## Platform
+
+        web
+
+        ## Brand and voice
+
+        - [commitment, with its source]
+
+        ## Design principles
+
+        - [principle a builder could honor or violate]
+
+        ## Evidence fence
+
+        - On hand: [evidence, with its source]
+        - Never invented where evidence is absent: claims, testimonials, benchmarks, customers, pricing.
+
+        ## Accessibility
+
+        Standard of record: [the `a11y` compliance module, or the Essential Floor line].
+
+        ## Tokens
+
+        - color.primary — [value] — [source file]
+
+        ## Typography
+
+        - [family] — scale [steps] — [source file]
+
+        ## Components
+
+        - [Name] — [source path] — [variants]
+
+        ## Motion
+
+        - [duration / easing rule] — [source file]
+
+        ## Drift
+
+        - color.primary — declared [value], shipped [value] (FEAT-012)
+  - op: import-document
+    kind: home
+    name: product-design
+    content:
+      home: product-design
+      title: The product design baseline
+      path: [.mochiko, product, design]
+      bounds: template
+      deliverables:
+        - file: design.md
+          template: design-baseline
+  - op: replace-document
+    kind: home
+    name: product
+    content:
+      home: product
+      title: The product baselines
+      path: [.mochiko, product]
+      bounds: template
+      deliverables:
+        - file: data-model.md
+          max_lines: 300
+        - file: constraints-and-decisions.md
+          max_lines: 300
+        - file: quickstart.md
+          max_lines: 300
+      subdirs: [architecture, contracts, design]
+  - op: set-condition
+    schema: command/implement
+    name: ux_bearing
+    spec:
+      values: presence
+      resolution: surface-presence
+      note: the batch's spec carries a Screens & Flows SCR/FLOW manifest.
+  - op: set-var
+    schema: command/implement
+    name: designer_seat
+    value: product-designer
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.tools
+    rule:
+      id: impl.craft-floor-binding
+      labels: [floor-pointer]
+      class: must
+      kind: binding
+      text: >-
+        On a card carrying SCR-XXX/FLOW-XXX trace, ${builder_seat} loads the pointer skill
+        immediately before any edit, small refinements included, and never for planning-only work.
+      when: {ux_bearing: present}
+      pointer: mochiko:patterns-craft-floor
+      anchor: 2026-09-19 impeccable-design-integration D8
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-inputs
+    text: >-
+      Design inputs are sufficiency-report.md and the design-phase deltas where they exist —
+      including the signed store delta, the anchor for the deviation check and the built-vs-signed
+      diff — at ${features_dir}/FEAT-XXX/; the product baselines at ${product_dir}/
+      (data-model.md, contracts/, constraints-and-decisions.md, the design baseline at
+      ${product_dir}/design/, and the architecture store, whose concern rows carry the NFR-XXX
+      targets the built code must meet); spec.md for the cards' cited acceptance criteria.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.gap-finding-blind-dispatch
+    text: >-
+      Gap-finding dispatch is two-message and blind. The first message carries only spec.md, the
+      sufficiency report and design deltas where they exist, Screens & Flows, and the baselines
+      data-model.md, contracts/, the design baseline, and the store's NFR-XXX concern rows —
+      never the code, tasks.md, the **TEST:** cases, or any report. The seat states its derived
+      expectations; only then does probing begin. Its brief carries the model-tiering rule, and
+      its delegated reads stay inside the same fence.
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.tools
+    rule:
+      id: impl.design-finish
+      labels: [evidence]
+      class: must
+      kind: routing
+      text: >-
+        On a UX-bearing batch the final validation carries the design finish: the gap-finding pass
+        runs its critique lens, the run's depth level in the finder's brief, and ${qa_seat} runs
+        mochiko:review-design-audit. The pointer skill owns the lens's blocking/advisory split and
+        its depth keying. A blocking critique finding is spec-required under impl.finding-kinds;
+        an advisory one is its own kind, critique-advisory — neither spec-required nor
+        beyond-spec, it takes no beyond-spec disposition and rides to the design landing fold; a
+        disputed kind goes to the user as impl.finding-kind-disputed routes it. Critique rework
+        spends at most one fix round and one confirm round inside impl.gap-rework-bound — never
+        a bound beside it, never raising it.
+      when: {ux_bearing: present}
+      pointer: mochiko:testing-gap-finding
+      anchor: 2026-09-19 impeccable-design-integration D8
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.boundaries
+    rule:
+      id: impl.design-audit-advisory
+      labels: [evidence]
+      class: floor
+      text: >-
+        design-audit: findings stay advisory at any severity. They land in the final-validation
+        report's `design-audit:` block — a clean audit omits the block; only a declined or
+        skipped audit states its reason there. A finding that diverges from the design baseline is
+        a Drift: candidate at the design landing fold.
+      when: {ux_bearing: present}
+      anchor: 2026-09-19 impeccable-design-integration D8
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.tools
+    rule:
+      id: impl.design-landing
+      labels: [landing]
+      class: must
+      text: >-
+        A UX-bearing landing folds the built UI into the design baseline: ${designer_seat} derives
+        the system part from shipped code, never from intent, reconciles it against the direction
+        contract's declared tokens, writes the shipped values, and marks each divergence, each
+        critique-advisory finding, and each accepted design-audit Drift: candidate as Drift:. The
+        write is judgment, graded by the landing verification seat. ${designer_seat} is the design
+        baseline's only writer, on exactly three paths: the setup leg (the truth part, the
+        brownfield system-part seed, the scaffold), a build-time baseline-delta.md entry, and this
+        fold.
+      when: {ux_bearing: present}
+      anchor: 2026-09-19 impeccable-design-integration D7
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.reserved
+    rule:
+      id: impl.design-first-write
+      labels: [user-gate, landing]
+      class: floor
+      kind: reservation
+      text: >-
+        Where the design baseline's system part is still empty at landing, the fold's first
+        system-part write is the user's: at final acceptance the proposed write and every
+        critique-advisory finding are presented for the user's signature before the baseline takes
+        them; a finding the user declines to sign lands as Drift:, never as baseline. A system
+        part seeded at setup was signed there.
+      when: {ux_bearing: present}
+      anchor: 2026-09-19 impeccable-design-integration D7
+  - op: reword-rule
+    schema: command/implement
+    id: impl.graded-fold
+    text: >-
+      Every touched baseline folds exactly once, via a graded fold — a three-way diff (pre-fold
+      baseline + delta vs folded result; delta applied whole, nothing else changed), checked by
+      the landing verification seat. An epic's shared-baseline delta folds once from the spine; a
+      single-member baseline from its feature delta. Two carves: the store's fold IS the store
+      landing — status flips, graded As-built:/Drift: writes, and the orphan check, not a
+      three-way diff; and the design baseline's system part folds per impl.design-landing, as
+      graded judgment, not a three-way diff — its truth part folds by the three-way diff. A
+      delta whose baseline file is absent folds into a fresh ${product_dir}/ file (empty pre-fold
+      side), the absence surfaced as a seeding gap.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.card-contents
+    text: >-
+      Per card: stories and feature rationale, dependencies, acceptance criteria by ID, a
+      **TEST:** real-infrastructure gate, and the cycle's brownfield exposure — no task lists,
+      no file paths; the builder decomposes at build time. A UX-bearing card's **TEST:** gate
+      names the FLOW-XXX paths it verifies, and carries the audit lens's pass/fail legs — the
+      accessibility standard of record by pointer, never restated · the measurable asserts ·
+      responsive checks at the viewports the Direction block's Contract declares — authored by
+      ${qa_seat} at design time, examples in mochiko:patterns-vertical-tdd's
+      references/TEST-GRAMMAR.md.
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.card-contents
+    field: anchor
+    value: 2026-09-19 impeccable-design-integration D8
+  - op: reword-rule
+    schema: skill/review-sufficiency
+    id: review-sufficiency.clause-ux-trace
+    text: >-
+      UX trace — where the spec carries a Screens & Flows manifest: every FEAT-tagged SCR-XXX's
+      data shown has a nameable serving contract surface, and every FLOW-XXX action a mutation
+      path. Existing = cited; new = gap. Each touched surface's Direction block names a Mode, a
+      Register, and a Contract a builder could honor without asking, else gap; a Declared token
+      that contradicts the design baseline's system part with no Incumbent world of expand or
+      replace stated = gap. An empty or absent system part, or an absent design home, is never a
+      gap — the Contract carries the intent until setup or the first landing writes it. No
+      manifest = n/a.
+  - op: reword-rule
+    schema: skill/review-sufficiency
+    id: review-sufficiency.fence-read-set
+    text: >-
+      Read the feature's `spec.md` (its Screens & Flows manifest included), the product
+      architecture store, the product baselines (`data-model.md`, `contracts/`,
+      `constraints-and-decisions.md`, the design baseline at `.mochiko/product/design/`), and the
+      capability map entries at `.mochiko/features/FEAT-XXX-<slug>.md`.
+  - op: mint-rule
+    schema: skill/review-specifications
+    section: review-specifications.sec.verdict
+    rule:
+      id: review-specifications.sf-direction-checks
+      labels: [verdict]
+      class: must
+      kind: duty
+      text: >-
+        Screens & Flows direction checks, per surface's Direction block: Mode chosen from the
+        surface itself (Persuade · Operate · Read · Experience — per surface, never per
+        product) · Register named · Contract concrete (visual world, type and color intent
+        named, not adjectives) · Declared tokens marked as intent · Incumbent world stated as
+        preserve, expand, or replace against the design baseline where a system part exists ·
+        platform read from the baseline, never restated in the block · the brief wins — a
+        Contract that deliberately departs from a saturated pattern is no finding for departing.
+        Graded on the block's text, never the prototype's pixels. A missing block or Mode is
+        Critical; a vague Contract or a missing Incumbent world is Important.
+      when: {manifest-present: present}
+      anchor: 2026-09-19 impeccable-design-integration D5

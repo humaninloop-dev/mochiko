@@ -578,3 +578,48 @@ suppressions:
     reason: census J2-6 — the deliberate polar opposite — the D8 disclosure-based honesty mechanism vs the grader's earned-verdict posture; NEVER converge these
   - ids: [testing-gap-finding.zero-findings-clean-pass, review-brainstorm.never-default-ready]
     reason: census J2-6 — the deliberate polar opposite — the D8 disclosure-based honesty mechanism vs the grader's earned-verdict posture (RB's protected tail says zero findings means hunt harder); NEVER converge these
+  # === Skill-side edges (impeccable-design-integration wave 1, v0.114.0; the three design
+  # skills of migrations 0011–0012 against the corpus, seeded by S5 against the landed log
+  # 1..15; each edge found by a one-row scratch-allowlist probe, detector driven to 0
+  # clusters). The eleven routing rules below chain into one COMMON-CANDIDATE cluster
+  # (best 0.84) through the shared "X is `mochiko:<skill>`, never this" frame, but each
+  # routes a DIFFERENT duty to a DIFFERENT owner, so a common block would merge distinct
+  # jurisdictions; kept distinct, the tripwire stands if a third rule converges on one
+  # member's exact duty. ------------------------------------------------------------------
+  # --- [D1] design-track routing web (cluster edges, all keep-distinct) ---
+  - ids: [authoring-prototype.direction-routing, patterns-design-direction.craft-routing]
+    reason: different hand-offs off one Direction block — prototype routes the choosing of the direction to design-direction; design-direction routes its execution at the edit to craft-floor
+  - ids: [authoring-prototype.direction-routing, patterns-design-direction.prototype-routing]
+    reason: two ends of one hand-off, deliberately mirrored — prototype never picks the direction, design-direction never draws the prototype (the arch/feat growth-door precedent)
+  - ids: [authoring-prototype.stories-routing, patterns-design-direction.prototype-routing]
+    reason: different routed objects — stories to authoring-user-stories vs screens and flows to authoring-prototype; routing frame overlap only
+  - ids: [patterns-craft-floor.grading-routing, patterns-design-direction.craft-routing]
+    reason: different jurisdictions — craft-floor sends grading of the built UI to the two lenses; design-direction sends execution at the edit to craft-floor
+  - ids: [patterns-craft-floor.grading-routing, review-design-audit.not-critique]
+    reason: different carves around the critique lens — the floor disowns all grading, the audit lens disowns only direction-contract grading; each names its own boundary
+  - ids: [patterns-craft-floor.grading-routing, review-design-audit.not-test-execution]
+    reason: different duties — the floor disowns grading the built UI, the audit lens disowns executing the TEST legs; frame overlap only
+  - ids: [patterns-craft-floor.grading-routing, testing-gap-finding.a11y-verification-routing]
+    reason: different duties — build-time floor disowning grading vs final-validation pass disowning a11y probing (routed to the audit TEST legs); frame overlap only
+  - ids: [patterns-design-direction.craft-routing, review-design-audit.not-critique]
+    reason: different routed objects — direction execution to craft-floor vs contract grading to the critique lens; frame overlap only
+  - ids: [review-code-minimalism.not-test-gates, review-design-audit.not-test-execution]
+    reason: 2-member review-family sibling carves routing to the same owner (mochiko:testing-end-user) from different lenses — ladder audit vs design audit; each names its own carve (the C5 precedent)
+  - ids: [review-design-audit.not-a11y-verification, review-design-audit.not-test-execution]
+    reason: intra-schema — two distinct scope limbs (no a11y finding originated vs no declared case re-run) sharing the TEST-legs referent (the RPA ISSUE-TEMPLATES precedent)
+  - ids: [review-design-audit.not-a11y-verification, testing-gap-finding.a11y-verification-routing]
+    reason: two ends of the D11 a11y routing, deliberately mirrored — the audit lens originates no a11y finding, the blind pass does no a11y probing; both point at the TEST legs, each from its own seat
+  - ids: [review-design-audit.not-a11y-verification, testing-gap-finding.test-execution-is-testing-end-user]
+    reason: different duties — a11y verification routing vs declared-case execution routing; shared testing-end-user referent only
+  - ids: [review-design-audit.not-test-execution, testing-gap-finding.test-execution-is-testing-end-user]
+    reason: parallel carves from two different final-validation lenses routing to the same owner (mochiko:testing-end-user); each names its own carve (the C5 precedent)
+  # --- [D2]-[D5] review-design-audit vs its review-code-minimalism form sibling
+  # (V1: built in the review-code-minimalism form, so the shape is inherited on purpose) ---
+  - ids: [review-code-minimalism.advisory-never-cycle-failing, review-design-audit.advisory-never-failing]
+    reason: 2-member, below bar — near-verbatim floors over different finding prefixes (minimalism vs design-audit) and different scopes (cycle vs cycle plus final validation); each floor protects its own lens
+  - ids: [review-code-minimalism.minimalism-entries-form, review-design-audit.design-audit-entries-form]
+    reason: different entry grammars in different reports (per-cycle verification report with rung claims vs final-validation report with SCR/FLOW trace); form inherited from the V1 sibling
+  - ids: [impl.beyond-spec-disposition, review-design-audit.disposition-at-checkpoint]
+    reason: J-5 cross-grammar — different finding kinds (beyond-spec gap findings vs design-audit findings) sharing the fix/backlog/accept reserved-to-user frame
+  - ids: [review-code-minimalism.not-general-code-review, review-design-audit.not-code-minimalism]
+    reason: two scopes that point at each other — the ladder lens excludes general review, the design lens excludes ladder discipline; deliberately mirrored boundary

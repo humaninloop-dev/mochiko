@@ -1,0 +1,627 @@
+grammar: 1
+id: 0011-design-direction-craft-floor
+sequence: 11
+intent: >-
+  Birth the two design patterns skills (design direction at specify, craft floor at the UI edit),
+  re-key authoring-prototype to read the design baseline first and render the Direction block, add
+  the Direction block to the spec template's Screens & Flows, and name it in specify's prototype
+  binding and its Screens & Flows fail condition.
+anchor: 2026-09-19 impeccable-design-integration D3
+hash: sha256:ee70cc8e99c38a53ed837dbae2404a2af167b48edcca8757453a2185de93aef5
+changes:
+  - op: import-document
+    kind: skill
+    name: patterns-design-direction
+    content:
+      kind: skill
+      skill: patterns-design-direction
+      sections:
+        - id: patterns-design-direction.sec.trigger
+          title: Trigger — once per UX-bearing spec, before the screens
+          intent: When the direction is set, and when this skill does not fire.
+          rules:
+            - id: patterns-design-direction.fires-before-screens
+              labels: [trigger]
+              class: must
+              text: >-
+                Fires once per UX-bearing spec, before its first story screen is drawn, and again
+                only when a later story changes a surface's mode or world; a spec ruled not
+                UX-bearing takes the waiver line and this skill does not fire.
+              anchor: 2026-09-19 impeccable-design-integration D1
+        - id: patterns-design-direction.sec.scope
+          title: >-
+            Scope — direction only, never the prototype, the build, or the accessibility
+            standard
+          intent: The sibling routes, the accessibility fence, and the baseline fence.
+          rules:
+            - id: patterns-design-direction.no-accessibility-content
+              labels: [boundary, floor-pointer]
+              class: floor
+              text: >-
+                This skill carries no accessibility content and restates no accessibility
+                obligation. The standard of record is the `a11y` compliance module where the
+                project attaches it, else the Essential Floor line carried by
+                `mochiko:patterns-code-minimalism`; a direction neither weakens nor restates it.
+              anchor: 2026-09-19 impeccable-design-integration D11
+            - id: patterns-design-direction.no-baseline-write
+              labels: [single-home, fence]
+              class: floor
+              text: >-
+                Nothing here writes `.mochiko/product/design/`. Mode and contract are per surface
+                and live only in the spec's Screens & Flows; declared tokens are intent, and the
+                baseline's design-system part is written from shipped code at landing, never from
+                this block.
+              anchor: 2026-09-19 impeccable-design-integration D7
+            - id: patterns-design-direction.prototype-routing
+              labels: [boundary]
+              class: must
+              kind: routing
+              text: >-
+                Rendering the direction as screens and flows is `mochiko:authoring-prototype`;
+                this skill decides the direction and never draws the prototype.
+            - id: patterns-design-direction.craft-routing
+              labels: [boundary]
+              class: must
+              kind: routing
+              text: >-
+                Executing the direction at the edit is `mochiko:patterns-craft-floor`, loaded by
+                the building seat; the Direction block written here is what it reads.
+        - id: patterns-design-direction.sec.discipline
+          title: Discipline — the design laws, the mode, and the checklist
+          intent: >-
+            The three laws, the per-surface mode, the checklist's walk, the evidence fence, and
+            platform routing; the modes, the checklist items, and the folds are the body's
+            procedure.
+          rules:
+            - id: patterns-design-direction.brief-wins
+              labels: [single-home]
+              class: floor
+              text: >-
+                The brief wins: pinned aesthetics, eras, materials, fonts, and palettes — from
+                the stories, the Intent rulings, or the baseline's brand commitments — are
+                honored even against a saturated-pattern warning. Redirecting a clear brief toward
+                the designer's own taste is failure.
+              anchor: 2026-09-19 impeccable-design-integration D3
+            - id: patterns-design-direction.refinement-preserves
+              labels: [boundary]
+              class: must
+              text: >-
+                Refinement preserves; redesign replaces. A refinement keeps the incumbent
+                identity, behavior, copy, and everything outside scope; a redesign keeps product
+                truth, content, function, native affordances, and constraints and replaces the
+                look outright — never polish on a discarded look.
+            - id: patterns-design-direction.visual-authority-evidence
+              labels: [evidence]
+              class: must
+              text: >-
+                Visual authority is evidence, not a filename: an empty or absent design baseline
+                does not make a product greenfield. The shipped UI, its tokens, and its assets are
+                read first, and the Incumbent world field names preserve, expand, or replace on
+                that evidence.
+            - id: patterns-design-direction.mode-per-surface
+              labels: [single-home]
+              class: must
+              text: >-
+                The mode is chosen from the surface, never from the product — a tool's landing
+                page is Persuade, its docs are Read — one mode per surface, named in the
+                Direction block.
+            - id: patterns-design-direction.checklist-walked
+              labels: [ladder]
+              class: must
+              kind: duty
+              text: >-
+                The shape checklist is walked every time — both rounds and the onboard, clarify,
+                and adapt folds; an item that does not apply is marked n/a in one line, never
+                skipped silently. Answers come from the stories, the Intent rulings, and the
+                baseline first; only a material gap becomes a question, never an invented answer.
+            - id: patterns-design-direction.evidence-fence
+              labels: [fence]
+              class: must
+              text: >-
+                Claims, testimonials, benchmarks, customers, and pricing are never invented where
+                the baseline's evidence fence says the evidence is absent; illustrative content is
+                labelled synthetic wherever a visitor could mistake it for the real thing.
+              anchor: 2026-09-19 impeccable-design-integration D6
+            - id: patterns-design-direction.platform-routing
+              labels: [boundary]
+              class: must
+              kind: routing
+              text: >-
+                Native guidance routes on the value in the `## Platform` section of the design
+                baseline (`.mochiko/product/design/design.md`, truth part): `ios` loads
+                `references/ios.md`, `android` loads `references/android.md`, `adaptive` loads
+                both; `web` and `desktop` route none. An unrecognized value warns. With no
+                baseline or no value, say "no platform value in the design baseline — no native
+                guidance routed" and default nothing.
+              anchor: 2026-09-19 impeccable-design-integration D6
+        - id: patterns-design-direction.sec.inputs
+          title: Inputs — what is read before the direction is chosen
+          intent: The read duty, and where audience and purpose already live.
+          rules:
+            - id: patterns-design-direction.reads-first
+              labels: [fence]
+              class: must
+              kind: duty
+              text: >-
+                Before choosing, read the design baseline at `.mochiko/product/design/` — its
+                truth part (brand commitments, voice, principles, evidence fence, platform) and
+                its system part where one exists — the spec's Intent rulings and stories, and
+                the shipped UI where one exists. Audience and purpose are read where the intent
+                stage and the product desk hold them, never asked again.
+        - id: patterns-design-direction.sec.disclosure
+          title: Disclosure — the Direction block
+          intent: The one artifact this skill writes, and its fields.
+          rules:
+            - id: patterns-design-direction.direction-block
+              labels: [artifact-grammar, binding]
+              class: must
+              kind: binding
+              text: >-
+                The output is one Direction block at the head of the spec's Screens & Flows, five
+                fields, one line each: `Mode` (one of Persuade, Operate, Read, Experience) ·
+                `Register` (bolder, quieter, distill, or held, with its reason) · `Contract`
+                (thesis · own world · story · first viewport · viewports — the surface's
+                shipped viewports, declared here by the adapt fold and nowhere else) · `Declared
+                tokens (intent)` (type, color, spacing, and motion named as intent, or "none —
+                honors the baseline") · `Incumbent world` (preserve, expand, or replace, with its
+                evidence). Its shape is the `spec` template's — render `mochiko-cli template
+                spec`.
+              anchor: 2026-09-19 impeccable-design-integration D3
+        - id: patterns-design-direction.sec.reserved
+          title: Reserved — decisions the designer never takes
+          intent: What goes to the user as a question with its evidence.
+          rules:
+            - id: patterns-design-direction.replace-reserved
+              labels: [user-gate]
+              class: must
+              kind: reservation
+              text: >-
+                Replacing an incumbent visual world, and any claim beyond the evidence fence, is
+                the user's ruling — surfaced as a question with its evidence, never decided by
+                the designer.
+  - op: import-document
+    kind: skill
+    name: patterns-craft-floor
+    content:
+      kind: skill
+      skill: patterns-craft-floor
+      sections:
+        - id: patterns-craft-floor.sec.trigger
+          title: Trigger — immediately before a UX-bearing edit
+          intent: When the floor loads, and when it does not.
+          rules:
+            - id: patterns-craft-floor.loads-before-ux-edit
+              labels: [trigger]
+              class: must
+              text: >-
+                Loaded immediately before any edit on a UX-bearing cycle card — a card carrying
+                `SCR-XXX` or `FLOW-XXX` trace — including small refinements; never for
+                planning-only work, and not for a card with no UI trace.
+              anchor: 2026-09-19 impeccable-design-integration D8
+        - id: patterns-craft-floor.sec.scope
+          title: Scope — procedure beside the code floor, never a direction of its own
+          intent: The code floor this sits beside, the taste it never takes, and who grades.
+          rules:
+            - id: patterns-craft-floor.code-floor-in-view
+              labels: [boundary, floor-pointer]
+              class: floor
+              text: >-
+                `patterns-code-minimalism.lazy-not-negligent` stays binding at the same edit: the
+                Essential Floor and the accessibility standard of record are defined there and in
+                the compliance module, never here. This floor adds design bans beside them and
+                never displaces or restates them.
+              pointer: mochiko:patterns-code-minimalism
+              anchor: 2026-09-19 impeccable-design-integration D11
+            - id: patterns-craft-floor.decides-nothing
+              labels: [boundary]
+              class: floor
+              text: >-
+                This floor makes no taste choice: register, visual world, type and color intent,
+                and motion stance come from the surface's Direction block. Where the edit needs a
+                choice the contract does not make, stop and surface it — never invent the
+                answer.
+              anchor: 2026-09-19 impeccable-design-integration D3
+            - id: patterns-craft-floor.grading-routing
+              labels: [boundary]
+              class: must
+              kind: routing
+              text: >-
+                Grading the built UI is not this skill's: the critique lens in
+                `mochiko:testing-gap-finding` and the design-audit lens grade it after the build;
+                this floor never grades its own edit.
+        - id: patterns-craft-floor.sec.discipline
+          title: Discipline — the contract, the tokens, the bans, the dial, the bound
+          intent: >-
+            The binding rules over the edit; the bans, the refuse list, the verify list, the
+            folds, and the dial are the body's procedure.
+          rules:
+            - id: patterns-craft-floor.contract-wins
+              labels: [single-home]
+              class: must
+              text: >-
+                The Direction block and the baseline's brand commitments override this floor's
+                defaults: the refuse list is defaults the contract can earn back; the ban list is
+                not.
+            - id: patterns-craft-floor.honor-baseline-tokens
+              labels: [single-home]
+              class: must
+              text: >-
+                Where the design baseline's system part names a token, type step, color role,
+                spacing step, component, or motion rule, the edit uses it; where it is empty, the
+                contract's declared tokens are the values; where both are silent, reuse the
+                project's existing value for the same role — a genuinely new value is disclosed,
+                never slipped in.
+            - id: patterns-craft-floor.bans-absolute
+              labels: [ladder]
+              class: must
+              text: >-
+                The bans hold on every surface and every mode; no brief, contract, or baseline
+                earns one back.
+            - id: patterns-craft-floor.register-dial
+              labels: [ladder]
+              class: must
+              text: >-
+                The register is executed as the Direction block names it — bolder, quieter,
+                distill, or held — scoped to the named target; nothing outside the target
+                changes, and no color, font, or system primitive the surface does not already own
+                appears unasked.
+            - id: patterns-craft-floor.verify-bounded
+              labels: [evidence]
+              class: must
+              kind: bound
+              text: >-
+                The verify list is checked on the built result in one batched inspection across
+                the declared viewports; every fix lands in one batch, with at most one confirm
+                round, then stop — no open-ended polish loop.
+              anchor: 2026-09-19 impeccable-design-integration D8
+            - id: patterns-craft-floor.platform-native
+              labels: [boundary]
+              class: must
+              kind: routing
+              text: >-
+                On the design baseline's `Platform` value, the native reference governs structure,
+                navigation, and controls: `../patterns-design-direction/references/ios.md` for
+                `ios`, `android.md` for `android`, both for `adaptive`; `web`, `desktop`, or no
+                value routes none and defaults nothing.
+              anchor: 2026-09-19 impeccable-design-integration D6
+        - id: patterns-craft-floor.sec.inputs
+          title: Inputs — the contract, the trace, the tokens
+          intent: What is read before the edit.
+          rules:
+            - id: patterns-craft-floor.reads-before-edit
+              labels: [fence]
+              class: must
+              kind: duty
+              text: >-
+                Before the edit, read the surface's Direction block in the spec's Screens & Flows,
+                the card's SCR/FLOW trace, and the design baseline's system part at
+                `.mochiko/product/design/` where one exists.
+        - id: patterns-craft-floor.sec.disclosure
+          title: Disclosure — stops and new values
+          intent: What the building seat reports from the floor.
+          rules:
+            - id: patterns-craft-floor.stops-disclosed
+              labels: [reporting]
+              class: must
+              text: >-
+                Every stop for a choice the contract did not make, and every new value introduced,
+                is disclosed in the cycle report, one line each.
+        - id: patterns-craft-floor.sec.reserved
+          title: Reserved
+          intent: Decisions this floor never takes.
+          note: >-
+            Deliberately empty — the taste choices this floor never takes are made upstream in
+            the Direction block, and `patterns-craft-floor.decides-nothing` routes any gap there;
+            nothing is reserved to the user at the edit itself.
+          rules: []
+  - op: reword-rule
+    schema: skill/authoring-prototype
+    id: authoring-prototype.two-coupled-artifacts
+    text: >-
+      The output is two coupled artifacts: the prototype app at
+      `.mochiko/specs/<feature>/prototype/` — plain static HTML/CSS with minimal inline JS for
+      navigation only — and the spec's Screens & Flows manifest: the Direction block authored
+      per `mochiko:patterns-design-direction` at its head, then `SCR-XXX` rows (screen, purpose,
+      data shown, FEAT tag) and `FLOW-XXX` rows (click-path steps, the story acceptance scenario
+      each keys to, FEAT tag). The manifest is the contract surface downstream stages trace to;
+      the HTML is its clickable rendering.
+  - op: reword-rule
+    schema: skill/authoring-prototype
+    id: authoring-prototype.design-system-honored
+    text: >-
+      Design system honored when one exists, the design baseline first: the system part at
+      `.mochiko/product/design/` wins, then the tokens the Direction block declares as intent,
+      then a system discoverable in the project — use its tokens and primitives (colors,
+      spacing, component names) so screens read as the product's family, at low fidelity, not
+      faithful reproduction. None of the three means neutral grey-box defaults; never invent a new
+      visual language.
+  - op: set-condition
+    schema: skill/authoring-prototype
+    name: design_system
+    spec:
+      values: presence
+      resolution: surface-presence
+      note: >-
+        a design system in the design baseline's system part (`.mochiko/product/design/`),
+        declared as tokens in the Direction block, or discoverable in the project (token files, a
+        component library).
+  - op: mint-rule
+    schema: skill/authoring-prototype
+    section: authoring-prototype.sec.scope
+    rule:
+      id: authoring-prototype.direction-routing
+      labels: [boundary]
+      class: must
+      kind: routing
+      text: >-
+        Choosing the surface's mode, register, contract, declared tokens, and incumbent-world call
+        is `mochiko:patterns-design-direction`; this skill renders the Direction block at low
+        fidelity and never picks or rewrites it.
+      anchor: 2026-09-19 impeccable-design-integration D3
+  - op: reword-rule
+    schema: command/specify
+    id: spec.prototype-craft
+    text: >-
+      The Screens & Flows section and prototype/ app per mochiko:authoring-prototype — the
+      Direction block per mochiko:patterns-design-direction at its head, SCR-XXX/FLOW-XXX manifest
+      grammar, low-fi discipline (binding flows, advisory pixels), bun-servable static HTML with
+      the no-server degrade path, the design baseline and design system honored where they exist;
+      not UX-bearing takes the waiver line "No UX surface — prototype waived at intent."
+      instead.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.fail.screens-flows
+    text: >-
+      A Screens & Flows section absent (the waiver line counts), or ruled UX-bearing with no
+      Direction block or no clickable prototype, or manifest↔prototype drift unresolved.
+  - op: replace-document
+    kind: template
+    name: spec
+    content:
+      template: spec
+      title: Feature Specification
+      form: artifact-format.md
+      register: full
+      overview: |
+        The feature specification deliverable (spec.md). Dense by construction, human-legible.
+        Follows the deliverable envelope (artifact-format.md). Omit empty sections. Section density
+        norms: Overview <= 3 lines; stories per authoring-user-stories (scenarios one line each, 2-3
+        per story); FR/SC/edge-case entries one line each; entities conceptual and compact.
+      sections:
+        - name: Intent
+          required: true
+          density: one line per ruling
+          contract: |
+            The confirmed one-screen synthesis from the intent stage — elicited rulings, one line
+            each, confirmed by the user before authoring began. Governs the authoring depth, the
+            feature derivation, and the stress-test rigor. Omit a line only if the probe was
+            genuinely not applicable. Lines: Scope boundary; Delivery (whole vs subset now, first
+            shippable value, sequencing constraints); Depth / rigor; UX-bearing (yes -> Screens &
+            Flows + prototype obligated; no -> the waiver line); Constraints; Out of scope.
+          check: >-
+            Is the Intent present with its six ruling lines (scope boundary, delivery,
+            depth/rigor, UX-bearing, constraints, out of scope), each confirmed with the user, or
+            a per-line not-applicable note?
+          heading: Intent
+          max_lines: 10
+        - name: Overview
+          required: true
+          density: <= 3 lines
+          contract: |
+            A compact synthesis of what the feature is. No more than three lines.
+          check: Is the Overview present and <= 3 lines?
+          heading: Overview
+          max_lines: 6
+        - name: User Stories
+          required: true
+          contract: |
+            An INDEX only. Story content lives in per-story files: stories/US-*.md — each carries the
+            story text, its acceptance scenarios, and its FEAT-ID mapping. The only story-native
+            status is `rejected` (the derivation filter's verdict, with the why, recorded in the story
+            file); every other status is derived by following the story's FEAT-ID to the feature map.
+            One row per story. Columns: ID (linked to stories/US-N.md), Story (one breath), Priority
+            (P1/P2/P3), Feature (FEAT-XXX or —), Disposition (homed | rejected — why).
+          check: >-
+            Is the User Stories section an index (one linked row per story, no inline story
+            bodies), with each row carrying priority, FEAT-ID (or —), and disposition, and every
+            rejected row a one-line why?
+          heading: User Stories
+        - name: Edge Cases
+          required: true
+          density: one line each
+          contract: |
+            The boundary and failure conditions the feature must handle — one line each.
+          check: Are edge cases enumerated, one line each?
+          heading: Edge Cases
+        - name: Functional Requirements
+          required: true
+          density: one line each
+          contract: |
+            Technology-agnostic functional requirements (FR-XXX), one line each, per
+            authoring-requirements. RFC 2119 language.
+          check: >-
+            Are functional requirements present in FR-XXX form, one line each,
+            technology-agnostic?
+          heading: Functional Requirements
+        - name: Key Entities
+          required: true
+          contract: |
+            The feature's domain nouns — conceptual and compact, not an OpenAPI schema.
+          check: Are key entities listed conceptually and compactly?
+          heading: Key Entities
+          max_lines: 15
+        - name: Success Criteria
+          required: true
+          density: one line each
+          contract: |
+            Measurable success criteria (SC-XXX), one line each, per authoring-requirements.
+          check: Are success criteria present in SC-XXX form and measurable?
+          heading: Success Criteria
+        - name: Screens & Flows
+          required: true
+          contract: |
+            Authored per mochiko:authoring-prototype from the Intent section's UX-bearing ruling. Not
+            UX-bearing -> the single line "No UX surface — prototype waived at intent." and nothing
+            else. UX-bearing -> the Direction block (per mochiko:patterns-design-direction), both
+            tables, and the prototype pointer, in full. The manifest is binding
+            (screens, data, actions); the prototype's pixels are advisory. Feature column lands at
+            derivation as a re-tag pass (FEAT-XXX per row); screens of unselected features greyed
+            coming-soon; a filter-rejected story's screens kept, greyed, marked rejected.
+          good: |
+            UX-bearing form:
+
+            ### Direction
+            - **Mode:** [Persuade | Operate | Read | Experience]
+            - **Register:** [bolder | quieter | distill | held] — [why, one clause]
+            - **Contract:** thesis — [...] · own world — [...] · story — [...] · first viewport — [...] · viewports — [...]
+            - **Declared tokens (intent):** [type · color · spacing · motion, as intent] | none — honors the baseline
+            - **Incumbent world:** [preserve | expand | replace] — [evidence, one clause]
+
+            | ID | Screen | Purpose | Data shown | Feature |
+            |----|--------|---------|------------|---------|
+            | SCR-001 | [name] | [one line] | [fields/collections rendered] | FEAT-001 |
+
+            | ID | Flow | Steps | Story scenario | Feature |
+            |----|------|-------|----------------|---------|
+            | FLOW-001 | [name] | SCR-001 -> [action] -> SCR-002 | US-1 / [scenario] | FEAT-001 |
+
+            **Prototype:** `prototype/` — clickable low-fi rendering of this manifest; serve with bun
+            or open `prototype/index.html` directly. Flows and data are binding; layout and styling
+            advisory.
+          check: >-
+            If the spec is UX-bearing, is the Direction block present with its five fields, and
+            are both the SCR-XXX and FLOW-XXX tables present with a Feature column and the
+            prototype pointer? If not UX-bearing, is the single waiver line present and nothing
+            else?
+          heading: Screens & Flows
+          max_lines: 37
+        - name: Feature Selection
+          required: true
+          contract: |
+            Authored per mochiko:authoring-feature-map after stories are drafted. Derivation output
+            (proposed entries, deltas, index-line drafts) stages in this spec workspace; the live map
+            is written only at spec acceptance, as one atomic batch. The selection itself is the
+            user's ruling — the derived table and filter verdicts are the producer's, the Selected
+            line records the user's choice. Three sub-parts: Derived features (table: FEAT-ID,
+            Feature, New/delta, Stories, SCs verified); Filter rejections (one line per rejected story
+            — the why verbatim from its story file; omit when none); Selection (Selected build-now in
+            dependency order; Deferred proposed entries carrying their SCs + seam obligations;
+            Deferred SCs — the ones covered only by unselected features, shown at the moment of
+            choice, never discovered at close).
+          check: >-
+            Does Feature Selection carry the derived-features table, the filter rejections (or
+            none), and a Selection recording the user's ruling with deferred features and deferred
+            SCs surfaced?
+          heading: Feature Selection
+          max_lines: 20
+        - name: Assumptions
+          required: false
+          contract: |
+            Assumptions the specification rests on. Omit if empty.
+          check: Are material assumptions recorded (or the section omitted when none)?
+          heading: Assumptions
+          max_lines: 10
+        - name: Open Questions
+          required: false
+          contract: |
+            Unresolved questions carried out of authoring. Omit if empty.
+          check: Are open questions recorded (or the section omitted when none)?
+          heading: Open Questions
+          max_lines: 10
+      skeleton: |
+        # {{spec_title}}
+
+        > Spec: {{spec_id}}
+        > Created: {{created}}
+        > Status: {{status}}
+
+        ---
+
+        ## Intent
+
+        - **Scope boundary:** {{intent_scope}}
+        - **Delivery:** {{intent_delivery}}
+        - **Depth / rigor:** {{intent_depth}}
+        - **UX-bearing:** {{intent_ux_bearing}}
+        - **Constraints:** {{intent_constraints}}
+        - **Out of scope:** {{intent_out_of_scope}}
+
+        ---
+
+        ## Overview
+
+        {{overview}}
+
+        ---
+
+        ## User Stories
+
+        | ID | Story (one breath) | Priority | Feature | Disposition |
+        |----|--------------------|----------|---------|-------------|
+        | [US-1](stories/US-1.md) | {{story_hook}} | P1 | FEAT-XXX | homed |
+        | [US-2](stories/US-2.md) | {{story_hook}} | P2 | — | rejected — {{why, one line}} |
+
+        ---
+
+        ## Edge Cases
+
+        {{edge_cases}}
+
+        ---
+
+        ## Functional Requirements
+
+        {{functional_requirements}}
+
+        ---
+
+        ## Key Entities
+
+        {{key_entities}}
+
+        ---
+
+        ## Success Criteria
+
+        {{success_criteria}}
+
+        ---
+
+        ## Screens & Flows
+
+        {{screens_and_flows}}
+
+        ---
+
+        ## Feature Selection
+
+        ### Derived features
+
+        | FEAT-ID | Feature | New / delta | Stories | SCs verified |
+        |---------|---------|-------------|---------|--------------|
+        | FEAT-XXX | [name] | new (`proposed`) | US-1, US-3 | SC-1, SC-2 |
+        | FEAT-YYY | [name] | delta on delivered | US-2 | SC-3 |
+
+        ### Filter rejections
+
+        - US-4 — rejected: {{why, one line}}
+
+        ### Selection
+
+        - **Selected (build now, dependency order):** FEAT-XXX, FEAT-YYY
+        - **Deferred (`proposed` on the map):** FEAT-ZZZ — carries SC-4, SC-5 and [seam obligations]
+        - **Deferred SCs:** SC-4, SC-5 — wait until FEAT-ZZZ builds
+
+        ---
+
+        ## Assumptions
+
+        {{assumptions}}
+
+        ---
+
+        ## Open Questions
+
+        {{open_questions}}
+      conformance:
+        extra_headings: deny

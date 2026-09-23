@@ -1,5 +1,5 @@
 {
-  "provenance": "wave5-plan.md \u00a74.2 and cli-schema-delivery/wave5-p3-skills-plan.md \u00a73. Frozen from the render and the working tree before P2 converted any skill and before the wave's first session. Never edited after; a floor rule added or renamed later breaks the cross-check in `converted-shape` rather than regrading quietly. Re-keyed once since, and only for ids the log determines: the 2026-09-13 hook-enforced-artifact-schema wave added one `artifact-home` floor to each of eleven skills (`floor_ids` plus `floor_pin`), on the lead's licence, with the same move recorded in this directory's README floor-ids row. Re-keyed again by the 2026-09-19 author-grader-consolidation wave-1 ruling (D7): `patterns-model-tiering` gained one floor, and `validation-primitive-edit` joins the review family as a post-freeze member — born after this freeze, so no pre-conversion baseline exists for it and its four byte columns are 0 rather than measured. Re-keyed again by the wave-2 landing of the 2026-09-03 producer-plan-enforcement ruling (D4): `review-seat-plan` joins the review family on the same post-freeze terms, five floors and four zeroed byte columns. Every byte-size field of every pre-freeze row is still the freeze's own, and no other field has been touched.",
+  "provenance": "wave5-plan.md \u00a74.2 and cli-schema-delivery/wave5-p3-skills-plan.md \u00a73. Frozen from the render and the working tree before P2 converted any skill and before the wave's first session. Never edited after; a floor rule added or renamed later breaks the cross-check in `converted-shape` rather than regrading quietly. Re-keyed once since, and only for ids the log determines: the 2026-09-13 hook-enforced-artifact-schema wave added one `artifact-home` floor to each of eleven skills (`floor_ids` plus `floor_pin`), on the lead's licence, with the same move recorded in this directory's README floor-ids row. Re-keyed again by the 2026-09-19 author-grader-consolidation wave-1 ruling (D7): `patterns-model-tiering` gained one floor, and `validation-primitive-edit` joins the review family as a post-freeze member — born after this freeze, so no pre-conversion baseline exists for it and its four byte columns are 0 rather than measured. Re-keyed again by the wave-2 landing of the 2026-09-03 producer-plan-enforcement ruling (D4): `review-seat-plan` joins the review family on the same post-freeze terms, five floors and four zeroed byte columns. Every byte-size field of every pre-freeze row is still the freeze's own, and no other field has been touched. Re-keyed again by the 2026-09-19 impeccable-design-integration wave (D3): `patterns-design-direction` (three floors) and `patterns-craft-floor` (two) join the patterns family and `review-design-audit` (two) joins the review family, all three on the same post-freeze terms with four zeroed byte columns; no existing row moved, since the wave's migrations left every pre-existing skill's floor set unchanged.",
   "frozen_utc": "2026-09-04T10:49:47+00:00",
   "binary": "mochiko-cli 0.1.0 \u00b7 grammar 1..1",
   "plugin_version": "0.105.0",
@@ -14,6 +14,7 @@
       "members": [
         "review-brainstorm",
         "review-code-minimalism",
+        "review-design-audit",
         "review-feasibility",
         "review-governance-intent",
         "review-plan-artifacts",
@@ -43,6 +44,8 @@
         "patterns-adopt-first",
         "patterns-architecture-shelves",
         "patterns-code-minimalism",
+        "patterns-craft-floor",
+        "patterns-design-direction",
         "patterns-map-minimalism",
         "patterns-model-tiering",
         "patterns-plan-minimalism",
@@ -342,6 +345,35 @@
       "baseline_source": "wc -c of skills/patterns-code-minimalism/schema.yaml (no family common file)",
       "body_bytes_pre": 2883
     },
+    "patterns-craft-floor": {
+      "family": "patterns",
+      "floor_ids": [
+        "patterns-craft-floor.code-floor-in-view",
+        "patterns-craft-floor.decides-nothing"
+      ],
+      "floor_pin": 2,
+      "schema_bytes": 0,
+      "common": null,
+      "common_bytes": 0,
+      "baseline_bytes": 0,
+      "baseline_source": "post-freeze member, 2026-09-19 impeccable-design-integration D3 — no pre-conversion baseline exists, never measured",
+      "body_bytes_pre": 0
+    },
+    "patterns-design-direction": {
+      "family": "patterns",
+      "floor_ids": [
+        "patterns-design-direction.brief-wins",
+        "patterns-design-direction.no-accessibility-content",
+        "patterns-design-direction.no-baseline-write"
+      ],
+      "floor_pin": 3,
+      "schema_bytes": 0,
+      "common": null,
+      "common_bytes": 0,
+      "baseline_bytes": 0,
+      "baseline_source": "post-freeze member, 2026-09-19 impeccable-design-integration D3 — no pre-conversion baseline exists, never measured",
+      "body_bytes_pre": 0
+    },
     "patterns-map-minimalism": {
       "family": "patterns",
       "floor_ids": [
@@ -485,6 +517,20 @@
       "baseline_bytes": 7155,
       "baseline_source": "wc -c of skills/review-code-minimalism/schema.yaml + schemas/skill-review-common.yaml",
       "body_bytes_pre": 3537
+    },
+    "review-design-audit": {
+      "family": "review",
+      "floor_ids": [
+        "review-design-audit.advisory-never-failing",
+        "review-design-audit.author-grader"
+      ],
+      "floor_pin": 2,
+      "schema_bytes": 0,
+      "common": "schemas/skill-review-common.yaml",
+      "common_bytes": 0,
+      "baseline_bytes": 0,
+      "baseline_source": "post-freeze member, 2026-09-19 impeccable-design-integration D3 — no pre-conversion baseline exists, never measured",
+      "body_bytes_pre": 0
     },
     "review-feasibility": {
       "family": "review",

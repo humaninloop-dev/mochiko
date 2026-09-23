@@ -978,7 +978,15 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
         // (`feat.sound-loop-floor` / `impl.sound-loop-floor`) adds one back. The zero beside it
         // is a SUPPRESSED zero: with an empty allowlist this family reports 29 clusters over 56
         // edges, and the repository allowlist suppresses all 56, leaving 0 edges unsuppressed.
-        (329, 12_607, 0, 56),
+        // Re-measured after the 2026-09-19 impeccable-design-integration wave (`0011`–`0015`):
+        // `0013` mints five `implement` rules and `0014` three `setup` rules, moving the scan 329
+        // to 337 and the pair count with it. The suppressed count falls 56 to 55 by the same
+        // reword mechanism: `0014`'s reword of `setup.user-card-rulings` pulls the allowlisted
+        // pair `feat.user-reserved` / `setup.user-card-rulings` back under the threshold, so its
+        // row no longer has an edge to suppress; the row stays, both ids still resolving. No
+        // command-side row was added. SUPPRESSED zero again: with an empty allowlist this family
+        // reports 28 clusters over 55 edges, and the repository allowlist suppresses all 55.
+        (337, 13_208, 0, 55),
         "rules scanned · in-kind pairs scored · clusters · allowlist-suppressed edges"
     );
 }
@@ -1059,10 +1067,22 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // pinned pair of runs over the same state, which is the only way to tell this zero from a
     // naive one. Drop an allowlist row and this assertion fails looking like a detector
     // regression when it is an allowlist edit.
-    assert_eq!(report.scanned, 1082, "rules scanned");
-    assert_eq!(report.scored, 161_376, "in-kind pairs scored");
+    // Re-measured after the 2026-09-19 impeccable-design-integration wave (`0011`–`0015`): the
+    // scan moves 1,082 to 1,142 — three imported skill documents (`patterns-design-direction`,
+    // `patterns-craft-floor`, `review-design-audit`, forty-three rules), eight command mints on
+    // `implement` and `setup`, and nine skill mints on the edited skills — and `scored` rises
+    // with it, the wave retiring nothing. `suppressed_hits` moves 170 to 186: the command-family
+    // pair `feat.user-reserved` / `setup.user-card-rulings` retires its hit (−1, see the pin
+    // above), and seventeen keep-distinct rows arrive for the design skills' edges (+17) —
+    // thirteen in one routing cluster the three skills form with `authoring-prototype`,
+    // `testing-gap-finding` and `review-code-minimalism`, and four `review-design-audit` pairs
+    // against its `review-code-minimalism` form sibling and `implement`. SUPPRESSED zero: with an
+    // empty allowlist the corpus reports 78 clusters over 186 edges, and the repository allowlist
+    // suppresses exactly 186, both read from a raw-versus-pinned pair of runs over one state.
+    assert_eq!(report.scanned, 1142, "rules scanned");
+    assert_eq!(report.scored, 179_962, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
-    assert_eq!(report.suppressed_hits, 170, "allowlist-suppressed edges");
+    assert_eq!(report.suppressed_hits, 186, "allowlist-suppressed edges");
 }
 
 // ---------------------------------------------------------------------------

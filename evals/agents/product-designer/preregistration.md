@@ -1,5 +1,12 @@
 # Preregistration — product-engineer persona plan-only eval (wave A baseline kit)
 
+> **Renamed.** The `mochiko:product-engineer` persona was renamed `mochiko:product-designer` at
+> v0.114.0 by `impeccable-design-integration` D4, in the same wave that rewrote its body to carry
+> the design-director judgment (D3). This kit moved from `evals/agents/product-engineer/` to
+> `evals/agents/product-designer/`; everything below it is the baseline kit as committed, and its
+> rubric (`rules.json`, ids minted under the old name) is stale against the D3 rewrite — the next
+> read re-mints it. The evidence tag's paths stay under the old name, as the tag froze them.
+
 > **Evidence.** The run directories cited below (`runs/baseline` and its siblings) are not carried
 > in the working tree — this kit's `.gitignore` ignores every `runs/` directory, so the raw sessions
 > are archived on a ref of their own rather than force-added here. Read one with:
