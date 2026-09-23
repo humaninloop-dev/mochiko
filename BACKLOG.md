@@ -847,6 +847,21 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
 
 ## Defects & empirical checks
 
+- [ ] **`/mochiko:implement` closed kinako FEAT-001 run 4 DONE over two standing floor fails**
+  (2026-09-23 · **important** · provenance: transcript audit of kinako runs 3 (`b0eddd5e`,
+  `d87ac459`, 0.110.0) and 4 (`abdf4115`, 0.112.0); evidence repo `humaninloop-dev/kinako`
+  `5167f36`, B123, FEAT-001 `reports/landing-fold-text-run4-2026-09-23.md`) — wiring, gates and
+  bounds held; six gaps did not. (1) `impl.fail.regression`: gate G5 failed the sweep, was booked
+  (B123), and the run closed DONE; run 3 minted `gates.md` without executing it — run a minted set
+  before landing; a failing gate gets a ruled disposition or fails the run. (2)
+  `impl.dm-landing-whole` / `impl.fail.ungraded-fold`: the budget deny blocks seats and lead on
+  over-budget baselines, so graded fold text stayed "owed by the principal's pen" (run 3: the user
+  ran `APPLY.sh`) — carve the landing fold, or groom first. (3) `impl.baselines-never-in-place`:
+  the B116 spine groom (`f4c3ae5`, 646 → 227) edited the store mid-run — carve or forbid grooms.
+  (4) `impl.artifact-home`: `reports/evidence/` is undeclared, so 166 files went to ungoverned
+  `.mochiko/archive/evidence/FEAT-001-run4/`, and both runs minted `run-log-*.md`, not
+  `implement-log.md`. (5) `impl.no-git-mutations` lacks the per-run authorization carve both runs
+  used. (6) 8 of 9 run-4 plans failed their first `review-seat-plan` grade, the main time sink.
 - [ ] **`primitive-cost-budgets.md`'s `review-governance-intent` row is stale, and the margin is
   thin** (2026-09-19, found by the audit of the lead's-pen reword) — the row predates v0.107.0's
   render-format change, and a rough remeasure puts the reworded rule about eight characters under
