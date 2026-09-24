@@ -106,7 +106,7 @@ Session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<t
 <!-- mochiko:governance:begin -->
 ## Governance
 
-**Ratified:** v3.1.2 · 2026-09-23 (AM-4) · production floor · depth: high · modules: compliance none · knowledge-management (core + CHANGELOG) · release-gates <!-- GI-001 (fact profile) · GI-021 (depth level) -->
+**Ratified:** v3.2.0 · 2026-09-24 (AM-5) · production floor · depth: high · modules: compliance none · knowledge-management (core + CHANGELOG) · release-gates <!-- GI-001 (fact profile) · GI-021 (depth level) -->
 
 ### Principles
 
@@ -126,13 +126,13 @@ Session artifacts (`record.md`, `synthesis.md`) live in `.mochiko/brainstorms/<t
 ### Quality gates
 
 - The markdown-primitive blocking checks are procedural: audit PASS · strip entries · landing ritual complete. With the Rust crate landed (v0.76.0), an executable `cargo test` gate is now active for `crates/**` (plus `fmt`/`clippy`/`audit` and a secret-scan under CI); markdown primitives stay procedurally gated (GI-012, ledger) — detail per principle in the ledger <!-- GI-004, GI-005 -->
-- Release gates: a `plugin.json` bump MUST NOT land without audits PASS · strips recorded · landing complete · `CHANGELOG.md` entry · `marketplace.json` synced · **derived view ≡ replay under the released binary range** (on the marketplace-sync gate) · **`cargo test` PASS plus the plugin contract suite's deterministic set green (gate 6 — a SKIPPED suite is not green and blocks the bump)** · **the wave-4 bump that ships the conformance hooks MUST NOT land before the first `mochiko-cli` publish carrying all four named supply-chain controls — a break-glass install never substitutes for consumers** — detail in the ledger <!-- GI-012 -->
+- Release gates: a `plugin.json` bump MUST NOT land without audits PASS · strips recorded · landing complete · `CHANGELOG.md` entry · `marketplace.json` synced · **derived view ≡ replay under the released binary range** (on the marketplace-sync gate) · **`cargo test` PASS plus the plugin contract suite's deterministic set green (gate 6 — a SKIPPED suite is not green and blocks the bump)** · **the wave-4 bump that ships the conformance hooks MUST NOT land before the first `mochiko-cli` publish carrying all four named supply-chain controls — a break-glass install never substitutes for consumers — breached at 0.109.0, excepted under the ledger's exception registry (AM-5)** — detail in the ledger <!-- GI-012 -->
 - A `mochiko-cli-v*` release tag MUST NOT land without the four crate layers green, the contract suite green against the tagged binary, and an unchanged render output shape — or a coordinated `plugin.json` bump when that shape changes; detail in the ledger <!-- GI-012 -->
 
 ### Governance operations
 
 - Ledger (waivers · amendment policy · exceptions · Three-Part metadata): `.mochiko/memory/governance-ledger.md`
-- Amend via `/mochiko:setup` (fact-profile changes — module attach/detach — and un-waives are governance events); standing amend triggers: public-product transition (the CI-arrival trigger fired and discharged at v0.76.0; the crate's first-public-release trigger fired at AM-2 — its discharge conditional on four named controls, two still owed — and those two are hard preconditions of the wave-4 hook ship, ledger); the transition clause expired at v3.0.3 (the pre-authorized wave-6 PATCH)
+- Amend via `/mochiko:setup` (fact-profile changes — module attach/detach — and un-waives are governance events); standing amend triggers: public-product transition (the CI-arrival trigger fired and discharged at v0.76.0; the crate's first-public-release trigger fired at AM-2 — its discharge conditional on four named controls, two still owed — and those two are hard preconditions of the wave-4 hook ship (breached at 0.109.0 — exception registry), ledger); the transition clause expired at v3.0.3 (the pre-authorized wave-6 PATCH)
 <!-- mochiko:output-style:begin -->
 - Writing style — conversation: `full` · reports: `ultra` *(internal agent hand-offs)* · documents: `full`. Terse and plain-English by default. Set any of the three to `off`, `lite`, `full`, or `ultra` and your choice is kept when this section is regenerated; "normal mode" turns it off for one session.
 <!-- mochiko:output-style:end -->

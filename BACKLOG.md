@@ -34,11 +34,10 @@ provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
   1. **Crate publish** — the two first-publish controls (manual-approval publish environment ·
      signed tags), then the `mochiko-cli-v*` tag. Gates 2 and 3 (GI-012 as amended, AM-3 C5).
   2. **Gate-6 full run** against the published binary (`MOCHIKO_GATE_VERSION=<tag>`; 87 cases,
-     ≈155 sessions, $13–16, ≈1 h — `wave5-gate6-plan.md`), then the release commit + the
-     pre-authorized **PATCH v3.1.3** (`wave5-bump-patch.md`, graded by `validation-constitution`;
-     re-keyed 2026-09-20 — v3.1.1 was taken by the `validator` retirement row; re-keyed again
-     2026-09-23 — v3.1.2 was taken by AM-4, the `GLOSSARY.md` discharge; the ledger's GI-019
-     clause-iv pointer and this line now read v3.1.3).
+     ≈155 sessions, $13–16, ≈1 h — `wave5-gate6-plan.md`), then the release commit. The owed
+     pre-authorized PATCH (`wave5-bump-patch.md`) was **folded into AM-5, governance v3.2.0,
+     2026-09-24** — v3.1.3 retired unminted; the 0.109.0 breach is a GI-012 exception-registry
+     row that expires at the publish in 1.
   3. **Kinako violator pass** — evidence-tree ruling owed (161 files with no legal home under
      `.mochiko/`; recommend a repo-root `evidence/`), then 214 moves + 143 pointers on the
      pre-gate 0.103.0 pin, upgrade, dogfood, **D10 watch** (`wave5-plan.md` §3/§7).
@@ -56,9 +55,9 @@ provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
   `runs/`, `schema-views/`, `strips/` declared; epic `implement-log.md` withdrawn; store templates
   with entry headings; the budget table re-keyed, contracts out — one user-ratified artifact (OQ1).
   **Wave 3, prose + governance:** seven `*.artifact-home` rewords, `testing-end-user` scratch path +
-  dry-run rule, `SubagentStart` line, deny texts, the run-close step; `/mochiko:setup` amend run —
-  GI-019 reach/amnesty/reads paragraphs, C1 discharge annotated, the 0.109.0 exception (PATCH
-  proposed, MINOR if read as expanded). **Wave 4, kinako:** full-inventory pass · watch re-measured.
+  dry-run rule, `SubagentStart` line, deny texts, the run-close step; the ledger amendment **DONE
+  2026-09-24 (governance v3.2.0, AM-5)** — its build-state line strikes at the wave-1 + wave-2
+  bump with a text-vs-build check. **Wave 4, kinako:** full-inventory pass · watch re-measured.
 - [ ] **Delta files retired — in-place baseline edits, riding the field review's waves** (2026-09-24;
   provenance: `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D6d + § Build
   surface; supersedes in part the item above — its wave-2 census also rules the `Lifecycle:` field

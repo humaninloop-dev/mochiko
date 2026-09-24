@@ -10,6 +10,11 @@ and the ledger `**Version:**` field move 3.1.1 → 3.1.2 when this lands. Conten
 v3.1.3, and the `Ratified:` line and ledger `**Version:**` field move 3.1.2 → 3.1.3 when this
 lands. Content unchanged.*
 
+*Folded 2026-09-24 into AM-5 (governance v3.2.0, MINOR, user-ruled): (a), (c), (d) and (e) landed
+in the ledger; (b) is void, because the bump reached `main` before the publish, and is replaced by
+a GI-012 exception-registry row. v3.1.3 is retired unminted. This file is now history; the
+synthesis's AM-5 entry is canonical.*
+
 **Authority:** the AM-3 ledger row (v3.1.0, 2026-09-14) pre-authorizes two PATCH amendments
 "recorded in the log row": (a) activation of GI-019's dormant conformance-testability limb at the
 `plugin.json` bump that ships the hooks (the v2.0.1 / v3.0.1 / v3.0.3 idiom); (b) the strike of the

@@ -2,7 +2,7 @@
 
 **Session date:** 2026-08-06 · **Mode:** brownfield
 **Confirmed at synthesis checkpoint:** 2026-08-06 by Deepesh
-**Governs:** the governance surface set v3.0.3 (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`) — v2.0.0 at AM-1, v3.0.0 at AM-2 (2026-09-04), v3.0.1–v3.0.3 by the pre-authorized wave-3/4/6 PATCHes (2026-09-04/05, ledger amendment log); **v3.1.0 at AM-3 (2026-09-14)** · v3.1.1 PATCH (2026-09-20, validator retirement, ledger amendment log) · **v3.1.2 at AM-4 (2026-09-23, PATCH)**
+**Governs:** the governance surface set v3.0.3 (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`) — v2.0.0 at AM-1, v3.0.0 at AM-2 (2026-09-04), v3.0.1–v3.0.3 by the pre-authorized wave-3/4/6 PATCHes (2026-09-04/05, ledger amendment log); **v3.1.0 at AM-3 (2026-09-14)** · v3.1.1 PATCH (2026-09-20, validator retirement, ledger amendment log) · **v3.1.2 at AM-4 (2026-09-23, PATCH)** · **v3.2.0 at AM-5 (2026-09-24, MINOR)**
 
 ## Fact profile
 
@@ -139,6 +139,175 @@ Not applicable — `layer-rules` not adopted.
 - **Verify pass:** PASS — all six folds confirmed by the sole reviewer from disk (2026-08-06); one sizing-line figure nit fixed post-verify.
 
 ## Amendment Log
+
+**AM-5 — 2026-09-24 — the hook field review folded into GI-019, the owed hook-ship PATCH folded
+with it, and the 0.109.0 publish-gate breach recorded as a GI-012 exception** *(driver: brainstorm
+`hook-enforcement-field-review` D1–D9 as review-amended, accepted 2026-09-23 — S8, S10, D9c/d, §
+Build surface wave 3; and the AM-3 pre-authorized PATCH drafted at
+`.mochiko/brainstorms/hook-enforced-artifact-schema/wave5-bump-patch.md`, owed as v3.1.3, whose
+activation trigger fired when 0.109.0 reached public `main`; setup amend invoked by the user
+2026-09-24. The driver record is **superseded in part 2026-09-24** by
+`delta-files-vs-direct-baseline-edits` D1/D6a — OQ1's fold-shape clause and `baseline-delta.md`'s
+entry-class candidacy; D2's per-entry budgets and the census stand, and nothing AM-5 carries rests
+on the superseded parts)*
+
+- **Lead checks before the questions (facts, 2026-09-24):** plugin 0.109.0 carrying the
+  conformance gate (`artifact-gate.sh` on `Write|Edit`, `Bash`, `PowerShell`; `seat-reminder.sh`
+  on `SubagentStart`) reached `origin/main` and `marketplace.json` at `2f92b09` (PR #36 merge,
+  2026-09-19); 0.110.0 → 0.114.0 each shipped it — six bumps. `mochiko-cli` is not on crates.io
+  (API 404), no `mochiko-cli-v*` tag exists, and the publish job is `if: false` in
+  `.github/workflows/release.yml` — so GI-012's wave-4 hook-ship precondition (AM-3, review C5)
+  was breached, and its AM-3 pre-authorized strike ("once the wave-4 bump has landed under this
+  precondition") can never fire. The field-review build's wave 1 (crate) has not started. No
+  `constitution.md` on disk; architecture store scaffold with its `Scope:` line present, nothing
+  written; feature map declined durable (GI-022) — no map write. Mode: amend, unambiguous.
+- **Q1 — Scope (user-ruled "as recommended", road A: one amendment for both drivers).**
+  *Field review:* the GI-019 "Reach of the gate", "First-touch amnesty" and "What the gate reads"
+  paragraphs re-worded for the ruled gate — closed world under `.mochiko/` (a write resolving to
+  no declared home is denied, the deny naming the run folder); homes resolved against the tree
+  root (nearest `.git` directory or worktree file), nested `.mochiko/` trees never homes; the
+  `.mochiko/runs/<run-id>/` raw-output home with its controls (run-key name · write refused
+  unless `.gitignore` carries `.mochiko/runs/` · the report sniff on `.md` there and in
+  `prototype/`, `inputs/`, `research/`, `referents/` · shell writes admitted for non-`.md`
+  targets only · deletion procedural at acceptance); the shell leg by write position; the gate's
+  added reads (`.gitignore` on a `runs/` write, the ancestor walk for `.git`, a worktree's `.git`
+  pointer file) — nothing leaves the machine still holds. Clause (iv)'s C1 "DISCHARGED" note
+  gains the field result: the ratified table did not admit honest content — nine per-run
+  whole-file denies across two kinako runs, all on feature-home and desk files
+  (`baseline-delta.md`, the feature `constraints-and-decisions.md`, `architecture.md`, `plan.md`,
+  a desk `derivation.md` — record F2), and product baselines already far over the `product`
+  home's 300-line bound that no seat could grow at landing, so run 3's folds landed through the
+  user's own shell and run 4's stayed owed (record F4) — re-keyed at the field review's wave 2 as
+  per-entry budgets (record D2; the census stands, the fold shape is superseded as above).
+  *Owed PATCH, folded:* (a) GI-019's dormant conformance Testability limb **activated** — the
+  hooks are live from 0.109.0; (c) the amnesty "known gap" sentence corrected to the wave-4
+  measurement (the pre-fix binary denied both `Write` and `Edit` over an existing undeclared
+  name; the file-set limb was built at wave 4); (d) one stated-limits pointer line under the
+  admission (repo-root writes uncaught · three shell shapes evade the write-position parse ·
+  `PowerShell` unverifiable on macOS · hooks-disabled projects keep the procedural ceremony
+  only); (e) the two 2026-09-15 status flips carried into this row; **(b) not taken** — replaced
+  by Q3's exception. **Provenance (review R9):** AM-3 pre-authorized only (a) and (b); (c) and
+  (d) were the draft's own additions and (e) its log-row bookkeeping — all three are ruled here,
+  as part of this Q1 ruling, not carried under the AM-3 pre-authorization. The v3.1.3 number is
+  retired unminted; BACKLOG's pointers to it re-point at close. **Rationale (put in the room):**
+  both drivers edit the same GI-019 paragraphs, and the owed PATCH's trigger has already fired
+  — two amendments would rewrite one text twice, and deferring would leave the ledger calling
+  live hooks dormant. Rejected: B (field review only, the owed PATCH later) · C (the exception
+  and the C1 note only). · **Mark:** Confident.
+- **R1 — Clause (iv)'s check-source predicate (review R1, Critical; user-ruled "as recommended",
+  road A).** The admission paragraph's predicate "decidable by string and count against data the
+  log carries" is widened to **against data the log carries and the repository's own layout,
+  with no judgment**: the ignore guard (does `.gitignore` carry `.mochiko/runs/`?) and the
+  worktree test (is the file under a git worktree, read from its `.git` pointer file?) are
+  yes/no facts about the repo, not grades, sequencing, or skill-owned judgment. The bright line's
+  purpose is to keep the gate from judging or ordering work, not to confine where it reads plain
+  facts. The admission paragraph's check-kind list and `.claude/rules/mochiko/rust-cli.md`'s
+  bright-line bullet move with it. Rejected: B (drop both checks; a mid-run `.gitignore` edit
+  could let raw output reach a commit) · C (leave the two checks unruled until a later amend). ·
+  **Mark:** Confident.
+- **Q2 — Tense of the re-worded paragraphs (user-ruled road B, `Contested` — chosen against the
+  lead's recommended dormant-clause road A, for simplicity after the trade-off was put: the
+  ledger reads ahead of the binary until wave 1 ships).** The paragraphs state the field-review
+  gate as the gate, with no dormant tier. A **build-state line** in the GI-019 entry discloses
+  the gap: at ratification the field-review wave 1 is unbuilt, and the shipped binary (0.2.0)
+  behaves per the AM-3 text — an undeclared path under `.mochiko/` passes, cwd-relative
+  resolution, the substring shell scan — until the field-review build ships. **Strike trigger
+  (review R2, user-ruled "as recommended"):** the line is struck at the **`plugin.json` bump that
+  carries both the wave-1 binary range and the wave-2 home migration** (`runs/`, `archive/`,
+  `strips/`, `schema-views/` declared), never at the wave-1 tag alone; that strike PATCH includes
+  a check of the re-worded paragraphs against what was built, and any drift is corrected in the
+  same row. Rejected: A (today's text live, new text dormant until wave 1) · C (a pointer now,
+  the re-wording deferred to wave 3) · at R2, striking at the wave-1 release alone (the ledger
+  would be wrong about `runs/` and `archive/` until wave 2).
+- **Q3 — The breach (user-ruled "as recommended", road A: a retroactive exception expiring at
+  the first publish).** Exception-registry row: *conformance hooks shipped at plugin
+  0.109.0–0.114.0 (first on public `main` 2026-09-19, `2f92b09`) before the first `mochiko-cli`
+  publish carrying the four named controls* · GI-012 (the wave-4 hook-ship precondition) ·
+  granted retroactively 2026-09-24 by user ruling; further `plugin.json` bumps may ship the
+  hooks under it, each bump's `CHANGELOG.md` entry citing the row · expires at the first
+  `mochiko-cli-v*` publish with all four controls (the field review's wave-1 publish). **Expiry
+  strike set (review R6):** the precondition clause on the region gates line · GI-012's two
+  paragraphs · the amendment policy's first-publish paragraph (its "hard preconditions of the
+  wave-4 hook ship" limb) · GI-012's Testability Pass and Fail limbs for the hook-ship bump —
+  struck or re-worded and the row closed, a PATCH recorded in the log row. Until then the
+  precondition text stays, marked breached with a pointer to the row; GI-012's Testability Fail
+  limb ("the wave-4 hook-shipping bump landed before that publish") stands true and points at the
+  row. The GI-002 first-public-release trigger stays open (its two owed controls unchanged).
+  **How it happened (review R3):** the 0.109.0 bump was committed on its branch as "bump staged,
+  not landed" (`5d8fc69`, 2026-09-15) and reached `main` inside the unrelated PR #36 merge; the
+  path-scoped rules inject on Read, so nothing fired at the merge. **Recurrence (user-ruled "as
+  recommended", road A):** one sentence joins GI-012's release rules — *a held version bump stays
+  on its own branch; merging a branch that carries a held bump, directly or inside another PR, is
+  a breach.* Rejected: a CI check on "MUST NOT be released" wording (machinery for a rare case) ·
+  record only. **Exposure accepted (review R4; user-confirmed fact 2026-09-24: no one besides the
+  maintainer installs mochiko):** only the maintainer installs today, from unpinned `main`
+  (`README.md`'s `cargo install --git`, no tag, checksum, or signature); that is accepted until the
+  publish. **Tripwire (user-ruled "as recommended"):** if anyone else starts installing mochiko
+  before the publish, the exception is revisited at the next setup run. Rejected: pinning the
+  README install to a reviewed `--rev` now (guards a risk that does not exist yet, a manual step
+  per release). **Backstop (review R5, user-ruled "go" on the lead's recommendation):** a revisit
+  date of **2026-12-31** — an exception still open then is put to the user at the next setup run
+  (keep, change, or act). Rejected: B (a breach record plus a release freeze until the publish —
+  blocks unrelated plugin work) · C (pull the gate from `main` until the publish — turns off a
+  gate catching real faults). · **Mark:** Confident.
+- **Q4 — Semver (user-ruled "as recommended", road A): MINOR, v3.1.2 → v3.2.0** — the
+  exception excuses a MUST NOT for a bounded window (waiver-class under the policy's MINOR
+  limb), and the gate's reach and reads widen (the "principle significantly expanded" limb).
+  Rejected: PATCH v3.1.3 (catch-up of already-ruled text) — it understates excusing a breached
+  release gate. · **Mark:** Confident.
+- **Q5 — Review sizing (user-ruled "as recommended"):** one cold intent seat, blind-map
+  two-message dispatch (`setup.blind-map-dispatch`); no waiver. · **Mark:** Confident.
+- **Unchanged (review R8):** fact profile (GI-001), modules (compliance none · knowledge-management
+  core + CHANGELOG · release-gates), floor, waivers, and depth level (`high`, GI-021). No module
+  re-offer: the declined-durable set stands. No principle minted.
+- **Surfaces expected to move (for the producer's plan, not a ruling):** the ledger — version
+  header, GI-019 (the admission paragraph's check-source predicate and check-kind list, and the
+  clause (iv) argument body carrying R1's rationale sentence (R1, verify N1), the
+  three paragraphs, clause-iv note, build-state line, stated-limits pointer, Testability
+  activation, trace), GI-012 (precondition paragraphs and Testability pointer to the exception,
+  the held-bump sentence (R3), trace), the amendment policy's first-publish paragraph (pointer),
+  exception registry row, amendment-log row 3.2.0; the CLAUDE.md governance region — `Ratified:`
+  line and the release-gates line's precondition clause (pointer to the exception, GI-017);
+  `.claude/rules/mochiko/rust-cli.md`'s bright-line bullet (R1), with the producer checking the
+  rest of the file for any line the change falsifies; the trace summary. **Outside the set,
+  noted:** the `CHANGELOG.md` 0.109.0 "Release precondition" paragraph is history and stays;
+  `BACKLOG.md`'s hook-build items re-point off v3.1.3 at close.
+- **Review:** solo cold intent review, `mochiko:devils-advocate` seat on
+  `mochiko:review-governance-intent`, blind-map two-message dispatch (25-angle map in 4 classes,
+  topic-only spawn, `.mochiko/` and the operating docs fenced until the map returned);
+  cross-examination of 8 questions, answered from the synthesis, nothing withdrawn. Verdict
+  **critical-gaps**: 14 raised, 9 survived (1 Critical · 3 Important · 5 Minor), 8 of them
+  coverage findings from the map. **Dispositions (2026-09-24):** R1 user-ruled A (predicate
+  widened, above) · R4 user-confirmed fact and road A · R3 user-ruled A · R2 user-ruled A · R5
+  user-ruled "go" on the lead's recommendation (backstop 2026-12-31), with R6–R9 folded in the
+  same "go" as lead repairs (strike set · R7 note re-worded and supersession cited · R8 bundling
+  reason, Q5 mark, unchanged line · R9 provenance). Report:
+  `.mochiko/brainstorms/hook-enforcement-field-review/reports/am5-intent-review.md`. Disclosed: the
+  reviewer's one crates.io probe sent the user's email in its User-Agent header (a read-only GET,
+  surfaced to the user, no repeat). **The user flagged the survivor questioning as more depth
+  than needed (2026-09-24); the remaining survivors were batched on "go".**
+  *Verify round 1:* **CLEAN on blocking** 2026-09-24 — 9/9 folds landed as dispositioned, no mark
+  raised past its ruling; three minor residuals lead-repaired in place (N1 the clause (iv)
+  argument body added to the move list · N2 the clause-iv note's "cumulative" dropped, the nine
+  denies named per-run · N3 the map count corrected to 25), closed seat-unverified, disclosed.
+- **Ratified:** 2026-09-24 by Deepesh ("ratified", plain text) — after verify round 1 CLEAN on
+  blocking and the three residuals lead-repaired; no surface authored before this line.
+- **Accepted:** 2026-09-24 by Deepesh ("accept") — surface set v3.2.0 authored by the producer
+  seat (`tech-lead`, `mochiko:authoring-constitution`) on a lead-approved plan: plan-only → fresh
+  `tech-lead` peer FAIL (items 1 and 5 — the region :129 clause re-worded instead of kept and
+  marked; FC-3's strike object settled by the seat) → re-plan with FC-3 lead-ruled (the
+  release-train paragraph's closing first-publish sentence only · the AM-3 precondition
+  paragraph · the new breach marker) → PASS, three advisories taken; graded by a plain fresh
+  `validation-constitution` seat (opus): **PASS 60/60** round 1, trace closed both directions;
+  advisories 1–4 taken at acceptance (a `rust-cli.md` build-state pointer · in-place notes on the
+  two re-pointed tier-1 Testability limbs · the outside-`.mochiko/` reach wording aligned · FP
+  markers removed), 5 at the landing (`BACKLOG.md` v3.1.3 pointers), 6 the manifest's validator
+  record, 7 disclosed (haiku Explore hand-backs failed twice; the grader ran its fact checks
+  itself). **FP-1 accepted** (region :135 carries the breach mark and joins the exception's
+  expiry strike set) · **FP-2 declined** (no `rust-cli.md` CHANGELOG-cite pointer — the row
+  already carries the duty). One seat was cut mid-grade by the usage limit and resumed
+  after the reset. `floor: tripped · seats: intent-reviewer (devils-advocate, cold) /
+  gov-producer (tech-lead) / plan-grader (tech-lead) / gov-validator (plain, opus)`.
 
 **AM-4 — 2026-09-23 — GLOSSARY.md deviation discharged (GI-009)** *(driver: the standing amend
 trigger "GLOSSARY.md gains content" fired when `impeccable-design-integration` build item 10
