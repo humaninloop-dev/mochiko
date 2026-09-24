@@ -663,10 +663,9 @@ sections:
           derives the system part from shipped code, never from intent, reconciles it against the
           direction contract's declared tokens, writes the shipped values, and marks each
           divergence, each critique-advisory finding, and each accepted design-audit Drift:
-          candidate as Drift:. The write is judgment, graded by the landing verification seat.
-          ${designer_seat} is the design baseline's only writer, on exactly three paths: the setup
-          leg (the truth part, the brownfield system-part seed, the scaffold), a build-time
-          baseline-delta.md entry, and this fold.
+          candidate as Drift:. The write is judgment, graded by the landing verification seat. The
+          setup lead writes only its empty scaffold; ${designer_seat} is the only writer of its
+          content, on two paths: a build-time baseline-delta.md entry, and this fold.
         when: {ux_bearing: present}
         anchor: 2026-09-19 impeccable-design-integration D7
   - id: impl.sec.ways-of-working

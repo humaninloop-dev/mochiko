@@ -65,7 +65,7 @@
  },
  {
   "id": "review-specifications.never-excess",
-  "rule": "A floor-, compliance-module-, or NFR-derived obligation is never excess, however heavy it looks.",
+  "rule": "A floor- or NFR-derived obligation is never excess, however heavy it looks.",
   "class": "must",
   "source": "log:review-specifications.never-excess",
   "section": "review-specifications.sec.scope",

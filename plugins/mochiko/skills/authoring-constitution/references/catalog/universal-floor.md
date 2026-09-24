@@ -12,8 +12,7 @@ retrofit hold identically at both levels, while addable rigor (merge-blocking ga
 thresholds) may relax at `low`. A deviation from either row is only ever a **recorded waiver**
 (D4: a per-check *fit* exception justified in the governance ledger, available at both levels,
 permanent pending the D4.1 revisit), never a loosened card; staged adoption is the `low` level,
-not a waiver (PO-D7 superseded). Absence is always deliberate and auditable, never silent. Audit-evidence variants (the retired `regulated` rows) live in
-[../COMPLIANCE-MODULES.md](../COMPLIANCE-MODULES.md) and attach via the fact profile.
+not a waiver (PO-D7 superseded). Absence is always deliberate and auditable, never silent.
 
 The canonical **category definitions** (what each category must address) live in
 [../ESSENTIAL-FLOOR.md](../ESSENTIAL-FLOOR.md) — cards here carry the two-row `low`/`high` depth,

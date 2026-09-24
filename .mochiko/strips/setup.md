@@ -9,6 +9,46 @@ D3 as amended (delivery binding, positive-confirmation halt, counts printed by t
 `wave3-plan.md` §9, the `DECISIONS.md` 2026-09-04 wave-3 row, and this wave's row. Pre-edit
 verbatim text: `git show 9732de0:plugins/mochiko/commands/setup.md`. -->
 
+## [v0.115.0] Goal step — reconstruction, amend surfacing, and baselines sentences superseded
+
+- **Disposition:** superseded → one scaffold sentence in Adaptive Goal Protocol step 2: "The
+  scaffolds exist at close, on **every** path, each created only where missing and carrying no
+  product content: the empty feature-map index (never reconstructed), the architecture store's
+  `spine.md` stub with its `Scope:` line, and the design home's empty truth headings at
+  `.mochiko/product/design/` (scaffold rules: `setup.sec.tools`)." The rules it cites were
+  re-keyed in the same landing by `plugins/mochiko/migrations/0023-setup-agnostic-setup-rule-set.yaml`
+  (`setup.feature-map-greenfield` scaffolds the empty index on every path; `setup.feature-map-brownfield`,
+  `setup.user-map-confirmation` and `setup.baselines-bootstrap` retired).
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D5 as amended at review folds S6/S7 — elicited product content goes, empty scaffolds stay; the
+  `Assumed` baseline sentences in the goal go; `DECISIONS.md` row 2026-09-24)
+- **Content:** verbatim —
+
+  ```
+  The feature map exists at close:
+  brownfield reconstructed and user-confirmed, greenfield an empty scaffold, and on an amend a
+  missing map surfaced and offered rather than scaffolded (feature-map rules:
+  `setup.sec.tools`). `Assumed`: brownfield close also carries the bootstrapped product
+  baselines at `.mochiko/product/`; greenfield leaves **the baselines** to seed at the first
+  implement run's design phase. The architecture store's `spine.md` stub and its `Scope:` line,
+  and the design home's scaffold at `.mochiko/product/design/`, are
+  outside that split — written on **every** path, creating only what is missing (store rules:
+  `setup.sec.tools`).
+  ```
+
+- **Kept deliberately:** step 2's governance-surface-set sentence byte for byte (ratified
+  synthesis before any surface, the trace closed and independently graded, the semver bump, the
+  acceptance with the trace summary); the every-path, create-only-what-is-missing scaffold clause,
+  now carrying the feature-map index as well as the store stub and the design home; steps 1 and 3,
+  the frontmatter, Identity & Mission and the Rules block byte for byte. The Not-done step still
+  cites the CLI-printed pin (unchanged at `kind: fail · 6`).
+- **Consumers assessed:** `setup.fail.no-feature-map` narrowed in `0023` to "No feature-map index
+  at close — absent and not scaffolded", enforcing `setup.feature-map-greenfield` alone; the
+  `close` moment reworded to "Where the feature-map index and the scaffolds must exist.";
+  `spec.missing-map-surfaced` re-pointed (setup scaffolds the empty index, reconstruction is not
+  setup's); `evals/plan/setup/observable.yaml` and the contract suite's setup expectations are
+  seat S3's in the same landing.
+
 ## [v0.105.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

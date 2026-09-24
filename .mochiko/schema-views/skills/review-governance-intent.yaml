@@ -93,8 +93,8 @@ sections:
         kind: binding
         text: >-
           Read the frozen synthesis and the agenda at
-          `../authoring-constitution/references/INTERROGATION-AGENDA.md` — its ten dimensions
-          are the coverage yardstick.
+          `../authoring-constitution/references/INTERROGATION-AGENDA.md` — its dimensions are
+          the coverage yardstick.
         pointer: ../authoring-constitution/references/INTERROGATION-AGENDA.md
       - id: review-governance-intent.brownfield-analysis-read
         labels: [binding]
@@ -132,9 +132,8 @@ sections:
         class: must
         kind: routing
         text: >-
-          A user-declared fact (team size, risk posture, lifespan, values) is checkable against
-          nothing on disk — flag for the lead to route to the user as confirmation, never to
-          argument.
+          A user-declared fact (team size, review culture, values) is checkable against nothing on
+          disk — flag for the lead to route to the user as confirmation, never to argument.
       - id: review-governance-intent.external-facts-binding
         labels: [evidence, binding]
         class: must
@@ -165,9 +164,9 @@ sections:
         text: >-
           Recommended status: `ready` (every hunt class actively worked, nothing blocking
           survived) / `needs-revision` (survivors resolvable by the session) / `critical-gaps` (a
-          fact profile contradicted by its own risk declaration or detected reality, an unrecorded
-          ruling — a missing or unrecorded depth-level declaration among them — or a synthesis
-          too thin to review).
+          principle intent restating a product instance, not the rule, an unrecorded ruling — a
+          missing or unrecorded depth-level declaration among them — or a synthesis too thin to
+          review).
         anchor: 2026-08-11 production-floor-adaptive-depth
       - id: review-governance-intent.default-fail
         class: floor

@@ -1,0 +1,32 @@
+grammar: 1
+id: 0022-setup-agnostic-closed-event-set
+sequence: 22
+intent: >-
+  Governance events close at six: forward-only amend supersession, the ledger rider on the closed
+  set, and the architecture desk's Scope-change detector at close.
+anchor: 2026-09-24 setup-product-agnostic D4
+hash: sha256:08070e2efc54a3a73eb1b8c3ac2a0a769cfb0625560f1ac2cf88b950e41eea96
+changes:
+  - op: reword-rule
+    schema: skill/authoring-constitution
+    id: authoring-constitution.amend-preserves-verbatim
+    text: >-
+      Amend preserves untouched principles verbatim (their GI-IDs are stable) — a fact-profile
+      module or a product-instance principle is superseded in place once, never carried — and
+      bumps the region's semver; a `.mochiko/memory/constitution.md` on disk is superseded — the
+      lead deletes it, never author into it.
+  - op: reword-rule
+    schema: skill/authoring-constitution
+    id: authoring-constitution.ledger-riders-and-trace-manifest
+    text: >-
+      The ledger ships its sections per the template's Shape 3, with the riders: the waiver table
+      says "None." when nothing is waived · every waiver carries its recorded justification per
+      the D4 model · governance events route back through setup's amend mode — the template's
+      Amendment policy closes their set.
+  - op: reword-rule
+    schema: command/architecture
+    id: arch.dm-store-integrity-close
+    text: >-
+      Keep store integrity intact at close — the derived index regenerated, orphans flagged,
+      statuses agreeing across index and ledger; a `Scope:` line changed in the visit surfaces
+      "shelf set changed — a setup amend is owed", no watcher.

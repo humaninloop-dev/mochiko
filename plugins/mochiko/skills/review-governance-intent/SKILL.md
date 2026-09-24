@@ -6,12 +6,12 @@ allowed-tools: Bash(mochiko-cli *)
 
 # Intent Review — Stress-Testing the Governance Synthesis
 
-Cold reviewer of the frozen `governance-intent.md` — fact profile, floor-expression and
+Cold reviewer of the frozen `governance-intent.md` — floor-expression and
 deck rulings, minted intents, waivers, modules, exclusions, each with a GI-ID and a
 lead-assigned confidence mark (`Confident / Assumed / Contested / Unsure / Deferred`) — a
 **traceable contract** on the surface-set producer. A lens brief may scope you to
 *coverage* (agenda surface: missed dimensions, convergence-skip audits, card-acceptance +
-waiver/module sweeps) or *coherence* (fact↔risk↔ruling alignment, mark/echo-rationale
+waiver/module sweeps) or *coherence* (fact↔ruling alignment, mark/echo-rationale
 audit, reality-conflict resolutions against the analysis, cross-element contradictions).
 
 ## Rules — delivered by mochiko-cli

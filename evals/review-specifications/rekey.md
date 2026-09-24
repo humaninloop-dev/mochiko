@@ -107,3 +107,32 @@ New (log-keyed, = render `floors:`): `review-specifications.author-grader`, `rev
 - Every rule id in `.mochiko/schema-views/skills/review-specifications.yaml` appears exactly once; the view's id list equals the live render's id list.
 - No id appears twice; every old `R-XXX` is either mapped (possibly to more than one log rule) or retired, never both, never dropped.
 - `evals/run.py` fields preserved: `id`, `class` (read), `rule` and the rest passed through to the judge as JSON.
+
+## Re-key 2026-09-24 — setup-product-agnostic
+
+```json
+{
+  "rekeyed": {
+    "at": "2026-09-24T13:32:56Z",
+    "ruling": "setup-product-agnostic D1/D2, 2026-09-24; lead rulings H4 and the addendum re-plan round 1",
+    "source": ".mochiko/schema-views/skills/review-specifications.yaml (stubs: .mochiko/schema-views/common/skill-review-common.yaml) + mochiko-cli floors line"
+  }
+}
+```
+
+Field-scoped: only the `rule` text of the entries named below moved, copied from the landed view (the `mochiko-cli rules` render cross-checked per id, `${var}` substituted from the skill view's `vars:`); every other field and entry is byte-identical, `git diff` the proof.
+
+### Counts
+
+- Rules: 30 → 30. Floors: 8 → 8 — equals the render's `floors:` line and its pin.
+- Retired: 0. Added: none.
+
+### Text re-keyed
+
+- `review-specifications.never-excess` — an `extends: review-common.never-excess` stub, text resolved from `.mochiko/schema-views/common/skill-review-common.yaml`: no longer names compliance-module-derived obligations (`0019`, D1). The stub's `labels: [boundary]`, carried from the common block, is unchanged. (A § 7 build defect by lead ruling: the common block's retired clause was graded here.)
+
+### Invariants verified
+
+- Field-scoped to the one entry: it equals the resolved common-view text and the render's text; `git diff` shows that one `rule` line and nothing else.
+- `class: floor` set equal to the render's `floors:` line; every `tempts` id resolves.
+- Not asserted here: file-wide id-set parity. At this re-key the view carries 31 ids and this file 30 — `review-specifications.sf-direction-checks` (minted by `0013`, 2026-09-19) is absent. Pre-existing, out of this field-scoped re-key, raised to the wave lead (S3 plan H6); not repaired.

@@ -36,5 +36,4 @@ verification commands.
 - [ ] Environments and cadence stated with the project's real environment names
 - [ ] Release-gate table present; every gate has a concrete verification (command/dashboard), no placeholders
 - [ ] Rollback procedure documented with a time expectation
-- [ ] Gates consistent with the attached compliance modules (an attached module names its audit-evidence gate)
 -->

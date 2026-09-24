@@ -25,14 +25,13 @@ observable:
   # roles
   - {id: setup.interrogation-inline, why: lead runs the interrogation itself — agenda adaptively then the catalog deck card by card}
   - {id: setup.stress-test-cold-seat, why: the pre-ratification stress-test is staffed by a cold seat or a recorded waiver}
-  - {id: setup.blind-map-dispatch, why: that seat is dispatched in two messages with the angle map returning before the synthesis path}
+  - {id: setup.blind-map-dispatch, why: that seat is dispatched in two messages — the setup topic / project name and goal first — with the angle map returning before the synthesis path}
   # reserved
   - {id: setup.coverage-survivor-routing, why: surviving coverage findings presented as candidate topics with the user ruling the path}
   - {id: setup.user-mode-ruling, why: mode proposed from what the workspace shows and ruled by the user when ambiguous (all three modes planted)}
   - {id: setup.user-card-rulings, why: every card ruling / module ruling / waiver described as the user's}
   - {id: setup.gate-synthesis-ratification, why: ratification gate described with both onward branches before any authoring}
   - {id: setup.user-conflict-rulings, why: s2 plants three reality-versus-README conflicts to confront in the open}
-  - {id: setup.user-map-confirmation, why: s2 reconstructed map confirmed entry by entry}
   - {id: setup.gate-final-acceptance, why: acceptance gate described flagged proposal by flagged proposal}
   # tools
   - {id: setup.surface-set, why: the authored set named — region · scoped rules files · pointers · ledger · trace summary}
@@ -40,15 +39,15 @@ observable:
   - {id: setup.interrogation-inputs, why: agenda and catalog deck read from the plugin references (s2 adds the codebase analysis)}
   - {id: setup.constitution-superseded, why: s3 plants a stale constitution file to delete on sight in one line}
   - {id: setup.km-module-scaffold, why: the knowledge-management adoption branch described with its scaffold and pinned copy}
-  - {id: setup.feature-map-brownfield, why: s2 reconstructs delivered capabilities from routes and modules}
-  - {id: setup.feature-map-greenfield, why: s1 scaffolds the empty index}
-  - {id: setup.baselines-bootstrap, why: s2 bootstraps the product baselines from delivered code while s1 defers them}
+  - {id: setup.feature-map-greenfield, why: s1 and s2 scaffold the empty index write-if-absent — s2's carrying the line that reconstruction is pending and not setup's — while s3's existing index is left alone}
+  - {id: setup.design-scaffold-unconditional, why: the lead writes the design home's empty truth headings where missing on every path — no fixture carries design.md — with no product-designer seat}
   - {id: setup.store-scaffold-unconditional, why: store scaffolded on every path — s3 creates only the missing concerns file}
   - {id: setup.architecture-scope-handoff, why: surface types declared on the spine header in s1 and s2 and the existing line left alone in s3}
   - {id: setup.next-step, why: close names the next doors}
   # ways-of-working
   - {id: setup.model-tiering, why: locate/enumerate reads routed to a cheap Explore subagent and every brief carries the routing rule}
   - {id: setup.plan-approval-producers, why: producing seats plan first and work only on an approved plan — graders exempt}
+  - {id: setup.validate-seat-form, why: the validate step's grader named as a plain fresh seat running validation-constitution on an explicit model alias not below the producer's tier}
   - {id: setup.author-grader-default-fail, why: grading reads the authored surfaces themselves and defaults to FAIL}
   - {id: setup.no-git-mutations, why: plan suggests commits and never runs a git mutation}
   - {id: setup.acceptance-plain-text, why: gates described as plain blocking text and never a timed prompt}
@@ -57,7 +56,8 @@ observable:
   - {id: setup.durables-never-deleted, why: s3 carries both durables — the amend extends them and never offers deletion}
   - {id: setup.governance-region-ownership, why: region regenerated between the markers with user content outside them untouched (planted in s1 and s3)}
   - {id: setup.carve-outs-preserved, why: s3 plants the output-style pair carrying a user-set value plus a user-added line}
-  - {id: setup.map-never-overwrite, why: s1 scaffold and s2 reconstruction never overwrite and the s3 amend makes no map write}
+  - {id: setup.map-never-overwrite, why: the empty-index scaffold is written only where absent — s1 and s2 — nothing is reconstructed on any path, and s3's existing map is never written over}
+  - {id: setup.gate-loop-bound, why: the validate loop described as one fix and one re-grade by the same seat, a second FAIL halting to the user}
   - {id: setup.store-ruled-content-never-here, why: no architecture stance taken in the run on any path}
 
 out_of_instrument:
@@ -72,13 +72,13 @@ out_of_instrument:
   - {id: setup.fail.no-acceptance, why: fail-condition}
   - {id: setup.fail.no-feature-map, why: fail-condition}
 
-# Declared unplanted branches (fixture-design record, not a partition class): three
+# Declared unplanted branches (fixture-design record, not a partition class): two
 # rule facets are observable through one half of their subject only, because no scenario
 # plants the other half. Each is a plant candidate if a later grid wants it graded whole.
+# (setup.fail.no-feature-map's amend-clause facet left this list when the 2026-09-24
+# setup-product-agnostic D5 ruling narrowed the rule to one clause — no feature-map index at
+# close, absent and not scaffolded.)
 #   setup.carve-outs-preserved — the mochiko:domain-registry half needs the layer-rules
 #     module attached and a domain-layer rules file; only the output-style pair is planted.
-#   setup.fail.no-feature-map — its amend clause (a missing map surfaced and offered) needs
-#     an amend fixture WITHOUT FEATURES.md; s3 plants the map-present side instead. The rule
-#     is out-of-instrument regardless, as a fail-condition.
 #   setup.km-module-scaffold — no fixture plants an adopted knowledge-management module, so
 #     the rule is graded on the described adoption branch, never on a never-overwrite read.

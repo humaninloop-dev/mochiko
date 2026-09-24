@@ -20,9 +20,11 @@ This artifact is a TRACEABLE CONTRACT on the surface-set producer, not a brief:
 AMEND RUNS UPDATE THIS FILE DELTA-WISE: touched elements are edited or superseded (never
 renumbered), new elements take fresh IDs, untouched elements keep their IDs, and the Amendment
 Log records each delta. The traceability cross-check always runs against this persisted,
-updated file. LEGACY MIGRATION: an amend run meeting a tier declaration (the retired axis)
-supersedes it — never renumbered — elicits the fact profile once, and re-records existing
-waivers under the D4 model. An existing single-floor synthesis that carries NO depth-level
+updated file. LEGACY MIGRATION (forward-only): an amend run meeting a tier declaration
+(the retired axis), a fact profile, an attached compliance module, or a principle intent that
+restates a product instance (setup-product-agnostic D2) supersedes it in place, once — never
+renumbered, never carried forward, no interim marker — and re-records existing waivers under
+the D4 model. An existing single-floor synthesis that carries NO depth-level
 declaration defaults to `high` on its next amend (adaptive-depth 2026-08-11, review fold #7) —
 recorded as the declared level without a flip ceremony, since it never operated at `low`.
 
@@ -47,33 +49,21 @@ Title "# Governance Intent — [PROJECT_NAME]" plus:
 **Confirmed at synthesis checkpoint:** [YYYY-MM-DD] by [user]
 **Governs:** the governance surface set v[X.Y.Z] (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`)
 
-## Fact profile
-
-The module-driving facts (interrogation dimension 2), each with its consequence-stated
-confirmation — negatives are recorded facts too (the S4 fail-safe, per
-`authoring-constitution/references/COMPLIANCE-MODULES.md`):
-
-- **GI-001 — Facts:** industry: [x] · data classes: [x] · jurisdictions/markets: [x] ·
-  contractual commitments: [x] · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
-- **Modules triggered (mechanical):** [module list with trigger fact each, or "none — negatives
-  confirmed: (each negative + its stated consequence)"]
-- **Brownfield cross-check:** [declared facts vs `codebase-analysis.md` / DS-XXX / detected
-  integrations — "consistent" or the confrontation's ruling] *(brownfield only)*
-
 ## Project identity & type
 
-- **GI-002 — Type:** [frontend | backend | fullstack | service | mobile | desktop] → shelves
+- **GI-001 — Type:** [frontend | backend | fullstack | service | mobile | desktop] → shelves
   dealt: [list] · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
-- **Identity:** [what's being built, for whom, lifespan — 2-3 sentences]
-- **Risk surface:** [what failure costs — honest context for the floor's expression]
 - **Team reality:** [solo/team, review culture — what enforcement can lean on]
+- **Trust vectors:** [what ships where — a binary, hooks, a public package, a deploy target's
+  exposure — and the supply-chain or exposure controls each calls for (interrogation dimension
+  8); "none beyond the repo" is a recorded answer]
 
 ## Depth level declaration
 
 The floor's single depth dial (adaptive-depth, 2026-08-11) — **one project-wide declaration, not
 a per-check negotiation**. Breadth is invariant: every floor category is present at both levels;
-the level tunes only how strictly the asserted *code* standards are authored (process rigor is
-uniform — D8), and compliance modules are level-blind (full strength at either level — D7). The
+the level tunes only how strictly the asserted *code* standards are authored
+(process rigor is uniform — D8). The
 level is the user's declaration alone — never fact-derived (D1); setup recommends, the user rules.
 
 - **GI-0XX — Declared level:** [low | high] · **Declared:** [YYYY-MM-DD] by [user] ·
@@ -86,7 +76,8 @@ level is the user's declaration alone — never fact-derived (D1); setup recomme
 ## Convergence skips — optional
 
 [Named skips only — a dimension left unasked because an earlier answer settled it ("dimension 5
-settled by dimension 1: solo founder"). A skip is convergence bookkeeping, never a scope ruling
+settled by dimension 6: the repo's CODEOWNERS and CI name one maintainer").
+A skip is convergence bookkeeping, never a scope ruling
 — there is no pruning license. Or "none".]
 
 ## Real commands
@@ -111,12 +102,17 @@ arbitrated cards are rulings too:**
 | GI-0XX | BE-HEX | arbitrated | [kept/tightened/dropped + user's stated reason] | [Confident] |
 | … | | | | |
 
-*(On a fact-profile or un-waive amend, affected rulings are re-dealt on the event's agenda
+*(On an amend whose governance event touches them — a waiver lifted, a stack or layout change,
+a new shelf dealt — affected rulings are re-dealt on the event's agenda
 slice or force-re-marked — a stale `Confident` never carries an unexamined ruling forward.)*
 
 ## Minted principle intents — optional
 
-One element per minted intent — traced to the elicited answer, never to prompting:
+One element per minted intent — traced to the elicited answer, never to prompting, and admitted
+only when it can be checked from the code, the pipeline or the stack without knowing what the
+product does for its users; a product instance (a boundary list, a data class's name, a behaviour
+toward users, an app-level SLO number) is pointed at its home, never restated. Intent that fails
+the test is not minted — it goes to Deliberate exclusions' Handed off list:
 
 - **GI-0XX — [Intent name]:** [what to enforce, how strictly — the user's words distilled]
   · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
@@ -124,8 +120,8 @@ One element per minted intent — traced to the elicited answer, never to prompt
 
 ## Waivers — optional
 
-Any asserted standard may be waived with a recorded justification (D4) — **except legal-mandate
-module obligations (D4.2)**. Waivers are permanent pending the D4.1 revisit; a revisit trigger
+Any asserted standard may be waived with a recorded justification (D4).
+Waivers are permanent pending the D4.1 revisit; a revisit trigger
 is the user's option, never a default.
 
 **Interim transition delta (D6).** After a `low`→`high` flip, a category the project does not yet
@@ -135,7 +131,7 @@ depth valve: it does not lower the declared level, and the level stays `high`.
 
 Every waiver is auditable:
 
-| GI-ID | Standard (floor category / card / non-legal module obligation) | Justification | Revisit trigger (optional) | Mark |
+| GI-ID | Standard (floor category / card / template-module obligation) | Justification | Revisit trigger (optional) | Mark |
 |-------|---------------------------------------------------------------|---------------|---------------------------|------|
 | GI-0XX | [e.g. FLOOR-TEST coverage gate] | [recorded reason] | [or "permanent (D4.1 pending)"] | [Confident] |
 | GI-0XX | [e.g. FLOOR-OBS SLO formalization] | interim transition delta (high declared [date]) | transition — dies when the item conforms | [Confident] |
@@ -143,8 +139,8 @@ Every waiver is auditable:
 ## Module selections
 
 **Template modules** (the operating-docs layer — knowledge-management, layer-rules,
-release-gates), ruled in session; *compliance modules attach mechanically in the Fact profile
-above, never here.* **Declines are rulings too** (recorded, durable: amend runs offer only
+release-gates), ruled in session.
+**Declines are rulings too** (recorded, durable: amend runs offer only
 modules with *no* recorded ruling here; a recorded decline is never re-asked until the user
 reopens it). The validator checks core + exactly the adopted modules:
 
@@ -173,6 +169,13 @@ Session-arbitrated registry seeds per `authoring-constitution/references/DOMAIN-
 - **GI-0XX:** [what governance will not cover + why — never a floor category (the floor leaves
   only by recorded waiver, above)]
   · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+
+**Handed off** (setup-product-agnostic D2) — one line per elicited intent that failed the
+rule-not-instance test: never minted, never flagged as a proposal; the hand-off is recorded here,
+never its content:
+
+- [intent, in a few words] — handed off to: [its owner, or "owner open (setup-product-agnostic
+  OQ1)"]
 
 ## Review
 
@@ -212,9 +215,8 @@ verify pass; waived or verified → G3. -->
 
 Checked mechanically before the write lands. Each line is a string or a count, never a judgment.
 
-- Required headings, in order: `## Fact profile`, `## Project identity & type`, `## Depth level declaration`, `## Real commands`, `## Floor expression & deck rulings`, `## Module selections`, `## Review`, `## Amendment Log`
+- Required headings, in order: `## Project identity & type`, `## Depth level declaration`, `## Real commands`, `## Floor expression & deck rulings`, `## Module selections`, `## Review`, `## Amendment Log`
 - Line budgets, each counted from its `##` line to the next `##`, nested content included:
-  - `## Fact profile` — 15 lines
   - `## Project identity & type` — 10 lines
   - `## Depth level declaration` — 6 lines
   - `## Convergence skips` — 10 lines (optional)
@@ -224,7 +226,7 @@ Checked mechanically before the write lands. Each line is a string or a count, n
   - `## Waivers` — 25 lines (optional)
   - `## Module selections` — 25 lines
   - `## Domain-dependency seeds` — 10 lines (optional)
-  - `## Deliberate exclusions` — 10 lines (optional)
+  - `## Deliberate exclusions` — 15 lines (optional)
   - `## Review` — 25 lines
   - `## Amendment Log` — 25 lines
 
@@ -236,18 +238,11 @@ Checked mechanically before the write lands. Each line is a string or a count, n
 **Confirmed at synthesis checkpoint:** [YYYY-MM-DD] by [user]
 **Governs:** the governance surface set v[X.Y.Z] (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`)
 
-## Fact profile
-
-- **GI-001 — Facts:** industry: [x] · data classes: [x] · jurisdictions/markets: [x] · contractual commitments: [x] · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
-- **Modules triggered (mechanical):** [module list with trigger fact each, or "none — negatives confirmed: (each negative + its stated consequence)"]
-- **Brownfield cross-check:** [declared facts vs `codebase-analysis.md` / DS-XXX / detected integrations — "consistent" or the confrontation's ruling] *(brownfield only)*
-
 ## Project identity & type
 
-- **GI-002 — Type:** [frontend | backend | fullstack | service | mobile | desktop] → shelves dealt: [list] · **Mark:** [...]
-- **Identity:** [what's being built, for whom, lifespan — 2-3 sentences]
-- **Risk surface:** [what failure costs]
+- **GI-001 — Type:** [frontend | backend | fullstack | service | mobile | desktop] → shelves dealt: [list] · **Mark:** [...]
 - **Team reality:** [solo/team, review culture]
+- **Trust vectors:** [what ships where + its controls]
 
 ## Depth level declaration
 
@@ -301,6 +296,10 @@ Checked mechanically before the write lands. Each line is a string or a count, n
 ## Deliberate exclusions
 
 - **GI-0XX:** [what governance will not cover + why] · **Mark:** [...]
+
+**Handed off:**
+
+- [intent] — handed off to: [owner]
 
 ## Review
 

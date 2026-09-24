@@ -22,6 +22,23 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/patterns-vertical-tdd/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the setup-product-agnostic build (v0.115.0). Ruling for the
+[v0.115.0] entry below: `.mochiko/brainstorms/setup-product-agnostic/record.md` D1–D6 as
+review-amended (`DECISIONS.md` 2026-09-24 "Setup goes product-agnostic ruled" row). Pre-edit
+verbatim text: `git show bbe303f:plugins/mochiko/skills/patterns-vertical-tdd/references/TEST-GRAMMAR.md`. -->
+
+## [v0.115.0] TEST-GRAMMAR's accessibility assert — the attached a11y module
+
+- **Disposition:** superseded → "the checks the design baseline's Accessibility pointer names, else"
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D1, D6, and the review fold S9; `DECISIONS.md` 2026-09-24)
+- **Content:** verbatim fragment — "the checks its attached `a11y` compliance module names, else"
+- **Kept deliberately:** the standard-of-record frame, the floor-line fallback to
+  `mochiko:patterns-code-minimalism`, and "cite it; never restate it here".
+- **Consumers assessed:** the `design-baseline` template's Accessibility section and the
+  `patterns-design-direction` rule are schema content, S1's in this wave. If S1's landed wording
+  differs, this line follows it.
+
 ## [v0.107.0] the walking-skeleton paragraph's "live in the schema"
 
 - **Disposition:** superseded → "are delivered by `mochiko-cli`", id unchanged

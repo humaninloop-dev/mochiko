@@ -1,6 +1,6 @@
 ---
 name: authoring-constitution
-description: This skill MUST be invoked when authoring or amending a project's governance surface set from a ratified session synthesis (`.mochiko/memory/governance-intent.md`), landing principles on native Claude Code surfaces; there is NO constitution.md. SHOULD also invoke when the work concerns principle enforcement, compliance modules, floor waivers, or an Essential Floor. The single governance-authoring skill for BOTH greenfield and brownfield projects — no separate brownfield skill.
+description: This skill MUST be invoked when authoring or amending a project's governance surface set from a ratified session synthesis (`.mochiko/memory/governance-intent.md`), landing principles on native Claude Code surfaces; there is NO constitution.md. SHOULD also invoke when the work concerns principle enforcement, floor waivers, or an Essential Floor. The single governance-authoring skill for BOTH greenfield and brownfield projects — no separate brownfield skill.
 allowed-tools: Bash(mochiko-cli *)
 ---
 
@@ -17,7 +17,7 @@ surfaces Claude Code natively loads, each at its disclosure level:
 | `CLAUDE.md` **governance region** | Ratified stamp · principle index · universal principles as short imperative lines · tech stack · quality-gates summary · module pointers | Always-on, every session and every spawned agent |
 | `.claude/rules/mochiko/*.md` | Scope-bound principles, one file per concern, `paths` frontmatter | On matching-file reads (plus the dispatch-brief obligated read for authoring producers) |
 | Skill pointers | Procedure-shaped standards — the index/rule points at the skill | On trigger / when a brief names it |
-| `.mochiko/memory/governance-ledger.md` | Per-principle **Three-Part records** keyed by GI-ID · floor + attached compliance modules · waivers · amendment policy · exceptions · amendment log | Read only by setup/amend runs and the validator |
+| `.mochiko/memory/governance-ledger.md` | Per-principle **Three-Part records** keyed by GI-ID · floor + declared depth level · waivers · amendment policy · exceptions · amendment log | Read only by setup/amend runs and the validator |
 
 The synthesis is a **traceable contract, not a brief** — the floor is asserted, its
 expression session-shaped; formulation is where this skill's judgment lives, and the
@@ -60,9 +60,7 @@ The shared core — the Three-Part Principle Rule, RFC 2119 keywords, surface ro
 mandatory content inventory, and module assembly — is the same in both modes. The content
 sources are the type-shelved principle deck
 ([references/catalog/](references/catalog/README.md)), the canonical floor definition
-([references/ESSENTIAL-FLOOR.md](references/ESSENTIAL-FLOOR.md)), the compliance-module
-library ([references/COMPLIANCE-MODULES.md](references/COMPLIANCE-MODULES.md)), and — for
-brownfield —
+([references/ESSENTIAL-FLOOR.md](references/ESSENTIAL-FLOOR.md)), and — for brownfield —
 [references/EMERGENT-CEILING-PATTERNS.md](references/EMERGENT-CEILING-PATTERNS.md).
 
 ## The Three-Part Principle Rule
@@ -91,7 +89,6 @@ superseded by this table):
 | `release-gates` | Always offered (a deployed/operated target class — PO-D1); content from the always-interrogated deployment dimension | Region: one summary line + pointer; detail in the ledger |
 | `evolution-notes` | Mode is brownfield (always) | Ledger section (floor status, gap references, confrontation rulings) + region pointer |
 | `knowledge-management` | The KM dimension elicited adoption (default-on, whole; a recorded decline is durable) | Region: the operating-manual **pointer** + index line; the bundle scaffolding and command carriers are unchanged (lead-executed at finalize) |
-| **compliance modules** (`hipaa`, `pci-dss`, … — [references/COMPLIANCE-MODULES.md](references/COMPLIANCE-MODULES.md)) | The fact profile triggered them (recorded in the synthesis's Fact profile — never a session choice) | Obligations formulated as principles at their stratum, routed by scope like any principle; the ledger records module + stratum per obligation |
 
 ## Brownfield — floor and ceiling
 

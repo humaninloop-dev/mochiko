@@ -20,6 +20,26 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/review-governance-intent/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the setup-product-agnostic build (v0.115.0). Ruling for the
+[v0.115.0] entry below: `.mochiko/brainstorms/setup-product-agnostic/record.md` D1–D6 as
+review-amended (`DECISIONS.md` 2026-09-24 "Setup goes product-agnostic ruled" row). Pre-edit
+verbatim text: `git show bbe303f:plugins/mochiko/skills/review-governance-intent/SKILL.md`. -->
+
+## [v0.115.0] the reviewer's scope line — fact profile and risk leave
+
+- **Disposition:** superseded → the synthesis's contents open at "floor-expression and deck rulings";
+  the coherence lens reads "fact↔ruling alignment".
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D1 for the fact profile, D3 for the risk surface; `DECISIONS.md` 2026-09-24)
+- **Content:** two fragments, verbatim.
+  1. "— fact profile, floor-expression and"
+  2. "(fact↔risk↔ruling alignment,"
+- **Kept deliberately:** "modules" in the synthesis list (the engineering template modules),
+  waivers, exclusions, and both lenses with their other audits.
+- **Consumers assessed:** this skill's rules citing the agenda's ten dimensions, risk posture and a
+  fact profile contradicted by its risk declaration are schema content, S1's in this wave. The eval
+  kit `evals/review-governance-intent/` is S3's (hand-off H10).
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

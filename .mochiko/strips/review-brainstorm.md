@@ -20,6 +20,23 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/review-brainstorm/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the setup-product-agnostic build (v0.115.0). Ruling for the
+[v0.115.0] entry below: `.mochiko/brainstorms/setup-product-agnostic/record.md` D1–D6 as
+review-amended (`DECISIONS.md` 2026-09-24 "Setup goes product-agnostic ruled" row). Pre-edit
+verbatim text: `git show bbe303f:plugins/mochiko/skills/review-brainstorm/references/EXTERNAL-CLAIMS.md`. -->
+
+## [v0.115.0] EXTERNAL-CLAIMS's recorded exclusion — the COMPLIANCE-MODULES.md pointer
+
+- **Disposition:** superseded → "mapping regulations to obligations is not setup's (retired from setup
+  2026-09-24; no setup run attaches a module)"
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D1, D6; `DECISIONS.md` 2026-09-24)
+- **Content:** verbatim — "mapping regulations to modules is `COMPLIANCE-MODULES.md`'s job;"
+- **Kept deliberately:** the exclusion bullet itself and "this file only governs how a stated
+  regulatory claim gets verified at review."
+- **Consumers assessed:** found outside the record's closed list at S2's plan sweep. A build defect
+  under wave plan § 7, fixed by the lead's ruling. Not a new ruling.
+
 ## [v0.113.0] the EXTERNAL-CLAIMS consumer pointer annotated for the retired agent
 
 - **Disposition:** superseded → the annotated pointer line, which now records that

@@ -9,16 +9,17 @@ overview: >-
   design principles, the evidence fence, the accessibility pointer) is durable and product-wide.
   The design system part (tokens, typography, components, motion) holds values as built and is
   written only from shipped code at a landing fold, never from intent; where it is still empty at
-  landing, its first write is signed by the user at final acceptance. One writer,
-  `product-designer`, on exactly three graded paths: the setup leg (the truth part, the brownfield
-  system-part seed, the scaffold), a build-time `baseline-delta.md` entry, and the landing fold.
-  Mode and the direction contract are per surface and live in the feature spec's Screens & Flows
-  Direction block, never here; audience and purpose live in the product desk and are pointed at,
-  never restated. Values, not stances: rendering strategy, state management, styling-system and
-  component-library policy, and the a11y card are stances the architecture store deals as AX-XXX
-  rows; a store row that needs a value points here, and this file never carries a stance. Where a
-  stance and a value conflict, the stance wins and the conflict is a Drift entry at the next
-  landing fold. No derived index.
+  landing, its first write is signed by the user at final acceptance. Its empty scaffold — the
+  required headings, no content — is written by the `/mochiko:setup` lead where the file is
+  missing; its content has one writer, `product-designer`, on two graded paths: a build-time
+  `baseline-delta.md` entry and the landing fold. Who writes the truth part's content is open
+  (setup-product-agnostic OQ1). Mode and the direction contract are per surface and live in the
+  feature spec's Screens & Flows Direction block, never here; audience and purpose live in the
+  product desk and are pointed at, never restated. Values, not stances: rendering strategy, state
+  management, styling-system and component-library policy, and the a11y card are stances the
+  architecture store deals as AX-XXX rows; a store row that needs a value points here, and this
+  file never carries a stance. Where a stance and a value conflict, the stance wins and the
+  conflict is a Drift entry at the next landing fold. No derived index.
 conformance:
   extra_headings: deny
 sections:
@@ -74,19 +75,19 @@ sections:
     required: true
     max_lines: 5
     contract: >-
-      Truth part. A pointer to the accessibility standard of record — the `a11y` compliance
-      module where the project's governance attaches it, else the Essential Floor line — and
-      nothing else. The obligation is defined there, never restated here.
+      Truth part. A pointer to the accessibility standard of record — the Essential Floor line,
+      unless a later ruling names another home — and nothing else. The obligation is defined
+      there, never restated here.
     check: >-
-      Is it a pointer to the standard of record (the `a11y` compliance module where governance
-      attaches it, else the Essential Floor line), with no obligation restated?
+      Is it a pointer to the standard of record (the Essential Floor line, or the home a later
+      ruling names), with no obligation restated?
   - name: Tokens
     heading: Tokens
     required: false
     max_lines: 30
     contract: >-
       System part. Color, spacing, radius, and elevation tokens as built, each with its value and
-      the source file it lives in. Absent until setup seeds it or the first landing writes it.
+      the source file it lives in. Absent until the first landing writes it.
     check: Is every token a shipped value with its source file, never an intended one?
   - name: Typography
     heading: Typography
@@ -141,7 +142,7 @@ skeleton: |
 
   ## Accessibility
 
-  Standard of record: [the `a11y` compliance module, or the Essential Floor line].
+  Standard of record: [the Essential Floor line, or the home a later ruling names].
 
   ## Tokens
 

@@ -23,6 +23,33 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 (persona renamed and rewritten, no alias). Pre-edit verbatim text:
 `git show 6e4b264:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the setup-product-agnostic build (v0.115.0). Ruling for the
+[v0.115.0] entry below: `.mochiko/brainstorms/setup-product-agnostic/record.md` D1–D6 as
+review-amended (`DECISIONS.md` 2026-09-24 "Setup goes product-agnostic ruled" row). Pre-edit
+verbatim text: `git show bbe303f:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+## [v0.115.0] router rows — setup's product-truth leg and design write
+
+- **Disposition:** superseded → the `analysis-codebase` row lists the design-system facts without a
+  seeding path; the `/mochiko:setup` row describes an engineering-only interrogation and the three
+  empty scaffolds; the `product-designer` row names the landing fold as its baseline path.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D5, which strikes `setup.product-truth-leg` and `setup.design-truth-write`; `DECISIONS.md` 2026-09-24)
+- **Content:** three fragments, verbatim.
+  1. `analysis-codebase` row — " — UI framework · CSS system · fonts · token files · component library
+     — that seed the design baseline's system part through setup's `product-designer` write)"
+  2. `/mochiko:setup` row — "The lead interrogates your intent — including a bounded
+     **product-truth leg** (platform · brand and voice · design principles · the accessibility
+     standard by pointer · the evidence fence, material gaps only) whose answers a `product-designer`
+     producer writes into the design baseline under a non-author grade for you to ratify, the design
+     home scaffolded unconditionally — you ratify"
+  3. `product-designer` row — "the single writer of the design baseline (setup's product-truth leg,
+     the landing fold);"
+- **Kept deliberately:** every row's position and cluster; the setup row's ratify, independent grade
+  and accept sequence; the design-system fact list; the `product-designer` row's single-writer duty.
+  The `validation-constitution` row's "floor/module/waiver accounting" stays, because template-module
+  matching survives the cut.
+
 ## [v0.114.0] the `product-engineer` roster row — persona renamed `product-designer`
 
 - **Disposition:** superseded → the re-keyed roster row: `product-designer`, a specify-cluster

@@ -47,13 +47,9 @@ addable rigor may relax at `low`). What else varies per project:
 
 - **Expression** — type facts translate each floor category into its correct form (an API error
   schema vs UI error states; a web health check vs a desktop crash reporter).
-- **Modules** — compliance obligations attach additively from the fact profile per
-  [../COMPLIANCE-MODULES.md](../COMPLIANCE-MODULES.md); modules are **level-blind** — they attach
-  at full strength at either depth level (D7) and carry no low/high rows. The legal-mandate
-  stratum sits above the dial. (The retired `regulated` rows live there as seed content.)
 - **Waivers** — any asserted standard can be waived with a recorded, auditable justification in
   the governance ledger (D4; a per-check *fit* exception, available at both levels, permanent
-  pending the D4.1 revisit) — except legal-mandate module obligations (D4.2). A waiver is never
+  pending the D4.1 revisit). A waiver is never
   silent: recorded in the synthesis and the ledger. Staged adoption is the `low` level, not a
   waiver (PO-D7 superseded); accumulated waivers remain the governance re-entry checklist as the
   team matures.

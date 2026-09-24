@@ -133,14 +133,6 @@ sections:
           identified (minimum 2–3) · inconsistencies documented with severity ·
           recommendations provided for constitution focus · file paths cited for all findings ·
           output written to `.mochiko/memory/codebase-analysis.md`.
-      - id: analysis-codebase.capability-signals-seed-feature-map
-        labels: [binding]
-        class: must
-        kind: binding
-        text: >-
-          The extracted capability signals (routes, UI surfaces, services) seed setup's
-          feature-map reconstruction — map machinery: `mochiko:authoring-feature-map`.
-        pointer: mochiko:authoring-feature-map
       - id: analysis-codebase.artifact-home
         labels: [binding]
         class: floor
@@ -158,8 +150,9 @@ sections:
         kind: binding
         text: >-
           Design-system facts (`detect-stack.sh`'s `design_system` key, code-verified) are facts,
-          never stances: they seed the design baseline's system part only through setup's
-          `product-designer` write, and later the frontend shelf.
+          never stances, recorded in the analysis only: no setup run writes them into the design
+          baseline — its system part is written from shipped code at a landing fold — and they
+          later seed the frontend shelf.
         anchor: 2026-09-19 impeccable-design-integration D6
   - id: analysis-codebase.sec.reserved
     title: Reserved — interpretation is the session's
@@ -175,3 +168,8 @@ sections:
           or a recorded waiver) — that interpretation belongs to the session and the
           constitution, never to this analysis.
         anchor: 2026-08-10 validator-scope-and-verbosity
+tombstones:
+  - id: analysis-codebase.capability-signals-seed-feature-map
+    disposition: >-
+      retired — setup reconstructs no feature map, so no setup feed exists; the reconstruction
+      and its inputs are OQ1's (setup-product-agnostic D5)

@@ -9,8 +9,6 @@ is never silent. The floor's **depth is a two-row dial** — a `low` and a `high
 card in [catalog/universal-floor.md](catalog/universal-floor.md), one project-wide level declared
 by the user and moved only one-way `low`→`high` (D1/D2); every category is present at both rows
 (breadth invariant), and a deviation is only ever a recorded waiver, never a loosened card.
-Audit-evidence variants live in [COMPLIANCE-MODULES.md](COMPLIANCE-MODULES.md) and attach via the
-fact profile.
 
 ## Detail Requirements
 

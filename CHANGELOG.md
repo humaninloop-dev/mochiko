@@ -5,6 +5,61 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.115.0] — 2026-09-24
+
+**Setup goes product-agnostic — MINOR** (`setup-product-agnostic` D1–D6 as review-amended, record
+`.mochiko/brainstorms/setup-product-agnostic/record.md`). Setup now elicits engineering standards
+only. The fact profile and the compliance modules leave the interrogation (D1). Governance holds
+the rule and never the product's instance, with a **Handed off** list under Deliberate exclusions
+for product-behaviour intent (D2). The agenda is seven dimensions plus the depth level; dimension 8
+gains trust vectors, and SLO numbers are a store concern (D3). The governance events close at six
+— depth flip · waiver · stack/toolchain/layout · engineering principle · engineering module ·
+exclusions — a product change opens no amend except through the stack/toolchain/layout event, and
+the architecture desk's close surfaces "shelf set changed — a setup amend is owed", no watcher
+(D4). Five setup rules are struck (`setup.product-truth-leg`, `setup.design-truth-write`,
+`setup.user-map-confirmation`, `setup.feature-map-brownfield`, `setup.baselines-bootstrap`) and six
+amended; the empty scaffolds are written on every path (D5). The product-shaped content is not
+rehomed here — a rehoming brainstorm owns it (D6; `BACKLOG.md`).
+
+Migrations **`0019`–`0023`**, one per decision: `0019-setup-agnostic-modules-out` (D1 — three
+template replacements, `governance-intent`, `governance-surfaces` and `design-baseline`;
+`review-common.never-excess` and `patterns-plan-minimalism.floor-both-ways` reworded to drop the
+compliance-module clause, both found outside the record's closed consumer list),
+`0020-setup-agnostic-rule-not-instance` (D2 — mints `authoring-constitution.rule-not-instance`;
+`validation-constitution.excess-governance` gains the product-instance clause), `0021-setup-agnostic-seven-dimensions`
+(D3), `0022-setup-agnostic-closed-event-set` (D4 — `arch.dm-store-integrity-close` carries the
+detector, the store skill untouched), and `0023-setup-agnostic-setup-rule-set` (D5 — the five setup
+exits, `setup.feature-map-greenfield` and `setup.design-scaffold-unconditional` reworded,
+`analysis-codebase.capability-signals-seed-feature-map` tombstoned, `arch.tools-brownfield-reconstruction`,
+`spec.missing-map-surfaced` and `impl.design-landing` re-keyed; `authoring-constitution.module-mechanical-attachment`
+superseded and `s4-fail-safe` tombstoned in 0019). The log replays to 80 documents and 1,135 rules
+(command 337 → 332, skill 805 → 803); floors 119/264 and fails 36 unchanged; setup pins floors 20 ·
+fail 6, sections 5/6/11/6/7/6. Fifteen views regenerate; every touched render shrinks, and
+`authoring-constitution` returns under budget.
+
+Prose: `INTERROGATION-AGENDA.md` to seven dimensions with the numbered six-event amend list and the
+forward-only legacy clause; `COMPLIANCE-MODULES.md` retired from setup's inputs, content kept for
+the rehoming session; the module sentences leave `ESSENTIAL-FLOOR.md`, the catalog README,
+`universal-floor.md` and `backend-service.md`; `QUALITY-CHECKLIST.md` drops the compliance-module
+checks, re-keys the amend route and the semver line, and gains the **No Product Instance** section
+with eight worked cases; `ANTI-PATTERNS.md`, `EXTERNAL-CLAIMS.md`, `FEASIBILITY-LENS.md` and
+`TEST-GRAMMAR.md` re-keyed; `release-gates.md` loses its compliance-module consistency check; the
+`authoring-constitution`, `review-governance-intent` and `analysis-codebase` SKILL.md lines and
+three router rows re-keyed. Strips: `[v0.115.0]` supersession entries in ten strip files
+(`.mochiko/strips/release-gates-module.md` new). Evals and crate: `fidelity.rs`, `validate.rs` and
+`matrix_similar.rs` census, sequence, sidecar-anchor and pointer pins re-keyed to the landed log,
+the three template fixtures recaptured, `evals/plan/setup/observable.yaml` re-keyed (three
+pre-existing uncovered ids added), four kits' `rules.json` re-keyed from the landed views with one
+pre-existing drift repaired, and the setup, `validation-constitution` and `review-governance-intent`
+goldens re-keyed off the retired criteria; `scripts/similar-rules-allowlist.yaml` loses one edge on
+a tombstoned id. No crate source changed; `mochiko-cli` 0.2.0 still suffices.
+
+Gate: 24 units audited by one plain `opus` seat, 24 PASS after one fix round (`impl.design-landing`
+named the retired setup leg); crate gates green (`cargo test` 16 binaries · fmt · clippy · audit);
+contract suite 97/97 cases passed in the `claude-mochiko` sandbox, none skipped
+(`.mochiko/brainstorms/setup-product-agnostic/build-log.md`; verdict blocks at
+`reports/gate-audit.md`).
+
 ## [0.114.0] — 2026-09-23
 
 **A design track lands, and `product-engineer` is renamed `product-designer` — MINOR, no

@@ -28,6 +28,28 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/analysis-codebase/`. -->
 
+<!-- Wave context: wave 1 of the setup-product-agnostic build (v0.115.0). Ruling for the
+[v0.115.0] entry below: `.mochiko/brainstorms/setup-product-agnostic/record.md` D1–D6 as
+review-amended (`DECISIONS.md` 2026-09-24 "Setup goes product-agnostic ruled" row). Pre-edit
+verbatim text: `git show bbe303f:plugins/mochiko/skills/analysis-codebase/SKILL.md`. -->
+
+## [v0.115.0] the Output line's capability-signal seeding
+
+- **Disposition:** superseded → "the production binding and envelope are delivered by `mochiko-cli`
+  as the `analysis-codebase.sec.output` rules." The rule the phrase summarized,
+  `analysis-codebase.capability-signals-seed-feature-map`, is tombstoned in the same wave.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D5: setup's brownfield feature-map reconstruction is struck, and the analysis feed to it leaves
+  setup's binding; `DECISIONS.md` 2026-09-24)
+- **Content:** verbatim — "the production binding, envelope, and capability-signal seeding are
+  delivered by `mochiko-cli` as the `analysis-codebase.sec.output` rules."
+- **Kept deliberately:** the Output line's artifact path and its production-binding and envelope
+  pointer. Stack detection, the design-system facts and the floor's present/partial/absent read are
+  unchanged, as the record rules.
+- **Consumers assessed:** the tombstone of `analysis-codebase.capability-signals-seed-feature-map` is
+  schema content, carried by S1's migration. The router's `analysis-codebase` row was reworded in
+  the same wave (`.mochiko/strips/mochiko.md`, [v0.115.0]).
+
 ## [v0.107.0] the reference file's two-arm codebase-analysis clause and two "in the schema" body lines
 
 - **Disposition:** superseded → the CLI forms

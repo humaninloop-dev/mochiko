@@ -1134,9 +1134,18 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // one, `testing-gap-finding` five, `testing-end-user`, `review-specifications` and
     // `analysis-codebase` one each), none a floor; eight command mints (`implement` five, two
     // of them floors; `setup` three). `0015` is a reword. Nothing retires and no fail node moves.
-    assert_eq!(command_rules, 337, "live command rules");
-    assert_eq!(skill_rules, 805, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1142, "live rules in total");
+    // `0019`–`0023` (the 2026-09-24 setup-product-agnostic wave, one anchor each, D1–D5) retire
+    // eight rules and mint one: five `setup` rules leave in `0023` (three `supersede-rule`, two
+    // `tombstone-rule`) and no command rule is minted, so command 337 → 332; on the skill side
+    // `authoring-constitution.module-mechanical-attachment` (superseded) and
+    // `authoring-constitution.s4-fail-safe` (tombstoned) leave in `0019`,
+    // `analysis-codebase.capability-signals-seed-feature-map` is tombstoned in `0023`, and `0020`
+    // mints `authoring-constitution.rule-not-instance`, so skill 805 → 803. None of the nine is a
+    // floor or a fail node; every other op is a reword, a field set, a moment or a template
+    // replaced, and the floor figures and the fail set hold.
+    assert_eq!(command_rules, 332, "live command rules");
+    assert_eq!(skill_rules, 803, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1135, "live rules in total");
     assert_eq!(skill_floors, 264, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
@@ -2637,10 +2646,13 @@ fn every_shipped_pointer_resolves_from_its_own_skill_directory() {
     // Pinned exactly, not as a floor (audit A4): the figure is one the unit's report leans on,
     // and the corpus census elsewhere pins exact numbers. A silent drop to 51 must not pass.
     // 87 through wave 5; 84 from wave 6, where migration 0003 cleared the three pointers that
-    // aimed at schema files the plugin no longer ships.
+    // aimed at schema files the plugin no longer ships; 82 from the 2026-09-24
+    // setup-product-agnostic wave, where `0019` retired the two rules that pointed at
+    // `references/COMPLIANCE-MODULES.md` (`authoring-constitution.module-mechanical-attachment`
+    // and `authoring-constitution.s4-fail-safe`).
     assert_eq!(
-        report.checked, 84,
-        "the corpus carries 84 path-shaped pointers"
+        report.checked, 82,
+        "the corpus carries 82 path-shaped pointers"
     );
     assert!(
         report.findings.is_empty(),
