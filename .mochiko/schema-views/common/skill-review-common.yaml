@@ -26,6 +26,4 @@ rules:
       reference, never restate.
   - id: review-common.never-excess
     labels: [boundary]
-    text: >-
-      A floor-, compliance-module-, or NFR-derived obligation is never excess, however heavy it
-      looks.
+    text: A floor- or NFR-derived obligation is never excess, however heavy it looks.

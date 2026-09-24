@@ -129,3 +129,43 @@ New (log-keyed, = render `floors:`): `review-governance-intent.never-a-participa
 - Every rule id in `.mochiko/schema-views/skills/review-governance-intent.yaml` appears exactly once; the view's id list equals the live render's id list.
 - No id appears twice; every old `R-XXX` is either mapped (possibly to more than one log rule) or retired, never both, never dropped.
 - `evals/run.py` fields preserved: `id`, `class` (read), `rule` and the rest passed through to the judge as JSON.
+
+## Re-key 2026-09-24 — setup-product-agnostic
+
+```json
+{
+  "rekeyed": {
+    "at": "2026-09-24T13:32:56Z",
+    "ruling": "setup-product-agnostic D1/D2, 2026-09-24; lead rulings H4 and the addendum re-plan round 1",
+    "source": ".mochiko/schema-views/skills/review-governance-intent.yaml (stubs: .mochiko/schema-views/common/skill-review-common.yaml) + mochiko-cli floors line"
+  }
+}
+```
+
+Field-scoped: only the `rule` text of the entries named below moved, copied from the landed view (the `mochiko-cli rules` render cross-checked per id, `${var}` substituted from the skill view's `vars:`); every other field and entry is byte-identical, `git diff` the proof.
+
+### Counts
+
+- Rules: 35 → 35 (log rules; every id in the derived view appears exactly once).
+- Floors: 16 → 16 — equals the render's `floors:` line and its `class: floor · 16 rules` pin.
+- Retired: 0. Added: none.
+
+### Text re-keyed
+
+- `review-governance-intent.status-vocabulary-and-criteria` — `critical-gaps` no longer cites "a fact profile contradicted by its own risk declaration or detected reality"; it cites "a principle intent restating a product instance, not the rule" (`0020`, D2).
+- `review-governance-intent.read-set-binding` — "its ten dimensions" → "its dimensions" (`0021`, D3).
+- `review-governance-intent.user-facts-flagged` — "risk posture" and "lifespan" leave the user-declared-fact examples (`0021`, D3).
+- `review-governance-intent.never-excess` — an `extends: review-common.never-excess` stub, text resolved from `.mochiko/schema-views/common/skill-review-common.yaml`: no longer names compliance-module-derived obligations (`0019`, D1). The stub's `labels: [boundary]`, carried from the common block, is unchanged.
+
+### Drift repaired (pre-existing, disclosed; lead ruling 3)
+
+`review-governance-intent.findings-through-leads-pen` lagged the view at HEAD — the clause `0006` added (2026-09) never reached this file. Repaired to the view's text in this re-key, as a fix-on-sight integrity repair; no other drift was found.
+
+- Old: "Findings enter through the lead's pen, dispositions in the Review section — never your own edits to the synthesis."
+- New: "Findings enter through the lead's pen, dispositions in the Review section — never your own edits to the synthesis, and never a corrected, patched, or rewritten copy of it beside the original. Producing the fix yourself is the violation, whatever the file is called; hand the finding over and let the pen that owns the artifact make the change."
+
+### Invariants verified
+
+- `class: floor` id set in the file == render `floors:` line (order and membership) and == the `class: floor` pin count.
+- Every rule id in `.mochiko/schema-views/skills/review-governance-intent.yaml` appears exactly once; every entry's `rule` equals the resolved view text (stub from the common view, `${var}` substituted) and the render's text.
+- Every `tempts` id in `evals.json` resolves in this file.

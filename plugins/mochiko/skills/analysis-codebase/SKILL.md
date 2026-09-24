@@ -65,8 +65,8 @@ sub-procedure with domain-entity extraction and an Essential-Floor status assess
   boundary and posture rules are delivered by `mochiko-cli` in the scope and verdict sections)
 - Inconsistencies and strengths to preserve
 
-**Output**: `.mochiko/memory/codebase-analysis.md` — the production binding, envelope, and
-capability-signal seeding are delivered by `mochiko-cli` as the `analysis-codebase.sec.output` rules.
+**Output**: `.mochiko/memory/codebase-analysis.md` — the production binding and envelope are
+delivered by `mochiko-cli` as the `analysis-codebase.sec.output` rules.
 
 ## Detection Script
 

@@ -92,7 +92,8 @@ sections:
         kind: duty
         text: >-
           Keep store integrity intact at close — the derived index regenerated, orphans flagged,
-          statuses agreeing across index and ledger.
+          statuses agreeing across index and ledger; a `Scope:` line changed in the visit surfaces
+          "shelf set changed — a setup amend is owed", no watcher.
       - id: arch.dm-km-landing
         labels: [landing, stewardship]
         class: floor
@@ -212,8 +213,9 @@ sections:
           The first visit to an existing repo derives the store from what exists — repo
           `ARCHITECTURE.md` prose, any per-feature `architecture.md` files, `nfrs.md`, structural
           `D-XXX` rows — presents it for confirmation, then archives the absorbed sources to
-          .mochiko/archive/product-baselines/<date>/. The derivation inherits the setup-bootstrap
-          `Assumed` caveat and its partial-baseline poisoning risk: say so when you present it.
+          .mochiko/archive/product-baselines/<date>/. The derivation is `Assumed` — code and
+          prose read as they stand, and a partial source can poison the baseline it seeds: say so
+          when you present it.
         anchor: 2026-08-19 product-architecture-schema D16
       - id: arch.tools-drift-probe-scope
         labels: [evidence, user-gate, stewardship]

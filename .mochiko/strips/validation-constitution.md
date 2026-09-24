@@ -34,6 +34,70 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/validation-constitution/references/QUALITY-CHECKLIST.md`. -->
 
+<!-- Wave context: wave 1 of the setup-product-agnostic build (v0.115.0). Ruling for every
+[v0.115.0] entry below: `.mochiko/brainstorms/setup-product-agnostic/record.md` D1–D6 as
+review-amended (`DECISIONS.md` 2026-09-24 "Setup goes product-agnostic ruled" row). Pre-edit
+verbatim text: `git show bbe303f:plugins/mochiko/skills/validation-constitution/references/QUALITY-CHECKLIST.md`
+and `…/references/ANTI-PATTERNS.md`. The new "No Product Instance" section is a pure addition (D2)
+and rides the decision row. -->
+
+## [v0.115.0] QUALITY-CHECKLIST — the compliance-module checks retired
+
+- **Disposition:** superseded → deleted or cut to their floor-only form; the section is renamed
+  "Floor Accounting (all modes)".
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D1, and the verify-round V2 closed list; `DECISIONS.md` 2026-09-24)
+- **Content:** eight lines, verbatim.
+  1. Traceability — "(floor-asserted / deck-kept / minted / compliance-module obligation — not a
+     waiver, exclusion, or template-module row)"
+  2. Traceability — " (compliance modules are checked in Floor & Module Accounting below)"
+  3. "## Floor & Module Accounting (all modes)"
+  4. "- [ ] Governance Floor section present in the ledger: production floor + declared depth level
+     (low/high) asserted · attached compliance modules with strata (or "none") · fact-profile trace
+     (GI-001)"
+  5. "- [ ] **No waiver names a legal-mandate module obligation** (D4.2 — strata per
+     [COMPLIANCE-MODULES.md](../../authoring-constitution/references/COMPLIANCE-MODULES.md)); one that
+     does is a FAIL"
+  6. "- [ ] Attached compliance modules match the synthesis's fact profile one-for-one — every
+     triggered module attached, none attached without a recorded trigger fact"
+  7. "- [ ] Module obligations are additive over the floor — no attached-module content loosens a
+     floor principle"
+  8. Stamp line — " · attached modules (or "none")"
+- **Kept deliberately:** the floor-category, waiver-record, threshold and waived-gate checks;
+  template-module matching in Traceability; the selected-module fragment list.
+- **Consumers assessed:** the rules `validation-constitution.never-excess` and
+  `validation-result-block` name compliance modules and are S1's in this wave;
+  `references/ANTI-PATTERNS.md` is reworded in the entry below.
+
+## [v0.115.0] QUALITY-CHECKLIST — the amend route and the semver line under the closed event set
+
+- **Disposition:** superseded → "amend route (the governance events the template's amendment policy
+  lists)", a pointer that does not restate the six events; the semver line reads "(floor-level change =
+  MAJOR; new principle or waiver change = MINOR; clarification = PATCH)", mirroring the landed
+  `validation-constitution.version-bump` rule and the ledger's semver line.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D4; `DECISIONS.md` 2026-09-24)
+- **Content:** two fragments, verbatim.
+  1. "amend route (fact-profile changes — module attach/detach — and un-waives are governance events)"
+  2. "(floor-level change / module attach or detach = MAJOR; new principle or waiver change = MINOR;
+     clarification = PATCH)"
+- **Kept deliberately:** the ledger pointer in the same line. An un-waive stays a governance event, as
+  "a waiver lifted" in the template's list. The MAJOR, MINOR and PATCH classes otherwise.
+- **Consumers assessed:** the `governance-surfaces` template's amend and semver lines and the
+  `validation-constitution.version-bump` rule are schema content, landed by S1 in this wave.
+
+## [v0.115.0] ANTI-PATTERNS's excess-governance exemption — compliance-module obligations
+
+- **Disposition:** superseded → "(floor/NFR obligations exempt)"
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D1, D6; `DECISIONS.md` 2026-09-24)
+- **Content:** verbatim — "(floor/compliance-module/NFR obligations exempt)"
+- **Kept deliberately:** the whole Excess-governance row otherwise, including the floor and NFR
+  exemptions.
+- **Consumers assessed:** found outside the record's closed list at S2's plan sweep. A build defect
+  under wave plan § 7, fixed by the lead's ruling. Not a new ruling. The rule
+  `validation-constitution.never-excess` carries the same list and is S1's.
+
 ## [v0.113.0] grader identity re-pointed — the description tail and the co-mount parenthetical
 
 - **Disposition:** superseded → the grader-side wordings: "Grader-side skill of the governance

@@ -49,6 +49,177 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/authoring-constitution/references/INTERROGATION-AGENDA.md`. -->
 
+<!-- Wave context: wave 1 of the setup-product-agnostic build (v0.115.0). Ruling for every
+[v0.115.0] entry below: `.mochiko/brainstorms/setup-product-agnostic/record.md` D1–D6 as
+review-amended (`DECISIONS.md` 2026-09-24 "Setup goes product-agnostic ruled" row). Pre-edit
+verbatim text: `git show bbe303f:plugins/mochiko/skills/authoring-constitution/<the file's path>`
+(`SKILL.md`, `references/INTERROGATION-AGENDA.md`, `references/COMPLIANCE-MODULES.md`,
+`references/ESSENTIAL-FLOOR.md`, `references/catalog/README.md`,
+`references/catalog/universal-floor.md`, `references/catalog/backend-service.md`). The rules this
+skill's pointers bind are schema content, recorded by the migration log, not here. -->
+
+## [v0.115.0] SKILL.md's compliance-module bindings — trigger, ledger row, content source, assembly row
+
+- **Disposition:** superseded → no compliance-module binding in `SKILL.md`. The description drops the
+  trigger; the ledger row carries "floor + declared depth level"; the content sources name the deck,
+  the floor definition and the brownfield ceiling library; the module-assembly table keeps its four
+  engineering-module rows.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D1; `DECISIONS.md` 2026-09-24)
+- **Content:** four lines, verbatim.
+  1. `description:` fragment — "principle enforcement, compliance modules, floor waivers, or an
+     Essential Floor."
+  2. Surface table, ledger row — "keyed by GI-ID · floor + attached compliance modules · waivers"
+  3. Shared-core content sources — "([references/ESSENTIAL-FLOOR.md](references/ESSENTIAL-FLOOR.md)),
+     the compliance-module library ([references/COMPLIANCE-MODULES.md](references/COMPLIANCE-MODULES.md)),
+     and — for brownfield —"
+  4. Module-assembly row — "| **compliance modules** (`hipaa`, `pci-dss`, … —
+     [references/COMPLIANCE-MODULES.md](references/COMPLIANCE-MODULES.md)) | The fact profile
+     triggered them (recorded in the synthesis's Fact profile — never a session choice) |
+     Obligations formulated as principles at their stratum, routed by scope like any principle; the
+     ledger records module + stratum per obligation |"
+- **Kept deliberately:** the `layer-rules`, `release-gates`, `evolution-notes` and
+  `knowledge-management` rows (engineering modules, the record's D4 event (5)); the other content
+  sources; "floor" in the ledger row. The description's other triggers are unchanged.
+- **Consumers assessed:** the rules `authoring-constitution.content-source-bindings`,
+  `module-mechanical-attachment` and `s4-fail-safe` are schema content, changed by S1's migrations
+  in the same wave. The router row for this skill names no module and is unchanged.
+
+## [v0.115.0] INTERROGATION-AGENDA — the fact profile and module attachment leave
+
+- **Disposition:** superseded → the agenda elicits engineering facts only; no fact profile, no module
+  attachment, no S4 fail-safe, no legal-mandate waiver stratum.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D1; `DECISIONS.md` 2026-09-24)
+- **Content:** seven passages, verbatim.
+  1. "No catalog card is dealt until the dimensions that select and filter the deck (fact profile,
+     type) are elicited."
+  2. The agenda test's triggers clause — "its *triggers* (fact-profile facts attach compliance
+     modules mechanically),"
+  3. Dimension 2's row — "| 2 | **Fact profile** | Industry · data classes · jurisdictions/markets ·
+     contractual commitments | Module triggers per [COMPLIANCE-MODULES.md](COMPLIANCE-MODULES.md) —
+     each module-driving fact gets a consequence-stated confirmation (the S4 fail-safe). The depth
+     level is the user's single declaration (D1), never fact-derived; facts shape each category's
+     expression, never the level |"
+  4. The knowledge-management paragraph's list — "(the fact profile, type, risk, team, detected
+     practices)"
+  5. Brownfield — "Declared module-driving facts are cross-checked against the analysis (the S4
+     fail-safe, per [COMPLIANCE-MODULES.md](COMPLIANCE-MODULES.md)); a declared-fact-vs-detected-
+     reality conflict is confronted the same way."
+  6. Step 1 — "— and compliance modules are level-blind (D7)" and "Compliance modules attach
+     mechanically from the fact profile per [COMPLIANCE-MODULES.md](COMPLIANCE-MODULES.md), each
+     attachment recorded in the synthesis."
+  7. Step 5 — "Legal-mandate module obligations are unwaivable (D4.2); contractual/non-legal module
+     obligations are waivable like any other standard (ruled 2026-07-30, `po-narrowing-build-scope`)."
+- **Kept deliberately:** the agenda test itself and its one depth-level exception; the brownfield
+  confront-conflicts-in-the-open doctrine, reworded to a declared type or toolchain the code belies;
+  the waiver model with its D4.1 revisit. The dimension-9 sentence on intent that resists enforceable
+  formulation is kept and re-framed under the new product-instance test (an addition, D2).
+- **Consumers assessed:** `setup.interrogation-inputs` and the `review-governance-intent` rule citing
+  the agenda's dimensions are schema content, S1's in this wave.
+
+## [v0.115.0] INTERROGATION-AGENDA — dimensions 1 and 4 struck, ten becomes seven
+
+- **Disposition:** superseded → seven dimensions (3, 5, 6, 7, 8, 9, 10), numbers stable, plus the
+  depth level; dimension 4's engineering half carried into dimension 8 as trust vectors.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D3; `DECISIONS.md` 2026-09-24)
+- **Content:** eight fragments, verbatim.
+  1. "every question elicits a **fact** — no question negotiates a per-check standard."
+  2. "its *shape* (product-kind facts translate each floor category into its correct expression)"
+  3. "## The ten dimensions (in order, adaptively)"
+  4. Dimension 1's row — "| 1 | **Project identity & intent** | What's being built, for whom,
+     expected lifespan | Framing for everything |"
+  5. Dimension 4's row — "| 4 | **Risk surface** | What failure costs: data loss, money, reputation,
+     compliance, user trust | Honest context for the floor's expression and the arbitrated card layer |"
+  6. "risk" in the knowledge-management paragraph's list (entry above, item 4)
+  7. "- **Greenfield** — the full ten dimensions, adaptively." and the brownfield focus "intent,
+     facts, risk, values."
+  8. Step 2 — "presets tuned by risk/values (dimensions 4, 9)."
+- **Kept deliberately:** the surviving dimensions keep their numbers; rows 5, 6, 7 and 10 are
+  unchanged; step 0's depth recommendation is unchanged (`low` for greenfield, `high` where reality
+  warrants), which is already the code-reality default the ruling names.
+- **Consumers assessed:** as the entry above.
+
+## [v0.115.0] INTERROGATION-AGENDA — the amend events close at six; the legacy clause goes forward-only
+
+- **Disposition:** superseded → the Amend bullet names the closed six-event set, keeps the PATCH
+  clarification class outside it, states that a product change opens no amend except through event
+  (3), and makes the legacy clause forward-only.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D4 and the user's Q8 ruling; `DECISIONS.md` 2026-09-24)
+- **Content:** two sentences, verbatim.
+  1. "An amendment that changes the fact profile (module attach/detach) or un-waives a floor category
+     is a governance event and gets the relevant agenda slice (dimensions 2, 4, 10 at minimum); a
+     wording-level amendment may need no interrogation at all."
+  2. "**Legacy migration:** an amend run meeting a synthesis that still carries a tier declaration
+     (the retired axis) supersedes it — never renumbered — elicits the fact profile once, and
+     re-records existing waivers under the D4 model."
+- **Kept deliberately:** the micro-session framing; the once-offer of unruled modules; the
+  tier-declaration migration with its waiver re-recording (now named "the PO-D4 waiver model"); the
+  depth-level flip as a governance-event amend; the no-depth-declaration `high` default.
+- **Consumers assessed:** the governance-intent template's amend preamble and the ledger's amendment
+  policy are schema content, S1's in this wave. S1's template wording wins over this bullet's
+  restated six events on any drift.
+
+## [v0.115.0] COMPLIANCE-MODULES.md — its setup binding retired; content kept for the rehoming session
+
+- **Disposition:** superseded → a retired-from-setup header above unchanged content. No setup run reads
+  the file; nothing in it binds a run.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D1, D6; `DECISIONS.md` 2026-09-24)
+- **Content:** faithfully compressed — the file's operative binding, left in place as text: "Attachment
+  is **mechanical from the fact profile** (interrogation dimension 2)" (the opening paragraph), the
+  fact-validation fail-safe (named elicitation · consequence-stated confirmation · brownfield
+  cross-check · temporal backstop), and § Amend events (a fact-profile change is a MAJOR governance
+  event).
+- **Kept deliberately:** every line of the file, verbatim, for the queued rehoming session (the
+  record's OQ1).
+- **Consumers assessed:** `review-brainstorm/references/EXTERNAL-CLAIMS.md` reworded in the same wave;
+  the two `authoring-constitution` rules that pointed here are S1's.
+
+## [v0.115.0] ESSENTIAL-FLOOR — the audit-evidence-variants pointer
+
+- **Disposition:** superseded → deleted; no floor category has audit-evidence variants in setup.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D1; `DECISIONS.md` 2026-09-24)
+- **Content:** verbatim — "Audit-evidence variants live in [COMPLIANCE-MODULES.md](COMPLIANCE-MODULES.md)
+  and attach via the fact profile."
+- **Kept deliberately:** the breadth-invariant sentence before it.
+
+## [v0.115.0] catalog/README — the Modules bullet and the D4.2 waiver exception
+
+- **Disposition:** superseded → deleted; the floor varies per project by expression and waivers only.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D1; `DECISIONS.md` 2026-09-24)
+- **Content:** two passages, verbatim.
+  1. "- **Modules** — compliance obligations attach additively from the fact profile per
+     [../COMPLIANCE-MODULES.md](../COMPLIANCE-MODULES.md); modules are **level-blind** — they attach
+     at full strength at either depth level (D7) and carry no low/high rows. The legal-mandate
+     stratum sits above the dial. (The retired `regulated` rows live there as seed content.)"
+  2. "— except legal-mandate module obligations (D4.2)"
+- **Kept deliberately:** the Expression and Waivers bullets.
+
+## [v0.115.0] universal-floor — the audit-evidence-variants pointer
+
+- **Disposition:** superseded → deleted.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D1; `DECISIONS.md` 2026-09-24)
+- **Content:** verbatim — "Audit-evidence variants (the retired `regulated` rows) live in
+  [../COMPLIANCE-MODULES.md](../COMPLIANCE-MODULES.md) and attach via the fact profile."
+- **Kept deliberately:** "Absence is always deliberate and auditable, never silent."
+
+## [v0.115.0] backend-service BE-DEP — the compliance-module sentence
+
+- **Disposition:** superseded → deleted; the card never asserted these obligations, and the record
+  hands them to the rehoming session.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D1; `DECISIONS.md` 2026-09-24)
+- **Content:** verbatim — "License compliance, documented supply-chain review, and tightened blocking
+  severity (medium+) are compliance-module content ([../COMPLIANCE-MODULES.md](../COMPLIANCE-MODULES.md)),
+  attached via the fact profile."
+- **Kept deliberately:** the card's merge block at high/critical vulnerability severity.
+
 ## [v0.107.0] the agenda preamble's raw-Read fallback for the governance-intent schema
 
 - **Disposition:** superseded → the CLI form `mochiko-cli template governance-intent`

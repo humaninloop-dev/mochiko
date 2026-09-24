@@ -85,9 +85,9 @@ seat never fetches: external verification belongs to the review seats alone.
   concern riding the primitive-edit ceremony, not run-time review.
 - **Domain-registry growth at implement** — deferred, not absent: the next amend run
   re-validates trust signals; no review-time carrier here.
-- **A regime's full obligation set** — mapping regulations to modules is
-  `COMPLIANCE-MODULES.md`'s job; this file only governs how a stated regulatory claim
-  gets verified at review.
+- **A regime's full obligation set** — mapping regulations to obligations is not setup's
+  (retired from setup 2026-09-24; no setup run attaches a module); this file only governs how
+  a stated regulatory claim gets verified at review.
 
 ---
 **Consumed by:** `review-brainstorm` (owner) · `review-feasibility` ·

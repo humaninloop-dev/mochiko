@@ -76,10 +76,10 @@ sections:
         class: floor
         text: >-
           The floor both ways: rung 1's "required" reads ratified requirements AND asserted floor
-          obligations — production-floor categories, compliance-module obligations, and
-          NFR-derived floor elements (security controls, error and data-loss handling,
-          observability, accessibility). Strictness against speculation survives; the floor never
-          enters the package through imagination, and never leaves it to reach a cheaper rung.
+          obligations — production-floor categories and NFR-derived floor elements (security
+          controls, error and data-loss handling, observability, accessibility). Strictness
+          against speculation survives; the floor never enters the package through imagination,
+          and never leaves it to reach a cheaper rung.
         anchor: 2026-08-12 plan-structure-yagni
   - id: patterns-plan-minimalism.sec.inputs
     title: Inputs — read before you claim

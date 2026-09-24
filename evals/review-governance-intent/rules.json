@@ -133,7 +133,7 @@
  },
  {
   "id": "review-governance-intent.never-excess",
-  "rule": "A floor-, compliance-module-, or NFR-derived obligation is never excess, however heavy it looks.",
+  "rule": "A floor- or NFR-derived obligation is never excess, however heavy it looks.",
   "class": "must",
   "source": "log:review-governance-intent.never-excess",
   "section": "review-governance-intent.sec.scope",
@@ -174,7 +174,7 @@
  },
  {
   "id": "review-governance-intent.read-set-binding",
-  "rule": "Read the frozen synthesis and the agenda at `../authoring-constitution/references/INTERROGATION-AGENDA.md` — its ten dimensions are the coverage yardstick.",
+  "rule": "Read the frozen synthesis and the agenda at `../authoring-constitution/references/INTERROGATION-AGENDA.md` — its dimensions are the coverage yardstick.",
   "class": "must",
   "source": "log:review-governance-intent.read-set-binding",
   "section": "review-governance-intent.sec.inputs",
@@ -258,7 +258,7 @@
  },
  {
   "id": "review-governance-intent.user-facts-flagged",
-  "rule": "A user-declared fact (team size, risk posture, lifespan, values) is checkable against nothing on disk — flag for the lead to route to the user as confirmation, never to argument.",
+  "rule": "A user-declared fact (team size, review culture, values) is checkable against nothing on disk — flag for the lead to route to the user as confirmation, never to argument.",
   "class": "must",
   "source": "log:review-governance-intent.user-facts-flagged",
   "section": "review-governance-intent.sec.inputs",
@@ -322,7 +322,7 @@
  },
  {
   "id": "review-governance-intent.status-vocabulary-and-criteria",
-  "rule": "Recommended status: `ready` (every hunt class actively worked, nothing blocking survived) / `needs-revision` (survivors resolvable by the session) / `critical-gaps` (a fact profile contradicted by its own risk declaration or detected reality, an unrecorded ruling — a missing or unrecorded depth-level declaration among them — or a synthesis too thin to review).",
+  "rule": "Recommended status: `ready` (every hunt class actively worked, nothing blocking survived) / `needs-revision` (survivors resolvable by the session) / `critical-gaps` (a principle intent restating a product instance, not the rule, an unrecorded ruling — a missing or unrecorded depth-level declaration among them — or a synthesis too thin to review).",
   "class": "must",
   "source": "log:review-governance-intent.status-vocabulary-and-criteria",
   "section": "review-governance-intent.sec.verdict",
@@ -515,7 +515,7 @@
  },
  {
   "id": "review-governance-intent.findings-through-leads-pen",
-  "rule": "Findings enter through the lead's pen, dispositions in the Review section — never your own edits to the synthesis.",
+  "rule": "Findings enter through the lead's pen, dispositions in the Review section — never your own edits to the synthesis, and never a corrected, patched, or rewritten copy of it beside the original. Producing the fix yourself is the violation, whatever the file is called; hand the finding over and let the pen that owns the artifact make the change.",
   "class": "floor",
   "source": "log:review-governance-intent.findings-through-leads-pen",
   "section": "review-governance-intent.sec.reserved",

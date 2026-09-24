@@ -15,6 +15,22 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/review-feasibility/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the setup-product-agnostic build (v0.115.0). Ruling for the
+[v0.115.0] entry below: `.mochiko/brainstorms/setup-product-agnostic/record.md` D1–D6 as
+review-amended (`DECISIONS.md` 2026-09-24 "Setup goes product-agnostic ruled" row). Pre-edit
+verbatim text: `git show bbe303f:plugins/mochiko/skills/review-feasibility/references/FEASIBILITY-LENS.md`. -->
+
+## [v0.115.0] FEASIBILITY-LENS's class-7 calibration — compliance-module obligations
+
+- **Disposition:** superseded → "a floor- or NFR-derived obligation is never excess"
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
+  D1, D6; `DECISIONS.md` 2026-09-24)
+- **Content:** verbatim — "a floor-, compliance-module-, or NFR-derived obligation is never excess"
+- **Kept deliberately:** the calibration bar (the cheaper alternative or the specific bar breached)
+  and the floor and NFR exemptions.
+- **Consumers assessed:** found outside the record's closed list at S2's plan sweep. A build defect
+  under wave plan § 7, fixed by the lead's ruling. Not a new ruling.
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

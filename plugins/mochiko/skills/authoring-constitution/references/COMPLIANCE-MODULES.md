@@ -1,5 +1,11 @@
 # Compliance Modules — the fact-triggered additive layer
 
+> **Retired from `/mochiko:setup` — 2026-09-24** (setup-product-agnostic D1, D6). No setup run
+> reads this file: no fact profile is elicited, no module attaches, and the governance surface set
+> carries no module and no legal-mandate stratum. The content below is kept unchanged and binds
+> nothing; it waits for the queued rehoming session, which decides where the trigger table and the
+> seed obligations live.
+
 The production floor's companion (PO-D2): regulated and compliance needs are not a tier — they
 are **additive elective modules attached by project facts** (industry, data classes,
 jurisdiction, contractual commitments). A module only ever ADDS obligations on top of the

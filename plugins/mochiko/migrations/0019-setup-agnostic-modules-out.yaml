@@ -1,0 +1,939 @@
+grammar: 1
+id: 0019-setup-agnostic-modules-out
+sequence: 19
+intent: >-
+  Strip compliance modules and the fact profile from setup's consumers (D1); the three template
+  replacements also fold D2 (minted-principle test, Handed off list), D3 (identity and type
+  reduced, trust vectors, the app-level SLO number named a product instance), D4 (forward-only
+  amend, the six events) and D5 (the lead's empty design scaffold, the Tokens line).
+anchor: 2026-09-24 setup-product-agnostic D1
+hash: sha256:3233ce4a006ec6032b25f1e8eb49ad380bf32f2d4ed3193b9baa217fa6149e68
+changes:
+  - op: replace-document
+    kind: template
+    name: governance-intent
+    content:
+      template: governance-intent
+      title: Governance Intent (the session synthesis — traceable contract)
+      form: artifact-format.md
+      register: full
+      overview: |
+        GOVERNANCE INTENT — the session synthesis (fill target)
+        ========================================================
+        Written by the /mochiko:setup lead at the close of the interrogation session and ratified at the
+        synthesis-confirmation checkpoint BEFORE any authoring. Lives durably at
+        `.mochiko/memory/governance-intent.md`, beside the governance ledger of the surface set it
+        governs (there is no constitution.md — governance lands on native surfaces).
+
+        This artifact is a TRACEABLE CONTRACT on the surface-set producer, not a brief:
+        - Every principle in the authored surface set MUST trace to exactly one element here
+          (its GI-ID), and every principle-bearing element here MUST be realized on a surface
+          or surfaced as a flagged proposal at the acceptance gate.
+        - Producer latitude is confined to FORMULATION (wording, enforcement mechanics, three-part
+          structure with real commands) — never SELECTION.
+        - The validator string-matches trace-IDs both ways (deterministic). Semantic fidelity of a
+          stamped trace is judgment-grade residual risk, mitigated by the synthesis-confirmation
+          checkpoint and the acceptance gate's trace summary.
+
+        AMEND RUNS UPDATE THIS FILE DELTA-WISE: touched elements are edited or superseded (never
+        renumbered), new elements take fresh IDs, untouched elements keep their IDs, and the Amendment
+        Log records each delta. The traceability cross-check always runs against this persisted,
+        updated file. LEGACY MIGRATION (forward-only): an amend run meeting a tier declaration
+        (the retired axis), a fact profile, an attached compliance module, or a principle intent that
+        restates a product instance (setup-product-agnostic D2) supersedes it in place, once — never
+        renumbered, never carried forward, no interim marker — and re-records existing waivers under
+        the D4 model. An existing single-floor synthesis that carries NO depth-level
+        declaration defaults to `high` on its next amend (adaptive-depth 2026-08-11, review fold #7) —
+        recorded as the declared level without a flip ceremony, since it never operated at `low`.
+
+        GI-ID rule: sequential GI-001, GI-002, … — unique forever within this file; never reuse a
+        retired ID.
+
+        CONFIDENCE MARKS: every GI element carries a mark from
+        `Confident / Assumed / Contested / Unsure / Deferred`, assigned by the lead at assembly from the
+        session's own indicators — updated DELTA-WISE on amend (untouched elements keep their marks).
+        The marks are the G3 intent review's prioritization substrate; they are lead-self-reported, so
+        the review audits them rather than trusting them. `Contested` = the user overruled a recorded
+        challenge with the steelman in view — the recorded basis is required, or the mark is a defect.
+
+        THE REVIEW SECTION is this file's durable record of the sized pre-G3 review (or its waiver) —
+        recovery keys off its state. The reviewers produce lead-adjudicated input; the Tier-2 validator
+        downstream issues the authoritative grade on the authored surface set (both still human-gated).
+      sections:
+        - name: Header
+          required: true
+          contract: |
+            Title "# Governance Intent — [PROJECT_NAME]" plus:
+            **Session date:** [YYYY-MM-DD] · **Mode:** [greenfield | brownfield | amend]
+            **Confirmed at synthesis checkpoint:** [YYYY-MM-DD] by [user]
+            **Governs:** the governance surface set v[X.Y.Z] (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`)
+          check: >-
+            Is the header present with project name, session date, mode
+            (greenfield/brownfield/amend), the synthesis-checkpoint confirmation line, and the
+            Governs line naming the surface-set version?
+        - name: Project identity & type
+          required: true
+          contract: |
+            - **GI-001 — Type:** [frontend | backend | fullstack | service | mobile | desktop] → shelves
+              dealt: [list] · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+            - **Team reality:** [solo/team, review culture — what enforcement can lean on]
+            - **Trust vectors:** [what ships where — a binary, hooks, a public package, a deploy target's
+              exposure — and the supply-chain or exposure controls each calls for (interrogation dimension
+              8); "none beyond the repo" is a recorded answer]
+          check: >-
+            Does Project identity & type carry GI-001 (type + shelves dealt + mark), the team
+            reality, and the trust vectors (what ships where and its controls) — and no
+            identity, audience or product-harm line (setup-product-agnostic D3)?
+          heading: Project identity & type
+          max_lines: 10
+        - name: Depth level declaration
+          required: true
+          contract: |
+            The floor's single depth dial (adaptive-depth, 2026-08-11) — **one project-wide declaration, not
+            a per-check negotiation**. Breadth is invariant: every floor category is present at both levels;
+            the level tunes only how strictly the asserted *code* standards are authored
+            (process rigor is uniform — D8). The
+            level is the user's declaration alone — never fact-derived (D1); setup recommends, the user rules.
+
+            - **GI-0XX — Declared level:** [low | high] · **Declared:** [YYYY-MM-DD] by [user] ·
+              **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+            - **Rationale:** [why this level — setup recommends `low` for greenfield, `high` where reality
+              warrants it; the user's ruling, recorded]
+            - **Ratchet:** one-way — `high` is terminal; a later `low`→`high` move happens only through a
+              flip ceremony (a conscious `/mochiko:setup` rerun in high mode), never silently, never reversed.
+          check: >-
+            Is there one project-wide Depth level declaration (GI-0XX: low|high, declared date +
+            by user, mark, rationale, one-way ratchet), the user's declaration alone (never
+            fact-derived)?
+          heading: Depth level declaration
+          max_lines: 6
+        - name: Convergence skips
+          required: false
+          contract: |
+            [Named skips only — a dimension left unasked because an earlier answer settled it ("dimension 5
+            settled by dimension 6: the repo's CODEOWNERS and CI name one maintainer").
+            A skip is convergence bookkeeping, never a scope ruling
+            — there is no pruning license. Or "none".]
+          check: >-
+            Are convergence skips named-only (each a dimension settled by an earlier answer) or
+            'none' — with no skip used as a scope/pruning ruling?
+          heading: Convergence skips
+          max_lines: 10
+        - name: Real commands
+          required: true
+          contract: |
+            (dimension 6/8 → the validator's placeholder bar)
+
+            | Purpose | Command | Source |
+            |---------|---------|--------|
+            | Lint | `[actual command]` | [detected / declared] |
+            | Test | `[actual command]` | [detected / declared] |
+            | [etc.] | | |
+          check: >-
+            Are real commands (lint, test, etc.) captured as ACTUAL commands with a
+            detected/declared source — no placeholders — meeting the validator's placeholder
+            bar?
+          heading: Real commands
+          max_lines: 12
+        - name: Floor expression & deck rulings
+          required: true
+          contract: |
+            Floor cards enter asserted — their rows record *expression* (type translation), never a level
+            ruling; arbitrated cards (architecture-opinion and kin) record the user's ruling. **Dropped
+            arbitrated cards are rulings too:**
+
+            | GI-ID | Card | Layer | Ruling / Expression | Mark |
+            |-------|------|-------|---------------------|------|
+            | GI-0XX | FLOOR-SEC | floor-asserted | [expression shaped how, or "at floor level"] | [Confident] |
+            | GI-0XX | BE-HEX | arbitrated | [kept/tightened/dropped + user's stated reason] | [Confident] |
+            | … | | | | |
+
+            *(On an amend whose governance event touches them — a waiver lifted, a stack or layout change,
+            a new shelf dealt — affected rulings are re-dealt on the event's agenda
+            slice or force-re-marked — a stale `Confident` never carries an unexamined ruling forward.)*
+          check: >-
+            Does Floor expression & deck rulings record each floor card's expression (type
+            translation, not a level ruling) and each arbitrated card's user ruling
+            (kept/tightened/dropped with reason — dropped cards recorded too), each with a GI-ID
+            and mark?
+          heading: Floor expression & deck rulings
+          max_lines: 25
+        - name: Minted principle intents
+          required: false
+          contract: |
+            One element per minted intent — traced to the elicited answer, never to prompting, and admitted
+            only when it can be checked from the code, the pipeline or the stack without knowing what the
+            product does for its users; a product instance (a boundary list, a data class's name, a behaviour
+            toward users, an app-level SLO number) is pointed at its home, never restated. Intent that fails
+            the test is not minted — it goes to Deliberate exclusions' Handed off list:
+
+            - **GI-0XX — [Intent name]:** [what to enforce, how strictly — the user's words distilled]
+              · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+              *Elicited from:* [dimension 9 answer, quoted or closely paraphrased]
+          check: >-
+            Is each minted principle intent one element (GI-0XX, what to enforce + how strictly,
+            mark) traced to an elicited answer (never to prompting), and checkable without knowing
+            what the product does for its users — no product instance restated (D2)?
+          heading: Minted principle intents
+          max_lines: 25
+        - name: Waivers
+          required: false
+          contract: |
+            Any asserted standard may be waived with a recorded justification (D4).
+            Waivers are permanent pending the D4.1 revisit; a revisit trigger
+            is the user's option, never a default.
+
+            **Interim transition delta (D6).** After a `low`→`high` flip, a category the project does not yet
+            meet at the high level rides a waiver as a **bounded transition exception** — transition-scoped,
+            naming its delta item, and dying when that item conforms. It is a staged-adoption record, never a
+            depth valve: it does not lower the declared level, and the level stays `high`.
+
+            Every waiver is auditable:
+
+            | GI-ID | Standard (floor category / card / template-module obligation) | Justification | Revisit trigger (optional) | Mark |
+            |-------|---------------------------------------------------------------|---------------|---------------------------|------|
+            | GI-0XX | [e.g. FLOOR-TEST coverage gate] | [recorded reason] | [or "permanent (D4.1 pending)"] | [Confident] |
+            | GI-0XX | [e.g. FLOOR-OBS SLO formalization] | interim transition delta (high declared [date]) | transition — dies when the item conforms | [Confident] |
+          check: >-
+            Is every waiver auditable (GI-ID, standard, justification, revisit-or-permanent,
+            mark), and interim transition deltas (D6) recorded as bounded transition-scoped
+            exceptions that do not lower the declared level?
+          heading: Waivers
+          max_lines: 25
+        - name: Module selections
+          required: true
+          contract: |
+            **Template modules** (the operating-docs layer — knowledge-management, layer-rules,
+            release-gates), ruled in session.
+            **Declines are rulings too** (recorded, durable: amend runs offer only
+            modules with *no* recorded ruling here; a recorded decline is never re-asked until the user
+            reopens it). The validator checks core + exactly the adopted modules:
+
+            | GI-ID | Module | Ruling | Because | Mark |
+            |-------|--------|--------|---------|------|
+            | GI-0XX | [layer-rules] | adopted | [BE-HEX kept \| layered intent minted] | [Confident] |
+            | GI-0XX | [knowledge-management] | [adopted \| declined] | [offered default-on at dimension 7; a decline also memorializes in dimension 10] | [Confident] |
+            | … | | | | |
+          check: >-
+            Does Module selections rule the template modules in-session (adopted/declined, each
+            with a why + GI-ID + mark), with declines recorded as durable rulings?
+          heading: Module selections
+          max_lines: 25
+        - name: Domain-dependency seeds
+          required: false
+          contract: |
+            (only when `layer-rules` is adopted)
+
+            Session-arbitrated registry seeds per `authoring-constitution/references/DOMAIN-DEPENDENCIES.md`
+            — domain-relevance filtered, trust-ranked, each level-cited; rejected seeds are rulings too:
+
+            | GI-ID | Dependency | Signal level | Ruling | Mark |
+            |-------|------------|--------------|--------|------|
+            | GI-0XX | [equatable] | [1 — Flutter Favorites, live-verified] | [kept \| dropped] | [Confident] |
+            | … | | | | |
+          check: >-
+            When layer-rules is adopted, are domain-dependency seeds session-arbitrated
+            (domain-relevance filtered, trust-ranked, level-cited), with rejected seeds recorded
+            as rulings too, each GI-ID'd and marked?
+          heading: Domain-dependency seeds
+          max_lines: 10
+        - name: Deliberate exclusions
+          required: false
+          contract: |
+            (dimension 10)
+
+            - **GI-0XX:** [what governance will not cover + why — never a floor category (the floor leaves
+              only by recorded waiver, above)]
+              · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
+
+            **Handed off** (setup-product-agnostic D2) — one line per elicited intent that failed the
+            rule-not-instance test: never minted, never flagged as a proposal; the hand-off is recorded here,
+            never its content:
+
+            - [intent, in a few words] — handed off to: [its owner, or "owner open (setup-product-agnostic
+              OQ1)"]
+          check: >-
+            Is each deliberate exclusion (dimension 10) recorded with what governance will not
+            cover + why + a mark, and never a floor category (the floor leaves only by recorded
+            waiver) — and each Handed off line one failed intent with its owner pointer and no
+            restated content?
+          heading: Deliberate exclusions
+          max_lines: 15
+        - name: Review
+          required: true
+          contract: |
+            <!-- The durable record of the sized pre-G3 intent review — one block per run (amend runs append
+            a new block, event-scaled). Recovery keys off this section's state: no sizing ruling → open the
+            gate; sized but survivors undispositioned → respawn/continue the review; folded but unverified →
+            verify pass; waived or verified → G3. -->
+
+            **[YYYY-MM-DD] — [first ratification | amend]**
+
+            - **Sizing:** lead stated weight [element count · mark mix · reality-surface load]; the default
+              [pair on first ratification | event-scaled on amend: governance event → pair · lighter
+              substantive delta → single · wording-level → none-with-recorded-waiver]; **lead sized:**
+              [pair | single | none], the sizing composed by the lead in its run plan — below the default
+              also takes a departure-trail line.
+            - *(if none)* **Waiver:** this record is lead-penned, so `none` is not the lead's to take —
+              waived by [user] as an explicit reserved ruling, [stated reason]. The synthesis proceeds to
+              G3 unreviewed; this record is the audit trail.
+            - *(otherwise)* **Review:** reviewer(s) [coverage / coherence lenses | solo]; **tally** [N raised
+              → M merged survivors]; recommended status [ready | needs-revision | critical-gaps]
+            - **Survivor dispositions** (every survivor carries one):
+
+              | # | Sev | GI element(s) | Finding | Disposition |
+              |---|-----|---------------|---------|-------------|
+              | S1 | [Critical] | [GI-0XX] | [one line] | [resolved / user-ruled / recorded-open — overruled → element marked `Contested`] |
+
+            - **Verify pass:** [PASS — folds confirmed by the coherence-lens/sole reviewer | pending]
+            - *(if any)* **G3-edit delta-pass:** [edited elements + the still-seated reviewer's outcome]
+          check: >-
+            Is the Review section present as the durable pre-G3 review record — one block per
+            run with sizing (and departure trail if below default), or a user-reserved waiver,
+            else reviewer/tally/recommended-status, every survivor carrying a disposition, plus
+            the verify-pass and any G3-edit delta-pass?
+          heading: Review
+          max_lines: 25
+        - name: Amendment Log
+          required: true
+          contract: |
+            [Empty on first ratification. Amend runs append one entry per delta:]
+            - [YYYY-MM-DD] — [GI-IDs added/edited/superseded] — [one-line rationale] — re-confirmed at
+              synthesis checkpoint [date]
+          check: >-
+            Is the Amendment Log present (empty on first ratification; one appended entry per
+            delta on amend — date, GI-IDs added/edited/superseded, rationale, re-confirmation
+            date)?
+          heading: Amendment Log
+          max_lines: 25
+      skeleton: |
+        # Governance Intent — [PROJECT_NAME]
+
+        **Session date:** [YYYY-MM-DD] · **Mode:** [greenfield | brownfield | amend]
+        **Confirmed at synthesis checkpoint:** [YYYY-MM-DD] by [user]
+        **Governs:** the governance surface set v[X.Y.Z] (CLAUDE.md governance region · `.claude/rules/mochiko/` · `.mochiko/memory/governance-ledger.md`)
+
+        ## Project identity & type
+
+        - **GI-001 — Type:** [frontend | backend | fullstack | service | mobile | desktop] → shelves dealt: [list] · **Mark:** [...]
+        - **Team reality:** [solo/team, review culture]
+        - **Trust vectors:** [what ships where + its controls]
+
+        ## Depth level declaration
+
+        - **GI-0XX — Declared level:** [low | high] · **Declared:** [YYYY-MM-DD] by [user] · **Mark:** [...]
+        - **Rationale:** [why this level]
+        - **Ratchet:** one-way — `high` is terminal; a later `low`→`high` move happens only through a flip ceremony.
+
+        ## Convergence skips
+
+        [Named skips only, or "none".]
+
+        ## Real commands
+
+        | Purpose | Command | Source |
+        |---------|---------|--------|
+        | Lint | `[actual command]` | [detected / declared] |
+        | Test | `[actual command]` | [detected / declared] |
+
+        ## Floor expression & deck rulings
+
+        | GI-ID | Card | Layer | Ruling / Expression | Mark |
+        |-------|------|-------|---------------------|------|
+        | GI-0XX | FLOOR-SEC | floor-asserted | [expression, or "at floor level"] | [Confident] |
+        | GI-0XX | BE-HEX | arbitrated | [kept/tightened/dropped + reason] | [Confident] |
+
+        ## Minted principle intents
+
+        - **GI-0XX — [Intent name]:** [what to enforce, how strictly] · **Mark:** [...] *Elicited from:* [dimension 9 answer]
+
+        ## Waivers
+
+        | GI-ID | Standard | Justification | Revisit trigger (optional) | Mark |
+        |-------|----------|---------------|---------------------------|------|
+        | GI-0XX | [e.g. FLOOR-TEST coverage gate] | [recorded reason] | [or "permanent (D4.1 pending)"] | [Confident] |
+
+        ## Module selections
+
+        | GI-ID | Module | Ruling | Because | Mark |
+        |-------|--------|--------|---------|------|
+        | GI-0XX | [layer-rules] | adopted | [reason] | [Confident] |
+        | GI-0XX | [knowledge-management] | [adopted | declined] | [reason] | [Confident] |
+
+        ## Domain-dependency seeds
+
+        *(only when `layer-rules` is adopted)*
+
+        | GI-ID | Dependency | Signal level | Ruling | Mark |
+        |-------|------------|--------------|--------|------|
+        | GI-0XX | [equatable] | [1 — Flutter Favorites, live-verified] | [kept | dropped] | [Confident] |
+
+        ## Deliberate exclusions
+
+        - **GI-0XX:** [what governance will not cover + why] · **Mark:** [...]
+
+        **Handed off:**
+
+        - [intent] — handed off to: [owner]
+
+        ## Review
+
+        **[YYYY-MM-DD] — [first ratification | amend]**
+
+        - **Sizing:** [...]
+        - **Review / Waiver:** [...]
+        - **Survivor dispositions:**
+
+          | # | Sev | GI element(s) | Finding | Disposition |
+          |---|-----|---------------|---------|-------------|
+          | S1 | [Critical] | [GI-0XX] | [one line] | [disposition] |
+
+        - **Verify pass:** [PASS | pending]
+
+        ## Amendment Log
+
+        [Empty on first ratification. Amend runs append one entry per delta.]
+      conformance:
+        extra_headings: allow
+  - op: replace-document
+    kind: template
+    name: governance-surfaces
+    content:
+      template: governance-surfaces
+      title: Governance Surfaces (the dissolved constitution — Shapes 1-5)
+      form: artifact-format.md
+      register: full
+      overview: |
+        GOVERNANCE SURFACES TEMPLATE — the canonical shapes of the dissolved constitution
+        =================================================================================
+        There is NO constitution.md. Governance is a SET, authored by `authoring-constitution` and graded as one deliverable
+        by `validation-constitution`:
+
+          1. A marked governance region in CLAUDE.md          (always-on; short-form only)
+          2. `paths`-scoped rules files under .claude/rules/mochiko/   (scope-on-touch)
+          3. Skill pointers                                    (procedure lives in skills)
+          4. The governance ledger at .mochiko/memory/governance-ledger.md  (setup/amend + validator only)
+          5. The trace summary manifest                        (the validator's grading surface)
+
+        Ownership (D8): the region between the markers — and everything under .claude/rules/mochiko/ and
+        the ledger — is setup-owned and idempotently REGENERATED on re-runs and amends. Content outside
+        the markers is user territory: NEVER touched. TWO carve-outs, both preserved verbatim across
+        regenerations: (1) a domain-dependency registry block (`mochiko:domain-registry` markers) inside
+        a layer-scoped rules file — implement-time additions live there
+        (`authoring-constitution/references/DOMAIN-DEPENDENCIES.md`); (2) the output-style switch line
+        (`mochiko:output-style` markers) in Governance operations — setup writes it default-on ONCE, and
+        every later regeneration keeps whatever per-surface values the user set. Regenerating it back to
+        the defaults silently reverts a user's ruling, which is the failure the carve-out exists to
+        prevent (style home: `templates/output-style.md`). HTML comments in CLAUDE.md are
+        stripped before context injection (doc-confirmed) — trace stamps there are context-free; comment
+        handling in rules files is undocumented, so the ledger is always the canonical metadata record.
+      sections:
+        - name: Shape 1 — the CLAUDE.md governance region
+          required: true
+          contract: |
+            Regenerated in place between the markers. Everything short-form: one line per entry, detail in
+            the ledger, module detail behind pointers.
+
+            ```markdown
+            <!-- mochiko:governance:begin -->
+            ## Governance
+
+            **Ratified:** v[X.Y.Z] · [YYYY-MM-DD] · production floor · depth: [low | high] <!-- GI-0XX (depth level) -->
+
+            ### Principles
+
+            <!-- Universal principles: the operative line IS the governance. Scope-bound and
+                 procedure-shaped principles: the line is an index entry pointing at the home. -->
+            - [Imperative universal principle, RFC 2119, one line] [(NON-NEGOTIABLE) for floor principles] <!-- GI-XXX -->
+            - [Imperative universal principle] <!-- GI-XXX -->
+            - [Concern name] — see `.claude/rules/mochiko/[file].md` <!-- GI-XXX -->
+            - [Procedure name] — follow skill `[skill-name]` when [trigger] <!-- GI-XXX -->
+
+            ### Technology stack
+
+            - [Language/runtime + version] · [framework] · [key mandated choices, one line each] <!-- GI-XXX -->
+
+            ### Quality gates
+
+            - `[actual command]` MUST pass before merge <!-- GI-XXX -->
+            - Coverage ≥ [floor card's coverage threshold, session-overridable]% on new code (`[actual command]`) <!-- GI-XXX -->
+
+            ### Governance operations
+
+            - Ledger (waivers · amendment policy · exceptions · Three-Part metadata): `.mochiko/memory/governance-ledger.md`
+            - Amend via `/mochiko:setup` — the governance events are closed at six: the depth flip · a waiver added, lifted or re-grounded · a stack, toolchain or layout change · an engineering principle minted, dropped or redefined · an engineering module attached or detached · the deliberate exclusions changed; a product change opens none unless it changes the surface types
+            <!-- mochiko:output-style:begin -->
+            - Writing style — conversation: `full` · reports: `ultra` *(internal agent hand-offs)* · documents: `full`. Terse and plain-English by default. Set any of the three to `off`, `lite`, `full`, or `ultra` and your choice is kept when this section is regenerated; "normal mode" turns it off for one session.
+            <!-- mochiko:output-style:end -->
+            [- Path-scoped rules inject on **Read**, not Write (observed behavior, kinako dogfood 2026-07-19) — before creating a new file under [the actual scoped paths, e.g. `src/`, `tests/`], read the matching `.claude/rules/mochiko/` file or read back the file you created <!-- standing line: emit whenever the set includes any rules file -->]
+            [- Operating docs (knowledge-management module): sessions in `.mochiko/brainstorms/` + `index.md`; rulings land in `DECISIONS.md`; open threads in `BACKLOG.md`; direction in `ROADMAP.md`; landing ritual + invariants at `.mochiko/memory/knowledge-management.md`; groom: `mochiko:grooming-operating-docs` <!-- GI-XXX -->]
+            [- Release gates: [one-line summary] — detail in the ledger <!-- GI-XXX -->]
+            <!-- mochiko:governance:end -->
+            ```
+          check: >-
+            Is the CLAUDE.md governance region present between the begin/end markers with no
+            setup-owned content outside them; a Ratified stamp line (version · date · production
+            floor + declared depth); a one-line-per-principle index that closes
+            index->home->ledger both ways; universal principles as short RFC 2119 lines with floor
+            principles first and marked (NON-NEGOTIABLE); technology-stack lines with actual
+            mandated choices (no placeholders); a quality-gates summary with actual commands; a
+            governance-operations block (ledger pointer + amend route); and the preserved
+            carve-outs (mochiko:output-style pair, mochiko:domain-registry block) still carrying
+            their pre-run values?
+        - name: Shape 2 — a scope-bound rules file
+          required: false
+          contract: |
+            One concern per file (`.claude/rules/mochiko/<concern>.md`). The `paths` globs must be honest to the concern — and honest cuts both
+            ways: a glob that matches everything is a universal principle wearing a costume (those belong in
+            the region), while globs that stop at the mechanism's home layer silently exempt code that can
+            violate the concern. Cover **every path whose code can violate the rule** — including layers that
+            orchestrate the governed operation through ports/interfaces, not just the layer that implements
+            it (kinako dogfood 2026-07-19: storage invariants scoped to domain+infrastructure missed the
+            application layer's use cases persisting through ports).
+
+            ```markdown
+            ---
+            paths:
+              - "[honest glob, e.g. src/api/**/*.py]"
+              - "[second glob if the concern truly spans]"
+            ---
+
+            # [Concern name] <!-- GI-XXX -->
+
+            - [Operative rule, RFC 2119]
+            - [Operative rule]
+            - [Operative rule]
+
+            Metadata (enforcement · testability · rationale): `.mochiko/memory/governance-ledger.md`, GI-XXX.
+            ```
+          check: >-
+            For every rules file that exists, do its `paths` globs cover every path whose code can
+            violate the concern (per-layer violation test against the kept architecture card, not
+            just the mechanism's home layer), is it one concern per file with RFC 2119 operative
+            rules, and does it point to the ledger for metadata rather than restating it?
+        - name: Shape 3 — the governance ledger
+          required: true
+          contract: |
+            Read by setup/amend runs and the validator only — never force-loaded into working sessions.
+
+            ```markdown
+            # Governance Ledger
+
+            **Governance Floor:** production (asserted) · **Depth level:** [low | high] (user-declared, one-way; `high` terminal) · **Trace:** GI-0XX (depth level)
+            **Version:** [X.Y.Z] (must match the region stamp)
+
+            ## Waivers
+
+            Any asserted standard, with a recorded justification (D4); permanent pending the D4.1 revisit.
+
+            | Standard | Justification | Revisit trigger (optional) | Trace |
+            |----------|---------------|----------------------------|-------|
+            | [floor category / card / template-module obligation, or "None."] | [recorded reason] | [or "permanent (D4.1 pending)"] | GI-XXX |
+
+            ## Amendment policy
+
+            - Route: `/mochiko:setup` amend mode. The governance events are closed at six
+              (setup-product-agnostic D4): (1) the depth-level flip `low`→`high` (a `high`-mode rerun) ·
+              (2) a waiver added, lifted or re-grounded · (3) a stack, toolchain or layout change — a real
+              command changes, a surface type is added and a new shelf deals, or the repo layout the
+              `paths`-scoped rules files bind to moves · (4) an engineering principle minted, dropped or
+              redefined · (5) an engineering module — knowledge-management, release-gates, layer-rules —
+              attached or detached · (6) the deliberate exclusions change. A product change opens no amend
+              except through event (3). The depth declaration and any later flip are recorded as
+              amendment-log rows, no new ledger structure.
+            - Semver: MAJOR — principle removal / incompatible redefinition / floor-level change /
+              depth-level flip (`low`→`high`) · MINOR — new principle or waiver
+              change · PATCH — clarification.
+            - Approvers: [from the synthesis's team reality]
+
+            ## Exception registry
+
+            | Exception | Principle (GI-ID) | Granted | Expires/revisit |
+            |-----------|-------------------|---------|-----------------|
+            | [none yet] | | | |
+
+            [## Domain-dependency policy (only when `layer-rules` is adopted)]
+            [Qualification criteria (domain-relevance filters first, then ubiquity) · trust-signal
+            hierarchy: `authoring-constitution/references/DOMAIN-DEPENDENCIES.md` · add-process + gate
+            (human ruling before registry entry; `domain_deps_added` cycle-report disclosure — the
+            checkpoint never auto-approves while it is non-empty). The list itself lives ONLY in the domain
+            rules file's `mochiko:domain-registry` block — preserved across regenerations, no ledger copy.]
+
+            ## Principles (Three-Part metadata, keyed by GI-ID)
+
+            ### GI-XXX — [Principle Name] · home: [CLAUDE.md | rules/mochiko/<file>.md | skill:<name>]
+
+            **Enforcement**:
+            - [How compliance is verified — specific commands or processes]
+
+            **Testability**:
+            - Pass: [criterion] · Fail: [criterion]
+
+            **Rationale**: [Failure mode prevented; success enabled.]
+
+            **Trace**: GI-XXX (floor-asserted: CARD-ID | deck-kept: CARD-ID | minted)
+
+            [## Evolution notes (brownfield — the evolution-notes module's ledger section)]
+            [Floor status table · gap references · session confrontation rulings.]
+
+            ## Amendment log
+
+            | Version | Date | Change | GI delta |
+            |---------|------|--------|----------|
+            | [X.Y.Z] | [date] | ratified | [elements] |
+            ```
+          check: >-
+            Is the ledger complete per Shape 3 — a Governance Floor header (production floor +
+            declared depth + depth-level trace), Waivers (each with
+            standard/justification/revisit-or-permanent/trace), Amendment policy (the closed
+            six-event set), Exception registry, Three-Part records keyed by GI-ID each carrying
+            Enforcement + Testability + Rationale + a real Trace stamp, and an amendment log whose
+            version matches the region stamp?
+        - name: Shape 4 — the trace summary manifest
+          required: true
+          contract: |
+            Emitted by the producer with every authoring round; presented at the acceptance gate; the
+            validator's grading surface. One row per principle-bearing GI element:
+
+            ```markdown
+            ## Trace summary
+
+            | GI-ID | Principle | Source | Primary home | Companions present |
+            |-------|-----------|--------|--------------|--------------------|
+            | GI-003 | [name] | deck-kept: CARD-ID | CLAUDE.md region line | index ✓ · ledger ✓ |
+            | GI-004 | [name] | minted | rules/mochiko/api.md | index ✓ · ledger ✓ |
+            | GI-005 | [name] | floor-asserted: CARD-ID | skill:mochiko:executing-tdd-cycle | index ✓ · ledger ✓ |
+
+            Flagged proposals: [none | list — each awaiting the user's ruling at acceptance]
+            Waivers: [none | GI-IDs]
+            ```
+          check: >-
+            Is the trace summary manifest present with one row per principle-bearing GI element
+            (GI-ID · principle · source · primary home · companions present), plus the
+            flagged-proposals and waivers lines?
+        - name: Shape 5 — the output-style rules file
+          required: false
+          contract: |
+            A Shape-2 file with fixed content (`.claude/rules/mochiko/output-style.md`), emitted every run rather than routed from a principle, scoped
+            over the paths where pipeline deliverables are authored. It is **edit-time reinforcement, never
+            the carrier**:
+
+            - **For:** a producer *editing* an existing deliverable, which reads the file at touch time and
+              writes in the right register.
+            - **NOT for:** reaching file **creates**. `paths` rules inject on **Read, not Write** — the same
+              observed behavior the region's standing new-file line records — so a file written from scratch
+              never triggers this one. The always-loaded governance region is what reaches creates; this file
+              is the second delivery, never the only one. (Anyone re-opening that question: it was ruled, not
+              overlooked.)
+            - **Create-or-join:** the `.claude/rules/mochiko/` scaffold is shared. Whichever concern lands
+              first creates the directory and the region's index line; every later concern joins it, one file
+              per concern.
+
+            ```markdown
+            ---
+            paths:
+              - ".mochiko/specs/**"
+            ---
+
+            # Writing style
+
+            - Documents here are written `full` by default — dense, articles droppable, fragments fine. The
+              **Writing style** line in `CLAUDE.md`'s Governance section is the authority whenever it differs.
+            - Never compress: IDs, identifiers, paths, commands, contract clauses, numeric targets and error
+              strings — verbatim.
+            - Stop compressing wherever it would leave a requirement, criterion or constraint ambiguous. A
+              human signs these off, so plain English beats terse every time the two pull apart.
+            ```
+
+            Preserved like the switch line: written once, refreshed only to track the region's Writing-style
+            values, and any line the user adds to it survives every regeneration. Full rules ship with
+            mochiko (the `output-style` template; deliverable envelope `artifact-format.md` rule 11) — this
+            file cites them and never restates them.
+          check: >-
+            If an output-style rules file exists, is it a Shape-2 file scoped over the deliverable
+            paths, marked edit-time reinforcement (not the carrier), preserved across
+            regenerations with any user-added line surviving, and does it cite the shipped
+            output-style rules rather than restating them?
+      skeleton: |
+        governance-surfaces is a SET of five distinct surfaces, not a single fill-in document. Author
+        each surface to the canonical shape carried verbatim in its section above:
+          1. CLAUDE.md governance region (Shape 1) — regenerated between the mochiko:governance markers.
+          2. `.claude/rules/mochiko/<concern>.md` scope-bound rules files (Shape 2) — one concern each.
+          3. `.mochiko/memory/governance-ledger.md` (Shape 3) — the full ledger.
+          4. The trace summary manifest (Shape 4) — emitted each authoring round.
+          5. `.claude/rules/mochiko/output-style.md` (Shape 5) — the preserved output-style rules file.
+        The fillable block for each surface is the fenced markdown inside its section's contract.
+  - op: replace-document
+    kind: template
+    name: design-baseline
+    content:
+      template: design-baseline
+      title: Design Baseline
+      form: artifact-format.md
+      register: full
+      overview: >-
+        `design.md` — the product's design baseline at `.mochiko/product/design/`, beside the
+        architecture store. Two parts in one file. The design truth part (platform, brand and
+        voice, design principles, the evidence fence, the accessibility pointer) is durable and
+        product-wide. The design system part (tokens, typography, components, motion) holds values
+        as built and is written only from shipped code at a landing fold, never from intent; where
+        it is still empty at landing, its first write is signed by the user at final acceptance.
+        Its empty scaffold — the required headings, no content — is written by the
+        `/mochiko:setup` lead where the file is missing; its content has one writer,
+        `product-designer`, on two graded paths: a build-time `baseline-delta.md` entry and the
+        landing fold. Who writes the truth part's content is open (setup-product-agnostic OQ1).
+        Mode and the direction contract are per surface and live in the feature spec's Screens &
+        Flows Direction block, never here; audience and purpose live in the product desk and are
+        pointed at, never restated. Values, not stances: rendering strategy, state management,
+        styling-system and component-library policy, and the a11y card are stances the
+        architecture store deals as AX-XXX rows; a store row that needs a value points here, and
+        this file never carries a stance. Where a stance and a value conflict, the stance wins and
+        the conflict is a Drift entry at the next landing fold. No derived index.
+      conformance:
+        extra_headings: deny
+      sections:
+        - name: Header
+          required: true
+          contract: >-
+            Title "# Design Baseline" plus one line pointing at the product desk for audience and
+            purpose. Governs no heading of its own.
+          check: Is the title present with the product-desk pointer, and nothing restated from it?
+        - name: Platform
+          heading: Platform
+          required: true
+          max_lines: 5
+          contract: >-
+            Truth part. The product's platform in one value — web, ios, android, adaptive, or
+            desktop. Free text: an unrecognized value is recorded as given and warned, never
+            silently defaulted.
+          check: >-
+            Is the value one of web / ios / android / adaptive / desktop? An unrecognized value is
+            warned and recorded, never denied or silently defaulted — or is it stated as not yet
+            recorded?
+        - name: Brand and voice
+          heading: Brand and voice
+          required: true
+          max_lines: 15
+          contract: >-
+            Truth part. Brand commitments and the product's voice, each sourced from evidence the
+            repo, README, or brand assets hold or the user stated. One line per commitment.
+          check: >-
+            Is each commitment and voice line sourced, never invented — or is the section stated
+            as not yet recorded?
+        - name: Design principles
+          heading: Design principles
+          required: true
+          max_lines: 12
+          contract: >-
+            Truth part. The product's design principles, one line each, each a choice a builder
+            could honor or violate.
+          check: >-
+            Is each principle one line and decidable against a built screen — or is the section
+            stated as not yet recorded?
+        - name: Evidence fence
+          heading: Evidence fence
+          required: true
+          max_lines: 8
+          contract: >-
+            Truth part. The evidence on hand, and the fence: claims, testimonials, benchmarks,
+            customers, and pricing are never invented where evidence is absent.
+          check: >-
+            Does it list the evidence on hand and fence claims, testimonials, benchmarks,
+            customers and pricing as never invented where evidence is absent?
+        - name: Accessibility
+          heading: Accessibility
+          required: true
+          max_lines: 5
+          contract: >-
+            Truth part. A pointer to the accessibility standard of record — the Essential Floor
+            line, unless a later ruling names another home — and nothing else. The obligation is
+            defined there, never restated here.
+          check: >-
+            Is it a pointer to the standard of record (the Essential Floor line, or the home a
+            later ruling names), with no obligation restated?
+        - name: Tokens
+          heading: Tokens
+          required: false
+          max_lines: 30
+          contract: >-
+            System part. Color, spacing, radius, and elevation tokens as built, each with its
+            value and the source file it lives in. Absent until the first landing writes it.
+          check: Is every token a shipped value with its source file, never an intended one?
+        - name: Typography
+          heading: Typography
+          required: false
+          max_lines: 12
+          contract: >-
+            System part. Font families and the type scale as built, with their source files.
+          check: Are the families and the scale the shipped ones, with source files?
+        - name: Components
+          heading: Components
+          required: false
+          max_lines: 25
+          contract: >-
+            System part. The component inventory as built, one line each: name, source path,
+            variants. Values only — a component-library policy is a stance and lives in the
+            store.
+          check: Is each component one line with a source path, and no policy stated?
+        - name: Motion
+          heading: Motion
+          required: false
+          max_lines: 8
+          contract: >-
+            System part. Durations, easing, and motion rules as built, with their source files.
+          check: Is each motion rule a shipped value with its source?
+        - name: Drift
+          heading: Drift
+          required: false
+          max_lines: 15
+          contract: >-
+            Written by the landing fold only. One line per divergence — declared-versus-shipped,
+            an unsigned or advisory critique finding, a design-audit divergence, or a stance-value
+            conflict — keyed to the token or component and the FEAT-XXX that surfaced it.
+          check: Is each line one divergence, keyed to a token or component and a FEAT-XXX?
+      skeleton: |
+        # Design Baseline
+
+        Audience and purpose: see the product desk.
+
+        ## Platform
+
+        [web | ios | android | adaptive | desktop — or "not yet recorded"]
+
+        ## Brand and voice
+
+        - [commitment, with its source]
+
+        ## Design principles
+
+        - [principle a builder could honor or violate]
+
+        ## Evidence fence
+
+        - On hand: [evidence, with its source]
+        - Never invented where evidence is absent: claims, testimonials, benchmarks, customers, pricing.
+
+        ## Accessibility
+
+        Standard of record: [the Essential Floor line, or the home a later ruling names].
+
+        ## Tokens
+
+        - color.primary — [value] — [source file]
+
+        ## Typography
+
+        - [family] — scale [steps] — [source file]
+
+        ## Components
+
+        - [Name] — [source path] — [variants]
+
+        ## Motion
+
+        - [duration / easing rule] — [source file]
+
+        ## Drift
+
+        - color.primary — declared [value], shipped [value] (FEAT-012)
+  - op: reword-rule
+    schema: skill/authoring-constitution
+    id: authoring-constitution.content-source-bindings
+    text: >-
+      The content sources bind: the type-shelved principle deck (`references/catalog/`) ·
+      `references/ESSENTIAL-FLOOR.md` (the canonical four floor categories) ·
+      `references/EMERGENT-CEILING-PATTERNS.md` (brownfield's existing-pattern library).
+  - op: reword-rule
+    schema: skill/authoring-constitution
+    id: authoring-constitution.waivers-authored-not-skipped
+    text: >-
+      A waived standard gets a waiver record in the ledger — standard, justification, optional
+      revisit trigger, trace; permanent pending the D4.1 revisit. Absence is always deliberate and
+      auditable.
+  - op: reword-rule
+    schema: skill/authoring-constitution
+    id: authoring-constitution.every-principle-traces
+    text: >-
+      Every authored principle carries its GI trace — on `CLAUDE.md` as an HTML comment beside
+      the line, and always in the ledger as the `GI-XXX (floor-asserted: CARD-ID | deck-kept:
+      CARD-ID | minted)` key, the canonical trace record.
+  - op: reword-rule
+    schema: skill/authoring-constitution
+    id: authoring-constitution.region-content-set
+    text: >-
+      The region carries: the ratified stamp (version · ratified date · floor · declared depth
+      level, semver per the template's amendment policy — Shape 3) · the principle index (one
+      line per principle, pointer to its home when the home is not the region) · the universal
+      principles as short imperative lines, floor principles first and marked `(NON-NEGOTIABLE)`,
+      each authored at the row the declared depth level selects (a `high`-only check is absent at
+      `low`) · the technology stack from the synthesis's real-commands and existing-practices
+      elements, brownfield populating from the codebase analysis.
+  - op: reword-rule
+    schema: skill/authoring-constitution
+    id: authoring-constitution.ledger-riders-and-trace-manifest
+    text: >-
+      The ledger ships its sections per the template's Shape 3, with the riders: the waiver table
+      says "None." when nothing is waived · every waiver carries its recorded justification per
+      the D4 model · fact-profile changes (module attach/detach) and un-waives are governance
+      events routed back through setup's amend mode.
+  - op: supersede-rule
+    schema: skill/authoring-constitution
+    id: authoring-constitution.module-mechanical-attachment
+    disposition: >-
+      superseded — no compliance module attaches in a setup run; the fact profile is not
+      elicited (setup-product-agnostic D1; the module content's home is OQ1's)
+    anchor: 2026-09-24 setup-product-agnostic D1
+  - op: tombstone-rule
+    schema: skill/authoring-constitution
+    id: authoring-constitution.s4-fail-safe
+    disposition: >-
+      retired with interrogation dimension 2 — no fact profile is elicited, so the
+      fact-validation fail-safe has nothing to guard (setup-product-agnostic D1)
+  - op: reword-rule
+    schema: skill/validation-constitution
+    id: validation-constitution.version-bump
+    text: >-
+      Determine the version bump: MAJOR (principle removed or incompatibly redefined; floor-level
+      change, incl. a low→high depth-level flip) · MINOR (principle added or significantly
+      expanded; waiver added/removed) · PATCH (clarification, non-semantic). Every change gets a
+      bump determination.
+  - op: reword-rule
+    schema: skill/validation-constitution
+    id: validation-constitution.validation-result-block
+    text: >-
+      The VALIDATION RESULT block carries every line: `VALIDATION RESULT: PASS/FAIL` · checklist
+      items X/Y passed (core + N module fragments, named) · surface integrity (region markers ·
+      index→home resolution · rules files paths-scoped · scope coverage · new-file read line
+      present/absent/n-a · universal-in-rules violations) · trace closure (manifest rows closed,
+      primary home + companions · synthesis elements realized-or-flagged · waivers matched ·
+      modules matched) · floor accounting (floor + declared level asserted, region stamp = ledger
+      · floor categories principled at the declared level or waived) · anti-patterns found (list
+      or "none") · version bump · issues requiring fix (each failure listed) · advisory
+      (judgment-grade, non-blocking — suspected trace-fidelity mismatches, or "none").
+  - op: reword-rule
+    schema: skill/patterns-design-direction
+    id: patterns-design-direction.no-accessibility-content
+    text: >-
+      This skill carries no accessibility content and restates no accessibility obligation. The
+      standard of record is the Essential Floor line carried by
+      `mochiko:patterns-code-minimalism`; a direction neither weakens nor restates it.
+  - op: reword-rule
+    schema: skill/patterns-craft-floor
+    id: patterns-craft-floor.code-floor-in-view
+    text: >-
+      `patterns-code-minimalism.lazy-not-negligent` stays binding at the same edit: the Essential
+      Floor and the accessibility standard of record are defined there, never here. This floor
+      adds design bans beside them and never displaces or restates them.
+  - op: reword-rule
+    schema: skill-common/skill-review-common
+    id: review-common.never-excess
+    text: A floor- or NFR-derived obligation is never excess, however heavy it looks.
+  - op: reword-rule
+    schema: skill/patterns-plan-minimalism
+    id: patterns-plan-minimalism.floor-both-ways
+    text: >-
+      The floor both ways: rung 1's "required" reads ratified requirements AND asserted floor
+      obligations — production-floor categories and NFR-derived floor elements (security
+      controls, error and data-loss handling, observability, accessibility). Strictness against
+      speculation survives; the floor never enters the package through imagination, and never
+      leaves it to reach a cheaper rung.

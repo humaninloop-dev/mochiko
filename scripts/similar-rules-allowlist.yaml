@@ -555,8 +555,6 @@ suppressions:
   # --- [C5] TGF/AC vs review-family members (detector [6]/[10]) ---
   - ids: [review-code-minimalism.not-test-gates, testing-gap-finding.test-execution-is-testing-end-user]
     reason: 2-member, below bar — two different jurisdictions routing to the same owner (mochiko:testing-end-user); each names its own carve
-  - ids: [analysis-codebase.capability-signals-seed-feature-map, review-specifications.map-mirror]
-    reason: different duties (capability-signal seeding vs reviewer's mirror) sharing the authoring-feature-map single-source pointer
   # --- [C6] remaining cross- and intra-schema singles (detector [12]/[13]/[14]) ---
   - ids: [authoring-prototype.upstream-untouched, executing-tdd-cycle.decompose-only-the-card]
     reason: cross-family (D5) — different obligations (renders-never-edits vs decompose-exactly-the-card) sharing the nothing-beyond frame

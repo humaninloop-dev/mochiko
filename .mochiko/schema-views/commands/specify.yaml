@@ -206,8 +206,9 @@ sections:
         class: must
         kind: routing
         text: >-
-          A missing feature map is surfaced — offer /mochiko:setup, whose brownfield analysis
-          reconstructs it — never silently tolerated.
+          A missing feature map is surfaced — offer /mochiko:setup, which scaffolds the empty
+          index; reconstruction of delivered capabilities is not setup's — never silently
+          tolerated.
         when: {feature_map: absent}
       - id: spec.unrefined-stubs
         labels: [scope-entry]

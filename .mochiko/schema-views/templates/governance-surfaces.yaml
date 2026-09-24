@@ -38,7 +38,7 @@ sections:
       <!-- mochiko:governance:begin -->
       ## Governance
 
-      **Ratified:** v[X.Y.Z] · [YYYY-MM-DD] · production floor · depth: [low | high] · modules: [attached compliance modules, or "none"] <!-- GI-001 (fact profile) · GI-0XX (depth level) -->
+      **Ratified:** v[X.Y.Z] · [YYYY-MM-DD] · production floor · depth: [low | high] <!-- GI-0XX (depth level) -->
 
       ### Principles
 
@@ -61,7 +61,7 @@ sections:
       ### Governance operations
 
       - Ledger (waivers · amendment policy · exceptions · Three-Part metadata): `.mochiko/memory/governance-ledger.md`
-      - Amend via `/mochiko:setup` (fact-profile changes — module attach/detach — and un-waives are governance events)
+      - Amend via `/mochiko:setup` — the governance events are closed at six: the depth flip · a waiver added, lifted or re-grounded · a stack, toolchain or layout change · an engineering principle minted, dropped or redefined · an engineering module attached or detached · the deliberate exclusions changed; a product change opens none unless it changes the surface types
       <!-- mochiko:output-style:begin -->
       - Writing style — conversation: `full` · reports: `ultra` *(internal agent hand-offs)* · documents: `full`. Terse and plain-English by default. Set any of the three to `off`, `lite`, `full`, or `ultra` and your choice is kept when this section is regenerated; "normal mode" turns it off for one session.
       <!-- mochiko:output-style:end -->
@@ -73,12 +73,12 @@ sections:
     check: >-
       Is the CLAUDE.md governance region present between the begin/end markers with no setup-owned
       content outside them; a Ratified stamp line (version · date · production floor + declared
-      depth · modules); a one-line-per-principle index that closes index->home->ledger both ways;
-      universal principles as short RFC 2119 lines with floor principles first and marked
-      (NON-NEGOTIABLE); technology-stack lines with actual mandated choices (no placeholders); a
-      quality-gates summary with actual commands; a governance-operations block (ledger pointer +
-      amend route); and the preserved carve-outs (mochiko:output-style pair,
-      mochiko:domain-registry block) still carrying their pre-run values?
+      depth); a one-line-per-principle index that closes index->home->ledger both ways; universal
+      principles as short RFC 2119 lines with floor principles first and marked (NON-NEGOTIABLE);
+      technology-stack lines with actual mandated choices (no placeholders); a quality-gates
+      summary with actual commands; a governance-operations block (ledger pointer + amend route);
+      and the preserved carve-outs (mochiko:output-style pair, mochiko:domain-registry block)
+      still carrying their pre-run values?
   - name: Shape 2 — a scope-bound rules file
     required: false
     contract: |
@@ -118,26 +118,30 @@ sections:
       ```markdown
       # Governance Ledger
 
-      **Governance Floor:** production (asserted) · **Depth level:** [low | high] (user-declared, one-way; `high` terminal) · **Modules:** [attached compliance modules with strata, or "none"] · **Trace:** GI-001 (fact profile) · GI-0XX (depth level)
+      **Governance Floor:** production (asserted) · **Depth level:** [low | high] (user-declared, one-way; `high` terminal) · **Trace:** GI-0XX (depth level)
       **Version:** [X.Y.Z] (must match the region stamp)
 
       ## Waivers
 
       Any asserted standard, with a recorded justification (D4); permanent pending the D4.1 revisit.
-      **Legal-mandate module obligations are unwaivable (D4.2)** — a waiver row naming one is a
-      validator FAIL.
 
       | Standard | Justification | Revisit trigger (optional) | Trace |
       |----------|---------------|----------------------------|-------|
-      | [floor category / card / non-legal module obligation, or "None."] | [recorded reason] | [or "permanent (D4.1 pending)"] | GI-XXX |
+      | [floor category / card / template-module obligation, or "None."] | [recorded reason] | [or "permanent (D4.1 pending)"] | GI-XXX |
 
       ## Amendment policy
 
-      - Route: `/mochiko:setup` amend mode; fact-profile changes (module attach/detach), un-waives,
-        and the depth-level flip (a `high`-mode rerun) are governance events — the declaration and any
-        later flip are recorded as amendment-log rows, no new ledger structure.
+      - Route: `/mochiko:setup` amend mode. The governance events are closed at six
+        (setup-product-agnostic D4): (1) the depth-level flip `low`→`high` (a `high`-mode rerun) ·
+        (2) a waiver added, lifted or re-grounded · (3) a stack, toolchain or layout change — a real
+        command changes, a surface type is added and a new shelf deals, or the repo layout the
+        `paths`-scoped rules files bind to moves · (4) an engineering principle minted, dropped or
+        redefined · (5) an engineering module — knowledge-management, release-gates, layer-rules —
+        attached or detached · (6) the deliberate exclusions change. A product change opens no amend
+        except through event (3). The depth declaration and any later flip are recorded as
+        amendment-log rows, no new ledger structure.
       - Semver: MAJOR — principle removal / incompatible redefinition / floor-level change /
-        depth-level flip (`low`→`high`) / module attach or detach · MINOR — new principle or waiver
+        depth-level flip (`low`→`high`) · MINOR — new principle or waiver
         change · PATCH — clarification.
       - Approvers: [from the synthesis's team reality]
 
@@ -166,7 +170,7 @@ sections:
 
       **Rationale**: [Failure mode prevented; success enabled.]
 
-      **Trace**: GI-XXX (floor-asserted: CARD-ID | deck-kept: CARD-ID | minted | module: <module>-<obligation>)
+      **Trace**: GI-XXX (floor-asserted: CARD-ID | deck-kept: CARD-ID | minted)
 
       [## Evolution notes (brownfield — the evolution-notes module's ledger section)]
       [Floor status table · gap references · session confrontation rulings.]
@@ -179,11 +183,11 @@ sections:
       ```
     check: >-
       Is the ledger complete per Shape 3 — a Governance Floor header (production floor +
-      declared depth + modules or none + fact-profile trace), Waivers (each with
-      standard/justification/revisit-or-permanent/trace, none naming a legal-mandate obligation),
-      Amendment policy, Exception registry, Three-Part records keyed by GI-ID each carrying
-      Enforcement + Testability + Rationale + a real Trace stamp, and an amendment log whose
-      version matches the region stamp?
+      declared depth + depth-level trace), Waivers (each with
+      standard/justification/revisit-or-permanent/trace), Amendment policy (the closed six-event
+      set), Exception registry, Three-Part records keyed by GI-ID each carrying Enforcement +
+      Testability + Rationale + a real Trace stamp, and an amendment log whose version matches the
+      region stamp?
   - name: Shape 4 — the trace summary manifest
     required: true
     contract: |

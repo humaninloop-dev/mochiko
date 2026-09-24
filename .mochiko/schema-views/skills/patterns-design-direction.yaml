@@ -23,9 +23,8 @@ sections:
         class: floor
         text: >-
           This skill carries no accessibility content and restates no accessibility obligation.
-          The standard of record is the `a11y` compliance module where the project attaches it,
-          else the Essential Floor line carried by `mochiko:patterns-code-minimalism`; a direction
-          neither weakens nor restates it.
+          The standard of record is the Essential Floor line carried by
+          `mochiko:patterns-code-minimalism`; a direction neither weakens nor restates it.
         anchor: 2026-09-19 impeccable-design-integration D11
       - id: patterns-design-direction.no-baseline-write
         labels: [single-home, fence]

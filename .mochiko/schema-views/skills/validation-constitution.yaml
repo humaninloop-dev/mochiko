@@ -29,7 +29,8 @@ sections:
         text: >-
           Excess governance is an anti-pattern too, FAIL-eligible: a principle restating a
           constraint already homed elsewhere (a GI-017 violation — governance surfaces point at
-          constraint homes, never restate them) or one with no eliciting fact in the synthesis —
+          constraint homes, never restate them), one restating the product's instance of a rule,
+          not the rule (cases: the checklist), or one with no eliciting fact in the synthesis —
           admissible only naming the constraint's existing home (point, don't restate) or the
           missing fact; it lands in the `Anti-patterns found` line.
       - id: validation-constitution.never-excess
@@ -135,9 +136,9 @@ sections:
         class: must
         text: >-
           Determine the version bump: MAJOR (principle removed or incompatibly redefined;
-          floor-level change, incl. a low→high depth-level flip; module attach/detach) · MINOR
-          (principle added or significantly expanded; waiver added/removed) · PATCH
-          (clarification, non-semantic). Every change gets a bump determination.
+          floor-level change, incl. a low→high depth-level flip) · MINOR (principle added or
+          significantly expanded; waiver added/removed) · PATCH (clarification, non-semantic).
+          Every change gets a bump determination.
         anchor: 2026-08-11 production-floor-adaptive-depth
       - id: validation-constitution.binary-verdict
         labels: [verdict]
@@ -187,12 +188,11 @@ sections:
           (region markers · index→home resolution · rules files paths-scoped · scope coverage
           · new-file read line present/absent/n-a · universal-in-rules violations) · trace
           closure (manifest rows closed, primary home + companions · synthesis elements
-          realized-or-flagged · waivers matched · modules matched) · floor/module accounting
-          (floor + declared level asserted, region stamp = ledger · modules matched to the fact
-          profile · floor categories principled at the declared level or waived) · anti-patterns
-          found (list or "none") · version bump · issues requiring fix (each failure listed) ·
-          advisory (judgment-grade, non-blocking — suspected trace-fidelity mismatches, or
-          "none").
+          realized-or-flagged · waivers matched · modules matched) · floor accounting (floor +
+          declared level asserted, region stamp = ledger · floor categories principled at the
+          declared level or waived) · anti-patterns found (list or "none") · version bump ·
+          issues requiring fix (each failure listed) · advisory (judgment-grade, non-blocking —
+          suspected trace-fidelity mismatches, or "none").
         anchor: 2026-08-26 validation-constitution-true-deletion-cut
       - id: validation-constitution.evidence-floor
         class: floor

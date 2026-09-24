@@ -1,0 +1,43 @@
+grammar: 1
+id: 0020-setup-agnostic-rule-not-instance
+sequence: 20
+intent: >-
+  Governance holds the rule, never the product's instance: mint the authoring rule, add the check
+  as an excess-governance clause, and re-key the intent review's critical-gaps angle.
+anchor: 2026-09-24 setup-product-agnostic D2
+hash: sha256:ad907c3d3f0376b7a4d0a511369c16756a76281ff407205637a7b79857639158
+changes:
+  - op: mint-rule
+    schema: skill/authoring-constitution
+    section: authoring-constitution.sec.artifact
+    rule:
+      id: authoring-constitution.rule-not-instance
+      labels: [single-home, artifact-grammar]
+      class: must
+      text: >-
+        A principle holds the rule, never the product's instance of it: it enters the set only if
+        it can be checked from the code, the pipeline or the stack without knowing what the
+        product does for its users. Where it needs the instance — a boundary list, a data
+        class's name, a behaviour toward users, an app-level SLO number — it points at the
+        instance's home and never restates it. Elicited intent that fails the test is neither
+        authored nor flagged as a proposal: it sits in the synthesis's Handed off list, the
+        hand-off recorded, never its content.
+      anchor: 2026-09-24 setup-product-agnostic D2
+  - op: reword-rule
+    schema: skill/validation-constitution
+    id: validation-constitution.excess-governance
+    text: >-
+      Excess governance is an anti-pattern too, FAIL-eligible: a principle restating a constraint
+      already homed elsewhere (a GI-017 violation — governance surfaces point at constraint
+      homes, never restate them), one restating the product's instance of a rule, not the rule
+      (cases: the checklist), or one with no eliciting fact in the synthesis — admissible only
+      naming the constraint's existing home (point, don't restate) or the missing fact; it lands
+      in the `Anti-patterns found` line.
+  - op: reword-rule
+    schema: skill/review-governance-intent
+    id: review-governance-intent.status-vocabulary-and-criteria
+    text: >-
+      Recommended status: `ready` (every hunt class actively worked, nothing blocking survived) /
+      `needs-revision` (survivors resolvable by the session) / `critical-gaps` (a principle intent
+      restating a product instance, not the rule, an unrecorded ruling — a missing or unrecorded
+      depth-level declaration among them — or a synthesis too thin to review).

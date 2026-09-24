@@ -117,3 +117,36 @@ New (log-keyed, = render `floors:`): `validation-constitution.author-grader`, `v
 - Every rule id in `.mochiko/schema-views/skills/validation-constitution.yaml` appears exactly once; the view's id list equals the live render's id list.
 - No id appears twice; every old `R-XXX` is either mapped (possibly to more than one log rule) or retired, never both, never dropped.
 - `evals/run.py` fields preserved: `id`, `class` (read), `rule` and the rest passed through to the judge as JSON.
+
+## Re-key 2026-09-24 — setup-product-agnostic
+
+```json
+{
+  "rekeyed": {
+    "at": "2026-09-24T13:32:56Z",
+    "ruling": "setup-product-agnostic D1/D2, 2026-09-24; lead rulings H4 and the addendum re-plan round 1",
+    "source": ".mochiko/schema-views/skills/validation-constitution.yaml (stubs: .mochiko/schema-views/common/skill-review-common.yaml) + mochiko-cli floors line"
+  }
+}
+```
+
+Field-scoped: only the `rule` text of the entries named below moved, copied from the landed view (the `mochiko-cli rules` render cross-checked per id, `${var}` substituted from the skill view's `vars:`); every other field and entry is byte-identical, `git diff` the proof.
+
+### Counts
+
+- Rules: 26 → 26 (log rules; every id in the derived view appears exactly once).
+- Floors: 14 → 14 — equals the render's `floors:` line and its `class: floor · 14 rules` pin.
+- Retired: 0. Added: none.
+
+### Text re-keyed
+
+- `validation-constitution.excess-governance` — gains the product-instance clause ("one restating the product's instance of a rule, not the rule (cases: the checklist)"), the D2 check homed as a clause, not a new rule (`0020`, D2).
+- `validation-constitution.version-bump` — no longer names "module attach/detach" as a MAJOR trigger (`0019`, D1).
+- `validation-constitution.validation-result-block` — "floor/module accounting" becomes "floor accounting", and trace closure drops "modules matched to the fact profile" (`0019`, D1); the checklist's template-module fragments stay.
+- `validation-constitution.never-excess` — an `extends: review-common.never-excess` stub, text resolved from `.mochiko/schema-views/common/skill-review-common.yaml`: no longer names compliance-module-derived obligations (`0019`, D1). The stub's `labels: [boundary]`, carried from the common block, is unchanged.
+
+### Invariants verified
+
+- `class: floor` id set in the file == render `floors:` line (order and membership) and == the `class: floor` pin count.
+- Every rule id in `.mochiko/schema-views/skills/validation-constitution.yaml` appears exactly once; every entry's `rule` equals the resolved view text (stub from the common view, `${var}` substituted) and the render's text.
+- Every `tempts` id in `evals.json` resolves in this file.

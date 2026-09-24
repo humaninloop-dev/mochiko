@@ -21,6 +21,26 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 
 ---
 
+## Setup product-agnostic build
+
+*(ruled + accepted 2026-09-24, `setup-product-agnostic` D1–D6 as review-amended; provenance:
+`.mochiko/brainstorms/setup-product-agnostic/record.md` § Build surface)*
+
+- [ ] **Rehoming the product-shaped content — brainstorm (OQ1's owner)** (2026-09-24; provenance:
+  record OQ1 + D6) — where the compliance-module content, the design truth content, the
+  brownfield feature-map reconstruction, the product baselines bootstrap and the handed-off
+  product-behaviour principles live once setup no longer carries them; must answer the design
+  baseline's empty Accessibility heading, who fills a brownfield project's empty index, and where
+  a module's obligations are asserted and graded. No fact-based trigger can fire (setup no longer
+  elicits legal exposure): rides ROADMAP Next, re-put at every groom until taken. Window exposure
+  accepted eyes-open (D6); existing consumers take the new agenda at their next amend (Q8).
+- [ ] **Eval-kit drift — `review-specifications/rules.json` lacks `sf-direction-checks`** (2026-09-24;
+  provenance: `.mochiko/brainstorms/setup-product-agnostic/build-log.md`, S3's plan-time
+  observation H6) — the kit holds 30 ids against the view's 31: `review-specifications.sf-direction-checks`,
+  minted by migration 0013, was never re-keyed in. Out of the setup build's scope (that wave touches
+  the kit field-scoped to `never-excess` only); owed as a `rekey.md`-recorded re-key from the view,
+  with the kit's goldens checked for the rule's absence.
+
 ## Hook-enforced artifact schema build
 
 *(ruled + accepted 2026-09-13, `hook-enforced-artifact-schema` D1–D11 as review-amended;
@@ -480,17 +500,6 @@ Ruling: DECISIONS.md row 2026-08-10 (D1–D15 as amended); build delivered same 
   2026-08-13: **re-scoped** — the v0.61.0 surface this watches is superseded by the
   capability-map rebuild (pm-role-and-feature-derivation D6); the watch transfers to the
   rebuilt surface and rides that section's D11 probe + first-fold item from its build on.
-- [ ] **Setup baseline-bootstrap hardening** (2026-08-10; provenance: record open thread 4,
-  D10 bootstrap clause `Assumed`) — the shipped clause (brownfield reconstructs the five
-  product baselines at `.mochiko/product/` from code; greenfield seeds at first plan run) is
-  marked `Assumed` in `setup.md`; reconstruction-burden scope unruled; half-reconstructed
-  baselines poison extend-mode. Re-opens at the first brownfield setup run on the new surface
-  or on friction, whichever first. 2026-08-11: the greenfield arm's enforcement half closed
-  at v0.66.0 (dogfood defect — first plan run never seeded; `plan.md` Baseline-seed binding +
-  `implement.md` empty-pre-fold clause, ADR
-  `2026-08-11-plan-baseline-seed-enforced`); the partial-baseline risk and the brownfield
-  reconstruction-burden scope stay open here.
-
 ## Cold-review gap-challenge residuals
 
 Ruling: DECISIONS.md row 2026-08-10 (D1–D10); build delivered same day at v0.60.0 (trail).
@@ -590,7 +599,9 @@ Ruling: DECISIONS.md row 2026-08-04 (AR-D1–D6); test deliberately parked for a
   `layer-rules` landed as a *beat* (2026-07-21); compliance modules ruled fact-triggered off
   dimension 2, agenda stays ten (PO 2026-07-30); ops SLOs elicited at dimension 8, no new
   dimension (OO-D3 2026-07-31). Three-for-three consolidated — open only for a genuinely new
-  *constitution* module. **Revisit: next module design.**
+  *constitution* module. **Revisit: next module design.** *2026-09-24: dimension 2 struck
+  (`setup-product-agnostic` D1) — the compliance datapoint no longer applies; the question
+  stands for engineering modules only.*
 - [ ] **D9 catalog-graduation seam** (2026-07-16, `setup-constitution-flexibility` record) —
   after real sessions mint principles, harvest candidates from trace stamps and design the
   graduation pass (curation authority, admission bar, versioning). From artifacts, not

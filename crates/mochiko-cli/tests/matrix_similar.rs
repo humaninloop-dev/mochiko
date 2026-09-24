@@ -986,7 +986,16 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
         // row no longer has an edge to suppress; the row stays, both ids still resolving. No
         // command-side row was added. SUPPRESSED zero again: with an empty allowlist this family
         // reports 28 clusters over 55 edges, and the repository allowlist suppresses all 55.
-        (337, 13_208, 0, 55),
+        // Re-measured after the 2026-09-24 setup-product-agnostic wave (`0019`–`0023`): `0023`
+        // retires five `setup` rules and mints none, moving the scan 337 to 332 and the pair count
+        // 13,208 to 12,834. The suppressed count nets 55 to 54 by the reword mechanism in both
+        // directions: the rewords of `arch.dm-store-integrity-close` and `spec.missing-map-surfaced`
+        // pull their allowlisted pairs (`feat.dm-map-integrity`, `spec.governance-region-absent`)
+        // back under the threshold (−2), and `0023`'s shorter `setup.user-card-rulings` brings the
+        // `feat.user-reserved` pair back over it (+1), so that row — kept since the last wave —
+        // suppresses an edge again. No command-side row was added or removed, and the cluster
+        // count holds at a SUPPRESSED zero.
+        (332, 12_834, 0, 54),
         "rules scanned · in-kind pairs scored · clusters · allowlist-suppressed edges"
     );
 }
@@ -1079,10 +1088,19 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // against its `review-code-minimalism` form sibling and `implement`. SUPPRESSED zero: with an
     // empty allowlist the corpus reports 78 clusters over 186 edges, and the repository allowlist
     // suppresses exactly 186, both read from a raw-versus-pinned pair of runs over one state.
-    assert_eq!(report.scanned, 1142, "rules scanned");
-    assert_eq!(report.scored, 179_962, "in-kind pairs scored");
+    // Re-measured after the 2026-09-24 setup-product-agnostic wave (`0019`–`0023`): eight rules
+    // retire (five `setup`, two `authoring-constitution`, one `analysis-codebase`) and one mints
+    // (`authoring-constitution.rule-not-instance`), moving the scan 1,142 to 1,135 and the pair
+    // count 179,962 to 178,230. `suppressed_hits` moves 186 to 184: the command family nets −1 (see
+    // the pin above), and the allowlist row pairing the tombstoned
+    // `analysis-codebase.capability-signals-seed-feature-map` with `review-specifications.map-mirror`
+    // left the file with its rule (−1). SUPPRESSED zero: with an empty allowlist the corpus reports
+    // 78 clusters, and the repository allowlist leaves none unsuppressed, both read from a
+    // raw-versus-pinned pair of `migrate validate --report` runs over one state.
+    assert_eq!(report.scanned, 1135, "rules scanned");
+    assert_eq!(report.scored, 178_230, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
-    assert_eq!(report.suppressed_hits, 186, "allowlist-suppressed edges");
+    assert_eq!(report.suppressed_hits, 184, "allowlist-suppressed edges");
 }
 
 // ---------------------------------------------------------------------------

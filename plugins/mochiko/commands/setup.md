@@ -48,15 +48,11 @@ Every run has a goal and an explicit done condition; a run is never goal-less.
    user's ratified intent: the intent synthesis was ratified by the user before any surface was
    authored; the trace from ratified intent to authored surfaces closes across the set and an
    independent grade confirmed it from the files; the governance region's semver is bumped; and
-   the user accepted the set with the trace summary in hand. The feature map exists at close:
-   brownfield reconstructed and user-confirmed, greenfield an empty scaffold, and on an amend a
-   missing map surfaced and offered rather than scaffolded (feature-map rules:
-   `setup.sec.tools`). `Assumed`: brownfield close also carries the bootstrapped product
-   baselines at `.mochiko/product/`; greenfield leaves **the baselines** to seed at the first
-   implement run's design phase. The architecture store's `spine.md` stub and its `Scope:` line,
-   and the design home's scaffold at `.mochiko/product/design/`, are
-   outside that split — written on **every** path, creating only what is missing (store rules:
-   `setup.sec.tools`).
+   the user accepted the set with the trace summary in hand. The scaffolds exist at close, on
+   **every** path, each created only where missing and carrying no product content: the empty
+   feature-map index (never reconstructed), the architecture store's `spine.md` stub with its
+   `Scope:` line, and the design home's empty truth headings at `.mochiko/product/design/`
+   (scaffold rules: `setup.sec.tools`).
 3. **Not done — default FAIL:** the `kind: fail` rules of `setup.sec.fail-conditions` — their
    count is the `kind: fail` line under `pins` in the preamble block — any one standing fails
    the run. A fail-conditions block whose end-line count disagrees with that pin is the

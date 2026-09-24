@@ -1,0 +1,22 @@
+grammar: 1
+id: 0021-setup-agnostic-seven-dimensions
+sequence: 21
+intent: >-
+  The interrogation agenda keeps seven dimensions: the intent review's read set and user-declared
+  facts stop naming the struck ones.
+anchor: 2026-09-24 setup-product-agnostic D3
+hash: sha256:77f3d81b42fe410bec3d8f88088aa7cd0d134defb13561b892ea9d261e5b4f23
+changes:
+  - op: reword-rule
+    schema: skill/review-governance-intent
+    id: review-governance-intent.read-set-binding
+    text: >-
+      Read the frozen synthesis and the agenda at
+      `../authoring-constitution/references/INTERROGATION-AGENDA.md` — its dimensions are the
+      coverage yardstick.
+  - op: reword-rule
+    schema: skill/review-governance-intent
+    id: review-governance-intent.user-facts-flagged
+    text: >-
+      A user-declared fact (team size, review culture, values) is checkable against nothing on
+      disk — flag for the lead to route to the user as confirmation, never to argument.

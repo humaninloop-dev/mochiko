@@ -170,14 +170,17 @@ fn the_log_replays_into_a_deliverable_state() {
     assert_eq!(replay.state.docs.len(), 80);
     assert_eq!(
         replay.sequences(),
-        vec![1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18],
+        vec![
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
+        ],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
          default key, 0008's gate form, 0009's plan-QA leg, 0010's validator retirement, \
          0011's design direction and craft floor, 0012's design verification lenses, 0013's \
          design baseline home, 0014's setup product-truth leg, 0015's product-designer re-key, \
          0016's direction per surface, 0017's critique depth precedence, 0018's design-baseline \
-         platform placeholder"
+         platform placeholder, 0019's compliance modules out, 0020's rule-not-instance test, 0021's \
+         seven dimensions, 0022's closed event set, 0023's setup rule set"
     );
 }
 
@@ -539,10 +542,20 @@ fn the_sidecar_anchors_ride_their_rules() {
     /// `plugins/mochiko/migrations/README.md` "The anchor rule"). A rule listed here MUST be
     /// genuinely absent from the live state, or the walk below still fails — this list only
     /// narrows which absence is expected, never which text is skipped.
-    const RETIRED_SIDECAR_ANCHORS: [(&str, &str); 1] = [(
-        "patterns-model-tiering.rostered-seats-never-retier",
-        "0007-seat-default-key.yaml, 2026-09-19 orchestrator-model-selection D1",
-    )];
+    const RETIRED_SIDECAR_ANCHORS: [(&str, &str); 3] = [
+        (
+            "patterns-model-tiering.rostered-seats-never-retier",
+            "0007-seat-default-key.yaml, 2026-09-19 orchestrator-model-selection D1",
+        ),
+        (
+            "authoring-constitution.module-mechanical-attachment",
+            "0019-setup-agnostic-modules-out.yaml, 2026-09-24 setup-product-agnostic D1",
+        ),
+        (
+            "setup.baselines-bootstrap",
+            "0023-setup-agnostic-setup-rule-set.yaml, 2026-09-24 setup-product-agnostic D5",
+        ),
+    ];
 
     for (id, expected) in &anchors {
         if RETIRED_SIDECAR_ANCHORS
@@ -652,9 +665,21 @@ fn the_corpus_census_holds_through_the_log() {
     // 257 → 264, the fail set unmoved at 36. The wave's gate-fix round added `0016`–`0018`:
     // seven `reword-rule`s and the `spec` template replaced (`0016`), one reword (`0017`), and the
     // `design-baseline` template replaced (`0018`) — no mint, no retirement, so nothing here moves.
-    assert_eq!(command_rules, 337, "live command rules");
-    assert_eq!(skill_rules, 805, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1142, "live rules in total");
+    // The 2026-09-24 setup-product-agnostic wave carries five migrations, `0019`–`0023`, one ruling
+    // anchor each (D1–D5). It retires eight rules and mints one. On the command side `0023` retires
+    // five `setup` rules — `setup.product-truth-leg`, `setup.design-truth-write` and
+    // `setup.baselines-bootstrap` by `supersede-rule`, `setup.user-map-confirmation` and
+    // `setup.feature-map-brownfield` by `tombstone-rule` — and mints none: command 337 → 332. On the
+    // skill side `0019` supersedes `authoring-constitution.module-mechanical-attachment` and
+    // tombstones `authoring-constitution.s4-fail-safe`, `0023` tombstones
+    // `analysis-codebase.capability-signals-seed-feature-map`, and `0020` mints
+    // `authoring-constitution.rule-not-instance`: skill 805 − 3 + 1 = 803. None of the nine is a
+    // floor or a fail node, so both floor counts and the fail set hold. Every other op across the
+    // five is a reword, a field set on `when`/`enforces`, a moment, or a template replaced, and moves
+    // nothing here.
+    assert_eq!(command_rules, 332, "live command rules");
+    assert_eq!(skill_rules, 803, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1135, "live rules in total");
     assert_eq!(skill_floors, 264, "skill floors");
     assert_eq!(command_floors, 119, "declared command floors");
     assert_eq!(fail_nodes, 36, "command fail nodes");
@@ -712,7 +737,7 @@ fn no_document_in_the_state_names_a_schema_file_or_the_absence_arm() {
 #[test]
 fn the_third_migration_left_every_reworded_rule_naming_its_cli_form() {
     let state = replay::load(&log_dir()).expect("the log is deliverable");
-    let cases: [(DocKind, &str, &str, &str); 14] = [
+    let cases: [(DocKind, &str, &str, &str); 13] = [
         (
             DocKind::Command,
             "architecture",
@@ -737,12 +762,9 @@ fn the_third_migration_left_every_reworded_rule_naming_its_cli_form() {
             "setup.synthesis-artifact",
             "mochiko-cli template governance-intent",
         ),
-        (
-            DocKind::Command,
-            "setup",
-            "setup.feature-map-brownfield",
-            "mochiko-cli template feature-entry",
-        ),
+        // `setup.feature-map-brownfield` left this table when the 2026-09-24
+        // setup-product-agnostic D5 ruling tombstoned it in `0023`; `0003`'s reword of it stays in
+        // the append-only log, and the thirteen rows below still prove the migration.
         (
             DocKind::Command,
             "specify",

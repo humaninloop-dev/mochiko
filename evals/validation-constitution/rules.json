@@ -37,7 +37,7 @@
  },
  {
   "id": "validation-constitution.excess-governance",
-  "rule": "Excess governance is an anti-pattern too, FAIL-eligible: a principle restating a constraint already homed elsewhere (a GI-017 violation — governance surfaces point at constraint homes, never restate them) or one with no eliciting fact in the synthesis — admissible only naming the constraint's existing home (point, don't restate) or the missing fact; it lands in the `Anti-patterns found` line.",
+  "rule": "Excess governance is an anti-pattern too, FAIL-eligible: a principle restating a constraint already homed elsewhere (a GI-017 violation — governance surfaces point at constraint homes, never restate them), one restating the product's instance of a rule, not the rule (cases: the checklist), or one with no eliciting fact in the synthesis — admissible only naming the constraint's existing home (point, don't restate) or the missing fact; it lands in the `Anti-patterns found` line.",
   "class": "must",
   "source": "log:validation-constitution.excess-governance",
   "section": "validation-constitution.sec.scope",
@@ -52,7 +52,7 @@
  },
  {
   "id": "validation-constitution.never-excess",
-  "rule": "A floor-, compliance-module-, or NFR-derived obligation is never excess, however heavy it looks.",
+  "rule": "A floor- or NFR-derived obligation is never excess, however heavy it looks.",
   "class": "must",
   "source": "log:validation-constitution.never-excess",
   "section": "validation-constitution.sec.scope",
@@ -244,7 +244,7 @@
  },
  {
   "id": "validation-constitution.version-bump",
-  "rule": "Determine the version bump: MAJOR (principle removed or incompatibly redefined; floor-level change, incl. a low→high depth-level flip; module attach/detach) · MINOR (principle added or significantly expanded; waiver added/removed) · PATCH (clarification, non-semantic). Every change gets a bump determination.",
+  "rule": "Determine the version bump: MAJOR (principle removed or incompatibly redefined; floor-level change, incl. a low→high depth-level flip) · MINOR (principle added or significantly expanded; waiver added/removed) · PATCH (clarification, non-semantic). Every change gets a bump determination.",
   "class": "must",
   "source": "log:validation-constitution.version-bump",
   "section": "validation-constitution.sec.verdict",
@@ -347,7 +347,7 @@
  },
  {
   "id": "validation-constitution.validation-result-block",
-  "rule": "The VALIDATION RESULT block carries every line: `VALIDATION RESULT: PASS/FAIL` · checklist items X/Y passed (core + N module fragments, named) · surface integrity (region markers · index→home resolution · rules files paths-scoped · scope coverage · new-file read line present/absent/n-a · universal-in-rules violations) · trace closure (manifest rows closed, primary home + companions · synthesis elements realized-or-flagged · waivers matched · modules matched) · floor/module accounting (floor + declared level asserted, region stamp = ledger · modules matched to the fact profile · floor categories principled at the declared level or waived) · anti-patterns found (list or \"none\") · version bump · issues requiring fix (each failure listed) · advisory (judgment-grade, non-blocking — suspected trace-fidelity mismatches, or \"none\").",
+  "rule": "The VALIDATION RESULT block carries every line: `VALIDATION RESULT: PASS/FAIL` · checklist items X/Y passed (core + N module fragments, named) · surface integrity (region markers · index→home resolution · rules files paths-scoped · scope coverage · new-file read line present/absent/n-a · universal-in-rules violations) · trace closure (manifest rows closed, primary home + companions · synthesis elements realized-or-flagged · waivers matched · modules matched) · floor accounting (floor + declared level asserted, region stamp = ledger · floor categories principled at the declared level or waived) · anti-patterns found (list or \"none\") · version bump · issues requiring fix (each failure listed) · advisory (judgment-grade, non-blocking — suspected trace-fidelity mismatches, or \"none\").",
   "class": "must",
   "source": "log:validation-constitution.validation-result-block",
   "section": "validation-constitution.sec.output",

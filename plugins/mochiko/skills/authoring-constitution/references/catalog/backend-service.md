@@ -107,8 +107,7 @@ doing too much.
 
 **Type tags:** backend, service, fullstack-api
 **Layer:** arbitrated (architecture-opinion — recommended for services; the user keeps / tightens / drops)
-**When kept:** production-strength enforcement — dependency scanning blocks merge at high/critical. License compliance, documented supply-chain review, and tightened blocking severity (medium+) are compliance-module content ([../COMPLIANCE-MODULES.md](../COMPLIANCE-MODULES.md)), attached via the fact profile.
-
+**When kept:** production-strength enforcement — dependency scanning blocks merge at high/critical.
 **Content:**
 
 External dependencies MUST be justified, minimal, and isolated. Every dependency is a liability —

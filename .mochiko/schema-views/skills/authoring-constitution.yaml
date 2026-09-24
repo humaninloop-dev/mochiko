@@ -99,9 +99,7 @@ sections:
         text: >-
           The content sources bind: the type-shelved principle deck (`references/catalog/`) ·
           `references/ESSENTIAL-FLOOR.md` (the canonical four floor categories) ·
-          `references/COMPLIANCE-MODULES.md` (audit-evidence variants, attached via the
-          synthesis's fact profile) · `references/EMERGENT-CEILING-PATTERNS.md` (brownfield's
-          existing-pattern library).
+          `references/EMERGENT-CEILING-PATTERNS.md` (brownfield's existing-pattern library).
         pointer: references/catalog/README.md
       - id: authoring-constitution.missing-synthesis-stop
         labels: [fence]
@@ -157,8 +155,7 @@ sections:
         text: >-
           Every authored principle carries its GI trace — on `CLAUDE.md` as an HTML comment
           beside the line, and always in the ledger as the `GI-XXX (floor-asserted: CARD-ID |
-          deck-kept: CARD-ID | minted | module: <module>-<obligation>)` key, the canonical trace
-          record.
+          deck-kept: CARD-ID | minted)` key, the canonical trace record.
       - id: authoring-constitution.realized-or-flagged
         labels: [evidence]
         class: floor
@@ -242,9 +239,10 @@ sections:
         labels: [artifact-grammar]
         class: must
         text: >-
-          Amend preserves untouched principles verbatim (their GI-IDs are stable) and bumps the
-          region's semver; a `.mochiko/memory/constitution.md` on disk is superseded — the lead
-          deletes it, never author into it.
+          Amend preserves untouched principles verbatim (their GI-IDs are stable) — a
+          fact-profile module or a product-instance principle is superseded in place once, never
+          carried — and bumps the region's semver; a `.mochiko/memory/constitution.md` on disk
+          is superseded — the lead deletes it, never author into it.
         when: {mode: amend}
         anchor: 2026-07-18 constitution-native-surfaces D8
       - id: authoring-constitution.three-part-rule
@@ -285,9 +283,8 @@ sections:
         class: floor
         text: >-
           A waived standard gets a waiver record in the ledger — standard, justification,
-          optional revisit trigger, trace; permanent pending the D4.1 revisit, and legal-mandate
-          module obligations are never waivable (D4.2). Absence is always deliberate and
-          auditable.
+          optional revisit trigger, trace; permanent pending the D4.1 revisit. Absence is always
+          deliberate and auditable.
         anchor: 2026-08-11 production-floor-adaptive-depth
       - id: authoring-constitution.brownfield-ceiling-test
         labels: [evidence]
@@ -342,24 +339,6 @@ sections:
           referenced, never restated.
         pointer: references/catalog/universal-floor.md
         anchor: 2026-08-11 production-floor-adaptive-depth
-      - id: authoring-constitution.module-mechanical-attachment
-        labels: [artifact-grammar]
-        class: must
-        text: >-
-          Compliance modules attach mechanically from the fact profile — fact-triggered, never
-          from appetite — additive-only and level-blind, per `references/COMPLIANCE-MODULES.md`.
-          Referenced, never restated.
-        pointer: references/COMPLIANCE-MODULES.md
-        anchor: 2026-08-11 production-floor-adaptive-depth D7
-      - id: authoring-constitution.s4-fail-safe
-        labels: [evidence]
-        class: must
-        kind: duty
-        text: >-
-          The S4 fail-safe binds per `references/COMPLIANCE-MODULES.md` — named elicitation,
-          consequence-stated confirmation, the brownfield cross-check confronted in the open, the
-          temporal backstop — and a compliance amend event is MAJOR. Referenced, never restated.
-        pointer: references/COMPLIANCE-MODULES.md
       - id: authoring-constitution.domain-dependency-admissibility
         labels: [evidence]
         class: must
@@ -380,6 +359,18 @@ sections:
           declared files in the memory home: render `mochiko-cli home .mochiko/memory` before
           writing either, and raise a name it does not carry rather than adding one.
         anchor: 2026-09-13 hook-enforced-artifact-schema D1
+      - id: authoring-constitution.rule-not-instance
+        labels: [single-home, artifact-grammar]
+        class: must
+        text: >-
+          A principle holds the rule, never the product's instance of it: it enters the set only
+          if it can be checked from the code, the pipeline or the stack without knowing what the
+          product does for its users. Where it needs the instance — a boundary list, a data
+          class's name, a behaviour toward users, an app-level SLO number — it points at the
+          instance's home and never restates it. Elicited intent that fails the test is neither
+          authored nor flagged as a proposal: it sits in the synthesis's Handed off list, the
+          hand-off recorded, never its content.
+        anchor: 2026-09-24 setup-product-agnostic D2
   - id: authoring-constitution.sec.output
     title: Output — what every governance set ships
     intent: The mandatory content the set carries and the closure the validator checks.
@@ -407,13 +398,13 @@ sections:
         kind: duty
         text: >-
           The region carries: the ratified stamp (version · ratified date · floor · declared
-          depth level · attached modules, semver per the template's amendment policy — Shape 3)
-          · the principle index (one line per principle, pointer to its home when the home is not
-          the region) · the universal principles as short imperative lines, floor principles
-          first and marked `(NON-NEGOTIABLE)`, each authored at the row the declared depth level
-          selects (a `high`-only check is absent at `low`) · the technology stack from the
-          synthesis's real-commands and existing-practices elements, brownfield populating from
-          the codebase analysis.
+          depth level, semver per the template's amendment policy — Shape 3) · the principle
+          index (one line per principle, pointer to its home when the home is not the region) ·
+          the universal principles as short imperative lines, floor principles first and marked
+          `(NON-NEGOTIABLE)`, each authored at the row the declared depth level selects (a
+          `high`-only check is absent at `low`) · the technology stack from the synthesis's
+          real-commands and existing-practices elements, brownfield populating from the codebase
+          analysis.
         anchor: 2026-07-25 skill-succinctness-strip
       - id: authoring-constitution.quality-gates-actual-commands
         labels: [artifact-grammar, evidence]
@@ -441,9 +432,8 @@ sections:
         text: >-
           The ledger ships its sections per the template's Shape 3, with the riders: the waiver
           table says "None." when nothing is waived · every waiver carries its recorded
-          justification per the D4 model · legal-mandate module obligations are never waived
-          (D4.2) · fact-profile changes (module attach/detach) and un-waives are governance
-          events routed back through setup's amend mode.
+          justification per the D4 model · governance events route back through setup's amend
+          mode — the template's Amendment policy closes their set.
         anchor: 2026-07-25 skill-succinctness-strip
   - id: authoring-constitution.sec.reserved
     title: Reserved — selection is never this seat's
@@ -477,3 +467,13 @@ sections:
           preserved verbatim. Referenced, never restated.
         pointer: references/DOMAIN-DEPENDENCIES.md
         anchor: 2026-07-21 domain-dependency-allowlist
+tombstones:
+  - id: authoring-constitution.module-mechanical-attachment
+    disposition: >-
+      superseded — no compliance module attaches in a setup run; the fact profile is not
+      elicited (setup-product-agnostic D1; the module content's home is OQ1's) (2026-09-24
+      setup-product-agnostic D1)
+  - id: authoring-constitution.s4-fail-safe
+    disposition: >-
+      retired with interrogation dimension 2 — no fact profile is elicited, so the
+      fact-validation fail-safe has nothing to guard (setup-product-agnostic D1)

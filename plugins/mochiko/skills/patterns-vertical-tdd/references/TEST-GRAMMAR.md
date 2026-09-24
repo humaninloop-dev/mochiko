@@ -134,7 +134,7 @@ rules on at the checkpoint):
 - **Assert**: Body text lines run ≤ 80 characters at the rendered width
 - **Assert**: Heading levels descend without a skip (no h1 → h3)
 - **Assert**: No horizontal scroll and no clipped or overlapping content at each of those viewports
-- **Assert**: The project's accessibility standard of record holds for this screen — the checks its attached `a11y` compliance module names, else the floor line `mochiko:patterns-code-minimalism` carries (cite it; never restate it here)
+- **Assert**: The project's accessibility standard of record holds for this screen — the checks the design baseline's Accessibility pointer names, else the floor line `mochiko:patterns-code-minimalism` carries (cite it; never restate it here)
 - **Capture**: screenshot, console
 ```
 

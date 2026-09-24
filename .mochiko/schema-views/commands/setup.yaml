@@ -30,7 +30,7 @@ moments:
   ratification: The user's ratification of the synthesis — before any surface is authored.
   acceptance: >-
     The user's final acceptance of the surface set, flagged proposal by flagged proposal.
-  close: Where the feature map and the bootstrapped surfaces must exist.
+  close: Where the feature-map index and the scaffolds must exist.
 sections:
   - id: setup.sec.roles
     title: Roles & Responsibilities — seat wiring
@@ -61,7 +61,7 @@ sections:
         class: floor
         text: >-
           The pre-ratification stress-test seat is spawned in two messages — first the setup
-          topic / project identity and goal only, never the synthesis path
+          topic / project name and goal only, never the synthesis path
           (${memory_dir}/governance-intent.md), so it builds its Phase 0 angle map blind to what
           the interrogation concluded; its map returns before you send the synthesis path and the
           cold read begins. In a pair, both seats build their maps independently.
@@ -75,36 +75,6 @@ sections:
           `model:` alias never below the producer's tier; its FAIL→fix→re-grade loop is
           bounded by setup.gate-loop-bound.
         anchor: 2026-09-19 author-grader-consolidation D7
-      - id: setup.product-truth-leg
-        labels: [seats]
-        class: must
-        kind: duty
-        text: >-
-          The product-truth leg is yours, inline, inside the interrogation stage
-          (setup.interrogation-inline): ask only what the repo, README, brand assets and,
-          brownfield, the analysis cannot answer, of five — platform, one of `web` · `ios` ·
-          `android` · `adaptive` · `desktop`, an unrecognized answer warned and never silently
-          defaulted · brand commitments and voice · design principles · the accessibility
-          standard of record, asked nothing: a pointer to the compliance module or floor line that
-          holds it · the evidence fence — no claim, testimonial, benchmark, customer or pricing
-          invented where evidence is absent. Audience and purpose are never asked; they live at
-          the product desk, and the design truth points there.
-        anchor: 2026-09-19 impeccable-design-integration D6
-      - id: setup.design-truth-write
-        labels: [seats, independence]
-        class: must
-        kind: binding
-        text: >-
-          The design baseline, ${product_dir}/design/design.md, has one writer, the
-          `product-designer` seat — never you. Dispatch it as a producer with the leg's answers
-          in its brief; it writes the truth part and, brownfield, seeds the system part from the
-          analysis's design-system facts, shape from `mochiko-cli home
-          ${product_dir}/design/design.md` and `mochiko-cli template design-baseline`. A plain
-          fresh seat that authored none of it grades the write against `mochiko-cli template
-          design-baseline --check`, spawned with an explicit `model:` alias never below the
-          producer's tier; its FAIL→fix→re-grade loop is bounded by setup.gate-loop-bound.
-        pointer: mochiko:patterns-sound-loop
-        anchor: 2026-09-19 impeccable-design-integration D6
   - id: setup.sec.reserved
     title: Reserved to the user — never the run's
     intent: 'Decisions held by the user: gates, rulings, and escalations no seat may take.'
@@ -129,11 +99,7 @@ sections:
         labels: [user-gate]
         class: must
         kind: reservation
-        text: >-
-          Every interrogation card ruling, module ruling, and waiver is the user's — and so is
-          every product-truth answer (setup.product-truth-leg) and the ratification of the design
-          baseline the seat writes — its truth part and, brownfield, its code-seeded system
-          part.
+        text: Every interrogation card ruling, module ruling, and waiver is the user's.
       - id: setup.gate-synthesis-ratification
         labels: [user-gate]
         class: floor
@@ -146,12 +112,6 @@ sections:
         text: >-
           Detected reality vs declared intent conflicts are the user's — confronted in the open,
           never silently resolved.
-        when: {mode: [brownfield]}
-      - id: setup.user-map-confirmation
-        labels: [user-gate]
-        class: must
-        kind: reservation
-        text: Confirmation of the reconstructed feature map, entry by entry, is the user's.
         when: {mode: [brownfield]}
       - id: setup.gate-final-acceptance
         labels: [user-gate]
@@ -204,37 +164,16 @@ sections:
           The knowledge-management module adopted → scaffold per
           templates/constitution-modules/knowledge-management.md, including the project-pinned
           copy at ${memory_dir}/knowledge-management.md; its never-overwrite floor holds.
-      - id: setup.feature-map-brownfield
-        labels: [landing]
-        class: must
-        text: >-
-          The analysis (setup.interrogation-inputs) extends into a feature-map reconstruction —
-          delivered capabilities derived from the code (routes, UI surfaces, services), confirmed
-          with the user, landing as the initial FEATURES.md + .mochiko/features/ entries with
-          `delivered` status and the reconstructed-from-code mark (shape: the features-index and
-          feature-entry templates — mochiko-cli template features-index and mochiko-cli template
-          feature-entry; map machinery and the first-touch re-verify obligation:
-          mochiko:authoring-feature-map).
-        when: {mode: [brownfield]}
-        pointer: mochiko:authoring-feature-map
       - id: setup.feature-map-greenfield
         labels: [landing]
         class: must
-        text: Scaffold the empty FEATURES.md index.
-        when: {mode: [greenfield]}
-      - id: setup.baselines-bootstrap
-        labels: [landing]
-        class: must
         text: >-
-          `Assumed`: the brownfield analysis also bootstraps the product baselines —
-          data-model.md · contracts/ · constraints-and-decisions.md · quickstart.md — at
-          ${product_dir}/ (ARCHITECTURE.md stays repo root, now as the store's derived index) —
-          from the delivered code; greenfield seeds those baselines at the first implement run's
-          design phase instead. The design baseline is the third arm: its truth part
-          interrogation-sourced on every path (setup.product-truth-leg), its system part
-          code-seeded on brownfield and left absent on greenfield
-          (setup.design-scaffold-unconditional).
-        anchor: 2026-08-26 plan-stage-utility
+          Scaffold the empty FEATURES.md index on every path, write-if-absent — the
+          features-index template's header with no capability rows (shape: mochiko-cli template
+          features-index); an existing index is never touched. On brownfield the empty index
+          carries one line under the header stating that reconstruction of the delivered
+          capabilities is pending and is not setup's — its owner is the open rehoming question
+          (setup-product-agnostic OQ1).
       - id: setup.store-scaffold-unconditional
         labels: [binding]
         class: must
@@ -279,11 +218,13 @@ sections:
         class: must
         text: >-
           The design home's scaffold is unconditional — on every path,
-          ${product_dir}/design/design.md is created where missing, carrying its required truth
-          headings, inside the product-designer seat's write (setup.design-truth-write); it
-          creates only what is missing and never writes over a baseline that carries content. The
-          optional system sections stay absent until code seeds them — brownfield here,
-          greenfield at the first UX-bearing feature's landing fold.
+          ${product_dir}/design/design.md is created where missing, written by you as an empty
+          scaffold: the design-baseline template's required truth headings (shape from
+          `mochiko-cli home ${product_dir}/design/design.md` and `mochiko-cli template
+          design-baseline`) with no product content under them — no `product-designer` seat and
+          no grader in this run. It creates only what is missing and never writes over a baseline
+          that carries content; the optional system sections stay absent until a landing fold
+          writes them from shipped code.
         anchor: 2026-09-19 impeccable-design-integration D6
   - id: setup.sec.ways-of-working
     title: Ways of Working
@@ -354,9 +295,8 @@ sections:
         class: floor
         text: >-
           The never-overwrite floor covers every feature-map write the run makes — the
-          brownfield reconstruction (setup.feature-map-brownfield) and the greenfield scaffold
-          (setup.feature-map-greenfield) are its instances, not its extent — and an amend run
-          makes none.
+          empty-index scaffold (setup.feature-map-greenfield), write-if-absent on every path, is
+          its one instance, not its extent: an existing index or entry file is never written over.
       - id: setup.store-ruled-content-never-here
         labels: [binding, stewardship]
         class: floor
@@ -422,10 +362,8 @@ sections:
         labels: [landing]
         class: floor
         kind: fail
-        text: >-
-          No feature map at close — brownfield reconstruction unconfirmed, greenfield index
-          unscaffolded, or, on an amend, a missing map neither surfaced nor offered.
-        enforces: [setup.feature-map-brownfield, setup.feature-map-greenfield, setup.user-map-confirmation]
+        text: No feature-map index at close — absent and not scaffolded.
+        enforces: [setup.feature-map-greenfield]
         anchor: 2026-08-26 command-content-schema D7
 tombstones:
   - id: setup.sec.harness
@@ -436,3 +374,26 @@ tombstones:
     disposition: >-
       superseded → rules redistributed across the D4 six-set
       (command-md-scaffold-standardization D3/D4/D5)
+  - id: setup.product-truth-leg
+    disposition: >-
+      superseded — setup elicits no product truth; the design home is the lead's empty scaffold
+      (setup.design-scaffold-unconditional); where the truth content lives is OQ1's
+      (setup-product-agnostic D5) (2026-09-24 setup-product-agnostic D5)
+  - id: setup.design-truth-write
+    disposition: >-
+      superseded — no product-designer seat and no grader in setup; the lead writes the empty
+      design scaffold (setup.design-scaffold-unconditional) (setup-product-agnostic D5)
+      (2026-09-24 setup-product-agnostic D5)
+  - id: setup.baselines-bootstrap
+    disposition: >-
+      superseded — setup bootstraps no product baselines on any path; their bootstrap is OQ1's
+      (setup-product-agnostic D5) (2026-09-24 setup-product-agnostic D5)
+  - id: setup.user-map-confirmation
+    disposition: >-
+      retired — setup reconstructs no map, so there is nothing to confirm; it scaffolds the
+      empty index only (setup.feature-map-greenfield) (setup-product-agnostic D5)
+  - id: setup.feature-map-brownfield
+    disposition: >-
+      retired — setup reconstructs no feature map; the empty-index scaffold is
+      setup.feature-map-greenfield on every path; reconstruction is OQ1's (setup-product-agnostic
+      D5)
