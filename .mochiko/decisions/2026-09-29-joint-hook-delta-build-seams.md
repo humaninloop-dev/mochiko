@@ -1,0 +1,108 @@
+# The hook field review and the delta-files retirement build together — the seams between them
+
+**Date:** 2026-09-29
+**Status:** ruled (user) 2026-09-29, R1–R6 each "as recommended" (R5/R6 at the wave-1 plan's
+approval); build started 2026-09-29 on branch `joint-hook-delta`
+**Driver:** the user asked to implement `hook-enforcement-field-review` (accepted 2026-09-23) and
+`delta-files-vs-direct-baseline-edits` (accepted 2026-09-24) together, after asking whether their
+decisions clash.
+
+## Context
+
+The delta record already rules that its build rides the field review's four waves (its D6d), so
+building them together is the ruled path, not a new choice. A cross-read of both records found no
+direct clash: the delta record supersedes in part the two field-review clauses that disagreed with
+it (the field review's OQ1 "fold shape" question and its `baseline-delta.md` entry-class candidate,
+delta D1/D6a). It did find seven seams where both records rule the same object and neither says
+what happens, and two smaller ones.
+
+Two things changed after both records were accepted. AM-5 (governance v3.2.0, 2026-09-24) landed
+the field review's wave-3 ledger amendment and recorded the 0.109.0 hook ship as a GI-012
+exception-registry row, which lets further `plugin.json` bumps ship the hooks until the first
+`mochiko-cli` publish with all four controls. Plugin v0.115.0 (`setup-product-agnostic`) took
+migrations 0019–0023 and struck setup's design-truth write, leaving the design truth part's writer
+to a queued rehoming brainstorm (that record's OQ1).
+
+## Decision
+
+**R1 — A ruling that changes a baseline lives on its entry only (seam 1).** A ruling made during an
+implement run that changes a product baseline or the architecture store is recorded on that entry
+and nowhere else, its reason in the entry's own fields (`Source` · `Shaped by` · `Impact`, or a
+build-raised entry's `Raised:` · `Weighed:`, delta D3b). The `.mochiko/decisions/<date>-<slug>.md`
+route of the field review's D6 (as amended at its review, S1) takes only standing in-run rulings
+that touch no baseline, such as "the verifier runs tests in release mode". This narrows the field
+review's S1 routing; it lands in wave 3's `impl.artifact-home` reword.
+
+**R2 — The base commits survive the run log (seam 6).** The run-open base commit is also written
+into `sufficiency-report.md`, and both base commits (run-open, and the sign-off commit or the
+checkpoint-table stand-in of delta V1) into the final-validation report. The ephemeral run log of
+the field review's D6 keeps them too. This adds to delta D3c; nothing in it is withdrawn.
+
+**R3 — No implement run is open across the joint upgrade (seam 7).** When the joint bump reaches a
+consumer, no implement run is open there: every open run lands or is closed before the upgrade.
+Kinako's wave-4 pass checks this first. The rule is for this upgrade only, because this one removes
+the per-feature delta files and the fold that an open run would need to finish. The field review's
+S16(ii) posture — a run in flight reads the new homes at its next write, no run pins a plugin
+version — stands for every other upgrade.
+
+**R4 — The joint build ships under the AM-5 exception row (publish).** The joint `plugin.json` bump
+ships the hooks under the GI-012 exception-registry row (only the maintainer installs, from git
+`main`), its `CHANGELOG.md` entry citing the row as the row requires. The field review's wave-1
+publish stays owed: the crate version is bumped, and no `mochiko-cli-v*` tag lands until the two
+owed controls (a manual-approval publish environment, signed tags) exist; that publish closes the
+row.
+
+**R5 — The run-id form (the field review's OQ2).** A run folder is named `<owner>-run<n>`, the owner
+being the delta record's D2 lifecycle key: `.mochiko/runs/FEAT-001-run5/`, `EPIC-003-run1/`,
+`lane-auth-fix-run1/`. The lead creates it at run-open. The run-key name check (the field review's
+D4 control 2) keys on this form, built as a new `<run-id>` path token in wave 1.
+
+**R6 — Who deletes the run folder (the field review's OQ5).** The lead removes it as a landing step
+after the user's acceptance. No `mochiko-cli run close` subcommand is built.
+
+**Routed to the census table, no new ruling (seams 2–5 and the smaller two).** The field review's
+wave-2 census table — one artifact the user ratifies — also: declares the archived-ledger shape
+under `archive/` and the wave-4 pass names the move route, since the field review's S12 keeps
+`mv <home> <elsewhere>` a deny (seam 2); sizes each entry budget on the baselines as they stand
+after the delta record's D5 cleanup, and states how text outside entries is bounded (summary
+tables, relationship tables, validation-rule lists, dated reconciliation sections) (seam 3); states
+whether the `Lifecycle:`, `Raised:` and `Weighed:` lines count toward an entry's budget (seam 4);
+rules `quickstart.md` and `design/design.md` — their entry grammar and their bound — with the
+design truth writer left to the rehoming brainstorm (seam 5); and is taken from the write sets the
+primitives will have after the delta record's rewrites, not today's (smaller one). How a report
+cites a reproducing commit for uncommitted work (field review D4, which has no fallback where delta
+V1 has one) is put to the user at the wave-3 plan approval (smaller two).
+
+## Rationale
+
+- R1: the field review's S1 example list already included "`AX-007` amended", a store change, so
+  without a boundary one ruling would be written twice or in a seat-chosen place. The delta record
+  made the entry the home of a baseline change's reason; the decisions route keeps what has no
+  entry.
+- R2: the unmarked-write test's "already in the tree at run-open" exclusion needs the run-open
+  commit, and the field review deletes the run log at acceptance. The sign-off commit already had a
+  durable stand-in (the checkpoint table); the run-open commit had none.
+- R3: an open run's delta copies and ledger stop being legal files, and the fold that would land
+  them no longer exists, so the run could not finish. A pre-upgrade check costs one line; the other
+  roads need a mechanism or hand work per run.
+- R4: the two controls are set up by the user on GitHub; waiting for them would hold the whole
+  build. The exception row was written for exactly this window, with a tripwire (anyone else
+  installs) and a 2026-12-31 backstop.
+- R5: one vocabulary for the run folder and the lifecycle markers, readable at a glance.
+- R6: the pre-code ladder stops at "exists already"; `rm -r` inside `runs/` is not a parsed write.
+
+## Alternatives considered
+
+- R1: both places, the entry plus a `decisions/` record pointing at it (two surfaces to keep in
+  agreement) · `decisions/` only, the entry pointing there (the reason away from the entry, against
+  delta D3b).
+- R2: the run log only, as ruled (no trace after acceptance of which base the review read) · both
+  commits in the `architecture.md` checkpoint table (only exists when the run carries a drawing).
+- R3: the lead converts an open run's delta files into marked entries at its next write (manual,
+  per run) · the open run finishes on the old plugin (needs a version-pin mechanism that does not
+  exist).
+- R4: publish first, then ship (nothing ships until the GitHub setup is done).
+- R5: a date plus the owner (two runs of one feature on one day collide) · a random key minted at
+  run-open (never collides, but the folder does not say whose run it is).
+- R6: a new `mochiko-cli run close <id>` subcommand (one more command to build and test for what a
+  removal already does).

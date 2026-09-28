@@ -91,7 +91,8 @@ provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
   **Prose (its wave 3):** the skills D6d lists, entry templates, strips, audits, bump. **Kinako
   (its wave 4):** D5 in order — run 4's fold applied (`C-011`/`D-061`), ledgers to `archive/`,
   copies deleted, fold blocks re-homed, 63 files' links re-pointed, each write diff-graded by a
-  non-author seat. Watch: OQ1 — the per-entry budget must admit the 177-line entry.
+  non-author seat. Watch: OQ1 — the per-entry budget must admit the 177-line entry. **Joint build
+  ruled 2026-09-29** (one branch, one bump, seams R1–R4: `.mochiko/decisions/2026-09-29-joint-hook-delta-build-seams.md`).
 
 ## CLI schema-delivery build
 
