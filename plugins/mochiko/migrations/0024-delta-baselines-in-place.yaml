@@ -1,0 +1,309 @@
+grammar: 1
+id: 0024-delta-baselines-in-place
+sequence: 24
+intent: >-
+  Execute delta D1: product baselines are edited in place under the run's lifecycle marker; the
+  per-feature delta copies, the baseline-delta.md ledger and the fold go. The in-place floor
+  replaces impl.baselines-never-in-place (its store carve moves to the store's sign-off flip,
+  0029); the build-time entry rule replaces the adopt-first ledger rule; the design baseline
+  template names the truth part's build-raised entry in place of the ledger (A2). What leaves each
+  reword (Q6): the ledger item (feat.author-grader, feat.delta-cards); "appliable before/after"
+  (map-side-altitude); "the graded folds" (landing-lane); the ledger route (design-landing, now a
+  truth-part build-raised entry, A2); "lands as deltas" (the seed, its keep-apart kept as the
+  checkpoint card's separate listing, Q5); "design deltas" and "a store delta"
+  (design-seats-staffing).
+anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D1
+hash: sha256:5632a86be584f0d8e811c612cb3ddd8be28f0bb895aa2eec6ba834e93b986820
+changes:
+  - op: supersede-rule
+    schema: command/implement
+    id: impl.baselines-never-in-place
+    disposition: >-
+      superseded by impl.baselines-in-place-marked — baselines are edited in place under the
+      run's lifecycle marker (D1); the graded fold and the per-feature delta copies go. Its store
+      carve (a store write only at the checkpoint's sign-off) moves to
+      authoring-architecture-store.sign-off-flips-proposed (0029); its "ruled truth never edited
+      in place" leaves by D1/D2 — a ruled entry is amended in place as `modifying`, the prior
+      text in the pinned-base diff.
+    anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D1
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.boundaries
+    rule:
+      id: impl.baselines-in-place-marked
+      labels: [landing]
+      class: floor
+      text: >-
+        Product baselines are edited in place. A seat that needs one to say something new — in
+        the design phase, or at a build-time technical decision — writes it into the product
+        file itself at ${product_dir}/ (data-model.md, constraints-and-decisions.md, contracts/,
+        quickstart.md, the design baseline's truth part, and the architecture store), on the run's
+        working tree, each written or amended entry under the run's lifecycle marker
+        (impl.baseline-entry-grammar). No per-feature or epic copy of a baseline, no
+        baseline-delta.md ledger, no fold: the change is the diff against the run's pinned base
+        (impl.base-pins), reviewed per impl.baseline-diff-review. A write into an absent baseline
+        creates the file in place. The design baseline's system part takes no design-phase or
+        build-time write: it lands from shipped code per impl.design-landing. The rule binds
+        feature, epic and product-lane runs; an out-of-run fix that ships a baseline edit and its
+        code in one commit writes `built` directly, no marker.
+      anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D1
+  - op: supersede-rule
+    schema: skill/patterns-adopt-first
+    id: patterns-adopt-first.baseline-delta-landing
+    disposition: >-
+      superseded by patterns-adopt-first.build-time-entry-landing — the build-time entry is
+      written in place in the product file under its lifecycle marker (D1); the baseline-delta.md
+      ledger this id names is retired. Its judgment grade before acceptance moves to the
+      successor.
+    anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D1
+  - op: mint-rule
+    schema: skill/patterns-adopt-first
+    section: patterns-adopt-first.sec.disclosure
+    rule:
+      id: patterns-adopt-first.build-time-entry-landing
+      labels: [binding]
+      class: must
+      kind: binding
+      text: >-
+        A build-time D-XXX / C-XXX / IP-XXX write lands in place in the product file under its
+        lifecycle marker — `in-flight (<key>)` for a new entry, `modifying (<key>)` or `removing
+        (<key>)` for an amendment or removal of a ruled one — graded as judgment before the user
+        accepts it; never a side ledger, never an unmarked edit of a ruled baseline.
+      when: {firing_site: build-time}
+      anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D1
+  - op: reword-rule
+    schema: command/implement
+    id: impl.landing-lane
+    text: >-
+      The landing adds no map work to the store landing and the baseline landing flip: a product
+      lane owns no capability entry, so the map takes no write — no graduation batch, no status
+      flip, no extent-line fold — and the map-delta boundary check of
+      impl.landing-verifier-folds reads as zero writes. The lane directory at
+      ${product_dir}/lane-<slug>/ persists as record.
+  - op: reword-rule
+    schema: command/feature
+    id: feat.author-grader
+    text: >-
+      Wherever a seat produces (delta card, a baseline entry written in place under its lifecycle
+      marker, grooming proposal), no output is cleared by its author; a producing seat plans
+      first, read-only, in a plan-only dispatch, and works only on a plan a fresh peer of its
+      persona type passed per `mochiko:review-seat-plan` and you approved.
+  - op: reword-rule
+    schema: command/feature
+    id: feat.delta-cards
+    text: >-
+      One delta card per the tasks template's card shape (rendered by `${tasks_schema}`): a bug's
+      acceptance is its reproduction-failing test, an improvement carries 1–3 acceptance
+      criteria; a product-baseline touch known at intake is named on the card, its entries
+      enumerated, and the implement run writes it in place under its lifecycle marker — never a
+      side ledger. Each card — bug and improvement alike — takes the sound-loop review leg
+      (feat.sound-loop-floor) before dispatch.
+  - op: reword-rule
+    schema: skill/authoring-feature-map
+    id: authoring-feature-map.map-side-altitude
+    text: >-
+      A work row is a map-side increment; the product baselines under `.mochiko/product/`, edited
+      in place under a run's lifecycle marker, are a different altitude — implement's surface,
+      untouched here.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-landing
+    text: >-
+      A UX-bearing landing folds the built UI into the design baseline: ${designer_seat} derives
+      the system part from shipped code, never from intent, reconciles it against the direction
+      contract's declared tokens, writes the shipped values, and marks each divergence, each
+      critique-advisory finding, and each accepted design-audit Drift: candidate as Drift:. The
+      write is judgment, graded by the landing verification seat. The setup lead writes only its
+      empty scaffold; ${designer_seat} is the only writer of its content, on two paths: a
+      build-raised entry in the truth part, written in place under its lifecycle marker
+      (impl.baseline-entry-grammar), and this fold.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-absent-baseline-seed
+    text: >-
+      The phase's first duty is the seed — an empty scaffold stating so where no code is
+      delivered; reconstructed from delivered code, and confirmed with the user at the checkpoint,
+      where it exists. The seed is the baseline write, its entries `proposed (<key>)` like every
+      design-phase write; the checkpoint card lists the seed entries apart from this feature's
+      design entries, so the design is never merged into the seed.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-seats-staffing
+    text: >-
+      Design-seat staffing is your call: typically ${design_seat} for the design-phase baseline
+      writes, ${architect_seat} for the store's `proposed` elements and the run's architecture.md
+      drawing, ${qa_seat} for the **TEST:** cases.
+  - op: replace-document
+    kind: template
+    name: design-baseline
+    content:
+      template: design-baseline
+      title: Design Baseline
+      form: artifact-format.md
+      register: full
+      overview: >-
+        `design.md` — the product's design baseline at `.mochiko/product/design/`, beside the
+        architecture store. Two parts in one file. The design truth part (platform, brand and
+        voice, design principles, the evidence fence, the accessibility pointer) is durable and
+        product-wide. The design system part (tokens, typography, components, motion) holds values
+        as built and is written only from shipped code at a landing fold, never from intent; where
+        it is still empty at landing, its first write is signed by the user at final acceptance.
+        Its empty scaffold — the required headings, no content — is written by the
+        `/mochiko:setup` lead where the file is missing; its content has one writer,
+        `product-designer`, on two graded paths: a build-raised entry in the truth part, written
+        in place under its lifecycle marker, and the landing fold. Who writes the truth part's
+        content is open (setup-product-agnostic OQ1). Mode and the direction contract are per
+        surface and live in the feature spec's Screens & Flows Direction block, never here;
+        audience and purpose live in the product desk and are pointed at, never restated. Values,
+        not stances: rendering strategy, state management, styling-system and component-library
+        policy, and the a11y card are stances the architecture store deals as AX-XXX rows; a store
+        row that needs a value points here, and this file never carries a stance. Where a stance
+        and a value conflict, the stance wins and the conflict is a Drift entry at the next
+        landing fold. No derived index.
+      conformance:
+        extra_headings: deny
+      sections:
+        - name: Header
+          required: true
+          contract: >-
+            Title "# Design Baseline" plus one line pointing at the product desk for audience and
+            purpose. Governs no heading of its own.
+          check: Is the title present with the product-desk pointer, and nothing restated from it?
+        - name: Platform
+          heading: Platform
+          required: true
+          max_lines: 5
+          contract: >-
+            Truth part. The product's platform in one value — web, ios, android, adaptive, or
+            desktop. Free text: an unrecognized value is recorded as given and warned, never
+            silently defaulted.
+          check: >-
+            Is the value one of web / ios / android / adaptive / desktop? An unrecognized value is
+            warned and recorded, never denied or silently defaulted — or is it stated as not yet
+            recorded?
+        - name: Brand and voice
+          heading: Brand and voice
+          required: true
+          max_lines: 15
+          contract: >-
+            Truth part. Brand commitments and the product's voice, each sourced from evidence the
+            repo, README, or brand assets hold or the user stated. One line per commitment.
+          check: >-
+            Is each commitment and voice line sourced, never invented — or is the section stated
+            as not yet recorded?
+        - name: Design principles
+          heading: Design principles
+          required: true
+          max_lines: 12
+          contract: >-
+            Truth part. The product's design principles, one line each, each a choice a builder
+            could honor or violate.
+          check: >-
+            Is each principle one line and decidable against a built screen — or is the section
+            stated as not yet recorded?
+        - name: Evidence fence
+          heading: Evidence fence
+          required: true
+          max_lines: 8
+          contract: >-
+            Truth part. The evidence on hand, and the fence: claims, testimonials, benchmarks,
+            customers, and pricing are never invented where evidence is absent.
+          check: >-
+            Does it list the evidence on hand and fence claims, testimonials, benchmarks,
+            customers and pricing as never invented where evidence is absent?
+        - name: Accessibility
+          heading: Accessibility
+          required: true
+          max_lines: 5
+          contract: >-
+            Truth part. A pointer to the accessibility standard of record — the Essential Floor
+            line, unless a later ruling names another home — and nothing else. The obligation is
+            defined there, never restated here.
+          check: >-
+            Is it a pointer to the standard of record (the Essential Floor line, or the home a
+            later ruling names), with no obligation restated?
+        - name: Tokens
+          heading: Tokens
+          required: false
+          max_lines: 30
+          contract: >-
+            System part. Color, spacing, radius, and elevation tokens as built, each with its
+            value and the source file it lives in. Absent until the first landing writes it.
+          check: Is every token a shipped value with its source file, never an intended one?
+        - name: Typography
+          heading: Typography
+          required: false
+          max_lines: 12
+          contract: >-
+            System part. Font families and the type scale as built, with their source files.
+          check: Are the families and the scale the shipped ones, with source files?
+        - name: Components
+          heading: Components
+          required: false
+          max_lines: 25
+          contract: >-
+            System part. The component inventory as built, one line each: name, source path,
+            variants. Values only — a component-library policy is a stance and lives in the
+            store.
+          check: Is each component one line with a source path, and no policy stated?
+        - name: Motion
+          heading: Motion
+          required: false
+          max_lines: 8
+          contract: >-
+            System part. Durations, easing, and motion rules as built, with their source files.
+          check: Is each motion rule a shipped value with its source?
+        - name: Drift
+          heading: Drift
+          required: false
+          max_lines: 15
+          contract: >-
+            Written by the landing fold only. One line per divergence — declared-versus-shipped,
+            an unsigned or advisory critique finding, a design-audit divergence, or a stance-value
+            conflict — keyed to the token or component and the FEAT-XXX that surfaced it.
+          check: Is each line one divergence, keyed to a token or component and a FEAT-XXX?
+      skeleton: |
+        # Design Baseline
+
+        Audience and purpose: see the product desk.
+
+        ## Platform
+
+        [web | ios | android | adaptive | desktop — or "not yet recorded"]
+
+        ## Brand and voice
+
+        - [commitment, with its source]
+
+        ## Design principles
+
+        - [principle a builder could honor or violate]
+
+        ## Evidence fence
+
+        - On hand: [evidence, with its source]
+        - Never invented where evidence is absent: claims, testimonials, benchmarks, customers, pricing.
+
+        ## Accessibility
+
+        Standard of record: [the Essential Floor line, or the home a later ruling names].
+
+        ## Tokens
+
+        - color.primary — [value] — [source file]
+
+        ## Typography
+
+        - [family] — scale [steps] — [source file]
+
+        ## Components
+
+        - [Name] — [source path] — [variants]
+
+        ## Motion
+
+        - [duration / easing rule] — [source file]
+
+        ## Drift
+
+        - color.primary — declared [value], shipped [value] (FEAT-012)

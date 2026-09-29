@@ -155,16 +155,19 @@ sections:
         text: >-
           The explorer is blind to code and cards. Admissible inputs are an explicit inclusion
           list, not a layer label: `spec.md` (FR-XXX, SC-XXX, stories, declared edge cases) · the
-          run's sufficiency report and the feature's design-phase deltas — those two artifacts
-          only, never the `FEAT-XXX/` run-output directory at large · Screens & Flows (SCR-XXX,
-          FLOW-XXX) · `data-model.md` (entities, state machines, DS-XXX sensitivity) ·
-          `contracts/` (`api.yaml` and any sibling contract documents) · the architecture store's
-          concern rows only — their `NFR-XXX` targets
+          run's sufficiency report and the feature's signed `architecture.md` drawing — those
+          two artifacts only, never the `FEAT-XXX/` run-output directory at large · Screens &
+          Flows (SCR-XXX, FLOW-XXX) · `data-model.md` (entities, state machines, DS-XXX
+          sensitivity) · `contracts/` (`api.yaml` and any sibling contract documents) · the
+          architecture store's concern rows only — their `NFR-XXX` targets
           (`.mochiko/product/architecture/concerns.md` plus any graduated
           `concerns/AX-XXX-<slug>.md`) · on a UX-bearing feature, the design baseline
           (`.mochiko/product/design/`), whose design truth and as-built system are the promised
-          look and conduct of the rendered UI. All define externally-observable promised behavior,
-          so the pass stays black-box.
+          look and conduct of the rendered UI. In each baseline and store file the fence admits
+          entries reading `built` (or no `**Lifecycle:**` field) and the in-flight class
+          (`in-flight` · `modifying` · `removing`), never a `proposed` entry, which is nothing
+          promised; a `removed` stub reads absent. All define externally-observable promised
+          behavior, so the pass stays black-box.
         anchor: 2026-08-19 qa-gap-finding-verification D3
       - id: testing-gap-finding.spine-outside-fence
         labels: [fence]

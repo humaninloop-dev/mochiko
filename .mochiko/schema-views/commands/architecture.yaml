@@ -168,10 +168,11 @@ sections:
         kind: binding
         text: >-
           mochiko:authoring-architecture-store is the store's owner: AX and spine grammar, the
-          element lifecycle (`ruled` → `in-flight (FEAT-XXX)` / `modifying (FEAT-XXX)` /
-          `removing (FEAT-XXX)` → `built`), the stance vocabulary (`decided` · `not-now` ·
-          `n-a` · `open`), row graduation, the fold at landings, the health view, and the index
-          regeneration.
+          element lifecycle (`ruled` → `proposed (<key>)` → at sign-off `in-flight (<key>)` /
+          `modifying (<key>)` / `removing (<key>)` → `built`, or `removed` for a removal; the
+          key `FEAT-XXX`, `EPIC-XXX` or `lane-<slug>`), the stance vocabulary (`decided` ·
+          `not-now` · `n-a` · `open`), row graduation, the fold at landings, the health view,
+          and the index regeneration.
         pointer: mochiko:authoring-architecture-store
       - id: arch.tools-shelves-skill
         labels: [floor-pointer]

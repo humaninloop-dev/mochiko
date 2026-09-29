@@ -5,4 +5,4 @@ path: [.mochiko, product, architecture, concerns]
 bounds: whole-file
 deliverables:
   - file: <AX-ID>.md
-    max_lines: 150
+    max_lines: 177

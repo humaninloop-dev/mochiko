@@ -17,9 +17,9 @@ sections:
     contract: |
       Title "# Implementation Cycles: [FEAT-XXX — FEATURE NAME]" plus two generated-from
       pointers: (1) the spec folder and the design inputs the cards were authored from —
-      spec.md, features/FEAT-XXX/sufficiency-report.md, and whichever of
-      constraints-and-decisions.md, data-model.md, contracts/ and the signed store delta the
-      design phase produced (on a zero-gap verdict no design phase ran, so the cards are
+      spec.md, features/FEAT-XXX/sufficiency-report.md, and, where the design phase ran, the
+      run's architecture.md drawing and its marked entries in the product baselines, read in the
+      pinned-base diff of .mochiko/product/ (on a zero-gap verdict no design phase ran, so the cards are
       authored from spec.md, the report, and the product baselines); (2) Structure:
       mochiko:patterns-vertical-tdd (cycle-card shape, slicing judgment).
     check: >-
@@ -114,7 +114,7 @@ sections:
 skeleton: |
   # Implementation Cycles: [FEAT-XXX — FEATURE NAME]
 
-  > Generated from the spec folder and the design inputs the cards were authored from: spec.md, features/FEAT-XXX/sufficiency-report.md, and whichever of constraints-and-decisions.md, data-model.md, contracts/ and the signed store delta the design phase produced
+  > Generated from the spec folder and the design inputs the cards were authored from: spec.md, features/FEAT-XXX/sufficiency-report.md, and, where the design phase ran, the run's architecture.md drawing and its marked entries in the product baselines, read in the pinned-base diff of .mochiko/product/
   > Structure: `mochiko:patterns-vertical-tdd` (cycle-card shape, slicing judgment)
 
   ## Overview

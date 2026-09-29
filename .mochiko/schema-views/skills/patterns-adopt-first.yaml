@@ -164,15 +164,18 @@ sections:
           at review. Grammar and mechanics live in the single source, referenced never restated.
         pointer: ../review-brainstorm/references/EXTERNAL-CLAIMS.md
         anchor: 2026-08-15 build-vs-off-the-shelf D2
-      - id: patterns-adopt-first.baseline-delta-landing
+      - id: patterns-adopt-first.build-time-entry-landing
         labels: [binding]
         class: must
         kind: binding
         text: >-
-          A build-time D-XXX / C-XXX / IP-XXX write lands as a `baseline-delta.md` entry graded as
-          judgment before the user accepts it — never an in-place edit of a ruled baseline.
+          A build-time D-XXX / C-XXX / IP-XXX write lands in place in the product file under its
+          lifecycle marker — `in-flight (<key>)` for a new entry, `modifying (<key>)` or
+          `removing (<key>)` for an amendment or removal of a ruled one — graded as judgment
+          before the user accepts it; never a side ledger, never an unmarked edit of a ruled
+          baseline.
         when: {firing_site: build-time}
-        anchor: 2026-08-26 plan-stage-utility
+        anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D1
   - id: patterns-adopt-first.sec.reserved
     title: Reserved — the user's gates
     intent: Decisions no seat takes on its own.
@@ -209,3 +212,10 @@ sections:
           constraint. Only the colliding decision pauses; the run proceeds elsewhere. These are
           expensive decisions; a human rules them.
         anchor: 2026-08-15 build-vs-off-the-shelf D3
+tombstones:
+  - id: patterns-adopt-first.baseline-delta-landing
+    disposition: >-
+      superseded by patterns-adopt-first.build-time-entry-landing — the build-time entry is
+      written in place in the product file under its lifecycle marker (D1); the baseline-delta.md
+      ledger this id names is retired. Its judgment grade before acceptance moves to the
+      successor. (2026-09-24 delta-files-vs-direct-baseline-edits D1)

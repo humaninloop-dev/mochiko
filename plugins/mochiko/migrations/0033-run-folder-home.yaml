@@ -1,0 +1,22 @@
+grammar: 2
+id: 0033-run-folder-home
+sequence: 33
+intent: >-
+  Declare the run folder, the one raw-output home, keyed by the seams R5 run id, per the ratified
+  census table (row N2).
+anchor: 2026-09-23 hook-enforcement-field-review D4
+hash: sha256:cf1c74929d8618764ad4e54c1696518ce7bba4c3cb55acc56c2bf03f72c6349c
+changes:
+  - op: import-document
+    kind: home
+    name: runs
+    content:
+      home: runs
+      title: One run's raw-output folder — git-ignored, deleted at acceptance
+      path: [.mochiko, runs, <run-id>]
+      raw_output: true
+      bounds: elsewhere
+      bounds_cite: hook-enforcement-field-review D4 (raw output — shape and size unchecked)
+      deliverables:
+        - file: implement-log.md
+          bound_reason: the ephemeral run log, deleted with the folder at acceptance

@@ -1,0 +1,263 @@
+grammar: 1
+id: 0027-delta-drawing-not-copies
+sequence: 27
+intent: >-
+  Execute delta D4: the run's home keeps architecture.md as the drawing the user signs and loses
+  its baseline copies; design outputs are written in place in the product baselines. What leaves
+  (Q6): the feature-dir deltas and copies (design-outputs-home, design-inputs, the tasks header);
+  "delta files overwrite only via the graded fold" (reports-envelope, product-surface); the
+  feature and epic homes as homes of constraints-and-decisions.md (technical-requirements
+  artifact-home); the epic's contracts/ sub-directory (epic artifact-home). A second ruling rides
+  the epic artifact-home reword, folded at the lead's ruling on S3's census finding:
+  hook-enforcement-field-review D6 (accepted 2026-09-23) withdraws the epic home's
+  implement-log.md, the run log living in the run folder (.mochiko/runs/<run-id>/), so
+  "implement-log.md is bounded per entry" leaves too. The home documents themselves are the
+  census's (S3).
+anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D4
+hash: sha256:8d40175e8604ee5ecd9d80023ada44ff03da2f8cf69b1ef41bd803305b825b14
+changes:
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-outputs-home
+    text: >-
+      Design outputs are written in place in the product baselines at ${product_dir}/ under the
+      run's lifecycle marker (impl.baseline-entry-grammar) — data-model.md, contracts/,
+      constraints-and-decisions.md, quickstart.md, the design baseline's truth part, and the
+      store's `proposed` elements where the structural trigger fired. The run's home keeps only
+      architecture.md, the drawing the user signs: the C4-container delta diagram, the sequence
+      diagrams for qualifying flows, the deployment view where IP-XXX rows exist, and the
+      checkpoint table of changed elements — no register text, no current-state narrative.
+      Structure and scope per mochiko:patterns-system-design, grammar and lifecycle per
+      mochiko:authoring-architecture-store.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.reports-envelope
+    text: >-
+      All reports land in the owning home's `reports/` directory —
+      ${features_dir}/FEAT-XXX/reports/ (a product-lane run: ${product_dir}/lane-<slug>/reports/,
+      an epic run: the epic home's): the sufficiency report, cycle reports, verification reports,
+      the final-validation report, the built-vs-signed diff. Every one carries the
+      `report-envelope` frontmatter (machine-first, typed by `report:`, ultra register, clean =
+      frontmatter-only; bounce an envelope-breaking report per templates/report-format.md rule 9),
+      and each producing seat's brief names the home's `reports/` path. Repeat runs append, dated;
+      the run's architecture.md drawing is overwritten per run.
+  - op: reword-rule
+    schema: command/feature
+    id: feat.product-surface
+    text: >-
+      Product baselines live at ${product_dir}/ (data-model.md, contracts/,
+      constraints-and-decisions.md, quickstart.md, and architecture/ — the architecture store,
+      whose derived index is repo-root ARCHITECTURE.md), edited in place under a run's lifecycle
+      marker; product-lane runs at ${product_dir}/lane-<slug>/. Across repeat runs, cards and
+      reports append (dated).
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-inputs
+    text: >-
+      Design inputs are sufficiency-report.md and, where the design phase ran, the run's
+      architecture.md drawing at ${features_dir}/FEAT-XXX/ and its marked entries in the product
+      baselines, read in the pinned-base diff — the signed store delta among them (the store at
+      the sign-off base, or the checkpoint table), the anchor for the deviation check and the
+      built-vs-signed diff; the product baselines at ${product_dir}/ (data-model.md, contracts/,
+      constraints-and-decisions.md, the design baseline at ${product_dir}/design/, and the
+      architecture store, whose concern rows carry the NFR-XXX targets the built code must meet);
+      spec.md for the cards' cited acceptance criteria.
+  - op: reword-rule
+    schema: skill/authoring-technical-requirements
+    id: authoring-technical-requirements.artifact-home
+    text: >-
+      `constraints-and-decisions.md` is a declared file in whichever home the run owns — the
+      spec or the product baseline: render `mochiko-cli home <that path>` before the first write
+      and hold the bound it returns. A delivery run writes the product file in place under its
+      lifecycle marker, never a feature or epic copy. The NFR rows this skill authors ride the
+      architecture store's concern rows, in the store's home, never as a second file here.
+  - op: reword-rule
+    schema: skill/authoring-epic
+    id: authoring-epic.artifact-home
+    text: >-
+      An epic's files are declared: render `mochiko-cli home .mochiko/epics/<EPIC-ID>` before the
+      first write. The manifest and the spine artifacts are the closed set — no product-baseline
+      copy among them, since shared baselines are edited in place under `.mochiko/product/` —
+      and every report lands in `reports/` typed by its envelope. A landing or review directory is
+      not a sub-home — its files are reports.
+  - op: replace-document
+    kind: template
+    name: tasks
+    content:
+      template: tasks
+      title: Implementation Cycles (cycle cards)
+      form: artifact-format.md
+      register: full
+      overview: |
+        This file is CYCLE CARDS, not a task list. Each card is a coherent bundle of named test cases
+        (the card's content); the builder decomposes each card into concrete tasks at build time, with
+        the code in view — the decomposition is disclosed in the cycle report, never pre-written here.
+        Cite spec/design content by ID (US-#, FR-#, SC-#, C-#) — never re-quote it; each test case cites
+        the ID(s) it covers. Structure and slicing judgment come from mochiko:patterns-vertical-tdd (the
+        cycle-card shape). The card's checkbox is the progress surface, flipped when the cycle's named
+        cases show green against real infrastructure.
+      sections:
+        - name: Header
+          required: true
+          contract: |
+            Title "# Implementation Cycles: [FEAT-XXX — FEATURE NAME]" plus two generated-from
+            pointers: (1) the spec folder and the design inputs the cards were authored from —
+            spec.md, features/FEAT-XXX/sufficiency-report.md, and, where the design phase ran, the
+            run's architecture.md drawing and its marked entries in the product baselines, read in the
+            pinned-base diff of .mochiko/product/ (on a zero-gap verdict no design phase ran, so the cards are
+            authored from spec.md, the report, and the product baselines); (2) Structure:
+            mochiko:patterns-vertical-tdd (cycle-card shape, slicing judgment).
+          check: >-
+            Is the header present with the FEAT-XXX title and both provenance pointers (source
+            artifacts and the patterns-vertical-tdd structure note)?
+        - name: Overview
+          required: true
+          contract: |
+            Metric table (Metric | Value): Cycles = [N]; Stories covered = [US-# list — every P1/P2
+            story on at least one card]. There is no foundation/feature split in the count.
+          check: >-
+            Does the Overview table report the cycle count and the covered US-# list, with every
+            P1/P2 story on at least one card?
+          heading: Overview
+          max_lines: 8
+        - name: Cycle Format
+          required: true
+          contract: |
+            Each card is one vertical increment: a coherent bundle of named test cases (expected behaviour,
+            in the `**TEST:**` grammar — see patterns-vertical-tdd/references/TEST-GRAMMAR.md for the
+            canonical Setup/Action/Assert/Capture grammar) that demonstrate together. The builder
+            implements the card test-first (red/green/refactor per mochiko:executing-tdd-cycle,
+            decomposition at build time), and the cycle is done when its named cases show green against
+            real infrastructure. The card's checkbox is the progress surface, flipped when the bundle's
+            cases pass. Where the work opens a new end-to-end path (greenfield / new path), the first
+            cycle is a walking skeleton; growth on an already-standing path skips it. There is no
+            foundation/feature card type — `[P]` parallel eligibility derives from a card's
+            dependencies, not from a type column. Each named test case cites the spec/design ID(s) it
+            covers.
+          check: >-
+            Does the Cycle Format explain the card as a bundle of named test cases, the test-first
+            flow, cycle-done when named cases pass on real infrastructure, the
+            checkbox-as-progress rule, the walking-skeleton first cycle where a new end-to-end
+            path opens, no foundation/feature type with `[P]` derived from dependencies, and
+            per-case ID citation?
+          heading: Cycle Format
+          max_lines: 6
+        - name: Cycle Cards
+          required: true
+          contract: |
+            Cards are listed directly, not grouped by foundation/feature type. Each card carries:
+            checkbox + title; Stories (US-# — why these stories/cases form one demonstrable bundle,
+            <= 2 lines); Depends on; Case (Simple | Split — why, one line | Merge — why, one line);
+            Brownfield exposure (none | extends `path` | modifies `path` — cycle-level surfaces only);
+            and the closing `**TEST:**` bundle — one or more named test cases, each opening with
+            `**Covers**: <spec/design IDs>` (the acceptance-ID citation lives per-case, never a standalone
+            Acceptance-criteria field) then Setup/Action/Assert/Capture fields per TEST-GRAMMAR.md.
+            Where a new end-to-end path opens, the first card is a walking skeleton (thinnest path, one
+            trivial case green). `[P]` marks parallel-eligible cards, derived from dependencies.
+          good: |
+            SAMPLE (illustration only — replace with actual cycles; DO NOT keep the samples in the generated tasks.md):
+
+            ### - [ ] Cycle 1: Walking skeleton — [thinnest end-to-end path]
+            - **Stories:** US-1 — thinnest end-to-end path through all layers, one trivial case green; establishes the production-shaped stack [<= 2 lines]
+            - **Depends on:** —
+            - **Case:** Simple
+            - **Brownfield exposure:** none
+
+            **TEST:** [entity] round-trips through the full stack
+            - **Covers**: US-1 / SC-1
+            - **Action**: `curl -X POST localhost:3000/api/[entity] -d '{"name":"Test"}'`
+            - **Assert**: Response status: 201
+            - **Assert**: Console contains "[entity]_id"
+            - **Capture**: console
+
+            ### - [ ] Cycle 2: [Feature bundle title] `[P]`
+            - **Stories:** US-2 — [why these stories/cases form one demonstrable bundle, <= 2 lines]
+            - **Depends on:** C1
+            - **Case:** [Simple | Split — why | Merge — why]
+            - **Brownfield exposure:** extends `src/models/[entity].py`
+
+            **TEST:** [behavior] works end to end via API
+            - **Covers**: US-2 / SC-2 scenario 1
+            - **Setup**: Seed prerequisite [entity] data
+            - **Action**: `curl -X POST localhost:3000/api/[endpoint] -d '{"[field]":"value"}'`
+            - **Assert**: Response status: 200
+            - **Assert**: Console contains "[expected field]"
+            - **Capture**: console
+
+            **TEST:** [behavior] rejects [invalid case]
+            - **Covers**: US-2 / SC-2 scenario 2
+            - **Setup**: Seed prerequisite [entity] data
+            - **Action**: `curl -X POST localhost:3000/api/[endpoint] -d '{"[field]":"invalid"}'`
+            - **Assert**: Response status: 400
+            - **Capture**: console
+          check: >-
+            Are cards listed directly (no foundation/feature grouping), each a bundle of named
+            `**TEST:**` cases with per-case `**Covers**:` IDs (never a standalone
+            acceptance-criteria field), carrying Stories/Depends-on/Case/Brownfield-exposure; is
+            the first cycle a walking skeleton where a new end-to-end path opens; is `[P]` used
+            only where dependencies allow; and is no illustrative sample or pre-written task list
+            / file path left in?
+          heading: Cycle Cards
+      skeleton: |
+        # Implementation Cycles: [FEAT-XXX — FEATURE NAME]
+
+        > Generated from the spec folder and the design inputs the cards were authored from: spec.md, features/FEAT-XXX/sufficiency-report.md, and, where the design phase ran, the run's architecture.md drawing and its marked entries in the product baselines, read in the pinned-base diff of .mochiko/product/
+        > Structure: `mochiko:patterns-vertical-tdd` (cycle-card shape, slicing judgment)
+
+        ## Overview
+
+        | Metric | Value |
+        |--------|-------|
+        | Cycles | [N] |
+        | Stories covered | [US-# list — every P1/P2 story on at least one card] |
+
+        ## Cycle Format
+
+        Each card is one vertical increment: a coherent bundle of **named test cases** (expected behaviour,
+        in the `**TEST:**` grammar — see [`TEST-GRAMMAR.md`](../skills/patterns-vertical-tdd/references/TEST-GRAMMAR.md)
+        for the canonical Setup/Action/Assert/Capture grammar) that demonstrate together. The builder
+        implements the card test-first (red/green/refactor per `mochiko:executing-tdd-cycle`,
+        decomposition at build time), and the cycle is done when its named cases show green against real
+        infrastructure. **The card's checkbox is the progress surface**, flipped when the bundle's cases
+        pass. Where the work opens a new end-to-end path (greenfield / new path), the **first cycle is a
+        walking skeleton**; growth on an already-standing path skips it. There is no foundation/feature
+        card type — `[P]` parallel eligibility derives from a card's dependencies, not from a type
+        column. Each named test case cites the spec/design ID(s) it covers.
+
+        ---
+
+        ## Cycle Cards
+
+        ### - [ ] Cycle 1: Walking skeleton — [thinnest end-to-end path]
+
+        - **Stories:** US-# — [thinnest end-to-end path through all layers; establishes the production-shaped stack, <= 2 lines]
+        - **Depends on:** —
+        - **Case:** Simple
+        - **Brownfield exposure:** none
+
+        **TEST:** [behavior] round-trips through the full stack
+        - **Covers**: US-# / SC-#
+        - **Action**: `[command]`
+        - **Assert**: [expected]
+        - **Capture**: console
+
+        ---
+
+        ### - [ ] Cycle N: [Feature bundle title] `[P]`
+
+        - **Stories:** US-# — [why these stories/cases form one demonstrable bundle, <= 2 lines]
+        - **Depends on:** [cycle refs]
+        - **Case:** [Simple | Split | Merge]
+        - **Brownfield exposure:** [none | extends `path` | modifies `path`]
+
+        **TEST:** [behavior] works end to end via real infrastructure
+        - **Covers**: US-# / SC-#
+        - **Setup**: [preconditions]
+        - **Action**: `[command]`
+        - **Assert**: [expected]
+        - **Capture**: console
+      conformance:
+        placeholders:
+          - '[thinnest end-to-end path]'
+          - '[Feature bundle title]'
+        extra_headings: deny

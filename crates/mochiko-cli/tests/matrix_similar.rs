@@ -995,7 +995,15 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
         // `feat.user-reserved` pair back over it (+1), so that row — kept since the last wave —
         // suppresses an edge again. No command-side row was added or removed, and the cluster
         // count holds at a SUPPRESSED zero.
-        (332, 12_834, 0, 54),
+        // Re-measured after the 2026-09-24 delta-files-vs-direct-baseline-edits wave
+        // (`0024`–`0029`): `implement` retires five rules and mints six, moving the scan 332 to
+        // 333 and the pair count 12,834 to 12,884. By kind the swap is like for like except
+        // `binding`, which gains one (`impl.baseline-delta-grammar` out;
+        // `impl.baseline-entry-grammar` and `impl.base-pins` in), 50 → 51 command rules: +50
+        // pairs, the whole of the move. The suppressed count holds at 54: the wave's one
+        // retired allowlisted hit is skill-side (see the corpus pin below), and a raw run over
+        // the old and new logs shows no command-family cluster moving. SUPPRESSED zero unchanged.
+        (333, 12_884, 0, 54),
         "rules scanned · in-kind pairs scored · clusters · allowlist-suppressed edges"
     );
 }
@@ -1097,10 +1105,24 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // left the file with its rule (−1). SUPPRESSED zero: with an empty allowlist the corpus reports
     // 78 clusters, and the repository allowlist leaves none unsuppressed, both read from a
     // raw-versus-pinned pair of `migrate validate --report` runs over one state.
-    assert_eq!(report.scanned, 1135, "rules scanned");
-    assert_eq!(report.scored, 178_230, "in-kind pairs scored");
+    // Re-measured after the 2026-09-24 delta-files-vs-direct-baseline-edits wave (`0024`–`0029`):
+    // nine rules superseded and ten minted move the scan 1,135 to 1,136, and the pair count falls
+    // 178,230 to 178,027 by the mechanism `0007` showed: a kind-less rule
+    // (`authoring-epic.member-deltas-stay-per-feature`) leaves the large `constraint` bucket,
+    // 535 → 534 (−534 pairs), while `binding` gains two, 165 → 167 (+331) — −203, the whole of the
+    // move.
+    // `suppressed_hits` moves 184 to 183 by the reword mechanism: `0026`'s reword of
+    // `authoring-technical-requirements.sequential-ids` pulls the allowlisted pair it forms with
+    // `authoring-requirements.fr-numbering` back under the threshold, so that row no longer has an
+    // edge to suppress; the row stays, both ids still resolving. SUPPRESSED zero: with an empty
+    // allowlist the corpus reports 77 clusters over 183 edges (78 over 184 before the wave), and
+    // the repository allowlist leaves none unsuppressed, both read from a raw-versus-pinned pair of
+    // `migrate validate --report` runs over one state. `0032`–`0035` carry home documents only
+    // and add no rule to either count.
+    assert_eq!(report.scanned, 1136, "rules scanned");
+    assert_eq!(report.scored, 178_027, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
-    assert_eq!(report.suppressed_hits, 184, "allowlist-suppressed edges");
+    assert_eq!(report.suppressed_hits, 183, "allowlist-suppressed edges");
 }
 
 // ---------------------------------------------------------------------------

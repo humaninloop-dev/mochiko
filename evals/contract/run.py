@@ -287,9 +287,16 @@ EXPECTED = {
                 "impl.gate-design-checkpoint",
                 "impl.gate-card-confirm",
                 "impl.gate-final-acceptance",
-                "impl.graded-fold",
+                # `0024-delta-baselines-in-place` and `0026-delta-pinned-base-review`
+                # (2026-09-24 delta-files-vs-direct-baseline-edits D1/D3) superseded
+                # `impl.baselines-never-in-place`, `impl.graded-fold`,
+                # `impl.fail.baseline-in-place` and `impl.fail.ungraded-fold` with these four
+                # floors.
+                "impl.baselines-in-place-marked",
+                "impl.baseline-diff-review",
+                "impl.fail.unmarked-baseline-write",
+                "impl.fail.unreviewed-baseline-diff",
                 "impl.author-grader-default-fail",
-                "impl.baselines-never-in-place",
                 "impl.deviation-gate",
                 "impl.constitution-supremacy",
                 "impl.constraint-challenge",
@@ -310,10 +317,8 @@ EXPECTED = {
                 "impl.fail.quality-gate",
                 "impl.fail.no-evidence",
                 "impl.fail.regression",
-                "impl.fail.baseline-in-place",
                 "impl.fail.deviation-unresolved",
                 "impl.fail.store-landing-incomplete",
-                "impl.fail.ungraded-fold",
                 "impl.fail.gap-finding-missing",
                 "impl.fail.skip-unstated",
                 "impl.fail.spec-gap-unresolved",
@@ -4155,18 +4160,21 @@ EXIT_CONFORMANCE = 4
 HALT_SENTENCE = "a second deny on this path halts"
 
 # The two homes the rows are keyed to, chosen for what they can exercise rather than for what they
-# are: `architecture-spine` is the only shipped template carrying both `extra_headings: deny` and
-# per-section budgets, and the report envelope is the only one carrying required frontmatter, an
-# enum and placeholder tokens. Between them the six conformance checks are all reachable.
+# are: `architecture-spine` carries `extra_headings: deny` and a size bound — per `##` entry since
+# `0034-store-entry-budgets` (2026-09-29 census table ratification) replaced its per-section
+# budgets — and the report envelope is the only one carrying required frontmatter, an enum and
+# placeholder tokens. Between them the six conformance checks are all reachable.
 SPINE_PATH = ".mochiko/product/architecture/spine.md"
 SESSION_HOME = ".mochiko/brainstorms/contract-demo"
 
-# A conforming `architecture-spine`: the three required headings, nothing undeclared, every section
-# inside its budget. Written down rather than derived — a baseline read off the thing it grades is
+# A conforming `architecture-spine`: the three required headings, nothing undeclared, every entry
+# inside its bound. Written down rather than derived — a baseline read off the thing it grades is
 # not a baseline — and cross-checked by `G-CONFORM`, which goes red if the shipped template moves
 # out from under it. Deliberately no numbers appear in any assertion about it (lead ruling,
 # 2026-09-13): `0005`'s budgets may be re-keyed by the table amendment, and a row that asserts a
-# measure by name survives that where a row asserting `30` does not.
+# measure by name survives that where a row asserting `30` does not. `0034` did re-key them, to a
+# per-entry bound: the size rows moved only their pad (past the new bound) and the measure's
+# wording, and still assert a size deny and a named standing measure.
 CONFORMING_SPINE = """# Architecture spine
 
 ## Container diagram
@@ -4303,7 +4311,7 @@ def gate_rows(captures: dict) -> list:
     redirect = captures.get("pre-tool-use-bash-redirect-false-allow")
     read = captures.get("pre-tool-use-read-home")
     oversized_spine = CONFORMING_SPINE.replace(
-        "One container.", "\n".join(f"PAD{i}" for i in range(40)))
+        "One container.", "\n".join(f"PAD{i}" for i in range(200)))
 
     rows = [
         GateRow("G-PATH", "deny: path", "deny",
@@ -4317,7 +4325,7 @@ def gate_rows(captures: dict) -> list:
                 keywords=("## Undeclared", "not a declared heading")),
         GateRow("G-SIZE", "deny: size", "deny",
                 lambda w: _write_payload(w, SPINE_PATH, oversized_spine),
-                keywords=("Container diagram", "against a budget of")),
+                keywords=("Container diagram", "per-entry bound of")),
         GateRow("G-FM-MISSING", "deny: shape (frontmatter)", "deny",
                 lambda w: _write_payload(w, f"{SESSION_HOME}/reports/r.md",
                                          "---\nfeature: FEAT-001\n---\n"),

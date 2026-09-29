@@ -1,5 +1,5 @@
 {
-  "provenance": "wave5-plan.md \u00a74.2 and cli-schema-delivery/wave5-p3-skills-plan.md \u00a73. Frozen from the render and the working tree before P2 converted any skill and before the wave's first session. Never edited after; a floor rule added or renamed later breaks the cross-check in `converted-shape` rather than regrading quietly. Re-keyed once since, and only for ids the log determines: the 2026-09-13 hook-enforced-artifact-schema wave added one `artifact-home` floor to each of eleven skills (`floor_ids` plus `floor_pin`), on the lead's licence, with the same move recorded in this directory's README floor-ids row. Re-keyed again by the 2026-09-19 author-grader-consolidation wave-1 ruling (D7): `patterns-model-tiering` gained one floor, and `validation-primitive-edit` joins the review family as a post-freeze member — born after this freeze, so no pre-conversion baseline exists for it and its four byte columns are 0 rather than measured. Re-keyed again by the wave-2 landing of the 2026-09-03 producer-plan-enforcement ruling (D4): `review-seat-plan` joins the review family on the same post-freeze terms, five floors and four zeroed byte columns. Every byte-size field of every pre-freeze row is still the freeze's own, and no other field has been touched. Re-keyed again by the 2026-09-19 impeccable-design-integration wave (D3): `patterns-design-direction` (three floors) and `patterns-craft-floor` (two) join the patterns family and `review-design-audit` (two) joins the review family, all three on the same post-freeze terms with four zeroed byte columns; no existing row moved, since the wave's migrations left every pre-existing skill's floor set unchanged.",
+  "provenance": "wave5-plan.md \u00a74.2 and cli-schema-delivery/wave5-p3-skills-plan.md \u00a73. Frozen from the render and the working tree before P2 converted any skill and before the wave's first session. Never edited after; a floor rule added or renamed later breaks the cross-check in `converted-shape` rather than regrading quietly. Re-keyed once since, and only for ids the log determines: the 2026-09-13 hook-enforced-artifact-schema wave added one `artifact-home` floor to each of eleven skills (`floor_ids` plus `floor_pin`), on the lead's licence, with the same move recorded in this directory's README floor-ids row. Re-keyed again by the 2026-09-19 author-grader-consolidation wave-1 ruling (D7): `patterns-model-tiering` gained one floor, and `validation-primitive-edit` joins the review family as a post-freeze member — born after this freeze, so no pre-conversion baseline exists for it and its four byte columns are 0 rather than measured. Re-keyed again by the wave-2 landing of the 2026-09-03 producer-plan-enforcement ruling (D4): `review-seat-plan` joins the review family on the same post-freeze terms, five floors and four zeroed byte columns. Every byte-size field of every pre-freeze row is still the freeze's own, and no other field has been touched. Re-keyed again by the 2026-09-19 impeccable-design-integration wave (D3): `patterns-design-direction` (three floors) and `patterns-craft-floor` (two) join the patterns family and `review-design-audit` (two) joins the review family, all three on the same post-freeze terms with four zeroed byte columns; no existing row moved, since the wave's migrations left every pre-existing skill's floor set unchanged. Re-keyed again by the 2026-09-24 delta-files-vs-direct-baseline-edits wave (D7, migration 0029), for ids the log determines: `authoring-architecture-store` swaps `sign-off-is-write-gate` for `sign-off-flips-proposed`, and `authoring-technical-requirements` swaps `store-write-at-sign-off` for `nfr-target-flips-at-sign-off`, a superseded floor for its successor floor in each; both `floor_pin`s hold and no byte field moved.",
   "frozen_utc": "2026-09-04T10:49:47+00:00",
   "binary": "mochiko-cli 0.1.0 \u00b7 grammar 1..1",
   "plugin_version": "0.105.0",
@@ -93,7 +93,7 @@
         "authoring-architecture-store.index-regenerated-every-write",
         "authoring-architecture-store.landing-diff-on-delta",
         "authoring-architecture-store.one-home-one-writer",
-        "authoring-architecture-store.sign-off-is-write-gate",
+        "authoring-architecture-store.sign-off-flips-proposed",
         "authoring-architecture-store.sound-loop-on-judgment-writes"
       ],
       "floor_pin": 10,
@@ -223,10 +223,10 @@
         "authoring-technical-requirements.fast-is-not-a-requirement",
         "authoring-technical-requirements.letter-is-spirit",
         "authoring-technical-requirements.nfr-store-home",
+        "authoring-technical-requirements.nfr-target-flips-at-sign-off",
         "authoring-technical-requirements.no-exceptions-documentation",
         "authoring-technical-requirements.no-topology-decisions",
-        "authoring-technical-requirements.rationalization-stop",
-        "authoring-technical-requirements.store-write-at-sign-off"
+        "authoring-technical-requirements.rationalization-stop"
       ],
       "floor_pin": 9,
       "schema_bytes": 16863,

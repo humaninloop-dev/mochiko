@@ -47,10 +47,10 @@ sections:
           derivation graded, desk-side writes carried no loop — full floor, net-new bite ·
           product baselines (the rest of `.mochiko/product/`): no loop outside pipeline runs —
           full floor, net-new bite · architecture store (`.mochiko/product/architecture/`): desk
-          judgment writes take the tech-lead review leg, design-phase deltas graded by the design
-          review pair beneath the user's sign-off (`mochiko:authoring-architecture-store`); full
-          floor satisfied by the desk's own loop where it runs — the bite is any store write
-          outside it.
+          judgment writes take the tech-lead review leg, a design phase's `proposed` writes graded
+          by the design review pair beneath the user's sign-off
+          (`mochiko:authoring-architecture-store`); full floor satisfied by the desk's own loop
+          where it runs — the bite is any store write outside it.
         pointer: mochiko:authoring-architecture-store
         anchor: 2026-08-13 charter-ritual-balance
   - id: patterns-sound-loop.sec.scope

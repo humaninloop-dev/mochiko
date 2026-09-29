@@ -1,0 +1,199 @@
+grammar: 1
+id: 0029-delta-proposed-until-signoff
+sequence: 29
+intent: >-
+  Execute delta D7 with seam R8: a design-phase write reads proposed until the user's sign-off,
+  which flips each entry by the pinned-base diff to in-flight, modifying or removing; every reader
+  treats proposed as nothing promised, the in-flight class as planned contract and removed as
+  absent. The flip gate replaces the store's sign-off write gate; the NFR flip replaces the
+  store-write-at-sign-off reservation; the sufficiency check gains its marker reader. What leaves
+  (Q6): "design-phase deltas" (the fence, the dispatch mirror, clause-in-flight, clause10-carve,
+  the sound-loop row), the signed architecture.md drawing named in their place where a run output
+  was admitted (RA1); the "Derived from" citation of the row's own delta (structural trigger, a
+  field no store grammar carries); "drafted … in the package" (the feasibility condition and
+  gate). The checkpoint and in-flight-territory-read lose nothing; they gain the flip or the
+  reader sentence and the read's location (RA2). Marker fields are spelled in the bold form the
+  gate reads (**Lifecycle:**; census row E1, re-cut after ratification).
+anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D7
+hash: sha256:641d897712d51cfac56bfecd549243e53c2007f5796a25ec69e2550b2cbbe78a
+changes:
+  - op: supersede-rule
+    schema: skill/authoring-architecture-store
+    id: authoring-architecture-store.sign-off-is-write-gate
+    disposition: >-
+      superseded by authoring-architecture-store.sign-off-flips-proposed — the sign-off is the
+      gate between `proposed` and the in-flight class, not between nothing and a write (D7); a
+      delivery run writes its store changes in place before sign-off as `proposed` (D1). The
+      successor also takes the store carve of impl.baselines-never-in-place.
+    anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D7
+  - op: mint-rule
+    schema: skill/authoring-architecture-store
+    section: authoring-architecture-store.sec.reserved
+    rule:
+      id: authoring-architecture-store.sign-off-flips-proposed
+      labels: [user-gate]
+      class: floor
+      kind: gate
+      text: >-
+        A delivery run writes its store changes in place as `proposed (<key>)` — a new element,
+        an amended one with its new text in place, a removed one cut to its heading (a spine row:
+        to its id, kind, name and status) — and nothing it writes before the user's sign-off is
+        promised. The sign-off, on the rendered diagram, the changed-element table and the
+        pinned-base diff, is the user's; it flips each `proposed (<key>)` by that diff — absent
+        at the base to `in-flight (<key>)`, changed from it to `modifying (<key>)`, cut to its
+        heading to `removing (<key>)` — through this skill, which regenerates the index. The
+        signed store delta is the store at the sign-off base, or the checkpoint table where no
+        commit is made. A run that ends before its checkpoint reverts its `proposed` elements by
+        the diff. No sign-off, no in-flight element.
+      anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D7
+  - op: supersede-rule
+    schema: skill/authoring-technical-requirements
+    id: authoring-technical-requirements.store-write-at-sign-off
+    disposition: >-
+      superseded by authoring-technical-requirements.nfr-target-flips-at-sign-off — a target is
+      no longer drafted in the package and written at sign-off (D1, D7): it is written in place as
+      `proposed` and flipped at the user's sign-off. The user's reservation of the sign-off moves
+      to the successor.
+    anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D7
+  - op: mint-rule
+    schema: skill/authoring-technical-requirements
+    section: authoring-technical-requirements.sec.reserved
+    rule:
+      id: authoring-technical-requirements.nfr-target-flips-at-sign-off
+      labels: [user-gate]
+      class: floor
+      kind: reservation
+      text: >-
+        A new, changed or removed NFR target is written in place on its store concern row as
+        `proposed (<key>)`, like every other store write, and flipped by kind at the user's
+        design-checkpoint sign-off — new to `in-flight`, changed to `modifying`, removed to
+        `removing`; the sign-off stays the user's.
+      anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D7
+  - op: reword-rule
+    schema: skill/review-sufficiency
+    id: review-sufficiency.clause-in-flight
+    text: >-
+      In-flight exposure — keyed on the row's status. A touched surface owned by an in-flight
+      row obliges reading that feature's entries in the product baselines and the store, its
+      signed architecture.md drawing, and its owning spec: `proposed` is nothing promised and
+      reads absent; the in-flight class (`in-flight` · `modifying` · `removing`) is planned
+      contract; `removed` reads absent. Need covered → cite the planned contract, no gap ·
+      adjacent → gap, the design phase writes its `proposed` entries sequenced behind that
+      delivery · conflicting → reserved to the user at run-open. No locks — conflict routing
+      is a question to the user, never a hold on the touched feature; only silent contradiction is
+      prohibited.
+  - op: reword-rule
+    schema: skill/testing-gap-finding
+    id: testing-gap-finding.blindness-fence-inclusion-list
+    text: >-
+      The explorer is blind to code and cards. Admissible inputs are an explicit inclusion list,
+      not a layer label: `spec.md` (FR-XXX, SC-XXX, stories, declared edge cases) · the run's
+      sufficiency report and the feature's signed `architecture.md` drawing — those two
+      artifacts only, never the `FEAT-XXX/` run-output directory at large · Screens & Flows
+      (SCR-XXX, FLOW-XXX) · `data-model.md` (entities, state machines, DS-XXX sensitivity) ·
+      `contracts/` (`api.yaml` and any sibling contract documents) · the architecture store's
+      concern rows only — their `NFR-XXX` targets (`.mochiko/product/architecture/concerns.md`
+      plus any graduated `concerns/AX-XXX-<slug>.md`) · on a UX-bearing feature, the design
+      baseline (`.mochiko/product/design/`), whose design truth and as-built system are the
+      promised look and conduct of the rendered UI. In each baseline and store file the fence
+      admits entries reading `built` (or no `**Lifecycle:**` field) and the in-flight class
+      (`in-flight` · `modifying` · `removing`), never a `proposed` entry, which is nothing
+      promised; a `removed` stub reads absent. All define externally-observable promised behavior,
+      so the pass stays black-box.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.gate-design-checkpoint
+    text: >-
+      The design checkpoint is the user's. Where the check named gaps, no code is written before
+      the user signs the design and the store delta — the store delta signed on a rendered
+      diagram plus its named AX-XXX row changes and the pinned-base diff of the baselines (no
+      render surface: present the source plus the changed-element table, and record it). The
+      checkpoint's closing act is the flip: each `proposed (<key>)` entry of the run, in every
+      baseline and the store, flips by the pinned-base diff — absent at the base to `in-flight
+      (<key>)`, changed from it to `modifying (<key>)`, cut to its heading to `removing (<key>)`
+      — the store's through mochiko:authoring-architecture-store; the sign-off base is then
+      pinned per impl.base-pins. The user may stop at the checkpoint and resume the build later.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.gap-finding-blind-dispatch
+    text: >-
+      Gap-finding dispatch is two-message and blind. The first message carries only spec.md, the
+      sufficiency report and the signed architecture.md drawing where one exists, Screens & Flows,
+      and the baselines data-model.md, contracts/, the design baseline, and the store's NFR-XXX
+      concern rows — their `built` and in-flight-class entries only, never a `proposed` one —
+      never the code, tasks.md, the **TEST:** cases, or any report. The seat states its derived
+      expectations; only then does probing begin. Its brief carries the model-tiering rule, and
+      its delegated reads stay inside the same fence.
+  - op: reword-rule
+    schema: skill/review-sufficiency
+    id: review-sufficiency.clause10-carve
+    text: >-
+      An in-flight collision under the in-flight exposure clause licenses reading the colliding
+      feature's signed architecture.md drawing and owning spec — the sole run-output read the
+      fence admits, scoped to the colliding surface, never extended to that feature's code, cards,
+      or cycle reports. Its baseline and store entries are read in place: `proposed` is nothing
+      promised and reads absent; the in-flight class (`in-flight` · `modifying` · `removing`) is
+      planned contract; `removed` reads absent.
+  - op: reword-rule
+    schema: skill/authoring-feature-map
+    id: authoring-feature-map.in-flight-territory-read
+    text: >-
+      In-flight territory obligates a read into the owning run's planned contract — its entries
+      in the product baselines and the architecture store keyed to that run in the in-flight class
+      (`in-flight` · `modifying` · `removing`; a `proposed` entry is nothing promised and reads
+      absent), and its signed architecture.md drawing — build against the planned contract or
+      escalate a conflict, never contradict silently.
+  - op: reword-rule
+    schema: skill/patterns-sound-loop
+    id: patterns-sound-loop.governing-surface-table
+    text: >-
+      Governing surfaces and their per-member regime — plugin primitives (`plugins/mochiko/`):
+      the primitive-edits ceremony (strip → record → author≠grader audit), no net-new
+      obligation · product code: `/mochiko:implement` seats, none · specs (`.mochiko/specs/`):
+      the `/mochiko:specify` loop, none · governance surfaces: the `/mochiko:setup` loop, none ·
+      capability map (`FEATURES.md` + entries): specify-side derivation graded, desk-side writes
+      carried no loop — full floor, net-new bite · product baselines (the rest of
+      `.mochiko/product/`): no loop outside pipeline runs — full floor, net-new bite ·
+      architecture store (`.mochiko/product/architecture/`): desk judgment writes take the
+      tech-lead review leg, a design phase's `proposed` writes graded by the design review pair
+      beneath the user's sign-off (`mochiko:authoring-architecture-store`); full floor satisfied
+      by the desk's own loop where it runs — the bite is any store write outside it.
+  - op: reword-rule
+    schema: skill/review-sufficiency
+    id: review-sufficiency.clause-structural-trigger
+    text: >-
+      Structural trigger — store consulted, trip check run, and either a no-delta claim
+      recordable or a delta needed (gap). Spine elements keyed to the row's own feature or epic,
+      `proposed` or in the in-flight class, are excluded from the no-delta evidence: a row never
+      satisfies this clause with its own planned structure.
+  - op: reword-rule
+    schema: skill/review-feasibility
+    id: review-feasibility.architecture-pass-gate
+    text: >-
+      The architecture pass is mandatory on a run's proposed store changes — A1–A3 per
+      `references/FEASIBILITY-LENS.md`.
+  - op: set-condition
+    schema: skill/review-feasibility
+    name: store_delta
+    spec:
+      values: presence
+      resolution: surface-presence
+      note: >-
+        the run's `proposed` architecture-store changes, drawn in its architecture.md and read in
+        the pinned-base diff.
+  - op: mint-rule
+    schema: skill/review-sufficiency
+    section: review-sufficiency.sec.inputs
+    rule:
+      id: review-sufficiency.lifecycle-marker-read
+      labels: [fence]
+      class: must
+      kind: binding
+      text: >-
+        Every baseline and store entry is read by its lifecycle marker: `proposed` is nothing
+        promised and reads absent — never cited as planned contract, never as delivered; the
+        in-flight class (`in-flight` · `modifying` · `removing`) is another run's planned
+        contract; `removed` reads absent; `built`, or no `**Lifecycle:**` field, is delivered. A
+        marker whose key names no open feature, epic or lane is an orphan, listed in
+        `sufficiency-report.md` for the user at run-open.
+      anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D7

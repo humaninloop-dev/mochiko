@@ -70,10 +70,24 @@ sections:
         kind: latitude
         text: >-
           An in-flight collision under the in-flight exposure clause licenses reading the
-          colliding feature's design-phase deltas and owning spec — the sole run-output read the
-          fence admits, scoped to the colliding surface, never extended to that feature's code,
-          cards, or cycle reports.
+          colliding feature's signed architecture.md drawing and owning spec — the sole
+          run-output read the fence admits, scoped to the colliding surface, never extended to
+          that feature's code, cards, or cycle reports. Its baseline and store entries are read in
+          place: `proposed` is nothing promised and reads absent; the in-flight class (`in-flight`
+          · `modifying` · `removing`) is planned contract; `removed` reads absent.
         anchor: 2026-08-26 plan-stage-utility
+      - id: review-sufficiency.lifecycle-marker-read
+        labels: [fence]
+        class: must
+        kind: binding
+        text: >-
+          Every baseline and store entry is read by its lifecycle marker: `proposed` is nothing
+          promised and reads absent — never cited as planned contract, never as delivered; the
+          in-flight class (`in-flight` · `modifying` · `removing`) is another run's planned
+          contract; `removed` reads absent; `built`, or no `**Lifecycle:**` field, is delivered. A
+          marker whose key names no open feature, epic or lane is an orphan, listed in
+          `sufficiency-report.md` for the user at run-open.
+        anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D7
   - id: review-sufficiency.sec.verdict
     title: Verdict — the clause set and its posture
     intent: >-
@@ -127,9 +141,9 @@ sections:
         kind: duty
         text: >-
           Structural trigger — store consulted, trip check run, and either a no-delta claim
-          recordable or a delta needed (gap). Spine elements whose `Derived from` cites the row's
-          own feature or epic delta are excluded from the no-delta evidence: a row never satisfies
-          this clause with its own planned structure.
+          recordable or a delta needed (gap). Spine elements keyed to the row's own feature or
+          epic, `proposed` or in the in-flight class, are excluded from the no-delta evidence: a
+          row never satisfies this clause with its own planned structure.
         anchor: 2026-08-26 plan-stage-utility
       - id: review-sufficiency.clause-nfr-targets
         labels: [verdict]
@@ -190,9 +204,12 @@ sections:
         kind: duty
         text: >-
           In-flight exposure — keyed on the row's status. A touched surface owned by an
-          in-flight row obliges reading that feature's deltas and owning spec: need covered →
-          cite the planned contract, no gap · adjacent → gap, the design phase authors the
-          proposed delta sequenced behind that delivery · conflicting → reserved to the user at
+          in-flight row obliges reading that feature's entries in the product baselines and the
+          store, its signed architecture.md drawing, and its owning spec: `proposed` is nothing
+          promised and reads absent; the in-flight class (`in-flight` · `modifying` ·
+          `removing`) is planned contract; `removed` reads absent. Need covered → cite the
+          planned contract, no gap · adjacent → gap, the design phase writes its `proposed`
+          entries sequenced behind that delivery · conflicting → reserved to the user at
           run-open. No locks — conflict routing is a question to the user, never a hold on the
           touched feature; only silent contradiction is prohibited.
         when: {scope: selection}
@@ -237,11 +254,12 @@ sections:
         text: >-
           The verdict lands as `sufficiency-report.md` in the feature dir
           (`.mochiko/features/FEAT-XXX/`), under the `templates/report-format.md` envelope. It
-          carries: the per-unit verdicts · the gap list, each gap keyed to its clause · the
-          store-consult result and any no-delta claim · store trips awaiting the user's
-          disposition at run-open · in-flight conflicts routed to the user · any `[MODIFY]`
-          amendment naming · the `quickstart.md` null-path record where no real
-          external-integration surface exists.
+          carries: the run-open base commit named in the brief, with any uncommitted product
+          change already in the tree listed as pre-existing · the per-unit verdicts · the gap
+          list, each gap keyed to its clause · the store-consult result and any no-delta claim ·
+          store trips awaiting the user's disposition at run-open · in-flight conflicts routed to
+          the user · any `[MODIFY]` amendment naming · the `quickstart.md` null-path record
+          where no real external-integration surface exists.
         anchor: 2026-08-26 plan-stage-utility
       - id: review-sufficiency.evidence-floor
         labels: [evidence]

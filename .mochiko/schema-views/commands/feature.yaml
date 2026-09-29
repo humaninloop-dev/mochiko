@@ -197,10 +197,10 @@ sections:
         text: >-
           One delta card per the tasks template's card shape (rendered by `${tasks_schema}`): a
           bug's acceptance is its reproduction-failing test, an improvement carries 1–3
-          acceptance criteria; plus the minimal enumerated baseline-delta.md in appliable
-          before/after form when a product-baseline touch is known at intake. Each card — bug
-          and improvement alike — takes the sound-loop review leg (feat.sound-loop-floor) before
-          dispatch.
+          acceptance criteria; a product-baseline touch known at intake is named on the card, its
+          entries enumerated, and the implement run writes it in place under its lifecycle marker
+          — never a side ledger. Each card — bug and improvement alike — takes the
+          sound-loop review leg (feat.sound-loop-floor) before dispatch.
       - id: feat.product-surface
         labels: [binding, reporting, landing]
         class: must
@@ -208,9 +208,9 @@ sections:
         text: >-
           Product baselines live at ${product_dir}/ (data-model.md, contracts/,
           constraints-and-decisions.md, quickstart.md, and architecture/ — the architecture
-          store, whose derived index is repo-root ARCHITECTURE.md); product-lane runs at
-          ${product_dir}/lane-<slug>/. Across repeat runs, cards and reports append (dated); delta
-          files overwrite only via the graded fold.
+          store, whose derived index is repo-root ARCHITECTURE.md), edited in place under a run's
+          lifecycle marker; product-lane runs at ${product_dir}/lane-<slug>/. Across repeat runs,
+          cards and reports append (dated).
         anchor: 2026-08-19 product-architecture-schema
       - id: feat.architecture-intake
         labels: [scope-entry, user-gate]
@@ -275,10 +275,10 @@ sections:
         labels: [independence, seats]
         class: must
         text: >-
-          Wherever a seat produces (delta card, baseline-delta.md, grooming proposal), no output
-          is cleared by its author; a producing seat plans first, read-only, in a plan-only
-          dispatch, and works only on a plan a fresh peer of its persona type passed per
-          `mochiko:review-seat-plan` and you approved.
+          Wherever a seat produces (delta card, a baseline entry written in place under its
+          lifecycle marker, grooming proposal), no output is cleared by its author; a producing
+          seat plans first, read-only, in a plan-only dispatch, and works only on a plan a fresh
+          peer of its persona type passed per `mochiko:review-seat-plan` and you approved.
       - id: feat.advisory-front-door
         labels: [scope-entry]
         class: must

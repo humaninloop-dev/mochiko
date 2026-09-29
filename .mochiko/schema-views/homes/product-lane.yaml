@@ -6,7 +6,7 @@ bounds: whole-file
 deliverables:
   - file: sufficiency-report.md
     max_lines: 300
-  - file: baseline-delta.md
+  - file: architecture.md
     max_lines: 300
 reports:
   envelope: report-envelope

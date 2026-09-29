@@ -5,9 +5,20 @@ path: [.mochiko, product]
 bounds: template
 deliverables:
   - file: data-model.md
-    max_lines: 300
+    form: entries
+    entry_heading: '###'
+    entry_max_lines: 177
+    section_max_lines: 177
+    entry_exempt_fields: [Lifecycle]
   - file: constraints-and-decisions.md
-    max_lines: 300
+    form: entries
+    entry_heading: '###'
+    entry_max_lines: 177
+    section_max_lines: 177
+    entry_exempt_fields: [Lifecycle]
   - file: quickstart.md
-    max_lines: 300
+    form: entries
+    entry_heading: '##'
+    entry_max_lines: 177
+    entry_exempt_fields: [Lifecycle]
 subdirs: [architecture, contracts, design]

@@ -2,7 +2,8 @@
 
 **Date:** 2026-09-29
 **Status:** ruled (user) 2026-09-29, R1–R7 each "as recommended" (R5/R6 at the wave-1 plan's
-approval, R7 during its plan round); build started 2026-09-29 on branch `joint-hook-delta`
+approval, R7 during its plan round; R8 "as recommended" during wave 2's plan round); build started
+2026-09-29 on branch `joint-hook-delta`
 **Driver:** the user asked to implement `hook-enforcement-field-review` (accepted 2026-09-23) and
 `delta-files-vs-direct-baseline-edits` (accepted 2026-09-24) together, after asking whether their
 decisions clash.
@@ -69,6 +70,22 @@ corrected at the wave-3 text-vs-build check, together with two text drifts S1 fo
 "a `.md` write" where the binary sniffs every extension; "What the gate reads" naming the on-disk
 file for `Edit` only, where `Write` also reads it as the amnesty baseline).
 
+**R8 — The sign-off flips each `proposed` entry by what the diff shows (a gap between delta D2 and
+D7).** Before the design checkpoint every baseline write a run makes reads `proposed (<key>)`, as
+delta D7 rules: a new entry, an amended one (its new text in place) and a removed one (its heading
+and marker kept, its body cut, the prior text in the pinned-base diff per M1). At sign-off the flip
+reads the pinned-base diff entry by entry: an entry absent at the base becomes `in-flight (<key>)`,
+one changed from the base `modifying (<key>)`, one cut to its heading `removing (<key>)`. This
+reconciles D7's "flips every `proposed (<key>)` … to `in-flight (<key>)`" with D2's `modifying` and
+`removing`; nothing else in either is withdrawn. After sign-off, D2 applies as written: a build-time
+amendment reads `modifying` and a removal `removing` from its first write, as a build-raised entry
+reads `in-flight`. Raised by seat S4 in its wave-2 plan (its Q3); lands in the grammar rule,
+`lifecycle-statuses`, the store template's legend, the store gate's successor and the checkpoint
+flip (migrations 0025 and 0029).
+
+**R9** (a landed removal leaves a one-line `removed` stub) is recorded apart, this record being at
+its size bound: [2026-09-29-landed-removal-stub.md](2026-09-29-landed-removal-stub.md).
+
 **Routed to the census table, no new ruling (seams 2–5 and the smaller two).** The field review's
 wave-2 census table — one artifact the user ratifies — also: declares the archived-ledger shape
 under `archive/` and the wave-4 pass names the move route, since the field review's S12 keeps
@@ -102,6 +119,9 @@ V1 has one) is put to the user at the wave-3 plan approval (smaller two).
 - R7: product documents commonly carry a `## Header` heading (a page's header section), so the limb
   would deny honest product docs; no field run showed a template smuggled out of `.mochiko/`, and
   the report sniff covers the case the runs did show.
+- R8: after sign-off a reader tells a new entry from a changed or removed one at a glance, without
+  the diff; every unsigned change still reads `proposed`, so D7's "nothing promised" holds for
+  amendments and removals too.
 
 ## Alternatives considered
 
@@ -120,3 +140,7 @@ V1 has one) is put to the user at the wave-3 plan approval (smaller two).
   removal already does).
 - R7: build it as ruled (false denies on product docs) · build it narrowly, `## Header` only beside
   other template-marking headings (less false blocking, more to build and test).
+- R8: every `proposed` flips to `in-flight`, as D7 is written, with `modifying`/`removing` only for
+  build-time changes (a reader needs the diff to tell a change from a new entry, and a removed entry
+  reads `in-flight`) · the kind from the first write, only new entries passing through `proposed`
+  (an unsigned change reads like a signed one — the leak D7 closes).

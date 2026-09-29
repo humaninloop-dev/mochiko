@@ -142,10 +142,15 @@ sections:
         labels: [artifact-grammar]
         class: must
         text: >-
-          Five lifecycle statuses — `ruled` · `in-flight` · `modifying` · `removing` ·
-          `built`; each in-flight-class element MUST name the `FEAT-XXX` that owns the change, and
-          status is the build-lifecycle axis only — stance is a separate axis and never implies
-          one.
+          Seven lifecycle statuses — `ruled` · `proposed` · `in-flight` · `modifying` ·
+          `removing` · `built` · `removed`; each `proposed` and in-flight-class element MUST
+          name the key of the run that owns the change — `FEAT-XXX`, `EPIC-XXX` or `lane-<slug>`
+          — and `ruled`, `built` and `removed` carry none. Readers: `proposed` is nothing
+          promised and reads absent; the in-flight class (`in-flight` · `modifying` ·
+          `removing`) is planned contract; `removed` reads absent. A removed concern row keeps its
+          heading and `**Status**: removed`, no body; a removed spine element keeps its table row
+          reduced to id, kind, name and status, and is not drawn; either id stays taken. Status is
+          the build-lifecycle axis only — stance is a separate axis and never implies one.
       - id: authoring-architecture-store.full-ax-table
         labels: [artifact-grammar, evidence]
         class: must
@@ -184,18 +189,20 @@ sections:
         class: must
         kind: duty
         text: >-
-          The fold fires when the built work changed structure: flip in-flight-class elements to
-          `built`, clear their `FEAT-XXX` keys, update `As-built:` and `Drift:` on every touched
-          row, regenerate the index.
+          The fold fires when the built work changed structure: the landing flip, read from the
+          pinned-base diff — `in-flight` and `modifying` elements to `built`, their keys
+          cleared, each `removing` element to its `removed` stub — then `As-built:` and `Drift:`
+          on every touched row, and the index regenerated.
         when: {structure_built: present}
         anchor: 2026-08-19 product-architecture-schema D10
       - id: authoring-architecture-store.orphan-rule
         labels: [artifact-grammar]
         class: must
         text: >-
-          Every in-flight-class element keys an open feature; an element whose `FEAT-XXX` names a
-          closed, retired, or nonexistent feature is an orphan — the health view flags it, and
-          desk visits clean it.
+          Every `proposed` and in-flight-class element keys an open feature, epic or lane; an
+          element whose key names a closed, retired, or nonexistent owner is an orphan — the
+          health view flags it, the sufficiency check lists it for the user at run-open, the
+          landing verifier flags one keyed to its own run, and desk visits clean it.
         anchor: 2026-08-19 product-architecture-schema D10
       - id: authoring-architecture-store.first-visit-bootstrap
         labels: [evidence]
@@ -256,16 +263,6 @@ sections:
     title: Reserved — the user's gates and dispositions
     intent: Decisions a run never takes on its own.
     rules:
-      - id: authoring-architecture-store.sign-off-is-write-gate
-        labels: [user-gate]
-        class: floor
-        kind: gate
-        text: >-
-          Ruled truth is never edited in place by a delivery run — a design-time write is legal
-          only as an in-flight-class delta, and only after the user's sign-off on the rendered
-          diagram plus the named row changes: the sign-off IS the write gate. No sign-off, no
-          store write.
-        anchor: 2026-08-19 product-architecture-schema D10
       - id: authoring-architecture-store.diff-user-dispositioned
         labels: [user-gate, reporting]
         class: floor
@@ -292,3 +289,27 @@ sections:
           downstream. A pipeline run that meets a store with no ruled content offers the bootstrap
           rather than failing.
         anchor: 2026-08-19 product-architecture-schema D16
+      - id: authoring-architecture-store.sign-off-flips-proposed
+        labels: [user-gate]
+        class: floor
+        kind: gate
+        text: >-
+          A delivery run writes its store changes in place as `proposed (<key>)` — a new
+          element, an amended one with its new text in place, a removed one cut to its heading (a
+          spine row: to its id, kind, name and status) — and nothing it writes before the user's
+          sign-off is promised. The sign-off, on the rendered diagram, the changed-element table
+          and the pinned-base diff, is the user's; it flips each `proposed (<key>)` by that diff
+          — absent at the base to `in-flight (<key>)`, changed from it to `modifying (<key>)`,
+          cut to its heading to `removing (<key>)` — through this skill, which regenerates the
+          index. The signed store delta is the store at the sign-off base, or the checkpoint table
+          where no commit is made. A run that ends before its checkpoint reverts its `proposed`
+          elements by the diff. No sign-off, no in-flight element.
+        anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D7
+tombstones:
+  - id: authoring-architecture-store.sign-off-is-write-gate
+    disposition: >-
+      superseded by authoring-architecture-store.sign-off-flips-proposed — the sign-off is the
+      gate between `proposed` and the in-flight class, not between nothing and a write (D7); a
+      delivery run writes its store changes in place before sign-off as `proposed` (D1). The
+      successor also takes the store carve of impl.baselines-never-in-place. (2026-09-24
+      delta-files-vs-direct-baseline-edits D7)

@@ -1100,8 +1100,9 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // author-grader-consolidation D7); `0009-plan-qa-leg` imported `review-seat-plan`
     // (2026-09-03 producer-plan-enforcement D8); the 2026-09-19 impeccable-design-integration
     // wave imported three skills (`0011`, `0012`), the `product-design` home and the
-    // `design-baseline` template (`0013`).
-    assert_eq!(state.docs.len(), 80, "the schema class is 80 files");
+    // `design-baseline` template (`0013`); the 2026-09-29 census table ratification imported seven
+    // home documents (`0032` six, `0033` the `runs` home).
+    assert_eq!(state.docs.len(), 87, "the schema class is 87 files");
 
     let census = census(&state);
     let (command_rules, command_floors) =
@@ -1143,9 +1144,15 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // mints `authoring-constitution.rule-not-instance`, so skill 805 → 803. None of the nine is a
     // floor or a fail node; every other op is a reword, a field set, a moment or a template
     // replaced, and the floor figures and the fail set hold.
-    assert_eq!(command_rules, 332, "live command rules");
+    // `0024`–`0029` (the 2026-09-24 delta-files-vs-direct-baseline-edits wave, one anchor each)
+    // supersede nine rules and mint ten. `implement` loses five — two floors, one must, two floor
+    // fail nodes — and gains six — two floors, two musts, two floor fail nodes — so command
+    // 332 → 333 with the floor figure and the fail set unmoved; the skill side swaps four for four,
+    // a floor for a floor twice, so skill 803 and its floors hold. `0032`–`0035` (the 2026-09-29
+    // census table ratification) carry home documents only, and no rules.
+    assert_eq!(command_rules, 333, "live command rules");
     assert_eq!(skill_rules, 803, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1135, "live rules in total");
+    assert_eq!(command_rules + skill_rules, 1136, "live rules in total");
     assert_eq!(skill_floors, 264, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a

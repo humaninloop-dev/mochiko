@@ -12,13 +12,7 @@ deliverables:
     max_lines: 300
   - file: design-closure.md
     max_lines: 300
-  - file: baseline-delta.md
-    max_lines: 300
   - file: sufficiency-report.md
-    max_lines: 300
-  - file: data-model.md
-    max_lines: 300
-  - file: constraints-and-decisions.md
     max_lines: 300
   - file: architecture.md
     max_lines: 300
@@ -27,8 +21,7 @@ deliverables:
   - file: contest-brief.md
     max_lines: 300
   - file: gates.md
-    max_lines: 150
-subdirs: [contracts]
+    max_lines: 300
 reports:
   envelope: report-envelope
   by_type: {}

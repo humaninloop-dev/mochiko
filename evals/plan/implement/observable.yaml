@@ -61,7 +61,9 @@ observable:
   - {id: impl.finding-kinds, why: finding split spec-required vs beyond-spec described}
   - {id: impl.store-landing, why: three-part store fold planned where a delta exists (s2)}
   - {id: impl.landing-selection, why: graduation batch - row fold, status, index, specs-index}
-  - {id: impl.graded-fold, why: three-way-diff fold per touched baseline}
+  - {id: impl.baseline-diff-review, why: pinned-base diff of every touched baseline reviewed - non-author grade; unmarked-write test; duplicate-id check; landing flip}
+  - {id: impl.base-pins, why: run-open base pinned at entry before the sufficiency seat; sign-off pin at the checkpoint; both in the final-validation report}
+  - {id: impl.baseline-entry-grammar, why: written and amended baseline entries carry the run's Lifecycle marker - proposed (<key>) until the checkpoint flips them}
   - {id: impl.gates-fold, why: ruled findings fold into gates.md in TEST grammar}
   # ways-of-working
   - {id: impl.author-grader-default-fail, why: no output cleared by its author across the roster}
@@ -72,7 +74,7 @@ observable:
   - {id: impl.no-git-mutations, why: plan suggests commits, never runs git}
   - {id: impl.acceptance-plain-text, why: gates as plain blocking text, never timed}
   # boundaries
-  - {id: impl.baselines-never-in-place, why: deltas-beside-baselines pattern throughout}
+  - {id: impl.baselines-in-place-marked, why: baselines edited in place under the run's lifecycle marker - no per-feature copies; no ledger; no fold}
   - {id: impl.attempt-per-grade, why: attempt bounds declared at run-open, charged per grade}
   - {id: impl.gap-rework-bound, why: run-scale bound restated at run-open}
   - {id: impl.gates-never-triaged, why: failed gate fails the cycle, no triage}
@@ -94,7 +96,6 @@ out_of_instrument:
   - {id: impl.finding-kind-disputed, why: contingency - disputed finding kind}
   - {id: impl.delivered-territory-routing, why: contingency - gap lands in delivered territory}
   - {id: impl.beyond-spec-disposition, why: contingency - beyond-spec findings exist}
-  - {id: impl.baseline-delta-grammar, why: contingency - build-time baseline discovery}
   - {id: impl.delta-reverification, why: contingency - delta re-grade round}
   - {id: impl.deviation-gate, why: contingency - a cycle deviates from the signed delta}
   - {id: impl.constitution-supremacy, why: contingency - governance conflict arises}
@@ -125,10 +126,10 @@ out_of_instrument:
   - {id: impl.fail.quality-gate, why: fail-condition}
   - {id: impl.fail.no-evidence, why: fail-condition}
   - {id: impl.fail.regression, why: fail-condition}
-  - {id: impl.fail.baseline-in-place, why: fail-condition}
+  - {id: impl.fail.unmarked-baseline-write, why: fail-condition}
   - {id: impl.fail.deviation-unresolved, why: fail-condition}
   - {id: impl.fail.store-landing-incomplete, why: fail-condition}
-  - {id: impl.fail.ungraded-fold, why: fail-condition}
+  - {id: impl.fail.unreviewed-baseline-diff, why: fail-condition}
   - {id: impl.fail.gap-finding-missing, why: fail-condition}
   - {id: impl.fail.skip-unstated, why: fail-condition}
   - {id: impl.fail.spec-gap-unresolved, why: fail-condition}

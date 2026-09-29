@@ -1080,12 +1080,14 @@ const IMPLEMENT_FLOORS: [&str; 37] = [
     // `0013-design-baseline-home` minted this checkpoint floor and `impl.design-audit-advisory`
     // below (2026-09-19 impeccable-design-integration D7 and D8).
     "impl.design-first-write",
-    "impl.graded-fold",
+    // `0026-delta-pinned-base-review` superseded `impl.graded-fold` with this floor (2026-09-24
+    // delta-files-vs-direct-baseline-edits D3), minted into `tools`, the section its predecessor
+    // sat in, so it renders in the same place.
+    "impl.baseline-diff-review",
     "impl.author-grader-default-fail",
     // `0005-artifact-homes` minted this one into `ways-of-working`, which renders here between the
-    // author-grader floor and the baselines floor.
+    // author-grader floor and the boundaries floors.
     "impl.artifact-home",
-    "impl.baselines-never-in-place",
     "impl.deviation-gate",
     "impl.constitution-supremacy",
     "impl.constraint-challenge",
@@ -1100,6 +1102,10 @@ const IMPLEMENT_FLOORS: [&str; 37] = [
     "impl.sound-loop-floor",
     "impl.transport-floor",
     "impl.design-audit-advisory",
+    // `0024-delta-baselines-in-place` superseded `impl.baselines-never-in-place` with this floor
+    // (2026-09-24 delta-files-vs-direct-baseline-edits D1). A mint appends to its section, so it
+    // renders at the end of `boundaries` rather than where its predecessor stood.
+    "impl.baselines-in-place-marked",
     "impl.fail.sufficiency-unrecorded",
     "impl.fail.design-skipped",
     "impl.fail.card-independence",
@@ -1107,14 +1113,16 @@ const IMPLEMENT_FLOORS: [&str; 37] = [
     "impl.fail.quality-gate",
     "impl.fail.no-evidence",
     "impl.fail.regression",
-    "impl.fail.baseline-in-place",
     "impl.fail.deviation-unresolved",
     "impl.fail.store-landing-incomplete",
-    "impl.fail.ungraded-fold",
     "impl.fail.gap-finding-missing",
     "impl.fail.skip-unstated",
     "impl.fail.spec-gap-unresolved",
     "impl.fail.no-acceptance",
+    // `0026` superseded `impl.fail.baseline-in-place` and `impl.fail.ungraded-fold` with these
+    // two (D3), appended to `fail-conditions`.
+    "impl.fail.unmarked-baseline-write",
+    "impl.fail.unreviewed-baseline-diff",
 ];
 
 /// A skill's floor set, the review family's referent, in render order.
@@ -1202,8 +1210,10 @@ fn the_widest_shipped_floor_index_is_the_size_the_wave_recorded() {
         (widest.0.as_str(), widest.1, widest.2),
         // Re-measured after `0005-artifact-homes` added `impl.artifact-home` to the set, and
         // again after `0013-design-baseline-home` added `impl.design-first-write` and
-        // `impl.design-audit-advisory`.
-        ("implement", 1021, 1057),
+        // `impl.design-audit-advisory`, and again after `0024` and `0026` (2026-09-24
+        // delta-files-vs-direct-baseline-edits) swapped four floors for four longer ids: +27
+        // characters, all ASCII, so bytes move by the same.
+        ("implement", 1048, 1084),
         "the widest floor index moved"
     );
 }
