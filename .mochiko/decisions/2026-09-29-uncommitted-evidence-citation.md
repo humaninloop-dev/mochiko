@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-29
 **Status:** ruled (user) 2026-09-29, "as recommended", at the wave-3 plan approval of the joint build
-(branch `joint-hook-delta`); build pending (wave 3, migrations 0036–0039)
+(branch `joint-hook-delta`); **built 2026-09-29 at plugin v0.116.0** (wave 3, migrations 0036–0039)
 **Driver:** the seams record's "smaller two"
 ([2026-09-29-joint-hook-delta-build-seams.md](2026-09-29-joint-hook-delta-build-seams.md), routed items),
 put to the user at the wave-3 plan approval as that record said.

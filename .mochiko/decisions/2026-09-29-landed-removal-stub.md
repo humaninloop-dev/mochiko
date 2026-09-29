@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-29
 **Status:** ruled (user) 2026-09-29, "as recommended", during wave 2's plan round of the joint build
-(branch `joint-hook-delta`)
+(branch `joint-hook-delta`); **built 2026-09-29 at plugin v0.116.0** (migrations 0025 and 0026)
 **Driver:** the plan grader P4, on seat S4's wave-2 plan (its advisory A10). This is the ninth seam
 ruling of the joint build; R1–R8 are in
 [the seams record](2026-09-29-joint-hook-delta-build-seams.md), which is at its size bound.

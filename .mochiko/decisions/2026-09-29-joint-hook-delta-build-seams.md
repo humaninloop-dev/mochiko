@@ -2,8 +2,9 @@
 
 **Date:** 2026-09-29
 **Status:** ruled (user) 2026-09-29, R1–R7 each "as recommended" (R5/R6 at the wave-1 plan's
-approval, R7 during its plan round; R8 "as recommended" during wave 2's plan round); build started
-2026-09-29 on branch `joint-hook-delta`
+approval, R7 during its plan round; R8 "as recommended" during wave 2's plan round); **built
+2026-09-29 at plugin v0.116.0** (joint build waves 1–3, branch `joint-hook-delta`); R3 applies and
+wave 4, kinako, is owed
 **Driver:** the user asked to implement `hook-enforcement-field-review` (accepted 2026-09-23) and
 `delta-files-vs-direct-baseline-edits` (accepted 2026-09-24) together, after asking whether their
 decisions clash.

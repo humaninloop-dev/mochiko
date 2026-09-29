@@ -2,7 +2,7 @@
 
 **Date:** 2026-09-29
 **Status:** ruled (user) 2026-09-29, "rule it now", at the second plan FAIL of seat S7 in wave 3 of the
-joint build (branch `joint-hook-delta`); build pending (wave 3, migration 0041)
+joint build (branch `joint-hook-delta`); **built 2026-09-29 at plugin v0.116.0** (wave 3, migration 0041)
 **Driver:** seat S8's plan observation O3, routed to S7; P7's re-review of S7's v3 (N2b) named it a
 reconciliation of two user-ruled decisions, the same kind as the seams record's R8
 ([2026-09-29-joint-hook-delta-build-seams.md](2026-09-29-joint-hook-delta-build-seams.md)).
