@@ -1,0 +1,87 @@
+grammar: 1
+id: 0036-run-folder-and-evidence
+sequence: 36
+intent: >-
+  Execute hook-enforcement-field-review D4 as amended (S2) inside the implement run and
+  testing-end-user: the run folder's life per seams R5 (the <owner>-run<n> form, the lead creates
+  it at run-open; field OQ2) and R6 (the lead removes it after final acceptance, no CLI
+  subcommand; field OQ5), with the .gitignore line run-open adds; evidence cited by command and
+  commit, and uncommitted evidence by the run-open pin plus a working-change fingerprint computed
+  when the report is written (seam R10); testing-end-user's scratch path moved to the run folder
+  (field F11). What leaves, under D4 as amended (record :486, "never a 'full log' path"): full-log
+  pointers — truncation-bounds' "with full-log pointers" and cleanup-protocol's locations
+  reported into the report, since the run folder goes at acceptance and a path into it would
+  dangle; and cleanup-protocol's "on failure keep the logs … clean up only after the human
+  reviews", the skill deleting no evidence file, the folder going at acceptance as the lead's step
+  (R6).
+anchor: 2026-09-23 hook-enforcement-field-review D4
+hash: sha256:b72af506b34d9294c7d0073da2b31335f08c0db869beb013289ec2a762229a53
+changes:
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.tools
+    rule:
+      id: impl.run-folder
+      labels: [evidence, landing]
+      class: must
+      kind: duty
+      text: >-
+        The run's raw output has one home, the run folder `.mochiko/runs/<run-id>/` in the main
+        tree: `<run-id>` is `<owner>-run<n>`, the owner being the run's lifecycle key (`FEAT-XXX`,
+        `EPIC-XXX`, `lane-<slug>`) and `<n>` the owner's next run number, never one a folder under
+        `runs/` carries — a number may recur once an earlier folder is removed, since no durable
+        record cites a folder path (impl.evidence-citation). At run-open the lead ensures
+        `.gitignore` carries the line `.mochiko/runs/`, adding it if absent — the gate refuses
+        every write under `runs/` until it does — creates the folder, names it at the run-open
+        confirmation, and every seat's brief names it. Captured console, logs, dumps and
+        screenshots go there, never into any other home; no report lands there. After the user's
+        final acceptance the lead removes the folder as a landing step; what stays durable is the
+        typed reports, the `tasks.md` checkboxes, the landing rows and the commits.
+      anchor: 2026-09-23 hook-enforcement-field-review D4
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.tools
+    rule:
+      id: impl.evidence-citation
+      labels: [evidence, reporting]
+      class: must
+      text: >-
+        A report cites evidence, never dumps it: it quotes the decisive lines with the command
+        that produced them and the commit they ran at, and never carries a full-log path — the
+        run folder (impl.run-folder) goes at acceptance, so a path into it would dangle. Evidence
+        from uncommitted work cites the run-open pin (impl.base-pins) plus a fingerprint of the
+        working change against it, computed by the reporting seat when the report is written,
+        never at dispatch — `base <sha> + working sha256:<hash>` — hashing the tracked diff
+        against the pin together with every untracked, non-ignored file's path and content, for
+        example `{ git diff --no-ext-diff --no-textconv --no-color --no-renames --binary <pin>;
+        git ls-files -o --exclude-standard; git ls-files -o --exclude-standard | git hash-object
+        --stdin-paths; } | shasum -a 256`, the command stated beside it. No seat stages, stashes
+        or commits to make a citation possible (impl.no-git-mutations). Each producing seat's
+        brief carries this.
+      anchor: 2026-09-23 hook-enforcement-field-review D4
+  - op: reword-rule
+    schema: skill/testing-end-user
+    id: testing-end-user.evidence-capture-binding
+    text: >-
+      Capture evidence per `references/EVIDENCE-CAPTURE.md` — console capture,
+      background-process PID tracking, timeout handling, and the four evidence types (`console` /
+      `screenshot` / `logs` / `timing`) — into the run folder the brief names,
+      `.mochiko/runs/<run-id>/`, never a system temp folder or any other home.
+  - op: reword-rule
+    schema: skill/testing-end-user
+    id: testing-end-user.cleanup-protocol
+    text: >-
+      Cleanup per `references/EVIDENCE-CAPTURE.md`: background processes are stopped pass or fail;
+      evidence files stay in the run folder until the lead removes it after the run's final
+      acceptance — this skill deletes none — and their locations go to the lead in the
+      checkpoint presentation, never into the persisted report.
+  - op: reword-rule
+    schema: skill/testing-end-user
+    id: testing-end-user.truncation-bounds
+    text: >-
+      Failure evidence in the report is bounded per the truncation rules in
+      `references/REPORT-TEMPLATES.md` — the decisive excerpt with the command that reproduces
+      it and its commit, or for uncommitted work the base commit plus the working-change
+      fingerprint, computed when the report is written by the method the brief carries; never a
+      full-log path, since the run folder goes at acceptance. The checkpoint presentation is
+      in-memory and never persisted.

@@ -13,6 +13,30 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/authoring-epic/SKILL.md`. -->
 
+## [v0.116.0] The two faces — "the shared-baseline deltas" as a spine file superseded
+
+- **Disposition:** deleted from the list. The list now ends "…the joint design-phase plan, the
+  joint architecture + seam design, and the ordering." The shared baselines' in-place, one-pen,
+  `EPIC-XXX`-keyed write is the delivered floor `authoring-epic.shared-baseline-single-pen-holder`
+  (plus `authoring-epic.artifact-home`), which arrives in this pair's own `sec.artifact` block. The
+  body does not restate it.
+  - **Fix round (V3a unit 2, issue 1):** the first landing replaced the item with "the shared
+    baselines are edited in place in the product files, one pen per file, keyed `EPIC-XXX`". That
+    restated the floor, so it left in the same wave.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-24 delta-files row →
+  `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D6(b): an epic writes
+  shared baselines in place, one pen per file; D1: no delta files; the delivered floor
+  `authoring-epic.shared-baseline-single-pen-holder` (0028)).
+- **Content (superseded text, verbatim):** `run consumes: the joint design-phase plan, the joint
+  architecture + seam design, the` / `ordering, and the shared-baseline deltas.`
+- **Kept deliberately:** the two faces, the spine's other three files, "per-feature detail stays in
+  the member dirs", and "the spine carries only what is genuinely joint".
+- **Budget:** body 3,129 → 3,200 at the first landing, then 3,101 at the V3a fix round (net −28, a
+  shrink). The description is unchanged at 496. The payload and any overage are the wave lead's
+  ledger.
+- **Consumers assessed:** the router's `:73` "shared-baseline joint deltas" is re-keyed in the same
+  wave (`strips/mochiko.md`).
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

@@ -1150,9 +1150,14 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // 332 → 333 with the floor figure and the fail set unmoved; the skill side swaps four for four,
     // a floor for a floor twice, so skill 803 and its floors hold. `0032`–`0035` (the 2026-09-29
     // census table ratification) carry home documents only, and no rules.
-    assert_eq!(command_rules, 333, "live command rules");
-    assert_eq!(skill_rules, 803, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1136, "live rules in total");
+    // `0036`–`0043` (the 2026-09-29 joint hook/delta build's wave 3) mint three rules and retire
+    // none: `impl.run-folder` and `impl.evidence-citation` on `implement` (`0036`) and
+    // `testing-end-user.pre-write-dry-run` (`0038`), all three musts, none a floor or a fail node —
+    // command 333 → 335, skill 803 → 804, the floor figures and the fail set unmoved. The rest are
+    // rewords keeping id, class and kind, and `0040`'s home replaced.
+    assert_eq!(command_rules, 335, "live command rules");
+    assert_eq!(skill_rules, 804, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1139, "live rules in total");
     assert_eq!(skill_floors, 264, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a

@@ -225,7 +225,9 @@ sections:
           .mochiko/product/architecture` before the first one. `spine.md` and `concerns.md` are
           the hand-written pair, `concerns/<AX-ID>.md` is a graduated row's file in the sub-home,
           and the repo-root index is the derived view this skill regenerates rather than authors.
-          Take the spine's per-section budgets from `mochiko-cli template architecture-spine`.
+          Take `spine.md`'s and `concerns.md`'s shape from their templates and their bound from
+          `mochiko-cli home` — per `##` entry, the templates' section budgets no longer apply; a
+          graduated file takes its sub-home's whole-file bound.
         anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: authoring-architecture-store.sec.output
     title: Output — the derived index and the health view

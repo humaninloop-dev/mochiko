@@ -95,9 +95,10 @@ Its *necessity* test is the simplest-execution ladder's rung 1 — does any rati
 
 ## Architecture pass {#architecture-pass}
 
-Fires when the design-phase package carries a **store delta** — the drafted topology + `AX-XXX` concern-row
+Fires when the run proposes a **store delta** — the run's `proposed` topology + `AX-XXX` concern-row
 changes authored by `mochiko:patterns-system-design` against the standing store at
-`.mochiko/product/architecture/`, graded before the user's sign-off writes it. Two lens groups —
+`.mochiko/product/architecture/`, drawn in its `architecture.md` and read in the pinned-base diff,
+graded before the user's sign-off flips them. Two lens groups —
 **topology feasibility** (A1–A2) and **governance conformance** (A3) —
 both cross-artifact, both adversarial. Same discipline as the six classes: you are trying to prove the
 topology cannot be built or cannot conform, not ticking a box.
@@ -121,7 +122,7 @@ the seam is between two *elements*, and reading it is no less cross-artifact for
 `constraints-and-decisions.md`) ↔ the topology the delta proposes.
 **Question:** is the topology buildable and deployable *given* the constraints and the infrastructure actually provisioned?
 
-**Worked example.** The delta introduces a managed message queue as a new `in-flight` component, but `C-006` forbids new managed infrastructure and no `IP-XXX` row provisions a queue. The topology names a component the constraints do not allow to exist. Not buildable as drawn.
+**Worked example.** The delta introduces a managed message queue as a new `proposed` component, but `C-006` forbids new managed infrastructure and no `IP-XXX` row provisions a queue. The topology names a component the constraints do not allow to exist. Not buildable as drawn.
 
 **Evidence:** the `SPN-XXX` element needing the capability, the `C-XXX`/`IP-XXX` that withholds it, and the buildability gap.
 **Resolvable vs fundamental:** adding the missing `IP-XXX` (if the constraint permits) or re-shaping to an allowed mechanism is *resolvable*; a categorical forbiddance of the only infrastructure the shape needs is *fundamental*. This is class 6 (constraint↔design) lifted one level up.
@@ -179,7 +180,7 @@ Classify each finding resolvable vs fundamental first — that classification, w
 
 - Not a coverage checklist — "is every FR mapped?" is the completeness sibling's.
 - Not measurability-in-isolation — "does this NFR have a measurement method?" is the sibling's.
-- Not consistency / traceability / presence — "do the entity names match the requirement references?" is the sibling's. On the store delta, "does every delta element appear in the diagram?", "is this stance one of the four legal words?", "is every element keyed to this feature?", and "do data-model/contracts conform to the signed store delta?" are the sibling's too.
+- Not consistency / traceability / presence — "do the entity names match the requirement references?" is the sibling's. On the store delta, "does every delta element appear in the diagram?", "is this stance one of the four legal words?", "is every element keyed to this run's owner?", and "do data-model/contracts conform to the signed store delta?" are the sibling's too.
 - Not constitution grading — you never judge whether the constitution *itself* is well-formed (G1, `validation-constitution`'s domain). The architecture pass's governance-conformance lens reads the governance surface only **as an input**, to grade the *topology's* conformance to it.
 
 Cross-artifact contradiction, impossibility, and buildability — plus class 7 and, when the package carries a store delta, topology feasibility and governance conformance (the architecture pass). Nothing else.

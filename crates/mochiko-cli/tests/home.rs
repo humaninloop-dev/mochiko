@@ -1549,16 +1549,81 @@ changes:
     let view = render::home_view(&state, path, Some(&located), &ctx);
     assert!(
         view.contains(
-            "data-model.md · entries · one `###` per entry · 150 lines per entry · 40 lines of \
-             section text outside entries · not counted: `**Lifecycle:**`, `**Raised:**` lines"
+            "data-model.md · entries · one `###` per entry · 150 lines per entry · 150 lines \
+             above the first heading · 40 lines of section text outside entries · not counted: \
+             `**Lifecycle:**`, `**Raised:**` lines"
         ),
         "{view}"
     );
     assert!(
-        view.contains("decisions.md · entries · one `##` per entry · 60 lines per entry"),
+        view.contains(
+            "decisions.md · entries · one `##` per entry · 60 lines per entry · 60 lines above \
+             the first heading"
+        ),
         "{view}"
     );
     assert!(!view.contains("no bound declared"), "{view}");
+}
+
+#[test]
+fn the_home_render_claims_no_template_bound_for_an_entry_store_home() {
+    // `product-architecture` is `bounds: template` and its files are entry stores, yet the render
+    // printed "bounds: per template section". The gate reads `bounds` only as elsewhere or not, so
+    // the line points at each deliverable's own bound.
+    let body = r####"
+grammar: 2
+id: 0001-homes
+sequence: 1
+intent: One entry-bounded store under a template-bounds home.
+changes:
+  - op: import-document
+    kind: home
+    name: product-architecture
+    content:
+      home: product-architecture
+      title: The product architecture store
+      path: [".mochiko", "product", "architecture"]
+      bounds: template
+      deliverables:
+        - file: spine.md
+          form: entries
+          entry_heading: "##"
+          entry_max_lines: 177
+"####;
+    let state = state("render-bounds-line", body);
+    let ctx = render::Context {
+        binary: "0.3.0".to_string(),
+        grammar: 2,
+        plugin: "test".to_string(),
+    };
+    let path = Path::new(".mochiko/product/architecture/");
+    let located = home::Located {
+        root: PathBuf::from("/repo"),
+        relative: path.to_path_buf(),
+    };
+    let view = render::home_view(&state, path, Some(&located), &ctx);
+    assert!(!view.contains("per template section"), "{view}");
+    assert!(
+        view.contains("bounds: per deliverable — each line below states its bound"),
+        "{view}"
+    );
+}
+
+#[test]
+fn a_directory_under_reports_is_named_with_its_reports_prefix() {
+    // Kinako's `reports/evidence/` was refused as "`evidence/` is not a declared sub-directory" of
+    // the feature home, as if it sat beside `reports/` rather than inside it.
+    let state = state("resolve-reports-subdir", HOMES);
+    let homes = homes(&state);
+    match homes.resolve(Path::new(
+        ".mochiko/features/FEAT-001/reports/evidence/run.log",
+    )) {
+        Resolution::UndeclaredSubdir { home, subdir } => {
+            assert_eq!(home.home, "feature");
+            assert_eq!(subdir, "reports/evidence");
+        }
+        other => panic!("expected an undeclared sub-dir, got {other:?}"),
+    }
 }
 
 #[test]

@@ -49,8 +49,8 @@ Every visit has a goal; a visit is never goal-less.
    health, then ask what the visit is for. **Health first, then the ask:** open by surfacing
    store state *before* taking the request — the health view, read from the derived root index:
    `open` rows still carrying no stance · `not-now` rows whose revisit trigger has gone stale ·
-   **fired** upgrade triggers awaiting their routing · orphan in-flight elements keying no open
-   feature · the standing drift register. The health view is a section of the derived index,
+   **fired** upgrade triggers awaiting their routing · orphan `proposed` and in-flight-class
+   elements keying no open feature, epic or lane · the standing drift register. The health view is a section of the derived index,
    never a separate artifact.
 2. **Goal — the done condition, converged per visit.** Converge to a goal and its done
    condition: a micro-brainstorm converges to a **one-line visit goal and its explicit done

@@ -130,10 +130,10 @@ spec or implement acceptance.
   against the last-groomed baseline (the baseline figures live on the stamp line).
 - **Dead-pointer scan:** every `ROADMAP.md` / `DECISIONS.md` / `BACKLOG.md` pointer
   resolves, or carries the `provenance: unrecoverable` terminal stamp.
-- **Orphan rule:** every in-flight-class element in the architecture store — `in-flight` /
-  `modifying` / `removing (FEAT-XXX)` — keys an open feature and resolves; an element
-  keying a closed or missing feature is an **orphan**, surfaced by the derived index's
-  health view and cleaned at the next desk visit.
+- **Orphan rule:** every `proposed` and in-flight-class element in the architecture store keys
+  an open feature, epic or lane and resolves (`authoring-architecture-store.orphan-rule`); an
+  element keying a closed, retired or missing owner is an **orphan**, surfaced by the derived
+  index's health view and cleaned at the next desk visit.
 - **Index agreement:** the derived index agrees with the store it renders; a disagreement
   is a defect, fixed by re-rendering, never by editing the index. Both this and the orphan
   rule **bind once the store carries ruled content** — where the store carries no ruled content
@@ -179,7 +179,7 @@ GI-XXX]
 - [ ] Core artifacts named with read-job, writer moment, and carrier (the admission rule holds for every scaffolded doc); electives present only when adopted, declines recorded
 - [ ] All three enforcement surfaces present (project-pinned copy at `.mochiko/memory/knowledge-management.md` · `paths`-scoped rules file · CLAUDE.md pointers) and the five carrying commands' landing steps reference the PROJECT copy, not this template
 - [ ] Landing ritual stated as one three-part move covering closing AND supersession
-- [ ] Invariants stated mechanically (bijection · specs-index agreement (open/close contract, rows never contradict the feature map) · status-agreement · open-only BACKLOG · horizon caps Now ≤5 / Next ≤7 / Later ≤10 · item bounds + count watch · dead-pointer scan with the `provenance: unrecoverable` terminal state · orphan rule (every in-flight-class store element keys an open feature and resolves) · index agreement (derived index matches the store) · presence) with the vacuous-at-zero note
+- [ ] Invariants stated mechanically (bijection · specs-index agreement (open/close contract, rows never contradict the feature map) · status-agreement · open-only BACKLOG · horizon caps Now ≤5 / Next ≤7 / Later ≤10 · item bounds + count watch · dead-pointer scan with the `provenance: unrecoverable` terminal state · orphan rule (every `proposed` and in-flight-class store element keys an open feature, epic or lane and resolves) · index agreement (derived index matches the store) · presence) with the vacuous-at-zero note
 - [ ] Decision-record schema + glossary term format present; superseded rows compress one line per decision, status preserved
 - [ ] Disambiguation present (`ROADMAP.md` = the thin forward view, never a decision archive; `DECISIONS.md` = the thin index over records; `evolution-roadmap.md` unrelated)
 - [ ] Never-overwrite floor stated; collision rulings recorded (or "none — clean names") and matching the synthesis

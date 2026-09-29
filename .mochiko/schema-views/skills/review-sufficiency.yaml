@@ -73,8 +73,7 @@ sections:
           colliding feature's signed architecture.md drawing and owning spec — the sole
           run-output read the fence admits, scoped to the colliding surface, never extended to
           that feature's code, cards, or cycle reports. Its baseline and store entries are read in
-          place: `proposed` is nothing promised and reads absent; the in-flight class (`in-flight`
-          · `modifying` · `removing`) is planned contract; `removed` reads absent.
+          place, by marker (review-sufficiency.lifecycle-marker-read).
         anchor: 2026-08-26 plan-stage-utility
       - id: review-sufficiency.lifecycle-marker-read
         labels: [fence]
@@ -204,14 +203,13 @@ sections:
         kind: duty
         text: >-
           In-flight exposure — keyed on the row's status. A touched surface owned by an
-          in-flight row obliges reading that feature's entries in the product baselines and the
-          store, its signed architecture.md drawing, and its owning spec: `proposed` is nothing
-          promised and reads absent; the in-flight class (`in-flight` · `modifying` ·
-          `removing`) is planned contract; `removed` reads absent. Need covered → cite the
-          planned contract, no gap · adjacent → gap, the design phase writes its `proposed`
-          entries sequenced behind that delivery · conflicting → reserved to the user at
-          run-open. No locks — conflict routing is a question to the user, never a hold on the
-          touched feature; only silent contradiction is prohibited.
+          in-flight row obliges reading that feature's signed architecture.md drawing, its owning
+          spec, and its entries in the product baselines and the store by marker
+          (review-sufficiency.lifecycle-marker-read), never a `proposed` one. Need covered →
+          cite the planned contract, no gap · adjacent → gap, the design phase writes its
+          `proposed` entries sequenced behind that delivery · conflicting → reserved to the
+          user at run-open. No locks — conflict routing is a question to the user, never a hold
+          on the touched feature; only silent contradiction is prohibited.
         when: {scope: selection}
         anchor: 2026-08-26 plan-stage-utility
       - id: review-sufficiency.absent-baseline

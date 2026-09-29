@@ -32,6 +32,22 @@
 //! inside double quotes, which is one quoted word and is never split. A `cd` in a pipeline or in
 //! the background is read as though it held. A relative write from a working directory inside a
 //! home is the hook's to close, by joining the target to the payload's `cwd`.
+//!
+//! `((` is scanned twice, and a target either reading names is a write target. The exact reading
+//! takes `((` as bash and zsh do: arithmetic when the `)` closing its inner `(` is followed at once
+//! by the outer `)`, two subshells otherwise. After 64 non-arithmetic answers anywhere in one scan
+//! (each process substitution scans with its own budget), every further `((` reads as two subshells
+//! without a look ahead. The arithmetic reading is the scan's before G1 R2: every `((` is one word,
+//! to the `)` that closes its first `(`. Each alone can miss a write the other sees. The arithmetic
+//! reading swallows `((echo a); tee x)` whole. The exact reading, where it takes an arithmetic `((`
+//! for subshells, reads a `<<` shift inside it as a heredoc that swallows every later line: past
+//! the budget, or where `closing_paren` misjudges the inner close, since it knows no backticks, no
+//! `case` pattern and no `\"` inside double quotes (G3 B1). So no write either reading sees is
+//! missed, and none the scan before G1 R2 saw. A write both readings miss stays open: real
+//! subshells that `closing_paren` misjudges as arithmetic are one. The errors are the union of both
+//! readings' false denies, such as an arithmetic `>` read as a redirect past the budget.
+
+use std::collections::HashSet;
 
 /// One lexical unit of a command line.
 #[derive(Debug, PartialEq)]
@@ -66,12 +82,34 @@ enum Dialect {
     PowerShell,
 }
 
-/// Every path this command text writes to.
+/// How a POSIX scan reads `((` (see the module doc).
+#[derive(Clone, Copy)]
+enum DoubleParen {
+    /// As bash and zsh do, within the look-ahead budget of [`arithmetic_close`].
+    Exact,
+    /// Always arithmetic: one word, to the `)` that closes its first `(`.
+    Arithmetic,
+}
+
+/// Every path this command text writes to: the targets of the exact reading, then each target of
+/// the arithmetic reading that the exact one does not name.
 pub fn write_targets(command: &str) -> Vec<String> {
+    let mut targets = read_targets(command, DoubleParen::Exact);
+    let named: HashSet<String> = targets.iter().cloned().collect();
+    targets.extend(
+        read_targets(command, DoubleParen::Arithmetic)
+            .into_iter()
+            .filter(|target| !named.contains(target)),
+    );
+    targets
+}
+
+/// Every path one reading of this command text writes to.
+fn read_targets(command: &str, parens: DoubleParen) -> Vec<String> {
     let mut targets = Vec::new();
     // The directory each open subshell writes from, the outermost first.
     let mut scopes = vec![Directory::Start];
-    for simple in simple_commands(tokenize(command, Dialect::Posix, 0)) {
+    for simple in simple_commands(tokenize(command, Dialect::Posix, parens, 0)) {
         for _ in 0..simple.opens {
             let inherited = scopes.last().cloned().unwrap_or(Directory::Start);
             scopes.push(inherited);
@@ -107,7 +145,12 @@ pub fn write_targets(command: &str) -> Vec<String> {
 /// its command, case-insensitively, because PowerShell is.
 pub fn powershell_write_targets(command: &str) -> Vec<String> {
     let mut targets = Vec::new();
-    for simple in simple_commands(tokenize(command, Dialect::PowerShell, 0)) {
+    for simple in simple_commands(tokenize(
+        command,
+        Dialect::PowerShell,
+        DoubleParen::Exact,
+        0,
+    )) {
         targets.extend(simple.redirected);
         for (index, word) in simple.words.iter().enumerate() {
             // How many *positional* paths this cmdlet takes. `Copy-Item`/`Move-Item` take two,
@@ -674,14 +717,17 @@ fn push_word(commands: &mut [Simple], word: String) {
 /// Quotes are stripped, which is the point: the wave-0 probe's line quoted its target, and a
 /// scanner that kept the quotes would not have matched a home. A quoted operator stays a word. An
 /// operator is its own token even when glued to a word (`x>file`, `file;`), which is the S12 fix.
-/// `depth` counts the process substitutions this text sits inside (see [`MAX_DEPTH`]).
-fn tokenize(command: &str, dialect: Dialect, depth: usize) -> Vec<Token> {
+/// `parens` is how a POSIX `((` is read; `depth` counts the process substitutions this text sits
+/// inside (see [`MAX_DEPTH`]).
+fn tokenize(command: &str, dialect: Dialect, parens: DoubleParen, depth: usize) -> Vec<Token> {
     let posix = dialect == Dialect::Posix;
     let chars: Vec<char> = command.chars().collect();
     let mut tokens = Vec::new();
     // `Some("")` is a real word: an empty quoted string, such as the suffix in BSD `sed -i ''`.
     let mut word: Option<String> = None;
     let mut heredocs: Vec<(String, bool)> = Vec::new();
+    // Subshell answers to `((` this scan may still look ahead for (see [`arithmetic_close`]).
+    let mut lookaheads = MAX_DEPTH;
     let mut i = 0;
     while i < chars.len() {
         let next = chars.get(i + 1).copied();
@@ -742,12 +788,24 @@ fn tokenize(command: &str, dialect: Dialect, depth: usize) -> Vec<Token> {
                 flush(&mut word, &mut tokens);
                 tokens.push(Token::Separator);
             }
-            // `((…))` and `$((…))` are arithmetic: one word, whose `>` compares and `<<` shifts.
+            // `((…))` and `$((…))` are arithmetic: one word, whose `>` compares and `<<` shifts —
+            // unless the `((` is two subshells, which open like any other `(`.
             '(' if posix && next == Some('(') => {
-                let close = closing_paren(&chars, i);
-                word.get_or_insert_with(String::new)
-                    .extend(&chars[i..(close + 1).min(chars.len())]);
-                i = close;
+                let close = match parens {
+                    DoubleParen::Exact => arithmetic_close(&chars, i, &mut lookaheads),
+                    DoubleParen::Arithmetic => Some(closing_paren(&chars, i)),
+                };
+                match close {
+                    Some(close) => {
+                        word.get_or_insert_with(String::new)
+                            .extend(&chars[i..(close + 1).min(chars.len())]);
+                        i = close;
+                    }
+                    None => {
+                        flush(&mut word, &mut tokens);
+                        tokens.push(Token::Open);
+                    }
+                }
             }
             '(' | ')' if posix => {
                 flush(&mut word, &mut tokens);
@@ -783,7 +841,12 @@ fn tokenize(command: &str, dialect: Dialect, depth: usize) -> Vec<Token> {
                 let close = closing_paren(&chars, i + 1);
                 if depth < MAX_DEPTH {
                     let inner: String = chars[i + 2..close.max(i + 2)].iter().collect();
-                    tokens.push(Token::Substitution(tokenize(&inner, dialect, depth + 1)));
+                    tokens.push(Token::Substitution(tokenize(
+                        &inner,
+                        dialect,
+                        parens,
+                        depth + 1,
+                    )));
                 }
                 i = close;
             }
@@ -842,6 +905,33 @@ fn fold_descriptor(word: &mut Option<String>) {
     {
         *word = None;
     }
+}
+
+/// Where the `((` at `open` ends when it is arithmetic, or `None` when it is two subshells.
+///
+/// Bash and zsh take `((` as arithmetic only when the `)` closing its inner `(` is followed at once
+/// by the `)` closing the outer; `((echo a); tee x)` is a subshell inside a subshell (G1 R2). An
+/// inner `(` that never closes stays one word, swallowing a line bash refuses anyway.
+///
+/// Only the inner span is scanned, and the caller consumes an arithmetic answer's span, so only a
+/// subshell answer can leave text to be scanned again. `budget` bounds those answers at
+/// [`MAX_DEPTH`] per [`tokenize`] call; once it is spent every `((` reads as two subshells with no
+/// scan at all. That reading can false-deny an arithmetic comparison, and can miss a write behind a
+/// `<<` shift it takes for a heredoc; [`write_targets`] adds the arithmetic reading, which sees
+/// that write (G3 B1).
+fn arithmetic_close(chars: &[char], open: usize, budget: &mut usize) -> Option<usize> {
+    if *budget == 0 {
+        return None;
+    }
+    let inner = closing_paren(chars, open + 1);
+    if inner >= chars.len() {
+        return Some(chars.len());
+    }
+    if chars.get(inner + 1) == Some(&')') {
+        return Some(inner + 1);
+    }
+    *budget -= 1;
+    None
 }
 
 /// The index of the `)` that closes the `(` at `open`, or the end of the text when none does.

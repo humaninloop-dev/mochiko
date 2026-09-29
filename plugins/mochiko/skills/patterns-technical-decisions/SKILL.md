@@ -53,7 +53,7 @@ See [DECISION-RECORD.md](references/DECISION-RECORD.md) for the full ADR format,
 
 ## Where decisions are recorded
 
-Feature-scope decision records are written into the **`constraints-and-decisions.md`** artifact — but that artifact's shape is **not** this skill's to define. **Project-scope** decisions (a project carrying the knowledge-management module) land in the decisions layer instead — a `DECISIONS.md` index row + a `.mochiko/decisions/<date>-<slug>.md` record, schema per the module's project-pinned copy — same technique, different destination. Its file structure, its Section-2 Technology-Decisions **`D-XXX`** field schema, and the constraint↔decision / infrastructure-planning traceability are owned by `mochiko:authoring-technical-requirements`. Do not restate the artifact template here.
+Every technology decision a spec or a run makes is written as a **`D-XXX`** entry in the **`constraints-and-decisions.md`** artifact — in the spec's file, or in place in the product file under its lifecycle marker — but that artifact's shape is **not** this skill's to define. **Project-scope** decisions, and standing run rulings that change no entry (a project carrying the knowledge-management module), land in the decisions layer instead — a `DECISIONS.md` index row + a `.mochiko/decisions/<date>-<slug>.md` record, schema per the module's project-pinned copy — same technique, different destination. The artifact's file structure, its Section-2 Technology-Decisions **`D-XXX`** field schema, and the constraint↔decision / infrastructure-planning traceability are owned by `mochiko:authoring-technical-requirements`. Do not restate the artifact template here.
 
 Boundary (handoff `mochiko:authoring-technical-requirements` → this skill):
 
@@ -63,6 +63,8 @@ Boundary (handoff `mochiko:authoring-technical-requirements` → this skill):
 | The **technique** — evaluating alternatives, weighing trade-offs and consequences, brownfield-alignment scoring, and the ADR record depth that fills each `D-XXX` slot | this skill |
 
 Author the decision *content* with the technique in this skill; place it into the `D-XXX` slots that `mochiko:authoring-technical-requirements` defines.
+
+Every entry you write or amend in the product file carries the run's `**Lifecycle:**` marker — grammar, placement and flips are `impl.baseline-entry-grammar`, the implement rule your dispatch brief carries as an obligated read; this skill never restates it.
 
 ## Brownfield Alignment
 

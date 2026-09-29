@@ -1003,7 +1003,15 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
         // pairs, the whole of the move. The suppressed count holds at 54: the wave's one
         // retired allowlisted hit is skill-side (see the corpus pin below), and a raw run over
         // the old and new logs shows no command-family cluster moving. SUPPRESSED zero unchanged.
-        (333, 12_884, 0, 54),
+        // Re-measured after the 2026-09-29 joint hook/delta build's wave 3 (`0036`–`0043`):
+        // `0036` mints `impl.run-folder` (kind `duty`) and `impl.evidence-citation` (no kind, so
+        // `constraint`), moving the scan 333 to 335 and the pair count 12,884 to 13,050. The +166
+        // is the two buckets' prior sizes in this family, counted from the derived views (`duty`
+        // 26, `constraint` 140), equal to the measured move. Every other command-side op in the
+        // wave is a text-only reword, and a raw run over the old (`1..35`) and new (`1..43`) logs
+        // shows no command-family cluster moving, so the suppressed count holds at 54. SUPPRESSED
+        // zero unchanged.
+        (335, 13_050, 0, 54),
         "rules scanned · in-kind pairs scored · clusters · allowlist-suppressed edges"
     );
 }
@@ -1119,10 +1127,23 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // the repository allowlist leaves none unsuppressed, both read from a raw-versus-pinned pair of
     // `migrate validate --report` runs over one state. `0032`–`0035` carry home documents only
     // and add no rule to either count.
-    assert_eq!(report.scanned, 1136, "rules scanned");
-    assert_eq!(report.scored, 178_027, "in-kind pairs scored");
+    // Re-measured after the 2026-09-29 joint hook/delta build's wave 3 (`0036`–`0043`): three
+    // rules minted and none retired move the scan 1,136 to 1,139 and the pair count 178,027 to
+    // 178,832. `0036`'s `impl.evidence-citation` declares no kind and joins `constraint`,
+    // 534 → 535 (+534 pairs); `0036`'s `impl.run-folder` and `0038`'s
+    // `testing-end-user.pre-write-dry-run` join `duty`, 135 → 137 (+135 +136) — +805, the whole
+    // of the move.
+    // `suppressed_hits` moves 183 to 182 by the reword mechanism: `0036`'s reword of
+    // `testing-end-user.truncation-bounds` pulls the allowlisted pair it forms with
+    // `testing-end-user.sanctioned-set-closure` back under the threshold, so that row no longer
+    // has an edge to suppress; the row stays, both ids still resolving. No other reword in the
+    // wave moves a figure. SUPPRESSED zero: with an empty allowlist the corpus reports 77
+    // clusters over 182 edges, and the repository allowlist leaves none unsuppressed, both read
+    // from a raw-versus-pinned pair of `migrate validate --report` runs over one state.
+    assert_eq!(report.scanned, 1139, "rules scanned");
+    assert_eq!(report.scored, 178_832, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
-    assert_eq!(report.suppressed_hits, 183, "allowlist-suppressed edges");
+    assert_eq!(report.suppressed_hits, 182, "allowlist-suppressed edges");
 }
 
 // ---------------------------------------------------------------------------

@@ -16,7 +16,8 @@
 //! 4. **headings** — required `##` headings present in declared order; an undeclared `##` denied.
 //! 5. **placeholders** — declared tokens absent from frontmatter values and heading text, read
 //!    outside backticked code spans: a quotation of a pattern is not an instance of it.
-//! 6. **size** — each heading's span within its budget, or the whole-file/per-entry bound.
+//! 6. **size** — each heading's span within its budget, or the whole-file/per-entry bound; a
+//!    store's text above its first heading is bounded as one entry.
 //!
 //! # First-touch amnesty (D4e, as amended at review C3/V3)
 //!
@@ -271,6 +272,14 @@ fn report_types(state: &State) -> Vec<String> {
 
 /// Turn a candidate's faults into a verdict, consulting the baseline's faults only if there are
 /// any to excuse. `None` means the body is clean.
+///
+/// One key carries several faults when a file repeats a heading, and nothing tells those sections
+/// apart but their size (RA3, ruled at Q3). So each key's faults are ranked largest first, in the
+/// candidate and the baseline alike, and a candidate fault is compared with the standing fault of
+/// its own rank; one past the standing count is new, and denies. An unchanged rewrite therefore
+/// always settles, where comparing every section with the first of its name denied a file for
+/// nothing but its own history. The residual, with no identity to go on: a swap inside one heading
+/// that lifts no rank above its standing fault settles too.
 fn settle<F>(faults: Vec<Fault>, baseline_faults: F) -> Option<Verdict>
 where
     F: FnOnce() -> Option<Vec<Fault>>,
@@ -279,21 +288,31 @@ where
         return Some(Verdict::allow());
     }
     let standing = baseline_faults().unwrap_or_default();
-    let mut excused: Vec<&Fault> = Vec::new();
     for fault in &faults {
-        match standing.iter().find(|s| s.key == fault.key) {
-            Some(was) if fault.not_worsened_from(was) => excused.push(fault),
+        let rank = ranked(&faults, &fault.key)
+            .iter()
+            .position(|same| std::ptr::eq(*same, fault))
+            .unwrap_or_default();
+        match ranked(&standing, &fault.key).get(rank) {
+            Some(was) if fault.not_worsened_from(was) => {}
             _ => return Some(Verdict::deny(fault.message.clone())),
         }
     }
     // Every fault stood before this write and none was worsened: allowed, and the overage is
     // reported rather than hidden.
-    let lines: Vec<String> = excused.iter().map(|f| format!("- {}", f.message)).collect();
+    let lines: Vec<String> = faults.iter().map(|f| format!("- {}", f.message)).collect();
     Some(Verdict::allow_with(format!(
         "This file already stood outside its declared shape before this write, and this write does \
          not worsen it, so it is allowed. Standing:\n{}",
         lines.join("\n")
     )))
+}
+
+/// The faults carrying `key`, largest magnitude first; equal ones keep their order in the body.
+fn ranked<'a>(faults: &'a [Fault], key: &str) -> Vec<&'a Fault> {
+    let mut same: Vec<&Fault> = faults.iter().filter(|f| f.key == key).collect();
+    same.sort_by_key(|fault| std::cmp::Reverse(fault.magnitude));
+    same
 }
 
 fn undeclared_file_reason(home: &Home, name: &str, run_folder: Option<&str>) -> String {
@@ -311,7 +330,8 @@ fn undeclared_file_reason(home: &Home, name: &str, run_folder: Option<&str>) -> 
 ///
 /// Route 1 is a declared deliverable, or a `reports/` file, of the nearest home — `nearest` is the
 /// resolved home for a name or a sub-directory it does not declare, and [`Homes::nearest`] for a
-/// path in no home at all; with none, the route points at the render that lists every home.
+/// path in no home at all; with none, the route points at the render that lists every home. A home
+/// that declares nothing is never offered: the route names its title instead (census row H2).
 /// Route 2 is the run folder for raw output, stated as ephemeral, and only when the log declares
 /// one: a folder the log does not declare is never invented.
 ///
@@ -320,6 +340,15 @@ fn undeclared_file_reason(home: &Home, name: &str, run_folder: Option<&str>) -> 
 /// [`Homes::nearest`]: crate::home::Homes::nearest
 pub fn routes(nearest: Option<&Home>, shown: &str, run_folder: Option<&str>) -> String {
     let first = match nearest {
+        // A home kept with an empty set — withdrawn, as the two contracts homes were — sent the
+        // seat back to the place that refused it. Its title is the log's own word on where such
+        // files went.
+        Some(home) if home.deliverables.is_empty() && home.reports.is_none() => format!(
+            "a declared deliverable or a `reports/` file of another home — `{}` declares none \
+             ({})",
+            home.display_path(),
+            home.title
+        ),
         Some(home) => {
             let directory = home.display_path();
             match home.reports {
@@ -510,8 +539,9 @@ fn shape_faults(
     faults
 }
 
-/// A cumulative store's entries, each within the per-entry bound, and — under `###` entries —
-/// each `##` section's own text within the section bound (field review D2; seams 3 and 4).
+/// A cumulative store's entries, each within the per-entry bound; its text above the first
+/// heading, bounded as one entry (census row P1); and — under `###` entries — each `##` section's
+/// own text within the section bound (field review D2; seams 3 and 4).
 ///
 /// The fault key is `size:entry:<heading text>`, the key a log's entries already carry, so the
 /// first-touch amnesty applies per entry: an entry already over budget may be edited without
@@ -525,9 +555,22 @@ fn entry_faults(deliverable: &Deliverable, body: &str) -> Vec<Fault> {
     };
     let hashes = "#".repeat(level);
     let exempt = &deliverable.entry_exempt_fields;
-    let (entries, sections) = entry_spans(body, level, exempt);
+    let (entries, sections, preamble) = entry_spans(body, level, exempt);
     let mut faults = Vec::new();
     if let Some(budget) = deliverable.entry_max_lines {
+        // Row P1 (b): nothing counted the preamble, so a store could grow there without limit.
+        if preamble > budget {
+            let first = if level == 2 { "`##`" } else { "`##` or `###`" };
+            faults.push(Fault::new(
+                "size:preamble",
+                Some(preamble),
+                format!(
+                    "the text above the first {first} heading is {preamble} lines against a \
+                     per-entry bound of {budget}, counted from the file's first line: a store's \
+                     preamble is bounded as one entry."
+                ),
+            ));
+        }
         let skipped = if exempt.is_empty() {
             String::new()
         } else {
@@ -906,8 +949,10 @@ fn heading_spans(body: &str) -> Vec<Span> {
 /// An entry runs from its heading to the next heading at its level or above, so a `###` entry ends
 /// at the next `###` or `##`. The scan is [`heading_scan`]'s, so a fenced `###` is not a boundary.
 /// Lines whose text is an exempt field — `**<Name>:**`, bare or as a `- ` list item — are not
-/// counted toward their entry; text before the first heading is not counted at all.
-fn entry_spans(body: &str, level: usize, exempt: &[String]) -> (Vec<Span>, Vec<Span>) {
+/// counted toward their entry. Every line before the first heading at the entry level or above —
+/// frontmatter, fences and a deeper heading included — is the preamble, counted in full and
+/// returned as the third value.
+fn entry_spans(body: &str, level: usize, exempt: &[String]) -> (Vec<Span>, Vec<Span>, usize) {
     enum Open {
         Nothing,
         Entry,
@@ -922,6 +967,7 @@ fn entry_spans(body: &str, level: usize, exempt: &[String]) -> (Vec<Span>, Vec<S
     };
     let mut entries: Vec<Span> = Vec::new();
     let mut sections: Vec<Span> = Vec::new();
+    let mut preamble = 0;
     let mut open = Open::Nothing;
     for (line, classified) in body.lines().zip(heading_scan(body)) {
         match classified {
@@ -950,11 +996,12 @@ fn entry_spans(body: &str, level: usize, exempt: &[String]) -> (Vec<Span>, Vec<S
                         section.lines += 1;
                     }
                 }
-                _ => {}
+                Open::Nothing => preamble += 1,
+                Open::Entry => {}
             },
         }
     }
-    (entries, sections)
+    (entries, sections, preamble)
 }
 
 /// The heading text a placeholder token may not survive in — `##` and `###`, fences excluded.

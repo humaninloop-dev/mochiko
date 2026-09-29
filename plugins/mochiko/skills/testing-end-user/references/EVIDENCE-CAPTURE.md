@@ -1,6 +1,6 @@
 # Evidence Capture
 
-> **Scratch paths are role-neutral.** Evidence files use a `verify-` prefix under a scratch directory (`/tmp/claude/`), naming the *work* (verification), not any agent. These are ephemeral runtime artifacts, cleaned up after the checkpoint.
+> **Evidence goes to the run folder.** `$RUN` below is the run folder the brief names, `.mochiko/runs/<run-id>/` of the main tree — never a system temp folder or any other home. Evidence files use a `verify-` prefix, naming the *work* (verification), not any agent, and stay raw output (`.log`, `.txt`, `.png`), never `.md`. They stay until the lead removes the run folder after the run's final acceptance; this skill deletes none.
 
 ## Table of Contents
 
@@ -26,13 +26,13 @@ This document defines how to capture, store, and manage evidence during test exe
 Capture both stdout and stderr from all commands:
 
 ```bash
-command 2>&1 | tee /tmp/claude/verify-{task}-output.log
+command 2>&1 | tee $RUN/verify-{task}-output.log
 ```
 
 ### Structured Storage
 
 ```
-/tmp/claude/
+$RUN/
 ├── verify-C2-gate-setup.log      # Setup command output
 ├── verify-C2-gate-action-1.log   # First action output
 ├── verify-C2-gate-action-2.log   # Second action output
@@ -67,8 +67,8 @@ For actions with the `(background)` modifier:
 
 ```bash
 # Start process and capture PID
-{command} > /tmp/claude/verify-{task}-bg-{n}.log 2>&1 &
-echo $! >> /tmp/claude/verify-{task}-pids.txt
+{command} > $RUN/verify-{task}-bg-{n}.log 2>&1 &
+echo $! >> $RUN/verify-{task}-pids.txt
 ```
 
 ### Tracking PIDs
@@ -84,23 +84,21 @@ PID file format (`-pids.txt`):
 To check background process output for assertions:
 
 ```bash
-tail -n 100 /tmp/claude/verify-{task}-bg-{n}.log
+tail -n 100 $RUN/verify-{task}-bg-{n}.log
 ```
 
 ### Cleanup
 
-After test completion (pass or fail):
+After test completion (pass or fail), stop every tracked process:
 
 ```bash
 # Kill all tracked processes
 while read pid cmd; do
   kill $pid 2>/dev/null
-done < /tmp/claude/verify-{task}-pids.txt
-
-# Remove temp files
-rm -f /tmp/claude/verify-{task}-*.log
-rm -f /tmp/claude/verify-{task}-pids.txt
+done < $RUN/verify-{task}-pids.txt
 ```
+
+The evidence files stay in the run folder: this skill deletes none.
 
 ## Timeout Handling
 
@@ -152,9 +150,9 @@ fi
 
 | Platform | Command |
 |----------|---------|
-| macOS | `screencapture -x /tmp/claude/verify-{task}-screenshot.png` |
-| Linux (X11) | `import -window root /tmp/claude/verify-{task}-screenshot.png` |
-| Linux (GNOME) | `gnome-screenshot -f /tmp/claude/verify-{task}-screenshot.png` |
+| macOS | `screencapture -x $RUN/verify-{task}-screenshot.png` |
+| Linux (X11) | `import -window root $RUN/verify-{task}-screenshot.png` |
+| Linux (GNOME) | `gnome-screenshot -f $RUN/verify-{task}-screenshot.png` |
 
 ### Graceful Fallback
 
@@ -170,7 +168,7 @@ If screenshot capture fails:
 For `**Capture**: logs(/var/log/app.log)`:
 
 ```bash
-tail -n 500 /var/log/app.log > /tmp/claude/verify-{task}-applog.log
+tail -n 500 /var/log/app.log > $RUN/verify-{task}-applog.log
 ```
 
 ### Log Rotation Awareness
@@ -179,10 +177,10 @@ If the log file might rotate during the test:
 
 ```bash
 # Capture at start
-cp /var/log/app.log /tmp/claude/verify-{task}-applog-start.log
+cp /var/log/app.log $RUN/verify-{task}-applog-start.log
 
 # Capture at end
-tail -n 500 /var/log/app.log > /tmp/claude/verify-{task}-applog-end.log
+tail -n 500 /var/log/app.log > $RUN/verify-{task}-applog-end.log
 ```
 
 ## File State Capture
@@ -246,7 +244,7 @@ Track from the first setup command to the final assert evaluation.
       "command": "dart run bin/watcher.dart",
       "type": "background",
       "pid": 12345,
-      "log_file": "/tmp/claude/verify-C2-gate-bg-1.log"
+      "log_file": "$RUN/verify-C2-gate-bg-1.log"
     },
     {
       "command": "touch /tmp/watcher-test/test.jsonl",
@@ -263,8 +261,8 @@ Track from the first setup command to the final assert evaluation.
     }
   ],
   "files": {
-    "console": "/tmp/claude/verify-C2-gate-output.log",
-    "pids": "/tmp/claude/verify-C2-gate-pids.txt"
+    "console": "$RUN/verify-C2-gate-output.log",
+    "pids": "$RUN/verify-C2-gate-pids.txt"
   }
 }
 ```
@@ -274,15 +272,14 @@ Track from the first setup command to the final assert evaluation.
 ### On Success
 
 1. Stop background processes
-2. Remove all temp files
-3. Keep the summary in memory for the report
+2. Keep the summary in memory for the report
+3. Give the lead the evidence locations in the checkpoint presentation
 
 ### On Failure
 
 1. Stop background processes
 2. **Keep logs for debugging**
-3. Report log locations to the user
-4. Cleanup after the human reviews
+3. Give the lead the log locations in the checkpoint presentation, never in the persisted report
 
 ### On Abort
 

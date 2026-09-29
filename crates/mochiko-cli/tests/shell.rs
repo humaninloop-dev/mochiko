@@ -725,6 +725,52 @@ fn an_arithmetic_expression_is_one_word() {
 }
 
 #[test]
+fn a_double_paren_that_closes_apart_is_two_subshells() {
+    // G1 R2: bash and zsh read `((` as arithmetic only when the `)` closing its inner `(` is
+    // followed at once by the outer `)`; otherwise it is a subshell inside a subshell.
+    assert_targets(&format!("((echo a); tee {HOME})"), &[HOME]);
+    assert_targets(&format!("((echo a) > {HOME})"), &[HOME]);
+    assert_targets(&format!("$((echo a); tee {HOME})"), &[HOME]);
+    // An inner `(` that never closes is still one word: bash refuses the line.
+    assert_targets("(( 3 > 2", &[]);
+    // The lookahead budget: 64 non-arithmetic answers per scan. Within it, arithmetic stays one
+    // word; past it, `((` reads as two subshells, so a write is never missed (fail-closed) and a
+    // comparison may be read as a redirect.
+    assert_targets(&("((a); ".repeat(63) + "(( 3 > 2 ))"), &[]);
+    assert_targets(&("((a); ".repeat(64) + "(( 3 > 2 ))"), &["2"]);
+    assert_targets(
+        &("((a); ".repeat(65) + &format!("((echo a); tee {HOME})")),
+        &[HOME],
+    );
+    assert_targets(
+        &("(".repeat(20_000) + &format!("tee {HOME}") + &";)".repeat(20_000)),
+        &[HOME],
+    );
+    // G3 B1: a `((` read as two subshells exposes a `<<` shift, which the scan takes for a heredoc
+    // that swallows every later line. Past the budget, or where a `case` pattern's `)` misleads the
+    // close, that hid a write the reading before R2 saw. Collected first, so every row reports.
+    let later = format!("\necho hi > {HOME}");
+    let hidden: Vec<String> = [
+        "((true); true); ".repeat(64) + "(( x = 1 << 2 ))",
+        "(( x = $(case a in a) echo 1;; esac) << 2 ))".to_string(),
+        "(( x = `case a in a) echo 1;; esac` << 2 ))".to_string(),
+        "((true); true); ".repeat(63) + "(( x = 1 << 2 ))",
+    ]
+    .into_iter()
+    .map(|shape| shape + &later)
+    .filter(|command| write_targets(command) != [HOME])
+    .collect();
+    assert!(hidden.is_empty(), "a later write is hidden: {hidden:#?}");
+}
+
+#[test]
+fn a_run_of_openers_past_the_lookahead_budget_stays_linear() {
+    // Past the budget no `((` is looked ahead, so this 40,000-character run costs 64 scans, not
+    // 20,000; it names no target under either reading.
+    assert_targets(&("(".repeat(20_000) + "a" + &";)".repeat(20_000)), &[]);
+}
+
+#[test]
 fn perl_l_and_0_take_digits_only() {
     assert_targets(&format!("perl -lpi -e s/a/b/ {HOME}"), &[HOME]);
     assert_targets(&format!("perl -0777pi -e s/a/b/ {HOME}"), &[HOME]);

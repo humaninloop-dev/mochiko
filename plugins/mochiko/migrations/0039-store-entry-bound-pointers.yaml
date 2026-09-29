@@ -1,0 +1,36 @@
+grammar: 1
+id: 0039-store-entry-bound-pointers
+sequence: 39
+intent: >-
+  Execute hook-enforcement-field-review D2 in the two store home rules, per the ratified census
+  table rows S3, S4 and S5 (the census reviewer R1's advisory A11 routed the pointer): spine.md
+  and concerns.md take their bound per ## entry from mochiko-cli home, the templates' section
+  budgets replaced; a graduated concern file keeps its sub-home's whole-file bound. What leaves:
+  the spine's "per-section budgets" taken from its template (both rules), and concerns.md's "whose
+  length is the concern count" framing (arch.artifact-home); "no file bound" stays as "no
+  whole-file bound".
+anchor: 2026-09-23 hook-enforcement-field-review D2
+hash: sha256:4eebef4387b6d47233b9f3d74156eb155e602341ab51aeecaad37e61c742d1cc
+changes:
+  - op: reword-rule
+    schema: command/architecture
+    id: arch.artifact-home
+    text: >-
+      The store's files have a declared home: render `mochiko-cli home
+      .mochiko/product/architecture` before the first write. `spine.md` binds the
+      `architecture-spine` template and `concerns.md` binds `architecture-concerns`: each takes
+      its shape from `mochiko-cli template <kind>` and its bound from the home — per `##` entry,
+      the templates' section budgets replaced, no whole-file bound; a graduated row's file is
+      `<AX-ID>.md` in `concerns/`, under that sub-home's whole-file bound. The repo-root index is
+      derived, never hand-written.
+  - op: reword-rule
+    schema: skill/authoring-architecture-store
+    id: authoring-architecture-store.artifact-home
+    text: >-
+      Every store write goes to a declared file: render `mochiko-cli home
+      .mochiko/product/architecture` before the first one. `spine.md` and `concerns.md` are the
+      hand-written pair, `concerns/<AX-ID>.md` is a graduated row's file in the sub-home, and the
+      repo-root index is the derived view this skill regenerates rather than authors. Take
+      `spine.md`'s and `concerns.md`'s shape from their templates and their bound from
+      `mochiko-cli home` — per `##` entry, the templates' section budgets no longer apply; a
+      graduated file takes its sub-home's whole-file bound.

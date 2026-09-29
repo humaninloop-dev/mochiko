@@ -1,0 +1,39 @@
+grammar: 1
+id: 0038-pre-write-dry-run
+sequence: 38
+intent: >-
+  Execute hook-enforcement-field-review D8: the pre-write dry run is a seat's standard step,
+  through the direct form wave 1 built (field S15, mochiko-cli check --path <p> --content -). Its
+  reach, as D8's "the producing skills' rules say so" is read here: testing-end-user's own rule
+  for the verification report; every implement-run report producer through impl.reports-envelope's
+  brief clause (the lead's Q2 ruling, on 0027's landed text); reports in other commands through
+  the SubagentStart line only. Nothing leaves.
+anchor: 2026-09-23 hook-enforcement-field-review D8
+hash: sha256:faab70d1e97623242e47889ff92f61b06f1b2d6bb133190fbb8db865a65cc22c
+changes:
+  - op: mint-rule
+    schema: skill/testing-end-user
+    section: testing-end-user.sec.output
+    rule:
+      id: testing-end-user.pre-write-dry-run
+      labels: [reporting]
+      class: must
+      kind: duty
+      text: >-
+        Dry-run the report before its Write: pipe the draft to `mochiko-cli check --path <report
+        path> --content -`, fix what a deny names, then write. A deny on the Write itself marks a
+        skipped dry run, not an honest draft.
+      anchor: 2026-09-23 hook-enforcement-field-review D8
+  - op: reword-rule
+    schema: command/implement
+    id: impl.reports-envelope
+    text: >-
+      All reports land in the owning home's `reports/` directory —
+      ${features_dir}/FEAT-XXX/reports/ (a product-lane run: ${product_dir}/lane-<slug>/reports/,
+      an epic run: the epic home's): the sufficiency report, cycle reports, verification reports,
+      the final-validation report, the built-vs-signed diff. Every one carries the
+      `report-envelope` frontmatter (machine-first, typed by `report:`, ultra register, clean =
+      frontmatter-only; bounce an envelope-breaking report per templates/report-format.md rule 9),
+      and each producing seat's brief names the home's `reports/` path and the pre-write dry run,
+      the draft piped to `mochiko-cli check --path <p> --content -` before the Write. Repeat runs
+      append, dated; the run's architecture.md drawing is overwritten per run.

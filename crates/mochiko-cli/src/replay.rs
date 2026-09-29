@@ -85,7 +85,7 @@ pub struct Replay {
     pub validation: Vec<Finding>,
     /// The sequence numbers applied, in order.
     sequences: Vec<u32>,
-    /// The grammar version the applied log was written in.
+    /// The highest grammar version among the applied log's files.
     grammar: Option<u32>,
 }
 
@@ -95,7 +95,11 @@ impl Replay {
         self.sequences.clone()
     }
 
-    /// The grammar version the applied log was written in, or `None` for an empty log.
+    /// The highest grammar version among the applied log's files, or `None` for an empty log.
+    ///
+    /// The highest, not the last: a log whose later files keep to grammar 1 is still written in
+    /// grammar 2 once any file uses it (O2). Only files that parsed count, and a file outside the
+    /// binary's range never parses, so this is never outside that range and judges nothing.
     pub fn grammar(&self) -> Option<u32> {
         self.grammar
     }
@@ -258,7 +262,7 @@ pub fn replay(migrations: &[Migration]) -> Replay {
     let mut out = Replay::default();
     for m in migrations {
         out.sequences.push(m.sequence);
-        out.grammar = Some(m.grammar);
+        out.grammar = out.grammar.max(Some(m.grammar));
         for (index, change) in m.changes.iter().enumerate() {
             // The migration's own header anchor is the authority a protected exit needs, so it
             // travels with every change rather than being re-derived from the state the change

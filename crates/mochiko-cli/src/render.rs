@@ -544,6 +544,10 @@ fn entries_shape(deliverable: &crate::home::Deliverable) -> String {
         Some(lines) => format!("{lines} lines per entry"),
         None => "no per-entry bound declared".to_string(),
     });
+    // The text above the first heading is bounded as one entry (census row P1).
+    if let Some(lines) = deliverable.entry_max_lines {
+        parts.push(format!("{lines} lines above the first heading"));
+    }
     if let Some(lines) = deliverable.section_max_lines {
         parts.push(format!("{lines} lines of section text outside entries"));
     }
@@ -694,8 +698,12 @@ pub fn home_view(
             body.push_str(&format!(
                 "bounds: {}\n",
                 match home.bounds {
-                    Bounds::Template => "per template section".to_string(),
-                    Bounds::WholeFile => "whole file, per deliverable".to_string(),
+                    // The gate reads `bounds` only as elsewhere or not; which bound a file takes —
+                    // its template's sections, a whole-file number, or per entry — is its own line
+                    // below, so this line claims no posture that some deliverable would contradict.
+                    Bounds::Template | Bounds::WholeFile => {
+                        "per deliverable — each line below states its bound".to_string()
+                    }
                     Bounds::Elsewhere => format!(
                         "declared elsewhere — {}",
                         home.bounds_cite.as_deref().unwrap_or("uncited")

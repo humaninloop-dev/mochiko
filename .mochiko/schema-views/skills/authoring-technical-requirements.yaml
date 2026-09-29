@@ -34,9 +34,10 @@ sections:
           The decision technique — comparing alternatives, weighing trade-offs, ADR depth, the
           ≥2-alternatives discipline — lives in `mochiko:patterns-technical-decisions`; this
           skill owns the `constraints-and-decisions.md` artifact structure (the D-XXX field
-          schema) and the C↔D traceability. Project-scope decisions (the knowledge-management
-          layer — `DECISIONS.md` + `.mochiko/decisions/`) are not this artifact's; only
-          feature-scope D-XXX records live here.
+          schema) and the C↔D traceability. Project-scope decisions and standing run rulings
+          that change no entry (the knowledge-management layer — `DECISIONS.md` +
+          `.mochiko/decisions/`) are not this artifact's; every technology decision a spec or a
+          run makes lives here as a D-XXX entry.
         pointer: mochiko:patterns-technical-decisions
       - id: authoring-technical-requirements.problem-space-not-solutions
         labels: [boundary]

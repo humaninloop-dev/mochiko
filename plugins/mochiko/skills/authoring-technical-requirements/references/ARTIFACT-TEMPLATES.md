@@ -64,8 +64,8 @@ Templates and field definitions for the **two constraint-layer surfaces this ski
 > **No structural-decision subsection.** Topology choices — component boundaries, interaction
 > style, responsibility placement — are recorded in the architecture store's delta, whose ruling
 > is its own decision record. They never appear as D-XXX rows here. Every D-XXX in this artifact
-> has one origin: the design-phase author (or, for a build-time decision, the gated
-> `baseline-delta.md` path).
+> has one origin: the design-phase author (or, for a build-time decision, the builder's
+> build-raised entry, written in place and marked per `impl.baseline-entry-grammar`).
 
 ---
 
@@ -123,7 +123,7 @@ Templates and field definitions for the **two constraint-layer surfaces this ski
 
 | Field | Required | Format | Rules |
 |-------|----------|--------|-------|
-| ID | Yes | C-XXX | Sequential, three-digit padded, no gaps |
+| ID | Yes | C-XXX | Sequential per prefix, three-digit padded, from the product file's high-water mark (`sequential-ids`) |
 | Title | Yes | Free text | Descriptive, concise |
 | Type | Yes | infrastructure / compatibility / regulatory / migration / organizational | On the statement line; exactly one type |
 | Source | Yes | Free text | On the statement line; traceable origin — system, regulation, contract, team |
@@ -136,7 +136,7 @@ Templates and field definitions for the **two constraint-layer surfaces this ski
 
 | Field | Required | Format | Rules |
 |-------|----------|--------|-------|
-| ID | Yes | D-XXX | Sequential, three-digit padded, no gaps |
+| ID | Yes | D-XXX | Sequential per prefix, three-digit padded, from the product file's high-water mark (`sequential-ids`) |
 | Title | Yes | Free text | Descriptive, concise |
 | Context | Yes | One-to-two lines | The problem that needed solving |
 | Shaped By | Yes | C-XXX / NFR-XXX references | On the context line; constraints and NFRs that narrowed options |
@@ -163,7 +163,7 @@ Templates and field definitions for the **two constraint-layer surfaces this ski
 
 | Field | Required | Format | Rules |
 |-------|----------|--------|-------|
-| ID | Yes | INT-XXX / DS-XXX | Sequential per prefix, three-digit padded, no gaps |
+| ID | Yes | INT-XXX / DS-XXX | Sequential per prefix, three-digit padded, from the product file's high-water mark (`sequential-ids`) |
 | Kind | Yes | integration / sensitivity | On the statement line |
 | Source | Yes | FR-XXX / SC-XXX reference | On the statement line; the business promise the declaration serves |
 | Criticality | INT only | hard / degraded / optional | How the feature behaves when the external system is unavailable |
@@ -212,9 +212,9 @@ Templates and field definitions for the **two constraint-layer surfaces this ski
 the architecture store, so a concern has one home — stance, pattern, targets, as-built, drift
 together. The **row shape** is the store's (`mochiko-cli template architecture-store`); what
 follows is the **grammar** this skill owns and the store row carries: the required fields, the
-categories, and what a measurement method must name. A new or changed target reaches the store as
-part of a design-time store delta, written at the user's sign-off — never edited into ruled truth
-in place.
+categories, and what a measurement method must name. A new, changed or removed target is written in
+place on its concern row as `proposed (<key>)` and flipped at the user's sign-off
+(`authoring-technical-requirements.nfr-target-flips-at-sign-off`).
 
 The trace chain resolves to the business source: `FR-XXX / SC-XXX → NFR-XXX`, and `Applies to:`
 cites the C-XXX or IP-XXX the target constrains.
@@ -223,7 +223,7 @@ cites the C-XXX or IP-XXX the target constrains.
 
 | Field | Required | Format | Rules |
 |-------|----------|--------|-------|
-| ID | Yes | NFR-XXX | Sequential, three-digit padded, no gaps |
+| ID | Yes | NFR-XXX | Sequential, three-digit padded, the next free id in the store at write time |
 | Title | Yes | Free text | Descriptive, concise |
 | Category | Yes | performance / availability / scalability / security / usability / maintainability | On the statement line; exactly one category |
 | Source | Yes | FR-XXX / SC-XXX reference | On the statement line; the business promise the target serves — an SLA or stakeholder gloss may ride alongside, never instead |
@@ -264,7 +264,7 @@ NFR-001 — API Response Latency
 All artifact types follow the same numbering conventions:
 
 1. **Three-digit padding:** C-001, not C-1
-2. **Sequential, no gaps:** C-001, C-002, C-003 (never C-001, C-003)
+2. **Next free id at write time:** a new entry takes the next free id after its file's high-water mark, and a landed id is never reused. For C- / D- / IP- / INT- / DS-, a gap left by an abandoned run's reverted entries is legal (`sequential-ids`); NFR- ids follow the store's own sequence
 3. **Prefix identifies type:** C- / D- / NFR- / IP- / INT- / DS-
 4. **Cross-references use full ID:** "See C-001" not "See constraint 1"
 5. **Grouping by concern:** Related items should be sequential where possible

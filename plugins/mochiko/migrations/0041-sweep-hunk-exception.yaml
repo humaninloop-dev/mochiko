@@ -1,0 +1,39 @@
+grammar: 1
+id: 0041-sweep-hunk-exception
+sequence: 41
+intent: >-
+  Execute seam R11 (.mochiko/decisions/2026-09-29-sweep-hunk-exception.md, user-ruled), which
+  reconciles delta D2 (I3: the run's diff-read sweep of counts, summary rows, index rows,
+  relationship tables and validation-rule lists) with delta D3's unmarked-write test, the rule's
+  own ruling, as the seams record's R8 reconciled D2 with D7. What leaves D3's test: a hunk in
+  data-model.md, constraints-and-decisions.md, quickstart.md, or the store's spine.md or
+  concerns.md, every changed line of which sits outside every entry and names an entry the same
+  diff marks for the run's key or is a count a recount confirms — such a hunk fails today and
+  passes after. Everything else that fails today still fails, including an edit to another entry's
+  summary row, such as deleting it, which names no marked id. Condition (4) limits the exception
+  only: a line inside an entry stays under the base test, which for spine.md reads the element
+  row's Status cell as the marker (impl.baseline-entry-grammar), so it asks no `##` section of
+  spine.md for a marker of its own. An entry's id is the identifier its heading carries, an
+  entity's being its heading's name, as R11's Invoice example reads it; a fenced line opening with
+  `#` is not a heading. Id, floor class, kind fail, enforces and the rule's anchor are kept.
+anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D2
+hash: sha256:150cb0fdc772512c42ec580702a56687da7e0a9ac1b77f992533c5528ec78f3b
+changes:
+  - op: reword-rule
+    schema: command/implement
+    id: impl.fail.unmarked-baseline-write
+    text: >-
+      A hunk in the run's pinned-base diff of ${product_dir}/ outside an entry marked for the
+      run's key — a pre-sign removal is a marked entry with its body cut, so a bare deletion
+      hunk is unmarked. Excepted: hunks already in the tree at run-open, recorded as pre-existing
+      on the run-open pin; hunks inside an entry marked for another open key; and a remaining hunk
+      that is the run's own sweep, only when all four hold: (1) its file is data-model.md,
+      constraints-and-decisions.md, quickstart.md, or the store's spine.md or concerns.md —
+      every other baseline file keeps this test unchanged; (2) each changed line is outside every
+      entry — above the file's first entry heading, or after a heading of fewer `#` than the
+      entry level `mochiko-cli home <file>` prints and before the next entry heading, a deeper
+      heading inside an entry staying inside it and a line in a fenced code block never a heading;
+      (3) each changed line names the id of an entry the same diff marks for the run's key — the
+      identifier its heading carries, an entity's id being its heading's name — or is a count a
+      recount at the diff's head confirms; (4) a line inside an entry is always that entry's
+      amendment and needs the entry's marker — naming a marked id never excuses it.

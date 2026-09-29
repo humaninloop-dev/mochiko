@@ -5,6 +5,85 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.116.0] — 2026-09-29
+
+**The hook field review and the delta-files retirement, built together — MINOR** (waves 1–3 of
+`hook-enforcement-field-review` D1–D9 as review-amended and `delta-files-vs-direct-baseline-edits`
+D1–D7 as review-amended, one branch and one bump as delta D6d rules; seams R1–R8 at
+`.mochiko/decisions/2026-09-29-joint-hook-delta-build-seams.md`, R9–R11 and the census-table
+ratification in their own records beside it). **Ships under the AM-5 exception row** (governance
+ledger, Exception registry, first row; seam R4): the conformance hooks still ship before the first
+`mochiko-cli` publish carrying the four named controls, and only the maintainer installs.
+**Upgrade: this plugin needs `mochiko-cli` 0.3.0** (grammar 1..2; migrations 0033 and 0034 are
+written in grammar 2, so 0.2.0 halts loudly at 0033). 0.3.0 is not published — the maintainer
+reinstalls from git `main` after the merge. Seam R3: open no implement run across this upgrade.
+
+Product baselines are now edited in place by the producing seat under a `**Lifecycle:**` marker
+keyed by the run's owner — no per-feature delta copies, no `baseline-delta.md` ledger, no fold, no
+three-way transcription grade; the change is `git diff <base>` against bases pinned at run-open and
+at sign-off (delta D1/D3). A design-phase write reads `proposed` until the user's sign-off, which
+flips each entry by the diff (seam R8); a landed removal leaves a one-line `removed` stub (R9); a
+run's own sweep edits outside every entry are excused from the unmarked-write test only under R11's
+four conditions. The gate's closed world covers `.mochiko/`; raw output goes to an ephemeral
+`.mochiko/runs/<owner>-run<n>/` home the lead creates at run-open (adding the `.gitignore` line when
+absent) and removes after acceptance (R5/R6); the cumulative stores are bounded per entry at 177
+lines with no whole-file cap; the implement run log moves into the run folder, a standing in-run
+ruling lands on the baseline entry it changes (R1) or as a `.mochiko/decisions/` record, and
+evidence from uncommitted work cites the pinned base plus a diff fingerprint (R10).
+
+Crate: `mochiko-cli` **0.3.0**, unpublished — tree-root home resolution (nested fixtures never homes)
+· `home` resolves a directory · the closed world under `.mochiko/` · the run-folder home (run-key
+name, ignore guard, `.md` sniff, named non-`.md` shell writes admitted) · a write-position shell
+parse · the per-entry budget kind, with a store's preamble counted as one entry · the direct
+dry-run form `check --path <p> --content -` · matrices from the thirteen real false positives ·
+wave-3 fixes: deny texts that never route to an empty home, the `.mochiko/runs` reason restored, an
+unchanged over-budget section no longer denied on rewrite (RA3), and `((` read as arithmetic only
+where bash and zsh agree — the write targets are the exact reading united with the
+always-arithmetic one (G3's fix round; a fuzz of a million random commands found no regression).
+
+Migrations **`0024`–`0029`** (delta D1–D4, D6b, D7), **`0032`–`0035`** (the census homes: closed
+world, run folder, store entry budgets, home sets after delta D4), **`0036`–`0040`** (field D4, D6,
+D8, D2 and D3 in the rules: run folder and evidence, the run log and in-run rulings, the pre-write
+dry run, store entry-bound pointers, brownfield archive names), **`0041`** (seam R11), and two
+audit fix rounds, **`0042`** (0029's marker read cited once) and **`0043`** (0037's routing
+restatement cut). Sequences 30 and 31 are unused. The log replays to 87 documents and 1,139 rules
+(command 332 → 335, skill 803 → 804); floors 119/264 and fails 36 unchanged; `migrate validate`
+0 rejecting · 113 advisory; the views equal the replay.
+
+Prose: `commands/architecture.md`; the `authoring-architecture-store`, `authoring-epic`,
+`authoring-technical-requirements`, `mochiko` (router), `patterns-api-contracts`,
+`patterns-entity-modeling` (its template re-levelled to `### Entity:` entries with the marker line,
+`validate-model.py`'s entity pattern with it), `patterns-system-design`,
+`patterns-technical-decisions` and `testing-end-user` skills with their references;
+`review-feasibility`'s `FEASIBILITY-LENS.md` and `review-plan-artifacts`' `ARTIFACT-CHECKLISTS.md`;
+the knowledge-management module template and `report-format.md`; the hooks — `seat-reminder.sh`'s
+run-folder and dry-run line, `session-start.sh`'s one-line run-folder count; the migrations
+README. Strips: `[v0.116.0]` entries in fifteen strip files (`.mochiko/strips/migrations-readme.md`
+new). Governance: PATCH **v3.2.1** — the build-state strike pre-ruled at AM-5, with the drift found
+against the built binary corrected. Operating docs: the KM pin's orphan rule re-keyed to 0025's
+wording; `.gitignore` gains `.mochiko/runs/`; the standing-overage rows in
+`.mochiko/memory/primitive-cost-budgets.md` (store +2,028 · gap-finding +3,196 · review-sufficiency
++1,198 · testing-end-user +1,030 · ATR +847 · feature-map +375 · sound-loop +208 · epic +42, each
+summed exactly from stepped prefix replays and ruled HOLDS). Evals and crate pins: `fidelity.rs`,
+`validate.rs` and `matrix_similar.rs` re-pinned to the landed log (the suppressed-edge count 183 →
+182 from 0036's `truncation-bounds` reword); `evals/contract/run.py`'s `REMINDER_GOLDEN` generated
+from the landed script and a `.git` in each gate workspace; the implement, feature and architecture
+kits re-keyed, the legacy `FEAT-004/baseline-delta.md` fixture deleted with a dated preregistration
+note (no grid had run).
+
+Gate: every seat plan-graded by a fresh peer (`plans: S1:PASS(2) · S2:PASS(1) · S3:PASS(2) ·
+S4:PASS(2) · S5:PASS(2) · S6:FAIL(2), user-ruled "go with fixes" · S7:FAIL(2), user-ruled (seam
+R11), its 0041 plan PASS · S8:PASS(2) · S9:PASS(2) · S10:PASS(2)`); the gate audit by fresh plain
+seats — V1 7/7 after the 0042 fix round, V2 11/11 after the 0043 fix round, V3a 6/6, V3b 10/10 after
+one fix round, V4 PASS on the PATCH and its advisory delta; crate reviews G1 (PASS after one fix
+round), G2 PASS, G3 (PASS after one fix round) and G4 (PASS after one fix round) on the wave-3 pins
+and harness; crate gates green (`cargo test --all` 581 tests across 18 targets · fmt · clippy ·
+audit · the opt-in full similarity sweep 48 passed); the views equal the replay; contract suite
+97/97 cases passed in the Docker sandbox against a 0.3.0 release build of this tree
+(`MOCHIKO_GATE_VERSION` unset), none skipped; secret scan clean. Trail:
+`.mochiko/brainstorms/hook-enforcement-field-review/build-log.md`. Wave 4, kinako, stays owed
+(`BACKLOG.md`).
+
 ## [0.115.0] — 2026-09-24
 
 **Setup goes product-agnostic — MINOR** (`setup-product-agnostic` D1–D6 as review-amended, record

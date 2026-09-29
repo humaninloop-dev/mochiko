@@ -1,0 +1,27 @@
+grammar: 1
+id: 0043-routing-restatement-cut
+sequence: 43
+intent: >-
+  Fix round for 0037, driven by gate auditor V2's budget finding: 0037's reword of
+  authoring-technical-requirements.decision-technique-routing ended ", in the spec's file or in
+  place in the product file under its lifecycle marker", a 79-character restatement of the same
+  payload's floor authoring-technical-requirements.artifact-home (the spec or the product
+  baseline; the product file written in place under its lifecycle marker). What leaves: that
+  restatement — the obligation stays, carried once by artifact-home. What stays:
+  hook-enforcement-field-review D6 as narrowed by seams R1, the boundary 0037 executed
+  (project-scope decisions and standing run rulings that change no entry are the
+  knowledge-management layer's; every technology decision a spec or a run makes lives here as a
+  D-XXX entry). Id, class, kind, pointer and labels kept; no other op.
+anchor: 2026-09-23 hook-enforcement-field-review D6
+hash: sha256:ee1c55cb07d13b0c492d6f57b12621b4a2aaf2f94dc76df71a38c6139433c038
+changes:
+  - op: reword-rule
+    schema: skill/authoring-technical-requirements
+    id: authoring-technical-requirements.decision-technique-routing
+    text: >-
+      The decision technique — comparing alternatives, weighing trade-offs, ADR depth, the
+      ≥2-alternatives discipline — lives in `mochiko:patterns-technical-decisions`; this skill
+      owns the `constraints-and-decisions.md` artifact structure (the D-XXX field schema) and the
+      C↔D traceability. Project-scope decisions and standing run rulings that change no entry
+      (the knowledge-management layer — `DECISIONS.md` + `.mochiko/decisions/`) are not this
+      artifact's; every technology decision a spec or a run makes lives here as a D-XXX entry.

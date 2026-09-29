@@ -64,13 +64,16 @@ A landing that only adds is incomplete.
   last-groomed baseline (figures on the stamp lines).
 - **Dead-pointer scan:** every `ROADMAP.md` / `DECISIONS.md` / `BACKLOG.md` pointer resolves,
   or carries `provenance: unrecoverable (<what it was>, removed <date>)`.
-- **Orphan rule:** every in-flight-class element in the architecture store
-  (`.mochiko/product/architecture/`) — `in-flight` / `modifying` / `removing (FEAT-XXX)` — keys
-  an open feature and resolves; an element keying a closed or missing feature is an **orphan**,
-  surfaced by the derived index's health view and cleaned at the next desk visit.
-  (Supersedes the AT-D6-C In-flight-agreement invariant added 2026-08-04 from the
+- **Orphan rule:** every `proposed` and in-flight-class element in the architecture store
+  (`.mochiko/product/architecture/`) keys an open feature, epic or lane and resolves
+  (`authoring-architecture-store.orphan-rule`); an element keying a closed, retired or missing
+  owner is an **orphan**, surfaced by the derived index's health view and cleaned at the next
+  desk visit. (Supersedes the AT-D6-C In-flight-agreement invariant added 2026-08-04 from the
   `architecture-tieback` record — per `product-architecture-schema` D10, `DECISIONS.md`
-  2026-08-19; landed direct by ruling, not via amend offer.)
+  2026-08-19; landed direct by ruling, not via amend offer. Re-keyed 2026-09-29 to the rule as
+  `0025-delta-lifecycle-marker.yaml` words it — `proposed` joins the keyed statuses and an epic or
+  lane may own an element, per `delta-files-vs-direct-baseline-edits` D2/D7 — matching the
+  shipped template at plugin 0.116.0.)
 - **Index agreement:** repo-root `ARCHITECTURE.md` is the store's derived index and agrees with
   the store it renders; a disagreement is a defect, fixed by re-rendering, never by editing the
   index. Both this and the orphan rule **bind once the store carries ruled content** — where the

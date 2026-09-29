@@ -11,3 +11,8 @@ __pycache__/
 
 # Rust build output (the mochiko-cli crate). Cargo.lock IS committed (binary crate).
 /target
+
+# Run folders: a run's raw output (console captures, logs, dumps) is ephemeral and never
+# committed; the lead removes each folder after the run's acceptance (hook-enforcement-field-review
+# D4 control 3; the gate refuses a run-folder write until this line is present)
+.mochiko/runs/

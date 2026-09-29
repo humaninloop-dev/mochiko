@@ -27,6 +27,140 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md`. -->
 
+<!-- Wave context: the joint hook/delta build, wave 3 (v0.116.0) — prose that restated the retired
+delta-file model is re-keyed to in-place baseline edits. Delta record:
+`.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` (`DECISIONS.md` 2026-09-24
+row); census: `.mochiko/decisions/2026-09-29-census-table-ratified.md`, rows in
+`.mochiko/brainstorms/hook-enforcement-field-review/reports/w2-census-table.md` (`DECISIONS.md`
+2026-09-29 row). Pre-edit verbatim text:
+`git show 5558fd7:plugins/mochiko/skills/review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md`. -->
+
+## [v0.116.0] ARTIFACT-CHECKLISTS Tier-1 examples — the per-feature spec paths re-pointed to the product baselines
+
+- **Disposition:** superseded → `.mochiko/product/data-model.md`,
+  `.mochiko/product/constraints-and-decisions.md` (a spec's `constraints-and-decisions.md` named as
+  equally legal input), and `.mochiko/product/*.md` ("all the product baselines a design phase
+  edits in place").
+- **Tier failed:** n/a — supersession by ruling (delta record D1 — baselines edited in place, no
+  per-feature copies — and D4; census row H5 — the spec home drops `data-model.md`, keeps
+  `constraints-and-decisions.md`).
+- **Content (superseded text, verbatim):**
+
+  ```
+  python scripts/check-artifacts.py .mochiko/specs/<feature>/data-model.md
+  python scripts/check-artifacts.py .mochiko/specs/<feature>/constraints-and-decisions.md .mochiko/specs/<feature>/data-model.md
+  # All design-phase artifacts
+  python scripts/check-artifacts.py .mochiko/specs/<feature>/*.md
+  ```
+
+- **Kept deliberately:** the three invocation shapes (single file · the entity-consistency pair ·
+  the glob), the check-coverage table and the exit codes.
+- **Consumers assessed:** `scripts/check-artifacts.py` takes paths as arguments and keys no home;
+  unchanged.
+
+## [v0.116.0] ARTIFACT-CHECKLISTS quickstart checklist — the `quickstart.md` presence check superseded by a per-entry check
+
+- **Disposition:** superseded → "A quickstart entry is **conditional** (written only when the run
+  adds or changes a real external-integration surface …)", and the row: "If the run adds or changes
+  an integration surface …, does the pinned-base diff carry a marked quickstart entry for it? If
+  none, is its null path recorded in the sufficiency report (no stub entry)?"
+- **Tier failed:** n/a — supersession by ruling (delta record D1, D4 and D6(b) — the per-feature
+  file and its epic copies withdrawn; census rows H5 — no `quickstart.md` in the spec home — and
+  Q1 — the product `quickstart.md` bounded per `##` entry; wave-3 lead ruling on P8's B2).
+- **Content (superseded text, verbatim):**
+
+  ```
+  `quickstart.md` is **conditional** (authored only when the feature has a real
+  external-integration surface — see `patterns-api-contracts`). First check the condition:
+  | Conditionality honored | If an integration surface exists (external API consumers, `x-integration` systems, non-trivial auth), is `quickstart.md` present? If none exists, is its null path recorded in the sufficiency report (no stub file)? | Important |
+  ```
+
+- **Kept deliberately:** the conditionality (an integration surface is still the trigger), the null
+  path in the sufficiency report, the heading and the four other rows (flow coverage, auth, errors,
+  external integrations).
+- **Consumers assessed:** `patterns-api-contracts`'s quickstart section is re-worded to the same
+  condition in the same wave (`strips/patterns-api-contracts.md`).
+
+## [v0.116.0] ARTIFACT-CHECKLISTS store-delta "Ruling carried" — "in the delta itself" re-keyed to the store element
+
+- **Disposition:** superseded → "… carry its ruling and rationale on the store element it writes?"
+- **Tier failed:** n/a — supersession by ruling (delta record D4 — `architecture.md` is only the
+  drawing and the checkpoint table, the register dies; seams R1,
+  `.mochiko/decisions/2026-09-29-joint-hook-delta-build-seams.md` — a ruling that changes a
+  baseline lives on its entry).
+- **Content (superseded text, verbatim):** `Does every structural change carry its ruling and
+  rationale in the delta itself?`
+- **Kept deliberately:** the parenthesis "The store ruling **is** the decision record — no `D-XXX`
+  back-link is owed", the row's name and its severity.
+- **Consumers assessed:** the `:344` scope-boundary cell's "ruling carried per structural change"
+  reads the same; unchanged.
+
+## [v0.116.0] ARTIFACT-CHECKLISTS lifecycle keys — `in-flight`/`modifying`/`removing` keyed to `FEAT-XXX` re-keyed to `proposed (<key>)`
+
+- **Disposition:** superseded → the checklist row "marked `proposed (<key>)`, the key naming this
+  run's owner"; the Key Question "Is any `proposed` element keyed to an owner other than this
+  run's, or to no owner at all?"; the scope-boundary cell "lifecycle statuses `proposed (<key>)`
+  keyed to the run's owner".
+- **Tier failed:** n/a — supersession by ruling (delta record D7 — a run's write before the
+  checkpoint reads `proposed`, flipped at sign-off — and D2 — the key is the run's owner,
+  `FEAT-XXX`, `EPIC-XXX` or `lane-<slug>`).
+- **Content (superseded text, verbatim):**
+
+  ```
+  | Lifecycle status correctness | Is every delta element — `SPN-XXX` and `AX-XXX` alike — marked `in-flight` / `modifying` / `removing` and keyed to this feature's `FEAT-XXX`? | Critical |
+  - Is any in-flight-class element keyed to a different feature, or to no feature at all?
+  lifecycle statuses keyed to `FEAT-XXX`
+  ```
+
+- **Kept deliberately:** the row's name, its Critical severity, and "`SPN-XXX` and `AX-XXX` alike".
+- **Consumers assessed:** `authoring-architecture-store`'s lifecycle section re-keyed in the same
+  wave; `review-feasibility`'s lens `:182` re-keyed to the run's owner in the same wave.
+
+## [v0.116.0] ARTIFACT-CHECKLISTS store-delta title and diagram coverage — "(drafted)" and "the delta's element list" re-keyed
+
+- **Disposition:** superseded →
+  - the title `### Checklist — Store delta (proposed)`;
+  - the coverage row's "every new, modified or removed box/arrow in the diff and the checkpoint
+    table? (Unchanged collaborators are drawn plain and take no row.)";
+  - the Key Question "…, or a styled (new, modified or removed) box with no changed element?".
+- **Tier failed:** n/a — supersession by ruling (delta record D4 — the register dies; the drawing
+  and the checkpoint table stay — and D7).
+- **Content (superseded text, verbatim):** `### Checklist — Store delta (drafted)` · `and every
+  diagram box/arrow in the delta's element list?` · `- Is there an `SPN-XXX` element with no box in
+  the diagram, or a box with no delta element?`
+- **Kept deliberately:** the coverage check in both directions and its Critical severity.
+  **Fix round (V3b B3), same D4 ruling:**
+  - The first landing read "every diagram box/arrow in the diff and the checkpoint table?" and left
+    the Key Question as "a box with no delta element?". That demanded a row for every drawn box.
+  - `patterns-system-design` still draws the unchanged direct collaborators, which the pinned-base
+    diff and the changed-element table never carry, so a correct delta took a false Critical.
+  - Both are now scoped to styled (new, modified or removed) boxes, in step with that skill's
+    scoped coverage check.
+  - The prior key, "the delta's element list", escaped this through the register's `existing`
+    status, which D4 retired. The plain-drawn, no-row clause carries that job now.
+- **Consumers assessed:** `patterns-system-design` §3 becomes the checkpoint table in the same wave.
+
+## [v0.116.0] ARTIFACT-CHECKLISTS store-delta intro — "not written until sign-off … the draft in the package" superseded
+
+- **Disposition:** superseded → "The run writes them in place as `proposed` elements: what you
+  grade is the pinned-base diff of `spine.md` / `concerns.md` plus the run's `architecture.md`
+  drawing and its checkpoint table."
+- **Tier failed:** n/a — supersession by ruling (delta record D1 — baselines edited in place, the
+  change is the diff against a pinned base; D3c — reviews read the pinned-base diff; D7 — the
+  write lands before the checkpoint as `proposed`).
+- **Content (superseded text, verbatim):**
+
+  ```
+  Grade this when the design-phase package carries a **store delta** — the drafted topology + `AX-XXX`
+  concern-row changes … The store itself is **not written until sign-off**: what you
+  grade is the draft in the package, not the store.
+  ```
+
+- **Kept deliberately:** the sign-off from a rendered diagram before detailed design builds on it,
+  the author (`mochiko:patterns-system-design`) and the standing-store path.
+- **Consumers assessed:** the `## Architecture Store Delta` heading and the no-delta section stand;
+  "store delta" still names the run's store change.
+
 ## [v0.107.0] the store-row-shape clause's raw-Read fallback for the architecture-store schema
 
 - **Disposition:** superseded → the CLI form `mochiko-cli template architecture-store --check`

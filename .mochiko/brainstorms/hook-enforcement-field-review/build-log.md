@@ -829,3 +829,752 @@
   S5:PASS(2)` — no single-writer breach; every write into the log under a lead slot; the census
   review loop reached its bound and its last finding went to the user, who ratified the table.
 - Wave 2 is uncommitted on `joint-hook-delta`; the commit is put to the user.
+
+## 2026-09-29 · wave 2 committed · wave 3 planned, approved, opened
+
+- User: "Commit and plan wave 3". Wave 2 committed `5558fd7` (67 files; the scan clean). Nothing
+  merged to `main`.
+- Plan: [wave3-joint-rewords-ceremony.md](wave3-joint-rewords-ceremony.md) — S6 crate fixes · S7
+  rule rewords 0036–0039 · S8 prose, hooks, README, strips · S9 pins, evals, contract suite (after S6
+  and S7) · S10 the pre-ruled governance strike PATCH v3.2.1 · G3 crate review · V1–V3 the gate
+  audit · the lead's ceremony and landing; the bump 0.116.0 under the AM-5 exception row.
+- User at plan approval: the "smaller two" → "Base + diff fingerprint (Recommended)", recorded as
+  seam R10 (`.mochiko/decisions/2026-09-29-uncommitted-evidence-citation.md`, new `DECISIONS.md`
+  row) · "Approve and start (Recommended)".
+- S6 (`staff-engineer`), S7, S8, S10 (`tech-lead`) spawned plan-only; fresh peers grade.
+- S10's plan (`s10/plan.md`, 184 lines): the trigger fires at 0.116.0; E1–E12 in the ledger, E13
+  `rust-cli.md`'s build-state parenthetical, E14 `CLAUDE.md`'s Ratified line; all PATCH. Drift
+  found beyond the three known: (d) the sniff places listed where the binary sniffs every declared
+  sub-directory without its own home, `features/desk/` included · (e) "never wedged" false for an
+  undeclared sub-directory · (f) the stated-limits pointer stale (evasion 3 open end to end under the
+  hooks' `if: Bash(*.mochiko*)` narrowing; a command-substitution shape; no `.git`, no gate) · (g)
+  the crate test matrices omit `tests/shell.rs`. Depends on S6 landing first (RA3, P1). One
+  installed-gate false deny on a read (`sed -n …; echo`), not retried.
+- Ruled: Q1 the PATCH states evasion 3's end-to-end gap; no `hooks.json` change this wave; BACKLOG
+  with the latency/coverage trade · Q2 the build-state line kept as a struck note (the v3.0.3 idiom)
+  · Q3 the missing whole-file bounds taken as drift into `rust-cli.md` · Q4 no GI-019 text for the
+  SessionStart listing unless the ledger enumerates what that hook prints.
+- S10 v2 frozen (203 lines, `79484692…`); P10 grading.
+- S7's plan (`s7/plan.md`, 246 lines): 0036 field D4 (mints `impl.run-folder` — R5, R6, the
+  `.gitignore` line — and `impl.evidence-citation` — R10; `testing-end-user` rewords) · 0037 field
+  D6 (`impl.artifact-home` — R1, S1; `decision-technique-routing`) · 0038 field D8 (mints
+  `testing-end-user.pre-write-dry-run`) · 0039 field D2 (per-entry bound pointers) · 0040 field D3
+  (N1d names). Probes: all seven render targets resolve (F8 closed by the wave-1 resolver, no
+  reword); R2's final-validation line already in 0026; the R10 fingerprint (`git diff --binary`
+  plus untracked paths and `git hash-object --stdin-paths`, hashed) is repeatable, covers untracked
+  files and only reads. One installed-gate false deny on a read (`grep -n -i … | head`), not retried.
+- Ruled: Q1 slot 0040 granted (wave plan §1 amended) · Q2 the D8 dry-run clause also in
+  `impl.reports-envelope`, building on 0027's text · Q3 N1d's D-XXX source named
+  `constraints-and-decisions.md`, the home replace in 0040 inside S7's set · Q4 `arch.artifact-home`'s
+  stale spine pointer rides 0039 · Q5 the epic home has never declared `tasks.md` (0005) while
+  `patterns-vertical-tdd.artifact-home` sends cycle cards to "the declared feature or epic home";
+  kinako's epics never wrote one; neither record ruled on it — BACKLOG, for the epic design's owner ·
+  Q6 the run-open step adds the `.gitignore` line when absent (field S2 fold governs).
+- S7 v2 frozen (253 lines, `762f1ea1…`); P7 grading.
+- S6's plan (`s6/plan.md`, 201 lines): P1 the preamble counted as one entry at `entry_max_lines`,
+  key `size:preamble` (kinako's five preambles 29/25/12/42/63, matching the census) · RA3
+  reproduced read-only (the unchanged driver-fix report denies, "52 lines against 15"); fix pairs
+  standing and new faults by rank within a key · A4 re-pointed, the silent skip removed (a
+  read-only pre-probe renders all 287 blocks, exit 0) · deny wording: an empty home never named as
+  route 1, its title printed; `.mochiko/runs` paths resolve only against the runs home, restoring
+  the run-key reason; D9's evidence ask already met in wave 1; `home` prints "per deliverable" ·
+  R2 `((` read as arithmetic only when its inner `)` closes right before the outer (bash and zsh
+  agree) · G1 R1/R3/R4/R5/A8 to BACKLOG · no version move for the unpublished 0.3.0. Two cargo
+  slots, predicted red counts, any unpredicted red a stop.
+- Ruled: Q1 take c′ (the `reports/evidence/` reason) · Q2 `form: log` preambles to BACKLOG (outside
+  P1's ratified scope) · Q3 rank pairing denying a new over-budget section under an existing
+  heading confirmed as the D4e reading; slot B's sweep must show no unchanged rewrite flipping to
+  deny in either tree.
+
+## 2026-09-29 · S8 plan returned · Q1–Q6 ruled · O2/O3 routed as graded addenda
+
+- S8's plan (`s8/plan.md`, 399 lines, plan-only): 11 skills (15 files), `seat-reminder.sh` and
+  `session-start.sh`, the migrations README, 12 strip files at [v0.116.0] (one new:
+  `migrations-readme.md`); no agent edits. One installed-gate false deny on a read (`sed -n …; ls`),
+  not retried.
+- Ruled: Q1 the third Q8 prose skill is `patterns-technical-decisions` (it writes D-XXX content into
+  `constraints-and-decisions.md`; `patterns-system-design` writes no baseline) · Q2 option A: the
+  entity template re-levels to `### Entity:` entries under `## Entities` with the `**Lifecycle:**`
+  first line, the brownfield tags and the Status column out, superseded by delta D1/D2 and census S1
+  (both v0.27.0-KEPT, so recorded supersessions); S8's set widens by
+  `patterns-entity-modeling/scripts/validate-model.py`, the one `Entity:` regex · Q3 the reminder
+  line carries D8's dry-run sentence with the run-scratch route; S9 re-pins `REMINDER_GOLDEN`
+  (`evals/contract/run.py`) · Q4 agreed: the lead relays S7's landed `truncation-bounds` /
+  `cleanup-protocol` text and S8 writes item 3.8 after S7 lands · Q5 the lead owns the budget
+  ledger: S8 reports each skill's body delta (characters of the parsed value) with its obligation;
+  the lead sweeps every wave-touched skill at the quiesced tree with the canonical snippet, names the
+  overage components (render per migration into V1/V2, body into V3) and writes the rows at the
+  ceremony (`.mochiko/memory/primitive-cost-budgets.md` joins the lead's set, wave plan §1) · Q6 the
+  README goes last, after S6's diff lands.
+- Routed: O2 (replay keeps the last file's grammar, so `migrate status`, `home` and the
+  session-start line print grammar 1 over a grammar-2 log) to S6 · O3
+  (`impl.fail.unmarked-baseline-write` reads a run's own summary-table or index-row hunk as
+  unmarked, against delta D2) to S7. Each goes in as a separate addendum file, graded by the same
+  peer after its current verdict; the frozen plans stay frozen. O4 (`mochiko-cli home` in the
+  reminder needs `--plugin-root` or `MOCHIKO_MIGRATIONS` outside the plugin root; this predates the
+  wave) to BACKLOG · O5 already with the rehoming brainstorm.
+
+## 2026-09-29 · addenda frozen · P10 FAIL on S10 (1 blocking) · fix round 1
+
+- S7's O3 addendum (`s7/plan-addendum.md`, 40 lines, `fdff066e…`): `impl.fail.unmarked-baseline-write`
+  (0026) keeps id, class, kind and anchor and gains a third exception under delta D2 I3 — a sweep hunk
+  outside every entry is excused only when each changed line names an id the same diff marks for the
+  run's key, or is a count a recount at the diff's head confirms; every case that failed before still
+  fails. Rides 0037 (field D6, delta D2 named second, the 0027 precedent). +309 characters on the
+  implement command's fail render only; no skill payload moves. For P7 after its verdict.
+- S6's O2 addendum (`s6/plan-addendum.md`, 39 lines, `001e08d0…`): `replay.rs:261` assigns each
+  file's grammar in turn; the fix keeps the maximum. The range check stays per file at parse
+  (`migration.rs:578`, exit 3), so a 0.2.0 binary still halts on 0033. `src/replay.rs` and
+  `tests/replay.rs` join S6's set; two of S6's own pins move 1 to 2; slot A predicts 13 red. For P6
+  after its verdict.
+- P10 on S10 (`p10/verdict.md`): FAIL, 1 blocking, 11 advisory, 25 claims checked (1 inexact,
+  cosmetic). B1: plan §4 re-words the governance text to fit whatever S6 lands, where §6 stops — a
+  new repository read is the conformance tier's Fail limb, and describing it would widen the
+  admission (MINOR at AM-5, never a PATCH); a P1 built otherwise contradicts the ratified census row;
+  RA3 has no not-landed branch; the re-read set omits `home.rs` and the `Cargo.toml` version line.
+  Items 1–4 and 6 pass; E1–E14 are PATCH-class. Read-only probes: the report sniff's reach confirmed;
+  "never wedged" false today (census L3); evasion 3 closed at the decision, open end to end.
+- Fix round 1 sent to S10: B1 as P10 states it (one stop before any write), with A1, A3, A4 and A7
+  folded. A4: the Reach line on eval workspaces must be true after S9's `.git` fix, so S10 sequences
+  that line after S9 lands or states the conditional. P10 re-reviews; a second FAIL goes to the user.
+- S8 v2 frozen (443 lines, `9b2e9a12…`), Q1–Q6 folded; linter baseline on the current template read-only
+  (`['User', 'Session']`, 8/8). P8 (fresh `tech-lead`) grading.
+- P7 on S7 (`p7/verdict.md`): FAIL, 4 blocking, 8 advisory. B1 the plan re-points full-log pointers
+  into the run folder, against D4 as amended (record `:486`, "never a 'full log' path"; R10) — lead
+  confirmed at the record · B2 two planned texts call the run folder "never a declared home" where 0033
+  declares `runs` · B3 0039 gives every store file a per-`##` bound, taking in `concerns/<AX-ID>.md`
+  (whole-file 177, census S5b) · B4 no attempt bound cited (wave plan §6). Verified clean: F8, R2 in
+  0026, R10's fingerprint (hash stable, index untouched, untracked covered, ignored excluded), 0027 as
+  base, prefix order. P7's Skill call failed twice (the classifier returned no verdict); it read the
+  pair by path. Fix round 1 sent to S7, the O3 addendum folded into v3 so P7 grades one plan.
+- S10 v3 frozen (252 lines, `ccd92ed5…`), B1 and A1–A11 folded; P10 re-review **PASS**
+  (`p10/verdict-r2.md`), 5 new advisories (N1 the §4 stop reads S6's whole `src/` diff, `render.rs`
+  included · N2 pin §4 to the post-G3 diff · N3 list the expected history hits · N4 E5's antecedent ·
+  N5 E6b's qualifier), folded as execution notes. GO held: S10 writes only after S6 lands and G3
+  passes. Its landed diff takes a fresh grader (V4, wave plan §6), since a PATCH is the user's to
+  approve (ledger amendment policy) and the author does not grade it.
+- S7 v3 frozen (`plan-v3.md`, 335 lines, `a3cdafdf…`), B1–B4, the O3 addendum (§3b, 0037 op 3) and
+  A1–A7 folded; P7 re-reviewing. P7's A8 (246 against 253) needs no change: 246 was v1, 253 the v2
+  it graded.
+
+## 2026-09-29 · P7 re-review FAIL (second) · to the user · seam R11 ruled · S7 GO for 0036–0040
+
+- P7 on S7 v3 (`p7/verdict-r2.md`): B1–B4 closed and verified; 2 new blocking, both in §3b (the O3
+  addendum, graded for the first time): N1 the per-line test has no domain, "another level" takes in
+  `####` sub-headings (the crate's `entry_spans` runs an entry to the next heading at its level or
+  above, `conform.rs:903–906`), and `home` prints no entry level for three baselines · N2 "nothing
+  leaves" is false, and D2 I3 supports the class but rules no exception to D3's test, which makes it
+  a reconciliation of two user rulings, the kind R8 was. Advisory: AR1 0036 op 5's brief fingerprint
+  could go stale · AR2 0037 would carry two rulings · AR4 V2's range.
+- To the user (a second FAIL): rule it now, defer to BACKLOG, or narrow D3 to lines inside entries.
+  Ruled **"rule it now"** as recommended: seam R11
+  (`.mochiko/decisions/2026-09-29-sweep-hunk-exception.md`; `DECISIONS.md` row; delta row and index
+  entry annotated). Its own record because the seams record sits at 146 of 150 lines.
+- Consequences: §3b leaves 0037 (AR2 closed) and becomes its own migration 0041, anchored to delta D2
+  and D3 with R11 named in the intent (wave plan §1 widened). S7 writes the 0041 section to R11's four
+  conditions; P7 grades that section once, and a FAIL goes to the user. V2 now covers 0032–0041 (AR4).
+- S7 GO for 0036–0040 as v3 without 0037 op 3, AR1 folded (the fingerprint computed when the report
+  is written, never at dispatch). One migrations slot open now; S6 runs no cargo while it is open.
+  Views regenerate after 0036–0040 and again after 0041.
+
+## 2026-09-29 · P6 FAIL on S6 (2) · P8 FAIL on S8 (7) · fix rounds 1 with lead rulings
+
+- P6 on S6 (`p6/verdict.md`): FAIL, 2 blocking, 6 advisory. B1 slot A is fail-fast and tailed, so at
+  most one test binary's reds show · B2 the sweep's before and after runs read a moving log (S7's
+  0036–0040) and tree, and slot B's build overwrites the E0 binary. Verified: RA3 reproduced; a full
+  sweep of 1,356 files (931 allow, 411 deny, matching S3's A6); R2 matches bash and zsh.
+- Ruled for S6's round: fold its O2 addendum into v3 so P6 grades one plan · B2 by a scratch copy of the
+  E0 binary run beside the new one on one log snapshot and one file list · slot A runs after S7's slot
+  closes, its reds predicted against the post-0040 log · A1 (a same-heading swap allows): Q3 is
+  re-affirmed — sections sharing a heading are told apart by rank only, so a write that grows no
+  rank's standing fault and adds none settles, as D4e reads; the plan's "growing any section denies"
+  claim is corrected, not the design · A5 the P1 reason prints the store's own entry level.
+- P8 on S8 (`p8/verdict.md`): FAIL, 7 blocking, 9 advisory, 26 claims checked (2 false or incomplete).
+  B1 sweep misses (entity `SKILL.md:298`, `RELATIONSHIP-PATTERNS.md:63`, the spec-home data-model paths
+  in `ARTIFACT-CHECKLISTS.md`, ATR's "no gaps", `REPORT-TEMPLATES.md` full-log lines) · B2 the
+  per-feature quickstart cap and presence check survive · B3 item 3.1 restates `lifecycle-statuses` ·
+  B4 `patterns-technical-decisions:56` mirrors a rule 0037 rewords · B5 the runs listing is unbounded
+  (15,000 folders take 11.2 s under `/bin/sh`) · B6 "never into a home" is false for `runs` · B7 stale
+  lines outside every seat's row.
+- Ruled for S8's round: B2 needs no user question — v0.23.0 T3's ≤150-line cap and presence check bind
+  a per-feature `quickstart.md` that delta D4/D6(b) withdrew (census H5), and the product file's bound
+  is census Q1 (177 per `##` entry, user-ratified), so both leave by recorded supersession citing those
+  rulings · B5 one reminder line per field OQ5 ("a `SessionStart` reminder line"): the count of run
+  folders and at most five names, the version line printed first, measured under `/bin/sh` at 15,000
+  folders to finish within 1 s (wave plan §4's "every" amended) · B7 S8's set widens by
+  `templates/constitution-modules/knowledge-management.md` (the pre-0025 orphan rule, `:133–136`),
+  `templates/report-format.md` (`:7`, "the design-phase deltas") and `commands/architecture.md`
+  (`:52`, the orphan wording); each re-points to `authoring-architecture-store.orphan-rule` as 0025
+  worded it, with strips, and the command edit makes V3's unit a command pair · B4 waits for S7's
+  landed 0037 text, like 3.8 · B6 "never into any other home", with S9 re-pinning the corrected line.
+- S6 v3 frozen (`plan-v3.md`, 263 lines, `2e919802…`), the O2 addendum folded as §2 I7, B1/B2 and A1–A5
+  folded, A6 declined with a reason. Lead execution note on A2: past the 64-answer budget, `((` falls
+  back to the subshell reading, so the gate fails closed and sees the write, where v3 said arithmetic
+  (fail-open). P6 re-reviewing v3 with the note. S6's reading: the guard carries a `tee HOME` target
+  so the deny can show; the new test `a_double_paren_past_the_lookahead_budget_reads_as_subshells`
+  (three rows); slot A's predicted reds move from 13 to 14.
+- S8 v3 frozen (`plan-v3.md`, 687 lines, `bfb86ca1…`), B1–B7 folded; the scratch pre-probe of the
+  runs line under `/bin/sh` took 0.245 s at 15,000 folders; the corrected reminder line is 352
+  ASCII characters. Ruled: A1 S8's set widens by `validate-model.py:41–45` and `:144` (stale with the
+  regex) · the KM template's `:182` checklist twin accepted · O6 mochiko's pinned
+  `.mochiko/memory/knowledge-management.md:67–70` (the same pre-0025 orphan line) to the lead's
+  ceremony set, kinako's copy to wave 4. P8 re-reviewing.
+- P8 re-review **PASS** (`p8/verdict-r2.md`): B1–B7 closed, 1 condition (C1, the linter docstring and
+  message per ruling (a)), 7 advisories, 22 claims checked with none false. Its scratch probes: the
+  version line first in every case; 0.465 s at 15,000 folders under `/bin/sh` (0.34 s of it `migrate
+  status`); `home .mochiko/runs/FEAT-001-run5` prints `home: runs`; the linter case 1 gives 8/8, the
+  controls 7/8. S8 GO with C1 and A1–A7 folded; 3.8 and `patterns-technical-decisions:56` held for
+  S7's landed text, the README for S6's diff.
+
+## 2026-09-29 · P6 re-review FAIL (second) · to the user · S6 GO with fixes as conditions
+
+- P6 on S6 v3 (`p6/verdict-r2.md`): B1's mechanics and B2 closed; 2 new blocking, 3 advisory. N1 the
+  baseline set counts any red in a test S6 "does not touch", but S6 edits shared helpers (`tests/hook.rs`
+  `state`, split to `state_from`, used by 29 tests; `cli.rs` `shipped_log()`), so an S6-caused red could
+  pass slot B as S9's · N2 v3's only guard is write-free and pins neither fallback; the fail-closed
+  row belongs in the already-red I5 test. Graded sound: I7 (the range check still halts 0.2.0 on 0033),
+  gate 0 against the landed log (1..35, `79aadc14…`) and S7's staged `s7/log/` (1..40, `73483c82…`,
+  1139 rules), the A2 bound under the fail-closed note.
+- To the user (a second FAIL): go with the fixes as conditions, one more plan round, or pause S6.
+  Ruled **"go with fixes"** as recommended. S6 GO on v3 with N1 (the baseline holds only reds in test
+  files S6 does not edit; any unpredicted red in its six is a stop), N2 as P6 wrote it (the row
+  `"((a); " × 65 + "((echo a); tee HOME)"` → `[HOME]` in I5, the 20,000-opener guard at `[]`, S6's
+  boundary rows allowed in I5; 13 reds by name), and R2-A1–A3 binding (slot B re-checks gate 0's state
+  hash, and 0041's slot opens only after slot B closes). G3 reviews the diff as planned.
+- P6's r3 note (`p6/verdict-r3.md`, after the ruling): S6's reading of the A2 note closes N2 — the
+  boundary rows traced exact against `src/shell.rs` (×63 → `[]`, passing today; ×64 → `["2"]`, red
+  today; 20,000 around `tee HOME` → `[HOME]`, red today), and no existing test spends the budget; N1
+  stays open on paper and is closed by the binding condition. The rows ride I5 (13 reds by name), and
+  the disclosure wording is corrected to "64 non-arithmetic `((` answers in one `tokenize` call".
+
+## 2026-09-29 · S7 landed 0036–0040 · lead-verified · S6 gate 0, S8's holds released, P7 on 0041
+
+- S7 landed 0036 (87 lines, `a22e822e…`) · 0037 (43, `bc4fb3c1…`; no op 3, no delta-D2 intent) ·
+  0038 (39, `a63f2897…`) · 0039 (36, `178cc8e2…`) · 0040 (41, `671aeb0f…`), each byte-equal to its
+  scratch copy; every prefix 0 rejecting · 113 advisory · clusters 0. Views: 6 files, +87/−23; 3 rules
+  added (`impl.run-folder`, `impl.evidence-citation`, `testing-end-user.pre-write-dry-run`), 9 texts
+  changed, none removed; allowlist-suppressed edges 183 to 182, no new unsuppressed edge.
+- Lead-verified first-hand (branch binary): `sequences 1..40 (38 migrations)` · `state
+  sha256:73483c82a7d916302e6446534f93523c76394ad7bfa4b871a68921061299956a · 87 documents · 1139 rules`
+  · `0 rejecting · 113 advisory` · a fresh emit identical to `.mochiko/schema-views/` · the five hashes.
+- Render deltas for the budget sweep: `testing-end-user` `sec.output` +794 (render 12,353 to 13,147;
+  its standing overage grows from +239 to about +1,033, a new obligation under field D4/D8) · ATR
+  `sec.scope` +158 · store `sec.artifact` +142 · the implement tools section 23,282 to 25,469 (ceiling
+  30,000).
+- Disclosed by S7: its rows diff ran `uv run --with pyyaml`, which may have fetched pyyaml from PyPI —
+  a public package fetch carrying no personal identifier; no repo effect. Seats keep to installed tools.
+- Relayed: S6 the landed hash (gate 0, then slot A granted on its pass; slot B on an explicit grant) ·
+  S8 the landed `truncation-bounds` and `cleanup-protocol` texts, items 3.8 and `:56` released · P7 to
+  grade `s7/plan-0041.md` (60 lines, `696bad7e…`) once, a FAIL to the user; S7's Q7 (spine's marker is
+  the row's Status cell) inside that grade.
+- S8 phase 1 landed (before the relay reached it): 20 plugin files, +196/−148; 12 strip files, 44
+  entries at [v0.116.0]. Held: 3.8, `:56`, the README. Bodies (characters, canonical snippet): store
+  5,391 to 5,797 · epic 3,129 to 3,200 · system-design 9,583 of 11,047 · entity 14,592 of 16,835 ·
+  api-contracts 12,278 of 13,412 · technical-decisions 5,377 of 5,783 (before `:56`) · router 47,358
+  (unbudgeted). C1 done, with two same-format comments (`:47`, `:102`) accepted; A1: no delivered rule
+  governs NFR- numbering, so the cell cites none and the strip says so. Linter proof decisive (case 1
+  8/8; the controls 7/8), taken on scratch copies, though after the template edit (a disclosed order
+  slip). A `py_compile` check made a gitignored `scripts/__pycache__/`, removed. Hook probes: exit 0
+  in every case, the version line first, 15,000 folders in 0.470 s; the reminder line 352 characters.
+- P7 on plan-0041 **PASS** (`p7/verdict-0041.md`), 0 blocking, 7 advisory: the text states R11's four
+  conditions and no wider (342 to 1,108 characters); `home` prints `###` for data-model and constraints,
+  `##` for quickstart, spine and concerns, and `entry_spans` (`conform.rs:903–955`) agrees; the intent
+  names what leaves; S7's Q7 answered (spine's row-Status marker satisfies conditions 2–4; no text
+  change); only `fidelity.rs`'s sequence list moves. A1–A4 folded at write time (the intent's condition 4
+  wording, an entity's id is its heading name, fenced `#` lines are not headings, results taken after
+  slot B). To BACKLOG: a count inside `## Elements` fails before and after (outside R11); hunks
+  straddling an entry and a sweep row; another open key's own sweep rows. 0041's slot follows S6's slot B.
+
+## 2026-09-29 · S8 phase 2 landed · lead budget sweep · V1, V3a, V3b dispatched
+
+- S8 phase 2: item 3.8 (`EVIDENCE-CAPTURE.md` to `$RUN/`, the `rm -f` pair withdrawn;
+  `REPORT-TEMPLATES.md` full-log pointers withdrawn, the v0.44.0-KEPT prose-on-clean check kept) and
+  `patterns-technical-decisions:56` (matching 0037's landed `decision-technique-routing` clause for
+  clause), against state `73483c82…`. One line beyond the plan list accepted: `REPORT-TEMPLATES.md:47`,
+  the `evidence` path field, twin of `:29`. Totals: 37 files, +1,340/−186; 14 strip files, 51 entries at
+  [v0.116.0]. testing-end-user body 9,596 to 9,593; technical-decisions 5,118 to 5,554 of 5,783. The
+  hook probes re-run at this state: exit 0 throughout, 15,000 folders in 0.470 s. The README waits for S6.
+- Lead budget sweep (`scratchpad/lead-budget/components.md`; canonical snippet plus each `!` block
+  rendered with the branch binary; testing-end-user's render matched S7's 13,147 exactly). Prefixes
+  ending at 0024 or 0025 do not validate alone (5 rejecting at 0024, forward cites 0026 resolves), so
+  0024–0026 are one component. Over budget, components summing exactly: store +2,058 · review-sufficiency
+  +1,377 · testing-end-user +1,030 · ATR +926 · feature-map +375 · epic +141 · sound-loop +208 ·
+  gap-finding +3,196; each carries its standing ruled overage plus this wave's renders (0024–0026,
+  0027–0029, 0036–0039) and S8's bodies (store +406, epic +71, testing-end-user −3). Body-only
+  budgets and descriptions all under. Re-run at the gate after 0041 and S6's diff.
+- Dispatched (fresh plain seats, `opus`; the contract rendered from the branch with the branch binary,
+  never through the Skill tool, which would render the installed 0.112.0 copy): V1, schema content
+  0024–0029 with its render components · V3a, the skill pairs (store, epic, ATR, testing-end-user with
+  its references, technical-decisions, the router) with the body components · V3b, system-design,
+  entity-modeling with its linter, api-contracts, the two checklists, the KM template, report-format,
+  the `architecture` command pair and both hooks. V3 is split in two for size; the README is a later
+  unit. V2 waits for 0041.
+- S6 gate 0 PASS (`s6/gate0.txt`, read-only): the relayed hash `73483c82…`, 287/287 blocks render,
+  all 10 render targets with and without a trailing slash, the `home` head and tail as expected.
+  Slot A (`cargo test --all --no-fail-fast`, full output in `s6/slot-a.txt`): the 13 predicted reds
+  are exactly the actual reds in S6's six files, each for its predicted cause; both guards green.
+  Baseline, 4 reds in files S6 does not edit, each the first failed assert (later asserts unverified,
+  for S9): `fidelity.rs` sequence list without 36–40 (`:173`) · `fidelity.rs` and `validate.rs`
+  census, live command rules 335 against 333 (`:731`, `:1153`) · `matrix_similar.rs` command-family
+  figures (335, 13050, 0, 54) against (333, 12884, 0, 54) (`:947`). The pre-fix binary is kept at
+  `s6/mochiko-cli-head` (`4d688d03…`). Slot A closed; S6 edits `src/` with no cargo, then asks for
+  slot B.
+- S6's `src/` edits done without cargo: 11 files (5 src, 6 tests), +526/−55, rustfmt on exactly
+  those, `--check` exit 0. Slot B granted, with one execution change: every cargo command runs with
+  `CARGO_TARGET_DIR` in `s6/target`, so the auditors' `target/debug/mochiko-cli` is not swapped
+  mid-audit; the lead rebuilds `target/` at the gates after G3. The sweep compares `s6/mochiko-cli-head`
+  with `s6/target/debug/mochiko-cli`, about 14 minutes by S6's smoke run.
+- Slot B stopped on one unpredicted red (576 passed, 5 failed; all 13 predicted now green, both guards
+  green, the 4 baseline reds unchanged by name): `matrix_similar.rs
+  a_log_whose_own_tree_carries_no_allowlist_keeps_walking_up` (`:1172`). The lead confirmed the
+  cause: the test's own comment (`:1168`) assumes its scratch tree sits inside the repository, which
+  holds only for an in-repo target dir, and the lead's `CARGO_TARGET_DIR` change moved it out;
+  `src/similar.rs` and the test file carry no diff. Ruled environment-caused; the in-repo rebuild at
+  the lead gate must show it green (binding). S6 continues slot B. BACKLOG: the test depends on the
+  target dir's location.
+- S6 slot B continued: fmt checks, clippy `-D warnings` and `cargo audit --deny warnings` exit 0; the
+  new binary's `migrate status` prints `grammar 2` over the same state `73483c82…`; the repo's
+  `target/` untouched. The side-by-side sweep (1,357 files) running.
+
+## 2026-09-29 · V3 gate audits, round 1 — outcome lines · 5 units FAIL · one fix round to S8
+
+Outcome lines (the auditors write nothing in the repo, so the lead records them; verdicts in
+`v3a/verdict.md` and `v3b/verdict.md`; each file count includes the unit's strip file):
+
+```
+audit: authoring-architecture-store (skill pair) · V3a (V3 split with V3b for size) · opus · 2 files · 1 rounds · 2 blocking
+audit: authoring-epic (skill pair) · V3a (V3 split with V3b for size) · opus · 2 files · 1 rounds · 1 blocking
+audit: authoring-technical-requirements (skill pair + ARTIFACT-TEMPLATES.md) · V3a (V3 split with V3b for size) · opus · 3 files · 1 rounds · 0 blocking
+audit: testing-end-user (skill pair + EVIDENCE-CAPTURE.md + REPORT-TEMPLATES.md) · V3a (V3 split with V3b for size) · opus · 4 files · 1 rounds · 0 blocking
+audit: patterns-technical-decisions (prose) · V3a (V3 split with V3b for size) · opus · 2 files · 1 rounds · 0 blocking
+audit: mochiko router (prose) · V3a (V3 split with V3b for size) · opus · 2 files · 1 rounds · 1 blocking
+audit: patterns-system-design (SKILL.md + DIAGRAM-CONVENTIONS) · V3b · opus · 3 files · 1 rounds · 2 blocking
+audit: patterns-entity-modeling (SKILL.md + RELATIONSHIP-PATTERNS + validate-model.py) · V3b · opus · 4 files · 1 rounds · 0 blocking
+audit: patterns-api-contracts (SKILL.md + OPENAPI-TEMPLATE) · V3b · opus · 3 files · 1 rounds · 0 blocking
+audit: review-plan-artifacts ARTIFACT-CHECKLISTS.md · V3b · opus · 2 files · 1 rounds · 1 blocking
+audit: review-feasibility FEASIBILITY-LENS.md · V3b · opus · 2 files · 1 rounds · 0 blocking
+audit: knowledge-management constitution module · V3b · opus · 2 files · 1 rounds · 0 blocking
+audit: report-format template · V3b · opus · 2 files · 1 rounds · 0 blocking
+audit: architecture command pair · V3b · opus · 2 files · 1 rounds · 0 blocking
+audit: hooks seat-reminder.sh + session-start.sh · V3b · opus · 3 files · 1 rounds · 0 blocking
+```
+
+- V3b: pre-pass 0 rejecting · 113 advisory; budgets inside and matching the lead's figures; the
+  linter `['User','Session']` 8/8 (controls 7/8); both hooks clean, 15,000 folders in 0.58 s.
+  system-design — B1 "every box appears in the table and vice versa" cannot hold now the table lists
+  only changed elements while collaborators stay drawn plain; B2 the altitude check keyed to every
+  spine element fails a delta adding a boundary or flow · ARTIFACT-CHECKLISTS — B3, B1's root cause in
+  the coverage row and Key Question. A6 (supersession notes on the 2026-08-13 architect-role and T3
+  `DECISIONS.md` rows) to the lead's landing; A7 (`REMINDER_GOLDEN`) is S9's.
+- V3a: its measurements match the lead's exactly. store — `:73` "the three keyed statuses" is false
+  against `lifecycle-statuses` (four, `proposed` too) while its strip calls it kept verbatim; the
+  `proposed` bullet (+86) repeats the diagram line above it (body +406: 320 HOLDS, 86 FAILS) · epic —
+  the +71 one-pen clause restates the floor `shared-baseline-single-pen-holder` (FAILS; fix: end the
+  list at "and the ordering") · router `:143` — "flips … in-flight-class elements to `built`"
+  contradicts `fold-duty` and `impl.store-landing` (a removal goes to its `removed` stub). Budget
+  verdicts for store, epic, ATR and testing-end-user are conditional on V1/V2's render rulings.
+- One fix round to S8 for all five FAIL units, as each auditor stated the fix; then V3a and V3b each
+  re-audit their units once, and a second FAIL goes to the user.
+
+## 2026-09-29 · V1 gate audit, round 1 — 0029 FAIL on its budget component · fix round 0042 to S7
+
+```
+audit: schema 0024-delta-baselines-in-place · V1 · opus · 6 files · 1 rounds · 0 blocking
+audit: schema 0025-delta-lifecycle-marker · V1 · opus · 6 files · 1 rounds · 0 blocking
+audit: schema 0026-delta-pinned-base-review · V1 · opus · 4 files · 1 rounds · 0 blocking
+audit: schema 0027-delta-drawing-not-copies · V1 · opus · 6 files · 1 rounds · 0 blocking
+audit: schema 0028-delta-epic-one-pen · V1 · opus · 3 files · 1 rounds · 0 blocking
+audit: schema 0029-delta-proposed-until-signoff · V1 · opus · 9 files · 1 rounds · 1 blocking
+```
+
+- V1 (`v1/verdict.md`): pre-pass 0 rejecting · 113 advisory, 0 clusters; views equal replay; across
+  0024–0029, 16 views move, 9 ids out (all tombstoned), 10 in, none reused; implement pins unchanged
+  (fail 15, floor 37); its budget measurement matches the lead's table to the character; 13 of 14
+  render components HOLD.
+- Blocking (0029, budget): review-sufficiency's +1,031 fails in part — the D7 reader sentence renders
+  three times in one payload (`lifecycle-marker-read`, again in `clause-in-flight`, 156 characters,
+  and as `clause10-carve`'s added sentence, 204), so about 360 characters are restatement. Fix: a
+  reword migration citing `review-sufficiency.lifecycle-marker-read` in both places, keeping D6d's
+  "never proposed"; the residual (about +700) HOLDS. Fix round to S7 as migration 0042 (wave plan §1
+  widened), written under a lead slot after S6's slot B with 0041; V1 re-audits it once.
+- Prefixes ending at 0024 or 0025 not validating alone: ruled acceptable by V1 — `replay.rs:276` runs
+  the hard set on the finished state only, and the six files landed together in `5558fd7` with
+  consecutive sequences, so no state or release carries 0024 without 0026. Recorded here in place of
+  editing the landed intents.
+- To BACKLOG: the store template's concern-ledger `check:` asks a stance of every row while its
+  contract excepts rows cut for removal · no seat is named to run the duplicate-id check and the
+  unmarked-write test (D3a names the landing diff reviewer) · `sequential-ids` names no sequence for a
+  spec-home file. 0026's unmarked-write fail needs 0041 (R11) before the bump — planned.
+- S8's fix round (all five units, one pass; strip entries extended in place at [v0.116.0], none new):
+  system-design and the checklists as V3b stated (styled boxes and `container` rows only; the altitude
+  check keyed to `kind: container`; body 9,991 of 11,047) · store — the `proposed` bullet deleted, the
+  in-flight-class line names the three sign-off statuses, the strip no longer claims it verbatim (body
+  5,767, net +376) · epic — the list ends at "and the ordering", the strip records a deletion (body
+  3,101, net −28) · router `:143` points at `impl.store-landing` and `impl.landing-verifier-folds`.
+  V3a's A1–A3 folded (A3 touches the passed ATR unit's `ARTIFACT-TEMPLATES.md:215`, re-read by V3a);
+  A4–A6 declined with reasons (A4 an accurate line, A5 predates the wave, A6 V1's schema content).
+  V3a and V3b re-auditing.
+
+## 2026-09-29 · V3a re-audit PASS on all three units
+
+```
+audit: authoring-architecture-store (skill pair) · V3a (V3 split with V3b for size) · opus · 2 files · 2 rounds · 0 blocking
+audit: authoring-epic (skill pair) · V3a (V3 split with V3b for size) · opus · 2 files · 2 rounds · 0 blocking
+audit: mochiko router (prose) · V3a (V3 split with V3b for size) · opus · 2 files · 2 rounds · 0 blocking
+```
+
+- V3a round 2 (`v3a/verdict-r2.md`): state `73483c82…` unchanged, 0 rejecting · 113 advisory; bodies
+  match S8's (store 5,767, epic 3,101, router 47,326). Store body +376 HOLDS in all four parts, the
+  pair's overage now conditional only on V2's 0039 (+142) · epic overage +42, covered by its standing
+  ruled +261 (the wave's net −219), settled · router `:143` points at two live rules that both carry
+  a removal to its `removed` stub. ATR's `:215` line breaks nothing; its round-1 PASS stands (its
+  outcome line stays `1 rounds`, round 2 re-read one line). The declined A4 holds. To BACKLOG: A5
+  (`AX-XXX-<slug>.md` against `<AX-ID>.md` naming, predates the wave) · A6 (a build-raised store
+  element against `sign-off-flips-proposed`) · R2-A1 (`impl.baseline-diff-review` is the exact home
+  of the baseline flip; a pointer refinement).
+- V3b round 2 (`v3b/verdict-r2.md`): both units 0 blocking; pre-pass 0 rejecting · 113 advisory;
+  system-design body 9,991 of 11,047, description 625 of 677.
+
+```
+audit: patterns-system-design (SKILL.md + DIAGRAM-CONVENTIONS) · V3b · opus · 3 files · 2 rounds · 0 blocking
+audit: review-plan-artifacts ARTIFACT-CHECKLISTS.md · V3b · opus · 2 files · 2 rounds · 0 blocking
+```
+
+- Stall caught (the user asked for status and saw nothing running): S6, S7 and V3b had gone idle with
+  finished background runs unreported. S6's sweep had ended at 18:28 exactly as predicted (1,357 rows,
+  176 changed: RA3 1, contracts 14, c′ 161, flips 0, other 0; gone 0, moving 0; the same state hash on
+  both sides). All three were prompted to report, and the standing rule was restated to every seat:
+  wait for a background command and report, never go idle mid-run.
+- S6's diff is final (no re-edit allowed after slot B), so G3 is dispatched on it now (a fresh
+  `general-purpose` `opus` seat; its cargo runs under `CARGO_TARGET_DIR=target/g3`, in-repo, only on a
+  lead slot, since S7's 0041/0042 slot is next) and S8's README is released.
+
+## 2026-09-29 · S6 slot B closed, every check as predicted · S7's 0041/0042 slot opened
+
+- S6 hand-off: 11 files, +529/−56, `Cargo.*` untouched. Slot B: 576 passed, 5 failed — the 4 baseline
+  reds of slot A by name plus the ruled environment-caused `matrix_similar.rs` red; none of the 13, both
+  guards green. Sweep (`s6/classify.txt`): 1,357 rows, gone 0, moving 0, the same state on both sides;
+  old 946 allow · 411 deny, new 947 · 410; 176 changed, all predicted (RA3 1 deny to allow · contracts 14
+  route wording · c′ 161 reason wording); flips 0, other 0, mochiko none. clippy, both fmt checks and
+  `cargo audit` exit 0. The new binary `s6/target/debug/mochiko-cli` (`5ac86b42…`) prints `grammar 2 ·
+  sequences 1..40` over `73483c82…`. For S9: the 4 baseline tests unverified past their first failed
+  assert (`fidelity.rs:173`, `:731`, `validate.rs:1153`, `matrix_similar.rs:947`).
+- S7's scratch stack (pre-slot-B binary): 1..41 and 1..42 each 0 rejecting · 113 advisory · clusters 0
+  (states `959d0467…`, `9d162ed7…`). 0041 renders R11's four conditions with A2/A3 folded (342 to
+  1,237 characters; the implement fail section 3,628 to 4,523). 0042 (anchor delta D7; the intent names
+  V1's finding and what leaves): `clause-in-flight` 710 to 632 and `clause10-carve` 493 to 392, each
+  citing `lifecycle-marker-read`, D6d's "never a `proposed` one" kept. review-sufficiency render 13,538
+  to 13,359 (−179, not −360: the citations and the kept D6d clause take back about 180); payload 16,621,
+  still +1,198 over, 0029's component now +852 for V1 to re-judge. One more installed-gate false deny
+  on a read (`grep -n -i` on the delta record), not retried.
+- S7's slot opened with S6's rebuilt binary for every step (A4); the repo's `target/` stays pre-slot-B
+  until the lead's gate rebuild. G3's cargo waits for the slot to close.
+- S9 dispatched plan-only (a fresh `staff-engineer`): the 4 baseline reds and whatever 0041/0042 move,
+  `REMINDER_GOLDEN` to S8's 352-character line read from the landed script, the stale eval content (P5
+  A1, G2 A1–A2, anything S8's entity template made stale), the gate workspaces' `.git` (G1 R5), and the
+  contract suite's deterministic run (gate 6; a SKIPPED suite blocks). P9 grades its plan.
+- S8's README landed (+85/−13) with its new strip file `migrations-readme.md` (2 entries at
+  [v0.116.0]: the grammar re-keyed to the highest per O2 · the grammar-range and bump-criterion
+  paragraph superseded, citing wave 1's approved §2.8 and field D2/D4). Every statement was checked
+  against S6's source with file:line (the repo binary predates S6's diff); one claim was narrowed to
+  what the crate bears out (an older binary reads the run folder as an ordinary home). `migrate
+  validate` unchanged. V3b audits it as unit 10, the last prose unit.
+
+## 2026-09-29 · S7 landed 0041 and 0042 · lead-verified · G3 cargo slot · V2 and V1's re-audit dispatched
+
+- S7 landed 0041 (39 lines, `9b700a9f…`) and 0042 (37 lines, `0ab9fb26…`), every step on S6's slot-B
+  binary (`5ac86b42…`, A4); scratch prefixes 1..41 and 1..42 each 0 rejecting · 113 advisory ·
+  clusters 0. Views: this slot moved only `commands/implement.yaml` (`impl.fail.unmarked-baseline-write`)
+  and `skills/review-sufficiency.yaml` (`clause10-carve`, `clause-in-flight`); cumulative against HEAD
+  7 files, +107/−34. Renders: review-sufficiency 13,538 to 13,359, payload 16,621 (+1,198 over 15,423)
+  · the implement fail section 3,628 to 4,523.
+- Lead-verified first-hand (S6's binary): `grammar 2 · sequences 1..42 (40 migrations)` · `state
+  sha256:9d162ed77bdd1ed39ed30147c909dfb2f6d77567b85fcdbeaad991d9b06d7d8d · 87 documents · 1139 rules`
+  · 0 rejecting · 113 advisory · a fresh emit identical to `.mochiko/schema-views/` · both hashes.
+- Dispatched: G3's cargo slot (`CARGO_TARGET_DIR=target/g3`) · V2 (a fresh plain `opus` seat) on
+  0032–0041 with the render components 0036, 0037, 0038, 0039 · V1's bounded re-audit of 0029's budget
+  item with 0042 applied (0029 now nets +852) and 0042 itself. S9 has the final hash for its plan.
+- V3b unit 10 (`v3b/verdict-readme.md`) PASS, 0 blocking — every README statement checked against the
+  code, and the S6-dependent ones probed with S6's binary on scratch trees (a preamble of 177 lines
+  allows and 178 denies; entries at 177/178; a bad run key denies "not a run key"; only 0033 and 0034
+  at grammar 2). V3b complete: 10 of 10 units PASS. Advisories to BACKLOG, not folded into an audited
+  file: R-A1 mark `entry_heading` Required · R-A2 the grammar row's kept "grammar version" wording ·
+  R-A3 declared run-folder names match at the top level only · R-A4 "(0033 and 0034 are grammar 2)"
+  will date. R-A5 (the repo binary predates S6) is the lead's gate rebuild.
+
+```
+audit: migrations README (plugins/mochiko/migrations/README.md) · V3b · opus · 2 files · 1 rounds · 0 blocking
+```
+
+- V1 round 2 (`v1/verdict-r2.md`, S6's binary verified): 0029's budget item PASS with 0042 applied, and
+  0042 PASS as schema content — one view file and two rule texts move, every rule field kept, the
+  floor pin stays 8; the reader sentence renders once, down from three. review-sufficiency 16,621
+  (+1,198) = standing +220 · 0026 +126 · 0029 +852 net, the +852 ruled HOLDS (`lifecycle-marker-read`
+  about 561, a new D7 obligation; `clause-in-flight` +161, the read's new home plus D6d's "never a
+  `proposed` one"; `clause10-carve` +115, a relocation; `clause-structural-trigger` +15); the citations
+  are the minimum in substance. V1 complete: 7 of 7 units PASS; its 11 round-1 advisories stand.
+
+```
+audit: schema 0029-delta-proposed-until-signoff · V1 · opus · 10 files · 2 rounds · 0 blocking
+audit: schema 0042-marker-read-cited · V1 · opus · 2 files · 1 rounds · 0 blocking
+```
+
+## 2026-09-29 · G3 FAIL on S6's crate diff (1 blocking, a shell-parse regression) · fix round 1
+
+- G3 (`g3/review.md`, cargo under `target/g3`): fmt, clippy and `cargo audit` exit 0; `cargo test`
+  577 passed, 4 failed — exactly the 4 expected pins, unmoved by 0041/0042; the environment-caused
+  `matrix_similar.rs` test green on the in-repo target, closing that binding check. P1, RA3 (grows and
+  new faults deny; the swaps are the ruled residual), A4, I4a–d and O2 hold; the range check per file,
+  no diff; no new filesystem read and no network call in `src/`; the render head/tail changes only in
+  the grammar digit.
+- B1 (blocking, `src/shell.rs:753–766`, `:874–887`, doc `:35–40`): R2's subshell reading hides writes
+  HEAD denied — a `((` read as two subshells exposes a `<<`, taken as a heredoc, and
+  `skip_heredoc_bodies` swallows every later line. Three shapes deny at HEAD and allow now before a
+  write into a home: 64 non-arithmetic `((` answers then `(( x = 1 << 2 ))` (bash and zsh) ·
+  `(( x = $(case … esac) << 2 ))` (zsh) · the backtick form (bash 3.2). Fix, as G3 recommends: the
+  union of the exact reading and HEAD's always-arithmetic reading (two linear scans), so no command
+  yields fewer targets than at HEAD; the three shapes as red rows; the doc corrected.
+- Advisory: A1 `settle` is O(k² log k) per key (3.44 s at 20,000 repeated sections, so a standing file
+  of about 25,000 sections passes the 5 s hook timeout and fails open; pathological) · A2 no floor on
+  the raw-output literal prefix (a hypothetical log) · A3 the RA3 deny rows pin no reason (folded) ·
+  A4 `echo $[1<<2]` then a write is allowed at HEAD too (pre-existing) · A5 `closing_paren`'s gaps
+  now decide the reading. A1, A2, A4 to BACKLOG; A5 by S6's call under the union.
+- Fix round 1 to S6 with a cargo slot under `CARGO_TARGET_DIR=target/s6` (in-repo, gitignored; V2's
+  scratch binary untouched). G3 re-reviews once; a second FAIL goes to the user.
+- The lead's A2 "fails closed" note rested on the subshell reading only ever exposing writes; G3 showed
+  it can also hide them (the exposed `<<` taken as a heredoc). The union below replaces it.
+- S6's fix round (`s6/fix-round.diff`, +84/−28; `src/shell.rs`, `tests/shell.rs`, `tests/conform.rs`
+  only): a `DoubleParen { Exact, Arithmetic }` switch, the Arithmetic arm being HEAD's `closing_paren`
+  arm verbatim; `write_targets` returns the exact reading plus every arithmetic-reading target it
+  lacks, in two linear scans; the doc claims only that no write either reading sees is missed. Red
+  first: the three shapes failed, the ×63 control held; green: 577 passed, 4 failed (the baseline). Both
+  fmt checks, clippy and `cargo audit` exit 0. End to end (`check --hook-json -`, head against new): the
+  three shapes deny on both; `((echo a); tee HOME)` allow to deny. The new binary is
+  `target/s6/debug/mochiko-cli` (`41c1de22…`). The file sweep was not re-run, since only `decide_shell`
+  calls `write_targets` (`hook.rs:365`). A3 folded; A5 moot under the union; A1, A2 and A4 to BACKLOG.
+  G3 re-reviewing, with a cargo slot.
+
+## 2026-09-29 · usage-limit pause · G3 re-review PASS · V2: 0037 FAIL on its budget · 0043 fix round
+
+- A usage limit stopped every seat at about 19:20 (reset 21:30). G3, S9 and V2 were mid-turn; nothing
+  was running at the reset. Each was resumed or re-prompted from its last written state.
+- G3 round 2 (`g3/review-r2.md`) **PASS**, 0 blocking: B1 and A3 closed; its own build under
+  `target/g3` — fmt, clippy and `cargo audit` exit 0; `cargo test` 577 passed, 4 failed (the baseline,
+  unchanged); the round's diff recomputed from S6's pre-round copies and identical. Advisory: R2-A1 the
+  module doc's "the scan before G1 R2" should name the scan at `5558fd7` (BACKLOG, doc-only) · R2-A2
+  the booked A1, A2 and A4 need BACKLOG rows (the lead's landing). S6's crate diff is final.
+- V2 (`v2/verdict.md`, S6's slot-B binary): 9 PASS, 1 FAIL; 0 rejecting · 113 advisory; views equal
+  replay; the view diff split per migration by stepped replays; no id lost or reused; the pins unchanged
+  (implement fail 15, floor 37; architecture 1, 23); every home agrees with its census row, and all 87
+  views, 102 strip files and 4 archive files resolve as declared deliverables. Budget: testing-end-user
+  0036 +490 and 0038 +304 HOLD · store 0039 +142 HOLDS · ATR 0037 +158 FAILS in part — 79 characters
+  (", in the spec's file or in place in the product file under its lifecycle marker") restate the
+  floor `authoring-technical-requirements.artifact-home`; R1's +79 HOLDS. Pressed cases hold: 0036's
+  pointer withdrawal (D4 `:486`), 0037's `impl.artifact-home` narrowing (D6, R1), 0041 no wider than
+  R11. Advisory: `impl.sec.tools` renders 25,469 of 30,000 (A3) · 0040 archives the constraints file
+  "unchanged" while it stays live in reduced form (A4).
+
+```
+audit: schema 0032-closed-world-homes · V2 · opus · 11 files · 1 rounds · 0 blocking
+audit: schema 0033-run-folder-home · V2 · opus · 5 files · 1 rounds · 0 blocking
+audit: schema 0034-store-entry-budgets · V2 · opus · 7 files · 1 rounds · 0 blocking
+audit: schema 0035-home-sets-after-delta · V2 · opus · 9 files · 1 rounds · 0 blocking
+audit: schema 0036-run-folder-and-evidence · V2 · opus · 10 files · 1 rounds · 0 blocking
+audit: schema 0037-run-log-and-in-run-rulings · V2 · opus · 6 files · 1 rounds · 1 blocking
+audit: schema 0038-pre-write-dry-run · V2 · opus · 6 files · 1 rounds · 0 blocking
+audit: schema 0039-store-entry-bound-pointers · V2 · opus · 6 files · 1 rounds · 0 blocking
+audit: schema 0040-brownfield-archive-names · V2 · opus · 6 files · 1 rounds · 0 blocking
+audit: schema 0041-sweep-hunk-exception · V2 · opus · 6 files · 1 rounds · 0 blocking
+```
+
+- Fix round to S7 as migration 0043 (a new file, the 0042 pattern, so landed hashes stay stable):
+  `decision-technique-routing` ends at "…lives here as a D-XXX entry."; slot open, on S6's final build
+  `target/s6/debug/mochiko-cli` (`41c1de22…`). V2 re-audits once. S10 GO (S6 final, G3 PASS): its §4
+  stop check first, against the final diff. S9 resumes its plan against 1..43.
+- G3 confirmed `review-r2.md` final (PASS; slot closed). Its evidence adds an in-process comparison of
+  1,000,000 random commands with 0 where the new parse names fewer targets than the old; the second
+  scan costs a few milliseconds on 60,000-character hostile input.
+- S10 landed the v3.2.1 PATCH (3 files, +54/−47: ledger 90, `rust-cli.md` 7, `CLAUDE.md` 2). The §4
+  stop check against S6's post-G3 diff: no new filesystem, process or network read in `src/`
+  (`render.rs` included); P1 as ratified; RA3 landed; `Cargo.toml` 0.3.0; S8's reminder one line; its
+  11 probe verdicts reproduced on the final build. Edits E1–E14 landed as planned with the N-notes; the
+  N3 grep is clean against the expected-hit list; the amendment-log row is ledger `:717` (2,762
+  characters: the trigger evidence, the strikes, each correction with its ground, "mints no principle;
+  no fresh `/mochiko:setup` amend"). Open: the Testability case list (`:562–563`) depends on S9's
+  contract cases; the row cites build-log lines `:47–48` and `:853–856`. V4 (a fresh plain `opus`
+  seat) grades the diff, pointer durability included. The DECISIONS row is the lead's at the landing.
+
+## 2026-09-29 · S7 landed 0043 · lead-verified · the log final at 1..43 · V2 re-auditing
+
+- 0043 (`0043-routing-restatement-cut.yaml`, 27 lines, `7b89c80c…`; anchor field D6; the intent names
+  V2's finding and the 79 characters leaving, R1's boundary staying) rewords
+  `decision-technique-routing` to end "…lives here as a D-XXX entry." One view file moves
+  (`skills/authoring-technical-requirements.yaml`). ATR render 17,663 to 17,584, payload 21,622; 0037's
+  component now +79, V2's HOLDS residual.
+- Lead-verified on the final crate build (`target/s6/debug/mochiko-cli`, `41c1de22…`): `grammar 2 ·
+  sequences 1..43 (41 migrations)` · `state sha256:71c099ee000b3ac9473e98fb3806b0b3d0e716539ad77b0b271d6464a1fed62c
+  · 87 documents · 1139 rules` · 0 rejecting · 113 advisory · a fresh emit identical · the file hash.
+  No more migrations are planned this wave. V2 re-audits 0037's budget with 0043 and 0043 itself; S9
+  freezes its plan against this state.
+- Lead ceremony, begun while seats work: `.gitignore` gains `.mochiko/runs/` (the line
+  `home::ignores` matches). The budget sweep re-run on the final build at 1..43
+  (`lead-budget/final.txt`) matches the components exactly; the ledger rows are written for store
+  (+2,028), review-sufficiency (+1,198), testing-end-user (+1,030), feature-map (+375), epic (+42, now
+  falling), sound-loop (+208) and gap-finding (+3,196), and the four body-only rows plus two
+  description rows note their [v0.116.0] re-measures inside budget; ATR's row waits for V2 on 0043. The
+  pinned `.mochiko/memory/knowledge-management.md` orphan rule re-keyed to 0025's wording (S8's O6).
+  V3b's A6: the 2026-08-13 architect-role row and the 2026-07-23 workflow-token-reduction row (T3)
+  annotated "superseded in part 2026-09-29" in `DECISIONS.md` and the index. Release note owed: plugin
+  0.116.0 needs `mochiko-cli` 0.3.0 (grammar 1..2) — the installed 0.2.0 halts loudly at 0033 — so the
+  maintainer reinstalls from `main` with the merge (seam R4: only the maintainer installs).
+
+## 2026-09-29 · V2 round 2 PASS · V4 PASS on the PATCH · S9's plan to P9 · the lead's Q-rulings
+
+- V2, round 2 (`scratchpad/v2/verdict-r2.md`): 0037 PASS with 0043 applied, 0043 PASS as schema content;
+  all eleven V2 units pass. ATR payload 21,622 = body 4,038 + render 17,584 (render 17,505 at 0036,
+  17,663 at 0037, 17,584 at 0043), +847 over 20,775, summing exactly: standing +263 · 0024–0026 +257 ·
+  0027 +83 · 0029 +165 · 0037 net +79 (R1's boundary text, HOLDS). The ledger's ATR row is written.
+  Outcome lines, replacing round 1's 0037 line:
+  `audit: schema 0037-run-log-and-in-run-rulings · V2 · opus · 6 files · 2 rounds · 0 blocking`
+  `audit: schema 0043-routing-restatement-cut · V2 · opus · 3 files · 1 rounds · 0 blocking`
+  V2 hit one installed-gate false deny on a read (`tee` to scratch, then `grep` on
+  `.mochiko/memory/primitive-cost-budgets.md`, read as a write target); not retried.
+- V4 (fresh plain `opus`, `scratchpad/v4/verdict.md`): S10's PATCH v3.2.1 PASS, 0 blocking, 8
+  advisory; 36 dry-run probes on the final build match the text; a PATCH, not a MINOR (both wider
+  denies grounded in rulings the row discloses).
+  `audit: governance PATCH v3.2.1 · V4 · opus · 3 files · 1 rounds · 0 blocking`
+  Lead: S10 applies A1 (date the struck note at `:494`), A2 (entry headings beside the build-log line
+  cites), A3 (the `runs/` Reach sentence to the build), A4, A6, A8; V4 confirms the delta. A5 is the
+  bump (the lead's); A7 is a plan note, skipped. After S9, S10 re-checks the Testability case list.
+- S9's plan (`scratchpad/s9/plan.md`, 369 lines, `ed2fb3d4…`), measured at 1..42: census 335/804/1139
+  (floors 119/264, 36 fails hold) · the command family (335, 13050, 0, 54) · the opt-in corpus (1139,
+  178832, 0, 182); the suppressed-edge drop 183 to 182 is 0036's `truncation-bounds` reword leaving
+  cluster [26], allowlist row `:538` kept (both ids resolve). Host probe: `gate-input` 17/31 red (no
+  `.git` in the workspaces) and `reminder-input` red (the stale golden) as the file stands; all seven
+  host cases green with the two planned edits simulated. Nothing written, no `cargo` run.
+- Lead rulings on S9's questions: Q1 gate 6 with `MOCHIKO_GATE_VERSION` unset, the sandbox building
+  from this tree (R4) · Q2 (a) — the legacy `FEAT-004/baseline-delta.md` fixture deleted, the s3 prose
+  and two preregistration phrases fixed, with a dated note that no grid ran before the change · Q3
+  the three `review-plan-artifacts` g1–g3 goldens booked to BACKLOG · Q4 `impl.run-folder` and
+  `impl.evidence-citation` observable · Q5 S9 builds `target/release` in its Docker slot; order: S9's
+  non-Docker slot, the lead's `plugin.json`/`marketplace.json` edits, S9's Docker slot on the
+  quiesced tree, the lead's gates · Q6 blocker: `sbx ls` returns 401, not authenticated to Docker —
+  the login goes to the user.
+- P9 (a fresh `staff-engineer` peer) grades the plan per `mochiko:review-seat-plan`, with the rulings.
+- Lead ceremony: `BACKLOG.md` build items re-stated (waves 1–3 built at 0.116.0, wave 4 owed) and
+  four residual groups booked · `ROADMAP.md` Next row marked built · `target/debug` rebuilt in-repo
+  (hash differs from `target/s6` by path; same source, identical status and validate output) ·
+  the CHANGELOG entry drafted in scratch, gate figures pending.
+- S10 applied A1, A2, A3, A4, A6 and A8 (ledger only; `rust-cli.md` holds none of the phrases). V4's
+  round 2 on the delta: PASS, 0 blocking — twelve hook-json probes on the final build match the A3
+  sentence; a word diff against round 1 shows no reflow change.
+  `audit: governance PATCH v3.2.1 advisory delta · V4 · opus · 1 file · 2 rounds · 0 blocking`
+  A5 stands as the landing condition: the PATCH lands with the 0.116.0 bump.
+- S9 re-froze its plan at 1..43 (`eb0f02f0…`, 372 lines; figures unchanged, E0 done) while P9 held
+  the earlier copy; P9 stopped on the hash move and the lead ruled it grades `eb0f02f0` in full.
+- `sbx login` done by the user; `sbx ls` lists sandboxes, the 401 gone — Q6 cleared.
+- P9 (`scratchpad/p9/verdict.md`): S9's plan FAIL, one blocker — B1, the Q2(a) dated preregistration
+  note not in the plan (§4, §7's anchor, "pending Q2"). Everything else passes: every pin traced and
+  re-run byte-identical on the final build at 1..43, the scope inside the five items, the Docker slot
+  last, no contract case renamed or added (97 hold, the GI-012 list). Fix round to S9 with B1 and
+  advisories A1–A4, A6, A7 folded; A5's four BACKLOG items booked by the lead (g1–g3,
+  `sf-direction-checks`, the architecture g3 path, a session-start contract row). One re-review.
+
+## 2026-09-29 · P9 PASS on S9's plan · GO on plan-v2 · slot A open
+
+- P9 re-graded `eb0f02f0` PASS once the lead's Q-rulings stood as execution notes (B1 downgraded to
+  A0), its message crossing the fix round. S9 wrote the fix round as a separate `plan-v2.md` (436
+  lines, `98bba14a…`, `make_v2.py` — 27 asserted replacements), leaving the passed file intact. P9's
+  delta re-review: PASS, no blocking — `make_v2.py` on `eb0f02f0` reproduces v2 byte for byte; B1 (the
+  dated note at preregistration `:257`, the ruling's three parts, the s3 scenario change named),
+  A1–A4, A6 (D0 records the `plugin.json` version and stops unless it reads 0.116.0) and A7 (97 cases,
+  none renamed) met; D-A1 accepted (a true reword of the JSON-escapes line); D-A2 applied at
+  execution (the note's pointer reads `:131 (s1) and :133 (s3)`). Verdict `scratchpad/p9/verdict.md`.
+- GO on v2. Slot A (pins, eval edits, `cargo test --all`, `CARGO_TARGET_DIR=target/s9`) is S9's alone.
+  Then: a fresh non-author review of the crate test edits · the lead's `plugin.json` /
+  `marketplace.json` bump · slot D, the contract suite in the sandbox on the quiesced tree · the
+  lead's gates.
+
+## 2026-09-29 · S9 slot A closed green · the bump edits · slot D open · G4 reviewing
+
+- S9 slot A (`scratchpad/s9/s9.diff`, `27341ea4…`, 12 files, +97 −62): E0 matched §1 at `71c099ee`;
+  E1 showed exactly the four predicted reds (`fidelity.rs:173`, `:731`, `validate.rs:1153`,
+  `matrix_similar.rs:947`) plus the opt-in corpus red at `:1122`, and `a_log_whose_own_tree_carries_no_allowlist_keeps_walking_up`
+  green in-repo. E2: the pins moved (sequences through 43; census 335/804/1139; the command family
+  (335, 13050, 0, 54); the corpus (1139, 178832, 0, 182)); `REMINDER_GOLDEN` generated from the
+  landed script; the `.git` added to `case_gate_input`'s workspaces and `case_gate_live`'s seed; the
+  implement, feature and architecture eval text re-keyed; the preregistration's dated note at
+  `:257`; the legacy `FEAT-004/baseline-delta.md` fixture deleted (its empty directory with it).
+  E3: `cargo test --all` 0 failed across 18 binaries (validate 105 · replay 64 · cli 62 · conform
+  60 · matrix_similar 48 · home 44 · shell 42 · hook 41 · render 39 · migration 38 · fidelity 17 ·
+  views 11 · anchor_grammar 5 · matrix_skill 3 · matrix_command 2); the opt-in similarity run 48
+  passed; rustfmt clean; host probe 7/7 with `R-LINE-EXACT`; `check-rubric` implement uncovered only
+  on the five booked 0013 ids. No gate deny. Deviations, none changing content: a relative binary
+  path in the first probe run (rerun absolute) · an em-dash escape in S9's scratch edit script
+  (fixed, `feature/evals.json` keeps its `—` escapes).
+- Lead: `plugins/mochiko/.claude-plugin/plugin.json` and `.claude-plugin/marketplace.json` to
+  **0.116.0**; nothing else under `plugins/`, `crates/` or `evals/` pins 0.115.0.
+- Dispatched in parallel: S9's slot D (the contract suite in the sandbox, `MOCHIKO_GATE_VERSION`
+  unset, D0 reading 0.116.0) · G4 (a fresh plain seat) reviewing `s9.diff` as the non-author crate
+  and harness review, cargo in `target/g4` · S10 re-checking the Testability case list. A G4 fix to
+  `run.py` re-runs slot D.
+- S10: the Testability case list holds — the five cases the ledger names are registered in `run.py`
+  (`:4954`–`:5025`), no gate case added or renamed, every `tests/` file modified only, `hooks.json`
+  without a diff. S10's unit is complete pending the landing.
+- S9 slot D: D0 `plugin.json` and `marketplace.json` read 0.116.0, `MOCHIKO_GATE_VERSION` unset · D1
+  `cargo build --release` exit 0, `0.3.0 · grammar 1..2` (`0c55d0b3…`) · D2 `--host-only` 7/7 · D3,
+  the full suite, started 22:49 with `run.py` at `ad5deb33…` (a G4 fix to it re-runs D3).
+- Lead gates on the quiesced tree, `CARGO_TARGET_DIR=target/lead`: views emit ≡ `.mochiko/schema-views`
+  (87 documents, 0 diff lines) · `migrate validate` 0 rejecting · 113 advisory at `71c099ee…` ·
+  `cargo fmt --all --check` 0 · `cargo clippy --all-targets -- -D warnings` 0 · `cargo audit --deny
+  warnings` 0 (1,277 advisories, 31 dependencies) · `cargo test --all` 0, 581 tests across 18 targets ·
+  `MOCHIKO_FULL_SIMILAR=1` `matrix_similar` 48 passed · secret scan clean — the CI pattern over tracked
+  and untracked files, gitleaks over the working diff and each untracked file, no personal address.
+
+## 2026-09-29 · G4 FAIL on S9's diff (2 blocking, both in one preregistration) · fix round 1
+
+- G4 (a fresh plain `opus` seat, `scratchpad/g4/verdict.md`): the diff equals the working tree; every
+  crate pin re-derived and true, not just green — census 333 to 335 and 803 to 804 by exactly three
+  mints, no class or kind moved; the command family +166 by bucket; the corpus +805; the 183 to 182
+  edge proven row `:538`'s by single-row allowlists on 1..35 and 1..43; asserts only re-valued, none
+  weakened. `run.py` minimal and correct: `REMINDER_GOLDEN` 352/352 against `seat-reminder.sh:34`; the
+  `.git` fixture masks nothing (no `.git` allows by the stated limit, ledger `:428`); 97 cases; host
+  7/7. Cargo in `target/g4`: fmt 0 · 581 passed across 18 targets · clippy 0 · full similarity 48.
+  `review: crate+harness S9 wave-3 pins · G4 · opus · 12 files · 1 rounds · 2 blocking`
+- Blocking: B1 `evals/plan/feature/preregistration.md:178` still names "the delta beside the
+  baseline", the retired ledger model · B2 the dated note at `:257` cites `evals/plan/README.md:31–32`
+  where the text sits at `:32–33` (a wrong pointer in a recorded amendment).
+- Lead: fix round 1 to S9 — B1, B2, and A4 (feature `observable.yaml:53` names s3's orphan fix) plus
+  a widened sweep for "delta beside". The contract suite reads nothing under `evals/plan`, so D3 stays
+  valid and keeps running. A1–A3 touch `run.py` (a recorded slice, two comments) and would stale D3:
+  booked to BACKLOG. A5 needs no edit. G4 re-reviews once.
+- S9's fix round (`s9-r2.diff`, `5d745695…`, 424 lines; three lines in two files): `:178` reads "the
+  contract touch named on the card"; the `:257` note names `:178` too and cites README `:32–33`;
+  feature `observable.yaml:53` names the store's orphan `SPN-005` fix for s3. `run.py` untouched
+  (`ad5deb33…`). The widened sweep's new retired-model hits outside `plan/` (the `review-plan-artifacts`
+  preregistration `:37`, `technical-analyst` `evals.json:103`, the `principal-architect` p2 fixture's
+  `architecture-delta.md`) booked by the lead.
+- G4 round 2 (`scratchpad/g4/verdict-r2.md`): PASS, 0 blocking — both fixes true (README lines and the
+  s3 fixture read by G4); the working diff equals `s9-r2.diff`; nothing new under `crates/`, the log,
+  the views or `evals/contract/`; the feature, architecture and implement kit checks as before.
+  `review: crate+harness S9 wave-3 pins · G4 · opus · 12 files · 2 rounds · 0 blocking`
+
+## 2026-09-29 · contract suite 97/97 · landing ritual done · wave 3 closed, the bump to the user
+
+- S9's D3 (`scratchpad/s9/contract-full.txt`), run on the quiesced tree with `plugin.json` at 0.116.0
+  and a 0.3.0 release build of this tree: `contract suite: 97/97 cases passed, 97 ran, 327
+  measurement(s) recorded and not asserted`, exit 0; no case skipped. `run.py` unchanged since the
+  run began (`ad5deb33…`); G4's fix round touched only `evals/plan`, which the suite does not read.
+- Final lead checks on the landing tree: `migrate validate` 0 rejecting · 113 advisory · the views
+  equal the replay · the secret scan clean (the CI pattern over tracked and untracked files, gitleaks
+  over the working diff) · no `.mochiko/runs/` folder left · `target/` ignored.
+- Landing ritual: `CHANGELOG.md` 0.116.0 entry (cites the AM-5 exception row and seam R4, the
+  `mochiko-cli` 0.3.0 reinstall from `main`, R3) · `plugin.json` and `marketplace.json` at 0.116.0 ·
+  `DECISIONS.md` — the five 2026-09-29 rows, the delta and field-review rows "built at v0.116.0" with
+  wave 4 owed, the v3.2.0 row noting PATCH v3.2.1, and the setup-agnostic row's stale "build queued"
+  transcribed to built at v0.115.0 (status-agreement, fix on sight) · the brainstorms index's delta
+  and field-review Landed lines · `ROADMAP.md`'s Next row · `BACKLOG.md`: both build items stay open
+  on wave 4, four residual groups booked (every item within 15 lines) · the budget ledger's rows.
+- Wave 3 closed. The bump commit goes to the user; nothing merges to `main` before the user says so.
+  After the merge the maintainer reinstalls `mochiko-cli` 0.3.0 from `main` (R4). Wave 4 (kinako)
+  follows, seam R3 first.

@@ -1028,18 +1028,18 @@ fn the_last_resort_names_the_directory_it_looked_in_when_there_is_none() {
 // the shipped log (present from P3's genesis onward)
 // ---------------------------------------------------------------------------
 
-/// The repository's own log, or `None` before P3's genesis migration exists.
-fn shipped_log() -> Option<PathBuf> {
-    let dir = Path::new(REPO_ROOT).join(LOG_DIR_NAME);
-    if dir.join("0001-genesis.yaml").is_file() {
-        Some(dir)
-    } else {
-        eprintln!(
-            "SKIPPED: {} does not exist yet — P3 generates it; this test is dark until then",
-            dir.join("0001-genesis.yaml").display()
-        );
-        None
-    }
+/// The repository's own log, shipped in the plugin. Its absence is a failure, never a skip: a skip
+/// is how the two tests below went dark when the log moved into the plugin.
+fn shipped_log() -> PathBuf {
+    let dir = Path::new(REPO_ROOT)
+        .join("plugins/mochiko")
+        .join(LOG_DIR_NAME);
+    assert!(
+        dir.join("0001-genesis.yaml").is_file(),
+        "the shipped log is missing: {} does not exist",
+        dir.join("0001-genesis.yaml").display()
+    );
+    dir
 }
 
 /// Renders every section of every primitive in the repository's own log.
@@ -1052,9 +1052,7 @@ fn shipped_log() -> Option<PathBuf> {
 /// rendered from it.
 #[test]
 fn the_shipped_log_renders_every_section_of_every_primitive() {
-    let Some(log_dir) = shipped_log() else {
-        return;
-    };
+    let log_dir = shipped_log();
     let state = mochiko_cli::replay::load(&log_dir).unwrap_or_else(|findings| {
         let lines: Vec<String> = findings.iter().map(ToString::to_string).collect();
         panic!(
@@ -1119,9 +1117,7 @@ fn the_shipped_log_renders_every_section_of_every_primitive() {
 /// grammar off the log, and prints the triple the `.md` halt clause keys on.
 #[test]
 fn the_shipped_log_is_reachable_through_the_binary() {
-    let Some(log_dir) = shipped_log() else {
-        return;
-    };
+    let log_dir = shipped_log();
     let plugin_root = Path::new(REPO_ROOT).join("plugins/mochiko");
     let expected_plugin = std::fs::read_to_string(plugin_root.join(".claude-plugin/plugin.json"))
         .ok()
@@ -1165,7 +1161,7 @@ fn the_shipped_log_is_reachable_through_the_binary() {
             assert_eq!(
                 r.out.lines().next().unwrap(),
                 format!(
-                    "mochiko-cli rules {} · section {id} · binary {} · grammar 1 · plugin {expected_plugin}",
+                    "mochiko-cli rules {} · section {id} · binary {} · grammar 2 · plugin {expected_plugin}",
                     doc.name,
                     env!("CARGO_PKG_VERSION")
                 ),
@@ -2039,7 +2035,7 @@ fn home_on_a_directory_keeps_the_head_and_tail_lines_byte_for_byte() {
     assert_eq!(
         lines[0],
         format!(
-            "mochiko-cli home {path} · binary {} · grammar 1 · plugin unknown",
+            "mochiko-cli home {path} · binary {} · grammar 2 · plugin unknown",
             env!("CARGO_PKG_VERSION")
         ),
         "{}",

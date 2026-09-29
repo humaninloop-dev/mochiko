@@ -1,0 +1,43 @@
+grammar: 1
+id: 0037-run-log-and-in-run-rulings
+sequence: 37
+intent: >-
+  Execute hook-enforcement-field-review D6 as amended (S1): the implement run log lives in the run
+  folder as the lead's ephemeral working memory; a standing in-run ruling lands at the landing as
+  a .mochiko/decisions/ record; a checkpoint acceptance takes no DECISIONS.md row. Seams R1
+  narrows S1's routing: a ruling that changes a product baseline or the architecture store is
+  recorded on that entry only, and .mochiko/decisions/ keeps only standing rulings that touch
+  none. What leaves: "implement-log.md is bounded per entry, never per file" (impl.artifact-home;
+  the log is withdrawn from the work homes, and 0033 declares it unbounded in runs/); "only
+  feature-scope D-XXX records live here" (decision-technique-routing; under R1 every technology
+  decision a spec or run makes is a D-XXX entry in the spec's file or in place in the product
+  file).
+anchor: 2026-09-23 hook-enforcement-field-review D6
+hash: sha256:c42608906a2603410c32bab4cdf11dd7a3fed1dc25c8e555d7c619ee0d24e0e9
+changes:
+  - op: reword-rule
+    schema: command/implement
+    id: impl.artifact-home
+    text: >-
+      Build-run artifacts have a declared home: render `mochiko-cli home ${features_dir}/FEAT-XXX`
+      — an epic run, the epic home; a lane run, the lane home — before the first write.
+      `tasks.md` binds the `tasks` template; every report lands in that home's `reports/` typed by
+      its envelope. The run log, `implement-log.md`, is the lead's ephemeral working memory in the
+      run folder (impl.run-folder), never in any other home. A ruling made during the run that
+      changes a product baseline or the architecture store is recorded on that entry only, its
+      reason in the entry's own fields (impl.baseline-entry-grammar); a standing ruling that
+      touches no entry lands at the landing as a `.mochiko/decisions/<date>-<slug>.md` record; a
+      checkpoint acceptance takes no `DECISIONS.md` row — its report and the `tasks.md` checkbox
+      carry it. A name the home's set does not carry is raised to the lead, never minted from a
+      sibling run.
+  - op: reword-rule
+    schema: skill/authoring-technical-requirements
+    id: authoring-technical-requirements.decision-technique-routing
+    text: >-
+      The decision technique — comparing alternatives, weighing trade-offs, ADR depth, the
+      ≥2-alternatives discipline — lives in `mochiko:patterns-technical-decisions`; this skill
+      owns the `constraints-and-decisions.md` artifact structure (the D-XXX field schema) and the
+      C↔D traceability. Project-scope decisions and standing run rulings that change no entry
+      (the knowledge-management layer — `DECISIONS.md` + `.mochiko/decisions/`) are not this
+      artifact's; every technology decision a spec or a run makes lives here as a D-XXX entry, in
+      the spec's file or in place in the product file under its lifecycle marker.

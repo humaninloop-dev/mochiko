@@ -1160,3 +1160,166 @@ fn an_entry_store_bound_to_a_template_keeps_its_shape_rules_and_drops_its_sectio
         "the heading rule still runs"
     );
 }
+
+// ---------------------------------------------------------------------------
+// joint wave 3: a store's preamble (census row P1)
+// ---------------------------------------------------------------------------
+
+#[test]
+fn a_stores_text_above_its_first_heading_is_bounded_as_one_entry() {
+    // Row P1 (b), ratified: the text above a store's first heading was counted by nothing, so a
+    // store could grow there without limit. It is bounded at the entry budget, counted from the
+    // file's first line as a span of its own.
+    let state = entries_state("preamble-bound");
+    let decisions = ".mochiko/product/decisions.md";
+    let fits = "# D\nl1\nl2\nl3\n## D-001\na\n";
+    assert!(
+        allowed(&grade(&state, decisions, fits)),
+        "{:?}",
+        grade(&state, decisions, fits).reason
+    );
+    let over = "# D\nl1\nl2\nl3\nl4\n## D-001\na\n";
+    let reason = grade(&state, decisions, over).reason.unwrap_or_default();
+    assert!(
+        reason.contains("above the first `##` heading")
+            && reason.contains("5 lines")
+            && reason.contains("of 4"),
+        "{reason}"
+    );
+    // A stray `###` above a `##` store's first entry is no boundary: it counts into the preamble.
+    let stray = "# D\n### stray\nl1\nl2\nl3\n## D-001\na\n";
+    assert!(denied(&grade(&state, decisions, stray)));
+    // A `###` store's preamble ends at its first `##` or `###`, and its reason says so.
+    let store = "# M\nl1\nl2\nl3\nl4\n## Entities\n### User\na\n";
+    let reason = grade(&state, DATA_MODEL, store).reason.unwrap_or_default();
+    assert!(
+        reason.contains("above the first `##` or `###` heading") && reason.contains("5 lines"),
+        "{reason}"
+    );
+    // A file with no heading at all is all preamble.
+    assert!(denied(&grade(&state, decisions, "l1\nl2\nl3\nl4\nl5\n")));
+}
+
+#[test]
+fn a_standing_preamble_overage_is_amnestied_and_a_growing_one_is_denied() {
+    let state = entries_state("preamble-amnesty");
+    let path = ".mochiko/product/decisions.md";
+    let baseline = "# D\nl1\nl2\nl3\nl4\nl5\n## D-001\na\n";
+    let verdict = regrade(&state, path, baseline, baseline);
+    assert!(allowed(&verdict), "{:?}", verdict.reason);
+    let context = verdict.context.unwrap_or_default();
+    assert!(
+        context.contains("above the first `##` heading"),
+        "the standing preamble is named, not hidden: {context}"
+    );
+    let grown = "# D\nl1\nl2\nl3\nl4\nl5\nl6\n## D-001\na\n";
+    assert!(denied(&regrade(&state, path, grown, baseline)));
+}
+
+// ---------------------------------------------------------------------------
+// joint wave 3: a heading a file repeats (RA3, census row X1)
+// ---------------------------------------------------------------------------
+
+/// A report whose `## Findings` repeats, one section per size, each counted from its heading.
+fn repeated_findings(sizes: &[usize]) -> String {
+    let mut body = String::from("---\nreport: cycle\nfeature: FEAT-001\n---\n\n");
+    for size in sizes {
+        body.push_str("## Findings\n");
+        for n in 1..*size {
+            body.push_str(&format!("f{n}\n"));
+        }
+    }
+    body
+}
+
+#[test]
+fn a_file_repeating_a_heading_keeps_its_amnesty_per_rank() {
+    // kinako's driver-fix-report.md repeats `## Notes of note` at 29, 26, 52 and 62 lines, and its
+    // unchanged rewrite was denied: every section was compared with the first of its name. Sections
+    // sharing a heading are told apart by rank, largest first (Q3, ruled).
+    let state = state("amnesty-rank");
+    let path = ".mochiko/features/FEAT-001/reports/fix.md";
+    let baseline = repeated_findings(&[6, 8]);
+    let unchanged = regrade(&state, path, &baseline, &baseline);
+    assert!(allowed(&unchanged), "{:?}", unchanged.reason);
+    // The larger section grown past its standing size: denied, and the reason names it.
+    let grown = regrade(&state, path, &repeated_findings(&[6, 9]), &baseline);
+    assert!(denied(&grown));
+    let reason = grown.reason.unwrap_or_default();
+    assert!(reason.contains("`## Findings` is 9 lines"), "{reason}");
+    // A section dropped: allowed.
+    assert!(allowed(&regrade(
+        &state,
+        path,
+        &repeated_findings(&[8]),
+        &baseline
+    )));
+    // A third over-budget section under the standing heading is a new fault: denied, by its size.
+    let added = regrade(&state, path, &repeated_findings(&[6, 8, 6]), &baseline);
+    assert!(denied(&added));
+    let reason = added.reason.unwrap_or_default();
+    assert!(reason.contains("`## Findings` is 6 lines"), "{reason}");
+    // The ruled residual: a swap within one heading lifts no rank above its standing fault.
+    assert!(allowed(&regrade(
+        &state,
+        path,
+        &repeated_findings(&[8, 3]),
+        &baseline
+    )));
+}
+
+// ---------------------------------------------------------------------------
+// joint wave 3: a home that declares nothing (census row H2)
+// ---------------------------------------------------------------------------
+
+/// A capability's `contracts/` home after delta D4 withdrew it: declared, with an empty set.
+const EMPTY_HOME_LOG: &str = r#"
+grammar: 1
+id: 0001-empty
+sequence: 1
+intent: A withdrawn home, kept with an empty file set.
+changes:
+  - op: import-document
+    kind: home
+    name: feature-contracts
+    content:
+      home: feature-contracts
+      title: Interface contracts under a capability — withdrawn by delta D4, see product-contracts
+      path: [".mochiko", "features", "<FEAT-ID>", "contracts"]
+      bounds: elsewhere
+      bounds_cite: the contract's own interface
+      deliverables: []
+"#;
+
+fn empty_home_state(tag: &str) -> State {
+    let dir = log_dir(tag);
+    let stamped = migration::with_hash("0001-empty.yaml", EMPTY_HOME_LOG)
+        .expect("the empty-home fixture log is well-formed");
+    std::fs::write(dir.join("0001-empty.yaml"), stamped).expect("fixture is writable");
+    replay::load(&dir).unwrap_or_else(|findings| {
+        let lines: Vec<String> = findings.iter().map(ToString::to_string).collect();
+        panic!("empty-home fixture log replays:\n{}", lines.join("\n"))
+    })
+}
+
+#[test]
+fn a_home_that_declares_nothing_is_never_named_as_the_nearest_home() {
+    // A new file under a withdrawn home was told to write "a declared deliverable of the nearest
+    // home" — that same home, which declares none. The route names the home's title instead.
+    let state = empty_home_state("empty-home");
+    let verdict = grade(
+        &state,
+        ".mochiko/features/FEAT-001/contracts/new-contract.md",
+        "# x\n",
+    );
+    assert!(denied(&verdict));
+    let reason = verdict.reason.unwrap_or_default();
+    assert!(
+        !reason.contains("the nearest home, `.mochiko/features/<FEAT-ID>/contracts/`"),
+        "{reason}"
+    );
+    assert!(
+        reason.contains("declares none") && reason.contains("see product-contracts"),
+        "{reason}"
+    );
+}

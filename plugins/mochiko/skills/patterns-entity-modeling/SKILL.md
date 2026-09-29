@@ -49,16 +49,12 @@ Examples:
 - "task status" → Enum/attribute (limited values)
 ```
 
-### Brownfield Entity Status
+### Brownfield Entities
 
-When modeling in brownfield projects:
-
-| Status | Meaning | Action |
-|--------|---------|--------|
-| `[NEW]` | Entity doesn't exist | Create full definition |
-| `[EXTENDS EXISTING]` | Adding to existing entity | Document new fields only |
-| `[REUSES EXISTING]` | Using existing as-is | Reference only |
-| `[RENAMED]` | Avoiding collision | Document new name + reason |
+A run writes into the product's `data-model.md` in place: a new entity is a new entry, an extended
+one is its existing entry amended, and an entity used as-is takes no write. The entry's lifecycle
+marker carries which it is. A new entity whose name would collide with an existing one takes a new
+name, and its entry records the reason.
 
 ## Attribute Definition
 
@@ -156,10 +152,15 @@ See [VALIDATION-RULES.md](references/VALIDATION-RULES.md) for constraint pattern
 
 ## Where the Artifact Lives
 
-`data-model.md` is a declared file in whichever home the run owns — the spec, the feature, the epic
-or the product baseline. Render `mochiko-cli home <that path>` for the file you are about to write,
-before the first write, and hold the file set and the bound it returns. Do not copy a sibling file
-instead: one already on disk may itself predate the declared shape, and it is not a template.
+`data-model.md` is a product baseline, `.mochiko/product/data-model.md`, edited in place: a run
+writes or amends its entities there, and the change is the diff against the run's pinned base.
+Render `mochiko-cli home <that path>` before the first write, and hold the file set and the bound it
+returns. Do not copy a sibling file instead: one already on disk may itself predate the declared
+shape, and it is not a template.
+
+Every entry you write or amend in the product file carries the run's `**Lifecycle:**` marker —
+grammar, placement and flips are `impl.baseline-entry-grammar`, the implement rule your dispatch
+brief carries as an obligated read; this skill never restates it.
 
 A write to a name the home does not carry is refused at write time, and so is a body past the bound
 the home returns. A new deliverable kind takes a migration in the plugin's log, never a local
@@ -175,7 +176,7 @@ document**; every Confidential or Restricted attribute is one **Sensitivity Deta
 Density is not a gap; a gap is a missing entity, classification, or relationship.
 
 ```markdown
-# Data Model: {feature_id}
+# Data Model
 
 > Entity definitions with relationships, per-attribute sensitivity annotations, and state machines.
 
@@ -198,45 +199,46 @@ Density is not a gap; a gap is a missing entity, classification, or relationship
 
 ## Entity Summary
 
-| Entity | Attributes | Relationships | Status |
-|--------|------------|---------------|--------|
-| User | 8 | 3 | [EXTENDS EXISTING] |
-| Session | 5 | 1 | [NEW] |
+| Entity | Attributes | Relationships |
+|--------|------------|---------------|
+| User | 6 | 1 |
+| Session | 5 | 1 |
 
 ---
 
-## Entity: User [EXTENDS EXISTING]
+## Entities
 
-Existing entity extended with authentication fields. **Traceability:** FR-001, FR-002, US#1
+### Entity: User
 
-### Attributes
+**Lifecycle:** proposed (<key>)
+
+A registered account holder. **Traceability:** FR-001, FR-002, US#1
+
+#### Attributes
 
 | Attribute | Type | Required | Default | Sensitivity | Description |
 |-----------|------|----------|---------|-------------|-------------|
+| id | UUID | Yes | auto | Internal | Primary key |
+| email | Email | Yes | - | Confidential | Login email |
 | passwordHash | Text | Yes | - | Restricted | Hashed password |
 | lastLoginAt | Timestamp | No | null | Internal | Last login time |
+| createdAt | Timestamp | Yes | auto | Internal | Creation time |
+| updatedAt | Timestamp | Yes | auto | Internal | Last modification |
 
-### Existing Attributes (Not Modified)
-
-| Attribute | Type | Sensitivity | Description |
-|-----------|------|-------------|-------------|
-| id | UUID | Internal | Existing primary key |
-| email | Email | Confidential | Existing email field |
-
-### Sensitivity Details  *(one row per Confidential+ attribute — specifics + deviations from the level default)*
+#### Sensitivity Details  *(one row per Confidential+ attribute — specifics + deviations from the level default)*
 
 | Attribute | Level | Retention | Access | Deviations | Compliance |
 |-----------|-------|-----------|--------|------------|------------|
 | passwordHash | Restricted | Until account deletion; purge on delete | System-only; no user/admin read | — | NIST 800-63 (DS-001) |
 | email | Confidential | Delete ≤ 30d after account closure | Users read own; admins read all | Log masking: j***@example.com | GDPR Art. 6, Art. 17 |
 
----
+### Entity: Session
 
-## Entity: Session [NEW]
+**Lifecycle:** proposed (<key>)
 
 User authentication session. **Traceability:** FR-003, US#2
 
-### Attributes
+#### Attributes
 
 | Attribute | Type | Required | Default | Sensitivity | Description |
 |-----------|------|----------|---------|-------------|-------------|
@@ -246,13 +248,13 @@ User authentication session. **Traceability:** FR-003, US#2
 | expiresAt | Timestamp | Yes | - | Internal | Expiration time |
 | createdAt | Timestamp | Yes | auto | Internal | Creation time |
 
-### Relationships
+#### Relationships
 
 | Relationship | Cardinality | Target | Delete Behavior | Description |
 |--------------|-------------|--------|-----------------|-------------|
 | user | N:1 | User | Cascade | Session belongs to user |
 
-### Sensitivity Details
+#### Sensitivity Details
 
 | Attribute | Level | Retention | Access | Deviations | Compliance |
 |-----------|-------|-----------|--------|------------|------------|
@@ -278,7 +280,7 @@ User authentication session. **Traceability:** FR-003, US#2
 Run the bundled structural linter as a **producer self-check** before handing the data model off. This is a heuristic, kernel-free Tier-2 check that confirms the *shape* is present (entities have ids, audit fields, attribute tables, relationships, state transitions, and sensitivity annotations). It is **not** the independent grade — the substantive review (right entities, sound cardinality, correct state machines, accurate sensitivity classification) is owned by an independent reviewer, never this skill.
 
 ```bash
-python scripts/validate-model.py .mochiko/specs/<feature>/data-model.md
+python scripts/validate-model.py .mochiko/product/data-model.md
 ```
 
 The script emits `checks`/`summary` JSON (exit 0 = all passed, 1 = one or more failed) covering: entity format, required attributes, relationships, state machines, validation rules, audit fields, id fields, and data-sensitivity annotation presence.
@@ -295,7 +297,7 @@ Before finalizing entity model, verify:
 - [ ] Handling defaults stated once per document; every Confidential or Restricted attribute has a Sensitivity Details row (specifics + deviations)
 - [ ] Data Sensitivity Summary table reflects all Confidential+ attributes
 - [ ] State machines documented for stateful entities
-- [ ] Brownfield status indicated for each entity
+- [ ] Each entity written or amended carries the run's lifecycle marker
 - [ ] Traceability to requirements documented
 
 ## Common Mistakes

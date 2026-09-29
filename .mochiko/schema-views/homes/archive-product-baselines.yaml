@@ -8,3 +8,4 @@ deliverables:
   - file: ARCHITECTURE-prose.md
   - file: <FEAT-ID>-architecture.md
   - file: nfrs.md
+  - file: constraints-and-decisions.md

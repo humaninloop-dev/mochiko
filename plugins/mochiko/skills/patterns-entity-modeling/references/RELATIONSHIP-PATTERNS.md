@@ -60,11 +60,13 @@ Requires a join entity to represent the relationship.
 ### Join Entity Definition
 
 ```markdown
-## Entity: ProjectMember [NEW]
+### Entity: ProjectMember
+
+**Lifecycle:** proposed (<key>)
 
 > Join entity for User-Project relationship.
 
-### Attributes
+#### Attributes
 
 | Attribute | Type | Required | Default | Description |
 |-----------|------|----------|---------|-------------|
@@ -74,7 +76,7 @@ Requires a join entity to represent the relationship.
 | role | Enum[owner,admin,member,viewer] | Yes | member | Member role |
 | joinedAt | Timestamp | Yes | auto | When user joined |
 
-### Constraints
+#### Constraints
 
 - Unique: (userId, projectId) - user can join project once
 ```

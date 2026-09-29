@@ -39,15 +39,13 @@ def extract_entities(content: str) -> list[dict]:
     Extract entities from data-model.md content.
 
     Looks for patterns like:
-    - ## Entity: EntityName
-    - ## Entity: EntityName [NEW]
-    - ## Entity: EntityName [EXTENDS EXISTING]
+    - ### Entity: EntityName
     - ### EntityName (simpler format)
     """
     entities = []
 
-    # Pattern for ## Entity: Name [STATUS] format
-    entity_pattern = r"^##\s+Entity:\s+(\w+)(?:\s+\[([^\]]+)\])?"
+    # Pattern for ### Entity: Name format (one product data-model.md entry)
+    entity_pattern = r"^###\s+Entity:\s+(\w+)(?:\s+\[([^\]]+)\])?"
 
     # Also check for simpler ### EntityName patterns within entity sections
     simple_entity_pattern = r"^###\s+(\w+)\s*$"
@@ -101,7 +99,7 @@ def extract_entities(content: str) -> list[dict]:
             "line_number": current_line
         })
 
-    # If no entities found with ## Entity: format, try summary table
+    # If no entities found with ### Entity: format, try summary table
     if not entities:
         entities = extract_entities_from_summary(content)
 
@@ -141,7 +139,7 @@ def check_entity_format(entities: list[dict], content: str) -> dict:
     issues = []
 
     if not entities:
-        issues.append("No entities found in document. Expected '## Entity: Name' format.")
+        issues.append("No entities found in document. Expected '### Entity: Name' format.")
 
     for entity in entities:
         if not entity["name"]:

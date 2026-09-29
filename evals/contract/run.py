@@ -4145,9 +4145,13 @@ REMINDER_SCRIPT = "seat-reminder.sh"
 # make the row tautological: a reword of the script would rewrite the golden and the case would
 # pass, which is the opposite of a freeze. Held in the suite, a reword fails the row until someone
 # changes this line too — and changing it is a visible edit to a release gate, which is the point.
+# Re-pinned at 0.116.0 (hook field review D8's dry-run sentence and joint-build seam R5's run-folder
+# sentence); the first sentence is unchanged, which is what `reminder-spawn`'s marker reads.
 REMINDER_GOLDEN = (
-    "mochiko gate: artifacts under declared homes take their shape from "
-    "`mochiko-cli home <path>`; existing files are not templates."
+    "mochiko gate: artifacts under declared homes take their shape from `mochiko-cli home "
+    "<path>`; existing files are not templates. Dry-run a draft with `mochiko-cli check --path "
+    "<path> --content -` before you write it. Raw output (console captures, logs, dumps) goes to "
+    "the run folder `.mochiko/runs/<run-id>/` of the main tree, never into any other home."
 )
 
 # `check`'s minted conformance code (record D3 / wave-1 plan §4). Every other exit is
@@ -4497,8 +4501,14 @@ def case_gate_input(runner, sandbox) -> tuple[list, pathlib.Path]:
 
     Rows resolve against the plugin's **real** log through `CLAUDE_PLUGIN_ROOT`, as ruled — the
     crate's fixture log is the crate's unit surface, and this suite's subject is what ships. The
-    cost of that is a row keyed to a budget the wave-3 table may re-key, so no assertion here reads
-    a number: each deny row names the measure that must appear in the reason, never its magnitude.
+    cost of that is a row keyed to a budget the wave-3 table could re-key — `0034` did, to a
+    per-entry bound — so no assertion here reads a number: each deny row names the measure that
+    must appear in the reason, never its magnitude.
+
+    Each row's workspace carries its own empty `.git` directory. The gate places a path by the
+    nearest ancestor holding `.git` (field review D7), so without one a workspace under
+    `evals/.work/` resolves to this repository's root, where its `.mochiko/` is not a home tree and
+    every deny row would read as an allow.
     """
     staged = stage("gate-input", PLUGIN)
     checks: list[Check] = []
@@ -4538,6 +4548,9 @@ def case_gate_input(runner, sandbox) -> tuple[list, pathlib.Path]:
     for row in gate_rows(captures):
         workspace = staged.root / f"ws-{row.id.lower()}"
         workspace.mkdir(parents=True, exist_ok=True)
+        # The workspace is its own tree root: the gate reads only whether `.git` exists, never
+        # what it holds, so an empty directory is the whole fixture.
+        (workspace / ".git").mkdir(exist_ok=True)
         if row.setup:
             row.setup(str(workspace))
         if row.root not in roots:
@@ -4824,7 +4837,8 @@ def case_gate_live(runner, sandbox) -> tuple[list, pathlib.Path]:
     workspace = f"/tmp/contract-gate-live-{uuid.uuid4().hex[:8]}"
     good = _abs(workspace, SPINE_PATH)
     bad = _abs(workspace, f"{SESSION_HOME}/notes.md")
-    seed = f"mkdir -p {shlex.quote(str(pathlib.Path(good).parent))} {shlex.quote(str(pathlib.Path(bad).parent))}"
+    # `.git` makes the workspace its own tree root; the sandbox's /tmp has none above it.
+    seed = f"mkdir -p {shlex.quote(workspace + '/.git')} {shlex.quote(str(pathlib.Path(good).parent))} {shlex.quote(str(pathlib.Path(bad).parent))}"
     prompt = (
         "Do these two steps in order, yourself, and do not work around a refusal.\n"
         f"1. Use the Write tool to create {good} with exactly this content:\n"

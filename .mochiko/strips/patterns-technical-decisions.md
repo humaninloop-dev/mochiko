@@ -5,6 +5,43 @@ batch-3 ratified 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-st
 First strip assessment of this skill (never-stripped band 30–70): body 161 → 89 lines = **45%**,
 in-band.
 
+## [v0.116.0] Where decisions are recorded — "Feature-scope decision records" and the project-scope clause re-routed to the landed decision-technique routing
+
+- **Disposition:** superseded →
+  - "Every technology decision a spec or a run makes is written as a **`D-XXX`** entry in the
+    **`constraints-and-decisions.md`** artifact — in the spec's file, or in place in the product
+    file under its lifecycle marker — …";
+  - "**Project-scope** decisions, and standing run rulings that change no entry (a project carrying
+    the knowledge-management module), land in the decisions layer instead …";
+  - "Its file structure" becomes "The artifact's file structure", because the antecedent moved.
+  - The same edit's earlier pure addition, the `impl.baseline-entry-grammar` pointer line (S8's
+    Q8), takes no entry.
+- **Tier failed:** n/a — supersession by ruling:
+  - `DECISIONS.md` 2026-09-24 delta-files row points to
+    `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md`, whose D1 edits the
+    product file in place;
+  - joint-build seam R1 (`.mochiko/decisions/2026-09-29-joint-hook-delta-build-seams.md`): a ruling
+    that changes a baseline lives on its entry, and `.mochiko/decisions/` keeps only rulings that
+    touch none;
+  - the delivered `authoring-technical-requirements.decision-technique-routing` as migration 0037
+    words it (log state `sha256:73483c82…`), whose routing this paragraph now matches clause for
+    clause.
+- **Content (superseded text, verbatim):** `Feature-scope decision records are written into the
+  **`constraints-and-decisions.md`** artifact — but that artifact's shape is **not** this skill's
+  to define. **Project-scope** decisions (a project carrying the knowledge-management module) land
+  in the decisions layer instead — … — same technique, different destination. Its file structure,`
+- **Kept deliberately:** everything else in the v0.27.0-KEPT "Where decisions are recorded"
+  section:
+  - the artifact's shape is not this skill's to define;
+  - the decisions-layer destination and its record schema pointer;
+  - "same technique, different destination";
+  - ownership by `mochiko:authoring-technical-requirements`;
+  - "Do not restate the artifact template here";
+  - the boundary table, verbatim.
+- **Budget:** body 5,118 → 5,554 against 5,783, of which +259 is the pointer and +177 this reword.
+  The description is unchanged at 469. Both are inside budget.
+- **Consumers assessed:** the ATR rule it mirrors is S7's (the log) and is not edited here.
+
 ## [v0.64.0] Guardrails cut — When-to-Use removed (supersedes v0.27.0 KEPT); slim description
 
 - **Disposition:** superseded → Wave 2 editorial guardrails cut (D4 cut line — When-to-Use bullets restate the description).

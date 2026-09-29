@@ -76,23 +76,23 @@ coverage is now graded upstream, at the sufficiency check's clause 1.
 
 ## Architecture Store Delta
 
-Grade this when the design-phase package carries a **store delta** — the drafted topology + `AX-XXX`
-concern-row changes the user signs off on, from a rendered diagram, before detailed design builds
-on them (authored by `mochiko:patterns-system-design` against the standing store at
-`.mochiko/product/architecture/`). The store itself is **not written until sign-off**: what you
-grade is the draft in the package, not the store.
+Grade this when the run proposes a **store delta** — the topology + `AX-XXX` concern-row changes
+the user signs off on, from a rendered diagram, before detailed design builds on them (authored by
+`mochiko:patterns-system-design` against the standing store at `.mochiko/product/architecture/`).
+The run writes them in place as `proposed` elements: what you grade is the pinned-base diff of
+`spine.md` / `concerns.md` plus the run's `architecture.md` drawing and its checkpoint table.
 
-### Checklist — Store delta (drafted)
+### Checklist — Store delta (proposed)
 
 | Check | Question | Severity |
 |-------|----------|----------|
-| Delta-diagram coverage | Does every `SPN-XXX` element the delta names (container / boundary / flow) appear in the rendered diagram, and every diagram box/arrow in the delta's element list? | Critical |
+| Delta-diagram coverage | Does every `SPN-XXX` element the delta names (container / boundary / flow) appear in the rendered diagram, and every new, modified or removed box/arrow in the diff and the checkpoint table? (Unchanged collaborators are drawn plain and take no row.) | Critical |
 | Qualifying-flow coverage | Does every **qualifying flow** — any flow crossing ≥2 components with non-trivial ordering or failure semantics (user journey *or* system flow) — have a sequence diagram? | Critical |
-| Lifecycle status correctness | Is every delta element — `SPN-XXX` and `AX-XXX` alike — marked `in-flight` / `modifying` / `removing` and keyed to this feature's `FEAT-XXX`? | Critical |
+| Lifecycle status correctness | Is every delta element — `SPN-XXX` and `AX-XXX` alike — marked `proposed (<key>)`, the key naming this run's owner? | Critical |
 | AX-row change legality | Does every changed concern row carry a legal stance — `decided` / `not-now` (+ revisit trigger) / `n-a` (+ reason axis; a handled-elsewhere row carries its pointer) / `open`? | Critical |
 | Floor-precedence legality | On a floor-asserted category, is `n-a — genuinely never` absent — the legal moves being a stance within the obligation, `n-a — handled elsewhere` with its pointer, or narrowing — with a true drop routed to the governance-ledger waiver? | Critical |
 | NFR targets on touched rows | Does every `NFR-XXX` the delta adds or changes carry a numeric target, a measurement method, and a **source** on its concern row? The chain now resolves `FR-XXX / SC-XXX → NFR-XXX` — the TR link died with the plan stage, so an NFR with no traceable business source is the same finding it always was. | Critical |
-| Ruling carried | Does every structural change carry its ruling and rationale in the delta itself? (The store ruling **is** the decision record — no `D-XXX` back-link is owed.) | Important |
+| Ruling carried | Does every structural change carry its ruling and rationale on the store element it writes? (The store ruling **is** the decision record — no `D-XXX` back-link is owed.) | Important |
 | Consult record | Does the package record the store consult — root index + full AX summary table always, the spine deep view on the structural-change trigger, and the touched concern files named? | Important |
 | Trip disposition | Is every trip the consult raised — a touched `open` / `not-now` row, a fired upgrade trigger — recorded with its disposition, batched at the run's front? | Important |
 | Baseline present | Is the standing store the delta is drawn from present — read, or reconstructed-and-confirmed with a confidence note, or bootstrap-empty where the store carries no ruled content (scaffold-only or absent)? | Important |
@@ -124,9 +124,9 @@ A design phase that judges the feature non-structural authors **no delta**. Grad
 
 ### Key Questions — Store delta
 
-- Is there an `SPN-XXX` element with no box in the diagram, or a box with no delta element?
+- Is there an `SPN-XXX` element with no box in the diagram, or a styled (new, modified or removed) box with no changed element?
 - Is there a multi-component flow with real ordering or failure semantics and no sequence diagram?
-- Is any in-flight-class element keyed to a different feature, or to no feature at all?
+- Is any `proposed` element keyed to an owner other than this run's, or to no owner at all?
 - Does any changed row take a stance the floor forbids on its category?
 - Does any added or changed `NFR-XXX` target lack a number, a measurement method, or a source?
 - Was the standing store actually read or confirmed, or silently assumed?
@@ -177,12 +177,12 @@ Grade these when reviewing the design output set (e.g. `data-model.md`, `contrac
 
 ### Checklist — Integration Guide (`quickstart.md`)
 
-`quickstart.md` is **conditional** (authored only when the feature has a real
+A quickstart entry is **conditional** (written only when the run adds or changes a real
 external-integration surface — see `patterns-api-contracts`). First check the condition:
 
 | Check | Question | Severity |
 |-------|----------|----------|
-| Conditionality honored | If an integration surface exists (external API consumers, `x-integration` systems, non-trivial auth), is `quickstart.md` present? If none exists, is its null path recorded in the sufficiency report (no stub file)? | Important |
+| Conditionality honored | If the run adds or changes an integration surface (external API consumers, `x-integration` systems, non-trivial auth), does the pinned-base diff carry a marked quickstart entry for it? If none, is its null path recorded in the sufficiency report (no stub entry)? | Important |
 | Flow coverage | Are common user flows documented with runnable examples (citing the contract, not re-documenting it)? | Important |
 | Auth documentation | Is the authentication sequence clear? | Important |
 | Error documentation | Are error handling patterns explained (conventions cited, top cases tabulated)? | Important |
@@ -290,13 +290,14 @@ everything it cannot settle.
 
 ```bash
 # Single file
-python scripts/check-artifacts.py .mochiko/specs/<feature>/data-model.md
+python scripts/check-artifacts.py .mochiko/product/data-model.md
 
-# Multiple files (enables the entity-consistency cross-check)
-python scripts/check-artifacts.py .mochiko/specs/<feature>/constraints-and-decisions.md .mochiko/specs/<feature>/data-model.md
+# Multiple files (enables the entity-consistency cross-check; a spec's
+# .mochiko/specs/<feature>/constraints-and-decisions.md is equally legal input)
+python scripts/check-artifacts.py .mochiko/product/constraints-and-decisions.md .mochiko/product/data-model.md
 
-# All design-phase artifacts
-python scripts/check-artifacts.py .mochiko/specs/<feature>/*.md
+# All the product baselines a design phase edits in place
+python scripts/check-artifacts.py .mochiko/product/*.md
 ```
 
 ### Automated check coverage
@@ -341,7 +342,7 @@ exactly. **This skill keeps the left column; `mochiko:review-feasibility` owns t
 | Consistency (does the design honor the decisions?) | requirements-decisions alignment; decisions-model consistency; model-contract / schema-model consistency; sensitivity-contract alignment; integration-contract alignment; constraint-decision cross-refs; constitution compliance; decision-honored-by-design | — |
 | **Contradiction** (do artifacts conflict?) | — | **TR ↔ constraint contradictions; NFR ↔ constraint conflicts; NFR ↔ NFR impossibilities** |
 | **Buildability** (can it be built / met?) | — | **NFR-design feasibility (can the design meet the NFR targets?); constraint-design buildability (can the design satisfy the constraints?); integration failure modes realistic vs aspirational** |
-| **Architecture** (the store delta) | delta↔diagram coverage; qualifying-flow sequence coverage; ruling carried per structural change; lifecycle statuses keyed to `FEAT-XXX`; AX-row stance + floor-precedence legality; NFR target/method present on touched rows; consult record + trip dispositions; the no-delta claim; **data-model / contracts conform to the signed store delta** | **topology feasibility (can the proposed topology meet the NFRs / be built under the constraints?); governance conformance (layer rules honored, dependencies within the allowlist, GI-linked principles satisfiable by the topology, floor-asserted obligations actually met by the shape a row claims)** — its **architecture pass** |
+| **Architecture** (the store delta) | delta↔diagram coverage; qualifying-flow sequence coverage; ruling carried per structural change; lifecycle statuses `proposed (<key>)` keyed to the run's owner; AX-row stance + floor-precedence legality; NFR target/method present on touched rows; consult record + trip dispositions; the no-delta claim; **data-model / contracts conform to the signed store delta** | **topology feasibility (can the proposed topology meet the NFRs / be built under the constraints?); governance conformance (layer rules honored, dependencies within the allowlist, GI-linked principles satisfiable by the topology, floor-asserted obligations actually met by the shape a row claims)** — its **architecture pass** |
 
 **The one-line test:** *"is it here, traceable, measurable, and does it honor the decisions?"* →
 this skill. *"can these pieces be built together without contradiction or overreach?"* →

@@ -49,6 +49,6 @@ halt and surface it.
 
 The **manifest** is the product view — who the members are, where the batch stands, and why
 these members belong together. The **spine files** beside it are the tech view the implement
-run consumes: the joint design-phase plan, the joint architecture + seam design, the
-ordering, and the shared-baseline deltas. Per-feature detail stays in the member dirs the
-downstream machinery already reads; the spine carries only what is genuinely joint.
+run consumes: the joint design-phase plan, the joint architecture + seam design, and the
+ordering. Per-feature detail stays in the member dirs the downstream machinery already reads;
+the spine carries only what is genuinely joint.

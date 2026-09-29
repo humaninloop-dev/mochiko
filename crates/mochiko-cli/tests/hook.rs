@@ -102,10 +102,15 @@ changes:
 "#;
 
 fn state(tag: &str) -> (State, PathBuf) {
+    state_from(tag, LOG)
+}
+
+/// [`state`] over another fixture log.
+fn state_from(tag: &str, body: &str) -> (State, PathBuf) {
     let dir = scratch(tag);
     let log = dir.join("log");
     std::fs::create_dir_all(&log).expect("log dir");
-    let stamped = migration::with_hash("0001-hook.yaml", LOG).expect("well-formed fixture");
+    let stamped = migration::with_hash("0001-hook.yaml", body).expect("well-formed fixture");
     std::fs::write(log.join("0001-hook.yaml"), stamped).expect("fixture is writable");
     let state = replay::load(&log).unwrap_or_else(|findings| {
         let lines: Vec<String> = findings.iter().map(ToString::to_string).collect();
@@ -913,6 +918,55 @@ fn a_folder_under_runs_not_named_by_the_run_key_is_refused_and_says_why() {
     assert!(reason.contains("`scratch` is not a run key"), "{reason}");
     assert!(reason.contains("`<owner>-run<n>`"), "{reason}");
     assert!(reason.contains("FEAT-001-run5"), "{reason}");
+}
+
+/// A home at `.mochiko/` itself, the shape of `operating-docs-nested`, appended to [`LOG`].
+const ROOT_HOME: &str = r#"
+  - op: import-document
+    kind: home
+    name: operating-docs-nested
+    content:
+      home: operating-docs-nested
+      title: Operating docs a collision ruling nests under .mochiko
+      path: [".mochiko"]
+      bounds: elsewhere
+      bounds_cite: .mochiko/memory/knowledge-management.md
+      deliverables:
+        - file: ROADMAP.md
+"#;
+
+#[test]
+fn a_bad_run_key_keeps_its_reason_under_a_root_home() {
+    // Census row N3's cost: with a home at `.mochiko/` itself, a folder under `runs/` that fails
+    // the run key fell through to that home as an undeclared sub-directory and lost its reason,
+    // and the run folder named as a copy destination lost the carve's directory refusal.
+    let (state, tree) = state_from("runs-key-root", &format!("{LOG}{ROOT_HOME}"));
+    std::fs::write(tree.join(".gitignore"), ".mochiko/runs/\n").expect(".gitignore");
+    let cwd = tree.display().to_string();
+    let write = decide(
+        &state,
+        &write_payload(&cwd, ".mochiko/runs/scratch/console.log", "raw\n"),
+    );
+    assert!(is_deny(&write));
+    assert!(
+        reason(&write).contains("`scratch` is not a run key"),
+        "{}",
+        reason(&write)
+    );
+    let redirect = shell(&state, &cwd, "echo x > .mochiko/runs/scratch/c.log");
+    assert!(is_deny(&redirect));
+    assert!(
+        reason(&redirect).contains("`scratch` is not a run key"),
+        "{}",
+        reason(&redirect)
+    );
+    let copy = shell(&state, &cwd, &format!("cp a.log {RUN}"));
+    assert!(is_deny(&copy));
+    assert!(
+        reason(&copy).contains("names a directory under the run folder"),
+        "{}",
+        reason(&copy)
+    );
 }
 
 #[test]

@@ -15,6 +15,56 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/authoring-architecture-store/SKILL.md`. -->
 
+## [v0.116.0] Element lifecycle diagram — the pre-`proposed` chain superseded by the three transitions
+
+- **Disposition:** superseded →
+  - a three-transition diagram: a run's write before the design checkpoint → `proposed (<key>)`;
+    the sign-off → `in-flight` / `modifying` / `removing (<key>)`; the landing → `built` /
+    `removed`;
+  - the in-flight-class bullet re-worded from a count to the class: "the three statuses the
+    sign-off gives (`in-flight` · `modifying` · `removing`), named collectively". Since 0025,
+    `proposed` is keyed too, so "the three keyed statuses" became false;
+  - one `removed` bullet, "where a landed `removing` element ends", which carries the
+    `removing`-to-`removed` step the diagram's `built | removed` leaves open;
+  - a pointer line to `authoring-architecture-store.lifecycle-statuses` for what each status reads
+    as, the `removed` stub's shape and the key set.
+  - **Fix round (V3a issues 1 and 2):**
+    - The first landing also added a `proposed` bullet ("a run's write before the design
+      checkpoint; the sign-off flips it"). It repeated the diagram's first two notes word for word,
+      so it left in the same wave.
+    - It also kept the in-flight-class bullet verbatim, which was false against `lifecycle-statuses`.
+      It is now re-worded, as above.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-24 delta-files row →
+  `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D2 (the key set) and D7
+  (`proposed` before the checkpoint, flipped at sign-off); `DECISIONS.md` 2026-09-29 joint-build
+  row → `.mochiko/decisions/2026-09-29-joint-hook-delta-build-seams.md` R8 (the sign-off flips by
+  what the diff shows) and `.mochiko/decisions/2026-09-29-landed-removal-stub.md` R9 (the
+  `removed` stub)).
+- **Content (superseded text, verbatim):**
+
+  ```
+  ruled → in-flight (FEAT-XXX) | modifying (FEAT-XXX) | removing (FEAT-XXX) → built
+  - **in-flight-class** — the three keyed statuses, named collectively.
+  ```
+
+- **Kept deliberately:**
+  - the `ruled` and `built` bullets, verbatim;
+  - the in-flight-class bullet's job of naming the class collectively;
+  - the section's job as the transition picture.
+  Nothing the delivered `lifecycle-statuses` rule says is restated in the prose; the section points
+  at it.
+- **Budget:** body 5,391 → 5,797 at the first landing, then 5,767 at the V3a fix round (−86 for
+  the repeated `proposed` bullet, +56 for the class-not-count wording). Net +376 over the base:
+  - +139 the widened diagram;
+  - +123 the pointer line;
+  - +58 the `removed` bullet;
+  - +56 the in-flight-class re-wording.
+  The description is unchanged at 492. The budget figures and any overage are the wave lead's
+  ledger.
+- **Consumers assessed:** the router's `:58` chain is re-keyed in the same wave
+  (`strips/mochiko.md`); `review-plan-artifacts`'s checklist and `review-feasibility`'s lens take
+  the same key wording in the same wave.
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

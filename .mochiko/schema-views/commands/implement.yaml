@@ -465,8 +465,9 @@ sections:
           built-vs-signed diff. Every one carries the `report-envelope` frontmatter
           (machine-first, typed by `report:`, ultra register, clean = frontmatter-only; bounce an
           envelope-breaking report per templates/report-format.md rule 9), and each producing
-          seat's brief names the home's `reports/` path. Repeat runs append, dated; the run's
-          architecture.md drawing is overwritten per run.
+          seat's brief names the home's `reports/` path and the pre-write dry run, the draft piped
+          to `mochiko-cli check --path <p> --content -` before the Write. Repeat runs append,
+          dated; the run's architecture.md drawing is overwritten per run.
       - id: impl.gates-full-suite
         labels: [evidence]
         class: must
@@ -744,6 +745,41 @@ sections:
           diff <base>..<groom>^` for the change before it, `git diff <groom>` for the change after
           it — and carries no lifecycle marker.
         anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3
+      - id: impl.run-folder
+        labels: [evidence, landing]
+        class: must
+        kind: duty
+        text: >-
+          The run's raw output has one home, the run folder `.mochiko/runs/<run-id>/` in the main
+          tree: `<run-id>` is `<owner>-run<n>`, the owner being the run's lifecycle key
+          (`FEAT-XXX`, `EPIC-XXX`, `lane-<slug>`) and `<n>` the owner's next run number, never one
+          a folder under `runs/` carries — a number may recur once an earlier folder is removed,
+          since no durable record cites a folder path (impl.evidence-citation). At run-open the
+          lead ensures `.gitignore` carries the line `.mochiko/runs/`, adding it if absent — the
+          gate refuses every write under `runs/` until it does — creates the folder, names it at
+          the run-open confirmation, and every seat's brief names it. Captured console, logs,
+          dumps and screenshots go there, never into any other home; no report lands there. After
+          the user's final acceptance the lead removes the folder as a landing step; what stays
+          durable is the typed reports, the `tasks.md` checkboxes, the landing rows and the
+          commits.
+        anchor: 2026-09-23 hook-enforcement-field-review D4
+      - id: impl.evidence-citation
+        labels: [evidence, reporting]
+        class: must
+        text: >-
+          A report cites evidence, never dumps it: it quotes the decisive lines with the command
+          that produced them and the commit they ran at, and never carries a full-log path — the
+          run folder (impl.run-folder) goes at acceptance, so a path into it would dangle.
+          Evidence from uncommitted work cites the run-open pin (impl.base-pins) plus a
+          fingerprint of the working change against it, computed by the reporting seat when the
+          report is written, never at dispatch — `base <sha> + working sha256:<hash>` —
+          hashing the tracked diff against the pin together with every untracked, non-ignored
+          file's path and content, for example `{ git diff --no-ext-diff --no-textconv --no-color
+          --no-renames --binary <pin>; git ls-files -o --exclude-standard; git ls-files -o
+          --exclude-standard | git hash-object --stdin-paths; } | shasum -a 256`, the command
+          stated beside it. No seat stages, stashes or commits to make a citation possible
+          (impl.no-git-mutations). Each producing seat's brief carries this.
+        anchor: 2026-09-23 hook-enforcement-field-review D4
   - id: impl.sec.ways-of-working
     title: Ways of Working
     intent: How the run sequences, verifies, and reports; model routing for its seats.
@@ -810,9 +846,14 @@ sections:
           Build-run artifacts have a declared home: render `mochiko-cli home
           ${features_dir}/FEAT-XXX` — an epic run, the epic home; a lane run, the lane home —
           before the first write. `tasks.md` binds the `tasks` template; every report lands in
-          that home's `reports/` typed by its envelope; `implement-log.md` is bounded per entry,
-          never per file. A name the home's set does not carry is raised to the lead, never minted
-          from a sibling run.
+          that home's `reports/` typed by its envelope. The run log, `implement-log.md`, is the
+          lead's ephemeral working memory in the run folder (impl.run-folder), never in any other
+          home. A ruling made during the run that changes a product baseline or the architecture
+          store is recorded on that entry only, its reason in the entry's own fields
+          (impl.baseline-entry-grammar); a standing ruling that touches no entry lands at the
+          landing as a `.mochiko/decisions/<date>-<slug>.md` record; a checkpoint acceptance takes
+          no `DECISIONS.md` row — its report and the `tasks.md` checkbox carry it. A name the
+          home's set does not carry is raised to the lead, never minted from a sibling run.
         anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: impl.sec.boundaries
     title: Boundaries — the non-waivable floor
@@ -1053,7 +1094,18 @@ sections:
           A hunk in the run's pinned-base diff of ${product_dir}/ outside an entry marked for the
           run's key — a pre-sign removal is a marked entry with its body cut, so a bare deletion
           hunk is unmarked. Excepted: hunks already in the tree at run-open, recorded as
-          pre-existing on the run-open pin, and hunks inside an entry marked for another open key.
+          pre-existing on the run-open pin; hunks inside an entry marked for another open key; and
+          a remaining hunk that is the run's own sweep, only when all four hold: (1) its file is
+          data-model.md, constraints-and-decisions.md, quickstart.md, or the store's spine.md or
+          concerns.md — every other baseline file keeps this test unchanged; (2) each changed
+          line is outside every entry — above the file's first entry heading, or after a heading
+          of fewer `#` than the entry level `mochiko-cli home <file>` prints and before the next
+          entry heading, a deeper heading inside an entry staying inside it and a line in a fenced
+          code block never a heading; (3) each changed line names the id of an entry the same diff
+          marks for the run's key — the identifier its heading carries, an entity's id being its
+          heading's name — or is a count a recount at the diff's head confirms; (4) a line
+          inside an entry is always that entry's amendment and needs the entry's marker — naming
+          a marked id never excuses it.
         enforces: [impl.baselines-in-place-marked, impl.baseline-entry-grammar]
         anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3
       - id: impl.fail.unreviewed-baseline-diff

@@ -7,6 +7,152 @@ primitives; design: `.mochiko/brainstorms/validator-scope-and-verbosity/record.m
 **M1 near-cap description** — its description was 1,514 chars, within ~22 of the 1,536 delivery
 cap; the slim form is the highest-value part of this cut.
 
+<!-- Wave context: the joint hook/delta build, wave 3 (v0.116.0) — the delta register and the
+"drafted in the package, written at sign-off" model are retired. Delta record:
+`.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` (`DECISIONS.md` 2026-09-24
+row). Pre-edit verbatim text: `git show 5558fd7:plugins/mochiko/skills/patterns-system-design/SKILL.md`. -->
+
+## [v0.116.0] DIAGRAM-CONVENTIONS sequence-participant line — "the delta register" re-keyed to the checkpoint table
+
+- **Disposition:** superseded → "components named in the container diagram (and, for a changed
+  element, the checkpoint table)".
+- **Tier failed:** n/a — supersession by ruling (delta record D4 — the register dies; the drawing
+  and the checkpoint table stay).
+- **Content (superseded text, verbatim):** `components named in the container diagram and the
+  delta register — keep the names identical across`
+- **Kept deliberately:** the naming-identity obligation across all three pieces. **Fix round (V3b
+  B1):**
+  - The first landing read "the container diagram and the checkpoint table", which named every
+    participant in the table.
+  - The table lists only changed elements, and an unchanged collaborator is a participant with no
+    row.
+  - The parenthesis scopes the table to changed elements, under the same D4 ruling.
+- **Consumers assessed:** none outside this skill.
+
+## [v0.116.0] Quality Checklist and Common Mistakes — register rows re-keyed; the new/modified/existing marking check superseded
+
+- **Disposition:** superseded →
+  - `:113` "Every new, modified or removed box in the container diagram has its `container` row in
+    the checkpoint table, and every `container` row is a styled box; unchanged collaborators are
+    drawn plain and take no row";
+  - `:114` "Every element the table lists as `kind: container` is a deployable/runnable
+    **container** …";
+  - `:119` "Each changed element carries the ruling that made it, and the table links it (link, not
+    restatement)";
+  - the Mistakes rows "the element carries the ruling; the table links it" and "Sub-container
+    table rows", the latter's Good cell reading "one `container` row per deployable/runnable piece;
+    code-level layers live in the detailed design";
+  - `:118` leaves: `:116`'s styling check (new/modified styled, removed struck) and the table's
+    `change` column carry what it asked.
+  - One line added (a pure addition, recorded here for the audit's read): "The change is in the
+    store as `proposed` elements; the drawing carries no register text and no current-state
+    narrative".
+- **Tier failed:** n/a — supersession by ruling (delta record D4 — `architecture.md` is only the
+  signed drawing plus the checkpoint table, the register dies; D1 and D7 — the change is written
+  in place as `proposed`; seams R1, `.mochiko/decisions/2026-09-29-joint-hook-delta-build-seams.md`
+  — the ruling lives on the entry it changes).
+- **Content (superseded text, verbatim):**
+
+  ```
+  - [ ] Every box in the container diagram appears in the delta register, and vice versa
+  - [ ] Every register row is a deployable/runnable **container** — no application/domain layer, module, port, or trait (C4-level-3 detail) inside a single process
+  - [ ] Every component is marked new / modified / existing
+  - [ ] The delta summary links each structural change to the ruling that made it (link, not restatement)
+  | Restated decisions | the rationale re-typed under the diagram | the delta summary links the ruling |
+  | Sub-container register rows | rows like `Preflight domain (Rust · no I/O)`, `Engine port trait` inside one process | one row per deployable/runnable container; code-level layers live in the detailed design |
+  ```
+
+- **Kept deliberately:** the v0.67.0 container-altitude check, the coverage check both ways,
+  link-never-restate, and the sub-container mistake row's Bad cell and substance. **Fix round (V3b
+  B1, B2):** both were first re-keyed too wide, and are now scoped under the same D4 ruling.
+  - Coverage: the first landing read "Every box … appears in the checkpoint table, and vice versa".
+    A drawing keeps unchanged direct collaborators, which have no row, so that could not hold. The
+    check is now scoped to styled (new, modified or removed) boxes and `container` rows.
+  - Altitude: the first landing read "Every spine element the table lists is a … container", which
+    misfired on legal `boundary`, `flow` and `AX-XXX` rows. It is now keyed to `kind: container`
+    rows.
+  - The register's `existing` status used to carry the unchanged collaborators. It left with `:118`,
+    and the plain-drawn, no-row clause now carries them.
+- **Consumers assessed:** `review-plan-artifacts`'s store-delta checklist re-keyed to the diff and
+  the checkpoint table in the same wave.
+
+## [v0.116.0] §3 "Delta register + ruling linkage" superseded by the checkpoint table of changed elements
+
+- **Disposition:** superseded → `### 3. Checkpoint table of changed elements`: one row per store
+  element the pinned-base diff adds, changes or cuts (`id — kind — name — change (adds · changes ·
+  cuts) — status`), the sign-off surface where no render exists and the signed state where no
+  commit is made; each row links the ruling, which lives on the element the change writes.
+- **Tier failed:** n/a — supersession by ruling (delta record D4 — the register dies, the checkpoint
+  table stays; D3c — the diff against a pinned base is what is reviewed, and the table stands in
+  for a missing commit (its V1); seams R1 — the ruling lives on the entry; the implement rules
+  `impl.design-outputs-home` and `impl.gate-design-checkpoint` name the table).
+- **Content (superseded text, verbatim):**
+
+  ```
+  ### 3. Delta register + ruling linkage
+
+  A **container-level register** of the change — one line per deployable/runnable piece the delta adds,
+  modifies, or removes: `name — responsibility — boundary — status (new / modified / existing)`.
+  **Altitude check — every row is a container, not a C4-level-3 construct:** each row must be a
+  separately deployable or independently runnable piece (a service, worker, store, queue, external
+  system). A code-level layer *inside* one process — an application or domain layer, a module, a port
+  or a trait — is **not** a container and does not earn a row; it belongs in the detailed design, not
+  here. Below the register, a **delta summary** (prose) linking each structural change to **the ruling
+  that made it**: the store element the change writes — the spine element (`SPN-XXX`) it adds, moves,
+  or retires, or the concern row (`AX-XXX`) it answers — and, where an analysis-origin `D-XXX` row
+  governs the fork, that row. **Link, never restate the decision.** Every box in the diagram appears
+  in the register and vice versa.
+  ```
+
+- **Kept deliberately:**
+  - the v0.67.0 altitude check, its container examples and the code-level-layer exclusion;
+  - the ruling linkage to the `SPN-XXX` / `AX-XXX` element and to an analysis-origin `D-XXX` row;
+  - "Link, never restate the decision";
+  - the box-to-row coverage.
+  **Fix round (V3b B1, B2), same D4 ruling:**
+  - The altitude check was first re-keyed to "every spine element the change writes". It is now
+    keyed to "every element the change writes as `kind: container`", and "Boundary and flow
+    elements and `AX-XXX` rows carry their own kinds and are not held to this check". The spine's
+    kinds are `container | boundary | flow`, and the table also carries concern rows.
+  - The coverage check was first re-keyed to "Every box in the diagram appears in the table and
+    vice versa". It now reads "Every new, modified or removed box in the diagram has its
+    `container` row in the table, and every `container` row is a styled box; unchanged
+    collaborators are drawn plain and take no row". The table lists only changed elements, while
+    the neighborhood rule still draws unchanged direct collaborators.
+- **Consumers assessed:** DIAGRAM-CONVENTIONS `:89` re-keyed in the same wave; the router's
+  system-design row re-keyed in the same wave (`strips/mochiko.md`).
+
+## [v0.116.0] Overview — "drafted in the design phase package … lands into the store at sign-off" superseded
+
+- **Disposition:** superseded → "the drawing the user signs (`architecture.md` in the run's home).
+  The change itself is written in place in the store as `proposed (<key>)` elements, through
+  `mochiko:authoring-architecture-store`, and flipped at sign-off."
+- **Tier failed:** n/a — supersession by ruling (delta record D1 — baselines, the store included,
+  edited in place; D4 — `architecture.md` is the signed drawing; D7 — `proposed` before the
+  checkpoint, flipped at sign-off).
+- **Content (superseded text, verbatim):** `— the delta drafted in the design phase package, and that
+  same delta as it lands into the store at sign-off.`
+- **Kept deliberately:** the v0.81.0/v0.91.0 overview's substance — the store is the standing
+  topology, this skill governs the altitude and diagram craft of the delta drawn against it, and
+  the delta is drawn before `data-model.md` and `contracts/`, which conform to the approved shape.
+- **Consumers assessed:** `authoring-architecture-store` owns the write; its lifecycle section is
+  re-keyed in the same wave.
+
+## [v0.116.0] `description:` — "a container-level delta register linked to the ruling behind each change" re-keyed
+
+- **Disposition:** superseded → "a checkpoint table of the changed store elements".
+- **Tier failed:** n/a — supersession by ruling (delta record D4 — the register dies).
+- **Content (superseded text, verbatim):** `a container-level delta register linked to the ruling
+  behind each change`
+- **Kept deliberately:** every trigger phrase, the MUST/SHOULD grading, the four pieces' order, the
+  store-spine read and the distinct-from line.
+- **Budget:** description 649 → 625 against 677; body 9,320 → 9,583 against 11,047 at the first
+  landing (the checkpoint-table row shape and its sign-off role, and the drawing-only checklist
+  line; `:118` leaves), then 9,583 → 9,991 at the V3b fix round (the scoped coverage check and the
+  `kind: container` altitude key, in §3 and the checklist). Both inside; the ledger is the wave
+  lead's.
+- **Consumers assessed:** the router's discovery row for this skill re-keyed in the same wave.
+
 ## [v0.91.0] No-delta claim's home re-keyed: "the plan package" → "the design-phase package" — plan-stage retirement D1
 
 - **Disposition:** superseded → the same one-line no-delta claim, recorded in the design-phase

@@ -183,13 +183,13 @@ impl Home {
     /// The `.gitignore` line the run folder needs: the path's literal prefix, before its first
     /// token, with a trailing `/` — `.mochiko/runs/` for `[.mochiko, runs, <run-id>]`.
     pub fn ignore_line(&self) -> String {
-        let literal: Vec<&str> = self
-            .path
-            .iter()
-            .take_while(|segment| !is_token(segment))
-            .map(String::as_str)
-            .collect();
-        format!("{}/", literal.join("/"))
+        format!("{}/", self.literal_prefix().join("/"))
+    }
+
+    /// The path's leading literal segments, before its first token.
+    fn literal_prefix(&self) -> &[String] {
+        let literal = self.path.iter().take_while(|s| !is_token(s)).count();
+        &self.path[..literal]
     }
 
     /// The declared deliverable names, in declaration order, for a deny reason.
@@ -219,7 +219,7 @@ pub enum Resolution<'a> {
     },
     /// A name the home does not declare.
     UndeclaredFile { home: &'a Home, name: String },
-    /// A sub-directory the home does not declare.
+    /// A sub-directory the home does not declare — one under `reports/` named with that prefix.
     UndeclaredSubdir { home: &'a Home, subdir: String },
     /// A sub-directory the home declares but does not itself govern. Its own home document
     /// governs it, or nothing does yet — and inventing a rule here is what D4f forbids.
@@ -635,9 +635,17 @@ fn resolve_in<'a>(homes: &'a [Home], path: &Path) -> Resolution<'a> {
     };
     for home in homes {
         let depth = home.path.len();
+        // The run folder's parent belongs to the raw-output home alone (census row N3): a path
+        // under its literal prefix that no run folder holds resolves to no home, so the closed
+        // world names the run key it missed, rather than a shallower home — one at `.mochiko/`
+        // itself — claiming the path as an undeclared sub-directory of its own.
+        let claimed = home.raw_output && parts.starts_with(home.literal_prefix());
         // The remainder must hold at least a file name, so a path that is only the home itself is
         // not inside it.
         if parts.len() <= depth {
+            if claimed {
+                return Resolution::Outside;
+            }
             continue;
         }
         let matches = home
@@ -646,6 +654,9 @@ fn resolve_in<'a>(homes: &'a [Home], path: &Path) -> Resolution<'a> {
             .zip(parts.iter())
             .all(|(pattern, segment)| segment_matches(pattern, segment));
         if !matches {
+            if claimed {
+                return Resolution::Outside;
+            }
             continue;
         }
         let rest = &parts[depth..];
@@ -689,9 +700,10 @@ fn resolve_in<'a>(homes: &'a [Home], path: &Path) -> Resolution<'a> {
                     reports,
                     name: rest[1].clone(),
                 },
+                // Named with its prefix, so the reason cannot read as a sibling of `reports/`.
                 Some(_) => Resolution::UndeclaredSubdir {
                     home,
-                    subdir: rest[1].clone(),
+                    subdir: format!("{REPORTS_DIR}/{}", rest[1]),
                 },
                 None => Resolution::UndeclaredSubdir {
                     home,

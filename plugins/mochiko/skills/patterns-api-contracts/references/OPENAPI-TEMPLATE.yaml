@@ -1,15 +1,16 @@
 # OpenAPI Template
 #
-# Complete template for RESTful API specifications. Copy and customize for your API.
-# Replace placeholders: {Feature Name}, {feature_id}, {description}
+# Complete template for RESTful API specifications. Seed a missing `api.yaml` from it, the
+# product's or a spec's; a run edits an existing file in place.
+# Replace placeholders: {Product Name}, {product} (a spec's file: its name and slug), {description}
 
 openapi: 3.0.3
 
 info:
-  title: "{Feature Name} API"
+  title: "{Product Name} API"
   version: "1.0.0"
   description: |
-    API contracts for {feature_id}.
+    API contracts for {product}.
 
     ## Overview
 

@@ -25,8 +25,7 @@ attempt: 1                  # pairs with the cycle-report attempt this run verif
 status: pass | fail | partial | timeout | error
 test_tasks:                 # one row per **TEST:** gate executed (id = the owning cycle's gate)
   - {id: C3-gate, classification: CLI, status: pass, asserts: "4/4", duration: 3.2s}
-  - {id: C3-gate-2, classification: GUI, status: pass, asserts: "2/2", duration: 8.1s,
-     evidence: "/tmp/claude/verify-C3-gate-2-shot.png"}
+  - {id: C3-gate-2, classification: GUI, status: pass, asserts: "2/2", duration: 8.1s}
 quality_gates:
   lint:  {status: pass, command: "pnpm lint"}
   build: {status: pass, command: "pnpm build"}
@@ -44,7 +43,7 @@ recommendation: approve | reject | retry | needs-human
 | `report` / `feature` | yes | Per the envelope; `final-validation` for the whole-implementation run |
 | `cycle` / `attempt` | per-cycle only | The cycle and attempt this verification pairs with |
 | `status` | yes | Aggregate result: `pass` only when every assert passed and every gate is green; `partial` for mixed; `timeout`/`error` per the result classification |
-| `test_tasks` | yes | One row per `**TEST:**` task: `id`, `classification` (CLI / GUI / SUBJECTIVE — drives auto-approve vs human checkpoint), `status`, `asserts` (passed/total), `duration`, `evidence` (path) where captured |
+| `test_tasks` | yes | One row per `**TEST:**` task: `id`, `classification` (CLI / GUI / SUBJECTIVE — drives auto-approve vs human checkpoint), `status`, `asserts` (passed/total), `duration` — no evidence path (`testing-end-user.cleanup-protocol`) |
 | `quality_gates` | yes | One entry per gate run: `status` from the exit code (`0` = pass — deterministic, never a judgment), `command`, and pass/fail/skip counts for test suites |
 | `minimalism` | per-cycle only | Code-minimalism lens findings (`mochiko:review-code-minimalism`): `{task, claimed, observed, evidence}` per finding, evidence one line (grep hit / stdlib call / manifest entry). **Advisory** — findings ride to the lead's checkpoint verdict and never fail a cycle the way a `**TEST:**` gate does; a builder-vs-reviewer rung dispute escalates to the user only at the checkpoint. `[]` when clean |
 | `recommendation` | yes | The verifier's recommendation to the gate — input to the lead's verdict, never the verdict |
@@ -73,8 +72,8 @@ Error: Permission denied for inotify
 ```
 
 Failed quality gates likewise: the gate's failing output excerpt under `## Failures`.
-A passing report carries **no prose** — no evidence tables, no narration; the captured
-evidence stays in logs/scratch, pointed to by `evidence:` fields. One sanctioned exception,
+A passing report carries **no prose** — no evidence tables, no narration, and no pointer to
+the captured evidence (`testing-end-user.cleanup-protocol`). One sanctioned exception,
 spelled out below: the single `## Notes of note` line a non-blocking finding takes.
 
 `## Failures` **is** this surface's failure narrative, and with it the sanctioned set closes
@@ -208,11 +207,11 @@ AskUserQuestion(
 
 ## Truncation
 
-Failure evidence in the report is bounded; full evidence always survives in a log file the
-report points to:
+Failure evidence in the report is bounded, and the report points at no log file — a failure is
+reproduced from the command and commit it cites (`testing-end-user.truncation-bounds`):
 
 - **Output excerpts:** if over 50 lines, include first 25 / last 25 with `[{N} lines
-  truncated]` between, plus the full-log path: `` Full log: /tmp/claude/verify-C{N}-gate-output.log ``
+  truncated]` between, plus the reproducing citation, e.g. `` Reproduce: pnpm test @ 3f2a1c9 ``
 - **Assert tables:** if more than 10 asserts, show the failing rows plus the first passing
   rows to 10 total, with a count note.
 
@@ -223,6 +222,5 @@ report points to:
   lead Reads for the verdict and what a resumed run finds as workspace evidence.
 - **The checkpoint presentation** is generated in memory, shown at the gate, and discarded
   after the human decision.
-- **Captured evidence** (full console output, screenshots, logs) lives outside the report
-  (`/tmp/claude/…` or the caller's scratch), referenced by path from `evidence:` fields and
-  truncation pointers.
+- **Captured evidence** (full console output, screenshots, logs) stays in the run folder,
+  outside the report and never referenced from it (`testing-end-user.cleanup-protocol`).

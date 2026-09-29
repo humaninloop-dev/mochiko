@@ -1142,6 +1142,53 @@ fn an_empty_log_reports_no_grammar() {
     assert_eq!(replay_of(&dir).grammar(), None);
 }
 
+#[test]
+fn the_replay_reports_the_highest_grammar_its_files_carry() {
+    // O2: the last applied file's grammar was reported, so a log ending in grammar-1 files printed
+    // `grammar 1` over its grammar-2 migrations.
+    let dir = log_dir("grammar-max");
+    write(&dir, "0001-genesis.yaml", GENESIS);
+    write(
+        &dir,
+        "0002-reword.yaml",
+        &followup_n(2, "demo.plain", "Second.").replacen("grammar: 1", "grammar: 2", 1),
+    );
+    write(
+        &dir,
+        "0003-reword.yaml",
+        &followup_n(3, "demo.plain", "Third."),
+    );
+    let replay = replay_of(&dir);
+    assert_clean(&replay);
+    assert_eq!(replay.grammar(), Some(2));
+    let full = replay::load_full(&dir).expect("a sound log loads whole");
+    assert_eq!(full.grammar(), Some(2));
+}
+
+#[test]
+fn a_file_outside_the_grammar_range_halts_the_log_wherever_it_sits() {
+    // The version contract is per file at parse, so an out-of-range file in the middle of a log
+    // halts it as surely as a genesis would; the highest grammar is taken over parsed files only.
+    let dir = log_dir("skew-middle");
+    write(&dir, "0001-genesis.yaml", GENESIS);
+    write(
+        &dir,
+        "0002-reword.yaml",
+        &followup_n(2, "demo.plain", "Second.").replacen("grammar: 1", "grammar: 99", 1),
+    );
+    write(
+        &dir,
+        "0003-reword.yaml",
+        &followup_n(3, "demo.plain", "Third."),
+    );
+    assert!(
+        codes(&replay_of(&dir)).contains(&"grammar-version"),
+        "{:?}",
+        codes(&replay_of(&dir))
+    );
+    assert!(replay::load_full(&dir).is_err());
+}
+
 // ---------------------------------------------------------------------------
 // Fix round 1 — A1, A5, A10
 // ---------------------------------------------------------------------------

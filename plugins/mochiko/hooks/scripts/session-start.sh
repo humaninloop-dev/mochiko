@@ -6,8 +6,8 @@
 # halt that matters lives at fire time, in the command's own delivery slot and in
 # dependency-halt.sh. Reporting a missing dependency before the first fire is the whole job.
 #
-# POSIX sh only. Depends on grep, sed, tr, and command -v; deliberately not on jq, which is not
-# present on every machine a consuming project runs on.
+# POSIX sh only. Depends on grep, sed, tr, dirname, and command -v; deliberately not on jq, which
+# is not present on every machine a consuming project runs on.
 
 set -u
 
@@ -61,5 +61,28 @@ for settings in "$HOME/.claude/settings.json" "${cwd:-.}/.claude/settings.json";
 		break
 	fi
 done
+
+# The run folders on disk (field review OQ5; joint-build seam R6): one reminder line, the count and
+# at most five names, so a lead sees a folder a run left behind. The lead removes a run's folder
+# after the user's acceptance; a stateless hook cannot tell a live run from a forgotten one. The
+# root is the nearest ancestor holding `.git`, a worktree's pointer naming the main tree, as the
+# gate reads it. No string is built in a loop, so a large listing stays well inside the 5-second
+# timeout and the version line above is not lost to it.
+root=${cwd:-$PWD}
+while [ ! -e "$root/.git" ] && [ "$root" != / ] && [ "$root" != . ]; do
+	root=$(dirname "$root")
+done
+if [ -f "$root/.git" ]; then
+	main=$(sed -n 's#^gitdir: \(.*\)/\.git/worktrees/.*#\1#p' "$root/.git")
+	[ -n "$main" ] && root=$main
+fi
+[ -e "$root/.git" ] || root=${cwd:-$PWD}
+set -- "$root"/.mochiko/runs/*/
+if [ -d "$1" ]; then
+	shown=$(printf '%s\n' "$@" | sed -n '1,5{s#/$##;s#.*/##;p;}' | tr '\n' ' ')
+	more=$(($# - 5))
+	if [ "$more" -gt 0 ]; then tail=" and $more more"; else tail=""; fi
+	printf '%s\n' "mochiko: $# run folder(s) under .mochiko/runs/ — ${shown% }$tail; the lead removes each after its run's acceptance."
+fi
 
 exit 0

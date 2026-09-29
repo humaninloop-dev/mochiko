@@ -168,13 +168,14 @@ fn the_log_replays_into_a_deliverable_state() {
         panic!("the log is deliverable:\n{}", lines.join("\n"));
     });
     // 80 through `0023`; the 2026-09-29 census table ratification's home migrations import seven
-    // more — six home documents in `0032`, the `runs` home in `0033`.
+    // more — six home documents in `0032`, the `runs` home in `0033`. `0036`–`0043` (the joint
+    // build's wave 3) import none; `0040` replaces a home in place.
     assert_eq!(replay.state.docs.len(), 87);
     assert_eq!(
         replay.sequences(),
         vec![
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
-            25, 26, 27, 28, 29, 32, 33, 34, 35
+            25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43
         ],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
@@ -187,7 +188,10 @@ fn the_log_replays_into_a_deliverable_state() {
          place, 0025's lifecycle marker, 0026's pinned-base review, 0027's drawing not copies, \
          0028's epic one pen, 0029's proposed until sign-off, then — 0030 and 0031 left unused by \
          ruling, a legal gap — 0032's closed-world homes, 0033's run folder, 0034's store entry \
-         budgets, 0035's home sets after the delta"
+         budgets, 0035's home sets after the delta, then the 2026-09-29 joint build's wave 3 — \
+         0036's run folder and evidence citation, 0037's run log and in-run rulings, 0038's \
+         pre-write dry run, 0039's store entry-bound pointers, 0040's brownfield archive names, \
+         0041's sweep-hunk exception, 0042's marker read cited, 0043's routing restatement cut"
     );
 }
 
@@ -728,9 +732,18 @@ fn the_corpus_census_holds_through_the_log() {
     // rewords, one condition set and four templates replaced, and move nothing here. `0030` and
     // `0031` are unused by ruling. `0032`–`0035` (the 2026-09-29 census table ratification) import
     // and replace home documents only, which carry no rules.
-    assert_eq!(command_rules, 333, "live command rules");
-    assert_eq!(skill_rules, 803, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1136, "live rules in total");
+    // The 2026-09-29 joint hook/delta build's wave 3 carries `0036`–`0043`, anchored to
+    // hook-enforcement-field-review D2–D4, D6 and D8 and to delta D2 and D7: three `mint-rule`s
+    // and nothing retired. `0036` mints `impl.run-folder` (a must, kind `duty`) and
+    // `impl.evidence-citation` (a must, no kind) on `implement`, and `0038` mints
+    // `testing-end-user.pre-write-dry-run` (a must, kind `duty`). None is a floor or a fail node,
+    // so command 333 → 335, skill 803 → 804, total 1136 → 1139, and both floor figures and the
+    // fail set hold. Every other op across the eight is a `reword-rule` that keeps its rule's id,
+    // class and kind — `0041`'s `impl.fail.unmarked-baseline-write` stays a floor fail node — or
+    // `0040`'s `archive-product-baselines` home replaced, and moves nothing here.
+    assert_eq!(command_rules, 335, "live command rules");
+    assert_eq!(skill_rules, 804, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1139, "live rules in total");
     assert_eq!(skill_floors, 264, "skill floors");
     assert_eq!(command_floors, 119, "declared command floors");
     assert_eq!(fail_nodes, 36, "command fail nodes");

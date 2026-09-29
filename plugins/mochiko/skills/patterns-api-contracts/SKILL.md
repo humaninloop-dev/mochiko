@@ -137,13 +137,18 @@ Each entry in `failure_modes`:
 
 ## Where the Artifact Lives
 
-`api.yaml` and the per-endpoint contract files are declared files in the `contracts/` home under
-whichever scope the run owns — the spec, the feature, the epic or the product baseline — and each of
-those homes declares its bound as the contract's own interface rather than a line count.
-`quickstart.md` is a declared file one level up, in the spec, the epic or the product home; the
-feature home does not carry it. Render `mochiko-cli home <that path>` for the file you are about to
-write, before the first write, and hold the file set and the bound it returns. Do not copy a sibling
-file instead: one already on disk may itself predate the declared shape.
+`api.yaml` and the per-endpoint contract files are declared files in a `contracts/` home — the
+product's, `.mochiko/product/contracts/`, edited in place, or a spec's — and each of those homes
+declares its bound as the contract's own interface rather than a line count. `quickstart.md` is a
+product baseline one level up, `.mochiko/product/quickstart.md`, edited in place; no other home
+carries it. Render `mochiko-cli home <that path>` for the file you are about to write, before the
+first write, and hold the file set and the bound it returns. Do not copy a sibling file instead: one
+already on disk may itself predate the declared shape.
+
+Every entry you write or amend in a product file carries the run's `**Lifecycle:**` marker —
+`x-lifecycle` on an `api.yaml` operation or schema — and its grammar, placement and flips are
+`impl.baseline-entry-grammar`, the implement rule your dispatch brief carries as an obligated read;
+this skill never restates it.
 
 A write to a name a home does not carry is refused at write time. A new deliverable kind takes a
 migration in the plugin's log, never a local exception.
@@ -162,18 +167,18 @@ coverage surface reviewers verify against, per `templates/artifact-format.md`):
 | /auth/login | POST | FR-001 | US#1 | User login |
 | /users/me | GET | FR-004 | US#4 | Get current user |
 
-## The Quickstart (`quickstart.md`) — conditional, capped
+## The Quickstart (`quickstart.md`) — the product's integration guide
 
-`quickstart.md` is the human-facing integration guide over the finished contract — and it
-is **conditional**: author it **only when the feature has a real integration surface**
-(external consumers of the API, an external system wrapped via `x-integration`, or a
-non-trivial auth sequence a caller must follow). A feature whose endpoints only serve its
-own UI over standard auth does not need one — record the null path as one line in the run's
-**sufficiency report** ("not applicable — no external integration surface"), never a
-stub file.
+`quickstart.md` is the human-facing integration guide over the finished contract, and a run
+writes into it **conditionally**: it writes or amends a quickstart entry **only when its work adds
+or changes a real integration surface** (external consumers of the API, an external system
+wrapped via `x-integration`, or a non-trivial auth sequence a caller must follow). A run whose
+endpoints only serve its own UI over standard auth writes none — record the null path as one line
+in the run's **sufficiency report** ("not applicable — no external integration surface"), never a
+stub entry.
 
-When authored, it is **capped and dense** (deliverable envelope,
-`templates/artifact-format.md`): target ≤ 150 lines —
+Each entry is **dense and bounded** as the product home prints it (deliverable envelope,
+`templates/artifact-format.md`) —
 
 - **Common flows** — one runnable example per primary flow (request + expected response,
   trimmed to the fields that matter); cite endpoint + schema by name, never re-document
@@ -208,7 +213,7 @@ Before finalizing API contracts:
 - [ ] Brownfield patterns matched (if applicable)
 - [ ] OpenAPI spec is valid
 - [ ] Traceability to requirements complete (the endpoint↔FR/US table — the contract's ID index)
-- [ ] Quickstart authored iff a real integration surface exists (≤ 150 lines, cites the contract, never re-documents it); otherwise its null path recorded in the run's sufficiency report
+- [ ] A quickstart entry written iff the run adds or changes a real integration surface (within its per-entry bound, cites the contract, never re-documents it); otherwise its null path recorded in the run's sufficiency report
 
 ## Common Mistakes
 
