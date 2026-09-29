@@ -1,9 +1,10 @@
 [package]
 name = "mochiko-cli"
-# 0.2.0 at the 2026-09-19 author-grader-consolidation wave: `mint-rule` carrying no `section:` now
-# appends a block to a common library, so a log written against this grammar is rejected by an
-# older binary. The grammar version stays 1 — no binary carrying the narrower rule was released.
-version = "0.2.0"
+# 0.3.0 at the 2026-09-29 joint hook/delta build, wave 1: tree-root home resolution, the closed
+# world under `.mochiko/`, the raw-output home, the per-entry budget kind and `check --path`. The
+# new home fields are grammar 2 — an older binary would ignore them and read the run folder as an
+# ordinary home — so the range becomes 1..2. No `mochiko-cli-v*` tag rides this bump (seams R4).
+version = "0.3.0"
 edition = "2021"
 description = "Template-schema guidance renderer for the mochiko plugin (foundation seed CLI)."
 license = "MIT OR Apache-2.0"

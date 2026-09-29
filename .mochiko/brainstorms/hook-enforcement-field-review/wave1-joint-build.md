@@ -122,8 +122,9 @@ from a home stays a deny); the file arguments of `sed -i` and `perl -i`, only wh
 command's own argument run; `dd of=`; the PowerShell cmdlets as today. Every other position is a read: a `grep`,
 `sed -n`, `wc` or `cat` operand, the source of `cp`, a `git show` object spec. The tokenizer splits separators glued
 to a word (`file;`, `file|`, `file&&`), which is how a `-i` or `tee` elsewhere in a line reached a home path (S12).
-The three evasions the prior build disclosed (`cd <home> && … > x.md`, a path in a variable, a relative write from a
-cwd inside a home) stay open and disclosed. The `runs/` carve (non-`.md` targets under `runs/<run-id>/` allowed) is
+Of the three evasions the prior build disclosed, `cd <home> && … > x.md` and a path in a variable stay open and
+disclosed; the third, a relative write from a cwd inside a home, closes at the decision level through §2.1's cwd join
+(lead ruling at the plan grades, build log). The `runs/` carve (non-`.md` targets under `runs/<run-id>/` allowed) is
 a decision, so it is S1's, in `hook.rs`; `shell.rs` returns targets only.
 
 **3.3 The matrix from the real commands.** S2 extracts, by script, every `Bash` call denied by the gate in the kinako

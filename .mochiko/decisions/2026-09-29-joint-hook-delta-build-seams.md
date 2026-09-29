@@ -1,8 +1,8 @@
 # The hook field review and the delta-files retirement build together — the seams between them
 
 **Date:** 2026-09-29
-**Status:** ruled (user) 2026-09-29, R1–R6 each "as recommended" (R5/R6 at the wave-1 plan's
-approval); build started 2026-09-29 on branch `joint-hook-delta`
+**Status:** ruled (user) 2026-09-29, R1–R7 each "as recommended" (R5/R6 at the wave-1 plan's
+approval, R7 during its plan round); build started 2026-09-29 on branch `joint-hook-delta`
 **Driver:** the user asked to implement `hook-enforcement-field-review` (accepted 2026-09-23) and
 `delta-files-vs-direct-baseline-edits` (accepted 2026-09-24) together, after asking whether their
 decisions clash.
@@ -60,6 +60,15 @@ D4 control 2) keys on this form, built as a new `<run-id>` path token in wave 1.
 **R6 — Who deletes the run folder (the field review's OQ5).** The lead removes it as a landing step
 after the user's acceptance. No `mochiko-cli run close` subcommand is built.
 
+**R7 — The sniff's `## Header` signature limb is struck, never built.** The prior ruling's D9
+(`hook-enforced-artifact-schema` record :542–544) gates a write outside every declared home when its
+content opens with report frontmatter *or a template's `## Header` signature*. Only the frontmatter
+half was ever built; S1's clause-walk of the ledger found the gap. The limb is struck by this
+ruling: the sniff stays report frontmatter only. The ledger's GI-019 "Reach of the gate" sentence is
+corrected at the wave-3 text-vs-build check, together with two text drifts S1 found (the ledger's
+"a `.md` write" where the binary sniffs every extension; "What the gate reads" naming the on-disk
+file for `Edit` only, where `Write` also reads it as the amnesty baseline).
+
 **Routed to the census table, no new ruling (seams 2–5 and the smaller two).** The field review's
 wave-2 census table — one artifact the user ratifies — also: declares the archived-ledger shape
 under `archive/` and the wave-4 pass names the move route, since the field review's S12 keeps
@@ -90,6 +99,9 @@ V1 has one) is put to the user at the wave-3 plan approval (smaller two).
   installs) and a 2026-12-31 backstop.
 - R5: one vocabulary for the run folder and the lifecycle markers, readable at a glance.
 - R6: the pre-code ladder stops at "exists already"; `rm -r` inside `runs/` is not a parsed write.
+- R7: product documents commonly carry a `## Header` heading (a page's header section), so the limb
+  would deny honest product docs; no field run showed a template smuggled out of `.mochiko/`, and
+  the report sniff covers the case the runs did show.
 
 ## Alternatives considered
 
@@ -106,3 +118,5 @@ V1 has one) is put to the user at the wave-3 plan approval (smaller two).
   run-open (never collides, but the folder does not say whose run it is).
 - R6: a new `mochiko-cli run close <id>` subcommand (one more command to build and test for what a
   removal already does).
+- R7: build it as ruled (false denies on product docs) · build it narrowly, `## Header` only beside
+  other template-marking headings (less false blocking, more to build and test).

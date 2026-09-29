@@ -13,7 +13,25 @@ use std::fmt;
 ///
 /// A log outside the range halts loudly rather than being read best-effort: partial delivery is
 /// exactly the failure mode the no-fallback posture exists to rule out.
-pub const GRAMMAR_RANGE: (u32, u32) = (1, 1);
+///
+/// Grammar 2 is grammar 1 plus the home fields of the hook field review's wave 1 (the raw-output
+/// home and the per-entry budget kind, [`GRAMMAR_2_HOME_FIELDS`]). A home decodes with unknown keys
+/// ignored, so a binary reading grammar 1 only would treat the run folder as an ordinary home; the
+/// bump is what turns that silent misreading into the dependency halt.
+pub const GRAMMAR_RANGE: (u32, u32) = (1, 2);
+
+/// The home fields grammar 2 adds, each spelled as the finding names it.
+///
+/// `form: entries` is a value of a grammar-1 key rather than a key of its own, which is why it is
+/// listed with its value. A grammar-1 migration carrying any of these is rejected at parse, so the
+/// only log an older binary can read is one it reads correctly.
+pub const GRAMMAR_2_HOME_FIELDS: [&str; 5] = [
+    "raw_output",
+    "form: entries",
+    "entry_heading",
+    "section_max_lines",
+    "entry_exempt_fields",
+];
 
 /// The command a version-contract halt tells the user to run. Named here, printed by the CLI
 /// surface, so the message has one home.
@@ -510,6 +528,37 @@ fn required_u32(map: &Mapping, key: &str, file: &str) -> Result<u32, ParseError>
     }
 }
 
+/// The first grammar-2 home field a document-level change carries, spelled as
+/// [`GRAMMAR_2_HOME_FIELDS`] spells it, or `None`.
+fn grammar_2_home_field(change: &Change) -> Option<&'static str> {
+    let (Change::ImportDocument { doc, content } | Change::ReplaceDocument { doc, content }) =
+        change
+    else {
+        return None;
+    };
+    if doc.kind != DocKind::Home {
+        return None;
+    }
+    let home = content.as_mapping()?;
+    if get(home, "raw_output").is_some() {
+        return Some(GRAMMAR_2_HOME_FIELDS[0]);
+    }
+    let Some(Value::Sequence(deliverables)) = get(home, "deliverables") else {
+        return None;
+    };
+    for deliverable in deliverables.iter().filter_map(Value::as_mapping) {
+        if get(deliverable, "form").and_then(Value::as_str) == Some("entries") {
+            return Some(GRAMMAR_2_HOME_FIELDS[1]);
+        }
+        for field in &GRAMMAR_2_HOME_FIELDS[2..] {
+            if get(deliverable, field).is_some() {
+                return Some(field);
+            }
+        }
+    }
+    None
+}
+
 /// The log's grammar version.
 ///
 /// Read before any range check of its own, so that a version this binary cannot handle always
@@ -883,6 +932,21 @@ fn parse_inner(file: &str, source: &str, require_hash: bool) -> Result<Migration
     let mut changes = Vec::with_capacity(raw_changes.len());
     for (index, raw) in raw_changes.iter().enumerate() {
         changes.push(parse_change(raw, file, index)?);
+    }
+    if grammar < 2 {
+        for (index, change) in changes.iter().enumerate() {
+            if let Some(field) = grammar_2_home_field(change) {
+                return Err(change_err(
+                    file,
+                    index,
+                    format!(
+                        "home field `{field}` is grammar 2, and this migration declares grammar \
+                         {grammar} — an older binary would ignore it; raise the `grammar:` header \
+                         to 2"
+                    ),
+                ));
+            }
+        }
     }
 
     // The hashed body: identity plus content, excluding the prose intent and the hash itself.

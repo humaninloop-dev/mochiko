@@ -13,7 +13,8 @@
 //! - [`render`] — the delivery render
 //! - [`home`] — the artifact-home model, its path tokens, and path resolution
 //! - [`conform`] — the six mechanical conformance checks and the first-touch amnesty
-//! - [`hook`] — the PreToolUse payload, the shell operator scan, and the decision JSON
+//! - [`hook`] — the PreToolUse payload and the decision JSON; shell targets come from [`shell`]
+//! - [`shell`] — the shell write-position parse: which paths a Bash or PowerShell command writes
 //! - [`schema`] — the artifact-template model and its two views
 //! - [`cli`] — argument parsing, resolution order, and the exit-code contract
 //! - [`genesis`] — the generator behind `plugins/mochiko/migrations/0001-genesis.yaml`
@@ -30,6 +31,7 @@ pub mod model;
 pub mod render;
 pub mod replay;
 pub mod schema;
+pub mod shell;
 pub mod similar;
 pub mod validate;
 pub mod views;

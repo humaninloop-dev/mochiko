@@ -1505,6 +1505,132 @@ fn a_deliverable_carrying_both_a_bound_and_a_reason_to_have_none_is_rejected() {
     );
 }
 
+/// The corpus plus the given home documents, each inserted under its own `home:` name.
+fn corpus_with_homes(yamls: &[&str]) -> State {
+    let mut state = corpus();
+    for yaml in yamls {
+        let value: serde_norway::Value = serde_norway::from_str(yaml).expect("the probe parses");
+        let name = value
+            .get("home")
+            .and_then(|v| v.as_str())
+            .expect("a probe home names itself")
+            .to_string();
+        state.docs.insert(
+            DocRef::new(DocKind::Home, name),
+            Document::from_value(DocKind::Home, &value).expect("a home is opaque"),
+        );
+    }
+    state
+}
+
+/// One home with one `form: entries` deliverable carrying the given extra lines.
+fn entries_home(extra: &str) -> String {
+    format!(
+        "home: probe-entries\ntitle: Entry-bounded store\npath: [.mochiko, probe-entries]\n\
+         bounds: whole-file\ndeliverables:\n  - file: store.md\n    form: entries\n{extra}"
+    )
+}
+
+/// The messages of every rejecting finding carrying `code`.
+fn messages(state: &State, code: Code) -> Vec<String> {
+    rejecting(state)
+        .into_iter()
+        .filter(|f| f.code == code)
+        .map(|f| f.to_string())
+        .collect()
+}
+
+#[test]
+fn a_well_formed_entries_deliverable_raises_no_bound_finding() {
+    // The template-less arm asks for `max_lines` or `bound_reason`; an entries deliverable is
+    // bounded per entry instead, the way a log is, so the arm must not fire on it.
+    let yaml = entries_home(
+        "    entry_heading: \"###\"\n    entry_max_lines: 150\n    section_max_lines: 40\n    \
+         entry_exempt_fields: [Lifecycle, Raised, Weighed]\n",
+    );
+    let state = corpus_with_homes(&[&yaml]);
+    assert!(
+        !codes(&state).contains(&Code::HomeBounds),
+        "a complete entries deliverable is legal: {:?}",
+        rejecting(&state)
+    );
+}
+
+#[test]
+fn an_entry_heading_other_than_two_or_three_hashes_is_rejected() {
+    for heading in ["\"####\"", "\"#\"", "entity"] {
+        let yaml = entries_home(&format!(
+            "    entry_heading: {heading}\n    entry_max_lines: 150\n"
+        ));
+        let state = corpus_with_homes(&[&yaml]);
+        assert!(
+            messages(&state, Code::HomeBounds)
+                .iter()
+                .any(|m| m.contains("entry_heading")),
+            "entry_heading {heading} is not `##` or `###`: {:?}",
+            rejecting(&state)
+        );
+    }
+}
+
+#[test]
+fn an_entries_deliverable_missing_its_heading_or_its_budget_is_rejected() {
+    for (missing, extra) in [
+        ("entry_max_lines", "    entry_heading: \"###\"\n"),
+        ("entry_heading", "    entry_max_lines: 150\n"),
+    ] {
+        let state = corpus_with_homes(&[&entries_home(extra)]);
+        assert!(
+            messages(&state, Code::HomeBounds)
+                .iter()
+                .any(|m| m.contains(missing)),
+            "form: entries with no `{missing}` cannot be counted: {:?}",
+            rejecting(&state)
+        );
+    }
+}
+
+#[test]
+fn a_section_bound_on_second_level_entries_is_rejected_because_it_can_never_bind() {
+    // With `##` entries every line after the first entry heading belongs to an entry, so a bound
+    // on "the text of a `##` section outside its entries" has nothing to count (ruled at plan Q7).
+    let yaml = entries_home(
+        "    entry_heading: \"##\"\n    entry_max_lines: 150\n    section_max_lines: 40\n",
+    );
+    let state = corpus_with_homes(&[&yaml]);
+    assert!(
+        messages(&state, Code::HomeBounds)
+            .iter()
+            .any(|m| m.contains("section_max_lines")),
+        "{:?}",
+        rejecting(&state)
+    );
+}
+
+#[test]
+fn only_one_home_may_be_the_raw_output_home() {
+    let raw = |name: &str| {
+        format!(
+            "home: {name}\ntitle: Raw output\npath: [.mochiko, {name}, <run-id>]\n\
+             raw_output: true\nbounds: elsewhere\nbounds_cite: record D4\n"
+        )
+    };
+    let one = corpus_with_homes(&[&raw("runs")]);
+    assert!(
+        !codes(&one).contains(&Code::HomeDuplicate),
+        "one raw-output home is the ruled shape: {:?}",
+        rejecting(&one)
+    );
+    let two = corpus_with_homes(&[&raw("runs"), &raw("scratch")]);
+    assert!(
+        messages(&two, Code::HomeDuplicate)
+            .iter()
+            .any(|m| m.contains("raw_output")),
+        "two raw-output homes would give the deny reason two run folders to name: {:?}",
+        rejecting(&two)
+    );
+}
+
 /// A2: the guard that keeps coverage complete as codes are added.
 ///
 /// The previous version of this test compared two set sizes that were equal by construction, so

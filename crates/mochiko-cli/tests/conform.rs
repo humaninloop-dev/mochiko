@@ -146,16 +146,26 @@ fn state(tag: &str) -> State {
 
 /// Grade a candidate body for one path, with no file on disk (a new file).
 fn grade(state: &State, path: &str, candidate: &str) -> conform::Verdict {
+    grade_routed(state, path, candidate, None)
+}
+
+/// [`grade`], with the run folder a raw-output home would name.
+fn grade_routed(
+    state: &State,
+    path: &str,
+    candidate: &str,
+    run_folder: Option<&str>,
+) -> conform::Verdict {
     let homes = Homes::load(state);
     let resolution = homes.resolve(Path::new(path));
-    conform::check(state, &resolution, candidate, None)
+    conform::check(state, &resolution, candidate, None, run_folder)
 }
 
 /// Grade a candidate body for one path against a baseline already on disk.
 fn regrade(state: &State, path: &str, candidate: &str, baseline: &str) -> conform::Verdict {
     let homes = Homes::load(state);
     let resolution = homes.resolve(Path::new(path));
-    conform::check(state, &resolution, candidate, Some(baseline))
+    conform::check(state, &resolution, candidate, Some(baseline), None)
 }
 
 const SPEC: &str = ".mochiko/features/FEAT-001/spec.md";
@@ -815,5 +825,338 @@ fn every_deny_reason_closes_with_the_advisory_halt_sentence() {
     assert!(
         reason.contains("a second deny on this path halts"),
         "D9's advisory sentence closes every reason: {reason}"
+    );
+}
+
+// ---------------------------------------------------------------------------
+// the closed world's two routes (field review D3)
+// ---------------------------------------------------------------------------
+
+/// The run folder a raw-output home names, as the hook would pass it.
+const RUN_FOLDER: &str = "/repo/.mochiko/runs/<run-id>/";
+
+fn reason_of(verdict: conform::Verdict) -> String {
+    assert!(denied(&verdict), "expected a deny");
+    verdict.reason.unwrap_or_default()
+}
+
+#[test]
+fn an_undeclared_subdir_reason_names_both_routes_and_no_longer_sends_the_seat_upstream() {
+    let state = state("routes-subdir");
+    let reason = reason_of(grade_routed(
+        &state,
+        ".mochiko/features/FEAT-001/evidence/console.log",
+        "raw\n",
+        Some(RUN_FOLDER),
+    ));
+    // The opener the contract suite keys on stays (`evals/contract/run.py:4311`).
+    assert!(reason.contains("not a declared sub-directory"), "{reason}");
+    // Route 1: the resolved home is the nearest one, and it opens a reports directory.
+    assert!(reason.contains(".mochiko/features/<FEAT-ID>/"), "{reason}");
+    assert!(
+        reason.contains(".mochiko/features/<FEAT-ID>/reports/"),
+        "{reason}"
+    );
+    // Route 2: the run folder by absolute path, stated as ephemeral.
+    assert!(reason.contains(RUN_FOLDER), "{reason}");
+    assert!(reason.contains("ephemeral"), "{reason}");
+    // D3's last sentence: the sentence the lead booked (F12) is gone.
+    assert!(!reason.contains("takes a migration"), "{reason}");
+}
+
+#[test]
+fn an_undeclared_file_reason_names_both_routes_and_keeps_its_opener() {
+    let state = state("routes-file");
+    let reason = reason_of(grade_routed(
+        &state,
+        ".mochiko/features/FEAT-001/console.log",
+        "raw\n",
+        Some(RUN_FOLDER),
+    ));
+    // The opener the contract suite keys on (`evals/contract/run.py:4314`, `:4357`, `:4848`).
+    assert!(reason.contains("not a declared deliverable"), "{reason}");
+    for expected in [
+        "spec.md",
+        ".mochiko/features/<FEAT-ID>/reports/",
+        RUN_FOLDER,
+        "ephemeral",
+    ] {
+        assert!(reason.contains(expected), "names {expected:?}: {reason}");
+    }
+}
+
+#[test]
+fn a_log_that_declares_no_raw_output_home_names_no_run_folder() {
+    // Today's log declares none: the route is omitted, never invented.
+    let state = state("routes-no-run-folder");
+    let reason = reason_of(grade(
+        &state,
+        ".mochiko/features/FEAT-001/evidence/console.log",
+        "raw\n",
+    ));
+    assert!(reason.contains(".mochiko/features/<FEAT-ID>/"), "{reason}");
+    assert!(!reason.contains("run folder"), "{reason}");
+    assert!(!reason.contains("ephemeral"), "{reason}");
+}
+
+#[test]
+fn a_path_under_mochiko_in_no_home_is_refused_and_names_both_routes() {
+    let state = state("closed-world");
+    let homes = Homes::load(&state);
+    let reason = reason_of(conform::closed_world(
+        &homes,
+        Path::new(".mochiko/evidence/console.log"),
+        Some(RUN_FOLDER),
+    ));
+    assert!(reason.contains("a write here is refused"), "{reason}");
+    // No declared home shares more than `.mochiko/` with this path, so route 1 says so and points
+    // at the render that lists every home.
+    assert!(
+        reason.contains("No declared home shares this path's prefix"),
+        "{reason}"
+    );
+    assert!(
+        reason.contains("mochiko-cli home .mochiko/evidence/console.log"),
+        "{reason}"
+    );
+    assert!(reason.contains(RUN_FOLDER), "{reason}");
+    assert!(reason.contains("ephemeral"), "{reason}");
+}
+
+#[test]
+fn a_closed_world_refusal_names_the_home_sharing_the_longest_prefix() {
+    // The fixture log carries no `.mochiko/features/` index home, so `notanid/` resolves to no
+    // home at all; the feature home shares two segments with it and is the nearest.
+    let state = state("closed-world-nearest");
+    let homes = Homes::load(&state);
+    let reason = reason_of(conform::closed_world(
+        &homes,
+        Path::new(".mochiko/features/notanid/x.md"),
+        Some(RUN_FOLDER),
+    ));
+    assert!(
+        reason.contains("the nearest home, `.mochiko/features/<FEAT-ID>/`"),
+        "{reason}"
+    );
+    assert!(
+        reason.contains(".mochiko/features/<FEAT-ID>/reports/"),
+        "{reason}"
+    );
+}
+
+// ---------------------------------------------------------------------------
+// the per-entry budget kind (field review D2, OQ1; grammar 2)
+// ---------------------------------------------------------------------------
+
+/// A product-baseline home whose stores are bounded per entry: a `###`-entry store with a bound
+/// on its sections' own text and two exempt marker fields, a `##`-entry store, and a `###`-entry
+/// store bound to a template whose shape rules still run.
+const ENTRIES_LOG: &str = r####"
+grammar: 2
+id: 0001-entries
+sequence: 1
+intent: Entry-bounded stores, for the per-entry budget kind.
+changes:
+  - op: import-document
+    kind: home
+    name: product
+    content:
+      home: product
+      title: Product baselines
+      path: [".mochiko", "product"]
+      bounds: whole-file
+      deliverables:
+        - file: data-model.md
+          form: entries
+          entry_heading: "###"
+          entry_max_lines: 4
+          section_max_lines: 3
+          entry_exempt_fields: [Lifecycle, Raised]
+        - file: decisions.md
+          form: entries
+          entry_heading: "##"
+          entry_max_lines: 4
+        - file: spine.md
+          form: entries
+          entry_heading: "###"
+          entry_max_lines: 4
+          template: store-shape
+  - op: import-document
+    kind: template
+    name: store-shape
+    content:
+      template: store-shape
+      title: A store with a shape
+      form: artifact-format.md
+      register: full
+      overview: A store whose frontmatter and headings are declared.
+      conformance:
+        frontmatter:
+          required: [store]
+        extra_headings: deny
+      sections:
+        - name: Entities
+          heading: Entities
+          required: true
+          max_lines: 2
+          contract: One entry per entity.
+          check: Is every entity an entry?
+      skeleton: |
+        ## Entities
+"####;
+
+fn entries_state(tag: &str) -> State {
+    let dir = log_dir(tag);
+    let stamped = migration::with_hash("0001-entries.yaml", ENTRIES_LOG)
+        .expect("the entries fixture log is well-formed");
+    std::fs::write(dir.join("0001-entries.yaml"), stamped).expect("fixture is writable");
+    replay::load(&dir).unwrap_or_else(|findings| {
+        let lines: Vec<String> = findings.iter().map(ToString::to_string).collect();
+        panic!("entries fixture log replays:\n{}", lines.join("\n"))
+    })
+}
+
+const DATA_MODEL: &str = ".mochiko/product/data-model.md";
+
+#[test]
+fn a_third_level_entry_is_bounded_on_its_own_and_ends_at_the_next_second_level_heading() {
+    let state = entries_state("entries-level-3");
+    let fits = "# Data model\n\n## Entities\nintro\n\n### User\na\nb\nc\n### Order\na\n\
+                ## Relations\nx\n## More\n### Line\nb\nc\nd\n";
+    assert!(
+        allowed(&grade(&state, DATA_MODEL, fits)),
+        "{:?}",
+        grade(&state, DATA_MODEL, fits).reason
+    );
+
+    // `### User` stops at `## Relations`: were Relations' lines counted into it, it would be 6.
+    let boundary = "## Entities\n### User\na\nb\nc\n## Relations\nx\ny\n";
+    assert!(allowed(&grade(&state, DATA_MODEL, boundary)));
+
+    let over = "## Entities\n### User\na\nb\nc\nd\n";
+    let reason = grade(&state, DATA_MODEL, over).reason.unwrap_or_default();
+    assert!(
+        reason.contains("`### User`") && reason.contains("5 lines") && reason.contains("of 4"),
+        "{reason}"
+    );
+}
+
+#[test]
+fn an_entry_store_carries_no_whole_file_bound() {
+    let state = entries_state("entries-no-file-cap");
+    let mut body = String::from("## Entities\n");
+    for n in 0..60 {
+        body.push_str(&format!("### Entity {n}\nfield\n\n"));
+    }
+    assert!(
+        allowed(&grade(&state, DATA_MODEL, &body)),
+        "D2: a fold that adds entries conforms"
+    );
+}
+
+#[test]
+fn a_heading_inside_a_fence_does_not_end_an_entry() {
+    let state = entries_state("entries-fence");
+    // Counted whole, `### User` is 5 lines; read as a boundary, the fenced line would split it
+    // into two entries of 2 and 3, both inside the bound of 4.
+    let body = "## Entities\n### User\n```\n### not a heading\nline\n```\n";
+    let reason = grade(&state, DATA_MODEL, body).reason.unwrap_or_default();
+    assert!(reason.contains("`### User` is 5 lines"), "{reason}");
+}
+
+#[test]
+fn exempt_marker_lines_are_not_counted_and_other_fields_are() {
+    let state = entries_state("entries-exempt");
+    // Both spellings of an exempt field: a bare `**Name:**` line and a list item (the list-item
+    // form is the plan's disclosed interpretation of seam 4).
+    let exempt = "## Entities\n### User\n**Lifecycle:** proposed (FEAT-001-run5)\n\
+                  - **Raised:** C3\na\nb\nc\n";
+    assert!(
+        allowed(&grade(&state, DATA_MODEL, exempt)),
+        "{:?}",
+        grade(&state, DATA_MODEL, exempt).reason
+    );
+    let counted = "## Entities\n### User\n**Weighed:** one line\na\nb\nc\n";
+    assert!(
+        denied(&grade(&state, DATA_MODEL, counted)),
+        "`Weighed` is not in this store's exempt list"
+    );
+}
+
+#[test]
+fn a_sections_own_text_outside_its_entries_takes_the_section_bound() {
+    let state = entries_state("entries-section");
+    let over = "## Entities\nl1\nl2\nl3\n### User\na\n";
+    let reason = grade(&state, DATA_MODEL, over).reason.unwrap_or_default();
+    assert!(
+        reason.contains("`## Entities`")
+            && reason.contains("outside its entries")
+            && reason.contains("4 lines"),
+        "{reason}"
+    );
+    assert!(allowed(&grade(
+        &state,
+        DATA_MODEL,
+        "## Entities\nl1\nl2\n### User\na\n"
+    )));
+}
+
+#[test]
+fn a_second_level_entry_counts_its_nested_headings() {
+    let state = entries_state("entries-level-2");
+    let path = ".mochiko/product/decisions.md";
+    assert!(allowed(&grade(
+        &state,
+        path,
+        "# D\n\n## D-001\na\n## D-002\nb\n"
+    )));
+    let reason = grade(&state, path, "## D-001\na\nb\n### sub\nc\n")
+        .reason
+        .unwrap_or_default();
+    assert!(reason.contains("`## D-001` is 5 lines"), "{reason}");
+}
+
+#[test]
+fn the_amnesty_applies_per_entry_and_a_renamed_entry_is_a_new_one() {
+    let state = entries_state("entries-amnesty");
+    let baseline = "## Entities\n### User\na\nb\nc\nd\ne\n";
+    // Non-growing: the over-budget entry untouched, a new entry added — allowed, overage named.
+    let added = format!("{baseline}### Order\na\n");
+    let verdict = regrade(&state, DATA_MODEL, &added, baseline);
+    assert!(allowed(&verdict), "{:?}", verdict.reason);
+    assert!(verdict.context.unwrap_or_default().contains("### User"));
+    // Growing the over-budget entry: denied (V9).
+    let grown = "## Entities\n### User\na\nb\nc\nd\ne\nf\n";
+    assert!(denied(&regrade(&state, DATA_MODEL, grown, baseline)));
+    // Renamed: a new key, so the amnesty does not carry, and the reason says so.
+    let renamed = "## Entities\n### Account\na\nb\nc\nd\ne\n";
+    let reason = regrade(&state, DATA_MODEL, renamed, baseline)
+        .reason
+        .unwrap_or_default();
+    assert!(reason.contains("renamed"), "{reason}");
+}
+
+#[test]
+fn an_entry_store_bound_to_a_template_keeps_its_shape_rules_and_drops_its_section_budgets() {
+    // Plan Q6, as ruled: the template's frontmatter, heading and placeholder checks run; its
+    // per-section `max_lines` (2 here) do not — the entry budgets replace them.
+    let state = entries_state("entries-template");
+    let path = ".mochiko/product/spine.md";
+    let long = "---\nstore: spine\n---\n\n## Entities\n### A\na\n### B\nb\n### C\nc\n";
+    assert!(
+        allowed(&grade(&state, path, long)),
+        "{:?}",
+        grade(&state, path, long).reason
+    );
+    let shapeless = "## Entities\n### A\na\n";
+    let reason = grade(&state, path, shapeless).reason.unwrap_or_default();
+    assert!(
+        reason.contains("`store`"),
+        "the frontmatter rule still runs: {reason}"
+    );
+    let extra = "---\nstore: spine\n---\n\n## Entities\n### A\na\n## Invented\nx\n";
+    assert!(
+        denied(&grade(&state, path, extra)),
+        "the heading rule still runs"
     );
 }

@@ -1207,7 +1207,7 @@ fn the_shared_fixture_log_denies_and_allows_on_each_branch() {
     let homes = Homes::load(&state);
     let grade = |path: &str, body: &str| {
         let resolution = homes.resolve(Path::new(path));
-        conform::check(&state, &resolution, body, None)
+        conform::check(&state, &resolution, body, None, None)
     };
 
     // Branch 1: the templated file, conforming and then over one section's budget.
@@ -1354,11 +1354,12 @@ changes:
         grammar: 1,
         plugin: "test".to_string(),
     };
-    let view = render::home_view(
-        &state,
-        Path::new(".mochiko/brainstorms/demo/record.md"),
-        &ctx,
-    );
+    let path = Path::new(".mochiko/brainstorms/demo/record.md");
+    let located = home::Located {
+        root: PathBuf::from("/repo"),
+        relative: path.to_path_buf(),
+    };
+    let view = render::home_view(&state, path, Some(&located), &ctx);
 
     assert!(
         view.contains("record.md · no template · no size bound — the session it records"),
@@ -1375,5 +1376,225 @@ changes:
     assert!(
         !view.contains("no bound declared"),
         "no arm here is silently unbounded: {view}"
+    );
+}
+
+// ---------------------------------------------------------------------------
+// the run folder: the `<run-id>` token and the raw-output home (field review D4, seams R5)
+// ---------------------------------------------------------------------------
+
+#[test]
+fn the_run_id_token_matches_exactly_the_ruled_owner_run_form() {
+    // `<owner>-run<n>`: a FEAT or EPIC id in the existing shapes, or `lane-<slug>`, then `-run`,
+    // then one or more digits (seams R5).
+    for segment in [
+        "FEAT-001-run5",
+        "EPIC-003-run1",
+        "lane-auth-fix-run1",
+        "FEAT-001-auth-run2",
+        "FEAT-1234-run10",
+        "lane-rerun-run3",
+    ] {
+        assert!(
+            home::segment_matches("<run-id>", segment),
+            "<run-id> should match {segment:?}"
+        );
+    }
+    for segment in [
+        "feat-001-run5",
+        "FEAT-001-run",
+        "FEAT-001-run5x",
+        "lane-run1",
+        "FEAT-01-run1",
+        "run5",
+        "FEAT-001",
+        "AX-001-x-run1",
+        "",
+    ] {
+        assert!(
+            !home::segment_matches("<run-id>", segment),
+            "<run-id> should not match {segment:?}"
+        );
+    }
+    assert!(
+        home::TOKENS.contains(&"<run-id>"),
+        "the token is in the vocabulary `migrate validate` checks against"
+    );
+}
+
+/// A log carrying the raw-output home as wave 2 is expected to declare it.
+const RUNS: &str = r#"
+grammar: 2
+id: 0001-runs
+sequence: 1
+intent: The raw-output home.
+changes:
+  - op: import-document
+    kind: home
+    name: runs
+    content:
+      home: runs
+      title: The run folder
+      path: [".mochiko", "runs", "<run-id>"]
+      raw_output: true
+      bounds: elsewhere
+      bounds_cite: hook-enforcement-field-review D4 (raw output, shape and size unchecked)
+      deliverables:
+        - file: implement-log.md
+          bound_reason: ephemeral run log, deleted at acceptance
+"#;
+
+#[test]
+fn any_path_under_the_raw_output_home_resolves_as_raw_except_its_declared_names() {
+    let state = state("resolve-raw", RUNS);
+    let homes = homes(&state);
+    for path in [
+        ".mochiko/runs/FEAT-001-run5/console.log",
+        ".mochiko/runs/FEAT-001-run5/notes.md",
+        ".mochiko/runs/EPIC-003-run1/cycle-2/screens/home.png",
+    ] {
+        match homes.resolve(Path::new(path)) {
+            Resolution::Raw { home, .. } => assert_eq!(home.home, "runs", "{path}"),
+            other => panic!("{path} resolved {other:?}"),
+        }
+    }
+    match homes.resolve(Path::new(".mochiko/runs/FEAT-001-run5/implement-log.md")) {
+        Resolution::File { deliverable, .. } => assert_eq!(deliverable.file, "implement-log.md"),
+        other => panic!("the run log is allowed by name (V7): {other:?}"),
+    }
+    assert!(
+        matches!(
+            homes.resolve(Path::new(".mochiko/runs/not-a-run-key/console.log")),
+            Resolution::Outside
+        ),
+        "a folder not named by the run key is no run folder"
+    );
+}
+
+#[test]
+fn the_raw_output_home_names_its_ignore_line_from_its_literal_prefix() {
+    let state = state("raw-ignore-line", RUNS);
+    let homes = homes(&state);
+    let runs = homes
+        .raw_output()
+        .expect("the log declares a raw-output home");
+    assert_eq!(runs.ignore_line(), ".mochiko/runs/");
+}
+
+#[test]
+fn the_ignore_guard_accepts_the_four_spellings_and_nothing_else() {
+    let state = state("raw-ignores", RUNS);
+    let homes = homes(&state);
+    let runs = homes.raw_output().expect("raw-output home");
+    let root = log_dir("raw-ignores-tree");
+    assert!(
+        !home::ignores(&root, runs),
+        "no `.gitignore` at all is not an ignore"
+    );
+    for (text, ignored) in [
+        (".mochiko/runs/\n", true),
+        ("/.mochiko/runs/\n", true),
+        (".mochiko/runs\n", true),
+        ("/.mochiko/runs\n", true),
+        ("target\n  .mochiko/runs/  \r\n", true),
+        ("# .mochiko/runs/\n", false),
+        ("!.mochiko/runs/\n", false),
+        (".mochiko/\n", false),
+        (".mochiko/runs/*.log\n", false),
+    ] {
+        std::fs::write(root.join(".gitignore"), text).expect(".gitignore is writable");
+        assert_eq!(home::ignores(&root, runs), ignored, "`.gitignore` {text:?}");
+    }
+}
+
+#[test]
+fn the_home_render_names_an_entry_stores_heading_budgets_and_exempt_fields() {
+    let body = r####"
+grammar: 2
+id: 0001-homes
+sequence: 1
+intent: One entry-bounded store.
+changes:
+  - op: import-document
+    kind: home
+    name: product
+    content:
+      home: product
+      title: Product baselines
+      path: [".mochiko", "product"]
+      bounds: whole-file
+      deliverables:
+        - file: data-model.md
+          form: entries
+          entry_heading: "###"
+          entry_max_lines: 150
+          section_max_lines: 40
+          entry_exempt_fields: [Lifecycle, Raised]
+        - file: decisions.md
+          form: entries
+          entry_heading: "##"
+          entry_max_lines: 60
+"####;
+    let state = state("render-entries", body);
+    let ctx = render::Context {
+        binary: "0.3.0".to_string(),
+        grammar: 2,
+        plugin: "test".to_string(),
+    };
+    let path = Path::new(".mochiko/product/data-model.md");
+    let located = home::Located {
+        root: PathBuf::from("/repo"),
+        relative: path.to_path_buf(),
+    };
+    let view = render::home_view(&state, path, Some(&located), &ctx);
+    assert!(
+        view.contains(
+            "data-model.md · entries · one `###` per entry · 150 lines per entry · 40 lines of \
+             section text outside entries · not counted: `**Lifecycle:**`, `**Raised:**` lines"
+        ),
+        "{view}"
+    );
+    assert!(
+        view.contains("decisions.md · entries · one `##` per entry · 60 lines per entry"),
+        "{view}"
+    );
+    assert!(!view.contains("no bound declared"), "{view}");
+}
+
+#[test]
+fn a_worktree_pointer_names_the_main_tree_and_any_other_pointer_names_itself() {
+    let main = log_dir("pointer-main");
+    std::fs::create_dir_all(main.join(".git/worktrees/seat")).expect("main gitdir");
+    let wt = main.join(".claude/worktrees/seat");
+    std::fs::create_dir_all(&wt).expect("worktree dir");
+    let located = home::Located {
+        root: wt.clone(),
+        relative: PathBuf::from(".mochiko/runs/FEAT-001-run5/x.log"),
+    };
+    for (pointer, expected) in [
+        (
+            format!("gitdir: {}/.git/worktrees/seat\n", main.display()),
+            &main,
+        ),
+        // git writes a relative gitdir under `worktree.useRelativePaths`: relative to the worktree.
+        ("gitdir: ../../../.git/worktrees/seat\n".to_string(), &main),
+        // A submodule's pointer is not a worktree's: its tree is its own main tree.
+        (
+            format!("gitdir: {}/.git/modules/seat\n", main.display()),
+            &wt,
+        ),
+        ("not a pointer\n".to_string(), &wt),
+    ] {
+        std::fs::write(wt.join(".git"), &pointer).expect("pointer is writable");
+        assert_eq!(&located.main_root(), expected, "pointer {pointer:?}");
+    }
+    let main_tree = home::Located {
+        root: main.clone(),
+        relative: PathBuf::from(".mochiko"),
+    };
+    assert_eq!(
+        main_tree.main_root(),
+        main,
+        "a `.git` directory is its own main tree"
     );
 }

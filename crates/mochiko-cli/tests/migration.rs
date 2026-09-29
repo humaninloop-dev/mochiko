@@ -255,8 +255,106 @@ fn a_grammar_outside_the_supported_range_is_rejected_with_the_install_line() {
 }
 
 #[test]
-fn the_supported_grammar_range_is_one_to_one() {
-    assert_eq!(migration::GRAMMAR_RANGE, (1, 1));
+fn the_supported_grammar_range_is_one_to_two() {
+    // Grammar 2 is grammar 1 plus the home fields of the hook field review's wave 1: the
+    // raw-output home and the per-entry budget kind. An older binary ignores unknown home keys, so
+    // the bump is what makes a 0.2.0 binary halt on a log that uses them instead of misreading it.
+    assert_eq!(migration::GRAMMAR_RANGE, (1, 2));
+}
+
+#[test]
+fn a_grammar_two_migration_parses_and_grammar_three_halts_with_the_install_line() {
+    let two = stamped(&HEADER.replace("grammar: 1", "grammar: 2"));
+    let m = migration::parse("0002-demo.yaml", &two).expect("grammar 2 is in range");
+    assert_eq!(m.grammar, 2);
+
+    let three = HEADER.replace("grammar: 1", "grammar: 3");
+    let err = migration::parse("0002-demo.yaml", &three).expect_err("grammar 3 is out of range");
+    assert!(
+        matches!(err, ParseError::GrammarVersion { found: 3, .. }),
+        "got {err}"
+    );
+    assert!(
+        format!("{err}").contains(migration::INSTALL_COMMAND),
+        "the halt names the install command: {err}"
+    );
+}
+
+/// A home change whose content uses a grammar-2 field, under the given grammar.
+fn home_change(grammar: u32, content: &str) -> String {
+    format!(
+        "grammar: {grammar}\nid: 0002-demo\nsequence: 2\nintent: A home change.\nchanges:\n  \
+         - op: import-document\n    kind: home\n    name: probe\n    content:\n{content}"
+    )
+}
+
+#[test]
+fn a_grammar_one_home_change_carrying_a_grammar_two_field_is_rejected_by_name() {
+    // An older binary reads a grammar-1 file and silently ignores the fields it does not know, so
+    // the raw-output home would be read as an ordinary one. Rejecting the pairing at parse is what
+    // makes "a migration adding a home field bumps the grammar" a property rather than a habit.
+    let base = "      home: probe\n      title: Probe\n      path: [.mochiko, probe]\n      \
+                bounds: whole-file\n";
+    let cases = [
+        ("raw_output", format!("{base}      raw_output: true\n")),
+        (
+            "form: entries",
+            format!(
+                "{base}      deliverables:\n        - file: x.md\n          form: entries\n          \
+                 entry_heading: \"###\"\n          entry_max_lines: 10\n"
+            ),
+        ),
+        (
+            "entry_heading",
+            format!(
+                "{base}      deliverables:\n        - file: x.md\n          form: log\n          \
+                 entry_heading: \"##\"\n          entry_max_lines: 10\n"
+            ),
+        ),
+        (
+            "section_max_lines",
+            format!(
+                "{base}      deliverables:\n        - file: x.md\n          max_lines: 10\n          \
+                 section_max_lines: 5\n"
+            ),
+        ),
+        (
+            "entry_exempt_fields",
+            format!(
+                "{base}      deliverables:\n        - file: x.md\n          max_lines: 10\n          \
+                 entry_exempt_fields: [Lifecycle]\n"
+            ),
+        ),
+    ];
+    for (field, content) in cases {
+        let one = home_change(1, &content);
+        let err = migration::with_hash("0002-demo.yaml", &one)
+            .expect_err("a grammar-1 home change may not carry a grammar-2 field");
+        assert!(
+            matches!(err, ParseError::MalformedChange { index: 0, .. }),
+            "{field}: got {err}"
+        );
+        assert!(
+            format!("{err}").contains(field) && format!("{err}").contains("grammar 2"),
+            "the finding names the field and the grammar it needs: {err}"
+        );
+
+        let two = home_change(2, &content);
+        let stamped = migration::with_hash("0002-demo.yaml", &two)
+            .unwrap_or_else(|e| panic!("{field}: the same change under grammar 2 stamps: {e}"));
+        migration::parse("0002-demo.yaml", &stamped)
+            .unwrap_or_else(|e| panic!("{field}: the same change under grammar 2 parses: {e}"));
+    }
+}
+
+#[test]
+fn a_grammar_one_home_change_with_only_grammar_one_fields_still_parses() {
+    let content = "      home: probe\n      title: Probe\n      path: [.mochiko, probe]\n      \
+                   bounds: whole-file\n      deliverables:\n        - file: log.md\n          \
+                   form: log\n          entry_max_lines: 40\n";
+    let stamped = migration::with_hash("0002-demo.yaml", &home_change(1, content))
+        .expect("a grammar-1 home stays legal under grammar 1");
+    migration::parse("0002-demo.yaml", &stamped).expect("and parses");
 }
 
 // --- every op decodes ---
@@ -371,7 +469,8 @@ fn with_hash_refuses_a_body_that_is_not_a_migration() {
 
 #[test]
 fn every_out_of_range_grammar_raises_the_version_contract_finding() {
-    for grammar in ["2", "99", "999999", "4294967295"] {
+    // `3` is the first grammar past this binary's range (1..2).
+    for grammar in ["3", "99", "999999", "4294967295"] {
         let body = HEADER.replace("grammar: 1", &format!("grammar: {grammar}"));
         let err = migration::parse("0002-demo.yaml", &body).expect_err("out of range");
         assert!(
