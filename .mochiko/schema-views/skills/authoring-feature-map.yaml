@@ -39,9 +39,9 @@ sections:
         labels: [boundary]
         class: must
         text: >-
-          A work row is a map-side increment; the product-baseline deltas under
-          `.mochiko/product/` (the appliable before/after form) are a different altitude —
-          implement's surface, untouched here.
+          A work row is a map-side increment; the product baselines under `.mochiko/product/`,
+          edited in place under a run's lifecycle marker, are a different altitude — implement's
+          surface, untouched here.
         anchor: 2026-08-10 feature-sizing-and-entry-points D9
       - id: authoring-feature-map.stories-routing
         labels: [boundary]
@@ -77,8 +77,11 @@ sections:
         class: must
         kind: duty
         text: >-
-          In-flight territory obligates a read into the owning run's artifacts — build against
-          the planned contract or escalate a conflict, never contradict silently.
+          In-flight territory obligates a read into the owning run's planned contract — its
+          entries in the product baselines and the architecture store keyed to that run in the
+          in-flight class (`in-flight` · `modifying` · `removing`; a `proposed` entry is nothing
+          promised and reads absent), and its signed architecture.md drawing — build against the
+          planned contract or escalate a conflict, never contradict silently.
         anchor: 2026-08-10 feature-map-layer D19
       - id: authoring-feature-map.reconstructed-reverify
         labels: [evidence]

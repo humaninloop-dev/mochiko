@@ -1,0 +1,166 @@
+grammar: 1
+id: 0026-delta-pinned-base-review
+sequence: 26
+intent: >-
+  Execute delta D3, with seams R2 and R9 and the lead's Q9 ruling: two pinned bases, every
+  baseline review reading the diff against them, and at landing the unmarked-write test, the
+  duplicate-id check, then the flip (a removal becoming its R9 stub). The diff review and the two
+  new fails replace the graded fold and its two fails; the graded fold's absent-file clause lives
+  on in review-sufficiency.absent-baseline and impl.design-absent-baseline-seed (A4). The run-open
+  base goes into sufficiency-report.md, named by both the skill's report binding and implement's
+  own report list, and both bases into the final-validation report (R2). What leaves (Q6): "the
+  graded folds" (landing-verifier-folds, which gains the flip and the stub); the ledger's name
+  (verification-design-time-grades); under D3a and the lead's Q9 and RA5 rulings, the 001 start of
+  the technical ids and their "no gaps" (sequential-ids) — a gap left where an abandoned run's
+  reverted entries were minted over is legal. The removed stub's marker is spelled in the bold
+  form the gate reads (**Lifecycle:** removed; census row E1, re-cut after ratification).
+anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3
+hash: sha256:fbbd3dd1f29a319fe0bc2f5b495bae7dd3258c7698a026b7642abc6a12239cdb
+changes:
+  - op: supersede-rule
+    schema: command/implement
+    id: impl.graded-fold
+    disposition: >-
+      superseded by impl.baseline-diff-review — no fold remains to grade: the change is the
+      pinned-base diff, reviewed by a non-author seat (D3c). Its store carve survives in
+      impl.store-landing and the landing flip; its design carve in impl.design-landing; its
+      absent-file clause in review-sufficiency.absent-baseline and
+      impl.design-absent-baseline-seed, the file created in place per
+      impl.baselines-in-place-marked; its epic clause in
+      authoring-epic.shared-baseline-single-pen-holder. The three-way transcription check goes
+      with the transcription.
+    anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.tools
+    rule:
+      id: impl.baseline-diff-review
+      labels: [landing, evidence]
+      class: floor
+      text: >-
+        Every review of a run's baseline change reads `git diff <base> -- ${product_dir}/` — the
+        committed and uncommitted change since the pinned base (impl.base-pins), whoever committed
+        it: in the design phase the design review pair reads it as part of the package it grades;
+        at build time the landing verification seat grades the judgment content of build-raised
+        entries. At landing, in order: the unmarked-write test runs on the diff before any landing
+        write; the duplicate-id check passes over every id in each touched baseline, and the
+        second run to land renumbers its own entries; then the landing flip, read from the diff,
+        never from markers alone — `in-flight` and `modifying` to `built`, the key cleared, each
+        `removing` entry to its stub (heading kept, `**Lifecycle:** removed`, no body, no key, its
+        id still taken) — over every baseline and the store alike, an NFR-only concern-row
+        change included whether or not structure was built, sweeping the counts, summary rows,
+        relationship tables and validation-rule lists the diff touched. An entry still keyed to
+        the run after the flip is flagged; an abandoned run's changes are found by the same diff
+        and reverted.
+      anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3
+  - op: supersede-rule
+    schema: command/implement
+    id: impl.fail.baseline-in-place
+    disposition: >-
+      superseded by impl.fail.unmarked-baseline-write — an in-place edit is now the rule (D1);
+      the fail is a write outside the run's marked entries (D3c, verify N1).
+    anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.fail-conditions
+    rule:
+      id: impl.fail.unmarked-baseline-write
+      labels: [landing]
+      class: floor
+      kind: fail
+      text: >-
+        A hunk in the run's pinned-base diff of ${product_dir}/ outside an entry marked for the
+        run's key — a pre-sign removal is a marked entry with its body cut, so a bare deletion
+        hunk is unmarked. Excepted: hunks already in the tree at run-open, recorded as
+        pre-existing on the run-open pin, and hunks inside an entry marked for another open key.
+      enforces: [impl.baselines-in-place-marked, impl.baseline-entry-grammar]
+      anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3
+  - op: supersede-rule
+    schema: command/implement
+    id: impl.fail.ungraded-fold
+    disposition: >-
+      superseded by impl.fail.unreviewed-baseline-diff — no fold remains to grade; the review is
+      of the pinned-base diff (D3c).
+    anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.fail-conditions
+    rule:
+      id: impl.fail.unreviewed-baseline-diff
+      labels: [landing]
+      class: floor
+      kind: fail
+      text: >-
+        A touched baseline accepted without its pinned-base diff review — the non-author grade,
+        the unmarked-write test, the duplicate-id check and the landing flip.
+      enforces: [impl.baseline-diff-review]
+      anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.tools
+    rule:
+      id: impl.base-pins
+      labels: [evidence, landing]
+      class: must
+      kind: binding
+      text: >-
+        Two base commits pin every baseline review. The run-open pin: the run's lead takes the
+        HEAD commit at entry, before spawning the sufficiency seat, and names it in that seat's
+        brief; the seat writes it into sufficiency-report.md, listing any uncommitted product
+        change already in the tree as pre-existing; run-open restates it, and the run's log
+        records it. The sign-off pin: the commit the checkpoint card asks the user to make —
+        suggested, never run (impl.no-git-mutations) — or, where none is made, the flipped entry
+        set the card records (the checkpoint table of the run's architecture.md where it has one),
+        which the built-vs-signed diff and impl.deviation-gate then read as the signed state. The
+        deviation gate and the built-vs-signed diff read against the sign-off pin; every other
+        baseline review reads against the run-open pin. Both pins go into the final-validation
+        report. A groom of a baseline during a run is deferred past the landing or, by the user's
+        ruling, lands as its own commit that the reviews read around — `git diff
+        <base>..<groom>^` for the change before it, `git diff <groom>` for the change after it —
+        and carries no lifecycle marker.
+      anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3
+  - op: reword-rule
+    schema: command/implement
+    id: impl.landing-verifier-folds
+    text: >-
+      The landing verification seat checks the landing flip of impl.baseline-diff-review —
+      `in-flight` and `modifying` entries to `built`, each `removing` entry to its stub (heading
+      kept, `**Lifecycle:** removed`, no body, no key); a lane run adds the map-delta boundary
+      check — the accepted work made no map write beyond the marked delta.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.verification-design-time-grades
+    text: >-
+      The same verification-seat independence covers this run's design-time grades: the cycle-card
+      review before the card confirm (its grade covering buildability) and the judgment content of
+      any build-raised baseline entry (impl.baseline-entry-grammar).
+  - op: reword-rule
+    schema: skill/review-sufficiency
+    id: review-sufficiency.report-binding
+    text: >-
+      The verdict lands as `sufficiency-report.md` in the feature dir
+      (`.mochiko/features/FEAT-XXX/`), under the `templates/report-format.md` envelope. It
+      carries: the run-open base commit named in the brief, with any uncommitted product change
+      already in the tree listed as pre-existing · the per-unit verdicts · the gap list, each
+      gap keyed to its clause · the store-consult result and any no-delta claim · store trips
+      awaiting the user's disposition at run-open · in-flight conflicts routed to the user · any
+      `[MODIFY]` amendment naming · the `quickstart.md` null-path record where no real
+      external-integration surface exists.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.sufficiency-report
+    text: >-
+      The verdict lands as sufficiency-report.md in the feature dir: the run-open base commit
+      (impl.base-pins), with any uncommitted product change already in the tree listed as
+      pre-existing; the store-consult result and any no-delta claim, the trips for the user at
+      run-open, the quickstart.md null path where no real external-integration surface exists, and
+      any [MODIFY] amendment named against a delivered feature.
+  - op: reword-rule
+    schema: skill/authoring-technical-requirements
+    id: authoring-technical-requirements.sequential-ids
+    text: >-
+      ID sequences are sequential per prefix, three-digit padded (C-, D-, IP-, INT-, DS-),
+      continuing the product file's own sequence at write time — the next free id after its
+      high-water mark, a `removed` stub's id counting as taken — never a feature-local run from
+      `001`. A landed id is never reused; a gap left when an abandoned run's reverted entries were
+      minted over is legal.

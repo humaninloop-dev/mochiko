@@ -9,6 +9,21 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/templates/report-format.md`. -->
 
+## [v0.116.0] Not-a-report list — "the design-phase deltas" re-keyed to what a design phase writes
+
+- **Disposition:** superseded → "the baseline entries and the `architecture.md` drawing a design
+  phase writes".
+- **Tier failed:** n/a — supersession by ruling:
+  - `DECISIONS.md` 2026-09-24 delta-files row points to
+    `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md`;
+  - D1 there: no delta files, baselines edited in place;
+  - D4 there: `architecture.md` is the signed drawing;
+  - the wave-3 lead's ruling on P8's B7.
+- **Content (superseded text, verbatim):** `(Deliverables — spec.md, tasks.md,` /
+  `the design-phase deltas, the working code — are not reports and are not governed here.)`
+- **Kept deliberately:** the deliverables-are-not-reports line and its other three members.
+- **Consumers assessed:** none. The envelope's rules are unchanged.
+
 ## [v0.107.0] rule 9's file citation of the implement schema — now cited by rule id alone
 
 - **Disposition:** superseded → the bare rule ids `impl.escalation-batching` /

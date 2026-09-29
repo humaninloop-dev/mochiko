@@ -33,7 +33,9 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
   baseline's empty Accessibility heading, who fills a brownfield project's empty index, and where
   a module's obligations are asserted and graded. No fact-based trigger can fire (setup no longer
   elicits legal exposure): rides ROADMAP Next, re-put at every groom until taken. Window exposure
-  accepted eyes-open (D6); existing consumers take the new agenda at their next amend (Q8).
+  accepted eyes-open (D6); existing consumers take the new agenda at their next amend (Q8). Also
+  carries (joint build, 2026-09-29): the router's one writer `product-designer` for the design truth
+  against runs editing baselines in place · where the truth part's `**Lifecycle:**` marker sits.
 - [ ] **Eval-kit drift — `review-specifications/rules.json` lacks `sf-direction-checks`** (2026-09-24;
   provenance: `.mochiko/brainstorms/setup-product-agnostic/build-log.md`, S3's plan-time
   observation H6) — the kit holds 30 ids against the view's 31: `review-specifications.sf-direction-checks`,
@@ -65,33 +67,70 @@ provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
      over-budget files ride D4e amnesty (mochiko 65 · kinako 102).
 - [ ] **Hook-enforcement field review build — four waves** (2026-09-23; provenance:
   `.mochiko/brainstorms/hook-enforcement-field-review/record.md` D9d + § Build surface, as
-  review-amended; supersedes item 3 of the item above — the kinako pass is now a full inventory and
-  the "not released" line there stays, it records an unmet GI-012 gate). **Wave 1, crate:**
-  tree-root home resolution (nested fixtures never homes) · `home` resolves a directory · closed
-  world under `.mochiko/` · the `runs/<run-id>/` home (run-key name, ignore-guard, sniff on `.md`,
-  non-`.md` shell writes admitted) · write-position shell parse · per-entry budget kind · direct
-  dry-run form · matrices from the 13 real false positives · **publish gated on the two owed
-  supply-chain controls**. **Wave 2, migration:** census from the primitives' write sets; `archive/`,
-  `runs/`, `schema-views/`, `strips/` declared; epic `implement-log.md` withdrawn; store templates
-  with entry headings; the budget table re-keyed, contracts out — one user-ratified artifact (OQ1).
-  **Wave 3, prose + governance:** seven `*.artifact-home` rewords, `testing-end-user` scratch path +
-  dry-run rule, `SubagentStart` line, deny texts, the run-close step; the ledger amendment **DONE
-  2026-09-24 (governance v3.2.0, AM-5)** — its build-state line strikes at the wave-1 + wave-2
-  bump with a text-vs-build check. **Wave 4, kinako:** full-inventory pass · watch re-measured.
+  review-amended; supersedes item 3 of the item above). **Waves 1–3 built 2026-09-29, jointly with
+  the delta retirement, at plugin 0.116.0** — crate 0.3.0 (grammar 1..2, unpublished, seam R4) ·
+  migrations 0032–0040 and 0043 · prose, hooks and strips at [v0.116.0] · governance PATCH v3.2.1
+  (the build-state line struck); trail: `.mochiko/brainstorms/hook-enforcement-field-review/build-log.md`.
+  **Owed — wave 4, kinako:** seam R3 first (no implement run open across the upgrade), then the
+  full-inventory pass and the watch re-measured; plugin 0.116.0 needs `mochiko-cli` 0.3.0 (0.2.0
+  halts at 0033), installed from git `main` by the maintainer only (seam R4). **Still gated on the
+  user:** the publish (the two owed supply-chain controls), which closes the AM-5 exception row.
 - [ ] **Delta files retired — in-place baseline edits, riding the field review's waves** (2026-09-24;
   provenance: `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D6d + § Build
-  surface; supersedes in part the item above — its wave-2 census also rules the `Lifecycle:` field
-  and per-baseline fields, takes the feature/epic/lane home sets from D4, and answers OQ1's fold
-  shape with "no fold"). **Migration (its wave 2):** two floors superseded by new ids (in place with
-  marker · sign-off flips `proposed` → `in-flight`), fail rules re-keyed (unmarked write · unreviewed
-  diff), `impl.graded-fold` → the pinned-base diff review, `impl.baseline-delta-grammar` → the entry
-  grammar, the ~25 rule sites D6d lists, `lifecycle-statuses` + `orphan-rule` + spine template for
-  `proposed` and the key set, three home sets in `0005`; **first** a full-text sweep of the log
-  ("delta" · "fold" · "appliable" · "in place" · "in-flight" · "FEAT-XXX") audited against the list.
-  **Prose (its wave 3):** the skills D6d lists, entry templates, strips, audits, bump. **Kinako
-  (its wave 4):** D5 in order — run 4's fold applied (`C-011`/`D-061`), ledgers to `archive/`,
-  copies deleted, fold blocks re-homed, 63 files' links re-pointed, each write diff-graded by a
-  non-author seat. Watch: OQ1 — the per-entry budget must admit the 177-line entry.
+  surface; supersedes in part the item above). **Migration and prose built 2026-09-29 in the joint
+  build, plugin 0.116.0** — 0024–0029, 0041 (seam R11) and the 0042 fix round; the D6d skills, entry templates and
+  strips at [v0.116.0]; seams R1–R11 in `.mochiko/decisions/2026-09-29-*.md`. **Owed — kinako (its
+  wave 4):** D5 in order — run 4's fold applied (`C-011`/`D-061`), ledgers to `archive/`, copies
+  deleted, fold blocks re-homed, 63 files' links re-pointed, the 17 `####` headings raised (census
+  ratification), each write diff-graded by a non-author seat. Watch: OQ1 — the per-entry budget must
+  admit the 177-line entry.
+
+## Joint hook/delta build residuals
+
+*(booked 2026-09-29 at the joint build's wave-3 landing; provenance: the wave-3 audit and review
+verdicts in `.mochiko/brainstorms/hook-enforcement-field-review/build-log.md`; none blocks 0.116.0)*
+
+- [ ] **Gate crate residuals** (2026-09-29; provenance: build-log, wave 1 G1 and wave 3 G3 entries) —
+  shell parse: narrow `cd` false allows (`popd`, a `cd` in a pipeline or background, `cd -`) · a
+  relative `cd` dropped rather than appended (evasion 1) · `cd $MAIN` from a worktree then a `runs/`
+  write refused by the worktree rule · `$[…]` arithmetic hides later lines (pre-existing) · the
+  `shell.rs` doc's "the scan before G1 R2" should name the scan at `5558fd7`. Elsewhere: case-sensitive
+  segments on a case-insensitive filesystem · `settle` is O(k² log k) per key, so about 25,000
+  repeated sections pass the 5 s hook timeout and fail open (group by key once) · no floor on a
+  raw-output home's literal prefix (two segments, or a `migrate validate` finding) · `form: log`
+  preambles unbounded (P1 covers `form: entries` only) · `matrix_similar.rs
+  a_log_whose_own_tree_carries_no_allowlist_keeps_walking_up` assumes an in-repo target dir · a
+  `withdraw-document` op (0035 replaced withdrawn homes with empty sets).
+- [ ] **Hook wiring residuals** (2026-09-29; provenance: build-log, S10 Q1, S8 O4, R1 RA3) — evasion
+  3 is closed at the decision but open end to end: `hooks.json`'s `if: Bash(*.mochiko*)` never fires
+  for a write run from a cwd inside a home (a latency-against-coverage trade, owed a ruling) · the
+  reminder's `mochiko-cli home` and dry-run lines need `--plugin-root` or `MOCHIKO_MIGRATIONS` outside
+  the plugin root · the strips home's door stays open in consumer repos.
+- [ ] **Rule-text residuals** (2026-09-29; provenance: build-log, the P7, V1, V2 and V3a entries) —
+  seam R11's edges: a count inside spine's `## Elements` fails before and after; a hunk straddling an
+  entry and a sweep row; another open key's own sweep rows · the store template's concern-ledger
+  `check:` asks a stance of every row while the contract excepts rows cut for removal · no seat is
+  named to run the duplicate-id check and the unmarked-write test (D3a names the landing diff
+  reviewer) · `sequential-ids` names no sequence for a spec-home file and no NFR- prefix · graduated
+  concern naming (`AX-XXX-<slug>.md` against `<AX-ID>.md`) · a build-raised store element against
+  `sign-off-flips-proposed` · the router could point at `impl.baseline-diff-review` for the flip ·
+  the epic home never declared `tasks.md` while `patterns-vertical-tdd.artifact-home` points there ·
+  `impl.sec.tools` renders 25,469 of its 30,000 ceiling · 0040 archives the constraints file
+  "unchanged" while it stays live in reduced form.
+- [ ] **Eval and doc residuals** (2026-09-29; provenance: build-log, S5 Q3, S9 Q3, P9 A5, G4 A1–A3 and V3b unit 10) — the five
+  0013 `impl.*` ids missing from `evals/plan/implement/observable.yaml` (pre-existing) · the three
+  `review-plan-artifacts` goldens g1–g3 (and its preregistration `:37`) still carry the pre-delta
+  per-feature package shape, as do `evals/agents/technical-analyst/evals.json:103` and the
+  `principal-architect` p2 fixture's `architecture-delta.md` (S9's widened sweep) ·
+  `review-specifications.sf-direction-checks` absent from its kit's `rules.json` since its 0013-era
+  mint · `plan/architecture` g3 still names a `specs/…/architecture-delta.md` path · no contract
+  row yet covers session-start's new run-folder line (new coverage, not a moved pin) ·
+  `evals/contract/run.py` (G4 A1–A3): `REMINDER_GOLDEN[:300]` at `:4688` cuts the 352-character
+  golden in a recorded line; `:4148`'s comment credits D8 and R5 where the script header credits D4,
+  D8, D9 and R5; `:4551`'s "never what it holds" holds only for a directory `.git` · the
+  migrations README: mark `entry_heading` Required; the grammar row's kept "grammar version"
+  wording; declared run-folder names match at the top level only; "(0033 and 0034 are grammar 2)"
+  will date.
 
 ## CLI schema-delivery build
 

@@ -13,6 +13,42 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 `.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
 `.mochiko/` references were correctly left alone on that test.
 
+## [v0.116.0] Orphan rule and its checklist twin — "in-flight-class … keys an open feature" re-keyed to the widened key set
+
+- **Disposition:** superseded →
+  - the invariant reads: "every `proposed` and in-flight-class element in the architecture store
+    keys an open feature, epic or lane and resolves
+    (`authoring-architecture-store.orphan-rule`); an element keying a closed, retired or missing
+    owner is an **orphan**, surfaced by the derived index's health view and cleaned at the next
+    desk visit";
+  - the validator-checklist fragment's orphan-rule parenthesis takes the same scope words.
+- **Tier failed:** n/a — supersession by ruling:
+  - `DECISIONS.md` 2026-09-24 delta-files row points to
+    `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md`;
+  - D2 there: the key is the run's owner (`FEAT-XXX`, `EPIC-XXX` or `lane-<slug>`);
+  - D7 there: `proposed` elements are keyed too;
+  - the delivered `authoring-architecture-store.orphan-rule`, as 0025 worded it;
+  - the wave-3 lead's ruling on P8's B7, and on its `:182` twin.
+- **Content (superseded text, verbatim):**
+
+  ```
+  - **Orphan rule:** every in-flight-class element in the architecture store — `in-flight` /
+    `modifying` / `removing (FEAT-XXX)` — keys an open feature and resolves; an element
+    keying a closed or missing feature is an **orphan**, surfaced by the derived index's
+    health view and cleaned at the next desk visit.
+  orphan rule (every in-flight-class store element keys an open feature and resolves)
+  ```
+
+- **Kept deliberately:**
+  - the orphan's two surfacings (health view, next desk visit);
+  - the "bind once the store carries ruled content" clause;
+  - the index-agreement invariant.
+- **Consumers assessed:**
+  - The template edit does not reach project-pinned copies already on disk. Mochiko's own
+    `.mochiko/memory/knowledge-management.md` is re-worded by the wave lead at the ceremony, and
+    kinako's copy waits for wave 4 (the lead's ruling on O6).
+  - `commands/architecture.md`'s health line is re-keyed in the same wave.
+
 ## [v0.91.0] Landing-ritual command list drops `plan` — the command no longer exists
 
 - **Disposition:** superseded → the two surviving pipeline landings. The landing ritual's

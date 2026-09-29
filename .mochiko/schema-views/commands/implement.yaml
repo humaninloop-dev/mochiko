@@ -118,8 +118,9 @@ sections:
         class: advisory
         kind: latitude
         text: >-
-          Design-seat staffing is your call: typically ${design_seat} for design deltas,
-          ${architect_seat} for a store delta, ${qa_seat} for the **TEST:** cases.
+          Design-seat staffing is your call: typically ${design_seat} for the design-phase
+          baseline writes, ${architect_seat} for the store's `proposed` elements and the run's
+          architecture.md drawing, ${qa_seat} for the **TEST:** cases.
       - id: impl.design-gaps-only
         labels: [independence, scope-entry]
         class: must
@@ -156,12 +157,14 @@ sections:
         text: >-
           The same verification-seat independence covers this run's design-time grades: the
           cycle-card review before the card confirm (its grade covering buildability) and the
-          judgment content of any build-time baseline-delta.md entry.
+          judgment content of any build-raised baseline entry (impl.baseline-entry-grammar).
       - id: impl.landing-verifier-folds
         labels: [independence, landing]
         class: must
         text: >-
-          The landing verification seat checks the graded folds; a lane run adds the map-delta
+          The landing verification seat checks the landing flip of impl.baseline-diff-review —
+          `in-flight` and `modifying` entries to `built`, each `removing` entry to its stub
+          (heading kept, `**Lifecycle:** removed`, no body, no key); a lane run adds the map-delta
           boundary check — the accepted work made no map write beyond the marked delta.
       - id: impl.seat-gap-finder-blind
         labels: [independence, seats]
@@ -180,9 +183,14 @@ sections:
         text: >-
           The design checkpoint is the user's. Where the check named gaps, no code is written
           before the user signs the design and the store delta — the store delta signed on a
-          rendered diagram plus its named AX-XXX row changes (no render surface: present the
-          source plus the changed-element table, and record it). The user may stop at the
-          checkpoint and resume the build later.
+          rendered diagram plus its named AX-XXX row changes and the pinned-base diff of the
+          baselines (no render surface: present the source plus the changed-element table, and
+          record it). The checkpoint's closing act is the flip: each `proposed (<key>)` entry of
+          the run, in every baseline and the store, flips by the pinned-base diff — absent at
+          the base to `in-flight (<key>)`, changed from it to `modifying (<key>)`, cut to its
+          heading to `removing (<key>)` — the store's through
+          mochiko:authoring-architecture-store; the sign-off base is then pinned per
+          impl.base-pins. The user may stop at the checkpoint and resume the build later.
         anchor: 2026-08-26 plan-stage-utility
       - id: impl.gate-card-confirm
         labels: [user-gate]
@@ -274,10 +282,11 @@ sections:
         class: must
         kind: binding
         text: >-
-          The verdict lands as sufficiency-report.md in the feature dir: the store-consult result
-          and any no-delta claim, the trips for the user at run-open, the quickstart.md null path
-          where no real external-integration surface exists, and any [MODIFY] amendment named
-          against a delivered feature.
+          The verdict lands as sufficiency-report.md in the feature dir: the run-open base commit
+          (impl.base-pins), with any uncommitted product change already in the tree listed as
+          pre-existing; the store-consult result and any no-delta claim, the trips for the user at
+          run-open, the quickstart.md null path where no real external-integration surface exists,
+          and any [MODIFY] amendment named against a delivered feature.
       - id: impl.absent-surfaces
         labels: [scope-entry]
         class: must
@@ -300,11 +309,15 @@ sections:
         class: must
         kind: binding
         text: >-
-          Design outputs land at ${features_dir}/FEAT-XXX/ as deltas beside their baselines
-          (data-model.md, contracts/; a prose baseline's delta in appliable before/after form),
-          plus the store delta where the structural trigger fired — structure and scope per
-          mochiko:patterns-system-design, grammar and lifecycle per
-          mochiko:authoring-architecture-store.
+          Design outputs are written in place in the product baselines at ${product_dir}/ under
+          the run's lifecycle marker (impl.baseline-entry-grammar) — data-model.md, contracts/,
+          constraints-and-decisions.md, quickstart.md, the design baseline's truth part, and the
+          store's `proposed` elements where the structural trigger fired. The run's home keeps
+          only architecture.md, the drawing the user signs: the C4-container delta diagram, the
+          sequence diagrams for qualifying flows, the deployment view where IP-XXX rows exist, and
+          the checkpoint table of changed elements — no register text, no current-state
+          narrative. Structure and scope per mochiko:patterns-system-design, grammar and lifecycle
+          per mochiko:authoring-architecture-store.
       - id: impl.design-review-pair
         labels: [independence, floor-pointer]
         class: must
@@ -318,8 +331,9 @@ sections:
         text: >-
           The phase's first duty is the seed — an empty scaffold stating so where no code is
           delivered; reconstructed from delivered code, and confirmed with the user at the
-          checkpoint, where it exists. The seed is the baseline write; this feature's design still
-          lands as deltas, never merged into the seed.
+          checkpoint, where it exists. The seed is the baseline write, its entries `proposed
+          (<key>)` like every design-phase write; the checkpoint card lists the seed entries apart
+          from this feature's design entries, so the design is never merged into the seed.
         when: {baseline: absent}
       - id: impl.design-map-assertion
         labels: [landing]
@@ -358,8 +372,9 @@ sections:
         labels: [seats, landing]
         class: must
         text: >-
-          A shared-baseline delta is authored once, under a single pen-holder; every shared-write
-          surface rides the transport floor.
+          A product baseline touched by two or more members is edited in place under one
+          pen-holder at a time per file, its entries keyed `EPIC-XXX`; every shared-write surface
+          rides the transport floor.
         when: {scope: [epic]}
       - id: impl.cards-template
         labels: [floor-pointer]
@@ -425,13 +440,14 @@ sections:
         class: must
         kind: binding
         text: >-
-          Design inputs are sufficiency-report.md and the design-phase deltas where they exist —
-          including the signed store delta, the anchor for the deviation check and the
-          built-vs-signed diff — at ${features_dir}/FEAT-XXX/; the product baselines at
-          ${product_dir}/ (data-model.md, contracts/, constraints-and-decisions.md, the design
-          baseline at ${product_dir}/design/, and the architecture store, whose concern rows carry
-          the NFR-XXX targets the built code must meet); spec.md for the cards' cited acceptance
-          criteria.
+          Design inputs are sufficiency-report.md and, where the design phase ran, the run's
+          architecture.md drawing at ${features_dir}/FEAT-XXX/ and its marked entries in the
+          product baselines, read in the pinned-base diff — the signed store delta among them
+          (the store at the sign-off base, or the checkpoint table), the anchor for the deviation
+          check and the built-vs-signed diff; the product baselines at ${product_dir}/
+          (data-model.md, contracts/, constraints-and-decisions.md, the design baseline at
+          ${product_dir}/design/, and the architecture store, whose concern rows carry the NFR-XXX
+          targets the built code must meet); spec.md for the cards' cited acceptance criteria.
       - id: impl.progress-surface
         labels: [evidence, reporting]
         class: must
@@ -449,8 +465,9 @@ sections:
           built-vs-signed diff. Every one carries the `report-envelope` frontmatter
           (machine-first, typed by `report:`, ultra register, clean = frontmatter-only; bounce an
           envelope-breaking report per templates/report-format.md rule 9), and each producing
-          seat's brief names the home's `reports/` path. Repeat runs append, dated; delta files
-          overwrite only via the graded fold.
+          seat's brief names the home's `reports/` path and the pre-write dry run, the draft piped
+          to `mochiko-cli check --path <p> --content -` before the Write. Repeat runs append,
+          dated; the run's architecture.md drawing is overwritten per run.
       - id: impl.gates-full-suite
         labels: [evidence]
         class: must
@@ -488,11 +505,12 @@ sections:
         class: must
         text: >-
           Gap-finding dispatch is two-message and blind. The first message carries only spec.md,
-          the sufficiency report and design deltas where they exist, Screens & Flows, and the
-          baselines data-model.md, contracts/, the design baseline, and the store's NFR-XXX
-          concern rows — never the code, tasks.md, the **TEST:** cases, or any report. The seat
-          states its derived expectations; only then does probing begin. Its brief carries the
-          model-tiering rule, and its delegated reads stay inside the same fence.
+          the sufficiency report and the signed architecture.md drawing where one exists, Screens
+          & Flows, and the baselines data-model.md, contracts/, the design baseline, and the
+          store's NFR-XXX concern rows — their `built` and in-flight-class entries only, never a
+          `proposed` one — never the code, tasks.md, the **TEST:** cases, or any report. The
+          seat states its derived expectations; only then does probing begin. Its brief carries
+          the model-tiering rule, and its delegated reads stay inside the same fence.
         pointer: mochiko:testing-gap-finding
         anchor: 2026-08-19 qa-gap-finding-verification
       - id: impl.mutation-lens
@@ -539,12 +557,13 @@ sections:
         labels: [landing]
         class: must
         text: >-
-          A built structural change folds into the architecture store in three parts: the delta's
-          elements flip built and their FEAT-XXX keys clear (transcription — rides this run's
-          landing audit) · the touched rows' As-built: and Drift: fields are written as judgment
-          and independently graded · the orphan check runs — an in-flight element keying no
-          open feature is flagged, never left. The store skill regenerates the derived root
-          ARCHITECTURE.md; it is never hand-edited here.
+          A built structural change lands in the architecture store in three parts: the landing
+          flip over the run's elements — `in-flight` and `modifying` to `built`, the key
+          cleared, each `removing` element to its `removed` stub (transcription — rides this
+          run's landing audit) · the touched rows' As-built: and Drift: fields are written as
+          judgment and independently graded · the orphan check runs — a `proposed` or
+          in-flight-class element keying no open feature, epic or lane is flagged, never left. The
+          store skill regenerates the derived root ARCHITECTURE.md; it is never hand-edited here.
         pointer: mochiko:authoring-architecture-store
       - id: impl.km-landing
         labels: [landing]
@@ -553,17 +572,6 @@ sections:
           The same landing carries the knowledge-management obligations of
           .mochiko/memory/knowledge-management.md.
         when: {km_file: present}
-      - id: impl.baseline-delta-grammar
-        labels: [landing, evidence]
-        class: must
-        kind: binding
-        text: >-
-          Work discovered to touch a product baseline authors baseline-delta.md in the feature dir
-          at discovery: a minimal, enumerated, appliable delta. A build-time technical decision (a
-          D-XXX, C-XXX, or IP-XXX row at decomposition) is written the same way, never in place,
-          against constraints-and-decisions.md; its judgment content is graded by the landing
-          verification seat before the user's acceptance — the landing's three-way diff stays a
-          transcription check only.
       - id: impl.landing-selection
         labels: [landing]
         class: must
@@ -596,26 +604,13 @@ sections:
         labels: [landing]
         class: must
         text: >-
-          The landing adds no map work to the store landing and the graded folds: a product lane
-          owns no capability entry, so the map takes no write — no graduation batch, no status
-          flip, no extent-line fold — and the map-delta boundary check of
+          The landing adds no map work to the store landing and the baseline landing flip: a
+          product lane owns no capability entry, so the map takes no write — no graduation
+          batch, no status flip, no extent-line fold — and the map-delta boundary check of
           impl.landing-verifier-folds reads as zero writes. The lane directory at
           ${product_dir}/lane-<slug>/ persists as record.
         when: {scope: [lane]}
         pointer: mochiko:authoring-feature-map
-      - id: impl.graded-fold
-        labels: [landing]
-        class: floor
-        text: >-
-          Every touched baseline folds exactly once, via a graded fold — a three-way diff
-          (pre-fold baseline + delta vs folded result; delta applied whole, nothing else changed),
-          checked by the landing verification seat. An epic's shared-baseline delta folds once
-          from the spine; a single-member baseline from its feature delta. Two carves: the store's
-          fold IS the store landing — status flips, graded As-built:/Drift: writes, and the
-          orphan check, not a three-way diff; and the design baseline's system part folds per
-          impl.design-landing, as graded judgment, not a three-way diff — its truth part folds
-          by the three-way diff. A delta whose baseline file is absent folds into a fresh
-          ${product_dir}/ file (empty pre-fold side), the absence surfaced as a seeding gap.
       - id: impl.gates-fold
         labels: [landing]
         class: must
@@ -665,9 +660,126 @@ sections:
           divergence, each critique-advisory finding, and each accepted design-audit Drift:
           candidate as Drift:. The write is judgment, graded by the landing verification seat. The
           setup lead writes only its empty scaffold; ${designer_seat} is the only writer of its
-          content, on two paths: a build-time baseline-delta.md entry, and this fold.
+          content, on two paths: a build-raised entry in the truth part, written in place under
+          its lifecycle marker (impl.baseline-entry-grammar), and this fold.
         when: {ux_bearing: present}
         anchor: 2026-09-19 impeccable-design-integration D7
+      - id: impl.baseline-entry-grammar
+        labels: [landing, evidence]
+        class: must
+        kind: binding
+        text: >-
+          Every product-baseline entry a run writes or amends carries a `**Lifecycle:**` field of
+          its own, apart from any stance field (the store's lifecycle field is its `Status`; a
+          constraints entry's `**Status:**` stays its stance). The key is the run's owner:
+          `FEAT-XXX` for a feature run, `EPIC-XXX` for an epic's shared write, `lane-<slug>` for a
+          product-lane run. Before the design checkpoint every run write reads `proposed (<key>)`:
+          a new entry, an amended one with its new text in place, a removed one with its heading
+          and marker kept and its body cut. The sign-off flips each by the pinned-base diff —
+          absent at the base to `in-flight (<key>)`, changed from it to `modifying (<key>)`, cut
+          to its heading to `removing (<key>)`. A build-time decision is written directly in that
+          post-sign form — new `in-flight`, amended `modifying`, removed `removing` — its
+          judgment graded by the landing verification seat. At landing `in-flight` and `modifying`
+          flip to `built`, the key cleared; a `removing` entry becomes its stub (heading kept,
+          `**Lifecycle:** removed`, no body, no key, its id still taken). An entry with no
+          `**Lifecycle:**` field reads `built`. Readers: `proposed` is nothing promised and reads
+          absent; the in-flight class (`in-flight` · `modifying` · `removing`) is planned
+          contract; `removed` reads absent; `built` or no field is delivered. A new entry takes
+          the next free id of the product file's own sequence at write time, a `removed` stub's id
+          counting as taken — no feature-local sequence, no renumbering at landing. The why
+          lives on the entry (a constraints entry's `Source` · `Shaped by` · `Impact`; a
+          build-raised entry's `**Raised:**` and one-line `**Weighed:**`), never in a ledger; the
+          commit message is not a carrier. Prior text is never kept beside the new — the
+          pinned-base diff shows it. Where the marker sits: in data-model.md and quickstart.md the
+          `**Lifecycle:**` line is the first line under the entry heading; in
+          constraints-and-decisions.md it is the same first line, above the stance line
+          (`**Class:** … · **Status:** …`), never sharing it; a build-raised entry's
+          `**Raised:** <cycle>` and `**Weighed:** <why, one line>` follow it directly, one line
+          each. A contracts/ .md entry is the heading of the clause that changes, at the level its
+          sibling clauses use, `**Lifecycle:**` its first line; api.yaml takes an `x-lifecycle`
+          key on the changed operation or schema, with the same values, a removed one keeping only
+          its summary and `x-lifecycle: removed`. The architecture store takes no separate field
+          and keeps its own `**Name**:` form: a spine element's lifecycle is its Status column,
+          with Raised and Weighed columns filled on a build-raised element; a concern row's is its
+          `- **Status**:` field, followed on a build-raised row by `- **Raised**:` and `-
+          **Weighed**:`; a removed concern keeps its heading and `- **Status**: removed`, a
+          removed spine row its id, kind, name and status, not drawn. Every brief to a seat that
+          writes or amends a product baseline carries this rule as an obligated read.
+        anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D2
+      - id: impl.baseline-diff-review
+        labels: [landing, evidence]
+        class: floor
+        text: >-
+          Every review of a run's baseline change reads `git diff <base> -- ${product_dir}/` —
+          the committed and uncommitted change since the pinned base (impl.base-pins), whoever
+          committed it: in the design phase the design review pair reads it as part of the package
+          it grades; at build time the landing verification seat grades the judgment content of
+          build-raised entries. At landing, in order: the unmarked-write test runs on the diff
+          before any landing write; the duplicate-id check passes over every id in each touched
+          baseline, and the second run to land renumbers its own entries; then the landing flip,
+          read from the diff, never from markers alone — `in-flight` and `modifying` to `built`,
+          the key cleared, each `removing` entry to its stub (heading kept, `**Lifecycle:**
+          removed`, no body, no key, its id still taken) — over every baseline and the store
+          alike, an NFR-only concern-row change included whether or not structure was built,
+          sweeping the counts, summary rows, relationship tables and validation-rule lists the
+          diff touched. An entry still keyed to the run after the flip is flagged; an abandoned
+          run's changes are found by the same diff and reverted.
+        anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3
+      - id: impl.base-pins
+        labels: [evidence, landing]
+        class: must
+        kind: binding
+        text: >-
+          Two base commits pin every baseline review. The run-open pin: the run's lead takes the
+          HEAD commit at entry, before spawning the sufficiency seat, and names it in that seat's
+          brief; the seat writes it into sufficiency-report.md, listing any uncommitted product
+          change already in the tree as pre-existing; run-open restates it, and the run's log
+          records it. The sign-off pin: the commit the checkpoint card asks the user to make —
+          suggested, never run (impl.no-git-mutations) — or, where none is made, the flipped
+          entry set the card records (the checkpoint table of the run's architecture.md where it
+          has one), which the built-vs-signed diff and impl.deviation-gate then read as the signed
+          state. The deviation gate and the built-vs-signed diff read against the sign-off pin;
+          every other baseline review reads against the run-open pin. Both pins go into the
+          final-validation report. A groom of a baseline during a run is deferred past the landing
+          or, by the user's ruling, lands as its own commit that the reviews read around — `git
+          diff <base>..<groom>^` for the change before it, `git diff <groom>` for the change after
+          it — and carries no lifecycle marker.
+        anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3
+      - id: impl.run-folder
+        labels: [evidence, landing]
+        class: must
+        kind: duty
+        text: >-
+          The run's raw output has one home, the run folder `.mochiko/runs/<run-id>/` in the main
+          tree: `<run-id>` is `<owner>-run<n>`, the owner being the run's lifecycle key
+          (`FEAT-XXX`, `EPIC-XXX`, `lane-<slug>`) and `<n>` the owner's next run number, never one
+          a folder under `runs/` carries — a number may recur once an earlier folder is removed,
+          since no durable record cites a folder path (impl.evidence-citation). At run-open the
+          lead ensures `.gitignore` carries the line `.mochiko/runs/`, adding it if absent — the
+          gate refuses every write under `runs/` until it does — creates the folder, names it at
+          the run-open confirmation, and every seat's brief names it. Captured console, logs,
+          dumps and screenshots go there, never into any other home; no report lands there. After
+          the user's final acceptance the lead removes the folder as a landing step; what stays
+          durable is the typed reports, the `tasks.md` checkboxes, the landing rows and the
+          commits.
+        anchor: 2026-09-23 hook-enforcement-field-review D4
+      - id: impl.evidence-citation
+        labels: [evidence, reporting]
+        class: must
+        text: >-
+          A report cites evidence, never dumps it: it quotes the decisive lines with the command
+          that produced them and the commit they ran at, and never carries a full-log path — the
+          run folder (impl.run-folder) goes at acceptance, so a path into it would dangle.
+          Evidence from uncommitted work cites the run-open pin (impl.base-pins) plus a
+          fingerprint of the working change against it, computed by the reporting seat when the
+          report is written, never at dispatch — `base <sha> + working sha256:<hash>` —
+          hashing the tracked diff against the pin together with every untracked, non-ignored
+          file's path and content, for example `{ git diff --no-ext-diff --no-textconv --no-color
+          --no-renames --binary <pin>; git ls-files -o --exclude-standard; git ls-files -o
+          --exclude-standard | git hash-object --stdin-paths; } | shasum -a 256`, the command
+          stated beside it. No seat stages, stashes or commits to make a citation possible
+          (impl.no-git-mutations). Each producing seat's brief carries this.
+        anchor: 2026-09-23 hook-enforcement-field-review D4
   - id: impl.sec.ways-of-working
     title: Ways of Working
     intent: How the run sequences, verifies, and reports; model routing for its seats.
@@ -734,24 +846,19 @@ sections:
           Build-run artifacts have a declared home: render `mochiko-cli home
           ${features_dir}/FEAT-XXX` — an epic run, the epic home; a lane run, the lane home —
           before the first write. `tasks.md` binds the `tasks` template; every report lands in
-          that home's `reports/` typed by its envelope; `implement-log.md` is bounded per entry,
-          never per file. A name the home's set does not carry is raised to the lead, never minted
-          from a sibling run.
+          that home's `reports/` typed by its envelope. The run log, `implement-log.md`, is the
+          lead's ephemeral working memory in the run folder (impl.run-folder), never in any other
+          home. A ruling made during the run that changes a product baseline or the architecture
+          store is recorded on that entry only, its reason in the entry's own fields
+          (impl.baseline-entry-grammar); a standing ruling that touches no entry lands at the
+          landing as a `.mochiko/decisions/<date>-<slug>.md` record; a checkpoint acceptance takes
+          no `DECISIONS.md` row — its report and the `tasks.md` checkbox carry it. A name the
+          home's set does not carry is raised to the lead, never minted from a sibling run.
         anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: impl.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-run ruling can waive.
     rules:
-      - id: impl.baselines-never-in-place
-        labels: [landing]
-        class: floor
-        text: >-
-          Baselines are never edited in place. They change only through the landing's graded fold.
-          The design phase writes deltas beside them; a build-time technical decision takes the
-          same path. One carve, and only one: a store write at the design checkpoint's user
-          sign-off is legal, and only as in-flight-class delta elements. Ruled truth in the store
-          is never edited in place either — the signed delta stands beside it until the landing
-          folds it.
       - id: impl.deviation-gate
         labels: [user-gate]
         class: floor
@@ -858,6 +965,23 @@ sections:
           is a Drift: candidate at the design landing fold.
         when: {ux_bearing: present}
         anchor: 2026-09-19 impeccable-design-integration D8
+      - id: impl.baselines-in-place-marked
+        labels: [landing]
+        class: floor
+        text: >-
+          Product baselines are edited in place. A seat that needs one to say something new — in
+          the design phase, or at a build-time technical decision — writes it into the product
+          file itself at ${product_dir}/ (data-model.md, constraints-and-decisions.md, contracts/,
+          quickstart.md, the design baseline's truth part, and the architecture store), on the
+          run's working tree, each written or amended entry under the run's lifecycle marker
+          (impl.baseline-entry-grammar). No per-feature or epic copy of a baseline, no
+          baseline-delta.md ledger, no fold: the change is the diff against the run's pinned base
+          (impl.base-pins), reviewed per impl.baseline-diff-review. A write into an absent
+          baseline creates the file in place. The design baseline's system part takes no
+          design-phase or build-time write: it lands from shipped code per impl.design-landing.
+          The rule binds feature, epic and product-lane runs; an out-of-run fix that ships a
+          baseline edit and its code in one commit writes `built` directly, no marker.
+        anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D1
   - id: impl.sec.fail-conditions
     title: Not done — default FAIL
     intent: >-
@@ -915,15 +1039,6 @@ sections:
         text: A regression in a previously delivered feature's gates.
         enforces: [impl.regression-sweep]
         anchor: 2026-08-26 command-content-schema D7
-      - id: impl.fail.baseline-in-place
-        labels: [landing]
-        class: floor
-        kind: fail
-        text: >-
-          A product baseline edited in place at build time, instead of through a graded
-          baseline-delta.md entry.
-        enforces: [impl.baselines-never-in-place, impl.baseline-delta-grammar]
-        anchor: 2026-08-26 command-content-schema D7
       - id: impl.fail.deviation-unresolved
         labels: [user-gate]
         class: floor
@@ -937,16 +1052,10 @@ sections:
         class: floor
         kind: fail
         text: >-
-          A signed store delta landed without its built-vs-signed diff, or an in-flight element
-          left neither flipped built nor keyed to an open feature.
+          A signed store delta landed without its built-vs-signed diff, or an in-flight-class
+          element left neither flipped (to `built`, or to its `removed` stub) nor keyed to an open
+          feature, epic or lane.
         enforces: [impl.store-landing]
-        anchor: 2026-08-26 command-content-schema D7
-      - id: impl.fail.ungraded-fold
-        labels: [landing]
-        class: floor
-        kind: fail
-        text: A touched baseline accepted without its graded fold.
-        enforces: [impl.graded-fold]
         anchor: 2026-08-26 command-content-schema D7
       - id: impl.fail.gap-finding-missing
         labels: [evidence]
@@ -977,3 +1086,69 @@ sections:
         extends: common.no-acceptance
         enforces: [impl.gate-final-acceptance]
         anchor: 2026-08-26 command-content-schema D7
+      - id: impl.fail.unmarked-baseline-write
+        labels: [landing]
+        class: floor
+        kind: fail
+        text: >-
+          A hunk in the run's pinned-base diff of ${product_dir}/ outside an entry marked for the
+          run's key — a pre-sign removal is a marked entry with its body cut, so a bare deletion
+          hunk is unmarked. Excepted: hunks already in the tree at run-open, recorded as
+          pre-existing on the run-open pin; hunks inside an entry marked for another open key; and
+          a remaining hunk that is the run's own sweep, only when all four hold: (1) its file is
+          data-model.md, constraints-and-decisions.md, quickstart.md, or the store's spine.md or
+          concerns.md — every other baseline file keeps this test unchanged; (2) each changed
+          line is outside every entry — above the file's first entry heading, or after a heading
+          of fewer `#` than the entry level `mochiko-cli home <file>` prints and before the next
+          entry heading, a deeper heading inside an entry staying inside it and a line in a fenced
+          code block never a heading; (3) each changed line names the id of an entry the same diff
+          marks for the run's key — the identifier its heading carries, an entity's id being its
+          heading's name — or is a count a recount at the diff's head confirms; (4) a line
+          inside an entry is always that entry's amendment and needs the entry's marker — naming
+          a marked id never excuses it.
+        enforces: [impl.baselines-in-place-marked, impl.baseline-entry-grammar]
+        anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3
+      - id: impl.fail.unreviewed-baseline-diff
+        labels: [landing]
+        class: floor
+        kind: fail
+        text: >-
+          A touched baseline accepted without its pinned-base diff review — the non-author
+          grade, the unmarked-write test, the duplicate-id check and the landing flip.
+        enforces: [impl.baseline-diff-review]
+        anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3
+tombstones:
+  - id: impl.baselines-never-in-place
+    disposition: >-
+      superseded by impl.baselines-in-place-marked — baselines are edited in place under the
+      run's lifecycle marker (D1); the graded fold and the per-feature delta copies go. Its store
+      carve (a store write only at the checkpoint's sign-off) moves to
+      authoring-architecture-store.sign-off-flips-proposed (0029); its "ruled truth never edited
+      in place" leaves by D1/D2 — a ruled entry is amended in place as `modifying`, the prior
+      text in the pinned-base diff. (2026-09-24 delta-files-vs-direct-baseline-edits D1)
+  - id: impl.baseline-delta-grammar
+    disposition: >-
+      superseded by impl.baseline-entry-grammar — a baseline change is an entry written in place
+      under its lifecycle marker (D1/D2), not a feature-dir delta. Its landing-seat grade of
+      build-time judgment moves to the successor and to impl.baseline-diff-review; its "three-way
+      diff stays a transcription check" has nothing left to check, since no transcription remains
+      (D3c). (2026-09-24 delta-files-vs-direct-baseline-edits D2)
+  - id: impl.graded-fold
+    disposition: >-
+      superseded by impl.baseline-diff-review — no fold remains to grade: the change is the
+      pinned-base diff, reviewed by a non-author seat (D3c). Its store carve survives in
+      impl.store-landing and the landing flip; its design carve in impl.design-landing; its
+      absent-file clause in review-sufficiency.absent-baseline and
+      impl.design-absent-baseline-seed, the file created in place per
+      impl.baselines-in-place-marked; its epic clause in
+      authoring-epic.shared-baseline-single-pen-holder. The three-way transcription check goes
+      with the transcription. (2026-09-24 delta-files-vs-direct-baseline-edits D3)
+  - id: impl.fail.baseline-in-place
+    disposition: >-
+      superseded by impl.fail.unmarked-baseline-write — an in-place edit is now the rule (D1);
+      the fail is a write outside the run's marked entries (D3c, verify N1). (2026-09-24
+      delta-files-vs-direct-baseline-edits D3)
+  - id: impl.fail.ungraded-fold
+    disposition: >-
+      superseded by impl.fail.unreviewed-baseline-diff — no fold remains to grade; the review is
+      of the pinned-base diff (D3c). (2026-09-24 delta-files-vs-direct-baseline-edits D3)

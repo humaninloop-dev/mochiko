@@ -32,6 +32,155 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/testing-end-user/SKILL.md`. -->
 
+<!-- Wave context: the joint hook/delta build, wave 3 (v0.116.0) — evidence moves to the run folder
+and the report cites command plus commit, never a log path. Rulings for every [v0.116.0] entry
+below: the hook field review `.mochiko/brainstorms/hook-enforcement-field-review/record.md` D4 as
+amended (`.mochiko/runs/<run-id>/` is the declared raw-output home; reports cite command and
+commit, never a full-log path) (`DECISIONS.md` 2026-09-23 row); joint-build seam R6 (the lead
+removes the run folder after the user's acceptance,
+`.mochiko/decisions/2026-09-29-joint-hook-delta-build-seams.md`) and R10 (uncommitted work cites
+the base commit plus a working-change fingerprint,
+`.mochiko/decisions/2026-09-29-uncommitted-evidence-citation.md`) (`DECISIONS.md` 2026-09-29 rows);
+the delivered rules `testing-end-user.evidence-capture-binding`, `.truncation-bounds` and
+`.cleanup-protocol` as migration 0036 words them (log state `sha256:73483c82…`); the wave-3
+lead's ruling that the full-log lines are withdrawn, not re-pointed. Pre-edit verbatim text:
+`git show 5558fd7:<path>` for `SKILL.md`, `references/EVIDENCE-CAPTURE.md` and
+`references/REPORT-TEMPLATES.md`. -->
+
+## [v0.116.0] SKILL.md Common Mistakes — "include log-file locations" re-keyed to the citation
+
+- **Disposition:** superseded → `Follow REPORT-TEMPLATES.md truncation rules; cite command and commit`.
+- **Tier failed:** n/a — supersession by ruling (field D4 as amended; `truncation-bounds`). The
+  cell is a member of the v0.64.0 keep-set (the Common Mistakes table).
+- **Content (superseded text, verbatim):** `| Follow REPORT-TEMPLATES.md truncation rules; include log-file locations |`
+- **Kept deliberately:** the row (mistake, what goes wrong, and "follow the truncation rules") and
+  the rest of the table.
+- **Budget:** body 9,596 → 9,593; description unchanged at 500. The payload is the wave lead's
+  ledger.
+- **Consumers assessed:** none.
+
+## [v0.116.0] REPORT-TEMPLATES Storage — "referenced by path from `evidence:` fields and truncation pointers" withdrawn
+
+- **Disposition:** superseded → "**Captured evidence** (full console output, screenshots, logs)
+  stays in the run folder, outside the report and never referenced from it
+  (`testing-end-user.cleanup-protocol`)."
+- **Tier failed:** n/a — supersession by ruling (field D4 as amended; R6; `cleanup-protocol`).
+- **Content (superseded text, verbatim):** `- **Captured evidence** (full console output,
+  screenshots, logs) lives outside the report` / ``  (`/tmp/claude/…` or the caller's scratch),
+  referenced by path from `evidence:` fields and`` / `  truncation pointers.`
+- **Kept deliberately:** the report-file and checkpoint-presentation storage bullets, verbatim.
+- **Consumers assessed:** `EVIDENCE-CAPTURE.md` is re-keyed to the run folder in the same wave.
+
+## [v0.116.0] REPORT-TEMPLATES Truncation — "full evidence always survives in a log file the report points to" and the "Full log:" pointer withdrawn
+
+- **Disposition:** superseded →
+  - "Failure evidence in the report is bounded, and the report points at no log file — a failure
+    is reproduced from the command and commit it cites (`testing-end-user.truncation-bounds`)";
+  - the excerpt bullet ends "plus the reproducing citation, e.g. `` Reproduce: pnpm test @ 3f2a1c9 ``".
+  - The uncommitted-work form (base plus fingerprint) lives in the rule and is not restated.
+- **Tier failed:** n/a — supersession by ruling:
+  - field D4 as amended: never a full-log path;
+  - R10: the uncommitted form;
+  - `truncation-bounds` (0036).
+- **Content (superseded text, verbatim):**
+
+  ```
+  Failure evidence in the report is bounded; full evidence always survives in a log file the
+  report points to:
+
+  - **Output excerpts:** if over 50 lines, include first 25 / last 25 with `[{N} lines
+    truncated]` between, plus the full-log path: `` Full log: /tmp/claude/verify-C{N}-gate-output.log ``
+  ```
+
+- **Kept deliberately:** the 50-line bound and its 25/25 split with the truncation marker, and the
+  assert-table bound, verbatim.
+- **Consumers assessed:** the checkpoint presentation's in-memory "View Details" stands; it
+  persists nothing.
+
+## [v0.116.0] REPORT-TEMPLATES `evidence:` path — the example row, its field definition and the passing-report pointer withdrawn
+
+- **Disposition:** superseded →
+  - the GUI `test_tasks` example row carries no `evidence:` key;
+  - the `test_tasks` field definition ends "`duration` — no evidence path
+    (`testing-end-user.cleanup-protocol`)";
+  - the passing-report line reads "no evidence tables, no narration, and no pointer to the captured
+    evidence (`testing-end-user.cleanup-protocol`)".
+  - The field definition (`:47`) is the example's twin and is not in S8's plan list. It is
+    included because leaving it would keep the persisted pointer the rule forbids. It is flagged
+    to the wave lead.
+- **Tier failed:** n/a — supersession by ruling (field D4 as amended; `cleanup-protocol`: locations
+  go to the lead in the checkpoint presentation, never into the persisted report).
+- **Content (superseded text, verbatim):**
+
+  ```
+       evidence: "/tmp/claude/verify-C3-gate-2-shot.png"}
+  | `test_tasks` | … `duration`, `evidence` (path) where captured |
+  evidence stays in logs/scratch, pointed to by `evidence:` fields. One sanctioned exception,
+  ```
+
+- **Kept deliberately:**
+  - the [v0.44.0] KEPT prose-on-clean check, verbatim: a passing report carries **no prose**, no
+    evidence tables, no narration;
+  - its one sanctioned exception (`## Notes of note`);
+  - the sanctioned-set paragraph.
+  Only the pointer clause inside that line leaves. The `minimalism` finding's one-line `evidence`
+  (a grep hit, not a path) stands.
+- **Consumers assessed:** the lead's verdict reads `status` and `recommendation`, never an evidence
+  path. `templates/report-format.md`'s envelope names no `evidence:` field.
+
+## [v0.116.0] EVIDENCE-CAPTURE cleanup — "Remove temp files", "Remove all temp files", "Report log locations to the user" and "Cleanup after the human reviews" superseded
+
+- **Disposition:** superseded →
+  - the Background Processes cleanup stops every tracked process and says "The evidence files stay
+    in the run folder: this skill deletes none";
+  - On Success: stop processes, keep the summary in memory, and give the lead the evidence
+    locations in the checkpoint presentation;
+  - On Failure: stop processes, **keep logs for debugging**, and give the lead the log locations in
+    the checkpoint presentation, never in the persisted report.
+- **Tier failed:** n/a — supersession by ruling (R6: the lead removes the folder after acceptance;
+  `cleanup-protocol`: this skill deletes none).
+- **Content (superseded text, verbatim):**
+
+  ```
+  # Remove temp files
+  rm -f /tmp/claude/verify-{task}-*.log
+  rm -f /tmp/claude/verify-{task}-pids.txt
+  2. Remove all temp files
+  3. Report log locations to the user
+  4. Cleanup after the human reviews
+  ```
+
+- **Kept deliberately:**
+  - process cleanup on pass or fail, with the PID-file kill loop;
+  - keep logs on failure;
+  - the On Abort steps, verbatim.
+- **Consumers assessed:** `testing-end-user.cleanup-protocol` (0036) is the rule this reference now
+  matches.
+
+## [v0.116.0] EVIDENCE-CAPTURE scratch paths — `/tmp/claude/` and the "ephemeral … cleaned up after the checkpoint" note superseded by the run folder
+
+- **Disposition:** superseded →
+  - the note reads "**Evidence goes to the run folder.** `$RUN` below is the run folder the brief
+    names, `.mochiko/runs/<run-id>/` of the main tree — never a system temp folder or any other
+    home …";
+  - the 15 surviving path lines read `$RUN/verify-…`.
+  - The other two `/tmp/claude/` lines were the `rm -f` pair recorded in the cleanup entry above.
+- **Tier failed:** n/a — supersession by ruling (field D4 as amended: the run folder is the
+  declared raw-output home; `evidence-capture-binding` (0036)).
+- **Content (superseded text, verbatim):** `> **Scratch paths are role-neutral.** Evidence files use
+  a `verify-` prefix under a scratch directory (`/tmp/claude/`), naming the *work* (verification),
+  not any agent. These are ephemeral runtime artifacts, cleaned up after the checkpoint.` · the
+  `/tmp/claude/` prefix at the former `:29, :35, :70, :71, :87, :98, :155–157, :173, :182, :185,
+  :249, :266, :267`
+- **Kept deliberately:**
+  - the role-neutral `verify-` prefix and its reason;
+  - every capture mechanic;
+  - the file names.
+  Capture files stay raw output (`.log`, `.txt`, `.png`), never `.md`. The test fixture
+  `/tmp/watcher-test/` is the test's subject, not evidence, and stands.
+- **Consumers assessed:** the seat reminder names the same run folder (`seat-reminder.sh`, same
+  wave).
+
 ## [v0.107.0] two body lines telling the reader that rules live "in the schema"
 
 - **Disposition:** superseded → "delivered by `mochiko-cli`", ids unchanged

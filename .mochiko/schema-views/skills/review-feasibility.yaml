@@ -7,7 +7,9 @@ conditions:
   store_delta:
     values: presence
     resolution: surface-presence
-    note: a drafted architecture-store delta carried in the design-phase package.
+    note: >-
+      the run's `proposed` architecture-store changes, drawn in its architecture.md and read in
+      the pinned-base diff.
 sections:
   - id: review-feasibility.sec.independence
     title: Independence — grader, never author
@@ -59,7 +61,7 @@ sections:
         class: must
         kind: gate
         text: >-
-          The architecture pass is mandatory on a drafted store delta — A1–A3 per
+          The architecture pass is mandatory on a run's proposed store changes — A1–A3 per
           `references/FEASIBILITY-LENS.md`.
         when: {store_delta: present}
         pointer: references/FEASIBILITY-LENS.md

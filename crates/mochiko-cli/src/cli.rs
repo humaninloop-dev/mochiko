@@ -83,17 +83,32 @@ enum Command {
     /// Answer a `PreToolUse` hook: allow the write, or deny it with the reason.
     ///
     /// The payload arrives on stdin because the shipped wrapper is a pipe holding no rule of its
-    /// own. Only this subcommand can exit [`crate::hook::EXIT_CONFORMANCE`].
+    /// own. Only this subcommand can exit [`crate::hook::EXIT_CONFORMANCE`]. `--path` with
+    /// `--content -` is the direct dry run: the verdict the hook would give a `Write` of the body
+    /// on stdin to that path, with no payload to build (field review S15).
     Check {
         /// Read the raw `PreToolUse` payload from stdin. `-` is the only accepted value: the
         /// flag names its source rather than defaulting to it, so a future second source cannot
         /// silently change what an existing call reads.
-        #[arg(long, value_name = "SOURCE")]
-        hook_json: String,
+        #[arg(
+            long,
+            value_name = "SOURCE",
+            conflicts_with_all = ["path", "content"],
+            required_unless_present = "path"
+        )]
+        hook_json: Option<String>,
+        /// The path a draft would be written to, for the dry run. A relative path resolves from
+        /// the working directory, against the tree it sits in.
+        #[arg(long, value_name = "PATH", requires = "content")]
+        path: Option<PathBuf>,
+        /// Read the draft body from stdin, for the dry run. `-` is the only accepted value.
+        #[arg(long, value_name = "SOURCE", requires = "path")]
+        content: Option<String>,
     },
     /// Render a path's declared home: its file set, template bindings and budgets.
     Home {
-        /// A repository-relative path, or an absolute one under the working directory.
+        /// A path, relative to the working directory or absolute. It resolves against the tree
+        /// it sits in — the nearest ancestor holding `.git` — never against the working directory.
         path: PathBuf,
     },
     /// Work on the migration log itself.
@@ -219,7 +234,24 @@ pub fn dispatch_io(
         ),
         Command::Template { name, check } => run_template(&dir, &name, check, out, err),
         Command::Doc { name } => run_doc(&dir, cli.plugin_root.as_deref(), &name, out, err),
-        Command::Check { hook_json } => run_check(&dir, &hook_json, input, out, err),
+        Command::Check {
+            hook_json: Some(hook_json),
+            ..
+        } => run_check(&dir, &hook_json, input, out, err),
+        Command::Check {
+            path: Some(path),
+            content: Some(content),
+            ..
+        } => run_dry_run(&dir, &path, &content, input, out, err),
+        // clap requires one form or the other, whole; this arm is unreachable by construction and
+        // answers as the usage error it would be.
+        Command::Check { .. } => {
+            let _ = writeln!(
+                err,
+                "error: check takes --hook-json -, or --path <PATH> with --content -"
+            );
+            2
+        }
         Command::Home { path } => run_home(&dir, cli.plugin_root.as_deref(), &path, out, err),
         Command::Migrate { action } => match action {
             MigrateAction::Validate { report } => {
@@ -756,6 +788,54 @@ fn run_check(
     outcome.exit_code()
 }
 
+/// Answer the hook's verdict for a draft body, with no payload to hand-build (field review S15).
+///
+/// The body on stdin is decided as the `Write` a seat is about to make: the same decision, the
+/// same one-line JSON, the same exit-code contract as `--hook-json` (see [`run_check`]). A relative
+/// `path` resolves from this process's working directory.
+fn run_dry_run(
+    dir: &Path,
+    path: &Path,
+    content: &str,
+    input: &mut dyn Read,
+    out: &mut dyn Write,
+    err: &mut dyn Write,
+) -> i32 {
+    if content != "-" {
+        let _ = writeln!(
+            err,
+            "error: --content takes '-' (the draft body is read from stdin)"
+        );
+        return 2;
+    }
+    let mut body = String::new();
+    if input.read_to_string(&mut body).is_err() {
+        let _ = writeln!(err, "error: the draft body could not be read from stdin");
+        return 2;
+    }
+    let Ok(cwd) = std::env::current_dir() else {
+        let _ = writeln!(err, "error: the working directory could not be read");
+        return 2;
+    };
+    let replay = match load_for_delivery(dir, err) {
+        Ok(replay) => replay,
+        Err(code) => return code,
+    };
+    let payload = crate::hook::Payload {
+        hook_event_name: Some("PreToolUse".to_string()),
+        tool_name: Some("Write".to_string()),
+        cwd: Some(cwd.display().to_string()),
+        tool_input: crate::hook::ToolInput {
+            file_path: Some(path.display().to_string()),
+            content: Some(body),
+            ..Default::default()
+        },
+    };
+    let outcome = crate::hook::decide(&replay.state, &payload);
+    let _ = writeln!(out, "{}", crate::hook::render(&outcome));
+    outcome.exit_code()
+}
+
 /// Render one path's declared home.
 fn run_home(
     dir: &Path,
@@ -769,6 +849,13 @@ fn run_home(
         Err(code) => return code,
     };
     let ctx = context(&replay, plugin_root);
-    let _ = write!(out, "{}", render::home_view(&replay.state, path, &ctx));
+    let cwd = std::env::current_dir().ok();
+    let located =
+        crate::home::absolute(path, cwd.as_deref()).and_then(|abs| crate::home::locate(&abs));
+    let _ = write!(
+        out,
+        "{}",
+        render::home_view(&replay.state, path, located.as_ref(), &ctx)
+    );
     0
 }

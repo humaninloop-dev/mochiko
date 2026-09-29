@@ -196,7 +196,8 @@ sections:
         text: >-
           Capture evidence per `references/EVIDENCE-CAPTURE.md` — console capture,
           background-process PID tracking, timeout handling, and the four evidence types
-          (`console` / `screenshot` / `logs` / `timing`).
+          (`console` / `screenshot` / `logs` / `timing`) — into the run folder the brief names,
+          `.mochiko/runs/<run-id>/`, never a system temp folder or any other home.
         pointer: references/EVIDENCE-CAPTURE.md
         anchor: 2026-08-11 guardrails-vs-detail
       - id: testing-end-user.sanctioned-set-closure
@@ -213,9 +214,12 @@ sections:
         labels: [reporting]
         class: must
         text: >-
-          Failure evidence in the report is bounded with full-log pointers per the truncation
-          rules in `references/REPORT-TEMPLATES.md`; the checkpoint presentation is in-memory and
-          never persisted.
+          Failure evidence in the report is bounded per the truncation rules in
+          `references/REPORT-TEMPLATES.md` — the decisive excerpt with the command that
+          reproduces it and its commit, or for uncommitted work the base commit plus the
+          working-change fingerprint, computed when the report is written by the method the brief
+          carries; never a full-log path, since the run folder goes at acceptance. The checkpoint
+          presentation is in-memory and never persisted.
         pointer: references/REPORT-TEMPLATES.md
       - id: testing-end-user.cleanup-protocol
         labels: [evidence]
@@ -223,8 +227,9 @@ sections:
         kind: duty
         text: >-
           Cleanup per `references/EVIDENCE-CAPTURE.md`: background processes are stopped pass or
-          fail; on failure keep the logs for debugging, report their locations, and clean up only
-          after the human reviews.
+          fail; evidence files stay in the run folder until the lead removes it after the run's
+          final acceptance — this skill deletes none — and their locations go to the lead in
+          the checkpoint presentation, never into the persisted report.
         pointer: references/EVIDENCE-CAPTURE.md
       - id: testing-end-user.measured-assert-evidence
         labels: [evidence]
@@ -237,6 +242,15 @@ sections:
           captured as evidence. It stays a custom assertion for human evaluation; classification
           is unchanged.
         anchor: 2026-09-19 impeccable-design-integration D10
+      - id: testing-end-user.pre-write-dry-run
+        labels: [reporting]
+        class: must
+        kind: duty
+        text: >-
+          Dry-run the report before its Write: pipe the draft to `mochiko-cli check --path <report
+          path> --content -`, fix what a deny names, then write. A deny on the Write itself marks
+          a skipped dry run, not an honest draft.
+        anchor: 2026-09-23 hook-enforcement-field-review D8
   - id: testing-end-user.sec.reserved
     title: Reserved — the human's gate
     intent: Decisions this skill never takes.

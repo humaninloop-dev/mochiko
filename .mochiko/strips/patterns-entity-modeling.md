@@ -6,6 +6,205 @@ Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-suc
 `.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4;
 ratified 2026-07-24).
 
+<!-- Wave context: the joint hook/delta build, wave 3 (v0.116.0) — `data-model.md` is a product
+baseline edited in place, one `###` entry per entity. Rulings for every [v0.116.0] entry below:
+the delta record `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D1 (baselines
+edited in place, no per-feature copies) and D2 (a lifecycle marker per entry, keyed by the run's
+owner) (`DECISIONS.md` 2026-09-24 row); census row S1 (the product `data-model.md`, one `###`
+entry per entity) and H5 (the spec home drops `data-model.md`),
+`.mochiko/decisions/2026-09-29-census-table-ratified.md`, rows in
+`.mochiko/brainstorms/hook-enforcement-field-review/reports/w2-census-table.md` (`DECISIONS.md`
+2026-09-29 row); the wave-3 lead's rulings on S8's Q2 (option A, the linter regex) and on P8's C1
+(the linter docstring and message). The v0.27.0 KEPT protected core — the template, the brownfield
+status table and the validation-script paragraph — and the v0.64.0 checklist keep-set leave only
+as the supersessions below. Pre-edit verbatim text:
+`git show 5558fd7:plugins/mochiko/skills/patterns-entity-modeling/SKILL.md`. -->
+
+## [v0.116.0] validate-model.py docstring, format comments and "no entities" message — `## Entity:` and the status tags re-keyed to `### Entity:`
+
+- **Disposition:** superseded → the docstring lists `### Entity: EntityName` and the unchanged
+  `### EntityName (simpler format)`; the two comments naming the format read `### Entity:`; the
+  message reads `Expected '### Entity: Name' format.`
+- **Tier failed:** n/a — supersession by ruling (census S1; delta D2 — the marker replaces the
+  status tags; the lead's ruling on P8's C1).
+- **Content (superseded text, verbatim):**
+
+  ```
+      - ## Entity: EntityName
+      - ## Entity: EntityName [NEW]
+      - ## Entity: EntityName [EXTENDS EXISTING]
+      # Pattern for ## Entity: Name [STATUS] format
+      # If no entities found with ## Entity: format, try summary table
+          issues.append("No entities found in document. Expected '## Entity: Name' format.")
+  ```
+
+- **Kept deliberately:** the script's check logic, untouched, including the optional `[STATUS]`
+  capture and the status-keyed skips: an entity with no tag reads `NEW`, so they never fire on the
+  new template. Pruning them is outside this row.
+- **Consumers assessed:** the SKILL.md Validation Script paragraph and the template, both re-keyed
+  in the same wave.
+
+## [v0.116.0] validate-model.py entity regex — `^##\s+Entity:` superseded by `^###\s+Entity:`
+
+- **Disposition:** superseded → `entity_pattern = r"^###\s+Entity:\s+(\w+)(?:\s+\[([^\]]+)\])?"`.
+  Only the heading level changes. The self-check now reports a `##` entity, which the gate reads
+  as section text rather than an entry.
+- **Tier failed:** n/a — supersession by ruling (census S1; the lead's ruling on S8's Q2).
+- **Content (superseded text, verbatim):** `entity_pattern = r"^##\s+Entity:\s+(\w+)(?:\s+\[([^\]]+)\])?"`
+- **Proof, run on scratch copies before the regex landed:**
+  - new template × new regex: `['User', 'Session']`, 8/8, exit 0.
+  - new template × old regex: `['User', 'User']`, 7/8, with `required_attributes` failing.
+  - old template × new regex: `['User', 'User', 'User', 'Session']` through the summary fallback,
+    7/8, exit 1.
+  - old template × old regex: `['User', 'Session']`, 8/8.
+- **Kept deliberately:** everything else in the script.
+- **Consumers assessed:** only this skill ships or runs the script.
+
+## [v0.116.0] RELATIONSHIP-PATTERNS join-entity example — `## Entity: ProjectMember [NEW]` re-levelled
+
+- **Disposition:** superseded → `### Entity: ProjectMember`, then `**Lifecycle:** proposed (<key>)`,
+  with `#### Attributes` and `#### Constraints`.
+- **Tier failed:** n/a — supersession by ruling (census S1; delta D2).
+- **Content (superseded text, verbatim):** `## Entity: ProjectMember [NEW]` · `### Attributes` ·
+  `### Constraints`
+- **Kept deliberately:** the example's attribute table and its uniqueness constraint.
+- **Consumers assessed:** none outside this skill. `## Entity Relationships` (`:156`) is a section
+  heading, not an entry, and it stands.
+
+## [v0.116.0] Quality Checklist — "Brownfield status indicated for each entity" re-keyed to the lifecycle marker
+
+- **Disposition:** superseded → `- [ ] Each entity written or amended carries the run's lifecycle marker`.
+- **Tier failed:** n/a — supersession by ruling (delta D1/D2; census S1). The line is a member of
+  the v0.64.0 keep-set.
+- **Content (superseded text, verbatim):** `- [ ] Brownfield status indicated for each entity`
+- **Kept deliberately:** the checklist's other nine lines.
+- **Consumers assessed:** none outside this skill.
+
+## [v0.116.0] Brownfield Entity Status table — the four tags superseded by the lifecycle marker
+
+- **Disposition:** superseded → `### Brownfield Entities`, which maps the old tags onto the new
+  model:
+  - `[NEW]` becomes a new entry;
+  - `[EXTENDS EXISTING]` becomes the existing entry amended;
+  - `[REUSES EXISTING]` becomes no write;
+  - the entry's lifecycle marker carries which it is;
+  - `[RENAMED]`'s collision rule survives as one line: a new entity whose name would collide takes
+    a new name, and its entry records the reason.
+- **Tier failed:** n/a — supersession by ruling (delta D1/D2). The table was in the v0.27.0 KEPT
+  core.
+- **Content (superseded text, verbatim):**
+
+  ```
+  ### Brownfield Entity Status
+
+  When modeling in brownfield projects:
+
+  | Status | Meaning | Action |
+  |--------|---------|--------|
+  | `[NEW]` | Entity doesn't exist | Create full definition |
+  | `[EXTENDS EXISTING]` | Adding to existing entity | Document new fields only |
+  | `[REUSES EXISTING]` | Using existing as-is | Reference only |
+  | `[RENAMED]` | Avoiding collision | Document new name + reason |
+  ```
+
+- **Kept deliberately:** each status's meaning, re-expressed as what the run writes, and the
+  collision-rename rule with its recorded reason.
+- **Consumers assessed:** `brownfield-integration` owns collision detection. It names no tag from
+  this table and is unchanged.
+
+## [v0.116.0] Template Entity Summary — the Status column superseded
+
+- **Disposition:** superseded → `| Entity | Attributes | Relationships |`. The example counts now
+  agree with the entity tables shown.
+- **Tier failed:** n/a — supersession by ruling (delta D2 — the status is each entry's
+  `**Lifecycle:**` field).
+- **Content (superseded text, verbatim):**
+
+  ```
+  | Entity | Attributes | Relationships | Status |
+  |--------|------------|---------------|--------|
+  | User | 8 | 3 | [EXTENDS EXISTING] |
+  | Session | 5 | 1 | [NEW] |
+  ```
+
+- **Kept deliberately:** the summary table itself.
+- **Consumers assessed:** the linter's summary-table fallback runs only when no entity heading is
+  found, and it is unchanged.
+
+## [v0.116.0] Template entity tags and "Existing Attributes (Not Modified)" — superseded by one full entry per entity
+
+- **Disposition:** superseded → the User entry carries its whole attribute table (`id`, `email`,
+  `passwordHash`, `lastLoginAt`, `createdAt`, `updatedAt`) under a `**Lifecycle:**` line. A
+  product entry holds the entity; the pinned-base diff holds the change. Its lead line no longer
+  narrates the change ("A registered account holder").
+- **Tier failed:** n/a — supersession by ruling (delta D1 — prior text is never kept beside the
+  new; D2).
+- **Content (superseded text, verbatim):**
+
+  ```
+  ## Entity: User [EXTENDS EXISTING]
+
+  Existing entity extended with authentication fields. **Traceability:** FR-001, FR-002, US#1
+  ...
+  ### Existing Attributes (Not Modified)
+
+  | Attribute | Type | Sensitivity | Description |
+  |-----------|------|-------------|-------------|
+  | id | UUID | Internal | Existing primary key |
+  | email | Email | Confidential | Existing email field |
+  ...
+  ## Entity: Session [NEW]
+  ```
+
+- **Kept deliberately:** every attribute, its sensitivity class, both Sensitivity Details rows,
+  the traceability lines and the Session relationship.
+- **Consumers assessed:** the linter's `EXTENDS EXISTING` skip no longer applies. User is checked
+  for id and audit fields and passes, per the proof above.
+
+## [v0.116.0] Template re-levelled — `# Data Model: {feature_id}` and `## Entity:` superseded by `# Data Model` and `### Entity:` under `## Entities`
+
+- **Disposition:** superseded → the title `# Data Model`, a `## Entities` section, one
+  `### Entity: <Name>` entry per entity with its first line `**Lifecycle:** proposed (<key>)`, and
+  the entity's tables under `####`.
+- **Tier failed:** n/a — supersession by ruling (census S1 — one `###` entry per entity, bounded
+  per entry; delta D1 — one product file, not a per-feature copy; delta D2).
+- **Content (superseded text, verbatim):** `# Data Model: {feature_id}` · `## Entity: User [EXTENDS
+  EXISTING]` · `## Entity: Session [NEW]` · `### Attributes` · `### Relationships` ·
+  `### Sensitivity Details`
+- **Kept deliberately:** the v0.27.0-KEPT template's substance: the summary, the handling defaults
+  stated once, the per-attribute Sensitivity column, the Details rows, and the trailing
+  Relationships / State Machines / Validation Rules sections. Only heading levels, the marker line
+  and the tags moved.
+- **Consumers assessed:** `patterns-api-contracts` reads entity names, not heading levels.
+  `review-plan-artifacts`'s data-model checklist grades content, not levels. Both are unchanged.
+
+## [v0.116.0] Validation Script path — `.mochiko/specs/<feature>/data-model.md` re-pointed
+
+- **Disposition:** superseded → `python scripts/validate-model.py .mochiko/product/data-model.md`.
+- **Tier failed:** n/a — supersession by ruling (delta D1; census H5).
+- **Content (superseded text, verbatim):** `python scripts/validate-model.py .mochiko/specs/<feature>/data-model.md`
+- **Kept deliberately:** the v0.27.0-KEPT validation-script scope paragraph, verbatim.
+- **Consumers assessed:** none.
+
+## [v0.116.0] Where the Artifact Lives — "whichever home the run owns — the spec, the feature, the epic or the product baseline" superseded
+
+- **Disposition:** superseded → "`data-model.md` is a product baseline,
+  `.mochiko/product/data-model.md`, edited in place: a run writes or amends its entities there, and
+  the change is the diff against the run's pinned base." The same edit adds one pure-addition
+  pointer line to `impl.baseline-entry-grammar` (S8's Q8).
+- **Tier failed:** n/a — supersession by ruling (delta D1 and D4 — the feature home loses its
+  baseline copies; D6(b) — an epic writes shared baselines in place; census H5).
+- **Content (superseded text, verbatim):** `` `data-model.md` is a declared file in whichever home
+  the run owns — the spec, the feature, the epic
+  or the product baseline. Render `mochiko-cli home <that path>` for the file you are about to write,
+  before the first write, and hold `` …
+- **Kept deliberately:** the obligations to render `mochiko-cli home` before the first write, hold
+  its file set and bound, and never copy a sibling file, plus the refused-write paragraph, verbatim.
+- **Budget:** body 14,355 → 14,592 against 16,835; the description is unchanged at 497. Both are
+  inside budget.
+- **Consumers assessed:** `patterns-api-contracts` and `patterns-technical-decisions` take the same
+  pointer in the same wave.
+
 ## [v0.91.0] Ladder blockquote re-keyed: "the plan ladder" / "the plan proposal" → design — plan-stage retirement D1
 
 - **Disposition:** superseded → the same blockquote naming the design ladder and the

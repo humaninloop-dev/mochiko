@@ -1,0 +1,102 @@
+grammar: 1
+id: 0035-home-sets-after-delta
+sequence: 35
+intent: >-
+  The feature, epic and product-lane home sets after delta D4, per the ratified census table (rows
+  H1–H4): the baseline copies and baseline-delta.md withdrawn, the epic's implement-log.md
+  withdrawn per field review D6, the lane run's signed drawing declared, the feature gates file at
+  a whole-file 300, and the two contracts homes emptied.
+anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D4
+hash: sha256:c71be711c7c26f4d1b070a1fd6354dd04285b00c7df0cc4065693aff8a1b6a93
+changes:
+  - op: replace-document
+    kind: home
+    name: feature
+    content:
+      home: feature
+      title: One capability's work home
+      path: [.mochiko, features, <FEAT-ID>]
+      bounds: template
+      deliverables:
+        - file: tasks.md
+          template: tasks
+        - file: plan.md
+          max_lines: 300
+        - file: requirements.md
+          max_lines: 300
+        - file: design-closure.md
+          max_lines: 300
+        - file: sufficiency-report.md
+          max_lines: 300
+        - file: architecture.md
+          max_lines: 300
+        - file: proposal.md
+          max_lines: 300
+        - file: contest-brief.md
+          max_lines: 300
+        - file: gates.md
+          max_lines: 300
+      reports:
+        envelope: report-envelope
+        by_type: {}
+  - op: replace-document
+    kind: home
+    name: epic
+    content:
+      home: epic
+      title: One epic's home
+      path: [.mochiko, epics, <EPIC-ID>]
+      bounds: template
+      deliverables:
+        - file: manifest.md
+          max_lines: 300
+        - file: proposal.md
+          max_lines: 300
+        - file: contest-brief.md
+          max_lines: 300
+        - file: architecture.md
+          max_lines: 300
+        - file: build-order.md
+          max_lines: 300
+        - file: screens-and-flows.md
+          max_lines: 300
+      reports:
+        envelope: report-envelope
+        by_type: {}
+  - op: replace-document
+    kind: home
+    name: product-lane
+    content:
+      home: product-lane
+      title: One product-lane run
+      path: [.mochiko, product, <slug>]
+      bounds: whole-file
+      deliverables:
+        - file: sufficiency-report.md
+          max_lines: 300
+        - file: architecture.md
+          max_lines: 300
+      reports:
+        envelope: report-envelope
+        by_type: {}
+  - op: replace-document
+    kind: home
+    name: feature-contracts
+    content:
+      home: feature-contracts
+      title: >-
+        Interface contracts under a capability — withdrawn by delta D4, see product-contracts
+      path: [.mochiko, features, <FEAT-ID>, contracts]
+      bounds: elsewhere
+      bounds_cite: the contract's own interface, per mochiko:patterns-api-contracts
+      deliverables: []
+  - op: replace-document
+    kind: home
+    name: epic-contracts
+    content:
+      home: epic-contracts
+      title: Interface contracts under an epic — withdrawn by delta D4, see product-contracts
+      path: [.mochiko, epics, <EPIC-ID>, contracts]
+      bounds: elsewhere
+      bounds_cite: the contract's own interface, per mochiko:patterns-api-contracts
+      deliverables: []

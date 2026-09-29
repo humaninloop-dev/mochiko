@@ -1,7 +1,7 @@
 # Governance Ledger
 
 **Governance Floor:** production (asserted) · **Depth level:** high (user-declared, one-way; `high` terminal — GI-021, minted at AM-1 discharging the legacy-default pointer; set up under the single floor pre-adaptive-depth, already conformed to full depth #7 fold 2026-08-11) · **Modules:** compliance: none (GI-001 negatives confirmed, incl. no-UI) · template: knowledge-management (core + CHANGELOG elective) · release-gates · **Trace:** GI-001 (fact profile) · GI-021 (depth level)
-**Version:** 3.2.0 (must match the region stamp)
+**Version:** 3.2.1 (must match the region stamp)
 
 ## Waivers
 
@@ -399,27 +399,34 @@ any rule is where drift starts. User ruling, dimension 9: "leave these out."
   recorded admission for two plugin-shipped hooks beyond the dependency halt: **(1)** a
   `PreToolUse` gate on `Write|Edit|Bash|PowerShell` that pipes the payload to `mochiko-cli check
   --hook-json -` and denies a write failing a **mechanical** check — path against a declared
-  home's pattern, with a path under `<root>/.mochiko/` that resolves to no declared home denied
-  (the closed world) · file name against the home's declared set, and a `runs/<run-id>/` name
-  against the run-key form · required `##` headings in the declared order, with an undeclared `##`
-  denied · required frontmatter fields and enum values · declared placeholder tokens ·
-  per-section and per-entry line budgets · a `.md` opening with report frontmatter under
-  `.mochiko/runs/` or the declared `prototype/`, `inputs/`, `research/`, `referents/`
-  sub-directories (the report sniff) · a shell command placing a declared-home path in a write
-  position (`hook-enforcement-field-review` record D5) · on a `runs/` write, the ignore guard and
-  the worktree test; **(2)** a `SubagentStart` hook injecting one self-identified
-  reminder line per seat (D1b as amended 2026-09-13, superseding the `Read`-time form). Every
-  check is decidable by string and count against data the log carries and the repository's own
-  layout, with no judgment — the `home` document kind and each template's conformance block, plus
-  yes/no facts about the repository: where its tree root is (the nearest ancestor holding `.git`),
-  whether `.gitignore` carries `.mochiko/runs/` (the ignore guard), and whether a path sits under a
-  git worktree (read from its `.git` pointer file). **Narrow supersession:**
-  `cli-schema-delivery` D7's "behavior-gating hooks are declined" stands for **judgment and sequencing**; the gate holds one
-  write until it conforms — or, over an existing file already failing a relaxable measure, until
-  the write does not worsen that measure — and a passing draft pays nothing.
-- **Stated limits of the gate** (`hook-enforced-artifact-schema` record § Build trail; AM-5):
-  repo-root writes uncaught · three shell shapes evade the write-position parse · `PowerShell`
-  routing unverifiable on macOS · hooks-disabled projects keep the procedural ceremony only.
+  home's pattern, with a path under `<root>/.mochiko/` that resolves to no declared home, or to a
+  sub-directory its home does not declare, denied (the closed world) · file name against the
+  home's declared set, and a `runs/<run-id>/` name against the run-key form · required `##`
+  headings in the declared order, with an undeclared `##` denied · required frontmatter fields and
+  enum values · declared placeholder tokens · per-section, per-entry and whole-file line budgets ·
+  a `.md` opening with report frontmatter under `.mochiko/runs/` or in a declared sub-directory, at
+  a level no home document governs (`features/desk/` itself included) (the report sniff) · a shell
+  command placing a declared-home path in a write position (`hook-enforcement-field-review` record
+  D5) · on a `runs/` write, the ignore guard and the worktree test; **(2)** a `SubagentStart` hook
+  injecting one self-identified reminder line per seat (D1b as amended 2026-09-13, superseding the
+  `Read`-time form). Every check is decidable by string and count against data the log carries and
+  the repository's own layout, with no judgment — the `home` document kind and each template's
+  conformance block, plus yes/no facts about the repository: where its tree root is (the nearest
+  ancestor holding `.git`), whether `.gitignore` carries `.mochiko/runs/` (the ignore guard), and
+  whether a path sits under a git worktree (read from its `.git` pointer file). **Narrow
+  supersession:** `cli-schema-delivery` D7's "behavior-gating hooks are declined" stands for
+  **judgment and sequencing**; the gate holds one write until it conforms — or, over an existing
+  file already failing a relaxable measure, until the write does not worsen that measure — and a
+  passing draft pays nothing.
+- **Stated limits of the gate** (`hook-enforced-artifact-schema` record § Build trail; AM-5;
+  re-pointed at v3.2.1 against the built binary): the root operating docs are no home — only the
+  report sniff reaches them · the shell scan is best-effort, its open shapes disclosed in
+  `crates/mochiko-cli/src/shell.rs` ("What the scan cannot see") and the joint build log
+  (`hook-enforcement-field-review/build-log.md`) · a relative write from a working
+  directory inside a home is closed at the decision but open end to end, because
+  `plugins/mochiko/hooks/hooks.json` narrows the shell arms to commands that name `.mochiko` · a
+  tree with no `.git` has no home tree and no gate · `PowerShell` routing unverifiable on macOS ·
+  hooks-disabled projects keep the procedural ceremony only.
 - **The bright-line argument, clause (iv) (D1/D4):** mechanical conformance is structural validity
   of an artifact against the store's own declared shape — the same class as clause (ii)'s hard
   constraints at migration apply, a compiler on its own language, applied at write time to the
@@ -442,56 +449,51 @@ any rule is where drift starts. User ruling, dimension 9: "leave these out."
   advisory at create time, deny reserved for templated per-section checks — would amend D1/D6 in
   the brainstorm record and was not taken.
 - **First-touch amnesty (D4e, as corrected at the verify pass against the built binary; file-set
-  limb corrected at AM-5 on the wave-4 measurement):** on any write over an existing file, `Write`
-  and `Edit` alike, the on-disk file is the baseline. Where the baseline already fails a
+  limb corrected at AM-5 on the wave-4 measurement):** on any write over an existing file a home
+  measures — a declared name, an undeclared name in a declared home, or a `reports/` file —
+  `Write` and `Edit` alike, the on-disk file is the baseline. Where the baseline already fails a
   **relaxable** measure — file set (an undeclared name in a declared home), shape (headings ·
   frontmatter · placeholders), or budget — a write that does not worsen that measure is allowed;
   **path is not a relaxable measure** — inside `<root>/.mochiko/` a write resolving to no declared
-  home is denied whether or not the file exists (the closed world, Reach below); outside it a
-  `.md` write is gated only when its content opens with mochiko report frontmatter or a template's
-  `## Header` signature. The binary names a standing file-set,
+  home, or to a sub-directory its home does not declare, is denied whether or not the file exists
+  (the closed world, Reach below); outside it a write of any extension is gated only when its
+  content opens with mochiko report frontmatter. The binary names a standing file-set,
   shape, or budget violation in `additionalContext`. **Known gap at AM-3, corrected at wave 4
   (v0.109.0):** the AM-3 verify pass read an `Edit` over an existing undeclared name as a bare
   allow; measured at wave 4, the pre-fix binary denied both a `Write` and an `Edit` over an
   existing undeclared name at exit 4 — no allow existed — and the file-set limb was built at wave 4
   as ratified: an existing undeclared name is editable with the name in `additionalContext`, a new
-  undeclared name still denies. An existing file in a declared home is never wedged, and the
-  rewrite that fixes one is itself an allowed non-worsening write.
+  undeclared name still denies. No existing file a home measures is ever wedged by a relaxable
+  measure, and the rewrite that fixes one is itself an allowed non-worsening write.
 - **Reach of the gate (D9, review C4; re-worded at AM-5 for the closed world —
   `hook-enforcement-field-review` D3/D4/D5/D7 as amended):** homes resolve against the tree root —
   the nearest ancestor holding `.git`, a directory or a worktree's pointer file — and only
-  `<root>/.mochiko/` is a home tree; a nested `.mochiko/` (fixtures, eval workspaces) is never a
-  home. Inside `<root>/.mochiko/` the world is closed: a write resolving to no declared home is
-  denied, and the deny names the run folder. `.mochiko/runs/<run-id>/` is the raw-output home: its
-  name must match the run-key form; a write there is refused unless `.gitignore` carries
-  `.mochiko/runs/`; the report sniff refuses a `.md` there, and in the declared `prototype/`,
-  `inputs/`, `research/`, and `referents/` sub-directories, when it opens with report frontmatter;
-  shell writes are admitted there for non-`.md` targets only; the folder is always the main
+  `<root>/.mochiko/` is a home tree; a nested `.mochiko/` (a fixture or an eval workspace, without
+  its own `.git`) is never a home. Inside `<root>/.mochiko/` the world is closed: a write resolving
+  to no declared home, or to a sub-directory its home does not declare, is denied, and the deny
+  names the run folder. `.mochiko/runs/<run-id>/` is the raw-output home: its name must match the
+  run-key form; a write there is refused unless `.gitignore` carries `.mochiko/runs/`; the report
+  sniff refuses a `.md` there, and in a declared sub-directory, at a level no home document governs
+  (`features/desk/` itself included), when it opens with report frontmatter; shell writes are
+  admitted there for named non-`.md` files only, a directory target refused (the no-stat edge
+  disclosed at `crates/mochiko-cli/src/hook.rs`, `carve_refusal`); the folder is always the main
   tree's, so a write to a worktree's own `.mochiko/runs/` is refused with the main tree's path;
-  deletion is procedural, a landing step at acceptance. The shell leg treats a home path as a
-  write target only in a write position. Outside `<root>/.mochiko/` a `.md` write is gated only
-  when its content opens with mochiko report frontmatter or a template's `## Header` signature — a
-  plain `.md` elsewhere is not mochiko's business. `NotebookEdit` and any MCP file writer a
-  consumer enables are knowingly outside the matcher set; escapes past that check and hook-disabled
-  consumers are the reviewer's under the author≠grader ceremony. The gate is a floor, not the
-  whole fence.
+  deletion is procedural, a landing step at acceptance. The shell leg treats a home path as a write
+  target only in a write position. Outside `<root>/.mochiko/` a write of any extension is gated
+  only when its content opens with mochiko report frontmatter — a plain file elsewhere is not
+  mochiko's business. `NotebookEdit` and any MCP file writer a consumer enables are knowingly
+  outside the matcher set; escapes past that check and hook-disabled consumers are the reviewer's
+  under the author≠grader ceremony. The gate is a floor, not the whole fence.
 - **What the gate reads (review C7; widened at AM-5):** the raw `PreToolUse` payload —
-  `tool_input.content`, `old_string`/`new_string`, `command` — and, on `Edit`, the on-disk file,
-  to apply the edit in memory; the ancestor walk for `.git` that finds the tree root; on a `runs/`
-  write, `.gitignore`; and a worktree's `.git` pointer file, to name the main tree's run folder. It
-  reads them against the log the plugin carries. Nothing leaves the machine.
-- **Build state at AM-5 (2026-09-24) — the admission's check list and the amnesty, reach and reads
-  paragraphs above read ahead of the binary** (user-ruled road B, `Contested` — chosen for
-  simplicity against the lead's recommended dormant-clause road, the trade-off put). At
-  ratification the field-review wave 1 is unbuilt, and the shipped binary (`mochiko-cli` 0.2.0)
-  behaves per the AM-3 text — an undeclared path under `.mochiko/` passes, home resolution is
-  cwd-relative, the shell leg scans by substring — until the field-review build ships; the AM-3
-  wording is in git history at `8f4e5ab`. **Strike trigger:** this line and the
-  `.claude/rules/mochiko/rust-cli.md` bright-line build-state pointer are struck at the
-  `plugin.json` bump that carries both the wave-1 binary range and the wave-2 home migration
-  (`runs/`, `archive/`, `strips/`, `schema-views/` declared), never at the wave-1 tag alone; that
-  strike PATCH checks the re-worded paragraphs against what was built and corrects any drift in the
-  same amendment-log row.
+  `tool_input.content`, `old_string`/`new_string`, `command`, and `cwd`, against which a relative
+  path resolves — and the on-disk file: on `Edit`, to apply the edit in memory, and on a `Write` or
+  `Edit` over a file a home measures, as the amnesty's baseline; the ancestor walk for `.git` that
+  finds the tree root; on a `runs/` write, `.gitignore`; and a worktree's `.git` pointer file, to
+  name the main tree's run folder. It reads them against the log the plugin carries. Nothing leaves
+  the machine.
+- **Build state — struck at v3.2.1** (2026-09-29, plugin 0.116.0, pre-ruled at AM-5): the
+  paragraphs above describe the built `mochiko-cli` 0.3.0, as corrected in the 3.2.1 row; the AM-3
+  wording is at `8f4e5ab`, the pre-3.2.1 wording at `bbe303f`.
 - **Hook floor, re-ratified for the new hooks (D7c):** a 5-second `timeout` on every shipped hook;
   fail-open when a hook cannot run or times out; hooks ship to every consuming project and execute
   the plugin author's code on every gated call — ratified knowingly. **Explicit-allow rule (D3/C2,
@@ -540,6 +542,11 @@ quality stays forbidden.
 The change adds the repository-layout facts to what `check` decides against, and per-entry size and
 the closed-world path to the conformance list; the MUST NOT clauses are unchanged.
 
+*Struck at v3.2.1:* the bullet's parenthetical "(build state: ledger GI-019 — the shipped binary
+behaves per the AM-3 text until the field-review wave-1 + wave-2 bump)", pre-ruled at AM-5; and
+"per-section and per-entry size" re-worded "per-section, per-entry and whole-file size" (lead
+ruling 2026-09-29, `hook-enforcement-field-review/build-log.md`, the S10 plan rulings).
+
 **Testability** — two tiers, in the GI-020 idiom: the conformance tier below is active from AM-5.
 **Assertable at ratification (2026-09-14):**
 - Pass: every kernel-class component in the tree traces to a recorded admission ruling and
@@ -554,8 +561,8 @@ the closed-world path to the conformance list; the MUST NOT clauses are unchange
 0.109.0 (`hooks.json`: `artifact-gate.sh` on `Write|Edit`, `Bash`, `PowerShell`;
 `seat-reminder.sh` on `SubagentStart`); tested by the contract cases `gate-input` ·
 `reminder-input` · `if-placement` · `gate-live` · `reminder-spawn` (`evals/contract/run.py`) and
-the crate matrices (`crates/mochiko-cli/tests/{home,conform,hook}.rs`). Dormant at AM-3 until the
-wave-4 hook ship; activated by AM-5 Q1(a), the pre-authorized PATCH folded in.
+the crate matrices (`crates/mochiko-cli/tests/{home,conform,hook,shell}.rs`). Dormant at AM-3 until
+the wave-4 hook ship; activated by AM-5 Q1(a), the pre-authorized PATCH folded in.
 - Pass: every shipped hook blocks on exactly two grounds — the binary's absence or a log outside
   its grammar range, and a conformance deny from `check` — with every other outcome an explicit
   `allow`; `check` reads no meaning and names no seat, order, or stage, and reads beyond the
@@ -707,6 +714,7 @@ category is live in translated form; application-shaped machinery inapplicable i
 | 3.1.1 | 2026-09-20 | PATCH — the `validator` persona retired at plugin v0.113.0 by ruling (`producer-plan-enforcement` D3 · `author-grader-consolidation` D7, that path's wave 3; the row itself user-ruled): GI-004's two detail lines re-point the grader identity from the persona to a plain fresh seat running the rendered `mochiko:validation-primitive-edit` contract, an editorial note beside them; the ratchet, the audit-unit keys and the five schema-content criteria are unchanged. Mints no principle; no fresh `/mochiko:setup` amend (the v3.0.1–v3.0.3 idiom) | GI-004 |
 | 3.1.2 | 2026-09-23 | AM-4 — GI-009's carried `GLOSSARY.md` deviation discharged (PATCH — a recorded deviation discharged, no principle added, removed, or redefined; user-ruled). Driver: the standing amend trigger "GLOSSARY.md gains content" fired when `impeccable-design-integration` build item 10 scaffolded `GLOSSARY.md` with eight terms at plugin v0.114.0 (`18b533c`); stress test waived by user ruling (recorded in the synthesis) | GI-009 deviation discharged — `GLOSSARY.md` a live operating doc under the pinned term format · KM invariants' deferral clause + revisit trigger retired · standing amend trigger struck (amendment policy · region governance-operations line) · region operating-docs line gains `GLOSSARY.md` (FP-1, user-ruled at acceptance) · the hook wave's owed pre-authorized PATCH re-keyed v3.1.2 → v3.1.3 (GI-019 clause-iv pointer) |
 | 3.2.0 | 2026-09-24 | AM-5 — the hook field review folded into GI-019, the owed hook-ship PATCH folded with it, the 0.109.0 publish-gate breach recorded as a GI-012 exception (MINOR — the exception excuses a MUST NOT for a bounded window, waiver-class; the gate's reach and reads widen, "principle significantly expanded"; user-ruled Q4, PATCH v3.1.3 rejected). Drivers: `hook-enforcement-field-review` D1–D9 as review-amended (accepted 2026-09-23; superseded in part 2026-09-24 by `delta-files-vs-direct-baseline-edits` D1/D6a — nothing carried rests on those parts) · the owed PATCH at `.mochiko/brainstorms/hook-enforced-artifact-schema/wave5-bump-patch.md`. Cold intent review solo (critical-gaps, 9 survivors folded, verify CLEAN on blocking); synthesis ratified 2026-09-24 | GI-019: predicate widened (R1) with check list + clause (iv) body · Reach / amnesty / reads re-worded, build-state line (Q2 `Contested`, strike PATCH pre-ruled) · C1 field result · amnesty known-gap corrected (c) · stated-limits pointer (d) · Testability conformance tier activated (a) · `rust-cli.md` bright-line bullet aligned, AM-3 text preserved · GI-012: precondition marked breached with pointers, held-bump rule (R3), Testability pointers · amendment policy first-publish paragraph points at the exception · region gates line (`CLAUDE.md` release-gates line) and amend-triggers line marked breached with pointers · exception registry first row (expiry strike set, tripwire, 2026-12-31 backstop; the amend-triggers strike-set item (FP-1, user-accepted at acceptance)) · **(e) carried:** the `DECISIONS.md` 2026-09-13 row ("ratified 2026-09-15 with the C1 amendment") and GI-019 clause (iv)'s condition + trace ("DISCHARGED 2026-09-15"), both transcribed 2026-09-15 under the KM status-agreement invariant · **v3.1.3 retired unminted** (AM-3 pre-authorized only a and b; c, d, e ruled at AM-5 Q1; b replaced by the exception) · **the AM-3 pre-authorized precondition strike void** (it could never fire) · fact profile, modules, floor, waivers, depth `high` unchanged; no principle minted |
+| 3.2.1 | 2026-09-29 | PATCH — the hook build's strike, pre-ruled at AM-5 (GI-019 build-state line). The trigger fired at plugin 0.116.0, the bump carrying both the wave-1 binary range (`mochiko-cli` 0.3.0, grammar 1..2; migrations 0033 and 0034 written in grammar 2) and the wave-2 home migration (0032–0035: `runs/`, `archive/`, `strips/`, `schema-views/` declared). **Struck:** GI-019's build-state line, kept as a dated struck note (the v3.0.3 idiom) holding the `8f4e5ab` (AM-3) and `bbe303f` (pre-3.2.1) pointers · `.claude/rules/mochiko/rust-cli.md`'s bright-line build-state parenthetical, its text preserved in GI-019. **Drift corrected against the built binary** (`hook.rs` · `conform.rs` · `home.rs` · `shell.rs`, after the wave-3 crate fixes): the report sniff's `## Header` signature limb struck, never built (seams R7, user-ruled, `.mochiko/decisions/2026-09-29-joint-hook-delta-build-seams.md`) · outside `<root>/.mochiko/` the sniff reads a write of any extension, not `.md` only (R7's routed drift; a wider deny than the AM-5 text, grounded in R7) · "What the gate reads" gains the on-disk file as the amnesty's baseline on `Write` as on `Edit` (R7's routed drift) · the in-home sniff places read as a class — a declared sub-directory at a level no home document governs, `features/desk/` itself included — in the check list and Reach (field review V2, user-ruled, with the lead build ruling 2026-09-29 at `hook-enforcement-field-review/build-log.md` § "plan round — S1 v1", :47–48; a wider deny than the AM-5 list) · the closed world names an undeclared sub-directory beside an undeclared home in the check list, the amnesty and Reach, and "never wedged" is scoped to files a home measures and to the relaxable measures (field review D3 and the census ratification's rows L1–L3, user-ruled; built since 0.109.0) · the amnesty's baseline scoped to files a home measures, matching "What the gate reads" · the nested-home example qualified by "without its own `.git`" · the check list's size kinds gain whole-file line budgets, and `rust-cli.md`'s bright-line bullet the same phrase — `rust-cli.md`'s touch widened to that phrase by lead ruling 2026-09-29 (`hook-enforcement-field-review/build-log.md` § "wave 2 committed · wave 3 planned, approved, opened", :853–856), built since AM-3 · the stated-limits line re-pointed: the root operating docs reached only by the report sniff, the shell scan's open shapes at `crates/mochiko-cli/src/shell.rs` and the joint build log, evasion 3 closed at the decision but open end to end under `hooks.json`'s `.mochiko` narrowing of the shell arms (the same lead ruling), a tree with no `.git` ungated · Reach's shell carve into `runs/` re-worded to named non-`.md` files, a directory target refused (the lead build ruling on S1's plan question 3, same § "plan round — S1 v1", :48–49; the no-stat edge at `hook.rs` `carve_refusal`) · "What the gate reads" names `cwd`, which a relative path resolves against · Testability's crate matrices gain `tests/shell.rs`. Mints no principle; no fresh `/mochiko:setup` amend (the v3.0.1–v3.0.3 idiom) | GI-019 |
 
 *AM-3 addendum (2026-09-14):* outside the governance region, and under the Card 2 ruling ratified
 2026-09-14, the `## Non-negotiable constraints` kernel-class paragraph's trace parenthetical in

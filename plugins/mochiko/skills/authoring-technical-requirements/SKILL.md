@@ -1,6 +1,6 @@
 ---
 name: authoring-technical-requirements
-description: This skill MUST be invoked when authoring `constraints-and-decisions.md` — hard constraints (C-XXX), technology decisions (D-XXX), infrastructure provisioning (IP-XXX), and the thin INT-XXX / DS-XXX declarations — plus the NFR-XXX grammar the architecture store's concern rows carry, each traced to a business source. Fires in `/mochiko:implement`'s design phase, or at build time through the gated `baseline-delta.md` path. SHOULD also invoke on 'C-', 'D-', 'NFR-', 'IP-', or 'technical constraints'. Owns the artifact structure — NOT the decision technique (mochiko:patterns-technical-decisions).
+description: This skill MUST be invoked when authoring `constraints-and-decisions.md` — hard constraints (C-XXX), technology decisions (D-XXX), infrastructure provisioning (IP-XXX), and the thin INT-XXX / DS-XXX declarations — plus the NFR-XXX grammar the architecture store's concern rows carry, each traced to a business source. Fires in `/mochiko:implement`'s design phase, or at build time as a build-raised entry written in place. SHOULD also invoke on 'C-', 'D-', 'NFR-', 'IP-', or 'technical constraints'. Owns the artifact structure — NOT the decision technique (mochiko:patterns-technical-decisions).
 allowed-tools: Bash(mochiko-cli *)
 ---
 

@@ -20,6 +20,53 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 review-amended (`DECISIONS.md` 2026-09-24 "Setup goes product-agnostic ruled" row). Pre-edit
 verbatim text: `git show bbe303f:plugins/mochiko/skills/review-feasibility/references/FEASIBILITY-LENS.md`. -->
 
+<!-- Wave context: the joint hook/delta build, wave 3 (v0.116.0) — the store is written in place as
+`proposed` before the checkpoint. Delta record:
+`.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` (`DECISIONS.md` 2026-09-24
+row). The three entries below edit lines under the v0.26.0 KEPT whole-body lineage and leave only
+as supersession-by-ruling. Pre-edit verbatim text:
+`git show 5558fd7:plugins/mochiko/skills/review-feasibility/references/FEASIBILITY-LENS.md`. -->
+
+## [v0.116.0] FEASIBILITY-LENS "What this lens is NOT" — "keyed to this feature" re-keyed to the run's owner
+
+- **Disposition:** superseded → `"is every element keyed to this run's owner?"`.
+- **Tier failed:** n/a — supersession by ruling (delta record D2: the key is the run's owner —
+  `FEAT-XXX`, `EPIC-XXX` or `lane-<slug>`).
+- **Content (superseded text, verbatim):** `"is every element keyed to this feature?"`
+- **Kept deliberately:** the rest of the sibling-owned list.
+- **Consumers assessed:** `review-plan-artifacts`'s lifecycle row is re-keyed to the run's owner in
+  the same wave, so the seam still mirrors.
+
+## [v0.116.0] FEASIBILITY-LENS A1 worked example — "a new `in-flight` component" re-keyed to `proposed`
+
+- **Disposition:** superseded → "a new `proposed` component".
+- **Tier failed:** n/a — supersession by ruling (delta record D7: a run's write before the
+  checkpoint reads `proposed`; the lens grades before the sign-off).
+- **Content (superseded text, verbatim):** `The delta introduces a managed message queue as a new
+  `in-flight` component,`
+- **Kept deliberately:** the example's substance (`C-006`, no `IP-XXX`, not buildable as drawn).
+- **Consumers assessed:** none.
+
+## [v0.116.0] FEASIBILITY-LENS architecture-pass trigger — "the drafted topology … graded before the user's sign-off writes it" superseded
+
+- **Disposition:** superseded → "Fires when the run proposes a **store delta** — the run's
+  `proposed` topology + `AX-XXX` concern-row changes … drawn in its `architecture.md` and read in the
+  pinned-base diff, graded before the user's sign-off flips them."
+- **Tier failed:** n/a — supersession by ruling:
+  - delta D1: the store is edited in place;
+  - delta D3(c): reviews read the pinned-base diff;
+  - delta D4: `architecture.md` is the signed drawing;
+  - delta D7: `proposed` before the checkpoint, flipped at sign-off.
+- **Content (superseded text, verbatim):** `Fires when the design-phase package carries a **store
+  delta** — the drafted topology + `AX-XXX` concern-row` / `changes authored by
+  `mochiko:patterns-system-design` against the standing store at` /
+  `` `.mochiko/product/architecture/`, graded before the user's sign-off writes it. ``
+- **Kept deliberately:**
+  - the author, the standing-store path, and grading before the sign-off;
+  - the two lens groups and their discipline.
+- **Consumers assessed:** `review-feasibility`'s rendered `conditions.store_delta` is S7's (the
+  log) and not edited here.
+
 ## [v0.115.0] FEASIBILITY-LENS's class-7 calibration — compliance-module obligations
 
 - **Disposition:** superseded → "a floor- or NFR-derived obligation is never excess"

@@ -9,6 +9,27 @@ D3 as amended (delivery binding, positive-confirmation halt, counts printed by t
 `wave3-plan.md` §9, the `DECISIONS.md` 2026-09-04 wave-3 row, and this wave's row. Pre-edit
 verbatim text: `git show 9732de0:plugins/mochiko/commands/architecture.md`. -->
 
+## [v0.116.0] Entry step health line — "orphan in-flight elements keying no open feature" re-keyed
+
+- **Disposition:** superseded → "orphan `proposed` and in-flight-class elements keying no open
+  feature, epic or lane".
+- **Tier failed:** n/a — supersession by ruling:
+  - `DECISIONS.md` 2026-09-24 delta-files row points to
+    `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md`;
+  - D2 there: the key set;
+  - D7 there: `proposed` elements are keyed;
+  - the delivered `authoring-architecture-store.orphan-rule` (0025);
+  - the wave-3 lead's ruling on P8's B7.
+- **Content (superseded text, verbatim):** `**fired** upgrade triggers awaiting their routing ·
+  orphan in-flight elements keying no open` / `feature · the standing drift register.`
+- **Kept deliberately:**
+  - the health-first opening and every other health item;
+  - "never a separate artifact";
+  - the Entry step's place in the canonical scaffold. No heading moved.
+- **Consumers assessed:**
+  - The command's rendered rules are the log's (S7) and are not edited here.
+  - The gate audit grades this unit as a command pair: the `.md` plus its render.
+
 ## [v0.105.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

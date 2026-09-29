@@ -22,10 +22,9 @@ binds it.
 
 - **Bright line (GI-019).** The tool renders, replays, and validates its own data — including
   an artifact's **mechanical conformance** to the shape the log declares for its home (path,
-  closed under `.mochiko/` · file set · headings · frontmatter · placeholders · per-section and
-  per-entry size; `mochiko-cli check`, AM-3) (build state: ledger GI-019 — the shipped binary
-  behaves per the AM-3 text until the field-review wave-1 + wave-2 bump), decided against the
-  log's data and the repository's own layout — yes/no facts such as whether `.gitignore` carries
+  closed under `.mochiko/` · file set · headings · frontmatter · placeholders · per-section,
+  per-entry and whole-file size; `mochiko-cli check`, AM-3), decided against the log's data and
+  the repository's own layout — yes/no facts such as whether `.gitignore` carries
   `.mochiko/runs/` or a path sits under a git worktree — with no judgment (AM-5). It MUST NOT grade an artifact's
   meaning or quality, MUST NOT dispatch or sequence agents, and MUST NOT hold judgment that
   skills own. Its hooks block on exactly two grounds:

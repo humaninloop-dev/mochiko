@@ -287,9 +287,16 @@ EXPECTED = {
                 "impl.gate-design-checkpoint",
                 "impl.gate-card-confirm",
                 "impl.gate-final-acceptance",
-                "impl.graded-fold",
+                # `0024-delta-baselines-in-place` and `0026-delta-pinned-base-review`
+                # (2026-09-24 delta-files-vs-direct-baseline-edits D1/D3) superseded
+                # `impl.baselines-never-in-place`, `impl.graded-fold`,
+                # `impl.fail.baseline-in-place` and `impl.fail.ungraded-fold` with these four
+                # floors.
+                "impl.baselines-in-place-marked",
+                "impl.baseline-diff-review",
+                "impl.fail.unmarked-baseline-write",
+                "impl.fail.unreviewed-baseline-diff",
                 "impl.author-grader-default-fail",
-                "impl.baselines-never-in-place",
                 "impl.deviation-gate",
                 "impl.constitution-supremacy",
                 "impl.constraint-challenge",
@@ -310,10 +317,8 @@ EXPECTED = {
                 "impl.fail.quality-gate",
                 "impl.fail.no-evidence",
                 "impl.fail.regression",
-                "impl.fail.baseline-in-place",
                 "impl.fail.deviation-unresolved",
                 "impl.fail.store-landing-incomplete",
-                "impl.fail.ungraded-fold",
                 "impl.fail.gap-finding-missing",
                 "impl.fail.skip-unstated",
                 "impl.fail.spec-gap-unresolved",
@@ -4140,9 +4145,13 @@ REMINDER_SCRIPT = "seat-reminder.sh"
 # make the row tautological: a reword of the script would rewrite the golden and the case would
 # pass, which is the opposite of a freeze. Held in the suite, a reword fails the row until someone
 # changes this line too — and changing it is a visible edit to a release gate, which is the point.
+# Re-pinned at 0.116.0 (hook field review D8's dry-run sentence and joint-build seam R5's run-folder
+# sentence); the first sentence is unchanged, which is what `reminder-spawn`'s marker reads.
 REMINDER_GOLDEN = (
-    "mochiko gate: artifacts under declared homes take their shape from "
-    "`mochiko-cli home <path>`; existing files are not templates."
+    "mochiko gate: artifacts under declared homes take their shape from `mochiko-cli home "
+    "<path>`; existing files are not templates. Dry-run a draft with `mochiko-cli check --path "
+    "<path> --content -` before you write it. Raw output (console captures, logs, dumps) goes to "
+    "the run folder `.mochiko/runs/<run-id>/` of the main tree, never into any other home."
 )
 
 # `check`'s minted conformance code (record D3 / wave-1 plan §4). Every other exit is
@@ -4155,18 +4164,21 @@ EXIT_CONFORMANCE = 4
 HALT_SENTENCE = "a second deny on this path halts"
 
 # The two homes the rows are keyed to, chosen for what they can exercise rather than for what they
-# are: `architecture-spine` is the only shipped template carrying both `extra_headings: deny` and
-# per-section budgets, and the report envelope is the only one carrying required frontmatter, an
-# enum and placeholder tokens. Between them the six conformance checks are all reachable.
+# are: `architecture-spine` carries `extra_headings: deny` and a size bound — per `##` entry since
+# `0034-store-entry-budgets` (2026-09-29 census table ratification) replaced its per-section
+# budgets — and the report envelope is the only one carrying required frontmatter, an enum and
+# placeholder tokens. Between them the six conformance checks are all reachable.
 SPINE_PATH = ".mochiko/product/architecture/spine.md"
 SESSION_HOME = ".mochiko/brainstorms/contract-demo"
 
-# A conforming `architecture-spine`: the three required headings, nothing undeclared, every section
-# inside its budget. Written down rather than derived — a baseline read off the thing it grades is
+# A conforming `architecture-spine`: the three required headings, nothing undeclared, every entry
+# inside its bound. Written down rather than derived — a baseline read off the thing it grades is
 # not a baseline — and cross-checked by `G-CONFORM`, which goes red if the shipped template moves
 # out from under it. Deliberately no numbers appear in any assertion about it (lead ruling,
 # 2026-09-13): `0005`'s budgets may be re-keyed by the table amendment, and a row that asserts a
-# measure by name survives that where a row asserting `30` does not.
+# measure by name survives that where a row asserting `30` does not. `0034` did re-key them, to a
+# per-entry bound: the size rows moved only their pad (past the new bound) and the measure's
+# wording, and still assert a size deny and a named standing measure.
 CONFORMING_SPINE = """# Architecture spine
 
 ## Container diagram
@@ -4303,7 +4315,7 @@ def gate_rows(captures: dict) -> list:
     redirect = captures.get("pre-tool-use-bash-redirect-false-allow")
     read = captures.get("pre-tool-use-read-home")
     oversized_spine = CONFORMING_SPINE.replace(
-        "One container.", "\n".join(f"PAD{i}" for i in range(40)))
+        "One container.", "\n".join(f"PAD{i}" for i in range(200)))
 
     rows = [
         GateRow("G-PATH", "deny: path", "deny",
@@ -4317,7 +4329,7 @@ def gate_rows(captures: dict) -> list:
                 keywords=("## Undeclared", "not a declared heading")),
         GateRow("G-SIZE", "deny: size", "deny",
                 lambda w: _write_payload(w, SPINE_PATH, oversized_spine),
-                keywords=("Container diagram", "against a budget of")),
+                keywords=("Container diagram", "per-entry bound of")),
         GateRow("G-FM-MISSING", "deny: shape (frontmatter)", "deny",
                 lambda w: _write_payload(w, f"{SESSION_HOME}/reports/r.md",
                                          "---\nfeature: FEAT-001\n---\n"),
@@ -4489,8 +4501,14 @@ def case_gate_input(runner, sandbox) -> tuple[list, pathlib.Path]:
 
     Rows resolve against the plugin's **real** log through `CLAUDE_PLUGIN_ROOT`, as ruled — the
     crate's fixture log is the crate's unit surface, and this suite's subject is what ships. The
-    cost of that is a row keyed to a budget the wave-3 table may re-key, so no assertion here reads
-    a number: each deny row names the measure that must appear in the reason, never its magnitude.
+    cost of that is a row keyed to a budget the wave-3 table could re-key — `0034` did, to a
+    per-entry bound — so no assertion here reads a number: each deny row names the measure that
+    must appear in the reason, never its magnitude.
+
+    Each row's workspace carries its own empty `.git` directory. The gate places a path by the
+    nearest ancestor holding `.git` (field review D7), so without one a workspace under
+    `evals/.work/` resolves to this repository's root, where its `.mochiko/` is not a home tree and
+    every deny row would read as an allow.
     """
     staged = stage("gate-input", PLUGIN)
     checks: list[Check] = []
@@ -4530,6 +4548,9 @@ def case_gate_input(runner, sandbox) -> tuple[list, pathlib.Path]:
     for row in gate_rows(captures):
         workspace = staged.root / f"ws-{row.id.lower()}"
         workspace.mkdir(parents=True, exist_ok=True)
+        # The workspace is its own tree root: the gate reads only whether `.git` exists, never
+        # what it holds, so an empty directory is the whole fixture.
+        (workspace / ".git").mkdir(exist_ok=True)
         if row.setup:
             row.setup(str(workspace))
         if row.root not in roots:
@@ -4816,7 +4837,8 @@ def case_gate_live(runner, sandbox) -> tuple[list, pathlib.Path]:
     workspace = f"/tmp/contract-gate-live-{uuid.uuid4().hex[:8]}"
     good = _abs(workspace, SPINE_PATH)
     bad = _abs(workspace, f"{SESSION_HOME}/notes.md")
-    seed = f"mkdir -p {shlex.quote(str(pathlib.Path(good).parent))} {shlex.quote(str(pathlib.Path(bad).parent))}"
+    # `.git` makes the workspace its own tree root; the sandbox's /tmp has none above it.
+    seed = f"mkdir -p {shlex.quote(workspace + '/.git')} {shlex.quote(str(pathlib.Path(good).parent))} {shlex.quote(str(pathlib.Path(bad).parent))}"
     prompt = (
         "Do these two steps in order, yourself, and do not work around a refusal.\n"
         f"1. Use the Write tool to create {good} with exactly this content:\n"

@@ -62,13 +62,20 @@ setup's scaffold and overridable at the desk.
 ## Element lifecycle
 
 ```
-ruled → in-flight (FEAT-XXX) | modifying (FEAT-XXX) | removing (FEAT-XXX) → built
+ruled → proposed (<key>)                           a run's write before the design checkpoint
+      → in-flight | modifying | removing (<key>)   the sign-off
+      → built | removed                            the landing
 ```
 
 - **`ruled`** — not in flight, not yet built. The resting state of *any* element, whatever
   its stance: a row sitting at `open` or `n-a` is `ruled` too.
-- **in-flight-class** — the three keyed statuses, named collectively.
+- **in-flight-class** — the three statuses the sign-off gives (`in-flight` · `modifying` ·
+  `removing`), named collectively.
 - **`built`** — the change shipped; `As-built:` says what actually exists.
+- **`removed`** — where a landed `removing` element ends.
+
+What each status reads as, the `removed` stub's shape and the key set:
+`authoring-architecture-store.lifecycle-statuses`.
 
 ## Landing duties — two triggers, never conflated
 

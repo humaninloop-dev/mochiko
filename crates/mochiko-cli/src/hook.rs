@@ -24,10 +24,11 @@
 //! real payloads including `\/`, which plain YAML would reject.
 
 use crate::conform::{self, Decision};
-use crate::home::Homes;
+use crate::home::{self, Homes, Resolution};
 use crate::replay::State;
+use crate::shell;
 use serde::Deserialize;
-use std::path::{Path, PathBuf};
+use std::path::Path;
 
 /// The exit code a conformance denial carries — minted, not reused.
 ///
@@ -159,59 +160,170 @@ fn escape(text: &str) -> String {
 // ---------------------------------------------------------------------------
 
 fn decide_file(state: &State, payload: &Payload) -> Outcome {
-    let Some(cwd) = payload.cwd.as_deref() else {
-        return Outcome::Allow { context: None };
-    };
     let Some(file_path) = payload.tool_input.file_path.as_deref() else {
         return Outcome::Allow { context: None };
     };
-    let Some(relative) = relativize(cwd, file_path) else {
-        // Outside the working directory: not this repository's business.
+    let cwd = payload.cwd.as_deref().map(Path::new);
+    let Some(absolute) = home::absolute(Path::new(file_path), cwd) else {
+        // A relative path with no `cwd` to join it to names no place at all.
         return Outcome::Allow { context: None };
     };
+    // A path in no git tree — the session scratchpad, `~/.claude/`, a cold-verification snapshot
+    // (delta-check N4) — has no home tree, and outside `<root>/.mochiko/` nothing changes (D3): it
+    // is not the gate's, as a path outside the working directory was not before (G1 A5).
+    let Some(located) = home::locate(&absolute) else {
+        return Outcome::Allow { context: None };
+    };
+    let shown = located.relative.display().to_string();
 
-    let absolute = PathBuf::from(cwd).join(&relative);
-    let baseline = std::fs::read_to_string(&absolute).ok();
+    let homes = Homes::load(state);
+    let resolution = homes.resolve(&located.relative);
 
-    let candidate = match payload.tool_name.as_deref() {
-        Some("Edit") => {
-            let old = payload.tool_input.old_string.as_deref().unwrap_or_default();
-            let new = payload.tool_input.new_string.as_deref().unwrap_or_default();
-            let Some(baseline) = baseline.as_deref() else {
-                // No file to edit; the platform rejects it on its own.
-                return Outcome::Allow { context: None };
-            };
-            match conform::apply_edit(baseline, old, new) {
-                Some(applied) => applied,
-                // `old_string` is absent from the file. The platform rejects that itself, and a
-                // second denial from here would only confuse the seat.
-                None => return Outcome::Allow { context: None },
-            }
+    // The path-class verdicts read no body, so they are decided before any file is read.
+    //
+    // The closed world (field review D3): under `<root>/.mochiko/`, no home is a deny. A log that
+    // declares no home has declared nothing to close — the same rule the shell leg keeps.
+    if matches!(resolution, Resolution::Outside) && located.in_home_tree() && !homes.is_empty() {
+        return outcome_of(conform::closed_world(
+            &homes,
+            &located.relative,
+            homes.run_folder(&located).as_deref(),
+        ));
+    }
+    // The run folder's layout controls (field review D4 as amended): main tree only (V3), then
+    // the ignore guard (control 3).
+    let raw_home = match &resolution {
+        Resolution::Raw { home, .. } | Resolution::File { home, .. } if home.raw_output => {
+            Some(*home)
         }
-        _ => payload
+        _ => None,
+    };
+    if let Some(raw_home) = raw_home {
+        if let Some(refusal) = run_folder_refusal(&homes, raw_home, &located) {
+            return refusal;
+        }
+    }
+
+    // The on-disk file is read only where a verdict needs it (G1 A9): to apply an `Edit` in
+    // memory, and as the first-touch amnesty's baseline for a file a home measures.
+    let edit = payload.tool_name.as_deref() == Some("Edit");
+    let amnesty = matches!(
+        resolution,
+        Resolution::File { .. } | Resolution::Report { .. } | Resolution::UndeclaredFile { .. }
+    );
+    let baseline = if edit || amnesty {
+        std::fs::read_to_string(&absolute).ok()
+    } else {
+        None
+    };
+
+    let candidate = if edit {
+        let old = payload.tool_input.old_string.as_deref().unwrap_or_default();
+        let new = payload.tool_input.new_string.as_deref().unwrap_or_default();
+        let Some(baseline) = baseline.as_deref() else {
+            // No file to edit; the platform rejects it on its own.
+            return Outcome::Allow { context: None };
+        };
+        match conform::apply_edit(baseline, old, new) {
+            Some(applied) => applied,
+            // `old_string` is absent from the file. The platform rejects that itself, and a
+            // second denial from here would only confuse the seat.
+            None => return Outcome::Allow { context: None },
+        }
+    } else {
+        payload
             .tool_input
             .content
             .as_deref()
             .unwrap_or_default()
-            .to_string(),
+            .to_string()
     };
 
-    let homes = Homes::load(state);
-    let resolution = homes.resolve(&relative);
-    if matches!(resolution, crate::home::Resolution::Outside) {
-        // The D9 sniff: gated only when the content is a mochiko report.
-        return outcome_of(conform::sniff(
-            state,
-            &relative.display().to_string(),
-            &candidate,
-        ));
+    match &resolution {
+        // The D9 sniff, outside `<root>/.mochiko/`: gated only when the content is a mochiko
+        // report.
+        Resolution::Outside => return outcome_of(conform::sniff(state, &shown, &candidate)),
+        // The report sniff on `.md` in the run folder (control 4) ...
+        Resolution::Raw { .. } if is_markdown(&absolute) => {
+            return outcome_of(conform::sniff_unchecked(
+                state,
+                &shown,
+                &candidate,
+                "the run folder (raw output, deleted at the run's acceptance)",
+            ));
+        }
+        // ... and in every declared sub-directory with no home document of its own (V2, as ruled
+        // at plan Q2).
+        Resolution::Deferred { subdir, .. } if is_markdown(&absolute) => {
+            return outcome_of(conform::sniff_unchecked(
+                state,
+                &shown,
+                &candidate,
+                &format!("`{subdir}/`, a declared sub-directory with no home document of its own"),
+            ));
+        }
+        _ => {}
     }
+
+    // The run folder is named only by a path-class deny, so the worktree pointer it may need is
+    // read only then.
+    let run_folder = match resolution {
+        Resolution::UndeclaredFile { .. } | Resolution::UndeclaredSubdir { .. } => {
+            homes.run_folder(&located)
+        }
+        _ => None,
+    };
     outcome_of(conform::check(
         state,
         &resolution,
         &candidate,
         baseline.as_deref(),
+        run_folder.as_deref(),
     ))
+}
+
+/// Whether a path names a markdown file — the only kind the report sniff reads.
+fn is_markdown(path: &Path) -> bool {
+    path.extension()
+        .is_some_and(|extension| extension.eq_ignore_ascii_case("md"))
+}
+
+/// A write into the run folder refused by its layout controls, or `None` when both hold.
+///
+/// Both read the repository, not the body: the worktree's `.git` pointer (V3) and the main
+/// tree's `.gitignore` (control 3) — the two reads GI-019's "What the gate reads" names for this.
+fn run_folder_refusal(
+    homes: &Homes,
+    raw_home: &home::Home,
+    located: &home::Located,
+) -> Option<Outcome> {
+    let main = located.main_root();
+    if main != located.root {
+        let folder = homes.run_folder(located).unwrap_or_default();
+        return Some(Outcome::Deny {
+            reason: format!(
+                "`{}` is under this worktree's own run folder. The run folder is always the main \
+                 tree's — one folder every seat of the run shares, which outlives the worktree — \
+                 so write it under `{folder}` instead. {}",
+                located.relative.display(),
+                conform::HALT_HINT
+            ),
+        });
+    }
+    if !home::ignores(&main, raw_home) {
+        let line = raw_home.ignore_line();
+        return Some(Outcome::Deny {
+            reason: format!(
+                "the run folder is not git-ignored: `{}/.gitignore` carries no `{line}` line, so \
+                 nothing written here is kept out of a commit or a cold-verification snapshot. \
+                 Add the line `{line}` to `{}/.gitignore` (run-open adds it), then write again. {}",
+                main.display(),
+                main.display(),
+                conform::HALT_HINT
+            ),
+        });
+    }
+    None
 }
 
 fn outcome_of(verdict: conform::Verdict) -> Outcome {
@@ -227,36 +339,6 @@ fn outcome_of(verdict: conform::Verdict) -> Outcome {
     }
 }
 
-/// A path relative to `cwd`, or `None` when it does not sit under it.
-///
-/// A relative `file_path` is taken as already relative to `cwd`. Nothing here touches the
-/// filesystem, so a path that does not exist yet resolves the same as one that does.
-fn relativize(cwd: &str, file_path: &str) -> Option<PathBuf> {
-    let path = Path::new(file_path);
-    if !path.is_absolute() {
-        return Some(normalize(path));
-    }
-    let cwd = normalize(Path::new(cwd));
-    let path = normalize(path);
-    path.strip_prefix(&cwd).ok().map(Path::to_path_buf)
-}
-
-/// Collapse `.` components and resolve `..` lexically, so no traversal survives into a home.
-fn normalize(path: &Path) -> PathBuf {
-    use std::path::Component;
-    let mut out = PathBuf::new();
-    for component in path.components() {
-        match component {
-            Component::CurDir => {}
-            Component::ParentDir => {
-                out.pop();
-            }
-            other => out.push(other.as_os_str()),
-        }
-    }
-    out
-}
-
 // ---------------------------------------------------------------------------
 // the Bash and PowerShell leg
 // ---------------------------------------------------------------------------
@@ -270,7 +352,7 @@ fn decide_shell(state: &State, payload: &Payload) -> Outcome {
     let Some(command) = payload.tool_input.command.as_deref() else {
         return Outcome::Allow { context: None };
     };
-    let cwd = payload.cwd.as_deref().unwrap_or("");
+    let cwd = payload.cwd.as_deref().map(Path::new);
     let homes = Homes::load(state);
     if homes.is_empty() {
         return Outcome::Allow { context: None };
@@ -279,24 +361,66 @@ fn decide_shell(state: &State, payload: &Payload) -> Outcome {
     // The two shells have different write vocabularies, and a cmdlet name in a Bash command means
     // nothing. Keying the table to the tool keeps each arm's false-positive surface its own.
     let targets = match payload.tool_name.as_deref() {
-        Some("PowerShell") => powershell_write_targets(command),
-        _ => write_targets(command),
+        Some("PowerShell") => shell::powershell_write_targets(command),
+        _ => shell::write_targets(command),
     };
     for target in targets {
-        let Some(relative) = relativize(cwd, &target) else {
+        // A relative target is joined to the payload's `cwd`, so a write from a cwd inside a home
+        // resolves into that home — which closes the prior build's disclosed evasion 3.
+        let Some(located) =
+            home::absolute(Path::new(&target), cwd).and_then(|abs| home::locate(&abs))
+        else {
             continue;
         };
+        let relative = &located.relative;
         // A file inside a home, or the home directory itself as a `cp`/`mv` destination.
-        let governed = !matches!(homes.resolve(&relative), crate::home::Resolution::Outside)
-            || !matches!(
-                homes.resolve(&relative.join("_")),
-                crate::home::Resolution::Outside
-            );
+        let direct = homes.resolve(relative);
+        let as_directory = homes.resolve(&relative.join("_"));
+        if let Some(raw_home) = raw_output_home(&direct, &as_directory) {
+            // The run-folder carve (field review V1/N2): the one home whose shell writes are
+            // admitted, for non-`.md` files only, under the folder's own controls.
+            if let Some(refusal) = run_folder_refusal(&homes, raw_home, &located) {
+                return refusal;
+            }
+            if let Some(refusal) = carve_refusal(&target, &direct) {
+                return refusal;
+            }
+            continue;
+        }
+        let governed =
+            !matches!(direct, Resolution::Outside) || !matches!(as_directory, Resolution::Outside);
         if governed {
+            let raw_route = homes
+                .run_folder(&located)
+                .map(|run| {
+                    format!(
+                        " Raw output (captured console, logs, dumps) goes to the run folder \
+                         `{run}`, which is ephemeral — deleted at the run's acceptance — and \
+                         takes a shell write of a non-`.md` file."
+                    )
+                })
+                .unwrap_or_default();
             return Outcome::Deny {
                 reason: format!(
-                    "{SHELL_REASON} a declared artifact home: `{target}`. The parse is \
+                    "{SHELL_REASON} a declared artifact home: `{target}`.{raw_route} The parse is \
                      best-effort over the command text. {}",
+                    crate::conform::HALT_HINT
+                ),
+            };
+        }
+        if located.in_home_tree() {
+            // The closed world reaches parsed shell writes too (field review D3).
+            return Outcome::Deny {
+                reason: format!(
+                    "This command writes `{target}`, which resolves to no declared home under \
+                     `.mochiko/`, where the world is closed: a write here is refused. Artifacts \
+                     are written with Write/Edit, never through a shell redirect. {} The parse is \
+                     best-effort over the command text. {}",
+                    conform::closed_world_routes(
+                        &homes,
+                        relative,
+                        homes.run_folder(&located).as_deref()
+                    ),
                     crate::conform::HALT_HINT
                 ),
             };
@@ -305,207 +429,49 @@ fn decide_shell(state: &State, payload: &Payload) -> Outcome {
     Outcome::Allow { context: None }
 }
 
-/// Every path this command text appears to write to.
-///
-/// Best-effort over the command string, and stated as such in the deny reason — a shell is not
-/// parsed here, it is scanned. The operators are the ones a denied seat reaches for first: a
-/// redirect, `tee`, an in-place `sed`, and a `cp`/`mv` destination (record D1c). A heredoc is
-/// covered by the redirect it needs to write anything.
-fn write_targets(command: &str) -> Vec<String> {
-    let tokens = tokenize(command);
-    let mut targets = Vec::new();
-    let mut index = 0;
-    while index < tokens.len() {
-        let token = tokens[index].as_str();
-        // `> path`, `>> path`, the clobber form `>| path`, and each of them glued to its path.
-        //
-        // `>|` is here because round 1's G5 found it was a one-character evasion: stripping `>`
-        // left `|path`, which resolved to nothing and allowed the write.
-        if let Some(rest) = token.strip_prefix(">>").or_else(|| token.strip_prefix('>')) {
-            let rest = rest.strip_prefix('|').unwrap_or(rest);
-            if rest.is_empty() {
-                if let Some(next) = tokens.get(index + 1) {
-                    targets.push(next.trim_start_matches('|').to_string());
-                }
-            } else {
-                targets.push(rest.to_string());
-            }
+/// The raw-output home a shell target lands in — as a file under it, or as the run folder itself
+/// named as a `cp`/`mv` destination directory — or `None`.
+fn raw_output_home<'a>(
+    direct: &Resolution<'a>,
+    as_directory: &Resolution<'a>,
+) -> Option<&'a home::Home> {
+    match (direct, as_directory) {
+        (Resolution::Raw { home, .. } | Resolution::File { home, .. }, _) if home.raw_output => {
+            Some(*home)
         }
-        match bare_command(token) {
-            // Every following non-flag argument is a destination.
-            "tee" => targets.extend(non_flag_args(&tokens[index + 1..])),
-            // `cp`/`mv`'s destination is its last argument.
-            "cp" | "mv" | "install" => {
-                if let Some(last) = non_flag_args(&tokens[index + 1..]).pop() {
-                    targets.push(last);
-                }
-                // A `mv` *out of* a home still names the home as its source, and a re-home under
-                // the gate is done with Write by design, so both ends are targets here.
-                if let Some(first) = non_flag_args(&tokens[index + 1..]).first() {
-                    targets.push(first.clone());
-                }
-            }
-            "sed" if tokens[index + 1..].iter().any(|t| t.starts_with("-i")) => {
-                targets.extend(non_flag_args(&tokens[index + 1..]));
-            }
-            "dd" => {
-                for token in &tokens[index + 1..] {
-                    if let Some(path) = token.strip_prefix("of=") {
-                        targets.push(path.to_string());
-                    }
-                }
-            }
-            _ => {}
-        }
-        index += 1;
+        (Resolution::Outside, Resolution::Raw { home, .. }) => Some(*home),
+        _ => None,
     }
-    targets.retain(|t| !t.is_empty());
-    targets
 }
 
-/// Every path this PowerShell command text appears to write to.
+/// A shell write into the run folder the carve does not admit, or `None` when it does.
 ///
-/// Best-effort over the command string, exactly as the POSIX table is. The vocabulary is the write
-/// cmdlets a seat reaches for after a `Write` deny — `Set-Content`, `Out-File`, `Add-Content`,
-/// `New-Item`, `Tee-Object`, and the `Copy-Item`/`Move-Item` pair — plus the `>` and `>>` redirects
-/// PowerShell shares with the POSIX shells. Without this table the whole arm was inert: the
-/// `PowerShell` leg reaches [`decide_shell`], but every cmdlet above resolved to no target and
-/// allowed the write.
-///
-/// Cmdlet names are matched case-insensitively, because PowerShell is.
-fn powershell_write_targets(command: &str) -> Vec<String> {
-    let tokens = tokenize(command);
-    let mut targets = Vec::new();
-    let mut index = 0;
-    while index < tokens.len() {
-        let token = tokens[index].as_str();
-        // The redirects, identical to the POSIX arm including the `>|` clobber form.
-        if let Some(rest) = token.strip_prefix(">>").or_else(|| token.strip_prefix('>')) {
-            let rest = rest.strip_prefix('|').unwrap_or(rest);
-            if rest.is_empty() {
-                if let Some(next) = tokens.get(index + 1) {
-                    targets.push(next.trim_start_matches('|').to_string());
-                }
-            } else {
-                targets.push(rest.to_string());
-            }
-        }
-        // How many *positional* paths this cmdlet takes. `Copy-Item`/`Move-Item` take two, because
-        // a move out of a home names the home as its source and the re-home is done with Write by
-        // design — the same reasoning as the POSIX `cp`/`mv` arm.
-        let positionals = match bare_command(token).to_ascii_lowercase().as_str() {
-            "set-content" | "out-file" | "add-content" | "new-item" | "tee-object" => 1,
-            "copy-item" | "move-item" => 2,
-            _ => 0,
-        };
-        if positionals > 0 {
-            targets.extend(cmdlet_targets(&tokens[index + 1..], positionals));
-        }
-        index += 1;
+/// The gate cannot see what a shell write puts in a file, so a `.md` — which the report sniff
+/// would read on a `Write` — is refused here (delta-check N2). A directory target hides the file
+/// name that test needs, so it is refused too (plan Q3): `target/` with its trailing slash, or the
+/// run folder itself. A sub-directory named without its slash (`cp -t <run>/sub x.md`) reads as a
+/// file and is admitted — the scan does not stat the target, and the gap is disclosed.
+fn carve_refusal(target: &str, direct: &Resolution) -> Option<Outcome> {
+    let directory = target.ends_with('/') || matches!(direct, Resolution::Outside);
+    if directory {
+        return Some(Outcome::Deny {
+            reason: format!(
+                "`{target}` names a directory under the run folder, which hides the file the \
+                 write lands in, and a shell may write only a non-`.md` file here — name the \
+                 destination file instead: `cp build.log <run folder>/build.log`. {}",
+                conform::HALT_HINT
+            ),
+        });
     }
-    targets.retain(|t| !t.is_empty());
-    targets
-}
-
-/// The path arguments of one cmdlet's argument run, stopping at the next statement separator.
-///
-/// Named path parameters name their target directly. A parameter known to take a non-path value
-/// has that value skipped, so `-Value "<some text>"` cannot be read as a path — the one shape that
-/// would otherwise deny an innocent write elsewhere. Every other `-Switch` is treated as taking no
-/// value, which costs at most a missed source on `Copy-Item -Force <src> <dst>` and never a false
-/// deny.
-fn cmdlet_targets(tokens: &[String], positionals: usize) -> Vec<String> {
-    const PATH_PARAMETERS: [&str; 4] = ["path", "filepath", "literalpath", "destination"];
-    const VALUE_PARAMETERS: [&str; 7] = [
-        "value", "itemtype", "encoding", "filter", "include", "exclude", "name",
-    ];
-    let mut out = Vec::new();
-    let mut taken = 0;
-    let mut index = 0;
-    while index < tokens.len() {
-        let token = tokens[index].as_str();
-        if matches!(token, "|" | ";" | "&&" | "||" | "&") {
-            break;
-        }
-        if token.starts_with('>') || token.starts_with('<') {
-            index += 1;
-            continue;
-        }
-        if let Some(name) = token.strip_prefix('-') {
-            let name = name.to_ascii_lowercase();
-            let value = tokens.get(index + 1).filter(|v| !v.starts_with('-'));
-            if PATH_PARAMETERS.contains(&name.as_str()) {
-                if let Some(value) = value {
-                    out.push(value.clone());
-                    index += 2;
-                    continue;
-                }
-            } else if VALUE_PARAMETERS.contains(&name.as_str()) && value.is_some() {
-                index += 2;
-                continue;
-            }
-            index += 1;
-            continue;
-        }
-        if taken < positionals {
-            out.push(token.to_string());
-            taken += 1;
-        }
-        index += 1;
+    if is_markdown(Path::new(target)) {
+        return Some(Outcome::Deny {
+            reason: format!(
+                "`{target}` is a `.md` in the run folder. A shell write's content is invisible to \
+                 the gate, so a `.md` there is written with Write/Edit, where the report sniff \
+                 reads it; the shell carve admits non-`.md` files only. {}",
+                conform::HALT_HINT
+            ),
+        });
     }
-    out
-}
-
-/// A command token's bare name, without a leading path.
-fn bare_command(token: &str) -> &str {
-    token.rsplit('/').next().unwrap_or(token)
-}
-
-/// The non-flag arguments of an argument run, stopping at the next shell separator.
-fn non_flag_args(tokens: &[String]) -> Vec<String> {
-    let mut out = Vec::new();
-    for token in tokens {
-        if matches!(token.as_str(), "|" | "&&" | "||" | ";" | "&") {
-            break;
-        }
-        if token.starts_with('-') || token.starts_with('>') || token.starts_with('<') {
-            continue;
-        }
-        out.push(token.clone());
-    }
-    out
-}
-
-/// Split a command into tokens, honouring quotes and splitting a glued redirect off its path.
-///
-/// Quotes are stripped, which is the point: the wave-0 probe's line quoted its target, and a
-/// scanner that kept the quotes would not have matched a home.
-fn tokenize(command: &str) -> Vec<String> {
-    let mut tokens = Vec::new();
-    let mut current = String::new();
-    let mut quote: Option<char> = None;
-    for ch in command.chars() {
-        match (quote, ch) {
-            (Some(open), c) if c == open => quote = None,
-            (Some(_), c) => current.push(c),
-            (None, '\'') | (None, '"') => quote = Some(ch),
-            (None, c) if c.is_whitespace() => {
-                if !current.is_empty() {
-                    tokens.push(std::mem::take(&mut current));
-                }
-            }
-            // A redirect is its own token even when glued to the previous word (`x>file`).
-            (None, '>') => {
-                if !current.is_empty() && !current.ends_with('>') {
-                    tokens.push(std::mem::take(&mut current));
-                }
-                current.push('>');
-            }
-            (None, c) => current.push(c),
-        }
-    }
-    if !current.is_empty() {
-        tokens.push(current);
-    }
-    tokens
+    None
 }

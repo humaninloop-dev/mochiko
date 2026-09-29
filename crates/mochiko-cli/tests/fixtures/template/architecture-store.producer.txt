@@ -49,14 +49,26 @@ the desk may override it. This is the durable home of shelf scope.
 REQUIRED CORE, per spine element: an id `SPN-XXX` (unique across the store), a `kind`
 (`container` | `boundary` | `flow`), a name, and a lifecycle `status`. Everything else —
 responsibility text, communication style, technology notes, local diagrams — is free-form.
+A build-raised element also fills two columns, `Raised` (its cycle) and `Weighed` (its why,
+one line); every other element reads `—` in both.
 
 Legal `status` values (the same set governs concern rows):
-`ruled` · `in-flight (FEAT-XXX)` · `modifying (FEAT-XXX)` · `removing (FEAT-XXX)` · `built`.
-The three middle values MUST carry their FEAT-XXX key; `ruled` and `built` MUST NOT.
+`ruled` · `proposed (<key>)` · `in-flight (<key>)` · `modifying (<key>)` · `removing (<key>)` ·
+`built` · `removed`. The key names the run that owns the change — `FEAT-XXX`, `EPIC-XXX` or
+`lane-<slug>`. The four keyed values MUST carry it; `ruled`, `built` and `removed` MUST NOT.
+
+A run writes `proposed` before the design checkpoint's sign-off: a new element, an amended
+one with its new text in place, a removed one cut to its row's core. The sign-off flips each
+by the pinned-base diff — absent at the base to `in-flight`, changed from it to `modifying`,
+cut to its core to `removing`; a change made after sign-off takes that form from its first
+write. The landing flips `in-flight` and `modifying` to `built` and a `removing` element to
+`removed`: its row kept, reduced to id, kind, name and status, and never drawn. Readers:
+`proposed` is nothing promised and reads absent; `in-flight` · `modifying` · `removing` is
+planned contract; `removed` reads absent.
 
 Status tracks the BUILD lifecycle and is independent of stance. `ruled` is the resting
-status of any element not in flight and not yet built — including a concern row whose
-stance is `open` or `n-a`. Do not read `ruled` as "a stance was decided".
+status of any element not proposed, not in flight and not yet built — including a concern
+row whose stance is `open` or `n-a`. Do not read `ruled` as "a stance was decided".
 
 ## Concern ledger (AX rows)
 
@@ -64,7 +76,10 @@ stance is `open` or `n-a`. Do not read `ruled` as "a stance was decided".
 their own file only on real depth.
 
 REQUIRED CORE, per row: an id `AX-XXX` (unique across the store), a concern name, a
-`Stance`, and a lifecycle `Status` (same value set as spine elements).
+`Stance`, and a lifecycle `Status` (same value set as spine elements). A row cut for removal —
+`proposed (<key>)` or `removing (<key>)` with its body cut, or `removed` after the landing — is
+the one exception: its heading (id and name) and its `- **Status**:` line, no other field; a `removed` row
+carries no key, and its id stays taken.
 
 Four stances: `decided` · `not-now` · `n-a` · `open` — `n-a` is never written bare (below).
 Two carry an obligation:
@@ -85,7 +100,8 @@ Conventional free-form fields, present where they carry something: `Ruling` (+ r
 `Rationale`, `Upgrade trigger`, `Owned by` (the handled-elsewhere pointer's home — required
 on an `n-a — handled elsewhere` row, absent otherwise), `Targets` (NFR-XXX ids with their
 measurable target, measurement method, and source — the FR-XXX / SC-XXX whose promise the
-target serves — live HERE, one home per concern), `As-built`, `Drift`, `Work` (FEAT-XXX / EPIC-XXX pointers;
+target serves — live HERE, one home per concern), `As-built`, `Drift`, `Raised` and `Weighed` (a build-raised row's cycle and one-line why, written
+`- **Raised**:` and `- **Weighed**:` directly after `Status`), `Work` (FEAT-XXX / EPIC-XXX pointers;
 the work itself lives on the feature map, never here).
 
 Every `Work:`, NFR-XXX, and `handled elsewhere` pointer MUST resolve. A dangling pointer is
@@ -114,8 +130,8 @@ Three parts:
      the sufficiency check and the design phase read, so a missing row is an invisible row.
   3. Health — the health view, a SECTION OF THIS INDEX and not a separate artifact. Five
      counts, each naming its rows: open rows · stale `not-now` triggers · fired triggers
-     awaiting routing · orphan elements (an in-flight-class element whose FEAT-XXX is not
-     an open feature) · drift register.
+     awaiting routing · orphan elements (a `proposed` or
+     in-flight-class element whose key names no open feature, epic or lane) · drift register.
 
 The index carries no content of its own: everything in it is derived from the store.
 
@@ -131,16 +147,17 @@ The index carries no content of its own: everything in it is derived from the st
 
 ```mermaid
 flowchart TD
-    [containers and their communication; in-flight-class elements marked]
+    [containers and their communication; proposed and in-flight-class elements marked; removed elements not drawn]
 ```
 
 ## Elements
 
-| ID | Kind | Name | Responsibility | Talks to (style) | Status |
-|----|------|------|----------------|------------------|--------|
-| SPN-001 | container | [name] | [one line] | SPN-002 (sync REST) | built |
-| SPN-002 | container | [name] | [one line] | SPN-003 (queue) | in-flight (FEAT-012) |
-| SPN-003 | boundary | [name] | [what changes across it — trust, ownership, tenancy] | — | ruled |
+| ID | Kind | Name | Responsibility | Talks to (style) | Status | Raised | Weighed |
+|----|------|------|----------------|------------------|--------|--------|---------|
+| SPN-001 | container | [name] | [one line] | SPN-002 (sync REST) | built | — | — |
+| SPN-002 | container | [name] | [one line] | SPN-003 (queue) | in-flight (FEAT-012) | [cycle] | [why, one line] |
+| SPN-003 | boundary | [name] | [what changes across it — trust, ownership, tenancy] | — | ruled | — | — |
+| SPN-004 | flow | [name] | — | — | removed | — | — |
 
 ## Key flows
 

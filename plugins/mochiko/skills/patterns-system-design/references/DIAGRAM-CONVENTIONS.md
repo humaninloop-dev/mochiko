@@ -86,8 +86,8 @@ sequenceDiagram
 ```
 
 Use `alt` / `opt` / `Note` to make ordering and failure explicit. Participants are the same
-components named in the container diagram and the delta register — keep the names identical across
-all three pieces.
+components named in the container diagram (and, for a changed element, the checkpoint table) — keep
+the names identical across all three pieces.
 
 ---
 

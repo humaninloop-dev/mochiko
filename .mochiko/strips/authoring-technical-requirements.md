@@ -23,6 +23,97 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/authoring-technical-requirements/references/ARTIFACT-TEMPLATES.md`. -->
 
+<!-- Wave context: the joint hook/delta build, wave 3 (v0.116.0) — baselines are edited in place, so
+`baseline-delta.md`, the sign-off write and the no-gaps id rule are retired. Delta record:
+`.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` (`DECISIONS.md` 2026-09-24
+row). Pre-edit verbatim text: `git show 5558fd7:<path>` for `SKILL.md` and
+`references/ARTIFACT-TEMPLATES.md`. -->
+
+## [v0.116.0] ARTIFACT-TEMPLATES id rules — "Sequential, … no gaps" superseded by the product file's high-water mark
+
+- **Disposition:** superseded →
+  - the C-, D- and INT-/DS- field cells read "Sequential per prefix, three-digit padded, from the
+    product file's high-water mark (`sequential-ids`)";
+  - the NFR- cell reads "Sequential, three-digit padded, the next free id in the store at write
+    time";
+  - numbering rule 2 reads "**Next free id at write time:** a new entry takes the next free id
+    after its file's high-water mark, and a landed id is never reused. For C- / D- / IP- / INT- /
+    DS-, a gap left by an abandoned run's reverted entries is legal (`sequential-ids`); NFR- ids
+    follow the store's own sequence".
+- **Tier failed:** n/a — supersession by ruling. The grounds are delta record D3(a), which takes
+  ids from the product sequence at write time with no feature-local run, and the wave-2 rewording
+  of the delivered rule `authoring-technical-requirements.sequential-ids` (0026, S4's Q9 and RA5).
+  That rule names C-, D-, IP-, INT- and DS- only. **No delivered rule governs NFR- numbering**, so
+  the NFR- cell claims no rule's coverage. It carries only D3(a)'s next-free-id at write time and
+  says nothing on gaps.
+- **Content (superseded text, verbatim):**
+
+  ```
+  | ID | Yes | C-XXX | Sequential, three-digit padded, no gaps |
+  | ID | Yes | D-XXX | Sequential, three-digit padded, no gaps |
+  | ID | Yes | INT-XXX / DS-XXX | Sequential per prefix, three-digit padded, no gaps |
+  | ID | Yes | NFR-XXX | Sequential, three-digit padded, no gaps |
+  2. **Sequential, no gaps:** C-001, C-002, C-003 (never C-001, C-003)
+  ```
+
+- **Kept deliberately:**
+  - three-digit padding;
+  - per-prefix sequences;
+  - numbering rules 1 and 3–5;
+  - the IP- cell (`:153`), which never claimed no gaps.
+- **Consumers assessed:**
+  - `review-plan-artifacts`'s Tier-1 checker reads id presence, not gaps.
+  - The duplicate-id check (delta D3a) is the landing verifier's, and it is unchanged.
+
+## [v0.116.0] ARTIFACT-TEMPLATES NFR section — "reaches the store as part of a design-time store delta, written at the user's sign-off — never edited into ruled truth in place" superseded
+
+- **Disposition:** superseded → "A new, changed or removed target is written in place on its
+  concern row as `proposed (<key>)` and flipped at the user's sign-off
+  (`authoring-technical-requirements.nfr-target-flips-at-sign-off`)." At the V3a fix round
+  (advisory A3), "new or changed" became "new, changed or removed", to match the rule it points at.
+- **Tier failed:** n/a — supersession by ruling:
+  - delta D1: the store is edited in place;
+  - delta D7: `proposed` before the checkpoint, flipped at sign-off;
+  - the delivered floor `nfr-target-flips-at-sign-off` (0025).
+- **Content (superseded text, verbatim):** `A new or changed target reaches the store as
+  part of a design-time store delta, written at the user's sign-off — never edited into ruled truth
+  in place.`
+- **Kept deliberately:**
+  - "the sign-off stays the user's", carried by the rule it points at;
+  - the grammar this section owns: fields, categories and measurement methods.
+- **Consumers assessed:** `review-plan-artifacts`'s "NFR targets on touched rows" check is
+  unchanged.
+
+## [v0.116.0] ARTIFACT-TEMPLATES structural-decision note — "the gated `baseline-delta.md` path" re-keyed
+
+- **Disposition:** superseded → "(or, for a build-time decision, the builder's build-raised entry,
+  written in place and marked per `impl.baseline-entry-grammar`)".
+- **Tier failed:** n/a — supersession by ruling:
+  - delta D1: no `baseline-delta.md`, no fold;
+  - the build-time entry landing rule (0024, `patterns-adopt-first.build-time-entry-landing`).
+- **Content (superseded text, verbatim):** `has one origin: the design-phase author (or, for a
+  build-time decision, the gated` / `` `baseline-delta.md` path). ``
+- **Kept deliberately:**
+  - no structural-decision subsection;
+  - topology rulings live in the store;
+  - one origin per D-XXX.
+- **Consumers assessed:** `patterns-adopt-first` owns the build-time landing and is unchanged.
+
+## [v0.116.0] `description:` — "or at build time through the gated `baseline-delta.md` path" re-keyed
+
+- **Disposition:** superseded → "or at build time as a build-raised entry written in place".
+- **Tier failed:** n/a — supersession by ruling (delta D1).
+- **Content (superseded text, verbatim):** `or at build time through the gated `baseline-delta.md` path.`
+- **Kept deliberately:** every trigger phrase, the MUST/SHOULD grading, the owns/not-owns line.
+- **Budget:** description 598 → 596 against 620. The body is unchanged at 4,038. Payload
+  measurement is the wave lead's ledger.
+- **Consumers assessed:**
+  - The router's ATR row (`:93`) never carried the build-time clause and is unchanged.
+  - The router's `baseline-delta.md` mention was in the `patterns-adopt-first` row (`:92`), which
+    is re-keyed in the same wave (`strips/mochiko.md`).
+  - This line was corrected at the V3a fix round (advisory A1). The first landing claimed the ATR
+    row was re-keyed.
+
 ## [v0.107.0] the NFR row-shape clause's raw-Read fallback for the architecture-store schema
 
 - **Disposition:** superseded → the CLI form `mochiko-cli template architecture-store`

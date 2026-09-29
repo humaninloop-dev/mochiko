@@ -128,9 +128,9 @@ door-gated rule is graded in the scenario that plants it:
 
 | golden | plants | KM | seats |
 |---|---|---|---|
-| s1-bug-delta-lane | a bug on a delivered single owner (delta lane, reproduction-failing test) · an improvement with a known contract touch (baseline-delta.md before/after) · a report on in-flight territory (files to the run) · a dangling `live` row on a closed spec · a stale unrefined stub · no epics | present | multi (producer + reviewer) |
+| s1-bug-delta-lane | a bug on a delivered single owner (delta lane, reproduction-failing test) · an improvement with a known contract touch (named on the card, written in place under the run's lifecycle marker) · a report on in-flight territory (files to the run) · a dangling `live` row on a closed spec · a stale unrefined stub · no epics | present | multi (producer + reviewer) |
 | s2-growth-mint-lane | an extend on a delivered capability (growth-door row) · a new-kind ask (route to specify, stub parked) · a no-single-owner report (product lane) · a live lane run (single-flight) · an "all in one go" epic question | absent (degrade path) | multi |
-| s3-groom-at-cap | ten capabilities (cap-trip) · a lookalike pair (merge) · a dead entry (retire) · a wholesale re-derivation ask with an explicit "host it here" (ceiling + hosting) · an open epic ready to dispatch · a fired architecture trigger · an unfolded delta · an orphan store element | present | multi |
+| s3-groom-at-cap | ten capabilities (cap-trip) · a lookalike pair (merge) · a dead entry (retire) · a wholesale re-derivation ask with an explicit "host it here" (ceiling + hosting) · an open epic ready to dispatch · a fired architecture trigger · an orphan store element | present | multi |
 
 **Planted (invited) rules per golden** — the honest coverage denominator per scenario; a rule
 outside a golden's set reads `absent` there by design:
@@ -175,7 +175,7 @@ lane-never-widens (s1). A flaky read on any of them is one pair, not a trend.
 - **The read-only fence forecloses every write.** `feat.artifact-home`, `feat.delta-cards`,
   `feat.product-surface`, `feat.dm-map-integrity`, and `feat.no-silent-map-mutations` are read on
   the writes the plan *describes* — paths, content, and sequence (home rendered before the first
-  write; the delta beside the baseline; the dangling row folded) — since no write lands.
+  write; the contract touch named on the card; the dangling row folded) — since no write lands.
 - **The no-dispatch line forbids spawning, not describing.** `feat.sound-loop-floor`,
   `feat.author-grader`, `feat.no-self-graded-writes`, `feat.transport-floor`, and
   `feat.model-tiering` are read on the seat wiring the plan describes (a producing seat on an
@@ -254,3 +254,4 @@ sessions inside the same bound. Exceeding either halts and returns to the user.
 - ship bar (a) / (b) / (c): **[measured at baseline]**
 - re-key count: 0
 - kit status: **AUTHORED — awaiting the baseline grid**
+- 2026-09-29 amendment, recorded before any grid: the s3-groom-at-cap fixture file `.mochiko/features/FEAT-004/baseline-delta.md` is deleted and the plant phrases at `:131` (s1) and `:133` (s3) and the reading example at `:178` are reworded to match. This changes the s3 scenario a session sees, since fixtures reach the session (`evals/plan/README.md:32–33`). Why: delta D1 (2026-09-24 delta-files-vs-direct-baseline-edits) retired the feature-dir delta ledger; baselines are edited in place under a run's lifecycle marker, so the plant no longer exists in the model. No grid had run before this change (kit status AUTHORED — awaiting the baseline grid; no `runs/`), and s3's invited set is unchanged. Ruled at the joint hook/delta build, wave 3 (lead's Q2(a)).

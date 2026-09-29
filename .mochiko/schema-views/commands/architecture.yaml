@@ -168,10 +168,11 @@ sections:
         kind: binding
         text: >-
           mochiko:authoring-architecture-store is the store's owner: AX and spine grammar, the
-          element lifecycle (`ruled` → `in-flight (FEAT-XXX)` / `modifying (FEAT-XXX)` /
-          `removing (FEAT-XXX)` → `built`), the stance vocabulary (`decided` · `not-now` ·
-          `n-a` · `open`), row graduation, the fold at landings, the health view, and the index
-          regeneration.
+          element lifecycle (`ruled` → `proposed (<key>)` → at sign-off `in-flight (<key>)` /
+          `modifying (<key>)` / `removing (<key>)` → `built`, or `removed` for a removal; the
+          key `FEAT-XXX`, `EPIC-XXX` or `lane-<slug>`), the stance vocabulary (`decided` ·
+          `not-now` · `n-a` · `open`), row graduation, the fold at landings, the health view,
+          and the index regeneration.
         pointer: mochiko:authoring-architecture-store
       - id: arch.tools-shelves-skill
         labels: [floor-pointer]
@@ -212,10 +213,13 @@ sections:
         text: >-
           The first visit to an existing repo derives the store from what exists — repo
           `ARCHITECTURE.md` prose, any per-feature `architecture.md` files, `nfrs.md`, structural
-          `D-XXX` rows — presents it for confirmation, then archives the absorbed sources to
-          .mochiko/archive/product-baselines/<date>/. The derivation is `Assumed` — code and
-          prose read as they stand, and a partial source can poison the baseline it seeds: say so
-          when you present it.
+          `D-XXX` rows — presents it for confirmation, then archives the absorbed sources,
+          unchanged, to .mochiko/archive/product-baselines/<date>/ under the names that home
+          declares — the prose as `ARCHITECTURE-prose.md`, each per-feature file as
+          `<FEAT-ID>-architecture.md`, `nfrs.md`, and the constraints file whose structural rows
+          were absorbed as `constraints-and-decisions.md`. The derivation is `Assumed` — code
+          and prose read as they stand, and a partial source can poison the baseline it seeds: say
+          so when you present it.
         anchor: 2026-08-19 product-architecture-schema D16
       - id: arch.tools-drift-probe-scope
         labels: [evidence, user-gate, stewardship]
@@ -321,10 +325,11 @@ sections:
         text: >-
           The store's files have a declared home: render `mochiko-cli home
           .mochiko/product/architecture` before the first write. `spine.md` binds the
-          `architecture-spine` template and takes its per-section budgets from `mochiko-cli
-          template architecture-spine`; `concerns.md` binds `architecture-concerns`, whose length
-          is the concern count and carries no file bound; a graduated row's file is `<AX-ID>.md`
-          in `concerns/`. The repo-root index is derived, never hand-written.
+          `architecture-spine` template and `concerns.md` binds `architecture-concerns`: each
+          takes its shape from `mochiko-cli template <kind>` and its bound from the home — per
+          `##` entry, the templates' section budgets replaced, no whole-file bound; a graduated
+          row's file is `<AX-ID>.md` in `concerns/`, under that sub-home's whole-file bound. The
+          repo-root index is derived, never hand-written.
         anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: arch.sec.boundaries
     title: Boundaries — the non-waivable floor

@@ -1,0 +1,41 @@
+grammar: 1
+id: 0040-brownfield-archive-names
+sequence: 40
+intent: >-
+  Execute hook-enforcement-field-review D3 for the product-baseline snapshots, per the ratified
+  census table row N1d: the brownfield reconstruction rule names no file, so the home's names came
+  from kinako's one snapshot, and the structural D-XXX rows it lists had no name at all. The rule
+  now names the archive name of each absorbed source, and the home declares
+  constraints-and-decisions.md, the source file's own name (the lead's Q3 ruling), for the
+  constraints file whose structural-origin D-XXX section the store absorbs
+  (product-architecture-schema D12). Nothing leaves.
+anchor: 2026-09-23 hook-enforcement-field-review D3
+hash: sha256:4438a7cb2a313c337f2d7fe645236518b9df1102b48c5a7b2722c32a5fca82c2
+changes:
+  - op: reword-rule
+    schema: command/architecture
+    id: arch.tools-brownfield-reconstruction
+    text: >-
+      The first visit to an existing repo derives the store from what exists — repo
+      `ARCHITECTURE.md` prose, any per-feature `architecture.md` files, `nfrs.md`, structural
+      `D-XXX` rows — presents it for confirmation, then archives the absorbed sources,
+      unchanged, to .mochiko/archive/product-baselines/<date>/ under the names that home declares
+      — the prose as `ARCHITECTURE-prose.md`, each per-feature file as
+      `<FEAT-ID>-architecture.md`, `nfrs.md`, and the constraints file whose structural rows were
+      absorbed as `constraints-and-decisions.md`. The derivation is `Assumed` — code and prose
+      read as they stand, and a partial source can poison the baseline it seeds: say so when you
+      present it.
+  - op: replace-document
+    kind: home
+    name: archive-product-baselines
+    content:
+      home: archive-product-baselines
+      title: One dated snapshot of the sources a brownfield store reconstruction absorbed
+      path: [.mochiko, archive, product-baselines, <slug>]
+      bounds: elsewhere
+      bounds_cite: arch.tools-brownfield-reconstruction (the absorbed sources, archived unchanged)
+      deliverables:
+        - file: ARCHITECTURE-prose.md
+        - file: <FEAT-ID>-architecture.md
+        - file: nfrs.md
+        - file: constraints-and-decisions.md

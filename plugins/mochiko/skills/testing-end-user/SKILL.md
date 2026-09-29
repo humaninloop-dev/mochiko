@@ -134,7 +134,7 @@ If any of these thoughts arise, STOP (`testing-end-user.rationalization-stop`):
 |---------|-----------------|-----|
 | Skipping setup validation | Actions fail mysteriously on assumed-complete setup | Run setup, capture its output, fail explicitly |
 | Missing background cleanup | Stale processes interfere with the next test | Track all PIDs; kill after pass or fail; verify cleanup |
-| Truncating evidence prematurely | Critical failure information cut from the report | Follow REPORT-TEMPLATES.md truncation rules; include log-file locations |
+| Truncating evidence prematurely | Critical failure information cut from the report | Follow REPORT-TEMPLATES.md truncation rules; cite command and commit |
 | PASS without assert verification | PASS claimed on unevaluated asserts | Every assert gets an explicit pass/fail; unevaluated = failure |
 | Proceeding after rejection | Execution continues past an explicit human reject | Rejection gates completion; retry or abort |
 | Skipping checkpoint presentation | Human never sees results — no audit trail, no gate | Every test ends with a checkpoint; no silent completion |

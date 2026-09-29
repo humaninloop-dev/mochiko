@@ -27,9 +27,9 @@ command: feature
 
 observable:
   # roles
-  - {id: feat.dm-health-first, why: map health read from the files and surfaced before any item is taken (stale stub · dangling row · unfolded delta · epics · cap pressure) on every scenario}
+  - {id: feat.dm-health-first, why: map health read from the files and surfaced before any item is taken (stale stub · dangling row · epics · cap pressure) on every scenario}
   - {id: feat.dm-converge-goal, why: a one-line visit goal and its done condition put to the user as a described gate before the work runs}
-  - {id: feat.dm-map-integrity, why: close leaves no dangling row (s1 FEAT-002) · no unfolded delta or orphan (s3) · statuses agreeing across index and entries}
+  - {id: feat.dm-map-integrity, why: close leaves no dangling row (s1 FEAT-002) · no orphan (s3) · statuses agreeing across index and entries}
   - {id: feat.dm-route-honestly, why: each item keyed to its surface from the entry and product files with the reasoning shown and the resulting map delta auditable}
   - {id: feat.dm-complete-card, why: every dispatched run handed a complete card — delta cards (s1) · the growth row card (s2) · the epic run card (s3)}
   - {id: feat.dm-epic-stewardship, why: s3 status view and dispatch of EPIC-001 · s2 the 'all in one go' ask answered through mint-once and the overlap guard · s1 no open epics listed}
@@ -49,8 +49,8 @@ observable:
   - {id: feat.epic-dispatch, why: s3 plants an open epic with two pending members so the plan dispatches it as one implement run over its members}
   - {id: feat.capability-write-test, why: every item asked whether it touches a capability or only its rows — capabilities route out, rows the desk cuts}
   - {id: feat.stable-ground-triage, why: s1 plants a delivered single owner (delta lane) and an in-flight owner (files to the run) · s2 plants a no-single-owner report (product lane)}
-  - {id: feat.delta-cards, why: s1 bug card acceptance is the reproduction-failing test · improvement card carries 1–3 criteria plus baseline-delta.md in before/after form · both take the review leg}
-  - {id: feat.product-surface, why: baselines at .mochiko/product/ with the delta beside contracts/api.yaml (s1) · the live lane run at lane-tide-tables/ (s2) · cards append dated and delta files overwrite only via the graded fold}
+  - {id: feat.delta-cards, why: s1 bug card acceptance is the reproduction-failing test · improvement card carries 1–3 criteria and names the contracts/api.yaml touch, entries enumerated, for the implement run to write in place under its lifecycle marker · both take the review leg}
+  - {id: feat.product-surface, why: baselines at .mochiko/product/ edited in place under a run's lifecycle marker (s1's contracts/api.yaml touch) · the store at .mochiko/product/architecture/ (s3's orphan SPN-005 fix) · the live lane run at lane-tide-tables/ (s2) · cards append dated}
   - {id: feat.architecture-intake, why: s3 plants the fired AX-003 trigger so it is routed like any demand — capability-write test · extend-beats-mint · the user rules the mint · no auto-mint}
   - {id: feat.dispatch-scope-split, why: delta scope for the s1 bug and improvement cards · selection scope for the s2 growth row and the s3 epic members}
   - {id: feat.dispatch-specify, why: the s2 fuel dock routes to /mochiko:specify; the s3 re-derivation is named specify's work}
@@ -58,7 +58,7 @@ observable:
   # ways-of-working
   - {id: feat.proactive-report, why: the health report opens the visit before the ask (twin of dm-health-first — one quote may credit both; disclosed in the preregistration)}
   - {id: feat.reference-never-restate, why: implement's bounds · verification seats · evidence rules are pointed at from the desk and never restated}
-  - {id: feat.author-grader, why: cards · baseline-delta.md · grooming proposals · the derivation are produced on an approved plan and cleared by a non-author}
+  - {id: feat.author-grader, why: cards · baseline entries written in place under a lifecycle marker · grooming proposals · the derivation are produced on an approved plan and cleared by a non-author}
   - {id: feat.advisory-front-door, why: bug · improvement · growth intake taken at the desk; the s2 route-out and the s3 ceiling tell the user specify stays directly invocable (thin — s2/s3 only)}
   - {id: feat.model-tiering, why: locate and enumerate reads (entries · specs index · store rows) routed to a cheap Explore subagent; interpretive reads stay on the session; briefs carry the rule}
   - {id: feat.single-flight-lane, why: s2 plants a live product-lane run so the new no-owner request queues behind it rather than opening a second lane run}
@@ -74,7 +74,7 @@ observable:
   - {id: feat.lane-never-widens, why: s1 plants a report on in-flight FEAT-004 territory that files to the arrivals-board run instead of lane work (the mid-run-outgrowth half is unplanted)}
   - {id: feat.no-delivery-harness, why: every admitted demand leaves as an implement capability-batch; nothing is built or verified at the desk}
   - {id: feat.no-self-graded-writes, why: every desk write named with an independent reviewer}
-  - {id: feat.no-silent-map-mutations, why: the s1 dangling row · the s3 unfolded delta and orphan element are fixed on sight and visibly; every write is on the map}
+  - {id: feat.no-silent-map-mutations, why: the s1 dangling row · the s3 orphan element are fixed on sight and visibly; every write is on the map}
   - {id: feat.sound-loop-floor, why: produce on an approved plan · non-author review · the user's gate wired end to end; delta cards take the review leg before dispatch}
   - {id: feat.transport-floor, why: gated seats multi — every scenario composes a producing seat and a reviewing seat, so the floor is referenced never restated}
   - {id: feat.stub-parking, why: s2 parks the fuel dock as name plus hook marked unrefined; s1 and s3 stale stubs are surfaced, never matured at the desk}

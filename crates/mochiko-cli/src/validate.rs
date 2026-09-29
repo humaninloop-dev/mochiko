@@ -10,7 +10,7 @@
 //! Nothing here grades a primitive's judgment content. The checks are structural validity on data
 //! this tool owns, which is what keeps the widened kernel-class admission inside the bright line.
 
-use crate::home::{Bounds, Form, Home};
+use crate::home::{Bounds, Deliverable, Form, Home};
 use crate::model::{
     canonical_depth, is_anchor, is_dotted_id, is_slug, norm_value, Class, Condition, DocKind,
     DocRef, Document, LabelRegistry, Ordered, Resolution, Rule, RuleKind, RuleSchema, Values,
@@ -891,6 +891,7 @@ fn cross_document(state: &State, findings: &mut Vec<Finding>) {
 /// [`crate::home`]) rather than grading any artifact a home governs.
 fn validate_homes(state: &State, findings: &mut Vec<Finding>) {
     let mut paths: BTreeMap<Vec<String>, Vec<(String, DocRef)>> = BTreeMap::new();
+    let mut raw_output: Vec<(String, DocRef)> = Vec::new();
     for (doc, document) in &state.docs {
         if doc.kind != DocKind::Home {
             continue;
@@ -951,7 +952,12 @@ fn validate_homes(state: &State, findings: &mut Vec<Finding>) {
                     ),
                 ));
             }
-            if deliverable.form != Some(Form::Log)
+            if deliverable.form == Some(Form::Entries) {
+                check_entries(doc, deliverable, findings);
+            }
+            // A log and an entry-bounded store are bounded per entry, so neither owes a
+            // whole-file bound.
+            if !matches!(deliverable.form, Some(Form::Log | Form::Entries))
                 && deliverable.template.is_none()
                 && deliverable.max_lines.is_none()
                 && deliverable.bound_reason.is_none()
@@ -987,6 +993,25 @@ fn validate_homes(state: &State, findings: &mut Vec<Finding>) {
             .entry(home.path.clone())
             .or_default()
             .push((home.home.clone(), doc.clone()));
+        if home.raw_output {
+            raw_output.push((home.home.clone(), doc.clone()));
+        }
+    }
+
+    // One run folder: a deny reason names exactly one place for raw output, and two would leave
+    // the seat choosing between them.
+    if raw_output.len() > 1 {
+        raw_output.sort_unstable_by(|a, b| a.0.cmp(&b.0));
+        let names: Vec<&str> = raw_output.iter().map(|(name, _)| name.as_str()).collect();
+        findings.push(Finding::doc(
+            Code::HomeDuplicate,
+            &raw_output[0].1,
+            format!(
+                "homes {} each declare `raw_output: true` — the raw-output home is one home, the \
+                 single run folder every deny reason names",
+                names.join(", ")
+            ),
+        ));
     }
 
     for (path, mut entries) in paths {
@@ -1005,6 +1030,36 @@ fn validate_homes(state: &State, findings: &mut Vec<Finding>) {
                 names.join(", "),
                 path.join("/")
             ),
+        ));
+    }
+}
+
+/// The grammar-2 `form: entries` arms: an entry needs a heading level to be counted and a budget
+/// to be bounded, and a section bound must have text to bind.
+fn check_entries(doc: &DocRef, deliverable: &Deliverable, findings: &mut Vec<Finding>) {
+    let file = &deliverable.file;
+    let mut fault = |message: String| findings.push(Finding::doc(Code::HomeBounds, doc, message));
+    if deliverable.entry_max_lines.is_none() {
+        fault(format!(
+            "deliverable `{file}` is form: entries with no `entry_max_lines` — an entry-bounded \
+             store is bounded per entry, never per file"
+        ));
+    }
+    match deliverable.entry_heading.as_deref() {
+        None => fault(format!(
+            "deliverable `{file}` is form: entries with no `entry_heading` — without the heading \
+             level no entry can be counted"
+        )),
+        Some("##" | "###") => {}
+        Some(other) => fault(format!(
+            "deliverable `{file}` declares `entry_heading: {other}` — want `##` or `###`"
+        )),
+    }
+    if deliverable.section_max_lines.is_some() && deliverable.entry_heading.as_deref() == Some("##")
+    {
+        fault(format!(
+            "deliverable `{file}` declares `section_max_lines` with `##` entries — every line \
+             after the first entry heading belongs to an entry, so the bound has nothing to count"
         ));
     }
 }

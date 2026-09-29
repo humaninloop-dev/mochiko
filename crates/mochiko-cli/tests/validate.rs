@@ -1100,8 +1100,9 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // author-grader-consolidation D7); `0009-plan-qa-leg` imported `review-seat-plan`
     // (2026-09-03 producer-plan-enforcement D8); the 2026-09-19 impeccable-design-integration
     // wave imported three skills (`0011`, `0012`), the `product-design` home and the
-    // `design-baseline` template (`0013`).
-    assert_eq!(state.docs.len(), 80, "the schema class is 80 files");
+    // `design-baseline` template (`0013`); the 2026-09-29 census table ratification imported seven
+    // home documents (`0032` six, `0033` the `runs` home).
+    assert_eq!(state.docs.len(), 87, "the schema class is 87 files");
 
     let census = census(&state);
     let (command_rules, command_floors) =
@@ -1143,9 +1144,20 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // mints `authoring-constitution.rule-not-instance`, so skill 805 → 803. None of the nine is a
     // floor or a fail node; every other op is a reword, a field set, a moment or a template
     // replaced, and the floor figures and the fail set hold.
-    assert_eq!(command_rules, 332, "live command rules");
-    assert_eq!(skill_rules, 803, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1135, "live rules in total");
+    // `0024`–`0029` (the 2026-09-24 delta-files-vs-direct-baseline-edits wave, one anchor each)
+    // supersede nine rules and mint ten. `implement` loses five — two floors, one must, two floor
+    // fail nodes — and gains six — two floors, two musts, two floor fail nodes — so command
+    // 332 → 333 with the floor figure and the fail set unmoved; the skill side swaps four for four,
+    // a floor for a floor twice, so skill 803 and its floors hold. `0032`–`0035` (the 2026-09-29
+    // census table ratification) carry home documents only, and no rules.
+    // `0036`–`0043` (the 2026-09-29 joint hook/delta build's wave 3) mint three rules and retire
+    // none: `impl.run-folder` and `impl.evidence-citation` on `implement` (`0036`) and
+    // `testing-end-user.pre-write-dry-run` (`0038`), all three musts, none a floor or a fail node —
+    // command 333 → 335, skill 803 → 804, the floor figures and the fail set unmoved. The rest are
+    // rewords keeping id, class and kind, and `0040`'s home replaced.
+    assert_eq!(command_rules, 335, "live command rules");
+    assert_eq!(skill_rules, 804, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1139, "live rules in total");
     assert_eq!(skill_floors, 264, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
@@ -1502,6 +1514,132 @@ fn a_deliverable_carrying_both_a_bound_and_a_reason_to_have_none_is_rejected() {
     assert!(
         codes(&state).contains(&Code::HomeBounds),
         "a bound and a reason to have none contradict"
+    );
+}
+
+/// The corpus plus the given home documents, each inserted under its own `home:` name.
+fn corpus_with_homes(yamls: &[&str]) -> State {
+    let mut state = corpus();
+    for yaml in yamls {
+        let value: serde_norway::Value = serde_norway::from_str(yaml).expect("the probe parses");
+        let name = value
+            .get("home")
+            .and_then(|v| v.as_str())
+            .expect("a probe home names itself")
+            .to_string();
+        state.docs.insert(
+            DocRef::new(DocKind::Home, name),
+            Document::from_value(DocKind::Home, &value).expect("a home is opaque"),
+        );
+    }
+    state
+}
+
+/// One home with one `form: entries` deliverable carrying the given extra lines.
+fn entries_home(extra: &str) -> String {
+    format!(
+        "home: probe-entries\ntitle: Entry-bounded store\npath: [.mochiko, probe-entries]\n\
+         bounds: whole-file\ndeliverables:\n  - file: store.md\n    form: entries\n{extra}"
+    )
+}
+
+/// The messages of every rejecting finding carrying `code`.
+fn messages(state: &State, code: Code) -> Vec<String> {
+    rejecting(state)
+        .into_iter()
+        .filter(|f| f.code == code)
+        .map(|f| f.to_string())
+        .collect()
+}
+
+#[test]
+fn a_well_formed_entries_deliverable_raises_no_bound_finding() {
+    // The template-less arm asks for `max_lines` or `bound_reason`; an entries deliverable is
+    // bounded per entry instead, the way a log is, so the arm must not fire on it.
+    let yaml = entries_home(
+        "    entry_heading: \"###\"\n    entry_max_lines: 150\n    section_max_lines: 40\n    \
+         entry_exempt_fields: [Lifecycle, Raised, Weighed]\n",
+    );
+    let state = corpus_with_homes(&[&yaml]);
+    assert!(
+        !codes(&state).contains(&Code::HomeBounds),
+        "a complete entries deliverable is legal: {:?}",
+        rejecting(&state)
+    );
+}
+
+#[test]
+fn an_entry_heading_other_than_two_or_three_hashes_is_rejected() {
+    for heading in ["\"####\"", "\"#\"", "entity"] {
+        let yaml = entries_home(&format!(
+            "    entry_heading: {heading}\n    entry_max_lines: 150\n"
+        ));
+        let state = corpus_with_homes(&[&yaml]);
+        assert!(
+            messages(&state, Code::HomeBounds)
+                .iter()
+                .any(|m| m.contains("entry_heading")),
+            "entry_heading {heading} is not `##` or `###`: {:?}",
+            rejecting(&state)
+        );
+    }
+}
+
+#[test]
+fn an_entries_deliverable_missing_its_heading_or_its_budget_is_rejected() {
+    for (missing, extra) in [
+        ("entry_max_lines", "    entry_heading: \"###\"\n"),
+        ("entry_heading", "    entry_max_lines: 150\n"),
+    ] {
+        let state = corpus_with_homes(&[&entries_home(extra)]);
+        assert!(
+            messages(&state, Code::HomeBounds)
+                .iter()
+                .any(|m| m.contains(missing)),
+            "form: entries with no `{missing}` cannot be counted: {:?}",
+            rejecting(&state)
+        );
+    }
+}
+
+#[test]
+fn a_section_bound_on_second_level_entries_is_rejected_because_it_can_never_bind() {
+    // With `##` entries every line after the first entry heading belongs to an entry, so a bound
+    // on "the text of a `##` section outside its entries" has nothing to count (ruled at plan Q7).
+    let yaml = entries_home(
+        "    entry_heading: \"##\"\n    entry_max_lines: 150\n    section_max_lines: 40\n",
+    );
+    let state = corpus_with_homes(&[&yaml]);
+    assert!(
+        messages(&state, Code::HomeBounds)
+            .iter()
+            .any(|m| m.contains("section_max_lines")),
+        "{:?}",
+        rejecting(&state)
+    );
+}
+
+#[test]
+fn only_one_home_may_be_the_raw_output_home() {
+    let raw = |name: &str| {
+        format!(
+            "home: {name}\ntitle: Raw output\npath: [.mochiko, {name}, <run-id>]\n\
+             raw_output: true\nbounds: elsewhere\nbounds_cite: record D4\n"
+        )
+    };
+    let one = corpus_with_homes(&[&raw("runs")]);
+    assert!(
+        !codes(&one).contains(&Code::HomeDuplicate),
+        "one raw-output home is the ruled shape: {:?}",
+        rejecting(&one)
+    );
+    let two = corpus_with_homes(&[&raw("runs"), &raw("scratch")]);
+    assert!(
+        messages(&two, Code::HomeDuplicate)
+            .iter()
+            .any(|m| m.contains("raw_output")),
+        "two raw-output homes would give the deny reason two run folders to name: {:?}",
+        rejecting(&two)
     );
 }
 

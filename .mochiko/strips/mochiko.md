@@ -28,6 +28,147 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 review-amended (`DECISIONS.md` 2026-09-24 "Setup goes product-agnostic ruled" row). Pre-edit
 verbatim text: `git show bbe303f:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+<!-- Wave context: the joint hook/delta build, wave 3 (v0.116.0) — the router's rows re-keyed from
+the retired delta-file model to in-place baseline edits. Delta record:
+`.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` (`DECISIONS.md` 2026-09-24
+row); seams: `.mochiko/decisions/2026-09-29-joint-hook-delta-build-seams.md` R8 and
+`.mochiko/decisions/2026-09-29-landed-removal-stub.md` R9 (`DECISIONS.md` 2026-09-29 rows). One
+entry per passage, each with its own ruling. The router body is unbudgeted: 47,148 → 47,358 at
+the first landing, 47,326 after the V3a fix round.
+Pre-edit verbatim text: `git show 5558fd7:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+## [v0.116.0] `/mochiko:implement` row — the store's "in-flight-class elements to `built`" flip and "the touched product baselines take their graded delta folds" superseded
+
+- **Disposition:** superseded → "takes the landing flip over the run's store elements and its
+  entries in the touched product baselines (`impl.store-landing`, `impl.landing-verifier-folds`)
+  with graded `As-built:`/`Drift:` writes and the built-vs-signed diff". Both halves now point at
+  the rules that hold the flip, and the row restates neither mapping.
+  - **Fix round (V3a unit 6, issue 1):** the first landing re-keyed only the baselines half, as
+    "the run's entries in the touched product baselines flip (`in-flight` / `modifying` to `built`,
+    `removing` to its `removed` stub)". It kept "flips the store's in-flight-class elements to
+    `built`", which sends a `removing` element to `built`. That contradicted `fold-duty`,
+    `impl.store-landing`, `impl.landing-verifier-folds` and the sentence's own second half. Both
+    halves now point.
+- **Tier failed:** n/a — supersession by ruling:
+  - delta D1: no delta files, no graded fold;
+  - delta D2: the landing flips each entry's marker;
+  - seams R9 (`.mochiko/decisions/2026-09-29-landed-removal-stub.md`): a landed removal leaves a
+    `removed` stub, in the store as in every baseline.
+- **Content (superseded text, verbatim):** `flips the store's in-flight-class elements to `built`
+  with graded `As-built:`/`Drift:` writes and the built-vs-signed diff, and the touched product
+  baselines take their graded delta folds`
+- **Kept deliberately:**
+  - the map-sense parenthesis "(selection scope graduates the batch; delta scope folds the
+    delta)";
+  - the graded `As-built:`/`Drift:` writes;
+  - the built-vs-signed diff;
+  - the capability-extent fold and the design-baseline clause.
+- **Consumers assessed:** `commands/implement.md`'s landing prose is classified map-sense and
+  stands (S8 plan Appendix A).
+
+## [v0.116.0] `testing-gap-finding` row — "the feature's design-phase deltas" in the input fence re-keyed
+
+- **Disposition:** superseded → "the run's sufficiency report and the feature's signed
+  `architecture.md` drawing, those two artifacts only". This matches the delivered floor.
+- **Tier failed:** n/a — supersession by ruling:
+  - delta D7: the drawing is what the user signs;
+  - the fence reworded in 0029, `testing-gap-finding.blindness-fence-inclusion-list`.
+- **Content (superseded text, verbatim):** `the sufficiency report and the feature's design-phase
+  deltas, those two artifacts only`
+- **Kept deliberately:**
+  - the rest of the inclusion list and the exclusions;
+  - "taste is advisory, carried to the landing fold", which is the map-sense landing and stands.
+- **Consumers assessed:** `testing-gap-finding`'s rules are S7's (the log). This row now mirrors
+  them.
+
+## [v0.116.0] `patterns-system-design` row — "the delta's element list … drafted in the design-phase package with the store untouched" superseded
+
+- **Disposition:** superseded → "a checkpoint table of the changed store elements, written in place
+  in the store as `proposed (<key>)` elements with their named `AX-XXX` row changes, and a
+  conditional deployment view; the user's sign-off on the rendered diagram flips them".
+- **Tier failed:** n/a — supersession by ruling:
+  - delta D1: the store is edited in place;
+  - delta D4: the register dies and the checkpoint table stays;
+  - delta D7: `proposed` before the checkpoint, flipped at sign-off.
+- **Content (superseded text, verbatim):** `the delta's element list with `in-flight` / `modifying`
+  / `removing (FEAT-XXX)` lifecycle statuses and its named `AX-XXX` row changes, and a conditional
+  deployment view; drafted **in the design-phase package with the store untouched** — the user's
+  sign-off on the rendered diagram is the write gate — and authored **before**`
+- **Kept deliberately:**
+  - the diagram craft;
+  - sequence diagrams for qualifying flows;
+  - the conditional deployment view;
+  - authored before `data-model.md`/`contracts`;
+  - the no-delta claim;
+  - the distinct-from line.
+- **Consumers assessed:** `patterns-system-design` is re-keyed in the same wave.
+
+## [v0.116.0] `patterns-adopt-first` row — "lands as a `baseline-delta.md` entry" re-keyed
+
+- **Disposition:** superseded → "lands as a build-raised entry written in place in the product
+  baseline".
+- **Tier failed:** n/a — supersession by ruling:
+  - delta D1: no `baseline-delta.md`;
+  - 0024: `patterns-adopt-first.build-time-entry-landing`.
+- **Content (superseded text, verbatim):** `lands as a `baseline-delta.md` entry`
+- **Kept deliberately:**
+  - "never builder-decided";
+  - the halt to the user's checkpoint;
+  - every other clause of the row.
+- **Consumers assessed:** `patterns-adopt-first`'s rules are the log's. Its prose had no retired
+  text (S8 plan 3.10).
+
+## [v0.116.0] Pipeline blockquote — "each capability's deltas … fold … deltas into the baselines" superseded
+
+- **Disposition:** superseded → "a run writes its baseline changes in place in those files under
+  their lifecycle markers, and each capability's run artifacts live at `.mochiko/features/FEAT-XXX/`
+  …; acceptance landings fold delivered work rows into capability extents and flip the run's
+  baseline entries."
+- **Tier failed:** n/a — supersession by ruling:
+  - delta D1: baselines edited in place, no fold;
+  - delta D4: the feature home loses its baseline copies.
+- **Content (superseded text, verbatim):** `each capability's deltas and run artifacts live at
+  `.mochiko/features/FEAT-XXX/`` · `acceptance landings fold delivered work rows into capability
+  extents and deltas into the baselines.`
+- **Kept deliberately:**
+  - the capability-batch keying;
+  - the two-altitude design surface and its product-baseline list;
+  - the design-baseline writer clause (routed to the rehoming brainstorm, O5; untouched);
+  - "bug/improvement deltas delta scope", which is map-sense;
+  - the graduation-bookkeeping sentence.
+- **Consumers assessed:** `authoring-feature-map` is map-sense and unchanged.
+
+## [v0.116.0] `authoring-epic` row — "shared-baseline joint deltas authored once under a single pen-holder" re-keyed
+
+- **Disposition:** superseded → "shared baselines edited in place under a single pen-holder per
+  file, keyed `EPIC-XXX`".
+- **Tier failed:** n/a — supersession by ruling (delta D6(b): an epic writes shared baselines in
+  place, one pen per file).
+- **Content (superseded text, verbatim):** `shared-baseline joint deltas authored once under a
+  single pen-holder`
+- **Kept deliberately:** the manifest, the rest of the spine, the mint-once and overlap guard, and
+  the close semantics.
+- **Consumers assessed:** `authoring-epic` is re-keyed in the same wave.
+
+## [v0.116.0] `authoring-architecture-store` row — the element-lifecycle chain re-keyed
+
+- **Disposition:** superseded → "element lifecycle (`ruled` → `proposed (<key>)` → `in-flight` /
+  `modifying` / `removing (<key>)` → `built` / `removed`)".
+- **Tier failed:** n/a — supersession by ruling:
+  - delta D2: the key is the run's owner;
+  - delta D7: `proposed` before the checkpoint;
+  - seams R8: the sign-off flips by what the diff shows;
+  - seams R9 (`.mochiko/decisions/2026-09-29-landed-removal-stub.md`): the `removed` end state.
+- **Content (superseded text, verbatim):** `element lifecycle (`ruled` → `in-flight` / `modifying` /
+  `removing (FEAT-XXX)` → `built`)`
+- **Kept deliberately:**
+  - "the fold at landings (status flips + graded `As-built:`/`Drift:` writes + the built-vs-signed
+    landing diff)", which is the store's own landing and stands;
+  - the orphan rule;
+  - the derived index.
+- **Consumers assessed:** `authoring-architecture-store`'s lifecycle section is re-keyed in the
+  same wave.
+
 ## [v0.115.0] router rows — setup's product-truth leg and design write
 
 - **Disposition:** superseded → the `analysis-codebase` row lists the design-system facts without a

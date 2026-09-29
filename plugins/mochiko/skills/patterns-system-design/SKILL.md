@@ -1,6 +1,6 @@
 ---
 name: patterns-system-design
-description: This skill MUST be invoked when designing an architecture delta — the diagram craft and altitude discipline for a structural change drafted against the product architecture store: a C4-container delta diagram, sequence diagrams for qualifying flows, a container-level delta register linked to the ruling behind each change, and a conditional deployment view. SHOULD also invoke on 'architecture delta', 'architecture design', 'container diagram', 'C4', or 'system topology'. Reads the store's spine for the current state; never re-derives it. Distinct from `authoring-architecture-store` (store grammar and lifecycle); does not grade its own output.
+description: This skill MUST be invoked when designing an architecture delta — the diagram craft and altitude discipline for a structural change drafted against the product architecture store: a C4-container delta diagram, sequence diagrams for qualifying flows, a checkpoint table of the changed store elements, and a conditional deployment view. SHOULD also invoke on 'architecture delta', 'architecture design', 'container diagram', 'C4', or 'system topology'. Reads the store's spine for the current state; never re-derives it. Distinct from `authoring-architecture-store` (store grammar and lifecycle); does not grade its own output.
 ---
 
 # Designing an Architecture Delta
@@ -10,8 +10,10 @@ description: This skill MUST be invoked when designing an architecture delta —
 Design the **shape** of a structural change before its detail: what the components are, where the
 boundaries cut, how the pieces talk, and how the proposed system differs from the one the product
 architecture store already describes. The store is the standing topology; this skill governs the
-**altitude and the diagram craft** of the **delta** drawn against it — the delta drafted in the design phase
-package, and that same delta as it lands into the store at sign-off. The delta is drawn **before**
+**altitude and the diagram craft** of the **delta** drawn against it — the drawing the user signs
+(`architecture.md` in the run's home). The change itself is written in place in the store as
+`proposed (<key>)` elements, through `mochiko:authoring-architecture-store`, and flipped at
+sign-off. The delta is drawn **before**
 `data-model.md` and `contracts/`, which conform to the approved shape.
 
 ## When NOT to Use
@@ -59,19 +61,22 @@ retry, webhook re-entry, saga). P1 user journeys are the **floor, never the cap*
 failure-critical system flow qualifies even when no P1 journey names it. A topology diagram cannot
 show ordering or what happens when a step fails; the sequence view is where that lives.
 
-### 3. Delta register + ruling linkage
+### 3. Checkpoint table of changed elements
 
-A **container-level register** of the change — one line per deployable/runnable piece the delta adds,
-modifies, or removes: `name — responsibility — boundary — status (new / modified / existing)`.
-**Altitude check — every row is a container, not a C4-level-3 construct:** each row must be a
-separately deployable or independently runnable piece (a service, worker, store, queue, external
-system). A code-level layer *inside* one process — an application or domain layer, a module, a port
-or a trait — is **not** a container and does not earn a row; it belongs in the detailed design, not
-here. Below the register, a **delta summary** (prose) linking each structural change to **the ruling
-that made it**: the store element the change writes — the spine element (`SPN-XXX`) it adds, moves,
-or retires, or the concern row (`AX-XXX`) it answers — and, where an analysis-origin `D-XXX` row
-governs the fork, that row. **Link, never restate the decision.** Every box in the diagram appears
-in the register and vice versa.
+A **checkpoint table** of the change — one row per store element the pinned-base diff adds, changes,
+or cuts: `id — kind — name — change (adds · changes · cuts) — status`. It is the sign-off surface
+where no render exists, and the signed state where no commit is made.
+**Altitude check — every element the change writes as `kind: container` is a genuine container,
+not a C4-level-3 construct:** each must be a separately deployable or independently runnable piece
+(a service, worker, store, queue, external system). A code-level layer *inside* one process — an
+application or domain layer, a module, a port or a trait — is **not** a container and does not earn
+a `container` row; it belongs in the detailed design, not here. Boundary and flow elements and
+`AX-XXX` rows carry their own kinds and are not held to this check. Each row links **the ruling
+that made it**, which lives on the store element the change writes — the spine element (`SPN-XXX`)
+it adds, moves, or retires, or the concern row (`AX-XXX`) it answers — and, where an
+analysis-origin `D-XXX` row governs the fork, that row. **Link, never restate the decision.** Every
+new, modified or removed box in the diagram has its `container` row in the table, and every
+`container` row is a styled box; unchanged collaborators are drawn plain and take no row.
 
 ### 4. Deployment view — conditional
 
@@ -110,13 +115,13 @@ arrow, or a qualifying flow with no sequence diagram.
 Before handing the delta off, verify:
 
 - [ ] The current state is read from the store's spine — not reconstructed here, not assumed
-- [ ] Every box in the container diagram appears in the delta register, and vice versa
-- [ ] Every register row is a deployable/runnable **container** — no application/domain layer, module, port, or trait (C4-level-3 detail) inside a single process
+- [ ] Every new, modified or removed box in the container diagram has its `container` row in the checkpoint table, and every `container` row is a styled box; unchanged collaborators are drawn plain and take no row
+- [ ] Every element the table lists as `kind: container` is a deployable/runnable **container** — no application/domain layer, module, port, or trait (C4-level-3 detail) inside a single process
 - [ ] Every arrow carries protocol + purpose; every node names its technology; boundaries are subgraphs
 - [ ] The delta is visually marked (new/modified styled, removed struck)
 - [ ] Every qualifying flow (≥2 components, non-trivial ordering/failure) has a sequence diagram
-- [ ] Every component is marked new / modified / existing
-- [ ] The delta summary links each structural change to the ruling that made it (link, not restatement)
+- [ ] Each changed element carries the ruling that made it, and the table links it (link, not restatement)
+- [ ] The change is in the store as `proposed` elements; the drawing carries no register text and no current-state narrative
 - [ ] The deployment view is present iff IP-XXX rows exist (else its absence is recorded)
 - [ ] The diagram scopes to the delta neighborhood; the wider system is linked past the threshold
 - [ ] A run that changes nothing structurally records the one-line no-delta claim rather than drawing a diagram
@@ -133,5 +138,5 @@ Before handing the delta off, verify:
 | Topology in the wrong place | a new component first appearing in `data-model.md` | the component declared in the delta, the data drawn downstream against it |
 | Sequence cap by priority | only P1 journeys get sequences | every qualifying flow does — P1 is the floor, not the cap |
 | Whole-system wall | 50 boxes for a 2-node change | the delta neighborhood inlined, the rest linked |
-| Restated decisions | the rationale re-typed under the diagram | the delta summary links the ruling |
-| Sub-container register rows | rows like `Preflight domain (Rust · no I/O)`, `Engine port trait` inside one process | one row per deployable/runnable container; code-level layers live in the detailed design |
+| Restated decisions | the rationale re-typed under the diagram | the element carries the ruling; the table links it |
+| Sub-container table rows | rows like `Preflight domain (Rust · no I/O)`, `Engine port trait` inside one process | one `container` row per deployable/runnable piece; code-level layers live in the detailed design |

@@ -6,6 +6,119 @@ Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-suc
 `.mochiko/brainstorms/workflow-token-reduction/record.md` + the wave-2 rulings R1–R4/T3;
 ratified 2026-07-24).
 
+<!-- Wave context: the joint hook/delta build, wave 3 (v0.116.0) — contracts and the quickstart are
+product baselines edited in place. Rulings for every [v0.116.0] entry below: the delta record
+`.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D1 (in place, no per-feature
+copies), D2 (the lifecycle marker), D4 (the feature home loses its baseline copies) and D6(b) (epic
+copies withdrawn) (`DECISIONS.md` 2026-09-24 row); census rows H5 (no `quickstart.md` in the spec
+home) and Q1 (the product `quickstart.md`, bounded per entry),
+`.mochiko/decisions/2026-09-29-census-table-ratified.md`, rows in
+`.mochiko/brainstorms/hook-enforcement-field-review/reports/w2-census-table.md` (`DECISIONS.md`
+2026-09-29 row); the wave-3 lead's ruling on P8's B2. Pre-edit verbatim text:
+`git show 5558fd7:plugins/mochiko/skills/patterns-api-contracts/SKILL.md`. -->
+
+## [v0.116.0] OPENAPI-TEMPLATE header — the per-feature placeholders and "Copy and customize" re-keyed
+
+- **Disposition:** superseded → "Seed a missing `api.yaml` from it, the product's or a spec's; a
+  run edits an existing file in place", with the placeholders `{Product Name}` and `{product}` (for
+  a spec's file, its name and slug).
+- **Tier failed:** n/a — supersession by ruling (delta D1, D4 and D6(b); the spec-contracts home
+  stays live).
+- **Content (superseded text, verbatim):**
+
+  ```
+  # Complete template for RESTful API specifications. Copy and customize for your API.
+  # Replace placeholders: {Feature Name}, {feature_id}, {description}
+    title: "{Feature Name} API"
+      API contracts for {feature_id}.
+  ```
+
+- **Kept deliberately:** the template body, every section of it, and the `x-integration` example.
+- **Consumers assessed:** `scripts/validate-openapi.py` reads no placeholder and is unchanged.
+
+## [v0.116.0] Quality Checklist quickstart line — "(≤ 150 lines …)" and "authored iff a real integration surface exists" re-keyed per entry
+
+- **Disposition:** superseded → "A quickstart entry written iff the run adds or changes a real
+  integration surface (within its per-entry bound, cites the contract, never re-documents it);
+  otherwise its null path recorded in the run's sufficiency report".
+- **Tier failed:** n/a — supersession by ruling (delta D1/D4/D6(b); census H5 and Q1; the lead's
+  ruling on P8's B2).
+- **Content (superseded text, verbatim):** `- [ ] Quickstart authored iff a real integration surface
+  exists (≤ 150 lines, cites the contract, never re-documents it); otherwise its null path recorded
+  in the run's sufficiency report`
+- **Kept deliberately:** the iff condition, cite-never-re-document, and the null path in the
+  sufficiency report (the v0.91.0 home).
+- **Consumers assessed:** `review-plan-artifacts`'s quickstart checklist re-keyed to the same
+  per-entry check in the same wave.
+
+## [v0.116.0] The Quickstart section — the v0.23.0 T3 whole-document cap and the per-feature framing superseded
+
+- **Disposition:** superseded →
+  - the heading "— the product's integration guide";
+  - "a run … writes or amends a quickstart entry **only when its work adds or changes a real
+    integration surface**", with the null path in the sufficiency report and never a stub entry;
+  - "Each entry is **dense and bounded** as the product home prints it". The bound is read from
+    the home and never restated here.
+- **Tier failed:** n/a — supersession by ruling:
+  - delta D1/D4/D6(b) withdraw the per-feature file the T3 cap bounded;
+  - census H5 and Q1 give the product `quickstart.md` its bound per entry, as the home declares it;
+  - the lead's ruling on P8's B2.
+- **Content (superseded text, verbatim):**
+
+  ```
+  ## The Quickstart (`quickstart.md`) — conditional, capped
+
+  `quickstart.md` is the human-facing integration guide over the finished contract — and it
+  is **conditional**: author it **only when the feature has a real integration surface**
+  (external consumers of the API, an external system wrapped via `x-integration`, or a
+  non-trivial auth sequence a caller must follow). A feature whose endpoints only serve its
+  own UI over standard auth does not need one — record the null path as one line in the run's
+  **sufficiency report** ("not applicable — no external integration surface"), never a
+  stub file.
+
+  When authored, it is **capped and dense** (deliverable envelope,
+  `templates/artifact-format.md`): target ≤ 150 lines —
+  ```
+
+- **Kept deliberately:**
+  - the integration-surface condition and its three triggers;
+  - the null path, one line in the sufficiency report;
+  - the four dense sections, verbatim: common flows, auth sequence, error handling, and the
+    external-system overview;
+  - cite, never re-document;
+  - the deliverable-envelope pointer.
+  The T3 intent (no unconditional, sprawling quickstart) survives as the condition plus the bound
+  per entry.
+- **Consumers assessed:**
+  - `review-plan-artifacts`'s quickstart checklist, re-keyed in the same wave;
+  - `agents/technical-analyst.md:60` names the conditional quickstart without the cap or the
+    presence check, so it stands;
+  - `templates/artifact-format.md:67` states generic conditional authoring and stands.
+
+## [v0.116.0] Where the Artifact Lives — "whichever scope the run owns" and the spec/epic `quickstart.md` homes superseded
+
+- **Disposition:** superseded →
+  - contracts live in the product's `contracts/`, edited in place, or in a spec's;
+  - `quickstart.md` is a product baseline, `.mochiko/product/quickstart.md`, edited in place, and
+    no other home carries it.
+  The same edit adds one pure-addition pointer line: the `**Lifecycle:**` marker and
+  `x-lifecycle`, pointing to `impl.baseline-entry-grammar` (S8's Q8).
+- **Tier failed:** n/a — supersession by ruling (delta D1/D4/D6(b); census H5; the
+  feature-contracts and epic-contracts homes are withdrawn in the log).
+- **Content (superseded text, verbatim):** `` `api.yaml` and the per-endpoint contract files are
+  declared files in the `contracts/` home under
+  whichever scope the run owns — the spec, the feature, the epic or the product baseline — `` … ``
+  `quickstart.md` is a declared file one level up, in the spec, the epic or the product home; the
+  feature home does not carry it. ``
+- **Kept deliberately:**
+  - each contracts home's bound as the interface;
+  - the obligations to render `mochiko-cli home` before the first write and never copy a sibling;
+  - the refused-write paragraph.
+- **Budget:** the body goes from 11,877 to 12,278 against a budget of 13,412, and the description
+  stays at 486. Both are inside budget.
+- **Consumers assessed:** `patterns-entity-modeling` and `patterns-technical-decisions` take the same
+  pointer in the same wave.
+
 ## [v0.91.0] Ladder blockquote and two "independent plan reviewer" pointers re-keyed to the design phase — plan-stage retirement D1/D5
 
 - **Disposition:** superseded → the design ladder / design-phase package / design-phase proposal

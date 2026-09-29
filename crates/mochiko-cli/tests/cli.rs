@@ -22,6 +22,16 @@ fn scratch(tag: &str) -> PathBuf {
     dir
 }
 
+/// A scratch git tree: a directory holding its own `.git`, so its `.mochiko/` is a home tree.
+///
+/// `target/` sits inside this repository, so a plain scratch directory resolves against this
+/// repository's root, and a `.mochiko/` inside it is a nested tree that is never a home.
+fn tree(tag: &str) -> PathBuf {
+    let dir = scratch(tag);
+    std::fs::create_dir_all(dir.join(".git")).expect("the tree's .git is creatable");
+    dir
+}
+
 fn write_migration(dir: &Path, name: &str, body: &str) {
     let stamped = mochiko_cli::migration::with_hash(name, body)
         .unwrap_or_else(|e| panic!("fixture {name} is not a well-formed migration: {e}"));
@@ -1018,18 +1028,18 @@ fn the_last_resort_names_the_directory_it_looked_in_when_there_is_none() {
 // the shipped log (present from P3's genesis onward)
 // ---------------------------------------------------------------------------
 
-/// The repository's own log, or `None` before P3's genesis migration exists.
-fn shipped_log() -> Option<PathBuf> {
-    let dir = Path::new(REPO_ROOT).join(LOG_DIR_NAME);
-    if dir.join("0001-genesis.yaml").is_file() {
-        Some(dir)
-    } else {
-        eprintln!(
-            "SKIPPED: {} does not exist yet — P3 generates it; this test is dark until then",
-            dir.join("0001-genesis.yaml").display()
-        );
-        None
-    }
+/// The repository's own log, shipped in the plugin. Its absence is a failure, never a skip: a skip
+/// is how the two tests below went dark when the log moved into the plugin.
+fn shipped_log() -> PathBuf {
+    let dir = Path::new(REPO_ROOT)
+        .join("plugins/mochiko")
+        .join(LOG_DIR_NAME);
+    assert!(
+        dir.join("0001-genesis.yaml").is_file(),
+        "the shipped log is missing: {} does not exist",
+        dir.join("0001-genesis.yaml").display()
+    );
+    dir
 }
 
 /// Renders every section of every primitive in the repository's own log.
@@ -1042,9 +1052,7 @@ fn shipped_log() -> Option<PathBuf> {
 /// rendered from it.
 #[test]
 fn the_shipped_log_renders_every_section_of_every_primitive() {
-    let Some(log_dir) = shipped_log() else {
-        return;
-    };
+    let log_dir = shipped_log();
     let state = mochiko_cli::replay::load(&log_dir).unwrap_or_else(|findings| {
         let lines: Vec<String> = findings.iter().map(ToString::to_string).collect();
         panic!(
@@ -1109,9 +1117,7 @@ fn the_shipped_log_renders_every_section_of_every_primitive() {
 /// grammar off the log, and prints the triple the `.md` halt clause keys on.
 #[test]
 fn the_shipped_log_is_reachable_through_the_binary() {
-    let Some(log_dir) = shipped_log() else {
-        return;
-    };
+    let log_dir = shipped_log();
     let plugin_root = Path::new(REPO_ROOT).join("plugins/mochiko");
     let expected_plugin = std::fs::read_to_string(plugin_root.join(".claude-plugin/plugin.json"))
         .ok()
@@ -1155,7 +1161,7 @@ fn the_shipped_log_is_reachable_through_the_binary() {
             assert_eq!(
                 r.out.lines().next().unwrap(),
                 format!(
-                    "mochiko-cli rules {} · section {id} · binary {} · grammar 1 · plugin {expected_plugin}",
+                    "mochiko-cli rules {} · section {id} · binary {} · grammar 2 · plugin {expected_plugin}",
                     doc.name,
                     env!("CARGO_PKG_VERSION")
                 ),
@@ -1369,11 +1375,21 @@ fn migrate_stamp_leaves_the_committed_genesis_byte_identical() {
 /// crate, so importing it is not an option, and the fixture is exactly the shape `check` and
 /// `home` both need — a home for `check` to deny against and for `home` to render.
 const HOME_LOG: &str = r#"
-grammar: 1
+grammar: 2
 id: 0001-hook
 sequence: 1
-intent: One home and its template, for the hook surface.
+intent: One home, the raw-output home, and a template, for the hook surface.
 changes:
+  - op: import-document
+    kind: home
+    name: runs
+    content:
+      home: runs
+      title: The run folder
+      path: [".mochiko", "runs", "<run-id>"]
+      raw_output: true
+      bounds: elsewhere
+      bounds_cite: hook-enforcement-field-review D4 (raw output, shape and size unchecked)
   - op: import-document
     kind: home
     name: feature
@@ -1413,6 +1429,15 @@ fn home_log(tag: &str) -> PathBuf {
     let dir = scratch(tag);
     write_migration(&dir, "0001-hook.yaml", HOME_LOG);
     dir
+}
+
+/// An absolute path to `relative` inside a fresh scratch tree.
+///
+/// `home` resolves a relative path from the process's working directory, which for an in-process
+/// test is the crate directory — inside this repository — so in-process cases name their tree by
+/// absolute path, and the relative limb is driven through [`run_binary`] with its own cwd.
+fn in_tree(tag: &str, relative: &str) -> String {
+    tree(tag).join(relative).display().to_string()
 }
 
 /// Drive `check` in-process with `payload` as its stdin, the one call site `dispatch_io`'s
@@ -1485,7 +1510,7 @@ fn check_grammar_skew() -> Run {
 /// is allowed to turn into a deny.
 fn check_deny_undeclared_file() -> Run {
     let log_dir = home_log("check-deny-log");
-    let cwd = scratch("check-deny-cwd");
+    let cwd = tree("check-deny-cwd");
     let cwd_string = cwd.display().to_string();
     let payload = format!(
         r##"{{"cwd":"{cwd_string}","tool_name":"Write","tool_input":{{"file_path":"{cwd_string}/.mochiko/features/FEAT-001/invented.md","content":"# x\n"}}}}"##
@@ -1609,12 +1634,8 @@ fn check_hook_json_takes_only_a_dash() {
 #[test]
 fn home_on_a_declared_deliverable_lists_the_homes_file_set_and_its_reports_directory() {
     let dir = home_log("home-inside");
-    let r = run(&[
-        "home",
-        ".mochiko/features/FEAT-001/gates.md",
-        "--log-dir",
-        &dir.display().to_string(),
-    ]);
+    let path = in_tree("home-inside-tree", ".mochiko/features/FEAT-001/gates.md");
+    let r = run(&["home", &path, "--log-dir", &dir.display().to_string()]);
     assert_eq!(r.code, 0, "{}", r.err);
     let lines: Vec<&str> = r.out.lines().collect();
     assert!(
@@ -1667,12 +1688,11 @@ fn home_on_a_path_no_declared_home_governs_still_lists_what_does_exist() {
 #[test]
 fn home_on_an_undeclared_name_inside_a_home_renders_rather_than_verdicts() {
     let dir = home_log("home-undeclared");
-    let r = run(&[
-        "home",
+    let path = in_tree(
+        "home-undeclared-tree",
         ".mochiko/features/FEAT-001/invented.md",
-        "--log-dir",
-        &dir.display().to_string(),
-    ]);
+    );
+    let r = run(&["home", &path, "--log-dir", &dir.display().to_string()]);
     // A render never fails on the content it describes — only `check` holds a verdict over a
     // write, and this is `home`, never `check`.
     assert_eq!(r.code, 0, "{}", r.err);
@@ -1693,4 +1713,338 @@ fn home_against_an_empty_log_exits_1() {
         &dir.display().to_string(),
     ]);
     assert_eq!(r.code, 1, "{}", r.err);
+}
+
+// ---------------------------------------------------------------------------
+// home — resolution against the tree root (field review D7 as amended)
+// ---------------------------------------------------------------------------
+
+#[test]
+fn home_resolves_an_absolute_path_against_its_own_tree() {
+    let dir = home_log("home-abs");
+    let path = in_tree("home-abs-tree", ".mochiko/features/FEAT-001/gates.md");
+    let r = run(&["home", &path, "--log-dir", &dir.display().to_string()]);
+    assert_eq!(r.code, 0, "{}", r.err);
+    assert!(r.out.contains("home: feature"), "{}", r.out);
+    assert!(
+        r.out
+            .lines()
+            .next()
+            .unwrap_or_default()
+            .starts_with(&format!("mochiko-cli home {path} · ")),
+        "the head line shows the path as it was typed: {}",
+        r.out
+    );
+}
+
+#[test]
+fn home_resolves_a_relative_path_from_the_process_cwd_against_the_tree_root() {
+    let dir = home_log("home-rel");
+    let root = tree("home-rel-tree");
+    let sub = root.join("crates");
+    std::fs::create_dir_all(&sub).expect("sub dir");
+    let log = dir.display().to_string();
+    for (cwd, path) in [
+        (&root, ".mochiko/features/FEAT-001/gates.md"),
+        (&sub, "../.mochiko/features/FEAT-001/gates.md"),
+    ] {
+        let r = run_binary(&["home", path, "--log-dir", &log], cwd, &[]);
+        assert_eq!(r.code, 0, "{}", r.err);
+        assert!(
+            r.out.contains("home: feature"),
+            "cwd {} path {path}: {}",
+            cwd.display(),
+            r.out
+        );
+    }
+}
+
+// ---------------------------------------------------------------------------
+// home — a directory path renders the home it names (field review S4)
+// ---------------------------------------------------------------------------
+
+/// Every directory the log's `*.artifact-home` rules tell a seat to render, with the home it
+/// names. The eight literal targets of the 17 rules in `0005-artifact-homes.yaml`, plus `product`
+/// and `product-lane` for the three rules that name `<that path>` (plan Q8, ten cases).
+const RENDER_TARGETS: [(&str, &str); 10] = [
+    (".mochiko/brainstorms/demo", "brainstorm-session"),
+    (".mochiko/memory", "memory"),
+    (".mochiko/specs/demo", "spec"),
+    (".mochiko/features", "features-index"),
+    (".mochiko/features/desk/2026-09-29-demo", "feature-desk"),
+    (".mochiko/product/architecture", "product-architecture"),
+    (".mochiko/epics/EPIC-001", "epic"),
+    // `impl.artifact-home`'s `${features_dir}/FEAT-XXX`, with a real id.
+    (".mochiko/features/FEAT-001", "feature"),
+    (".mochiko/product", "product"),
+    (".mochiko/product/demo", "product-lane"),
+];
+
+#[test]
+fn home_on_every_render_target_directory_renders_the_home_it_names() {
+    let log = format!("{REPO_ROOT}/plugins/mochiko/migrations");
+    let root = tree("home-render-targets");
+    for (relative, expected) in RENDER_TARGETS {
+        for suffix in ["", "/"] {
+            let path = format!("{}/{relative}{suffix}", root.display());
+            let r = run(&["home", &path, "--log-dir", &log]);
+            assert_eq!(r.code, 0, "{path}: {}", r.err);
+            let last = r.out.lines().last().unwrap_or_default();
+            assert_eq!(
+                last,
+                format!("mochiko-cli home end · {path} · {expected}"),
+                "a home's own directory renders that home: {}",
+                r.out
+            );
+            assert!(
+                r.out.contains(&format!("home: {expected} — ")),
+                "{path}: {}",
+                r.out
+            );
+            assert!(
+                !r.out.contains("NOT a declared deliverable"),
+                "{path} is a directory, not a file of its parent: {}",
+                r.out
+            );
+        }
+    }
+}
+
+// ---------------------------------------------------------------------------
+// home — the closed world's verdict line (field review D3)
+// ---------------------------------------------------------------------------
+
+/// The one line D3 rules out for a path under `.mochiko/`.
+const UNCHECKED: &str = "nothing here is checked";
+
+#[test]
+fn home_on_a_closed_world_path_states_the_refusal_and_both_routes_instead_of_unchecked() {
+    let dir = home_log("home-closed");
+    let root = tree("home-closed-tree");
+    let path = root
+        .join(".mochiko/evidence/console.log")
+        .display()
+        .to_string();
+    let r = run(&["home", &path, "--log-dir", &dir.display().to_string()]);
+    assert_eq!(r.code, 0, "{}", r.err);
+    assert!(
+        !r.out.contains(UNCHECKED),
+        "D3: no more \"nothing here is checked\" under `.mochiko/`: {}",
+        r.out
+    );
+    assert!(r.out.contains("a write here is refused"), "{}", r.out);
+    assert!(r.out.contains("declared deliverable"), "route 1: {}", r.out);
+    assert!(
+        r.out
+            .contains(&format!("{}/.mochiko/runs/", root.display())),
+        "route 2 by absolute path: {}",
+        r.out
+    );
+    assert!(r.out.contains("ephemeral"), "{}", r.out);
+}
+
+#[test]
+fn home_on_an_undeclared_subdir_prints_the_routes_after_its_verdict() {
+    let dir = home_log("home-closed-subdir");
+    let path = in_tree(
+        "home-closed-subdir-tree",
+        ".mochiko/features/FEAT-001/evidence/console.log",
+    );
+    let r = run(&["home", &path, "--log-dir", &dir.display().to_string()]);
+    let verdict = r
+        .out
+        .find("NOT a declared sub-directory")
+        .unwrap_or_else(|| panic!("the verdict stays: {}", r.out));
+    let route = r
+        .out
+        .find("ephemeral")
+        .unwrap_or_else(|| panic!("the routes follow: {}", r.out));
+    assert!(verdict < route, "{}", r.out);
+}
+
+#[test]
+fn home_outside_mochiko_keeps_todays_unchecked_line() {
+    let dir = home_log("home-outside-mochiko");
+    let path = in_tree("home-outside-mochiko-tree", "docs/x.md");
+    let r = run(&["home", &path, "--log-dir", &dir.display().to_string()]);
+    assert!(
+        r.out.lines().any(|line| line
+            == "resolved: no declared home governs this path — nothing here is checked at write time"),
+        "unchanged outside `.mochiko/`: {}",
+        r.out
+    );
+}
+
+#[test]
+fn home_on_a_run_folder_path_names_the_raw_output_rules() {
+    let dir = home_log("home-run-folder");
+    let path = in_tree(
+        "home-run-folder-tree",
+        ".mochiko/runs/FEAT-001-run5/console.log",
+    );
+    let r = run(&["home", &path, "--log-dir", &dir.display().to_string()]);
+    assert_eq!(r.code, 0, "{}", r.err);
+    assert!(r.out.contains("home: runs"), "{}", r.out);
+    for expected in [
+        "raw output in the run folder",
+        "`.mochiko/runs/`",
+        "always the main tree's",
+        "ephemeral",
+    ] {
+        assert!(r.out.contains(expected), "names {expected:?}: {}", r.out);
+    }
+}
+
+// ---------------------------------------------------------------------------
+// check --path <p> --content - — the direct dry run (field review S15)
+// ---------------------------------------------------------------------------
+
+#[test]
+fn the_dry_run_answers_the_hooks_verdict_for_a_draft_body_on_stdin() {
+    let log = home_log("dry-run").display().to_string();
+    let root = tree("dry-run-tree");
+    let fits = root.join(".mochiko/features/FEAT-001/gates.md");
+    let r = run_check(
+        &[
+            "check",
+            "--path",
+            &fits.display().to_string(),
+            "--content",
+            "-",
+            "--log-dir",
+            &log,
+        ],
+        "a\nb\n",
+    );
+    assert_eq!(r.code, 0, "{}", r.err);
+    assert!(
+        r.out.contains(r#""permissionDecision":"allow""#),
+        "{}",
+        r.out
+    );
+    assert_eq!(
+        r.out.lines().count(),
+        1,
+        "the same one-line decision JSON: {}",
+        r.out
+    );
+
+    let over = run_check(
+        &[
+            "check",
+            "--path",
+            &fits.display().to_string(),
+            "--content",
+            "-",
+            "--log-dir",
+            &log,
+        ],
+        "1\n2\n3\n4\n5\n6\n7\n",
+    );
+    assert_eq!(
+        over.code,
+        mochiko_cli::hook::EXIT_CONFORMANCE,
+        "{}",
+        over.err
+    );
+    assert!(
+        over.out.contains(r#""permissionDecision":"deny""#)
+            && over.out.contains("7 lines against a whole-file bound of 6"),
+        "the reason text rides the decision: {}",
+        over.out
+    );
+}
+
+#[test]
+fn the_dry_run_resolves_a_relative_path_from_the_process_cwd() {
+    let log = home_log("dry-run-rel").display().to_string();
+    let root = tree("dry-run-rel-tree");
+    let sub = root.join("crates");
+    std::fs::create_dir_all(&sub).expect("sub dir");
+    // The child's stdin is empty, so the body is empty: a new file at an undeclared name, which
+    // only a path resolved into the feature home can deny.
+    let r = run_binary(
+        &[
+            "check",
+            "--path",
+            "../.mochiko/features/FEAT-001/invented.md",
+            "--content",
+            "-",
+            "--log-dir",
+            &log,
+        ],
+        &sub,
+        &[],
+    );
+    assert_eq!(
+        r.code,
+        mochiko_cli::hook::EXIT_CONFORMANCE,
+        "{} {}",
+        r.out,
+        r.err
+    );
+    assert!(r.out.contains("not a declared deliverable"), "{}", r.out);
+}
+
+#[test]
+fn the_dry_run_and_the_hook_payload_are_two_exclusive_forms() {
+    let log = home_log("dry-run-usage").display().to_string();
+    for args in [
+        vec!["check", "--path", "x.md", "--log-dir", &log],
+        vec!["check", "--content", "-", "--log-dir", &log],
+        vec![
+            "check",
+            "--hook-json",
+            "-",
+            "--path",
+            "x.md",
+            "--content",
+            "-",
+            "--log-dir",
+            &log,
+        ],
+        vec![
+            "check",
+            "--path",
+            "x.md",
+            "--content",
+            "body.md",
+            "--log-dir",
+            &log,
+        ],
+        vec!["check", "--log-dir", &log],
+    ] {
+        let r = run_check(&args, "");
+        assert_eq!(r.code, 2, "a usage error: {args:?} — {}", r.err);
+        assert!(
+            r.out.is_empty(),
+            "a usage error prints no decision: {}",
+            r.out
+        );
+    }
+}
+
+#[test]
+fn home_on_a_directory_keeps_the_head_and_tail_lines_byte_for_byte() {
+    // The release rule's "unchanged render output shape": a directory path renders a body, and
+    // its first and last lines are the same two shapes every other `home` render carries.
+    let log = format!("{REPO_ROOT}/plugins/mochiko/migrations");
+    let path = in_tree("home-dir-shape", ".mochiko/specs/demo/");
+    let r = run(&["home", &path, "--log-dir", &log]);
+    let lines: Vec<&str> = r.out.lines().collect();
+    assert_eq!(
+        lines[0],
+        format!(
+            "mochiko-cli home {path} · binary {} · grammar 2 · plugin unknown",
+            env!("CARGO_PKG_VERSION")
+        ),
+        "{}",
+        r.out
+    );
+    assert_eq!(
+        lines[lines.len() - 1],
+        format!("mochiko-cli home end · {path} · spec"),
+        "{}",
+        r.out
+    );
 }

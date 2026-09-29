@@ -533,30 +533,119 @@ pub fn template_view(
 // the home view
 // ---------------------------------------------------------------------------
 
+/// An entry-bounded store's line in the home view: its entry heading, its budgets, the fields its
+/// count skips, and the template that still shapes it.
+fn entries_shape(deliverable: &crate::home::Deliverable) -> String {
+    let mut parts = vec![format!(
+        "entries · one `{}` per entry",
+        deliverable.entry_heading.as_deref().unwrap_or("?")
+    )];
+    parts.push(match deliverable.entry_max_lines {
+        Some(lines) => format!("{lines} lines per entry"),
+        None => "no per-entry bound declared".to_string(),
+    });
+    // The text above the first heading is bounded as one entry (census row P1).
+    if let Some(lines) = deliverable.entry_max_lines {
+        parts.push(format!("{lines} lines above the first heading"));
+    }
+    if let Some(lines) = deliverable.section_max_lines {
+        parts.push(format!("{lines} lines of section text outside entries"));
+    }
+    if !deliverable.entry_exempt_fields.is_empty() {
+        let names: Vec<String> = deliverable
+            .entry_exempt_fields
+            .iter()
+            .map(|name| format!("`**{name}:**`"))
+            .collect();
+        parts.push(format!("not counted: {} lines", names.join(", ")));
+    }
+    if let Some(template) = &deliverable.template {
+        parts.push(format!(
+            "template `{template}` shapes it; its section budgets are replaced by the entry budgets"
+        ));
+    }
+    parts.join(" · ")
+}
+
 /// One path's home, its file set, its template bindings and its budgets.
 ///
 /// This is the line the authoring-time rule points a seat at (record D1a): for a kind with no
 /// template yet, it is the whole of the channel — the declared home, its file set and its bound,
-/// delivered before the first write. It renders what the log declares and says nothing about any
-/// file on disk, so it never grades an artifact.
-pub fn home_view(state: &State, path: &Path, ctx: &Context) -> String {
+/// delivered before the first write. It renders what the log declares and reads no artifact on
+/// disk, so it never grades one.
+///
+/// `path` is shown exactly as the caller typed it, which keeps the head and tail lines stable;
+/// `located` is where [`crate::home::locate`] placed it, and `None` — a path in no git tree —
+/// resolves outside every home, the same answer `check` gives.
+pub fn home_view(
+    state: &State,
+    path: &Path,
+    located: Option<&crate::home::Located>,
+    ctx: &Context,
+) -> String {
     use crate::home::{Bounds, Form, Homes, Resolution};
 
     let display = path.display().to_string();
     let homes = Homes::load(state);
-    let resolution = homes.resolve(path);
+    let resolution = match located {
+        Some(located) => homes.resolve(&located.relative),
+        None => Resolution::Outside,
+    };
+
+    // A path naming a home's own directory reads, to the file resolver, as a name or a
+    // sub-directory of the parent home, or as no home at all; the render targets the rules print
+    // are exactly such paths (field review S4). So the directory reading wins unless the path is a
+    // declared file or a report, which a directory never is.
+    let directory = match (&resolution, located) {
+        (Resolution::File { .. } | Resolution::Report { .. }, _) | (_, None) => None,
+        (_, Some(located)) => homes.resolve_dir(&located.relative),
+    };
 
     let mut body = String::new();
     let home = match &resolution {
+        _ if directory.is_some() => directory,
         Resolution::Outside => None,
         Resolution::File { home, .. }
         | Resolution::Report { home, .. }
         | Resolution::UndeclaredFile { home, .. }
         | Resolution::UndeclaredSubdir { home, .. }
-        | Resolution::Deferred { home, .. } => Some(*home),
+        | Resolution::Deferred { home, .. }
+        | Resolution::Raw { home, .. } => Some(*home),
+    };
+
+    // Under `<root>/.mochiko/` the world is closed (field review D3): a path no home governs is
+    // refused at write time, so the render says so and names the same two routes the deny does.
+    // "Nothing here is checked" is the wording D3 rules out there; it stays true, and stays,
+    // everywhere else.
+    let closed = matches!(resolution, Resolution::Outside)
+        && directory.is_none()
+        && !homes.is_empty()
+        && located.is_some_and(|l| l.in_home_tree());
+    let run_folder = || located.and_then(|l| homes.run_folder(l));
+    let routes = match (&resolution, located) {
+        _ if directory.is_some() => None,
+        (Resolution::Outside, Some(located)) if closed => Some(
+            crate::conform::closed_world_routes(&homes, &located.relative, run_folder().as_deref()),
+        ),
+        (
+            Resolution::UndeclaredFile { home, .. } | Resolution::UndeclaredSubdir { home, .. },
+            _,
+        ) => Some(crate::conform::routes(
+            Some(home),
+            &home.display_path(),
+            run_folder().as_deref(),
+        )),
+        _ => None,
     };
 
     let verdict = match &resolution {
+        _ if directory.is_some() => {
+            "this home's own directory — its declared files are listed below".to_string()
+        }
+        Resolution::Outside if closed => {
+            "no declared home governs this path — `.mochiko/` is closed, so a write here is refused"
+                .to_string()
+        }
         Resolution::Outside => {
             "no declared home governs this path — nothing here is checked at write time".to_string()
         }
@@ -573,13 +662,25 @@ pub fn home_view(state: &State, path: &Path, ctx: &Context) -> String {
             format!("`{subdir}/` is NOT a declared sub-directory of this home")
         }
         Resolution::Deferred { subdir, .. } => format!(
-            "`{subdir}/` is a declared sub-directory governed by its own home document, if one exists"
+            "`{subdir}/` is a declared sub-directory governed by its own home document, if one \
+             exists; until then its content is unchecked, except that a `.md` opening with report \
+             frontmatter is refused"
+        ),
+        Resolution::Raw { home, rest } => format!(
+            "`{rest}`, raw output in the run folder — any name, shape and size unchecked; a `.md` \
+             opening with report frontmatter is refused; a write needs `{}` in the main tree's \
+             `.gitignore`, and the folder is always the main tree's; ephemeral — deleted at the \
+             run's acceptance",
+            home.ignore_line()
         ),
     };
 
     match home {
         None => {
             body.push_str(&format!("resolved: {verdict}\n"));
+            if let Some(routes) = &routes {
+                body.push_str(&format!("routes: {routes}\n"));
+            }
             if !homes.is_empty() {
                 body.push_str(&format!("\ndeclared homes ({}):\n", homes.len()));
                 for home in homes.iter() {
@@ -591,11 +692,18 @@ pub fn home_view(state: &State, path: &Path, ctx: &Context) -> String {
             body.push_str(&format!("home: {} — {}\n", home.home, home.title));
             body.push_str(&format!("directory: {}\n", home.display_path()));
             body.push_str(&format!("resolved: {verdict}\n"));
+            if let Some(routes) = &routes {
+                body.push_str(&format!("routes: {routes}\n"));
+            }
             body.push_str(&format!(
                 "bounds: {}\n",
                 match home.bounds {
-                    Bounds::Template => "per template section".to_string(),
-                    Bounds::WholeFile => "whole file, per deliverable".to_string(),
+                    // The gate reads `bounds` only as elsewhere or not; which bound a file takes —
+                    // its template's sections, a whole-file number, or per entry — is its own line
+                    // below, so this line claims no posture that some deliverable would contradict.
+                    Bounds::Template | Bounds::WholeFile => {
+                        "per deliverable — each line below states its bound".to_string()
+                    }
                     Bounds::Elsewhere => format!(
                         "declared elsewhere — {}",
                         home.bounds_cite.as_deref().unwrap_or("uncited")
@@ -613,6 +721,7 @@ pub fn home_view(state: &State, path: &Path, ctx: &Context) -> String {
                         Some(lines) => format!("append-only log · {lines} lines per `##` entry"),
                         None => "append-only log · no per-entry bound declared".to_string(),
                     },
+                    (Some(Form::Entries), _) => entries_shape(deliverable),
                     (_, Some(template)) => format!(
                         "template `{template}` · `mochiko-cli template {template}` carries its \
                          section budgets"

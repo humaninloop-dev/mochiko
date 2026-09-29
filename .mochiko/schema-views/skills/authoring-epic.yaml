@@ -125,21 +125,14 @@ sections:
         labels: [artifact-grammar]
         class: must
         text: 'Ordering: shared-foundation first, then in-epic dependency order.'
-      - id: authoring-epic.member-deltas-stay-per-feature
-        labels: [single-home]
-        class: must
-        text: >-
-          Per-feature design deltas stay in each member's `.mochiko/features/FEAT-XXX/` dir,
-          linked from the manifest — downstream machinery keeps reading the per-feature dirs it
-          already reads.
       - id: authoring-epic.shared-baseline-single-pen-holder
         labels: [artifact-grammar, single-home]
         class: floor
         text: >-
-          A product baseline touched by two or more members gets one joint delta authored in the
-          spine under a single pen-holder; a baseline touched by one member keeps its per-feature
-          delta. The landing folds each baseline exactly once — spine delta for shared
-          baselines, feature delta otherwise.
+          A product baseline touched by two or more members is edited in place under a single
+          pen-holder at a time per file, its entries keyed `EPIC-XXX`; a baseline touched by one
+          member only is written under that member's `FEAT-XXX`. Each baseline change lands once,
+          in the landing flip — no spine or per-feature copy exists to fold.
         anchor: 2026-08-14 multi-feature-plan-implement D10
       - id: authoring-epic.transport-floor-binding
         labels: [binding, floor-pointer]
@@ -147,8 +140,8 @@ sections:
         kind: binding
         text: >-
           The transport floor's composition steer governs every epic shared-write surface —
-          spine files and shared baseline deltas: concurrent writers get worktree isolation or a
-          single pen-holder, disclosed at run open.
+          spine files and the shared product baselines edited in place: concurrent writers get
+          worktree isolation or a single pen-holder, disclosed at run open.
         pointer: mochiko:patterns-transport-floor
       - id: authoring-epic.mint-once
         labels: [single-home]
@@ -180,10 +173,10 @@ sections:
         kind: binding
         text: >-
           An epic's files are declared: render `mochiko-cli home .mochiko/epics/<EPIC-ID>` before
-          the first write. The manifest and the spine artifacts are the closed set, `contracts/`
-          is the one admitted sub-directory, every report lands in `reports/` typed by its
-          envelope, and `implement-log.md` is bounded per entry. A landing or review directory is
-          not a sub-home — its files are reports.
+          the first write. The manifest and the spine artifacts are the closed set — no
+          product-baseline copy among them, since shared baselines are edited in place under
+          `.mochiko/product/` — and every report lands in `reports/` typed by its envelope. A
+          landing or review directory is not a sub-home — its files are reports.
         anchor: 2026-09-13 hook-enforced-artifact-schema D1
   - id: authoring-epic.sec.output
     title: Output — the manifest and the close
@@ -234,3 +227,10 @@ sections:
           the epic continues, manifest status `closed-partial`) or hold the whole run — is
           reserved to the user, never the lead's: carve-out breaks the one-unit promise.
         anchor: 2026-08-14 multi-feature-plan-implement D7
+tombstones:
+  - id: authoring-epic.member-deltas-stay-per-feature
+    disposition: >-
+      superseded, no successor — no per-feature design delta remains (D1, D6b): a member's
+      baseline writes are in place under its FEAT-XXX key. The manifest's link to each member dir
+      lives on in authoring-epic.manifest-required-fields. (2026-09-24
+      delta-files-vs-direct-baseline-edits D6b)

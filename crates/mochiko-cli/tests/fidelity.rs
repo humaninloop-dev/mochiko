@@ -167,11 +167,15 @@ fn the_log_replays_into_a_deliverable_state() {
             .collect();
         panic!("the log is deliverable:\n{}", lines.join("\n"));
     });
-    assert_eq!(replay.state.docs.len(), 80);
+    // 80 through `0023`; the 2026-09-29 census table ratification's home migrations import seven
+    // more — six home documents in `0032`, the `runs` home in `0033`. `0036`–`0043` (the joint
+    // build's wave 3) import none; `0040` replaces a home in place.
+    assert_eq!(replay.state.docs.len(), 87);
     assert_eq!(
         replay.sequences(),
         vec![
-            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
+            25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43
         ],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
@@ -180,7 +184,14 @@ fn the_log_replays_into_a_deliverable_state() {
          design baseline home, 0014's setup product-truth leg, 0015's product-designer re-key, \
          0016's direction per surface, 0017's critique depth precedence, 0018's design-baseline \
          platform placeholder, 0019's compliance modules out, 0020's rule-not-instance test, 0021's \
-         seven dimensions, 0022's closed event set, 0023's setup rule set"
+         seven dimensions, 0022's closed event set, 0023's setup rule set, 0024's baselines in \
+         place, 0025's lifecycle marker, 0026's pinned-base review, 0027's drawing not copies, \
+         0028's epic one pen, 0029's proposed until sign-off, then — 0030 and 0031 left unused by \
+         ruling, a legal gap — 0032's closed-world homes, 0033's run folder, 0034's store entry \
+         budgets, 0035's home sets after the delta, then the 2026-09-29 joint build's wave 3 — \
+         0036's run folder and evidence citation, 0037's run log and in-run rulings, 0038's \
+         pre-write dry run, 0039's store entry-bound pointers, 0040's brownfield archive names, \
+         0041's sweep-hunk exception, 0042's marker read cited, 0043's routing restatement cut"
     );
 }
 
@@ -542,7 +553,7 @@ fn the_sidecar_anchors_ride_their_rules() {
     /// `plugins/mochiko/migrations/README.md` "The anchor rule"). A rule listed here MUST be
     /// genuinely absent from the live state, or the walk below still fails — this list only
     /// narrows which absence is expected, never which text is skipped.
-    const RETIRED_SIDECAR_ANCHORS: [(&str, &str); 3] = [
+    const RETIRED_SIDECAR_ANCHORS: [(&str, &str); 8] = [
         (
             "patterns-model-tiering.rostered-seats-never-retier",
             "0007-seat-default-key.yaml, 2026-09-19 orchestrator-model-selection D1",
@@ -554,6 +565,35 @@ fn the_sidecar_anchors_ride_their_rules() {
         (
             "setup.baselines-bootstrap",
             "0023-setup-agnostic-setup-rule-set.yaml, 2026-09-24 setup-product-agnostic D5",
+        ),
+        // The 2026-09-24 delta-files-vs-direct-baseline-edits wave supersedes nine rules; these
+        // five carry a genesis anchor. The other four (`impl.baselines-never-in-place`,
+        // `impl.baseline-delta-grammar`, `impl.graded-fold`,
+        // `authoring-epic.member-deltas-stay-per-feature`) are not in the sidecar.
+        (
+            "patterns-adopt-first.baseline-delta-landing",
+            "0024-delta-baselines-in-place.yaml, \
+             2026-09-24 delta-files-vs-direct-baseline-edits D1",
+        ),
+        (
+            "impl.fail.baseline-in-place",
+            "0026-delta-pinned-base-review.yaml, \
+             2026-09-24 delta-files-vs-direct-baseline-edits D3",
+        ),
+        (
+            "impl.fail.ungraded-fold",
+            "0026-delta-pinned-base-review.yaml, \
+             2026-09-24 delta-files-vs-direct-baseline-edits D3",
+        ),
+        (
+            "authoring-architecture-store.sign-off-is-write-gate",
+            "0029-delta-proposed-until-signoff.yaml, \
+             2026-09-24 delta-files-vs-direct-baseline-edits D7",
+        ),
+        (
+            "authoring-technical-requirements.store-write-at-sign-off",
+            "0029-delta-proposed-until-signoff.yaml, \
+             2026-09-24 delta-files-vs-direct-baseline-edits D7",
         ),
     ];
 
@@ -677,9 +717,33 @@ fn the_corpus_census_holds_through_the_log() {
     // floor or a fail node, so both floor counts and the fail set hold. Every other op across the
     // five is a reword, a field set on `when`/`enforces`, a moment, or a template replaced, and moves
     // nothing here.
-    assert_eq!(command_rules, 332, "live command rules");
-    assert_eq!(skill_rules, 803, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1135, "live rules in total");
+    // The 2026-09-24 delta-files-vs-direct-baseline-edits wave carries six migrations,
+    // `0024`–`0029`, one ruling anchor each: nine `supersede-rule`s and ten `mint-rule`s. On the
+    // command side, all on `implement`, five retire — `impl.baselines-never-in-place`,
+    // `impl.graded-fold`, both of them floors, `impl.baseline-delta-grammar`, and the two floor
+    // fail nodes `impl.fail.baseline-in-place` and `impl.fail.ungraded-fold` — and six mint:
+    // `impl.baselines-in-place-marked` and `impl.baseline-diff-review` (floors),
+    // `impl.baseline-entry-grammar` and `impl.base-pins`, and the floor fail nodes
+    // `impl.fail.unmarked-baseline-write` and `impl.fail.unreviewed-baseline-diff`: command
+    // 332 → 333, floors −4 +4, fail nodes −2 +2. On the skill side four retire and four mint, a
+    // floor for a floor on `authoring-architecture-store` and `authoring-technical-requirements`,
+    // and a non-floor for a non-floor across `patterns-adopt-first`, `authoring-epic` and
+    // `review-sufficiency`: skill 803 and both floor figures hold. The wave's other ops are
+    // rewords, one condition set and four templates replaced, and move nothing here. `0030` and
+    // `0031` are unused by ruling. `0032`–`0035` (the 2026-09-29 census table ratification) import
+    // and replace home documents only, which carry no rules.
+    // The 2026-09-29 joint hook/delta build's wave 3 carries `0036`–`0043`, anchored to
+    // hook-enforcement-field-review D2–D4, D6 and D8 and to delta D2 and D7: three `mint-rule`s
+    // and nothing retired. `0036` mints `impl.run-folder` (a must, kind `duty`) and
+    // `impl.evidence-citation` (a must, no kind) on `implement`, and `0038` mints
+    // `testing-end-user.pre-write-dry-run` (a must, kind `duty`). None is a floor or a fail node,
+    // so command 333 → 335, skill 803 → 804, total 1136 → 1139, and both floor figures and the
+    // fail set hold. Every other op across the eight is a `reword-rule` that keeps its rule's id,
+    // class and kind — `0041`'s `impl.fail.unmarked-baseline-write` stays a floor fail node — or
+    // `0040`'s `archive-product-baselines` home replaced, and moves nothing here.
+    assert_eq!(command_rules, 335, "live command rules");
+    assert_eq!(skill_rules, 804, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1139, "live rules in total");
     assert_eq!(skill_floors, 264, "skill floors");
     assert_eq!(command_floors, 119, "declared command floors");
     assert_eq!(fail_nodes, 36, "command fail nodes");

@@ -15,7 +15,7 @@ command: implement
 
 observable:
   # artifact homes (0005-artifact-homes, 2026-09-13)
-  - {id: impl.artifact-home, why: the plan names the `mochiko-cli home` render of the feature (or epic/lane) home before its first write and routes tasks.md, reports/, and implement-log.md to it}
+  - {id: impl.artifact-home, why: the plan names the `mochiko-cli home` render of the feature (or epic/lane) home before its first write and routes tasks.md and reports/ to it and the run log to the run folder}
   # roles
   - {id: impl.dm-entry-gate, why: plan shows run-open gating on the selected batch}
   - {id: impl.design-phase-fires-on-gap, why: gap-vs-zero-gap branch visible (s1 vs s2)}
@@ -29,8 +29,8 @@ observable:
   - {id: impl.seat-card-author-independence, why: card author design-class with QA on TEST cases}
   - {id: impl.builder-decompose-disclose, why: build phase shows decomposition disclosed + test-first + plan approval}
   - {id: impl.seat-verification-independence, why: verification seats never the implementer, real infrastructure}
-  - {id: impl.verification-design-time-grades, why: card review + build-time delta grading named}
-  - {id: impl.landing-verifier-folds, why: landing verification step checks the graded folds}
+  - {id: impl.verification-design-time-grades, why: card review + the judgment grade of any build-raised baseline entry named}
+  - {id: impl.landing-verifier-folds, why: landing verification checks the landing flip — in-flight and modifying to built, removing to its stub}
   - {id: impl.seat-gap-finder-blind, why: fresh devils-advocate dispatched blind}
   # reserved
   - {id: impl.gate-design-checkpoint, why: gate described with sign-off content and branches (s2)}
@@ -41,7 +41,7 @@ observable:
   - {id: impl.tools-referenced-never-restated, why: plan references pointer skills, never restates their procedure}
   - {id: impl.sufficiency-binding-verdict, why: entry shows per-row check with binding verdict routing}
   - {id: impl.sufficiency-report, why: sufficiency-report.md path and content planned}
-  - {id: impl.design-outputs-home, why: deltas beside baselines at the feature dir (s2)}
+  - {id: impl.design-outputs-home, why: design outputs written in place in the product baselines under the run's marker; only the architecture.md drawing in the run home (s2)}
   - {id: impl.design-review-pair, why: both review skills graded before the checkpoint (s2)}
   - {id: impl.design-map-assertion, why: design phase asserts dependencies/extent onto the entry (s2)}
   - {id: impl.cards-template, why: tasks.md from the tasks template/schema binding}
@@ -50,7 +50,7 @@ observable:
   - {id: impl.card-review-before-confirm, why: verification seat reviews cards before the confirm}
   - {id: impl.craft-build-bindings, why: build binds the executing/brownfield/minimalism skills}
   - {id: impl.craft-verify-bindings, why: verify binds testing-end-user + code-minimalism lens}
-  - {id: impl.design-inputs, why: inputs enumerated - reports, deltas, baselines, spec}
+  - {id: impl.design-inputs, why: inputs enumerated - sufficiency report, the architecture.md drawing and the marked baseline entries in the pinned-base diff, baselines, spec}
   - {id: impl.progress-surface, why: per-card checkboxes flipped as progress}
   - {id: impl.reports-envelope, why: report paths + envelope format named}
   - {id: impl.gates-full-suite, why: quality gates run the full suite}
@@ -59,9 +59,13 @@ observable:
   - {id: impl.gap-finding-scope, why: pass present on selection scope, skip stated otherwise}
   - {id: impl.gap-finding-blind-dispatch, why: two-message blind dispatch with the fence list}
   - {id: impl.finding-kinds, why: finding split spec-required vs beyond-spec described}
-  - {id: impl.store-landing, why: three-part store fold planned where a delta exists (s2)}
+  - {id: impl.store-landing, why: three-part store landing (flip · As-built/Drift judgment · orphan check) planned where a store delta exists (s2)}
   - {id: impl.landing-selection, why: graduation batch - row fold, status, index, specs-index}
-  - {id: impl.graded-fold, why: three-way-diff fold per touched baseline}
+  - {id: impl.baseline-diff-review, why: pinned-base diff of every touched baseline reviewed - non-author grade; unmarked-write test; duplicate-id check; landing flip}
+  - {id: impl.base-pins, why: run-open base pinned at entry before the sufficiency seat; sign-off pin at the checkpoint; both in the final-validation report}
+  - {id: impl.baseline-entry-grammar, why: written and amended baseline entries carry the run's Lifecycle marker - proposed (<key>) until the checkpoint flips them}
+  - {id: impl.run-folder, why: run-open names the run folder .mochiko/runs/<owner>-run<n>/ with its .gitignore line ensured, every seat brief carries it, and the lead removes it after acceptance}
+  - {id: impl.evidence-citation, why: reports quote decisive lines with the command and commit (or the run-open pin plus the working fingerprint), never a full-log path}
   - {id: impl.gates-fold, why: ruled findings fold into gates.md in TEST grammar}
   # ways-of-working
   - {id: impl.author-grader-default-fail, why: no output cleared by its author across the roster}
@@ -72,7 +76,7 @@ observable:
   - {id: impl.no-git-mutations, why: plan suggests commits, never runs git}
   - {id: impl.acceptance-plain-text, why: gates as plain blocking text, never timed}
   # boundaries
-  - {id: impl.baselines-never-in-place, why: deltas-beside-baselines pattern throughout}
+  - {id: impl.baselines-in-place-marked, why: baselines edited in place under the run's lifecycle marker - no per-feature copies; no ledger; no fold}
   - {id: impl.attempt-per-grade, why: attempt bounds declared at run-open, charged per grade}
   - {id: impl.gap-rework-bound, why: run-scale bound restated at run-open}
   - {id: impl.gates-never-triaged, why: failed gate fails the cycle, no triage}
@@ -94,7 +98,6 @@ out_of_instrument:
   - {id: impl.finding-kind-disputed, why: contingency - disputed finding kind}
   - {id: impl.delivered-territory-routing, why: contingency - gap lands in delivered territory}
   - {id: impl.beyond-spec-disposition, why: contingency - beyond-spec findings exist}
-  - {id: impl.baseline-delta-grammar, why: contingency - build-time baseline discovery}
   - {id: impl.delta-reverification, why: contingency - delta re-grade round}
   - {id: impl.deviation-gate, why: contingency - a cycle deviates from the signed delta}
   - {id: impl.constitution-supremacy, why: contingency - governance conflict arises}
@@ -125,10 +128,10 @@ out_of_instrument:
   - {id: impl.fail.quality-gate, why: fail-condition}
   - {id: impl.fail.no-evidence, why: fail-condition}
   - {id: impl.fail.regression, why: fail-condition}
-  - {id: impl.fail.baseline-in-place, why: fail-condition}
+  - {id: impl.fail.unmarked-baseline-write, why: fail-condition}
   - {id: impl.fail.deviation-unresolved, why: fail-condition}
   - {id: impl.fail.store-landing-incomplete, why: fail-condition}
-  - {id: impl.fail.ungraded-fold, why: fail-condition}
+  - {id: impl.fail.unreviewed-baseline-diff, why: fail-condition}
   - {id: impl.fail.gap-finding-missing, why: fail-condition}
   - {id: impl.fail.skip-unstated, why: fail-condition}
   - {id: impl.fail.spec-gap-unresolved, why: fail-condition}

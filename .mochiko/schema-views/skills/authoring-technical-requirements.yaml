@@ -34,9 +34,10 @@ sections:
           The decision technique — comparing alternatives, weighing trade-offs, ADR depth, the
           ≥2-alternatives discipline — lives in `mochiko:patterns-technical-decisions`; this
           skill owns the `constraints-and-decisions.md` artifact structure (the D-XXX field
-          schema) and the C↔D traceability. Project-scope decisions (the knowledge-management
-          layer — `DECISIONS.md` + `.mochiko/decisions/`) are not this artifact's; only
-          feature-scope D-XXX records live here.
+          schema) and the C↔D traceability. Project-scope decisions and standing run rulings
+          that change no entry (the knowledge-management layer — `DECISIONS.md` +
+          `.mochiko/decisions/`) are not this artifact's; every technology decision a spec or a
+          run makes lives here as a D-XXX entry.
         pointer: mochiko:patterns-technical-decisions
       - id: authoring-technical-requirements.problem-space-not-solutions
         labels: [boundary]
@@ -268,8 +269,11 @@ sections:
         labels: [artifact-grammar]
         class: must
         text: >-
-          ID sequences are sequential with no gaps, three-digit padded, per prefix (C-001…,
-          D-001…, IP-001…, INT-001…, DS-001…).
+          ID sequences are sequential per prefix, three-digit padded (C-, D-, IP-, INT-, DS-),
+          continuing the product file's own sequence at write time — the next free id after its
+          high-water mark, a `removed` stub's id counting as taken — never a feature-local run
+          from `001`. A landed id is never reused; a gap left when an abandoned run's reverted
+          entries were minted over is legal.
       - id: authoring-technical-requirements.declaration-rows-complete
         labels: [artifact-grammar]
         class: must
@@ -315,8 +319,9 @@ sections:
         kind: binding
         text: >-
           `constraints-and-decisions.md` is a declared file in whichever home the run owns — the
-          spec, the feature, the epic or the product baseline: render `mochiko-cli home <that
-          path>` before the first write and hold the bound it returns. The NFR rows this skill
+          spec or the product baseline: render `mochiko-cli home <that path>` before the first
+          write and hold the bound it returns. A delivery run writes the product file in place
+          under its lifecycle marker, never a feature or epic copy. The NFR rows this skill
           authors ride the architecture store's concern rows, in the store's home, never as a
           second file here.
         anchor: 2026-09-13 hook-enforced-artifact-schema D1
@@ -338,11 +343,20 @@ sections:
     title: Reserved — the user's pen
     intent: Decisions this seat never takes.
     rules:
-      - id: authoring-technical-requirements.store-write-at-sign-off
+      - id: authoring-technical-requirements.nfr-target-flips-at-sign-off
         labels: [user-gate]
         class: floor
         kind: reservation
         text: >-
-          A new or changed NFR target reaches the store the way every other store write does —
-          drafted in the package, written at the user's sign-off.
-        anchor: 2026-08-19 product-architecture-schema D10
+          A new, changed or removed NFR target is written in place on its store concern row as
+          `proposed (<key>)`, like every other store write, and flipped by kind at the user's
+          design-checkpoint sign-off — new to `in-flight`, changed to `modifying`, removed to
+          `removing`; the sign-off stays the user's.
+        anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D7
+tombstones:
+  - id: authoring-technical-requirements.store-write-at-sign-off
+    disposition: >-
+      superseded by authoring-technical-requirements.nfr-target-flips-at-sign-off — a target is
+      no longer drafted in the package and written at sign-off (D1, D7): it is written in place as
+      `proposed` and flipped at the user's sign-off. The user's reservation of the sign-off moves
+      to the successor. (2026-09-24 delta-files-vs-direct-baseline-edits D7)

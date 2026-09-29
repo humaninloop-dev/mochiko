@@ -10,7 +10,8 @@
 # The line below is frozen: the plugin contract suite reads it as a golden, so rewording it is a
 # row change, not an edit. It points at the tool rather than restating any rule — the homes, the
 # file sets and the budgets all live in the migration log, and `mochiko-cli home <path>` is how a
-# seat reads them.
+# seat reads them. Its second and third sentences (hook field review D4, D8 and D9; joint-build
+# seam R5) add the pre-write dry run and the run folder raw output goes to; the first is unchanged.
 #
 # This hook never blocks and never emits a permissionDecision key: SubagentStart is not a
 # permission event, and a reminder that could deny would be a second gate nobody ruled on.
@@ -30,5 +31,5 @@ printf '%s' "$input" | tr -d '\n' |
 # useless where the binary is not installed; session-start.sh is the loud surface for that.
 command -v mochiko-cli >/dev/null 2>&1 || exit 0
 
-printf '%s\n' '{"hookSpecificOutput":{"hookEventName":"SubagentStart","additionalContext":"mochiko gate: artifacts under declared homes take their shape from `mochiko-cli home <path>`; existing files are not templates."}}'
+printf '%s\n' '{"hookSpecificOutput":{"hookEventName":"SubagentStart","additionalContext":"mochiko gate: artifacts under declared homes take their shape from `mochiko-cli home <path>`; existing files are not templates. Dry-run a draft with `mochiko-cli check --path <path> --content -` before you write it. Raw output (console captures, logs, dumps) goes to the run folder `.mochiko/runs/<run-id>/` of the main tree, never into any other home."}}'
 exit 0

@@ -1,0 +1,43 @@
+grammar: 1
+id: 0028-delta-epic-one-pen
+sequence: 28
+intent: >-
+  Execute delta D6b: a product baseline touched by two or more epic members is edited in place
+  under one pen at a time per file, keyed EPIC-XXX; a single member's write is keyed to that
+  member's FEAT-XXX (Q7). The per-feature-deltas rule leaves with no successor; its manifest link
+  lives on in authoring-epic.manifest-required-fields. What leaves (Q6): "folds each baseline
+  exactly once — spine delta … feature delta" (shared-baseline-single-pen-holder) and "deltas"
+  in the epic rules (epic-shared-baseline-single-pen, transport-floor-binding).
+anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D6b
+hash: sha256:fd740ee700537e18c9d5b3631973c21a47961158af780d4a71707879e7251b44
+changes:
+  - op: reword-rule
+    schema: command/implement
+    id: impl.epic-shared-baseline-single-pen
+    text: >-
+      A product baseline touched by two or more members is edited in place under one pen-holder at
+      a time per file, its entries keyed `EPIC-XXX`; every shared-write surface rides the
+      transport floor.
+  - op: reword-rule
+    schema: skill/authoring-epic
+    id: authoring-epic.shared-baseline-single-pen-holder
+    text: >-
+      A product baseline touched by two or more members is edited in place under a single
+      pen-holder at a time per file, its entries keyed `EPIC-XXX`; a baseline touched by one
+      member only is written under that member's `FEAT-XXX`. Each baseline change lands once, in
+      the landing flip — no spine or per-feature copy exists to fold.
+  - op: reword-rule
+    schema: skill/authoring-epic
+    id: authoring-epic.transport-floor-binding
+    text: >-
+      The transport floor's composition steer governs every epic shared-write surface — spine
+      files and the shared product baselines edited in place: concurrent writers get worktree
+      isolation or a single pen-holder, disclosed at run open.
+  - op: supersede-rule
+    schema: skill/authoring-epic
+    id: authoring-epic.member-deltas-stay-per-feature
+    disposition: >-
+      superseded, no successor — no per-feature design delta remains (D1, D6b): a member's
+      baseline writes are in place under its FEAT-XXX key. The manifest's link to each member dir
+      lives on in authoring-epic.manifest-required-fields.
+    anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D6b
