@@ -4,7 +4,8 @@
 **Status:** ruled (user) 2026-09-29, every row "as recommended", after the review loop's bound
 (R1 reviewed, S3 revised once, R1 re-reviewed); **built 2026-09-29 at plugin v0.116.0** (wave 2
 phase B, migrations 0032–0035, and the wave-3 preamble bound; branch `joint-hook-delta`); the kinako
-rows — items 2–4 below — land at wave 4
+rows — items 2–4 below — **built 2026-10-01 at wave 4** (kinako PR #24; item 4 raised 14, K1 having
+written the other 3 at `###`: build log, 2026-09-30)
 **Driver:** the field review's OQ1 and D2 require the census table to be user-ratified as one table;
 the delta record's D2 routes the per-store marker fields to it.
 

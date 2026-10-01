@@ -51,7 +51,7 @@ provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
 - [ ] **Hook-enforced artifact schema — what is left** (2026-09-15; provenance: the record's
   § Build trail + `build-log.md`; delivered through `9738a90`). Waves 0–3 CLOSED (probe · crate
   463 tests · governance v3.1.0 AM-3 · `0005` with the ratified budget table); wave 4 BUILT +
-  audited, 0.109.0 committed on the branch **not released**; wave 5 mochiko half DONE (path 0 ·
+  audited, on public `main` from 0.109.0 (2026-09-19) before any publish; wave 5 mochiko half DONE (path 0 ·
   set 0). Owed, each gated on the user:
   1. **Crate publish** — the two first-publish controls (manual-approval publish environment ·
      signed tags), then the `mochiko-cli-v*` tag. Gates 2 and 3 (GI-012 as amended, AM-3 C5).
@@ -60,30 +60,17 @@ provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
      pre-authorized PATCH (`wave5-bump-patch.md`) was **folded into AM-5, governance v3.2.0,
      2026-09-24** — v3.1.3 retired unminted; the 0.109.0 breach is a GI-012 exception-registry
      row that expires at the publish in 1.
-  3. **Kinako violator pass** — evidence-tree ruling owed (161 files with no legal home under
-     `.mochiko/`; recommend a repo-root `evidence/`), then 214 moves + 143 pointers on the
-     pre-gate 0.103.0 pin, upgrade, dogfood, **D10 watch** (`wave5-plan.md` §3/§7).
+  3. **Kinako violator pass** — done 2026-10-01 (field review wave 4, kinako PR #24); watch below.
   4. **Size survivors** — ruling owed on the recommendation: rewrite nothing, existing
      over-budget files ride D4e amnesty (mochiko 65 · kinako 102).
-- [ ] **Hook-enforcement field review build — four waves** (2026-09-23; provenance:
-  `.mochiko/brainstorms/hook-enforcement-field-review/record.md` D9d + § Build surface, as
-  review-amended; supersedes item 3 of the item above). **Waves 1–3 built 2026-09-29, jointly with
-  the delta retirement, at plugin 0.116.0** — crate 0.3.0 (grammar 1..2, unpublished, seam R4) ·
-  migrations 0032–0040 and 0043 · prose, hooks and strips at [v0.116.0] · governance PATCH v3.2.1
-  (the build-state line struck); trail: `.mochiko/brainstorms/hook-enforcement-field-review/build-log.md`.
-  **Owed — wave 4, kinako:** seam R3 first (no implement run open across the upgrade), then the
-  full-inventory pass and the watch re-measured; plugin 0.116.0 needs `mochiko-cli` 0.3.0 (0.2.0
-  halts at 0033), installed from git `main` by the maintainer only (seam R4). **Still gated on the
-  user:** the publish (the two owed supply-chain controls), which closes the AM-5 exception row.
-- [ ] **Delta files retired — in-place baseline edits, riding the field review's waves** (2026-09-24;
-  provenance: `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D6d + § Build
-  surface; supersedes in part the item above). **Migration and prose built 2026-09-29 in the joint
-  build, plugin 0.116.0** — 0024–0029, 0041 (seam R11) and the 0042 fix round; the D6d skills, entry templates and
-  strips at [v0.116.0]; seams R1–R11 in `.mochiko/decisions/2026-09-29-*.md`. **Owed — kinako (its
-  wave 4):** D5 in order — run 4's fold applied (`C-011`/`D-061`), ledgers to `archive/`, copies
-  deleted, fold blocks re-homed, 63 files' links re-pointed, the 17 `####` headings raised (census
-  ratification), each write diff-graded by a non-author seat. Watch: OQ1 — the per-entry budget must
-  admit the 177-line entry.
+- [ ] **Gate first-live-run watch — D10, with S15's metrics restored** (2026-10-01; provenance:
+  `.mochiko/brainstorms/hook-enforcement-field-review/record.md` D9(d) and S15; the wave-4 plan
+  `wave4-kinako-pass.md` § 4) — on kinako's next implement run under plugin 0.116.0 or later,
+  measure the deny count by kind, the false-positive share of the shell leg, the files per run
+  under `.mochiko/`, and S15's displacement metrics (per-home total volume · reports per run ·
+  section sizes before and after). **Trigger:** a deny rate still high after the second run
+  re-keys the table. Baseline: kinako `main` once PR #24 merges (a merge commit, never squash),
+  with no implement run open across it.
 
 ## Joint hook/delta build residuals
 
@@ -100,7 +87,9 @@ verdicts in `.mochiko/brainstorms/hook-enforcement-field-review/build-log.md`; n
   raw-output home's literal prefix (two segments, or a `migrate validate` finding) · `form: log`
   preambles unbounded (P1 covers `form: entries` only) · `matrix_similar.rs
   a_log_whose_own_tree_carries_no_allowlist_keeps_walking_up` assumes an in-repo target dir · a
-  `withdraw-document` op (0035 replaced withdrawn homes with empty sets).
+  `withdraw-document` op (0035 replaced withdrawn homes with empty sets) · `README.md`'s
+  `cargo install --git … mochiko-cli` omits `--locked`, so an install resolves fresh dependency
+  versions the repo's `cargo audit` never checked (seen at the 0.3.0 reinstall, 2026-09-30).
 - [ ] **Hook wiring residuals** (2026-09-29; provenance: build-log, S10 Q1, S8 O4, R1 RA3) — evasion
   3 is closed at the decision but open end to end: `hooks.json`'s `if: Bash(*.mochiko*)` never fires
   for a write run from a cwd inside a home (a latency-against-coverage trade, owed a ruling) · the
@@ -131,6 +120,15 @@ verdicts in `.mochiko/brainstorms/hook-enforcement-field-review/build-log.md`; n
   migrations README: mark `entry_heading` Required; the grammar row's kept "grammar version"
   wording; declared run-folder names match at the top level only; "(0033 and 0034 are grammar 2)"
   will date.
+- [ ] **Wave-4 kinako-pass process findings** (2026-10-01; provenance: build-log, the K2, K3 and
+  diff-read entries of 2026-09-30 and 2026-10-01) — (1) the gate lets a seat run `bash <script>`
+  without reading the script, so "the user runs the break-glass script" rests on seat discipline
+  alone (K2); (2) the gate denies a shell write into the `.mochiko/` paths of a scratch git repo,
+  since it resolves homes against any repo root — correct, and the lead's in-run route was
+  `git diff --no-index`, a note for the gate's scope docs, not yet a rule (K3); (3) in K1, K2b, K3 and
+  K4 the diff read FAILed on defects the plan grade had passed (stale counts, adjacency swallows,
+  drifted line cites, commit-message claims), while K2's read passed with commit-message advisories
+  — consider folding that defect checklist into `mochiko:review-seat-plan`.
 
 ## CLI schema-delivery build
 
