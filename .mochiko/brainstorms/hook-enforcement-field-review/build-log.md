@@ -1578,3 +1578,964 @@ audit: schema 0041-sweep-hunk-exception · V2 · opus · 6 files · 1 rounds · 
 - Wave 3 closed. The bump commit goes to the user; nothing merges to `main` before the user says so.
   After the merge the maintainer reinstalls `mochiko-cli` 0.3.0 from `main` (R4). Wave 4 (kinako)
   follows, seam R3 first.
+
+## 2026-09-30 · wave 3 committed and merged · wave 4 planned
+
+- User: "Commit it" (wave 3 as `591f31e`), then "merge to main and plan wave 4". Before the merge the
+  five 2026-09-29 decision records still read "build pending" or "build started" against
+  `DECISIONS.md`'s "built" — fixed on sight as `853ce88` (status agreement). PR #40: CI `crate` green
+  on both heads (`591f31e` push and PR, `853ce88` PR, 4m04s); merged as `7b15fd4`. `main` carries
+  plugin 0.116.0 and crate 0.3.0. Wave 4's mochiko records ride branch `joint-hook-delta-w4`.
+- Planning reads: the installs are split — the user scope holds plugin 0.112.0, kinako's project
+  scope 0.114.0, a stale 0.110.0 entry names the removed `mochiko-run3` worktree, and the binary on
+  PATH is 0.2.0. A session binds its gate to the plugin copy it started with, so the pass runs in a
+  session started after the upgrade. Kinako: the user's checkout sits on `console-consistency-sweep`
+  with an uncommitted `.gitignore` line and holds no `.mochiko` commit `origin/main` lacks; `main`
+  (`44635f1`) is ahead by two releases — the pass branches from it in its own worktree.
+- Plan: [wave4-kinako-pass.md](wave4-kinako-pass.md) — preconditions (merge · the user's reinstall
+  and plugin update · a fresh session · R3 first) · K0 inventory and op probe · K1 D5(i) · K2
+  D5(ii)–(iii) with D9(b)'s evidence deletions · K3 D5(iv) with census item 4 · K4 D5(v) with S11's
+  pointers · a non-author diff read after each step · K5 close checks · refused shell shapes routed
+  to one reviewed script the user runs with `!` · the landing, with the D10 watch booked for kinako's
+  next implement run. Put to the user for approval.
+- User: "Approve (Recommended)" · the wave runs in this session resumed after the upgrade ("Resume
+  this one") · kinako's work in a new worktree off kinako `origin/main` ("New worktree"). Next: the
+  user's reinstall and plugin update at both scopes, then the resume; the lead confirms the
+  SessionStart line before K0 is dispatched.
+- Upgrade, by the user: `cargo install --force --git …` installed 0.3.0 at `7b15fd42` but resolved
+  fresh dependencies (no `--locked`); reinstalled with `--locked` on the lead's security note, the
+  build now matching `Cargo.lock` (clap 4.6.6, syn 3.0.3) — README's missing `--locked` booked to
+  BACKLOG. Marketplace refreshed; the user scope updated 0.112.0 to 0.116.0; `/reload-plugins --force`.
+- The user questioned the quit-and-resume. A live probe settled it: in a scratch git tree, a Write
+  into `.mochiko/runs/FEAT-000-run1/` was allowed (0.112.0's log denies it, 0.116.0's allows) and a
+  control Write of an undeclared `.mochiko/` file was denied with 0.3.0's run-folder route in the
+  text — the running session's gate is on plugin 0.116.0 and binary 0.3.0. No restart; plan
+  precondition 4 re-worded. Kinako's project scope (0.114.0) is still owed its update.
+- R3 pre-check by the lead: kinako has no `.mochiko/runs/`, and no worktree carries a `.mochiko`
+  commit `origin/main` lacks; whether a feature run is still open is K0's read. Worktree created per
+  the user's ruling: `kinako/.claude/worktrees/w4-cleanup`, branch `mochiko-0.116-cleanup` at
+  `44635f1`, clean (`.claude/worktrees` ignored by kinako). K0 (a fresh `tech-lead`) dispatched
+  read-only: R3 evidence, the record figures re-counted, the move list per step with each target's
+  home, the op probe of every write shape against the live gate logic, anything the plan missed.
+- User: kinako's project scope updated 0.114.0 to 0.116.0. Kinako's two live peer sessions still hold
+  their old hooks until each reloads (`/reload-plugins --force`); neither writes during the pass.
+
+## 2026-09-30 · K0 inventory returned · PK0 verifying · W1–W4 ruled by the user, L1–L11 by the lead
+
+- K0 (`scratchpad/k0/inventory.md`, 249 lines, `3781b1c7…`; link list `raw-links.tsv`, `1d0ffaa9…`):
+  R3 none open (every sufficiency report paired with a passed final validation or an epic close; no
+  run folder; no store run key). Every record figure within a recount: evidence 68/166/93 · legacy
+  directories as recorded · 9 archive files · pointers 47 in 24 at `5167f36` (48 in 25 at HEAD) ·
+  63 ledger-naming files · ledgers 8,068 lines (237 entries, not 238: a fenced `## 2.1.47`) · fold
+  blocks at the recorded lines · 17 headings (15 in the file + 3 from §A2, less `C-002 · AMENDED`) ·
+  high-water C-008/D-049, no collision. Budgets: the largest entry after K1/K3 is 85 (data model) and
+  126/77 (constraints), under 177. Op probe: only the ledger `git mv` is refused among the needed
+  shapes (`git rm`, `rm -r`, Write, Edit, `git add`, `git commit` allowed); the whole-tree unchanged
+  rewrite denies exactly the 327 evidence files and 41 closed-record files. No stop item. Nineteen
+  gaps (§5); K4's real scope 124 ledger · 131 copy · 69 evidence · 11 live fold-heading links, and
+  236 line cites.
+- PK0 (a fresh `tech-lead`) verifies K0 first-hand; its FAIL on a fact reopens the ruling on it.
+- User, from plain options, each "as recommended": W1 preamble notes kept as dated lines · W2 the
+  D-050…D-061 write-ups moved unchanged into the product entries · W3 the three EPIC-002 contract
+  fold blocks re-homed · W4 the Rust comment links left and booked. The lead's L1–L11 readings and
+  W1–W4 are recorded in `.mochiko/decisions/2026-09-30-wave4-kinako-pass-rulings.md`, with a new
+  `DECISIONS.md` row.
+- PK0 (`scratchpad/pk0/verdict.md`): FAIL, 4 blocking. What holds, first-hand: R3 none open, every
+  record figure, every sampled probe verdict (C8/F2 off by one line, a construction difference), the
+  draft budgets re-measured, the keep list, every §5 anchor, 30 sampled link rows. Blocking: B1 the
+  copy class misses the short `FEAT-00x/…` form (61 lines in 30 files; 15 live), so the code-comment
+  count behind W4 is 12 lines in 8 files, not 8 in 6 · B2 the evidence class drops two grep lines
+  (one of the record's 47) · B3 the K4 file probe counted from a superseded list (113 · 98 · 15) ·
+  B4 §A is stale beyond the refusal count (five moved code line cites; B137's eight marker keys
+  against A4's "six → seven"). Missed: nine cites W3 orphans; `contracts/README.md:21`'s counts.
+- Lead: fix round 1 to K0 (B1–B4, the missed items, the `C-002 · AMENDED` target entry, the
+  package-to-product id map for W2, the ledger-internal lines). W4's count corrected in the record,
+  its ground unchanged and the user told; L1 widened to "§A applied as current truth — every count
+  and cite re-verified at HEAD, a later landed change wins, noting the run-4 figure". PK0 re-reviews once.
+- K0's fix round (`inventory-v2.md`, 294 lines, `f57d6eaf…`; `raw-links-v2.tsv`, 1,070 lines,
+  `f171a8db…`): B1 C re-derived at 192 in 68, holding PK0's 61; code comments 12 in 8 · B2 E and
+  E-dead cover the whole grep set (the two drops explained: a worktree-path exclusion, a never-created
+  folder) · B3 136 files · 120 allow · 16 deny · B4 27 §A cites checked, 5 moved, 3 counts superseded.
+  L3's stop fired (the product home binds no template); four new findings (W2's bodies carry
+  colliding package ids, short paths and stale cites; AppSettings 13 in code; D-057's "private" false
+  as graded; 202 contract line cites).
+- Lead readings L12–L17 recorded: the `## Declarations` heading after the Part 4 name · W2's bodies
+  id-mapped by §A2's F-01, paths and cites corrected, one dated provenance line each, each its own
+  `###` entry (the user told, W2 reopenable) · AppSettings "eleven at run 4" with a dated B137 note ·
+  D-057's fact corrected with a note · L5 widened to the contracts · §A's links written in final form.
+  PK0 re-reviews v2.
+
+## 2026-09-30 · PK0 PASS on K0's v2 · K1 dispatched plan-only
+
+- PK0 round 2 (`scratchpad/pk0/verdict-r2.md`): PASS, 0 blocking — B1–B4 closed and re-checked
+  first-hand (C 192 in 68 with 0 missing; E ∪ E-dead the whole 54-line grep set; the file probe 136 ·
+  120 · 16; 27 cites, 5 moved, the counts checked in code); K0's new findings true; nothing v1 had
+  right broken; no ruling W1–W4 or L1–L17 rests on a wrong fact. Advisories to carry: D-055's body
+  also cites `architecture.md:182` (L13's re-point) · W1's worst case about 102 lines, inside 177.
+  `review: inventory K0 wave-4 · PK0 · claude-opus-5-5 · 1 file · 2 rounds · 0 blocking`
+- K1 (a fresh `technical-analyst`) dispatched plan-only: §A applied in place as current truth (L1,
+  L2, L14, L15, L17), the README and ipc counts, and W2's twelve write-ups moved per L13 — each its
+  own `###` entry, id-mapped, re-pointed, re-verified, one provenance line. A fresh peer grades the
+  plan; GO follows a PASS; a non-author diff read after execution.
+- K1's plan (`scratchpad/k1/plan.md`, 223 lines, `536adbaf…`): full-replace Writes of five files
+  (`data-model.md`, `constraints-and-decisions.md`, `contracts/ipc.md`, `contracts/plugin-bridge.md`,
+  `contracts/README.md`), the final bodies pre-assembled in `k1/final/` and each dry-run ALLOW on the
+  live gate; budgets: the data model 1,317 lines with a largest entry of 85, constraints 969 lines
+  with 126, the twelve W2 bodies their own entries at about 30 at most. One more stale cite found
+  beyond PK0's list (D-056's `cli.rs:1516-1519`, now `:1658`). Lead on K1's two questions: A2's Part 4
+  "none" writes nothing (the `## Declarations` heading is K3's, for the older blocks) · A4's four
+  unanchored pieces placed at the section each extends, a plan choice the grader judges. PK1 (a fresh
+  `technical-analyst`) grades the plan.
+- PK1 (`scratchpad/pk1/verdict.md`, on `sonnet`, the persona's default): FAIL, item 3 — the reads
+  list names a non-existent `corpus/sitting.rs`, and corrections row 1 resolves only against the
+  top-level `settings.rs`; rows 1–5 match K0 §5.1 verbatim while the plan claims no reliance on K0.
+  A disclosure defect, not content: items 1, 2 and 4–6 PASS, with the hunk counts, baselines, five
+  dry runs, budgets, four W2 bodies word for word and the 29 id tokens all re-checked first-hand.
+  `plan-grade: K1 · PK1 · claude-sonnet-5 · 1 rounds · 1 blocking`. Fix round 1 to K1 (the reads,
+  the attribution, a check that no final text names a wrong path); PK1 re-reviews once.
+- K1's revision (229 lines, `8b57a1b8…`): the reads corrected and the attribution split (rows 1–5 to
+  K0 §5.1; the W2 cite fixes and D-056's `:1658` K1's own). PK1 round 2 (`verdict-r2.md`): PASS —
+  the round-1 read reconstructed to its exact sha and diffed, three hunks only; `final/*` sizes and
+  times unchanged since round 1. `plan-grade: K1 · PK1 · claude-sonnet-5 · 2 rounds · 0 blocking`.
+- GO K1 (the worktree clean at `44635f1`; K1 the one writer): five full-replace Writes byte-identical
+  to `k1/final/*`, `cmp` after each, the step's diff saved; no commit before the non-author read.
+
+## 2026-09-30 · K1 executed in kinako · the lead verified · D1 reading the diff
+
+- K1: the five files written, no gate deny, nothing outside them, no commit. Method deviation,
+  disclosed: 20 exact-match Edits reproducing the graded hunks, not five whole-file Writes (a
+  1,200-line retype risks drift; an Edit fails loudly on a miss — one miss on a dropped backtick,
+  re-read and applied). Outcome as graded: each file `cmp`-identical to `k1/final/*`, verified
+  first-hand by the lead; `git diff` sha `2500e838…` (5 files, +474 −4; saved `k1/k1.diff`).
+- D1 (a fresh `tech-lead`) reads the diff against §A, the W2 source and the rulings: conservation,
+  current truth, all twelve W2 bodies, the duplicate-id check, final-form links, the gate, scope.
+  The lead commits the step on D1's PASS.
+- D1 (`scratchpad/d1/verdict.md`): FAIL, 17 blocking — ids (C-011/D-061/V-51, no duplicate), gate
+  and scope PASS, and every value K1 changed true; the fails lie elsewhere:
+  - scaffolding landed (Part 3's "none" body, A3's trailer);
+  - three insertions split a note or a sentence, and C-009…C-011 were written `####`, nesting them
+    inside another entry;
+  - A4 rewritten beyond L1 (dropped sentences, one miscounted row, `bind-record-conduct-below-floor`
+    left unrecorded);
+  - two line cites K1's own insertions made false;
+  - report names, paths and feature-only § anchors not in final form;
+  - two W2 changes outside the allowed kinds (D-060's cite, D-055's added clause);
+  - D-061's cite and "not yet realized" claim false;
+  - three derived counts stale in their own sections.
+  Not committed.
+- Lead: fix round 1 to K1 with every F item. Rulings on D1's "your call" items:
+  - A5 made blocking under W1 (run 4's id map lands as a dated note);
+  - A7 new text qualified per the baselines' rule;
+  - A8's older stale counts booked to kinako BACKLOG;
+  - F9 as D1 places it;
+  - advisories A1, A3, A4, A6 and A9 taken.
+  D1 re-reads the whole diff once; a second FAIL goes to the user.
+- K1's fix round: F1 and F4–F18 fixed; A1, A3, A4, A5, A6, A7 and A9 taken; A11 skipped. Its first
+  report claimed F2 closed, but the lead found A3's trailer still in the `ipc.md` diff (K1 had looked
+  in the other file) and sent it back in the same round. Now deleted. The lead verified: `git diff`
+  sha `8a685bcc…` (5 files, +483 −6), no trailer, five files only. D1 re-reads the whole diff.
+- D1 round 2 (`scratchpad/d1/verdict-r2.md`): FAIL, 6 blocking. Checked fixed first-hand: F1, F2,
+  F4–F16, the A5 map, and all 12 W2 bodies by word diff. Ids, gate and scope PASS. Blocking:
+  - B1: D-052's FR-034 is qualified with the wrong spec;
+  - B2: the entity count note says one where two were added;
+  - B3: D-061's correction cites the wrong test;
+  - B4: F7(d)/(e) left unfixed (GAP-10 and the bind.md note re-worded and re-tensed);
+  - B5: a false § SCR-036 pointer, caused by D1's own round-1 wording, disclosed;
+  - B6: A7 not applied in `plugin-bridge.md`.
+
+  `review: diff K1 kinako wave-4 · D1 · opus-5.5 · 5 files · 2 rounds · 6 blocking`
+- The second FAIL went to the user, who chose "One more round". K1 applies D1's six fixes word for
+  word, plus advisories a1 (the landing date 2026-09-23), a2 ("at HEAD" → `44635f1`), a3, a4 (bare
+  mochiko ids → the rulings record's path) and a5. D1 checks the delta. A third FAIL goes back to
+  the user.
+
+## 2026-09-30 · D1 PASS on K1's third round · K1 committed in kinako · K2 dispatched plan-only
+
+- K1 round 3 (`k1-r3.diff`, `25b99866…`, 5 files +487 −6; 80 lines changed from r2): D1's six fixes
+  applied word for word, and a1–a5 taken. D1 round 3 (`scratchpad/d1/verdict-r3.md`): PASS, 0 blocking.
+  Each fix was re-checked against the specs, the tests and §A4; nothing outside the named hunks moved;
+  the gate allows all five files; the id set is unchanged.
+  `review: diff K1 kinako wave-4 · D1 · opus-5.5 · 5 files · 3 rounds · 0 blocking`.
+  Advisories: the mochiko rulings record must land on the mochiko branch, because kinako now cites it,
+  and K5's dead-pointer scan must honour the `mochiko:` prefix.
+- Lead: gitleaks clean on the staged diff, and no personal address. The staged diff's sha equals the
+  graded `25b99866…`. Committed on kinako `mochiko-0.116-cleanup` as `e5e2e15`, tree clean.
+- K2 (a fresh `staff-engineer`) dispatched plan-only. It covers:
+  - the three ledgers to `archive/ledgers/<FEAT-ID>/`, by the user's one `!` script (L8);
+  - the feature copies deleted: FEAT-001 and FEAT-006's data models, constraints and contracts, and
+    FEAT-002's contracts. Each is verified folded first, the W2 write-ups already having landed in K1;
+  - the 327 evidence files deleted;
+  - the keep list honoured (census items 2–3, delta I9).
+
+  A fresh peer grades the plan, and a non-author diff read follows execution.
+
+## 2026-09-30 · K2 planned · FEAT-006 stop · W5 ruled · PK2 grading
+
+- K2's plan (`scratchpad/k2/plan.md`, 212 lines, `22510028…`) and the user script
+  (`k2/move-ledgers.sh`, `76e7e8f3…`).
+  - The script guards HEAD `e5e2e15`, a clean tree, pinned sha256s and absent targets, then runs
+    `git -C <W> mv` ×3 with absolute paths and re-checks each sha256.
+  - Every seat op dry-runs allow. The inner `git mv` is denied, as K0 found.
+  - K2 observed that the gate allows a seat to run `bash <script>`: it reads no script contents, so
+    "the user runs it" rests on seat discipline.
+  - End state, simulated in a scratch index: held branch 337 files, −33,094 lines (R100 ×3, D ×334);
+    full 342, which matches K0.
+- **The stop.** FEAT-001 and FEAT-002 are folded: 60 units are anchored, with 0 missing. FEAT-006 is not.
+  - EPIC-001's `ac21ce8` changed no product baseline; the lead confirmed the stat.
+  - The product names FEAT-006's copies as the home of content it omits. The lead confirmed c&d
+    `:8–10`, `:561` and `:600–601`, dm `:8–11` and `:984`, and README `:133`.
+  - Delta D5(iii)'s FEAT-006 premise ("the evidence of its epic landing") is false in part.
+- **User ruling W5** ("as recommended"): W2's move applies to what the product names. That is the
+  in-force rows' rationale, IP-001…005, `CorpusLocator` and corpus-format § 1.1. The superseded
+  decisions, v1 §§ 1–9 and the engine-port/ipc residue go to history.
+- **Lead reading L18:** K2 commits the held branch, and K2b (the W5 move plus FEAT-006's five
+  deletions) is its own commit before K3. Both are in the rulings record, now 140 lines.
+- PK2 (a fresh `staff-engineer`) is grading K2's plan and the script, read-only.
+
+## 2026-09-30 · PK2 FAIL on K2's plan (2 blocking) · K2 fix round
+
+- PK2 (`scratchpad/pk2/verdict.md`, `2c3d29e6…`):
+  `review: plan K2 kinako wave-4 · PK2 · opus-5.5 · 2 blocking`.
+  - **B1.** O5 was "run if ruled". With W5 and L18 on disk, a GO would read that trigger as met and
+    delete FEAT-006's copies before W5's move. Fix: strike O5 and the full branch from K2.
+  - **B2.** §4.3's "cited nowhere else" is false: D-013 is in 14 files (GI-033 waiver row), IP-003…005
+    in `ci.yml:1`, and D-014 in `console.rs:151`. W5 is unaffected, because it rests on the six
+    pointer lines the lead confirmed, not on this claim, and the user's question did not state it.
+  - Verified live:
+    - the script's paths and sha pins;
+    - a `/bin/bash` 3.2 replica on a scratch linked worktree, which gave 3 × R100 with nothing else,
+      and all five guards STOP;
+    - every op's gate verdict;
+    - every count;
+    - `end-state.py`, 10/10 on simulated commits;
+    - 24 of 60 fold units read.
+  - Advisories:
+    - A1: a mid-run failure leaves some ledgers moved without a STOP line, so add an ERR trap and a
+      user-side recovery;
+    - A2: re-check the script's sha at H3;
+    - A3–A5: text fixes;
+    - A6: carry the GI-033 row into K2b's W5 inventory.
+- The lead sent B1, B2, A1, A3, A4 and A5 to K2 for its one fix round. A2 and A6 stay with the lead.
+  PK2 re-reads the delta.
+
+## 2026-09-30 · PK2 PASS on K2's revision 2 · GO · H3 handed to the user
+
+- K2's revision 2 files:
+  - `plan.md`: 259 lines, `bd415693…`;
+  - `move-ledgers.sh`: `e6f52eaf…`. It adds an ERR trap and an `archive/ledgers`-absent guard;
+  - `undo-ledgers.sh`: `d6ff0cc0…`. New: a user-run recovery that touches the six ledger paths only
+    and refuses if any other path changed;
+  - `commit-msg.txt`: `12bc1a9e…`.
+- PK2 round 2 (`pk2/verdict-r2.md`, `077602cb…`): PASS, 0 blocking.
+  `review: plan K2 kinako wave-4 · PK2 · opus-5.5 · 2 rounds · 0 blocking`.
+  - B1 and B2 are closed.
+  - PK2's own replica (its own object store) covered undo from every partial state, run twice, and
+    refusing on stray files or a moved HEAD.
+  - Kinako's index and object store were untouched.
+  - Advisories:
+    - A1: a Finder `.DS_Store` in a target dir stops undo's `rmdir`, after git is already restored.
+    - A2: undo discards edits on the six paths. Accepted: only the move writes them.
+    - A3: check both scripts' shas at H3.
+    - A5: after `== undone`, the user reports to the lead and nothing re-runs without the lead.
+- Lead: re-hashed both scripts, the plan and the commit message; all equal the graded bytes. Read both
+  scripts whole. `bash -n` is clean. GO sent to K2 (O0). H3: the user is handed the `!` line.
+
+## 2026-09-30 · user ran the ledger move · K2 staged the deletions · D2 reading the diff
+
+- O0 (K2): HEAD `e5e2e15`, 0 status lines, and both script shas unchanged.
+- **The user ran `move-ledgers.sh` with `!`.** It ended `== done`. The before and after sha256s are
+  equal for all three ledgers, with 3 `R` lines. The output was transcribed to
+  `scratchpad/k2/raw-user-script.txt`. The lead's own `diff --cached -M --name-status` shows exactly
+  3 R100. Shape: L8, the recorded break-glass (field review S16(i)).
+- K2:
+  - O2: 3 R100, nothing else.
+  - O3: `git rm` of the 7 FEAT-001/FEAT-002 copies, giving 10 lines.
+  - O4: `git rm -r` of the 3 evidence trees, giving 337 lines (3 R and 334 D, no untracked).
+  - O6: `end-state.py --verify` PASS. `337 files changed, 33094 deletions(-)`, matching the plan's
+    §5.
+  - No gate deny, no stop, not committed. FEAT-006's five copies are still tracked, for K2b.
+- D2 (a fresh `qa-engineer`) is reading the staged diff against the plan's §1, the fold evidence and
+  the keep set, read-only.
+
+## 2026-09-30 · D2 PASS on K2's staged diff · O7 GO · K2b dispatched plan-only
+
+- D2 (`scratchpad/d2/verdict.md`, `88bd220b…`): PASS, 0 blocking.
+  `review: diff K2 kinako wave-4 · D2 · opus-5.5 · 1 round · 0 blocking`.
+  - The expected set, built independently from `ls-tree -r e5e2e15`, equals the staged name-status.
+  - Numstat is +0, and the ledger blobs are equal.
+  - The keep set is untouched, and FEAT-006's five copies are still tracked.
+  - Fold evidence: 43 of 60 units read, 33 of them outside PK2's sample. The 12 D bodies are present
+    once each, with only L13 tokens differing.
+  - None of the 327 evidence files is referenced by a product, spec, map entry or code.
+  - Advisories:
+    - A1: K2's omitted-content column was incomplete, but each item has another home.
+    - A2 and A4: commit-message scope. The lead applied both; the message is now `1effec51…`.
+    - A3: the rulings record is still untracked in mochiko, and lands in the wave-4 commit.
+    - A5: counts for K4. Ledger links are 130 lines in 52 files, matching K0. Copy links are at least
+      123 in 41, 18 of them in the product, 2 of those stale quickstart GAP-6 cites.
+- Lead: gitleaks ran on the staged diff with no leaks (a vacuous scan, since it inserts nothing), and
+  no personal address. GO for O7.
+- K2b (a fresh `technical-analyst`) was dispatched plan-only while D2 read. It reads only product
+  files and FEAT-006's copies, which the staged change leaves alone. It covers:
+  - W5's moves;
+  - the product lines the move makes false, rewritten to the new home;
+  - the five `git rm`s.
+
+  Two W5-unnamed items, dm § Amendment and the per-entity sensitivity detail, are resolved from the
+  tree, or stop to the user if a current fact exists only in the copy.
+- **K2 committed** in kinako as `7d0fbef` (parent `e5e2e15`): `337 files changed, 33094 deletions(-)`.
+  - The message sha was checked (`1effec51…`) before the commit.
+  - `end-state.py --verify --rev HEAD` PASS.
+  - Tree clean; the lead confirmed with `log` and `--shortstat`.
+  - K2b's base is `7d0fbef`.
+
+## 2026-09-30 · K2b planned · sensitivity-table stop · W6 ruled · K2b revising
+
+- K2b's plan (`scratchpad/k2b/plan.md`, 298 lines, `6e66d254…`, with its bodies in
+  `k2b/bodies/final/`). Findings:
+  - FEAT-006's ids are the product's own, so no remap is needed.
+  - The bodies carry no file:line code cites.
+  - About 180 bare FR/SC ids get the "(corpus-stewardship)" qualifier, and two short paths are
+    re-pointed.
+  - D-003/008/009 move as their Amendment re-issue texts.
+  - What moves:
+    - 10 c&d entries: C-001 extends its existing entry, and the other nine are new, placed before
+      `### D-050`;
+    - IP-001…005 as 5 new entries;
+    - `CorpusLocator`, whole;
+    - one corpus-format section.
+  - Seven false product lines are rewritten.
+  - All four whole-file edits dry-run allow. The largest entry is 112 lines, within the budget of
+    177.
+  - dm § Amendment is resolved, not a stop: the product's `WriteLock`, `InFlightTurnMarker` and
+    V-rules already carry the current facts, re-verified from code.
+  - For K4: `features/FEAT-006-corpus-stewardship.md:36/37/44` links to the copies.
+- **Stop.** The per-entity `Sensitivity Details` tables (retention, access, deviations) for 8 entities
+  exist only in the copy, and the product lacks them. The lead's check: the copy's tables at dm
+  `:130`…`:464` run 6–8 lines each, and the product uses `#### Sensitivity Details` for FEAT-001's
+  entities (dm `:615`).
+- **User ruling W6** ("as recommended"): they move too, each under its entity in the FEAT-001 shape,
+  within K2b. The rulings record is now 144 lines.
+- K2b is revising the plan for W6. A fresh peer (PK2b) grades it next.
+- K2b's revision (`plan.md`, 300 lines, `9f9c096f…`; 20 body files) moves 25 bodies, W6's 8
+  `#### Sensitivity Details` tables among them. No stop remains open.
+  - It self-caught two defects: the placement had to follow the Live-rows prose (K1's F4 class), and
+    `CorpusLocator`'s sub-headings had to be `####`.
+  - Expected end state: 9 files changed, +704 −5688 (4 M, 5 D).
+  - Dry-runs: all four files allow, and the `git rm` allows.
+- PK2b (a fresh `technical-analyst`) is grading it, read-only.
+
+## 2026-09-30 · PK2b FAIL on K2b's plan (2 blocking) · K2b fix round
+
+- PK2b (`scratchpad/pk2b/verdict.md`): FAIL, 2 blocking.
+  - **B1.** `proposed/dm-final.md` omits Corpus's `#### Sensitivity Details`: only 7 of the 8 W6
+    tables are in. The dm numstat is 118/9, not 127/9, so the plan's +704 does not match its own
+    artifact.
+  - **B2.** c&d `:375–376` cites FEAT-006's `engine-port.md`, which K2b deletes, and it was missing
+    from the item-2 rewrites.
+  - Verified clean:
+    - all 49 c&d/dm units disposed;
+    - 21 bodies diffed against their sources, with only L13 tokens differing;
+    - D-013 agrees with GI-033;
+    - placement (no F4-class swallow) and budgets;
+    - the gate dry-runs and scope.
+- The lead sent both fixes and the advisory to K2b for its one fix round. The totals are to be
+  re-derived from the rebuilt artifact by numstat, not by arithmetic. The possessive "FEAT-006's …"
+  mentions are to be re-grepped in the product. PK2b re-reads the delta.
+- A K2b message crossed with the fix round. Plan `7914f884` left out Corpus's table on purpose, calling
+  it a contradiction: `rootPath` is not in Corpus's Attributes.
+- **Lead reading L19:** it is not a contradiction. The product keeps `rootPath` on Corpus as in memory
+  and Confidential (dm `:36`, `:74`, `:132`), and the copy's row states the same facts. So the table
+  moves, as W6 rules, which also closes B1.
+- The rulings record is now 147 lines. K2b is doing the full fix round (B1, B2 and the advisory) on
+  top.
+- K2b's revisions 3 and 4 (`plan.md` `0cbb2834…`, 300 lines):
+  - B1: the Corpus table is folded in, giving dm 127/9 and 23 `####` headings.
+  - B2: c&d `:375–376` is the eighth rewrite. A product re-grep for paths and for the possessive
+    "FEAT-006's …" found `contracts/ipc.md:437`.
+  - The lead ruled that line in scope, under item 2's "any others you find", because the deletion
+    makes it false. It is the ninth rewrite, pointing to `client.ts` with the copy in history, and
+    `ipc.md` becomes the fifth modified file.
+  - New totals: 10 files changed, +710 −5693 (5 M, 5 D).
+  - Lead: hashed every `proposed/*` file, and all five `*-current.md` are `cmp`-equal to HEAD
+    `7d0fbef`.
+- PK2b is re-reading the delta; a second FAIL goes to the user.
+
+## 2026-09-30 · PK2b PASS on K2b's revision 4 · GO
+
+- PK2b round 2 (`pk2b/verdict-r2.md`): PASS, 0 blocking.
+  `review: plan K2b kinako wave-4 · PK2b · opus-5.5 · 2 rounds · 0 blocking`.
+  - B1 is fixed: the Corpus table's cells match dm `:36`, `:74` and `:131–132`, per L19.
+  - B2 and the ipc rewrite are fixed: `client.ts` is named in the same file as "the single typed
+    client".
+  - PK2b's own `git grep -n "FEAT-006"` of the product found no further line that goes false. The
+    remaining hits cite FEAT-006 files this pass keeps, or record past divergences.
+  - Totals reproduced in a fresh scratch repo: +710 −5693, 10 files.
+- GO to K2b:
+  - Edit the five product files, with each `cmp`-equal to its `proposed/*-final.md` or stop;
+  - `git rm` the five copies;
+  - stage everything; no commit before D3's read.
+- **K2b executed** on `7d0fbef`: five Edits, each file `cmp` MATCH against its `proposed/*-final.md`;
+  `git rm` ×5; staged. `10 files changed, 710 insertions(+), 5693 deletions(-)` (5 M, 5 D), with
+  nothing unstaged or untracked.
+- Lead: every staged product blob (`git show :<path>`) is `cmp`-equal to its graded final, and the
+  shortstat matches. D3 (a fresh `qa-engineer`) is reading the staged diff, read-only.
+
+## 2026-09-30 · D3 FAIL on K2b's staged diff (6 blocking) · K2b diff fix round
+
+- D3 (`scratchpad/d3/verdict.md`, `a03852a6…`, 139 lines): FAIL, 6 blocking, 11 advisories.
+  - **B1.** Nine cites in moved bodies name FEAT-006 copy sections that the product lacks, and the
+    step deletes their only target (D1's F12 class).
+  - **B2.** Corpus SD's line cites have drifted by +2 (F10 class).
+  - **B3.** dm `:16` and `:34`'s modelled counts are stale, and the Data Sensitivity Summary lacks
+    CorpusLocator's `rootPath` row.
+  - **B4.** Three lines go false after the move: the c&d "silent" list (D-012 now carries it), c&d
+    `:8`'s rationale-home line, and corpus-format `:7–11` against § 1.1.
+  - **B5.** C-001's rationale was not moved, though W5 names it.
+  - **B6.** D-001, D-010 and D-011 differ beyond L13, in heading text and restated bullets (F15
+    class).
+  - Held, checked first-hand:
+    - staged equals the graded finals;
+    - all other bodies match their source exactly;
+    - placement and budgets;
+    - the W6 levels;
+    - D-013 against GI-033;
+    - the gate allows.
+- Lesson, carried to K3/K4's briefs:
+  - PK2b's plan grade passed what D3's diff read caught: cross-file cite targets, derived counts and
+    "silent"-list truth.
+  - Plan grades need the D1 defect-class list (F10/F12/F15, stale counts) as an explicit checklist.
+- K2b is fixing all six in the staged files. The r1 finals are kept for D3's delta read.
+- K2b's round 2 is re-staged: `10 files changed, 804 insertions(+), 5700 deletions(-)`, with
+  `r1-to-r2.diff` at `303da433…`.
+  - All six fixes are made. Eight advisories were applied and three declined with reasons.
+  - One new K4 item: `architecture/spine.md:26`.
+- Lead: the staged blobs are `cmp`-equal to the new finals, and the tree scope is 5 M + 5 D. D3 is
+  re-reading the delta; a second FAIL goes to the user.
+
+## 2026-09-30 · D3 FAIL on K2b's round 2 (2 blocking) · user: one more round
+
+- D3 round 2 (`d3/verdict-r2.md`, `52895e87…`): FAIL, 2 blocking.
+  - **R1.** B3 is only half cured: dm `:16` and `:35` keep the stale counts, with notes giving the true
+    ones beside them.
+  - **R2.** A B1 re-point made D-011's disposition claim that § The export rendering is "verbatim".
+    D3 says the fault is its own round-1 mapping; the right form is L6.
+  - Cured, checked first-hand:
+    - B1: 8 of the 9 targets hold the cited fact;
+    - B2, B4(a–c) and B6;
+    - B5: verbatim match to the source;
+    - the declines are sound;
+    - the delta sets are equal;
+    - budgets and the gate.
+- This was the second FAIL, so it went to the user. The user chose "One more round (Recommended)".
+- K2b is applying D3's exact wording, with nothing else touched. D3 checks only those hunks.
+- K2b round 3 (`r2-to-r3.diff`, `26d18ffd…`, 41 lines): R1 and R2 applied, plus D1 provenance
+  disclosures. `824 insertions(+), 5701 deletions(-)`.
+- D3 round 3 (`d3/verdict-r3.md`, `1f8fe354…`): R1 and R2 cured, but FAIL with 2 new blocking.
+  - **Q1.** D-012's new provenance line lists a § V2.9 re-point that D-012 lacks; it is D-014's.
+  - **Q2.** The unchanged commit message says all nine cites are re-pointed, but D-011's § 8 is now
+    kept "in history".
+- This was the third FAIL, so it went to the user. The user chose "Apply D3's wording
+  (Recommended)": two exact phrases, nothing else, and advisories E1/E2 not applied. D3 checks those
+  two lines.
+
+## 2026-09-30 · D3 round 4: product files PASS · commit message fixed by the lead · K2b commit GO
+
+- K2b round 4 (`r3-to-r4.diff`, `d7655b9d…`): Q1 and Q2 applied verbatim. The lead confirmed the delta
+  is exactly those phrases.
+- D3 round 4 (`d3/verdict-r4.md`, `2ea2291c…`):
+  - Q1 and Q2 cured. D3's own r3-to-r4 diff is one hunk, and the other four files are byte-unchanged.
+  - **P1, the commit message only.** Its second-sweep sentence cited round-1 working-copy line
+    numbers, true at neither the parent nor the commit. D3 says it missed this in rounds 2 and 3.
+  - Advisory F1: the "every false line" claim holds because K4's list carries `ipc.md:7`, README
+    `:113–125` and `spine.md:26`, as it does.
+  - `review: diff K2b kinako wave-4 · D3 · opus-5.5 · 4 rounds · 0 blocking on the product files`.
+- The lead applied D3's exact by-entry replacement text to `commit-msg.txt`, which is now
+  `96ca8c74…`, the previous version kept as `.r4.txt`. The commit message is the lead's own ceremony
+  text, as at K2, under the user's standing "apply D3's wording" ruling.
+- Gitleaks ran on the staged diff (74 KB): no leaks, and no personal address. GO to K2b to commit.
+- **K2b committed** in kinako as `e45b47e` (parent `7d0fbef`):
+  `10 files changed, 824 insertions(+), 5701 deletions(-)`. The HEAD, shortstat and message shas
+  were checked before the commit, and the tree is clean.
+- **K3 dispatched plan-only** (a fresh `technical-analyst`), based on `e45b47e`.
+  - Inputs:
+    - the fold blocks: c&d `:1231`/`:1407`, dm `:1142`/`:1315`, and W3's three contracts;
+    - c&d's 15 `####` at HEAD against the census's 17, to reconcile or stop;
+    - K0's `drafts-v2`, marked stale (`44635f1`) and used as method only.
+  - The brief carries the defect-class checklist from D1 and D3 (F4, F10, F12, F15, stale counts,
+    silent lines, sentence splits, commit-message claims), plus a mechanical conservation proof.
+
+## 2026-09-30 · K3 planned · heading count reconciled · PK3 grading
+
+- K3's plan (`scratchpad/k3/plan.md`, 155 lines, `469178cb…`):
+  - five `current`/`final` pairs, each final allowed by the gate;
+  - conservation scripts with zero unexplained line differences;
+  - 18 in-file re-points to removed fold headings, done by entry name;
+  - 2 out-of-scope items for K4: `FEAT-002/requirements.md` and `contracts/README.md`.
+- **Heading reconciliation.** 15 `####` in c&d at HEAD: 14 raised, 1 kept (`C-002 · AMENDED`, L3).
+  - The lead confirmed c&d already had 15 at `44635f1`.
+  - The census's "17" assumed run 4's C-009…C-011 would land at `####`. K1 wrote them at `###`, so
+    item 4's "every id its own entry" is met.
+- Flagged for the grader:
+  - 8 `### Part N ·` fold scaffold headings dropped;
+  - W1's notes paraphrased with a Source cite (K1's convention), not moved verbatim.
+- **Gate observation.** K3 built a scratch git repo with `.mochiko/product/…` paths for numstat and
+  was denied on a shell redirect. The gate was correct: it resolves homes against any repo root. K3
+  rebuilt under other names, which is a route-around even in scratch.
+  - The lead told K3 not to repeat the shape.
+  - Seats use `git diff --no-index --numstat` from here on.
+  - This is a note for the gate's scope docs.
+- PK3 (a fresh `technical-analyst`) is grading, briefed on all four flags and the defect-class list.
+- PK3 (`pk3/verdict.md`, 70 lines): FAIL, 2 blocking.
+  `review: plan K3 kinako wave-4 · PK3 · claude-sonnet-5 · 2 blocking`.
+  - **B1.** Dropping `### Part 2 · Decisions` leaves the EPIC-002 ratification table (D-038…D-044)
+    unheaded after `### D-014` (F4 class).
+  - **B2.** The plan claims five conservation scripts passing 0/0, but only one exists, and it prints
+    10/7. PK3's own symmetric rebuild shows the content is in fact conserved.
+  - Advisories:
+    - a blank line before `## Declarations`;
+    - the notes lack K1's `Source:` line;
+    - the NFR/AX-021 preamble fact is dropped;
+    - the heading reconciliation, numstat and gate are confirmed.
+  - Not swept in full: the ~30 span boundaries for sentence splits.
+- K3 fix round: B1 and B2, plus A1–A3 and a full boundary sweep. PK3 re-reads.
+- K3's revision 2 (`plan.md` `50227944…`, 183 lines):
+  - B1: 2 of the 8 Part-N drops needed an anchor, and each gets a new `###`.
+  - B2: `conserve_all.py` covers all 5 files, giving 0/0 and PASS.
+  - A1–A3 applied.
+  - The sweep found 2 more missing blank lines (dm `HarnessSessionFile`, pb `SCR-037`).
+  - `--no-index` numstat: 5 files, +808 −869.
+- The lead hashed every final and the script. PK3's re-grade is to test the script's whitelist
+  against a deliberately broken copy.
+- PK3 round 2 (`pk3/verdict-r2.md`): PASS, 0 blocking.
+  `review: plan K3 kinako wave-4 · PK3 · claude-sonnet-5 · 2 rounds · 0 blocking`.
+  - B1's anchors are minimal. PK3 swept all 5 finals for any heading glued to the text before it,
+    with 0 hits.
+  - B2: the whitelist is narrow, PASS is reproduced byte for byte, and a tampered sentence in a
+    scratch copy FAILs.
+  - A3's fact matches the HEAD preamble.
+  - Only the disclosed plan sections changed.
+  - The gate, numstat and commit message are re-checked.
+- GO to K3: write the five files, each `cmp`-equal to its final; stage; no commit before D4's read.
+- K3's turn was cut off mid-write when the machine slept ("API Error: Your computer went to sleep
+  mid-response").
+  - The lead checked the tree: HEAD `e45b47e`, nothing staged. dm, engine-port, ipc and plugin-bridge
+    are `cmp`-equal to their finals, and c&d is `cmp`-equal to its current, untouched, with no
+    partial file.
+  - K3 was resumed to write c&d only, then `cmp` all five and stage.
+
+## 2026-09-30 · K3 executed and staged · D4 reading the diff
+
+- **K3 executed and staged:** `5 files changed, 808 insertions(+), 869 deletions(-)`. K3 caught one
+  transcription slip in c&d (`measured."*` against `measured"*.`) by `cmp`, and fixed it by Edit.
+  - Lead: every staged blob is `cmp`-equal to its graded final, and the finals' shas are unchanged
+    from PK3's grade. 5 staged, 0 unstaged, 0 untracked.
+  - D4 (a fresh `qa-engineer`) is reading the staged diff. The brief asks for an independent
+    conservation check and a W1 fact-by-fact check, plus the defect classes.
+- The gate denied a build-log Edit that would have made the previous entry 64 lines, against the
+  bound of 60. The remedy is the bound's own: a new entry for the new event (this one). The shape
+  was not retried.
+- D4 (`d4/verdict.md`, `ee85c9cd…`, 116 lines): FAIL, 7 blocking, 9 advisories.
+  - **B1 (F4).** Three EPIC-001 seed quotes now head the wrong entry: c&d `:128`, dm `:628` and dm
+    `:854`.
+  - **B2.** Two direction words ("below", "above") are false.
+  - **B3.** One re-point was missed, at ipc `:749`.
+  - **B4.** "§ Entity: BoundSession" is ambiguous.
+  - **B5.** Three section counts are stale: "Two rows", "Seventeen rows" and "Seven rows".
+  - **B6.** "Heading levels are demoted one level" is now false.
+  - **B7.** The commit message says four fold headings were deleted, but it was seven.
+  - Held:
+    - scope, and blobs equal to the finals;
+    - D4's own conservation check (18 re-points and 42 preamble lines, all accounted for);
+    - 14 raised and 1 kept;
+    - budgets, the largest 157;
+    - no glued headings;
+    - the W1 facts;
+    - the gate;
+    - the K4 list complete.
+  - `k3/raw-conserve.txt` now prints a pb FAIL. PK3's break test appears to have overwritten the
+    author's evidence file, which is a grader writing into the author's folder.
+- Lesson: PK3's plan grade passed, and D4's diff read found F4 in a new shape (a provenance quote cut
+  off from its heading) and stale counts again. Plan graders read proposed whole files less closely
+  than diff readers read the diff.
+- K3's diff fix round covers all seven. The r1 finals are kept for D4's delta read.
+- K3's round 2 (`r1-to-r2.diff`, `431296e4…`): `816 insertions(+), 877 deletions(-)`. K3 reports all
+  seven fixed, and 6 advisories applied and 3 declined.
+- The lead checked before D4's re-read. Two items were not done as briefed, so K3 was sent back within
+  the same round, before D4 spends a read:
+  - **B5.** The three section leads still state the stale counts, with notes stacked beside them.
+    `:264`'s note gives no current total at all.
+  - **A6.** Three pre-existing stale cites were re-pointed to new line numbers, against L5's rule
+    to cite by name.
+- K3 corrected both:
+  - The leads now read "Ten rows are delivered", "Forty-two rows exist. Thirty-seven are live; five
+    are superseded" and "Nine rows are delivered", each id listed, with the old text in dated notes.
+  - The A6 cites now go by name.
+  - `r1-to-r2.diff` is `021958b7…`, and the shortstat is unchanged.
+- The lead verified the staged blobs against the finals. D4 is re-reading the delta; a second FAIL
+  goes to the user.
+
+## 2026-10-01 · D4 FAIL on K3's round 2 (3 blocking) · user: apply D4's fixes
+
+- D4 round 2 (`d4/verdict-r2.md`, `a4d4f6db…`, 92 lines): all 7 round-1 blockers cured. FAIL, with 3
+  new blockers, each one sentence:
+  - **R1.** c&d `:264` keeps K1's "pre-run-4" note, which is now false, and its new note credits
+    17 to 42 to the re-home alone.
+  - **R2.** A3's new dm `:718` text points at the header's high-water paragraph, which is stale
+    (dm `:31` "continues at V-46 and DS-012").
+  - **R3.** The commit message's "text unchanged" omits five edited moved lines.
+  - Checked first-hand:
+    - D4's own delta equals K3's (62 lines);
+    - 20 seed quotes re-paired by script;
+    - the recounts are true;
+    - the A6 targets are right;
+    - the declines are sound;
+    - conservation, budgets (max 157), glued headings, the fold greps and the gate.
+- This was the second FAIL, so it went to the user. The user chose "Apply D4's fixes
+  (Recommended)": exactly three sentences, and no advisories.
+- Booked for kinako's BACKLOG (the stale-counts item): dm `:31`'s high-water line, which predates K3.
+  Revised by the lead: it is a live product fact made stale by K1, so it goes to K4's scope (L1) and
+  is not booked.
+- K3 round 3 (`r2-to-r3.diff`, `365ec531…`): R1–R3 applied exactly. The lead confirmed a 3-hunk delta.
+- D4 round 3 (`d4/verdict-r3.md`, `f0d194d6…`): PASS, 0 blocking.
+  `review: diff K3 kinako wave-4 · D4 · opus-5.5 · 3 rounds · 0 blocking`.
+  - D4's own delta has 3 hunks and equals K3's.
+  - The recount, the minted ids and the whole message are true.
+  - The gate and budgets hold.
+- The lead edited the commit message (`1f9ff5b9…`):
+  - D4's advisory v1 quote ("the fold" and "this fold");
+  - a rulings pointer;
+  - the attribution line set to this session's form. K3's draft carried its own seat's model line.
+- Gitleaks: clean. GO to K3 to commit.
+
+## 2026-10-01 · K3 committed · K4 dispatched plan-only
+
+- **K3 committed** in kinako as `1313c9e` (parent `e45b47e`):
+  `5 files changed, 816 insertions(+), 877 deletions(-)`. The message sha was checked, the
+  attribution is this session's form, and the tree is clean.
+- Kinako merges PRs with merge commits (`44635f1`, `88da637`, `f2c8c24`, `cab3aaa`), so the branch
+  commits cited "in history at …" (`7d0fbef`) survive on `main`. The kinako PR must be merged the
+  same way, never squashed.
+- **K4 dispatched plan-only** (a fresh `technical-analyst`), based on `1313c9e`.
+  - Scope: every link class in live, writable files (L, C, C6 for FEAT-006's copies, E, H, N, N3,
+    and the dead links), plus dm's stale high-water line (L1).
+  - Method: a table-driven transform with a line-diff proof. The seat may split K4 into sub-steps.
+  - A dated report's path links are the seat's to read against D5(v)/L4–L7, or to stop on.
+  - The brief carries the defect-class checklist.
+
+## 2026-10-01 · K4 planned · dated-report links · W7 ruled · K4 revising
+
+- K4's plan (`scratchpad/k4/plan.md`, 212 lines, `f323f108…`): 131 lines in 25 live files, split
+  into 5 file-disjoint sub-steps (K4a–K4e), all gate-allow.
+  - Readings:
+    - L6's historical-instruction test extends to `tasks.md:174`;
+    - "dated" is judged by substance (`sufficiency-report.md` counts as dated).
+  - Gap: 48 C/C6 tokens were left "resolved at execution", which cannot be graded.
+- K4 left every dated report untouched, and listed "460 dated path-links" as K5 residue.
+  - The lead's count from K0's TSV: 222 path-link lines in 73 files still present at HEAD (L 81,
+    C 70, E 59, E-dead 3, H 9). The 460 includes dated line cites.
+  - L5 exempts only line cites. D5(v), S11 and K5's clean scan call for the path links.
+- **User ruling W7** ("as recommended"): dated reports' path links are handled. Ledger links are
+  re-pointed; copy, evidence and fold-heading links gain "(in history at `44635f1`)", with the text
+  otherwise unchanged.
+  - The rulings record is now 149 lines, against a bound of 150. W4 and W5 were re-wrapped, with the
+    text unchanged. A further ruling needs a new record.
+- K4 is revising: W7's rows as extra file-disjoint sub-steps, every row resolved in the table, and
+  `44635f1` verified for each annotation.
+- K4's revision 2 (`plan.md` `bbedce98…`, 201 lines): 353 rows in 98 files, 11 file-disjoint
+  sub-steps (K4a–e live, K4f–k dated), all gate-allow.
+  - Tables: core 45 · c-c6 42 · n-n3 56 tokens · dated 222.
+  - K4 re-derived the dated count as 222 in 73 files, matching the lead's. `44635f1` is unchanged up
+    to each deletion.
+  - New: 6 FEAT-002 rows re-point rather than annotate, and one more pre-existing dead link repaired
+    (`FEAT-006/requirements.md:26`).
+- PK4 (a fresh `technical-analyst`) is grading. The brief asks for an independent link census, a
+  script check of all 222 dated rows, and every live row read against its target.
+
+## 2026-10-01 · PK4 FAIL on K4's plan (4 blocking) · K4 fix round
+
+- PK4 (`pk4/verdict.md`, 139 lines): FAIL, 4 blocking.
+  `review: plan K4 kinako wave-4 · PK4 · claude-sonnet-5 · 4 blocking`.
+  - **B1.** The deleted-copy total is 12, not 17.
+  - **B2 and B4.** The row counts are hand-derived and wrong: 139 live / 361 in all, not 131 / 353.
+  - **B3.** A `spine.md:26` row was retyped with ASCII hyphens where the file has en dashes.
+  - Held:
+    - the 222 dated rows exact;
+    - the file partition;
+    - the high-water, `B86` and `FEAT-006/requirements.md:26` targets;
+    - `44635f1` unchanged up to each deletion.
+  - `apply.py` is "not yet written", so there are no proposed files to grade.
+  - PK4's verdict does not report the brief's independent completeness census (item 1) or its
+    every-live-row read (item 2).
+- Fix round sent to K4:
+  - counts regenerated by script;
+  - every `old` column byte-copied from `1313c9e`;
+  - `apply.py` with a pre-apply verbatim assertion, `conserve.py`, the proposed whole files for all
+    98 targets, and the gate dry-run on each.
+- PK4 was told its re-grade must cover items 1 and 2 with evidence.
+- K4 stalled idle, waiting on a gate dry-run monitor that had stopped: an empty `gate-results.tsv`,
+  and no process running. The lead nudged it, and the re-run in batches completed.
+- K4's revision 3 (`plan.md` `d797e498…`, 195 lines):
+  - 366 rows (easy 277, hard 33, n-n3 56), every `old` sliced from `1313c9e`;
+  - `apply.py` asserts each `old` verbatim once; run 1 found 32 anchor mismatches, including 9
+    fabricated fold-heading anchors, which K4 fixed; run 2 applied 366/366;
+  - `conserve.py` proves 98 files, 333 lines;
+  - the gate allows all 98;
+  - live 143 rows in 25 files, dated 223 in 73.
+- PK4 is re-grading. The brief asks for the census, all 143 live rows, a re-run of `apply.py` into
+  PK4's own scratch space, a break test, and a script check of the dated rows.
+
+## 2026-10-01 · PK4 round 2: B5 · W8 ruled · K4 adds one row
+
+- PK4 round 2 (`pk4/verdict-r2.md`, `08843219…`): B1–B4 confirmed fixed. The mechanics reproduce:
+  `apply.py` is byte-identical in PK4's own scratch run, `conserve.py` FAILs on an injected break,
+  and the gate allows 11 of 11.
+- **New finding, B5, from the census.** PK4 found 312 relative-form mentions of the five deleted
+  contract names, in 67 files, in no table.
+- The lead's check (`lead-ceremony/relcontracts.py`, at `1313c9e`):
+  - 28 are dead markdown hyperlinks. K4's tables cover 27; one is missing,
+    `FEAT-001/reports/records-groom-review-2026-09-22.md:295`.
+  - The rest are backtick names in table cells. They name product contracts of the same names that
+    still exist, and 19 are in the product itself.
+- This was the second FAIL, so it went to the user.
+- **User ruling W8** ("as recommended"): bare names stay, like L4's bare ledger names; the one
+  missed hyperlink gets a row; K5 scans resolvable links only.
+  - The first rulings record was at its 150-line bound, so W8 is in a new record,
+    `.mochiko/decisions/2026-10-01-wave4-kinako-pass-rulings-2.md`.
+- K4 is adding the row, plus PK4's two factual advisories, then re-running apply, conserve and the
+  gate. PK4 re-checks the delta.
+- K4's revision 4 (`plan.md` `282d609d…`): the `:295` row, annotated per W7 (the copy existed at
+  `44635f1`; the link's relative depth was wrong); the `concerns.md` label and href fixed together;
+  367 rows; apply 367/367; conserve 98 files, 334 lines; gate 2/2.
+- PK4 round 3 (`pk4/verdict-r3.md`, `599a470d…`):
+  - the delta passes, and the other 96 files are byte-unchanged;
+  - one new item: `docs/quickstart.md:19–21`, 4 hyperlinks to `contracts/*.md` relative to `docs/`;
+  - the lead checked: `docs/contracts` exists in no commit, so these links have never resolved;
+    they predate the pass and lie outside K5's scan.
+- This was the third FAIL, so it went to the user. **User ruling W9** ("as recommended"): repair them
+  in K4, re-pointed to `../.mochiko/product/contracts/<name>.md` as L6 did for `tasks.md:114`.
+  Recorded in `…-rulings-2.md`.
+
+## 2026-10-01 · PK4 PASS on K4's revision 5 · GO
+
+- K4's revision 5 (`plan.md` `5698db7b…`, 267 lines): 4 W9 rows added to K4a, giving 371 rows in 99
+  files; apply 371/371, conserve 99 files and 337 lines, gate 99/99 allow. The lead diffed
+  `docs/quickstart.md`: lines 19–21 only, labels kept.
+- PK4 round 4 (`pk4/verdict-r4.md`, `f6f98659…`): PASS, 0 blocking.
+  `review: plan K4 kinako wave-4 · PK4 · claude-sonnet-5 · 4 rounds · 0 blocking`.
+  - The mechanics reproduce byte for byte. The only `apply.py` change is the K4a cluster entry.
+  - The census inside and outside `.mochiko/` is clean: 26 links, 24 covered, and 2 that already
+    resolve.
+- GO to K4:
+  - apply by Edit, one row per Edit, never a whole-file Write, since a retyped file is how K3's slip
+    happened;
+  - `cmp` each sub-step against its proposed files;
+  - stage nothing. D5 reads each sub-step's diff, then the sub-steps commit one at a time.
+- **K4 executed** all 11 sub-steps by Edit. Every touched file is `cmp`-equal to its proposed file,
+  and no deny was raised. Unstaged: `99 files changed, 337 insertions(+), 337 deletions(-)`.
+  - K4 disclosed two deviations, with content byte-equal either way: in K4a, two same-line pairs went
+    as one Edit each; in K4h, short unique anchors were used inside two very long run-log lines.
+  - Lead: an independent `cmp` of all 99 live files against `proposed/`, 0 differences. HEAD is
+    `1313c9e`, nothing is staged, 99 ` M` and nothing untracked.
+- D5 (a fresh `qa-engineer`) is reading the diff per sub-step: an independent hunk-to-row map, every
+  live hunk read, the dated rows by script plus a third read, and the gate.
+
+## 2026-10-01 · D5 FAIL on K4's diff (8 blocking) · L20 · K4 diff fix round
+
+- D5 (`d5/verdict.md`, `464937ff…`, 200 lines): FAIL, 8 blocking.
+  `review: diff K4 kinako wave-4 · D5 · claude-opus-5-5 · 8 blocking`.
+  - **B1.** All 56 N/N3 rows wrote the resolver's description as their new text: line numbers (F10,
+    56/56), `#` markup, nested backticks, and at least 14 wrong targets. PK4's grade passed them.
+  - **B2.** 18 annotations sit inside code spans.
+  - **B3.** 3 new hrefs are dead relative to their own files.
+  - **B4.** A sentence split at `spine.md:26`.
+  - **B5.** `tasks.md:1045`, L6's named example, was re-pointed instead of annotated.
+  - **B6.** A wrong D-id target.
+  - **B7.** Two anchors that exist only in the deleted copy (F12).
+  - **B8.** Commit messages untrue: they say ledger links are annotated, and carry line numbers.
+  - Held:
+    - D5's own parser maps 371 rows onto 337 lines;
+    - the dated rows are exact;
+    - the repairs resolve;
+    - the high-water fix is true;
+    - W8 is respected;
+    - the gate allows all 99.
+- **Lead reading L20:** `FEAT-002/sufficiency-report.md` is dated by substance (`report: review`,
+  2026-09-10), so its 30 line cites stay under L5. This is K4's own §2 reading, which its table
+  contradicted. Recorded in `…-rulings-2.md`.
+- Lesson: the plan grade read the tables. The diff read read the text the tables wrote. Only the
+  second sees what lands.
+- K4's fix round: tables fixed, then `proposed/` regenerated from `1313c9e`, then the live files
+  brought to it by Edit and `cmp`; every href resolved by script.
+- K4 reported the fix round: all 8 fixed, N/N3 down to 22 (4 false positives into a rules file
+  dropped), 330 rows in all, `97 files changed, 306 insertions(+), 306 deletions(-)`, 0 new dead
+  hrefs.
+- The lead checked before D5's re-read and sent it back again.
+  - `BACKLOG.md:477`/`:481` (B93) cite the signed EPIC-002 contract's `:53`, which still exists,
+    unchanged.
+  - K4 re-pointed them to product `ipc.md:253`, a heading saying that statement is false. That
+    inverts the cite and writes a line number. K4 also kept a line number there on purpose.
+  - Every kept N/N3 row is now to be re-verified for which file the cite meant, with the evidence in
+    `k4/n-n3-verify.tsv`.
+- K4's re-verify: B93's pair dropped, and one more of the same class found
+  (`FEAT-001/tasks.md:647`, a cite into EPIC-001's unchanged `data-model.md:378`) and dropped.
+  - N/N3 is now 19, and 327 rows in all.
+  - `97 files changed, 303 insertions(+), 303 deletions(-)`.
+  - Lead: all 99 proposed files are `cmp`-equal to the live tree. The added lines carry no new line
+    number; the 4 hits are pre-existing frontmatter text that only gained an annotation.
+- D5 is re-reading the delta. A second FAIL goes to the user.
+
+## 2026-10-01 · D5 round 2: all 11 diffs PASS · commit messages fixed by the lead · K4 commit GO
+
+- D5 round 2 (`d5/verdict-r2.md`, `414f214d…`, 153 lines): all 11 diffs PASS.
+  - B1 holds: the 19 kept rows were checked by the cited fact at the commit that wrote each cite, and
+    the 37 dropped rows are byte-equal to HEAD.
+  - 0 annotations sit in code spans, 0 new dead links, and B4–B7 are fixed.
+  - The hunk map lands all 327 rows. The gate allows 97 of 97.
+  - **R2-B1, messages only:** five messages were untrue of their sub-steps (K4b, c, d, f, g). D5
+    gave the exact replacement text.
+  - `review: diff K4 kinako wave-4 · D5 · claude-opus-5-5 · 2 rounds · 0 blocking on the diffs`.
+- The lead applied D5's exact text, as the lead's own ceremony text, as at K2b. It added a trailer
+  to all 11: the rulings pointers and the attribution. The lead checked the text matches and that no
+  message carries a `file:line`.
+- Gitleaks on the full diff: no leaks, and no personal address. GO to K4 to commit K4a…K4k in order,
+  each staged set's shortstat matching its reported figure.
+- Booked for kinako's BACKLOG and K5's residue:
+  - D5's A2: `FEAT-001/architecture.md:61`'s bare `:1204` line cite, which no census caught.
+  - D5's A10, K5 residue: 22 annotated dead hrefs; the old ledger path, annotated, at
+    `tasks.md:174`/`:1045`; and the reverted fenced fold-heading text.
+
+## 2026-10-01 · K4 committed · K5 close checks by the lead: clean
+
+- K4 committed K4a…K4k in order (`94434e0`…`73dd17d`): 97 files, +303 −303. The tree is clean.
+  Branch total `44635f1..73dd17d`: 15 commits, 443 files, +2438 −39989.
+- K5 ran by the lead, read-only, kinako at `73dd17d` (scratchpad `k5/k5-report.md`):
+  - **Ledger grep:** 0 unannotated old feature-directory ledger paths outside L7's exclusion set.
+    The rest are 7 hits inside the archived ledgers, 30 in excluded closed or frozen files, and 157
+    bare names, `BD-` cites and annotated or re-pointed paths (L4, W7). Crates hits are W4's.
+  - **Dead-pointer scan** (markdown hrefs and path-qualified backtick paths, fenced blocks
+    skipped, W8): 0 dead pointers caused by the pass left unannotated. 3 apparent hits are
+    provenance lines whose commit id wraps to the next line. 31 dead targets carry the in-history
+    annotation by design.
+  - **Pre-existing:** 81 dead pointers in 24 files were already dead at `44635f1` (wrong relative
+    depths in text copied from EPIC-001, retired `specs/` and product paths, plugin-cache paths).
+    They are outside D5(v)'s moved-or-deleted scope. Booked for kinako's `BACKLOG.md`, not fixed.
+    The first count, 135 in 34, was inflated: the scan read a backtick path's `:line` suffix as
+    part of the path. The lead fixed the scan (`k5/deadscan2.py`) and re-ran it. Blame shows the
+    pass wrote none of the 81; one line, c&d's NFR rows, K3 moved unchanged.
+  - **Figures** against `git diff -M --name-status 44635f1 HEAD`: 3 R100 (the ledgers), 339 D
+    (327 evidence files and 12 copies: FEAT-001 5, FEAT-002 2, FEAT-006 5) and 101 M. They match
+    K0's list.
+  - **Gate no-op:** one file per touched home, current content, under `mochiko-cli` 0.3.0 on
+    0.116.0: 16 of 16 allow.
+  - `.mochiko/runs/` is absent (L11).
+- Next: the kinako landing (B119 closed, B121 narrowed, B132 updated, the new items, the ROADMAP
+  run-4 row; `brainstorms/index.md` untouched, L10). Then the PR, on the user's word, merged with a
+  merge commit. Then the mochiko landing.
+
+## 2026-10-01 · Kinako landing written by the lead · D6 FAIL (4 blocking) · fix round
+
+- The lead wrote kinako's landing, uncommitted:
+  - a per-decision record, `.mochiko/decisions/2026-10-01-mochiko-0116-cleanup-pass.md`, and its
+    `DECISIONS.md` row;
+  - B119 moved to the trail, superseded;
+  - B121 narrowed to its three open limbs, since 0034 discharges the bounds limb;
+  - B132's README limb done;
+  - B144 (code comments, W4/L17), B145 (stale counts and the `:1204` cite) and B146 (the 81
+    pre-existing dead pointers) opened;
+  - the ROADMAP run-4 row and stamp touched. The brainstorms index is untouched (L10).
+- D6 is a fresh non-author diff read (`d6/verdict.md`). FAIL, with 4 blocking and 9 advisory:
+  - B1: B144 booked only `corpus/settings.rs`'s two ids, but L17 covers run 4's ids in at least
+    14 files;
+  - B2: the ROADMAP gave §A1–A4's date as 2026-10-01, but K1 is dated 2026-09-30;
+  - B3: B146 named a `specs/FEATURES.md` that no commit ever held;
+  - B4: the untracked record escaped the scan, and its two mochiko cites missed the `mochiko:`
+    form.
+- The lead fixed all four and took A1–A6 and A8:
+  - B132's BD-236 limb now reads as the principal's call;
+  - B145 names BoundSession's 8 fields;
+  - B138 gains a dated 0034 note;
+  - the trail names the three evidence trees, with D3 and census row R1;
+  - B146's dated-report handling is marked unruled.
+- A7 goes to the user: commit the mochiko rulings records before the kinako PR merges. A9 is not
+  taken, with B132 as the precedent.
+- Checks after the fixes:
+  - the scan stays at 115, and the record alone scans 0;
+  - every item is ≤15 lines;
+  - the gate allows all five files.
+- Round 2 is with D6.
+
+## 2026-10-01 · D6 round 2 PASS · kinako landing committed `345ff0f`
+
+- D6 round 2 (`d6/verdict-r2.md`): PASS, 0 blocking.
+  - Every fix checks out first-hand.
+  - The scan, widened to the untracked record, reads 115 with no hit in it.
+  - The gate allows all five files, and every touched item is ≤15 lines.
+  - N1 taken: the ROADMAP stamp adds "B138 noted". N2 (C-003 is reserved, not minted) needs no
+    change.
+- Gitleaks on the landing diff and the record: no leaks, and no personal address.
+- Committed `345ff0f` on `mochiko-0.116-cleanup`: 5 files, +139 −24, tree clean. Branch total from
+  `44635f1`: 16 commits.
+- Owed: the PR to kinako `main` (the user's word; a merge commit, never squash), and the mochiko
+  landing, with the two rulings records committed before the PR merges (D6's A7).
+
+## 2026-10-01 · Kinako PR #24 opened · mochiko landing written by the lead
+
+- The user ruled "Open PR now" and "Commit + open PR", both as recommended.
+- Kinako `main` was still at `44635f1` after a fetch. The lead pushed `mochiko-0.116-cleanup` and
+  opened humaninloop-dev/kinako#24, with 16 commits: 446 files, +2572 −40008 (3 R, 339 D, 1 A,
+  103 M). The body's first line asks for a merge commit, never a squash. The user merges.
+- The mochiko landing is uncommitted on `joint-hook-delta-w4`:
+  - `DECISIONS.md`: rows R9, R10, R11, the census and the seams now read "wave 4, kinako, built
+    2026-10-01", kinako PR #24. The delta row's D5 and the field review's wave 4 read the same.
+    The 2026-09-30 rulings row is widened to W1–W7 and L1–L19, built. A 2026-10-01 row is added
+    for rulings-2 (W8, W9, L20), built.
+  - `BACKLOG.md`: both build items go to the trail as DONE. The publish limb stays at *what is
+    left* item 1, whose item 3 now reads done. New: the D10/S15 watch item, and a process-findings
+    item (the `bash <script>` gap, the scratch-repo deny, plan grades missing diff-read defects).
+  - Both index entries and the ROADMAP Next row now read wave 4 BUILT 2026-10-01.
+  - Both rulings records' Status lines now read "Built 2026-10-01". The first stays at 149 lines.
+- The gate allows all eight files. *What is left* is 16 lines, one under its pre-landing 17; it was
+  already over the cap.
+- Next: D7, a fresh non-author read of the mochiko landing diff. Then the commit and the PR.
+
+## 2026-10-01 · D7 FAIL on the mochiko landing (5 blocking) · fix round
+
+- D7 (`d7/verdict.md`): FAIL, with 5 blocking and 10 advisory findings.
+  - B1/B2: the seams and census records' Status lines still read wave 4 as owed or future, against
+    their rows.
+  - B3: the trail's "every link re-pointed" was false, because W4 left the code-comment links.
+  - B4: OQ1's entry sizes were off by one; the gate counts 122 and 85.
+  - B5: *what is left*'s "0.109.0 … not released" line, which D9(d) ruled corrected, was never
+    corrected; 0.109.0 has been on `main` since `2f92b09` (2026-09-19).
+  - D7 found the 2026-09-30 row's rewording acceptable: it corrects a false count and adds no
+    ruling.
+- The lead fixed all five, with D7's text. It took A1–A7:
+  - finding (3) scoped to K1, K2b, K3 and K4;
+  - finding (2) restated as a write deny and a note, not a rule;
+  - the trail line names the write steps and the full `-2.md` path, and separates evidence
+    deletion from the moves;
+  - *what is left* item 3 is one line, so the item is 15;
+  - the watch's baseline is kinako `main` after the merge commit, its title says "S15's metrics
+    restored", and it covers "0.116.0 or later".
+- A8 is left as ruled, since the trail reconciles the 17. A9: `wave4-kinako-pass.md` will be
+  committed with the records. A10 is not taken, to keep item 1 within its lines.
+- The gate allows every edited file. No "kinako, owed" phrase is left in DECISIONS, the index,
+  ROADMAP or the records. Round 2 is with D7.
+
+## 2026-10-01 · D7 round 2 FAIL (1, its own text) · user-ruled delta check · round 3 PASS · commit
+
+- D7 round 2 (`d7/verdict-r2.md`): every round-1 fix holds, but one blocking finding remains.
+  - The fault was D7's own B3 text: "every link in kinako's records". L7's closed and frozen records
+    still carry 30 old ledger links, by design.
+- A second FAIL goes to the user. The user ruled "Apply D7's text + delta check", as recommended.
+  - The lead applied the text word for word ("live, writable records … closed and frozen records
+    left as written, L7").
+  - The lead also rewrapped process finding (2)'s split code span.
+- D7 round 3 (`d7/verdict-r3.md`): PASS, 0 blocking. The diff hashes are unchanged elsewhere.
+  - `review: diff mochiko-landing wave-4 · D7 · claude-opus-5-5 · 3 rounds · 0 blocking`.
+- Gitleaks on the full mochiko landing (diff and untracked files): no leaks, and no personal
+  address. There is no `plugin.json` bump, since the pass found no primitive defect.
+- The lead commits the landing on `joint-hook-delta-w4`. The commit carries `wave4-kinako-pass.md`
+  and both rulings records, so kinako's cites resolve before PR #24 merges. The lead then opens the
+  mochiko PR. **Wave 4 is closed** except for the user's merges and the D10 watch.
