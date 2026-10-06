@@ -1011,7 +1011,15 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
         // wave is a text-only reword, and a raw run over the old (`1..35`) and new (`1..43`) logs
         // shows no command-family cluster moving, so the suppressed count holds at 54. SUPPRESSED
         // zero unchanged.
-        (335, 13_050, 0, 54),
+        // Re-measured after the 2026-10-06 brainstorm target state (`0044`–`0045`): `0044` mints
+        // twenty-five `brainstorm` rules, moving the scan 335 to 360 and the pair count 13,050 to
+        // 15,402. By kind, counted from the derived views: `constraint` 141 → 155 (+2,065),
+        // `duty` 27 → 33 (+177), `reservation` 17 → 20 (+54), `binding` 51 → 52 (+51), `bound`
+        // 5 → 6 (+5) — +2,352, the whole of the move. The suppressed count moves 54 to 57: the
+        // three keep-distinct rows `0044` added to the allowlist, all three edges between its own
+        // `brainstorm` rules; no reword in the wave moves an allowlisted pair. SUPPRESSED zero
+        // unchanged.
+        (360, 15_402, 0, 57),
         "rules scanned · in-kind pairs scored · clusters · allowlist-suppressed edges"
     );
 }
@@ -1140,10 +1148,19 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // wave moves a figure. SUPPRESSED zero: with an empty allowlist the corpus reports 77
     // clusters over 182 edges, and the repository allowlist leaves none unsuppressed, both read
     // from a raw-versus-pinned pair of `migrate validate --report` runs over one state.
-    assert_eq!(report.scanned, 1139, "rules scanned");
-    assert_eq!(report.scored, 178_832, "in-kind pairs scored");
+    // Re-measured after the 2026-10-06 brainstorm target state (`0044`–`0045`): twenty-nine rules
+    // minted and none retired move the scan 1,139 to 1,168 and the pair count 178,832 to 188,198.
+    // By kind: `constraint` 535 → 549 (+7,581), `duty` 137 → 147 (+1,415), `reservation`
+    // 59 → 62 (+180), `binding` 167 → 168 (+167), `bound` 23 → 24 (+23) — +9,366, the whole of
+    // the move. `suppressed_hits` moves 182 to 185: the three rows `0044` added for the three
+    // edges its mints raised (see the command-family pin above). SUPPRESSED zero: with an empty
+    // allowlist the corpus reports 78 clusters over 185 edges (77 over 182 before the wave), and
+    // the repository allowlist leaves none unsuppressed, both read from a raw-versus-pinned pair
+    // of `migrate validate --report` runs over one state.
+    assert_eq!(report.scanned, 1168, "rules scanned");
+    assert_eq!(report.scored, 188_198, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
-    assert_eq!(report.suppressed_hits, 182, "allowlist-suppressed edges");
+    assert_eq!(report.suppressed_hits, 185, "allowlist-suppressed edges");
 }
 
 // ---------------------------------------------------------------------------

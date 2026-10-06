@@ -1,5 +1,65 @@
 # Strip notes — `commands/brainstorm.md`
 
+<!-- Wave context: wave 1 of the brainstorm target-state build (v0.117.0). The command's rules gain
+the target state through migration `0044-brainstorm-target-state.yaml`, recorded by the log (no
+strip owed); two passages of the `.md` the new rules make false are reworded. Ruling for every
+[v0.117.0] entry below: `.mochiko/brainstorms/brainstorm-target-state/record.md` (`DECISIONS.md`
+2026-10-06 row). Pre-edit verbatim text: `git show 2e4c57c:plugins/mochiko/commands/brainstorm.md`. -->
+
+## [v0.117.0] `## Identity & Mission` — "one question at a time" superseded
+
+- **Disposition:** superseded → "You run the questioning yourself, inline; how the session is
+  staffed beyond that is your call." Which decision takes a turn of its own and which rides the
+  defaults batch is now the rules' (`brainstorm.own-turn-or-batch`; `brainstorm.lead-inline-questioning`
+  reworded by `0044` to drop "one question per turn").
+- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D6)
+- **Content:** verbatim —
+
+  ```
+  You run the questioning
+  yourself, inline, one question at a time; how the session is staffed beyond that is your call.
+  ```
+
+- **Kept deliberately:** the rest of `## Identity & Mission` byte for byte, which the [v0.104.0]
+  entry kept whole — the lead of the session, inline questioning, staffing beyond it the lead's
+  call, "every decision carries its statement, its rationale, and its confidence mark" (still true
+  of a decision card, which carries all three), the cold seat never in the room, the user's ruling
+  and acceptance, the record as the deliverable.
+- **Consumers assessed:** none shared — the command's own text. The same cadence restated outside
+  the command is reworded this wave: `README.md:61`, `ARCHITECTURE.md:175`, and the router's
+  `/mochiko:brainstorm` row (strip `mochiko.md` [v0.117.0]).
+
+## [v0.117.0] Adaptive Goal Protocol step 2 — the per-decision standard widened to the decision card
+
+- **Disposition:** superseded → "each decision one card with its fixed parts (card form:
+  `brainstorm.sec.tools`) and a confidence mark (`Confident` / `Assumed` / `Contested` / `Unsure`
+  / `Deferred`)". The parts are `brainstorm.decision-cards`' to name (`0044`, `sec.tools`); the
+  Goal cites the section and never the list.
+- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D9: a decision's card is
+  its only home in the record, titled by its name, with fixed parts)
+- **Content:** verbatim —
+
+  ```
+  each
+     decision carrying statement + rationale + confidence mark (`Confident` / `Assumed` /
+     `Contested` / `Unsure` / `Deferred`);
+  ```
+
+- **Kept deliberately:** the per-decision standard kept at [v0.35.0], [v0.43.0] and [v0.104.0] is
+  widened, not dropped — statement and why are two of the card's six parts, and the five
+  confidence marks stay verbatim (D9 does not touch them; D8 adds no new mark, "ratified" is
+  written in how-it-was-decided). Every other clause of step 2 stays word for word, re-wrapped
+  only: cold-reviewed with every surviving finding dispositioned or the waiver recorded, the
+  index entry, the user's acceptance. Entry and Not done untouched.
+- **Consumers assessed:** none shared — the command's own text. `README.md:85` ("every ruling
+  lands in … with a confidence mark") stays true and is untouched. `primitive-edits.md`
+  criterion 7 grades a run command's fixed done condition, which stays fixed. No expectation in
+  `evals/` or `crates/mochiko-cli/tests/` freezes the clause: grep "statement + rationale" over
+  both returns one hit, `evals/plan/brainstorm-probe/plan.md:31`, a captured historical probe
+  plan and not an expectation; variant wordings such as "statement, rationale and a confidence
+  mark" hit only historical eval-arm copies, run artifacts and the fixture-echo caveat at
+  `evals/plan/brainstorm/preregistration.md:219`.
+
 <!-- Wave context: the CLI schema-delivery pilot (v0.104.0) — brainstorm becomes the first
 converted command: its rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin now carries at `plugins/mochiko/migrations/`, and the command reads no schema file.

@@ -2,7 +2,7 @@
 
 > **Topic:** revise brainstorm v2's agent-team engagement model after its first run. Opened as "compare the three brainstorm executions and modify the rewrite"; the user narrowed it to the v2 run's team dynamics after experiencing the session as *"a continuous loop without my input."*
 > **Session:** 2026-07-05 · lead + user, running bare `analysis-iterative` (no live team) · method: **transcript forensics** — the run was judged from its lead + teammate `.jsonl` transcripts, not from its own record/handover (which were lead-authored and scored the routing check ✓ from the lead's seat)
-> **Status:** **Accepted and built at v0.5.0.** Decisions user-ruled live, including two deliberate supersessions (the healthy kind — three rulings converging in one direction). This record is itself un-reviewed (the session ran bare); a cold review can be requested.
+> **Status:** **Accepted and built at v0.5.0.** **Amended in part 2026-10-06** — "all adversarial pressure moved to convergence" gains one exception, a blind second list before the user rules on a costly fork (`brainstorm-target-state` D7; built 2026-10-06 at v0.117.0). Decisions user-ruled live, including two deliberate supersessions (the healthy kind — three rulings converging in one direction). This record is itself un-reviewed (the session ran bare); a cold review can be requested.
 
 ---
 

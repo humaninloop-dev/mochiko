@@ -25,6 +25,87 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 review-amended (`DECISIONS.md` 2026-09-24 "Setup goes product-agnostic ruled" row). Pre-edit
 verbatim text: `git show bbe303f:plugins/mochiko/skills/review-brainstorm/references/EXTERNAL-CLAIMS.md`. -->
 
+<!-- Wave context: wave 1 of the brainstorm target-state build (v0.117.0). The skill's rules gain
+the reviewer's side of the target state through migration `0045-review-brainstorm-target-state.yaml`,
+recorded by the log (no strip owed); the Protocol follows them, and `references/RECORD-FITNESS.md`
+gains the card-parts checklist with its intro scoped to the fitness list. Ruling for the
+[v0.117.0] entries below: `.mochiko/brainstorms/brainstorm-target-state/record.md` D8, D10, D16
+(`DECISIONS.md` 2026-10-06 row), and for the intro D16's "Changed at build (Q23; 2026-10-06,
+user: "2A")" note — a missing card part does not block `ready` — with the wave 1 `build-log.md`
+entry "the user's word on P2". Pre-edit verbatim text:
+`git show 2e4c57c:plugins/mochiko/skills/review-brainstorm/SKILL.md` and
+`git show 2e4c57c:plugins/mochiko/skills/review-brainstorm/references/RECORD-FITNESS.md`. -->
+
+## [v0.117.0] `## Protocol` — re-keyed to the map's timing, the card-parts checklist, ratified decisions first, the builder test and the front map's end read
+
+- **Disposition:** superseded → the Protocol's first paragraph as shipped at v0.117.0. It names
+  the map's timing (from the first brief), the card-parts checklist, ratified decisions first, the
+  builder test, and on a front map the taken angles read for depth and the dropped ones checked.
+  It names the steps; the obligations are the `0045` rules (`card-parts-first`, `ratified-first`,
+  `builder-test`, `resumed-end-read`).
+- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D10 with its S2 and S16
+  notes and its fallback-seat sentence; D16 as changed at review, S4; D8's reviewer clause)
+- **Content:** verbatim —
+
+  ```
+  Blind angle map first, then the cold read — scenario stress and the six hunt classes per
+  decision: unchallenged assumption · missing intra-decision dimension · passive acceptance ·
+  rejected-road steelman · inconsistency · excess machinery. Ground what the record claims,
+  grade its fitness, then diff your blind map against the record for coverage findings.
+  Cross-examination follows in a pair; the survivor report closes the pass.
+  ```
+
+- **Kept deliberately:** "Blind angle map first, then the cold read" verbatim — the sequencing
+  prose the [v0.100.0] blind-map entry kept in the body. The six hunt classes verbatim and in
+  order — `review-brainstorm.hunt-classes-per-decision` names them "as named in SKILL.md's
+  Protocol". "Ground what the record claims, grade its fitness", the coverage diff, and
+  "Cross-examination follows in a pair; the survivor report closes the pass". The **Verify pass**
+  paragraph byte for byte: "over folded dispositions" still names what the pass grades; what it
+  reads is `verify-pass-grade`'s, reworded in `0045`. Superseded within the kept text: "your blind
+  map" → "the blind map", since a fresh seat holding a map a gone seat saved can take the end read
+  (D10's last sentence; `review-brainstorm.resumed-end-read`). Nothing the [v0.83.0] cut deleted
+  returns.
+- **Consumers assessed:** `commands/brainstorm.md` dispatches the skill and quotes no Protocol
+  text. `agents/devils-advocate.md:21` and the router (`SKILL.md:122`) describe a cold end-stage
+  review, still true: the cold read stays at the end. `evals/contract/run.py:500-503` quotes the
+  untouched opening line. The `evals/review-brainstorm/` arms carry their own frozen copies.
+
+## [v0.117.0] `references/RECORD-FITNESS.md` intro — scoped to the fitness list
+
+- **Disposition:** superseded → "The fitness list below is each end-stage reviewer's final
+  checklist over `record.md`, run during the independent cold read. … Cite evidence from the
+  record for every fitness item; a fitness item without cited evidence is unchecked, and any
+  unchecked fitness item blocks `ready`." The new `## Card parts` section says its list is
+  reported, that a missing part does not itself block `ready`, and that what blocks `ready` is the
+  fitness list.
+- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D16 as changed at
+  review, S4: the card-parts check is the seat's own checklist, reported before it reads for
+  judgment; and D16's "Changed at build (Q23; 2026-10-06, user: "2A")" note in the record — a
+  missing card part does not block `ready` — with the wave 1 `build-log.md` entry "the user's word
+  on P2")
+- **Content:** verbatim —
+
+  ```
+  Each end-stage reviewer's final checklist over `record.md`, run during the independent cold
+  read. The record is the session's only
+  artifact — grading surface, audit trail, and deliverable in one — so it must stand entirely
+  on its own. Cite evidence from the record for every item; an item without cited evidence is
+  unchecked, and any unchecked item blocks `ready`.
+  ```
+
+- **Kept deliberately:** the title; "The record is the session's only artifact — grading
+  surface, audit trail, and deliverable in one — so it must stand entirely on its own"; the
+  evidence rule and its `ready` consequence, unchanged in force for the seven fitness items; the
+  seven items byte for byte, "Rejected roads recorded" among them, which still blocks `ready`
+  when rejected roads are missing.
+- **Consumers assessed:** `review-brainstorm.record-fitness-binding` ("Fitness grades per
+  `references/RECORD-FITNESS.md`") reads the fitness list as before.
+  `review-brainstorm.card-parts-first` points at the new section. The frozen eval-arm copies
+  `evals/review-brainstorm/variants/armA|armB/references/RECORD-FITNESS.md` are historical arm
+  variants and not live consumers. No other primitive quotes the intro (grep "final checklist
+  over" over `plugins/mochiko`, `README.md`, `ARCHITECTURE.md` and `.mochiko/schema-views`: this
+  file only).
+
 ## [v0.115.0] EXTERNAL-CLAIMS's recorded exclusion — the COMPLIANCE-MODULES.md pointer
 
 - **Disposition:** superseded → "mapping regulations to obligations is not setup's (retired from setup

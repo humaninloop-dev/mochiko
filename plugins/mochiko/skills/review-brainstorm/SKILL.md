@@ -37,11 +37,14 @@ halt and surface it.
 
 ## Protocol
 
-Blind angle map first, then the cold read — scenario stress and the six hunt classes per
-decision: unchallenged assumption · missing intra-decision dimension · passive acceptance ·
-rejected-road steelman · inconsistency · excess machinery. Ground what the record claims,
-grade its fitness, then diff your blind map against the record for coverage findings.
-Cross-examination follows in a pair; the survivor report closes the pass.
+Blind angle map first, then the cold read; your first brief sets whether the map is drawn at
+frame hardening or at the end. With the record: the card-parts checklist; then, ratified
+decisions first, scenario stress and the six hunt classes per decision: unchallenged
+assumption · missing intra-decision dimension · passive acceptance · rejected-road steelman ·
+inconsistency · excess machinery. Ground what the record claims, grade its fitness, hold it to
+the builder test, then diff the blind map against the record for coverage findings — on a
+front map, angles taken read for depth and angles dropped checked. Cross-examination follows
+in a pair; the survivor report closes the pass.
 
 **Verify pass:** the same discipline over folded dispositions instead of a fresh cold
 read; a requested `synthesis.md` gets the fidelity sample.

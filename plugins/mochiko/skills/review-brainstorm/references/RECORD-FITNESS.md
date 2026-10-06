@@ -1,10 +1,10 @@
 # Standalone-Record Fitness
 
-Each end-stage reviewer's final checklist over `record.md`, run during the independent cold
-read. The record is the session's only
+The fitness list below is each end-stage reviewer's final checklist over `record.md`, run
+during the independent cold read. The record is the session's only
 artifact — grading surface, audit trail, and deliverable in one — so it must stand entirely
-on its own. Cite evidence from the record for every item; an item without cited evidence is
-unchecked, and any unchecked item blocks `ready`.
+on its own. Cite evidence from the record for every fitness item; a fitness item without cited
+evidence is unchecked, and any unchecked fitness item blocks `ready`.
 
 - [ ] **Self-contained** — readable without the conversation: a cold reader can reconstruct
       what was decided, why, and what was rejected, from this file alone
@@ -22,3 +22,16 @@ unchecked, and any unchecked item blocks `ready`.
       triggers are listed as open, not absorbed into settled prose
 - [ ] **Provenance stated** — who/what produced and reviewed the record, and when,
       so a consumer can tell what review it survived
+
+## Card parts
+
+The checklist `review-brainstorm.card-parts-first` points at. Every decision card is titled by
+the decision's name and carries these six parts. This list is reported; a missing part does not
+itself block `ready` — what blocks `ready` is the fitness list above.
+
+- [ ] **Statement**
+- [ ] **Why**
+- [ ] **Rejected roads**
+- [ ] **Accepted risk**
+- [ ] **How it was decided** — where a yes to the lead's pick is recorded as ratified
+- [ ] **Changed at review** — where each review fix to the card adds its line

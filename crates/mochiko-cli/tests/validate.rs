@@ -1155,9 +1155,14 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // `testing-end-user.pre-write-dry-run` (`0038`), all three musts, none a floor or a fail node —
     // command 333 → 335, skill 803 → 804, the floor figures and the fail set unmoved. The rest are
     // rewords keeping id, class and kind, and `0040`'s home replaced.
-    assert_eq!(command_rules, 335, "live command rules");
-    assert_eq!(skill_rules, 804, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1139, "live rules in total");
+    // `0044`–`0045` (the 2026-10-06 brainstorm target state) mint twenty-nine rules and retire
+    // none: twenty-five on `brainstorm` (`0044`) and four on `review-brainstorm` (`0045`), all
+    // musts, none a floor or a fail node — command 335 → 360, skill 804 → 808, the floor figures
+    // and the fail set unmoved. The rest are rewords keeping id, class and kind, a `when:` set,
+    // two moments and two conditions.
+    assert_eq!(command_rules, 360, "live command rules");
+    assert_eq!(skill_rules, 808, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1168, "live rules in total");
     assert_eq!(skill_floors, 264, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
@@ -2787,10 +2792,12 @@ fn every_shipped_pointer_resolves_from_its_own_skill_directory() {
     // aimed at schema files the plugin no longer ships; 82 from the 2026-09-24
     // setup-product-agnostic wave, where `0019` retired the two rules that pointed at
     // `references/COMPLIANCE-MODULES.md` (`authoring-constitution.module-mechanical-attachment`
-    // and `authoring-constitution.s4-fail-safe`).
+    // and `authoring-constitution.s4-fail-safe`); 83 from the 2026-10-06 brainstorm target state,
+    // where `0045` minted `review-brainstorm.card-parts-first` pointing at
+    // `references/RECORD-FITNESS.md`.
     assert_eq!(
-        report.checked, 82,
-        "the corpus carries 82 path-shaped pointers"
+        report.checked, 83,
+        "the corpus carries 83 path-shaped pointers"
     );
     assert!(
         report.findings.is_empty(),

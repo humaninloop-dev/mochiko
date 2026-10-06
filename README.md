@@ -58,7 +58,7 @@ The product's capability layer lives in a repo-level map: `FEATURES.md` plus one
 
 ## Choose your path
 
-Every path starts by thinking, not typing. `/mochiko:brainstorm` walks the problem through with you one question at a time and leaves a cold-reviewed decision record behind. What happens next is proportional to the change: enter the pipeline when it pays, bypass it when it doesn't. Brainstorm itself never pushes — *pipeline entry is an offer, never a default*.
+Every path starts by thinking, not typing. `/mochiko:brainstorm` walks the problem through with you and leaves a cold-reviewed decision record behind. What happens next is proportional to the change: enter the pipeline when it pays, bypass it when it doesn't. Brainstorm itself never pushes — *pipeline entry is an offer, never a default*.
 
 ```mermaid
 flowchart TD
@@ -127,7 +127,7 @@ Four rules, no exceptions: a done-condition declared before the loop runs (defau
 | Command | Produces | Loop |
 |---|---|---|
 | `/mochiko:setup` | Governance surface set (CLAUDE.md region, rules files, ledger) | interrogation → ratified intent → author ↔ independent grade |
-| `/mochiko:brainstorm` | `record.md` decision record | you + lead think; cold review at convergence |
+| `/mochiko:brainstorm` | `record.md` decision record | you + lead think; the review's blind map at frame hardening, its cold read at convergence (small sessions: both at convergence) |
 | `/mochiko:feature` | Map-health report, routed demands, work rows / delta cards dispatched to the pipeline | Delivery-Manager desk; every visit converges to an explicit done condition |
 | `/mochiko:specify` | `spec.md` (intent · stories · Screens & Flows · Feature Selection) + `prototype/` + the capability-map delta | intent stage → product-manager frames, requirements-analyst + product-designer author ↔ devils-advocate |
 | `/mochiko:architecture` | The product architecture store at `.mochiko/product/architecture/` — baseline, per-row stances, amendments, drift dispositions | health view → one-line visit goal → principal-architect authors ↔ tech-lead grades ↔ you rule every stance |
