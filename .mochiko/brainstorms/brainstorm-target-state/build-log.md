@@ -209,3 +209,21 @@ Verdict blocks: `reports/gate-audit.md`. Outcome lines, in the contract's gramma
 - Two artifact-home hook denies on the lead's own shell writes this wave (the build log, then
   the trail — one each, different paths), both redone with Edit as the hook directs; the hook's
   text was surfaced to the user as it asks. Nothing was written by a denied command.
+
+## 2026-10-06 — gate 6 green; wave 1 closed at v0.117.0
+
+- The user ran `sbx login`; the full contract suite ran against this worktree: `contract suite:
+  97/97 cases passed, 97 ran, 327 measurement(s) recorded and not asserted`, exit 0 — 7 host
+  cases against the rebuilt release binary, 90 in the `claude-mochiko` Docker sandbox, none
+  SKIPPED or FILTERED. Gate 6 green; every release gate of GI-012 now holds at 0.117.0.
+- Closing transcription: the `CHANGELOG.md` gates paragraph filled (seats, plans, audit, gates,
+  suite); the record's status header reads the suite green; no other surface carried the
+  pending wording (grep over the index, `DECISIONS.md`, `ROADMAP.md`, `BACKLOG.md`: none).
+- Wave 1 was the only wave: the map in `wave1-target-state.md` is spent, no 0046, no second
+  wave owed. Open after the merge: the user upgrades the installed plugin and the dogfood repo
+  copy to 0.117.0; the dogfood watch in `BACKLOG.md` (D20, D23) is the next reading.
+- Commit history on `brainstorm-target-state`: `86dcf02` carries the wave; this closing entry
+  rides a follow-up commit on the same branch. The merge of PR #42 is the user's.
+- floor: tripped · seats: P1 / P2 / P3 (`general-purpose`, `opus`) produced; g1 / g2 / g3 plan
+  graders and the gate grader (`general-purpose`, `opus`) reviewed · plans: P1:FAIL(1) ·
+  P2:FAIL(1, second round user-granted) · P3:PASS — no seat dirtied the tree while planning.

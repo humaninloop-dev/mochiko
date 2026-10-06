@@ -17,8 +17,8 @@ provenance test forbade it), prose, strips, budgets (the `review-brainstorm` +1,
 ruled HOLDS), crate pins and both eval kits; three producer seats under the sound loop (P1 and
 P2 each one failed plan round, P2's second round granted by the user with the Q23 ruling folded
 into D16; P3 clean); 8/8 gate audits PASS round 1; crate gates, views ≡ replay, audit and secret
-scan green; the contract suite's host cases 7/7, its sandbox cases pending the user's `sbx
-login` at the time of writing; the build item → trail, the dogfood watch open ·
+scan green; the contract suite 97/97, none skipped; the build item → trail, the dogfood watch
+open ·
 **Opened:** 2026-10-04 · **Lead:** session lead (inline questioning via
 `mochiko:analysis-iterative`) · **Review:** solo cold review, complete — one
 `mochiko:devils-advocate` seat on `mochiko:review-brainstorm` at its persona default tier (`opus`,

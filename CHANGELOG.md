@@ -63,7 +63,15 @@ brainstorm plan-only kit (`evals/plan/brainstorm/` — `observable.yaml`, `evals
 entries, its section appended to `rekey.md`. No crate source changed; `mochiko-cli` 0.3.0 still
 suffices.
 
-[lead fills after the gates]
+Ran under the sound loop with three plain producer seats (`general-purpose`, `opus`): `plans:
+P1:FAIL(1) · P2:FAIL(1, second round user-granted) · P3:PASS`, no dirty tree, each plan graded by a
+fresh plain peer. Audited under the gate form by one plain seat: 8 units / 1 round / 0 blocking,
+all PASS. Gates: `mochiko-cli migrate validate` 0 rejecting · 113 advisory · views ≡ replay
+(`views emit` to a temp dir, identical) · `cargo test -p mochiko-cli` 581 green · fmt · clippy ·
+audit (exit 0) · full-corpus similarity sweep 48/48, 0 clusters, 185 allowlist-suppressed edges
+(3 rows added) · `gitleaks detect --no-git` no leaks · **contract suite 97/97, 97 ran, none
+skipped** (7 host cases against the rebuilt release binary, 90 in the `claude-mochiko` Docker
+sandbox against this worktree) · `plugin.json` and `marketplace.json` synced at 0.117.0.
 
 ## [0.116.0] — 2026-09-29
 
