@@ -19,7 +19,7 @@ Guide collaborative thinking by adapting questioning style, depth, and output to
 
 ## Output
 
-Generate the synthesis document using [SYNTHESIS.md](SYNTHESIS.md).
+Conclude with the deliverable your calling command names; when it names none, generate the synthesis document using [SYNTHESIS.md](SYNTHESIS.md).
 
 **Floor (non-waivable)** — surface every elicited unknown as an open question in the produced artifacts; a vague zone the principal could not resolve is never silently omitted.
 
@@ -49,7 +49,7 @@ Generate the synthesis document using [SYNTHESIS.md](SYNTHESIS.md).
 
 ## Two output shapes, one engine
 
-The adaptive flow above is the single questioning engine. It carries two output shapes; the engine is identical and only the agenda and the concluding artifact differ. Pick the shape that matches the work in front of you.
+The adaptive questioning the Overview describes is the single questioning engine. It carries two output shapes; the engine is identical and only the agenda and the concluding artifact differ. Pick the shape that matches the work in front of you.
 
 ### General analysis (default)
 

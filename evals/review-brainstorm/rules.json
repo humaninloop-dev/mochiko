@@ -16,7 +16,7 @@
  },
  {
   "id": "review-brainstorm.blind-map-before-record-contact",
-  "rule": "Phase 0 blind angle map from the topic only, produced as its own deliverable before record contact.",
+  "rule": "Your blind angle map is drawn only from what your first brief carries — the topic and goal line, or the frame's problem, destination and out-of-scope lines — and is its own deliverable before any record contact.",
   "class": "floor",
   "source": "log:review-brainstorm.blind-map-before-record-contact",
   "section": "review-brainstorm.sec.independence",
@@ -123,6 +123,19 @@
   ]
  },
  {
+  "id": "review-brainstorm.resumed-end-read",
+  "rule": "Resumed with the record, or seated fresh with the saved map because the seat that drew it is gone, run the full cold read, check that each angle the session took from the map was answered in depth and check each angle it dropped; draw no second map.",
+  "class": "must",
+  "source": "log:review-brainstorm.resumed-end-read",
+  "section": "review-brainstorm.sec.scope",
+  "kind": "duty",
+  "when": "map_timing=front",
+  "labels": [
+   "boundary"
+  ],
+  "mapped_from": []
+ },
+ {
   "id": "review-brainstorm.grounding-excludes-session-artifacts",
   "rule": "Free repo grounding for the blind map — session artifacts excluded.",
   "class": "must",
@@ -197,6 +210,19 @@
    "R-042",
    "R-067"
   ]
+ },
+ {
+  "id": "review-brainstorm.card-parts-first",
+  "rule": "Before you read the record for judgment, check that every decision card carries its fixed parts as `references/RECORD-FITNESS.md` lists them, and report that checklist.",
+  "class": "must",
+  "source": "log:review-brainstorm.card-parts-first",
+  "section": "review-brainstorm.sec.inputs",
+  "kind": "duty",
+  "pointer": "references/RECORD-FITNESS.md",
+  "labels": [
+   "evidence"
+  ],
+  "mapped_from": []
  },
  {
   "id": "review-brainstorm.hunt-classes-per-decision",
@@ -348,7 +374,7 @@
  },
  {
   "id": "review-brainstorm.verify-pass-grade",
-  "rule": "Grade each fold against the updated record, quoting evidence; new surface only for fold-introduced contradictions. The verify pass belongs to the record-integrity lens in a pair, to you when solo.",
+  "rule": "Grade each fold reading only the changed cards and their gists, quoting evidence; new surface only for fold-introduced contradictions. The verify pass belongs to the record-integrity lens in a pair, to you when solo.",
   "class": "must",
   "source": "log:review-brainstorm.verify-pass-grade",
   "section": "review-brainstorm.sec.verdict",
@@ -363,6 +389,30 @@
   "rule": "Fidelity-sample a requested `synthesis.md` — every ruling present, no confidence mark inflated, no rejected alternative resurrected.",
   "class": "must",
   "source": "log:review-brainstorm.synthesis-fidelity-sample",
+  "section": "review-brainstorm.sec.verdict",
+  "kind": "duty",
+  "labels": [
+   "evidence"
+  ],
+  "mapped_from": []
+ },
+ {
+  "id": "review-brainstorm.ratified-first",
+  "rule": "Aim the hunt first at the decisions recorded as ratified.",
+  "class": "must",
+  "source": "log:review-brainstorm.ratified-first",
+  "section": "review-brainstorm.sec.verdict",
+  "kind": "duty",
+  "labels": [
+   "evidence"
+  ],
+  "mapped_from": []
+ },
+ {
+  "id": "review-brainstorm.builder-test",
+  "rule": "Hold the record to the builder test against the frame's destination: reading only the record, what would a builder still have to ask the user?",
+  "class": "must",
+  "source": "log:review-brainstorm.builder-test",
   "section": "review-brainstorm.sec.verdict",
   "kind": "duty",
   "labels": [

@@ -130,3 +130,49 @@ Field-scoped: only the `rule` text of the entries named below moved, copied from
 
 - Field-scoped to the one entry: it equals the resolved common-view text and the render's text; `git diff` shows that one `rule` line and nothing else.
 - Id set equal to the view's; `class: floor` set equal to the render's `floors:` line; every `tempts` id resolves.
+
+## Re-key 2026-10-06 — brainstorm-target-state
+
+```json
+{
+  "rekeyed": {
+    "at": "2026-10-05T23:38:25Z",
+    "ruling": "brainstorm-target-state D8, D10, D16, D17 (DECISIONS.md 2026-10-06), migration 0045; wave 1 plan §2/§3.4",
+    "source": ".mochiko/schema-views/skills/review-brainstorm.yaml (stubs: .mochiko/schema-views/common/skill-review-common.yaml) + mochiko-cli floors line"
+  }
+}
+```
+
+Field-scoped, as the 2026-09-24 re-key was: the `rule` text of the two reworded entries is copied
+from the landed view, and the four minted ids are added at their view position with
+`mapped_from: []` (no pre-cut `R-XXX` entry maps to them); every other field and entry is
+byte-identical, `git diff` the proof. Script: one pass over the view, which reproduces the
+pre-wave file byte for byte from the pre-wave view.
+
+### Counts
+
+- Rules: 30 → 34. Floors: 9 → 9 — equals the render's `floors:` line and its pin.
+- Retired: 0. Added: 4.
+
+### Text re-keyed
+
+- `review-brainstorm.blind-map-before-record-contact` (floor, id kept) — the map is drawn from
+  whatever the first brief carries: the topic and goal line, or the frame's problem, destination
+  and out-of-scope lines (D10).
+- `review-brainstorm.verify-pass-grade` — the verify pass reads only the changed cards and their
+  gists (D17).
+
+### Added
+
+| log rule | class | section | when / pointer | note |
+|---|---|---|---|---|
+| `review-brainstorm.resumed-end-read` | must | `sec.scope` | `map_timing=front` | D10 — the end read of a seat that drew its map at frame hardening |
+| `review-brainstorm.card-parts-first` | must | `sec.inputs` | `references/RECORD-FITNESS.md` | D16 |
+| `review-brainstorm.ratified-first` | must | `sec.verdict` | — | D8, D16 |
+| `review-brainstorm.builder-test` | must | `sec.verdict` | — | D16 |
+
+### Invariants verified
+
+- Id set and order equal to the view's; `class: floor` set equal to the render's `floors:` line;
+  no goldens carry `tempts`, so none can dangle.
+- Re-running the script over the re-keyed file and the landed view changes nothing.

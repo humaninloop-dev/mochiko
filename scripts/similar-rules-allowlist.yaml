@@ -621,3 +621,10 @@ suppressions:
     reason: J-5 cross-grammar — different finding kinds (beyond-spec gap findings vs design-audit findings) sharing the fix/backlog/accept reserved-to-user frame
   - ids: [review-code-minimalism.not-general-code-review, review-design-audit.not-code-minimalism]
     reason: two scopes that point at each other — the ladder lens excludes general review, the design lens excludes ladder discipline; deliberately mirrored boundary
+  # --- brainstorm-target-state (0044, v0.117.0) — the three edges its mints raised, each kept distinct ---
+  - ids: [brainstorm.frame-changes-users-word, brainstorm.size-users-ruling]
+    reason: two user reservations over different objects — a hardened frame line vs the session size; ruled separately (brainstorm-target-state D3, D11)
+  - ids: [brainstorm.size-users-ruling, brainstorm.user-pen-boundary]
+    reason: the size ruling carries a raise-freely, never-lower asymmetry the general pen boundary does not (brainstorm-target-state D11)
+  - ids: [brainstorm.blind-map-dispatch, brainstorm.small-session-review]
+    reason: "the two `when: size` arms of one blind-dispatch obligation — front spawn from three frame lines vs today's two-message end dispatch from topic and goal (brainstorm-target-state D10, D11)"

@@ -2,7 +2,7 @@
 
 > **Topic:** revise the end-stage review pair after its first completed run. Opened by the user as: token efficiency — "the number of reviews and devils advocate and also number of times should be reduced and efficiently used."
 > **Session:** opened 2026-07-05, concluded 2026-07-16 · lead + user, running bare `mochiko:analysis-iterative` (no live team) · method: **transcript forensics** (per the v2.1 record's D1 — judge a run from its `.jsonl` transcripts, never from its self-reports) over the v2.1 dogfood run `setup-constitution-flexibility` (lead `c3daf32e…jsonl` + subagents `fact-checker`/`reviewer-a`/`reviewer-b`).
-> **Status:** **ACCEPTED and built at v0.6.0 (2026-07-16).** Five decisions user-ruled; all four build-plan items executed, plus the consistency pass (router, agent mount, REGISTRY annotations). This record is itself **un-reviewed** (bare session, no cold pass); a cold review can be requested.
+> **Status:** **ACCEPTED and built at v0.6.0 (2026-07-16).** **D2 extended 2026-10-06** — the verbatim rule for facts reaches sessions with no fact-checker seated (`brainstorm-target-state` D5; built 2026-10-06 at v0.117.0). Five decisions user-ruled; all four build-plan items executed, plus the consistency pass (router, agent mount, REGISTRY annotations). This record is itself **un-reviewed** (bare session, no cold pass); a cold review can be requested.
 
 ---
 

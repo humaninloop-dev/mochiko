@@ -5,6 +5,74 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.117.0] — 2026-10-06
+
+**The brainstorm target state — MINOR** (`brainstorm-target-state` D1–D23 as review-amended, record
+`.mochiko/brainstorms/brainstorm-target-state/record.md`; `DECISIONS.md` 2026-10-06 row).
+`/mochiko:brainstorm` opens with a light orient and a six-line frame card, each line marked as the
+user's words or the lead's guess; the frame hardens at the user's first reply, which also rules the
+session's size — small, standard or too big (D1–D3, D11). Questioning runs against a visible
+decision map that is never a gate (D4). A fact is in hand before its decision is put and enters the
+record as a quoted source line (D5). A decision earns its own turn only when it is a real choice or
+costly to undo; the rest ride one defaults batch (D6). Every fork carries the cheaper shape and the
+rejected road, and on a costly fork a fresh seat returns a blind second list (D7). Three ratified
+yeses in a row change the next fork's form (D8). Questions follow dependency order, in plain words
+with one example per option, and show a rough artifact when they are about how something looks or
+behaves (D12–D14). Each decision lives in one named card (D9). In standard and too-big sessions the
+review seat draws its blind angle map at frame hardening while questioning goes on, and the same
+seat is resumed for the end read; small sessions keep today's review (D10, D11). The end reviewer
+checks card parts first, aims at ratified decisions first and runs the builder test (D16). Deciding
+stops when the map is empty, and if the map has not shrunk for three questions running the lead
+says so and offers to step back to the frame (D15); findings reach the user sorted, a fix edits
+one card, and a second failed verify goes to the user (D17); acceptance is one screen before review
+and one after (D18). The rules are guardrails, never a sequence, with three counted limits (D22).
+Brainstorm only — setup and every other command keep their rules (D19). The blind second list is
+built untested and judged in the dogfood repo (D20, D23; `BACKLOG.md`).
+
+Migrations **`0044-brainstorm-target-state`** (`command/brainstorm`: the `size` condition and the
+`frame-hardened` moment, the `cold-review` moment reworded, four rules reworded with their ids, 25
+minted) and **`0045-review-brainstorm-target-state`** (`skill/review-brainstorm`: the `map_timing`
+condition, the blind-map floor and `verify-pass-grade` reworded with their ids, `resumed-end-read`,
+`card-parts-first`, `ratified-first` and `builder-test` minted). The log replays to 87 documents and
+1,168 rules (command 335 → 360, skill 804 → 808); floors and fails unchanged — `brainstorm` 8
+floors · 4 fails, `review-brainstorm` 9 floors; `migrate validate` 0 rejecting · 113 advisory,
+clusters 0 with three allowlist rows (suppressed edges 182 → 185); two views regenerate. Renders:
+`brainstorm` 11,829 → 20,700, `review-brainstorm` 9,733 → 11,133.
+
+Prose: `commands/brainstorm.md` — Identity drops "one question at a time" (D6), and the Goal's
+per-decision standard becomes the decision card with its confidence mark (D9).
+`review-brainstorm`'s Protocol names the map's timing, the card-parts checklist, ratified decisions
+first, the builder test and the front map's end read; `references/RECORD-FITNESS.md` gains the
+card-parts checklist, its intro scoped to the fitness list (D10, D16), and a missing part does
+not block `ready` (the user's 2026-10-06 ruling, D16 as changed at build). `analysis-iterative`'s
+two repairs: the dangling "adaptive flow above" pointer, and the Output line, which now defers to
+the calling command's deliverable — setup's output unchanged (D21). `README.md`, `ARCHITECTURE.md`
+and the router's `/mochiko:brainstorm` row re-keyed. Strips: `[v0.117.0]` entries in four strip
+files, among them the supersession of `analysis-iterative`'s kept Common Mistakes rows for
+brainstorm only (D19). Budgets: `review-brainstorm` payload 14,222 against 12,824, a +1,398 overage
+argued as new obligations; `analysis-iterative` 4,222 inside 4,928.
+The overage was ruled HOLDS by the wave's gate grader (a plain `general-purpose` seat, `opus`),
+which measured the payload itself: render +1,400 from migration 0045 and body +256, every addition
+carrying D8, D10, D16 or D17, nothing the v0.83.0 cut removed returned; the ledger row records it.
+Evals and crate pins: `fidelity.rs`, `validate.rs` and `matrix_similar.rs` re-pinned to the landed
+log — sequences 44 and 45, the census 360 / 808 / 1,168, the command family `(360, 15,402, 0, 57)`,
+the corpus 1,168 rules · 188,198 pairs · 185 suppressed edges, and the pointer pin 82 → 83; the
+brainstorm plan-only kit (`evals/plan/brainstorm/` — `observable.yaml`, `evals.json`,
+`preregistration.md`) re-keyed to the new rule set, `check-rubric` 45 observable of 55, with
+`evals/plan/README.md` 21 of 30 → 45 of 55; `evals/review-brainstorm/rules.json` re-keyed 30 → 34
+entries, its section appended to `rekey.md`. No crate source changed; `mochiko-cli` 0.3.0 still
+suffices.
+
+Ran under the sound loop with three plain producer seats (`general-purpose`, `opus`): `plans:
+P1:FAIL(1) · P2:FAIL(1, second round user-granted) · P3:PASS`, no dirty tree, each plan graded by a
+fresh plain peer. Audited under the gate form by one plain seat: 8 units / 1 round / 0 blocking,
+all PASS. Gates: `mochiko-cli migrate validate` 0 rejecting · 113 advisory · views ≡ replay
+(`views emit` to a temp dir, identical) · `cargo test -p mochiko-cli` 581 green · fmt · clippy ·
+audit (exit 0) · full-corpus similarity sweep 48/48, 0 clusters, 185 allowlist-suppressed edges
+(3 rows added) · `gitleaks detect --no-git` no leaks · **contract suite 97/97, 97 ran, none
+skipped** (7 host cases against the rebuilt release binary, 90 in the `claude-mochiko` Docker
+sandbox against this worktree) · `plugin.json` and `marketplace.json` synced at 0.117.0.
+
 ## [0.116.0] — 2026-09-29
 
 **The hook field review and the delta-files retirement, built together — MINOR** (waves 1–3 of

@@ -37,6 +37,23 @@ entry per passage, each with its own ruling. The router body is unbudgeted: 47,1
 the first landing, 47,326 after the V3a fix round.
 Pre-edit verbatim text: `git show 5558fd7:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the brainstorm target-state build (v0.117.0) — one router row re-keyed.
+Ruling: `.mochiko/brainstorms/brainstorm-target-state/record.md` D6 (`DECISIONS.md` 2026-10-06
+row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
+`git show 2e4c57c:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+## [v0.117.0] `/mochiko:brainstorm` row — "one question at a time" superseded
+
+- **Disposition:** superseded → "you want to think a problem through; the deliverable is …". The
+  asking cadence is brainstorm's own rule now (`brainstorm.own-turn-or-batch`), and the row
+  restates none of it.
+- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D6)
+- **Content (superseded text, verbatim):** `you want to think a problem through one question at a time;`
+- **Kept deliberately:** the rest of the row — the cold-reviewed `record.md` you accept, pipeline
+  entry offered, never defaulted.
+- **Consumers assessed:** none — the router's own index text. `README.md:61` and
+  `ARCHITECTURE.md:175` carried the same cadence and are reworded this wave (repo docs, no strip).
+
 ## [v0.116.0] `/mochiko:implement` row — the store's "in-flight-class elements to `built`" flip and "the touched product baselines take their graded delta folds" superseded
 
 - **Disposition:** superseded → "takes the landing flip over the run's store elements and its

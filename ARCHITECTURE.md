@@ -158,7 +158,8 @@ cap or bound trips.
 [`commands/brainstorm.md`](plugins/mochiko/commands/brainstorm.md). The session is the lead and
 the user (questioning inline via `analysis-iterative`), plus a fact-checker teammate — a
 neutral, skill-less seat filled only when the topic has a reality surface — whose map lands
-verbatim in the record. At convergence the user sizes a cold review at a named gate.
+verbatim in the record. At frame hardening the user rules the session's size, which sets when
+the cold review's blind map is drawn.
 
 | Seat | Wiring |
 |---|---|
@@ -171,7 +172,7 @@ flowchart LR
   lead["lead: /mochiko:brainstorm"]
   fc["fact-checker<br/>(no skill)"]
   rev["devils-advocate ×<br/>review-brainstorm"]
-  user <-->|"one question per turn"| lead
+  user <-->|"questions and rulings"| lead
   fc -->|"reality map, verbatim"| record[("brainstorms/&lt;slug&gt;/record.md")]
   lead --> record
   record -->|"frozen, at convergence"| rev -->|"survivors + tally"| lead

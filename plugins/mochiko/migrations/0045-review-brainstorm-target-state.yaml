@@ -1,0 +1,85 @@
+grammar: 1
+id: 0045-review-brainstorm-target-state
+sequence: 45
+intent: >-
+  Write the cold reviewer's side of the brainstorm target state (brainstorm-target-state D8, D10,
+  D16, D17): a map_timing condition for a blind map drawn at frame hardening or at the end, the
+  blind-map floor reworded to draw from whatever the first brief carries (id, class, kind and
+  anchor kept), the verify pass narrowed to the changed cards, and mints for the resumed end read,
+  the card-parts checklist, ratified decisions first and the builder test. No floor is minted,
+  retired or lowered.
+anchor: 2026-10-06 brainstorm-target-state
+hash: sha256:1a9dd565cf9d3bf3ee493aabb920a81033d16d427bc1846a4de42dae5bf34472
+changes:
+  - op: set-condition
+    schema: skill/review-brainstorm
+    name: map_timing
+    spec:
+      values: [front, end]
+      resolution: entry-derived
+      note: >-
+        whether the blind angle map was drawn at frame hardening (front), by you or by a seat now
+        gone whose saved map your brief carries, or is drawn at the end of the session (end).
+  - op: reword-rule
+    schema: skill/review-brainstorm
+    id: review-brainstorm.blind-map-before-record-contact
+    text: >-
+      Your blind angle map is drawn only from what your first brief carries — the topic and goal
+      line, or the frame's problem, destination and out-of-scope lines — and is its own
+      deliverable before any record contact.
+  - op: reword-rule
+    schema: skill/review-brainstorm
+    id: review-brainstorm.verify-pass-grade
+    text: >-
+      Grade each fold reading only the changed cards and their gists, quoting evidence; new
+      surface only for fold-introduced contradictions. The verify pass belongs to the
+      record-integrity lens in a pair, to you when solo.
+  - op: mint-rule
+    schema: skill/review-brainstorm
+    section: review-brainstorm.sec.scope
+    rule:
+      id: review-brainstorm.resumed-end-read
+      labels: [boundary]
+      class: must
+      kind: duty
+      when: {map_timing: front}
+      text: >-
+        Resumed with the record, or seated fresh with the saved map because the seat that drew it
+        is gone, run the full cold read, check that each angle the session took from the map was
+        answered in depth and check each angle it dropped; draw no second map.
+      anchor: 2026-10-06 brainstorm-target-state D10
+  - op: mint-rule
+    schema: skill/review-brainstorm
+    section: review-brainstorm.sec.inputs
+    rule:
+      id: review-brainstorm.card-parts-first
+      labels: [evidence]
+      class: must
+      kind: duty
+      text: >-
+        Before you read the record for judgment, check that every decision card carries its fixed
+        parts as `references/RECORD-FITNESS.md` lists them, and report that checklist.
+      pointer: references/RECORD-FITNESS.md
+      anchor: 2026-10-06 brainstorm-target-state D16
+  - op: mint-rule
+    schema: skill/review-brainstorm
+    section: review-brainstorm.sec.verdict
+    rule:
+      id: review-brainstorm.ratified-first
+      labels: [evidence]
+      class: must
+      kind: duty
+      text: Aim the hunt first at the decisions recorded as ratified.
+      anchor: 2026-10-06 brainstorm-target-state
+  - op: mint-rule
+    schema: skill/review-brainstorm
+    section: review-brainstorm.sec.verdict
+    rule:
+      id: review-brainstorm.builder-test
+      labels: [evidence]
+      class: must
+      kind: duty
+      text: >-
+        Hold the record to the builder test against the frame's destination: reading only the
+        record, what would a builder still have to ask the user?
+      anchor: 2026-10-06 brainstorm-target-state D16

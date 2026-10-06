@@ -21,6 +21,26 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 
 ---
 
+## Brainstorm target-state build
+
+*(ruled + accepted 2026-10-06, `brainstorm-target-state` D1–D23 as review-amended; built
+2026-10-06 at v0.117.0 (trail); provenance: `.mochiko/brainstorms/brainstorm-target-state/record.md`)*
+
+- [ ] **Dogfood watch — the first target-state sessions** (2026-10-06; provenance: D20, D23,
+  the wave 1 `build-log.md`) — run in the user's dogfood repo once the plugin copy there is at
+  v0.117.0. Judge against today's figures: findings per review (15 to 25 today) · coverage
+  findings still arriving at the end (3 to 8 today) · whether the first verify pass comes back
+  clean (today, in at least twenty sessions, it did not) · whether the blind second list names a
+  road the lead had not listed (D20 `Contested`, built untested; the record's OQ2). Also watch:
+  the wait the stop rule accepts for a front map (D15 as amended) · what a size raise from small
+  starts once the frame has hardened — D11 allows the raise, no rule says what it triggers · a
+  fallback review seat reading the floor `blind-map-before-record-contact` literally, which does
+  not name the saved map · cards reaching the review without a part, now reported only (D16 as
+  changed at build, Q23) · the narrowed `verify-pass-grade` beside `reopen-born-verify`'s
+  record-fitness read · `analysis-iterative`'s Overview and General-analysis lines still stating
+  the synthesis default (true under D21's "when it names none"; a later ruling's candidate). A
+  count that does not move goes to the user as a finding, never tuned away in place.
+
 ## Setup product-agnostic build
 
 *(ruled + accepted 2026-09-24, `setup-product-agnostic` D1–D6 as review-amended; provenance:
@@ -277,7 +297,7 @@ trail (2026-09-08); their open residue is carried below.)*
   brainstorm's wrongly-parked reopen bound + an unplantable rule mislabelled `conditional` ·
   feature's **missing positive control** (pre = post at the branch base; re-pinned to `794cea8`,
   a real one-rule delta) and a **control-prompt leak** of rubric vocabulary into the bare-model
-  arm); none has run a grid · **the regression path is uncontrolled across every command kit** (found 2026-09-19 by the feature kit's audit re-grade, traced in `cmd_report`) — all four kits' positive controls are *added* rules, which exercise only the adoption branch (`passk(post, rid)`); the branch the tolerance band and ship bars gate on is `passk(pre, rid) and not passk(post, rid)` over the unchanged bucket, and no real `--old-ref` can fire it because it only happens when a command has actually regressed. One synthetic mutation probe — weaken a single rule's text in the post tree, confirm the report names exactly that id — validates it for the whole target, not per kit; owed before any kit's first regression read, not before a baseline grid · **the command target's unread golden fields** (found 2026-09-19 by the architecture kit's audit re-grade, traced in the runner) — `assertions` and `expected_output` in a command kit's `evals.json` are read by nothing, while the skill target runs its assertions as a deterministic layer; decide whether to wire them here (a scripted layer beside the judged one, which the plan-only substrate may not support) or to declare them human-only in the kit shape so no author mistakes them for a gate · the other four commands'
+  arm); none has run a grid (the `brainstorm` kit's expectations are re-keyed in the `brainstorm-target-state` build, 2026-10-06 — see that section) · **the regression path is uncontrolled across every command kit** (found 2026-09-19 by the feature kit's audit re-grade, traced in `cmd_report`) — all four kits' positive controls are *added* rules, which exercise only the adoption branch (`passk(post, rid)`); the branch the tolerance band and ship bars gate on is `passk(pre, rid) and not passk(post, rid)` over the unchanged bucket, and no real `--old-ref` can fire it because it only happens when a command has actually regressed. One synthetic mutation probe — weaken a single rule's text in the post tree, confirm the report names exactly that id — validates it for the whole target, not per kit; owed before any kit's first regression read, not before a baseline grid · **the command target's unread golden fields** (found 2026-09-19 by the architecture kit's audit re-grade, traced in the runner) — `assertions` and `expected_output` in a command kit's `evals.json` are read by nothing, while the skill target runs its assertions as a deterministic layer; decide whether to wire them here (a scripted layer beside the judged one, which the plan-only substrate may not support) or to declare them human-only in the kit shape so no author mistakes them for a gate · the other four commands'
   kits (`architecture` · `brainstorm` · `feature` · `specify` — authored 2026-09-18 in worktrees,
   audits pending) · D10 one-real-run correlation check · Goodhart watch (anti-recitation register) ·
   the four kits' relocation under the renamed
@@ -541,7 +561,7 @@ Ruling: DECISIONS.md row 2026-08-10 (D1–D15 as amended); build delivered same 
 
 Ruling: DECISIONS.md row 2026-08-10 (D1–D10); build delivered same day at v0.60.0 (trail).
 
-- [ ] **First-live-run watch, both carriers** (2026-08-10; provenance: D9): watch the first live brainstorm review and first live setup G3 review post-build — does the blind map produce material coverage findings (not generic noise), does reopen routing fire, does the materiality bar hold solo? Feeds the record's I8 padding open thread too.
+- [ ] **First-live-run watch, both carriers** (2026-08-10; provenance: D9): watch the first live brainstorm review and first live setup G3 review post-build — does the blind map produce material coverage findings (not generic noise), does reopen routing fire, does the materiality bar hold solo? Feeds the record's I8 padding open thread too. **2026-10-06:** brainstorm's half moves to the front map once the target-state build ships (`brainstorm-target-state` D10) and rides that section's dogfood watch; setup's half is unchanged (D19).
 
 ## Feature-map layer residuals
 

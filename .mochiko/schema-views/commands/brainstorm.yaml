@@ -23,11 +23,20 @@ conditions:
     resolution: standing-trigger
     note: >-
       fires the moment the run composes more than one seat, and re-fires on a seat added mid-run.
+  size:
+    values: [small, standard, too-big]
+    resolution: moment-resolved(frame-hardened)
+    note: >-
+      small — no fog and a few forks · standard — the full flow · too-big — fog dominates;
+      ruled by the user at frame hardening (brainstorm.size-users-ruling).
 moments:
   session-open: Where the index is read and the session is entered as open.
-  cold-review: The blind two-message dispatch and the cold read of the frozen record.
+  cold-review: >-
+    Where the review seat reads the frozen record cold, its blind angle map already landed.
   acceptance: The user's acceptance of the record.
   close: Where the index is updated with where the outcome landed and the KM close ritual runs.
+  frame-hardened: >-
+    Where the user's first reply confirms or corrects the frame card and rules the size.
 sections:
   - id: brainstorm.sec.roles
     title: Roles & Responsibilities — seat wiring
@@ -39,8 +48,7 @@ sections:
         kind: duty
         text: >-
           You are the lead. Plan the run and orchestrate it toward the run's goal; run the
-          questioning yourself, inline, via mochiko:analysis-iterative — one question per turn,
-          format adapted to the user's state.
+          questioning yourself, inline, via mochiko:analysis-iterative.
         pointer: mochiko:analysis-iterative
       - id: brainstorm.staffing-latitude
         labels: [seats]
@@ -57,16 +65,44 @@ sections:
         labels: [independence, seats]
         class: must
         text: >-
-          A review seat is spawned in two messages — first the topic statement and goal line
-          only, never ${record_path}, so it builds its Phase 0 angle map with no sight of what the
-          session decided; its map returns before you send ${record_path} and the cold read
-          begins. The anchoring fence is structural, not a trust ask.
+          At frame hardening a review seat is spawned with the frame's problem, destination and
+          out-of-scope lines only — never ${record_path} or the session — and draws its blind
+          angle map while questioning goes on without waiting for it; the fence is structural, not
+          a trust ask. The same seat, or each seat of a pair, is resumed with ${record_path} for
+          the end read; a fresh seat with the saved map takes it only if the first is gone.
+        when: {size: [standard, too-big]}
         anchor: 2026-08-10 cold-review-gap-challenge D6
       - id: brainstorm.pair-maps-independent
         labels: [independence, seats]
         class: must
-        text: In a review pair, both seats build their Phase 0 angle maps independently.
+        text: In a review pair, each seat draws its own blind angle map independently.
         anchor: 2026-08-10 cold-review-gap-challenge D5
+      - id: brainstorm.own-rules-win
+        labels: [floor-pointer]
+        class: must
+        text: >-
+          Where mochiko:analysis-iterative and brainstorm's own rules differ, brainstorm's rules
+          win.
+        anchor: 2026-10-06 brainstorm-target-state D19
+      - id: brainstorm.small-session-review
+        labels: [independence, seats]
+        class: must
+        text: >-
+          The review seat's first message carries the topic and goal line only, never
+          ${record_path}; its blind angle map lands before ${record_path} is sent and the cold
+          read begins. The fence is structural, not a trust ask.
+        when: {size: small}
+        anchor: 2026-10-06 brainstorm-target-state D11
+      - id: brainstorm.blind-second-list
+        labels: [independence, seats]
+        class: must
+        kind: duty
+        text: >-
+          On a fork costly to undo, a fresh seat — never the review seat — gets the frame and
+          the question but not your options, and returns the roads it sees; the user sees where
+          its list and yours differ before ruling.
+        when: {size: [standard, too-big]}
+        anchor: 2026-10-06 brainstorm-target-state D7
   - id: brainstorm.sec.reserved
     title: Reserved to the user — never the run's
     intent: 'Decisions held by the user: acceptance, waivers, and the rulings no seat may take.'
@@ -105,6 +141,34 @@ sections:
         text: >-
           Any amendment to a user-ruled decision, and any new decision, is reserved to the user
           — their word, never yours.
+      - id: brainstorm.frame-changes-users-word
+        labels: [user-gate]
+        class: must
+        kind: reservation
+        text: >-
+          After the frame hardens, a line changes only by the user's word — when a fact breaks
+          it, the user changes their mind, or a decision rules something out — one line at a
+          time, each change stamped in the record; a changed destination re-checks the decisions
+          already made against it.
+        anchor: 2026-10-06 brainstorm-target-state D3
+      - id: brainstorm.size-users-ruling
+        labels: [user-gate, scope-entry]
+        class: must
+        kind: reservation
+        text: >-
+          The size is yours to propose on the frame card and the user's to rule in the reply that
+          confirms the frame; it may be raised at any time and is never lowered without the user's
+          word.
+        anchor: 2026-10-06 brainstorm-target-state D11
+      - id: brainstorm.user-steers
+        labels: [user-gate]
+        class: must
+        kind: reservation
+        text: >-
+          In any reply the user may edit the decision map, pick which askable question comes next,
+          pull a default out to its own turn, or stop the session; moving anything out of scope is
+          a frame change and takes the user's word.
+        anchor: 2026-10-06 brainstorm-target-state
   - id: brainstorm.sec.tools
     title: Tools bindings
     intent: Paths, templates, and skills the session binds to.
@@ -151,6 +215,23 @@ sections:
         text: >-
           Pipeline entry (e.g. /mochiko:specify when the record is honestly a feature description)
           is an offer after acceptance, never a default.
+      - id: brainstorm.decision-cards
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          Each decision's one home in ${record_path} is a card titled by its name, with fixed
+          parts — statement · why · rejected roads · accepted risk · how it was decided ·
+          changed at review; everything else in the record points at the card by name with at most
+          a one-line gist.
+        anchor: 2026-10-06 brainstorm-target-state D9
+      - id: brainstorm.facts-quoted
+        labels: [evidence]
+        class: must
+        text: >-
+          A fact enters the record as a quoted source line with its path and line number; your
+          reading of it is written apart and marked as a reading.
+        anchor: 2026-10-06 brainstorm-target-state D5
   - id: brainstorm.sec.ways-of-working
     title: Ways of Working
     intent: >-
@@ -173,8 +254,10 @@ sections:
         class: must
         kind: routing
         text: >-
-          Non-coverage survivors keep the ordinary fold / repair / ruling path and may be
-          dispositioned in batches.
+          A non-coverage survivor that offers a real choice, is costly to get wrong, or challenges
+          a ruling of the user's gets its own turn in the question form; your repairs of facts,
+          counts and wording go to the user in one named batch, and a survivor that changes
+          nothing is listed with its reason.
       - id: brainstorm.reopen-born-verify
         labels: [attempt-economy]
         class: must
@@ -202,6 +285,160 @@ sections:
           `reports/` under its envelope type. A name the set does not carry is raised to the user,
           never invented mid-session, and the index entry is written in the index home, not here.
         anchor: 2026-09-13 hook-enforced-artifact-schema D1
+      - id: brainstorm.light-orient
+        labels: [scope-entry]
+        class: must
+        text: >-
+          Before your first message, read ${index_path}, the records the topic names and the
+          user's earlier rulings on it — no user turn, no sweep of code or consumers; fact work
+          waits until the decisions show which facts they need.
+        anchor: 2026-10-06 brainstorm-target-state D1
+      - id: brainstorm.frame-card
+        labels: [scope-entry]
+        class: must
+        kind: duty
+        text: >-
+          Your first message is a frame card of six lines — problem (naming who has it) ·
+          destination · must not break · betting on · out of scope · proposed size — each
+          marked as the user's words or your guess, with no confidence percentage. A line you
+          cannot fill even as a guess is asked on its own before the card is shown.
+        anchor: 2026-10-06 brainstorm-target-state D2
+      - id: brainstorm.frame-hardens
+        labels: [user-gate, scope-entry]
+        class: must
+        text: >-
+          No deciding starts before the frame hardens at the user's first reply to the card, every
+          guessed line confirmed, corrected or struck; a line the user cannot answer yet is marked
+          open and becomes an early decision.
+        anchor: 2026-10-06 brainstorm-target-state D3
+      - id: brainstorm.decision-map
+        labels: [reporting]
+        class: must
+        kind: duty
+        text: >-
+          The first question arrives with a decision map in three parts — askable now (sharply
+          stated, by name) · in fog (with what each hangs on) · out of scope — never put to
+          the user for approval. Each later turn carries one status line (decided · askable now
+          · in fog), the full map shown again when it changes, and every item you add or graduate
+          changes visibly.
+        anchor: 2026-10-06 brainstorm-target-state D4
+      - id: brainstorm.blind-map-fold
+        labels: [evidence]
+        class: must
+        kind: duty
+        text: >-
+          When the blind map lands, fold its load-bearing angles into the decision map, each
+          marked as from the blind map, and list the angles you drop for the end read; a ruling
+          already made that a late angle bears on goes back to the user.
+        when: {size: [standard, too-big]}
+        anchor: 2026-10-06 brainstorm-target-state D10
+      - id: brainstorm.fact-before-decision
+        labels: [evidence]
+        class: must
+        text: >-
+          No decision is put to the user before the fact it hangs on is in hand, its source
+          attached — you find what the repo, the platform or the docs can answer while other
+          questions go on. A fact only the user holds is asked as a labelled fact question, never
+          dressed as a decision; one that cannot be found is stated as unknown and the decision
+          carries it as open.
+        anchor: 2026-10-06 brainstorm-target-state D5
+      - id: brainstorm.own-turn-or-batch
+        labels: [user-gate]
+        class: must
+        text: >-
+          A decision gets its own turn when it is a real choice or a wrong pick is costly to undo;
+          every other one is a default, shown by name in one line when it arises and confirmed in
+          one batch at wrap-up — a default other questions hang on is confirmed before them.
+        anchor: 2026-10-06 brainstorm-target-state D6
+      - id: brainstorm.options-rule
+        labels: [user-gate]
+        class: must
+        text: >-
+          Every fork carries at least two real options, one of them the cheaper shape — do less,
+          reuse, or do nothing — and names the rejected road with its reason.
+        anchor: 2026-10-06 brainstorm-target-state D7
+      - id: brainstorm.ratified-yes
+        labels: [user-gate]
+        class: must
+        text: >-
+          A yes to your pick stands and is recorded as ratified in the decision's
+          how-it-was-decided part, with no new confidence mark; after three ratified rulings in a
+          row, say so and put the next fork in another form — the case against first, or a weak
+          lean in place of a firm pick.
+        anchor: 2026-10-06 brainstorm-target-state D8
+      - id: brainstorm.vague-answer-reasked
+        labels: [user-gate]
+        class: must
+        text: >-
+          "Whatever you think" is not a ruling: re-ask it as a choice between two concrete
+          options. An answer that sounds like convention, not a want, draws one probe — what
+          would you want if you need not justify it.
+        anchor: 2026-10-06 brainstorm-target-state D8
+      - id: brainstorm.dependency-order
+        labels: [user-gate]
+        class: must
+        text: >-
+          No question is put before what it hangs on is settled, and each says in one line what it
+          unblocks; which askable question goes first is your judgment.
+        anchor: 2026-10-06 brainstorm-target-state D12
+      - id: brainstorm.question-form
+        labels: [reporting]
+        class: must
+        text: >-
+          When options are put, the question uses plain words and names decisions, never bare ids;
+          each option is one sentence with one concrete example, and the question carries the case
+          against your pick and a one-line recommendation, all on one screen. An open question to
+          an unsure user stays allowed.
+        anchor: 2026-10-06 brainstorm-target-state D13
+      - id: brainstorm.show-before-asking
+        labels: [evidence]
+        class: must
+        kind: duty
+        text: >-
+          A question about how something looks or behaves comes with a rough artifact inside the
+          message — a mock, a worked scenario with real numbers, or a replay on a past case —
+          never a file or code; anything heavier, such as a clickable prototype, is built only on
+          the user's request.
+        anchor: 2026-10-06 brainstorm-target-state D14
+      - id: brainstorm.stop-rule
+        labels: [attempt-economy]
+        class: must
+        text: >-
+          Deciding is finished only when the map is empty — nothing askable, every patch of fog
+          ruled, deferred by the user's word or handed to a later session, no open frame line, the
+          defaults batch confirmed, and any blind map that was started landed, each of its angles
+          folded or listed as dropped; a session the user stops records what is left as open and
+          says the destination was not reached. If the map has not shrunk for three questions
+          running, say so and offer to step back to the frame.
+        anchor: 2026-10-06 brainstorm-target-state D15
+      - id: brainstorm.fix-one-card-verify-once
+        labels: [attempt-economy]
+        class: must
+        kind: bound
+        text: >-
+          A fix edits the one card it touches and adds a line under its changed-at-review part;
+          the review seat verifies the fixes once, reading only the changed cards and their gists,
+          and a second failed verify goes to the user.
+        anchor: 2026-10-06 brainstorm-target-state D17
+      - id: brainstorm.accept-screens
+        labels: [user-gate]
+        class: must
+        kind: duty
+        text: >-
+          The record does not freeze for review before the user has confirmed or changed one
+          screen — the decisions by name with their gists, the defaults batch, what is out of
+          scope, the open questions, and each untested bet with how it would be tested; after
+          review, one screen shows what changed. Acceptance is the user's explicit word; anything
+          vaguer is asked once more.
+        anchor: 2026-10-06 brainstorm-target-state D18
+      - id: brainstorm.size-shapes
+        labels: [scope-entry]
+        class: must
+        text: >-
+          The session rules the askable forks and hands the fog to named later sessions, written
+          where the project keeps its open threads in the fog's own wording.
+        when: {size: too-big}
+        anchor: 2026-10-06 brainstorm-target-state D11
   - id: brainstorm.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-run ruling can waive.

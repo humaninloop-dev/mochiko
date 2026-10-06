@@ -1,7 +1,9 @@
 # Command Architecture Realignment — Decision Record
 
 **Status:** accepted (2026-08-02) — un-reviewed bare session; no cold review ordered, no
-recorded waiver beyond the user's "settled" acceptance
+recorded waiver beyond the user's "settled" acceptance · **D1 amended in part 2026-10-06,
+brainstorm only** — three counted limits return (`brainstorm-target-state` D22; built 2026-10-06
+at v0.117.0)
 **When:** 2026-08-02
 **Form:** bare session (direct `analysis-iterative` invocation; lead + user)
 **Topic:** the fundamental architecture of mochiko commands — aligning them to Claude Code's

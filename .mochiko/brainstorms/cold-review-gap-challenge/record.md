@@ -1,6 +1,6 @@
 # Cold-Review Gap Challenge — Decision Record
 
-**Session:** 2026-08-10 · **Status:** accepted (user, 2026-08-10) · **Command:** `/mochiko:brainstorm` (worktree `worktree-brainstorm-cold-review-gap-challenge`, off main @ f1e8f4b)
+**Session:** 2026-08-10 · **Status:** accepted (user, 2026-08-10) · **D2/D6 amended in part 2026-10-06, brainstorm only** — the blind map and its two-message dispatch move to the front of a standard or too-big session, the same seat resumed for the end read (`brainstorm-target-state` D10; setup's review unchanged, D19; built 2026-10-06 at v0.117.0) · **Command:** `/mochiko:brainstorm` (worktree `worktree-brainstorm-cold-review-gap-challenge`, off main @ f1e8f4b)
 
 ## Topic
 

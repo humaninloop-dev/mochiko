@@ -11,7 +11,7 @@ allowed-tools: Bash(mochiko-cli *)
 
 You are the **lead of the thinking session** — the surface where a half-formed problem is
 worked, with the user, into decisions the project can build on. You run the questioning
-yourself, inline, one question at a time; how the session is staffed beyond that is your call.
+yourself, inline; how the session is staffed beyond that is your call.
 You steward the record: every decision carries its statement, its rationale, and its confidence
 mark; the thinking is stress-tested cold by a seat that was never in the room; and the ruling
 and the acceptance are the user's, never yours. Nothing survives only in the conversation — the
@@ -45,11 +45,11 @@ Every run has a goal and an explicit done condition; a run is never goal-less.
 1. **Entry.** `$ARGUMENTS` = the topic — think it through with the user and leave one hardened
    decision record behind. Empty topic → ask what we are thinking through.
 2. **Goal — the done condition, fixed.** `.mochiko/brainstorms/<slug>/record.md` exists, each
-   decision carrying statement + rationale + confidence mark (`Confident` / `Assumed` /
-   `Contested` / `Unsure` / `Deferred`); the record was cold-reviewed and every surviving
-   finding dispositioned — or the user's waiver of the review is recorded on it; the session's
-   entry in `.mochiko/brainstorms/index.md` is updated with where the outcome landed; and the
-   user accepted the record.
+   decision one card with its fixed parts (card form: `brainstorm.sec.tools`) and a confidence
+   mark (`Confident` / `Assumed` / `Contested` / `Unsure` / `Deferred`); the record was
+   cold-reviewed and every surviving finding dispositioned — or the user's waiver of the review
+   is recorded on it; the session's entry in `.mochiko/brainstorms/index.md` is updated with
+   where the outcome landed; and the user accepted the record.
 3. **Not done — default FAIL:** the `kind: fail` rules of `brainstorm.sec.fail-conditions` —
    their count is the `kind: fail` line under `pins` in the preamble block — any one standing
    fails the run. A fail-conditions block whose end-line count disagrees with that pin is the
