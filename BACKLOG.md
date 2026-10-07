@@ -21,6 +21,26 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 
 ---
 
+## Human-readable IDs build
+
+*(ruled + accepted 2026-10-08, `human-readable-ids` D1–D22 as review-amended; provenance:
+`.mochiko/brainstorms/human-readable-ids/record.md`)*
+
+- [ ] **Build the joined ID form** (2026-10-08; provenance: D1–D22, F20/F24 for the family list and
+  scopes) — wave 0 first: D8's two-arm read test on hand-coined slugs (arm 1 bare, arm 2 slugged; pass
+  = arm 2 ≥15 "knew", ≥5 over arm 1, 0 "misled"); a fail stops the build. Then: the minting rules and
+  templates of every family (D1, D3, D9, D10, D13, D19), the report label `C<n>` → `Q<n>` (D10),
+  `validate-requirements.py` and the other plugin scripts (F21); the crate — `mochiko-cli ids --check`
+  incl. mention drift (D6, D18) and `ids rename` / `ids rekey`, scoped and preview-first, skipping
+  quotes across line breaks (D7, D15); the slug map drafted and graded, then applied to the live layer
+  (D14), history layer frozen (D12, D14, D21); one `/mochiko:setup` amend recording the GI-019
+  admission and the GI-005 ruling (D17); CI report wired (D18); minor bump with the break in
+  `CHANGELOG.md` (D20); a `GLOSSARY.md` entry for the joined form (record § For the landing).
+- [ ] **Opt-in back-fill pass for user projects** (2026-10-08; provenance: D16, OQ3) — D14's method
+  packaged for a consumer project (slug map drafted by a seat, graded, applied by `ids rename`).
+  Trigger: D14's run on this repo has proven the method. Until then projects like kinako keep both
+  forms, and the D6 check lists their old bare IDs.
+
 ## Brainstorm target-state build
 
 *(ruled + accepted 2026-10-06, `brainstorm-target-state` D1–D23 as review-amended; built
