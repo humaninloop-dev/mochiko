@@ -4269,3 +4269,222 @@ fn another_holders_mention_is_listed_as_kept() {
     let line = "kept docs/a.md:1:15 · D-012-audit-log-retention · another holder's\n";
     assert_eq!(out.matches(line).count(), 1, "{out}");
 }
+
+// ---------------------------------------------------------------------------
+// T18 — wave 1c: a session's record path as a mention's own qualifier (D11 as changed at build,
+// item 13)
+// ---------------------------------------------------------------------------
+
+const FOO_BAR: &str = ".mochiko/brainstorms/foo-bar/record.md";
+
+/// Two sessions: `foo-bar` defining D3, D6 and D7 bare, and `baz-qux` defining D3.
+fn path_sessions(tag: &str) -> PathBuf {
+    let root = tree(tag);
+    put(
+        &root,
+        FOO_BAR,
+        "### D3 — Delivery binding\n### D6 — y\n### D7 — z\n",
+    );
+    put(
+        &root,
+        ".mochiko/brainstorms/baz-qux/record.md",
+        "### D3 — w\n",
+    );
+    root
+}
+
+#[test]
+fn a_record_path_in_code_names_its_session() {
+    let root = path_sessions("1c-path");
+    let text = format!("per `{FOO_BAR}` D3, D6 and `{FOO_BAR}`\n  D7 here\n");
+    assert_eq!(
+        resolutions(&root, ".mochiko/strips/x.md", &text),
+        vec![
+            ("D3".into(), Resolved::Owned(name("foo-bar"))),
+            ("D6".into(), Resolved::Owned(name("foo-bar"))),
+            ("D7".into(), Resolved::Owned(name("foo-bar"))),
+        ],
+        "item 13: the path names its session, for a compound's member (S4) and across a soft break (C3)"
+    );
+}
+
+#[test]
+fn a_path_names_a_session_only_as_its_record() {
+    let root = path_sessions("1c-boundary");
+    for text in [
+        "per `.mochiko/brainstorms/no-such/record.md` D3\n",
+        "per `.mochiko/brainstorms/foo-bar/synthesis.md` D3\n",
+        "per `.mochiko/brainstorms/foo-bar/reports/record.md` D3\n",
+        "per `.mochiko/brainstorms/<slug>/record.md` D3\n",
+        "per `record.md` D3\n",
+        "per `foo-bar/record.md` D3\n",
+    ] {
+        assert_eq!(
+            resolutions(&root, ".mochiko/strips/x.md", text),
+            vec![("D3".into(), Resolved::Unresolved)],
+            "Q2: {text}"
+        );
+    }
+    // Another family behind a record path keeps today's reading.
+    put(&root, ".mochiko/specs/foo-bar/spec.md", "**FR-001**: x\n");
+    assert_eq!(
+        resolutions(
+            &root,
+            ".mochiko/strips/x.md",
+            &format!("per `{FOO_BAR}` FR-001\n")
+        ),
+        vec![("FR-001".into(), Resolved::Unresolved)]
+    );
+    // A path in plain text is no qualifier; the line reads it as a record link, as before (B1).
+    assert_eq!(
+        resolutions(
+            &root,
+            ".mochiko/strips/x.md",
+            &format!("per {FOO_BAR} D3\n")
+        ),
+        vec![("D3".into(), Resolved::Owned(name("foo-bar")))]
+    );
+}
+
+#[test]
+fn the_check_reports_a_path_qualified_mention() {
+    let root = tree("1c-check");
+    put(
+        &root,
+        FOO_BAR,
+        "### D3-delivery-binding-rule — Delivery binding\n",
+    );
+    let strip = ".mochiko/strips/x.md";
+    put(
+        &root,
+        strip,
+        &format!("per `{FOO_BAR}` D3 and `{FOO_BAR}` D3-render-chunking-rule\n"),
+    );
+    assert_eq!(
+        findings(&root, &[strip], &[]),
+        vec![
+            (strip.into(), 1, ids::Kind::Bare, "D3".into()),
+            (
+                strip.into(),
+                1,
+                ids::Kind::Drift,
+                "D3-render-chunking-rule".into()
+            ),
+        ]
+    );
+}
+
+#[test]
+fn a_rename_rewrites_a_path_qualified_token_and_keeps_the_path() {
+    let root = path_sessions("1c-rename");
+    let strip = ".mochiko/strips/x.md";
+    put(&root, strip, &format!("per `{FOO_BAR}` D3 as amended\n"));
+    let plan = rename_plan(&root, FOO_BAR, "D3", "delivery-binding-rule", &[]);
+    let edit = plan
+        .edits
+        .iter()
+        .find(|e| e.path == Path::new(strip))
+        .expect("the strip's path-qualified mention");
+    assert_eq!(
+        rename::diff_check(&edit.old, &edit.new, &plan.target),
+        Ok(1)
+    );
+    let (code, out, err) = run(&[
+        "ids",
+        "rename",
+        &arg(&root, FOO_BAR),
+        "D3",
+        "delivery-binding-rule",
+        "--write",
+    ]);
+    assert_eq!(code, 0, "{err}");
+    assert!(out.contains("ID tokens only"), "{out}");
+    assert_eq!(
+        read(&root, strip),
+        format!("per `{FOO_BAR}` D3-delivery-binding-rule as amended\n"),
+        "the token is rewritten and the path stays as written"
+    );
+}
+
+#[test]
+fn a_rekey_follows_a_path_qualified_mention() {
+    // As `foo-bar` would: the path names the owner for every rewrite that keys on it.
+    let root = path_sessions("1c-rekey");
+    let strip = ".mochiko/strips/x.md";
+    put(&root, strip, &format!("per `{FOO_BAR}` D3 here\n"));
+    let plan = rekey_plan(&root, FOO_BAR, "D3", "D4");
+    let edit = plan
+        .edits
+        .iter()
+        .find(|e| e.path == Path::new(strip))
+        .expect("the strip's path-qualified mention");
+    assert_eq!(edit.new, format!("per `{FOO_BAR}` D4 here\n"));
+}
+
+#[test]
+fn a_path_qualifier_still_counts_toward_names_several() {
+    let root = path_sessions("1c-several");
+    let of = |line: &str, token: &str| -> Vec<Resolved> {
+        resolutions(&root, "DECISIONS.md", line)
+            .into_iter()
+            .filter(|(text, _)| text == token)
+            .map(|(_, resolved)| resolved)
+            .collect()
+    };
+    // (a) a path cite of one session and a link to another: the line names several.
+    let a = format!("| D5 per `{FOO_BAR}` D3 and [b](.mochiko/brainstorms/baz-qux/record.md) |\n");
+    assert_eq!(of(&a, "D5"), vec![Resolved::Unresolved], "(a)");
+    assert_eq!(
+        of(&a, "D3"),
+        vec![Resolved::Owned(name("foo-bar"))],
+        "(a) the path's own mention"
+    );
+    // (b) Q1 as ruled: a path qualifier never owns its line's bare decisions.
+    let b = format!("| D5 per `{FOO_BAR}` D3 |\n");
+    assert_eq!(of(&b, "D5"), vec![Resolved::Unresolved], "(b) Q1");
+    // (c) the record link and the slug qualifier read as before.
+    let c = "| ruled D5 | [record](.mochiko/brainstorms/foo-bar/record.md) |\n";
+    assert_eq!(
+        of(c, "D5"),
+        vec![Resolved::Owned(name("foo-bar"))],
+        "(c) B1"
+    );
+    assert_eq!(
+        of("per `foo-bar` D3\n", "D3"),
+        vec![Resolved::Owned(name("foo-bar"))],
+        "(c) D11"
+    );
+}
+
+#[test]
+fn ranges_lists_and_masked_path_cites_stay_bare() {
+    // D5 and D15: the shapes the tool leaves bare stay bare behind a path; one plain cite is the
+    // control the rename must reach.
+    let root = tree("1c-bare");
+    put(
+        &root,
+        FOO_BAR,
+        "### D3-delivery-binding-rule — a\n### D4 — b\n### D5 — c\n### D6 — d\n### D7 — e\n",
+    );
+    let strip = ".mochiko/strips/x.md";
+    let bare = format!(
+        "ruled `{FOO_BAR}` D1–D7\n\nruled `{FOO_BAR}` D3 · D4 · D5 · D6\n\n> per `{FOO_BAR}` D3\n\n```\nper `{FOO_BAR}` D3\n```\n\nquoted \"per `{FOO_BAR}` D3 here\"\n"
+    );
+    put(&root, strip, &format!("{bare}\nper `{FOO_BAR}` D3 here\n"));
+    let control = bare.lines().count() + 2;
+    assert_eq!(
+        findings(&root, &[strip], &[]),
+        vec![(strip.into(), control, ids::Kind::Bare, "D3".into())],
+        "only the control is reported"
+    );
+    let plan = rename_plan(&root, FOO_BAR, "D3", "render-binding-cards", &[]);
+    let edit = plan
+        .edits
+        .iter()
+        .find(|e| e.path == Path::new(strip))
+        .expect("the control line");
+    assert_eq!(
+        edit.new,
+        format!("{bare}\nper `{FOO_BAR}` D3-render-binding-cards here\n")
+    );
+}

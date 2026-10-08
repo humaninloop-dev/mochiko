@@ -461,6 +461,8 @@ pub enum Skip {
 /// The owner name written in front of a per-artifact ID (D11).
 #[derive(Clone, Debug, PartialEq, Eq)]
 pub struct Qualifier {
+    /// As written: a session's record path stays a path here, read as its session on resolving
+    /// (wave 1c).
     pub text: String,
     /// Whether it is a code span (`` `lunch-orders` FR-012 ``) or plain text (`adaptive-depth D7`).
     pub code: bool,
@@ -1323,7 +1325,8 @@ fn cycle_heading(text: &str) -> Option<String> {
 ///
 /// A per-artifact ID resolves, first match winning (plan item 4):
 /// 1. through its qualifier — its own, or its compound's first member's (S4). A session `D`
-///    qualifies only by an existing session directory (R1); a cycle by a FEAT or EPIC ID (R4, R9);
+///    qualifies only by an existing session directory (R1), named by its slug or, in a code span,
+///    by its record's path (wave 1c, [`record_session`]); a cycle by a FEAT or EPIC ID (R4, R9);
 ///    any other family, and a cycle under another name (a lane's `lane-<slug>`), only by an owner
 ///    the index holds;
 /// 2. to the citing file's own owner, when that file is one of the family's definition files;
@@ -1346,7 +1349,10 @@ fn resolve(index: &Index, rel: &Path, text: &str, tokens: &[Token], token: &Toke
         return Resolved::Project;
     }
     if let Some(qualifier) = &token.qualifier {
-        let owner = owner_named(&qualifier.text);
+        let owner = match record_session(qualifier) {
+            Some(session) if family.name == "session D" => Owner::Name(session.to_string()),
+            _ => owner_named(&qualifier.text),
+        };
         let qualifies = match (family.name, &owner) {
             ("session D", Owner::Name(name)) => index.is_session(name),
             ("session D", Owner::Id { .. }) => false,
@@ -1375,6 +1381,17 @@ fn resolve(index: &Index, rel: &Path, text: &str, tokens: &[Token], token: &Toke
         }
     }
     Resolved::Unresolved
+}
+
+/// The session a code-span qualifier names when it is that session's record path,
+/// `` `.mochiko/brainstorms/<slug>/record.md` `` (D11 as changed at build, wave 1c). Only the
+/// tree-root path counts; a bare or relative `record.md` names no session (Q2 as ruled).
+fn record_session(qualifier: &Qualifier) -> Option<&str> {
+    let slug = qualifier
+        .text
+        .strip_prefix(".mochiko/brainstorms/")?
+        .strip_suffix("/record.md")?;
+    (qualifier.code && !slug.is_empty() && !slug.contains('/')).then_some(slug)
 }
 
 /// The sessions the line around byte `at` names (B1 as narrowed at build, R1): every record link

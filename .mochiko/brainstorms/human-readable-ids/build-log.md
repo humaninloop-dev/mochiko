@@ -1169,3 +1169,77 @@ Append-only. One `##` entry per event, 60 lines at most.
   edit, a longer `before`), so adding them would quote each token twice; none added, files unchanged.
   `pm-role-and-feature-derivation/record.md:86` "charter (D10)" and "(D8)" are the record's own; no
   row. W3-A's reason text is not swapped in (the lead's call: the covering rows carry their own).
+
+## 2026-10-08 — wave 2 closed; commit 2 made
+
+- W2-prose (after a second pull; it disclosed it had held the edit past its validate run): the
+  CHANGELOG's unreleased entry names 0046–0050, the log as "sequences 1..50", with 0048's and 0050's
+  effects. Validate re-read first-hand by the seat: `0 rejecting · 113 advisory`; `check` allow;
+  written byte-identical to its draft.
+- Lead first-hand before committing: `crates/`, `plugins/`, `evals/`, the views, the strips and the
+  cost-budget ledger equal the frozen tree the code review passed; only the CHANGELOG lines above
+  differ. A fresh `views emit` equals `.mochiko/schema-views/`. CHANGELOG `check` allow.
+- Wave 2 closed: the gate audit 32 of 32 PASS; W2-tests' crate tests PASS twice; CHANGELOG done.
+- Commit 2, `7e0dafb`, not pushed: 128 files — migrations 0046–0050, views, plugin prose, strips,
+  the ledger, eval kits, crate tests and goldens, the CHANGELOG, `reports/w2-gate-audit.md`, and the
+  session files (record, this log, the wave-2 and wave-3 plans). `inputs/` stays out (wave 3's).
+  A clean-archive test run of `7e0dafb` is going in the background.
+- Clean-archive run of `7e0dafb` (target inside the extracted tree): test 0 (750 passed, 0
+  failed), fmt 0, clippy 0.
+
+## 2026-10-08 — wave 1c built green in the copy; code review sent
+
+- P1 (seat-reported; report `scratchpad/p1c-build-report.md`, `b59e0bf188c29f89`): `src/ids.rs`
+  +19 −2, `tests/ids.rs` +219, in `scratchpad/w1c-tree/`; four layers 0 at task 0 and at the close
+  (`tests/ids.rs` 175 passed). Reds as planned; T2's plain-text-path case asserts `Owned`, the B1
+  line rule's existing behaviour (disclosed deviation). Sweep: 599 pairs per binary, `--check`
+  byte-identical, 0 refusals, 0 violations, **320 new rewrites** (272 direct, 48 inherited) in 75
+  files; 87 canonical path qualifiers unreached, each accounted for (52 ranges, 27 lists, 4 fenced,
+  2 undefined `D6a`, 2 `<slug>`). A checker bug (a doubled `D` prefix, 6,755 false violations) was
+  fixed and disclosed before the clean run.
+- Stop S7 fired at the close: main `crates/` status went from 18 entries to none — the lead's
+  commit 2. Cleared as status-only after the lead's first-hand check: main `crates/` against the copy
+  differs only in P1's two files; the three base hashes are unchanged; the copy holds no local
+  settings file.
+- Code review sent to `w1-code-review` on the frozen copy, four layers first-hand, a sweep sample
+  with both binaries; one fix round on a FAIL, then the fallback.
+
+## 2026-10-08 — wave 1c code review PASS; landing ordered. W3-C built; cross-shard relays
+
+- `CODE REVIEW: wave-1c record-path qualifier · PASS · findings: none blocking`. First-hand: test 0
+  (757 passed), fmt 0, clippy 0, audit 0; red-first confirmed (base source with the new tests: 169
+  pass, 6 fail, each for its stated reason); its own 599-pair sweep matches P1's exactly (320 new,
+  272 direct, 48 inherited, 75 files, 0 violations); `--check` byte-identical (621 bare · 59 drift);
+  a hunt fixture of 20-odd path variants and a `--write` probe on a copy behave as ruled. Its note
+  (both binaries, not 1c): a rename rewrites `inputs/hand-b.tsv` unless excluded — `inputs/` is on
+  the Exclude list.
+- Landing ordered to P1 (single writer of main `crates/mochiko-cli/` for the step): hash-checked copy
+  of the two files, the four layers and `cargo build` in the main tree, `diff -rq` against the copy.
+  The lead commits after.
+- W3-C (seat-reported): `slug-map-c.tsv` 202 rows, `alias-c.tsv` 98 (12 glued, 86 file-scoped),
+  `literal-c.tsv` 52, `hand-c.tsv` 79 (75 `qualify`, 4 `quote`); lint 0; previews all exit 0 (202
+  renames, 179 other-owner probes, 49 literal calls); a scratch tree with every shard's hand rows
+  applied, 399 runs exit 0. W3-A's 5 relayed rows were already held in `hand-c.tsv`. Alias needs
+  all joined except "adaptive-depth D1–D8", a range (bare by rule). Lead first-hand: field counts
+  full in all eight `inputs/` files.
+- Relayed (file and sha, verbatim): 17 rows to W3-A (`w3c-hand-for-a.tsv`, `d2a6591354bf3f5b`) and 45
+  to W3-B (`w3c-hand-for-b.tsv`, `38c21169b01ad7ff`), plus two unjudged pointers each.
+- Flags for the map grade and the apply: titles differ by shard (A and C cut confidence marks, B keeps
+  them; evidence only, not ruled); W3-C's four `quote` rows edit crate doc comments
+  (`src/ids.rs` :374, :504, :568; `rename.rs:1278`), and 1c adds two lines after `ids.rs:463`, so
+  :504 and :568 become :506 and :570 at landing (W3-C to refresh); crate comments the renames touch
+  take `cargo test` and the rust-cli review at the apply; `DECISIONS.md:78`'s qualify row leaves
+  that row's own seven bare `D<n>` unresolved (no wrong owner).
+- Pen note: `wave1-crate-ids.md:83` holds a relayed `quote` row; the lead edits that file only within
+  existing lines until the apply.
+
+## 2026-10-08 — wave 1c landed and closed; commit 3
+
+- P1 landed 1c (seat-reported, evidence `scratchpad/land-*.txt`): base hashes confirmed, the two
+  files copied and hash-verified; main tree test 0 (757 passed), fmt 0, clippy 0, audit 0, build 0;
+  `target/debug/mochiko-cli` rebuilt (sha256 prefix `6020cbb8c33d65e1`); `diff -rq` against the
+  reviewed copy empty. Lead first-hand: `src/ids.rs` `27ce157f8ccc7f0e`, `tests/ids.rs`
+  `ecedd910fb2a9cea`; `git status` shows only those two crate files.
+- Wave 1c closed (`wave1-crate-ids.md` status, same line). Plans line for 1c: `p1-crate:PASS(1)`;
+  seats: P1 produced / `p1c-plan-grader` graded the plan / `w1-code-review` reviewed the code.
+- Commit 3: the two crate files, `wave1-crate-ids.md` and this log; not pushed.

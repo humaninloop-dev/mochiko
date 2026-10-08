@@ -5,7 +5,7 @@ gate and restated the bet, D8/D13 as changed at build). Build questions B1–B3 
 the tool; the code review passed at re-review 5 after four user-granted fix rounds (`build-log.md`).
 Wave 1b (`rekey` by joined ID, `--alias` path scoping, and `rename`'s shared-number refusal) closed
 2026-10-08: the review passed after one fix round (`build-log.md`). Wave 1c (a record path as a
-qualifier, requirement 13) opened 2026-10-08.
+qualifier, requirement 13) closed 2026-10-08: the review passed first time (`build-log.md`).
 
 Branch `human-readable-ids-build` off `main` @ `bf410cc` (user: "ok"). Scope for this session: waves
 1–3; wave 4 (setup amend, contract suite, bumps, tag) stays with the user (user: "1-3").
