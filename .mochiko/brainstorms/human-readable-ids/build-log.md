@@ -1608,3 +1608,45 @@ Append-only. One `##` entry per event, 60 lines at most.
   the backlog items from this wave (the `fenced_lines` fence-length defect before the
   `mochiko-cli` release, nested quotes, foreign GIs under a project-wide rename, the Explore route,
   the teammate wake-up).
+
+## 2026-10-09 — fence-length fix in the crate before wave 4's release (wave 3b), ruled
+
+- Put to the user after commit `4b2291e`: fix the `fenced_lines` defect in the crate before wave 4
+  publishes `mochiko-cli` with `ids`, or ship it and book it. Lean: fix first — the defect rewrites
+  text inside a four-backtick fence in any consumer's repo. User: "as recommended".
+- Scope: `crates/mochiko-cli/src/conform.rs` `fenced_lines` only — a closing fence must match the
+  opener's character and be at least its length, with nothing after it but whitespace; a backtick
+  opener's info string holds no backtick. The one classifier serves both callers (`check`'s heading
+  scan and the `ids` mask), so the conformance hook's reading of fences changes too. Nested quotes
+  stay booked, not in scope.
+- Crate unit ceremony (`.claude/rules/mochiko/rust-cli.md`): a `mochiko:staff-engineer` seat plans
+  first, read-only; a fresh staff-engineer peer grades the plan (`mochiko:review-seat-plan`); the
+  seat builds red-green; the non-author crate review (`mochiko:tech-lead`) and the four layers
+  follow. After it lands: the governance-surfaces-template strip leaves the Exclude list and the
+  done check re-runs; the validation-constitution strip stays excluded (nested quotes).
+
+## 2026-10-09 — wave 3b built and reviewed; the template strip leaves the Exclude list
+
+- Seat `w3b-fence` (`mochiko:staff-engineer`, default tier): plan-only first, `scratchpad/fence/plan.md`
+  (sha256 `5e97dea249612159`), no repo write. Plan grade (`w3b-plan-grade`, a fresh staff-engineer
+  peer, `mochiko:review-seat-plan`): PASS · 0 blocking · 5 advisory. The grader ran every red leg
+  at HEAD itself. Its A1 caught that the `check` sweep could never flip allow/deny: each file is
+  graded against itself, and standing faults pass. The sweep now compares fault sets, plus a
+  fresh-write mode. The lead approved and folded A1, A2, A4 and A5.
+- Build: `fenced_lines` keeps the opener's character and run length; a closer must match both, with
+  only whitespace after; a backtick opener whose info string holds a backtick does not open; an
+  unclosed block runs to the end. A private `fence_run` helper; no interface change. 8 new tests,
+  each red at HEAD with its predicted value (7 planned, plus the unclosed-block test from review A1).
+- Sweeps: `ids --check` on HEAD 4 bare (the template strip's fenced lines), on the fix 0. `check`
+  over 494 tracked `.mochiko/` files: 0 differences against the on-disk baseline and 0 as fresh
+  writes. Disclosed: an out-of-repo `CARGO_TARGET_DIR` turns one existing `matrix_similar` test red,
+  since it assumes the target dir sits in the repo. The test layer ran on the default dir; booked.
+- Crate review (`w3-crate-review`, `mochiko:tech-lead`, non-author): `CRATE REVIEW 3b: PASS · 2
+  findings (0 blocking)` (findings sha256 `e3e593ef8ef7397a`). 17 edge cases probed (tabs, CRLF,
+  tildes in backtick blocks, longer closers, unclosed blocks), all green. A1 folded: the unclosed-
+  block test. A2: the `matrix_similar` assumption, booked.
+- Four layers: `cargo test --all` 765 passed, 0 failed; fmt, clippy and audit 0.
+- Lead, first-hand on a release build of the current tree (`scratchpad/fence/target-lead`, sha256
+  `3601ba4976b7b411`): `mochiko-cli ids --check · 0 bare · 0 drift` with the Exclude list now
+  minus the template strip. Without the validation-constitution strip: `1 bare` (its nested-quote
+  line, :68). `migrate validate` 0 rejecting · 113 advisory. The wave plan's Exclude list is updated.

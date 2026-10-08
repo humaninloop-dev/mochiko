@@ -417,6 +417,21 @@ fn a_heading_inside_a_fenced_code_block_is_not_a_heading() {
     assert!(verdict.reason.unwrap_or_default().contains("## Invented"));
 }
 
+#[test]
+fn a_heading_inside_a_nested_shorter_fence_is_not_a_heading() {
+    let state = state("head-nested-fence");
+    // A four-backtick fence quoting a three-backtick block: the inner fence lines are content, so
+    // the `## Invented` between them stays inside the outer block.
+    let fenced =
+        format!("{CONFORMING}\n## Examples\n\n````\n```markdown\n## Invented\n```\n````\n");
+    let verdict = grade(&state, SPEC, &fenced);
+    assert!(
+        allowed(&verdict),
+        "a heading quoted inside a nested fence must not read as a heading: {:?}",
+        verdict.reason
+    );
+}
+
 // ---------------------------------------------------------------------------
 // placeholders
 // ---------------------------------------------------------------------------

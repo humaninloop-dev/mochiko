@@ -215,8 +215,9 @@ The defaults, plus exactly these literal prefixes:
   `review-brainstorm`, `review-governance-intent`, `review-plan-artifacts`,
   `review-specifications`, `validation-constitution`;
 - *added 2026-10-09, at the diff review's fix round (done check only — the apply had run):*
-  `.mochiko/strips/governance-surfaces-template.md` and `.mochiko/strips/validation-constitution.md`.
-  Each holds verbatim text that D18's allowlist covers but the tool misreads: a four-backtick
-  fence whose inner three-backtick lines toggle `fenced_lines` (`crates/mochiko-cli/src/conform.rs`),
-  and a quote inside a quote. Restored to bare, those 5 lines count as bare without these two
-  prefixes. Cost: the check no longer reads the rest of the two files. Booked: the crate fix.
+  `.mochiko/strips/validation-constitution.md` — verbatim text that D18's allowlist covers but the
+  tool misreads: a quote inside a quote (one line, restored to bare). Cost: the check no longer
+  reads the rest of the file. Booked: the crate fix for nested quotes.
+  *(`.mochiko/strips/governance-surfaces-template.md` was also added at the fix round, for a
+  four-backtick fence the tool misread; removed the same day once wave 3b fixed `fenced_lines` in
+  `crates/mochiko-cli/src/conform.rs`.)*

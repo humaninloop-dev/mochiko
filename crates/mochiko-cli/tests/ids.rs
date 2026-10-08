@@ -554,6 +554,56 @@ fn a_fenced_block_is_masked_from_fence_to_fence() {
 }
 
 #[test]
+fn a_shorter_fence_inside_a_longer_one_is_content() {
+    // The governance-surfaces-template strip's shape: a four-backtick fence quoting a
+    // three-backtick block. The inner fence lines neither close the outer block nor reopen it.
+    let text = "a\n````\n```markdown\n## Heading\nGI-001\n```\n````\nb\n";
+    assert_eq!(
+        masked_text(text),
+        "````\n```markdown\n## Heading\nGI-001\n```\n````\n"
+    );
+}
+
+#[test]
+fn a_tilde_fence_holding_backtick_lines_stays_open() {
+    let text = "a\n~~~\n```\nGI-001\n```\n~~~\nb\n";
+    assert_eq!(masked_text(text), "~~~\n```\nGI-001\n```\n~~~\n");
+}
+
+#[test]
+fn a_closer_shorter_than_its_opener_does_not_close_the_fence() {
+    let text = "a\n````\nGI-001\n```\nGI-002\n````\nb\n";
+    assert_eq!(masked_text(text), "````\nGI-001\n```\nGI-002\n````\n");
+    // A longer closer does close: at least the opener's length, not exactly it.
+    let text = "a\n```\nGI-001\n`````\nb\n";
+    assert_eq!(masked_text(text), "```\nGI-001\n`````\n");
+}
+
+#[test]
+fn a_closer_with_an_info_string_does_not_close_the_fence() {
+    let text = "a\n```\nGI-001\n```sh\nGI-002\n```\nb\n";
+    assert_eq!(masked_text(text), "```\nGI-001\n```sh\nGI-002\n```\n");
+    // Trailing whitespace is not an info string.
+    let text = "a\n```\nx\n```   \nb\n";
+    assert_eq!(masked_text(text), "```\nx\n```   \n");
+}
+
+#[test]
+fn a_backtick_line_whose_info_string_holds_a_backtick_opens_no_fence() {
+    let text = "a\n```x```\nGI-001\n";
+    assert_eq!(masked_text(text), "");
+    // The rule is the backtick fence's only: a tilde fence's info string may hold one.
+    let text = "a\n~~~ x`y\nGI-001\n~~~\nb\n";
+    assert_eq!(masked_text(text), "~~~ x`y\nGI-001\n~~~\n");
+}
+
+#[test]
+fn an_unclosed_fence_runs_to_the_end_of_the_text() {
+    let text = "a\n````\nGI-001\n```\nGI-002\n";
+    assert_eq!(masked_text(text), "````\nGI-001\n```\nGI-002\n");
+}
+
+#[test]
 fn a_blockquote_line_is_masked() {
     assert_eq!(masked_text("a\n> quoted GI-001\nb"), "> quoted GI-001\n");
 }
@@ -1539,6 +1589,20 @@ fn a_rename_never_writes_into_nested_trees_scratch_or_settings() {
         !rename::preview(&plan).contains("settings"),
         "S8: never printed"
     );
+}
+
+#[test]
+fn a_token_in_a_nested_fence_is_neither_reported_nor_renamed() {
+    let root = gi_tree("nested-fence");
+    put(
+        &root,
+        "notes.md",
+        "````\n```markdown\n## Heading\nGI-001\n```\n````\n",
+    );
+    assert_eq!(findings(&root, &["notes.md"], &[]), vec![]);
+    let plan = rename_plan(&root, INTENT, "GI-001", "secret-hygiene-rules", &[]);
+    let paths: Vec<_> = plan.edits.iter().map(|e| e.path.clone()).collect();
+    assert_eq!(paths, vec![PathBuf::from(INTENT)]);
 }
 
 #[test]

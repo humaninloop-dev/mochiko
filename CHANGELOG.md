@@ -62,6 +62,10 @@ references, `validation-primitive-edit`, the `release-gates` module template, an
 the `artifact-gate` and `dependency-halt` hook scripts — 9 strip entries stamped [v0.118.0]
 (`validation-primitive-edit.md`, `artifact-gate.md` and `dependency-halt.md` new). No migration;
 the replay is unchanged. `mochiko-cli ids --check` over the live layer: 0 bare · 0 drift.
+The same `mochiko-cli` release reads fenced blocks by the CommonMark closing rule (wave 3b): a fence
+closes only on a run of its own character at least as long as the opener, so a three-backtick block
+inside a four-backtick fence stays fenced — for `ids`' verbatim mask and for `check`'s heading scan
+alike.
 
 ## [0.117.0] — 2026-10-06
 
