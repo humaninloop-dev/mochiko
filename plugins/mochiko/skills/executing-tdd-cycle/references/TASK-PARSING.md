@@ -7,10 +7,10 @@ decompose at build time (SKILL.md step 2) — nothing task-level is parsed from 
 ## Card Pattern
 
 ```markdown
-### - [ ] Cycle {N}: {title} `[P]`?
+### - [ ] C{N}-<slug> — {title} `[P]`?
 
-- **Stories:** US-# — rationale
-- **Depends on:** — | C{M}
+- **Stories:** `<spec-slug>` US-#-<slug> — rationale
+- **Depends on:** — | C{M}-<slug>
 - **Case:** Simple | Split — why | Merge — why
 - **Brownfield exposure:** none | extends `path` | modifies `path`
 
@@ -23,13 +23,14 @@ decompose at build time (SKILL.md step 2) — nothing task-level is parsed from 
 
 A card may carry more than one `**TEST:**` block — together they are the cycle's test-case
 bundle. Cycle 1 of a new end-to-end path is a **walking skeleton** (one trivial case green);
-growth on an already-standing path has no skeleton cycle.
+growth on an already-standing path has no skeleton cycle. A card written before the upgrade
+keeps the `### - [ ] Cycle {N}: {title}` heading and is read the same way.
 
 ### Fields to Extract
 
 | Field | Use |
 |-------|-----|
-| Checkbox | `- [ ]` pending / `- [x]` complete — on the `### Cycle` heading line |
+| Checkbox | `- [ ]` pending / `- [x]` complete — on the card's `###` heading line |
 | `[P]` | Marks a parallel-eligible card — derived from dependencies, not a card type |
 | Stories | The `US-#` set this card serves — resolve against `spec.md` for the independent tests |
 | Depends on | Cards that must be complete before this one starts |

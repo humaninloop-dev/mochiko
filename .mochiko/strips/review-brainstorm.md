@@ -36,6 +36,13 @@ entry "the user's word on P2". Pre-edit verbatim text:
 `git show 2e4c57c:plugins/mochiko/skills/review-brainstorm/SKILL.md` and
 `git show 2e4c57c:plugins/mochiko/skills/review-brainstorm/references/RECORD-FITNESS.md`. -->
 
+## [v0.118.0] RECORD-FITNESS card heading names the joined ID
+
+- **Disposition:** superseded → "Every decision card is headed by its joined ID and the decision's name (`### D<n>-<slug> — <name>`) and carries these six parts.", matching 0047 #10.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; hand-off P8)
+- **Content (superseded):** "Every decision card is titled by the decision's name and carries these six parts."
+- **Kept deliberately:** the six parts and the reported-not-blocking clause.
+
 ## [v0.117.0] `## Protocol` — re-keyed to the map's timing, the card-parts checklist, ratified decisions first, the builder test and the front map's end read
 
 - **Disposition:** superseded → the Protocol's first paragraph as shipped at v0.117.0. It names

@@ -276,7 +276,7 @@ Use these as the spot-check lens when running the consistency pass quickly:
 | Issue Type | Severity | Example |
 |------------|----------|---------|
 | Entity name mismatch | Important | "User" vs "Account" inconsistency |
-| Missing requirement trace | Important | FR-003 not addressed in contracts |
+| Missing requirement trace | Important | `<spec-slug>` FR-003-<slug> not addressed in contracts |
 | Decision contradiction (design vs decided approach) | Critical | Using JWT when the decision chose sessions |
 | Minor spelling variance | Minor | "userId" vs "user_id" |
 

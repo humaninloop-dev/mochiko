@@ -9,6 +9,15 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/templates/report-format.md`. -->
 
+## [v0.118.0] Rule 5's example IDs joined; its gloss wording reworded
+
+- **Disposition:** superseded → "Cite upstream IDs in their joined form, per the IDs section of `templates/artifact-format.md` (`T4.2`, `FR-003-csv-report-export`, `C-012-password-hashing-policy`, `SC-005-checkout-completion-rate`) — never re-quote their text. One-line context is allowed only where the ID alone would be unreadable at the consumption point."
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; B4: the grammar's one home is artifact-format's IDs section, so this rule points at it)
+- **Content (superseded):** two superseded lines: (1) the examples "Cite upstream IDs (`T4.2`, `FR-003`, `C-012`, `SC-005`) — never re-quote their text." (2) the gloss wording "One-line context is allowed only where a bare ID would be unreadable at the consumption point." — "a bare ID" became "the ID alone", since the IDs section now gives "bare" the meaning "no slug".
+- **Kept deliberately:** `T4.2` (a local task label, D10) as the contrast; the rule's meaning.
+- **Owner clause added after the gate (advisory P2 of the wave-2 gate audit, `.mochiko/brainstorms/human-readable-ids/reports/w2-gate-audit.md`; the lead's 2026-10-08 resume):** the rule now reads "Cite upstream IDs in their joined form, behind their owner where cited outside their own file, per the IDs section …", as `artifact-format.md` rule 1 says, and its three per-artifact examples carry their owners (`` `lunch-orders` FR-003-csv-report-export ``, `` `product` C-012-password-hashing-policy ``, `` `lunch-orders` SC-005-checkout-completion-rate ``), because a report always cites upstream IDs from outside their owning file (record D11). The Disposition's quote above is the first-landed form, superseded by this line before any release.
+- **Consumers assessed:** every report template and report-writing seat reads rule 5 by meaning; `executing-tdd-cycle/references/CYCLE-REPORT-FORMAT.md` carries the same `C-012-password-hashing-policy` example.
+
 ## [v0.116.0] Not-a-report list — "the design-phase deltas" re-keyed to what a design phase writes
 
 - **Disposition:** superseded → "the baseline entries and the `architecture.md` drawing a design

@@ -138,9 +138,10 @@ sections:
         class: must
         kind: binding
         text: >-
-          The synthesis: ${memory_dir}/governance-intent.md, GI-XXX namespace, from the
-          governance-intent template (rendered by mochiko-cli template governance-intent) — the
-          durable amend baseline.
+          The synthesis: ${memory_dir}/governance-intent.md, from the governance-intent template
+          (rendered by mochiko-cli template governance-intent) — the durable amend baseline; its
+          GI elements are numbered per that template's GI-ID rule and slugged per the IDs section
+          of `templates/artifact-format.md`.
       - id: setup.interrogation-inputs
         labels: [binding, scope-entry]
         class: must

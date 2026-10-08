@@ -314,6 +314,16 @@ sections:
           `derivation.md`; a review of either is a report in that home's `reports/`. An id outside
           the `FEAT-XXX` shape has no home and is raised, never written.
         anchor: 2026-09-13 hook-enforced-artifact-schema D1
+      - id: feat.grader-checks-joined-ids
+        labels: [independence]
+        class: must
+        text: >-
+          The non-author seat grading a map write checks the FEAT and EPIC IDs it mints or cites
+          against the IDs section of `templates/artifact-format.md`: a minted ID is joined, its
+          slug naming the capability's topic and matching its entry file's or manifest heading's
+          slug; a cited ID follows its definition — joined with that slug, or bare where the
+          definition is bare.
+        anchor: 2026-10-08 human-readable-ids D6
   - id: feat.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no visit and no seat can waive.

@@ -1,0 +1,33 @@
+grammar: 1
+id: 0048-landing-rekey
+sequence: 48
+intent: >-
+  Route the landing renumber through mochiko-cli ids rekey (human-readable-ids D4 as changed at
+  review; D7 V3; D15 V3; Q5 (a)): the second run to land names its own entry by the joined old ID,
+  so only that entry moves, its slug travels, and every mention of it follows; a bare mention the
+  preview lists as untied is settled by hand. One reword of a floor rule that keeps its id, class
+  and anchor.
+anchor: 2026-10-08 human-readable-ids D4
+hash: sha256:599e7ecb20b0d25178b26f1922ec0431f2ddcf152ee7a4f71be5fce013600f4f
+changes:
+  - op: reword-rule
+    schema: command/implement
+    id: impl.baseline-diff-review
+    text: >-
+      Every review of a run's baseline change reads `git diff <base> -- ${product_dir}/` — the
+      committed and uncommitted change since the pinned base (impl.base-pins), whoever committed
+      it: in the design phase the design review pair reads it as part of the package it grades; at
+      build time the landing verification seat grades the judgment content of build-raised
+      entries. At landing, in order: the unmarked-write test runs on the diff before any landing
+      write; the duplicate-id check passes over every id in each touched baseline, and the second
+      run to land renumbers its own entries, each with `mochiko-cli ids rekey <owning-file>
+      <old-ID>-<slug> <new-ID>` — the joined old ID picks the run's own entry and the new ID is
+      bare — previewed, then `--write`, so the entry's slug travels and every mention of that
+      entry follows (a bare mention the preview lists as untied is settled by hand); then the
+      landing flip, read from the diff, never from markers alone — `in-flight` and `modifying`
+      to `built`, the key cleared, each `removing` entry to its stub (heading kept,
+      `**Lifecycle:** removed`, no body, no key, its id still taken) — over every baseline and
+      the store alike, an NFR-only concern-row change included whether or not structure was built,
+      sweeping the counts, summary rows, relationship tables and validation-rule lists the diff
+      touched. An entry still keyed to the run after the flip is flagged; an abandoned run's
+      changes are found by the same diff and reverted.

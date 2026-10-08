@@ -13,6 +13,13 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 `.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
 `.mochiko/` references were correctly left alone on that test.
 
+## [v0.118.0] The two GI trace slots joined
+
+- **Disposition:** superseded → `GI-XXX-<slug>` in the collision-rulings slot and in `**Trace**: GI-XXX-<slug> (module selection)`.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; matching W2-schema's L2: ledger trace lines are joined)
+- **Content (superseded):** "…— from the synthesis, GI-XXX]" and "**Trace**: GI-XXX (module selection)".
+- **Kept deliberately:** line 12 and line 45 (family names) and line 141's `D16` (a decided citation, wave 3).
+
 ## [v0.116.0] Orphan rule and its checklist twin — "in-flight-class … keys an open feature" re-keyed to the widened key set
 
 - **Disposition:** superseded →

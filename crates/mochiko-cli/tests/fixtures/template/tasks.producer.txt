@@ -4,13 +4,16 @@ This file is CYCLE CARDS, not a task list. Each card is a coherent bundle of nam
 (the card's content); the builder decomposes each card into concrete tasks at build time, with
 the code in view — the decomposition is disclosed in the cycle report, never pre-written here.
 Cite spec/design content by ID (US-#, FR-#, SC-#, C-#) — never re-quote it; each test case cites
-the ID(s) it covers. Structure and slicing judgment come from mochiko:patterns-vertical-tdd (the
-cycle-card shape). The card's checkbox is the progress surface, flipped when the cycle's named
-cases show green against real infrastructure.
+the ID(s) it covers, each written joined behind its owner per the IDs section of `templates/artifact-format.md` — a US,
+FR or SC behind its spec's slug (`` `<spec-slug>` FR-012-<slug> ``), a C- ID behind its product
+file's owner: `` `product` `` for the product baseline, the spec's slug for a spec's own file
+(`` `product` C-003-<slug> ``). Structure and slicing judgment come from
+mochiko:patterns-vertical-tdd (the cycle-card shape). The card's checkbox is the progress surface,
+flipped when the cycle's named cases show green against real infrastructure.
 
 ## Header
 
-Title "# Implementation Cycles: [FEAT-XXX — FEATURE NAME]" plus two generated-from
+Title "# Implementation Cycles: [FEAT-XXX-<slug> — FEATURE NAME]" plus two generated-from
 pointers: (1) the spec folder and the design inputs the cards were authored from —
 spec.md, features/FEAT-XXX/sufficiency-report.md, and, where the design phase ran, the
 run's architecture.md drawing and its marked entries in the product baselines, read in the
@@ -40,7 +43,8 @@ covers.
 ## Cycle Cards
 
 Cards are listed directly, not grouped by foundation/feature type. Each card carries:
-checkbox + title; Stories (US-# — why these stories/cases form one demonstrable bundle,
+checkbox + the card's joined cycle ID and title (`### - [ ] C<n>-<slug> — <title>`); Stories
+(US-# — why these stories/cases form one demonstrable bundle,
 <= 2 lines); Depends on; Case (Simple | Split — why, one line | Merge — why, one line);
 Brownfield exposure (none | extends `path` | modifies `path` — cycle-level surfaces only);
 and the closing `**TEST:**` bundle — one or more named test cases, each opening with
@@ -52,27 +56,27 @@ trivial case green). `[P]` marks parallel-eligible cards, derived from dependenc
 Good example:
 SAMPLE (illustration only — replace with actual cycles; DO NOT keep the samples in the generated tasks.md):
 
-### - [ ] Cycle 1: Walking skeleton — [thinnest end-to-end path]
-- **Stories:** US-1 — thinnest end-to-end path through all layers, one trivial case green; establishes the production-shaped stack [<= 2 lines]
+### - [ ] C1-walking-skeleton-path — Walking skeleton: [thinnest end-to-end path]
+- **Stories:** `<spec-slug>` US-1-<slug> — thinnest end-to-end path through all layers, one trivial case green; establishes the production-shaped stack [<= 2 lines]
 - **Depends on:** —
 - **Case:** Simple
 - **Brownfield exposure:** none
 
 **TEST:** [entity] round-trips through the full stack
-- **Covers**: US-1 / SC-1
+- **Covers**: `<spec-slug>` US-1-<slug> / SC-001-<slug>
 - **Action**: `curl -X POST localhost:3000/api/[entity] -d '{"name":"Test"}'`
 - **Assert**: Response status: 201
 - **Assert**: Console contains "[entity]_id"
 - **Capture**: console
 
-### - [ ] Cycle 2: [Feature bundle title] `[P]`
-- **Stories:** US-2 — [why these stories/cases form one demonstrable bundle, <= 2 lines]
-- **Depends on:** C1
+### - [ ] C2-<slug> — [Feature bundle title] `[P]`
+- **Stories:** `<spec-slug>` US-2-<slug> — [why these stories/cases form one demonstrable bundle, <= 2 lines]
+- **Depends on:** C1-walking-skeleton-path
 - **Case:** [Simple | Split — why | Merge — why]
 - **Brownfield exposure:** extends `src/models/[entity].py`
 
 **TEST:** [behavior] works end to end via API
-- **Covers**: US-2 / SC-2 scenario 1
+- **Covers**: `<spec-slug>` US-2-<slug> / SC-002-<slug> scenario 1
 - **Setup**: Seed prerequisite [entity] data
 - **Action**: `curl -X POST localhost:3000/api/[endpoint] -d '{"[field]":"value"}'`
 - **Assert**: Response status: 200
@@ -80,7 +84,7 @@ SAMPLE (illustration only — replace with actual cycles; DO NOT keep the sample
 - **Capture**: console
 
 **TEST:** [behavior] rejects [invalid case]
-- **Covers**: US-2 / SC-2 scenario 2
+- **Covers**: `<spec-slug>` US-2-<slug> / SC-002-<slug> scenario 2
 - **Setup**: Seed prerequisite [entity] data
 - **Action**: `curl -X POST localhost:3000/api/[endpoint] -d '{"[field]":"invalid"}'`
 - **Assert**: Response status: 400
@@ -99,7 +103,7 @@ Checked mechanically before the write lands. Each line is a string or a count, n
 
 ## Skeleton
 
-# Implementation Cycles: [FEAT-XXX — FEATURE NAME]
+# Implementation Cycles: [FEAT-XXX-<slug> — FEATURE NAME]
 
 > Generated from the spec folder and the design inputs the cards were authored from: spec.md, features/FEAT-XXX/sufficiency-report.md, and, where the design phase ran, the run's architecture.md drawing and its marked entries in the product baselines, read in the pinned-base diff of .mochiko/product/
 > Structure: `mochiko:patterns-vertical-tdd` (cycle-card shape, slicing judgment)
@@ -128,30 +132,30 @@ column. Each named test case cites the spec/design ID(s) it covers.
 
 ## Cycle Cards
 
-### - [ ] Cycle 1: Walking skeleton — [thinnest end-to-end path]
+### - [ ] C1-<slug> — Walking skeleton: [thinnest end-to-end path]
 
-- **Stories:** US-# — [thinnest end-to-end path through all layers; establishes the production-shaped stack, <= 2 lines]
+- **Stories:** `<spec-slug>` US-#-<slug> — [thinnest end-to-end path through all layers; establishes the production-shaped stack, <= 2 lines]
 - **Depends on:** —
 - **Case:** Simple
 - **Brownfield exposure:** none
 
 **TEST:** [behavior] round-trips through the full stack
-- **Covers**: US-# / SC-#
+- **Covers**: `<spec-slug>` US-#-<slug> / SC-#-<slug>
 - **Action**: `[command]`
 - **Assert**: [expected]
 - **Capture**: console
 
 ---
 
-### - [ ] Cycle N: [Feature bundle title] `[P]`
+### - [ ] C<n>-<slug> — [Feature bundle title] `[P]`
 
-- **Stories:** US-# — [why these stories/cases form one demonstrable bundle, <= 2 lines]
+- **Stories:** `<spec-slug>` US-#-<slug> — [why these stories/cases form one demonstrable bundle, <= 2 lines]
 - **Depends on:** [cycle refs]
 - **Case:** [Simple | Split | Merge]
 - **Brownfield exposure:** [none | extends `path` | modifies `path`]
 
 **TEST:** [behavior] works end to end via real infrastructure
-- **Covers**: US-# / SC-#
+- **Covers**: `<spec-slug>` US-#-<slug> / SC-#-<slug>
 - **Setup**: [preconditions]
 - **Action**: `[command]`
 - **Assert**: [expected]

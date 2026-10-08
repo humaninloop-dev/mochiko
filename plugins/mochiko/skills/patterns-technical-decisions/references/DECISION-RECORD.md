@@ -11,7 +11,7 @@ Each significant decision should follow this structure:
 
 ### Status
 
-[Proposed | Accepted | Deprecated | Superseded by DR-XXX]
+[Proposed | Accepted | Deprecated | Superseded by D-XXX-<slug>]
 
 ### Context
 
@@ -132,16 +132,16 @@ Track how decisions relate:
 
 | Decision | Depends On | Reason |
 |----------|------------|--------|
-| D2: Session storage | D1: Auth mechanism | JWT choice eliminates server sessions |
-| D3: Token storage | D1: Auth mechanism | JWT determines how tokens are handled |
-| D5: Refresh endpoint | D1: Auth mechanism | JWT requires refresh token flow |
+| D-002-server-session-storage: Session storage | D-001-auth-token-mechanism: Auth mechanism | JWT choice eliminates server sessions |
+| D-003-client-token-storage: Token storage | D-001-auth-token-mechanism: Auth mechanism | JWT determines how tokens are handled |
+| D-005-token-refresh-endpoint: Refresh endpoint | D-001-auth-token-mechanism: Auth mechanism | JWT requires refresh token flow |
 
 ## Impact Chain
 
-D1 (JWT auth)
-  → D2 (No server sessions)
-  → D3 (Token in httpOnly cookie)
-  → D5 (Refresh endpoint required)
+D-001-auth-token-mechanism (JWT auth)
+  → D-002-server-session-storage (No server sessions)
+  → D-003-client-token-storage (Token in httpOnly cookie)
+  → D-005-token-refresh-endpoint (Refresh endpoint required)
   → API contract includes /auth/refresh
 ```
 

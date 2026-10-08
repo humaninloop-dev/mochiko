@@ -106,10 +106,11 @@ sections:
         labels: [artifact-grammar]
         class: must
         text: >-
-          Spine elements carry `SPN-XXX` (unique store-wide), a kind — `container` · `boundary`
-          · `flow` — a name, and a status; concern rows carry `AX-XXX` (unique store-wide), a
-          name, a `Stance`, and a `Status`. Everything past that core is free-form — the schema
-          constrains the skeleton, never the voice.
+          Spine elements carry `SPN-XXX` (unique store-wide), written joined `SPN-XXX-<slug>`, a
+          kind — `container` · `boundary` · `flow` — a name, and a status; concern rows
+          carry `AX-XXX` (unique store-wide), written joined `AX-XXX-<slug>` — a graduated row's
+          file name carries the same slug — a name, a `Stance`, and a `Status`. Everything past
+          that core is free-form — the schema constrains the skeleton, never the voice.
       - id: authoring-architecture-store.two-arm-schema-binding
         class: must
         kind: binding

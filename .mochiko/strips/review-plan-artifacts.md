@@ -35,6 +35,14 @@ row); census: `.mochiko/decisions/2026-09-29-census-table-ratified.md`, rows in
 2026-09-29 row). Pre-edit verbatim text:
 `git show 5558fd7:plugins/mochiko/skills/review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md`. -->
 
+## [v0.118.0] `check-artifacts.py` counts distinct IDs by their core; one checklist example joined
+
+- **Disposition:** superseded → `fr_matches`/`us_matches` key each match on its ID core, prefix plus number (`m.rstrip('-').upper()`), so `FR-012-csv…` and `FR-012` count once; `ARTIFACT-CHECKLISTS.md:279` reads `` `<spec-slug>` FR-003-<slug> not addressed in contracts ``.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; D4 (the number in its scope is the key) and D12/F21 for the script; D11 for the owner)
+- **Content (superseded):** script: "fr_matches = set(re.findall(fr_pattern, content, re.IGNORECASE))" and the same for `us_matches`; checklist: "| Missing requirement trace | Important | FR-003 not addressed in contracts |".
+- **Kept deliberately:** the two patterns themselves, with the legacy `FR-ABC-001` acceptance; every pass/fail outcome (only the counts change), which matters because `review-plan-artifacts.tier1-preassert` folds a failed count in as a floor; the file mode (644); the checklist's other 25 placeholders (family names).
+- **Consumers assessed:** `evals/run.py:69` names the script as a tier-1 pre-assert; W2-tests is told `fr_count`/`us_count` now count distinct IDs.
+
 ## [v0.116.0] ARTIFACT-CHECKLISTS Tier-1 examples — the per-feature spec paths re-pointed to the product baselines
 
 - **Disposition:** superseded → `.mochiko/product/data-model.md`,

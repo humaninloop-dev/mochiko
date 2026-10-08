@@ -7,7 +7,7 @@ independent test, 2-3 one-line acceptance scenarios.
 ## Example 1: P1 User Story (Core)
 
 ```markdown
-### User Story 1 - Create Recurring Task (Priority: P1)
+### US-1-recurring-task-creation — Create Recurring Task (Priority: P1)
 
 A user selects a task, chooses a recurrence pattern (daily, weekly, or monthly), and
 saves; the system generates future task instances on that schedule.
@@ -25,7 +25,7 @@ saves; the system generates future task instances on that schedule.
 ## Example 2: P2 User Story (Important)
 
 ```markdown
-### User Story 2 - Edit Recurrence Pattern (Priority: P2)
+### US-2-recurrence-pattern-editing — Edit Recurrence Pattern (Priority: P2)
 
 A user changes a task's recurrence pattern (e.g. weekly → monthly); future occurrences
 regenerate on the new schedule while completed instances are preserved.
@@ -42,7 +42,7 @@ regenerate on the new schedule while completed instances are preserved.
 ## Example 3: P3 User Story (Nice to Have)
 
 ```markdown
-### User Story 3 - Custom Recurrence Patterns (Priority: P3)
+### US-3-custom-recurrence-builder — Custom Recurrence Patterns (Priority: P3)
 
 A power user builds a pattern the standard options don't cover (e.g. "every 2 weeks on
 Tuesday and Thursday") in an advanced recurrence builder.

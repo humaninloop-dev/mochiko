@@ -52,7 +52,7 @@ checkpoint_criteria_met: true  # The implementer's self-assessment (the lead ver
 | `files_modified` | list of strings | yes | Paths of existing files modified (empty list if none) |
 | `brownfield_tasks` | integer | yes | Count of decomposition tasks classified extend/modify (per the card's brownfield exposure) |
 | `domain_deps_added` | list of strings | yes | Domain-layer dependency registry additions made this cycle (empty list if none). The visibility floor for registry growth: additions are disclosed here and surfaced at the checkpoint; a non-empty list always forces a human checkpoint — never auto-approved |
-| `deviations` | list of strings | yes | Departures from the task descriptions, one line each, citing the task ID (e.g. `"T3.4: argon2 over bcrypt (C-012 allows)"`). `[]` if none |
+| `deviations` | list of strings | yes | Departures from the task descriptions, one line each, citing the task ID (e.g. `` "T3.4: argon2 over bcrypt (`product` C-012-password-hashing-policy allows)" ``). `[]` if none |
 | `checkpoint_criteria_met` | boolean | yes | The implementer's assessment of whether the cycle's checkpoint criteria are satisfied; a self-report, not the verdict — the lead verifies independently and decides |
 
 ## Conditional Prose
@@ -153,9 +153,9 @@ checkpoint_criteria_met: false
 ## Failure narrative
 
 T4.3's refresh test (`auth.refresh.test.ts:41`) fails intermittently: the refresh handler
-reads `user.lastLogin` before C3's write commits. Tried serializing on the session row
+reads `user.lastLogin` before `FEAT-XXX-<slug>` C3-<slug>'s write commits. Tried serializing on the session row
 (still races under the test's parallel logins) and moving the read behind the commit hook
 (breaks the T4.2 contract test). The middleware currently guards with a retry, which the
 test's timing still beats about 1 run in 5. Left red; needs a decision between a
-transaction boundary change (touches C3 code) and relaxing the timing assertion.
+transaction boundary change (touches `FEAT-XXX-<slug>` C3-<slug> code) and relaxing the timing assertion.
 ```

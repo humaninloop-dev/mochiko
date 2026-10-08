@@ -74,7 +74,11 @@ sections:
       - id: authoring-epic.identity-grammar
         labels: [artifact-grammar]
         class: must
-        text: Epic identity is `EPIC-XXX` — sequential, the same id family as `FEAT-XXX`.
+        text: >-
+          Epic identity is `EPIC-XXX` — sequential, the same id family as `FEAT-XXX` — and it
+          takes its slug from the manifest's heading (`EPIC-004-<slug>`); a mention carries that
+          slug except at the bare spots the IDs section of `templates/artifact-format.md` names,
+          the home directory `.mochiko/epics/EPIC-XXX/` among them.
       - id: authoring-epic.one-type-two-faces
         labels: [artifact-grammar]
         class: must
@@ -187,7 +191,8 @@ sections:
         class: must
         kind: binding
         text: >-
-          `manifest.md` carries: members — each `FEAT-XXX` linked to its
+          `manifest.md` opens with the epic's definition line, `# EPIC-XXX-<slug> — <name>`, its
+          ID first, and carries: members — each written `FEAT-XXX-<slug>` and linked to its
           `.mochiko/features/FEAT-XXX/` dir · status — `open` / `delivered` / `closed-partial`
           · the why-together line — the relatedness stated at the desk mint that opened it.
       - id: authoring-epic.close-semantics

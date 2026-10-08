@@ -41,6 +41,13 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/validation-constitution/
 and `…/references/ANTI-PATTERNS.md`. The new "No Product Instance" section is a pure addition (D2)
 and rides the decision row. -->
 
+## [v0.118.0] Trace-stamp forms joined in QUALITY-CHECKLIST
+
+- **Disposition:** superseded → `` (`**Trace**: GI-XXX-<slug> (…)` in the ledger; … ``) and "Trace stamps are real IDs (e.g., "GI-031-error-response-logging", NOT "GI-XXX-<slug>")".
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; hand-off P8; the collision guard (the example's number sits outside this repo's GI-001–022))
+- **Content (superseded):** "(`**Trace**: GI-XXX (…)` in the ledger;" and "- [ ] Trace stamps are real IDs (e.g., "GI-007", NOT "GI-XXX")".
+- **Kept deliberately:** line 25's `GI-017` and line 61's "permanent (D4.1 pending)" (decided citations, wave 3); the region line's `<!-- GI-… -->` trace comment (machine-read, bare, D12).
+
 ## [v0.115.0] QUALITY-CHECKLIST — the compliance-module checks retired
 
 - **Disposition:** superseded → deleted or cut to their floor-only form; the section is renamed

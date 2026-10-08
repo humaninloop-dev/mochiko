@@ -23,6 +23,14 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/authoring-user-stories/SKILL.md`. -->
 
+## [v0.118.0] Story heading form joined in `SKILL.md` and `EXAMPLES.md`; `validate-user-stories.py` reads joined, bare and legacy headings
+
+- **Disposition:** superseded → `### US-<n>-<slug> — [Brief Title] (Priority: P#)` (hand-off P4), the three examples `### US-1-recurring-task-creation — …`, `### US-2-recurrence-pattern-editing — …`, `### US-3-custom-recurrence-builder — …`; the script finds joined, bare `### US-<n> —` and legacy `### User Story <n> -` headings, and `check_header_format` passes only those three shapes, the slug lowercase and three words.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; D12 and F21 for the script; D16 for the bare and legacy forms (a bare definition stays valid; eval fixtures hold 95 bare `### US-<n> —` headings); hand-off P4)
+- **Content (superseded):** `SKILL.md:46` "### User Story N - [Brief Title] (Priority: P#)"; `EXAMPLES.md` "### User Story 1 - Create Recurring Task (Priority: P1)", "### User Story 2 - Edit Recurrence Pattern (Priority: P2)", "### User Story 3 - Custom Recurrence Patterns (Priority: P3)"; the script's two patterns `r'^###\s+User\s+Story\s+(\d+)\s*[-–—]\s*(.+?)\s*\(Priority:\s*(P[123])\)'` and `r'^###\s+User\s+Story\s+\d+\s*[-–—]\s*.+\s*\(Priority:\s*P[123]\)'`, and the group numbers they fed. Pre-edit file: `git show bf410cc:plugins/mochiko/skills/authoring-user-stories/scripts/validate-user-stories.py`.
+- **Kept deliberately:** the `## User Story Format` heading and the examples' kind headings ("Example n: Pn User Story"); every other check; the separator class `[-–—]`; the file mode (755). Not taken: the per-story files' H1 `# US-<n> —` (the script reads H3 only) and 3 fixture headings using ` · `.
+- **Consumers assessed:** W2-tests is told the story count widens to the three heading forms.
+
 ## [v0.107.0] the User Story Format heading's "the schema's density rules"
 
 - **Disposition:** superseded → "the delivered density rules"

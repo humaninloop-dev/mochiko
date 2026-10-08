@@ -100,7 +100,7 @@ All production code MUST have automated tests.
 
 **Rationale**: Tests enable confident refactoring and catch regressions early. The 80% warning/60% blocking thresholds balance coverage with pragmatism. The ratchet rule prevents coverage erosion over time.
 
-> Note: Current coverage is 65%. See GAP-002 in evolution-roadmap.md for improvement plan.
+> Note: Current coverage is 65%. See GAP-002-test-coverage-shortfall in evolution-roadmap.md for improvement plan.
 
 ---
 

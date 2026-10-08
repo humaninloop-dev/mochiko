@@ -15,7 +15,7 @@ phase: analysis | design       # which phase this round produced — discloses, 
 round: {{round}}
 produced: [constraints-and-decisions.md]   # the D-XXX/C-XXX/IP-XXX rows this round wrote; + store-delta NFR rows when touched; design rounds: [data-model.md, contracts/api.yaml, quickstart.md]
 changed_this_round:            # round 1 of a phase: [initial]; later: the reviewer gap IDs addressed
-  - "{{G2: NFR-003 given a numeric latency target}}"
+  - "{{G2: NFR-003-global-p95-latency given a numeric latency target}}"
 governance_alignment: "{{aligned | the rules/GI IDs touched and any exception, one line}}"
 assumptions: []                # assumptions made this round, one line each with the rationale compressed in
 open_questions:                # producer-surfaced unknowns feeding the clarification loop / gap routing

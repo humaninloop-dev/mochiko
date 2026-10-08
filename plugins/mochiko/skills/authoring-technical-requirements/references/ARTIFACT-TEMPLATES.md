@@ -19,16 +19,16 @@ Templates and field definitions for the **two constraint-layer surfaces this ski
 
 | ID | Type | Source | Severity |
 |----|------|--------|----------|
-| C-001 | infrastructure | Existing production environment | blocking |
-| C-002 | regulatory | GDPR Article 17 | blocking |
+| C-001-<slug> | infrastructure | Existing production environment | blocking |
+| C-002-<slug> | regulatory | GDPR Article 17 | blocking |
 
 ---
 
-### C-001: [Descriptive Title]
+### C-001-<slug>: [Descriptive Title]
 
 **infrastructure · blocking · source:** [where it originates] — [the boundary stated as a one-to-two-line fact, not a preference].
 
-**Impact:** eliminates [design choice A] · requires [consideration B] · shapes D-001
+**Impact:** eliminates [design choice A] · requires [consideration B] · shapes D-001-<slug>
 **Verify:** [how to confirm it still applies — one line]  *(omit if self-evident)*
 
 ---
@@ -41,14 +41,14 @@ Templates and field definitions for the **two constraint-layer surfaces this ski
 
 | ID | Decision | Choice | Shaped By |
 |----|----------|--------|-----------|
-| D-001 | Primary database | PostgreSQL 15 | C-001 |
-| D-002 | Auth mechanism | JWT with refresh tokens | C-003 |
+| D-001-<slug> | Primary database | PostgreSQL 15 | C-001-<slug> |
+| D-002-<slug> | Auth mechanism | JWT with refresh tokens | C-003-<slug> |
 
 ---
 
-### D-001: [Decision Title]
+### D-001-<slug>: [Decision Title]
 
-**Context** ([one-to-two lines: the problem needing a decision]) · **Shaped by:** C-001 · NFR-001
+**Context** ([one-to-two lines: the problem needing a decision]) · **Shaped by:** C-001-<slug> · NFR-001-<slug>
 
 | Option | Pros | Cons |
 |--------|------|------|
@@ -75,19 +75,19 @@ Templates and field definitions for the **two constraint-layer surfaces this ski
 
 | ID | Type | Source Constraint | Priority |
 |----|------|-------------------|----------|
-| IP-001 | compute | C-001 | MUST |
-| IP-002 | ci-cd | C-004, NFR-002 | MUST |
+| IP-001-<slug> | compute | C-001-<slug> | MUST |
+| IP-002-<slug> | ci-cd | C-004-<slug>, NFR-002-<slug> | MUST |
 
 ---
 
-### IP-001: [Descriptive Title]
+### IP-001-<slug>: [Descriptive Title]
 
-**compute · MUST · source:** C-001, NFR-003 — [what must be provisioned, one-to-two lines; WHAT, not HOW].
+**compute · MUST · source:** C-001-<slug>, NFR-003-<slug> — [what must be provisioned, one-to-two lines; WHAT, not HOW].
 
 **Criteria:**
 - [Verifiable condition, one line]
 
-**Deps:** IP-002  *(omit if none)*
+**Deps:** IP-002-<slug>  *(omit if none)*
 
 ---
 
@@ -97,22 +97,22 @@ Templates and field definitions for the **two constraint-layer surfaces this ski
 
 | ID | Kind | Source | Downstream home |
 |----|------|--------|-----------------|
-| INT-001 | integration | FR-001 | POST /auth/token (`x-integration`) |
-| DS-001 | sensitivity | FR-004 | User.email (Confidential) |
+| INT-001-<slug> | integration | `<spec-slug>` FR-001-<slug> | POST /auth/token (`x-integration`) |
+| DS-001-<slug> | sensitivity | `<spec-slug>` FR-004-<slug> | User.email (Confidential) |
 
 ---
 
-### INT-001: [External System]
+### INT-001-<slug>: [External System]
 
-**integration · criticality: hard · source:** FR-001 — the feature MUST integrate with [system]; its unavailability is [criticality].
+**integration · criticality: hard · source:** `<spec-slug>` FR-001-<slug> — the feature MUST integrate with [system]; its unavailability is [criticality].
 
 **Authored downstream:** [endpoint carrying the `x-integration` boundary] (`mochiko:patterns-api-contracts`)
 
 ---
 
-### DS-001: [Data Class]
+### DS-001-<slug>: [Data Class]
 
-**sensitivity · source:** FR-004 — the feature handles [data], which is sensitive and MUST be classified and protected.
+**sensitivity · source:** `<spec-slug>` FR-004-<slug> — the feature handles [data], which is sensitive and MUST be classified and protected.
 
 **Authored downstream:** [entity.attribute] (`mochiko:patterns-entity-modeling`)
 
@@ -123,7 +123,7 @@ Templates and field definitions for the **two constraint-layer surfaces this ski
 
 | Field | Required | Format | Rules |
 |-------|----------|--------|-------|
-| ID | Yes | C-XXX | Sequential per prefix, three-digit padded, from the product file's high-water mark (`sequential-ids`) |
+| ID | Yes | C-XXX-<slug> | Sequential per prefix, three-digit padded, from the product file's high-water mark (`sequential-ids`) |
 | Title | Yes | Free text | Descriptive, concise |
 | Type | Yes | infrastructure / compatibility / regulatory / migration / organizational | On the statement line; exactly one type |
 | Source | Yes | Free text | On the statement line; traceable origin — system, regulation, contract, team |
@@ -136,10 +136,10 @@ Templates and field definitions for the **two constraint-layer surfaces this ski
 
 | Field | Required | Format | Rules |
 |-------|----------|--------|-------|
-| ID | Yes | D-XXX | Sequential per prefix, three-digit padded, from the product file's high-water mark (`sequential-ids`) |
+| ID | Yes | D-XXX-<slug> | Sequential per prefix, three-digit padded, from the product file's high-water mark (`sequential-ids`) |
 | Title | Yes | Free text | Descriptive, concise |
 | Context | Yes | One-to-two lines | The problem that needed solving |
-| Shaped By | Yes | C-XXX / NFR-XXX references | On the context line; constraints and NFRs that narrowed options |
+| Shaped By | Yes | C-XXX-<slug> / NFR-XXX-<slug> references | On the context line; constraints and NFRs that narrowed options |
 | Options | Yes | Table, one line per option | Minimum 2 alternatives with pros/cons |
 | Choice | Yes | Free text | Selected option |
 | Rationale | Yes | ≤ 3 lines | WHY, not just WHAT |
@@ -150,22 +150,22 @@ Templates and field definitions for the **two constraint-layer surfaces this ski
 
 | Field | Required | Format | Rules |
 |-------|----------|--------|-------|
-| ID | Yes | IP-XXX | Sequential, three-digit padded |
+| ID | Yes | IP-XXX-<slug> | Sequential, three-digit padded |
 | Title | Yes | Free text | Descriptive, concise |
 | Type | Yes | compute / networking / storage / ci-cd / monitoring / security / environment-config | On the statement line; exactly one |
-| Source | Yes | C-XXX / NFR-XXX refs | On the statement line; constraints/NFRs that necessitate this |
+| Source | Yes | C-XXX-<slug> / NFR-XXX-<slug> refs | On the statement line; constraints/NFRs that necessitate this |
 | Priority | Yes | MUST / SHOULD / MAY | RFC 2119, on the statement line |
 | Statement | Yes | One-to-two lines | WHAT to provision, not HOW — no separate Description paragraph |
 | Criteria | Yes | Bullet list, one line each | Independently verifiable |
-| Deps | No | IP-XXX refs | Other infra items this depends on |
+| Deps | No | IP-XXX-<slug> refs | Other infra items this depends on |
 
 ### Field Definitions — Declarations
 
 | Field | Required | Format | Rules |
 |-------|----------|--------|-------|
-| ID | Yes | INT-XXX / DS-XXX | Sequential per prefix, three-digit padded, from the product file's high-water mark (`sequential-ids`) |
+| ID | Yes | INT-XXX-<slug> / DS-XXX-<slug> | Sequential per prefix, three-digit padded, from the product file's high-water mark (`sequential-ids`) |
 | Kind | Yes | integration / sensitivity | On the statement line |
-| Source | Yes | FR-XXX / SC-XXX reference | On the statement line; the business promise the declaration serves |
+| Source | Yes | `<spec-slug>` FR-XXX-<slug> / SC-XXX-<slug> reference | On the statement line; the business promise the declaration serves |
 | Criticality | INT only | hard / degraded / optional | How the feature behaves when the external system is unavailable |
 | Statement | Yes | One line | *That* the concern exists — never its downstream structure |
 | Authored downstream | Yes | Artifact + owning skill | Where the boundary or classification is built out; a declaration with no named home is incomplete |
@@ -223,14 +223,14 @@ cites the C-XXX or IP-XXX the target constrains.
 
 | Field | Required | Format | Rules |
 |-------|----------|--------|-------|
-| ID | Yes | NFR-XXX | Sequential, three-digit padded, the next free id in the store at write time |
+| ID | Yes | NFR-XXX-<slug> | Sequential, three-digit padded, the next free id in the store at write time |
 | Title | Yes | Free text | Descriptive, concise |
 | Category | Yes | performance / availability / scalability / security / usability / maintainability | On the statement line; exactly one category |
-| Source | Yes | FR-XXX / SC-XXX reference | On the statement line; the business promise the target serves — an SLA or stakeholder gloss may ride alongside, never instead |
+| Source | Yes | `<spec-slug>` FR-XXX-<slug> / SC-XXX-<slug> reference | On the statement line; the business promise the target serves — an SLA or stakeholder gloss may ride alongside, never instead |
 | Requirement | Yes | One line | The quality attribute — the statement IS the description |
 | Target | Yes | Numeric | Specific, measurable threshold |
 | Measured | Yes | Compact line or short list | Tool, conditions, frequency of measurement |
-| Applies to | No | C-XXX / IP-XXX references | Which constraints or provisioning items this NFR constrains |
+| Applies to | No | `` `product` C-XXX-<slug> / IP-XXX-<slug> `` references (the spec's slug in place of `product` for a spec's own file) | Which constraints or provisioning items this NFR constrains |
 
 ### NFR Categories with Examples
 
@@ -248,13 +248,13 @@ cites the C-XXX or IP-XXX the target constrains.
 Every target's `Measured:` line names **what tool**, **under what conditions**, and **how frequently**. Compact example — the fields as they ride a concern row, not as a document section:
 
 ```markdown
-NFR-001 — API Response Latency
+NFR-001-api-response-latency — API Response Latency
 
-**performance · source:** FR-001 (real-time interaction expectation) — API responses feel instantaneous under production load.
+**performance · source:** `<spec-slug>` FR-001-<slug> (real-time interaction expectation) — API responses feel instantaneous under production load.
 
 **Target:** p95 < 200ms, p99 < 500ms
 **Measured:** APM, rolling 24h windows, continuous — at 1,000 concurrent users (70% read / 20% write / 10% search); excludes maintenance windows and bulk imports
-**Applies to:** C-001 · IP-002
+**Applies to:** `product` C-001-<slug> · IP-002-<slug>
 ```
 
 ---
@@ -263,8 +263,8 @@ NFR-001 — API Response Latency
 
 All artifact types follow the same numbering conventions:
 
-1. **Three-digit padding:** C-001, not C-1
+1. **Three-digit padding:** C-001-<slug>, not C-1-<slug>
 2. **Next free id at write time:** a new entry takes the next free id after its file's high-water mark, and a landed id is never reused. For C- / D- / IP- / INT- / DS-, a gap left by an abandoned run's reverted entries is legal (`sequential-ids`); NFR- ids follow the store's own sequence
 3. **Prefix identifies type:** C- / D- / NFR- / IP- / INT- / DS-
-4. **Cross-references use full ID:** "See C-001" not "See constraint 1"
+4. **Cross-references use full ID:** "See C-001-<slug>" not "See constraint 1" — each ID written joined, behind its owner when cited from another file, per the IDs section of [`artifact-format.md`](../../../templates/artifact-format.md)
 5. **Grouping by concern:** Related items should be sequential where possible

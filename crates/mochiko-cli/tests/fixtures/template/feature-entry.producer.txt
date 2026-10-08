@@ -1,6 +1,7 @@
 # Feature Map Entry (per-capability)
 
-One file per capability: .mochiko/features/FEAT-XXX-<slug>.md. Authored and amended per
+One file per capability: .mochiko/features/FEAT-XXX-<slug>.md — the file's slug is the ID's
+slug, `FEAT-XXX-<slug>`. Authored and amended per
 mochiko:authoring-feature-map — the skill carries the derivation method, the work-row and
 fold rules, and the write timing; this shape carries only the structure. An entry is a
 durable capability plus a block of transient work rows (its delivery increments); there is
@@ -11,12 +12,12 @@ artifact-format.md rule 6.
 
 ## Header & Status
 
-Title "# FEAT-{{XXX}} — {{capability_name}}" plus a Status line
+Title "# FEAT-{{XXX}}-{{slug}} — {{capability_name}}" plus a Status line
 (proposed | in-flight | delivered | retired) and one status-dependent detail line:
   in-flight  -> since {{date}} · live work rows in run(s): `.mochiko/specs/{{spec-slug}}/`
                 (or the owning lane run, for feature-command growth-door work)
   delivered  -> since {{date}} · sticky — live rows may still be visible below
-  retired    -> {{date}} · ruling: {{pointer}}  (or, on a merge: merged-into FEAT-{{YYY}})
+  retired    -> {{date}} · ruling: {{pointer}}  (or, on a merge: merged-into FEAT-{{YYY}}-{{slug}})
   proposed   -> surfaced by {{spec-slug}} ({{date}}) — or, for a capability stub,
                 minted by /mochiko:feature ({{date}}) · marked `unrefined`
 Reconstructed entries add: `reconstructed-from-code ({{date}}) — first touching spec
@@ -78,9 +79,9 @@ _Density:_ IDs and pointers only, newest first
 ## Obligations — optional
 
 Deferred completeness pointers riding this entry until the work builds — one line each,
-distinct from work rows (which are cut delivery increments): deferred SC-XXX (travels here
+distinct from work rows (which are cut delivery increments): deferred `<spec-slug>` SC-XXX-<slug> (travels here
 when its covering capability went unselected) · deferred seams ("when built, verify seam
-against FEAT-XXX") · cross-cutting extend obligations from stories homed elsewhere.
+against FEAT-XXX-<slug>") · cross-cutting extend obligations from stories homed elsewhere.
 
 _Density:_ one line each
 
@@ -101,7 +102,7 @@ Checked mechanically before the write lands. Each line is a string or a count, n
 
 ## Skeleton
 
-# FEAT-{{XXX}} — {{capability_name}}
+# FEAT-{{XXX}}-{{slug}} — {{capability_name}}
 
 > Status: {{status}}  <!-- proposed | in-flight | delivered | retired -->
 > {{status_line_detail}}
@@ -125,11 +126,11 @@ Checked mechanically before the write lands. Each line is a string or a count, n
 
 ## Architecture
 
-- {{SPN-XXX | AX-XXX}} — {{element_name}} (`.mochiko/product/architecture/`)
+- {{SPN-XXX | AX-XXX}}-{{slug}} — {{element_name}} (`.mochiko/product/architecture/`)
 
 ## Story trace
 
-- {{spec-slug}}: US-{{n}}, US-{{n}}
+- `{{spec-slug}}` US-{{n}}-{{slug}}, US-{{n}}-{{slug}}
 
 ## Obligations
 

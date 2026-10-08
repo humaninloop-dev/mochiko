@@ -16,6 +16,15 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/authoring-requirements/SKILL.md`. -->
 
+## [v0.118.0] FR and SC definition lines joined; `validate-requirements.py` accepts the joined form
+
+- **Disposition:** superseded → `SKILL.md` FR lines `- **FR-00N-<slug>**: …` (placeholder text, so a placeholder slug) and SC lines with coined slugs (`SC-001-task-creation-time`, `SC-002-recurring-task-adoption`, `SC-003-scheduling-ticket-volume`). The script's capture takes an optional slug, only the prefix is upper-cased, and `check_format` accepts bare `FR-XXX` (D16) or exactly three lowercase slug words (D19), the slug checked case-sensitively inside the `IGNORECASE` pattern.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; D12 and F21 for the script; hand-off P10)
+- **Content (superseded):** `SKILL.md`: "- **FR-001**: System MUST [specific capability]", "- **FR-002**: Users MUST be able to [specific action]", "- **FR-003**: System SHOULD [recommended behavior]", "- **FR-004**: System MAY [optional capability]", "- **SC-001**: Users complete…", "- **SC-002**: 95% of users…", "- **SC-003**: Support tickets…". Script: the capture `rf'\*\*({prefix}-(\d{{3}}))[\*:]+…'`, `req_id = match.group(1).upper()`, and `check_format`'s `rf'^{prefix}-\d{{3}}$'` with "Invalid format (expected {prefix}-XXX)". Pre-edit file: `git show bf410cc:plugins/mochiko/skills/authoring-requirements/scripts/validate-requirements.py`.
+- **Kept deliberately:** the RFC 2119 keywords and the requirement text; numbering stays keyed on the number (D4); the file mode (644).
+- **Pre-existing bug fixed under this edit (the lead's 2026-10-08 ruling Q1, a scope addition):** the requirement-text lookahead `(?=\n\*\*{prefix}-|…)` became `(?=\n\s*(?:[-*]\s+)?\*\*{prefix}-|…)`. Before it, a bulleted list — the `SKILL.md` template's own form, `- **FR-001**:` — ended each requirement's text only at the next `##`, so the first requirement swallowed the rest and the script found one FR per section, bare or joined (a real eval spec with six bulleted FRs read as one). Red: a bulleted bare-plus-joined fixture found 1, expected 2; green: 2, and no other fixture regressed. Superseded text: `(?=\n\*\*{prefix}-|\n##|\n\n##|\Z)`.
+- **Consumers assessed:** `authoring-requirements.validation-script` (advisory) reads the script's output; W2-tests is told FR IDs now keep their slug's case.
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

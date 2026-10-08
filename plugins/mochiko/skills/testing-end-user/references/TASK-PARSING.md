@@ -77,13 +77,14 @@ The legal field set (which fields exist and whether they are required) is define
 ```
 START: Line matching `**TEST:**` at the foot of a cycle card
        (legacy: a task line matching `- [ ] **T{N}.{X}**: **TEST:`)
-END: Next `### Cycle` heading, next task line, OR end of the block
+END: Next cycle-card heading (`### - [ ] C<n>-…`; a pre-upgrade card's `### - [ ] Cycle <n>:`),
+     next task line, OR end of the block
 ```
 
 ### 2. Extract the Owning Cycle
 
-The gate belongs to the card it sits on — take the cycle number from the enclosing
-`### - [ ] Cycle {N}:` heading. (Legacy task-line form: `\*\*T(\d+)\.(\d+)\*\*:` yields
+The gate belongs to the card it sits on — take the cycle number from the digits after `C` in
+the enclosing `### - [ ] C{N}-<slug> —` heading (a pre-upgrade card: `### - [ ] Cycle {N}:`). (Legacy task-line form: `\*\*T(\d+)\.(\d+)\*\*:` yields
 cycle and task number.)
 
 ### 3. Extract Test Type

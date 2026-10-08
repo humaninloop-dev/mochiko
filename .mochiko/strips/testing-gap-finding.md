@@ -26,6 +26,13 @@ Ruling: `.mochiko/brainstorms/impeccable-design-integration/record.md` D8 · D11
 `DECISIONS.md` 2026-09-19 row and that session's `wave1-design-integration.md`. Pre-edit verbatim
 text: `git show 6e4b264:plugins/mochiko/skills/testing-gap-finding/SKILL.md`. -->
 
+## [v0.118.0] Durable-gates example IDs joined
+
+- **Disposition:** superseded → `# FEAT-014-<slug> — Durable gates` and `Source: … FEAT-014-<slug> final validation (spec-violation, `<spec-slug>` SC-003-<slug>)`.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; D11 (S4) for the SC owner)
+- **Content (superseded):** "# FEAT-014 — Durable gates" and "- Source: gap-finding pass, FEAT-014 final validation (spec-violation, SC-003)".
+- **Kept deliberately:** lines 62, 64 and 98 (family names).
+
 ## [v0.114.0] "Accessibility probing — declined" superseded for verification only
 
 - **Disposition:** superseded → the delivered rule `testing-gap-finding.a11y-verification-routing`

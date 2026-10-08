@@ -1,0 +1,151 @@
+grammar: 1
+id: 0047-joined-id-minting-rules
+sequence: 47
+intent: >-
+  Write the joined ID form into the log's minting rules (human-readable-ids D1, with D2, D3, D9,
+  D13, D19 and D21; build question B4): each family's minting grammar, definition line, marker and
+  example IDs go joined; EPIC gains its definition line, the manifest heading; cross-file citation
+  forms carry their owner (D11) — a C-family pair behind its product file's owner, a
+  build-raised entry's cycle behind the run's key; brainstorm and setup point at the IDs section
+  of templates/artifact-format.md. Every reword keeps its id, class, kind and anchor.
+anchor: 2026-10-08 human-readable-ids D1
+hash: sha256:825cff1f60ec6953ac6f2f4f8473962de95f72d8c0de6c50fa18ba3bb0af070b
+changes:
+  - op: reword-rule
+    schema: skill/authoring-requirements
+    id: authoring-requirements.fr-format
+    text: >-
+      Functional requirements use the FR-XXX form, each requirement's ID joined to a three-word
+      topic slug (`FR-007-<slug>`), with RFC 2119 keywords — MUST (absolute; no exceptions) ·
+      SHOULD (recommended; valid exceptions may exist) · MAY (optional).
+  - op: reword-rule
+    schema: skill/authoring-requirements
+    id: authoring-requirements.fr-numbering
+    text: >-
+      FR numbering is sequential, three-digit padded, no gaps (FR-001-<slug>, FR-002-<slug>…);
+      related requirements group together.
+  - op: reword-rule
+    schema: skill/authoring-requirements
+    id: authoring-requirements.sc-format
+    text: >-
+      Define 3–5 measurable outcomes in SC-XXX form — three-digit padded, written joined
+      (`SC-001-<slug>`).
+  - op: reword-rule
+    schema: skill/authoring-feature-map
+    id: authoring-feature-map.retired-terminal
+    text: >-
+      `retired` is terminal: entry kept, dated, provenance intact — never deleted. An epic
+      member's pending or live work row carries an inline `[EPIC-XXX-<slug>]` marker that vanishes
+      with the row at its graduation fold.
+  - op: reword-rule
+    schema: skill/authoring-epic
+    id: authoring-epic.identity-grammar
+    text: >-
+      Epic identity is `EPIC-XXX` — sequential, the same id family as `FEAT-XXX` — and it
+      takes its slug from the manifest's heading (`EPIC-004-<slug>`); a mention carries that slug
+      except at the bare spots the IDs section of `templates/artifact-format.md` names, the home
+      directory `.mochiko/epics/EPIC-XXX/` among them.
+  - op: reword-rule
+    schema: skill/authoring-architecture-store
+    id: authoring-architecture-store.element-grammar
+    text: >-
+      Spine elements carry `SPN-XXX` (unique store-wide), written joined `SPN-XXX-<slug>`, a kind
+      — `container` · `boundary` · `flow` — a name, and a status; concern rows carry
+      `AX-XXX` (unique store-wide), written joined `AX-XXX-<slug>` — a graduated row's file name
+      carries the same slug — a name, a `Stance`, and a `Status`. Everything past that core is
+      free-form — the schema constrains the skeleton, never the voice.
+  - op: reword-rule
+    schema: skill/authoring-technical-requirements
+    id: authoring-technical-requirements.sequential-ids
+    text: >-
+      ID sequences are sequential per prefix, three-digit padded (C-, D-, IP-, INT-, DS-), each
+      written joined (`D-012-<slug>`) per the IDs section of `templates/artifact-format.md`,
+      continuing the product file's own sequence at write time — the next free id after its
+      high-water mark, a `removed` stub's id counting as taken — never a feature-local run from
+      `001`. A landed id is never reused; a gap left when an abandoned run's reverted entries were
+      minted over is legal.
+  - op: reword-rule
+    schema: skill/authoring-constitution
+    id: authoring-constitution.every-principle-traces
+    text: >-
+      Every authored principle carries its GI trace — on `CLAUDE.md` as an HTML comment beside
+      the line, the bare number, and always in the ledger as the `GI-XXX-<slug> (floor-asserted:
+      CARD-ID | deck-kept: CARD-ID | minted)` key, the canonical trace record.
+  - op: reword-rule
+    schema: command/brainstorm
+    id: brainstorm.deliverable-record
+    text: >-
+      The deliverable is ${record_path} — kebab-case `<slug>` derived at the start, decisions in
+      one `D1…` namespace; a card's number takes its topic slug, and cites of it inside or
+      outside the record follow the IDs section of `templates/artifact-format.md`.
+  - op: reword-rule
+    schema: command/brainstorm
+    id: brainstorm.decision-cards
+    text: >-
+      Each decision's one home in ${record_path} is a card headed by its joined ID and its name
+      (`### D<n>-<slug> — <name>`), with fixed parts — statement · why · rejected roads ·
+      accepted risk · how it was decided · changed at review; everything else in the record
+      points at the card by name with at most a one-line gist.
+  - op: reword-rule
+    schema: command/setup
+    id: setup.synthesis-artifact
+    text: >-
+      The synthesis: ${memory_dir}/governance-intent.md, from the governance-intent template
+      (rendered by mochiko-cli template governance-intent) — the durable amend baseline; its GI
+      elements are numbered per that template's GI-ID rule and slugged per the IDs section of
+      `templates/artifact-format.md`.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.baseline-entry-grammar
+    text: >-
+      Every product-baseline entry a run writes or amends carries a `**Lifecycle:**` field of its
+      own, apart from any stance field (the store's lifecycle field is its `Status`; a constraints
+      entry's `**Status:**` stays its stance). The key is the run's owner: `FEAT-XXX` for a
+      feature run, `EPIC-XXX` for an epic's shared write, `lane-<slug>` for a product-lane run.
+      Before the design checkpoint every run write reads `proposed (<key>)`: a new entry, an
+      amended one with its new text in place, a removed one with its heading and marker kept and
+      its body cut. The sign-off flips each by the pinned-base diff — absent at the base to
+      `in-flight (<key>)`, changed from it to `modifying (<key>)`, cut to its heading to `removing
+      (<key>)`. A build-time decision is written directly in that post-sign form — new
+      `in-flight`, amended `modifying`, removed `removing` — its judgment graded by the landing
+      verification seat. At landing `in-flight` and `modifying` flip to `built`, the key cleared;
+      a `removing` entry becomes its stub (heading kept, `**Lifecycle:** removed`, no body, no
+      key, its id still taken). An entry with no `**Lifecycle:**` field reads `built`. Readers:
+      `proposed` is nothing promised and reads absent; the in-flight class (`in-flight` ·
+      `modifying` · `removing`) is planned contract; `removed` reads absent; `built` or no field
+      is delivered. A new entry takes the next free id of the product file's own sequence at write
+      time, written joined with its three-word topic slug per the IDs section of
+      `templates/artifact-format.md`, a `removed` stub's id counting as taken — no feature-local
+      sequence, no renumbering at landing. The why lives on the entry (a constraints entry's
+      `Source` · `Shaped by` · `Impact`; a build-raised entry's `**Raised:**` and one-line
+      `**Weighed:**`), never in a ledger; the commit message is not a carrier. Prior text is never
+      kept beside the new — the pinned-base diff shows it. Where the marker sits: in
+      data-model.md and quickstart.md the `**Lifecycle:**` line is the first line under the entry
+      heading; in constraints-and-decisions.md it is the same first line, above the stance line
+      (`**Class:** … · **Status:** …`), never sharing it; a build-raised entry's
+      ``**Raised:** `<key>` C<n>-<slug>`` — the run's key in a code span, a FEAT or EPIC key
+      written joined — and `**Weighed:** <why, one line>` follow it directly, one line each. A
+      contracts/ .md entry is the heading of the clause that changes, at the level its sibling
+      clauses use, `**Lifecycle:**` its first line; api.yaml takes an `x-lifecycle` key on the
+      changed operation or schema, with the same values, a removed one keeping only its summary
+      and `x-lifecycle: removed`. The architecture store takes no separate field and keeps its own
+      `**Name**:` form: a spine element's lifecycle is its Status column, with Raised and Weighed
+      columns filled on a build-raised element; a concern row's is its `- **Status**:` field,
+      followed on a build-raised row by `- **Raised**:` and `- **Weighed**:`; a removed concern
+      keeps its heading and `- **Status**: removed`, a removed spine row its id, kind, name and
+      status, not drawn. Every brief to a seat that writes or amends a product baseline carries
+      this rule as an obligated read.
+  - op: reword-rule
+    schema: skill/review-feasibility
+    id: review-feasibility.findings-cite-ids
+    text: >-
+      Findings cite the IDs in tension, each joined behind its product file's owner (`` `product`
+      C-003-<slug> ↔ `product` D-007-<slug> ``), with the four gate-fuel fields.
+  - op: reword-rule
+    schema: skill/authoring-epic
+    id: authoring-epic.manifest-required-fields
+    text: >-
+      `manifest.md` opens with the epic's definition line, `# EPIC-XXX-<slug> — <name>`, its ID
+      first, and carries: members — each written `FEAT-XXX-<slug>` and linked to its
+      `.mochiko/features/FEAT-XXX/` dir · status — `open` / `delivered` / `closed-partial` ·
+      the why-together line — the relatedness stated at the desk mint that opened it.

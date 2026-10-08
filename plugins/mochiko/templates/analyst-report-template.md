@@ -14,7 +14,7 @@ feature: {{feature_id}}
 round: {{round}}
 produced: [spec.md]
 changed_this_round:            # round 1: [initial]; later rounds: the gap IDs / changes addressed
-  - "{{G3: added expiry edge case to US2}}"
+  - "{{G3: added expiry edge case to `lunch-orders` US-2-order-expiry-handling}}"
 assumptions:                   # one line each, with the rationale compressed in
   - {id: A1, assumption: "{{assumption}}", why: "{{rationale, one line}}"}
 open_questions: []             # producer-surfaced unknowns feeding the clarification loop

@@ -98,6 +98,11 @@ renders of the log, compared byte for byte.*
     the diff check holds. Shapes the tool already leaves bare (ranges, lists of four or more, masked
     spans) stay bare. Census: W3-C found 343 such mentions in 86 files (`scratchpad/w3c-shorthand.tsv`).
     Fallback if the code review fails twice: the mentions stay bare (D18 as narrowed).
+    *P1's plan questions, ruled by the lead within the ruling's own words (2026-10-08):* Q1 — a path
+    qualifier names its mention's owner only; it does not make the line name one owner, so a bare
+    `D<n>` beside it stays as D11 as narrowed leaves it (`line_sessions` unchanged; C2's lesson).
+    Q2 — only the tree-root path `.mochiko/brainstorms/<slug>/record.md` names a session; a bare
+    `` `record.md` `` or `` `<slug>/record.md` `` stays bare (D18 as narrowed).
 
 ## Build questions for the user — ruled 2026-10-08
 

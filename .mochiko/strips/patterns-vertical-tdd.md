@@ -27,6 +27,14 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 review-amended (`DECISIONS.md` 2026-09-24 "Setup goes product-agnostic ruled" row). Pre-edit
 verbatim text: `git show bbe303f:plugins/mochiko/skills/patterns-vertical-tdd/references/TEST-GRAMMAR.md`. -->
 
+## [v0.118.0] Cycle and story example IDs joined in `SKILL.md`, `BUNDLE-IDENTIFICATION.md` and `TEST-GRAMMAR.md`
+
+- **Disposition:** superseded → cycle IDs in the joined `C<n>-<slug>` form (the slicing blocks, the worked example's cards written `C1-walking-skeleton-path — Walking skeleton: …` as the tasks template heads them, the anti-pattern blocks), the step-1 story list joined, the Story→Cycle table's stories behind `` `task-tracker` `` and cycles joined, and the TEST examples' FLOW and SCR IDs behind `` `storefront` ``.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; hand-off P5; D11 (S4) and the lead's Q-A ruling for owners on the modeled `tasks.md` table and TEST lines)
+- **Content (superseded):** `SKILL.md`: "Cycle 1: All models        Cycle 2: All services        Cycle 3: All endpoints", "Cycle 1: User creation (…)", "Cycle 2: User authentication (…)". `BUNDLE-IDENTIFICATION.md`: the story list "US-1 (P1): …" to "US-5 (P3): …", "C1 is the walking skeleton…", the table rows "| US-1 | C1 (walking skeleton) |…" to "| US-5 | C5 |…", "If C4 depends on C3, and C3 is P2 while C4 is P3…", the cards "C1: Walking skeleton — …" to "C4: [P] Filtering — …", and the anti-pattern lines "Cycle 1: All database models" … "Cycle 2: Apply to all entities" with "…until Cycle 4 completes." `TEST-GRAMMAR.md`: "**TEST:** FLOW-002 checkout path walks end-to-end in the built app", "(per FLOW-002 steps)", "**TEST:** SCR-004 settings screen meets the measurable UI floor…". Pre-edit file: `git show bf410cc:plugins/mochiko/skills/patterns-vertical-tdd/references/BUNDLE-IDENTIFICATION.md`.
+- **Kept deliberately:** `C2, C3, C4, C5` (a list of four, D5); "Cycle A / Cycle B" (generic letters); TEST-GRAMMAR:105 (`FLOW-XXX`, a family name). Each anti-pattern block and the worked example model a different `tasks.md`, so `C1`–`C4` take one slug per block.
+- **Consumers assessed:** `patterns-vertical-tdd.sec.discipline` and the tasks template (0046) already head cards `### - [ ] C<n>-<slug> — <title>`.
+
 ## [v0.115.0] TEST-GRAMMAR's accessibility assert — the attached a11y module
 
 - **Disposition:** superseded → "the checks the design baseline's Accessibility pointer names, else"

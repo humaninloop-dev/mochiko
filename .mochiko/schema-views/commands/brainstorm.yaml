@@ -179,7 +179,9 @@ sections:
         kind: binding
         text: >-
           The deliverable is ${record_path} — kebab-case `<slug>` derived at the start,
-          decisions in one `D1…` namespace.
+          decisions in one `D1…` namespace; a card's number takes its topic slug, and cites of
+          it inside or outside the record follow the IDs section of
+          `templates/artifact-format.md`.
       - id: brainstorm.record-as-you-go
         labels: [evidence]
         class: must
@@ -220,10 +222,10 @@ sections:
         class: must
         kind: binding
         text: >-
-          Each decision's one home in ${record_path} is a card titled by its name, with fixed
-          parts — statement · why · rejected roads · accepted risk · how it was decided ·
-          changed at review; everything else in the record points at the card by name with at most
-          a one-line gist.
+          Each decision's one home in ${record_path} is a card headed by its joined ID and its
+          name (`### D<n>-<slug> — <name>`), with fixed parts — statement · why · rejected
+          roads · accepted risk · how it was decided · changed at review; everything else in
+          the record points at the card by name with at most a one-line gist.
         anchor: 2026-10-06 brainstorm-target-state D9
       - id: brainstorm.facts-quoted
         labels: [evidence]

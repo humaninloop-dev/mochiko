@@ -12,6 +12,13 @@ report lands in its home's `reports/` directory) and D3 (the homes as the migrat
 with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 `git show 794cea8:plugins/mochiko/templates/techanalyst-report-template.md`. -->
 
+## [v0.118.0] `changed_this_round` example NFR joined
+
+- **Disposition:** superseded → `"{{G2: NFR-003-global-p95-latency given a numeric latency target}}"`.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`)
+- **Content (superseded):** "  - "{{G2: NFR-003 given a numeric latency target}}"".
+- **Kept deliberately:** line 16's kind list ("the D-XXX/C-XXX/IP-XXX rows this round wrote") and `G2` (a local label). The slug matches `FEASIBILITY-LENS.md`'s NFR-003, so one NFR-003 carries one slug across the two example files.
+
 ## [v0.109.0] Usage Note 7's output location sits at an undeclared name in the spec home
 
 - **Disposition:** superseded → `.mochiko/specs/<slug>/reports/techanalyst-report.md`, the spec

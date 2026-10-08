@@ -35,7 +35,7 @@ Every constraint MUST name what it comes from — a business requirement, a succ
 
 **Pattern** (the source rides the statement line — see ARTIFACT-TEMPLATES.md):
 ```markdown
-## C-001: Existing PostgreSQL Infrastructure
+## C-001-existing-postgresql-infrastructure: Existing PostgreSQL Infrastructure
 
 **infrastructure · MUST · source:** production fact (PostgreSQL 15 cluster in place) — …
 ```
@@ -48,16 +48,16 @@ Constraints SHOULD reference the decisions they shaped. Decisions MUST reference
 
 **Pattern (Constraint side):**
 ```markdown
-## C-001: Existing PostgreSQL Infrastructure
+## C-001-existing-postgresql-infrastructure: Existing PostgreSQL Infrastructure
 
-**Impact:** eliminates NoSQL options · shapes D-001 (database choice)
+**Impact:** eliminates NoSQL options · shapes D-001-primary-database-choice (database choice)
 ```
 
 **Pattern (Decision side):**
 ```markdown
-## D-001: Primary Database
+## D-001-primary-database-choice: Primary Database
 
-**Context** (…) · **Shaped by:** C-001 (existing PostgreSQL cluster)
+**Context** (…) · **Shaped by:** C-001-existing-postgresql-infrastructure (existing PostgreSQL cluster)
 ```
 
 **Validation rule:** Every D-XXX entry MUST have a non-empty `Shaped by` reference. Every C-XXX entry SHOULD reference at least one D-XXX in its Impact line.
@@ -70,9 +70,9 @@ Every NFR MUST trace to a business source that justifies the target — the FR-X
 
 **Pattern:**
 ```markdown
-## NFR-001: API Response Latency
+## NFR-001-api-response-latency: API Response Latency
 
-**performance · source:** FR-001 (real-time interaction; "instant feedback" expectation, spec §3.2) — …
+**performance · source:** `<spec-slug>` FR-001-<slug> (real-time interaction; "instant feedback" expectation, spec §3.2) — …
 ```
 
 **Validation rule:** No NFR without a source on its statement line. Targets pulled from thin air are not requirements — they are guesses.
@@ -83,9 +83,9 @@ Every constraint or NFR that implies platform work SHOULD reference the IP-XXX i
 
 **Pattern:**
 ```markdown
-## IP-001: Compute Provisioning
+## IP-001-compute-capacity-provisioning: Compute Provisioning
 
-**compute · MUST · source:** C-001 (existing AWS environment), NFR-003 (10k concurrent users) — …
+**compute · MUST · source:** C-001-existing-aws-environment (existing AWS environment), NFR-003-concurrent-user-capacity (10k concurrent users) — …
 ```
 
 **Validation rule:** Every constraint implying platform provisioning has a corresponding IP-XXX; every IP-XXX traces back to a C-XXX or NFR-XXX on its statement line.
@@ -96,9 +96,9 @@ Every INT-XXX and DS-XXX declaration names the downstream artifact that authors 
 
 **Pattern:**
 ```markdown
-## INT-004: Identity Provider
+## INT-004-identity-provider-integration: Identity Provider
 
-**integration · criticality: hard · source:** FR-001 — boundary authored on POST /auth/token (`mochiko:patterns-api-contracts`)
+**integration · criticality: hard · source:** `<spec-slug>` FR-001-<slug> — boundary authored on POST /auth/token (`mochiko:patterns-api-contracts`)
 ```
 
 **Validation rule:** Every INT-XXX resolves to an endpoint carrying `x-integration`; every DS-XXX resolves to at least one classified attribute in `data-model.md`. A declaration with no downstream boundary is an outage waiting to happen; a declaration with no classification is ungoverned sensitive data.
@@ -110,29 +110,29 @@ Some traceability relationships form chains that must be consistent end-to-end. 
 ### Full Traceability Chain
 
 ```
-FR-001 (business: "users can sign in")
-  ├── C-001 (constraint: must use existing identity provider)
-  ├── D-002 (decision: JWT with refresh tokens)
-  ├── NFR-001 (quality: p95 < 200ms)
-  ├── INT-004 (declaration: external identity provider, hard criticality)
-  └── IP-002 (provisioning: identity-provider connectivity)
+FR-001-user-sign-in (business: "users can sign in")
+  ├── C-001-existing-identity-provider (constraint: must use existing identity provider)
+  ├── D-002-jwt-refresh-tokens (decision: JWT with refresh tokens)
+  ├── NFR-001-api-response-latency (quality: p95 < 200ms)
+  ├── INT-004-identity-provider-integration (declaration: external identity provider, hard criticality)
+  └── IP-002-identity-provider-connectivity (provisioning: identity-provider connectivity)
         └── [design tail, authored downstream]
               Entity: User (+ per-attribute sensitivity)  → patterns-entity-modeling
               Endpoint: POST /auth/token (+ x-integration) → patterns-api-contracts
 ```
 
-**Reading this chain:** Business requirement FR-001 is constrained by C-001, informed by decision D-002, must meet NFR-001 latency, depends on the INT-004 integration, and requires IP-002 provisioning. The downstream design tail (the User entity with classified attributes, exposed via an endpoint that integrates with an external identity provider) is authored by the design skills, tracing back up to this constraint chain.
+**Reading this chain:** Business requirement FR-001-user-sign-in is constrained by C-001-existing-identity-provider, informed by decision D-002-jwt-refresh-tokens, must meet NFR-001-api-response-latency, depends on the INT-004-identity-provider-integration integration, and requires IP-002-identity-provider-connectivity provisioning. The downstream design tail (the User entity with classified attributes, exposed via an endpoint that integrates with an external identity provider) is authored by the design skills, tracing back up to this constraint chain.
 
 ### Constraint Impact Chain
 
 ```
-C-002 (regulatory: GDPR Art. 17 right to erasure)
-  ├── D-004 (decision: soft-delete with 30-day purge)
-  ├── DS-002 (declaration: user profile data is Restricted)
-  └── IP-003 (provisioning: scheduled purge job)
+C-002-gdpr-erasure-right (regulatory: GDPR Art. 17 right to erasure)
+  ├── D-004-soft-delete-purge (decision: soft-delete with 30-day purge)
+  ├── DS-002-user-profile-sensitivity (declaration: user profile data is Restricted)
+  └── IP-003-scheduled-purge-job (provisioning: scheduled purge job)
 ```
 
-**Reading this chain:** Regulatory constraint C-002 drives decision D-004, declares the sensitivity of the data it governs, and necessitates the IP-003 provisioning for the purge job. Downstream, this constraint also drives the entity retention policy and a DELETE endpoint — authored in the design skills.
+**Reading this chain:** Regulatory constraint C-002-gdpr-erasure-right drives decision D-004-soft-delete-purge, declares the sensitivity of the data it governs, and necessitates the IP-003-scheduled-purge-job provisioning for the purge job. Downstream, this constraint also drives the entity retention policy and a DELETE endpoint — authored in the design skills.
 
 ## Completeness Validation (Constraint-Layer Artifacts)
 
@@ -189,15 +189,15 @@ These are producer **self-checks** on the constraint-layer artifacts before fina
 
 Every cross-reference (C-XXX, D-XXX, NFR-XXX, IP-XXX, INT-XXX, DS-XXX) appearing in any constraint-layer artifact MUST correspond to an actual entry in the appropriate artifact file.
 
-**Violation example:** D-005 references "C-003" but constraints-and-decisions.md only has C-001 and C-002.
+**Violation example:** D-005-connection-pooling-choice references "C-003-data-retention-window" but constraints-and-decisions.md only has C-001-existing-postgresql-infrastructure and C-002-gdpr-erasure-right.
 
 ### Rule 2: Bidirectional References Should Match
 
-If D-005 lists C-001 as a shaping constraint, then C-001 SHOULD list D-005 in its Impact section. Mismatches indicate incomplete traceability.
+If D-005-connection-pooling-choice lists C-001-existing-postgresql-infrastructure as a shaping constraint, then C-001-existing-postgresql-infrastructure SHOULD list D-005-connection-pooling-choice in its Impact section. Mismatches indicate incomplete traceability.
 
 ### Rule 3: No Contradictory Constraints
 
-If C-001 says "must use existing PostgreSQL" and C-004 says "must support any SQL database," there is a contradiction. Constraints restrict — and two constraints that restrict incompatibly cannot both hold.
+If C-001-existing-postgresql-infrastructure says "must use existing PostgreSQL" and C-004-sql-database-portability says "must support any SQL database," there is a contradiction. Constraints restrict — and two constraints that restrict incompatibly cannot both hold.
 
 ## Design-layer traceability (authored downstream — referenced, not owned here)
 
@@ -223,9 +223,9 @@ For complex features, produce a summary matrix. The constraint-layer producer fi
 
 | FR | Constraints | Decisions | NFRs | Entities | Endpoints |
 |----|-------------|-----------|------|----------|-----------|
-| FR-001 | C-001 | D-002 | NFR-001, NFR-004 | User | POST /auth/token |
-| FR-002 | - | D-001 | NFR-001 | Order, Payment | POST /orders |
-| FR-003 | C-002 | D-004 | NFR-002 | User, Order | DELETE /users/{id} |
+| `<spec-slug>` FR-001-user-sign-in | C-001-existing-identity-provider | D-002-jwt-refresh-tokens | NFR-001-api-response-latency, NFR-004-auth-availability-target | User | POST /auth/token |
+| `<spec-slug>` FR-002-order-placement-flow | - | D-001-primary-database-choice | NFR-001-api-response-latency | Order, Payment | POST /orders |
+| `<spec-slug>` FR-003-account-data-deletion | C-002-gdpr-erasure-right | D-004-soft-delete-purge | NFR-002-deletion-completion-time | User, Order | DELETE /users/{id} |
 ```
 
 This matrix provides a single view of the entire traceability web from business requirements through design, making gaps immediately visible.

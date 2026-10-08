@@ -152,8 +152,10 @@ def check_traceability(content: str) -> Dict[str, Any]:
     # Pattern for user stories (US-001, US-1, US-ABC-001, etc.)
     us_pattern = r'\bUS-[A-Z0-9]+-?[0-9]*\b|\bUS-[0-9]+\b'
 
-    fr_matches = set(re.findall(fr_pattern, content, re.IGNORECASE))
-    us_matches = set(re.findall(us_pattern, content, re.IGNORECASE))
+    # Key each match on its ID core, prefix plus number: a joined ID (FR-012-order-cutoff-time)
+    # matches as `FR-012-`, the same ID as a bare FR-012
+    fr_matches = {m.rstrip('-').upper() for m in re.findall(fr_pattern, content, re.IGNORECASE)}
+    us_matches = {m.rstrip('-').upper() for m in re.findall(us_pattern, content, re.IGNORECASE)}
 
     fr_count = len(fr_matches)
     us_count = len(us_matches)

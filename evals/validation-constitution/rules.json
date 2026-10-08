@@ -346,6 +346,19 @@
   ]
  },
  {
+  "id": "validation-constitution.joined-ids",
+  "rule": "Hold every durable ID the artifact mints or cites to the IDs section of `templates/artifact-format.md`: a new mint is joined, its three slug words naming the topic — never a strength word, a removal ruling's direction word kept; a citation carries its definition's slug, or stays bare where the definition is bare; match on the number within its scope. A bare new mint, a drifted slug, or a slug that misreads its topic is a finding.",
+  "class": "must",
+  "source": "log:validation-constitution.joined-ids",
+  "section": "validation-constitution.sec.verdict",
+  "pointer": "../../templates/artifact-format.md",
+  "labels": [
+   "verdict",
+   "artifact-grammar"
+  ],
+  "mapped_from": []
+ },
+ {
   "id": "validation-constitution.validation-result-block",
   "rule": "The VALIDATION RESULT block carries every line: `VALIDATION RESULT: PASS/FAIL` · checklist items X/Y passed (core + N module fragments, named) · surface integrity (region markers · index→home resolution · rules files paths-scoped · scope coverage · new-file read line present/absent/n-a · universal-in-rules violations) · trace closure (manifest rows closed, primary home + companions · synthesis elements realized-or-flagged · waivers matched · modules matched) · floor accounting (floor + declared level asserted, region stamp = ledger · floor categories principled at the declared level or waived) · anti-patterns found (list or \"none\") · version bump · issues requiring fix (each failure listed) · advisory (judgment-grade, non-blocking — suspected trace-fidelity mismatches, or \"none\").",
   "class": "must",

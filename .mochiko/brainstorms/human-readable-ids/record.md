@@ -51,7 +51,9 @@ changes only by the user's word, stamped here.
   wholesale, and old forms need not resolve; only the project's own release gates (contract suite,
   `cargo test`) still hold for whatever ships.
 - **Betting on** — *guess*: three words carry enough meaning to skip the lookup, and stay true
-  as the thing they name evolves.
+  as the thing they name evolves. **Changed by the user's word, 2026-10-08, at build** (D8's wave-0
+  FAIL, overridden on the lead's lean A, "as recommded"): three topic words tell the reader what an ID
+  is about; reading the rule for what it demands stays the reader's job.
 - **Out of scope** — *guess*: rule IDs (already dotted slugs, e.g. `brainstorm.frame-card`);
   renaming the prefixes themselves (`GI`, `D`).
 - **Proposed size** — *guess*: `standard` — several real forks (which ID families, slug at every
@@ -623,6 +625,14 @@ reusing the ID-to-definition resolution D7's tool needs (scope per F24 and D11).
 definition stays judgment, recorded as OQ4. Rejected: no detection (a missed mention stays wrong
 forever, unseen). Accepted risk: more crate code in an advisory tool.
 
+**Changed at build.** 2026-10-08, build question B3 (`wave1-crate-ids.md`): where the family table
+lives. Ruled, user ("as recommded", lead's lean A): **in crate code** — a table built from F24's facts
+(prefix, padding, scope, definition site); the migration log's grammar does not change, so no grammar
+bump and no lockstep release — **plus a drift test**: a crate test replays the log and fails if a
+family's minting rule shows a form other than the table's. Rejected: the families as data in the log
+(a new node kind, grammar 2 → 3, binary range, hooks and plugin moving together, for a table that
+changes rarely). Accepted risk: a new family means a crate release.
+
 ### D7 — Rename mechanism: a scoped, preview-first `mochiko-cli` rename command, admitted as kernel-class here — `Confident`
 
 **Statement.** `mochiko-cli` gains a rename command — shape `mochiko-cli ids rename <owning-file>
@@ -703,6 +713,18 @@ still the IDs' author, which the baseline narrows but does not remove. **W3**, v
 (lead-found, same class as the reviewer's W2; user: "as recommded"): S9's change carried into the title
 and Statement — they had kept the one-arm test before the mass rewrite.
 
+**Changed at build.** 2026-10-08, wave 0, with arm 1 put to the user: the user waived their own
+marking — "i am okay for you to implement without testing involving me". The user-marked test does
+not run; the user chose a cold-seat replacement ("a, ok, 1-3"): a fresh reader seat guesses from the
+IDs alone, a second fresh seat scores against the true titles, D8's pass rule unchanged. Result
+(`wave0-read-test.md`): **FAIL on clause 1** — the slugged arm 7 "knew" against a bar of 15; gain 7;
+none misled; the slug carried the right topic on 19 of 20 joined IDs against 0 of 20 bare; one topic
+slug on a removal ruling read inverted (item 38). The build stopped and returned to the user.
+**The user overrode the failed gate**, on the lead's lean A ("as recommded"): the build proceeds; the
+bet is restated from "skip the lookup" to "tell the reader what an ID is about" — the part the test
+showed working (19 of 20 against 0 of 20) — and D13 gains direction words for removal rulings. The
+original bet stands recorded as failed by a cold reader, not as passed.
+
 ### D9 — Number form: each family keeps the padding its minting rule states — `Confident`
 
 **Statement.** The number part of the joined form keeps today's padding per family: three digits for
@@ -759,6 +781,20 @@ Rejected: telling them apart by location (ambiguous for a cycle cited inside a r
 from the slug set (narrows D3). Accepted risk: a shipped-template edit, with its strip and audit, and
 a label seats already know changes.
 
+**Changed at build.** 2026-10-08, build question B2 (`wave1-crate-ids.md`): no plugin rule mints this
+repo's own forms, so the crate has no definition site for them — session-prefixed decisions (`PO-D1`,
+`TC-D4`, `OO-D3` and nine more prefixes; 422 live mentions), `AM-n` (276), `J-n` (56), `FP-n` (39),
+`OQ-n` (24), strip census IDs (~130). Ruled, user ("as recommded", lead's weak lean B): **session-
+prefixed decisions are normalized** at back-fill to the D11 form — `PO-D1` becomes
+`` `production-only-focus` D1-<slug> `` — so the crate needs no code for them, and D15's diff check
+accepts that qualifier change as an ID-token change; **the other repo-only forms are slugged once** from
+D14's map and then sit on D18's allowlist, unchecked. Named to the user before the ruling: the
+normalization changes how ~420 mentions look, not only adds a slug — close to the frame's out-of-scope
+"renaming the prefixes (`GI`, `D`)", which does not list these shorthands. Rejected: a declared
+repo file the crate reads (a new hand-kept home for forms no plugin rule mints); slugging every
+repo-only form once with nothing checked. Accepted risk: `AM`/`OQ`/`J`/`FP`/census slugs can drift
+unseen.
+
 ### D11 — Cross-session qualifier: a cite of another session's decision keeps the session slug — `Confident`
 
 **Statement.** A citation of a decision from another session carries that session's slug in front:
@@ -784,6 +820,35 @@ FR-012-csv-report-export `` in a `tasks.md`); project-wide families (`GI`, `FEAT
 the citing file's folder — wrong as soon as a feature has two specs (`feature-entry.yaml:67`), and a
 wrong guess silently rewrites another spec. Accepted risk: longer citations in `tasks.md`, cycle
 reports and feature entries.
+
+**Changed at build.** 2026-10-08, build question B1 (`wave1-crate-ids.md`): `DECISIONS.md`, the
+brainstorms index, `BACKLOG.md` and `ROADMAP.md` carry bare `D<n>` on 550 lines, nearly all inside a
+row or entry that already names one session. Added, user-ruled ("as recommded", lead's lean A): **the
+line names the owner** — a bare session `D<n>` in a row or entry that names exactly one session (a
+link to its record, or a leading `` `slug` `` qualifier) belongs to that session, and the tool and
+the check resolve it so; an explicit qualifier is owed only where the line names none or several.
+Rejected: the literal qualifier on every mention (rows grow by about a third, repeating a name the
+row shows). Accepted risk: a second rule beside D11's, applied line by line.
+**Narrowed at build**, 2026-10-08, after wave 1's code re-review failed twice on it (C2: a qualifier
+mid-line, on the brainstorms index's "Landed" lines, made the tool give a session's bare `D<n>` to the
+superseding session — `index.md:39` and `:58` reproduced; the diff check cannot see an owner error).
+Put to the user with the case against each road (A another fix round on the leading-qualifier rule ·
+B re-staff · C narrow); the lead's lean moved from A to C once a count showed C's cost. Ruled, user:
+"yes go with C" — **only a link to its record names a line's owner**; a leading `` `slug` `` qualifier
+no longer does. Every link and qualifier on the line still counts toward "names several", which leaves
+the line's bare `D<n>` unresolved. A mention's own qualifier is untouched. Accepted risk: about 7 bare
+`D<n>` in 6 lines (the lead's rough script, not the tool) that only a leading qualifier would have
+owned stay bare after back-fill.
+**Changed at build**, 2026-10-08, at wave 3's shard plans (W3-C Q1): 343 mentions in 86 files, most
+of them strips, carry their own qualifier as a code-span path to the owner's record
+(`` `.mochiko/brainstorms/<slug>/record.md` D3 ``). The tool read that path as a qualifier naming no
+session, so neither rename nor check reached them. Put to the user with the case against each road
+(A leave them bare, under D18 as narrowed · C a small crate change, built while the map is drafted);
+user: "as recommended" (the lead's lean C). Added: **a mention's code-span qualifier that is the path
+of a session's `record.md` names that session**, as its slug would; a rename rewrites the ID token
+and leaves the path as written. Built as wave 1c under the sound loop; if its code review fails
+twice, the fallback is A. Rejected: A — the 343 cites never take a slug; hand-editing them — 343
+edits outside the diff check. Accepted risk: one more qualifier shape the tool reads.
 
 ### D12 — Machine-read spots: every spot a program reads keeps the bare number — `Confident`
 
@@ -842,6 +907,16 @@ lean, ratified (ratified run: 4; forks keep the changed form).
 
 **Changed at review.** —
 
+**Changed at build.** 2026-10-08, after wave 0's FAIL (D8): a topic slug on a removal ruling read
+inverted — `` `setup-product-agnostic` D1-setup-fact-profile `` taken as "setup captures the fact
+profile" when the ruling is that it leaves setup (`wave0-read-test.md`, item 38). Added, user-ruled
+("as recommded", lead's lean A): **a ruling that removes, retires, moves out or declines something
+carries its direction word** — `D1-profile-leaves-setup`, `GI-022-no-feature-map` — still never a
+strength word (`must`, `should`, `never`, `may`). Rejected: rule slugs throughout, re-tested (B — trades
+the risk D13 guards against for a better score); stopping the build (C). *Repaired 2026-10-08 (P1's
+plan grade, F5; user: "ok of d13"): the first example, `D1-fact-profile-leaves-setup`, had four words
+against D19's three — a direction word counts toward the three.*
+
 ### D14 — Back-fill: rewrite the live layer, freeze the history layer, from one graded slug map — `Confident`
 
 **Statement.** Existing IDs and their citations in this repo's live layer are rewritten to the joined
@@ -883,6 +958,13 @@ first, as wave 0 before any build, on hand-coined slugs; the slug map is drafted
 **V2**, verify round 1 repair: the Statement's "(already bare by D12)" now reads "(bare by D12 and
 D21)". **W2**, verify round 2 repair (user: "as recommded"): R1 and R2 carried into the Statement
 itself — the history layer's full list, and D8 first in the method order.
+
+**Changed at build.** 2026-10-08, W2-tests' plan grade (user: "as recommded"): the history layer adds
+the crate's template goldens `crates/mochiko-cli/tests/fixtures/template/`. They are renders of the
+migration log, compared byte for byte by crate tests, so their text follows the bare log (D21):
+rewriting them turns `cargo test` red, and checking them reports the log's minted examples as drift
+against this repo's own definitions. The exclusion lands in the check's default list with wave 1's
+fix round 3.
 
 ### D15 — Protected lines: an ID-token-only rewrite is ruled non-semantic, behind a mandatory diff check — `Confident`
 
@@ -1006,6 +1088,19 @@ fences (ruled at D15). R1 (S3) and D21, round 1: the allowlist also names the cr
 corpus, eval stimuli, the migration log's rule text and `.mochiko/schema-views/`; and, per S7 (D6), the
 check also reports mention drift. W3-class carry, verify round 2 (user: "as recommded"): the Statement
 now lists the full allowlist itself, adding D16's bare-definition rule.
+
+**Changed at build.** 2026-10-08, at P1's plan re-grade (advisories A1, A4, A5): in this repo about
+2,000 citations can never be tied to a definition — ~1,700 product-family IDs with no definition in
+the live tree (another project's, `kinako FEAT-002`; eval-fixture IDs; examples), plain words before a
+decision number (`user-ruled D4`), and the bare `C<n>` labels the lead had ruled local (R9). D16
+forbids coining a slug for them, so "zero bare in-scope IDs" could never be met. Ruled, user ("as
+recommded", the lead's weak lean A, put with the case against first): **the check reports only
+mentions it can tie to a definition** — an ID with no definition in the indexed tree, or a
+per-artifact or session mention with no resolvable owner, is never reported and never rewritten; the
+done check is clean over the rest. Rejected: B, report them and count a recorded leftover as done (a
+CI report that always shows ~2,000 findings gets ignored). Accepted risk: a real bare citation whose
+definition the tool cannot find goes unreported; the D11 shorthand session cites (`adaptive-depth
+D7`) leave the check's view and are found by wave 3's slug map instead.
 
 ### D19 — Grammar mechanics: `<ID>-<w1>-<w2>-<w3>`, three lowercase words — `Confident`
 
@@ -1146,7 +1241,11 @@ prefixes themselves (`GI`, `D`, `FR`, …).
 - **Three topic words are enough to skip the lookup** (frame, betting line; D13 makes them topic
   words) — tested by D8's two-arm read test, run as wave 0 before any build (as changed at review,
   S9): the slugged arm at least 15 of 20 "knew it" and at least 5 more than the bare arm, none
-  "misled".
+  "misled". **Tested 2026-10-08 by a cold seat: FAILED** (7 of 20 knew); the user overrode the gate
+  and restated the bet — *three topic words tell the reader what an ID is about* — on the test's own
+  evidence: right topic on 19 of 20 joined IDs against 0 of 20 bare, none misled (D8 as changed at
+  build). The restated bet's untested part: a reader who knows the topic opens the rule rather than
+  guessing its verdict (OQ1).
 - **The slug stays true as meaning evolves** (frame, betting line) — held by D4's rename-on-change and
   D7's tool. *Reworded at review (S7):* its mechanical half — every mention agrees with its definition
   — is tested by D6's check as extended at review, run in D18's CI report; D17's amend run is the first

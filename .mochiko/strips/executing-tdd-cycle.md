@@ -39,6 +39,13 @@ report lands in its home's `reports/` directory) and D3 (the homes as the migrat
 with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 `git show 794cea8:plugins/mochiko/skills/executing-tdd-cycle/SKILL.md`. -->
 
+## [v0.118.0] Card pattern and cycle citations joined in `TASK-PARSING.md` and `CYCLE-REPORT-FORMAT.md`
+
+- **Disposition:** superseded → the card pattern `### - [ ] C{N}-<slug> — {title} `[P]`?`, `` - **Stories:** `<spec-slug>` US-#-<slug> — rationale ``, `- **Depends on:** — | C{M}-<slug>`, the checkbox field "on the card's `###` heading line", plus one line keeping the pre-upgrade `### - [ ] Cycle {N}:` heading readable; the cycle report's deviation example behind `` `product` `` and its narrative's `C3` behind the run key `` `FEAT-XXX-<slug>` ``.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; hand-off P5; D16 (a pre-upgrade card stays readable; the crate keeps the same reader, C1); D11 (S4) and R4 for the run-key owner)
+- **Content (superseded):** `TASK-PARSING.md`: "### - [ ] Cycle {N}: {title} `[P]`?", "- **Stories:** US-# — rationale", "- **Depends on:** — | C{M}", "…— on the `### Cycle` heading line". `CYCLE-REPORT-FORMAT.md`: "(e.g. `"T3.4: argon2 over bcrypt (C-012 allows)"`)", "…before C3's write commits…", "(touches C3 code)".
+- **Kept deliberately:** line 25's "Cycle 1 of a new end-to-end path" (an ordinal in doctrine prose, not an ID); the integer `cycle:` field; `T3.4`/`T4.2`/`T4.3` (local task labels); the example run key `feature: user-auth`, a non-ID value the user booked for the backlog.
+
 ## [v0.109.0] the `description:` names `tasks.md` under the spec home
 
 - **Disposition:** superseded → `.mochiko/features/<FEAT-ID>/tasks.md`, where the feature home

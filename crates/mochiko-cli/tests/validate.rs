@@ -1160,9 +1160,16 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // musts, none a floor or a fail node — command 335 → 360, skill 804 → 808, the floor figures
     // and the fail set unmoved. The rest are rewords keeping id, class and kind, a `when:` set,
     // two moments and two conditions.
-    assert_eq!(command_rules, 360, "live command rules");
-    assert_eq!(skill_rules, 808, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1168, "live rules in total");
+    // `0046`–`0050` (the 2026-10-08 human-readable-ids wave 2) mint seven counted
+    // rules and retire none: `0049`'s five must stubs extending `review-common.joined-ids` on the
+    // review skills (the common block itself sits outside this count) and its two must command
+    // rules, `arch.grader-checks-joined-ids` and `feat.grader-checks-joined-ids`, none a floor or a
+    // fail node — command 360 → 362, skill 808 → 813, the floor figures and the fail set unmoved.
+    // `0046` and `0050` replace templates, and the fifteen rewords of `0047` and `0048` keep id,
+    // class and kind — `impl.baseline-diff-review` stays a floor.
+    assert_eq!(command_rules, 362, "live command rules");
+    assert_eq!(skill_rules, 813, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1175, "live rules in total");
     assert_eq!(skill_floors, 264, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
@@ -2794,10 +2801,12 @@ fn every_shipped_pointer_resolves_from_its_own_skill_directory() {
     // `references/COMPLIANCE-MODULES.md` (`authoring-constitution.module-mechanical-attachment`
     // and `authoring-constitution.s4-fail-safe`); 83 from the 2026-10-06 brainstorm target state,
     // where `0045` minted `review-brainstorm.card-parts-first` pointing at
-    // `references/RECORD-FITNESS.md`.
+    // `references/RECORD-FITNESS.md`; 88 from the 2026-10-08 human-readable-ids wave 2, where
+    // `0049`'s five `extends: review-common.joined-ids` stubs each inherit the common block's
+    // `pointer: ../../templates/artifact-format.md`.
     assert_eq!(
-        report.checked, 83,
-        "the corpus carries 83 path-shaped pointers"
+        report.checked, 88,
+        "the corpus carries 88 path-shaped pointers"
     );
     assert!(
         report.findings.is_empty(),

@@ -27,6 +27,13 @@ row). The three entries below edit lines under the v0.26.0 KEPT whole-body linea
 as supersession-by-ruling. Pre-edit verbatim text:
 `git show 5558fd7:plugins/mochiko/skills/review-feasibility/references/FEASIBILITY-LENS.md`. -->
 
+## [v0.118.0] FEASIBILITY-LENS worked examples joined; the `at` and cite forms behind `product`
+
+- **Disposition:** superseded → each worked-example definition joined (`C-002-on-premises-only-hosting`, `D-004-hosted-vector-database`, `NFR-003-global-p95-latency`, `C-005-single-region-deployment`, `FR-009-mobile-push-notifications`, `C-007-polling-only-connections`, `D-001-postgres-only-datastore`, `D-006-elasticsearch-text-search`, `NFR-002-list-endpoint-latency`, `C-004-no-new-infrastructure`, `NFR-004-request-path-latency`, `C-006-no-managed-infrastructure`, `AX-001-identity-auth-boundary — Identity & auth`); the example `GI-007` → `GI-031-hexagonal-layer-boundaries`; the `at` form and the cite form read `` `product` C-XXX-<slug> `` ↔ `` `product` D-XXX-<slug> ``, matching `review-feasibility.findings-cite-ids` (0047).
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; D11 (S4) for the owner; the collision guard of W2-prose's approved plan: `GI-007` is a decided ID in this repo, so an example using it would read as a citation of it)
+- **Content (superseded):** the bare worked-example IDs at lines 14, 26, 38, 50, 62, 74, 113, 125, 135 and 137 (e.g. "`C-002: the system MUST run fully on-premises…`", "`respects BE-HEX layering per GI-007`", "`AX-001 Identity & auth` reads `decided`"), the `at` form "always "C-XXX requires X, D-XXX requires not-X."" and the cite form "(`C-XXX` ↔ `D-XXX`)". Pre-edit file: `git show bf410cc:plugins/mochiko/skills/review-feasibility/references/FEASIBILITY-LENS.md`.
+- **Kept deliberately:** the seam and evidence lines (family names); line 84's "C4 level-3" (a C4 model level, not an ID).
+
 ## [v0.116.0] FEASIBILITY-LENS "What this lens is NOT" — "keyed to this feature" re-keyed to the run's owner
 
 - **Disposition:** superseded → `"is every element keyed to this run's owner?"`.

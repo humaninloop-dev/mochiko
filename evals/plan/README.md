@@ -43,7 +43,7 @@ plan/                    (shared mechanics — session, provisioning, judge call
                          background worker) · s3-empty-args
     observable.yaml      D8 partition: every rule bucketed observable or declared
                          out-of-instrument (implement 58 + 46; specify 39 of 52;
-                         feature 47 of 50; architecture 45 of 48; brainstorm 45 of 55)
+                         feature 48 of 51; architecture 46 of 49; brainstorm 45 of 55)
     preregistration.md   read rule + tolerance band + F2 noise guard (grid-gating)
     runs/<name>/         plans, summary.json, report.md (gitignored or committed per run)
 ```

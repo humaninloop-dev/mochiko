@@ -20,6 +20,13 @@ status table and the validation-script paragraph — and the v0.64.0 checklist k
 as the supersessions below. Pre-edit verbatim text:
 `git show 5558fd7:plugins/mochiko/skills/patterns-entity-modeling/SKILL.md`. -->
 
+## [v0.118.0] Traceability lines joined and qualified; BR examples joined
+
+- **Disposition:** superseded → `` **Traceability:** `<spec-slug>` FR-001-<slug>, FR-002-<slug>, US-1-<slug> ``, `` (`<spec-slug>` DS-001-<slug>) ``, `` `<spec-slug>` FR-003-<slug>, US-2-<slug> ``; `BR-001-date-range-order`, `BR-002-price-range-order`, `BR-003-quantity-ceiling-check` (the BR mint site, F20).
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; the lead's Q-B ruling (`US#1` → `US-<n>-…`, on D9); D11 (S4) for the owner; hand-off P8 for BR)
+- **Content (superseded):** `SKILL.md` "A registered account holder. **Traceability:** FR-001, FR-002, US#1", "NIST 800-63 (DS-001)", "User authentication session. **Traceability:** FR-003, US#2"; `VALIDATION-RULES.md` "| BR-001 | startDate, endDate |…", "| BR-002 | minPrice, maxPrice |…", "| BR-003 | quantity, maxQuantity |…".
+- **Kept deliberately:** the entity text and the sensitivity tables; one owner in front of the first member covers each list of three or fewer.
+
 ## [v0.116.0] validate-model.py docstring, format comments and "no entities" message — `## Entity:` and the status tags re-keyed to `### Entity:`
 
 - **Disposition:** superseded → the docstring lists `### Entity: EntityName` and the unchanged

@@ -44,13 +44,13 @@ halt and surface it.
 
 **Wrong** (horizontal slicing):
 ```
-Cycle 1: All models        Cycle 2: All services        Cycle 3: All endpoints
+C1-all-data-models        C2-all-service-classes        C3-all-api-endpoints
 ```
 
 **Right** (vertical slicing):
 ```
-Cycle 1: User creation (model + service + endpoint, end to end)
-Cycle 2: User authentication (model + service + endpoint, end to end)
+C1-user-account-creation (model + service + endpoint, end to end)
+C2-user-authentication-flow (model + service + endpoint, end to end)
 ```
 
 ### 2. Walking Skeleton First, Infrastructure Homed by Need

@@ -17,6 +17,13 @@ home) and Q1 (the product `quickstart.md`, bounded per entry),
 2026-09-29 row); the wave-3 lead's ruling on P8's B2. Pre-edit verbatim text:
 `git show 5558fd7:plugins/mochiko/skills/patterns-api-contracts/SKILL.md`. -->
 
+## [v0.118.0] Traceability table FR and US cells joined and qualified
+
+- **Disposition:** superseded → `` `<spec-slug>` FR-001-<slug> `` / `` `<spec-slug>` US-1-<slug> `` and the `FR-004` / `US-4` row the same.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; the lead's Q-B ruling (`US#n` → `US-<n>-…`, on D9); D11 (S4) for the owner)
+- **Content (superseded):** "| /auth/login | POST | FR-001 | US#1 | User login |" and "| /users/me | GET | FR-004 | US#4 | Get current user |".
+- **Kept deliberately:** the table shape and the endpoint columns.
+
 ## [v0.116.0] OPENAPI-TEMPLATE header — the per-feature placeholders and "Copy and customize" re-keyed
 
 - **Disposition:** superseded → "Seed a missing `api.yaml` from it, the product's or a spec's; a

@@ -50,9 +50,11 @@ fields are not.
    producer did and what it is unsure of; it carries **no done-state and no PASS/FAIL**.
    The recommended verdict lives in reviewer reports; the clearing decision is the
    lead's. A disclosure must not gain a "ready"/"complete" field.
-5. **No restatement.** Cite upstream IDs (`T4.2`, `FR-003`, `C-012`, `SC-005`) — never
-   re-quote their text. One-line context is allowed only where a bare ID would be
-   unreadable at the consumption point.
+5. **No restatement.** Cite upstream IDs in their joined form, behind their owner where cited
+   outside their own file, per the IDs section of `templates/artifact-format.md` (`T4.2`,
+   `` `lunch-orders` FR-003-csv-report-export ``, `` `product` C-012-password-hashing-policy ``,
+   `` `lunch-orders` SC-005-checkout-completion-rate ``) — never re-quote their text. One-line
+   context is allowed only where the ID alone would be unreadable at the consumption point.
 6. **Findings schema (reviewer reports).** Each finding is one structured entry:
 
    ```yaml

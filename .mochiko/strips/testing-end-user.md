@@ -47,6 +47,13 @@ lead's ruling that the full-log lines are withdrawn, not re-pointed. Pre-edit ve
 `git show 5558fd7:<path>` for `SKILL.md`, `references/EVIDENCE-CAPTURE.md` and
 `references/REPORT-TEMPLATES.md`. -->
 
+## [v0.118.0] Gate-boundary and owning-cycle reading moved to the joined card heading
+
+- **Disposition:** superseded → END "Next cycle-card heading (`### - [ ] C<n>-…`; a pre-upgrade card's `### - [ ] Cycle <n>:`)", and the cycle number read from "the digits after `C` in the enclosing `### - [ ] C{N}-<slug> —` heading (a pre-upgrade card: `### - [ ] Cycle {N}:`)".
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; hand-off P5; D16 for the legacy heading)
+- **Content (superseded):** "END: Next `### Cycle` heading, next task line, OR end of the block" and "take the cycle number from the enclosing `### - [ ] Cycle {N}:` heading."
+- **Kept deliberately:** the legacy task-line form and every other parse step; the gate-ID labels (`C3-gate`, local).
+
 ## [v0.116.0] SKILL.md Common Mistakes — "include log-file locations" re-keyed to the citation
 
 - **Disposition:** superseded → `Follow REPORT-TEMPLATES.md truncation rules; cite command and commit`.

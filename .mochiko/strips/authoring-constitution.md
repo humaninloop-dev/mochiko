@@ -58,6 +58,13 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/authoring-constitution/<
 `references/catalog/universal-floor.md`, `references/catalog/backend-service.md`). The rules this
 skill's pointers bind are schema content, recorded by the migration log, not here. -->
 
+## [v0.118.0] ESSENTIAL-FLOOR worked note's GAP ID joined
+
+- **Disposition:** superseded → "See GAP-002-test-coverage-shortfall in evolution-roadmap.md for improvement plan.", the same slug `templates/constitution-modules/evolution-notes.md` gives GAP-002.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`)
+- **Content (superseded):** "> Note: Current coverage is 65%. See GAP-002 in evolution-roadmap.md for improvement plan."
+- **Kept deliberately:** the file's decided citations (`D4`, `D4.1`, `D1/D2`, `D5`, `PO-D*`) for wave 3.
+
 ## [v0.115.0] SKILL.md's compliance-module bindings — trigger, ledger row, content source, assembly row
 
 - **Disposition:** superseded → no compliance-module binding in `SKILL.md`. The description drops the

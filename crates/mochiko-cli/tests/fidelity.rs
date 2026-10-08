@@ -170,13 +170,15 @@ fn the_log_replays_into_a_deliverable_state() {
     // 80 through `0023`; the 2026-09-29 census table ratification's home migrations import seven
     // more — six home documents in `0032`, the `runs` home in `0033`. `0036`–`0043` (the joint
     // build's wave 3) import none; `0040` replaces a home in place. `0044`–`0045` (the 2026-10-06
-    // brainstorm target state) import none.
+    // brainstorm target state) import none. `0046`–`0050` (the 2026-10-08 human-readable-ids
+    // wave 2) import none either: `0046` and `0050` replace templates in place.
     assert_eq!(replay.state.docs.len(), 87);
     assert_eq!(
         replay.sequences(),
         vec![
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
-            25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45
+            25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48,
+            49, 50
         ],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
@@ -194,7 +196,9 @@ fn the_log_replays_into_a_deliverable_state() {
          pre-write dry run, 0039's store entry-bound pointers, 0040's brownfield archive names, \
          0041's sweep-hunk exception, 0042's marker read cited, 0043's routing restatement cut, \
          then the 2026-10-06 brainstorm target state — 0044's brainstorm guardrails, 0045's cold \
-         reviewer's side"
+         reviewer's side, then the 2026-10-08 human-readable-ids wave 2 — 0046's joined-ID \
+         templates, 0047's joined minting rules, 0048's landing re-key, 0049's graders' check, \
+         0050's joined GI check"
     );
 }
 
@@ -751,9 +755,19 @@ fn the_corpus_census_holds_through_the_log() {
     // figures and the fail set hold. Every other op across the two is a `reword-rule` that keeps
     // its rule's id, class and kind — `review-brainstorm.blind-map-before-record-contact` stays a
     // floor — a `when:` set, two moments or two conditions, and moves nothing here.
-    assert_eq!(command_rules, 360, "live command rules");
-    assert_eq!(skill_rules, 808, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1168, "live rules in total");
+    // The 2026-10-08 human-readable-ids wave 2 carries `0046`–`0050`, anchored to
+    // human-readable-ids D21, D1, D4 and D6: eight `mint-rule`s and nothing retired. `0046`
+    // replaces ten template documents and `0050` one of them again, which carry no rules.
+    // `0047`'s fourteen `reword-rule`s and `0048`'s one each keep their rule's id, class and kind
+    // — `authoring-feature-map.retired-terminal`, `authoring-constitution.every-principle-traces`
+    // and `impl.baseline-diff-review` stay floors. `0049` mints one common block,
+    // which sits outside this count, five must stubs that extend it on the review skills, and two
+    // must command rules, `arch.grader-checks-joined-ids` and `feat.grader-checks-joined-ids`;
+    // none is a floor or a fail node, so command 360 → 362, skill 808 → 813, total 1168 → 1175,
+    // and both floor figures and the fail set hold.
+    assert_eq!(command_rules, 362, "live command rules");
+    assert_eq!(skill_rules, 813, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1175, "live rules in total");
     assert_eq!(skill_floors, 264, "skill floors");
     assert_eq!(command_floors, 119, "declared command floors");
     assert_eq!(fail_nodes, 36, "command fail nodes");

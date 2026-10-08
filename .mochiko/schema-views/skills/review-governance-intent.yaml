@@ -215,6 +215,10 @@ sections:
           A session confirming its own synthesis is the gap this review closes — never soften on
           "the user already confirmed it in session".
         anchor: 2026-08-11 validator-scope-and-verbosity
+      - id: review-governance-intent.joined-ids
+        class: must
+        extends: review-common.joined-ids
+        anchor: 2026-10-08 human-readable-ids D6
   - id: review-governance-intent.sec.output
     title: Output — the survivor report
     intent: The finding contract and the one shape the report takes.

@@ -42,7 +42,7 @@
       {
         "type": "not_contains",
         "path": ".mochiko/features/FEAT-031/tasks.md",
-        "pattern": "(?m)^###\\s*-\\s*\\[ \\]\\s*Cycle 5"
+        "pattern": "(?m)^###\\s*-\\s*\\[ \\]\\s*(Cycle 5|C5\\b)"
       },
       {
         "type": "fixture_unchanged"
