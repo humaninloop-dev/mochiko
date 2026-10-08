@@ -13,7 +13,7 @@
      and reported — whenever the edited persona has a kit under `evals/agents/`. The report's
      regression, adoption, and band lines are quoted in the strip entry or, for a pure addition,
      in the decision row's rationale.
-  2. **Advisory only, never a gate** (harness D2, GI-019): the grader reads the grid as evidence
+  2. **Advisory only, never a gate** (harness D2, GI-019-kernel-tooling-admission): the grader reads the grid as evidence
      beside the audit criteria; a regression or a noise-dominated read is a finding to disposition,
      not an exit code. A kit with no `refs.pre` pin, or a persona without a kit, takes the plain
      ceremony.

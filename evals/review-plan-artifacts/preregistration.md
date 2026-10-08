@@ -10,7 +10,7 @@
 > Or check the whole archive out: `git worktree add /tmp/eval-evidence eval-evidence-2026-09-19`.
 
 Committed BEFORE any grid (`skill-compression-tooling` R6/R9 as carried into the converged
-skill runner; `primitive-eval-harness-v2` D1 vocabulary, D12/C3 the re-keyed inventory). Kit
+skill runner; `primitive-eval-harness-v2` D1-eval-layer-targets vocabulary, D12/C3 the re-keyed inventory). Kit
 authored by an independent seat (author ≠ grader: the kit author graded nothing, the auditor
 authored nothing). Fields marked **[measured at grid]** are filled from the grid's
 `summary.json`; no value above the fill log changes after the first priced run.

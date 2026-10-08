@@ -45,7 +45,7 @@ answer-first, plain words, `keep-coding-instructions: true`).
 
 ## Decisions
 
-### D1 — Coexistence: styles are an optional product surface; the switch line stays authoritative — `Confident`
+### D1-style-switch-coexistence — Coexistence: styles are an optional product surface; the switch line stays authoritative — `Confident`
 
 Native output styles ship as user-selectable extras (`/config` → Output style); the
 CLAUDE.md governance-region switch line remains the authoritative in-pipeline chat carrier,
@@ -56,12 +56,12 @@ when a user selects the style AND the switch line is live is accepted: same regi
 not contradictory. Ruled A over B (native-style-as-chat-carrier) and C (`force-for-plugin`).
 
 *Amended at review (I2):* the accepted-risk note extends to **level mismatch** — a user
-running the switch line at chat `lite`/`ultra` while the Caveman style (baked `full`, D4) is
+running the switch line at chat `lite`/`ultra` while the Caveman style (baked `full`, D4-caveman-style-file) is
 selected has two levels commanded on one surface; the style side likely wins (docs: styles
 trigger in-conversation adherence reminders). Accepted as-is, no winner ruled — the user
 opted into the style from the picker, and either outcome is still the caveman register.
 
-### D2 — Style files are free-standing product artifacts; no sync obligation to the register home — `Contested`
+### D2-free-standing-styles — Style files are free-standing product artifacts; no sync obligation to the register home — `Contested`
 
 The `output-styles/` files are end-user packaging for people who pick a style from the
 `/config` menu — not register carriers. Written once from the register (caveman) / the user's
@@ -73,14 +73,14 @@ rationale: BLUF+caveman especially is a standalone artifact for outsiders, not p
 machinery; the sync tax is bureaucracy for a product surface. Accepted risk, on record: a
 future register change does not ripple to the style files.
 
-### D3 — Roster: two styles ship — `Caveman` and `Caveman-BLUF`; pure BLUF does not — `Confident`
+### D3-two-style-roster — Roster: two styles ship — `Caveman` and `Caveman-BLUF`; pure BLUF does not — `Confident`
 
 The user's pasted BLUF draft merges with the caveman register into one combined style file;
 BLUF-standalone never ships (no mochiko value-add over the user's own draft, and styles are
 single-select so the combined file is the only way to run both at once). Ruled A over
 three-style roster (B) and no-combined-file (C).
 
-### D4 — Caveman style file: baked `full` level only, rules + yields, no ladder — `Confident`
+### D4-caveman-style-file — Caveman style file: baked `full` level only, rules + yields, no ladder — `Confident`
 
 One fixed register: `full` (drop articles, fragments OK). No `off/lite/ultra` ladder, no
 per-surface table, no governance vocabulary in the file. Content: drop list ·
@@ -97,7 +97,7 @@ and its **response pattern line** (`[thing] [action] [reason]. [next step].` wit
 not/yes example pair). Never-announce over the template's disclose-once: the `/config`
 picker is itself the disclosure.
 
-### D5 — Caveman-BLUF merge: BLUF governs structure, caveman governs diction; BLUF wins conflicts — `Confident`
+### D5-caveman-bluf-merge — Caveman-BLUF merge: BLUF governs structure, caveman governs diction; BLUF wins conflicts — `Confident`
 
 From BLUF: answer-first ordering (first sentence = conclusion) · minimal supporting detail
 (short why-line or 2–4 tight bullets) · jargon defined in ≤4 words · uncertainty stated with
@@ -116,29 +116,29 @@ selected) and the written-artifacts-exempt line — coding continues under
 `keep-coding-instructions: true`, so code/comments/commits are written normally under both
 styles. Sibling styles no longer diverge on escape or artifact behavior.
 
-### D6 — Packaging + landing mechanics (bundled) — `Confident`
+### D6-style-packaging-landing — Packaging + landing mechanics (bundled) — `Confident`
 
 - **Location:** `plugins/mochiko/output-styles/caveman.md` + `caveman-bluf.md` (directory
   convention per docs; sibling to `commands/`, `skills/`).
 - **Frontmatter:** `name: Caveman` · `name: Caveman BLUF`; one-line descriptions;
-  `keep-coding-instructions: true` on both; no `force-for-plugin` (per D1).
+  `keep-coding-instructions: true` on both; no `force-for-plugin` (per D1-style-switch-coexistence).
 - **plugin.json:** untouched — the documented optional `outputStyles` field is **omitted
   deliberately** (amended at review, I1): replaces-default semantics mean omission keeps the
   default `output-styles/` directory scan, which is all that's needed.
 - **Discoverability:** one line on the router skill's user-facing surface naming the two
   styles and pointing at `/config` → Output style.
 - **Landing:** pure addition — rides the decision row, no strip notes; `plugin.json` version
-  bump + `CHANGELOG.md` entry + `marketplace.json` sync per release gates (GI-012); **plus the
+  bump + `CHANGELOG.md` entry + `marketplace.json` sync per release gates (GI-012-release-gates-module); **plus the
   KM three-move ritual — DECISIONS.md row · BACKLOG stance · ROADMAP.md touch** (amended at
   review, I5); author≠grader validator pass grading both style files against this record
-  **and the router-skill discoverability edit** (a shipped-primitive edit, GI-004 — amended at
+  **and the router-skill discoverability edit** (a shipped-primitive edit, GI-004-primitive-audit-ratchet — amended at
   review, I6) before the bump.
 
 ## Build surface
 
 1. Create `plugins/mochiko/output-styles/caveman.md` — baked `full`, drafted from the repo
-   CLAUDE.md block per D4.
-2. Create `plugins/mochiko/output-styles/caveman-bluf.md` — D5 merge (BLUF structure ·
+   CLAUDE.md block per D4-caveman-style-file.
+2. Create `plugins/mochiko/output-styles/caveman-bluf.md` — D5-caveman-bluf-merge merge (BLUF structure ·
    caveman diction · BLUF-wins conflict rule), drafted from the user's pasted BLUF text +
    the caveman file.
 3. Router surface: one discoverability line.
@@ -155,30 +155,30 @@ session-model override). Verdict: **FAIL, needs-revision — 9 findings (6 Impor
 
 | # | Finding | Disposition |
 |---|---|---|
-| I1 | F1/D6 "no manifest field" false — `outputStyles` documented in plugins-reference | Repaired: F1 + D6 amended; omission-keeps-default verified by lead re-read of the source (replaces-default semantics) |
-| I2 | D1 silent on level mismatch (line `ultra` vs style `full`) | D1 accepted-risk note extended; no winner ruled |
-| I3 | D4 omitted never-announce + pattern line from its drafting source | Both included in D4 |
-| I4 | D5 merge silent on escape + artifacts-exempt | Both carry into the merge; escape drops to plain BLUF |
-| I5 | Landing list missing ROADMAP touch (KM three-move ritual) | D6 + step 5 amended |
-| I6 | Router edit outside audit scope (GI-004) | Audit scope extended to the router edit |
+| I1 | F1/D6 "no manifest field" false — `outputStyles` documented in plugins-reference | Repaired: F1 + D6-style-packaging-landing amended; omission-keeps-default verified by lead re-read of the source (replaces-default semantics) |
+| I2 | D1-style-switch-coexistence silent on level mismatch (line `ultra` vs style `full`) | D1-style-switch-coexistence accepted-risk note extended; no winner ruled |
+| I3 | D4-caveman-style-file omitted never-announce + pattern line from its drafting source | Both included in D4-caveman-style-file |
+| I4 | D5-caveman-bluf-merge merge silent on escape + artifacts-exempt | Both carry into the merge; escape drops to plain BLUF |
+| I5 | Landing list missing ROADMAP touch (KM three-move ritual) | D6-style-packaging-landing + step 5 amended |
+| I6 | Router edit outside audit scope (GI-004-primitive-audit-ratchet) | Audit scope extended to the router edit |
 | M1 | F4 missing fork exception | F4 caveat added; grep found no fork usage — vacuous today |
 | M2 | Never-announce (block) vs disclose-once (template) birth-time divergence | Never-announce ships (rides I3); F7 notes the delta |
-| M3 | D5 rejected roads lacked why-lost | One line each added to D5 |
+| M3 | D5-caveman-bluf-merge rejected roads lacked why-lost | One line each added to D5-caveman-bluf-merge |
 
 External claims re-verified live at review (F1 directory quote · F2 frontmatter table · F3
-removal versions · D3 single-select premise); I1's plugins-reference premise re-read by the
+removal versions · D3-two-style-roster single-select premise); I1's plugins-reference premise re-read by the
 lead before disposition (source re-read clause). Reviewer's clean list: confidence marks
-honest, D6 no-strip-notes stance correct per `primitive-edits.md`.
+honest, D6-style-packaging-landing no-strip-notes stance correct per `primitive-edits.md`.
 
 ## Build (2026-08-07, v0.55.0 — same session)
 
 Plan-approved wave, all six build-surface steps executed:
 
-- `plugins/mochiko/output-styles/caveman.md` — D4 as amended (baked `full` · drop +
+- `plugins/mochiko/output-styles/caveman.md` — D4-caveman-style-file as amended (baked `full` · drop +
   never-compress lists · never-announce + pattern line (I3) · keep-user's-language · five
   yields · escape · artifacts-exempt · `keep-coding-instructions: true`, no
   `force-for-plugin`).
-- `plugins/mochiko/output-styles/caveman-bluf.md` — D5 as amended (BLUF structure rules 1–6 +
+- `plugins/mochiko/output-styles/caveman-bluf.md` — D5-caveman-bluf-merge as amended (BLUF structure rules 1–6 +
   rigor-unchanged note · caveman diction · BLUF-wins conflict rule · escape drops to plain
   BLUF (I4) · artifacts-exempt · fragments licensed only where they cannot be misread).
 - Router `SKILL.md` — Output-styles discoverability section (names both, `/config` pointer,

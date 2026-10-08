@@ -33,7 +33,7 @@ Entry formats: `strips/README.md`.
   here for levels/switch only — unaffected; `commands/plan.md`'s Register bullet cites the
   surface table — unaffected; governance setup surfaces cite the switch line — unaffected.
 
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -46,9 +46,9 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 `.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
 `.mochiko/` references were correctly left alone on that test.
 
-## [v0.76.0] `governance-surfaces-template.md` contextual mentions → `governance-surfaces` schema — schema-based-template-guidance D1/D8
+## [v0.76.0] `governance-surfaces-template.md` contextual mentions → `governance-surfaces` schema — schema-based-template-guidance D1-single-plugin-cli/D8-schema-data-files
 - **Disposition:** superseded → the `governance-surfaces` schema (`mochiko-cli template governance-surfaces`, or Read `plugins/mochiko/schemas/governance-surfaces.yaml` raw). Three contextual mentions reworded so no pointer dangles when the template file is deleted; the two-arm form is deliberately NOT forced here — these are "the surface that carries the switch line / Shape 5" citations, not read-instructions (plan §5 output-style row).
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1-single-plugin-cli/D3-pipeline-template-scope/D8-schema-data-files; `DECISIONS.md` "Template-schema CLI ruled").
 - **Content (superseded, verbatim):**
   - `edits it in place; it survives every regeneration (\`governance-surfaces-template.md\`). No` — The switch
   - `(\`governance-surfaces-template.md\` Shape 5) injects on **Read, not Write**, so it reinforces at` — Two delivery legs
@@ -65,7 +65,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 ## [v0.44.0] Style version-history block relocated (class 2, 719 B / 8 lines)
 - **Disposition:** superseded → relocated **verbatim** into this note (below). In-file residue: the
   bare stamp plus the live routing (`Bound by`), which is wiring a run consumes, not history.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim, the whole block as it stood at the scrub):**
 ```
 **Style version:** v1 (2026-08-01 — `verbosity-caveman-ops-separation`

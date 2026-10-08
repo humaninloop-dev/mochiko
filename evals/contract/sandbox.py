@@ -11,7 +11,7 @@ constant below at the same value. Both call sites in `run.py` pass every paramet
 the defaults are never exercised and the argv this builds is byte-identical to the original's
 sandbox-mode output.
 
-**Why it is a copy and not an import.** This suite is a release gate: GI-012 makes it a condition
+**Why it is a copy and not an import.** This suite is a release gate: GI-012-release-gates-module makes it a condition
 of every `plugin.json` bump, and says a SKIPPED suite is not green. `evals/run.py` is a research
 harness for the skill evals and is free to change whenever that work needs it — which is exactly
 what happened. On 2026-09-11 (`8c27460`) it converged onto host mode: `SANDBOX` and `sbx_sh` were

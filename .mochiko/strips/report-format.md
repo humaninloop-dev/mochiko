@@ -5,7 +5,7 @@ Entry formats: `strips/README.md`.
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/templates/report-format.md`. -->
 
@@ -38,7 +38,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 - **Disposition:** superseded → the bare rule ids `impl.escalation-batching` /
   `impl.finding-severity-routing`
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** "`plugins/mochiko/schemas/implement.yaml`'s `impl.escalation-batching` /
   `impl.finding-severity-routing` rules"
 - **Kept deliberately:** both rule ids, which are the citation that matters and still resolve in
@@ -54,12 +54,12 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 - **Disposition:** superseded → `commands/implement.md`. Two sites named surfaces the plan-stage
   retirement killed. The footer site was the material one: `commands/plan.md` was deleted this
-  same wave, so the Consumed-by line had become a **dead pointer** — a GI-005 defect, not a
+  same wave, so the Consumed-by line had become a **dead pointer** — a GI-005-record-layer-integrity defect, not a
   cosmetic staleness. The report-envelope binding it recorded did not disappear with the command;
   it moved to implement's Reports tool, which now names this file and the `sufficiency-report.md`
   that rides the envelope, so the pointer re-homes rather than being dropped.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1 — implement becomes the single
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires — implement becomes the single
   downstream run; D4 and the Build surface — the sufficiency verdict lands as a report under
   `templates/report-format.md` and implement's Reports tool gains the envelope binding; `plan.md`
   the summary artifact dies with no restatement artifact; `DECISIONS.md` 2026-08-26 row.)
@@ -115,7 +115,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
   clarifying clause that "unsanctioned" reads against each class's own payload home for
   classes outside rule 2's closed set.
 
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -131,7 +131,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 ## [v0.80.0] Envelope `slice:` field deleted — slice-vocabulary purge
 
 - **Disposition:** superseded → nothing; the field is deleted outright. No replacement key: a
-  slice-scoped run has been impossible since v0.57.0 (`feature-map-layer` D4/D22 — "slices die,
+  slice-scoped run has been impossible since v0.57.0 (`feature-map-layer` D4-slices-leave-pipeline/D22-foundation-ordering-role — "slices die,
   the feature is the pipeline unit"), so the envelope's scoping keys are `feature:` plus the
   per-report `cycle:`/`round:` counters.
 - **Tier failed:** n/a — supersession by ruling
@@ -158,7 +158,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 
 ## [v0.49.0] Deliverable list drops slices.md
 - **Disposition:** superseded → slicing is a spec.md section, covered by the existing spec.md list entry
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D6)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D6-slices-into-spec)
 - **Content:** "slices.md" in the not-reports deliverable list (line 7).
 - **Kept deliberately:** the `slice:` frontmatter field — slice-scoped runs still exist.
 - **Consumers assessed:** all report templates (envelope unchanged otherwise).
@@ -172,7 +172,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 ## [v0.44.0] Format version-history block relocated (class 2, 495 B / 6 lines)
 - **Disposition:** superseded → relocated **verbatim** into this note (below). In-file residue: the
   bare stamp plus the live routing (`Consumed by`), which is wiring a run consumes, not history.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim, the whole block as it stood at the scrub):**
 ```
 **Format version:** v2 (2026-08-01 — `verbosity-caveman-ops-separation` D4: rule 2's closed

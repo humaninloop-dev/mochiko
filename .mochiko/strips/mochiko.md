@@ -7,19 +7,19 @@ single physical lines, so the R2 line denominator undercounts this skill; dual a
 recorded here and flagged on the wave's ROADMAP row.
 
 <!-- Wave context: the command-`.md`-scaffold standardization wave (v0.97.0). Ruling:
-`.mochiko/brainstorms/command-md-scaffold-standardization/record.md` D1 (`DECISIONS.md`
+`.mochiko/brainstorms/command-md-scaffold-standardization/record.md` D1-canonical-command-scaffold (`DECISIONS.md`
 2026-08-27 row); the implement-only-pair staleness half by
-`.mochiko/brainstorms/command-content-schema/record.md` D10 (`DECISIONS.md` 2026-08-26). -->
+`.mochiko/brainstorms/command-content-schema/record.md` D10-per-command-rollout (`DECISIONS.md` 2026-08-26). -->
 
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
 <!-- Wave context: wave 1 of the impeccable design-integration build (v0.114.0). Ruling for the
-[v0.114.0] entry below: `.mochiko/brainstorms/impeccable-design-integration/record.md` D3/D4
+[v0.114.0] entry below: `.mochiko/brainstorms/impeccable-design-integration/record.md` D3-no-new-persona/D4-engineer-becomes-designer
 (persona renamed and rewritten, no alias). Pre-edit verbatim text:
 `git show 6e4b264:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
@@ -38,16 +38,38 @@ the first landing, 47,326 after the V3a fix round.
 Pre-edit verbatim text: `git show 5558fd7:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
 <!-- Wave context: wave 1 of the brainstorm target-state build (v0.117.0) — one router row re-keyed.
-Ruling: `.mochiko/brainstorms/brainstorm-target-state/record.md` D6 (`DECISIONS.md` 2026-10-06
+Ruling: `.mochiko/brainstorms/brainstorm-target-state/record.md` D6-question-turn-test (`DECISIONS.md` 2026-10-06
 row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
 `git show 2e4c57c:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+## [v0.118.0] Wave 3 back-fill: the fresh-gate-grader, primitive-audit-ratchet and transport-neutral-harness cites joined
+
+- **Disposition:** superseded → `SKILL.md`:39 now cites
+  `author-grader-consolidation` D7-fresh-gate-grader; `SKILL.md`:71 (the `patterns-transport-floor`
+  row) now reads "(`command-architecture-realignment` D5-transport-neutral-harness)"; and
+  `SKILL.md`:129 (the `validation-primitive-edit` row) cites GI-004-primitive-audit-ratchet.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/human-readable-ids/record.md` D11-cross-session-qualifier,
+  D14-live-layer-backfill and D15-protected-line-rewrites — every live-layer mention joined to its
+  definition's slug, cross-session mentions qualified, verbatim spans masked; wave plan
+  `.mochiko/brainstorms/human-readable-ids/wave3-backfill.md` items 7–9)
+- **Content (superseded):** every changed line at `0b8982a`, verbatim, as `<file>:<line>: <text>`
+  (files under `plugins/mochiko/skills/mochiko/`):
+
+  ```text
+  SKILL.md:39: (`author-grader-consolidation` D7). `review-*` = the skill **produces
+  SKILL.md:71: | `patterns-transport-floor` | the **transport floor**, `patterns-sound-loop`'s sibling on the transport axis — BEFORE composing or running a multi-seat command carrying cross-seat/lead-relayed messaging or a shared write surface: the split trigger (message legs 3/4/6/7 on any such messaging; topology legs 1/2/5 on a shared write surface), each lane non-waivable once fired; the seven legs (composition steer · single writer per surface · mesh hold · content-pinned supersession · quiesce before cold grade · no ritual sends/never re-send · fan-in confirmation) and the platform floor (agent-teams ≥ v2.1.224, teammate delivery documented-automatic/ordering undocumented, the ownership-split doc anchor); governs transport USE — the transport choice stays neutral (realignment D5) — read at the desk, by the charters' Boundaries, and at any multi-seat run |
+  SKILL.md:129: | `validation-primitive-edit` | running the **primitive-edit gate audit** — the binary PASS/FAIL a shipped `plugins/mochiko/` primitive takes before the `plugin.json` bump that ships it (GI-004). The unit is keyed by kind (command pair · skill pair · prose primitive · schema content) and the judgment items follow it; the deterministic pre-pass is run first-hand by the grader and quoted, never relayed from the brief; the verdict block carries the evidence-read line (absent ⇒ FAIL) and one outcome line goes into the record of the landing. Carried by a **plain fresh seat with an explicit `model:` alias**, never the editor, one seat per wave; a FAIL allows one fix and one re-audit by the same seat resumed, a second FAIL goes to the user. Not the input-job `review-*` families, and not setup's governance surface set (`validation-constitution`) |
+  ```
+
+- **Kept deliberately:** none.
 
 ## [v0.117.0] `/mochiko:brainstorm` row — "one question at a time" superseded
 
 - **Disposition:** superseded → "you want to think a problem through; the deliverable is …". The
   asking cadence is brainstorm's own rule now (`brainstorm.own-turn-or-batch`), and the row
   restates none of it.
-- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D6)
+- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D6-question-turn-test)
 - **Content (superseded text, verbatim):** `you want to think a problem through one question at a time;`
 - **Kept deliberately:** the rest of the row — the cold-reviewed `record.md` you accept, pipeline
   entry offered, never defaulted.
@@ -192,7 +214,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
   seeding path; the `/mochiko:setup` row describes an engineering-only interrogation and the three
   empty scaffolds; the `product-designer` row names the landing fold as its baseline path.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D5, which strikes `setup.product-truth-leg` and `setup.design-truth-write`; `DECISIONS.md` 2026-09-24)
+  D5-setup-rules-cut, which strikes `setup.product-truth-leg` and `setup.design-truth-write`; `DECISIONS.md` 2026-09-24)
 - **Content:** three fragments, verbatim.
   1. `analysis-codebase` row — " — UI framework · CSS system · fonts · token files · component library
      — that seed the design baseline's system part through setup's `product-designer` write)"
@@ -217,7 +239,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
   over its own taste; surfaces story gaps as findings; never grades its own output (skills:
   authoring-prototype, patterns-design-direction).
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/impeccable-design-integration/record.md` D3 · D4; the persona's own
+  (`.mochiko/brainstorms/impeccable-design-integration/record.md` D3-no-new-persona · D4-engineer-becomes-designer; the persona's own
   strip entry `.mochiko/strips/product-designer.md` [v0.114.0]).
 - **Content:** verbatim superseded row — "| `product-engineer` | specify-cluster PRODUCER —
   staff-level engineer who authors the clickable low-fi prototype + Screens & Flows manifest in
@@ -245,8 +267,8 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
   line reads producer↔grader; and the `patterns-model-tiering` row's seat-default-key clause reads
   five `opus` where it read six.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/producer-plan-enforcement/record.md` D3 ·
-  `.mochiko/brainstorms/author-grader-consolidation/record.md` D7; `DECISIONS.md` 2026-09-03
+  (`.mochiko/brainstorms/producer-plan-enforcement/record.md` D3-peer-plan-grader ·
+  `.mochiko/brainstorms/author-grader-consolidation/record.md` D7-fresh-gate-grader; `DECISIONS.md` 2026-09-03
   and 2026-09-19 rows).
 - **Content:** verbatim superseded spans — "on the `validator` persona (today:
   `validation-constitution`;" · "six `opus`, four `sonnet`" · the whole roster row "| `validator` |
@@ -281,7 +303,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
   a seat · no `inherit`).
 - **Tier failed:** n/a — supersession by ruling
   (`.mochiko/brainstorms/orchestrator-model-selection/record.md` D1–D5; `DECISIONS.md`
-  2026-09-19 row; supersedes `model-tiered-seats` D5 and its fold F6).
+  2026-09-19 row; supersedes `model-tiered-seats` D5-seat-tiering-deferred and its fold F6).
 - **Content:** verbatim superseded spans — "WHEN dispatching exploration, fact-finding, or
   bounded execution work in any run" · "completeness-sensitive enumerations stay session tier" ·
   "judgment legs never tier down; rostered seats never change tier (model-tiered-seats D5); third
@@ -313,7 +335,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
 
 - **Disposition:** superseded → the CLI forms; the shelf row's phantom `template` becomes `doc`
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** seven lines, in file order.
   1. "the six ships as a **`.md` + schema pair**."
   2. "then an obligated first read of the command's own `plugins/mochiko/schemas/<cmd>.yaml`"
@@ -343,8 +365,8 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
   `plugins/mochiko/skills/mochiko/SKILL.md`
 - **Tier failed:** n/a — supersession by ruling. TWO rulings, one edit:
   the two-anatomy claim by `.mochiko/brainstorms/command-md-scaffold-standardization/record.md`
-  D1 (`DECISIONS.md` 2026-08-27); the implement-only-pair claim by
-  `.mochiko/brainstorms/command-content-schema/record.md` D10 (`DECISIONS.md` 2026-08-26),
+  D1-canonical-command-scaffold (`DECISIONS.md` 2026-08-27); the implement-only-pair claim by
+  `.mochiko/brainstorms/command-content-schema/record.md` D10-per-command-rollout (`DECISIONS.md` 2026-08-26),
   which made all six commands pairs at v0.95.0 — that half was already stale on arrival here
   and is a pre-existing defect this wave repairs, not a change D1 caused.
 - **Content:** "Each command below states its whole contract in one of two anatomies —
@@ -362,7 +384,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
   to the user) — untouched. The Boundaries floor and the Delivery-Manager responsibilities —
   re-homed in the replacement as the named `boundaries` and `roles` schema sections, not
   dropped. Lines 67-68's "the charters' Boundaries" — left standing; `charter-ritual-balance`
-  D3 returned no-clause-superseded (record Appendix A.3) and the pointer's three-command
+  D3-sound-loop-carrier returned no-clause-superseded (record Appendix A.3) and the pointer's three-command
   scope is unchanged.
 - **Consumers assessed:** router body is the only surface carrying this text; `README.md`,
   `ARCHITECTURE.md`, `CLAUDE.md`, and the conversion skill were re-keyed in the same wave.
@@ -375,7 +397,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
   `command-labels.yaml`). `feature` and `architecture` keep the charter form unchanged.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26
   command-content-schema row → `.mochiko/brainstorms/command-content-schema/record.md`
-  D2/D7/D9).
+  D2-rules-prose-split/D7-stage-one-scope/D9-schema-governance-envelope).
 - **Content:** verbatim — "as six-section **charters** (Identity & Mission · Adaptive Goal
   Protocol · Roles & Responsibilities · Tools · Ways of Working · Boundaries)".
 - **Kept deliberately:** `feature` and `architecture` keep the six-section charter form; the
@@ -391,7 +413,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
   synced to the landed template, the principal-architect row's dead contest-brief clause replaced
   by its surviving seats, and one "feature plans" phrase re-keyed.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1/D3/D4). Raised by the v0.91.0 wave
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires/D3-requirements-layer-dies/D4-planless-homes-gates). Raised by the v0.91.0 wave
   audit — **V2 B2** (:102), **V2 B3** (:74), **V1 B1** (:136), **V2 advisory** (:122). The lead's
   ruling behind the V1 item, recorded because it reverses part of this seat's own main-pass
   wording: **the design-phase authoring proposal and the principal-architect's contest brief DIED
@@ -435,7 +457,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
   worse than no row: the router is the discoverability surface, and a dead entry sends the user
   at a slash command that does not resolve.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 (`/mochiko:plan` retires as a
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires (`/mochiko:plan` retires as a
   command) and D4 ("`plan.md` (the summary artifact) dies — no restatement artifact")).
 - **Content (deleted rows, verbatim):**
 
@@ -463,7 +485,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
   `/mochiko:implement`'s design phase, with its member rows and the surrounding pipeline prose
   re-keyed to the design phase.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 (implement absorbs a conditional
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires (implement absorbs a conditional
   design phase), D3 (the TR layer dies), D4 (homes and gates), D5 (the two graders re-scope)).
 - **Content (superseded fragments, verbatim):**
 
@@ -506,7 +528,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
   sufficiency check at entry, the conditional design phase, card authoring by a non-builder
   design seat, and the three user gates.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 (the run's new spine), D2 (the
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires (the run's new spine), D2 (the
   check: per-row, non-author graded, binding, disputed clause defaults gap-to-user), D4 (homes
   and the three surviving gates — run-open routing, design sign-off, card confirm)).
 - **Content (superseded row, verbatim):**
@@ -533,7 +555,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
   surface and a new skill that is not indexed is, by construction, undiscoverable. No strip is
   owed for an addition; this note exists so the wave's router changes read as one set.
 - **Ruling:** `DECISIONS.md` 2026-08-26 plan-stage-retirement row →
-  `.mochiko/brainstorms/plan-stage-utility/record.md` D2 (the check's content spec) and the
+  `.mochiko/brainstorms/plan-stage-utility/record.md` D2-sufficiency-check-clauses (the check's content spec) and the
   Build surface's "Sufficiency-check carrier: likely a new skill". The skill itself is authored
   by another seat in this wave; this seat added only its index row.
 
@@ -545,7 +567,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
   skill** (D7 — the store skill inherits its Duty-1 landing-diff trigger); the row left the Setup
   cluster because the store's home is the desk command, not a one-time ceremony (D1/Q3).
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D1 (living desk) · D3
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D1-architecture-desk-command (living desk) · D3
   (single store, per-feature artifact dies) · D4 (derived index) · D7 (crew) · D10 (consult
   always, sign-off as write gate) · D12 (`nfrs.md` absorbed, store homed at
   `.mochiko/product/architecture/`); `DECISIONS.md` 2026-08-19).
@@ -618,7 +640,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
 - **Tier failed:** n/a — supersession by ruling
   (`.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`; the retired seats and the retired
   card types carry their own prior rulings — `DECISIONS.md` 2026-08-02 for the seat folds,
-  `vertical-tdd-complexity-and-qa-role` D3 at v0.75.0 for foundation-vs-feature).
+  `vertical-tdd-complexity-and-qa-role` D3-foundation-type-retired at v0.75.0 for foundation-vs-feature).
 - **Content (verbatim, the two superseded fragments):**
 
   ```
@@ -684,9 +706,9 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
 - **Consumers assessed:** router rows describe, never dispatch; the described primitives
   reworded/deleted in the same v0.78.0 wave.
 
-## [v0.76.0] Router rows re-typed: `spec`/`tasks`/`plan` template files → CLI/schema-delivered (schema-based-template-guidance D1/D8)
+## [v0.76.0] Router rows re-typed: `spec`/`tasks`/`plan` template files → CLI/schema-delivered (schema-based-template-guidance D1-single-plugin-cli/D8-schema-data-files)
 - **Disposition:** superseded → `plugins/mochiko/schemas/{spec,tasks,plan}.yaml` + `mochiko-cli template <name>` (raw Read of the `.yaml` is the D8-first-class degraded path). The three router-index rows are re-described as CLI/schema-delivered primitives; the `(template)` designation is ruled to `(schema)` — the shape is no longer a `templates/<t>-template.md` file. The sibling report/format rows (`analyst-report-template`, `advocate-report-template`, `report-format`, `artifact-format`, `output-style`, `techanalyst-report-template`, `feasibility-report-template`) keep `(template)` because they remain markdown template files (D3 leaves them `.md`). Discoverability preserved: each re-typed row keeps its full role description.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1 one plugin CLI · D3 the 8 pipeline templates · D8 schemas ship as data files, raw Read first-class; `DECISIONS.md` "Template-schema CLI ruled" row).
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1-single-plugin-cli one plugin CLI · D3 the 8 pipeline templates · D8 schemas ship as data files, raw Read first-class; `DECISIONS.md` "Template-schema CLI ruled" row).
 - **Content (superseded, verbatim):**
   - `| \`spec-template\` (template) | the \`spec.md\` the analyst authors and the loop converges on — lead-seeded; header \`status\` carries the loop's done-condition |`
   - `| \`tasks-template\` (template) | the \`tasks.md\` deliverable — the cycle-card skeleton (per-card checkbox as the progress surface, Stories+rationale, type, dependencies, acceptance criteria by ID, \`**TEST:**\` gate, brownfield exposure) |`
@@ -750,7 +772,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
 
 ## [v0.61.0] Consumption note + entry rows re-keyed to the feature entry and the two-altitude design surface; `/mochiko:feature` row added
 - **Disposition:** superseded → rewritten in place: the Specify-cluster consumption note (spec-root accumulation / extend-mode / Graduation-contract keying) re-keyed to the two-altitude surface (product baselines at `.mochiko/product/`, per-feature artifacts at `.mochiko/features/FEAT-XXX/`, folds at acceptance); the `/mochiko:specify`, `/mochiko:plan`, `/mochiko:implement` entry rows re-keyed (feature-keyed entry: spec selection or feature-command delta; specify scoped to new-capability work).
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/feature-sizing-and-entry-points/record.md` D9 — entry re-key, artifact re-home, two-altitude design surface; supersedes feature-map D17/D18's spec-folder layout, extend-mode-at-spec-root, and cross-spec reach clauses. Specify/feature boundary and the new row: D5/D6/D12.)
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/feature-sizing-and-entry-points/record.md` D9-plan-implement-rekey — entry re-key, artifact re-home, two-altitude design surface; supersedes `feature-map-layer` D17-per-feature-runs/D18-graduation-contract-rekey's spec-folder layout, extend-mode-at-spec-root, and cross-spec reach clauses. Specify/feature boundary and the new row: D5/D6/D12.)
 - **Content (superseded, verbatim):**
   - Consumption note: `> Feature-scoped consumption is carried by the spec's Feature Selection section + the map: \`/mochiko:plan\` and \`/mochiko:implement\` run per selected feature under the re-keyed **Graduation contract** (shared artifacts accumulate at spec root, extend-mode, per-feature trio under \`features/FEAT-XXX/\`). Deferred SCs, seams, and obligations ride the map entries (\`mochiko:authoring-feature-map\`); implement's acceptance landing executes the graduation bookkeeping — no separate feature-close stage exists.`
   - `/mochiko:specify` row's opening clause: `you want to create a feature specification —` (rest of the row kept verbatim; re-scoped to "spec **new-capability** work" per D6).
@@ -761,7 +783,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
 
 ## [v0.58.0] authoring-slices row out; requirements-analyst row re-framed under the PM
 - **Disposition:** superseded → the skill retired whole (`.mochiko/strips/authoring-slices.md` [v0.58.0]); its craft lives in `authoring-feature-map`, whose row already stands.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md`, D4/D18/D22 + D15)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md`, D4-slices-leave-pipeline/D18-graduation-contract-rekey/D22-foundation-ordering-role + D15-layered-pm-analyst)
 - **Content (superseded, verbatim):**
   - Skills-table row: `| \`authoring-slices\` | authoring the spec's **Delivery Slices section** — graduation-slice decomposition (story→slice homes, dependency-closed order, foundation designation, extend obligations, Feature-Done, Graduation contract) or the single-slice line, keyed to the Intent section's delivery ruling; lead-dispatched, no fixed seat |`
   - Agents-table row (pre-edit): `| \`requirements-analyst\` | specify-cluster producer — authors the feature \`spec.md\` (prioritized user stories + FR/SC requirements) (skills: authoring-requirements, authoring-user-stories) |` — rewritten for the D10 story files and the D15 analyst-inside-PM-frame boundary.
@@ -798,7 +820,7 @@ row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
 - **Consumers assessed:** router-only edit; the six command entries and remaining 27 skill
   rows untouched.
 
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -813,7 +835,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 
 ## [v0.44.0] Review-family split's design-record citation
 - **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 — design:
@@ -825,7 +847,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 - **Disposition:** superseded → rewritten in place at **two** sites: the *How the library
   composes* sentence and the `workflow-contract` reach-when cell. A **third** correction rode the
   same edit and is logged in its own entry below.
-- **Tier failed:** n/a — supersession by ruling (`lead-owned-process-flexibility` **OQ-2**,
+- **Tier failed:** n/a — supersession by ruling (`lead-owned-process-flexibility` **OQ-2-declaration-durable-home**,
   adopted at acceptance **A2**, 2026-08-01; `DECISIONS.md` 2026-08-01 row). Wave note:
   `.mochiko/strips/command-shape.md` [v0.40.0]. The router was **not** one of the wave's five
   briefed build targets; it is a consumer the wave made stale, repaired in the same wave on the

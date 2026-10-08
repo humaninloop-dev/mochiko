@@ -22,7 +22,7 @@ Governance holds the rule, never the product's instance of it: a principle passe
 checked from the code, the pipeline, or the stack without knowing what the product does for its
 users.
 
-- [ ] No surface restates a product's instance of a rule — its boundary list, its data's name, its behaviour toward its users; where a principle needs the instance, it points at the instance's home (GI-017: point, never restate)
+- [ ] No surface restates a product's instance of a rule — its boundary list, its data's name, its behaviour toward its users; where a principle needs the instance, it points at the instance's home (GI-017-pointer-only-region: point, never restate)
 - [ ] No elicited intent that failed the test is authored as a principle or flagged as a proposal — it sits in the synthesis's Handed off list under Deliberate exclusions
 
 Worked cases — a principle as elicited, and what the set may hold of it:

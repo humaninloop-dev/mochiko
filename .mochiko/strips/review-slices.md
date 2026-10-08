@@ -11,7 +11,7 @@ aphorism (L29) was **raised, not ruled** here (see the wave return).
 
 ## [v0.49.0] Skill retired — folded into `review-specifications` as the Delivery Slices grade
 - **Disposition:** superseded → `review-specifications` (new "The Delivery Slices section" 11-check table: checks 1–10 + 13 of the original 13); directory deleted
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D6+D9)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D6-slices-into-spec+D9-slice-grading-merges)
 - **Content:** the 163-line SKILL.md — the 13-check table, two-slices vocabulary, null-exit grading, inline severity/verdict tables. Checks 11 (spec stamp) + 12 (overlay purity) died with the overlay file itself; the depth second-guess is re-keyed to the spec's Intent delivery ruling. Full text: git history at v0.48.0.
 - **Kept deliberately:** the vocabulary guard (graduation slice vs vertical slice/cycle) — carried into the absorbing section; the depth-second-guess-in-both-directions judgment core survives whole.
 - **Consumers assessed:** devils-advocate (roster edited) · router (row removed) · review-specifications (absorbing home edited in the same wave).

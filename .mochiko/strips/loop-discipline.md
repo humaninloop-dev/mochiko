@@ -168,7 +168,7 @@ If you notice yourself thinking any of these, the loop is unsound. Stop and repa
 - **Consumers assessed:** 6 commands (obligated read dropped, mechanics inlined) · `templates/command-shape.md` (deleted same wave) · `templates/workflow-contract.md`, `templates/agent-dispatch.md`, `templates/sized-end-stage-review.md` (attribution reworded) · router `skills/mochiko` (rows deleted) · `review-brainstorm` · `review-governance-intent` · `review-plan-artifacts` · `review-task-artifacts` · `review-slices` · `review-feasibility` · `authoring-slices` · `patterns-technical-decisions` (pointers reworded to "the lead's — its command states them").
 
 ---
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -183,7 +183,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 
 ## [v0.44.0] Keystone-test doctrine pointer
 - **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 (Full doctrine + the grep-checkable deny-list: `.mochiko/brainstorms/agent-decoupling/synthesis.md`.)
@@ -192,7 +192,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 
 ## [v0.44.0] Archived-ROADMAP source-techniques pointer (Reference Files list)
 - **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 - See the archived mochiko `ROADMAP.md` ("The sound-loop doctrine", `.mochiko/archive/ROADMAP.md` in the mochiko repo) for the source techniques
@@ -202,7 +202,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 # v0.40.0 — the D6(a) rewrite, ratified on its own acceptance card
 
 **Wave context:** `lead-owned-process-flexibility`
-(`.mochiko/brainstorms/lead-owned-process-flexibility/record.md`), **D6(a) ratified at
+(`.mochiko/brainstorms/lead-owned-process-flexibility/record.md`), **D6-derived-consequence-set(a) ratified at
 acceptance A1 on its own card** — R31 gave it one because doctrine surgery on the skill
 carrying mochiko's whole loop discipline deserves its own yes, and the card shows the internal
 `Contested` element (U1-C's tier-ranking decline). Wave note: `.mochiko/strips/command-shape.md`
@@ -233,7 +233,7 @@ Flags list · every Common-Rationalizations row but the one logged below.
 - **Disposition:** superseded → rewritten in place at four sites, all naming one carrier rule:
   the Overview sentence · the *How to apply* section (retitled "name the carrier, then fill it",
   now a three-branch list) · the Common-Rationalizations row · the Related pointer.
-- **Tier failed:** n/a — supersession by ruling (**OQ-2**, adopted verbatim at acceptance **A2**;
+- **Tier failed:** n/a — supersession by ruling (**OQ-2-declaration-durable-home**, adopted verbatim at acceptance **A2**;
   raised as **R17**, which observes that D1-as-amended falsifies F30's constant-at-authoring
   premise for a departing run). The paired shape-side entry is
   `.mochiko/strips/command-shape.md` [v0.40.0] "The per-run-contract prohibition retired".

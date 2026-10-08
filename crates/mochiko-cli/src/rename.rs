@@ -1,6 +1,6 @@
 //! `ids rename`, `ids rekey` and `ids literal`: preview-first rewrites behind a diff check.
 //!
-//! `human-readable-ids` D7 admits the rename as a kernel-class write tool on three conditions:
+//! `human-readable-ids` D7-scoped-rename-command admits the rename as a kernel-class write tool on three conditions:
 //! it is scoped (keyed on the number inside its owning scope, never the bare number project-wide),
 //! it previews by default and writes only when asked, and the seat supplies every slug — the tool
 //! coins none and judges no word choice. D15 adds the fourth: before any write, a diff check
@@ -1275,7 +1275,7 @@ fn alias_matches(text: &str, alias: &str, number: &str, quotes: bool) -> Vec<(us
     out
 }
 
-/// The starts of `id`'s tokens that are members of an alias form's compound — `D2` in `AD-D1/D2` —
+/// The starts of `id`'s tokens that are members of an alias form's compound — `D2` in "`AD-D1/D2`" —
 /// and so belong to the alias's owner (L4 as ruled at review), unless the form heads a list of
 /// four (M4).
 fn alias_members(text: &str, alias: &str, id: &ids::Id, quotes: bool) -> Vec<usize> {

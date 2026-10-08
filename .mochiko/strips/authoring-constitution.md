@@ -5,7 +5,7 @@ Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-suc
 [v0.22.0] entries — workflow-token-reduction wave 1 (design:
 `.mochiko/brainstorms/workflow-token-reduction/record.md`, D6b; ratified 2026-07-23).
 
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -22,20 +22,20 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 across the `references/` tree converts from a single asserted production level to a **two-row
 `low`/`high` depth dial** (one project-wide level, user-declared, one-way `low`→`high`). Ruling:
 `production-floor-adaptive-depth`, ratified 2026-08-11, D1–D8 — `.mochiko/brainstorms/production-floor-adaptive-depth/record.md`;
-`DECISIONS.md` 2026-08-11 adaptive-depth row. **PO-D2 amended** (one floor, now at two depth levels;
-the four-rung tier ladder stays retired), **PO-D7 superseded** (staged adoption is the `low` level,
+`DECISIONS.md` 2026-08-11 adaptive-depth row. **`production-only-focus` D2-tier-axis-retired amended** (one floor, now at two depth levels;
+the four-rung tier ladder stays retired), **`production-only-focus` D7-immature-team-onramp superseded** (staged adoption is the `low` level,
 not a recorded waiver). D5 draws the `low` row on the retrofit-cost cut line: obligations expensive
 to retrofit hold identically at both levels; addable rigor (merge-blocking gates, coverage
 thresholds) may relax at `low`. All seven entries below are supersessions **by ruling**, not tier
 failures. `catalog/backend-service.md` was deliberately left untouched (its cards are arbitrated
-arch-opinion, outside the depth dial per PO-D3 S7 / review-fold #9). `COMPLIANCE-MODULES.md` and the
+arch-opinion, outside the depth dial per `production-only-focus` D3-library-owned-standard S7 / review-fold #9). `COMPLIANCE-MODULES.md` and the
 `ESSENTIAL-FLOOR.md` worked-example framing gained **pure additions** (D7 level-blind clause; a
 depth note + coverage annotation) — additions ride the decision row and take no strip entry.
 
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the authoring family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -45,7 +45,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/authoring-constitution/references/INTERROGATION-AGENDA.md`. -->
 
@@ -57,6 +57,71 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/authoring-constitution/<
 `references/ESSENTIAL-FLOOR.md`, `references/catalog/README.md`,
 `references/catalog/universal-floor.md`, `references/catalog/backend-service.md`). The rules this
 skill's pointers bind are schema content, recorded by the migration log, not here. -->
+
+## [v0.118.0] Wave 3 back-fill: production-only-focus and setup-product-agnostic cites joined
+
+- **Disposition:** superseded → 26 lines across `SKILL.md`, `references/COMPLIANCE-MODULES.md`,
+  `references/DOMAIN-DEPENDENCIES.md`, `references/INTERROGATION-AGENDA.md`,
+  `references/catalog/README.md`, `references/catalog/backend-service.md` and
+  `references/catalog/universal-floor.md` now cite in the joined form. Each glued `PO-D` cite is
+  qualified and joined: `production-only-focus` D1-customer-product-target ·
+  `production-only-focus` D2-tier-axis-retired · `production-only-focus` D3-library-owned-standard ·
+  `production-only-focus` D4-waivers-reach-everything ·
+  `production-only-focus` D4.2-legal-mandate-exception ·
+  `production-only-focus` D5-production-depth-agenda ·
+  `production-only-focus` D7-immature-team-onramp. Each plain-qualified setup-product-agnostic cite
+  in `INTERROGATION-AGENDA.md` keeps its qualifier and joins:
+  `setup-product-agnostic` D1-profile-leaves-setup · `setup-product-agnostic` D2-rule-not-instance ·
+  `setup-product-agnostic` D3-seven-dimension-agenda · `setup-product-agnostic` D4-closed-event-set.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/human-readable-ids/record.md` D11-cross-session-qualifier,
+  D14-live-layer-backfill and D15-protected-line-rewrites — every live-layer mention joined to its
+  definition's slug, cross-session mentions qualified, verbatim spans masked; wave plan
+  `.mochiko/brainstorms/human-readable-ids/wave3-backfill.md` items 7–9)
+- **Content (superseded):** every changed line at `0b8982a`, verbatim, as `<file>:<line>: <text>`
+  (files under `plugins/mochiko/skills/authoring-constitution/`):
+
+  ```text
+  SKILL.md:89: | `release-gates` | Always offered (a deployed/operated target class — PO-D1); content from the always-interrogated deployment dimension | Region: one summary line + pointer; detail in the ledger |
+  references/COMPLIANCE-MODULES.md:9: The production floor's companion (PO-D2): regulated and compliance needs are not a tier — they
+  references/COMPLIANCE-MODULES.md:27: | Customer-facing UI in a jurisdiction with accessibility statutes (ADA / EAA / EN 301 549) | `a11y` (WCAG) | legal-mandate | seed — routed here per PO-D5's S8 fold |
+  references/COMPLIANCE-MODULES.md:33:   (PO-D4.2): a recorded permanent waiver of a legal control is documented evidence of a knowing
+  references/COMPLIANCE-MODULES.md:37: - Both strata are **additive-only** over the floor (PO-D2), in all cases.
+  references/DOMAIN-DEPENDENCIES.md:63: One universal gate, uniform at both depth levels (the retired tier fork is gone — PO-D2; the
+  references/INTERROGATION-AGENDA.md:14: **The agenda test (PO-D3, adaptive-depth 2026-08-11, setup-product-agnostic 2026-09-24):** every
+  references/INTERROGATION-AGENDA.md:23: (PO-D3's S7 carve-out).
+  references/INTERROGATION-AGENDA.md:31: surface) were struck by ruling (setup-product-agnostic D1, D3), and the seven that stay keep their
+  references/INTERROGATION-AGENDA.md:62: **Dimension 8 carries rules, not product values** (setup-product-agnostic D3). An SLO is declared
+  references/INTERROGATION-AGENDA.md:70: without knowing what the product does for its users (setup-product-agnostic D2): the rule stays, the
+  references/INTERROGATION-AGENDA.md:80: The retired tier ladder's low-tier pruning license is gone (PO-D2): every project here is a
+  references/INTERROGATION-AGENDA.md:87: agenda by a single recorded scope ruling that binds every project (setup-product-agnostic D1, D3) —
+  references/INTERROGATION-AGENDA.md:109:   agenda slice it touches; the event set is closed at six (setup-product-agnostic D4): (1) the
+  references/INTERROGATION-AGENDA.md:125:   retired axis), its existing waivers re-recorded under the PO-D4 waiver model; a fact profile,
+  references/INTERROGATION-AGENDA.md:126:   attached compliance modules, or product-instance principles (setup-product-agnostic D4 — no
+  references/INTERROGATION-AGENDA.md:164:    deliberately arbitrated layer (PO-D3's S7 carve-out): present with recommendations; the user
+  references/catalog/README.md:19: dealt. Mochiko's target is customer-facing product applications (PO-D1): SaaS, web, mobile,
+  references/catalog/README.md:30: *(The former CLI and library shelves retired with their types under PO-D1's deferral of
+  references/catalog/README.md:40: The floor is one production standard at **two depth levels — `low` and `high`** (PO-D2, as amended
+  references/catalog/README.md:54:   waiver (PO-D7 superseded); accumulated waivers remain the governance re-entry checklist as the
+  references/catalog/backend-service.md:6: **arbitrated-layer** cards (architecture-opinion — PO-D3's S7 carve-out): architecture choice is
+  references/catalog/universal-floor.md:15: not a waiver (PO-D7 superseded). Absence is always deliberate and auditable, never silent.
+  references/catalog/universal-floor.md:37: **Waiver posture:** D4 — recorded justification in the ledger, available at either level as a per-check *fit* exception; prefer narrowing over waiving (e.g. "no auth — single-user local companion" as a *tightened scope*, not a dropped category). Staged adoption is the **low** level, not a waiver (PO-D7 superseded).
+  references/catalog/universal-floor.md:51: **Waiver posture:** D4 — recorded justification in the ledger, available at either level as a per-check *fit* exception. The young-team on-ramp is the **low** level, not a waiver (PO-D7 superseded): coverage is measured and ratcheted from reality before the blocking threshold is asserted at `high`.
+  references/catalog/universal-floor.md:79: **Waiver posture:** D4 — recorded justification in the ledger, available at either level as a per-check *fit* exception (historically the most-waived category on immature stacks — the recorded waiver, not a silent gap, is the honest state). Staged adoption is the **low** level, not a waiver (PO-D7 superseded).
+  ```
+
+- **Kept deliberately:** the unqualified bare cites
+  "`D1/D2`, `D2`, `D4`, `D4.1`, `D5`, `D6`, `D7`, `D8`" at `COMPLIANCE-MODULES.md` :16, :35–:36;
+  `DOMAIN-DEPENDENCIES.md` :64; `ESSENTIAL-FLOOR.md` :6, :10, :86; `INTERROGATION-AGENDA.md` :42,
+  :132, :134, :141, :152, :154, :178; `catalog/README.md` :41–:42, :45, :51–:52, :66;
+  `catalog/universal-floor.md` :9–:10, :13–:14, :37, :51, :65, :79. Each line names no session and
+  links no record, so no owner resolves and the mention stays as written
+  (`human-readable-ids` D11-cross-session-qualifier as narrowed at build;
+  `human-readable-ids` D18-build-done-check as changed at build: an unindexed mention is neither
+  reported nor rewritten). `catalog/README.md`:41's "`D1–D8`" is also a range of more than three
+  members (`human-readable-ids` D5-compound-reference-forms). `COMPLIANCE-MODULES.md`:3's
+  "(setup-product-agnostic D1, D6)" sits in a `>` blockquote, verbatim under
+  `human-readable-ids` D15-protected-line-rewrites.
 
 ## [v0.118.0] ESSENTIAL-FLOOR worked note's GAP ID joined
 
@@ -72,7 +137,7 @@ skill's pointers bind are schema content, recorded by the migration log, not her
   the floor definition and the brownfield ceiling library; the module-assembly table keeps its four
   engineering-module rows.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D1; `DECISIONS.md` 2026-09-24)
+  D1-profile-leaves-setup; `DECISIONS.md` 2026-09-24)
 - **Content:** four lines, verbatim.
   1. `description:` fragment — "principle enforcement, compliance modules, floor waivers, or an
      Essential Floor."
@@ -97,7 +162,7 @@ skill's pointers bind are schema content, recorded by the migration log, not her
 - **Disposition:** superseded → the agenda elicits engineering facts only; no fact profile, no module
   attachment, no S4 fail-safe, no legal-mandate waiver stratum.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D1; `DECISIONS.md` 2026-09-24)
+  D1-profile-leaves-setup; `DECISIONS.md` 2026-09-24)
 - **Content:** seven passages, verbatim.
   1. "No catalog card is dealt until the dimensions that select and filter the deck (fact profile,
      type) are elicited."
@@ -130,7 +195,7 @@ skill's pointers bind are schema content, recorded by the migration log, not her
 - **Disposition:** superseded → seven dimensions (3, 5, 6, 7, 8, 9, 10), numbers stable, plus the
   depth level; dimension 4's engineering half carried into dimension 8 as trust vectors.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D3; `DECISIONS.md` 2026-09-24)
+  D3-seven-dimension-agenda; `DECISIONS.md` 2026-09-24)
 - **Content:** eight fragments, verbatim.
   1. "every question elicits a **fact** — no question negotiates a per-check standard."
   2. "its *shape* (product-kind facts translate each floor category into its correct expression)"
@@ -154,7 +219,7 @@ skill's pointers bind are schema content, recorded by the migration log, not her
   clarification class outside it, states that a product change opens no amend except through event
   (3), and makes the legacy clause forward-only.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D4 and the user's Q8 ruling; `DECISIONS.md` 2026-09-24)
+  D4-closed-event-set and the user's Q8 ruling; `DECISIONS.md` 2026-09-24)
 - **Content:** two sentences, verbatim.
   1. "An amendment that changes the fact profile (module attach/detach) or un-waives a floor category
      is a governance event and gets the relevant agenda slice (dimensions 2, 4, 10 at minimum); a
@@ -174,7 +239,7 @@ skill's pointers bind are schema content, recorded by the migration log, not her
 - **Disposition:** superseded → a retired-from-setup header above unchanged content. No setup run reads
   the file; nothing in it binds a run.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D1, D6; `DECISIONS.md` 2026-09-24)
+  D1-profile-leaves-setup, D6-cut-ships-first; `DECISIONS.md` 2026-09-24)
 - **Content:** faithfully compressed — the file's operative binding, left in place as text: "Attachment
   is **mechanical from the fact profile** (interrogation dimension 2)" (the opening paragraph), the
   fact-validation fail-safe (named elicitation · consequence-stated confirmation · brownfield
@@ -189,7 +254,7 @@ skill's pointers bind are schema content, recorded by the migration log, not her
 
 - **Disposition:** superseded → deleted; no floor category has audit-evidence variants in setup.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D1; `DECISIONS.md` 2026-09-24)
+  D1-profile-leaves-setup; `DECISIONS.md` 2026-09-24)
 - **Content:** verbatim — "Audit-evidence variants live in [COMPLIANCE-MODULES.md](COMPLIANCE-MODULES.md)
   and attach via the fact profile."
 - **Kept deliberately:** the breadth-invariant sentence before it.
@@ -198,7 +263,7 @@ skill's pointers bind are schema content, recorded by the migration log, not her
 
 - **Disposition:** superseded → deleted; the floor varies per project by expression and waivers only.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D1; `DECISIONS.md` 2026-09-24)
+  D1-profile-leaves-setup; `DECISIONS.md` 2026-09-24)
 - **Content:** two passages, verbatim.
   1. "- **Modules** — compliance obligations attach additively from the fact profile per
      [../COMPLIANCE-MODULES.md](../COMPLIANCE-MODULES.md); modules are **level-blind** — they attach
@@ -211,7 +276,7 @@ skill's pointers bind are schema content, recorded by the migration log, not her
 
 - **Disposition:** superseded → deleted.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D1; `DECISIONS.md` 2026-09-24)
+  D1-profile-leaves-setup; `DECISIONS.md` 2026-09-24)
 - **Content:** verbatim — "Audit-evidence variants (the retired `regulated` rows) live in
   [../COMPLIANCE-MODULES.md](../COMPLIANCE-MODULES.md) and attach via the fact profile."
 - **Kept deliberately:** "Absence is always deliberate and auditable, never silent."
@@ -221,7 +286,7 @@ skill's pointers bind are schema content, recorded by the migration log, not her
 - **Disposition:** superseded → deleted; the card never asserted these obligations, and the record
   hands them to the rehoming session.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D1; `DECISIONS.md` 2026-09-24)
+  D1-profile-leaves-setup; `DECISIONS.md` 2026-09-24)
 - **Content:** verbatim — "License compliance, documented supply-chain review, and tightened blocking
   severity (medium+) are compliance-module content ([../COMPLIANCE-MODULES.md](../COMPLIANCE-MODULES.md)),
   attached via the fact profile."
@@ -231,7 +296,7 @@ skill's pointers bind are schema content, recorded by the migration log, not her
 
 - **Disposition:** superseded → the CLI form `mochiko-cli template governance-intent`
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** two lines.
   1. `references/INTERROGATION-AGENDA.md`: ", or `plugins/mochiko/schemas/governance-intent.yaml`
      read raw"
@@ -246,7 +311,7 @@ skill's pointers bind are schema content, recorded by the migration log, not her
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -290,7 +355,7 @@ skill's pointers bind are schema content, recorded by the migration log, not her
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -301,7 +366,7 @@ skill's pointers bind are schema content, recorded by the migration log, not her
   halt likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -311,7 +376,7 @@ skill's pointers bind are schema content, recorded by the migration log, not her
 
 ## [v0.101.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2A, authoring family)
 
-Ruling for every entry below: skill-content-schema D3 (three-home boundary) / D8/C4
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (three-home boundary) / D8/C4
 (protected transfers + the whole-body re-home clause), `DECISIONS.md` 2026-09-01 rows
 (Skill-content schema ruled · Skill-schema wave-2 family doors ruled — the authoring-family
 door); census: `.mochiko/brainstorms/skill-content-schema/research/census-authoring.md` §A (AC) +
@@ -333,7 +398,7 @@ builds 48 rules, census 47, deviation recorded here)** · 6 `every-principle-tra
 `${template}` = `governance-surfaces` — BOTH body sites, the "Artifact shapes" line and the
 content-inventory preamble, single-home into this one rule, wave-lead confirmed; the
 governance-intent arm lives only in `references/INTERROGATION-AGENDA.md` and rides the file
-per census J-2) · 14 `missing-synthesis-stop` (`when: {synthesis: absent}`) ·
+per census J-2-unbound-agenda-reference) · 14 `missing-synthesis-stop` (`when: {synthesis: absent}`) ·
 15a `markers-only-regeneration` · 15b `preserved-blocks` · 15c `amend-preserves-verbatim`
 (`when: {mode: amend}`) · 16a `grading-routing` · 16b `eliciting-routing` ·
 16c `analysis-routing` · 17 `three-part-rule` · 18 `enforcement-fits-team-reality` ·
@@ -348,7 +413,7 @@ untouched, stub points):** 26 `essential-floor-canonical-home` ·
 30 `three-source-rule` · 31 `arbitrated-shelf-frame` · 32 `module-mechanical-attachment` ·
 33 `s4-fail-safe` · 34 `domain-dependency-admissibility` ·
 35 `domain-dependency-growth-gate`. `references/INTERROGATION-AGENDA.md` carries NO stub —
-census J-2, by ruling, named here so the omission reads as a ruling, not a miss;
+census J-2-unbound-agenda-reference, by ruling, named here so the omission reads as a ruling, not a miss;
 RFC-2119-KEYWORDS.md and EMERGENT-CEILING-PATTERNS.md stay teaching, no stubs.
 **Section distribution (build call, disclosed):** the census gave body totals
 (independence 1 · scope 5 · inputs 3 · output 6 · reserved 4 · artifact 18) with stubs
@@ -381,11 +446,11 @@ re-seeds from 21,550 to the measured payload, third seeding path, no headroom (P
 the ledger row).
 
 ## [v0.101.0] Whole-body survivor protection re-homes onto the pair (D8/C4 explicit clause)
-- **Disposition:** superseded — the [v0.28.0] "KEPT: the remaining body" under-band survivor ruling (already narrowed by the two recorded v0.63.0 supersessions — the enforcement-strength table and the brownfield action-mapping paragraph) re-homes onto the PAIR: `SKILL.md` body + `schema.yaml` jointly, recorded once here per skill-content-schema D8/C4 — the review-feasibility precedent replayed; no per-line ambiguity survives. Every named survivor's home after conversion: the synthesis contract in `ratified-synthesis-only` + `sec.reserved` + `every-principle-traces`/`realized-or-flagged`; surface routing in `universal-routing` · `scope-bound-routing` · `rules-inject-on-read-caveat` · `procedure-shaped-routing` · `index-and-ledger-closure`; the module-assembly table's obligations in `never-route-unselected-modules` (narrative table stays body prose); both mode contracts in `two-modes-one-core` + the `mode:` dimension; the ceiling test in `brownfield-ceiling-test`; the floor-accounting and mode-prerequisites blockquotes in `floor-categories-accounted` + `missing-synthesis-stop`; the Three-Part Rule in `three-part-rule` (+ `enforcement-fits-team-reality`); RFC 2119 in `operative-constraint-only` + the body's teaching pointer; the inventory behavioral riders in `region-content-set` · `quality-gates-actual-commands` · `output-style-file-every-run` · `ledger-riders-and-trace-manifest`.
+- **Disposition:** superseded — the [v0.28.0] "KEPT: the remaining body" under-band survivor ruling (already narrowed by the two recorded v0.63.0 supersessions — the enforcement-strength table and the brownfield action-mapping paragraph) re-homes onto the PAIR: `SKILL.md` body + `schema.yaml` jointly, recorded once here per skill-content-schema D8-skill-governance-envelope/C4 — the review-feasibility precedent replayed; no per-line ambiguity survives. Every named survivor's home after conversion: the synthesis contract in `ratified-synthesis-only` + `sec.reserved` + `every-principle-traces`/`realized-or-flagged`; surface routing in `universal-routing` · `scope-bound-routing` · `rules-inject-on-read-caveat` · `procedure-shaped-routing` · `index-and-ledger-closure`; the module-assembly table's obligations in `never-route-unselected-modules` (narrative table stays body prose); both mode contracts in `two-modes-one-core` + the `mode:` dimension; the ceiling test in `brownfield-ceiling-test`; the floor-accounting and mode-prerequisites blockquotes in `floor-categories-accounted` + `missing-synthesis-stop`; the Three-Part Rule in `three-part-rule` (+ `enforcement-fits-team-reality`); RFC 2119 in `operative-constraint-only` + the body's teaching pointer; the inventory behavioral riders in `region-content-set` · `quality-gates-actual-commands` · `output-style-file-every-run` · `ledger-riders-and-trace-manifest`.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema rows).
 - **Content:** the [v0.28.0] "KEPT: the remaining body (under-band survivor ruling)" claim — see that entry below for its lineage.
 - **Kept deliberately:** `description:` byte-untouched; all 9 `references/` files untouched (6 root + 3 catalog); `templates/constitution-modules/` untouched.
-- **Consumers assessed:** GI-005/GI-006 hold — every protected line traceable through this ledger to its new home, reconstructible in both directions.
+- **Consumers assessed:** GI-005-record-layer-integrity/GI-006-primitive-edit-traceability hold — every protected line traceable through this ledger to its new home, reconstructible in both directions.
 
 ## [v0.101.0] Adaptive-depth machinery — protection transfers (census §A row 2; production-floor-adaptive-depth D1–D8, v0.65.0)
 - **Disposition:** superseded — the body-borne depth rules transfer to `two-modes-one-core` (the declared-level row clause), `region-content-set` (floor-first, `(NON-NEGOTIABLE)`, depth-row-selected, `high`-only-absent-at-`low`), and `floor-categories-accounted` (the not-a-missing-category clause); the reference-borne machinery (two-row dial + breadth invariant, floor doctrine, floor cards' content sets, level-blind module attachment) transfers to reference stubs `depth-dial-breadth-invariant` · `floor-doctrine` · `floor-cards-content-sets` · `module-mechanical-attachment` — the reference files stay the procedure homes, referenced never restated (D3/C2 stub-default). Per D8/C4 the protections re-home onto these rule IDs.
@@ -393,13 +458,13 @@ the ledger row).
 - **Content:** body: "floor cards authored at the synthesis's declared depth level (the two-row `low`/`high` card form)" · "Author each floor principle at the row the synthesis's declared depth level selects; a `high`-only check is absent at `low`." · "(A `high`-only check absent at `low` is not a missing category — its category is still present through its other rows.)"
 - **Consumers assessed:** all v0.65.0 reference-file products untouched; `/mochiko:setup` reads the same doctrine through the catalog (untouched).
 
-## [v0.101.0] Two-arm governance-surfaces pointers — protection transfers to C-A3 stub (census §A row 3; schema-based-template-guidance D1/D8, v0.76.0; GI-020)
-- **Disposition:** superseded — both `SKILL.md` sites (the "Artifact shapes" line and the content-inventory preamble) single-home into `two-arm-schema-binding` (`extends: authoring-common.two-arm-template`, must, `kind: binding`, `${template}` = `governance-surfaces`), per D8/C4; both arms preserved verbatim through the inherited block text (GI-020 — raw Read the first-class degraded path). The third site — the governance-intent pointer in `references/INTERROGATION-AGENDA.md` — rides the untouched file (census J-2).
+## [v0.101.0] Two-arm governance-surfaces pointers — protection transfers to C-A3 stub (census §A row 3; schema-based-template-guidance D1-single-plugin-cli/D8-schema-data-files, v0.76.0; GI-020-plugin-install-model)
+- **Disposition:** superseded — both `SKILL.md` sites (the "Artifact shapes" line and the content-inventory preamble) single-home into `two-arm-schema-binding` (`extends: authoring-common.two-arm-template`, must, `kind: binding`, `${template}` = `governance-surfaces`), per D8/C4; both arms preserved verbatim through the inherited block text (GI-020-plugin-install-model — raw Read the first-class degraded path). The third site — the governance-intent pointer in `references/INTERROGATION-AGENDA.md` — rides the untouched file (census J-2-unbound-agenda-reference).
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows).
 - **Content:** "invoke `mochiko-cli template governance-surfaces` when the binary is available; otherwise Read `plugins/mochiko/schemas/governance-surfaces.yaml` raw" (both body sites carried this two-arm form).
 - **Consumers assessed:** `plugins/mochiko/schemas/skill-authoring-common.yaml` (P1's, this wave) carries the block; `schemas/governance-surfaces.yaml` untouched.
 
-## [v0.101.0] D8 ownership boundary — protection transfers (census §A row 4; constitution-native-surfaces D8, 2026-07-18)
+## [v0.101.0] D8 ownership boundary — protection transfers (census §A row 4; constitution-native-surfaces D8-marked-governance-region, 2026-07-18)
 - **Disposition:** superseded — protection transfers to `markers-only-regeneration` (floor), `preserved-blocks` (floor), and `amend-preserves-verbatim` (must, `when: {mode: amend}`), per D8/C4.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows).
 - **Content:** "Regenerate only what sits between the markers — user content outside them is untouchable." · "the two preserved blocks: `mochiko:domain-registry` … and the `mochiko:output-style` switch line … on every later run **read the existing values and re-emit them unchanged**" · "In amend, preserve untouched principles verbatim (their GI-IDs are stable) and bump the region's semver. A `.mochiko/memory/constitution.md` on disk is superseded — the lead deletes it; never author into it."
@@ -417,9 +482,9 @@ the ledger row).
 - **Content (decisive line per row):** 1 "**There is no `constitution.md`.** Governance lands on the surfaces Claude Code natively loads" · 2 the four-surface set (region markers · rules files · skill pointers · ledger) · 3 "write it as part of the output, not as an afterthought" · 6 "**Every principle traces.** … always in the **ledger** … the canonical trace record" · 7 "**Every element is realized or flagged.** … never silently dropped" · 8 "**No unsanctioned selection.** … emit a **flagged proposal** … ruled on by the user at the acceptance gate" · 10a "a **short imperative line in the CLAUDE.md region** … Universal principles do NOT go to unconditional rules files" · 10b "`paths` globs covering **every path whose code can violate the concern**" · 10c "rules files inject on **Read**, not Write — … emit the region's standing new-file read line" · 10d "Mint a new skill only for a session-minted procedure" · 10e "Index → home → ledger must close; the validator checks it" · 16a–c the three When-NOT routings (validator · interrogation · `analysis-codebase`) · 17 "Every principle MUST have three components … A principle without all three is incomplete" · 18 "Enforcement MUST fit the team reality recorded in the synthesis" · 19 "The surface … carries the **operative constraint only** … do not restate them" · 20a–d the mandatory content inventory's eight items as four set-rules (stamp/index/universal-lines/stack · gates with **actual commands, never placeholder tokens** · the unconditional output-style rules file every run · ledger riders + trace summary manifest) · 21 "MUST **account for** all four Essential Floor categories … A floor category with neither is a defect in either mode" · 22 "There is **no CLAUDE.md-synchronization section**" · 23 "**Never route module content the synthesis didn't select**" · 25 "reference `.mochiko/memory/evolution-roadmap.md` as a documented stub"
 - **Consumers assessed:** `validation-constitution` grades the produced set, never this skill's text (untouched); the router row stays generically true.
 
-## [v0.76.0] `governance-surfaces-template.md` + `governance-intent-template.md` read-pointers → schemas (two-arm) — schema-based-template-guidance D1/D8
+## [v0.76.0] `governance-surfaces-template.md` + `governance-intent-template.md` read-pointers → schemas (two-arm) — schema-based-template-guidance D1-single-plugin-cli/D8-schema-data-files
 - **Disposition:** superseded → `mochiko-cli template governance-surfaces` / `template governance-intent`, or Read `plugins/mochiko/schemas/governance-surfaces.yaml` / `plugins/mochiko/schemas/governance-intent.yaml` raw (D8-first-class). Three sites: `SKILL.md` "Artifact shapes" pointer + "Every governance set MUST include, per" pointer (both → governance-surfaces); `references/INTERROGATION-AGENDA.md` synthesis-shape mention (→ governance-intent).
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1-single-plugin-cli/D3-pipeline-template-scope/D8-schema-data-files; `DECISIONS.md` "Template-schema CLI ruled").
 - **Content (superseded, verbatim):**
   - `Artifact shapes (region block, rules file, ledger):` / `[\`governance-surfaces-template.md\`](../../templates/governance-surfaces-template.md).` — `SKILL.md`
   - `Every governance set MUST include, per` / `[\`governance-surfaces-template.md\`](../../templates/governance-surfaces-template.md):` — `SKILL.md`
@@ -429,7 +494,7 @@ the ledger row).
 
 ## [v0.65.0] `catalog/universal-floor.md` — single-level shelf doctrine superseded (two-row dial)
 - **Disposition:** superseded → the shelf header in `references/catalog/universal-floor.md`; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1/D2/D5, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row; PO-D2 amended).
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1-declared-level-transition/D2-one-way-ratchet/D5-low-retrofit-principle, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row; `production-only-focus` D2-tier-axis-retired amended).
 - **Content (verbatim):**
 ```
 The floor *level* is the asserted
@@ -443,7 +508,7 @@ the D4.1 revisit), never a loosened card.
 
 ## [v0.65.0] `catalog/universal-floor.md` — four FLOOR cards' single `**Asserted level:**` lines superseded (two-row tables)
 - **Disposition:** superseded → the FLOOR-SEC / FLOOR-TEST / FLOOR-ERR / FLOOR-OBS cards in `references/catalog/universal-floor.md`; each single asserted-level line becomes a `low`/`high` two-row table. Preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D5 retrofit-cost cut line, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D5-low-retrofit-principle retrofit-cost cut line, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
 - **Content (verbatim, the four superseded lines):**
 ```
 FLOOR-SEC
@@ -468,10 +533,10 @@ type) · no PII in logs.
 - **Kept deliberately (D5's never-relax set holds at both levels — nothing lost, only redistributed):** the full obligation set survives, split across the two rows. Expensive-to-retrofit obligations are pinned to `low` (and therefore both rows): secrets-out-of-repo + input-validation + auth-at-boundaries (FLOOR-SEC), no-silent-data-corruption + no-leaked-stack-traces (FLOOR-ERR), no-PII-in-logs (FLOOR-OBS), ratchet + day-one smoke test (FLOOR-TEST). Addable rigor moves to `high`: merge-blocking scan gates (FLOOR-SEC — the scanners still *run* at `low`), coverage ≥80%/≥60% thresholds (FLOOR-TEST), error-schema + correlation IDs (FLOOR-ERR), structured logs + correlation IDs + health checks (FLOOR-OBS). Type-tags, Layer, and Content pointers untouched.
 - **Consumers assessed:** `ESSENTIAL-FLOOR.md` worked examples (now annotated as the `high` row); `catalog/README.md` card-format field (superseded below); graders in Cluster C re-key to the two-row table form. No removed obligation.
 
-## [v0.65.0] `catalog/universal-floor.md` — FLOOR waiver postures: staged-adoption-as-waiver superseded (PO-D7)
+## [v0.65.0] `catalog/universal-floor.md` — FLOOR waiver postures: staged-adoption-as-waiver superseded (`production-only-focus` D7-immature-team-onramp)
 - **Disposition:** superseded/amended → the `**Waiver posture:**` lines of FLOOR-TEST (superseded), FLOOR-SEC and FLOOR-OBS (extended with the both-levels clause); preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D4/PO-D7 superseded, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
-- **Content (verbatim — the PO-D7 staged-adoption-as-waiver framing, now superseded because staged adoption is the `low` level):**
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D4-waiver-fit-escape/`production-only-focus` D7-immature-team-onramp superseded, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Content (verbatim — the `production-only-focus` D7-immature-team-onramp staged-adoption-as-waiver framing, now superseded because staged adoption is the `low` level):**
 ```
 FLOOR-TEST
 **Waiver posture:** D4 — recorded justification in the ledger (the young-team on-ramp, PO-D7: a
@@ -480,18 +545,18 @@ threshold).
 ```
   FLOOR-SEC and FLOOR-OBS waiver postures were **extended, not removed** — the "available at either level as a per-check *fit* exception" clause and a "staged adoption is the **low** level, not a waiver (PO-D7 superseded)" line were added; their original bodies (prefer-narrowing example on SEC; most-waived-on-immature-stacks parenthetical on OBS) survive verbatim in place.
 - **Kept deliberately:** the D4 recorded-justification-in-the-ledger discipline (both cards), FLOOR-SEC's prefer-narrowing example, FLOOR-OBS's honest-state parenthetical.
-- **Consumers assessed:** `catalog/README.md` Waivers bullet (its own PO-D7 sentence superseded below); the governance ledger's waiver home is unchanged.
+- **Consumers assessed:** `catalog/README.md` Waivers bullet (its own `production-only-focus` D7-immature-team-onramp sentence superseded below); the governance ledger's waiver home is unchanged.
 
 ## [v0.65.0] `catalog/README.md` — "The asserted production floor" one-level doctrine section superseded
 - **Disposition:** superseded → the `## The asserted production floor` section body of `references/catalog/README.md` (renamed `## The two-row production floor`); preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1/D2/D7, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row; PO-D2 amended, PO-D7 superseded).
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1-declared-level-transition/D2-one-way-ratchet/D7-level-blind-modules, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row; `production-only-focus` D2-tier-axis-retired amended, `production-only-focus` D7-immature-team-onramp superseded).
 - **Content (verbatim):**
 ```
 There is exactly one standard level — the production floor (PO-D2). The retired
 `poc → internal → production → regulated` ladder is gone: no card carries per-tier defaults or
 strictness ladders, and no session negotiates the floor's level.
 ```
-  And the Waivers bullet's PO-D7 sentence:
+  And the Waivers bullet's `production-only-focus` D7-immature-team-onramp sentence:
 ```
 A waiver is never silent: recorded in the synthesis and the ledger, it is
 the honest staged-adoption on-ramp for early-stage teams (PO-D7). Accumulated waivers are the
@@ -502,7 +567,7 @@ governance re-entry checklist as the team matures.
 
 ## [v0.65.0] `catalog/README.md` — card-format field + two "asserted level" bullets superseded
 - **Disposition:** superseded → the card-format field and two doctrine bullets in `references/catalog/README.md`; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D5, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D5-low-retrofit-principle, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
 - **Content (verbatim):**
 ```
 **Asserted level / Recommended form:** [the single production-level content — thresholds,
@@ -523,7 +588,7 @@ governance re-entry checklist as the team matures.
 
 ## [v0.65.0] `ESSENTIAL-FLOOR.md` — single-and-asserted level doctrine line superseded
 - **Disposition:** superseded → the floor-accounting paragraph of `references/ESSENTIAL-FLOOR.md`; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1/D2, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1-declared-level-transition/D2-one-way-ratchet, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
 - **Content (verbatim):**
 ```
 The floor's **level is single and asserted** — the production level on each
@@ -536,7 +601,7 @@ a deviation is only ever a recorded waiver, never a loosened card.
 
 ## [v0.65.0] `DOMAIN-DEPENDENCIES.md` — one-universal-gate carrier line superseded (level-acknowledging)
 - **Disposition:** superseded → the Growth-section carrier line of `references/DOMAIN-DEPENDENCIES.md`; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D8 — pipeline process rigor uniform at both levels, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D8-dial-standards-scope — pipeline process rigor uniform at both levels, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
 - **Content (verbatim):**
 ```
 One universal gate at the asserted floor (the retired tier fork is gone — PO-D2):
@@ -556,7 +621,7 @@ the decision row and take no strip entry. `governance-intent-template.md` and
 
 ## [v0.65.0] `SKILL.md` — greenfield-mode "floor cards at the asserted production level" superseded
 - **Disposition:** superseded → the greenfield row of the "Two modes, one shared core" table in `skills/authoring-constitution/SKILL.md`; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1/D2/D5, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1-declared-level-transition/D2-one-way-ratchet/D5-low-retrofit-principle, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
 - **Content (verbatim):**
 ```
 floor cards at the asserted production level.
@@ -566,7 +631,7 @@ floor cards at the asserted production level.
 
 ## [v0.65.0] `SKILL.md` — "the asserted level and waiver posture per category" ESSENTIAL-FLOOR bullet superseded
 - **Disposition:** superseded → the ESSENTIAL-FLOOR "both →" bullet in the shared-core content-sources list of `SKILL.md`; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1-declared-level-transition, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
 - **Content (verbatim):**
 ```
 The asserted level and waiver posture per category
@@ -577,8 +642,8 @@ live on the floor cards in the catalog;
 - **Consumers assessed:** `SKILL.md` body only; `ESSENTIAL-FLOOR.md` itself has its single-level line superseded in producer-a's sibling entry above.
 
 ## [v0.65.0] `INTERROGATION-AGENDA.md` — agenda-test "the floor's level is the library's, asserted" block superseded
-- **Disposition:** superseded → the **agenda test (PO-D3)** paragraph of `references/INTERROGATION-AGENDA.md`; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1/D2/D3, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Disposition:** superseded → the **agenda test (`production-only-focus` D3-library-owned-standard)** paragraph of `references/INTERROGATION-AGENDA.md`; preserved verbatim here.
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1-declared-level-transition/D2-one-way-ratchet/D3-project-wide-dial, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
 - **Content (verbatim):**
 ```
 **The agenda test (PO-D3):** every question elicits a **fact** — no question negotiates a
@@ -593,7 +658,7 @@ architecture-opinion card set (PO-D3's S7 carve-out).
 
 ## [v0.65.0] `INTERROGATION-AGENDA.md` — dimension-2 "the floor's level is fixed" Feeds-cell tail superseded
 - **Disposition:** superseded → the Feeds cell of the dimension-2 (Fact profile) row in the ten-dimensions table; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1-declared-level-transition, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
 - **Content (verbatim):**
 ```
 The floor's level is fixed; facts shape its expression, never its strictness
@@ -633,7 +698,7 @@ The floor's level is fixed; facts shape its expression, never its strictness
 
 ## [v0.44.0] Design-record citation, surface-routing preamble
 - **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 (design record: `.mochiko/brainstorms/constitution-native-surfaces/record.md`, D1–D8)
@@ -642,7 +707,7 @@ The floor's level is fixed; facts shape its expression, never its strictness
 
 ## [v0.44.0] Design-record citation in `references/DOMAIN-DEPENDENCIES.md`
 - **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 Design record:

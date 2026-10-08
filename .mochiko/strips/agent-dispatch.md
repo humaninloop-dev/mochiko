@@ -81,7 +81,7 @@ one-shot subagent — a refill is an ordinary dispatch to brief, never the trans
 - **Consumers assessed:** 6 commands (still brief per this file) · router row unchanged.
 
 ---
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -97,7 +97,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 ## [v0.44.0] Briefing version-history block relocated (class 2, 1,011 B / 11 lines)
 - **Disposition:** superseded → relocated **verbatim** into this note (below). In-file residue: the
   bare stamp plus the live routing (`Governed by / Pairs with`), which is wiring a run consumes, not history.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim, the whole block as it stood at the scrub):**
 ```
 **Briefing version:** v7 (2026-07-31 — team-method escalations closed
@@ -117,7 +117,7 @@ note; roster staleness fixed) · **Governed by:** `loop-discipline` · **Pairs w
 
 ## [v0.44.0] Rationale-and-provenance pointer
 - **Disposition:** superseded → deleted; this note is the home it pointed at.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 (Rationale + provenance: `.mochiko/strips/agent-dispatch.md`.)
@@ -165,7 +165,7 @@ note; roster staleness fixed) · **Governed by:** `loop-discipline` · **Pairs w
   ruling asks for, not a second home.
 - **Tier failed:** n/a — supersession by ruling (`standing-seat-lifecycle` **D3**:
   *"`agent-dispatch.md`'s Seat-transport section gains the matching retarget"*, as amended by
-  **TC-D6**; wave note: `.mochiko/strips/command-shape.md` v0.38.0).
+  **`team-lead-strategic-compaction` D6-overridable-cadence-default**; wave note: `.mochiko/strips/command-shape.md` v0.38.0).
 - **Content (v5, verbatim):** "**Seat transport** (spawning a named teammate, the `name:`
   discriminator, the addressability probe) now lives in `templates/command-shape.md` **Layer 2**
   — command-layer-only mechanics, homed with the rest of the team transport. This file is
@@ -193,7 +193,7 @@ note; roster staleness fixed) · **Governed by:** `loop-discipline` · **Pairs w
 # v0.33.0 — briefing v4 → v5 (Seat transport leaves; the remainder assessed line-by-line)
 
 **Wave context:** command goal-shape rebuild, **step 1 of 4** (design:
-`.mochiko/brainstorms/command-succinctness-strip/record.md`, CS-D6; `DECISIONS.md` 2026-07-30).
+`.mochiko/brainstorms/command-succinctness-strip/record.md`, `command-succinctness-strip` D6-read-chain-scope; `DECISIONS.md` 2026-07-30).
 D6 ruled two things about this file: Seat transport moves out to shape Layer 2, and **the rest is
 assessed line-by-line at v5 altitude**. That assessment's outcome: the 8-field briefing table and
 the one-hard-line independence section are this file's enduring job and survive intact; two
@@ -213,7 +213,7 @@ row grades its own output; this checklist is the per-call restatement at the mom
 ## [v0.33.0] Seat transport relocated out → `command-shape.md` Layer 2
 - **Disposition:** relocated → `templates/command-shape.md` **Layer 2** (arrival entry:
   `.mochiko/strips/command-shape.md`, same version).
-- **Tier failed:** n/a — supersession by ruling (**CS-D6**: the section is "command-layer-only
+- **Tier failed:** n/a — supersession by ruling (**`command-succinctness-strip` D6-read-chain-scope**: the section is "command-layer-only
   content currently sitting in a file every skill dispatch also references"; the split cost a
   cross-file reference hop on every run). Not a minimalism strip — the content is unchanged and
   still live, one file over.
@@ -263,7 +263,7 @@ row grades its own output; this checklist is the per-call restatement at the mom
 
 ## [v0.33.0] Title placeholder `[PHASE]` → `[STAGE]`
 - **Disposition:** superseded → `[STAGE]`.
-- **Tier failed:** n/a — supersession by ruling (**CS-D3/D5**: the phase posture dies with the
+- **Tier failed:** n/a — supersession by ruling (**`command-succinctness-strip` D3-goal-shaped-documents/D5-goal-command-anatomy**: the phase posture dies with the
   flow/phase body; shape v5 forbids `## Phase` headings and the anatomy speaks of stages). A
   briefing template that still says "phase" teaches the vocabulary the wave is removing.
 

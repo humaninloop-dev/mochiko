@@ -5,7 +5,7 @@ ratified 2026-07-23: producer disclosures machine-first; rationale lives in the 
 
 ## [v0.49.0] Template retired — dies with the `task-architect` seat
 - **Disposition:** superseded → none; the cycle-card producer's disclosure rides the plan run's standard producer reporting; file deleted
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D4)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D4-task-architect-retires)
 - **Content:** the seat's per-round self-disclosure schema (what was produced, vertical-slice rationale, TDD structure). Full text: git history at v0.48.0.
 - **Consumers assessed:** plan (no longer binds it) · router row removed.
 

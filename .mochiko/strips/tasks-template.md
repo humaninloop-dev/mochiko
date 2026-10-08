@@ -1,7 +1,7 @@
 # Strip notes — `templates/tasks-template.md`
 
 Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 2 (design:
-`.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4;
+`.mochiko/brainstorms/workflow-token-reduction/record.md` D4-reference-by-id + the wave-2 rulings R1–R4;
 ratified 2026-07-24).
 
 ## [v0.91.0] `schemas/tasks.yaml` — the generated-from pointer re-keyed off the dead plan package (both sites)
@@ -13,7 +13,7 @@ ratified 2026-07-24).
   inputs the cards were actually authored from, and carries the zero-gap branch explicitly, since
   a run that passes the sufficiency check authors cards with no design phase having run at all.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/plan-stage-utility/record.md` D4 — `plan.md` dies, no restatement
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D4-planless-homes-gates — `plan.md` dies, no restatement
   artifact, and the proposal gate is a dead gate; D3 — `requirements.md` dies as a mandatory
   artifact; D1 — the conditional design phase and its zero-gap path; `DECISIONS.md` 2026-08-26
   row.)
@@ -45,12 +45,12 @@ ratified 2026-07-24).
   `**TEST:**` bundle, the walking-skeleton rule, or `[P]` derivation changed.
 - **Consumers assessed:** `crates/mochiko-cli` renders this schema — re-ran `cargo test --all`
   after the edit, all suites green, so the YAML stays parseable and the raw-Read degraded path
-  (GI-020) stays honest. `mochiko:patterns-vertical-tdd` owns the card shape, not the provenance
+  (GI-020-plugin-install-model) stays honest. `mochiko:patterns-vertical-tdd` owns the card shape, not the provenance
   pointer, so it is unaffected. The `sufficiency-report.md` filename is not yet ruled anywhere —
   flagged to the wave lead (see the note in the P2 report); if it is renamed, both sites here and
   `templates/feasibility-report-template.md`'s `artifacts_reviewed` example move together.
 
-## [v0.81.0] `schemas/tasks.yaml` — `nfrs.md` dropped from the generated-from pointer (both sites) — product-architecture-schema D12
+## [v0.81.0] `schemas/tasks.yaml` — `nfrs.md` dropped from the generated-from pointer (both sites) — product-architecture-schema D12-store-absorbs-nfrs
 
 - **Disposition:** deleted from the enumeration. The header's provenance pointer listed the design
   artifacts a `tasks.md` may be generated from; `nfrs.md` is no longer one of them (D12 absorbs it
@@ -58,7 +58,7 @@ ratified 2026-07-24).
   generated from the spec folder and the produced design artifacts, and the store is neither.
   NFR-XXX ids are unaffected — cards still cite them wherever a card's acceptance criteria do.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12; `DECISIONS.md` 2026-08-19).
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12-store-absorbs-nfrs; `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim — the same list at both sites):**
 
   ```
@@ -81,7 +81,7 @@ ratified 2026-07-24).
 
 ## [v0.80.0] `schemas/tasks.yaml` — "one vertical slice" re-worded "one vertical increment" (both sites)
 
-- **Disposition:** superseded → "Each card is one vertical increment", the replacement unit language the ruling fixes. Recorded here because this file carries the tasks artifact's whole lineage: `templates/tasks-template.md` was retired into `plugins/mochiko/schemas/tasks.yaml` at v0.76.0 (entry below), and the schema is a shipped primitive under the same edit ceremony (schema-based-template-guidance D8). `.mochiko/strips/tasks.md` is a different primitive — the retired `commands/tasks.md` — and correctly takes nothing from this wave.
+- **Disposition:** superseded → "Each card is one vertical increment", the replacement unit language the ruling fixes. Recorded here because this file carries the tasks artifact's whole lineage: `templates/tasks-template.md` was retired into `plugins/mochiko/schemas/tasks.yaml` at v0.76.0 (entry below), and the schema is a shipped primitive under the same edit ceremony (schema-based-template-guidance D8-schema-data-files). `.mochiko/strips/tasks.md` is a different primitive — the retired `commands/tasks.md` — and correctly takes nothing from this wave.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`, "Slice vocabulary purged from shipped primitives", ruled 2026-08-19; `DECISIONS.md` row of the same date, which names `schemas/tasks.yaml` explicitly).
 - **Content (superseded, verbatim — both sites, old → new):**
   - `:37`, the `Cycle Format` section `contract:` block — `Each card is one vertical slice: a coherent bundle of named test cases (expected behaviour,` → `Each card is one vertical increment: a coherent bundle of named test cases (expected behaviour,`
@@ -93,7 +93,7 @@ ratified 2026-07-24).
 
 ## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/tasks.yaml + mochiko-cli template tasks
-- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1-single-plugin-cli/D3-pipeline-template-scope/D8-schema-data-files; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
 - **Content (superseded template, full verbatim below):**
 
 ````markdown
@@ -177,13 +177,13 @@ column. Each named test case cites the spec/plan ID(s) it covers.
 - **Capture**: console
 ````
 - **Merge lineage:** the verbatim block above originally captured the **pre-v0.75.0** template (the version live on the `mochiko-cli` branch when this strip was authored); at the `mochiko-cli`←`main` merge it was updated to the **v0.75.0** template — the actual content deleted post-merge — because `main`'s vertical-TDD wave (D1–D4) had already re-keyed the template to the test-case-bundle grammar before deletion. `plugins/mochiko/schemas/tasks.yaml` was folded to that same v0.75.0 grammar at the merge; the [v0.75.0] entry below records the intermediate re-key.
-- **Kept deliberately:** Every line of guidance preserved — lifted into `plugins/mochiko/schemas/tasks.yaml` (skeleton / contract / overview / register / density) and rendered by `mochiko-cli template tasks`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). Nothing dropped.
+- **Kept deliberately:** Every line of guidance preserved — lifted into `plugins/mochiko/schemas/tasks.yaml` (skeleton / contract / overview / register / density) and rendered by `mochiko-cli template tasks`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020-plugin-install-model, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). Nothing dropped.
 - **Consumers assessed:** `commands/plan.md` (re-pointed by P4) · `commands/feature.md` (re-pointed by P4) · `skills/mochiko/SKILL.md` router row (re-described by P5) · `skills/patterns-vertical-tdd/SKILL.md` (re-pointed by P5) · `skills/review-plan-artifacts/SKILL.md` (D7 re-key — tasks cycle-card criteria cite the `--check` view, re-pointed by P5). V2 fidelity PASS 2026-08-16 (schema graded 8/8 at the M3 gate).
 
 ## [v0.75.0] Foundation/feature grouping + type + standalone acceptance-criteria field superseded; skeleton-first sample, per-case citation
 
 - **Disposition:** superseded → the test-case-bundle card shape in the same file: Overview `Cycles | [N]` (no foundation/feature split); a Cycle Format re-keyed to skeleton-first + `[P]`-from-dependencies + the bundle-as-card-content rule; a walking-skeleton sample card (Cycle 1) and a feature-bundle sample (Cycle 2) carrying named `**TEST:**` cases each with a `**Covers**:` citation line.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Vertical-TDD cycle anchor + QA test-case authorship (D1–D4)"; record `.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md`, D1/D3 + the D2 acceptance-ID-relocation amendment).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Vertical-TDD cycle anchor + QA test-case authorship (D1–D4)"; record `.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md`, D1-test-bundle-cycles/D3-foundation-type-retired + the D2-qa-authored-cases acceptance-ID-relocation amendment).
 - **Content:**
   - Overview table row "`| Cycles | [N] ([N] foundation + [N] feature) |`" → "`| Cycles | [N] |`".
   - Cycle Format sentence "Foundation cycles run sequentially, first; feature cycles are parallel-eligible `[P]` unless dependent on another feature cycle." → skeleton-first-where-a-new-path-opens + "There is no foundation/feature card type — `[P]` parallel eligibility derives from a card's dependencies, not from a type column." + "the cycle is done when its named cases show green against real infrastructure" + "Each named test case cites the spec/plan ID(s) it covers."
@@ -196,21 +196,21 @@ column. Each named test case cites the spec/plan ID(s) it covers.
 
 ## [v0.67.0] Fixed design-input enumeration re-keyed to the proposal-produced set
 - **Disposition:** superseded → the re-keyed provenance line: "Generated from the spec folder and the feature's produced design artifacts: spec.md, features/FEAT-XXX/plan.md, and whichever of requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/ **the approved proposal included**"
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-structure-yagni/record.md` D1/D2 — artifacts are the approved proposal's, not a fixed set; combined wave `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` D5)
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-structure-yagni/record.md` D1-delivery-manager-identity/D2-plan-proposal-gate — artifacts are the approved proposal's, not a fixed set; combined wave `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` D5-combined-sibling-wave)
 - **Content:** "> Generated from the spec folder: spec.md, features/FEAT-XXX/plan.md, requirements.md, constraints-and-decisions.md, nfrs.md, data-model.md, contracts/"
 - **Kept deliberately:** the cycle-card shape, the `**TEST:**` grammar pointer, the sample cards, the Overview/Cycle-Format structure — untouched.
 - **Consumers assessed:** patterns-vertical-tdd (fills it) · executing-tdd-cycle (reads cards) · review-plan-artifacts (grades it) · plan/plan-template (fixed-set re-key, same wave).
 
 ## [v0.58.0] Slice references re-keyed to FEAT
 - **Disposition:** superseded → title "[FEAT-XXX — FEATURE NAME]" · provenance line "Generated from the spec folder: spec.md, features/FEAT-XXX/plan.md, …" · sample Stories line "[why these stories share this cycle / what it establishes, ≤ 2 lines]"
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md`, D4/D17/D18 — feature is the pipeline unit; per-feature artifacts under `features/FEAT-XXX/`)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md`, D4-slices-leave-pipeline/D17-per-feature-runs/D18-graduation-contract-rekey — feature is the pipeline unit; per-feature artifacts under `features/FEAT-XXX/`)
 - **Content:** title "# Implementation Cycles: [FEATURE NAME]" · "> Generated from `.mochiko/specs/<feature>/`: spec.md, plan.md, requirements.md, …" · sample Stories bracket "[why these graduate together / what this cycle establishes, ≤ 2 lines]"
 - **Kept deliberately:** "Each card is one vertical slice" in Cycle Format — implementation-level cycle vocabulary owned by `patterns-vertical-tdd`, not graduation-slice language; the whole card shape, TEST-grammar pointer, and foundation/feature structure untouched.
 - **Consumers assessed:** patterns-vertical-tdd (fills it; re-keyed same wave) · executing-tdd-cycle (reads cards — unaffected) · review-plan-artifacts (grades it) · plan/implement commands (re-keyed same wave).
 
 ## [v0.49.0] Rewritten task list → cycle cards
 - **Disposition:** superseded → the cycle-card form in the same file (per card: heading checkbox · Stories+rationale · type · Depends on · Case · acceptance criteria by ID · brownfield exposure line · `**TEST:**` gate block)
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2+D3)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2-cycle-card-stop+D3-single-tasks-artifact)
 - **Content:** the `TN.X` task-line skeleton (per-task checkbox/ID/description/file path), the Cycle Format TDD ladder (TN.1 failing test … TN.X TEST), the 4-marker table (`[P]`/`[US#]`/`[EXTEND]`/`[MODIFY]` at task level), the Checkpoint line, and the Story→Cycle Mapping table with its derived-echo-of-`task-mapping.md` note. Full text: git history at v0.48.0.
 - **Kept deliberately:** `[P]` at cycle level · the `**TEST:**` gate (grammar unchanged, TEST-GRAMMAR.md still owner) · the never-compress rule for TEST commands/paths · foundation-sequential/feature-parallel structure. The Stories+Case card lines absorb `task-mapping.md`'s content — that artifact had no template file; its mapping+rationale role ends here.
 - **Consumers assessed:** patterns-vertical-tdd (fills it) · executing-tdd-cycle (reads cards, decomposes at build time) · testing-end-user (gate parsing re-keyed) · review-plan-artifacts (grades it) · plan/implement commands.

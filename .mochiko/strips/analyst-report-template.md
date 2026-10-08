@@ -8,7 +8,7 @@ doctrine reversed).
 artifact gate ships. Every `.mochiko/` path a shipped primitive names was resolved against the homes
 the migration log declares (`plugins/mochiko/migrations/0005-artifact-homes.yaml`, wave 3), and a
 path the homes do not carry is re-pointed rather than left to be denied at write time. Ruling for
-the [v0.109.0] entry below: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2 (a
+the [v0.109.0] entry below: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2-home-file-sets (a
 report lands in its home's `reports/` directory) and D3 (the homes as the migration declares them),
 with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 `git show 794cea8:plugins/mochiko/templates/analyst-report-template.md`. -->
@@ -25,7 +25,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 - **Disposition:** superseded → `.mochiko/specs/<slug>/reports/analyst-report.md`, the spec home's
   declared `reports/` directory, where a report is admitted under any name by its `report:` type
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2; migration
+  (`.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2-home-file-sets; migration
   `0005-artifact-homes.yaml`, the `spec` home's `reports:` block)
 - **Content:** ``5. **Output location** — `.mochiko/specs/<feature>/analyst-report.md`, seeded and
   collected by the lead.``

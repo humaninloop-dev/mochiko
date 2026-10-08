@@ -33,7 +33,7 @@ spec *slice* subfolder, and no shipped text said how it folds up to the repo-lev
 
 ## Decisions
 
-### AT-D1 — feature-root `architecture.md` is a real, accumulated artifact `Confident`
+### D1-accumulated-feature-architecture — feature-root `architecture.md` is a real, accumulated artifact `Confident`
 
 Each slice landing folds its slice's approved delta into the feature-root `architecture.md`
 (same in-place-update discipline as the `ARCHITECTURE.md` fold). This gives `plan.md`'s
@@ -42,7 +42,7 @@ Alternatives rejected: killing the middle level (late slices re-derive state fro
 deltas); first-slice-file-is-the-feature-root (conflates one slice's artifact with the
 feature target).
 
-### AT-D2 — both folds fire at slice landing `Confident`
+### D2-slice-landing-folds — both folds fire at slice landing `Confident`
 
 A slice landing folds the built delta into **both** the feature-root `architecture.md` and
 repo `ARCHITECTURE.md`. Repo doc stays current-state-honest per branch (F4); the second fold
@@ -51,12 +51,12 @@ state; feature-root = accumulated feature *target* (includes approved-but-not-ye
 later-slice structure once each slice's plan signs off). Rejected: repo fold at feature close
 only (violates the current-state contract for the whole multi-slice duration).
 
-### AT-D3 — per-slice nesting confirmed intended `Confident` *(ground-fact confirmation)*
+### D3-per-slice-nesting — per-slice nesting confirmed intended `Confident` *(ground-fact confirmation)*
 
 Not a new ruling — F1's shipped text already rules it. Recorded so the backlog item's
 "anomaly or intended?" question has an explicit answer: **intended granularity**.
 
-### AT-D4 — `ARCHITECTURE.md` gains a thin "In flight" pointer list `Confident`
+### D4-in-flight-pointers — `ARCHITECTURE.md` gains a thin "In flight" pointer list `Confident`
 
 User-originated dimension (main-branch reader should see in-flight structural change).
 Ruled as a pointer block, not content sections: one line per active feature — feature name +
@@ -67,7 +67,7 @@ subtractive-landing discipline as ROADMAP Now. Rejected: full in-progress sectio
 `ARCHITECTURE.md` (future-tense state, concurrent-feature merge conflicts, zombie-section
 rot); git-only (real visibility gap stands).
 
-### AT-D5 — feature-close diff ruled now, executed later `Confident` — parked
+### D5-feature-close-diff — feature-close diff ruled now, executed later `Confident` — parked
 
 At feature close, before the In-flight pointer is removed, diff shipped code against the
 accumulated feature-root target. Catches the descoped/partially-built-slice hole per-slice
@@ -75,18 +75,18 @@ diffs cannot see (each slice's diff reads clean or never ran; nothing else check
 feature target — worked example: slice 3's approved Avatar Worker dropped, feature declared
 done). No owning workflow exists today (feature-close verification is unowned; `audit` is
 unscoped), so the obligation **parks as a named line on the audit-scoping backlog item**; the
-pointer-removal step (AT-D4) is its natural hook. Until audit lands, the Delivery Slices
+pointer-removal step (`architecture-tieback` D4-in-flight-pointers) is its natural hook. Until audit lands, the Delivery Slices
 section's slice status is the only live check. Steelman for skipping it entirely (slice
 bookkeeping suffices) rejected on the mid-run silent-skip case.
 
-### AT-D6 — carriers: A+C hybrid `Contested` — lead recommended commands-first (A), user chose KM-only (C), lead pushed back once, user composed the hybrid
+### D6-hybrid-carrier-choice — carriers: A+C hybrid `Contested` — lead recommended commands-first (A), user chose KM-only (C), lead pushed back once, user composed the hybrid
 
 **A carries the executable, event-time obligations (primary):**
 - `authoring-architecture` — Duty 2 extension: on a slice-scoped landing the fold targets
   feature-root `architecture.md` **and** repo `ARCHITECTURE.md`; procedure single-sourced here.
 - `plan.md` Bindings — one line: In-flight pointer written at architecture sign-off.
 - `implement.md` Bindings — one line: feature-root fold at slice landing.
-- BACKLOG — the AT-D5 parked line on the audit-scoping item.
+- BACKLOG — the `architecture-tieback` D5-feature-close-diff parked line on the audit-scoping item.
 
 **C adds a KM backstop (secondary, between-events):** the knowledge-management module's
 `ARCHITECTURE.md` invariants gain one line — *In-flight pointer list: entries added at plan
@@ -112,7 +112,7 @@ time; (c) it would split one event's two folds across two governance homes.
    `.mochiko/memory/knowledge-management.md` — one invariant line each (AT-D6-C).
 6. Repo `ARCHITECTURE.md` — no In-flight entries exist yet; the list section is created
    lazily by the first pointer write, not scaffolded empty.
-7. BACKLOG — AT-D5 parked line on the `audit` workflow-scoping item.
+7. BACKLOG — `architecture-tieback` D5-feature-close-diff parked line on the `audit` workflow-scoping item.
 
 Token discipline: command edits are 1-line pointers to the single-sourced skill procedure,
 per the token-justified-additions rule.
@@ -126,7 +126,7 @@ Landed per the build surface, two corrections at build:
 - **Auditor-caught defect, fixed round 2:** the dual-target paragraph as first written sat
   under Duty 2 and inherited its built-change gate — a descoped slice's approved delta would
   silently never accumulate into the feature-root target. Rewritten per the auditor's fix
-  (matching AT-D2's ruling): feature-root fires on **approved-delta-existed** (Duty 1's
+  (matching `architecture-tieback` D2-slice-landing-folds's ruling): feature-root fires on **approved-delta-existed** (Duty 1's
   trigger shape) independent of built structure; "no structural change → no update" scoped
   to repo `ARCHITECTURE.md` only.
 
@@ -143,7 +143,7 @@ strict-YAML portability — pre-existing repo-wide pattern).
 ## Open threads
 
 1. **Feature-close diff execution** — parked until `audit` (or whatever owns feature-close)
-   exists; the line rides the audit-scoping item (AT-D5).
+   exists; the line rides the audit-scoping item (`architecture-tieback` D5-feature-close-diff).
 2. **Concurrent-features watch** — the In-flight list's one-line-per-feature conflict surface
    is believed negligible; confirm at the first project running two features concurrently.
 3. **Dogfood** — the whole chain (slice fold → feature-root accumulation → In-flight pointer

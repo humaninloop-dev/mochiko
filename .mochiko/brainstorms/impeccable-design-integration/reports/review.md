@@ -20,7 +20,7 @@ blind_map_reference: "the angles: block below — written and returned to the le
 classes:
   - id: C1
     name: Non-negotiable conformance
-    scope: GI-019 kernel-class, GI-020 clone-only and one-dependency, skills-and-agents-primary, the five skill-library axes
+    scope: GI-019-kernel-tooling-admission kernel-class, GI-020-plugin-install-model clone-only and one-dependency, skills-and-agents-primary, the five skill-library axes
   - id: C2
     name: Artifact homes and the two trees
     scope: where PRODUCT.md and DESIGN.md live, home minting for the artifact gate, .impeccable versus .mochiko, derived versus authored design truth

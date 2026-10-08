@@ -103,7 +103,7 @@ item_grades:
       home_shape_fifth_code: >
         OK, and required. `Homes::load` skips an undecodable home at delivery time by design
         (home.rs:299), so without a rejecting finding at authoring time a malformed home would be
-        silently absent — the GI-005 class. `validate_homes` reports it with the decoder's own error.
+        silently absent — the GI-005-record-layer-integrity class. `validate_homes` reports it with the decoder's own error.
       six_resolution_variants: >
         OK. Each variant is a distinct sentence a deny reason must be able to say, and `Deferred` vs
         `UndeclaredSubdir` is a real distinction: one is a declared sub-directory awaiting its own home
@@ -279,7 +279,7 @@ migration lands homes for a 288-file tree.
 
 Everything else I was asked to grade holds. Nothing in `check` reads meaning: one filesystem read
 exists in the whole of the new code, and it reads the artifact under test as the amnesty baseline.
-No schema file is read, embedded, or referenced, so GI-020 is intact. The five disclosed deviations
+No schema file is read, embedded, or referenced, so GI-020-plugin-install-model is intact. The five disclosed deviations
 are each sound, and the two I found beyond them are disclosure gaps rather than defects — the
 `Edit`-with-absent-`old_string` path returns an allow where the plan said exit 2, which is the better
 behaviour and needs the plan folded to match, and the plan's `matrix_home.rs` became part of

@@ -11,9 +11,9 @@ classes: 8
 
 ## Notes of note
 
-Built blind under `cold-review-gap-challenge` D2/D6/D7: from the topic statement and goal line
+Built blind under `cold-review-gap-challenge` D2-blind-angle-map/D6-two-message-dispatch/D7-angle-map-inputs: from the topic statement and goal line
 plus free repo grounding, before any contact with the session's record, index entry, or
-directory. Ground read: the operating docs, the ledger's GI-004 and GI-012 blocks, both
+directory. Ground read: the operating docs, the ledger's GI-004-primitive-audit-ratchet and GI-012-release-gates-module blocks, both
 `.claude/rules/mochiko/` files, the rendered rule sets of `patterns-sound-loop` and
 `review-brainstorm`, `.mochiko/schema-views/`, and the records of `author-grader-value-tiering`,
 `producer-plan-enforcement`, `orchestrator-model-selection`, and two adjacent review sessions.
@@ -31,7 +31,7 @@ An angle the record shows it saw and rejected is a ruling, not a gap.
   substitutes. A path forward built on "it catches things" cannot say which cheap form
   preserves the catch.
 - **A2 — One mechanism or five.** The five binding sites grade different objects: a record's
-  reasoning (cold review), a primitive's conformance to a criteria list (GI-004 audit), a
+  reasoning (cold review), a primitive's conformance to a criteria list (GI-004-primitive-audit-ratchet audit), a
   plan's adequacy, a spec's gaps, code's shape. A conformance audit is mechanizable; a
   reasoning attack is not. Does the session distinguish them before ruling one floor over all
   five?
@@ -41,10 +41,10 @@ An angle the record shows it saw and rejected is a ruling, not a gap.
   reverse. Which axis is the floor on?
 - **A4 — Three claims under one name.** Independence is asserted as fresh context, different
   seat, and different skill (axis 5 says agent *and* skill). Which of the three carries the
-  catch? `producer-plan-enforcement` D3 already splits them — same persona type, fresh spawn,
+  catch? `producer-plan-enforcement` D3-peer-plan-grader already splits them — same persona type, fresh spawn,
   different skill — so the three are known to be separable.
-- **A5 — Non-catch purposes.** Independence also produces the audit trail GI-004's testability
-  reads ("audit PASS on record"), the reconstructibility GI-006 demands, and the evidence the
+- **A5 — Non-catch purposes.** Independence also produces the audit trail GI-004-primitive-audit-ratchet's testability
+  reads ("audit PASS on record"), the reconstructibility GI-006-primitive-edit-traceability demands, and the evidence the
   ratchet is measured against. A cheaper form that preserves catch yield but leaves less
   evidence still breaks two principles.
 
@@ -53,12 +53,12 @@ An angle the record shows it saw and rejected is a ruling, not a gap.
 - **A6 — The tiering key itself.** If independence tiers, what is the key? Candidates: artifact
   durability, blast radius, reversibility, author confidence, surface kind, depth level. The
   driver says "value"; value is not yet a defined key anywhere in the repo.
-- **A7 — Reversibility as the key.** `orchestrator-model-selection` D4 accepted a weaker
+- **A7 — Reversibility as the key.** `orchestrator-model-selection` D4-dogfood-evidence-gate accepted a weaker
   evidence gate precisely because the change was one alias flip to revert. Reversibility is
   already a ruled discount elsewhere. Is it the key here, and does it survive the objection
   that a shipped plugin edit reaches consumers before anyone reverts it?
 - **A8 — Two keys that do not obviously reconcile.** `patterns-sound-loop` fires on
-  judgment-authored × governing surface. GI-004 fires on shipped-primitive edit × before the
+  judgment-authored × governing surface. GI-004-primitive-audit-ratchet fires on shipped-primitive edit × before the
   bump. The first is kind-keyed and library-wide; the second is ceremony-keyed and
   maintainer-side. They overlap on `plugins/mochiko/` and are disjoint elsewhere. Does the path
   forward unify the keys or leave both standing?
@@ -83,10 +83,10 @@ An angle the record shows it saw and rejected is a ruling, not a gap.
   mechanizable half. A path forward that names one without pricing the others has not chosen.
 - **A13 — Mechanical substitution, the largest available lever.** `mochiko-cli check` already
   grades mechanical conformance (path, file set, headings, frontmatter, placeholders, size)
-  under the AM-3 admission. Several `primitive-edits.md` criteria — scaffold conformance,
+  under the AM-3-conformance-gate-admission admission. Several `primitive-edits.md` criteria — scaffold conformance,
   section-set match, ID continuity, floor survival, budget — are mechanically checkable in
   principle. Moving them into the crate leaves judgment grading only what judgment must. Does
-  the session cost this, and does GI-019's bright line (never grade meaning) bound how far it
+  the session cost this, and does GI-019-kernel-tooling-admission's bright line (never grade meaning) bound how far it
   goes?
 - **A14 — Grader tier as the lever.** The cheapest independence is a cheap grader.
   `orchestrator-model-selection` D5/CG3 bars a grader from running below its producer's tier,
@@ -97,13 +97,13 @@ An angle the record shows it saw and rejected is a ruling, not a gap.
   N-fold. What does batching cost in independence — shared context across artifacts, or
   nothing?
 - **A16 — Sampling.** Grading a sample rather than every edit is the sharpest cost cut and the
-  most direct collision with GI-004's ratchet ("the baseline — all shipped primitives audited —
+  most direct collision with GI-004-primitive-audit-ratchet's ratchet ("the baseline — all shipped primitives audited —
   MUST NOT decrease"). Is sampling considered and rejected, or not considered?
 - **A17 — Cost and latency are different problems.** Parallel grader spawns cut latency and
   raise cost; batching cuts cost and raises latency; mechanization cuts both. The driver names
   both as primary. Does the path forward split them, or treat them as one quantity?
 - **A18 — Could cheaper be better.** A narrower criteria list may raise precision.
-  `adversarial-review-generality` AR-D1 rules the opposite worry — encoded angle lists act as a
+  `adversarial-review-generality` D1-checklist-ceiling-worry rules the opposite worry — encoded angle lists act as a
   ceiling, so a narrower list lowers off-taxonomy recall. Both effects are real; does the
   session weigh them against each other?
 
@@ -132,7 +132,7 @@ An angle the record shows it saw and rejected is a ruling, not a gap.
   compute yield needs a calibration design; a keyword-extract labelling in this repo produced
   0.667 inter-labeller agreement. A measurement plan that skips calibration produces a number
   nobody can act on.
-- **A25 — The parked benchmark.** `adversarial-review-generality` AR-D3/AR-D5 fully specified a
+- **A25 — The parked benchmark.** `adversarial-review-generality` D3-seeded-defect-benchmark/`adversarial-review-generality` D5-dedicated-test-session fully specified a
   seeded-defect benchmark — arms, replicates, seed mix, independent seeder, independent scorer,
   precision guard — and deliberately parked it as a BACKLOG item, with the decay risk recorded.
   It measures exactly whether encoded criteria ceiling the catch. Is it re-triggered,
@@ -140,7 +140,7 @@ An angle the record shows it saw and rejected is a ruling, not a gap.
 
 ## Class 5 — Reconciling the standing rulings (10)
 
-- **A26 — `producer-plan-enforcement` D3's wave gate.** D3 retires `validator` library-wide in
+- **A26 — `producer-plan-enforcement` D3-peer-plan-grader's wave gate.** D3 retires `validator` library-wide in
   a second wave, explicitly gated on wave-1 figures and on a named replacement carrier being in
   place. Wave 1 is unbuilt and open in BACKLOG. Does this session honor the gate, dissolve it,
   or supersede D3? Silence leaves two live rulings on the same retirement.
@@ -148,7 +148,7 @@ An angle the record shows it saw and rejected is a ruling, not a gap.
   authored nothing it grades, running a different skill from the author's") and the router's
   mount-doctrine line. If this session writes axis 5 differently, two records claim the same
   line and the landing has to say which wins.
-- **A28 — The seat default key depends on independence.** `orchestrator-model-selection` D1
+- **A28 — The seat default key depends on independence.** `orchestrator-model-selection` D1-class-keyed-tier
   tiers seats on one criterion: does a structurally independent seat stand between this seat's
   output and the run's verdict. Four producers were cheapened *because* independence stands
   behind them. Weakening independence retiers those four by implication. Is the dependency
@@ -160,14 +160,14 @@ An angle the record shows it saw and rejected is a ruling, not a gap.
 - **A30 — Live bounds on any cheap-grader move.** CG3 (a grader never below its producer's
   tier) and CG6 (one tier per seat per loop) constrain the tier lever directly. Named or not
   named?
-- **A31 — The prior retention ruling.** `architect-role-pushback-and-abstraction` D3
+- **A31 — The prior retention ruling.** `architect-role-pushback-and-abstraction` D3-library-pushback-posture
   (2026-08-13) explicitly retained author≠grader, tracing the additive bias it hunted to
   charter asymmetry rather than to independence. Any weakening supersedes it, by a recorded
   row.
 - **A32 — What the stalled session carries forward.** `author-grader-value-tiering` has ground
   facts F1–F6 and exactly one trail answer: cost and latency/ceremony primary, yield not
   disputed. Superseding it should carry or re-ask that, not silently inherit it.
-- **A33 — A cost-adding ruling on the same evidence.** `cold-review-gap-challenge` D5 has both
+- **A33 — A cost-adding ruling on the same evidence.** `cold-review-gap-challenge` D5-independent-map-building has both
   reviewers in a pair build blind maps independently, justified by the low-overlap evidence.
   That is duplication bought deliberately. Is it in scope for the consolidation, or fenced out?
 - **A34 — `review-brainstorm`'s own floors.** The skill carries nine `class: floor` rules
@@ -180,23 +180,23 @@ An angle the record shows it saw and rejected is a ruling, not a gap.
 
 ## Class 6 — Governance mechanics (6)
 
-- **A36 — The amend path is not the brainstorm's.** GI-004 is NON-NEGOTIABLE and floor-asserted
+- **A36 — The amend path is not the brainstorm's.** GI-004-primitive-audit-ratchet is NON-NEGOTIABLE and floor-asserted
   (FLOOR-TEST). Changing it is a governance event through `/mochiko:setup`, not a decision row.
   Does the record state the path, and does it state the semver class against the precedents —
-  AM-1 and AM-2 MAJOR (a principle redefined), AM-3 MINOR (an admission widened under unchanged
+  AM-1-kernel-ban-softened and AM-2-required-cli-dependency MAJOR (a principle redefined), AM-3-conformance-gate-admission MINOR (an admission widened under unchanged
   text)?
 - **A37 — Which limb of the ratchet is claimed.** "All shipped primitives audited MUST NOT
   decrease" has two readings: every edit graded (a cheaper grader preserves it) versus the
   audit's strength (a cheaper grader lowers it). The record has to pick, because sampling fails
   the first reading and tiering arguably fails the second.
-- **A38 — Re-expression or amendment.** GI-004 has been re-expressed three times already
-  (v0.76.0 for the crate, AM-2 for the schema-content unit, and the code extension) with the
+- **A38 — Re-expression or amendment.** GI-004-primitive-audit-ratchet has been re-expressed three times already
+  (v0.76.0 for the crate, AM-2-required-cli-dependency for the schema-content unit, and the code extension) with the
   ratchet unchanged each time. Is this a fourth re-expression or a change to the principle? The
   answer sets MAJOR vs MINOR.
-- **A39 — GI-006 reconstructibility.** Every primitive edit must be reconstructible from strips
+- **A39 — GI-006-primitive-edit-traceability reconstructibility.** Every primitive edit must be reconstructible from strips
   plus the log plus `DECISIONS.md` plus version stamps. Audit evidence is part of that trail. A
   cheaper audit that writes less has to say what the trail loses.
-- **A40 — The release gate's text.** GI-012 lists "audits PASS" as a `plugin.json` bump
+- **A40 — The release gate's text.** GI-012-release-gates-module lists "audits PASS" as a `plugin.json` bump
   precondition. A tiered floor changes what that phrase means at the gate. Is the gate text
   touched, and does the marketplace-sync gate care?
 - **A41 — Whose ruling.** The record recommends; the user rules; `/mochiko:setup` lands the
@@ -222,7 +222,7 @@ An angle the record shows it saw and rejected is a ruling, not a gap.
   `.claude/rules/mochiko/primitive-edits.md` (grader identity in both criteria blocks, plus
   criterion 6) · `.claude/rules/mochiko/rust-cli.md` (the code-review clause) ·
   `patterns-sound-loop`'s leg-2 rule · the `review-*` skills' independence sections · the
-  ledger's GI-004 block · `.mochiko/memory/primitive-cost-budgets.md` · the router's
+  ledger's GI-004-primitive-audit-ratchet block · `.mochiko/memory/primitive-cost-budgets.md` · the router's
   validator-bearing lines. A named-but-incomplete carrier list leaves dead pointers.
 - **A46 — Schema content edits are migrations.** Every rule-text change lands as a new migration
   file under `plugins/mochiko/migrations/`, validated by `mochiko-cli migrate validate`, with
@@ -243,12 +243,12 @@ An angle the record shows it saw and rejected is a ruling, not a gap.
   in the rule, not in the producer's hands.
 - **A50 — Ratchet erosion over time.** A cheap default drifts as more surfaces claim it. Is
   there a re-tightening trigger, a recorded watch with observables, and a named revert?
-  `orchestrator-model-selection` D4 shows the shape: two observables plus a revert trigger.
+  `orchestrator-model-selection` D4-dogfood-evidence-gate shows the shape: two observables plus a revert trigger.
 - **A51 — Reversal cost is asymmetric.** Cheapening a floor is a governance amend; restoring it
   is another. Unlike a frontmatter alias flip, this is not cheap to revert, which weakens the
   "ship and watch" argument that carried the tier ruling.
 - **A52 — A new single point of failure.** If the crate absorbs the mechanizable half, a class
-  of defect now rests entirely on a tool that GI-019 forbids from judging meaning. What falls
+  of defect now rests entirely on a tool that GI-019-kernel-tooling-admission forbids from judging meaning. What falls
   in the gap between what `check` can assert and what the cheap grader still reads?
 - **A53 — Correlated failure across seats.** Every seat here is the same model family. Two
   agent seats are independent in context and prompt, not in training or inductive bias — a

@@ -4,7 +4,7 @@
 
 ## Context
 
-CS-D10 step 4: the remaining five commands (brainstorm, specify, slice, setup, implement)
+`command-succinctness-strip` D10-pilot-first-execution step 4: the remaining five commands (brainstorm, specify, slice, setup, implement)
 re-authored goal-shaped against shape v5 by five parallel cold authors after the pilot
 (plan, v0.34.0). Mid-wave, the prior architect seat executed a superseded wave-open
 instruction and produced orphan drafts of all five — caught by the authors' read-before-write
@@ -31,7 +31,7 @@ file bases on HEAD or an audited-against-HEAD equivalent with its own survivor l
   re-keyed to the measured **69.2 w/gate over 37 gates** (74.6/39 superseded — computed under
   the buggy rule); `90·(G+2)` ceiling confirmed unchanged.
 - **Measurement truth (landed, single-basis):** surface 14,697 → **9,456 w (−35.7%)** against
-  ruling A's −47.5% calibration (all six over floor on CS-D8's safe side, +22.6% aggregate —
+  ruling A's −47.5% calibration (all six over floor on `command-succinctness-strip` D8-kept-line-regrading's safe side, +22.6% aggregate —
   ~60% explained by the per-gate under-pricing). Run-level: six-run total **−16,346 B**;
   **four of six commands regress per run** (brainstorm +5,122 · specify +1,736 · setup +588 ·
   slice +49) against implement −7,317 and plan −16,524; shared read floor 29,611 → 32,836
@@ -40,7 +40,7 @@ file bases on HEAD or an audited-against-HEAD equivalent with its own survivor l
 
 ## Rationale
 
-CS-D2′ makes goal-shape conformance the criterion — met on all six with zero protected content
+`command-succinctness-strip` D2-strip-success-criterion′ makes goal-shape conformance the criterion — met on all six with zero protected content
 dropped. The run-level regression on light commands sharpens the deferred read-drop's case
 (−11,926 B/run on its live-run trigger) rather than justifying cuts past standing evidence.
 

@@ -3,12 +3,12 @@
 Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-succinctness wave 3
 (design: `.mochiko/brainstorms/skill-succinctness-strip/record.md`, ratified 2026-07-25);
 [v0.23.0] entries — workflow-token-reduction wave 2 (design:
-`.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4;
+`.mochiko/brainstorms/workflow-token-reduction/record.md` D4-reference-by-id + the wave-2 rulings R1–R4;
 ratified 2026-07-24).
 
 <!-- Wave context: the joint hook/delta build, wave 3 (v0.116.0) — `data-model.md` is a product
 baseline edited in place, one `###` entry per entity. Rulings for every [v0.116.0] entry below:
-the delta record `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D1 (baselines
+the delta record `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D1-delta-files-retire (baselines
 edited in place, no per-feature copies) and D2 (a lifecycle marker per entry, keyed by the run's
 owner) (`DECISIONS.md` 2026-09-24 row); census row S1 (the product `data-model.md`, one `###`
 entry per entity) and H5 (the spec home drops `data-model.md`),
@@ -217,7 +217,7 @@ as the supersessions below. Pre-edit verbatim text:
 - **Disposition:** superseded → the same blockquote naming the design ladder and the
   design-phase proposal.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 carry-over: "plan-minimalism
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires carry-over: "plan-minimalism
   ladder governs what the design phase authors"; wording ruled by the wave lead 2026-08-26).
 - **Content (superseded text, verbatim):**
 

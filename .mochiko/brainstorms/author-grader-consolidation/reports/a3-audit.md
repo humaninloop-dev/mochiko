@@ -166,7 +166,7 @@ body chars plus the seven rendered blocks, `--plugin-root plugins/mochiko`:
 
 - PASS · Version sync. `plugins/mochiko/.claude-plugin/plugin.json` 0.110.0 → 0.111.0 and
   `.claude-plugin/marketplace.json` metadata 0.110.0 → 0.111.0, both in the diff.
-- PASS · Names the record (`author-grader-consolidation/record.md`), the D-list (D2–D7, D9, D11),
+- PASS · Names the record (`author-grader-consolidation/record.md`), the D-list (D2–D7, D9-audit-outcome-line, D11-wave-gate-grader),
   the supersession of `author-grader-value-tiering`, the new skill with its eleven floors, and the
   migration `0008-gate-form.yaml` with all four of its mints.
 - PASS · The tagging claim is honest: "the inventory corrected the assumption that the contract
@@ -184,7 +184,7 @@ body chars plus the seven rendered blocks, `--plugin-root plugins/mochiko`:
 - Advisory · "Gates: … contract suite full sandbox run green" is written as an established result.
   `build-log.md` records `cargo test` 472 green, the full similarity sweep green, `migrate
   validate` 0 rejecting and views idempotent, but no contract-suite sandbox run. The line must be
-  true at the bump, per GI-012 gate 6 (a SKIPPED suite is not green). Not counted blocking because
+  true at the bump, per GI-012-release-gates-module gate 6 (a SKIPPED suite is not green). Not counted blocking because
   the brief admits gate-figure placeholders.
 
 `audit: CHANGELOG + manifests · validator · opus · 3 files · 1 rounds · 1 blocking`
@@ -213,7 +213,7 @@ is the independent non-author code review that file requires.
   why it is written anyway. The `..` in `Change::MintRule { section, rule, .. }` swallows only
   `doc`, which is bound from `change.doc()` at `replay.rs:340` — the new field is destructured
   explicitly.
-- PASS · B1 · Bright line (GI-019). The change is pure data shape: no grading of meaning, no
+- PASS · B1 · Bright line (GI-019-kernel-tooling-admission). The change is pure data shape: no grading of meaning, no
   dispatch or sequencing, no gating beyond the two admitted grounds.
 - PASS · B2 · Nine new tests, and they cover the claimed surface: positive append on both library
   kinds (`replay.rs` tests 1–2, each asserting block order and that `sections` stays empty), the

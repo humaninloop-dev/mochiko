@@ -111,7 +111,7 @@ Issues requiring fix: none blocking. Four non-blocking findings follow.
 
 ## Notes of note
 
-1. **D5 items 4 and 7 reworded, not verbatim.** Item 4 drops the `plan-structure-yagni` D5 citation
+1. **D5 items 4 and 7 reworded, not verbatim.** Item 4 drops the `plan-structure-yagni` D5-ladder-carrier-teeth citation
    and restates the split as "presence blocking and the claim's honesty advisory"; item 7 moves
    ", advisory" into the head sentence. Both obligations survive, and the citation rides the rule's
    own anchor and the re-pointed `patterns-plan-minimalism.grading-routing`.

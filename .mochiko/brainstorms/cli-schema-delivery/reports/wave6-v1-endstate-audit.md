@@ -59,7 +59,7 @@ show 5f775ea:scripts/test-find-similar-rules.py` (`diff` exit 0).
 
 ## 5. Migration `0003` — PASS on substance, one count wrong in the report
 Header fields conform to the log README: `grammar` 1, `id` matching the stem, `sequence` 3 matching the filename
-prefix, one-line `intent`, anchor `2026-09-03 cli-schema-delivery D9` in `YYYY-MM-DD <slug> D<n>` form. **The
+prefix, one-line `intent`, anchor "`2026-09-03 cli-schema-delivery D9`" in `YYYY-MM-DD <slug> D<n>` form. **The
 hash verifies**: `migrate validate --plugin-root plugins/mochiko` reports **0 rejecting · 105 advisory**, and
 tampering the anchor in a scratch copy raises `hash-mismatch`, so the anchor is genuinely covered. **The op
 counts in the report are wrong:** the file carries **24 changes, seven `set-var`**, not "Twenty-three changes:

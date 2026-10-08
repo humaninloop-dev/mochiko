@@ -1096,9 +1096,9 @@ fn each_empty_enforces_mirror_still_carries_its_reason_as_a_note() {
 fn the_shipped_corpus_matches_its_recorded_census() {
     let state = shipped_state();
     // 50 through wave 6; `0005-artifact-homes` added twenty `home` documents and three templates;
-    // `0008-gate-form` imported the `validation-primitive-edit` skill (2026-09-19
-    // author-grader-consolidation D7); `0009-plan-qa-leg` imported `review-seat-plan`
-    // (2026-09-03 producer-plan-enforcement D8); the 2026-09-19 impeccable-design-integration
+    // `0008-gate-form` imported the `validation-primitive-edit` skill ("2026-09-19
+    // author-grader-consolidation D7"); `0009-plan-qa-leg` imported `review-seat-plan`
+    // ("2026-09-03 producer-plan-enforcement D8"); the 2026-09-19 impeccable-design-integration
     // wave imported three skills (`0011`, `0012`), the `product-design` home and the
     // `design-baseline` template (`0013`); the 2026-09-29 census table ratification imported seven
     // home documents (`0032` six, `0033` the `runs` home).
@@ -1114,17 +1114,17 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // eleven skills. `0007` (the seat default key, 2026-09-19) nets +4 on the same skill — one
     // `supersede-rule` (−1) and five `mint-rule`s (+5), two of the five floors; the command side
     // is untouched. The superseded rule was itself a floor, so the skill's floor count nets +1 on
-    // top of `0005`'s eleven. `0008` (the gate form, 2026-09-19 author-grader-consolidation D7) is
+    // top of `0005`'s eleven. `0008` (the gate form, "2026-09-19 author-grader-consolidation D7") is
     // pure mints and retires nothing: two command rules on `setup`, one of them a floor, and
     // twenty-two skill rules — one on `patterns-model-tiering` and twenty-one in the imported
     // `validation-primitive-edit` document, eleven of those floors. `common.gate-loop-bound` is a
     // block in the existing command-common library, so it mints no document and falls outside both
-    // rule counts. The fail set does not move. `0009` (the plan-QA leg, 2026-09-03
-    // producer-plan-enforcement D8) imports one skill document, `review-seat-plan`, carrying
+    // rule counts. The fail set does not move. `0009` (the plan-QA leg, "2026-09-03
+    // producer-plan-enforcement D8") imports one skill document, `review-seat-plan`, carrying
     // fifteen rules of which five are floors; every other op it carries is a `reword-rule`,
     // which keeps its rule's id, class and section and so mints nothing. The command figures
     // and the fail set hold; only the skill side moves.
-    // `0010` (the validator retirement, 2026-09-03 producer-plan-enforcement D3) is three
+    // `0010` (the validator retirement, "2026-09-03 producer-plan-enforcement D3") is three
     // `reword-rule` ops and nothing else — one on `patterns-model-tiering` and two on
     // `authoring-constitution`, each keeping its id, class, kind and section — so it mints and
     // retires nothing and every figure below holds unmoved.
@@ -2403,7 +2403,7 @@ fn a_common_block_carrying_no_labels_is_never_itself_a_finding() {
     );
 }
 
-// --- the flat top-level `rules:` grammar (content-schema D14) ---
+// --- the flat top-level `rules:` grammar (`command-content-schema` D14-nested-section-grammar) ---
 
 #[test]
 fn a_command_schema_carrying_top_level_rules_is_rejected() {

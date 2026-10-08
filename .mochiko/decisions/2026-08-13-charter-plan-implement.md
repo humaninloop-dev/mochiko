@@ -5,13 +5,13 @@
 
 ## Context
 
-At v0.68.0, `pm-role-and-feature-derivation` D10 re-formatted `commands/feature.md` from the v8
+At v0.68.0, `pm-role-and-feature-derivation` D10-feature-desk-charter re-formatted `commands/feature.md` from the v8
 Goal · Harness · Bindings anatomy into the six-section charter (Identity & Mission · Adaptive
 Goal Protocol · Roles & Responsibilities · Tools · Ways of Working · Boundaries), with the v8
 supersession recorded **this command only** and the desk-vs-pipeline-stage distinction on record
 at the I7 fold. Working with the desk charter the next day, the user ruled the same anatomy
 should carry to the two pipeline commands — `plan.md` already held the posture's seed (lead =
-delivery manager of the goal, `plan-structure-yagni` D1, cited by feature.md's own symmetry
+delivery manager of the goal, `plan-structure-yagni` D1-delivery-manager-identity, cited by feature.md's own symmetry
 note).
 
 ## Decision
@@ -51,7 +51,7 @@ Consequences:
 ## Rationale
 
 The Delivery-Manager posture was already half-adopted: plan's lead has been "delivery manager of
-the goal" since `plan-structure-yagni` D1, and feature.md's charter cites that symmetry. The
+the goal" since `plan-structure-yagni` D1-delivery-manager-identity, and feature.md's charter cites that symmetry. The
 charter makes the posture structural — the always-happens floor carried as owned
 responsibilities, the goal contract explicit per run — where v8 carried it as harness bullets.
 Extending it keeps the three commands that route, plan, and land delivery speaking one anatomy.

@@ -5,7 +5,7 @@ Entry formats: `strips/README.md`.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the patterns family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -17,7 +17,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -53,7 +53,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -64,7 +64,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -74,7 +74,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 
 ## [v0.102.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2B, patterns family)
 
-Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (obligations move, procedure stays
 prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
 ruled · the patterns-family door); census:
 `.mochiko/brainstorms/skill-content-schema/research/census-patterns.md` §A (SL) + §B (SL rows
@@ -131,7 +131,7 @@ ledger row).
 
 ## [v0.102.0] Governing-surface table + store carve — protection transfers with their re-key trail (census §A SL; [v0.81.0]/[v0.91.0])
 - **Disposition:** superseded — protection transfers to `patterns-sound-loop.governing-surface-table` (must, binding) and `patterns-sound-loop.store-carve` (must), per D8/C4; the table's seven member rows move whole into the rule text, per-member regime preserved.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; the table's protecting trail: birth `DECISIONS.md` 2026-08-13 charter-ritual-balance; the architecture-store row re-keyed by `DECISIONS.md` 2026-08-19 product-architecture-schema D3/D4/D11/D12 — the store carve rode that decision row — and its middle column re-worded by `DECISIONS.md` 2026-08-26 plan-stage-utility D1/D5; both re-keys recorded in this file's entries below).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; the table's protecting trail: birth `DECISIONS.md` 2026-08-13 charter-ritual-balance; the architecture-store row re-keyed by `DECISIONS.md` 2026-08-19 product-architecture-schema D3/D4/D11/D12 — the store carve rode that decision row — and its middle column re-worded by `DECISIONS.md` "2026-08-26 plan-stage-utility D1/D5"; both re-keys recorded in this file's entries below).
 - **Content:** the seven-row table verbatim-in-substance (plugin primitives · product code · specs · governance · capability map · product baselines · architecture store, each with its existing-regime and net-new columns) · "status flips and orphan cleanup are transcription … the `As-built:` and `Drift:` writes are judgment and are graded".
 - **Kept deliberately:** the architecture-store row's [v0.91.0] wording ("design-phase deltas graded by the design review pair beneath the user's sign-off") survives verbatim inside the rule text.
 - **Consumers assessed:** the router's row restates the governing-surface list generically (unchanged this wave); `mochiko:authoring-architecture-store` is the named carrier the rule's pointer binds.
@@ -141,7 +141,7 @@ ledger row).
 - **Disposition:** superseded → "design-phase deltas graded by the design review pair beneath the
   user's sign-off".
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 (the design phase absorbs plan's
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires (the design phase absorbs plan's
   design work) and D5 (`review-plan-artifacts` / `review-feasibility` re-scope to grade the
   design-phase output); wording ruled by the wave lead 2026-08-26).
 - **Content (superseded fragment, verbatim — the architecture-store row's middle column):**
@@ -170,7 +170,7 @@ ledger row).
   index** the store skill regenerates on every store write (D4 fold, single writer), so there is
   nothing to hand-fold and the net-new bite moved to the store itself.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3/D4 (one store, derived index) ·
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3-store-replaces-artifact/D4-store-file-structure (one store, derived index) ·
   D11 (store-write review cadence, as narrowed at S6) · D12 (store homed under
   `.mochiko/product/architecture/`); `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim):**

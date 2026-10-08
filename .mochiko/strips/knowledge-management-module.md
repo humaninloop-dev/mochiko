@@ -1,6 +1,6 @@
 # Strip notes — `templates/constitution-modules/knowledge-management.md`
 
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -63,7 +63,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
   was retired this wave, so the list named a command that cannot run. The ritual itself is
   unchanged — the same three-part move fires at the same moments, one of which no longer exists.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1 — `/mochiko:plan` retires and
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires — `/mochiko:plan` retires and
   `/mochiko:implement` becomes the single downstream run; `DECISIONS.md` 2026-08-26 row.)
 - **Content (superseded, verbatim, one site):** "at the command landing step (brainstorm close ·
   setup/amend · specify/plan/implement landings where those commands run)". Now:
@@ -81,7 +81,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
   NOT edited here; flagged to the wave lead for routing. `CLAUDE.md`'s landing-ritual paragraph
   cites that pinned copy, not this template.
 
-## [v0.81.0] `ARCHITECTURE.md` doc-role re-worded to the derived index; In-flight agreement → orphan rule — product-architecture-schema D4/D10
+## [v0.81.0] `ARCHITECTURE.md` doc-role re-worded to the derived index; In-flight agreement → orphan rule — product-architecture-schema D4-store-file-structure/D10-plan-time-contract
 
 - **Disposition:** superseded → the derived-index role and the orphan rule. `ARCHITECTURE.md`
   stays a repo-root core doc with the same read-job, but it is now a **rendered projection** of
@@ -90,7 +90,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
   single-writer regeneration, and the In-flight-pointer invariant it carried is replaced by the
   store's own orphan rule.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D4 (derived index, single writer,
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D4-store-file-structure (derived index, single writer,
   index-vs-ledger disagreement is a defect) · D10 (the six-step delta lifecycle whose orphan rule
   explicitly supersedes the pinned AT-D6-C invariant); `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim — three fragments):**
@@ -134,7 +134,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 
 ## [v0.44.0] Redesign record citation
 - **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 `.mochiko/brainstorms/operating-docs-maintenance/record.md`

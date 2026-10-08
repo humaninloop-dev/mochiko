@@ -15,7 +15,7 @@ carry the two forms this wave replaces). -->
 - **Disposition:** superseded → the same four clauses, re-keyed to `kind: fail`, in the
   amended procedure (steps 11 and 13, step 14's criteria summary, and the Pitfalls list).
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/command-schema-ontology/record.md` D1 and build-surface item 4,
+  (`.mochiko/brainstorms/command-schema-ontology/record.md` D1-rule-kind-set and build-surface item 4,
   "`kind: fail` replaces the `fail-condition` label as the operative selector";
   `DECISIONS.md` 2026-08-27. Reworded lines tabled in that session's
   `conversion-inventory.md` section H.)
@@ -53,7 +53,7 @@ carry the two forms this wave replaces). -->
   comment (ontology `conversion-inventory.md` section G), restated in procedure step 4.
 - **Tier failed:** n/a — supersession by ruling
   (`.mochiko/brainstorms/command-schema-ontology/record.md` D1/D3/D4/D8 grow the namespace,
-  and command-content-schema D16 evicted the inline `ruling:` field it still listed;
+  and command-content-schema D16-provenance-leaves-schemas evicted the inline `ruling:` field it still listed;
   `DECISIONS.md` 2026-08-26 and 2026-08-27.)
 - **Content:** step 4 as it stood at v0.97.0, verbatim —
 

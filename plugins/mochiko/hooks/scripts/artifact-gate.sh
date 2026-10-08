@@ -1,5 +1,5 @@
 #!/bin/sh
-# PreToolUse — the write-time artifact gate (record D1, D3, D7c; ledger GI-019 clause iv).
+# PreToolUse — the write-time artifact gate (record D1, D3, D7c; ledger GI-019-kernel-tooling-admission clause iv).
 #
 # Registered on Write|Edit un-narrowed, and on Bash|PowerShell narrowed to commands whose text
 # names `.mochiko`. Every declared artifact home sits under `.mochiko/`, so that narrowing keeps

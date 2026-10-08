@@ -3,7 +3,7 @@
 //! Given what the log declares for a path ([`crate::home`]) and the body a write would leave on
 //! disk, this module answers allow or deny. That is the whole of it: **every check is decidable by
 //! string and count**, and none of them reads meaning, grades quality, or sequences a seat — which
-//! is what keeps the write-time gate on the admitted side of the bright line (GI-019). The tool is
+//! is what keeps the write-time gate on the admitted side of the bright line (GI-019-kernel-tooling-admission). The tool is
 //! checking an artifact against the log's own declaration, never against a standard of its own.
 //!
 //! # The six checks, in the order a deny reports them (record D4)
@@ -171,7 +171,7 @@ pub fn check(
         // controls — the ignore guard, the main-tree rule, the report sniff on `.md` — are the
         // hook's, because they read the repository's layout rather than the body.
         Resolution::Raw { .. } => Verdict::allow(),
-        // The file set is a *relaxable* measure (D4e, as ratified at AM-3): an undeclared name on a
+        // The file set is a *relaxable* measure (D4e, as ratified at AM-3-conformance-gate-admission): an undeclared name on a
         // file that is already on disk is amnestied and named in `additionalContext`, so a
         // mis-homed file is never wedged — those are exactly the files the violator pass rewrites.
         // A *new* file at an undeclared name has no baseline and still denies, so the set binds on
@@ -861,7 +861,7 @@ fn heading_scan(body: &str) -> Vec<Option<(usize, &str)>> {
 /// Per line of `body`, whether it is a fence line or inside a fenced block.
 ///
 /// The one fence classifier in the crate: [`heading_scan`] reads it here, and the ID scanner
-/// ([`crate::ids`]) reads it to leave a fenced quotation as written (`human-readable-ids` D15). A
+/// ([`crate::ids`]) reads it to leave a fenced quotation as written (`human-readable-ids` D15-protected-line-rewrites). A
 /// second copy is how the fence trap would come back one module away from where it was closed.
 pub(crate) fn fenced_lines(body: &str) -> Vec<bool> {
     let mut out = Vec::with_capacity(body.lines().count());

@@ -1,7 +1,7 @@
 # Preregistration — architecture plan-only eval
 
 Committed BEFORE the first grid (record build 2; skill-harness R6 carried over; the band
-form from `primitive-eval-harness-v2` D11 as folded and the `2026-09-09-persona-band-invited-only`
+form from `primitive-eval-harness-v2` D11-preregistration-noise-guard as folded and the `2026-09-09-persona-band-invited-only`
 ruling, adapted to the command target below). The runner refuses a grid without this file.
 Amending it after results exist is a recorded, deliberate act — never a quiet retro-fit.
 

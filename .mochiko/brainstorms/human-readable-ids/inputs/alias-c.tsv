@@ -1,0 +1,99 @@
+literal	scope	family	owner	numbers	evidence	note
+PO-D	tree	D	production-only-focus	all	.mochiko/brainstorms/index.md:635	glued
+CS-D	tree	D	command-succinctness-strip	all	.mochiko/brainstorms/index.md:641	glued
+AD-D	tree	D	architecture-design-primitive	all	.mochiko/brainstorms/index.md:647	glued
+ER-D	tree	D	external-research-in-review	all	.mochiko/brainstorms/index.md:556	glued;live-after-normalize — definitions are glued in the record; W3-A normalize rows (S2) make this live
+TC-D	tree	D	team-lead-strategic-compaction	all	.mochiko/brainstorms/index.md:617	glued
+AR-D	tree	D	adversarial-review-generality	all	.mochiko/brainstorms/index.md:562	glued;live-after-normalize — definitions are glued in the record; W3-A normalize rows (S2) make this live
+OO-D	tree	D	ops-observability-hardening	all	.mochiko/brainstorms/index.md:623	glued
+AT-D	tree	D	architecture-tieback	all	.mochiko/brainstorms/index.md:568	glued;live-after-normalize — definitions are glued in the record; W3-A normalize rows (S2) make this live
+SD-D	tree	D	security-depth-scoping	all	.mochiko/brainstorms/index.md:629	glued
+OD-D	tree	D	operating-docs-maintenance	all	.mochiko/brainstorms/index.md:653	glued
+PT-D	tree	D	ponytail-concepts-integration	all	.mochiko/brainstorms/index.md:550	glued
+UX-D	tree	D	ux-mocking-in-specify	all	.mochiko/brainstorms/index.md:574	glued
+adaptive-depth D	.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md	D	production-floor-adaptive-depth	all	.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md:61	shorthand
+adaptive-depth D	.mochiko/brainstorms/build-vs-off-the-shelf/record.md	D	production-floor-adaptive-depth	all	.mochiko/brainstorms/build-vs-off-the-shelf/record.md:252	shorthand
+adaptive-depth D	.mochiko/brainstorms/index.md	D	production-floor-adaptive-depth	all	.mochiko/brainstorms/index.md:27	shorthand
+adaptive-depth D	.mochiko/brainstorms/plan-structure-yagni/record.md	D	production-floor-adaptive-depth	all	.mochiko/brainstorms/plan-structure-yagni/record.md:48	shorthand
+adaptive-depth D	.mochiko/brainstorms/setup-product-agnostic/record.md	D	production-floor-adaptive-depth	all	.mochiko/brainstorms/setup-product-agnostic/record.md:10	shorthand
+adaptive-depth D	.mochiko/brainstorms/setup-product-agnostic/reports/angle-map.md	D	production-floor-adaptive-depth	all	.mochiko/brainstorms/setup-product-agnostic/reports/angle-map.md:160	shorthand
+adaptive-depth D	.mochiko/brainstorms/setup-product-agnostic/reports/gate-audit.md	D	production-floor-adaptive-depth	all	.mochiko/brainstorms/setup-product-agnostic/reports/gate-audit.md:105	shorthand
+adaptive-depth D	.mochiko/brainstorms/skill-content-schema/research/census.md	D	production-floor-adaptive-depth	all	.mochiko/brainstorms/skill-content-schema/research/census.md:74	shorthand
+adaptive-depth D	DECISIONS.md	D	production-floor-adaptive-depth	all	DECISIONS.md:22	shorthand
+adaptive-depth D	ROADMAP.md	D	production-floor-adaptive-depth	all	ROADMAP.md:30	shorthand
+adopt-first D	.mochiko/brainstorms/index.md	D	build-vs-off-the-shelf	all	.mochiko/brainstorms/index.md:95	shorthand;dead — the owner has no indexed definition (S2); the apply reports it
+adopt-first D	DECISIONS.md	D	build-vs-off-the-shelf	all	DECISIONS.md:47	shorthand;dead — the owner has no indexed definition (S2); the apply reports it
+angle-1 D	.mochiko/brainstorms/model-tiered-seats/record.md	D	standing-seat-lifecycle	all	.mochiko/brainstorms/model-tiered-seats/record.md:167	shorthand;judged — angle 1 is standing-seat-lifecycle (model-tiered-seats/record.md:91)
+architect-role D	.mochiko/strips/plan-template.md	D	architect-role-pushback-and-abstraction	all	.mochiko/strips/plan-template.md:6	shorthand
+architect-role D	.mochiko/strips/plan.md	D	architect-role-pushback-and-abstraction	all	.mochiko/strips/plan.md:915	shorthand
+architect-role D	DECISIONS.md	D	architect-role-pushback-and-abstraction	all	DECISIONS.md:175	shorthand
+content-schema D	.mochiko/brainstorms/cli-schema-delivery/record.md	D	command-content-schema	all	.mochiko/brainstorms/cli-schema-delivery/record.md:153	shorthand;judged — command-content-schema, not skill-content-schema, in every listed file (numbers D10–D16 exist only there; the strips cite the class: ceremony of command D6)
+content-schema D	.mochiko/brainstorms/index.md	D	command-content-schema	all	.mochiko/brainstorms/index.md:107	shorthand;judged — command-content-schema, not skill-content-schema, in every listed file (numbers D10–D16 exist only there; the strips cite the class: ceremony of command D6)
+content-schema D	.mochiko/brainstorms/skill-content-schema/record.md	D	command-content-schema	all	.mochiko/brainstorms/skill-content-schema/record.md:162	shorthand;judged — command-content-schema, not skill-content-schema, in every listed file (numbers D10–D16 exist only there; the strips cite the class: ceremony of command D6)
+content-schema D	.mochiko/strips/architecture.md	D	command-content-schema	all	.mochiko/strips/architecture.md:129	shorthand;judged — command-content-schema, not skill-content-schema, in every listed file (numbers D10–D16 exist only there; the strips cite the class: ceremony of command D6)
+content-schema D	.mochiko/strips/brainstorm.md	D	command-content-schema	all	.mochiko/strips/brainstorm.md:165	shorthand;judged — command-content-schema, not skill-content-schema, in every listed file (numbers D10–D16 exist only there; the strips cite the class: ceremony of command D6)
+content-schema D	.mochiko/strips/feature.md	D	command-content-schema	all	.mochiko/strips/feature.md:108	shorthand;judged — command-content-schema, not skill-content-schema, in every listed file (numbers D10–D16 exist only there; the strips cite the class: ceremony of command D6)
+content-schema D	.mochiko/strips/implement.md	D	command-content-schema	all	.mochiko/strips/implement.md:140	shorthand;judged — command-content-schema, not skill-content-schema, in every listed file (numbers D10–D16 exist only there; the strips cite the class: ceremony of command D6)
+content-schema D	.mochiko/strips/setup.md	D	command-content-schema	all	.mochiko/strips/setup.md:150	shorthand;judged — command-content-schema, not skill-content-schema, in every listed file (numbers D10–D16 exist only there; the strips cite the class: ceremony of command D6)
+content-schema D	.mochiko/strips/specify.md	D	command-content-schema	all	.mochiko/strips/specify.md:135	shorthand;judged — command-content-schema, not skill-content-schema, in every listed file (numbers D10–D16 exist only there; the strips cite the class: ceremony of command D6)
+content-schema D	DECISIONS.md	D	command-content-schema	all	DECISIONS.md:47	shorthand;judged — command-content-schema, not skill-content-schema, in every listed file (numbers D10–D16 exist only there; the strips cite the class: ceremony of command D6)
+content-schema D	ROADMAP.md	D	command-content-schema	all	ROADMAP.md:31	shorthand;judged — command-content-schema, not skill-content-schema, in every listed file (numbers D10–D16 exist only there; the strips cite the class: ceremony of command D6)
+content-schema D	crates/mochiko-cli/tests/validate.rs	D	command-content-schema	all	crates/mochiko-cli/tests/validate.rs:2406	shorthand;judged — command-content-schema, not skill-content-schema, in every listed file (numbers D10–D16 exist only there; the strips cite the class: ceremony of command D6)
+cost-gate D	.mochiko/brainstorms/plan-structure-yagni/record.md	D	validator-scope-and-verbosity	7	.mochiko/brainstorms/plan-structure-yagni/record.md:66	shorthand;judged — "the external cost-gate D7" (plan-structure-yagni/record.md:49 names the session)
+feature-map D	.mochiko/brainstorms/feature-sizing-and-entry-points/record.md	D	feature-map-layer	all	.mochiko/brainstorms/feature-sizing-and-entry-points/record.md:13	shorthand
+feature-map D	.mochiko/strips/authoring-feature-map.md	D	feature-map-layer	all	.mochiko/strips/authoring-feature-map.md:535	shorthand
+feature-map D	.mochiko/strips/implement.md	D	feature-map-layer	all	.mochiko/strips/implement.md:1994	shorthand
+feature-map D	.mochiko/strips/mochiko.md	D	feature-map-layer	all	.mochiko/strips/mochiko.md:753	shorthand
+feature-map D	.mochiko/strips/plan.md	D	feature-map-layer	all	.mochiko/strips/plan.md:940	shorthand
+feature-map D	DECISIONS.md	D	feature-map-layer	all	DECISIONS.md:93	shorthand
+feature-sizing D	.mochiko/brainstorms/pm-requirements-stacking/record.md	D	feature-sizing-and-entry-points	all	.mochiko/brainstorms/pm-requirements-stacking/record.md:14	shorthand
+feature-sizing D	.mochiko/brainstorms/pm-role-and-feature-derivation/record.md	D	feature-sizing-and-entry-points	all	.mochiko/brainstorms/pm-role-and-feature-derivation/record.md:172	shorthand
+feature-sizing D	.mochiko/brainstorms/skill-content-schema/research/census-authoring.md	D	feature-sizing-and-entry-points	all	.mochiko/brainstorms/skill-content-schema/research/census-authoring.md:104	shorthand
+feature-sizing D	.mochiko/strips/authoring-feature-map.md	D	feature-sizing-and-entry-points	all	.mochiko/strips/authoring-feature-map.md:391	shorthand
+feature-sizing D	.mochiko/strips/feature-entry-template.md	D	feature-sizing-and-entry-points	all	.mochiko/strips/feature-entry-template.md:156	shorthand
+feature-sizing D	.mochiko/strips/features-index-template.md	D	feature-sizing-and-entry-points	all	.mochiko/strips/features-index-template.md:101	shorthand
+feature-sizing D	DECISIONS.md	D	feature-sizing-and-entry-points	all	DECISIONS.md:24	shorthand
+field-review D	.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/reports/review.md	D	hook-enforcement-field-review	all	.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/reports/review.md:311	shorthand
+gate-form D	.mochiko/brainstorms/index.md	D	author-grader-consolidation	9	.mochiko/brainstorms/index.md:142	shorthand;judged — the gate form is author-grader-consolidation wave 1; its D9 watch (author-grader-consolidation/record.md:5)
+gate-form D	.mochiko/brainstorms/producer-plan-enforcement/record.md	D	author-grader-consolidation	9	.mochiko/brainstorms/producer-plan-enforcement/record.md:9	shorthand;judged — the gate form is author-grader-consolidation wave 1; its D9 watch (author-grader-consolidation/record.md:5)
+gate-form D	DECISIONS.md	D	author-grader-consolidation	9	DECISIONS.md:48	shorthand;judged — the gate form is author-grader-consolidation wave 1; its D9 watch (author-grader-consolidation/record.md:5)
+gate-form D	ROADMAP.md	D	author-grader-consolidation	9	ROADMAP.md:26	shorthand;judged — the gate form is author-grader-consolidation wave 1; its D9 watch (author-grader-consolidation/record.md:5)
+harness-v2 D	evals/plan/brainstorm/preregistration.md	D	primitive-eval-harness-v2	all	evals/plan/brainstorm/preregistration.md:121	shorthand
+map-layer D	.mochiko/brainstorms/pm-role-and-feature-derivation/record.md	D	feature-map-layer	all	.mochiko/brainstorms/pm-role-and-feature-derivation/record.md:172	shorthand
+model-tiered D	BACKLOG.md	D	model-tiered-seats	all	BACKLOG.md:847	shorthand
+model-tiered D	ROADMAP.md	D	model-tiered-seats	all	ROADMAP.md:28	shorthand
+multi-feature D	.mochiko/strips/authoring-epic.md	D	multi-feature-plan-implement	all	.mochiko/strips/authoring-epic.md:151	shorthand
+multi-feature D	DECISIONS.md	D	multi-feature-plan-implement	all	DECISIONS.md:24	shorthand
+plan-stage D	.mochiko/brainstorms/skill-content-schema/research/census-authoring.md	D	plan-stage-utility	all	.mochiko/brainstorms/skill-content-schema/research/census-authoring.md:82	shorthand
+plan-stage D	.mochiko/strips/authoring-epic.md	D	plan-stage-utility	all	.mochiko/strips/authoring-epic.md:151	shorthand
+pm-role D	.mochiko/brainstorms/command-md-scaffold-standardization/record.md	D	pm-role-and-feature-derivation	all	.mochiko/brainstorms/command-md-scaffold-standardization/record.md:74	shorthand
+pm-role D	.mochiko/brainstorms/index.md	D	pm-role-and-feature-derivation	all	.mochiko/brainstorms/index.md:468	shorthand
+pm-role D	.mochiko/brainstorms/skill-content-schema/research/census-authoring.md	D	pm-role-and-feature-derivation	all	.mochiko/brainstorms/skill-content-schema/research/census-authoring.md:101	shorthand
+pm-role D	.mochiko/strips/authoring-feature-map.md	D	pm-role-and-feature-derivation	all	.mochiko/strips/authoring-feature-map.md:187	shorthand
+pm-role D	.mochiko/strips/feature-entry-template.md	D	pm-role-and-feature-derivation	all	.mochiko/strips/feature-entry-template.md:156	shorthand
+pm-role D	.mochiko/strips/features-index-template.md	D	pm-role-and-feature-derivation	all	.mochiko/strips/features-index-template.md:101	shorthand
+pm-role D	DECISIONS.md	D	pm-role-and-feature-derivation	all	DECISIONS.md:77	shorthand
+producer-plan D	.mochiko/brainstorms/author-grader-consolidation/build-log.md	D	producer-plan-enforcement	all	.mochiko/brainstorms/author-grader-consolidation/build-log.md:24	shorthand
+producer-plan D	.mochiko/brainstorms/author-grader-consolidation/record.md	D	producer-plan-enforcement	all	.mochiko/brainstorms/author-grader-consolidation/record.md:163	shorthand
+producer-plan D	.mochiko/brainstorms/author-grader-consolidation/reports/review.md	D	producer-plan-enforcement	all	.mochiko/brainstorms/author-grader-consolidation/reports/review.md:471	shorthand
+producer-plan D	DECISIONS.md	D	producer-plan-enforcement	all	DECISIONS.md:27	shorthand
+product-arch D	.mochiko/brainstorms/skill-content-schema/research/census-authoring.md	D	product-architecture-schema	all	.mochiko/brainstorms/skill-content-schema/research/census-authoring.md:85	shorthand
+qa-gap-finding D	.mochiko/brainstorms/skill-compression-tooling/record.md	D	qa-gap-finding-verification	all	.mochiko/brainstorms/skill-compression-tooling/record.md:292	shorthand
+scaffold-standardization D	.mochiko/brainstorms/command-schema-ontology/record.md	D	command-md-scaffold-standardization	all	.mochiko/brainstorms/command-schema-ontology/record.md:176	shorthand
+skill-compression D	.mochiko/brainstorms/skill-content-schema/record.md	D	skill-compression-tooling	all	.mochiko/brainstorms/skill-content-schema/record.md:434	shorthand
+standing-seat D	.mochiko/brainstorms/team-lead-strategic-compaction/record.md	D	standing-seat-lifecycle	all	.mochiko/brainstorms/team-lead-strategic-compaction/record.md:116	shorthand
+team-method D	.mochiko/brainstorms/architecture-design-primitive/record.md	D	team-method-vs-command-shape	all	.mochiko/brainstorms/architecture-design-primitive/record.md:146	shorthand
+team-method D	.mochiko/decisions/2026-07-31-team-method-escalations-closed.md	D	team-method-vs-command-shape	all	.mochiko/decisions/2026-07-31-team-method-escalations-closed.md:3	shorthand
+team-method D	.mochiko/strips/plan.md	D	team-method-vs-command-shape	all	.mochiko/strips/plan.md:1701	shorthand
+team-method D	.mochiko/strips/tasks.md	D	team-method-vs-command-shape	all	.mochiko/strips/tasks.md:35	shorthand
+template-guidance D	.mochiko/brainstorms/index.md	D	schema-based-template-guidance	all	.mochiko/brainstorms/index.md:107	shorthand
+template-guidance D	DECISIONS.md	D	schema-based-template-guidance	all	DECISIONS.md:47	shorthand
+template-schema D	.mochiko/brainstorms/product-architecture-schema/record.md	D	schema-based-template-guidance	all	.mochiko/brainstorms/product-architecture-schema/record.md:299	shorthand;judged — the template-schema session is schema-based-template-guidance (its D8 schema data files, D10 one wave)
+template-schema D	.mochiko/brainstorms/skill-content-schema/research/census-authoring.md	D	schema-based-template-guidance	all	.mochiko/brainstorms/skill-content-schema/research/census-authoring.md:62	shorthand;judged — the template-schema session is schema-based-template-guidance (its D8 schema data files, D10 one wave)
+template-schema D	.mochiko/strips/authoring-architecture-store.md	D	schema-based-template-guidance	all	.mochiko/strips/authoring-architecture-store.md:231	shorthand;judged — the template-schema session is schema-based-template-guidance (its D8 schema data files, D10 one wave)
+template-schema D	.mochiko/strips/authoring-feature-map.md	D	schema-based-template-guidance	all	.mochiko/strips/authoring-feature-map.md:214	shorthand;judged — the template-schema session is schema-based-template-guidance (its D8 schema data files, D10 one wave)
+token-epic D	.mochiko/brainstorms/index.md	D	workflow-token-reduction	all	.mochiko/brainstorms/index.md:592	shorthand
+token-epic D	.mochiko/decisions/2026-08-06-kinako-waves-retired.md	D	workflow-token-reduction	all	.mochiko/decisions/2026-08-06-kinako-waves-retired.md:39	shorthand
+token-epic D	DECISIONS.md	D	workflow-token-reduction	all	DECISIONS.md:107	shorthand
+transport-neutral D	BACKLOG.md	D	command-architecture-realignment	5	BACKLOG.md:1051	shorthand;judged — transport-neutral is command-architecture-realignment D5 (BACKLOG.md:759)
+transport-neutral D	DECISIONS.md	D	command-architecture-realignment	5	DECISIONS.md:107	shorthand;judged — transport-neutral is command-architecture-realignment D5 (BACKLOG.md:759)

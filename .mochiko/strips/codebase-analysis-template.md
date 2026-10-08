@@ -6,7 +6,7 @@ analysis outputs in scope, slimmed but legible; ratified 2026-07-24).
 
 ## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/codebase-analysis.yaml + mochiko-cli template codebase-analysis
-- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1-single-plugin-cli/D3-pipeline-template-scope/D8-schema-data-files; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
 - **Content (superseded template, full verbatim below):**
 
 ````markdown
@@ -163,7 +163,7 @@ Based on this analysis, the constitution should:
 3. **Severity levels**: `low` (cosmetic), `medium` (should fix), `high` (blocking)
 4. **This is a reference template** - Agent produces actual content following this structure
 ````
-- **Kept deliberately:** Every line of guidance preserved — lifted into `plugins/mochiko/schemas/codebase-analysis.yaml` (skeleton / contract / overview / register / density) and rendered by `mochiko-cli template codebase-analysis`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). Nothing dropped.
+- **Kept deliberately:** Every line of guidance preserved — lifted into `plugins/mochiko/schemas/codebase-analysis.yaml` (skeleton / contract / overview / register / density) and rendered by `mochiko-cli template codebase-analysis`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020-plugin-install-model, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). Nothing dropped.
 - **Consumers assessed:** `skills/analysis-codebase/SKILL.md` (re-pointed by P5) · `skills/analysis-codebase/references/CONTEXT-GATHERING.md` (re-pointed by P5) · landing sweeps (I5, owned by P6): `BACKLOG.md` + `.mochiko/memory/codebase-analysis.md` template-path examples. V2 fidelity PASS 2026-08-16 (schema graded 8/8 at the M3 gate).
 
 ## [v0.23.0] Four Essential-Floor "Assessment Details" subsections merged into one check table

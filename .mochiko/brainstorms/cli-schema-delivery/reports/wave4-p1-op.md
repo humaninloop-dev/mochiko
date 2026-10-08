@@ -52,7 +52,7 @@ be read or written. The bytes come from the view writer over the re-parsed stamp
 leading comment block is carried through verbatim.
 
 **Migration `0002-fail-conditions-intent.yaml`**, six `reword-section` changes, header anchor
-`2026-09-03 cli-schema-delivery D3`, hash
+"`2026-09-03 cli-schema-delivery D3`", hash
 `sha256:47abe5a344e71b73fb234c48f1305c9e80af40001d9629e3277ade56c5236757`. Stamping reformatted the
 hand-written body into the log's own folded layout, which is the point of routing the write through
 the view writer rather than serde.

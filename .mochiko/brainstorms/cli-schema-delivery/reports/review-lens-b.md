@@ -112,7 +112,7 @@ Run in the worktree at `1ed5c19`. The record's fact discipline is, on the whole,
 | F7 governance text | verbatim against the ledger |
 | F8 manifest, marketplace source, no hooks configured, no `hooks/` directory | yes |
 | F11 `converting-skill-to-schema` absent on disk | yes |
-| Sibling-session relations | verified against `producer-plan-enforcement/record.md` on `main`: accepted 2026-09-03, build pending in two waves, D1 `Contested` "detection plus review, no hook gate, no worktree", and "a future hook gate takes its own ruling from zero" verbatim |
+| Sibling-session relations | verified against `producer-plan-enforcement/record.md` on `main`: accepted 2026-09-03, build pending in two waves, D1-detection-review-enforcement `Contested` "detection plus review, no hook gate, no worktree", and "a future hook gate takes its own ruling from zero" verbatim |
 
 **Did not survive verification:** F1's stated crate total, F2's tombstones claim, F2's floor count instrument, and four items in F9. Those become findings below.
 
@@ -156,22 +156,22 @@ D10.6 supersedes the command and skill delivery watches. It does not name the CL
 
 **I4 — The parent session's scope ratchet is unnamed.**
 *Target:* D10.5.
-`schema-based-template-guidance` D3 scoped the crate to the eight pipeline artifact templates "first … with an explicit later ratchet". D2 here widens it to all fifty schema files, which is that ratchet firing. D10.5's supersession list names D8, D1's renderer limb, and the closed name set, not D3.
+`schema-based-template-guidance` D3-pipeline-template-scope scoped the crate to the eight pipeline artifact templates "first … with an explicit later ratchet". D2 here widens it to all fifty schema files, which is that ratchet firing. D10.5's supersession list names D8, D1's renderer limb, and the closed name set, not D3.
 *Disposition:* add D3's ratchet to D10.5 as discharged.
 
-**I5 — GI-008 is untouched by a decision that retires three of its subjects.**
+**I5 — GI-008-script-test-waiver is untouched by a decision that retires three of its subjects.**
 *Target:* D6, D10.
-D6 retires the two checkers and the detector. GI-019's own text places "the 6 existing scripts (5 `.py` validators, 1 `.sh` detector)" outside kernel-class, carried by waiver GI-008 whose revisit trigger reads "Script count grows, or a script becomes load-bearing in a shipped flow". D10 claims to hold the governance envelope in one place and never mentions GI-008.
-*Disposition:* add a GI-008 clause to D10 — the waiver narrows or discharges at wave 6.
+D6 retires the two checkers and the detector. GI-019-kernel-tooling-admission's own text places "the 6 existing scripts (5 `.py` validators, 1 `.sh` detector)" outside kernel-class, carried by waiver GI-008-script-test-waiver whose revisit trigger reads "Script count grows, or a script becomes load-bearing in a shipped flow". D10 claims to hold the governance envelope in one place and never mentions GI-008-script-test-waiver.
+*Disposition:* add a GI-008-script-test-waiver clause to D10 — the waiver narrows or discharges at wave 6.
 
-**I6 — GI-020's Testability rows are not rewritten.**
+**I6 — GI-020-plugin-install-model's Testability rows are not rewritten.**
 *Target:* D10.1.
 D10.1 rewrites the enforcement text. The ledger entry's Testability reads: "Pass: a fresh plugin install with no binary present is fully functional. · Fail: install requires a build step, fetches a binary, or fails without the binary." Under the new posture both lines invert. An amendment that rewrites enforcement and leaves testability standing ships a self-contradicting principle, and the governance validator grades exactly that trace.
 *Disposition:* name the Testability rewrite inside D10.1.
 
 **I7 — The provenance sidecar's disposition is unstated.**
 *Target:* D2, wave 6, Open threads.
-D2 folds the sidecar "in as migration grammar". Wave 6 never lists the file. Five hundred ninety-seven anchors are protected-content carriers under GI-005 and GI-006. Whether `.mochiko/provenance.yaml` is deleted, frozen as archive, or kept authoritative is neither ruled nor listed open.
+D2 folds the sidecar "in as migration grammar". Wave 6 never lists the file. Five hundred ninety-seven anchors are protected-content carriers under GI-005-record-layer-integrity and GI-006-primitive-edit-traceability. Whether `.mochiko/provenance.yaml` is deleted, frozen as archive, or kept authoritative is neither ruled nor listed open.
 *Disposition:* rule it, or list it in Open threads.
 
 **I8 — Collapsing scaffold criterion 3 drops FAIL survival, not only the count pin.**
@@ -216,7 +216,7 @@ D2 says "The 99 existing strip files freeze as archive (append-only per KM)". St
 
 **I15 — "GI-005 becomes mechanical" over-claims.**
 *Target:* D2.
-GI-005 covers the whole record layer: protected content in prose primitives and the dead-pointer scan over the roadmap, decisions index, and backlog. The migration constraint mechanizes the schema-rule limb only.
+GI-005-record-layer-integrity covers the whole record layer: protected content in prose primitives and the dead-pointer scan over the roadmap, decisions index, and backlog. The migration constraint mechanizes the schema-rule limb only.
 *Disposition:* scope the claim to the limb it actually mechanizes.
 
 ### Minor
@@ -228,7 +228,7 @@ GI-005 covers the whole record layer: protected content in prose primitives and 
 - **M5 —** Ceremony scale is unpriced. Waves 3 through 6 touch thirty-six primitives, roughly thirty two-arm sites, the primitive-edit rules file and the budget ledger; the comparable prior wave was priced at eighty-three strips across forty files.
 - **M6 —** The standing backlog item "Prose vs. gate allocation", which asks exactly which behaviors earn prose versus a hard `PreToolUse` hook, is not named by D7.
 - **M7 —** The existing measured read-cost figures are not cited. The open thread predicts rendered output is smaller than raw YAML; the four family multipliers and delivered-at-invoke totals already on record would give that prediction a baseline.
-- **M8 —** D4 says Windows is "served by cargo only" without noting that `cargo install` compiles from source and requires a Rust toolchain — a build step moved onto the user, adjacent to what GI-020 forbade of the plugin.
+- **M8 —** D4 says Windows is "served by cargo only" without noting that `cargo install` compiles from source and requires a Rust toolchain — a build step moved onto the user, adjacent to what GI-020-plugin-install-model forbade of the plugin.
 - **M9 —** F9.9's "a `SessionStart` hook is the earliest point" is contestable: a `Setup` event is documented for "one-time preparation in CI or scripts" under `--init-only`, `--init` or `--maintenance`.
 - **M10 —** D10.5 lists the crate's closed name set and embedded copies among "supersessions-by-ruling". Those are code, not ruled decisions, and the strips ceremony has no entry type for them.
 
@@ -289,13 +289,13 @@ Folded faithfully. Every phrase I fetched independently appears in F9 with its m
 
 **1 — I5's fold rests on a wrong script census (D10.7, Constraints 7, prior-session relations).**
 D10.7 reads: "GI-008 narrows at the amend run: the waiver's scope drops the three retired scripts and keeps the remaining three (`validate-*`/`check-artifacts.py`, `detect-stack.sh`)."
-Both halves are wrong on the files. The plugin ships exactly six helper scripts, and they are GI-008's census to the letter — one bash (`detect-stack.sh`) and five python (`validate-requirements.py`, `validate-user-stories.py`, `validate-openapi.py`, `validate-model.py`, `check-artifacts.py`), each under `plugins/mochiko/skills/*/scripts/`. D6 retires none of them. The three it does retire live in `scripts/` and all postdate the 2026-08-06 ratification — `check-command-schema.py` at v0.92.0, `find-similar-rules.py` at v0.99.0, `check-skill-schema.py` at v0.100.0 — so they are not members of the waived six and appear in no waiver row. The fold therefore drops non-members from the waiver and then miscounts the remainder as three when six remain, four of them `validate-*`.
+Both halves are wrong on the files. The plugin ships exactly six helper scripts, and they are GI-008-script-test-waiver's census to the letter — one bash (`detect-stack.sh`) and five python (`validate-requirements.py`, `validate-user-stories.py`, `validate-openapi.py`, `validate-model.py`, `check-artifacts.py`), each under `plugins/mochiko/skills/*/scripts/`. D6 retires none of them. The three it does retire live in `scripts/` and all postdate the 2026-08-06 ratification — `check-command-schema.py` at v0.92.0, `find-similar-rules.py` at v0.99.0, `check-skill-schema.py` at v0.100.0 — so they are not members of the waived six and appear in no waiver row. The fold therefore drops non-members from the waiver and then miscounts the remainder as three when six remain, four of them `validate-*`.
 *Why blocking:* the disposition is misapplied, and it changes what the wave-2 amend run would land.
-*Repair:* restate the engagement. GI-008's six are untouched by this session. The live question my finding was pointing at is different and still open: the three post-ratification checkers carry no waiver row at all, so their retirement and Rust port may need no ledger touch — or the absence of a row is itself the thing to record. Rule which.
+*Repair:* restate the engagement. GI-008-script-test-waiver's six are untouched by this session. The live question my finding was pointing at is different and still open: the three post-ratification checkers carry no waiver row at all, so their retirement and Rust port may need no ledger touch — or the absence of a row is itself the thing to record. Rule which.
 
 **2 — I13's fold reintroduces the defect it was fixing (Evidence honesty).**
 Evidence honesty now claims: "Every decision heading now carries its own split mark — choice vs mechanism/efficacy — so no bare `Confident` stands on an untested mechanism (review B-I13)." That is false for two headings. D2 reads `Confident` bare; D10 reads `Confident` bare. Nine of eleven headings did get split marks, which is the substance of the fold, but the blanket sentence overstates the result — which is precisely the blanket-versus-per-decision contradiction I raised.
-*Why blocking:* a record-integrity invariant fails on its own claim, and D2 does carry an efficacy limb worth marking (its GI-005 mechanization depends on an unbuilt validator), as does D10 (its own limb D11 is `Assumed`).
+*Why blocking:* a record-integrity invariant fails on its own claim, and D2 does carry an efficacy limb worth marking (its GI-005-record-layer-integrity mechanization depends on an unbuilt validator), as does D10 (its own limb D11 is `Assumed`).
 *Repair:* split D2's and D10's marks, or scope the sentence to the mechanism decisions and name the two scope-and-envelope rulings as choice-only.
 
 **3 — I7's fold contradicts itself on when the sidecar freezes (D2 versus the build surface).**
@@ -312,7 +312,7 @@ The wave-6 reading is the coherent one: D6 keeps the three Python checkers alive
 
 | finding | fold | verdict |
 |---|---|---|
-| C1 | F9.1 restated (~32 events, 12 blocking); D7 gains dependency-halt hooks; D11 argues GI-019; D7's rationale names the incomplete map as the reason the Q8 ruling was superseded | clean, exceeds the disposition |
+| C1 | F9.1 restated (~32 events, 12 blocking); D7 gains dependency-halt hooks; D11 argues GI-019-kernel-tooling-admission; D7's rationale names the incomplete map as the reason the Q8 ruling was superseded | clean, exceeds the disposition |
 | C2 | halt re-keyed to positive confirmation; policy placeholder, oversized-render stub and hook-disabled cases named; D9 wave 6 deletes shipped snapshots and moves views repo-side; residual named and left `Assumed` | clean |
 | I1 | D1 restructured to in-memory replay, cache on measured need, SQLite deferred with the shelf candidate named; the amendment note states the unpaid-for-machinery problem in its own words | clean |
 | I2 | null road and maintainer-side-only road recorded rejected at the frame, with the governance cost attributed to a `medium` driver | clean, exceeds |
@@ -325,7 +325,7 @@ The wave-6 reading is the coherent one: D6 keeps the three Python checkers alive
 | I11 | `allowed-tools` grant added to D3 and to D6's scaffold criteria; placeholder expansion closed as documented; wave 0 re-scoped | clean |
 | I12 | cache home ruled `${CLAUDE_PLUGIN_DATA}`, never the ephemeral plugin cache | clean |
 | I14 | freeze scoped to schema-content entries; strip files stay live for prose | clean |
-| I15 | GI-005 claim scoped to the schema-rule limb | clean |
+| I15 | GI-005-record-layer-integrity claim scoped to the schema-rule limb | clean |
 | M1 | 599 including `Cargo.toml` — verified at 11 lines, 588 + 11 | clean, arithmetic checks |
 | M2 | tombstones stated as 3 of 6 and named; D8's fidelity fixture agrees | clean |
 | M3 | both figures given with instruments stated | clean |

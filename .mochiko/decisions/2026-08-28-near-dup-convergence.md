@@ -24,8 +24,8 @@ runner), and the noise falsifier's instrument-side standing is re-confirmed at k
 The similar-rule detector (`scripts/find-similar-rules.py`, layer 1 of the similar-items
 grooming system, built 2026-08-28) scanned the six command content schemas at v0.98.0:
 321 rules, 12,203 in-kind pairs scored, 36 clusters — 11 spanning 3+ commands. The
-`command-schema-ontology` D8 bar (itself a narrow supersession of command-content-schema
-D3, `Contested`) licensed extraction to `common.yaml` only for EXACT duplicates across
+`command-schema-ontology` D8-common-extends-adoption bar (itself a narrow supersession of command-content-schema
+D3-no-shared-library, `Contested`) licensed extraction to `common.yaml` only for EXACT duplicates across
 3+ commands. The scan shows most duplication is *near*-identical: same responsibility,
 wording drift confined to phrasing, illustration, or unit nouns — plus one conversion-wave
 inconsistency (`setup.register` unbound while five siblings extend) and one exact triple
@@ -78,7 +78,7 @@ Eight moves: `setup.register` stub joins `common.register` · new blocks
 
 ## Verification protocol
 
-Strips + author≠grader audits per touched pair (GI-004) before the `plugin.json` bump ·
+Strips + author≠grader audits per touched pair (GI-004-primitive-audit-ratchet) before the `plugin.json` bump ·
 `check-command-schema.py --all` + detector + both test matrices green · pre/post plan-only
 grids on implement + setup (ontology-grid post arm reused as pre, per the ontology D7 reuse
 precedent), expectation: no observable change.

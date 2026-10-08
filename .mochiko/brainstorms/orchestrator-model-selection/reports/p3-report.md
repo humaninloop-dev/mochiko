@@ -71,7 +71,7 @@ confirmation.
 Also confirmed directly against the render before writing edit 4, rather than trusted from the
 plan:
 
-- `class-key-session-tier` is still a floor and now reads `orchestrator-model-selection D1/D3`;
+- `class-key-session-tier` is still a floor and now reads "`orchestrator-model-selection D1/D3`";
   the `never tiered down` and `sonnet-worker-rung` needles both survive.
 - `override-is-the-pin` still carries `` `model: haiku` `` and `` `model: sonnet` `` and is still
   a floor — untouched by 0007's reword.

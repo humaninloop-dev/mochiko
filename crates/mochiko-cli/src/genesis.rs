@@ -40,7 +40,7 @@ pub const INTENT: &str =
 /// grammar does not require one; it is here as the provenance of the import itself.
 pub const ANCHOR: &str = "2026-09-03 cli-schema-delivery D2";
 
-/// The maintainer-side provenance sidecar (`command-content-schema` D16). Read, never written.
+/// The maintainer-side provenance sidecar (`command-content-schema` D16-provenance-leaves-schemas). Read, never written.
 pub const SIDECAR: &str = ".mochiko/provenance.yaml";
 
 /// The two discriminators the sidecar has carried across its rename at v0.100.0.

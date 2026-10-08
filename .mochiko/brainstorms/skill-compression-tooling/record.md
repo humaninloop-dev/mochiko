@@ -42,11 +42,11 @@ F8 corrected (R16) — remainder citation-verified by the cold reviewer and hold
   premise false — delivery truncates ~1.8k-char descriptions mid-sentence. Consequence priced:
   Arm A headroom on the pilots is a fraction of a never-stripped skill's; the deliverable's
   durable value is the eval instrument, not the byte harvest (R9).
-- **F2 — the calibration bands were method-superseded.** `validator-scope-and-verbosity` D8 (as
+- **F2 — the calibration bands were method-superseded.** `validator-scope-and-verbosity` D8-prior-doctrine-superseded (as
   amended): `skill-succinctness-strip`'s calibration bands are dead for future passes; what
   survives is **measure-first** and **true-reductions-only**. The governing law became
-  **measure-then-gate** (D1): benchmark first, cost gate second.
-- **F3 — a cut line already exists.** `validator-scope-and-verbosity` D4: keep goal + output
+  **measure-then-gate** (`validator-scope-and-verbosity` D1-measure-then-gate): benchmark first, cost gate second.
+- **F3 — a cut line already exists.** `validator-scope-and-verbosity` D4-guardrails-cut-line: keep goal + output
   contract / non-waivable floor / anti-patterns and rejections / hard reference-data; drop
   procedure / examples / restatement. *("output contract" restored 2026-08-22 — the original
   paraphrase dropped it; caught by the build audit, B1.)* Edge-case playbooks
@@ -58,7 +58,7 @@ F8 corrected (R16) — remainder citation-verified by the cold reviewer and hold
   persona card with planted vagueness; neutral outcome rubric, LLM-as-judge, numeric scores,
   existing checklists demoted to a secondary floor check; decision rule 10% threshold,
   floors absolute, 4 variants × 2 commands × ≥2 replicates = 16+ runs, diagnostic trace-back on
-  loss. D7: cost gate = empirical budgets (winner +25%), char-count pre-assert in the existing
+  loss. `validator-scope-and-verbosity` D7-empirical-budget-gate: cost gate = empirical budgets (winner +25%), char-count pre-assert in the existing
   audit, **chars never `wc -c` bytes**.
 - **F5 — that benchmark's one real run hit noise.** On one of three arms, replicate spread
   (5.6/7.1) exceeded the effect gap (0.8/1.8); the noise guard fired and the verdict had to be
@@ -92,7 +92,7 @@ F8 corrected (R16) — remainder citation-verified by the cold reviewer and hold
   byte-ranked D7 picks are unchanged under chars (reviewer re-measured).
 - **F9 — editing a shipped primitive is a landing, not an edit.** Every removal takes a
   `.mochiko/strips/<primitive>.md` entry (strip or supersession-by-ruling, version-stamped) plus
-  the independent author≠grader audit before the `plugin.json` bump (CLAUDE.md; GI-004, GI-006).
+  the independent author≠grader audit before the `plugin.json` bump (CLAUDE.md; GI-004-primitive-audit-ratchet, GI-006-primitive-edit-traceability).
   Protected content — a record's protected set, a `KEPT:` line, a `DECISIONS.md`-traceable line —
   leaves only as a recorded supersession-by-ruling.
 - **F10 — no repo-level skill directory exists yet.** `.claude/skills/` is absent; `.claude/rules/
@@ -101,14 +101,14 @@ F8 corrected (R16) — remainder citation-verified by the cold reviewer and hold
 
 ## Decisions
 
-- **D1 — New dependent session, not a resume and not a supersession.** `Confident` (user-ruled:
+- **D1-new-dependent-session — New dependent session, not a resume and not a supersession.** `Confident` (user-ruled:
   "yes b, based on what already exists. both have a lot of related context"). This session cites
   `skill-succinctness-strip`, `validator-scope-and-verbosity`, and `primitive-eval-harness` as
   ground facts and decides only what is new: the repo-level compressor skill and the before/after
   judge protocol. The cut line (F3), the surviving accounting rules (F2), and the harness design
   (F6) are inherited, not re-litigated. `primitive-eval-harness` stays open on its own terms.
 
-- **D2 — Two compression arms, staged low-risk to high-risk, against a recorded baseline.**
+- **D2-staged-compression-arms — Two compression arms, staged low-risk to high-risk, against a recorded baseline.**
   `Confident` (user-ruled: "both would be good. less risky is a and more risky b. going a to b,
   running baseline would give a lot of learning"). **Arm A = lossless densification** — headings,
   rules, MUST/SHOULD grading, and example count all preserved; only restatement, hedging,
@@ -123,7 +123,7 @@ F8 corrected (R16) — remainder citation-verified by the cold reviewer and hold
   resolve when noise fired). *(As amended post-review: effect-size re-priced — the pilots are twice-compressed,
   R1; a no-skill control arm joins the design, R3.)*
 
-- **D3 — Substrate is one skill in isolation; command-level runs are out of scope, permanently.**
+- **D3-single-skill-substrate — Substrate is one skill in isolation; command-level runs are out of scope, permanently.**
   `Confident` (user-ruled: "one skill at a time, full command is not i am after and is out of
   scope. For full command, i have dogfood projects that i will use real work experience. I am
   looking to build the lowest level evaluation primitive"). One run = one `claude -p --bare
@@ -132,11 +132,11 @@ F8 corrected (R16) — remainder citation-verified by the cold reviewer and hold
   real dogfood projects and is explicitly NOT an artifact of this session — no staged phase-2
   cluster run. The deliverable is the **lowest-level evaluation primitive**: reusable per-skill,
   not a one-off study of one compression pass. Rationale: F5 (multi-seat stage-runs carry every
-  seat's variance — that is the noise mode that broke the prior benchmark), F6 D1/D5 (the harness
+  seat's variance — that is the noise mode that broke the prior benchmark), F6 `primitive-eval-harness` D1-synthetic-skill-goldens/D5-pilot-skill-target (the harness
   already ruled synthetic per-skill goldens and a single-skill pilot), and the user's standing
   dogfood practice already covering the ecological question.
 
-- **D4 — Instrument: rule-coverage checklist primary, holistic pairwise read secondary.**
+- **D4-rule-coverage-instrument — Instrument: rule-coverage checklist primary, holistic pairwise read secondary.**
   `Confident` (user-ruled "as recommended", after a plain-language restatement). Primary
   measurement: enumerate every behavioral rule the **baseline** skill asserts (each MUST/SHOULD,
   floor, anti-pattern, format obligation); the judge answers one binary per rule against the
@@ -150,21 +150,21 @@ F8 corrected (R16) — remainder citation-verified by the cold reviewer and hold
   the compressor misses rules the compressor never noticed → author≠grader on the inventory
   (a non-author seat builds or reviews the rule list), per the sound-loop floor. Rationale: F5
   (holistic scoring is the instrument that drowned in replicate noise), F4 (variance discipline:
-  binary + quoted evidence, never scores), F6 D2 (judge advisory, never blocking).
+  binary + quoted evidence, never scores), F6 `primitive-eval-harness` D2-deterministic-judge-split (judge advisory, never blocking).
 
-- **D5 — File topology is fenced.** `Confident` (user-ruled "as recommended"). Neither arm may
+- **D5-fenced-file-topology — File topology is fenced.** `Confident` (user-ruled "as recommended"). Neither arm may
   rename files, merge `references/*.md` into `SKILL.md`, split new reference files out, or
   relocate content anywhere (including `templates/`, already banned). Densify or delete in
   place only — relocation disguised as reduction is what true-reductions-only exists to catch.
 
-- **D6 — `description:` frontmatter is out of scope for this primitive.** `Confident`
+- **D6-description-scoped-out — `description:` frontmatter is out of scope for this primitive.** `Confident`
   (user-ruled "as recommended"). It is the trigger surface with a live truncation defect (F1
   C1) and the highest leverage — but the wrong instrument here: a non-firing skill yields a
   null result, not a gradable artifact. It needs a trigger-fire-rate probe, which stays on the
   standing BACKLOG watch (slim-description fire-rate, F7 of `primitive-eval-harness`). This
   session's scope: bodies + references only.
 
-- **D7 — Pilot set: `patterns-entity-modeling` plus the two biggest — `mochiko` (router) and
+- **D7-compression-pilot-set — Pilot set: `patterns-entity-modeling` plus the two biggest — `mochiko` (router) and
   `review-feasibility`.** `Confident` (user-ruled: "as recommended but i want to pick 2 more
   skills. pick by biggest 2"). By SKILL.md body size the biggest two are `mochiko/SKILL.md`
   (39,546 B, the user-invoked router) and `review-feasibility/SKILL.md` (19,746 B + 13,558 B
@@ -177,17 +177,17 @@ F8 corrected (R16) — remainder citation-verified by the cold reviewer and hold
   on request; not chosen because the ruling said files.) *(As amended post-review: mandatory
   pre-arm protected-content reconciliation — both non-router pilots carry `KEPT:` survivor
   rulings, R2; the router rides Arm A only — its body is deliberately unbudgeted because the
-  body IS the router index, R11; AR-D3's seeded-defect method named as the follow-on instrument
+  body IS the router index, R11; `adversarial-review-generality` D3-seeded-defect-benchmark's seeded-defect method named as the follow-on instrument
   for the review-skill pilot, R13.)*
 
-- **D8 — Execution details.** `Confident` (user-ruled "confirmed" on the block). **Goldens:**
-  3 per pilot skill (harness D5's 3–5 band), authored by a non-compressor seat — the same
+- **D8-compression-execution-details — Execution details.** `Confident` (user-ruled "confirmed" on the block). **Goldens:**
+  3 per pilot skill (`primitive-eval-harness` D5-pilot-skill-target's 3–5 band), authored by a non-compressor seat — the same
   author≠grader logic as the rule inventory. **Replicates:** 3 arms (baseline / A / B) × 3
   replicates = 27 runs per skill (~$15–27 Sonnet; ×3 pilots ≈ $45–80 + judging). **Gate rule:
   pass^k** — a rule counts as held only if it holds across all replicates; pass@k flatters
   flaky artifacts (F4 variance discipline). **Judge models:** Haiku for the checklist binaries
   (~$0.035/transcript), Sonnet for the secondary pairwise read; both advisory, never blocking
-  (F6 D2, inherited). **Compressor home:** `.claude/skills/compressing-skills/SKILL.md` —
+  (F6 `primitive-eval-harness` D2-deterministic-judge-split, inherited). **Compressor home:** `.claude/skills/compressing-skills/SKILL.md` —
   repo-level, never shipped, library naming convention (gerund + object); owns the
   rule-inventory procedure, the Arm A/B passes, eval dispatch, and the report format; delegates
   the cut line (F3, ruled) and the landing ritual (F9, inherited). **Landing:** a ratified
@@ -208,20 +208,20 @@ delivered-chars arithmetic before the grid is authorized R9 · Arm A runs once p
 landing, re-add path = strips README re-add entry type R16 · compressor description kept
 minimal and the repo-level skill voluntarily takes the author≠grader audit R16)*
 
-1. **`.claude/skills/compressing-skills/SKILL.md`** — the repo-level compressor skill (D8):
+1. **`.claude/skills/compressing-skills/SKILL.md`** — the repo-level compressor skill (D8-compression-execution-details):
    procedure = rule inventory (non-author-reviewed) → Arm A pass → Arm B pass → eval dispatch →
-   report → user ratification gate → landing ritual hand-off. Fenced per D5; scope per D6.
-2. **`evals/` top-level dir** (never shipped; home ruled by `primitive-eval-harness` D4):
+   report → user ratification gate → landing ritual hand-off. Fenced per D5-fenced-file-topology; scope per D6-description-scoped-out.
+2. **`evals/` top-level dir** (never shipped; home ruled by `primitive-eval-harness` D4-thin-eval-scripts):
    ~200-line thin runner driving `claude -p --bare --plugin-dir plugins/mochiko --output-format
    json --permission-mode dontAsk --max-turns N`; `plugin_errors` smoke; per-skill
    `evals/<skill>/evals.json` goldens (skill-creator format); checklist judge (Haiku, binary +
    quoted evidence, `{text, passed, evidence}`); pairwise judge (Sonnet, position swap);
    committed baseline results file regenerated only as a deliberate landing act.
-3. **Pilot execution** (D7 order): `patterns-entity-modeling` end-to-end first — proves the
-   loop and fills `primitive-eval-harness` D5's deferred pilot slot — then `mochiko` (router;
+3. **Pilot execution** (D7-compression-pilot-set order): `patterns-entity-modeling` end-to-end first — proves the
+   loop and fills `primitive-eval-harness` D5-pilot-skill-target's deferred pilot slot — then `mochiko` (router;
    routing-accuracy golden shape) and `review-feasibility` (verdict-artifact golden shape).
 4. **Cross-session fold:** on acceptance, annotate `primitive-eval-harness` record (open) that
-   its D5 pilot slot is being filled by this session's build; that session still closes on its
+   its `primitive-eval-harness` D5-pilot-skill-target pilot slot is being filled by this session's build; that session still closes on its
    own terms.
 
 ## Cold review, dispositions, and folds (2026-08-22)
@@ -250,23 +250,23 @@ rules — both settled empirically before any priced run · **R6**(I3) pre-regis
 recorded before any run: floor rules absolute, rules-lost bound fixed at pre-registration ·
 **R7**(I4) session model = Sonnet (conservative: a smaller model following the compressed skill
 implies larger ones will) · **R8**(I5) unaccepted-upstream risk named, in Open questions ·
-**R9**(I7) delivered-chars arithmetic per pilot per arm before the grid is authorized; D6 stands
+**R9**(I7) delivered-chars arithmetic per pilot per arm before the grid is authorized; D6-description-scoped-out stands
 with the honest note that descriptions are the always-loaded surface and bodies load only on
 invoke — the primitive's durable value is the instrument · **R10**(I8) consumer-side check joins
 the rule inventory (strips' `Consumers assessed` obligation); paraphrase breaking a consumer is
 a failed rule · **R11**(I9) a ratified compression re-seeds the body budget downward at landing;
-router rides Arm A only · **R12**(I10) GI-019 trace below · **R13**(I11) AR-D3 named as the
+router rides Arm A only · **R12**(I10) GI-019-kernel-tooling-admission trace below · **R13**(I11) `adversarial-review-generality` D3-seeded-defect-benchmark named as the
 follow-on instrument if the review-skill pilot's checklist proves insensitive · **R14**(I12)
 streak re-affirmation recorded above; Open questions restored to honesty · **R15**(I6) Rejected
-roads below · **R16**(M1–M8) F8 82-files fix · char measures added, picks unchanged · D8
+roads below · **R16**(M1–M8) F8 82-files fix · char measures added, picks unchanged · D8-compression-execution-details
 arithmetic fixed (36 runs/skill; anchors are harness F17) · F7 disclosure + billing note ·
 Arm A stopping rule + strips re-add path · compressor description minimal + voluntary
-author≠grader audit (GI-004 scopes `plugins/mochiko/**`; extended by choice) · stale index
+author≠grader audit (GI-004-primitive-audit-ratchet scopes `plugins/mochiko/**`; extended by choice) · stale index
 entry fixed on sight (M8).
 
 ## Rejected roads (recorded post-review, R15)
 
-- **Do nothing** — the D7 char-budget gate already catches growth. Rejected: it prices drift,
+- **Do nothing** — the `validator-scope-and-verbosity` D7-empirical-budget-gate char-budget gate already catches growth. Rejected: it prices drift,
   not degradation; degradation is the unanswered question.
 - **Hand editorial cut via the proven wave path** — rejected as the sole road: it is exactly
   what ran at v0.24.0–v0.28.0 and left the degradation question unmeasured; this session builds
@@ -277,11 +277,11 @@ entry fixed on sight (M8).
   but NOT foreclosed generally: a future relocation pass is a legitimate separate lever needing
   its own accounting ruling against true-reductions-only.
 - **Schema-CLI carries the detail** (v0.76.0 precedent) — out of scope: template guidance, not
-  skill prose; would need its own GI-019 case.
-- **Progressive disclosure / skill splitting** — topology change; banned by D5's fence for the
+  skill prose; would need its own GI-019-kernel-tooling-admission case.
+- **Progressive disclosure / skill splitting** — topology change; banned by D5-fenced-file-topology's fence for the
   arms, unexamined beyond them.
 
-## GI-019 admissibility trace (R12)
+## GI-019-kernel-tooling-admission admissibility trace (R12)
 
 The `evals/` runner and both judges are maintainer-side advisory tooling, not kernel-class: no
 primitive depends on them for delivery or composition (skills ship and function with the harness
@@ -289,8 +289,8 @@ absent); they never gate pipeline progress (the ship decision is the user's rati
 author≠grader audit unchanged — the eval report rides it as evidence only); they never dispatch
 or sequence pipeline agents (the runner spawns isolated throwaway eval sessions, not workflow
 seats); the judges hold no judgment skills own (they grade eval outputs, advisory-never-blocking,
-harness D2). Same class as the GI-008 advisory scripts and the qa-gap-finding D10 mutation-tool
-precedent. GI-020 untouched: nothing ships under `plugins/`.
+`primitive-eval-harness` D2-deterministic-judge-split). Same class as the GI-008-script-test-waiver advisory scripts and the `qa-gap-finding-verification` D10-mutation-not-kernel mutation-tool
+precedent. GI-020-plugin-install-model untouched: nothing ships under `plugins/`.
 
 ## Open questions
 
@@ -298,12 +298,12 @@ precedent. GI-020 untouched: nothing ships under `plugins/`.
 
 - **R8 risk:** this record inherits harness D1/D2/D4/D5 from the `primitive-eval-harness`
   record, which is paused, not cold-reviewed, not accepted. Trigger: if its eventual review
-  overturns its D4 (thin scripts under `evals/`), build-surface item 2 re-opens here.
+  overturns its `primitive-eval-harness` D4-thin-eval-scripts (thin scripts under `evals/`), build-surface item 2 re-opens here.
 - **Pre-registration values** — the rules-lost bound (R6) and the representative invoke for the
   R9 arithmetic are set at build time, before any run, and recorded then.
-- Session trail: Q1 placement (D1) · Q2 arms (D2) · Q3 substrate (D3) · Q4 instrument (D4,
+- Session trail: Q1 placement (D1-new-dependent-session) · Q2 arms (D2-staged-compression-arms) · Q3 substrate (D3-single-skill-substrate) · Q4 instrument (D4-rule-coverage-instrument,
   restated plainly on request) · Q5a–c fence/descriptions/pilots (D5–D7) · Q6a–d execution
-  (D8) · review sizing (solo, user-ruled) · disposition batch (2026-08-22, all folded,
+  (D8-compression-execution-details) · review sizing (solo, user-ruled) · disposition batch (2026-08-22, all folded,
   D4–D8 re-affirmed).
 - Accepted + landed 2026-08-22. Build execution is the open work — BACKLOG
   "Skill-compression eval-primitive build".

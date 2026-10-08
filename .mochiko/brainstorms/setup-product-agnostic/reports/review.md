@@ -16,19 +16,19 @@ fact_verification:
   F2: verified (setup section counts 7/7/13/6/7/6 against mochiko-cli rules setup, plugin 0.114.0)
   F3: >-
     Verified. The rules files total 476 lines and engine-port.md has 154. The spine rows cite
-    governance as follows: SPN-015 cites "GI-004 boundary 1", SPN-016 cites GI-008, SPN-017
+    governance as follows: SPN-015 cites "GI-004 boundary 1", SPN-016 cites "GI-008", SPN-017
     cites "GI-036 prose.md" and SPN-019 cites GI-032.
   F4: >-
     Quotes verified at kinako DECISIONS.md lines 77 and 80. Two defects: the amend history
     omits v1.1.0 (2026-08-16), and the spine.md:207 pointer is historical, since the text now
     sits at spine.md:173 and :233. See S16.
   F5: >-
-    Partly verified. GI-001 rests on the vision record's D12, and the cold review's C1 found
+    Partly verified. "GI-001" rests on the vision record's D12, and the cold review's C1 found
     dimensions 1 and 4 skipped. The count of "37" was not reproduced: a phrase count gives 39.
     See S16.
   F6: verified (COMPLIANCE-MODULES.md)
   F7: verified (mochiko-cli template design-baseline)
-  F8: verified (mochiko governance-intent GI-001 and GI-017)
+  F8: verified (mochiko governance-intent GI-001-project-fact-profile and GI-017-pointer-only-region)
   F9: verified (setup.md Adaptive Goal Protocol step 2)
   D5_counts: >-
     Broken. Twelve ids leave, not thirteen. Three floors leave, not two, because
@@ -59,7 +59,7 @@ survivors:
       First, a greenfield project runs /mochiko:specify after the cut. The rule
       spec.missing-map-surfaced routes it to "/mochiko:setup, whose brownfield analysis
       reconstructs it", which D5 removes. The floor spec.fail.map-unread fails the run, so the
-      pipeline dead-ends. Second, the legal-mandate stratum, unwaivable under PO-D4.2, is held
+      pipeline dead-ends. Second, the legal-mandate stratum, unwaivable under `production-only-focus` D4.2-legal-mandate-exception, is held
       nowhere. patterns-vertical-tdd TEST-GRAMMAR's accessibility assert then silently falls
       back to the floor line for a product under ADA or EAA.
     resolution: >-
@@ -92,20 +92,20 @@ survivors:
     decisions: [D2]
     kind: inconsistency, unchallenged assumption
     finding: >-
-      The confirmed sort keeps GI-008, "the Claude engine MUST be reached only through a port",
+      The confirmed sort keeps "GI-008", "the Claude engine MUST be reached only through a port",
       as a hexagonal rule. F3 shows that store row SPN-016 is the same boundary and cites
-      GI-008, which is the two-homes pattern D2 exists to end. It also fails D2's own axis,
+      "GI-008", which is the two-homes pattern D2 exists to end. It also fails D2's own axis,
       "whether the principle changes when the product changes": the engine choice was itself a
       product ruling (B20). The claim that the region "sorted cleanly" covers 7 of about 17
-      rows. GI-030 (UI never touches corpus or engine), GI-031 (corpus backup), GI-005
-      ("critical path") and GI-007 ("transcript content" in logs) were never put. "Mechanical
+      rows. GI-030 (UI never touches corpus or engine), GI-031 (corpus backup), "GI-005"
+      ("critical path") and "GI-007" ("transcript content" in logs) were never put. "Mechanical
       enough for the validate seat" is untested.
     failure_scenario: >-
-      The validate seat applies the new no-product-instance check. It either strikes GI-008,
+      The validate seat applies the new no-product-instance check. It either strikes "GI-008",
       contradicting the user-confirmed sort, or keeps it and GI-030 alike, so product
       architecture stays in governance.
     resolution: >-
-      Re-run the sort over every region row and put GI-008 and GI-030 to the user against the
+      Re-run the sort over every region row and put "GI-008" and GI-030 to the user against the
       stated axis. Reword the test so the grader has worked cases, or mark D2's mechanical
       claim Assumed.
   - id: S4
@@ -116,9 +116,9 @@ survivors:
       D3 names the depth recommendation as dimension 4's only lost consumer. The agenda also
       feeds dimension 4 into the floor's expression ("honest context") and into step 2's deck
       presets ("presets tuned by risk/values (dimensions 4, 9)"). Mochiko's own synthesis shows
-      the risk surface is not always product-shaped. Its AM-1 to AM-3 risk entries, covering the
+      the risk surface is not always product-shaped. Its AM-1-kernel-ban-softened to AM-3-conformance-gate-admission risk entries, covering the
       shipped-executable vector and the hook vector, produced the four named supply-chain
-      controls that gate the hook ship (GI-012). That is a distribution and trust fact that D3's
+      controls that gate the hook ship (GI-012-release-gates-module). That is a distribution and trust fact that D3's
       rationale, "what its failure costs", does not cover.
     failure_scenario: >-
       A project that starts shipping a binary or hooks has no dimension that surfaces the new
@@ -133,7 +133,7 @@ survivors:
     finding: >-
       D4 says "a product change is never a governance event … none leaves governance stale".
       Its own event (3) fires on "a surface type is added". Adding a mobile or web surface to
-      the product is a product change. OQ3 concedes that the GI-002 type line goes stale when
+      the product is a product change. OQ3 concedes that the "GI-002" type line goes stale when
       Scope moves at the desk. The goal line's last limb holds only by definition.
     failure_scenario: >-
       A desk visit adds frontend-web to Scope. Nothing fires an amend and no frontend shelf is
@@ -142,7 +142,7 @@ survivors:
     resolution: >-
       Reword D4 honestly: product changes open no amend except a surface-type change, which is
       event (3). Name the detector, for example an implement-entry comparison of Scope against
-      GI-002, or rule that no detector is wanted.
+      "GI-002", or rule that no detector is wanted.
   - id: S6
     severity: Important
     decisions: [D5, "Build surface step 1"]
@@ -183,18 +183,18 @@ survivors:
     decisions: ["Build surface step 5"]
     kind: record-integrity (the supersession chain is incomplete)
     finding: >-
-      Step 5 misses rulings the cut supersedes. PO-D3 ("setup elicits facts; safety floor +
-      modules asserted") is listed under the prior-session relations but not superseded. PO-D4's
+      Step 5 misses rulings the cut supersedes. `production-only-focus` D3-library-owned-standard ("setup elicits facts; safety floor +
+      modules asserted") is listed under the prior-session relations but not superseded. `production-only-focus` D4-waivers-reach-everything's
       D4.2 legal-mandate unwaivable stratum is ruled Contested and made moot by D1. The PO
       record's S4 fact-validation fail-safe fold is struck by D1. impeccable-design-integration
-      D11 routes the accessibility standard of record to the a11y module. Protected content
+      D11-accessibility-record-standard routes the accessibility standard of record to the a11y module. Protected content
       leaves only by recorded ruling.
     failure_scenario: >-
       The landing strips content traceable to these rows with no supersession row. The
       primitive-edit audit's preserved-responsibilities check reads that as silent deletion.
     resolution: >-
-      Add supersession-in-part rows for PO-D3, PO-D4 (D4.2), the PO record's S4 fold and
-      impeccable D11.
+      Add supersession-in-part rows for `production-only-focus` D3-library-owned-standard, `production-only-focus` D4-waivers-reach-everything (D4.2), the PO record's S4 fold and
+      `impeccable-design-integration` D11-accessibility-record-standard.
   - id: S9
     severity: Important
     decisions: ["Build surface steps 2 and 4", OQ1]
@@ -207,7 +207,7 @@ survivors:
       migration 0011's no-accessibility-content rule route to the a11y module. The
       release-gates.md validator fragment has "Gates consistent with the attached compliance
       modules". evals/plan/setup/observable.yaml lists 9 of the struck ids, and
-      evals/contract/run.py is named only generically. Dead pointers are defects under GI-005.
+      evals/contract/run.py is named only generically. Dead pointers are defects under GI-005-record-layer-integrity.
     failure_scenario: >-
       The build lands, and the contract suite, the plan-eval rubric and live runs hit rules
       that cite removed setup behavior.
@@ -220,8 +220,8 @@ survivors:
     kind: coverage (blind-map angle A5)
     finding: >-
       The record never reconciles with the ruled but queued ops-observability-hardening build.
-      OO-D3 elicits app-level SLO numbers at dimension 8, which are user-owned and product-shaped
-      values. OO-D4 makes RUNBOOK asserted with a setup writer moment. OO-D5 adds a fifth floor
+      `ops-observability-hardening` D3-app-level-slos elicits app-level SLO numbers at dimension 8, which are user-owned and product-shaped
+      values. `ops-observability-hardening` D4-runbook-floor-promotion makes RUNBOOK asserted with a setup writer moment. `ops-observability-hardening` D5-operations-floor-category adds a fifth floor
       category, Operations. D3 keeps dimension 8 unexamined, and D4's closed six has no event
       for an SLO change. Kinako's release gate already names distribution detail: the tap
       formula and the plugin tag channel.
@@ -297,7 +297,7 @@ dropped:
   - D2 enforceability (a pointer to the store keeps the input-validation rule testable; the record covers it via "points at its home")
   - re-entry through arbitrated cards and the domain registry (the registry names stack crates, which pass D2)
   - product-shaped waivers such as kinako GI-031 (they leave with their principles under the D4 legacy clause)
-  - mochiko's own GI-019 and GI-020 against D2 (build step 6 defers them to the next amend, which is a ruling)
+  - mochiko's own GI-019-kernel-tooling-admission and GI-020-plugin-install-model against D2 (build step 6 defers them to the next amend, which is a ruling)
   - all-Confident marks (every decision rests on an explicit user ruling, with its caveats folded into S3 and S6)
 verify_round_1:
   pass: verify (solo, over the record re-frozen 2026-09-24 with 16 of 16 survivors dispositioned)
@@ -318,7 +318,7 @@ verify_round_1:
       legacy clause (V3).
     S2: CLEAN. The false sentence is replaced (record lines 127-133), and the declared-module road is recorded as rejected with a reason (141-145).
     S3: >-
-      CLEAN. GI-008 and GI-030 are re-sorted (173-178), the sort is declared illustrative, the
+      CLEAN. "GI-008" and GI-030 are re-sorted (173-178), the sort is declared illustrative, the
       mechanical claim is marked Assumed (168), worked cases are owed in build step 4, and the
       rejected road is added (186-188). One minor side-effect is recorded as V9.
     S4: >-
@@ -335,7 +335,7 @@ verify_round_1:
       list stale (V1). The lead now writes the design headings, which contradicts the design
       baseline template's "one writer, product-designer", and the template is not in the build
       surface (V5).
-    S8: CLEAN. Build step 5 gains rows for PO-D3, PO-D4's D4.2, the S4 fail-safe and impeccable D11, and product-architecture-schema is marked as standing.
+    S8: CLEAN. Build step 5 gains rows for `production-only-focus` D3-library-owned-standard, `production-only-focus` D4-waivers-reach-everything's D4.2, the S4 fail-safe and `impeccable-design-integration` D11-accessibility-record-standard, and product-architecture-schema is marked as standing.
     S9: CLEAN. Every consumer the cold review named is in build step 4, and observable.yaml has its own step 6.
     S10: >-
       NOT CLEAN. The ops-observability relations are added and dimension 8 gets its D2 clause.
@@ -388,7 +388,7 @@ verify_round_1:
         D6's rationale says "the window touches no live consumer" because existing consumers
         keep their modules "until their next amend under D4's legacy clause". That clause strips
         modules and product-instance principles at that amend. Kinako owes an amend now (F4), so
-        its gdpr module and GI-011, GI-012 and GI-013 would leave governance before any rehome
+        its gdpr module and "GI-011", "GI-012" and "GI-013" would leave governance before any rehome
         exists.
       scenario: >-
         Kinako runs its owed boundary amend next week. The legacy clause strips erasure, export
@@ -433,14 +433,14 @@ verify_round_1:
       touches: [D3, "Build surface step 3"]
       finding: >-
         The governance-intent template's Risk surface line is struck. The trust-vector answers
-        that dimension 8 now elicits then have no synthesis slot. Mochiko's own AM-1 to AM-3
+        that dimension 8 now elicits then have no synthesis slot. Mochiko's own AM-1-kernel-ban-softened to AM-3-conformance-gate-admission
         entries live on that line today.
       resolution: Name the slot for dimension 8's trust-vector answers in build step 3.
     - id: V9
       severity: Minor
       touches: [D2, "Build surface step 4"]
       finding: >-
-        The GI-008 re-sort keeps "every external system through a port, BE-HEX's port
+        The "GI-008" re-sort keeps "every external system through a port, BE-HEX's port
         requirement". Kinako narrowed that scheme out during arbitration: engine-port.md is
         "scoped to the one obligation this project ruled — the engine seam". The sort seeds the
         validator's worked cases, so this example widens a ratified scope.
@@ -524,7 +524,7 @@ further review pass. The record's decisions stand.
 | V6 | CLEAN | D4 is retitled "opens no amend except through event (3)". |
 | V7 | CLEAN | D6's alternatives record the distinction: the SLO set supersedes an existing governance home, while module content has none. |
 | V8 | CLEAN | Build step 3 gives the template a Trust vectors line in dimension 8's slot. |
-| V9 | CLEAN | D2's GI-008 row now reads "at whatever scope the project ratified — kinako ratified the engine seam only". |
+| V9 | CLEAN | D2's "GI-008" row now reads "at whatever scope the project ratified — kinako ratified the engine seam only". |
 
 Findings introduced by the folds:
 

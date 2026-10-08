@@ -6,8 +6,8 @@
 
 Provenance: .mochiko/brainstorms/command-plan-only-eval/record.md (D1-D11, accepted
 2026-08-27) with the brainstorm-probe amendments (evals/plan/brainstorm-probe/).
-Maintainer-side advisory tooling (GI-019 trace via the harness session); never shipped
-(GI-020). Sibling of the skill runner evals/run.py; judge patterns adapted from it.
+Maintainer-side advisory tooling (GI-019-kernel-tooling-admission trace via the harness session); never shipped
+(GI-020-plugin-install-model). Sibling of the skill runner evals/run.py; judge patterns adapted from it.
 
 One run = one headless `claude -p` session in an ephemeral workdir (fixture files +
 a provisioned plugins/mochiko tree), invoking the command as the prompt under a pinned
@@ -32,7 +32,7 @@ permission fence (roster stays visible, calls are denied); max-turns 40 with cap
 warning.
 
 Vocabulary shared across the eval targets (skills · commands · agents): evals/README.md
-(primitive-eval-harness-v2 D1/D10). The persona target lives in agents.py beside this file
+(primitive-eval-harness-v2 D1-eval-layer-targets/D10-persona-runner-layout). The persona target lives in agents.py beside this file
 and is reached through `evals/run.py agent ...`. Shared mechanics (session ·
 provisioning · judge calls · grid math) come from evals/lib/ (D10, second landing act); this
 file keeps the command target's rubric, load gate, prompts, and report.
@@ -584,7 +584,7 @@ def cmd_report(cmd: str, name: str) -> None:
         if nres:
             lines.append(f"- **unresolvable names in plans:** {nres}")
         lines.append("")
-    # Noise band (primitive-eval-harness-v2 D11: measured band + stopping rule, applied to
+    # Noise band (primitive-eval-harness-v2 D11-preregistration-noise-guard: measured band + stopping rule, applied to
     # the command target at its next grid). Commands' goldens declare no tempts, so the
     # band is the all-pairs replicate-disagreement share per arm over the observable rules,
     # plus five points, capped at 20 %; fewer than eight pairs = UNDER-SAMPLED (band = cap).

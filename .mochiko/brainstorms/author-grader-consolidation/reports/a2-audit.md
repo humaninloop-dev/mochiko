@@ -6,7 +6,7 @@ round: 1
 ## Failure narrative
 
 Unit 1 (schema content) is FAIL on three blocking findings. The migration is grammar-clean and
-the AM-2 five hold, but three obligations of the ruling it executes are not delivered as the
+the AM-2-required-cli-dependency five hold, but three obligations of the ruling it executes are not delivered as the
 record phrases them. First, D4 and build-surface item 1 put the loop bound's number in one place;
 `validation-primitive-edit.gate-loop-bound` restates it while asserting its number lives
 elsewhere. Second, D3's mechanical split is a build-time inventory of what `migrate validate`
@@ -21,13 +21,13 @@ and none touches an id. Unit 2 is PASS with no blocking findings.
 VALIDATE: schema content — `plugins/mochiko/migrations/0008-gate-form.yaml` together with its
 regenerated view diff.
 
-Checklist run: the AM-2 five from governance ledger GI-004 as re-expressed at v3.0.0, then
+Checklist run: the AM-2-required-cli-dependency five from governance ledger GI-004-primitive-audit-ratchet as re-expressed at v3.0.0, then
 fidelity to record decisions D2, D3, D4, D5, D6, D7, D9, D11 and build-surface item 1.
 
 Evidence read: the migration file in full; the three changed view diffs
 (`common/common.yaml`, `commands/setup.yaml`, `skills/patterns-model-tiering.yaml`); the new
 `.mochiko/schema-views/skills/validation-primitive-edit.yaml` in full; the record's Decisions and
-Build-surface sections; `plugins/mochiko/migrations/README.md`; the GI-004 ledger block;
+Build-surface sections; `plugins/mochiko/migrations/README.md`; the GI-004-primitive-audit-ratchet ledger block;
 `crates/mochiko-cli/src/validate.rs` for the check set; the corpus views for collision hunting.
 
 ## Unit 1 — pre-pass, run first-hand
@@ -57,19 +57,19 @@ eleven ids. The six sections render as `independence` · `scope` · `inputs` · 
 · `reserved`, which is `validation-constitution`'s set exactly, with no empty section needing an
 explicit marker.
 
-## Unit 1 — the AM-2 five
+## Unit 1 — the AM-2-required-cli-dependency five
 
 1. Intent stated — PASS. The header `intent:` names all four changes (the common-block bound,
    setup's bound and validate-seat rule, the tiering pin, the new skill), and every one of the
    six sections carries its own `intent:`.
-2. Anchor present where required — PASS. Header anchor `2026-09-19 author-grader-consolidation
-   D7` is well-formed; thirteen rule-level anchors are present and each names the decision its
+2. Anchor present where required — PASS. Header anchor "`2026-09-19 author-grader-consolidation
+   D7`" is well-formed; thirteen rule-level anchors are present and each names the decision its
    rule executes. No `supersede-rule` or `tombstone-rule` op appears, so no protected exit owes
    one. `common.gate-loop-bound` is the corpus's first anchored common-block rule — no anchor
    exists anywhere under `.mochiko/schema-views/common/` at HEAD — and the binary accepted it
    (`anchor-format` is a rejecting code; validate reports 0 rejecting).
 
-## Unit 1 — the AM-2 five, continued
+## Unit 1 — the AM-2-required-cli-dependency five, continued
 
 3. ID lifecycle right — PASS. `mint-once`, `id-duplicate` and `id-prefix` are rejecting codes and
    validate reports none. No tombstone or supersession was owed: no loop-bound rule existed
@@ -212,8 +212,8 @@ Issues requiring fix: none.
 
 Two non-blocking observations, neither changing a verdict.
 
-The migration writes the second AM-2 criterion as "anchor present where the exit requires one"
-where the record and GI-004 write "anchor present where required". The substitution sharpens
+The migration writes the second AM-2-required-cli-dependency criterion as "anchor present where the exit requires one"
+where the record and GI-004-primitive-audit-ratchet write "anchor present where required". The substitution sharpens
 rather than narrows, since the log's anchor rule is defined on protected exits, but it is a
 deviation from the record's wording.
 

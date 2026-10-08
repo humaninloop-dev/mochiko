@@ -2,7 +2,7 @@
 
 **Status:** accepted (user, 2026-07-30 — "accept") · review complete: pair, lens-split; verify
 CLEAN at round 3; clearing verdict ready · opened 2026-07-30, wrapped 2026-07-30.
-**Topic as ruled:** PO-D5 Tier I item 1 (record `.mochiko/brainstorms/production-only-focus/record.md`):
+**Topic as ruled:** `production-only-focus` D5-production-depth-agenda Tier I item 1 (record `.mochiko/brainstorms/production-only-focus/record.md`):
 "Security depth — threat modeling at plan time, security requirements with teeth, blocking SAST +
 dependency-vuln gates, a security lens in the validator set; first-in-line, scoped in its own
 follow-on session, not built here."
@@ -12,7 +12,7 @@ review sizing offered at convergence.
 
 ## Baseline shift since the ruling (re-grounded 2026-07-30)
 
-Two waves landed between PO-D5's ruling and this session, both material to its scope:
+Two waves landed between `production-only-focus` D5-production-depth-agenda's ruling and this session, both material to its scope:
 
 1. **The architecture primitive (v0.32.0):** `/mochiko:plan` now carries a design-time
    architecture stage — `architecture.md` with a C4-container delta diagram, sequence diagrams
@@ -24,15 +24,15 @@ Two waves landed between PO-D5's ruling and this session, both material to its s
    (secrets out of repo · CI secret scanning · input validation at boundaries · auth at all
    boundaries · blocking dependency-vuln scanning); the compliance-module registry
    (`COMPLIANCE-MODULES.md`) exists with legal-mandate strata and the audit-evidence seed pool;
-   waivers follow D4. The map F21 diagnosis ("one floor card + DS-XXX annotations, no depth
+   waivers follow `production-only-focus` D4-waivers-reach-everything. The map F21 diagnosis ("one floor card + DS-XXX annotations, no depth
    layer") predates both.
 
 ## Problem statement (evolving)
 
-*(seeded from PO-D5; sharpens through questioning)*
+*(seeded from `production-only-focus` D5-production-depth-agenda; sharpens through questioning)*
 
 The narrowing's rationale was "the narrowing funds the deepening" — security was the first-named
-gap ("which we haven't gone deep into"). This session turns PO-D5's four components into a
+gap ("which we haven't gone deep into"). This session turns `production-only-focus` D5-production-depth-agenda's four components into a
 buildable scope: what each component IS, where it lives (which artifacts, seats, skills, gates),
 what is asserted vs arbitrated, and what sequence lands it.
 
@@ -59,7 +59,7 @@ All paths relative to `plugins/mochiko/`. Verified against working tree at 2026-
 
 ### The asserted floor
 
-**F1.** `FLOOR-SEC — Security by Default` (`skills/authoring-constitution/references/catalog/universal-floor.md:23-32`). Type tags: **all**. Layer: **floor-asserted**. Asserted level names five controls: secrets out of the repo (env vars + `.gitignore`) · secret scanning in CI · input validation at boundaries · auth enforced at all boundaries · dependency vulnerability scanning blocking merge. Waiver posture D4, with a stated preference: "prefer narrowing over waiving (e.g. 'no auth — single-user local companion' as a *tightened scope*, not a dropped category)."
+**F1.** `FLOOR-SEC — Security by Default` (`skills/authoring-constitution/references/catalog/universal-floor.md:23-32`). Type tags: **all**. Layer: **floor-asserted**. Asserted level names five controls: secrets out of the repo (env vars + `.gitignore`) · secret scanning in CI · input validation at boundaries · auth enforced at all boundaries · dependency vulnerability scanning blocking merge. Waiver posture `production-only-focus` D4-waivers-reach-everything, with a stated preference: "prefer narrowing over waiving (e.g. 'no auth — single-user local companion' as a *tightened scope*, not a dropped category)."
 
 **F2.** The floor's level is single and asserted; nothing can lower it; deviation is only ever a recorded waiver, never a loosened card (`universal-floor.md:3-10`, `ESSENTIAL-FLOOR.md:5-11`). Absence is "always deliberate and auditable, never silent."
 
@@ -77,7 +77,7 @@ All paths relative to `plugins/mochiko/`. Verified against working tree at 2026-
 
 **F8.** `skills/authoring-constitution/references/COMPLIANCE-MODULES.md` trigger table (`:14-20`) seeds five modules: `hipaa`, `pci-dss`, `gdpr`, `a11y` (WCAG) — all **legal-mandate** — and `attestation` (SOC 2 / ISO 27001 / customer security addenda) — **contractual**. Attachment is "mechanical from the fact profile" (interrogation dimension 2); "No rigor negotiation occurs at attachment — the user rules the *facts*."
 
-**F9.** Strata / waiver posture (`:22-29`): legal-mandate obligations are **unwaivable** (PO-D4.2 — "a recorded permanent waiver of a legal control is documented evidence of a knowing violation"); contractual/non-legal are waivable under D4. Both strata are additive-only over the floor.
+**F9.** Strata / waiver posture (`:22-29`): legal-mandate obligations are **unwaivable** (`production-only-focus` D4.2-legal-mandate-exception — "a recorded permanent waiver of a legal control is documented evidence of a knowing violation"); contractual/non-legal are waivable under `production-only-focus` D4-waivers-reach-everything. Both strata are additive-only over the floor.
 
 **F10.** Seed obligations relocated from the retired `regulated` tier (`:31-48`) — **Security**: audit logging of auth events · documented key-rotation policy · compliance-mapped controls. **Dependencies**: license compliance · documented supply-chain review · vulnerability-blocking severity tightened (high/critical → medium+). **Observability**: log retention policy · access-controlled log storage · audit-grade traceability. **Testing**: coverage ≥90/≥80 + evidence retained for audit. **Error handling**: error-event retention and traceability.
 
@@ -295,7 +295,7 @@ All paths relative to `plugins/mochiko/`. Verified against working tree at 2026-
 
 ## Decisions
 
-### D1 — Structural form: woven into existing seats; the craft lands in new model-invoked skills — `Confident`
+### D1-security-woven-seats — Structural form: woven into existing seats; the craft lands in new model-invoked skills — `Confident`
 **Statement:** No security-engineer agent. Threat modeling rides `system-architect` × a new
 model-invoked skill on the architecture stage; verification wiring rides existing machinery (the
 gate-list producer fix F94, the exit-code runner F91); review pressure enters via lens briefs and
@@ -311,18 +311,18 @@ a producer artifact (`architecture.md`); a security seat would be a pure reviewe
 lens briefs exist for. **Hybrid revisit stands:** if dogfoods surface a genuine dedicated
 security artifact, the seat question reopens.
 **Provenance note:** lead-recommended, user-adopted without elaboration ("go with your
-recommendations") — streak watch opened. **S16 fold (review, user-ruled):** D1 explicitly
+recommendations") — streak watch opened. **S16 fold (review, user-ruled):** D1-security-woven-seats explicitly
 confirmed at disposition — the user answered a plain-terms U5 restatement of both structural
 calls with "confirmed"; mark retained `Confident` citing that direct affirmation. The streak
-closed at D3's reversal (engagement evidenced by a user ruling against recommendation).
-**S10 fold (review):** D1's "lens briefs" language corrected — F74 puts no lens slot at the
-in-loop sites where all three D6 sites land; the available mechanisms are **checklist
+closed at D3-security-requirement-class's reversal (engagement evidenced by a user ruling against recommendation).
+**S10 fold (review):** D1-security-woven-seats's "lens briefs" language corrected — F74 puts no lens slot at the
+in-loop sites where all three D6-security-lens-sites sites land; the available mechanisms are **checklist
 extensions + persona-judgment edits**. The build surface gains the persona edits (a
 security-judgment line in `system-architect` for the sweep, and in `devils-advocate` for the
 abuse hunts), each re-checked against the decoupling keystone test. Checklists are procedure;
 the judgment must live in the persona per axis 4.
 
-### D2 — Threat modeling = trust-boundary annotation + a security-keyed flow sweep inside `architecture.md` — `Confident`
+### D2-threat-modeling-annotation — Threat modeling = trust-boundary annotation + a security-keyed flow sweep inside `architecture.md` — `Confident`
 **Statement:** No new artifact. Three mechanisms: (1) a **trust-boundary convention** on the C4
 delta diagram — where untrusted input enters, which arrows cross trust lines, authn/authz points
 annotated on arrows (closes F98's ownership-only "boundary" sense); (2) the **qualifying-flow
@@ -338,7 +338,7 @@ a stage to a five-stage loop, and (c)-posture is not the lead driver) · require
 (*rejected:* leaves F98 standing — threats without a topology view is the blindness the
 architecture primitive exists to fix).
 **Provenance note:** lead-recommended, user-adopted without elaboration — second consecutive;
-streak at 2. **S16 fold (review, user-ruled):** D2 explicitly confirmed at disposition — the user's direct
+streak at 2. **S16 fold (review, user-ruled):** D2-threat-modeling-annotation explicitly confirmed at disposition — the user's direct
 "confirmed" on the plain-terms U5 restatement; mark retained `Confident` citing it.
 **S1 fold, edge 2 (review, user-ruled — U1):** the sweep runs **before `data-model.md` exists**
 (architecture precedes detailed design), so "carries Confidential+ data" leaves the trigger —
@@ -346,13 +346,13 @@ the security key becomes **"crosses a trust boundary / carries declared-sensitiv
 DS-XXX thin declarations + spec-level sensitivity)"**, coarse by design. When the downstream
 `data-model.md` contradicts the ruled trust picture (e.g. Restricted data crossing an
 unannotated boundary), **plan's existing detailed-design-contradiction backward path to G3
-fires** — no new machinery, no second sign-off act. D2's DS-consumer claim is re-grounded:
+fires** — no new machinery, no second sign-off act. D2-threat-modeling-annotation's DS-consumer claim is re-grounded:
 the sweep consumes the *declarations*; the classification detail feeds the backward check.
 **S17 fold (review):** the question trail, reconstructing every "ruled at QN" reference:
-Q1 driver → Q2 = D1 → Q3 = D2 → Q4 = D3 (`Contested`, the streak-breaking reversal) →
-Q5 = D4 → Q6 = D5 → Q7 = D6.
+Q1 driver → Q2 = D1-security-woven-seats → Q3 = D2-threat-modeling-annotation → Q4 = D3-security-requirement-class (`Contested`, the streak-breaking reversal) →
+Q5 = D4-sast-floor-row → Q6 = D5-oss-area-coverage → Q7 = D6-security-lens-sites.
 
-### D3 — SEC-XXX minted: a dedicated security-requirement class, full plumbing at birth — `Contested` (user-ruled over the lead's reuse recommendation)
+### D3-security-requirement-class — SEC-XXX minted: a dedicated security-requirement class, full plumbing at birth — `Contested` (user-ruled over the lead's reuse recommendation)
 **Statement:** Threats and security obligations land as **SEC-XXX** rows — threat → control →
 verification method — a first-class requirement class in the analysis layer. **Full plumbing is
 mandatory at birth** (the F95 lesson: a half-minted class rots): field schema in
@@ -375,7 +375,7 @@ coarse at the analysis stage (from the spec's abuse cases + DS declarations), an
 **completes them at the architecture stage** — an architect-owned SEC subsection of the
 designated home (S6 below), mirroring the structural-decisions precedent. The closure check
 runs at the architecture stage's review, where the diagram exists.
-**S6 fold (review):** the named artifact home — the plumbing organ D3's own list omitted —
+**S6 fold (review):** the named artifact home — the plumbing organ D3-security-requirement-class's own list omitted —
 is **`constraints-and-decisions.md`**, which gains a designated SEC-XXX section beside its
 structural-decisions section; `plan.md`'s Bindings class enumeration updates with it (one
 command edit — the build surface's zero-command-edits claim corrects accordingly).
@@ -384,17 +384,17 @@ command edit — the build surface's zero-command-edits claim corrects according
 verification is genuinely GUI/subjective de-devolves its cycle to the human checkpoint —
 accepted checkpoint inflation, on the record.
 
-### D4 — SAST joins FLOOR-SEC's asserted row — `Confident`
+### D4-sast-floor-row — SAST joins FLOOR-SEC's asserted row — `Confident`
 **Statement:** Every project runs a **blocking SAST scan**, same standing as secret scanning and
 dependency-vuln blocking. The stack tooling map gains a SAST column; interrogation dimension 6's
 elicitation names scanners (closes F66); the governance quality-gates template models the line
-(closes F93 for it). The D4 recorded waiver is the valve for a genuinely noisy stack — visible
+(closes F93 for it). The `production-only-focus` D4-waivers-reach-everything recorded waiver is the valve for a genuinely noisy stack — visible
 and justified, never a silent drop.
 **Rejected road (with steelman):** arbitrated default-in. *Steelman:* SAST false-positive rates
 vary by stack and codebase age; an asserted-but-noisy gate teaches gate-bypassing. *Rejected
 because:* that is the F100 shape (a floor control whose tooling lives on a droppable card), and
 the waiver route handles the noisy case with a record.
-**Provenance note:** lead-recommended, user-adopted — with a user-added direction ruled at D5.
+**Provenance note:** lead-recommended, user-adopted — with a user-added direction ruled at D5-oss-area-coverage.
 **S3 fold (review, user-ruled — U3):** the bar and the brownfield policy: SAST blocks at
 **high/critical** (parity with dependency scanning) · brownfield onboarding runs
 **new-findings-only diff scanning**, pre-existing findings recorded as a known-debt baseline
@@ -419,7 +419,7 @@ F100's type-gate clause. The **enforcement clause and threshold** ("blocks merge
 high/critical", "scanner in CI") relocate to FLOOR-SEC's universal home with the tooling map;
 BE-DEP's version becomes a tightening over the floor, never the carrier.
 
-### D5 — OSS-leveraged security, organized by area coverage — `Confident`
+### D5-oss-area-coverage — OSS-leveraged security, organized by area coverage — `Confident`
 **Statement (user-shaped):** three confirmed expressions plus the user's organizing principle:
 1. **Enforcement rides OSS scanners** — gates carried by named open-source defaults per stack
    (`semgrep` SAST · `trivy`/`gitleaks` secrets · `osv-scanner`/ecosystem auditors for deps);
@@ -482,7 +482,7 @@ itself (graduation-seam owner), re-derivation triggered by an ASVS major release
 per-feature `review-plan-artifacts` rows check only the areas the feature touches. **A
 shelf-pending area is a recorded known-gap with a Tier-I pointer — never "N/A", never
 silently "addressed"** — the ledger stays honest for the three unseeded product types.
-**S13 fold (review):** D5's rejected roads, recorded: registry-vs-SEC-closure-alone (rejected
+**S13 fold (review):** D5-oss-area-coverage's rejected roads, recorded: registry-vs-SEC-closure-alone (rejected
 — closure without a completeness denominator cannot say what is missing) ·
 ASVS-vs-Top-10/CWE seed (rejected — the Top 10 is a risk ranking, not a coverage taxonomy) ·
 commercial-default tooling (rejected — adoption friction; paid substitutes stay legitimate
@@ -494,9 +494,9 @@ key-rotation *execution* stays with ops-hardening.
 canary at setup or first implement (a gate that cannot fail is not a gate); lands as a build
 item.
 
-### D6 — The security lens lands at three sites, never a new seat — `Confident`
+### D6-security-lens-sites — The security lens lands at three sites, never a new seat — `Confident`
 **Statement:** (1) **Plan reviewers, primary:** `review-plan-artifacts` gains SEC coverage +
-closure rows (D3) and the D5 area-coverage row *(statement amended at verify V3: scoped to the
+closure rows (D3-security-requirement-class) and the D5-oss-area-coverage area-coverage row *(statement amended at verify V3: scoped to the
 areas the feature touches — the app-level grade lives in the governance ledger per S9; the
 original every-area/"recorded N/A" text superseded by S9/U6)*;
 `review-feasibility`'s architecture pass gains the trust picture — an unauthenticated arrow
@@ -546,7 +546,7 @@ with the stack tooling map **and the enforcement clause + threshold** relocating
 universal home (closing both F100 clauses — the "closes F100" shorthand corrected per S7) ·
 dimension 6 elicits
 scanners (F66) · the governance quality-gates template models the security gates (F93) ·
-`tasks-template` gains the `## Quality Gates` producer (F94) · checklist/lens extensions per D6
+`tasks-template` gains the `## Quality Gates` producer (F94) · checklist/lens extensions per D6-security-lens-sites
 · the F19 defect fix (the `[PII]`-marker script contradiction + heading mismatch) folds in as
 the build's prerequisite stage. **Review corrections to this surface (S6, S10, S18, S20):**
 the skill is named **`patterns-threat-modeling`**, its registry at
@@ -565,19 +565,19 @@ config · S4 the ownership-check obligation with its detailed-design closure row
 pin + maintainer and re-derivation trigger · S9 the governance-ledger coverage section +
 `validation-constitution`'s coverage check · S14 the spec-layer producer abuse-case prompt ·
 S15 the rotatability prompt in the config/crypto areas. Everything else rides skills,
-references, and templates (D1's payoff); the build plan confirms or corrects.
+references, and templates (D1-security-woven-seats's payoff); the build plan confirms or corrects.
 
 ---
 
 ## Review
 
 **Sizing gate (2026-07-30):** weight stated — 6 decisions (D1–D6); mix 5 `Confident` /
-1 `Contested` (D3, user-ruled over the lead's recommendation); a 100-fact embedded map; one
-user-added organizing principle (D5); scope fences + consequence list presented. Default keying:
+1 `Contested` (D3-security-requirement-class, user-ruled over the lead's recommendation); a 100-fact embedded map; one
+user-added organizing principle (D5-oss-area-coverage); scope fences + consequence list presented. Default keying:
 heavyweight → pair. **User ruling: pair.** Lens split: decision-quality vs record-integrity;
 both briefs name the embedded map as the fact substrate; verify pass owned by the
 record-integrity reviewer. The record is frozen from reviewer spawn until dispositions land.
-*(S16 correction: the "5 Confident" tally overstated D1/D2 at sizing time — both were then
+*(S16 correction: the "5 Confident" tally overstated D1-security-woven-seats/D2-threat-modeling-annotation at sizing time — both were then
 unconfirmed recommendation-adoptions; both were explicitly confirmed at disposition.)*
 
 **Cold reads + cross-exam (2026-07-30):** dq-reviewer 16 raised (4C/8I/4M) · ri-reviewer 13
@@ -586,8 +586,8 @@ withdrawal absorbed, 3 ri withdrawals absorbed; zero unresolved cross-objections
 lead-merged survivors** (5 Critical / 12 Important / 3 Minor). ri-reviewer's sample audit of
 the embedded map: **CLEAN** — 23 of 100 entries verified against the cited files; sole
 immaterial imprecision F97 (errata below). Both reviewers recommended **critical-gaps** on the
-broken-load-bearing-claims bar: D2's sweep input (absent at its own gate), D5.3's carrier
-(cannot reach its subject), D6's "F48 machinery unchanged", and the "closes F100" claim.
+broken-load-bearing-claims bar: D2-threat-modeling-annotation's sweep input (absent at its own gate), D5.3's carrier
+(cannot reach its subject), D6-security-lens-sites's "F48 machinery unchanged", and the "closes F100" claim.
 
 **Map errata (S19):** F97's wording — `validate-openapi.py`'s 401 check falls back to the
 document-level `security` block (per F22), not only per-operation declarations. F97's
@@ -595,35 +595,35 @@ conclusion (nothing asks whether an operation *should* be authenticated) is unch
 
 **Dispositions (2026-07-30) — 20/20 landed.** User ruling batch: U1–U4 + U6 adopted as
 recommended ("go with your recommendation"); U5 answered with an explicit **"confirmed"**
-after a plain-terms restatement of both structural calls (D1 + D2 stand, marks retained).
+after a plain-terms restatement of both structural calls (D1-security-woven-seats + D2-threat-modeling-annotation stand, marks retained).
 Lead-formulated folds landed in the decision bodies and build surface above. *(V5 honesty
 note: U1–U4 + U6 — the four Critical repairs among them — were batch adoptions of the lead's
 recommended folds, the same form S16 was raised about; the record claims no more deliberation
-for them than D1/D2's original adoptions carried. The V1/V2 verify repairs were likewise
+for them than D1-security-woven-seats/D2-threat-modeling-annotation's original adoptions carried. The V1/V2 verify repairs were likewise
 batch-ratified after individual presentation.)*
 
 | # | Sev | Disposition |
 |---|-----|-------------|
-| S1 | Crit | user-ruled (U1) — two-phase SEC authoring + coarse sweep key + the existing backward path; both edges closed by one ruling (D2 + D3 folds) |
-| S2 | Crit | user-ruled (U2) — semgrep-on-SAST carrier · registry scope corrected · "established, never hand-rolled" (D5 fold) |
-| S3 | Crit | user-ruled (U3) — high/critical bar · brownfield diff-scan + debt register · in-repo config (D4 fold) |
-| S4 | Crit | user-ruled (U4) — data-model-keyed ownership-check obligation (D5 fold) |
-| S5 | Crit | resolved — floor-keyed conformance bullet; "unchanged" withdrawn (D6 fold) |
-| S6 | Imp | resolved — home = `constraints-and-decisions.md` SEC section; +1 command edit (D3 fold, build surface) |
-| S7 | Imp | resolved — enforcement clause + threshold relocate with the tooling map (D4 fold) |
-| S8 | Imp | resolved — V10 area added · version pinned at build · maintainer + re-derivation trigger (D5 fold) |
-| S9 | Imp | half user-ruled (U6: known-gap, never N/A) · half resolved (ledger home, once-per-app) (D5 fold) |
-| S10 | Imp | resolved — persona edits in scope; D1's "lens briefs" language corrected (D1 fold, build surface) |
-| S11 | Imp | resolved — CLI-preferred verification + stated de-devolve residue (D3 fold) |
-| S12 | Imp | resolved — economics stated; cap stands with a reopen condition (D6 fold) |
-| S13 | Imp | resolved — D5's rejected roads recorded (D5 fold) |
-| S14 | Imp | resolved — producer-side abuse prompt added (D6 fold) |
-| S15 | Imp | resolved — rotatability obligation in config/crypto areas (D5 fold) |
-| S16 | Imp | user-ruled (U5) — D1/D2 explicitly confirmed; streak closed at D3; sizing tally corrected |
-| S17 | Imp | resolved — the question trail recorded (D2 fold) |
+| S1 | Crit | user-ruled (U1) — two-phase SEC authoring + coarse sweep key + the existing backward path; both edges closed by one ruling (D2-threat-modeling-annotation + D3-security-requirement-class folds) |
+| S2 | Crit | user-ruled (U2) — semgrep-on-SAST carrier · registry scope corrected · "established, never hand-rolled" (D5-oss-area-coverage fold) |
+| S3 | Crit | user-ruled (U3) — high/critical bar · brownfield diff-scan + debt register · in-repo config (D4-sast-floor-row fold) |
+| S4 | Crit | user-ruled (U4) — data-model-keyed ownership-check obligation (D5-oss-area-coverage fold) |
+| S5 | Crit | resolved — floor-keyed conformance bullet; "unchanged" withdrawn (D6-security-lens-sites fold) |
+| S6 | Imp | resolved — home = `constraints-and-decisions.md` SEC section; +1 command edit (D3-security-requirement-class fold, build surface) |
+| S7 | Imp | resolved — enforcement clause + threshold relocate with the tooling map (D4-sast-floor-row fold) |
+| S8 | Imp | resolved — V10 area added · version pinned at build · maintainer + re-derivation trigger (D5-oss-area-coverage fold) |
+| S9 | Imp | half user-ruled (U6: known-gap, never N/A) · half resolved (ledger home, once-per-app) (D5-oss-area-coverage fold) |
+| S10 | Imp | resolved — persona edits in scope; D1-security-woven-seats's "lens briefs" language corrected (D1-security-woven-seats fold, build surface) |
+| S11 | Imp | resolved — CLI-preferred verification + stated de-devolve residue (D3-security-requirement-class fold) |
+| S12 | Imp | resolved — economics stated; cap stands with a reopen condition (D6-security-lens-sites fold) |
+| S13 | Imp | resolved — D5-oss-area-coverage's rejected roads recorded (D5-oss-area-coverage fold) |
+| S14 | Imp | resolved — producer-side abuse prompt added (D6-security-lens-sites fold) |
+| S15 | Imp | resolved — rotatability obligation in config/crypto areas (D5-oss-area-coverage fold) |
+| S16 | Imp | user-ruled (U5) — D1-security-woven-seats/D2-threat-modeling-annotation explicitly confirmed; streak closed at D3-security-requirement-class; sizing tally corrected |
+| S17 | Imp | resolved — the question trail recorded (D2-threat-modeling-annotation fold) |
 | S18 | Min | resolved — `patterns-threat-modeling` + `SECURITY-AREAS.md` named (build surface) |
 | S19 | Min | resolved — map errata above |
-| S20 | Min | resolved — gate-canary build item (D5 fold, build surface) |
+| S20 | Min | resolved — gate-canary build item (D5-oss-area-coverage fold, build surface) |
 
 **Verify pass (ri-reviewer, owner per sizing gate) — round 1: NOT CLEAN.** 20/20 folds
 confirmed landed with quoted evidence; four blocking + one recommended repairs, all in the
@@ -631,16 +631,16 @@ fold-introduced-contradiction class: **V1** S4's ownership obligation keyed to e
 attributes that exist only at detailed design — after S1's architecture-stage closure
 (re-opened the ordering defect on a third edge) · **V2** S3's brownfield debt register
 composed with S2's carrier exempted hand-rolled crypto in old code — a floor-lowering third
-deviation category the floor rule forecloses · **V3** D5/D6 statement text still carried the
+deviation category the floor rule forecloses · **V3** D5-oss-area-coverage/D6-security-lens-sites statement text still carried the
 superseded "recorded N/A" / every-area scope · **V4** the build surface still claimed "closes
 F100" against S7 and omitted eight folds' build consequences · **V5 (recommended)** the
 disposition batch applied a stricter engagement standard to the challenged decisions than to
 the rulings that closed the challenges.
 
 **Repairs penned (V1/V2 user-ratified — batch, per V5's own standard):** V1 — the ownership
-check fires at the detailed-design review as a second narrow closure (D5 fold amended) · V2 —
+check fires at the detailed-design review as a second narrow closure (D5-oss-area-coverage fold amended) · V2 —
 the baseline splits: generic findings → synthesis-recorded gate-strictness override,
-floor-line hits → brownfield confrontations (D4 fold amended) · V3 — both statements amended
+floor-line hits → brownfield confrontations (D4-sast-floor-row fold amended) · V3 — both statements amended
 in the S1/S5/S7 marking pattern · V4 — the F100 line corrected + the correction block extended
 to all eight folds · V5 — the honesty note added to the dispositions paragraph.
 **Re-verify round 2: NOT CLEAN — 2 blocking + 2 recommended, all narrow.** All five round-1
@@ -659,7 +659,7 @@ authors ownership rows, seat-aligned closures · R4 — the economics enumeratio
 new contradictions; R3 checked against the independence rule (analyst + architect produce, the
 review seat grades — no self-grading) and the native ownership pattern. One recommended tidy
 applied (the debt register's home marked — synthesis, per V2; the "governance ledger" wording
-superseded); one cosmetic instance (D2's statement "Confidential+") left self-resolving per
+superseded); one cosmetic instance (D2-threat-modeling-annotation's statement "Confidential+") left self-resolving per
 the verifier. Verifier's status recommendation: **ready** — all three broken load-bearing
 claims repaired at the source. Carried forward (verifier's closing note): the pattern behind
 every round-2/3 item was *folds landing correctly in their own block and colliding with

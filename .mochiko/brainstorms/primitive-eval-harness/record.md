@@ -1,6 +1,6 @@
 # Evaluation Harness for Primitive Changes (CI/CD) — Decision Record
 
-**Status:** **superseded 2026-09-08** by [`primitive-eval-harness-v2`](../primitive-eval-harness-v2/record.md) — never cold-reviewed, never accepted; D1–D5 re-ruled by number there (D1 → v2 D8 · D2 re-affirmed layer-wide · D3 re-affirmed · D4 re-affirmed as amended by v2 D10 · D5 discharged by `skill-compression-tooling`); the four open questions ruled in v2 D13. Frozen; provenance only.
+**Status:** **superseded 2026-09-08** by [`primitive-eval-harness-v2`](../primitive-eval-harness-v2/record.md) — never cold-reviewed, never accepted; D1–D5 re-ruled by number there (D1-synthetic-skill-goldens → `primitive-eval-harness-v2` D8-synthetic-persona-goldens · `primitive-eval-harness` D2-deterministic-judge-split re-affirmed layer-wide · D3-local-regression-harness re-affirmed · D4-thin-eval-scripts re-affirmed as amended by `primitive-eval-harness-v2` D10-persona-runner-layout · `primitive-eval-harness` D5-pilot-skill-target discharged by `skill-compression-tooling`); the four open questions ruled in `primitive-eval-harness-v2` D13-old-open-questions. Frozen; provenance only.
 **Opened:** 2026-08-19
 **Session:** collaborative brainstorm via `mochiko:analysis-iterative` (one question per turn)
 
@@ -19,8 +19,8 @@ Threads:
 2. Whether deepeval or an alternative (promptfoo, Inspect AI, Braintrust, native
    Claude Code headless runs, custom Rust harness…) fits evaluating markdown prompt
    artifacts rather than application LLM outputs.
-3. Admissibility under the kernel-class ruling (GI-019) and the additive-install
-   constraint (GI-020): where an eval harness may sit (maintainer-side CI, advisory
+3. Admissibility under the kernel-class ruling (GI-019-kernel-tooling-admission) and the additive-install
+   constraint (GI-020-plugin-install-model): where an eval harness may sit (maintainer-side CI, advisory
    exit-code signal) and where it may not (pipeline gating, judgment that skills own).
 4. Cost/flakiness/signal: LLM-as-judge determinism, per-run token cost, what a
    regression suite for prose primitives even asserts.
@@ -35,17 +35,17 @@ Full web-seat reports preserved at `research/deepeval.md` and `research/harness-
   workflow) path-filters on `crates/**`, `plugins/mochiko/schemas/**`, `Cargo.*`, and itself.
   A skill or agent edit runs no job. Six steps gate the crate: fmt · clippy · test · audit ·
   secret scan.
-- **F2 — the admissibility door is already open.** GI-019 (ledger `:218–245`): "Advisory
+- **F2 — the admissibility door is already open.** GI-019-kernel-tooling-admission (ledger `:218–245`): "Advisory
   post-hoc checkers consumed as optional exit-code signals are NOT kernel-class." Bright line
   for anything admitted: never gates pipeline progress, never dispatches or sequences agents,
-  never holds judgment that skills own. GI-020: plugin install stays markdown-only; any
+  never holds judgment that skills own. GI-020-plugin-install-model: plugin install stays markdown-only; any
   binary is strictly additive (absent = degraded path works).
 - **F3 — this session is the reserved home for the question.** BACKLOG `:727–736` "Quality-
   control pipeline — deepeval or equivalent" is open and annotated by
-  `qa-gap-finding-verification` D10 (2026-08-19): mutation-tool adoption there is *not* this
+  `qa-gap-finding-verification` D10-mutation-not-kernel (2026-08-19): mutation-tool adoption there is *not* this
   eval-harness brainstorm; item stays open. That session's scope is product code built by the
   pipeline; this session's subject is the pipeline's own primitives — no boundary conflict,
-  and D10 is a worked precedent for the GI-019 admissibility argument.
+  and `qa-gap-finding-verification` D10-mutation-not-kernel is a worked precedent for the GI-019-kernel-tooling-admission admissibility argument.
 - **F4 — primitive verification today is fully manual model judgment.** The author≠grader
   audit = `mochiko:validator` (default-FAIL) grading text coherence + preserved
   responsibilities, plus a hand-run char-budget pre-assert (v0.81.0 sweep caught one drift by
@@ -60,9 +60,9 @@ Full web-seat reports preserved at `research/deepeval.md` and `research/harness-
   persona-card fixture (curated set at `.mochiko/benchmarks/guardrails-vs-detail/`, 464 KB;
   full trail unmerged on branch `worktree-brainstorm-validator-scope`).
 - **F6 — a designed-but-never-run eval already exists.** `adversarial-review-generality`
-  AR-D3 (2026-08-04): seeded-defect benchmark for review skills — ~10 seeds, 60/40
+  `adversarial-review-generality` D3-seeded-defect-benchmark (2026-08-04): seeded-defect benchmark for review skills — ~10 seeds, 60/40
   in/off-taxonomy, independent cold scorer holding the seed key, ≥2 replicates,
-  strict-majority hit. Parked for a dedicated session (AR-D5). BACKLOG `:324–341`.
+  strict-majority hit. Parked for a dedicated session (`adversarial-review-generality` D5-dedicated-test-session). BACKLOG `:324–341`.
 - **F7 — standing watches are eval questions with no instrument.** Slim-description
   fire-rate ("do the 27 slim descriptions still fire?", BACKLOG `:213–227`) and blind-map
   coverage materiality (`cold-review-gap-challenge` open watch). Also a live warning from
@@ -160,7 +160,7 @@ WebSearch blocked for the seat — no blog-survey layer, disclosed)
 
 ## Decisions
 
-- **D1 — Goldens are synthetic per-skill, in the `skill-creator` format; real-project
+- **D1-synthetic-skill-goldens — Goldens are synthetic per-skill, in the `skill-creator` format; real-project
   fixtures deferred to the cluster phase.** `Confident` (user-ruled "as you recommended").
   Small scripted scenarios versioned beside each skill (`evals/evals.json` shape: id ·
   prompt · expected_output · assertions), isolating one skill per run at ~$0.5/session.
@@ -169,34 +169,34 @@ WebSearch blocked for the seat — no blog-survey layer, disclosed)
   Anthropic-maintained), F19 (current eyeball practice has no repeatable scenario — the
   harness's first job is freezing one), F17 (cost favors minimal isolated scenarios).
 
-- **D2 — Deterministic checks may block; the LLM judge is advisory, never blocking.**
+- **D2-deterministic-judge-split — Deterministic checks may block; the LLM judge is advisory, never blocking.**
   `Confident` (user-ruled "as recommended"). Blocking layer: `plugin_errors` smoke (F13) +
   scripted assertions over the transcript (right tools called, right files touched, output
   shape). Judged layer: binary pass/fail + quoted evidence, pinned evaluation steps, blind
   A/B with position swap for version comparison — reported, never failing a run. Rationale:
   F5 (own benchmark: replicate spread exceeded effect gap), F11 (vendor's own CI remedy is
-  "warn, don't fail"), F16 (converged practice), GI-019 posture (advisory exit-code signals
+  "warn, don't fail"), F16 (converged practice), GI-019-kernel-tooling-admission posture (advisory exit-code signals
   sit outside kernel-class).
 
-- **D3 — Local-first regression harness; CI wiring is deferred, not the goal.** `Confident`
+- **D3-local-regression-harness — Local-first regression harness; CI wiring is deferred, not the goal.** `Confident`
   (user's words: "we dont need to focus too much on ci at the moment. as long as we have a
   way to test regression, even if it doesnt fit CI"). The deliverable is a maintainer-side
   runnable check — edit a skill, run the harness, see the regression diff before shipping.
   GitHub Actions wiring is a later, optional layer on top of the same runner; nothing in
   the design may depend on CI to be useful.
 
-- **D4 — Thin scripts first under a top-level `evals/` dir (never shipped); stable pieces
+- **D4-thin-eval-scripts — Thin scripts first under a top-level `evals/` dir (never shipped); stable pieces
   promote into the Rust crate once proven.** `Confident` (user-ruled from options).
   Runner ≈ 200 lines (shell/jq or small Python — the advisory-checker class the six
-  existing GI-008 scripts occupy), driving `claude -p --bare --plugin-dir plugins/mochiko
+  existing GI-008-script-test-waiver scripts occupy), driving `claude -p --bare --plugin-dir plugins/mochiko
   --output-format json --permission-mode dontAsk --max-turns N`. Rationale: fastest path to
   first regression signal (F18 shortlist #1), measure-then-gate culture (F5 precedent),
-  GI-020 untouched (repo-side dir, not under `plugins/`), promotion path honors the D11
+  GI-020-plugin-install-model untouched (repo-side dir, not under `plugins/`), promotion path honors the `schema-based-template-guidance` D11-kernel-position-softened
   foundation bet without paying Rust build cost before the harness proves value. promptfoo
-  declined: Node toolchain + YAML layer for machinery a local-first harness (D3) mostly
+  declined: Node toolchain + YAML layer for machinery a local-first harness (D3-local-regression-harness) mostly
   doesn't need.
 
-- **D5 — First target: one pilot skill, end-to-end through all three layers.** `Confident`
+- **D5-pilot-skill-target — First target: one pilot skill, end-to-end through all three layers.** `Confident`
   (user-ruled from options). Freeze 3–5 goldens for one frequently-edited skill, record a
   baseline, run smoke + assertions + advisory judge. Trigger-fire sweep over model-invoked
   skills (the standing BACKLOG watch, F7) and high-churn coverage come after the loop is
@@ -206,19 +206,19 @@ WebSearch blocked for the seat — no blog-survey layer, disclosed)
 
 *(elicited unknowns surface here — non-waivable floor)*
 
-- Which skill is the pilot (D5) — user to pick on resume. *(2026-08-22: the accepted
+- Which skill is the pilot (D5-pilot-skill-target) — user to pick on resume. *(2026-08-22: the accepted
   `skill-compression-tooling` session fills this slot — pilot `patterns-entity-modeling`
   end-to-end, then `mochiko` router + `review-feasibility`; this record stays open on its
   own terms and still owes its cold review.)*
 - Baseline mechanics — committed baseline file regenerated as a deliberate landing act
   (F16 pattern) — proposed, not yet ruled.
 - Admissibility trace — lead's read: the harness is not kernel-class (primitives do not
-  depend on it; it is maintainer-side advisory tooling, D10 precedent), but the reasoning
+  depend on it; it is maintainer-side advisory tooling, `qa-gap-finding-verification` D10-mutation-not-kernel precedent), but the reasoning
   deserves a recorded ruling on resume.
 - Phase 2 (skill+agent cluster runs via `--forward-subagent-text`) — shape sketched in
   F13, not yet a decision. *(2026-08-27: the accepted `command-plan-only-eval` session
   extends the eval question to the command surface on a plan-only substrate — a regression
-  instrument for command edits composing with this record's D2/D3/D4; its build is queued.
+  instrument for command edits composing with this record's D2-deterministic-judge-split/D3-local-regression-harness/D4-thin-eval-scripts; its build is queued.
   This record stays open on its own terms and still owes its cold review.)*
 - Judge model choice (Haiku vs Sonnet for assertions/judging) — detail, unruled.
 - Session status: **paused mid-questioning 2026-08-19; record not yet cold-reviewed, not

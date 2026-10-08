@@ -103,8 +103,8 @@ The substring is present. **Correctly left unchanged.**
 
 For completeness, the needle that DID change is genuinely stale and its replacement genuinely
 present: `class-key-session-tier`'s new text (`0007:118-133`) contains `never tiered down`,
-`2026-09-05 sonnet-worker-rung`, and `orchestrator-model-selection D1/D3`, and no longer contains
-`model-tiered-seats D5`. It is also still `class: floor` (genesis `0001:6451-6453`), so the
+`2026-09-05 sonnet-worker-rung`, and "`orchestrator-model-selection D1/D3`", and no longer contains
+"`model-tiered-seats D5`". It is also still `class: floor` (genesis `0001:6451-6453`), so the
 `is_floor()` assertion above it still holds.
 
 ## Check 3 — `RETIRED_SIDECAR_ANCHORS` is narrow, and its assertion is real

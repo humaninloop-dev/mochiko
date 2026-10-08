@@ -106,7 +106,7 @@ fn the_writer_round_trips_every_scalar_shape_the_corpus_uses() {
 /// `|-` strips them, `|` keeps exactly one, `|+` keeps every one that is actually written after
 /// the body. The first cut chose `|+` for two or more and then wrote no blank lines for it to
 /// keep, so `"a\n\n"` and `"a\n\n\n"` both read back as `"a\n"`. Unreachable on today's
-/// corpus, but this module is the GI-006 reconstruction surface.
+/// corpus, but this module is the GI-006-primitive-edit-traceability reconstruction surface.
 #[test]
 fn a_multiline_scalar_keeps_every_trailing_newline() {
     let cases = [
@@ -265,8 +265,8 @@ fn every_emitted_view_matches_the_committed_one() {
     let state = replayed_state();
     let views = views::emit(&state);
     // 73 through `0007`; `0008-gate-form` imported the `validation-primitive-edit` skill
-    // (2026-09-19 author-grader-consolidation D7), and `0009-plan-qa-leg` imported
-    // `review-seat-plan` (2026-09-03 producer-plan-enforcement D8). 80 since the 2026-09-19
+    // ("2026-09-19 author-grader-consolidation D7"), and `0009-plan-qa-leg` imported
+    // `review-seat-plan` ("2026-09-03 producer-plan-enforcement D8"). 80 since the 2026-09-19
     // impeccable-design-integration wave: `0011` imported `patterns-design-direction` and
     // `patterns-craft-floor`, `0012` `review-design-audit`, and `0013` the `product-design` home
     // and the `design-baseline` template. 87 since the 2026-09-29 census table ratification:
@@ -342,7 +342,7 @@ fn the_committed_views_tree_holds_no_file_the_emitter_does_not_write() {
         "the committed views tree carries files the emitter does not write:\n{}",
         orphans.join("\n")
     );
-    // 75 since `0009-plan-qa-leg` (2026-09-03 producer-plan-enforcement D8) — the count only
+    // 75 since `0009-plan-qa-leg` ("2026-09-03 producer-plan-enforcement D8") — the count only
     // holds once the new skill's view is committed alongside the migration. 80 since `0013`
     // (2026-09-19 impeccable-design-integration), the five design-wave documents committed. 87
     // since `0032`–`0033` (the 2026-09-29 census table ratification), the seven new homes' views
@@ -451,7 +451,7 @@ fn emit_to_writes_only_under_the_out_directory() {
     let state = replayed_state();
     let written = views::emit_to(&state, &out).expect("the views write");
 
-    // 75 since `0009-plan-qa-leg` (2026-09-03 producer-plan-enforcement D8); 80 since `0013`
+    // 75 since `0009-plan-qa-leg` ("2026-09-03 producer-plan-enforcement D8"); 80 since `0013`
     // (2026-09-19 impeccable-design-integration); 87 since `0032`–`0033` (the 2026-09-29 census
     // table ratification).
     assert_eq!(written.len(), 87);

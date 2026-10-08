@@ -40,7 +40,7 @@ agent (the TDD producer, mounted on `implement`) — strips ruled in-wave (singl
 
 ## [v0.49.0] Card-form wording re-key
 - **Disposition:** superseded → cycle-card vocabulary (card checkbox flip; exposure-driven read-before-write)
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2+D2.1)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2-cycle-card-stop+D2.1-builder-restriction-removed)
 - **Content:** "Updated `tasks.md` with completed task checkboxes (`[x]`)" · "when a task says EXTEND or MODIFY, you read the full file first".
 - **Kept deliberately:** persona otherwise untouched (keystone: no workflow trace added).
 - **Consumers assessed:** implement · executing-tdd-cycle.

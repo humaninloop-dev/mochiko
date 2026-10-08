@@ -151,7 +151,7 @@ which was right as of the audit; my post-rework run is the fourth and it held. C
 upward does not change the reading — a guard that fires half the time is not a guard.
 
 The posture held in all four: nothing was fabricated and no fallback was taken. That is the part
-that matters, and it is why this strengthens GI-020's unsupported declaration rather than
+that matters, and it is why this strengthens GI-020-plugin-install-model's unsupported declaration rather than
 weakening it. It is worth the lead's attention because it is the one path where the prose clause is
 load-bearing, and the evidence says it cannot be relied on there.
 
@@ -164,7 +164,7 @@ load-bearing, and the evidence says it cannot be relied on there.
 2. **`hook-input` grew from eight rows to thirteen.** Added: the dependency hook against an
    out-of-range log, which is its only gate other than absence and needed no session; and
    `SessionStart` against a settings file setting `disableSkillShellExecution`, which is the
-   unsupported-environment notice GI-020 obliges.
+   unsupported-environment notice GI-020-plugin-install-model obliges.
 3. **The no-Read assertion was too narrow to survive staging.** It matched only
    `plugins/mochiko/schemas/` and a `schema.yaml` suffix, and the staged copy's own
    `schemas/brainstorm.yaml` matched neither — it would have passed a run that did exactly the

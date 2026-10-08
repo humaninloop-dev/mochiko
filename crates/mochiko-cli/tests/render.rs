@@ -44,7 +44,7 @@ const SHIPPED_TEMPLATES: [&str; 12] = [
     "report-envelope",
     "architecture-spine",
     "architecture-concerns",
-    // `0013-design-baseline-home` (2026-09-19 impeccable-design-integration D5) imported the
+    // `0013-design-baseline-home` ("2026-09-19 impeccable-design-integration D5") imported the
     // design baseline's template, bound by the `product-design` home.
     "design-baseline",
 ];
@@ -1078,10 +1078,10 @@ const IMPLEMENT_FLOORS: [&str; 37] = [
     "impl.gate-card-confirm",
     "impl.gate-final-acceptance",
     // `0013-design-baseline-home` minted this checkpoint floor and `impl.design-audit-advisory`
-    // below (2026-09-19 impeccable-design-integration D7 and D8).
+    // below ("2026-09-19 impeccable-design-integration D7 and D8").
     "impl.design-first-write",
-    // `0026-delta-pinned-base-review` superseded `impl.graded-fold` with this floor (2026-09-24
-    // delta-files-vs-direct-baseline-edits D3), minted into `tools`, the section its predecessor
+    // `0026-delta-pinned-base-review` superseded `impl.graded-fold` with this floor ("2026-09-24
+    // delta-files-vs-direct-baseline-edits D3"), minted into `tools`, the section its predecessor
     // sat in, so it renders in the same place.
     "impl.baseline-diff-review",
     "impl.author-grader-default-fail",
@@ -1103,7 +1103,7 @@ const IMPLEMENT_FLOORS: [&str; 37] = [
     "impl.transport-floor",
     "impl.design-audit-advisory",
     // `0024-delta-baselines-in-place` superseded `impl.baselines-never-in-place` with this floor
-    // (2026-09-24 delta-files-vs-direct-baseline-edits D1). A mint appends to its section, so it
+    // ("2026-09-24 delta-files-vs-direct-baseline-edits D1"). A mint appends to its section, so it
     // renders at the end of `boundaries` rather than where its predecessor stood.
     "impl.baselines-in-place-marked",
     "impl.fail.sufficiency-unrecorded",
@@ -1180,9 +1180,9 @@ fn every_shipped_floor_index_matches_its_pin() {
         checked += 1;
     }
     // Thirty skills through `0007`; `0008-gate-form` imported `validation-primitive-edit`
-    // (2026-09-19 author-grader-consolidation D7), which carries its own eleven-floor index,
-    // and `0009-plan-qa-leg` imported `review-seat-plan` (2026-09-03
-    // producer-plan-enforcement D8), whose index carries five. The 2026-09-19
+    // ("2026-09-19 author-grader-consolidation D7"), which carries its own eleven-floor index,
+    // and `0009-plan-qa-leg` imported `review-seat-plan` ("2026-09-03
+    // producer-plan-enforcement D8"), whose index carries five. The 2026-09-19
     // impeccable-design-integration wave imported three more: `patterns-design-direction` and
     // `patterns-craft-floor` at `0011`, `review-design-audit` at `0012`.
     assert_eq!(checked, 41, "six commands and thirty-five skills");
@@ -1298,7 +1298,7 @@ fn optional_section_fields_still_render_when_present() {
 }
 
 // ---------------------------------------------------------------------------
-// gate-5 schema-data consistency (GI-020: the log carries everything, and ships nothing)
+// gate-5 schema-data consistency (GI-020-plugin-install-model: the log carries everything, and ships nothing)
 // ---------------------------------------------------------------------------
 
 /// The log carries every template the crate names, and the shelf document beside them.
@@ -1325,7 +1325,7 @@ fn the_log_carries_every_template_and_the_shelf() {
     );
 }
 
-/// No schema file ships (GI-020, record D9 wave 6).
+/// No schema file ships (GI-020-plugin-install-model, record D9 wave 6).
 ///
 /// The paired half of the test above: the content survives, and the files it used to be read from
 /// are gone. Both directions matter and they fail apart — a deletion that also lost the content

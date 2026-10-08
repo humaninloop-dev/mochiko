@@ -6,7 +6,7 @@ opens with the first edit that superseded any of its shipped text.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the dense-five family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -16,13 +16,13 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/testing-gap-finding/SKILL.md`. -->
 
 <!-- Wave context: wave 1 of the impeccable design-integration build (v0.114.0) — the critique
 lens and the accessibility supersession, migration `0012-design-verification-lenses.yaml`.
-Ruling: `.mochiko/brainstorms/impeccable-design-integration/record.md` D8 · D11 · D13, with the
+Ruling: `.mochiko/brainstorms/impeccable-design-integration/record.md` D8-implement-design-bites · D11-accessibility-record-standard · D13-breadth-invariant-design, with the
 `DECISIONS.md` 2026-09-19 row and that session's `wave1-design-integration.md`. Pre-edit verbatim
 text: `git show 6e4b264:plugins/mochiko/skills/testing-gap-finding/SKILL.md`. -->
 
@@ -36,12 +36,12 @@ text: `git show 6e4b264:plugins/mochiko/skills/testing-gap-finding/SKILL.md`. --
 ## [v0.114.0] "Accessibility probing — declined" superseded for verification only
 
 - **Disposition:** superseded → the delivered rule `testing-gap-finding.a11y-verification-routing`
-  (`sec.scope`, `kind: routing`, anchored `2026-09-19 impeccable-design-integration D11`): no
+  (`sec.scope`, `kind: routing`, anchored "`2026-09-19 impeccable-design-integration D11`"): no
   accessibility probing in this pass or its critique lens; the a11y floor stays a build-time
   standard; verifying it at final validation is the audit lens's `**TEST:**` legs on
   `mochiko:qa-engineer`. The body bullet is removed so the content has one home.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/impeccable-design-integration/record.md` D11; `DECISIONS.md` 2026-09-19).
+  (`.mochiko/brainstorms/impeccable-design-integration/record.md` D11-accessibility-record-standard; `DECISIONS.md` 2026-09-19).
   The decline predates any design surface, and verifying a floor is what an audit lens is.
 - **Content (superseded, verbatim — `## When NOT to Use`):**
   "- **Accessibility probing** — declined; the a11y floor stays a build-time standard."
@@ -68,7 +68,7 @@ text: `git show 6e4b264:plugins/mochiko/skills/testing-gap-finding/SKILL.md`. --
 
 - **Disposition:** superseded → "are delivered by `mochiko-cli`"
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** "live in the schema; the artifact looks like this:"
 - **Kept deliberately:** the sentence's subject — that the grammar, authorship, and artifact rules
   for the durable gate set are rules rather than prose — and the worked artifact example that
@@ -80,7 +80,7 @@ text: `git show 6e4b264:plugins/mochiko/skills/testing-gap-finding/SKILL.md`. --
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -120,7 +120,7 @@ text: `git show 6e4b264:plugins/mochiko/skills/testing-gap-finding/SKILL.md`. --
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -131,7 +131,7 @@ text: `git show 6e4b264:plugins/mochiko/skills/testing-gap-finding/SKILL.md`. --
   surface it, and halt likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -141,7 +141,7 @@ text: `git show 6e4b264:plugins/mochiko/skills/testing-gap-finding/SKILL.md`. --
 
 ## [v0.103.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2C, small families)
 
-Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (obligations move, procedure stays
 prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
 ruled · Skill-schema wave-2 family doors ruled — the small-families door: abort tripped, the
 dense five convert on the B/C drivers, review six-set reused); census:
@@ -205,8 +205,8 @@ headroom — the wave closer executes the ledger row). Description byte-untouche
   narrow read) in `blindness-fence-inclusion-list`; "Delegated reads inherit the inclusion
   list" (the v0.79.0 V2/F2 fence-delegation guard) in `delegated-reads-inherit-fence`.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01
-  skill-content-schema rows; protecting lineage `DECISIONS.md` 2026-08-19
-  qa-gap-finding-verification D3, 2026-08-19 product-architecture-schema D12 fence guard,
+  skill-content-schema rows; protecting lineage `DECISIONS.md` "2026-08-19
+  qa-gap-finding-verification D3", "2026-08-19 product-architecture-schema D12" fence guard,
   2026-08-26 plan-stage-utility D3/A6).
 - **Content:** the `## The blindness fence` section's inclusion-list paragraph, the
   spine-exclusion sentence, the structural-exclusion line, and the delegated-reads
@@ -230,7 +230,7 @@ headroom — the wave closer executes the ledger row). Description byte-untouche
   `when: {run_scope: [selection, epic]}`), and `testing-gap-finding.delta-lane-skip-stated`
   (floor, duty, `when: {run_scope: [delta, product-lane]}`), per D8/C4.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; protecting
-  lineage `DECISIONS.md` 2026-08-19 qa-gap-finding-verification D2/D3/D4-as-amended-I1).
+  lineage `DECISIONS.md` "2026-08-19 qa-gap-finding-verification D2/D3/D4-as-amended-I1").
 - **Content:** the `## Run scope and placement` section (one-pass placement, the three
   scope bullets, real-infrastructure line — the latter to
   `testing-gap-finding.real-infrastructure-never-mocks`, floor), the two-message dispatch
@@ -253,10 +253,10 @@ headroom — the wave closer executes the ledger row). Description byte-untouche
   `when: {mutation_tool: absent}`), `testing-gap-finding.flaky-suite-skip-noted` (must,
   duty, `when: {mutation_tool: present}`),
   `testing-gap-finding.surviving-mutants-advisory` (must), and
-  `testing-gap-finding.tool-advisory-posture` (floor — the GI-019 carve-out language),
+  `testing-gap-finding.tool-advisory-posture` (floor — the GI-019-kernel-tooling-admission carve-out language),
   per D8/C4.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; protecting
-  lineage `DECISIONS.md` 2026-08-19 qa-gap-finding-verification D5/D10).
+  lineage `DECISIONS.md` "2026-08-19 qa-gap-finding-verification D5/D10").
 - **Content:** the `## The mutation lens` section's five obligation bullets and the
   advisory-posture closing paragraph ("never gates progress, never dispatches agents,
   never holds judgment this skill owns").
@@ -275,7 +275,7 @@ headroom — the wave closer executes the ledger row). Description byte-untouche
   `testing-gap-finding.bound-exhaustion-user-ruled` (must, reservation), and
   `testing-gap-finding.out-of-territory-routing` (must, routing), per D8/C4.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; protecting
-  lineage `DECISIONS.md` 2026-08-19 qa-gap-finding-verification D6).
+  lineage `DECISIONS.md` "2026-08-19 qa-gap-finding-verification D6").
 - **Content:** the `## Findings — split by kind, never by severity` section's two kind
   definitions, the adjudication paragraph, the rework-bound paragraph, and the
   out-of-territory routing paragraph — moved whole; the a/b split at row 21 separates the
@@ -292,7 +292,7 @@ headroom — the wave closer executes the ledger row). Description byte-untouche
   `testing-gap-finding.zero-findings-clean-pass` (must — the J2-6 polarity note in the map
   entry above governs its audit reading), per D8/C4.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; protecting
-  lineage `DECISIONS.md` 2026-08-19 qa-gap-finding-verification D8).
+  lineage `DECISIONS.md` "2026-08-19 qa-gap-finding-verification D8").
 - **Content:** the `## Done condition and disclosure` section whole — the done sentence,
   the four disclosure fields, and "Zero findings is a clean pass — no never-zero rule, no
   quota. The disclosure is the honesty mechanism, not the finding tally."
@@ -308,7 +308,7 @@ headroom — the wave closer executes the ledger row). Description byte-untouche
   card authoring inside the implement run, survives graduation, union read), per D8/C4.
   The v0.91.0 mint-moment re-key wording is preserved verbatim in substance.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; protecting
-  lineage `DECISIONS.md` 2026-08-19 qa-gap-finding-verification D7 + 2026-08-26
+  lineage `DECISIONS.md` "2026-08-19 qa-gap-finding-verification D7" + 2026-08-26
   plan-stage-utility mint-moment re-key, this file's [v0.91.0] entries).
 - **Content:** the `## Fold-back — the durable gate set` section's authorship paragraph
   and artifact paragraph.
@@ -345,7 +345,7 @@ headroom — the wave closer executes the ledger row). Description byte-untouche
 - **Disposition:** superseded → "minted at first fold (or at **card authoring inside the
   implement run**)".
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1: cards are authored inside the
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires: cards are authored inside the
   implement run — after the design phase, or directly on a zero-gap sufficiency verdict — never
   in a separate plan run). Caught by V1's **multiline-aware** sweep: the phrase wrapped across
   two lines as "at plan\ntime", so every line-scoped grep in this wave — including the
@@ -381,7 +381,7 @@ the *mechanism* names a retirement kills, not only the stage names.
 - **Disposition:** superseded → two named members in its place — the run's **sufficiency report**
   and the feature's **design-phase deltas**.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D3 fence consequence: "`requirements.md`
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D3-requirements-layer-dies fence consequence: "`requirements.md`
   is a named member of `mochiko:testing-gap-finding`'s explicit inclusion list; its slot re-keys
   to the sufficiency report + the design-phase deltas (spec-layer artifacts, never code); the
   narrowing is recorded, its adequacy watched (Open questions)"; plus Addendum **A6**: "map
@@ -420,14 +420,14 @@ the *mechanism* names a retirement kills, not only the stage names.
   skill consumes (untouched); `implement.md` (P1's rewrite dispatches the pass at final
   validation).
 
-## [v0.81.0] Runtime-NFR references re-pointed from `nfrs.md` to the store's concern rows — product-architecture-schema D12
+## [v0.81.0] Runtime-NFR references re-pointed from `nfrs.md` to the store's concern rows — product-architecture-schema D12-store-absorbs-nfrs
 
 - **Disposition:** superseded → the architecture store's concern rows
   (`.mochiko/product/architecture/concerns.md` plus any graduated
   `concerns/AX-XXX-<slug>.md`), which now home the `NFR-XXX` targets. `nfrs.md` dies as a file;
   the ids and the targets survive, so all three references move rather than drop.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12, `Contested` — the absorb
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12-store-absorbs-nfrs, `Contested` — the absorb
   names `testing-gap-finding`/gates runtime-NFR re-points among its added consumer rewires;
   `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim — three fragments):**

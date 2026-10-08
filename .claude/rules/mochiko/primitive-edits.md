@@ -42,7 +42,7 @@ log by construction, so schema-content edits take no strip entry. The human-read
   `mochiko:validation-primitive-edit`'s render pasted verbatim into the brief; the dispatcher
   writes only the unit, its file paths, and the pre-pass commands, and a hand-written contract
   section is a floor miss on the same terms as an omitted alias. **One seat takes every unit of a
-  wave** (`author-grader-consolidation` D11): each unit keeps its own verdict block and its own
+  wave** (`author-grader-consolidation` D11-wave-gate-grader): each unit keeps its own verdict block and its own
   outcome line tagged with the seat, and the seat splits into two only when the units' files
   would not fit its context, saying so in the lines. The editor never grades their own edit.
 
@@ -66,12 +66,12 @@ log by construction, so schema-content edits take no strip entry. The human-read
   rules as `mochiko-cli` renders them from the log — held against the canonical-scaffold criteria
   below. (This supersedes the "the command's own text" bar of ADR
   `2026-08-02-doctrine-purge-wave-1` decision 4; ruling:
-  `command-md-scaffold-standardization` D1, C1 fold.) For a **schema-bearing skill** the graded
+  `command-md-scaffold-standardization` D1-canonical-command-scaffold, C1 fold.) For a **schema-bearing skill** the graded
   unit is likewise the pair — `SKILL.md` + that skill's rendered rules — held
   against the skill-pair criteria block below
   (skill-content-schema D8/I6; the matching-skill routing never applies to the pair). For
   **schema content** — a migration file plus its regenerated view diff — the unit is that pair
-  and the items are the AM-2 five: intent stated · anchor present where required · ID lifecycle
+  and the items are the AM-2-required-cli-dependency five: intent stated · anchor present where required · ID lifecycle
   right · floor and fail survival · register. For every other primitive — the seven prose skills
   and the router included — the unit is the file, graded on internal coherence plus preserved
   responsibilities, with the matching `validation-*` / `review-*` skill reached as the domain
@@ -104,7 +104,7 @@ log by construction, so schema-content edits take no strip entry. The human-read
   **Canonical-scaffold criteria — every pair-form command, all six commands.** A command ships as
   a `.md` whose rules `mochiko-cli` renders from the log, and is graded across **both surfaces** on
   one criteria set. There is no second block and no per-form exception: the library has one
-  scaffold (`command-md-scaffold-standardization` D1/D2), and the only branch is the
+  scaffold (`command-md-scaffold-standardization` D1-canonical-command-scaffold/D2-superset-scaffold-sections), and the only branch is the
   done-condition class at the end of this list.
 
   1. **Scaffold conformance** — **[judgment]**, except the `allowed-tools` grant (**[suite]**).
@@ -135,7 +135,7 @@ log by construction, so schema-content edits take no strip entry. The human-read
      `kind: fail` rule survives (a reword keeps its ID), and the correspondence
      between the `<cmd>.fail.*` ID segment and `kind: fail` holds in both directions —
      `kind:` is never defaulted on a `.fail.*` ID. The
-     hand-pinned count is gone by ruling (`cli-schema-delivery` D3: the counts are
+     hand-pinned count is gone by ruling (`cli-schema-delivery` D3-rules-delivery-binding: the counts are
      computed and printed by the CLI, never hand-pinned): the pin is the
      `- kind: fail · N rules` line the render prints under `pins` in the preamble block,
      and the `.md`'s Not-done line cites that pin and obliges a halt-and-surface when a
@@ -164,7 +164,7 @@ log by construction, so schema-content edits take no strip entry. The human-read
      condition — in `<cmd>.sec.tools` and the Entry step · the non-waivable floor in
      `<cmd>.sec.boundaries`. The floor includes the sound-loop pointer line
      `mochiko:patterns-sound-loop` on the three DM-chartered commands — `architecture` ·
-     `feature` · `implement` (`charter-ritual-balance` D3) — counted on whichever surface
+     `feature` · `implement` (`charter-ritual-balance` D3-sound-loop-carrier) — counted on whichever surface
      carries it; the scaffold does not extend that pointer to `brainstorm` · `setup` ·
      `specify`, and an audit must not demand it there. Where the command is DM-chartered,
      the DM's bare-minimum responsibilities are present as owned responsibilities.
@@ -228,12 +228,12 @@ log by construction, so schema-content edits take no strip entry. The human-read
   D1–D7 (`DECISIONS.md` 2026-08-27 — the canonical scaffold; supersedes the charter-form /
   goal-form split and this block's former dual-block shape, clause inventory in that
   record's Appendix A) · `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`
-  D10 · `.mochiko/decisions/2026-08-13-charter-plan-implement.md` ·
-  `.mochiko/brainstorms/charter-ritual-balance/record.md` D3 (`DECISIONS.md` 2026-08-13) ·
+  D10-feature-desk-charter · `.mochiko/decisions/2026-08-13-charter-plan-implement.md` ·
+  `.mochiko/brainstorms/charter-ritual-balance/record.md` D3-sound-loop-carrier (`DECISIONS.md` 2026-08-13) ·
   `.mochiko/brainstorms/command-content-schema/record.md` D9 · D11 · D14 · D16
   (`DECISIONS.md` 2026-08-26) ·
   `.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 (`DECISIONS.md`
-  2026-08-27 — the run-shape grammar; amends command-content-schema D6, and D3 narrowly) ·
+  2026-08-27 — the run-shape grammar; amends command-content-schema D6-rule-block-grammar, and D3-no-shared-library narrowly) ·
   `.mochiko/decisions/2026-08-28-near-dup-convergence.md` R1–R6 (`DECISIONS.md` 2026-08-28 —
   widens the D8 extraction bar to 3+-command near-identical families,
   strongest-wording-wins).
@@ -269,7 +269,7 @@ log by construction, so schema-content edits take no strip entry. The human-read
      `<skill>.sec.independence` · `scope` · `inputs` · `verdict` · `output` · `reserved`
      (census §H, v0.100.0); the authoring family's, swapping `verdict` for `artifact` —
      `independence` · `scope` · `inputs` · `artifact` · `output` · `reserved`
-     (census-authoring J-1, v0.101.0); the patterns family's — a full swap-out, not one
+     (census-authoring J-1-producer-family-misfit, v0.101.0); the patterns family's — a full swap-out, not one
      slot — `trigger` · `scope` · `discipline` · `inputs` · `disclosure` · `reserved`
      (census-patterns §B/J-P7, v0.102.0). The small families' dense five —
      `testing-end-user` · `testing-gap-finding` · `executing-tdd-cycle` ·
@@ -285,7 +285,7 @@ log by construction, so schema-content edits take no strip entry. The human-read
      sentence that cites it, **[suite]** for the frozen floor set in `expected-skills.json`.
      The load-first block obligates stating the floor
      count back before the first procedural step (the delivery read-back,
-     skill-content-schema D6 as amended). The hand-pinned count is
+     skill-content-schema D6-load-first-guard as amended). The hand-pinned count is
      gone by ruling: the pin is the `- class: floor · N rules` line the render prints under
      `pins` in the preamble block together with the `floors:` index line beneath it, and the
      read-back sentence cites both — a hard-coded number there is the defect, not its
@@ -323,7 +323,7 @@ log by construction, so schema-content edits take no strip entry. The human-read
   8. **Budget = delivered-at-invoke payload** — **[CLI]** for the measurement (the render plus the
      ledger's canonical snippet), **[judgment]** for any overage argument. The budgeted quantity is the `SKILL.md` body
      plus the seven rendered blocks the `!` lines deliver, one number, characters of the
-     parsed value (`cli-schema-delivery` D10 clause 6 — no schema file is read at invoke, so
+     parsed value (`cli-schema-delivery` D10-governance-envelope-supersessions clause 6 — no schema file is read at invoke, so
      none is part of the payload). The budget re-seeded to that measured figure at
      conversion with **no +25% headroom** (the ledger's third seeding path — the conversion
      is a relocation, never a measured winner); content growth takes the normal
@@ -350,16 +350,16 @@ log by construction, so schema-content edits take no strip entry. The human-read
       ruling covers the exit. Decision anchors live on the log's own rules, carried by the
       migration that writes them and enforced by the binary at apply; a rule carrying a
       supersession-transfer (a `KEPT:`-protected or `DECISIONS.md`-traceable line relocated
-      into schema content, skill-content-schema D8/C4) inherits protected status through
+      into schema content, skill-content-schema D8-skill-governance-envelope/C4) inherits protected status through
       that anchor and leaves only by recorded supersession-by-ruling. The former sidecar is
       frozen at `.mochiko/archive/provenance-frozen-2026-09-05.yaml`.
 
   Rulings: `.mochiko/brainstorms/skill-content-schema/record.md` D1–D9 as amended
   (`DECISIONS.md` 2026-09-01) · the census inventory
   `.mochiko/brainstorms/skill-content-schema/research/census.md` (§E kind retirement · §H section
-  set · J-7 cross-directory pointers) · the authoring-family census
-  `.mochiko/brainstorms/skill-content-schema/research/census-authoring.md` (§I labels · J-1
-  section set · J-6 budget · J-7 first-seeds) · the patterns-family census
+  set · J-7-cross-directory-pointers cross-directory pointers) · the authoring-family census
+  `.mochiko/brainstorms/skill-content-schema/research/census-authoring.md` (§I labels · J-1-producer-family-misfit
+  section set · J-6-overage-dissolves-reseed budget · J-7-first-member-budgets first-seeds) · the patterns-family census
   `.mochiko/brainstorms/skill-content-schema/research/census-patterns.md` (§B section proposal ·
   §ROAD rejection · §I labels · J-P2 first-strips · J-P5 two-arm/overage) · the
   small-families census
@@ -377,7 +377,7 @@ log by construction, so schema-content edits take no strip entry. The human-read
 (`pre` at the kit's pinned `refs.pre`, `post` the working tree), judged and reported — and the report's
 regression, adoption, and band lines are quoted in the strip entry (or the decision row for a pure
 addition). Advisory only, never a gate (ADR `2026-09-09-persona-edit-advisory-grid`, harness D2,
-GI-019); the landing re-pins `refs.pre` to the landed ref.
+GI-019-kernel-tooling-admission); the landing re-pins `refs.pre` to the landed ref.
 
 **Protected content leaves ONLY by ruling.** A line in a record's protected set, marked `KEPT:`, or
 traceable to a `DECISIONS.md` row may be removed only as a recorded supersession-by-ruling. A silent

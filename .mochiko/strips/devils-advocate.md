@@ -11,7 +11,7 @@ were ruled in their command waves.
 - **Disposition:** superseded → the two-word re-key inside the same `description:` value:
   "specifications, **design packages**, brainstorm records, governance intent".
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1 — `/mochiko:plan` retired; the
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires — `/mochiko:plan` retired; the
   package this seat reviews is now the in-run design phase's output, per D5's re-scope of
   `review-plan-artifacts`; `DECISIONS.md` 2026-08-26 row).
 - **Content (superseded, verbatim):** `plan packages`
@@ -39,7 +39,7 @@ were ruled in their command waves.
 - **Disposition:** superseded → the re-keyed bullet: "**`mochiko:review-plan-artifacts`** —
   completeness review of the design output sets and the cycle cards (`tasks.md`)."
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1 + D5 — the plan package ceases to
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires + D5 — the plan package ceases to
   exist and `review-plan-artifacts` re-scopes onto the in-run design phase's output;
   `DECISIONS.md` 2026-08-26 row).
 - **Content (superseded, verbatim):** `completeness review of the plan analysis/design sets and the cycle cards (`tasks.md`).`
@@ -121,7 +121,7 @@ were ruled in their command waves.
 - **Consumers assessed:** persona file, no downstream reader. The clause named a spec section
   created at v0.49.0 (the task-de-granularization build, `DECISIONS.md` 2026-08-02 — `slices.md`
   became a co-accepted spec Delivery-Slices section) and **removed at v0.58.0** under
-  `feature-map-layer` D4, "graduation slices retire — the feature is the pipeline unit"
+  `feature-map-layer` D4-slices-leave-pipeline, "graduation slices retire — the feature is the pipeline unit"
   (`DECISIONS.md` 2026-08-10). Verified by grep against the current schema: `schemas/spec.yaml`
   carries `Screens & Flows` as its UX section and no `Delivery Slices` section exists. The
   router's own `devils-advocate` row (`skills/mochiko/SKILL.md`) describes the seat as
@@ -136,7 +136,7 @@ were ruled in their command waves.
   exception: there, zero findings with full disclosure is a clean pass, and
   `mochiko:testing-gap-finding` owns that done condition".
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-19 QA gap-finding row;
-  record `.mochiko/brainstorms/qa-gap-finding-verification/record.md` D8 as amended at review
+  record `.mochiko/brainstorms/qa-gap-finding-verification/record.md` D8-gap-finding-skill as amended at review
   by I10 — the pass's done condition is "every derived expectation probed or explicitly marked
   unprobeable, counts disclosed", with **zero findings = a clean pass, no never-zero rule**;
   disclosure, not volume, is the honesty mechanism).
@@ -178,7 +178,7 @@ were ruled in their command waves.
   good\" is never acceptable. On the runtime gap-finding pass, disclosure — not finding count —
   is the standard".
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-19 QA gap-finding row;
-  record `.mochiko/brainstorms/qa-gap-finding-verification/record.md` D8 as amended at review
+  record `.mochiko/brainstorms/qa-gap-finding-verification/record.md` D8-gap-finding-skill as amended at review
   by I10 — done condition is every derived expectation probed or explicitly marked unprobeable
   with counts disclosed, **zero findings = a clean pass**; and D4 as amended by I1, the reseat
   that put this persona on the pass and so put its finding-count floors in scope at all).
@@ -235,7 +235,7 @@ were ruled in their command waves.
 
 ## [v0.49.0] Roster drops review-task-artifacts + review-slices
 - **Disposition:** superseded → the two absorbing skills already on the roster (review-plan-artifacts, review-specifications)
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D4+D9)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D4-task-architect-retires+D9-slice-grading-merges)
 - **Content:** frontmatter `skills:` entries `review-task-artifacts`, `review-slices` + their two Skills-Available bullets ("completeness review of `task-mapping.md` / `tasks.md`", "completeness review of the `slices.md` decomposition overlay").
 - **Consumers assessed:** router agent row (re-keyed same wave) · both dispatching commands.
 

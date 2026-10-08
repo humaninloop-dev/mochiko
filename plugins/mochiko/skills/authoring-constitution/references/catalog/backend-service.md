@@ -3,7 +3,7 @@
 Dealt when the declared project type is **backend, service, or fullstack (API side)**. These were
 mochiko's former universal greenfield defaults; they are now type-selected cards — good
 architecture for services, misfitting baggage for an SPA or a mobile app. All three are
-**arbitrated-layer** cards (architecture-opinion — PO-D3's S7 carve-out): architecture choice is
+**arbitrated-layer** cards (architecture-opinion — `production-only-focus` D3-library-owned-standard's S7 carve-out): architecture choice is
 per-project judgment, not a rigor dial, so they are dealt recommend-then-arbitrate, never
 asserted. Each card pairs with the `layer-rules` template module where noted.
 

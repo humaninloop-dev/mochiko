@@ -60,7 +60,7 @@ supplementary_sites:
   found_by: each skill's artifact-home read (Q2-8)
   disposition: >-
     0027 reword (floor): the D4 clause — the contracts/ sub-directory leaves — and, by the lead's ruling
-    on S3's census finding, hook-enforcement-field-review D6 — "implement-log.md is bounded per entry"
+    on S3's census finding, hook-enforcement-field-review D6-ephemeral-run-log — "implement-log.md is bounded per entry"
     leaves, the run log living in .mochiko/runs/<run-id>/
 - node: review-sufficiency.lifecycle-marker-read
   doc: skills/review-sufficiency

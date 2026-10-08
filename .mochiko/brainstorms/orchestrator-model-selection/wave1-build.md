@@ -21,7 +21,7 @@ through the lead, fan-in confirmed) · primitive-edits ceremony (strip → recor
 
 ## P1 — content of migration 0007 (the plan P1 refines; the ruling it executes is fixed)
 
-Header `anchor: 2026-09-19 orchestrator-model-selection D1`; per-rule anchors as noted.
+Header "`anchor: 2026-09-19 orchestrator-model-selection D1`"; per-rule anchors as noted.
 
 1. `supersede-rule` `patterns-model-tiering.rostered-seats-never-retier` — disposition: superseded by the seat default key (D1–D3); anchor D1.
 2. `mint-rule` in `sec.scope` — id `patterns-model-tiering.seat-default-key`, `class: floor`, `kind: binding`, anchor D3. Text carries: every rostered persona pins its ruled default tier as an alias in frontmatter; the criterion (does a structurally independent seat stand between this seat's output and the run's verdict); the ten-row assignment — `strong` (`opus`): validator · devils-advocate · tech-lead · qa-engineer · staff-engineer · principal-architect; `down` (`sonnet`): requirements-analyst · technical-analyst · product-manager · product-engineer; held rows argued in the record; a persona pins a tier alias never a full id (D8); `inherit` or an absent `model:` is out of floor (D2).
@@ -30,8 +30,8 @@ Header `anchor: 2026-09-19 orchestrator-model-selection D1`; per-rule anchors as
 5. `mint-rule` in `sec.discipline` — id `patterns-model-tiering.seat-version-floor`, `class: must`, `kind: bound`. Frontmatter outranks `CLAUDE_CODE_SUBAGENT_MODEL` from Claude Code v2.1.251 (below it the env var silently retiers every seat); `CLAUDE_CODE_SUBAGENT_MODEL_FORCE=1` and an organization `availableModels` substitution override every model choice on both transports and are left as the consumer's own environment, undetected in-run (D2 as review-amended; G1/G12 user-ruled).
 6. `mint-rule` in `sec.disclosure` — id `patterns-model-tiering.seat-roster-disclosure`, `class: must`, `kind: duty`. Every run report's seat roster line carries each seat's tier — its default, or the deviation and its reason (G13: single-source here; a command pair carrying its own roster grammar edits its migration section too — P1 checks the six command renders and reports, edits none unless one carries roster grammar).
 7. `reword-rule` `patterns-model-tiering.override-is-the-pin` (floor; header anchor covers) — on the dispatch rungs the override is the pin (unchanged clause); on a seat spawn the persona file is the pin — the spawn carries `model:` only as a disclosed deviation; an undisclosed override, or a persona file carrying `inherit` or no `model:`, has failed this floor.
-8. `reword-rule` `patterns-model-tiering.class-key-session-tier` (floor) — "Session tier" → "Seat tier"; the parenthetical `(model-tiered-seats D5; …)` → `(orchestrator-model-selection D1/D3; …)`; the id survives.
-9. `reword-rule` `patterns-model-tiering.worker-seat-set-reserved` (floor) — the closing parenthetical `(model-tiered-seats D5)` → `(orchestrator-model-selection D3: both build seats are `strong`)`.
+8. `reword-rule` `patterns-model-tiering.class-key-session-tier` (floor) — "Session tier" → "Seat tier"; the parenthetical "`(model-tiered-seats D5; …)`" → "`(orchestrator-model-selection D1/D3; …)`"; the id survives.
+9. `reword-rule` `patterns-model-tiering.worker-seat-set-reserved` (floor) — the closing parenthetical "`(model-tiered-seats D5)`" → "`(orchestrator-model-selection D3: both build seats are `strong`)`".
 10. `reword-section` `sec.scope` (title "Scope — dispatch tier and the seat default", intent) · `reword-section` `sec.reserved` note (retiering reservation now rides `seat-default-key`: the table is ruled, never run-decided; deviation is the lead's disclosed lane).
 11. `mochiko-cli migrate stamp` the file · `mochiko-cli migrate validate --report --plugin-root plugins/mochiko` clean · `mochiko-cli views emit --plugin-root plugins/mochiko --out .mochiko/schema-views` · `expected-skills.json`: `floor_ids` = the seven floors (drop `rostered-seats-never-retier`, add `seat-default-key`, `seat-deviation-bounds`), `floor_pin` 7, every byte column untouched · `python3 evals/contract/run.py --host-only` green.
 12. `SKILL.md`: description (≤ 1,536 chars) — "Governs dispatch tier only — rostered seats never change model (model-tiered-seats D5)" → the seat default key sentence (rostered personas pin a ruled tier alias — six `opus`, four `sonnet` — the lead deviates only with disclosure; `inherit` never; orchestrator-model-selection D1–D5); tagline and Overview first sentence reworded from "Rostered mochiko personas run on the strong tier and stay there" to the key. The Rules block byte-identical. Strip entries (supersession-by-ruling) in `.mochiko/strips/patterns-model-tiering.md` stamped `[v0.110.0]`.
@@ -47,7 +47,7 @@ Header `anchor: 2026-09-19 orchestrator-model-selection D1`; per-rule anchors as
 
 ## Gates before the bump (lead)
 
-`mochiko-cli migrate validate --report` clean · `cargo test -p mochiko-cli` green (crate untouched; still run) · contract suite: `--host-only` green at minimum, full sandbox run attempted (a SKIPPED full run blocks the bump per GI-012 gate 6 — reported, never waved) · V1 + V2 PASS · CHANGELOG entry · `plugin.json` + `marketplace.json` → 0.110.0 · budgets row.
+`mochiko-cli migrate validate --report` clean · `cargo test -p mochiko-cli` green (crate untouched; still run) · contract suite: `--host-only` green at minimum, full sandbox run attempted (a SKIPPED full run blocks the bump per GI-012-release-gates-module gate 6 — reported, never waved) · V1 + V2 PASS · CHANGELOG entry · `plugin.json` + `marketplace.json` → 0.110.0 · budgets row.
 
 ## Deferred
 

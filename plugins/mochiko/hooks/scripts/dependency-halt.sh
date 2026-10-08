@@ -2,7 +2,7 @@
 # The dependency halt (record D7b). Registered twice: on UserPromptExpansion for this plugin's
 # own commands and skills, and on PreToolUse/Skill for this plugin's own skills.
 #
-# The gate is on dependency absence only, never on behavior or judgment (GI-019). It fires for
+# The gate is on dependency absence only, never on behavior or judgment (GI-019-kernel-tooling-admission). It fires for
 # mochiko's own primitives, only where that primitive actually takes its rules from the binary,
 # and only when the binary is missing or the migration log sits outside the binary's grammar
 # range. Everything else proceeds untouched. It renders nothing: the measured platform behavior

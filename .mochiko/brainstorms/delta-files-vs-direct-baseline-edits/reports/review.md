@@ -211,7 +211,7 @@ survivors:
     kind: coverage (F4) · missed prior ruling
     finding: >-
       D1 puts design/ in the design-phase write set. The design baseline (impeccable-design-integration
-      D6/D7, 2026-09-19; 0013 and 0018) is "written only from shipped code at a landing fold, never
+      D6-product-truth-leg/D7-design-system-landing, 2026-09-19; 0013 and 0018) is "written only from shipped code at a landing fold, never
       from intent". It has "one writer, product-designer, on exactly three graded paths", one of
       them "a build-time baseline-delta.md entry". impl.design-first-write (floor) makes "the fold's
       first system-part write" the user's at final acceptance. The live gap-finding fence (0012
@@ -308,13 +308,13 @@ survivors:
     finding: >-
       D1's rationale says "the fold failed at each purpose it was ruled for". Each of its three legs
       is an execution defect curable under road C. No seat could apply the fold because of the
-      budget deny (F9), which field-review D2 cures and D1 does not (OQ1 shows D1 hits the same
+      budget deny (F9), which `hook-enforcement-field-review` D2-cumulative-store-budgets cures and D1 does not (OQ1 shows D1 hits the same
       wall). The accreted blocks are a fold-shape choice, which the field review's OQ1 already
       asked about. The never-folded ledger is a fold that was never dispatched. C's real residual
       cost is the transcription step, the two copies and renumbering. The ruling stands on those.
     resolution: >-
       Restate D1's rationale on the residual costs. Record that D1 does not cure the gate problem
-      and depends on field-review D2 and OQ1.
+      and depends on `hook-enforcement-field-review` D2-cumulative-store-budgets and OQ1.
   - id: M3
     severity: Minor
     decisions: [Prior-session relations, D6]

@@ -5,22 +5,22 @@ agent (the analysis+design producer, mounted on `plan`) — strips ruled in-wave
 
 <!-- Lineage note: this persona's original mount was `commands/plan.md`, RETIRED at v0.91.0.
 The seat survives whole — it is now a design-phase producer inside `/mochiko:implement`
-(`.mochiko/brainstorms/plan-stage-utility/record.md` D1), and also authors cycle cards there
+(`.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires), and also authors cycle cards there
 (D1 mechanic c). The "mounted on `plan`" phrasing in the header above is frozen wave context
 from v0.15.0, not a live pointer. -->
 
 ## [v0.110.0] Frontmatter `model: opus` superseded — the seat default key sends this seat to `sonnet`
 
 - **Disposition:** superseded → `model: sonnet` on the same frontmatter key. The seat default key
-  (`orchestrator-model-selection` D1) assigns this persona the `down` class on one criterion —
+  (`orchestrator-model-selection` D1-class-keyed-tier) assigns this persona the `down` class on one criterion —
   does a structurally independent seat stand between this seat's output and the run's verdict —
   and D2 pins the class default in the persona file as a tier alias, never `inherit` and never an
   absent `model:`. D3's ground for this row: "design producer, graded by feasibility +
   plan-artifacts reviews".
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/orchestrator-model-selection/record.md` D3, the ten-row seat class table,
+  (`.mochiko/brainstorms/orchestrator-model-selection/record.md` D3-seat-class-table, the ten-row seat class table,
   with D1/D2 as its mechanism and D8 as its alias rule; `DECISIONS.md` 2026-09-19 row). The same
-  ruling supersedes `model-tiered-seats` D5 and its fold F6 — the deferral this table discharges.
+  ruling supersedes `model-tiered-seats` D5-seat-tiering-deferred and its fold F6 — the deferral this table discharges.
 - **Content:** verbatim — `model: opus` (frontmatter, line 9).
 - **Kept deliberately:** every other byte of the file — the frontmatter `description:` value
   (v0.63.0 protected prose framing), `name:`, `color:`, the
@@ -49,7 +49,7 @@ from v0.15.0, not a live pointer. -->
   "the constraint layer (`constraints-and-decisions.md`: C-XXX / D-XXX / IP-XXX, plus the thin
   INT-XXX / DS-XXX declarations) and its traceability to a business source."
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/plan-stage-utility/record.md` D3 — the FR→TR layer dies as a mandatory
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D3-requirements-layer-dies — the FR→TR layer dies as a mandatory
   artifact and does **not** move to specify; no per-feature `requirements.md` exists, and real
   technical decisions land where they already live, on `constraints-and-decisions.md` and the
   architecture store; `DECISIONS.md` 2026-08-26 row).
@@ -73,7 +73,7 @@ from v0.15.0, not a live pointer. -->
   (P3), so the mount and the `skills:` frontmatter stay valid; the re-key mirrors that skill's
   own re-scoped `description:` rather than restating its internals.
 
-## [v0.81.0] Skill-pointer artifact list: `nfrs.md` → the store's concern rows — product-architecture-schema D12
+## [v0.81.0] Skill-pointer artifact list: `nfrs.md` → the store's concern rows — product-architecture-schema D12-store-absorbs-nfrs
 
 - **Disposition:** superseded → the architecture store. The persona's pointer to
   `mochiko:authoring-technical-requirements` named the three analysis artifacts by filename; D12
@@ -81,7 +81,7 @@ from v0.15.0, not a live pointer. -->
   the filename and leaving a silent gap, the line now **states the new home**, so an analyst
   reading the persona learns where an NFR goes rather than merely not being told.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12; `DECISIONS.md` 2026-08-19).
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12-store-absorbs-nfrs; `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim):**
 
   ```

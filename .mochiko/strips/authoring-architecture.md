@@ -16,7 +16,7 @@ new home by the audit's preserved-responsibilities check.
   discipline; store status flips + derived-index regeneration for Duty 2; the D10 orphan rule for
   the In-flight pointer list.
 - **Tier failed:** n/a — supersession by ruling (record
-  `.mochiko/brainstorms/product-architecture-schema/record.md` — **D7** "new
+  `.mochiko/brainstorms/product-architecture-schema/record.md` — **D7-architecture-desk-crew** "new
   `authoring-architecture-store` … (retires `authoring-architecture`)" · **D3** one
   schema-backed store, the per-feature artifact dies · **D4** repo-root `ARCHITECTURE.md` becomes a
   **derived projection**, regenerated on every store write (review fold S12: derived, never

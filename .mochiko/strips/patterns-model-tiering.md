@@ -6,12 +6,32 @@ born v0.77.0 as a pure addition).
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the patterns family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/patterns-model-tiering/SKILL.md`. -->
+
+## [v0.118.0] Wave 3 back-fill: the usage-accounting-unit cite joined
+
+- **Disposition:** superseded → `SKILL.md`:22 now cites
+  `model-tiered-seats` D1-usage-accounting-unit.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/human-readable-ids/record.md` D11-cross-session-qualifier,
+  D14-live-layer-backfill and D15-protected-line-rewrites — every live-layer mention joined to its
+  definition's slug, cross-session mentions qualified, verbatim spans masked; wave plan
+  `.mochiko/brainstorms/human-readable-ids/wave3-backfill.md` items 7–9)
+- **Content (superseded):** every changed line at `0b8982a`, verbatim, as `<file>:<line>: <text>`
+  (files under `plugins/mochiko/skills/patterns-model-tiering/`):
+
+  ```text
+  SKILL.md:22: (model-tiered-seats D1).
+  ```
+
+- **Kept deliberately:** the description's (`SKILL.md`:3) "(orchestrator-model-selection D1–D5)": a
+  range over five decisions, more than three members, left bare
+  (`human-readable-ids` D5-compound-reference-forms).
 
 ## [v0.113.0] description and Overview roster count re-keyed to the `validator` retirement
 
@@ -27,9 +47,9 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   anchor, the id, class, kind, labels and rule anchor all unchanged) and takes no strip: the
   prior text is in the log by construction.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/producer-plan-enforcement/record.md` D3 — the `validator` persona
+  (`.mochiko/brainstorms/producer-plan-enforcement/record.md` D3-peer-plan-grader — the `validator` persona
   retires library-wide, second wave; sequenced as wave 3 by
-  `.mochiko/brainstorms/author-grader-consolidation/record.md` D10, wave plan
+  `.mochiko/brainstorms/author-grader-consolidation/record.md` D10-consolidation-wave-order, wave plan
   `wave3-validator-retirement.md` §3.1; `DECISIONS.md` 2026-09-03 and 2026-09-19 rows).
 - **Content:** verbatim —
 
@@ -46,7 +66,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Kept deliberately:** the `## Rules — delivered by mochiko-cli` block — its halt clause, seven
   `!` lines, and read-back sentence — byte for byte; the tagline ("Every read, every bounded task,
   and every seat rides the lowest tier where its result can be trusted."); the Overview's
-  economics sentence and its `model-tiered-seats D1` citation; the description's cheap-rung and
+  economics sentence and its `model-tiered-seats D1-usage-accounting-unit` citation; the description's cheap-rung and
   worker-rung clauses and every trigger phrase, all unchanged — the 2026-09-05 sonnet-worker-rung
   ruling stands. Inside the floor itself, the two rows held `strong` against the criterion
   (staff-engineer and principal-architect) keep their sentence, and the `down` list is untouched:
@@ -78,7 +98,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   rewords) and take no strip: the prior text is in the log by construction.
 - **Tier failed:** n/a — supersession by ruling
   (`.mochiko/brainstorms/orchestrator-model-selection/record.md` D1–D5 and D8 as review-amended;
-  `DECISIONS.md` 2026-09-19 row; the prior `model-tiered-seats` D5 and its fold F6 are superseded
+  `DECISIONS.md` 2026-09-19 row; the prior `model-tiered-seats` D5-seat-tiering-deferred and its fold F6 are superseded
   by that ruling).
 - **Content:** verbatim —
 
@@ -92,7 +112,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   judgment leg of producing, reviewing, and grading stay on the session tier. SHOULD also invoke
   on 'model tiering', 'cheap explorer', 'worker subagent', 'offload to sonnet', 'which model',
   'explore the code', 'targeted read', or 'fact-find dispatch'. Governs dispatch tier only —
-  rostered seats never change model (model-tiered-seats D5); third sibling of
+  rostered seats never change model (model-tiered-seats D5-seat-tiering-deferred); third sibling of
   patterns-sound-loop and patterns-transport-floor.`
 
   tagline: `**Every read and every bounded task rides the lowest tier where its result can be
@@ -105,11 +125,11 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 
 - **Kept deliberately:** the `## Rules — delivered by mochiko-cli` block — its halt clause, seven
   `!` lines, and read-back sentence — byte for byte; the Overview's economics sentence and its
-  `model-tiered-seats D1` citation, unchanged ("Haiku is ~5× cheaper than Opus and ~10× cheaper
+  `model-tiered-seats D1-usage-accounting-unit` citation, unchanged ("Haiku is ~5× cheaper than Opus and ~10× cheaper
   than Fable per token both directions, Sonnet sits between the two, and on subscription seats
   cheaper-model work preserves Opus-cap headroom"); the description's whole worker-rung clause —
   the 2026-09-05 sonnet-worker-rung ruling stands and both build seats stay `opus`
-  (orchestrator-model-selection D3 holds `staff-engineer` and `qa-engineer` in the strong class);
+  (orchestrator-model-selection D3-seat-class-table holds `staff-engineer` and `qa-engineer` in the strong class);
   the description's cheap-rung clause and its `model: haiku` override, unchanged.
 - **Consumers assessed:** the router row (`skills/mochiko/SKILL.md`, reworded in the same landing —
   entry in `strips/mochiko.md`); the six rendered command rule sets — all six were rendered
@@ -148,14 +168,14 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   completeness-sensitive enumerations stay on the session tier. SHOULD also invoke on 'model
   tiering', 'cheap explorer', 'which model', 'explore the code', 'targeted read', or 'fact-find
   dispatch'. Governs dispatch tier only — rostered seats never change model (model-tiered-seats
-  D5); third sibling of patterns-sound-loop and patterns-transport-floor.`
+  D5-seat-tiering-deferred); third sibling of patterns-sound-loop and patterns-transport-floor.`
 
   tagline: `**Every read rides the lowest tier where its answer can be trusted.**`
 
   Overview: `Rostered mochiko personas run on the strong tier and stay there; this floor governs
   the *reads they and the lead dispatch along the way*. The economics are documented, not
   assumed: Haiku is ~5× cheaper than Opus and ~10× cheaper than Fable per token both directions,
-  and on subscription seats cheap-model work preserves Opus-cap headroom (model-tiered-seats D1).`
+  and on subscription seats cheap-model work preserves Opus-cap headroom (model-tiered-seats D1-usage-accounting-unit).`
 
 - **Kept deliberately:** the `## Rules — delivered by mochiko-cli` block — its halt clause, seven
   `!` lines, and read-back sentence — byte for byte; the description's D5 clause ("rostered seats
@@ -175,7 +195,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -209,7 +229,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -220,7 +240,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -230,7 +250,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 
 ## [v0.102.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2B, patterns family)
 
-Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (obligations move, procedure stays
 prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
 ruled · the patterns-family door); census:
 `.mochiko/brainstorms/skill-content-schema/research/census-patterns.md` §A (MT) + §B (MT rows
@@ -245,7 +265,7 @@ the class key read as the lane key: which dispatch lane fires for each read clas
 scope {1} · discipline {2, 5, 6, 7} · inputs {10} · disclosure {8, 9, 11} · reserved {}
 (`rules: []` + note — the retier-deferral reservation rides row 1's text in the scope
 section). No `conditions:` block — census §B's live-`when:` dimension list omits MT; the
-load-first block legally omits the `when:` grammar sentence (wave-1 RCM-4 wave-wide
+load-first block legally omits the `when:` grammar sentence (wave-1 RCM-4-test-gate-carveout wave-wide
 ruling).
 **Both-rows citation (the census §A MT ceremony):** every move below cites BOTH
 protecting rows — birth `DECISIONS.md` 2026-08-16 model-tiered-seats D1–D5 AS AMENDED by

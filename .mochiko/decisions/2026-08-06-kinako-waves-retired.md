@@ -36,6 +36,6 @@ trail entries) are provenance-only now.
 ## Alternatives considered
 
 - **Keep open, re-scope to current version:** rejected — a re-measure of the current library
-  is the OTel probe's job (token-epic D2 item), which is already open and better shaped.
+  is the OTel probe's job (`workflow-token-reduction` D2-run-cost-entry item), which is already open and better shaped.
 - **Fold into the OTel probe item:** rejected — nothing left to fold; the cache-mechanism
   forensics are already recorded in `plan-run-transport-forensics`.

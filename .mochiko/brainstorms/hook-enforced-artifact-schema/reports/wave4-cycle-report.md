@@ -18,7 +18,7 @@ gate_contract_host: PASS — 7/7 host cases, including the QA seat's three new o
 gate_contract_sandbox: NOT RUN — 78 metered sandbox sessions; the lead's word, per wave 3
 wrapper_median_ms: 31.5 (20 runs) · binary alone 27.0 · trigger is 100
 per_run_projection_s: 6.6 and 5.0 on the two wave-0 sessions · cap is 60
-plugin_json_staged: 0.108.0 to 0.109.0 — written into the tree, uncommitted and unreleased; no tag, no publish (the GI-012 precondition)
+plugin_json_staged: 0.108.0 to 0.109.0 — written into the tree, uncommitted and unreleased; no tag, no publish (the GI-012-release-gates-module precondition)
 committed: no
 powershell_vocabulary: 6 write cmdlets plus the shared redirects — the arm was inert before this wave
 budget_finding: 11 skills stand over their payload budgets from wave 3's mints — ruled 11/11 HOLDS at audit unit 6, ledger stamped
@@ -318,7 +318,7 @@ The two-arm residual splits into two limbs with **different causes and different
 line names only the limbs its own row carries and cites each separately:
 
 - **Render −8 to −189**, from the two-arm rule retired by `0003-two-arm-to-cli.yaml` (record
-  `cli-schema-delivery` D9, anchor 2026-09-03). Seven rows: `analysis-codebase`,
+  `cli-schema-delivery` D9-staged-wave-rollout, anchor 2026-09-03). Seven rows: `analysis-codebase`,
   `authoring-feature-map`, `authoring-technical-requirements`, `patterns-vertical-tdd`, and the
   three authoring skills that bound the retired `authoring-common.two-arm-template` stub —
   `authoring-architecture-store`, `authoring-constitution`, `authoring-prototype`.
@@ -329,7 +329,7 @@ line names only the limbs its own row carries and cites each separately:
 Nine rows carry at least one limb; two carry neither and name the mint and the format constant
 alone. No budget number moved, and every row's prior history is preserved after the new clause.
 
-**The reconstruction now closes (GI-006).** The audit found a 383-character hole on
+**The reconstruction now closes (GI-006-primitive-edit-traceability).** The audit found a 383-character hole on
 `analysis-codebase`: recorded render 9,088 plus the mint's 523 predicts 9,611 against an actual
 9,228, and no clause accounted for the difference. With both clauses present the identity holds on
 every row — recorded render, less 237, less the row's two-arm render reduction, plus the mint,

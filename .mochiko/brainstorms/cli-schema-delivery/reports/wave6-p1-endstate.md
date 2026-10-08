@@ -109,7 +109,7 @@ verbatim. Every command view now opens:
 
 ## 6. Migration `0003-two-arm-to-cli.yaml`
 
-Sequence 3, anchor `2026-09-03 cli-schema-delivery D9`, hash
+Sequence 3, anchor "`2026-09-03 cli-schema-delivery D9`", hash
 `sha256:03fff77f4bead9606092a50745bb9c8692facfa22723b6c181692a58043fbbe3`. **Twenty-four changes:
 seven `set-var`, three `set-rule-field` clearing `pointer:`, fourteen `reword-rule`** — `grep -c
 "^  - op:"` over the file gives 24, and the op tally 7 · 3 · 14. `tasks_schema` is set on both

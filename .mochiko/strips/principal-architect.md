@@ -12,7 +12,7 @@ for the 2-consumer allowance).
   per-feature artifact + a hand-kept prose doc to the product architecture store's baseline, its
   deltas, and its derived index.
 - **Tier failed:** n/a — supersession by ruling (record
-  `.mochiko/brainstorms/product-architecture-schema/record.md` — **D7** "`principal-architect`
+  `.mochiko/brainstorms/product-architecture-schema/record.md` — **D7-architecture-desk-crew** "`principal-architect`
   recharters as desk lead / store steward (shelf walks, plan-time contest from the store baseline,
   delta authoring); **drift becomes an empirical duty** — desk visits spawn a codebase probe grading
   `As-built:` claims against actual code" · **D3/D4** the artifact dies and the root doc becomes a
@@ -83,7 +83,7 @@ for the 2-consumer allowance).
   unchanged by this edit:
   - **All seven `## Core Identity` war-stories**, including the v0.67.0 ruled seventh ("three layers
     of abstraction for a problem that needed one…").
-  - **Every `## Your Judgment` bullet** — Boundaries (with the SD-D1 trust-level clause) ·
+  - **Every `## Your Judgment` bullet** — Boundaries (with the `security-depth-scoping` D1-security-woven-seats trust-level clause) ·
     Interaction style · Responsibility placement · Buildability · **Altitude and necessity** ·
     **Cheaper boxes, not only fewer** · Delta over greenfield fantasy.
   - **All nine original `## What You Reject` bullets** and **all five `## What You Embrace`
@@ -100,7 +100,7 @@ for the 2-consumer allowance).
     `## Brownfield Awareness` (grouped with the other situational cluster). Written
     **judgment-shaped, not procedural**, per skill-library axis 4 (persona carries judgment, skill
     carries procedure; a persona contains no trace of any workflow): opinions dealt never asserted
-    (D5/PO-D3 S7) · breadth first and expensive rows first (D5 breadth invariant + D7 fold S7
+    (D5/`production-only-focus` D3-library-owned-standard S7) · breadth first and expensive rows first (D5 breadth invariant + D7 fold S7
     retrofit-cost ordering) · a deferral is a decision with a fuse (D6 `not-now` + upgrade triggers,
     D13's fired-trigger surfacing) · claims about the built system are evidence not memory (D7's
     empirical drift duty) · the store's health is yours to surface (the D10 orphan rule + health
@@ -159,7 +159,7 @@ for the 2-consumer allowance).
 
 ## [v0.67.0] REWRITTEN as the architecture seat — governance + feasibility duties relocated to `tech-lead`
 - **Disposition:** superseded → the governance/codebase/feasibility persona relocates to the new `agents/tech-lead`; this file is rewritten as the architecture + altitude seat (topology craft arrives from the retired `system-architect`).
-- **Tier failed:** n/a — supersession by ruling (record `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` **D1/D2**; `DECISIONS.md` 2026-08-13 row L13).
+- **Tier failed:** n/a — supersession by ruling (record `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` **D1-architect-split-retires/D2-feasibility-to-techlead**; `DECISIONS.md` 2026-08-13 row L13).
 - **Relocated OUT → `agents/tech-lead` (governance + feasibility persona, verbatim or near-verbatim):**
   - Frontmatter `skills:` `authoring-constitution, analysis-codebase, review-feasibility` → tech-lead (principal-architect's new set is `patterns-system-design, patterns-technical-decisions, authoring-architecture`).
   - Core Identity (the four governance war-stories) → tech-lead Core Identity (+ a feasibility war-story).
@@ -171,7 +171,7 @@ for the 2-consumer allowance).
   - What You Reject / What You Embrace (the old governance persona's two lists) → **folded** into tech-lead's Quality Standards + Your Judgment, not carried as standalone sections (reconstructibility: the vague/aspirational/rationale-less/unnecessary rejects map to Precise/Enforceable/Justified + the necessity judgment; the CI-verifiable/metrics/explicit-rationale/opinionated-defaults embraces map to Enforceable/testability/Justified/Pragmatic).
   - Feasibility Review section (the impossible-combination hunt, the surviving `infeasible` verdict, "review another agent's artifacts, never your own", the "never the constitution" scoping, procedure deferred to `review-feasibility`) → tech-lead — with the **class-7 excess/altitude hunt + interrogatory round added as judgment** (the class-7 procedure stays in the `review-feasibility` skill, another seat; the persona carries the judgment, not the step list).
 - **KEPT survivor — the v0.63.0 prose `description:` framing** (kept deliberately at v0.63.0 below: the governance-standards + cross-artifact-feasibility framing, greenfield/brownfield authoring, codebase analysis) — **superseded** here by principal-architect's new architecture + altitude description; the governance framing it carried relocates to tech-lead's description. Recorded supersession-by-ruling, not a silent drop.
-- **Relocated IN ← retired `agents/system-architect` (topology craft):** see `strips/system-architect.md` [v0.67.0] relocation map — Core Identity, What You Produce, Your Judgment, Reject/Embrace, Brownfield Awareness, incl. the SD-D1 trust-level clause.
+- **Relocated IN ← retired `agents/system-architect` (topology craft):** see `strips/system-architect.md` [v0.67.0] relocation map — Core Identity, What You Produce, Your Judgment, Reject/Embrace, Brownfield Awareness, incl. the `security-depth-scoping` D1-security-woven-seats trust-level clause.
 - **Decision-row-backed additions (read as ruled additions, not drift):** the altitude-judgment craft new to this persona — the seventh Core-Identity war-story ("three layers of abstraction for a problem that needed one…"), the "Altitude and necessity" Judgment bullet, and the altitude lines in What You Reject / What You Embrace — is ruled by `DECISIONS.md` 2026-08-13 row, **D1/D3/D4** (D4 as amended at review, F1: the persona carries the altitude-judgment **craft** only; the proposal-gate/contest choreography lives in `plan.md` + `patterns-plan-minimalism`, never in this persona — grep-verified: no loop-position vocabulary in the file).
 - **Content (verbatim — the pre-rewrite persona, whole file):**
   ````markdown

@@ -28,7 +28,7 @@ current conventions; D1 forbids cutting to reach a band).
 
 **Wave context (v0.44.0 — P9 lockstep re-key, in place).** The shape's P9 clause was amended
 this wave (KEPT survivor keeps its claim; its evidence pointer moves to the strip note —
-`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row, executed under the lead's stage-A option (a)). The lead's first plan was to re-key
+`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row, executed under the lead's stage-A option (a)). The lead's first plan was to re-key
 this skill as it landed repo-side with the D6 trio move; **the S14 probe failed on the agent half
 in-session** (spawn accepted, but the type never instantiated from `.claude/agents/`), so the move
 is deferred to a fresh-session probe and this skill **ships one more version, correctly re-keyed
@@ -38,7 +38,7 @@ in place**.
 - **Disposition:** superseded → deleted from the shipped file, preserved verbatim here. The trio
   ships one more version (the D6 move is gated on a fresh-session probe), so its shipped-tree
   pointers are live leaks for adopters and scrub now rather than at the move.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row), executed under the lead's pointer ruling (2026-08-01)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row), executed under the lead's pointer ruling (2026-08-01)
 - **Content (verbatim, all three):**
 ```
    (`command-shape.md`, *Transition note*; `lead-owned-process-flexibility` R16). The read has
@@ -288,7 +288,7 @@ the vocabulary a caller uses when handing over a converted command.
   finding (all four invariants were presence-checks a driver-replay passes with the Critical
   never surfacing) turned into a gradeable thing. 22 grades P19 and P20 as **paths or named
   artifact sections**, with a P19 that names no counted unit called a gap in its own right —
-  that clause is **OQ-4**'s, and without it a composed run has no denominator for its bounds or
+  that clause is **OQ-4-transport-lifecycle-split**'s, and without it a composed run has no denominator for its bounds or
   for Layer 2's recycle cadence (F47's exemption firing by default is R23's finding). 23 grades
   both directions: no P20 under a departable default is a FAIL, and so is **process residue** in
   the Goal (D6(b)) — with the residue clause explicitly scoped v7-form-only, because a v6-form
@@ -306,7 +306,7 @@ the vocabulary a caller uses when handing over a converted command.
   with an explicit branch condition; the frontmatter's "P1–P17 slot set" → "P1–P20".
 - **Tier failed:** n/a — a revision consequence.
 - **The carve-out, and why it is the opposite of P17's:** an unbound **P17** states nothing
-  because Layer 2's default governs the silence (TC-D6). **P18–P20** are not silent-by-default —
+  because Layer 2's default governs the silence (`team-lead-strategic-compaction` D6-overridable-cadence-default). **P18–P20** are not silent-by-default —
   a v6-form file is **outside their scope entirely**, which is a different thing and is written
   as such: *"demanding them there is the defect, the mixed-form interim being ruled rather than
   tolerated."* Collapsing the two carve-outs would let a grader read v6-form silence as
@@ -369,7 +369,7 @@ edits, each traceable to a shape change; **no check was loosened and none remove
 - **The one carve-out, and why it is a carve-out rather than sloppiness:** check 12's standing
   rule is that "a conditional slot that does not bind carries its stated absence (check 3's
   rule)". Applying that to P17 would oblige **every** command to write a "no lifecycle
-  override" line — which is verbatim the option **TC-D6 rejected** ("forced per-command
+  override" line — which is verbatim the option **`team-lead-strategic-compaction` D6-overridable-cadence-default rejected** ("forced per-command
   explicitness … adds a mandatory line to every command"). So an unbound P17 states **nothing**,
   and the grader is given the inverse test instead: *a command whose recycle moments or counted
   unit visibly differ from the Layer-2 default while carrying no `**Seat lifecycle:**` line is
@@ -420,7 +420,7 @@ edits, each traceable to a shape change; **no check was loosened and none remove
   reading only the fixed line would never learn that the check's own rule caught its author.
 - **Markers deliberately NOT added, with the reason** — this is the half of the decision that
   would otherwise be invisible: **`~≥3` / the cadence value** (implement carries the ruled floor
-  *as its own parameter value* per TC-D5, so a marker would fire on conformant text) ·
+  *as its own parameter value* per `team-lead-strategic-compaction` D5-lifecycle-doctrine-generalized, so a marker would fire on conformant text) ·
   **`counted, never observed`** (too close to the wording a legitimate override line needs to
   disambiguate its unit) · **the versioned-name rule** (no command has cause to state it, so a
   marker would guard nothing) · **a probe-discriminator check** (commands bind only the probe
@@ -441,10 +441,10 @@ edits, each traceable to a shape change; **no check was loosened and none remove
 
 ---
 
-# v0.33.0 — the grader revised alongside shape v5 (CS-D9)
+# v0.33.0 — the grader revised alongside shape v5 (`command-succinctness-strip` D9-grader-shape-revision)
 
 **Wave context:** command goal-shape rebuild, **step 1 of 4** (design:
-`.mochiko/brainstorms/command-succinctness-strip/record.md`, **CS-D9** in its reworked,
+`.mochiko/brainstorms/command-succinctness-strip/record.md`, **`command-succinctness-strip` D9-grader-shape-revision** in its reworked,
 user-ratified form; `DECISIONS.md` 2026-07-30). D9's ground: the v4 floor keys on the v4 anatomy
 and "would FAIL every conformant goal-shaped file", so the grader lands *with* the shape and
 *before* any command is re-authored. Body 118 → **208 lines, 1,033 → 2,160 words, 7,179 →
@@ -520,7 +520,7 @@ every row names both numbers.
 | **1** References present | **1** | **re-keyed by ruling — disposition pending** | D7's read-drop changes this check's reference set. Per D9 its disposition "lands with the D10 checkpoint, never silently": v5 states that until that ruling lands, a missing `loop-discipline` reference is a FAIL and its absence is never read as anticipated. The KM-path clause is **held as-is** — shape v5 now homes the *generic* landing ritual, which would let a v5 command stop naming the project copy, but no ruling in CS-D1–D10 removed the reference, so the guard stands and the tension is flagged (below). |
 | **2** Frontmatter | **2** | **kept** (verbatim) | Named kept in D9. Unaffected by the anatomy. |
 | **3** No restated shape prose | **8** | **re-keyed** | D9: "3's signature list re-keyed to the new forbidden markers." All five v4 markers survive; one **home changed** (`the forbidden form` / `forbidden transport` → `command-shape.md` Layer 2, per D6's absorption). Six markers added from the checker map's measured 4–6/6 cross-command repetition set: `input, never the gate` · `Out of rounds = escalate` · `disjoint agents, disjoint skills` / `structurally separated` · `unsized by design` · `respawn is cold by design`. Each is doctrine the home states with zero parameter content. **Guarded against over-reach:** naming *which* validation branch a workflow runs is P6's binding and explicitly not a hit — only explaining the branch is. |
-| **4** Exceptions marked | **9** | **re-keyed** | D9: "4 re-keyed — both live `shape-exception` markers re-justified against v5." Added rule: a marker whose cited ground is a v4 section that no longer exists is a FAIL. The two live markers are `plan.md:227` (AD-D8/R5, the un-rendered-diagram degrade-with-record) and `setup.md:100–101` (the falsified routing=independence correction) — both are on v4 files this step and are re-justified at the pilot/wave, not here. |
+| **4** Exceptions marked | **9** | **re-keyed** | D9: "4 re-keyed — both live `shape-exception` markers re-justified against v5." Added rule: a marker whose cited ground is a v4 section that no longer exists is a FAIL. The two live markers are `plan.md:227` (`architecture-design-primitive` D8-rendered-diagram-signoff/R5, the un-rendered-diagram degrade-with-record) and `setup.md:100–101` (the falsified routing=independence correction) — both are on v4 files this step and are re-justified at the pilot/wave, not here. |
 | **5** Version stamps | **10** | **kept** (verbatim) | Named kept in D9. Governs strip-wave and revision runs unchanged. |
 | **6** Altitude | **11** | **carried forward unchanged** | D9: "6 (altitude) … carried forward unchanged." Text unchanged. |
 | **7** Parameter completeness | **12** | **re-keyed** | D9: "7 re-keyed to the v5 slot list." Now enumerates **P1–P16** with the three conditional slots marked (P2 team-form · P13 sized review · P14 devolved branch), and requires a non-binding conditional slot to carry its stated absence. |
@@ -530,7 +530,7 @@ every row names both numbers.
 | **11** Footer stamped | **16** | **kept** | Revision-run floor; D9 silent, unaffected by the anatomy. Needed intact because the step-4 read-drop edit is graded under 16–19. |
 | **12** Rewrites logged | **17** | **kept** | As above. |
 | **13** Ruling fidelity | **18** | **kept + new clause** | Added: a ruling the author *reports* as un-encodable is graded on its reported reason, never waved through — closing the gap that an author's "couldn't encode this" would otherwise exit the check. |
-| **14** Altitude + re-audit set | **19** | **kept + new clause** | Added: where a ruling defers the re-audit to a named later ceremony (CS-D10's pilot + wave), the note's re-audit-coverage line must name that ceremony **and** the delta set it covers — the case this very revision is in. |
+| **14** Altitude + re-audit set | **19** | **kept + new clause** | Added: where a ruling defers the re-audit to a named later ceremony (`command-succinctness-strip` D10-pilot-first-execution's pilot + wave), the note's re-audit-coverage line must name that ceremony **and** the delta set it covers — the case this very revision is in. |
 
 **New floor checks (v5 3–7)** — all five are D9-mandated and all are mechanical:
 

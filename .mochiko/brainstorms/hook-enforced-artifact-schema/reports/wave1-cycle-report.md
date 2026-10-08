@@ -188,7 +188,7 @@ home matrix is in `tests/home.rs`, the render goldens in `tests/cli.rs`.
 **The first four, as originally reported:**
 1. A fifth finding code, `home-shape`, for a home document the decoder cannot read. Without it
    `Homes::load` would skip a malformed home silently, which is the record-layer corruption class
-   GI-005 forbids.
+   GI-005-record-layer-integrity forbids.
 2. `Resolution` carries six variants, not the three the plan sketched, because a deny reason has to
    say whether the problem is the file name, a sub-directory, or nothing at all.
 3. `dispatch_io`, so the exit-code contract is driven in-process like every other CLI test rather

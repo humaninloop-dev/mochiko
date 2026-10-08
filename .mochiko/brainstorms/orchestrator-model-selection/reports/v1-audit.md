@@ -109,7 +109,7 @@ or partial read-back is a skipped read — halt and surface it." The preamble pr
 
 Seven floors delivered, one out and two in versus HEAD's six. The superseded floor left through
 `supersede-rule` with a well-formed op-level anchor — `0007-seat-default-key.yaml:18-27`,
-`anchor: 2026-09-19 orchestrator-model-selection D1`, the only exit the log's grammar allows for
+"`anchor: 2026-09-19 orchestrator-model-selection D1`", the only exit the log's grammar allows for
 protected content (`migrations/README.md`, "The anchor rule"). The migration also carries the
 header anchor. The three floor rewords (`override-is-the-pin`, `class-key-session-tier`,
 `worker-seat-set-reserved`) keep their ids and their existing anchors; `reword-rule` supersedes
@@ -178,7 +178,7 @@ protection needs no authority; lowering it would, and nothing here lowers any.
 ### Migration grammar and the anchor rule — PASS
 
 `grammar: 1` · `id: 0007-seat-default-key` · `sequence: 7`, agreeing with the filename prefix ·
-header `anchor: 2026-09-19 orchestrator-model-selection D1`, well-formed ·
+header "`anchor: 2026-09-19 orchestrator-model-selection D1`", well-formed ·
 `hash: sha256:f07c75a8…`, validated (a stale hash is a rejecting finding; there are none). Eleven
 ops, every one naming `schema: skill/patterns-model-tiering`. Sequence 7 is the lead's allocation
 per `wave1-build.md`; gaps at 0005/0006 are legal.
@@ -190,7 +190,7 @@ The `sec.trigger` render diff between the 0007-less replay and this tree shows t
 
 - `Session` → `Seat`
 - `or a strong seat does` → `or another rostered seat does`
-- `(model-tiered-seats D5;` → `(orchestrator-model-selection D1/D3;`
+- "`(model-tiered-seats D5;`" → "`(orchestrator-model-selection D1/D3;`"
 
 The id and `class: floor` survive.
 

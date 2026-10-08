@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """The plugin contract suite — the layer that tests what the crate never can.
 
-Provenance: `.mochiko/brainstorms/cli-schema-delivery/record.md` D8 as amended. The suite runs
+Provenance: `.mochiko/brainstorms/cli-schema-delivery/record.md` D8-layered-test-regime as amended. The suite runs
 inside the Docker AI sandbox `claude-mochiko`, through the sandbox helpers `evals/run.py` already
-owns; it imports them and never forks them. Maintainer-side, never shipped (GI-020).
+owns; it imports them and never forks them. Maintainer-side, never shipped (GI-020-plugin-install-model).
 
 What it asserts (D8's deterministic set):
 
@@ -132,7 +132,7 @@ TEMPLATE_NAMES = (
     "architecture-spine",
     "architecture-store",
     "codebase-analysis",
-    # `0013-design-baseline-home` (2026-09-19 impeccable-design-integration D5) imported the
+    # `0013-design-baseline-home` ("2026-09-19 impeccable-design-integration D5") imported the
     # design baseline's template, bound by the `product-design` home.
     "design-baseline",
     "feature-entry",
@@ -154,7 +154,7 @@ PROBE_HALTED = "CONTRACT-PROBE: halted"
 # the host's macOS Mach-O binary and reports `sh: Syntax error: "(" unexpected`.
 SANDBOX_TARGET_DIR = "/home/agent/mochiko-target"
 
-# Gate 6 (GI-012) grades the artifact a consumer installs, not the worktree. Setting
+# Gate 6 (GI-012-release-gates-module) grades the artifact a consumer installs, not the worktree. Setting
 # `MOCHIKO_GATE_VERSION` to a published version swaps the sandbox source build for
 # `cargo install`, so the sessions run against the crate that was actually released. Unset — the
 # development default — the sandbox builds from this tree, which is what an ordinary run wants.
@@ -280,7 +280,7 @@ EXPECTED = {
                 # `0005-artifact-homes` (2026-09-13) minted the authoring-time home
                 # floor on every producing primitive.
                 "impl.artifact-home",
-                # `0013-design-baseline-home` (2026-09-19 impeccable-design-integration D7/D8)
+                # `0013-design-baseline-home` ("2026-09-19 impeccable-design-integration D7/D8")
                 # minted the first-write checkpoint and the advisory design-audit floors.
                 "impl.design-first-write",
                 "impl.design-audit-advisory",
@@ -288,7 +288,7 @@ EXPECTED = {
                 "impl.gate-card-confirm",
                 "impl.gate-final-acceptance",
                 # `0024-delta-baselines-in-place` and `0026-delta-pinned-base-review`
-                # (2026-09-24 delta-files-vs-direct-baseline-edits D1/D3) superseded
+                # ("2026-09-24 delta-files-vs-direct-baseline-edits D1/D3") superseded
                 # `impl.baselines-never-in-place`, `impl.graded-fold`,
                 # `impl.fail.baseline-in-place` and `impl.fail.ungraded-fold` with these four
                 # floors.
@@ -674,7 +674,7 @@ def load_runner():
     raised `AttributeError` before any sandbox case ran, and `run_probe()`'s positional
     `claude_args` call silently rebound to a changed signature and began asking for
     `--plugin-dir True`. A release gate may not depend on a research harness that owes it nothing
-    (GI-012), so the three names it needs now live beside it. See `sandbox.py`'s header.
+    (GI-012-release-gates-module), so the three names it needs now live beside it. See `sandbox.py`'s header.
     """
     path = CONTRACT / "sandbox.py"
     spec = importlib.util.spec_from_file_location("mochiko_contract_sandbox", path)
@@ -2498,7 +2498,7 @@ def case_hook_input(runner, sandbox) -> tuple[list, pathlib.Path]:
            "; ".join(problems) if problems else None)
     )
 
-    # The unsupported-environment notice. GI-020 declares a policy that blocks inline execution
+    # The unsupported-environment notice. GI-020-plugin-install-model declares a policy that blocks inline execution
     # unsupported, and this is the only place a user is told so before their first fire.
     policy_home = staged.root / "policy-home"
     (policy_home / ".claude").mkdir(parents=True, exist_ok=True)
@@ -3746,7 +3746,7 @@ def case_brainstorm_hooks_off(runner, sandbox: "Sandbox") -> tuple[list, pathlib
 def case_brainstorm_policy(runner, sandbox: "Sandbox") -> tuple[list, pathlib.Path]:
     """Shell execution disabled by policy, hooks on. Recorded, never asserted (D8).
 
-    GI-020 declares this environment unsupported, so there is no contract to hold it to and
+    GI-020-plugin-install-model declares this environment unsupported, so there is no contract to hold it to and
     nothing here gates. What it is worth knowing is what actually happens: under branch B the hook
     delivers only a presence line, so the placeholder should reach the model and the `.md`'s prose
     halt clause should be the thing that stops the run — the one path in the whole suite where
@@ -4029,7 +4029,7 @@ def case_deliverables(runner, sandbox) -> tuple[list, pathlib.Path]:
     document in the version triple, head line and end line, exactly as `rules` does. `template`
     does not and did not: it opens on the document's own title and closes on the provenance
     footer, because its output is read as a document rather than as a delivery envelope. Wrapping
-    it would be a change to the render output shape and a `mochiko-cli` release concern (GI-012),
+    it would be a change to the render output shape and a `mochiko-cli` release concern (GI-012-release-gates-module),
     not something for a test to presume; the lead booked it as a follow-up at the wave-6 approval.
     So each command is held to what it emits.
     """
@@ -5100,7 +5100,7 @@ def main() -> int:
     if args.list:
         return EXIT_OK
 
-    # A filtered run answers "is this case green again", never "may the bump land". GI-012 gate 6
+    # A filtered run answers "is this case green again", never "may the bump land". GI-012-release-gates-module gate 6
     # wants the whole declared set, and a green line from a subset is the easiest thing in this
     # suite to mistake for one. So it is said before the run and again beside the verdict.
     if filtered:

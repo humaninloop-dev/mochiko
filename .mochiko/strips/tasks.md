@@ -16,7 +16,7 @@ an early-gate + cumulative-mode pattern — no new shape gap at that wave, when 
 
 - **Disposition:** relocated → `commands/plan.md` (Phase 4, the Structuring loop). The whole command
   primitive is retired; the file is deleted from `commands/` (a tombstone awaits `git rm` by the lead).
-  Design records: `.mochiko/brainstorms/team-method-vs-command-shape/record.md` (D4 — surface reduction,
+  Design records: `.mochiko/brainstorms/team-method-vs-command-shape/record.md` (D4-tasks-into-plan — surface reduction,
   tasks merges into plan; D5 — one final package acceptance) + the architecture-design build that executed
   the merge (`.mochiko/brainstorms/architecture-design-primitive/record.md`).
 - **Version note:** originally stamped v0.30.0; re-stamped **v0.32.0** after origin/main released v0.30.0
@@ -32,7 +32,7 @@ an early-gate + cumulative-mode pattern — no new shape gap at that wave, when 
   dispatch, shape Layer 2), and is **peer-edged with the task-architect** per the v4 mesh — so main's
   v0.31.0 peer-edge conform of this loop is preserved, not lost, in its new home.
 - **What dissolved (not relocated):** tasks' standalone `tasks.md`-acceptance gate (its G5) — folded into
-  plan's single final **package acceptance (G7)** per team-method D5 (design + mapping + tasks accepted as
+  plan's single final **package acceptance (G7)** per `team-method-vs-command-shape` D5-final-package-acceptance (design + mapping + tasks accepted as
   one package, which is `/mochiko:implement`'s unchanged entry). The standalone signature was load-bearing
   only while a command boundary sat between plan and tasks; that boundary is gone.
 - **Tier failed:** n/a — this is a build-time surface reduction (a ruled merge), not an altitude/purpose
@@ -51,7 +51,7 @@ an early-gate + cumulative-mode pattern — no new shape gap at that wave, when 
 
 ## [v0.31.0] Lead-relayed gap lists superseded by the in-loop mesh (shape v4 conforming edit)
 - **Disposition:** superseded → `templates/command-shape.md` v4 (Layer 2 — "Independence by structure" + "In-loop mesh"). Rewritten in place: the reviewer is still cold-spawned at the first (mapping) review, and the producer↔reviewer peer edge is declared on the roster.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/team-method-vs-command-shape/record.md` **D1**, scoped by **D2**), not a minimalism strip. Permanent no-contact was the falsified claim; cold *arrival* survives as a property of the stage.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/team-method-vs-command-shape/record.md` **D1-mesh-routing-default**, scoped by **D2-in-loop-mesh**), not a minimalism strip. Permanent no-contact was the falsified claim; cold *arrival* survives as a property of the stage.
 - **Content (superseded, verbatim):**
   - producer seat: "Round > 1 within a phase is a message to the same seat carrying the reviewer's gap list verbatim"
   - reviewer seat: "spawned **cold at the first (mapping) review**, never in contact with the producer"

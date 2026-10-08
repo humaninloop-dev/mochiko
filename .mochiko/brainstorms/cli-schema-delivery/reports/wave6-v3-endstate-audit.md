@@ -134,7 +134,7 @@ renders` rows, all `ok`. That is the substantive check, and it is green.
 carries the pre-v0.107.0 plugin-root recipe (`README.md:590–596`). What it does not carry is the
 remedy when a migration moves a floor set — see F3.
 
-## 6. Sanitization (GI-003) — PASS
+## 6. Sanitization (GI-003-repo-secret-hygiene) — PASS
 
 No session ids, home-directory transcript paths, tokens or credentials in P3's report, in
 `README.md`, or in the `run.py` diff. The only `session_` hit in either document is the function

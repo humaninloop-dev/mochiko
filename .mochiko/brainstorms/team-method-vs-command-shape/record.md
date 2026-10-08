@@ -54,16 +54,16 @@ cold-checkout gate missing in both (kinako rule 7 — a gap either way).
 
 ## Decisions
 
-- **D1 — F1 routing topology: the mesh becomes Layer 2's default.** `Contested` — the
+- **D1-mesh-routing-default — F1 routing topology: the mesh becomes Layer 2's default.** `Contested` — the
   user ruled A (absorb the mesh as shape doctrine) over the lead's recommendation B
   (routing as a per-command declared parameter); the lead's one push-back ran as the Q2
-  scope challenge and the user took the carve (D2), so D1 stands as A-scoped. Peer-routed
+  scope challenge and the user took the carve (D2-in-loop-mesh), so D1-mesh-routing-default stands as A-scoped. Peer-routed
   in-loop verification is the default: producers hand work to the verifier directly, the
   lead rules on policy / deviations / scope — exception handler, not switchboard. The
   Layer 2 "Independence by structure" sentence is re-carved: routing no longer *carries*
   independence for in-loop seats (kinako evidence: qa independent behaviorally — re-ran
   every TEST task, checked premises — while never routing through the lead).
-- **D2 — Mesh scope: in-loop traffic only; cold review stays cold, reframed as a stage
+- **D2-in-loop-mesh — Mesh scope: in-loop traffic only; cold review stays cold, reframed as a stage
   property.** `Confident` — user adopted the recommendation after an explicit steelman of
   mesh-everywhere. The mesh default binds the kinako-evidenced class (in-loop
   producer↔verifier↔producer). Cold end-stage review keeps structural isolation — cold
@@ -74,7 +74,7 @@ cold-checkout gate missing in both (kinako rule 7 — a gap either way).
   an evidence-free extrapolation into the one structure whose independence genuinely is
   carried by who-talks-to-whom.
 
-- **D3 — Cycle clearing under the mesh: the clean-cycle verdict devolves to the pair;
+- **D3-devolved-cycle-clearing — Cycle clearing under the mesh: the clean-cycle verdict devolves to the pair;
   the lead rules on escalations and the endgame.** `Confident` — user adopted the
   recommendation. The confidence gate relocates, branch-split: the **auto-approve branch
   devolves** — a cycle whose verifications are all deterministic-CLI at 100% pass, with
@@ -98,7 +98,7 @@ cold-checkout gate missing in both (kinako rule 7 — a gap either way).
   D1–D3 stand unaffected: they are shape-level (Layer 2 routing, cold-review carve,
   verdict devolution), and a smaller command surface still runs on the shape.
 
-- **D4 — Surface reduction, first step: `/mochiko:tasks` merges into `/mochiko:plan`.**
+- **D4-tasks-into-plan — Surface reduction, first step: `/mochiko:tasks` merges into `/mochiko:plan`.**
   `Contested` — the user ruled a deliberately smaller step ("start small") than the
   lead's recommended four-command surface (setup · brainstorm · specify · build): plan
   and tasks combine into one design-room command; specify, slice, implement, setup,
@@ -112,7 +112,7 @@ cold-checkout gate missing in both (kinako rule 7 — a gap either way).
   into the spec side) is `Deferred` — recorded as the lead-recommended direction, open
   for a later session, not ruled here.
 
-- **D5 — The merged plan's human gate: one final acceptance on the whole package.**
+- **D5-final-package-acceptance — The merged plan's human gate: one final acceptance on the whole package.**
   `Confident` — user adopted the recommendation. The command's named gate moves to the
   end: design + mapping + task breakdown accepted as one package, which remains
   implement's unchanged entry condition. The standalone design-acceptance signature
@@ -147,7 +147,7 @@ cold-checkout gate missing in both (kinako rule 7 — a gap either way).
 Concluded by user ruling ("close the record, and do bookkeeping"). **Record un-reviewed**
 (bare session — direct skill invocation; no team seats, no sizing gate offered as a
 command run would have: the validator seat passed to the user, who accepted or
-counter-ruled every element inline as it was made — D1/D4 `Contested`, D2/D3/D5
+counter-ruled every element inline as it was made — D1-mesh-routing-default/D4-tasks-into-plan `Contested`, D2-in-loop-mesh/D3-devolved-cycle-clearing/D5-final-package-acceptance
 `Confident`, Q4-original withdrawn at R1).
 
 **Landed:** ROADMAP Key Decisions (team-method row, 2026-07-25) · BACKLOG

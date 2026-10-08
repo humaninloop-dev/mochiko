@@ -62,18 +62,18 @@ PRIORITY FACT — lead self-compaction. Bottom line first: **the model cannot in
 - **P23 — Absence:** no per-teammate context or token display exists anywhere. `code.claude.com/docs/en/agent-view` (fetched this run) has zero mention of context usage, token counts, or compaction for individual agents; the agent panel is name/status rows plus transcript navigation. This re-confirms `standing-seat-lifecycle` F-e(a) as still current — **the lead has no surface on which to observe a seat's occupancy**, which is exactly the fact that dissolved thresholds in that record (`record.md:193`).
 - **P24 — Absence:** no teammate summarize / handoff / context-export primitive is documented. agent-teams describes information sharing exhaustively as automatic message delivery, idle notifications, the shared task list, and messaging by name.
 - **P25 — So the answer to Q4 is: teammates only auto-compact (inferred, never documented — see P18 and `standing-seat-lifecycle` §3c/§5, which already marked this UNKNOWN), or they die and get respawned.** Both death paths are documented: graceful — *"The lead sends a shutdown request. The teammate can approve, exiting gracefully, or reject with an explanation"* (limitation: *"Shutdown can be slow — teammates finish their current request or tool call before shutting down"*); hard — `TaskStop` *"also accepts an agent-team teammate… by agent ID or name"*. Replacement is the documented recovery: *"Spawn a replacement teammate to continue the work."*
-- **P26 — One warning for the already-ruled recycling design:** `standing-seat-lifecycle` D1's same-name respawn rests on "latest wins", sourced to a pre-v2.1.199 SendMessage doc. The current tool doc says: *"As of v2.1.199, a send to a name that now resolves to a different agent than it did earlier in the conversation is **refused instead of delivered**."* A lead that respawns a seat under its old name may find sends to that name refused. Worth a check before any cadence rule leans on name reuse.
+- **P26 — One warning for the already-ruled recycling design:** `standing-seat-lifecycle` D1-checkpoint-seat-recycling's same-name respawn rests on "latest wins", sourced to a pre-v2.1.199 SendMessage doc. The current tool doc says: *"As of v2.1.199, a send to a name that now resolves to a different agent than it did earlier in the conversation is **refused instead of delivered**."* A lead that respawns a seat under its old name may find sends to that name refused. Worth a check before any cadence rule leans on name reuse.
 
 *(Lead note at review, RI-18: the three paragraphs below are the checker's interpretive
 commentary over its own facts — P1–P26 and F1–F86 are the fact surface; what follows is
 commentary, not mapped fact. Its "the seats have **zero** for anyone" phrasing is the
-equivocation D1's Resolution corrects — review fold #7.)*
+equivocation D1-seat-only-compaction's Resolution corrects — review fold #7.)*
 
-**What this means for D1, stated as facts and not as a recommendation:**
+**What this means for D1-seat-only-compaction, stated as facts and not as a recommendation:**
 
-- The strict reading of your conditional — *can the lead invoke its own compaction?* — is **NO** (P1, P2, P3, P6). On that reading D1 stands as written.
+- The strict reading of your conditional — *can the lead invoke its own compaction?* — is **NO** (P1, P2, P3, P6). On that reading D1-seat-only-compaction stands as written.
 - The rationale's second clause — *"no platform mechanism lets the lead invoke **or time** its own compaction"* — is **partly falsified**. Timing levers exist (P11): the human user typing `/compact` at a lead-named moment, a plugin-shippable `PreCompact` block, and pre-run threshold config. What the lead lacks is a lever it can pull **unilaterally, mid-run**. Whether "the lead recommends and the human types, at a gate the command already owns" counts as the lead holding the responsibility is a judgment for you and the user — I'm reporting that the mechanism exists, not that it should be used.
-- D1's asymmetry is **inverted from what the record assumes**, and this is the sharpest finding: the lead's own context has **three** documented influence paths (P11 timing, P13/P14 what-survives) — while the seats have **zero** for anyone, human or model (P18–P25). The one seat-side lever that exists is kill-and-respawn, which `standing-seat-lifecycle` D1–D4 already rules and which `BACKLOG.md:199` records as unbuilt. So a doctrine scoped to "seats only" targets the half of the team where **no compaction mechanism exists at all**.
+- D1-seat-only-compaction's asymmetry is **inverted from what the record assumes**, and this is the sharpest finding: the lead's own context has **three** documented influence paths (P11 timing, P13/P14 what-survives) — while the seats have **zero** for anyone, human or model (P18–P25). The one seat-side lever that exists is kill-and-respawn, which `standing-seat-lifecycle` D1–D4 already rules and which `BACKLOG.md:199` records as unbuilt. So a doctrine scoped to "seats only" targets the half of the team where **no compaction mechanism exists at all**.
 
 *(end verbatim priority answer)*
 
@@ -109,19 +109,19 @@ equivocation D1's Resolution corrects — review fold #7.)*
 - **F22** — **Grep absence across the whole plugin** (`plugins/mochiko/`, all file types), run this session: `recycl` **0** · `context window` **0** · `context growth` **0** · `seat lifetime` **0** · `shut down` **0** · `shutdown` **0** · `token budget` **0** · `auto-compact` **0** · `microcompact` **0** · `context health` **0** · `/usage` **0**.
 - **F23** — **`compact` now appears zero times in `plugins/mochiko/commands/` and zero times in `plugins/mochiko/agents/`.** The only two plugin hits are adjectival and unrelated to context: `templates/spec-template.md:4` ("entities conceptual and compact") and `templates/artifact-format.md:26` ("a compact ID index"). This **moves the `standing-seat-lifecycle` §7 erratum** (`record.md:144`), which recorded exactly one lexically-incidental hit at `commands/brainstorm.md:36` ("compact digest") — that line no longer exists after the v5 goal-shape rewrite, so the commands' lexical hit count for `compact` has gone from 1 to 0.
 - **F24** — **Live `compact` hits in `.mochiko/` (excluding `archive/` and `transform/`), complete list — all in session records or strip notes, none in shipped doctrine:** `brainstorms/index.md:11,13,14` · `brainstorms/team-lead-strategic-compaction/record.md:1,6,8` · `brainstorms/standing-seat-lifecycle/record.md:40,64,94,114,115,116,144,148,179,186,188,192,194,199,244,292` · `brainstorms/workflow-token-reduction/record.md:267` (adjectival) · `brainstorms/ops-observability-hardening/record.md:429,449,1198` · `brainstorms/brainstorm-command-rewrite/record.md:52,124` (adjectival) · `brainstorms/brainstorm-v2-2-revision/record.md:26` (adjectival) · `strips/*.md` ×5 (all adjectival). **Archive plus transform:** 1 file, 4 hits, not re-examined. **Net: "compaction" as a context concept exists in mochiko only inside `standing-seat-lifecycle/record.md`, `ops-observability-hardening/record.md:1198`, and this session's own files — nowhere in any command, template, agent, or skill.**
-- **F25** — `standing-seat-lifecycle/record.md` **D1** (`:262-268`): implement's **producer** recycles at cycle checkpoints under a *"**conditioned cadence**"* — *"recycle when the transcript has plausibly outgrown a fresh brief **or** the cache has gone cold — approximated by two lead-countable conditions, a **cycle floor (~≥3 …)** and a **gate-pause-duration check**"*; the **verifier** recycles *"per slice boundary"*; the dying seat shuts down *"when its cycle work is on disk — before the gate pause"*; the successor spawns *"under the same seat name"*. Scope: **implement's two seats only** — *"short-loop seats keep standing"*.
-- **F26** — **D2** (`:270-276`): a fresh incarnation is briefed *"from the existing artifact set alone … No new handoff artifact; no lead-authored state summary."* Kill-safety precondition: *"a seat is recyclable at a boundary iff this set is current on disk."* Sufficiency is a **named dogfood watch-item**, not a settled fact.
-- **F27** — **D3** (`:280-288`): Layer 2 is to be rewritten on **two axes** — *"**Team transport** … is unchanged. **Per-seat context lifecycle** — standing / stage-scoped / boundary-recycled — becomes a per-seat choice keyed to loop length, declared in each command's seat-roster [PARAM]."* The sentence *"that continuity is what a standing seat buys"* is retired; the anti-pattern line is **retargeted at transport**. Also ruled in: an **end-of-need shutdown norm** — *"a seat shuts down when its remaining work is zero **and re-summons is improbable**"* — explicitly gated because *"the pure-idle token cost is **unknown**"*.
-- **F28** — **D4** (`:290-292`): per-seat measurement rides the epic's OTel probe, with the map's unknowns as probe questions — *"teammate compaction (whether, when, cost, what it drops), pure-idle seat burn, SendMessage cache behavior across rounds"* — plus *"a `/usage` / status-line `used_percentage` reading on the heavy seats"* at gates.
-- **F29** — **D1–D4 are ruled but NOT BUILT.** `BACKLOG.md:199-201` carries the open item verbatim: *"**Standing-seat build items (deferred)** — conditioned checkpoint recycling · respawn briefs from artifacts · the Layer-2 transport-vs-lifecycle rewrite (**v4+** — coordinate with the team-method mesh rewrite above) · per-seat measurement. Record D1–D4."* `DECISIONS.md:79` records the ruling; the shape is now v5 and its version block (`command-shape.md:223-236`) attributes every v4/v5 change to `command-succinctness-strip` and `team-method-vs-command-shape`, **not** to standing-seat D3 — and F14 confirms the sentence D3 retires is still in force.
-- **F30** — **A recycling addition to `implement` was authored and then reverted by user ruling, one day ago.** `.mochiko/decisions/2026-07-30-goal-shape-wave-ceremony.md:19`, verbatim: *"implement's seat-recycling addition **reverted** (`RETURNED:` with re-add trigger — standing-seat build items shipping, D3 first)"*. The doctrine order is on record: **D3 must land before any per-command recycling text.**
+- **F25** — `standing-seat-lifecycle/record.md` **`standing-seat-lifecycle` D1-checkpoint-seat-recycling** (`:262-268`): implement's **producer** recycles at cycle checkpoints under a *"**conditioned cadence**"* — *"recycle when the transcript has plausibly outgrown a fresh brief **or** the cache has gone cold — approximated by two lead-countable conditions, a **cycle floor (~≥3 …)** and a **gate-pause-duration check**"*; the **verifier** recycles *"per slice boundary"*; the dying seat shuts down *"when its cycle work is on disk — before the gate pause"*; the successor spawns *"under the same seat name"*. Scope: **implement's two seats only** — *"short-loop seats keep standing"*.
+- **F26** — **`standing-seat-lifecycle` D2-artifact-only-respawn** (`:270-276`): a fresh incarnation is briefed *"from the existing artifact set alone … No new handoff artifact; no lead-authored state summary."* Kill-safety precondition: *"a seat is recyclable at a boundary iff this set is current on disk."* Sufficiency is a **named dogfood watch-item**, not a settled fact.
+- **F27** — **`standing-seat-lifecycle` D3-transport-lifecycle-reframe** (`:280-288`): Layer 2 is to be rewritten on **two axes** — *"**Team transport** … is unchanged. **Per-seat context lifecycle** — standing / stage-scoped / boundary-recycled — becomes a per-seat choice keyed to loop length, declared in each command's seat-roster [PARAM]."* The sentence *"that continuity is what a standing seat buys"* is retired; the anti-pattern line is **retargeted at transport**. Also ruled in: an **end-of-need shutdown norm** — *"a seat shuts down when its remaining work is zero **and re-summons is improbable**"* — explicitly gated because *"the pure-idle token cost is **unknown**"*.
+- **F28** — **`standing-seat-lifecycle` D4-seat-measurement-probe** (`:290-292`): per-seat measurement rides the epic's OTel probe, with the map's unknowns as probe questions — *"teammate compaction (whether, when, cost, what it drops), pure-idle seat burn, SendMessage cache behavior across rounds"* — plus *"a `/usage` / status-line `used_percentage` reading on the heavy seats"* at gates.
+- **F29** — **D1–D4 are ruled but NOT BUILT.** `BACKLOG.md:199-201` carries the open item verbatim: *"**Standing-seat build items (deferred)** — conditioned checkpoint recycling · respawn briefs from artifacts · the Layer-2 transport-vs-lifecycle rewrite (**v4+** — coordinate with the team-method mesh rewrite above) · per-seat measurement. Record D1–D4."* `DECISIONS.md:79` records the ruling; the shape is now v5 and its version block (`command-shape.md:223-236`) attributes every v4/v5 change to `command-succinctness-strip` and `team-method-vs-command-shape`, **not** to `standing-seat-lifecycle` D3-transport-lifecycle-reframe — and F14 confirms the sentence `standing-seat-lifecycle` D3-transport-lifecycle-reframe retires is still in force.
+- **F30** — **A recycling addition to `implement` was authored and then reverted by user ruling, one day ago.** `.mochiko/decisions/2026-07-30-goal-shape-wave-ceremony.md:19`, verbatim: *"implement's seat-recycling addition **reverted** (`RETURNED:` with re-add trigger — standing-seat build items shipping, D3 first)"*. The doctrine order is on record: **`standing-seat-lifecycle` D3-transport-lifecycle-reframe must land before any per-command recycling text.**
 - **F31** — **The lead's own accumulation has exactly one disposition in the repo, and it accepts it.** `standing-seat-lifecycle/record.md:192` (the S3 review fold), verbatim: *"the lead's read-accumulation across a run is **accepted** — bounded by epic-D3's per-unit slimming and, at the limit, lossy session auto-compaction (§3c) — because the lead is structurally un-recyclable: under the one-lead shape its context *is* the session, and no cheaper disposal exists without changing the command shape itself."* Same wording at `:244`.
 - **F32** — **Thresholds were considered and dissolved for want of an instrument.** `standing-seat-lifecycle/record.md:193`: *"F-e(a): no documented surface lets the *lead* see a teammate's context occupancy — thresholds have nothing to trigger on."* The residue is a **user escape hatch** — *"the user, who *can* see per-seat panes, may order a recycle at any gate — as a **coarse, instrument-blind override**"*.
 - **F33** — `standing-seat-lifecycle/record.md:64` (§3c) records teammate compaction as **inference, not fact**: *"**Context window fills → auto-compaction — INFERENCE for teammates; the agent-teams page never mentions compaction.**"* And `:94` (§5): *"**Teammate auto-compaction: UNKNOWN.**"*
-- **F34** — `model-tiered-seats/record.md:136` (**D1**) makes context health a standing test, verbatim: *"**Worker-context health** — what stays out of strong seats' contexts — remains the **mandatory secondary test** every tiered-seat design must also pass, composing with angle 1's lifecycle rulings."* Applied at `:163`: *"the bulk read is isolated inside the disposable subagent and the return is a terse answer, never a raw dump; the dump staying out of the dispatcher's context is the test's point."* It is a **design-review test on proposals**, not a runtime duty on any lead.
-- **F35** — `model-tiered-seats/record.md:161` (**D4 fold F5**) forecloses a standing cheap seat partly on accumulation grounds: *"a standing seat re-pays its transcript across gate pauses (angle-1 §3); the disposable subagent's frontmatter `model:` is the **confirmed** mechanism."*
+- **F34** — `model-tiered-seats/record.md:136` (**`model-tiered-seats` D1-usage-accounting-unit**) makes context health a standing test, verbatim: *"**Worker-context health** — what stays out of strong seats' contexts — remains the **mandatory secondary test** every tiered-seat design must also pass, composing with angle 1's lifecycle rulings."* Applied at `:163`: *"the bulk read is isolated inside the disposable subagent and the return is a terse answer, never a raw dump; the dump staying out of the dispatcher's context is the test's point."* It is a **design-review test on proposals**, not a runtime duty on any lead.
+- **F35** — `model-tiered-seats/record.md:161` (**`model-tiered-seats` D4-explore-tier-restoration fold F5**) forecloses a standing cheap seat partly on accumulation grounds: *"a standing seat re-pays its transcript across gate pauses (angle-1 §3); the disposable subagent's frontmatter `model:` is the **confirmed** mechanism."*
 - **F36** — `workflow-token-reduction/record.md` headline spend map (§2, `:38-44`): the **lead-side doctrine tax** is ~7,193 tokens est./run (`command-shape.md` + `agent-dispatch.md` + `loop-discipline`); the **heaviest single seat load** is plan's `technical-analyst` at ~16.8k tokens est. of skills alone, ~43k with all reference bundles. §3 (`:46-52`) names the repeat-load surfaces: the doctrine tax recurs on every run **and on every `/resume`**; pipeline artifacts are re-Read cold into ~10 agent contexts per feature; and *"once invoked, 'the rendered SKILL.md content enters the conversation… and stays there for the rest of the session'"*.
-- **F37** — **D2** (`workflow-token-reduction/record.md:258-260`): *"each workflow run ends with a recorded cost entry in the feature directory. **Baseline mechanism … a manual protocol** — at run end the lead records the user-visible usage figure (e.g. from `/usage`, supplied by the user) plus the run-shape counts the lead itself observes"*. Load-bearing constraint at `:260`: *"**the platform exposes no session-readable cumulative token total** (only a USD estimate + a live context snapshot), and an automated transcript parse would breach the kernel-free rule."*
+- **F37** — **`workflow-token-reduction` D2-run-cost-entry** (`workflow-token-reduction/record.md:258-260`): *"each workflow run ends with a recorded cost entry in the feature directory. **Baseline mechanism … a manual protocol** — at run end the lead records the user-visible usage figure (e.g. from `/usage`, supplied by the user) plus the run-shape counts the lead itself observes"*. Load-bearing constraint at `:260`: *"**the platform exposes no session-readable cumulative token total** (only a USD estimate + a live context snapshot), and an automated transcript parse would breach the kernel-free rule."*
 - **F38** — **That cost entry was subsequently dropped from the shape** (F17), so nothing in any shipped command asks a lead to record or observe usage today. `BACKLOG.md:191-193` keeps the OTel probe open: *"Standing-seat D4 + model-tiered D6 probe questions ride it."*
 - **F39** — `ops-observability-hardening/record.md:1198` carries the probe forward: *"**D4** per-seat measurement rides the epic's OTel probe (per-seat attribution, the teammate-compaction/idle/cache unknowns as probe questions, a manual per-seat `/usage` reading at gates)."*
 - **F40** — **Absence, stated:** no line in any of the six commands, in `command-shape.md`, in `agent-dispatch.md`, in `sized-end-stage-review.md`, or in any skill assigns **anyone** — lead, seat, or user — a duty to observe, budget, compact, or reset a context. The only lifecycle instructions in shipped doctrine are "respawn on resume" (F12) and "kill and respawn on addressability failure" (F15).
@@ -158,7 +158,7 @@ equivocation D1's Resolution corrects — review fold #7.)*
 - **F67** — The one context-occupancy instrument that exists is **per-session**, and each teammate is a session. Carried from `standing-seat-lifecycle/record.md:108` (statusline doc): `context_window.total_input_tokens` = *"Token counts **currently in the context window**, from the most recent API response"*; `context_window_size` = *"200000 by default, or 1000000 for models with extended context"*; plus `used_percentage` and `exceeds_200k_tokens`. Re-confirmed via F46: `used_percentage` *"always uses the model's full context window"* even when the compaction threshold is decoupled.
 - **F68** — **What happens when a teammate nears or hits its limit is undocumented.** No agent-teams sentence covers it. The general session behavior (F43/F44) plus F42 is the only available reasoning, and F41 confirms the docs never make that connection.
 - **F69** — **The lead can end a teammate two ways, both documented.** Graceful — agent-teams: *"The lead sends a shutdown request. The teammate can approve, exiting gracefully, or **reject with an explanation**."* Limitation: *"**Shutdown can be slow** — teammates finish their current request or tool call before shutting down."* Hard — `tools-reference`, `TaskStop`: *"Stops a running background task by ID. As of v2.1.198, it also accepts an **agent-team teammate** or a named background agent by agent ID or name."*
-- **F70** — **Replacement is the documented recovery path, but name takeover has tightened since the record was written.** agent-teams troubleshooting: *"**Spawn a replacement teammate to continue the work.**"* `tools-reference`, `SendMessage`: *"As of v2.1.199, a send to a name that now resolves to a different agent than it did earlier in the conversation is **refused instead of delivered**."* **This narrows `standing-seat-lifecycle` D1's same-name respawn mechanic** (`record.md:264`, sourced to a pre-2.1.199 doc): a lead that respawns a seat under its old name may find sends to that name refused rather than silently rerouted.
+- **F70** — **Replacement is the documented recovery path, but name takeover has tightened since the record was written.** agent-teams troubleshooting: *"**Spawn a replacement teammate to continue the work.**"* `tools-reference`, `SendMessage`: *"As of v2.1.199, a send to a name that now resolves to a different agent than it did earlier in the conversation is **refused instead of delivered**."* **This narrows `standing-seat-lifecycle` D1-checkpoint-seat-recycling's same-name respawn mechanic** (`record.md:264`, sourced to a pre-2.1.199 doc): a lead that respawns a seat under its old name may find sends to that name refused rather than silently rerouted.
 - **F71** — **Cost guidance the docs give for long-running teams** — `costs`, "Agent team token costs": *"Use Sonnet for teammates."* · *"Keep teams small. Each teammate runs its own context window, so token usage is roughly proportional to team size."* · *"**Keep spawn prompts focused.** Teammates load CLAUDE.md, MCP servers, and skills automatically, but everything in the spawn prompt adds to their context from the start."* · *"**Shut down teammates when their work is done.** Each active teammate continues consuming tokens until it exits or the session ends."* agent-teams: *"**Too large**: teammates work too long without check-ins, increasing risk of wasted effort"* and *"Letting a team run unattended for too long increases the risk of wasted effort."* **None of these is framed as context management; all are framed as token cost or wasted effort.**
 - **F72** — **Absence: no mechanism for a teammate to summarize itself, hand off state, or transfer context to a successor.** agent-teams describes information sharing exhaustively as automatic message delivery, idle notifications, the shared task list, and teammate messaging by name.
 - **F73** — Teammate caches are separate and shorter-lived than the lead's. `prompt-caching`, "Subagents and the cache": *"A subagent starts its own conversation with its own system prompt and tool set, separate from the parent's. It builds its own cache, starting with no cache hits on its first call … **Subagents use the five-minute TTL even on a subscription**, since the automatic one-hour TTL applies to the main conversation. The parent's cache is unaffected."* (Stated for subagents; not restated for teammates.)
@@ -186,7 +186,7 @@ equivocation D1's Resolution corrects — review fold #7.)*
 
 #### FD-1 — can a model observe its own context occupancy? (routed from the review; settles RI-14)
 
-FD-1 SETTLED. **D3's claim holds for the model: no documented mechanism lets a model — lead or teammate — read its own context occupancy. But the reviewers are right that the map didn't carry the fact, and settling it surfaced a documented surface I had missed, which forces two errata (F66, F85) and softens one inherited claim.** Facts only, no recommendation.
+FD-1 SETTLED. **D3-structural-cadence-trigger's claim holds for the model: no documented mechanism lets a model — lead or teammate — read its own context occupancy. But the reviewers are right that the map didn't carry the fact, and settling it surfaced a documented surface I had missed, which forces two errata (F66, F85) and softens one inherited claim.** Facts only, no recommendation.
 
 **(a) Can the model read its own context occupancy? — NO documented mechanism, on four checked routes.**
 
@@ -204,9 +204,9 @@ FD-1 SETTLED. **D3's claim holds for the model: no documented mechanism lets a m
 - **FD1-7 — And a plugin can ship one.** Same section: *"The same trust and `disableAllHooks` gates that apply to `statusLine` apply here. **Plugins can ship a default `subagentStatusLine` in their [`settings.json`](/docs/en/plugins-reference#standard-plugin-layout).**"*
 - **FD1-8 — Erratum to F66.** F66 stated "no per-teammate context or token display is documented anywhere", grounded in `agent-view` and `interactive-mode`. That is **too strong**: the agent panel's **default** subagent row already displays a **token count**, and `subagentStatusLine` exposes `contextWindowSize` + `tokenCount` + `tokenSamples` per row. **Corrected F66:** *"`agent-view` and `interactive-mode` carry no per-agent context display, but `statusline`'s `subagentStatusLine` does: the agent panel's default row is `name · description · token count`, and a custom row script receives `contextWindowSize`, `tokenCount`, and `tokenSamples` per task. This is a **human-facing terminal surface**, readable by a shell script, **not by the lead model.**"*
 - **FD1-9 — Two limits on FD1-6, both undocumented rather than negative.** (i) The doc says *"each **subagent** shown in the agent panel"*; **it never states whether agent-team teammates appear in that `tasks` array.** Teammates do share that panel (agent-teams: *"The lead's terminal lists teammates in the agent panel below the prompt input"*), so coverage is plausible — but unconfirmed, and I am not asserting it. (ii) `tokenCount` is **not defined** on the page — whether it means live context occupancy or cumulative usage is unstated, which is precisely the live-vs-cumulative ambiguity `standing-seat-lifecycle` F-e(a) left open on the 300K sighting. `contextWindowSize` being alongside it is suggestive of a fill ratio, not proof.
-- **FD1-10 — Net answer to (c).** For **a model stating its own fill**: no documented mechanism — direct read impossible (FD1-1 through FD1-3), and the one injection channel (FD1-4) has no occupancy value to carry, only a lagging transcript to estimate from. **So the record's D3 phrase — "a seat cannot see its own token count either, so a self-reported 'context-health' line is an invented number" — is CORRECT AS STATED for the model.** What changes is the *neighbouring* claim: a **human**, and a **script**, can see a per-agent token count today, and a plugin can ship the row that displays it.
+- **FD1-10 — Net answer to (c).** For **a model stating its own fill**: no documented mechanism — direct read impossible (FD1-1 through FD1-3), and the one injection channel (FD1-4) has no occupancy value to carry, only a lagging transcript to estimate from. **So the record's D3-structural-cadence-trigger phrase — "a seat cannot see its own token count either, so a self-reported 'context-health' line is an invented number" — is CORRECT AS STATED for the model.** What changes is the *neighbouring* claim: a **human**, and a **script**, can see a per-agent token count today, and a plugin can ship the row that displays it.
 
-**One inherited claim this softens, flagged because a ruling rests on it.** `standing-seat-lifecycle/record.md:193` dissolved threshold-triggered recycling on the finding *"no documented surface lets the **lead** see a teammate's context occupancy — thresholds have nothing to trigger on"*, and D1's escape hatch was worded as a *"coarse, **instrument-blind** override"* because F-e(a) found the pane figure's meaning undetermined. **Both remain true of the lead-as-model** (FD1-1–FD1-5), and the meaning of `tokenCount` is still undefined (FD1-9ii). **But "instrument-blind" is now the weaker half of the claim:** `context_window.used_percentage` is documented as *"Pre-calculated percentage of context window used"*, `context_window_size` as the window ceiling, and `total_input_tokens` as *"Token counts currently in the context window, from the most recent API response"* — so a human reading a configured status line has a **calibrated** fill figure, not a bare number. That resolves F-e(a)'s ambiguity **for the session-level status line**; it does not resolve it for the panel's `tokenCount`.
+**One inherited claim this softens, flagged because a ruling rests on it.** `standing-seat-lifecycle/record.md:193` dissolved threshold-triggered recycling on the finding *"no documented surface lets the **lead** see a teammate's context occupancy — thresholds have nothing to trigger on"*, and `standing-seat-lifecycle` D1-checkpoint-seat-recycling's escape hatch was worded as a *"coarse, **instrument-blind** override"* because F-e(a) found the pane figure's meaning undetermined. **Both remain true of the lead-as-model** (FD1-1–FD1-5), and the meaning of `tokenCount` is still undefined (FD1-9ii). **But "instrument-blind" is now the weaker half of the claim:** `context_window.used_percentage` is documented as *"Pre-calculated percentage of context window used"*, `context_window_size` as the window ceiling, and `total_input_tokens` as *"Token counts currently in the context window, from the most recent API response"* — so a human reading a configured status line has a **calibrated** fill figure, not a bare number. That resolves F-e(a)'s ambiguity **for the session-level status line**; it does not resolve it for the panel's `tokenCount`.
 
 *(end verbatim FD-1 answer)*
 
@@ -224,7 +224,7 @@ FD-2 SETTLED — **the reviewers are correct and F9 is defective.** Plan's compl
 
 **(b) The "≤6 everywhere else" figure EXCLUDES plan's completeness reviewer — on two grounds, either of which is sufficient.**
 
-- **FD2-6 — Ground one: the measurement is producer-keyed, in its own words.** `standing-seat-lifecycle/record.md:54`, verbatim: *"Both dwarf the ≤3–6-round standing **producers** of every other command."* The "≤6 everywhere else" shorthand used later at `:181` and inside **D1's own rationale at `:266`** is a compression of that producer-scoped sentence. `model-tiered-seats/record.md:81` removes all doubt: *"All non-implement standing **producers** are ≤3–6 rounds."* **Reviewers were never in the denominator.**
+- **FD2-6 — Ground one: the measurement is producer-keyed, in its own words.** `standing-seat-lifecycle/record.md:54`, verbatim: *"Both dwarf the ≤3–6-round standing **producers** of every other command."* The "≤6 everywhere else" shorthand used later at `:181` and inside **`standing-seat-lifecycle` D1-checkpoint-seat-recycling's own rationale at `:266`** is a compression of that producer-scoped sentence. `model-tiered-seats/record.md:81` removes all doubt: *"All non-implement standing **producers** are ≤3–6 rounds."* **Reviewers were never in the denominator.**
 - **FD2-7 — Ground two: the plan row listed the reviewer as standing but gave it no round figure.** `standing-seat-lifecycle/record.md:48`, verbatim: *"| `plan.md` | **producer** (technical-analyst) across **both phases**; **completeness reviewer** standing both phases | feasibility reviewer cold, **once** (re-fire only on structural change) | producer up to **~6** (≤3/phase × 2) |"*. The seat is named as standing; the rounds column reports **only the producer**. The reviewer's own exposure was never computed. `model-tiered-seats/record.md:70` repeats the pattern — its completeness-reviewer row's rounds cell is a bare dash.
 - **FD2-8 — And the figure was computed against a plan that no longer exists.** Both records say *"both phases"* / *"≤3/phase × 2"* — plan had **two** phases on 2026-07-23, and `tasks` was a **separate command** with its own two phases (`standing-seat-lifecycle/record.md:49`). Under today's file plan has **five** stages (FD2-1/FD2-3), because tasks merged in (map F3) and an architecture stage was added. **So the reviewer's own lifetime grew from ≤6 to ≤15 independently of the scoping error.** Even had the original derivation counted reviewers, it would now be stale.
 
@@ -232,7 +232,7 @@ FD-2 SETTLED — **the reviewers are correct and F9 is defective.** Plan's compl
 
 > **F9 (corrected).** **`implement` is the longest-running team by construction** — its producer's lifetime is bounded by the feature's cycle count, which the command file leaves unbounded, and the one built feature ran 15 cycles at up to 3 retries each plus up to 3 fix passes (`standing-seat-lifecycle/record.md:54`: *"~15–45+ turns"*). **But the runner-up is not a producer: it is `plan`'s completeness reviewer at ≤15 review passes** (`plan.md:22-24`, `:40`, `:90-91` — five stages × cap 3), standing from first review to last, which is **2.5× plan's longest producer** (`technical-analyst`, ≤6) and longer than every standing seat in the library except implement's two. The inherited *"≤6 everywhere else"* (`standing-seat-lifecycle/record.md:54`, `:181`, `:266`) is **a producer-only measurement** — stated as such at `:54` and `model-tiered-seats:81` — **computed when plan had two phases**; it does not bound reviewer seats and does not survive the tasks-into-plan merge. Corrected library ordering by bounded exposure: implement producer (unbounded by cycle count) · implement verifier (~15 verifications + final validation) · **plan completeness reviewer (≤15 passes)** · plan `technical-analyst` and `task-architect` (≤6 each) · setup producer (analysis + ≤3) · specify, slice producers (≤3).
 
-**One consequence I am flagging as a fact about the record's own text, not as advice.** The session's **D4** scopes the cadence rule to *"standing seats whose lifetime spans multiple units"* and enumerates *"implement's producer and verifier, setup's producer, a long session's fact-checker"*, exempting *"cold end-stage seats (e.g. reviewers spawned at convergence)"*. Plan's completeness reviewer is **not** a cold end-stage seat — `plan.md:40` spawns it *"cold at first review, standing after"*, in-loop across five stages — so **it satisfies D4's stated criterion while being absent from D4's enumeration**, and D4's rationale cites the very *"≤6 library-wide"* figure that FD2-6/FD2-7 show excludes it. Whether the enumeration or the criterion governs is a ruling, not a fact; I report only that the two disagree on this seat.
+**One consequence I am flagging as a fact about the record's own text, not as advice.** The session's **D4-governed-standing-seats** scopes the cadence rule to *"standing seats whose lifetime spans multiple units"* and enumerates *"implement's producer and verifier, setup's producer, a long session's fact-checker"*, exempting *"cold end-stage seats (e.g. reviewers spawned at convergence)"*. Plan's completeness reviewer is **not** a cold end-stage seat — `plan.md:40` spawns it *"cold at first review, standing after"*, in-loop across five stages — so **it satisfies D4-governed-standing-seats's stated criterion while being absent from D4-governed-standing-seats's enumeration**, and D4-governed-standing-seats's rationale cites the very *"≤6 library-wide"* figure that FD2-6/FD2-7 show excludes it. Whether the enumeration or the criterion governs is a ruling, not a fact; I report only that the two disagree on this seat.
 
 *(end verbatim FD-2 answer)*
 
@@ -249,7 +249,7 @@ FD-3 SCORED. **One command of six fills P14. `implement` is the only one that bi
 - **FD3-5 — `setup`: NO branch, no P14 — and it fails the test for an instructive reason.** `setup.md:132-134`, verbatim: *"**No devolved branch:** every verdict is a Tier-2 judgment grade **with deterministic sub-checks inside**, never all-CLI, so no gate is skipped and no unit clears unread."* Deterministic checks **do** exist inside setup's validation; the branch still doesn't bind, because Layer 2 requires *every* verification in the unit to be a deterministic CLI check (`command-shape.md:213-215`). Partial determinism does not qualify.
 - **FD3-6 — `brainstorm`: no P14, and the word "devolved" does not appear in the file at all.** A grep for `devolved` across all six commands returns hits in five; `brainstorm.md` has **zero**. Its Bindings block carries Artifacts · Uncertainty carrier · Fact route · Verify-pass owner · KM landing — **no clearing unit**. What it does state, at `brainstorm.md:40-41`, is the absence one level up: *"**Validation model:** the sized end-stage review of `record.md`; there is no in-loop critique seat."* Since the devolved branch is a property of in-loop clearing, no in-loop critique seat forecloses it by construction. **Whether that satisfies the shape's stated-absence rule** (`command-shape.md:31-34`) **is a grading judgment, not a fact I can settle.** Two facts bearing on it: P14 is declared *"(devolved branch only)"* at `command-shape.md:116-117`, i.e. conditional rather than universally required; and `brainstorm.md` was graded **PASS** in the 2026-07-30 wave ceremony (`.mochiko/decisions/2026-07-30-goal-shape-wave-ceremony.md:21`: *"**Ceremony audit: all five PASS; wave verdict PASS.**"*), so an independent grader already accepted the file as written.
 
-**FD3-7 — The blast radius, stated plainly.** **P14 fill rate: 1 of 6.** A shape-wide cadence keyed to the clearing unit binds `implement` alone and is a **no-op in the other five**, which have no clearing unit to count. `implement` is also the one command whose seat-recycling text was authored and then **reverted** on 2026-07-30 pending D3 (map F30) — so a P14-keyed rule would land exactly, and only, where a reverted mechanism is already queued.
+**FD3-7 — The blast radius, stated plainly.** **P14 fill rate: 1 of 6.** A shape-wide cadence keyed to the clearing unit binds `implement` alone and is a **no-op in the other five**, which have no clearing unit to count. `implement` is also the one command whose seat-recycling text was authored and then **reverted** on 2026-07-30 pending `standing-seat-lifecycle` D3-transport-lifecycle-reframe (map F30) — so a P14-keyed rule would land exactly, and only, where a reverted mechanism is already queued.
 
 **FD3-8 — What the other five do have that is lead-countable, since the denominator question is really "count what instead".** These are structural units the command files already make the lead count, none of them P14: **rounds** — `specify` and `slice` cap 3 (`specify.md:61`, `slice.md:74`); `setup` caps 3 produce↔validate (`setup.md:112`); `plan` caps *"**3** produce↔review rounds **per stage**"* across five stages (`plan.md:90-91`). **Stages** — `plan`'s five. **Named gates** — G1–G7 (`plan`), G1–G5 (`implement`, `setup`), G1–G4 (`slice`), G1–G3 (`specify`). **`brainstorm` has neither rounds nor numbered gates**: its bounds are per-reviewer, per-survivor, and per-fact (*"per reviewer one cold read … lead↔reviewer argument **max two exchanges per survivor** … one fact-checker dispatch per fact"*, `brainstorm.md:61-64`), and its gates are named rather than numbered (review sizing · survivor rulings · tie-break · acceptance). **So `brainstorm` is the hardest case for any structural cadence, not merely for a P14-keyed one** — and per map F4 its fact-checker is a whole-session standing seat, i.e. it has the lifetime problem without a countable unit.
 
@@ -259,7 +259,7 @@ FD-3 SCORED. **One command of six fills P14. `implement` is the only one that bi
 
 ## Decisions
 
-### D1 — Scope: the lead manages the seats' compaction, not its own — `Contested` (held at Q8, re-affirmed at review U2; mark per U5 — held-through-challenge ⇒ `Contested`, the same convention as D3)
+### D1-seat-only-compaction — Scope: the lead manages the seats' compaction, not its own — `Contested` (held at Q8, re-affirmed at review U2; mark per U5 — held-through-challenge ⇒ `Contested`, the same convention as D3-structural-cadence-trigger)
 
 **Statement (amended at review — original second clause superseded by the fact map):** The
 lead's compaction strategy governs the **seats' contexts only**. The lead's own (main-session)
@@ -312,7 +312,7 @@ levers needing no human** (post-compaction re-read; the Compact-Instructions sec
 the unilateral-lever ground does not reach (DQ-5 residue, recorded); available to a future
 session — this record's map (notably F79–F86) is the ready evidence base.
 
-### D2 — Binding site: `command-shape.md` Layer 2 — `Confident`
+### D2-layer-two-binding — Binding site: `command-shape.md` Layer 2 — `Confident`
 
 **Statement:** The compaction-responsibility doctrine lives in **Layer 2 of
 `templates/command-shape.md`** — every team-form command inherits it; a command adds a
@@ -325,16 +325,16 @@ and the mesh. ~~"the compaction rule will key on structures Layer 2 already name
 units, checkpoints), so it can be stated once in workflow-generic terms"~~ — superseded
 (RI-6 residue / FD-3): Layer 2 names the clearing unit only where the devolved branch binds,
 which is 1 of 6 commands, so the generic statement keys instead to **the command's own
-counted loop unit** per D6 as re-keyed (U6a), with `brainstorm`'s parameter line the one
+counted loop unit** per D6-overridable-cadence-default as re-keyed (U6a), with `brainstorm`'s parameter line the one
 override. Single-sourcing: commands reference, never restate.
 
 **Known limit (DQ-4, recorded — unmitigated; corrected at verify B5):** the Layer-2 home
 enters the lead's context as message history and is summarized away by the lead's own
 compaction (F83). ~~Survival rides the existing resume-from-workspace-evidence Recovery
 discipline~~ — that discipline triggers on pause/resume, never on a context condition
-(F12/F19), and a post-compaction re-read duty was a **rejected lead-side lever at Q8** (D1
-Rejected), so the exposure stands **unmitigated, an accepted risk under D1's scope** — the
-future lead-side session D1 names inherits it, with F84 pricing the re-read it would cost.
+(F12/F19), and a post-compaction re-read duty was a **rejected lead-side lever at Q8** (D1-seat-only-compaction
+Rejected), so the exposure stands **unmitigated, an accepted risk under D1-seat-only-compaction's scope** — the
+future lead-side session D1-seat-only-compaction names inherits it, with F84 pricing the re-read it would cost.
 
 **Rejected (RI-13, recorded at review):** the project CLAUDE.md governance region (survives
 compaction re-injected from disk, but setup-owned and per-project — a plugin cannot land
@@ -342,7 +342,7 @@ doctrine there); skill-body carriage (re-injected but truncated under the 5k/25k
 dropped — F54/F56); per-command restating (violates single-sourcing and meets the same
 message-history fate).
 
-### D3 — Trigger: structural cadence at boundaries, plain — `Contested`
+### D3-structural-cadence-trigger — Trigger: structural cadence at boundaries, plain — `Contested`
 
 **Statement:** The lead acts on a seat's context at **named structural moments only** — every
 N units (cycles, rounds), at gate pauses, at review start — a cadence the lead counts. No
@@ -370,7 +370,7 @@ per-agent token count (FD1-6/FD1-8) — no longer wholly instrument-blind for th
 though teammate coverage of `subagentStatusLine` and the meaning of `tokenCount` are
 **recorded-open probe items**.
 
-### D4 — Governed seats: standing multi-unit seats only — `Confident`
+### D4-governed-standing-seats — Governed seats: standing multi-unit seats only — `Confident`
 
 **Statement (enumeration corrected at review per FD-2; criterion unchanged, user re-affirmed
 U1):** The cadence rule governs **standing seats whose lifetime spans multiple units** — the
@@ -379,9 +379,9 @@ F9, reproduced as cited): implement's producer (unbounded by cycle count; the on
 seat, ~15–45+ turns) · implement's verifier (~15 verifications + final validation, derived; unmeasured — RI-16) ·
 **plan's completeness reviewer (≤15 review passes)** · plan's technical-analyst and task-architect (≤6 each) ·
 setup's producer (analysis + ≤3) · specify's and slice's producers (≤3). **Beyond FD-2's
-ordering, D4 adds (verify B3/B4):** a long session's **fact-checker** — no unit bound exists
+ordering, D4-governed-standing-seats adds (verify B3/B4):** a long session's **fact-checker** — no unit bound exists
 for it; it **meets the criterion but is cadence-exempt** for want of a countable unit,
-governed by the user's gate-time recycle override per D6's brainstorm parameter line.
+governed by the user's gate-time recycle override per D6-overridable-cadence-default's brainstorm parameter line.
 "Cold at first review, standing after" seats are **governed when multi-unit** —
 cold arrival guarantees freshness only at the first round, not the fifteenth (RI-7). Exempt:
 cold end-stage seats (reviewers spawned at convergence). Edge: setup's producer (≤3 rounds)
@@ -395,27 +395,27 @@ merge (FD2-6/FD2-8).
 defines a respawn as cold by design — so cadence-recycling a convergence-stage seat spends a
 respawn on freshness it already has. The accumulation problem concentrates in standing
 multi-unit seats (measured for implement's producer; bounded-derived for the rest, FD-2).
-Per-command exceptions ride D2's escape hatch (a parameter line), not the generic rule.
+Per-command exceptions ride D2-layer-two-binding's escape hatch (a parameter line), not the generic rule.
 
 **Re-affirmed at review (U1)** with the corrected enumeration in view.
 
 **Rejected:** A (uniform all-seats) — pays for no-op respawns; C (per-command marking as the
-rule) — D2 already provides it as the exception path.
+rule) — D2-layer-two-binding already provides it as the exception path.
 
-### D5 — One doctrine: the lifecycle rulings generalize into Layer 2 — `Confident`
+### D5-lifecycle-doctrine-generalized — One doctrine: the lifecycle rulings generalize into Layer 2 — `Confident`
 
 **Statement (amended at review):** The `standing-seat-lifecycle` recycling machinery becomes
-the **generic Layer-2 mechanism** of this doctrine: cadence-triggered (D3), scoped to
-standing multi-unit seats (D4), **recycling-by-respawn as the default move** — respawn briefs
+the **generic Layer-2 mechanism** of this doctrine: cadence-triggered (D3-structural-cadence-trigger), scoped to
+standing multi-unit seats (D4-governed-standing-seats), **recycling-by-respawn as the default move** — respawn briefs
 built from existing artifacts only, cold-by-design freshness, successors under a **versioned
 name with the lead re-announcing the seat** (~~same-name successors~~ superseded pending the
 v2.1.199 name-refusal check, F70/P26 — same-name reuse only if that check passes at build).
 Implement's ruled numbers (~≥3-cycle floor + gate-pause-**duration** check — a cache-warmth
 condition on the trigger, not a per-gate observation duty (RI-10); per-slice verifier
-recycling) survive as that command's parameter values under D2.
+recycling) survive as that command's parameter values under D2-layer-two-binding.
 
 **Marking (amended at review, U4a):** the lifecycle rulings are **absorbed with one ruled
-exception: D6 supersedes standing-seat D3's clause "declared in each command's seat-roster
+exception: D6-overridable-cadence-default supersedes `standing-seat-lifecycle` D3-transport-lifecycle-reframe's clause "declared in each command's seat-roster
 [PARAM]"** — the lifecycle-policy *location* moves to the Layer-2 default with per-command
 overrides. Every other clause is absorbed unchanged: their record stays the rationale home
 for the machinery; this session's record is the home for its promotion to shape-wide
@@ -433,10 +433,10 @@ per-command parameters is the shape's existing pattern; the risks ride the watch
 the probe rider below.
 
 **Sequencing invariant (U4c, honoring the 2026-07-30 revert's gate):** the Layer-2 lifecycle
-rewrite (standing-seat D3 as amended by this session) lands **first**; no per-command
+rewrite (`standing-seat-lifecycle` D3-transport-lifecycle-reframe as amended by this session) lands **first**; no per-command
 recycling text ships before it. **Cost rider (DQ-11, recorded-open):** no per-respawn token
 figure exists for any seat; costing one recycle rides the OTel/dogfood probe (F28/F38/F39),
-which may tune D6's default value — mirroring the original ruling's own gating discipline
+which may tune D6-overridable-cadence-default's default value — mirroring the original ruling's own gating discipline
 (F27).
 
 **Rejected (RI-13, recorded at review):** keeping the machinery implement-scoped with Layer 2
@@ -457,12 +457,12 @@ Per the amended Statement, the ruling's **default is versioned names (`producer-
 lead re-announcing the seat**; same-name reuse is the conditional upgrade, available only if
 the name-refusal check passes at build.
 
-### D6 — Cadence default lives in Layer 2, command-overridable — `Confident`
+### D6-overridable-cadence-default — Cadence default lives in Layer 2, command-overridable — `Confident`
 
 **Statement (re-keyed at review, U6a — the original shape-slot-P14 keying superseded by
 FD-3; re-worded at verify B2/N4):** Layer 2 states the default cadence — **at each gate
 pause, count each governed seat's completed loop units and recycle at ~≥3** — counting,
-never per-seat observation (D3/RI-10), with D5's gate-pause-**duration** (cache-warmth)
+never per-seat observation (D3/RI-10), with D5-lifecycle-doctrine-generalized's gate-pause-**duration** (cache-warmth)
 condition composing on the same trigger — the unit being the one the command's Bounds
 already make the lead count (implement: the **cycle** · specify: the **produce↔critique
 round** · slice: the **produce↔review round** · setup: the **produce↔validate round** ·
@@ -471,21 +471,21 @@ parameter line only to override. ~~"recycle at ~≥3 of the command's own cleari
 denominator in exactly **1 of 6 commands** (FD3-7: shape slot P14 is devolved-branch-only,
 filled by implement alone) — a silent no-op in the other five. `brainstorm` counts no sequential loop
 unit (FD3-8) and carries the one required parameter line: its standing fact-checker is
-cadence-exempt, governed by the user's gate-time recycle override (D3's escape hatch).
+cadence-exempt, governed by the user's gate-time recycle override (D3-structural-cadence-trigger's escape hatch).
 ~~"the only current heavyweight needs zero edits"~~ superseded (RI-2, U4b): implement
 conforms on the producer floor but carries **one explicit override as a parameter value —
-its verifier keeps the ruled per-slice cadence** (standing-seat D1, F25).
+its verifier keeps the ruled per-slice cadence** (`standing-seat-lifecycle` D1-checkpoint-seat-recycling, F25).
 
 **Rationale (amended at review):** defaults live once in the shape; forced per-command
 explicitness (rejected B) adds a mandatory line to every command while a differing command
 writes the same override line under either option. The counted-loop-unit key preserves that
 while giving five of six commands a real denominator (FD3-8); the **mechanism**
 (default-in-shape + overrides) is what the user re-affirmed (U1), the content being the U6a
-ruling. The default *value* (~≥3) is probe-tunable per D5's cost rider.
+ruling. The default *value* (~≥3) is probe-tunable per D5-lifecycle-doctrine-generalized's cost rider.
 
 **Note:** D4–D6 were flagged as a three-adoption streak (RI-3/DQ-9); at review the user
 **explicitly re-affirmed all three** (U1) with the repairs in view — the `Confident` marks
-are genuine as of that re-affirmation; D6's rides the U6a re-key.
+are genuine as of that re-affirmation; D6-overridable-cadence-default's rides the U6a re-key.
 
 ---
 
@@ -513,64 +513,64 @@ ruled; full per-survivor table with the folds.
 
 ### Dispositions (all 23; user batch U1–U6 ruled 2026-07-31)
 
-**User batch:** **U1** D4/D5/D6 explicitly re-affirmed (D5 as a named bet on unbuilt
-machinery; D6 as the mechanism over the U6a content) · **U2** D1 stands on the corrected
+**User batch:** **U1** D4-governed-standing-seats/D5-lifecycle-doctrine-generalized/D6-overridable-cadence-default explicitly re-affirmed (D5-lifecycle-doctrine-generalized as a named bet on unbuilt
+machinery; D6-overridable-cadence-default as the mechanism over the U6a content) · **U2** D1-seat-only-compaction stands on the corrected
 inventory · **U3** the omitted F45 fact → record-open probe · **U4** adopted whole
 (supersession clause + "zero edits" struck with the verifier override stated + D3-first
-sequencing invariant) · **U5** D1 → `Contested` · **U6** option (a), the counted-loop-unit
+sequencing invariant) · **U5** D1-seat-only-compaction → `Contested` · **U6** option (a), the counted-loop-unit
 re-key.
 
 | # | survivor(s) | sev | disposition |
 |---|---|---|---|
-| 1 | RI-1 | C | user-ruled U4a — supersession clause in D5's Marking; both indexes + decisions row at close |
-| 2 | RI-2 | C | user-ruled U4b — "zero edits" struck; verifier per-slice override stated in D6 |
-| 3 | RI-3 + DQ-9 + RI-17/DQ-10 (folded per lead merge) | C | user-ruled U1 — explicit re-affirmation; D6's Note replaced; D5's same-name clause made conditional (the RI-17/DQ-10 repair) |
-| 4 | RI-4 + DQ-13 | C | resolved — D1 Statement/Rationale amended in place, superseded wording struck through |
-| 5 | DQ-1 | C | user-ruled U4c — sequencing invariant in D5 |
-| 6 | DQ-2 | C | user-ruled U3 — omission recorded in D1's Resolution; probe record-open |
-| 7 | DQ-3 + RI-9 | C | resolved — equivocation ruled: respawn = reset lever, not compaction; one inventory statement in D1; D1 re-affirmed on it (U2); null-option risk named in D5's rationale |
-| 8 | DQ-4 | C | recorded-open — D2 known-limit recorded **unmitigated** (verify B5: Recovery fires on pause, never a context condition; the re-read duty was Q8-rejected) — accepted risk under D1's scope |
-| 9 | DQ-7 (+RI-6 residue) | C | user-ruled U6a — D6 re-keyed to counted loop units; D2's workflow-generic premise corrected |
-| 10 | DQ-6 + RI-7 | I | resolved via FD-2 — D4 enumeration corrected; cold-then-standing class classified governed-when-multi-unit |
-| 11 | DQ-11 | I | recorded-open — cost rider in D5; D6 value probe-tunable |
+| 1 | RI-1 | C | user-ruled U4a — supersession clause in D5-lifecycle-doctrine-generalized's Marking; both indexes + decisions row at close |
+| 2 | RI-2 | C | user-ruled U4b — "zero edits" struck; verifier per-slice override stated in D6-overridable-cadence-default |
+| 3 | RI-3 + DQ-9 + RI-17/DQ-10 (folded per lead merge) | C | user-ruled U1 — explicit re-affirmation; D6-overridable-cadence-default's Note replaced; D5-lifecycle-doctrine-generalized's same-name clause made conditional (the RI-17/DQ-10 repair) |
+| 4 | RI-4 + DQ-13 | C | resolved — D1-seat-only-compaction Statement/Rationale amended in place, superseded wording struck through |
+| 5 | DQ-1 | C | user-ruled U4c — sequencing invariant in D5-lifecycle-doctrine-generalized |
+| 6 | DQ-2 | C | user-ruled U3 — omission recorded in D1-seat-only-compaction's Resolution; probe record-open |
+| 7 | DQ-3 + RI-9 | C | resolved — equivocation ruled: respawn = reset lever, not compaction; one inventory statement in D1-seat-only-compaction; D1-seat-only-compaction re-affirmed on it (U2); null-option risk named in D5-lifecycle-doctrine-generalized's rationale |
+| 8 | DQ-4 | C | recorded-open — D2-layer-two-binding known-limit recorded **unmitigated** (verify B5: Recovery fires on pause, never a context condition; the re-read duty was Q8-rejected) — accepted risk under D1-seat-only-compaction's scope |
+| 9 | DQ-7 (+RI-6 residue) | C | user-ruled U6a — D6-overridable-cadence-default re-keyed to counted loop units; D2-layer-two-binding's workflow-generic premise corrected |
+| 10 | DQ-6 + RI-7 | I | resolved via FD-2 — D4-governed-standing-seats enumeration corrected; cold-then-standing class classified governed-when-multi-unit |
+| 11 | DQ-11 | I | recorded-open — cost rider in D5-lifecycle-doctrine-generalized; D6-overridable-cadence-default value probe-tunable |
 | 12 | RI-8 | I | resolved — "proven" → "ruled but unbuilt"; the bet named |
-| 13 | RI-10 | I | resolved — "duration" restored as a cache-warmth condition in D5 **and** composed into D6's Statement (verify B2) |
-| 14 | RI-11 | I | user-ruled U5 — D1 `Contested`; convention stated on D1's header |
+| 13 | RI-10 | I | resolved — "duration" restored as a cache-warmth condition in D5-lifecycle-doctrine-generalized **and** composed into D6-overridable-cadence-default's Statement (verify B2) |
+| 14 | RI-11 | I | user-ruled U5 — D1-seat-only-compaction `Contested`; convention stated on D1-seat-only-compaction's header |
 | 15 | RI-12 + DQ-14 | I | resolved — Status line reset; index refresh rides the close ritual |
-| 16 | RI-13 | I | resolved (pairs with #8) — Rejected roads recorded on D2 and D5 |
-| 17 | RI-5 + DQ-12 | M | resolved — D6's live citations qualified "shape slot P14" (the struck original quote kept as written); P-namespace distinct (verify N3) |
-| 18 | RI-16 | M | resolved — measurement attributed to the producer; verifier marked unmeasured (D4) |
+| 16 | RI-13 | I | resolved (pairs with #8) — Rejected roads recorded on D2-layer-two-binding and D5-lifecycle-doctrine-generalized |
+| 17 | RI-5 + DQ-12 | M | resolved — D6-overridable-cadence-default's live citations qualified "shape slot P14" (the struck original quote kept as written); P-namespace distinct (verify N3) |
+| 18 | RI-16 | M | resolved — measurement attributed to the producer; verifier marked unmeasured (D4-governed-standing-seats) |
 | 19 | RI-18 | M | resolved — commentary marker inserted before the priority answer's closing paragraphs |
-| 20 | DQ-5 residue | M | resolved — operative-conjunct note in D1's Rejected |
-| 21 | DQ-8 residue | M | resolved — F32 escape hatch restated under D3 with FD-1's calibration note |
-| 22 | RI-14 / FD-1 | fact | settled — D3 grounded; F66/F85 errata landed verbatim |
+| 20 | DQ-5 residue | M | resolved — operative-conjunct note in D1-seat-only-compaction's Rejected |
+| 21 | DQ-8 residue | M | resolved — F32 escape hatch restated under D3-structural-cadence-trigger with FD-1's calibration note |
+| 22 | RI-14 / FD-1 | fact | settled — D3-structural-cadence-trigger grounded; F66/F85 errata landed verbatim |
 | 23 | RI-15 / FD-2 | fact | settled — F9 corrected verbatim; fed #10 |
 
 **Recorded-open items for the landing:** teammate applicability of
 `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE` (U3) · `subagentStatusLine` teammate coverage + `tokenCount`
 semantics (FD-1) · cost-one-recycle (DQ-11) — those three riding the existing OTel/dogfood
-probe watch — plus **D2's compaction exposure (DQ-4), an accepted risk inherited by the
-future lead-side session D1 names, not a probe item** (verify nit 2). **Reviewer severity disagreement (RI-17/DQ-10)** resolved by lead merge into #3 at
+probe watch — plus **D2-layer-two-binding's compaction exposure (DQ-4), an accepted risk inherited by the
+future lead-side session D1-seat-only-compaction names, not a probe item** (verify nit 2). **Reviewer severity disagreement (RI-17/DQ-10)** resolved by lead merge into #3 at
 Important. **Verify pass:** owner reviewer-ri (record-integrity).
 
 **Round 1 — NOT CLEAN:** 14/23 verified clean; **5 blocking** (B1 three superseded map facts
-unmarked at their sites, F9/F66/F85 · B2 D5↔D6 gate-pause contradiction · B3 D4↔D6
-fact-checker contradiction · B4 D4's FD-2 citation drift · B5 D2's mitigation cited a
+unmarked at their sites, F9/F66/F85 · B2 D5-lifecycle-doctrine-generalized↔D6-overridable-cadence-default gate-pause contradiction · B3 D4-governed-standing-seats↔D6-overridable-cadence-default
+fact-checker contradiction · B4 D4-governed-standing-seats's FD-2 citation drift · B5 D2-layer-two-binding's mitigation cited a
 trigger that never fires on compaction) + **5 non-blocking** (N1 watch-item default/fallback
-inversion · N2 stale D1 conditional paragraph · N3 P14 qualifiers + a false row claim · N4
+inversion · N2 stale D1-seat-only-compaction conditional paragraph · N3 P14 qualifiers + a false row claim · N4
 wrong unit labels · N5 merge-arithmetic step unstated, RI-17 untraceable from the table) +
-1 observation. **All repaired same round** — pointer notes at the three fact sites; D6
-re-worded (count-not-observe, duration condition composed, per-command loop names); D4
-ranking reproduced as cited with the fact-checker a marked D4 addition, cadence-exempt per
-D6; D2's limit recorded **unmitigated** (the Q8-rejected duty not resurrected), row #8 →
-recorded-open; watch-item aligned; the D1 conditional marked tested; shape-slot qualifiers +
+1 observation. **All repaired same round** — pointer notes at the three fact sites; D6-overridable-cadence-default
+re-worded (count-not-observe, duration condition composed, per-command loop names); D4-governed-standing-seats
+ranking reproduced as cited with the fact-checker a marked D4-governed-standing-seats addition, cadence-exempt per
+D6-overridable-cadence-default; D2-layer-two-binding's limit recorded **unmitigated** (the Q8-rejected duty not resurrected), row #8 →
+recorded-open; watch-item aligned; the D1-seat-only-compaction conditional marked tested; shape-slot qualifiers +
 row #17 corrected; merge arithmetic stated (29 − 7 − 1) with RI-17 traced in row #3; the
 commentary marker gains the equivocation clause.
 
 **Round 2 — CLEAN** (bounded to the repairs and their interaction with the clean 14):
 **10/10 repairs verified landed**, no regression in the clean 14; 3 non-blocking nits
 returned and applied with this result — the implement-verifier derived bound carried into
-D4's ranking · DQ-4 added to the recorded-open register marked non-probe · the Status line
+D4-governed-standing-seats's ranking · DQ-4 added to the recorded-open register marked non-probe · the Status line
 refreshed to the live resume state. Reviewer's closing: *"with 23/23 dispositioned and the
 repairs verified, nothing from my lens now blocks acceptance."*
 

@@ -4,12 +4,12 @@ feature: cli-schema-delivery
 round: 2
 ---
 
-# AM-2 — cold intent review of the frozen governance synthesis
+# AM-2-required-cli-dependency — cold intent review of the frozen governance synthesis
 
 **Reviewer:** solo cold intent reviewer (`mochiko:review-governance-intent`), spawned by the
 blind-map two-message protocol — message one carried the topic and goal line only; the synthesis
 path, the ledger, and the driver record were withheld until the 37-angle map returned.
-**Artifact reviewed:** `.mochiko/memory/governance-intent.md` (frozen, AM-2 folded in place).
+**Artifact reviewed:** `.mochiko/memory/governance-intent.md` (frozen, AM-2-required-cli-dependency folded in place).
 **Date:** 2026-09-04. **Single writer of this file.**
 
 **Status recommended: `critical-gaps`.**
@@ -84,11 +84,11 @@ the fence allowed: `CLAUDE.md`, `.claude/rules/mochiko/*.md`, `crates/mochiko-cl
 
 #### C1 — The log is not in the plugin. The claim that it is, is false of the tree; the ruling that would make it true is unrecorded.
 
-**Elements:** GI-020 (AM-2 intent), GI-002 (AM-2 identity).
+**Elements:** GI-020-plugin-install-model (AM-2-required-cli-dependency intent), GI-002-project-type-shelves (AM-2-required-cli-dependency identity).
 
 The synthesis states, as accomplished fact, that `mochiko-cli` "serves every command's and skill's
-rules from a migration log **shipped in the plugin**, replayed in memory at fire" (GI-002, AM-2),
-and GI-020's intent rests on it. It is not shipped, and nothing rules where it will be.
+rules from a migration log **shipped in the plugin**, replayed in memory at fire" (GI-002-project-type-shelves, AM-2-required-cli-dependency),
+and GI-020-plugin-install-model's intent rests on it. It is not shipped, and nothing rules where it will be.
 
 Measured, this session:
 
@@ -113,7 +113,7 @@ First, the amended text would be false on ratification day. The record's own A-C
 clause for exactly that purpose. The clause covers primitives not yet re-pointed. It does not
 cover the log's absence from the plugin.
 
-Second, and larger: the unruled question is the one GI-020 exists to govern. Shipping the log
+Second, and larger: the unruled question is the one GI-020-plugin-install-model exists to govern. Shipping the log
 inside the plugin means shipping a 598,626-byte generated file that is re-generated on every
 schema change, into the artifact whose install weight this non-negotiable protects. Embedding it
 in the binary instead breaks the plugin-version-to-log correspondence the version contract assumes.
@@ -124,11 +124,11 @@ weight of its own replacement unruled has skipped its central question.
 
 **Resolution path.** One question to the user: where does the log ship — `plugins/mochiko/migrations/`,
 embedded in the binary, or supplied by the environment — and what does that add to the install?
-Until it is answered, re-word GI-002/GI-020 from the present tense to the ruled end state.
+Until it is answered, re-word GI-002-project-type-shelves/GI-020-plugin-install-model from the present tense to the ruled end state.
 
 #### C2 — The synthesis marks Confident what the driver record marks Contested and Assumed.
 
-**Elements:** GI-020, GI-002 (AM-2 risk and identity).
+**Elements:** GI-020-plugin-install-model, GI-002-project-type-shelves (AM-2-required-cli-dependency risk and identity).
 
 The distribution decision the whole amendment rests on is `Contested` in the record, with its
 rationale explicitly inferred:
@@ -142,23 +142,23 @@ The record's Evidence-honesty section repeats it: "**D4's rationale is inferred*
 the user". D10 separately marks "transition-clause validity `Assumed` until the wave-2 validator
 grades it".
 
-The synthesis carries **Confident** on GI-020 and **Confident** on GI-002's AM-2 identity and risk
+The synthesis carries **Confident** on GI-020-plugin-install-model and **Confident** on GI-002-project-type-shelves's AM-2-required-cli-dependency identity and risk
 paragraphs. Neither the contest, nor the choice-against-recommendation, nor the `Assumed` transition
 limb appears anywhere in the file.
 
 This is not a formatting nit. The mark is the contract on the producer and the signal the user
 ratifies against. Presented as written, the ratifier sees a settled, confident decision where the
 record holds a contested one whose reasons nobody has stated. The session demonstrably knows how to
-mark honestly — GI-019 carries "Confident on the admission; the argument `Assumed` until this run's
-validator grades it" — which makes the flat Confident on GI-020 a departure, not a convention.
+mark honestly — GI-019-kernel-tooling-admission carries "Confident on the admission; the argument `Assumed` until this run's
+validator grades it" — which makes the flat Confident on GI-020-plugin-install-model a departure, not a convention.
 
-**Resolution path.** Restate GI-020's mark as a split mirroring the record: the ruling Confident,
+**Resolution path.** Restate GI-020-plugin-install-model's mark as a split mirroring the record: the ruling Confident,
 the transition clause Assumed, the distribution basis Contested with reasons inferred. Same for
-GI-002's AM-2 paragraphs.
+GI-002-project-type-shelves's AM-2-required-cli-dependency paragraphs.
 
 ### Important
 
-#### I1 — GI-020's Testability rows are not assertable on ratification day.
+#### I1 — GI-020-plugin-install-model's Testability rows are not assertable on ratification day.
 
 The Pass row asserts that a fresh install plus the tool install "renders every command's and
 skill's rules (contract suite, deterministic set)", and that with the binary absent "every mochiko
@@ -172,10 +172,10 @@ The record demanded a clause that makes the principle true on ratification day. 
 that for the prose statement and not for the Testability rows, which are what the validator grades.
 
 **Resolution path.** Scope the rows to what is assertable during the transition and state the
-end-state rows as dormant until wave 3 — the same dormant-clause idiom GI-012 used successfully at
-AM-1.
+end-state rows as dormant until wave 3 — the same dormant-clause idiom GI-012-release-gates-module used successfully at
+AM-1-kernel-ban-softened.
 
-#### I2 — GI-004 is asserted unchanged while the driver record re-keys the audit unit under it.
+#### I2 — GI-004-primitive-audit-ratchet is asserted unchanged while the driver record re-keys the audit unit under it.
 
 The synthesis says "GI-004's audit ratchet for markdown primitives is unchanged". The record
 changes it in three places:
@@ -192,29 +192,29 @@ what the audit unit is, and the retirement of an independent self-check, are exa
 that ratchet exists to catch. The synthesis records none of them.
 
 Related and unruled: the proposal defers the `primitive-edits.md` re-key to wave 6. That file is
-GI-004's enforcement home in the ledger, so re-keying it changes GI-004's operative content. The
+GI-004-primitive-audit-ratchet's enforcement home in the ledger, so re-keying it changes GI-004-primitive-audit-ratchet's operative content. The
 transition clause's expiry was pre-authorized as a PATCH amendment; this was not, so as written it
 will need a second amend run nobody has budgeted.
 
-**Resolution path.** Carry the audit-unit change and the booked loss under GI-004, and rule now
+**Resolution path.** Carry the audit-unit change and the booked loss under GI-004-primitive-audit-ratchet, and rule now
 whether the wave-6 ceremony re-key is a pre-authorized activation or a fresh governance event.
 
-#### I3 — GI-005's mechanization is recorded on the wrong principle.
+#### I3 — GI-005-record-layer-integrity's mechanization is recorded on the wrong principle.
 
 The record rules that "the schema-rule limb of **GI-005** becomes mechanical (the prose-primitive
 limb and the dead-pointer scan stay procedural)" (D2). The synthesis puts the migration log on
-GI-006 (Card 7) and leaves GI-005 untouched, still reading "protected content leaves only by
+GI-006-primitive-edit-traceability (Card 7) and leaves GI-005-record-layer-integrity untouched, still reading "protected content leaves only by
 recorded ruling (strips/supersession)".
 
-GI-005 is a non-negotiable, and the change is real: protected content in schema rules now leaves
+GI-005-record-layer-integrity is a non-negotiable, and the change is real: protected content in schema rules now leaves
 through a migration's `anchor:` field, enforced by the binary, not through a strip entry enforced
 by ceremony. Two regimes now exist and the principle that governs protected content names one.
 
-**Resolution path.** Add the schema-rule limb to GI-005, or state why GI-006 alone carries it.
+**Resolution path.** Add the schema-rule limb to GI-005-record-layer-integrity, or state why GI-006-primitive-edit-traceability alone carries it.
 
 #### I4 — The declared-unsupported set is narrower in the synthesis than in the record.
 
-GI-020 declares unsupported only "environments that disable skill shell execution or hooks by
+GI-020-plugin-install-model declares unsupported only "environments that disable skill shell execution or hooks by
 policy". The record declares one more, and names a consequence the new non-negotiable's own wording
 touches:
 
@@ -248,7 +248,7 @@ first publish, and say which.
 
 #### I6 — The new release gate can pass by being unable to run.
 
-GI-012's gate 6 requires the contract suite's deterministic set green at every `plugin.json` bump.
+GI-012-release-gates-module's gate 6 requires the contract suite's deterministic set green at every `plugin.json` bump.
 The suite's exit codes are three-valued, and its own README is explicit that the third is common:
 
 > | 3 | **SKIPPED** — the suite could not run, with the reason printed |
@@ -271,17 +271,17 @@ The record's amended D8 carries it on the face of the ruling:
 The contract suite's README repeats it and says why: "this is the file a future maintainer reads
 before running the suite". Promotion to a blocking release gate converts an occasional convenience
 into a standing obligation to run automated headless sessions on that subscription at every bump.
-The synthesis's GI-012 row names the suite as gating and carries none of this — while GI-001
+The synthesis's GI-012-release-gates-module row names the suite as gating and carries none of this — while GI-001-project-fact-profile
 declares "contractual commitments: none".
 
 **Resolution path.** One question: do third-party terms of service fall inside the fact profile's
-contractual dimension? Record the answer either way, and carry the caveat onto GI-012, which is
+contractual dimension? Record the answer either way, and carry the caveat onto GI-012-release-gates-module, which is
 where the recurring obligation now lives.
 
 #### I8 — The crate's release train is ungoverned, and it is now the one consumers depend on.
 
 The Real-commands table names two trains: `plugin.json` bumps, and `mochiko-cli-v*` tags feeding
-`release.yml`. GI-012's six gates bind only the first. From ratification, every consumer's rules
+`release.yml`. GI-012-release-gates-module's six gates bind only the first. From ratification, every consumer's rules
 delivery depends on a binary shipped by the second, which has no audit, no changelog entry, no
 landing ritual, and no compat check.
 
@@ -296,7 +296,7 @@ accepted with reasons.
 
 #### I9 — The public front door will contradict the ratified non-negotiable.
 
-`README.md` currently tells every prospective user the opposite of what AM-2 ratifies:
+`README.md` currently tells every prospective user the opposite of what AM-2-required-cli-dependency ratifies:
 
 > The install above is complete on its own — the plugin is markdown-only, with **no build step and
 > no binary dependency**. … When the binary is absent, agents Read those YAML files raw.
@@ -313,11 +313,11 @@ the amend's scope with an owner and a wave.
 
 #### M1 — No reversal condition on a one-way move.
 
-GI-020 is the only element in the file with no revisit trigger, on the change with the highest
+GI-020-plugin-install-model is the only element in the file with no revisit trigger, on the change with the highest
 reversal cost. The record prices that cost ("after wave 2, reversal costs a second amend run plus
 re-pointing every converted `.md`") and mints observable pilot abort criteria — the read-back metric
 below its pre-registered bar, or per-invoke read cost above the F3 baseline — that halt waves 4 and
-5. Neither reaches the synthesis. **Resolution:** carry D9's pilot abort criteria as GI-020's
+5. Neither reaches the synthesis. **Resolution:** carry D9's pilot abort criteria as GI-020-plugin-install-model's
 revisit trigger.
 
 #### M2 — No maintainer break-glass named.
@@ -344,15 +344,15 @@ Twenty-three of the thirty-seven angles died on the read. Reasons, one line each
 | 2 | risk surface elicited | covered in depth — hooks on every consumer machine, access-loss class, controls named (their reality is I5) |
 | 3 | real commands exist | verified: `cargo test --all` = 300 passed, exactly as claimed; `migrate validate --log-dir migrations --plugin-root plugins/mochiko` = 0 rejecting / 105 advisory, exit 0; both workflows and `run.py` real |
 | 5 | retired checkers' lost coverage | the record's unit-1b accounting names every residual (12 shape errors · 3 without referent · 11 dead under D6 · 1 named); the only real loss folds into I2 |
-| 6 | module once-offer sweep | the catalog holds exactly four modules and all four carry rulings (GI-009/010/011 · GI-012 · GI-013 · GI-014); nothing outstanding |
-| 7 | depth level | GI-021 carried, `high`, one-way, and restated in the ledger header |
+| 6 | module once-offer sweep | the catalog holds exactly four modules and all four carry rulings (GI-009/010/011 · GI-012-release-gates-module · GI-013-no-layer-rules · GI-014-no-evolution-notes); nothing outstanding |
+| 7 | depth level | GI-021-depth-level-declaration carried, `high`, one-way, and restated in the ledger header |
 | 8 | open-ended transition | expiry condition stated and its amendment pre-authorized as PATCH |
-| 9 | bright line clause 1 | argued at length in GI-019's clause (i) and marked `Assumed` — the confrontation the angle asked for |
+| 9 | bright line clause 1 | argued at length in GI-019-kernel-tooling-admission's clause (i) and marked `Assumed` — the confrontation the angle asked for |
 | 10 | render versus select | clause (ii) covers structural validity on the tool's own data; the count-pin limb folds into I2 |
 | 11 | rewrite completeness | complete across governance surfaces; the non-governance gap is I9 |
 | 12 | ~50 primitive edits owing ceremony | the record prices them per-`.md` against the v0.76.0 precedent, and this run edits no primitive |
 | 13 | two protection regimes | survives as I3 |
-| 14 | pointer-only restatement | the AM-2 text points; trace comments only |
+| 14 | pointer-only restatement | the AM-2-required-cli-dependency text points; trace comments only |
 | 15 | rules inject on Read | hooks are a delivery channel, not rules-file injection; no contradiction |
 | 16 | hooks as control flow | named, timed at 5 seconds, fail-open, scoped to absence; behavior gating explicitly declined |
 | 17 | adoption cost | priced honestly, including the driver attribution at `medium` and the total-loss class |
@@ -361,7 +361,7 @@ Twenty-three of the thirty-seven angles died on the read. Reasons, one line each
 | 24 | skill-path halt | the `PreToolUse` matcher on `Skill` covers it and the synthesis names it |
 | 26 | six traceable elements | all six present with GI-IDs and elicitation lines |
 | 27 | MAJOR bump | matches the ledger's own policy for an incompatible redefinition; user-ruled |
-| 29 | no-feature-map ruling | properly minted as GI-022, traced to the amend limb, declined durable |
+| 29 | no-feature-map ruling | properly minted as GI-022-no-feature-map, traced to the amend limb, declined durable |
 | 31 | hollowed non-negotiable | the clone-only limb retains real content; the rewrite is not hollow |
 | 32 | widening by assertion | the argument is on record with three clauses; see 9 |
 | 34 | open transition | see 8 |
@@ -402,19 +402,19 @@ read, no new angles.
 
 | # | Finding | Fold | Verdict |
 |---|---|---|---|
-| C1 | log not in the plugin, location unruled | GI-002 moved to future tense and states the current reality outright ("today it lives at the repo root and no installed plugin carries it"); GI-020 carries the ruling — `plugins/mochiko/migrations/` from wave 3 — with the weight priced and the two rejected alternatives (embedding, network fetch) named against D5 and the silent-degradation class | **CONFIRMED** (2 nits) |
-| C2 | marks upgraded past the record | GI-020's mark now splits four ways: the two rulings Confident, the distribution basis Contested with reasons inferred and Assumed, the transition clause Assumed, the wave-3 rows dormant. GI-002 identity and risk carry matching splits. Mirrors record D4, D10 | **CONFIRMED** |
-| I1 | Testability unassertable day one | End-state rows declared dormant until the wave-3 pilot, under the AM-1 dormant-clause idiom, with what *is* assertable named: the suite's absence and skew cases (2/2) and the log's hard set at 0 rejecting | **CONFIRMED** |
-| I2 | GI-004 asserted unchanged | New floor note keeps the markdown ratchet and records the schema-content audit unit with D6's five criteria; the retired count self-check is booked as a loss citing D3; the wave-6 re-key ruled a pre-authorized PATCH activation | **CONFIRMED** |
-| I3 | GI-005 mechanization on the wrong row | New floor note puts the schema-rule limb on GI-005 and names both regimes, the prose limb and dead-pointer scan staying procedural. Matches record D2 | **CONFIRMED** |
+| C1 | log not in the plugin, location unruled | GI-002-project-type-shelves moved to future tense and states the current reality outright ("today it lives at the repo root and no installed plugin carries it"); GI-020-plugin-install-model carries the ruling — `plugins/mochiko/migrations/` from wave 3 — with the weight priced and the two rejected alternatives (embedding, network fetch) named against D5 and the silent-degradation class | **CONFIRMED** (2 nits) |
+| C2 | marks upgraded past the record | GI-020-plugin-install-model's mark now splits four ways: the two rulings Confident, the distribution basis Contested with reasons inferred and Assumed, the transition clause Assumed, the wave-3 rows dormant. GI-002-project-type-shelves identity and risk carry matching splits. Mirrors record D4, D10 | **CONFIRMED** |
+| I1 | Testability unassertable day one | End-state rows declared dormant until the wave-3 pilot, under the AM-1-kernel-ban-softened dormant-clause idiom, with what *is* assertable named: the suite's absence and skew cases (2/2) and the log's hard set at 0 rejecting | **CONFIRMED** |
+| I2 | GI-004-primitive-audit-ratchet asserted unchanged | New floor note keeps the markdown ratchet and records the schema-content audit unit with D6's five criteria; the retired count self-check is booked as a loss citing D3; the wave-6 re-key ruled a pre-authorized PATCH activation | **CONFIRMED** |
+| I3 | GI-005-record-layer-integrity mechanization on the wrong row | New floor note puts the schema-rule limb on GI-005-record-layer-integrity and names both regimes, the prose limb and dead-pointer scan staying procedural. Matches record D2 | **CONFIRMED** |
 | I4 | unsupported set too narrow | PowerShell-only Windows declared unsupported as a dimension-10 exclusion; the no-build-step property explicitly scoped to the plugin, with the Windows source build stated | **CONFIRMED** |
 | I5 | two named controls absent | Discharge made conditional: each of the four controls carries present-or-owed with its evidence, and the trigger stays open until all four exist at the first publish. Stricter than the record, which called signed tags builder's room | **CONFIRMED** (1 nit) |
-| I6 | gate can exit skipped | GI-012: "A SKIPPED suite (exit 3) is not green — it blocks the bump" | **CONFIRMED** |
-| I7 | ToS caveat uncarried | Carried onto GI-012 as a Contested mark on the gate's substrate, with a matching GI-001 note ruling it a third-party exposure rather than a fact-profile dimension. The question I posed is answered explicitly | **CONFIRMED** |
-| I8 | crate release train ungoverned | GI-012 gates `mochiko-cli-v*` tags on the four crate layers, the contract suite against the tagged binary, and an unchanged render output shape or a coordinated plugin bump — naming the exact gap, that the grammar range does not version that shape | **CONFIRMED** |
-| I9 | README contradicts | Named in the AM-2 log's consequence set, re-authored at the wave-3 landing, owner stated, and correctly placed outside this run's producer as a non-governance surface | **CONFIRMED** |
-| M1 | no reversal condition | GI-020 gains the wave-3 pilot abort criteria as its revisit trigger, with the reversal cost priced. Matches record D9 | **CONFIRMED** |
-| M2 | no break-glass | `cargo install --path crates/mochiko-cli` carried into the `rust-cli.md` rewrite via the AM-2 log's scope | **CONFIRMED** |
+| I6 | gate can exit skipped | GI-012-release-gates-module: "A SKIPPED suite (exit 3) is not green — it blocks the bump" | **CONFIRMED** |
+| I7 | ToS caveat uncarried | Carried onto GI-012-release-gates-module as a Contested mark on the gate's substrate, with a matching GI-001-project-fact-profile note ruling it a third-party exposure rather than a fact-profile dimension. The question I posed is answered explicitly | **CONFIRMED** |
+| I8 | crate release train ungoverned | GI-012-release-gates-module gates `mochiko-cli-v*` tags on the four crate layers, the contract suite against the tagged binary, and an unchanged render output shape or a coordinated plugin bump — naming the exact gap, that the grammar range does not version that shape | **CONFIRMED** |
+| I9 | README contradicts | Named in the AM-2-required-cli-dependency log's consequence set, re-authored at the wave-3 landing, owner stated, and correctly placed outside this run's producer as a non-governance surface | **CONFIRMED** |
+| M1 | no reversal condition | GI-020-plugin-install-model gains the wave-3 pilot abort criteria as its revisit trigger, with the reversal cost priced. Matches record D9 | **CONFIRMED** |
+| M2 | no break-glass | `cargo install --path crates/mochiko-cli` carried into the `rust-cli.md` rewrite via the AM-2-required-cli-dependency log's scope | **CONFIRMED** |
 | M3 | `cargo audit` misfiled | Own row in the Real-commands table, cross-referenced to the risk discharge; the Build row now carries only the build | **CONFIRMED** |
 
 **Nits — wording only, none blocking, none changing a ruling or its conclusion.**
@@ -432,9 +432,9 @@ read, no new angles.
    `rust-cli.md` rewrite names the log as `migrations/` and scopes its `paths` frontmatter to
    `migrations/**`. With the log ruled to `plugins/mochiko/migrations/` from wave 3, both need the
    new home or the touch-time rule will stop covering the log where it lives.
-3. **I5's outcome is stale in one line of the AM-2 log's own Scope bullet**, which still reads
+3. **I5's outcome is stale in one line of the AM-2-required-cli-dependency log's own Scope bullet**, which still reads
    "first-public-release trigger discharged with named controls". The Dispositions paragraph
-   directly below it, and GI-002's body, both carry the conditional discharge correctly; the Scope
+   directly below it, and GI-002-project-type-shelves's body, both carry the conditional discharge correctly; the Scope
    bullet records the deck as ruled before the review and was not swept. A ledger row copied from
    that line would land the wrong status.
 

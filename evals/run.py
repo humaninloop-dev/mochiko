@@ -7,9 +7,9 @@
 
 Skill target: the skill-compression regression instrument.
 
-Provenance: .mochiko/brainstorms/skill-compression-tooling/record.md (D8 as amended) and
-.mochiko/brainstorms/primitive-eval-harness-v2/record.md (D1 vocabulary, D12/C3 the re-keyed
-inventories). Maintainer-side advisory tooling (GI-019 trace recorded); never shipped (GI-020).
+Provenance: .mochiko/brainstorms/skill-compression-tooling/record.md (D8-compression-execution-details as amended) and
+.mochiko/brainstorms/primitive-eval-harness-v2/record.md (D1-eval-layer-targets vocabulary, D12-old-record-superseded/C3 the re-keyed
+inventories). Maintainer-side advisory tooling (GI-019-kernel-tooling-admission trace recorded); never shipped (GI-020-plugin-install-model).
 Vocabulary shared with the command and persona targets: evals/README.md. Shared mechanics
 (session · provisioning · judge calls · band arithmetic) come from evals/lib/ (D10, second
 landing act); this file keeps the skill target's load gate, fixtures, invited read, and report,

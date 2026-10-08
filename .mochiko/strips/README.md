@@ -81,7 +81,7 @@ where a supersession or tombstone of protected content demands one.
 
 The 50 snapshot files deleted at v0.107.0 — 20 under `plugins/mochiko/schemas/` and 30
 `skills/*/schema.yaml` — therefore take no entries in this directory. Their record is the log plus
-the wave-6 ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md` D2 and D9 wave 6). The
+the wave-6 ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md` D2-full-schema-scope and D9-staged-wave-rollout wave 6). The
 human-readable projection of the log lives at `.mochiko/schema-views/`, regenerated and never
 hand-edited. Body prose in a `SKILL.md`, a command `.md`, a `references/` file or a template is
 unaffected: those are primitive edits and still take entries here.

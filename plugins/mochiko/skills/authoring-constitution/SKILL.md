@@ -86,7 +86,7 @@ superseded by this table):
 | Module | Attach when | Routes to |
 |--------|-------------|-----------|
 | `layer-rules` | A layered-architecture principle was kept **or minted** (the module ruling lands in the synthesis either way — the interrogation's layered-architecture beat) | `paths`-scoped rules files (one per layer concern; the domain file carries the preserved registry block + policy preamble — `references/DOMAIN-DEPENDENCIES.md`) + index lines + ledger entries (incl. the Domain-dependency policy section) |
-| `release-gates` | Always offered (a deployed/operated target class — PO-D1); content from the always-interrogated deployment dimension | Region: one summary line + pointer; detail in the ledger |
+| `release-gates` | Always offered (a deployed/operated target class — `production-only-focus` D1-customer-product-target); content from the always-interrogated deployment dimension | Region: one summary line + pointer; detail in the ledger |
 | `evolution-notes` | Mode is brownfield (always) | Ledger section (floor status, gap references, confrontation rulings) + region pointer |
 | `knowledge-management` | The KM dimension elicited adoption (default-on, whole; a recorded decline is durable) | Region: the operating-manual **pointer** + index line; the bundle scaffolding and command carriers are unchanged (lead-executed at finalize) |
 

@@ -71,7 +71,7 @@ lean).
   `` `stories/US-<n>.md` `` · FEAT `FEAT-XXX` · EPIC `` `EPIC-XXX` `` · AX `` `AX-XXX` (unique
   store-wide) `` · SPN `` `SPN-XXX` (unique store-wide) `` · NFR `` `NFR-XXX` targets live on the
   concern row `` · C-/D-/IP-/INT-/DS- `three-digit padded (C-, D-, IP-, INT-, DS-)` · SCR
-  `` `SCR-XXX` `` · FLOW `` `FLOW-XXX` `` · GI `sequential GI-001, GI-002` · session D `` `D1…` `` ·
+  `` `SCR-XXX` `` · FLOW `` `FLOW-XXX` `` · GI "`sequential GI-001, GI-002`" · session D `` `D1…` `` ·
   cycle `**Depends on:** C1`.
 - **H2 — definition lines keep the ID first.** After its leaders (`#…`, `- `/`* `, `[ ]`/`[x]`,
   `**`, `**Targets**:`, a first table cell `| `), the ID is the line's first token. This wave names

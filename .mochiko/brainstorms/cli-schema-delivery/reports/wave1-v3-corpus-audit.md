@@ -133,7 +133,7 @@ read-back, verified:
 ```
 
 Unreachable on today's corpus — I confirmed all 50 documents round-trip under an independent
-PyYAML comparator — so no live corruption. But this module is the GI-006 reconstruction surface and
+PyYAML comparator — so no live corruption. But this module is the GI-006-primitive-edit-traceability reconstruction surface and
 its own doc asserts a lossless projection; the neighbouring hazards (a leading-space first line, a
 trailing-space body line) each have a guard at `:284-289` and this one does not.
 
@@ -218,7 +218,7 @@ action asked; noted because CI now runs it on every `migrations/**` touch.
 (6 command · 1 command-common · 1 command-labels · 30 skill · 2 skill-common · 1 skill-labels ·
 8 template · 1 shelf). 597 `anchor:` fields at rule depth against 597 sidecar entries — counted
 independently by indentation, not by the crate. Header carries `grammar: 1`, `sequence: 1`,
-`anchor: 2026-09-03 cli-schema-delivery D2`, and a hash that is real: a one-character tamper in the
+"`anchor: 2026-09-03 cli-schema-delivery D2`", and a hash that is real: a one-character tamper in the
 copy produced `hash-mismatch · 1 rejecting`. Regenerated with `genesis emit` and `cmp`-identical
 at 598,626 bytes. `.mochiko/provenance.yaml` untouched (`git status` clean after every run). Both
 `note:` lifts are present, verbatim from the source comments, and generic — the corpus carries
@@ -269,7 +269,7 @@ insertions / 1 deletion inside `is_decision_segment` plus its doc paragraph, and
 `anchor_grammar.rs` pins it hard, including reading the two forcing anchors out of the sidecar by
 rule id so the test dies if the corpus stops needing the widening. `RULING_RE` in both Python
 checkers is `D\d+.*`, so the report's parity claim is accurate and the Rust stays the stricter of
-the two. GI-019 intact: the detector proposes and never merges, genesis is a generator, nothing
+the two. GI-019-kernel-tooling-admission intact: the detector proposes and never merges, genesis is a generator, nothing
 dispatches or gates.
 
 **Report honesty.** The seat disclosed more against itself than the diff would have forced: the

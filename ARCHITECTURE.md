@@ -93,7 +93,7 @@ Every command states a verifiable done-condition that defaults to FAIL, a frame 
 approval before any producing seat works, author ≠ grader independence, the decisions
 reserved to the user — and the homes the lead cannot invent (paths, templates, entry
 conditions). All six carry it in **one canonical scaffold** (v0.97.0,
-`command-md-scaffold-standardization` D1/D2): `# <Name> — <epithet>` title ·
+`command-md-scaffold-standardization` D1-canonical-command-scaffold/D2-superset-scaffold-sections): `# <Name> — <epithet>` title ·
 `## Identity & Mission` · `## Rules — delivered by mochiko-cli` · `## Adaptive Goal Protocol`,
 whose three steps are Entry (`$ARGUMENTS` and gating) · Goal (the done condition) ·
 `Not done — default FAIL` (count-pinned, always last). The rule-shaped content sits on the

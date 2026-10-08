@@ -38,7 +38,7 @@ the re-keyed form and names this file as a downstream consumer). -->
   `.claude/rules/mochiko/primitive-edits.md`, re-keyed to `kind: fail` and carrying the
   bidirectional `<cmd>.fail.*`-segment cross-check.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/command-schema-ontology/record.md` D1 and build-surface item 9,
+  (`.mochiko/brainstorms/command-schema-ontology/record.md` D1-rule-kind-set and build-surface item 9,
   "criterion 3 re-keys from the label set to `kind: fail`"; `DECISIONS.md` 2026-08-27.
   Inventory: that session's `conversion-inventory.md` section H.)
 - **Content:** criterion 3 as shipped at v0.97.0, verbatim —
@@ -77,7 +77,7 @@ already landed. `converting-command-to-schema/SKILL.md` step 14 lists the criter
 rather than by number, so its summary order differing from the block's costs nothing. -->
 
 <!-- Wave context: the command-`.md`-scaffold standardization wave (v0.97.0). Ruling:
-`.mochiko/brainstorms/command-md-scaffold-standardization/record.md` D1, D6-R2 as amended →
+`.mochiko/brainstorms/command-md-scaffold-standardization/record.md` D1-canonical-command-scaffold, D6-R2 as amended →
 `DECISIONS.md` 2026-08-27 row. Clause inventory: that record's Appendix A. -->
 
 ## [v0.97.0] Dual command-audit criteria blocks collapsed to one canonical-scaffold block
@@ -85,7 +85,7 @@ rather than by number, so its summary order differing from the block's costs not
 - **Disposition:** superseded → the single "Canonical-scaffold criteria — every pair-form
   command, all six" block in `.claude/rules/mochiko/primitive-edits.md`
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/command-md-scaffold-standardization/record.md` D1, D6-R2;
+  (`.mochiko/brainstorms/command-md-scaffold-standardization/record.md` D1-canonical-command-scaffold, D6-R2;
   `DECISIONS.md` 2026-08-27. Clause inventory: that record's Appendix A.)
 - **Content:** the two blocks as shipped at v0.96.0 — the "Pair-form commands
   (command-content-schema D9; implement from v0.92.0, the D10 five-command rollout … from

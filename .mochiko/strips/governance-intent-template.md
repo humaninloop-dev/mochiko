@@ -11,7 +11,7 @@ carries no version line (checked at this edit), so no footer stamp was owed and 
 
 ## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/governance-intent.yaml + mochiko-cli template governance-intent
-- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1-single-plugin-cli/D3-pipeline-template-scope/D8-schema-data-files; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
 - **Content (superseded template, full verbatim below):**
 
 ````markdown
@@ -218,12 +218,12 @@ verify pass; waived or verified → G3. -->
 - [YYYY-MM-DD] — [GI-IDs added/edited/superseded] — [one-line rationale] — re-confirmed at
   synthesis checkpoint [date]
 ````
-- **Kept deliberately:** Doctrine-dense, multi-shape canonical reference — every operative line is protected / `DECISIONS.md`-traceable governance doctrine. All of it was carried **verbatim** into `plugins/mochiko/schemas/governance-intent.yaml` (shape-blocks preserved over uniform per-section fields, per plan §3 I3) and renders through `mochiko-cli template governance-intent`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). V2 confirmed **no doctrine dropped** — nothing removed.
+- **Kept deliberately:** Doctrine-dense, multi-shape canonical reference — every operative line is protected / `DECISIONS.md`-traceable governance doctrine. All of it was carried **verbatim** into `plugins/mochiko/schemas/governance-intent.yaml` (shape-blocks preserved over uniform per-section fields, per plan §3 I3) and renders through `mochiko-cli template governance-intent`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020-plugin-install-model, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). V2 confirmed **no doctrine dropped** — nothing removed.
 - **Consumers assessed:** `commands/setup.md` (re-pointed by P4) · `skills/authoring-constitution/references/INTERROGATION-AGENDA.md` (re-pointed by P5). V2 fidelity PASS 2026-08-16 (schema graded 8/8 at the M3 gate).
 
 ## [v0.53.0] Review-block sizing/waiver re-keyed off the deleted weight card
 - **Disposition:** superseded → the same two Review-section lines re-keyed to the v8 reality: sizing "composed by the lead in its run plan"; the `none` waiver "waived by [user] as an explicit reserved ruling".
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 command-architecture-realignment D2 — the weight card was deleted at the v8 rebuild, v0.48.0; this template's lines 157/160 were the stale remainder, logged as a BACKLOG defect at the 2026-08-04 groom and closed in the v0.53.0 wave).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row "2026-08-02 command-architecture-realignment D2" — the weight card was deleted at the v8 rebuild, v0.48.0; this template's lines 157/160 were the stale remainder, logged as a BACKLOG defect at the 2026-08-04 groom and closed in the v0.53.0 wave).
 - **Content (verbatim, the two superseded fragments):**
   ```
   stated on the user's run-start weight card — below the default also
@@ -237,7 +237,7 @@ verify pass; waived or verified → G3. -->
 
 ---
 
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -252,7 +252,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 
 ## [v0.44.0] Confidence-marks session-slug citation
 - **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 (setup-adversarial-review D2)

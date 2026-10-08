@@ -80,7 +80,7 @@ renders of the log, compared byte for byte.*
    names none or several. *(Narrowed 2026-10-08, user: "yes go with C": only a record link names
    the owner; every link and qualifier still counts toward "several".)*
 10. **Normalization of session-prefixed decisions** (D10 as changed at build, B2): wave 3's back-fill
-    rewrites `PO-D1` (and the eleven other prefixes) as `` `production-only-focus` D1-<slug> ``; the
+    rewrites "`PO-D1`" (and the eleven other prefixes) as `` `production-only-focus` D1-<slug> ``; the
     rename path must accept such an alias form as the mention it rewrites, and the diff check counts
     that qualifier change as an ID-token change. Other repo-only forms (`AM`, `OQ`, `J`, `FP`, census
     IDs) are slugged once and are not checked — the check never flags them.

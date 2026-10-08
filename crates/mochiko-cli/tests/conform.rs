@@ -1,7 +1,7 @@
 //! The six conformance checks (record D4), the first-touch amnesty, and the `Edit`-in-memory leg.
 //!
 //! Each check is decidable by string and count, which is what keeps the write-time gate on the
-//! admitted side of the bright line: nothing here reads meaning or grades quality (GI-019).
+//! admitted side of the bright line: nothing here reads meaning or grades quality (GI-019-kernel-tooling-admission).
 //!
 //! Every fixture is written under `CARGO_TARGET_TMPDIR`, inside `target/`.
 
@@ -215,7 +215,7 @@ fn an_undeclared_file_name_is_denied_and_the_reason_names_the_set_and_the_route(
 
 #[test]
 fn an_undeclared_name_on_a_file_already_on_disk_is_amnestied_and_names_the_violation() {
-    // D4e as ratified at AM-3: the file set is a relaxable measure. A mis-homed file that already
+    // D4e as ratified at AM-3-conformance-gate-admission: the file set is a relaxable measure. A mis-homed file that already
     // exists stays editable, with the violation reported rather than hidden, because a gate that
     // refuses every write to it is a gate that wedges it.
     let state = state("set-amnesty");

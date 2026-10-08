@@ -5,7 +5,7 @@
 **Goal (user's words):** ensure the agent skills are not verbose and really succinct; question each
 skill one by one; aim to reduce size by 30–70%; follow the strip documentation that already exists.
 **Provenance:** lead-authored as-you-go; facts lead-gathered (no fact-checker seat); cold-reviewed
-2026-07-25 by a solo `devils-advocate` (user-sized at D5; `review-brainstorm` solo protocol) with
+2026-07-25 by a solo `devils-advocate` (user-sized at D5-cold-review-close; `review-brainstorm` solo protocol) with
 lead verification of every reported citation. Review section below.
 
 ---
@@ -28,7 +28,7 @@ Baseline freezes at this stamp; each wave re-measures at proposal time (fold M12
   ellipsis — and `validation-constitution` renders with **no description at all** (cause
   undiagnosed; reproducible). Consequences: trigger phrases past the truncation boundary are
   *already dead*; `validation-constitution` is a **live absent-fire instance predating any strip**;
-  cutting already-truncated tails saves zero delivered tokens (D4's sham-cut category).
+  cutting already-truncated tails saves zero delivered tokens (D4-true-reduction-accounting's sham-cut category).
 - **Strip doctrine exists:** `.mochiko/strips/README.md` — per-primitive strip notes, newest-first,
   version-stamped. Tiered criterion: **Tier 1** (altitude — restated doctrine/pattern → relocate to
   single-sourced home) / **Tier 2** (no behavior/failure named → delete). Entry types: strip,
@@ -53,13 +53,13 @@ Baseline freezes at this stamp; each wave re-measures at proposal time (fold M12
 The existing doctrine is **criterion-driven** (a line leaves because it fails a tier, survives
 because evidence backs it). The user's 30–70% goal is **quota-shaped**. These can compose (quota as
 burden-of-proof inversion + calibration bar) or conflict (quota forces cuts past Tier-2 evidence,
-including prior KEPT entries). D1 puts this to the user first.
+including prior KEPT entries). D1-calibration-bar-target puts this to the user first.
 
 ---
 
 ## Decisions
 
-### D1 — Target semantics: calibration bar, criterion rules · **Confident** *(streak-adopted,
+### D1-calibration-bar-target — Target semantics: calibration bar, criterion rules · **Confident** *(streak-adopted,
 re-affirmed post-review — batch R7 ratified 2026-07-25)*
 30–70% is the expected outcome and a tripwire, not a quota. Tiers apply line-by-line with the
 burden of proof on each line. A skill landing under 30% triggers a second, harder pass in which
@@ -72,9 +72,9 @@ out of the goal).
 **Review folds:** I7 exposed the tripwire's second pass as undefined for the 24 skills with no
 KEPT entries, and the uniform band as blind to prior-wave status → amendment R3.
 
-### D2 — Scope: all three surfaces, each under its own rule · **Confident** *(streak-adopted,
+### D2-three-surface-scope — Scope: all three surfaces, each under its own rule · **Confident** *(streak-adopted,
 re-affirmed post-review — batch R7 ratified 2026-07-25)*
-SKILL.md bodies: main strip target, tier criterion per D1. Frontmatter descriptions: dedicated
+SKILL.md bodies: main strip target, tier criterion per D1-calibration-bar-target. Frontmatter descriptions: dedicated
 sub-pass under a **trigger-fidelity criterion**. References: stripped only where the body pointer
 dies or content duplicates a single-sourced home. Agent personas out of scope (already strip-noted
 in prior waves).
@@ -87,7 +87,7 @@ regression class was under-fire only; **wrong-fire added** — disambiguating bo
 positive trigger phrases; cut only genuine elaboration. (I8) scripts / `.yaml` / `templates/` were
 unscoped → amendment R5.
 
-### D3 — Execution: wave production, per-skill ratification · **Confident** *(streak-adopted,
+### D3-per-skill-ratification — Execution: wave production, per-skill ratification · **Confident** *(streak-adopted,
 re-affirmed post-review — batch R7 ratified 2026-07-25)*
 Architect agents fan out per cluster, one strip proposal per skill. Lead walks the user through
 proposals one skill at a time (proposed strips, contested lines with drafted Tier-2 rationale,
@@ -106,7 +106,7 @@ guard now has a mechanism, not just a name: a **pre-wave measurement pass enumer
 all-consumer escalation, never inside one cluster's wave. The open `BACKLOG.md:382` queue →
 amendment R4b.
 
-### D4 — Accounting: true reductions only · **Confident** *(streak-adopted, re-affirmed
+### D4-true-reduction-accounting — Accounting: true reductions only · **Confident** *(streak-adopted, re-affirmed
 post-review — batch R7 ratified 2026-07-25)*
 Reduction credit = deletes + body→reference moves where the reference is genuinely conditional
 (the strip note must name the invocation path that skips it — audit-checkable). Always-read
@@ -121,7 +121,7 @@ queue proven not to drain. Disambiguated: **deduping** into a genuinely conditio
 home earns credit like any Tier-1 relocation; mere flagging earns nothing → credit + destination
 ruling in amendment R4a. (I4) the percentage had no denominator → amendment R2.
 
-### D5 — Close shape: cold review → conclude → defer execution · **Confident** *(genuine read at
+### D5-cold-review-close — Close shape: cold review → conclude → defer execution · **Confident** *(genuine read at
 the no-recommendation fork, breaking the streak; elaborated ruling)*
 The record takes a cold review before anything executes; the session concludes with full
 bookkeeping (ROADMAP Key Decisions row, BACKLOG build item carrying the wave plan); waves execute
@@ -141,7 +141,7 @@ quality surface. The review's `critical-gaps` verdict vindicated the ruling.
 ## Review (2026-07-25)
 
 **Protocol:** solo cold reviewer (`devils-advocate`, `review-brainstorm` solo protocol — both
-lenses + verify duties), user-sized at D5. Independent cold read; scenario stress per decision;
+lenses + verify duties), user-sized at D5-cold-review-close. Independent cold read; scenario stress per decision;
 five hunt classes; reality-grounding of every load-bearing Facts claim against the files (no
 fact-checker map existed); standalone-record fitness checklist. Lead then verified every reported
 citation against the repo before folding (per stress-test-verify protocol).
@@ -149,7 +149,7 @@ citation against the repo before folding (per stress-test-verify protocol).
 **Tally:** reviewer formed 18 → reported **13** (3 Critical / 7 Important / 3 Minor; 5 dropped on
 self-scrutiny, retrievable). Lead verification: **13/13 confirmed** — one figure adjusted
 (`templates/` = 1,588 md lines, not 1,822; substance unchanged). Reviewer's recommended status:
-**`critical-gaps`**, on (a) the broken C1 fact under D2, (b) two fitness items unchecked (C2
+**`critical-gaps`**, on (a) the broken C1 fact under D2-three-surface-scope, (b) two fitness items unchecked (C2
 confidence marks, C3 rejected roads — zero-of-five), (c) a 2-in-6 miss rate in the lead-authored
 Facts section (C1 wrong, I8 materially incomplete; three bullets verified exact).
 
@@ -157,17 +157,17 @@ Facts section (C1 wrong, I8 materially incomplete; three bullets verified exact)
 
 | # | Finding (compressed) | Disposition |
 |---|---|---|
-| C1 | "Always-loaded descriptions" false — delivery truncates ~1.8k-char descriptions; `validation-constitution` renders none (live absent-fire) | **Folded** — Facts corrected; D2 sub-pass re-scoped measure-first (R1) |
+| C1 | "Always-loaded descriptions" false — delivery truncates ~1.8k-char descriptions; `validation-constitution` renders none (live absent-fire) | **Folded** — Facts corrected; D2-three-surface-scope sub-pass re-scoped measure-first (R1) |
 | C2 | D1–D4 marked `Confident` despite being unelaborated adoptions — fitness checklist requires `Assumed` | **Folded** — marks downgraded inline with streak counts; re-affirmation = R7 |
-| C3 | Zero rejected roads recorded across D1–D5 | **Folded** — rejected roads + D5's fork options added to every decision |
+| C3 | Zero rejected roads recorded across D1–D5 | **Folded** — rejected roads + D5-cold-review-close's fork options added to every decision |
 | I4 | 30–70% has no denominator | **Amendment R2** |
-| I5 | All-consumer guard: no mechanism, misses cross-cluster reference homes, ignores open BACKLOG:382 queue (aphorism ×11 verified) | **Folded** into D3 (pre-wave enumeration, reference files under guard); queue ruling = R4b |
-| I6 | D2 protected only against under-fire; "restated boundaries" are negative triggers whose cut yields wrong-fire | **Folded** into D2 — wrong-fire watched, disambiguators protected |
+| I5 | All-consumer guard: no mechanism, misses cross-cluster reference homes, ignores open BACKLOG:382 queue (aphorism ×11 verified) | **Folded** into D3-per-skill-ratification (pre-wave enumeration, reference files under guard); queue ruling = R4b |
+| I6 | D2-three-surface-scope protected only against under-fire; "restated boundaries" are negative triggers whose cut yields wrong-fire | **Folded** into D2-three-surface-scope — wrong-fire watched, disambiguators protected |
 | I7 | Under-30% second pass vacuous for 24 no-KEPT skills; uniform band blind to prior-wave status | **Amendment R3** |
-| I8 | Supporting total silently excluded 3,362 lines (scripts, OpenAPI yaml); `templates/` unscoped and a sham-cut loophole as destination | **Folded** — Facts corrected, `templates/` banned as destination (D4); scope ruling = R5 |
-| I9 | D4's dedup sentence ambiguous; biggest Tier-1 target routed to a queue that doesn't drain | **Folded** — disambiguated in D4; credit + destination = R4a |
+| I8 | Supporting total silently excluded 3,362 lines (scripts, OpenAPI yaml); `templates/` unscoped and a sham-cut loophole as destination | **Folded** — Facts corrected, `templates/` banned as destination (D4-true-reduction-accounting); scope ruling = R5 |
+| I9 | D4-true-reduction-accounting's dedup sentence ambiguous; biggest Tier-1 target routed to a queue that doesn't drain | **Folded** — disambiguated in D4-true-reduction-accounting; credit + destination = R4a |
 | I10 | Plan locks untested process into BACKLOG; one-skill pilot steelman | **Amendment R6** |
-| M11 | "Largest-first" ordering inverted (misc 1,860 runs last) | **Folded** — reordered by never-stripped mass (D3) |
+| M11 | "Largest-first" ordering inverted (misc 1,860 runs last) | **Folded** — reordered by never-stripped mass (D3-per-skill-ratification) |
 | M12 | No version/date stamp on measured facts | **Folded** — stamped v0.23.0 / 2026-07-25; per-wave re-measure |
 | M13 | No open-threads section | **Folded** — section added below |
 
@@ -210,7 +210,7 @@ unentangled with the description anomaly); R7 discharged — D1–D4 marks upgra
 ## Open threads / revisit triggers (fold M13)
 
 - **`validation-constitution` renders no description** — live discoverability defect predating
-  this session; diagnose during R1's measurement pass. Revisit D2's sub-pass scope on findings.
+  this session; diagnose during R1's measurement pass. Revisit D2-three-surface-scope's sub-pass scope on findings.
 - **Truncation boundary undiagnosed** (~1.5k chars complete, ~1.8k cut) — exact limit and
   mechanism unknown; R1 measures. If truncation is version-dependent, re-open D2.
 - **Scripts / yaml / templates excluded (R5)** — revisit trigger: any wave whose skill's body

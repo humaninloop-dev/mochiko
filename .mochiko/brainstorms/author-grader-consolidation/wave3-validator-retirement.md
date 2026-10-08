@@ -1,15 +1,15 @@
-# Wave 3 — the `validator` retirement (`producer-plan-enforcement` D3 · D8 item 5 · D9 wave 2), audited under the gate form
+# Wave 3 — the `validator` retirement (`producer-plan-enforcement` D3-peer-plan-grader · D8-plan-qa-landing item 5 · D9 wave 2), audited under the gate form
 
 **Opened:** 2026-09-19 · **Lead:** the brainstorm session lead · **Target version:** 0.113.0 (MINOR —
 one persona retired, three rule rewords, no protected exit without its supersession row; precedent:
 the `product-engineer` → `product-designer` rename ruled MINOR, the `mochiko:explorer` deletion at
-v0.78.0) · **Sequenced by:** `author-grader-consolidation` D10 (this is that path's wave 3, the
+v0.78.0) · **Sequenced by:** `author-grader-consolidation` D10-consolidation-wave-order (this is that path's wave 3, the
 last) · **Audited under:** the gate form (D3 · D6 · D7 · D11) — one plain seat, rendered contract,
 one re-audit by the same seat. No double-grade this wave (D9 took its baseline at wave 2).
 
-Ruling anchors: `2026-09-03 producer-plan-enforcement D3` (the retirement and its consumer list,
-the axis-5 and mount-doctrine wordings) · `2026-09-03 producer-plan-enforcement D8` item 5 (the
-landing set) · `2026-09-19 author-grader-consolidation D7` (the carrier: a plain fresh seat running
+Ruling anchors: "`2026-09-03 producer-plan-enforcement D3`" (the retirement and its consumer list,
+the axis-5 and mount-doctrine wordings) · "`2026-09-03 producer-plan-enforcement D8`" item 5 (the
+landing set) · "`2026-09-19 author-grader-consolidation D7`" (the carrier: a plain fresh seat running
 the rendered `validation-primitive-edit` contract; `setup.validate-seat-form` for the setup loop).
 
 **Gate satisfied (D3 / D9):** the carrier is live at v0.111.0 and has graded 14 units at wave 2; the
@@ -33,7 +33,7 @@ ownership, no cross-seat messaging.
 ## 1. Sequence allocation
 
 Migration **`0010-validator-retirement.yaml`** — sequence 10, assigned here. Header anchor
-`2026-09-03 producer-plan-enforcement D3`. Rewords only: no id moves, no floor pin change, the rule
+"`2026-09-03 producer-plan-enforcement D3`". Rewords only: no id moves, no floor pin change, the rule
 count stays 1,082.
 
 ## 2. Seats and ownership (disjoint)
@@ -41,7 +41,7 @@ count stays 1,082.
 | Seat | Owns | Depends on |
 |---|---|---|
 | **P1 schema + tiering pair** | `plugins/mochiko/migrations/0010-validator-retirement.yaml` · `.mochiko/schema-views/**` (re-emit) · `plugins/mochiko/skills/patterns-model-tiering/SKILL.md` (description + Overview count) · `.mochiko/strips/patterns-model-tiering.md` (one supersession-by-ruling entry) · `.mochiko/memory/primitive-cost-budgets.md` — the `patterns-model-tiering` rows **and the `authoring-constitution` payload row** (amended at approval: the two rewords add 66 render chars; ruled-HOLDS restamp, argued under unit 1) · `scripts/similar-rules-allowlist.yaml` (rows only for edges the sweep reports). **Sole writer of the budget ledger until it reports done.** | — |
-| **P2 prose sweep** | `plugins/mochiko/agents/validator.md` (delete) · `plugins/mochiko/.claude-plugin/plugin.json` (the agents entry only — the version is the lead's) · `plugins/mochiko/skills/mochiko/SKILL.md` (four persona lines **plus the `patterns-model-tiering` row's roster count, line 71** — amended at approval) · `plugins/mochiko/skills/validation-constitution/SKILL.md` · `plugins/mochiko/skills/review-brainstorm/references/EXTERNAL-CLAIMS.md` (one pointer) · `CLAUDE.md` (lines naming `mochiko:validator` + axis 5, **title aligned to "Producer↔grader pairing"** — amended at approval; nothing in the `## Governance` region unless the user rules A on the amendment-log row, which then extends this scope to the `Ratified:` line and the ledger's version log) · `.claude/rules/mochiko/primitive-edits.md` (one parenthetical) · `ARCHITECTURE.md` (legacy hand-maintained index, six lines) · `.mochiko/memory/governance-ledger.md` (**GI-004's two detail lines, 111 and 126, + one dated editorial note — corrected at approval: line 126 sits under GI-004, GI-005 names no persona and takes no note**) · `.mochiko/memory/primitive-cost-budgets.md` — the `validator` agent row and the `validation-constitution` rows only, **written after P1 reports done** · strips: `.mochiko/strips/validator.md` · `mochiko.md` · `validation-constitution.md` · `review-brainstorm.md` | P1's rule ids only (§3.1, for cross-reference); its budget rows on P1's landing |
+| **P2 prose sweep** | `plugins/mochiko/agents/validator.md` (delete) · `plugins/mochiko/.claude-plugin/plugin.json` (the agents entry only — the version is the lead's) · `plugins/mochiko/skills/mochiko/SKILL.md` (four persona lines **plus the `patterns-model-tiering` row's roster count, line 71** — amended at approval) · `plugins/mochiko/skills/validation-constitution/SKILL.md` · `plugins/mochiko/skills/review-brainstorm/references/EXTERNAL-CLAIMS.md` (one pointer) · `CLAUDE.md` (lines naming `mochiko:validator` + axis 5, **title aligned to "Producer↔grader pairing"** — amended at approval; nothing in the `## Governance` region unless the user rules A on the amendment-log row, which then extends this scope to the `Ratified:` line and the ledger's version log) · `.claude/rules/mochiko/primitive-edits.md` (one parenthetical) · `ARCHITECTURE.md` (legacy hand-maintained index, six lines) · `.mochiko/memory/governance-ledger.md` (**GI-004-primitive-audit-ratchet's two detail lines, 111 and 126, + one dated editorial note — corrected at approval: line 126 sits under GI-004-primitive-audit-ratchet, GI-005-record-layer-integrity names no persona and takes no note**) · `.mochiko/memory/primitive-cost-budgets.md` — the `validator` agent row and the `validation-constitution` rows only, **written after P1 reports done** · strips: `.mochiko/strips/validator.md` · `mochiko.md` · `validation-constitution.md` · `review-brainstorm.md` | P1's rule ids only (§3.1, for cross-reference); its budget rows on P1's landing |
 | **P3 suite · crate fixtures · eval kit** | the frozen-census tests (`fidelity.rs` · `validate.rs` · `matrix_similar.rs` · `views.rs` · `render.rs`) re-keyed after 0010 · `evals/contract/run.py` and `evals/contract/README.md` only if a roster or name assertion reaches `validator` (the preload case is `devils-advocate` × `review-specifications` — expected untouched) · `evals/agents/validator/preregistration.md` (retirement stamp at the top) · `evals/README.md` (one line: the kit is frozen provenance) · `evals/plan/agents.py` only if it enumerates every persona directory (expected untouched) | P1 landed (for the re-key) |
 | **Lead** | `CHANGELOG.md` `[0.113.0]` · both manifests → 0.113.0 · `DECISIONS.md` supersession annotations (§6) · ADR and older-record status lines · BACKLOG / ROADMAP / record / index / `build-log.md` | after §4 for the landing; the CHANGELOG + manifests before the gate audit |
 
@@ -50,7 +50,7 @@ P1 lands · lead's CHANGELOG + manifests · §4 audits · §5 gates · §6 landi
 
 ## 3. Content
 
-### 3.1 Migration `0010-validator-retirement.yaml` (P1) — header anchor `2026-09-03 producer-plan-enforcement D3`
+### 3.1 Migration `0010-validator-retirement.yaml` (P1) — header anchor "`2026-09-03 producer-plan-enforcement D3`"
 
 Three `reword-rule` ops, each keeping its id, class, kind and labels (the verbatim prior text rides
 the log as the supersession record, as 0009 did for leg 1):
@@ -83,7 +83,7 @@ is expected.
 ### 3.2 Prose sweep (P2)
 
 - **`agents/validator.md`** — deleted whole. Strip entry in `.mochiko/strips/validator.md`:
-  supersession by ruling (`producer-plan-enforcement` D3 · `author-grader-consolidation` D7), the
+  supersession by ruling (`producer-plan-enforcement` D3-peer-plan-grader · `author-grader-consolidation` D7-fresh-gate-grader), the
   file's responsibilities named and where each now lives — the generic default-FAIL grade →
   `validation-primitive-edit` on a plain fresh seat (primitive-edit gate) and
   `setup.validate-seat-form` (setup's validate step); the evidence-hierarchy and source re-read
@@ -121,9 +121,9 @@ is expected.
   plain fresh seat × `validation-constitution` (explicit `model:` alias), the mermaid node label, and
   the closing seat paragraph's `validator` sentence → the shipped-primitive and setup grades run on
   plain fresh seats carrying the rendered contracts.
-- **Ledgers** — `governance-ledger.md` GI-004 detail "(`mochiko:validator` against the primitive's
+- **Ledgers** — `governance-ledger.md` GI-004-primitive-audit-ratchet detail "(`mochiko:validator` against the primitive's
   own text)" → a plain fresh seat running the rendered `mochiko:validation-primitive-edit` contract
-  against the unit's own files; GI-005 detail "graded by `mochiko:validator` on five criteria" → by
+  against the unit's own files; GI-005-record-layer-integrity detail "graded by `mochiko:validator` on five criteria" → by
   the primitive-edit gate seat on the same five; plus one dated editorial line under each: grader
   identity re-pointed 2026-09-19 at v0.113.0 by ruling, ratchet and criteria unchanged, no
   amendment. **P2 reads the ledger's own amendment policy first**; if it classes a detail edit as an
@@ -131,8 +131,8 @@ is expected.
   `validator` agent row struck with a retirement note (the figure stays legible for provenance).
 
 **Amendments at approval (2026-09-19, lead rulings on the seats' reserved questions):** (1) the
-ledger's "graded by `mochiko:validator` on five criteria" line sits at line 126 **under GI-004**,
-not GI-005 — both detail edits and the single editorial note are GI-004's; GI-005 names no persona
+ledger's "graded by `mochiko:validator` on five criteria" line sits at line 126 **under GI-004-primitive-audit-ratchet**,
+not GI-005-record-layer-integrity — both detail edits and the single editorial note are GI-004-primitive-audit-ratchet's; GI-005-record-layer-integrity names no persona
 and takes nothing; (2) the router's `patterns-model-tiering` row (line 71) carries the roster count
 and moves six → five with the same strip entry; (3) the axis-5 title aligns to
 "**Producer↔grader pairing**" beside its reworded body — a role-noun alignment under this section's
@@ -159,7 +159,7 @@ persona-less. Its brief carries the verbatim render of `mochiko-cli rules valida
 (all seven blocks, pasted by the lead), the unit list with file paths, and the pre-pass commands; it
 runs the pre-pass itself and quotes it (D3). Units, one verdict block and one D9 line each:
 
-1. schema content — `0010-validator-retirement.yaml` + the view diff (AM-2 five);
+1. schema content — `0010-validator-retirement.yaml` + the view diff (AM-2-required-cli-dependency five);
 2. skill pair — `patterns-model-tiering` (SKILL.md + render · strip · budget rows);
 3. skill pair — `validation-constitution` (SKILL.md + render · strip · budget rows);
 4. prose primitive — `agents/validator.md` retirement + `plugin.json` + strip + the supersession
@@ -217,6 +217,6 @@ validator"). Frozen records stay: `governance-intent.md` (ratified synthesis —
 files 0001–0009, BACKLOG lines quoting delivered builds' seat figures. `.mochiko/provenance.yaml`
 no longer exists (folded into the log at genesis), so D3's anchor item is moot.
 
-**Lead's default, stated to the user at wave open:** the ledger GI-004/GI-005 detail lines are a
+**Lead's default, stated to the user at wave open:** the ledger GI-004-primitive-audit-ratchet/GI-005-record-layer-integrity detail lines are a
 grader-identity re-point with the principle's meaning unchanged, handled as a detail edit under this
 wave's audit, not a `/mochiko:setup` amend run; the user said "go" with that default in view.

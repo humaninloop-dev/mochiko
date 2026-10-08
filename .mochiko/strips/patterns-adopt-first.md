@@ -6,7 +6,7 @@ D2–D5); this file opens with the first edit that superseded any of its shipped
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the patterns family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -18,7 +18,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -54,7 +54,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -65,7 +65,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -75,7 +75,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 
 ## [v0.102.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2B, patterns family)
 
-Ruling for every entry below: skill-content-schema D3 (three-home boundary) / D8/C4
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (three-home boundary) / D8/C4
 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema ruled ·
 Skill-schema wave-2 family doors ruled — the patterns-family door); census:
 `.mochiko/brainstorms/skill-content-schema/research/census-patterns.md` §A (AF) + §B (AF, the full
@@ -148,10 +148,10 @@ seeding path, no headroom (the ceremony seat executes the ledger row).
 - **Content:** "**User-ruled when the custom build is expensive to walk back** — persisted formats, storage engines, locking/concurrency primitives, migration-bearing shapes. **Seat-decidable with disclosure** below that line. The split criterion is retrofit cost, deliberately the same principle the adaptive-depth ruling ratified."
 - **Consumers assessed:** the Who-grades-what routing (now `patterns-adopt-first.grader-routing`) states the gate user-ruled by construction — consistent after the move.
 
-## [v0.102.0] v0.91.0 build-time firing site + never-builder-decided + baseline-delta landing — protection transfers (census §A row 5; plan-stage-utility D1 mechanic (d))
+## [v0.102.0] v0.91.0 build-time firing site + never-builder-decided + baseline-delta landing — protection transfers (census §A row 5; plan-stage-utility D1-plan-command-retires mechanic (d))
 
 - **Disposition:** superseded — protection transfers to `patterns-adopt-first.build-time-never-builder-decided` (floor, reservation; `when: {firing_site: build-time}`, DECLARE form) and `patterns-adopt-first.baseline-delta-landing` (must, binding; same `when:`), per D8/C4.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; protecting rulings 2026-08-15 build-vs-off-the-shelf + `DECISIONS.md` 2026-08-26 plan-stage-utility D1 mechanic (d) — the v0.91.0 recorded supersession of the old "not at build time" carve, entries below).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; protecting rulings 2026-08-15 build-vs-off-the-shelf + `DECISIONS.md` "2026-08-26 plan-stage-utility D1" mechanic (d) — the v0.91.0 recorded supersession of the old "not at build time" carve, entries below).
 - **Content:** "A commodity-category ruling or an IP-XXX provisioning call that first surfaces at **build-time decomposition** is never the builder's to make. The builder **halts the cycle** and takes it to the user's checkpoint, where this discipline's obligations — the disclosure floor, the rationale bite, and the constraint-challenge route-back below — fire exactly as they do in the design phase. The resulting D-XXX / C-XXX / IP-XXX write lands as a `baseline-delta.md` entry graded as judgment before the user accepts it, never an in-place edit of a ruled baseline."
 - **Kept deliberately:** the fire-exactly-as-design-phase clause survives in the rule's text as explicit ID citations of `disclosure-floor` · `rationale-bite` · `constraint-challenge-finding`.
 - **Consumers assessed:** `implement.md` carries the build-time decision gating and the `baseline-delta.md` path (untouched); `mochiko:executing-tdd-cycle`'s halt obligation is unchanged.
@@ -167,7 +167,7 @@ seeding path, no headroom (the ceremony seat executes the ledger row).
 
 - **Disposition:** relocated → `plugins/mochiko/skills/patterns-adopt-first/schema.yaml`, per the map entry above (D3).
 - **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 rows; every row birth-traceable to the 2026-08-15 build-vs-off-the-shelf row, row 3's narrowed carve to 2026-08-26 plan-stage-utility).
-- **Widening disclosed (W1 fix round):** row 1's rule text reads "Design **and build** seats own in-process libraries and self-hostable components" where the body read "Design seats own" — not a verbatim relocation. Ground: the v0.91.0 build-time firing site (plan-stage-utility D1 mechanic (d), the transfer entry above) — the discipline fires at build-time decomposition and its scope bound governs both firing sites; the frozen `description:` already carries the build-time decision. Deliberate, kept.
+- **Widening disclosed (W1 fix round):** row 1's rule text reads "Design **and build** seats own in-process libraries and self-hostable components" where the body read "Design seats own" — not a verbatim relocation. Ground: the v0.91.0 build-time firing site (plan-stage-utility D1-plan-command-retires mechanic (d), the transfer entry above) — the discipline fires at build-time decomposition and its scope bound governs both firing sites; the frozen `description:` already carries the build-time decision. Deliberate, kept.
 - **Content (decisive line per row):** 1 "Design seats own **in-process libraries and self-hostable components**. Buying a **managed service, a SaaS product, or a whole capability** is a business call: it routes to an IP-XXX provisioning requirement and the PM/user, never here." · 2 "what the product exists to do is presumptively not a commodity; the test is for the infrastructure underneath" · 3 "the card carries that commitment; the code ladder … shapes code, it does not reopen the mechanism" · 4 "'established, never hand-rolled' for linters, CI, and build tooling is governance-floor doctrine, not a design- or build-time decision" · 5 "**is this problem older than this product?** Presumptively yes for … storage · locking · serialization · queueing · caching · auth · search. That list is a starting set, not a catalog: judgment extends it; absence from the list is not an exemption." · 6 "**The author's framing never gates the check.**" · 17 "the ladders size the artifact; this discipline asks who should have built it. … that home carries tooling defaults, this skill the design- and build-time decision — no merge, cross-pointers only."
 - **Consumers assessed:** the router row describes the skill generically and stays true; `mochiko:patterns-plan-minimalism` rung 3 and `mochiko:patterns-code-minimalism`'s binding-constraint carve reference the skill, never restate it (untouched).
 
@@ -175,7 +175,7 @@ seeding path, no headroom (the ceremony seat executes the ledger row).
 
 - **Disposition:** superseded → "not a design- or build-time decision (see Siblings)".
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 mechanic (d)). Raised as an
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires mechanic (d)). Raised as an
   **advisory** by the v0.91.0 wave audit: the main pass re-keyed this skill's Siblings line to
   "this skill the design- and build-time decision" but left this cross-reference to it reading
   "not a plan decision", so the bullet pointed at a line that no longer used its words.
@@ -201,7 +201,7 @@ seeding path, no headroom (the ceremony seat executes the ledger row).
   build-time decomposition decision in a commodity category, with the never-builder-decided
   rule carried in the field.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 carry-overs — "adopt-first
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires carry-overs — "adopt-first
   re-homed to the design phase and build-time decomposition (gated per mechanics d)" — and
   mechanic (d): "A commodity-category adopt-first ruling or an IP-XXX provisioning call is never
   builder-decided: it halts the cycle to the user's checkpoint, where
@@ -231,7 +231,7 @@ seeding path, no headroom (the ceremony seat executes the ledger row).
 - **Disposition:** superseded → a narrowed carve-out (no reopening a mechanism the design phase
   already ruled) plus a new **build-time gate** section carrying mechanic (d)'s obligation.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 mechanic (d)).
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires mechanic (d)).
 - **Why this edit exceeded the re-point brief, recorded so the audit reads it as deliberate:**
   the description re-key alone would have left the body asserting that this discipline does
   **not** fire at build time while the description asserted it does — a direct self-contradiction

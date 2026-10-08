@@ -1,7 +1,7 @@
 //! The artifact-template model and its two guidance views.
 //!
 //! A template describes one pipeline artifact. The binary only renders it — it never grades an
-//! artifact against it (the bright line, GI-019). The `--check` view is the mirror-checklist
+//! artifact against it (the bright line, GI-019-kernel-tooling-admission). The `--check` view is the mirror-checklist
 //! rendering of the same template, not a linter.
 //!
 //! # Where a template comes from
@@ -74,7 +74,7 @@ pub struct Section {
 /// The conformance block: what a binary can check about a produced artifact by string and count.
 ///
 /// Every field here is decidable without reading meaning, which is what keeps the write-time gate
-/// on the admitted side of the bright line (GI-019). The heading grammar is not repeated here — it
+/// on the admitted side of the bright line (GI-019-kernel-tooling-admission). The heading grammar is not repeated here — it
 /// comes off [`Section::heading`] in declaration order.
 #[derive(Debug, Default, Deserialize)]
 pub struct Conformance {

@@ -2,7 +2,7 @@
 MODULE: release-gates
 =====================
 Attach when: always offered for the target class — customer-facing software the team deploys
-and operates has a real release process by definition (PO-D1), and the deployment-and-release
+and operates has a real release process by definition (`production-only-focus` D1-customer-product-target), and the deployment-and-release
 dimension (always interrogated — no pruning license) supplies its content: environments,
 cadence, release-blocking criteria, rollback expectations. Trace: the GI module-selection
 element that names `release-gates`.

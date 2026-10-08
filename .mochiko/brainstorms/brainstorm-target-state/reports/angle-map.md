@@ -35,7 +35,7 @@ grounding: >-
   strips/analysis-iterative.md (v0.63.0 guardrails cut, v0.25.0 KEPT entries) and the
   strips/review-brainstorm.md headings (v0.100.0 protection transfers). DECISIONS.md rows 85-87, 90,
   102-103, 108, 119 and 210-214. command-architecture-realignment record D1/D6 (lines 68-80, 145-150).
-  command-schema-ontology D4 (lines 260-272). setup-product-agnostic OQ1. BACKLOG.md lines 29-38,
+  command-schema-ontology D4-moment-anchor-declarations (lines 260-272). setup-product-agnostic OQ1. BACKLOG.md lines 29-38,
   270-290 and 544. primitive-cost-budgets.md rows for analysis-iterative and review-brainstorm. The
   evals/contract brainstorm hits. Outside sources, read in full: agent-skills@1401c8b interview-me,
   idea-refine and doubt-driven-development; pocock-skills@d81f3a1 wayfinder, grilling,
@@ -103,7 +103,7 @@ angles:
       session it is designed for?
   B-prior-ruling-collisions:
     - >-
-      B1 (LB) The flow collides with command-architecture-realignment D1, which is Contested and
+      B1 (LB) The flow collides with command-architecture-realignment D1-choreography-leaves-commands, which is Contested and
       user-ruled (2026-08-02). D1 says: "Stage/seat choreography, default pipelines ... are deleted,
       not relocated: no new skills ... The lead is trusted to plan." Its rationale says "the volume
       of encoded detail is itself the defect". D6 adds "no stage or gate vocabulary". A stage-by-stage
@@ -112,7 +112,7 @@ angles:
       the lead's latitude or a narrative default the lead may depart from. It must say which.
       Silence here leaves the next build in conflict with a standing user ruling.
     - >-
-      B2 (LB) Where the stages physically live. command-schema-ontology D4 says moments are
+      B2 (LB) Where the stages physically live. command-schema-ontology D4-moment-anchor-declarations says moments are
       "unordered ... never schedules moments against each other", and sequence is the .md narrative
       plus the lead's latitude. command-md-scaffold-standardization forbids any extra top-level
       section in a command. A staged flow has to land in one of three places: the Adaptive Goal
@@ -150,7 +150,7 @@ angles:
       reopen-born grade). Any change to the review stage removes protected content, which can leave
       only by recorded supersession.
     - >-
-      B7 ER-D3 purity and in-session research. EXTERNAL-CLAIMS.md says "Producers disclose; review
+      B7 `external-research-in-review` D3-verify-at-review purity and in-session research. EXTERNAL-CLAIMS.md says "Producers disclose; review
       seats verify. No producer carries a verification duty." A research stage that makes
       verification a producer duty breaks this. Research outputs still need quotable sources so the
       reviewer and the lead can re-read them.
@@ -369,7 +369,7 @@ angles:
   H-landing-and-evaluation:
     - >-
       H1 (LB) How we know it is better. Repo precedent chooses remedies empirically: the
-      guardrails-vs-detail benchmark, and adversarial-review-generality AR-D2 ("chosen empirically,
+      guardrails-vs-detail benchmark, and `adversarial-review-generality` D2-empirical-remedy-choice ("chosen empirically,
       not by argument"). A brainstorm plan-only eval kit exists, but it has never run a grid, and the
       regression path is uncontrolled across command kits (BACKLOG.md:270-290). The record should
       name the measure, or mark efficacy Assumed (n=0) on each stage.

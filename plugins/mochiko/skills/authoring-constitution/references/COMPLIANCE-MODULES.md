@@ -6,7 +6,7 @@
 > nothing; it waits for the queued rehoming session, which decides where the trigger table and the
 > seed obligations live.
 
-The production floor's companion (PO-D2): regulated and compliance needs are not a tier — they
+The production floor's companion (`production-only-focus` D2-tier-axis-retired): regulated and compliance needs are not a tier — they
 are **additive elective modules attached by project facts** (industry, data classes,
 jurisdiction, contractual commitments). A module only ever ADDS obligations on top of the
 asserted floor — never subtracts, never loosens. Attachment is **mechanical from the fact
@@ -24,17 +24,17 @@ governs the floor cards only. The legal-mandate stratum sits above the dial.
 | Health/medical data about identifiable people (US market) | `hipaa` | legal-mandate | seed |
 | Cardholder / payment-card data handled or stored | `pci-dss` | legal-mandate | seed |
 | Personal data of EU/UK residents | `gdpr` | legal-mandate | seed |
-| Customer-facing UI in a jurisdiction with accessibility statutes (ADA / EAA / EN 301 549) | `a11y` (WCAG) | legal-mandate | seed — routed here per PO-D5's S8 fold |
+| Customer-facing UI in a jurisdiction with accessibility statutes (ADA / EAA / EN 301 549) | `a11y` (WCAG) | legal-mandate | seed — routed here per `production-only-focus` D5-production-depth-agenda's S8 fold |
 | Contractual attestation commitments (SOC 2, ISO 27001, customer security addenda) | `attestation` | contractual | seed |
 
 ## Strata — waiver posture (ruled 2026-07-30, `po-narrowing-build-scope`)
 
 - **legal-mandate** — obligations entering via a legally-mandated module are **unwaivable**
-  (PO-D4.2): a recorded permanent waiver of a legal control is documented evidence of a knowing
+  (`production-only-focus` D4.2-legal-mandate-exception): a recorded permanent waiver of a legal control is documented evidence of a knowing
   violation, not an escape valve.
 - **contractual / non-legal** — waivable under the D4 model: a recorded, auditable
   justification in the governance ledger, permanent pending the D4.1 expiry revisit.
-- Both strata are **additive-only** over the floor (PO-D2), in all cases.
+- Both strata are **additive-only** over the floor (`production-only-focus` D2-tier-axis-retired), in all cases.
 
 ## Seed obligations (relocated from the retired `regulated` tier)
 

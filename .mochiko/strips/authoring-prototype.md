@@ -6,7 +6,7 @@ strip entries at v0.58.0 (feature-map-layer wave).
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the authoring family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -16,7 +16,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/authoring-prototype/SKILL.md`. -->
 
@@ -24,7 +24,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 - **Disposition:** superseded → "delivered by `mochiko-cli` in the artifact section"
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** two lines.
   1. Related row: "(binding in the schema's artifact section)"
   2. the greying-grammar sentence: "the greying grammar the schema's re-tag and rejected-story
@@ -38,7 +38,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -91,7 +91,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -101,7 +101,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
   a silent continue.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -111,7 +111,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 ## [v0.101.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2A, authoring family)
 
-Ruling for every [v0.101.0] entry below: skill-content-schema D3 (three-home boundary) /
+Ruling for every [v0.101.0] entry below: skill-content-schema D3-obligations-only-schema (three-home boundary) /
 D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (record + wave-2 family-door
 rulings); census: `.mochiko/brainstorms/skill-content-schema/research/census-authoring.md` §A/§B (AP).
 Schema home: `plugins/mochiko/skills/authoring-prototype/schema.yaml`. Minted IDs carry the
@@ -177,22 +177,22 @@ growth claimed.
   machinery the re-tag pass consumes; review-specifications' Screens & Flows checks re-keyed at
   v0.58.0, untouched here.
 
-## [v0.101.0] [v0.76.0] two-arm spec pointer — protection transfers (schema-based-template-guidance D8, GI-020)
+## [v0.101.0] [v0.76.0] two-arm spec pointer — protection transfers (schema-based-template-guidance D8-schema-data-files, GI-020-plugin-install-model)
 
 - **Disposition:** superseded — protection transfers to `spec-two-arm`
   (`extends: authoring-common.two-arm-template`, `${template}` = spec), per D8/C4. Both arms
-  preserved — CLI invoke + first-class raw Read (GI-020).
+  preserved — CLI invoke + first-class raw Read (GI-020-plugin-install-model).
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; original
-  protection: 2026-08-16 schema-based-template-guidance D1/D8, the [v0.76.0] entry below).
+  protection: "2026-08-16 schema-based-template-guidance D1/D8", the [v0.76.0] entry below).
 - **Content:** the Overview two-arm parenthetical and the `## Related` spec-schema line's
   mechanics.
 - **Kept deliberately:** the Related list keeps the spec-schema name as a navigation pointer;
   the `artifact-format.md` pointer stays (now also the C-A4 stub's inherited pointer).
 - **Consumers assessed:** n/a (single-writer skill).
 
-## [v0.76.0] `spec-template.md` read-pointers → `spec` schema (two-arm CLI / raw Read) — schema-based-template-guidance D1/D8
+## [v0.76.0] `spec-template.md` read-pointers → `spec` schema (two-arm CLI / raw Read) — schema-based-template-guidance D1-single-plugin-cli/D8-schema-data-files
 - **Disposition:** superseded → `mochiko-cli template spec`, or Read `plugins/mochiko/schemas/spec.yaml` raw (D8-first-class). Two sites re-pointed: the Overview "in the shape … defines" pointer and the Related-section pointer.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1-single-plugin-cli/D3-pipeline-template-scope/D8-schema-data-files; `DECISIONS.md` "Template-schema CLI ruled").
 - **Content (superseded, verbatim):**
   - `in the shape` / `[\`spec-template.md\`](../../templates/spec-template.md) defines:` — Overview item 2
   - `- [\`spec-template.md\`](../../templates/spec-template.md) — owns the Screens & Flows section shape this skill fills` — Related
@@ -231,7 +231,7 @@ growth claimed.
 
 ## [v0.58.0] Slice-tag grammar re-keyed to FEAT tags (R10)
 - **Disposition:** superseded → the same greying grammar re-keyed: invariant 7 becomes "FEAT tags carried — a re-tag pass at derivation" (tags cannot exist during lockstep authoring — derivation runs after stories, so FEAT tags land as a re-tag pass over the SCR/FLOW manifest); new invariant 8 keeps a filter-rejected story's screens greyed, marked rejected, pointed at the recorded rejection. Map machinery single-sourced in `mochiko:authoring-feature-map`.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)", record `.mochiko/brainstorms/feature-map-layer/record.md`, D4 slices retire · R10 filter-vs-lockstep build lines).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)", record `.mochiko/brainstorms/feature-map-layer/record.md`, D4-slices-leave-pipeline slices retire · R10 filter-vs-lockstep build lines).
 - **Content (verbatim, the superseded lines):**
   - description clauses: `SCR-XXX screen entries (purpose, data shown, slice tag)` and `FLOW-XXX click-path entries (step sequences keyed to story acceptance scenarios, slice tag)` — "slice tag" → "FEAT tag" in both;
   - Overview manifest parenthetical: `SCR-XXX rows (screen, purpose, data shown, slice)` / `FLOW-XXX rows (click-path steps, the story acceptance scenario each keys to, slice)`;

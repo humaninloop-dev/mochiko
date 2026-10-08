@@ -7,7 +7,7 @@ ruling in `build-log.md`, the seams records (`.mochiko/decisions/2026-09-29-join
 ceremony and the landing ritual.
 **Branch:** `joint-hook-delta` at `5558fd7` (wave 2 committed: migrations through 0035, views at 87).
 **This wave carries the joint bump:** `plugin.json` 0.115.0 → **0.116.0** (MINOR — new homes, new rules, a new
-grammar), shipped under the AM-5 exception row (seams R4). No `mochiko-cli-v*` tag; the crate stays unpublished
+grammar), shipped under the AM-5-field-review-fold exception row (seams R4). No `mochiko-cli-v*` tag; the crate stays unpublished
 at 0.3.0. Nothing merges to `main` before the bump commit, and the merge itself is the user's call.
 
 ## 0. Carried into this wave (from the build log)
@@ -26,7 +26,7 @@ prose that restates superseded rules · the ledger's pre-ruled strike PATCH · t
 | S10 | `tech-lead` | `.mochiko/memory/governance-ledger.md` (the pre-ruled strike PATCH, v3.2.1) · the `CLAUDE.md` governance region lines that PATCH moves · `.claude/rules/mochiko/rust-cli.md` build-state pointer |
 | Lead | — | `CHANGELOG.md` · `plugin.json` · `marketplace.json` · mochiko's `.gitignore` (`.mochiko/runs/`) · `.mochiko/memory/primitive-cost-budgets.md` (the gate sweep and the rows; S8's Q5) · the landing ritual (`DECISIONS.md`, `BACKLOG.md`, the trail, `ROADMAP.md`, the brainstorms index) · `build-log.md` |
 | P6–P10 | fresh peers | plan grades per `mochiko:review-seat-plan`; write nothing |
-| G3 | fresh, non-author | code review of S6's crate diff (`rust-cli.md`, GI-004) |
+| G3 | fresh, non-author | code review of S6's crate diff (`rust-cli.md`, GI-004-primitive-audit-ratchet) |
 | V1–V3 | fresh plain seats (`opus`) | the gate audit, `mochiko:validation-primitive-edit`, per unit (§6) |
 
 Transport as waves 1–2: lead-relayed, one writer per file, each seat formats only its own files, every write into
@@ -88,17 +88,17 @@ units (S8's skills, references, hooks, README, with their strips) · **V4** S10'
 fresh seat against its passed plan (E1–E14) and the built binary; the PATCH itself is the user's to approve at the
 bump. One fix round and one re-audit per unit; a second FAIL goes to the user.
 
-## 7. S10 — the governance PATCH (pre-ruled at AM-5)
+## 7. S10 — the governance PATCH (pre-ruled at AM-5-field-review-fold)
 
-The strike trigger fires at this bump (ledger GI-019 build-state line, `:489–494`): strike the build-state line and
-the `rust-cli.md` pointer, and correct drift between the AM-5 text and what was built in the same amendment-log row —
+The strike trigger fires at this bump (ledger GI-019-kernel-tooling-admission build-state line, `:489–494`): strike the build-state line and
+the `rust-cli.md` pointer, and correct drift between the AM-5-field-review-fold text and what was built in the same amendment-log row —
 at least R7's struck `## Header` limb (`:452`, `:473`), ".md write" where every extension is sniffed (`:472`), and
 "What the gate reads" for `Write` (`:478`). PATCH v3.2.1, the v3.0.1–v3.0.3 idiom: mints no principle, no fresh
 `/mochiko:setup` amend. S10's plan states the full drift list from a clause-by-clause read against the built binary.
 
 ## 8. Lead — the ceremony and the landing
 
-`.gitignore` gains `.mochiko/runs/` · `CHANGELOG.md` 0.116.0 citing the AM-5 exception row (R4) · `plugin.json` and
+`.gitignore` gains `.mochiko/runs/` · `CHANGELOG.md` 0.116.0 citing the AM-5-field-review-fold exception row (R4) · `plugin.json` and
 `marketplace.json` 0.116.0 · the landing ritual: the field-review, delta and seams rows to built, the census and R9
 records, the BACKLOG build item to the trail with the new items booked (G1 R1/R3/R4/A8 unless taken, the five 0013
 `observable.yaml` ids, the strips-home door, a `withdraw-document` op, the design-truth items to the rehoming
@@ -110,7 +110,7 @@ before the plugin carrying 0032–0035.
 1. S6, S7, S8, S10 plan-only in parallel, graded, GO. S7's migrations land under slots; S7 regenerates views.
 2. S9 plans once S6 and S7 have landed; graded; executes (pins, evals, contract suite).
 3. G3 on S6's diff; V1–V3 on every unit. Fix rounds bounded.
-4. Lead gates (release gates 1–6, GI-012): audits PASS · strips recorded · landing complete · CHANGELOG ·
+4. Lead gates (release gates 1–6, GI-012-release-gates-module): audits PASS · strips recorded · landing complete · CHANGELOG ·
    marketplace synced · views ≡ replay · `cargo test --all` plus fmt, clippy, audit, the opt-in similarity test ·
    the contract suite's deterministic set green. Then the bump commit, put to the user; the merge to `main` is theirs.
 

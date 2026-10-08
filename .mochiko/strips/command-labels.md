@@ -7,7 +7,7 @@ rode their decision rows as pure additions.
 <!-- Wave context: the schema-header runtime-kernel wave (v0.100.0) — shipped schema
 top-of-file header comments trimmed to runtime-essential content. Ruling for every
 [v0.100.0] entry below: `.mochiko/decisions/2026-08-28-schema-header-runtime-kernel.md`
-(a recorded supersession-by-amendment of command-content-schema D14) + `DECISIONS.md`
+(a recorded supersession-by-amendment of command-content-schema D14-nested-section-grammar) + `DECISIONS.md`
 2026-08-28 row. Pre-edit verbatim text: `git show e44b33d:plugins/mochiko/schemas/<file>`. -->
 
 ## [v0.100.0] `schemas/command-labels.yaml` header — ceremony/roadmap notes superseded, tombstone kept
@@ -28,7 +28,7 @@ top-of-file header comments trimmed to runtime-essential content. Ruling for eve
   `git show e44b33d:plugins/mochiko/schemas/command-labels.yaml` (lines 1–17).
 - **Kept deliberately:** the cross-command-link semantics (same label = the cross-command link)
   and the `fail-condition` retirement tombstone, **verbatim** — a tombstone never leaves by
-  cleanup (record integrity, GI-005).
+  cleanup (record integrity, GI-005-record-layer-integrity).
 - **Consumers assessed:** the six command `.md`s (point here for labels; unchanged) ·
   `.claude/skills/converting-command-to-schema/SKILL.md` (exemplar list unchanged for this file) ·
   `scripts/check-command-schema.py` (reads label keys, not header comments; post-edit PASS).
@@ -45,7 +45,7 @@ top-of-file header comments trimmed to runtime-essential content. Ruling for eve
   schemas (`plugins/mochiko/schemas/<cmd>.yaml`), which is now the operative selector for
   the Not-done set; the registry header carries a one-line retirement note in its place.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/command-schema-ontology/record.md` D1 and build-surface item 4,
+  (`.mochiko/brainstorms/command-schema-ontology/record.md` D1-rule-kind-set and build-surface item 4,
   "`kind: fail` replaces the `fail-condition` label as the operative selector";
   `DECISIONS.md` 2026-08-27. Inventory: that session's `conversion-inventory.md` section H.)
 - **Content:** the registry line as shipped at v0.97.0, verbatim —
@@ -75,7 +75,7 @@ top-of-file header comments trimmed to runtime-essential content. Ruling for eve
   `plugins/mochiko/schemas/common.yaml` as the one exception and states its bar (text that
   is an exact duplicate across three or more command schemas).
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/command-schema-ontology/record.md` D8 as amended by C2 —
+  (`.mochiko/brainstorms/command-schema-ontology/record.md` D8-common-extends-adoption as amended by C2 —
   "a recorded supersession-by-ruling of command-content-schema D3 … amended, not
   reversed"; `DECISIONS.md` 2026-08-27.)
 - **Content:** the clause as shipped at v0.97.0, verbatim —
@@ -89,7 +89,7 @@ top-of-file header comments trimmed to runtime-essential content. Ruling for eve
 - **Kept deliberately:** both halves of what D3 bought. Per-command rules remain the
   **default**, and the same label across command schemas remains the cross-command link —
   D8 narrowed the prohibition, it did not retire the mechanism. The header still cites
-  command-content-schema D3/D8 as the registry's own ruling.
+  command-content-schema D3-no-shared-library/D8-label-vocabulary-registry as the registry's own ruling.
 - **Consumers assessed:** `plugins/mochiko/schemas/common.yaml` (the exception this clause
   now names, shipped the same wave) · `.claude/skills/converting-command-to-schema/SKILL.md`
   step 6 (labels-from-the-registry-only, unchanged — the registry bar is untouched by D8)

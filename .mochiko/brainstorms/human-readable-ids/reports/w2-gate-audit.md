@@ -100,17 +100,17 @@ ruling. The validate `budget` findings count rule text only and are not the ledg
 ## S1 — schema content `0046-joined-id-templates`
 
 VALIDATE: schema content `plugins/mochiko/migrations/0046-joined-id-templates.yaml` with its regenerated view diff (10 template views).
-Checklist run: `judgment-items-schema`, the AM-2 five.
+Checklist run: `judgment-items-schema`, the AM-2-required-cli-dependency five.
 Evidence read: `0046-joined-id-templates.yaml` (header, intent, anchor, 10 `replace-document` ops) · `git diff -- .mochiko/schema-views/templates/{spec,tasks,governance-intent,governance-surfaces,feature-entry,features-index,architecture-concerns,architecture-spine,architecture-store,design-baseline}.yaml`, read in full · record D2, D5, D9, D11, D12, D19, D21 · `w2-schema-plan.r1.frozen.md` §1–§2.
 Pre-pass: `0 rejecting · 113 advisory`, with no advisory naming a template; views ≡ replay; HEAD views ≡ 1..45 replay.
 - PASS — intent stated: the intent names D1, D2, D9, D11, D19 and D21. It also names the owner qualifiers, the SC padding, the cycle heading, the trace-line ripple and the bare carve-outs (D12, D21). Each one appears in the view diff.
-- PASS — anchor present: `anchor: 2026-10-08 human-readable-ids D21`; it is bare, as an anchor must be (D12).
+- PASS — anchor present: "`anchor: 2026-10-08 human-readable-ids D21`"; it is bare, as an anchor must be (D12).
 - PASS — ID lifecycle right: whole-document replaces. No rule id is minted, retired or reused, and the template section names are unchanged.
 - PASS — floor and fail survival: templates carry no floor or fail rule, and the replaced documents keep every section, `required:` and `max_lines:`. The diff touches ID tokens, two overview insertions (the tasks owner line, the feature-entry file-slug line) and the governance-intent trace-matching line only.
 - PASS — register: the inserted contract and overview text keeps the templates' `full` register.
 - PASS — departure 1a (governance-intent "(deterministic …)" kept): matching on the GI number is still deterministic. The new parenthetical makes the line true now that ledger mentions are joined and markers stay bare (D12).
 - PASS — departure 1b (`spec` derived-features `FEAT-YYY` row joins `US-2`): it applies D2 and D21's scope clause to an example ID the plan missed. That row's sibling already shows `US-1-{{slug}}`.
-- PASS — fidelity checks: `<!-- GI-… -->` markers stay bare (`governance-surfaces.yaml:41-70,100`); `[US-1-{{slug}}](stories/US-1.md)` keeps the path bare; SC is three-digit (`SC-001-{{slug}}`, D9); cross-file SC carries its spec slug (`` `tenant-workspaces` SC-007-tenant-read-speed ``); the cycle `Raised` cell is behind the run key; and every H1 drift `shows` string survives (`sequential GI-001, GI-002`, `**Depends on:** C1`).
+- PASS — fidelity checks: `<!-- GI-… -->` markers stay bare (`governance-surfaces.yaml:41-70,100`); `[US-1-{{slug}}](stories/US-1.md)` keeps the path bare; SC is three-digit (`SC-001-{{slug}}`, D9); cross-file SC carries its spec slug (`` `tenant-workspaces` SC-007-tenant-read-speed ``); the cycle `Raised` cell is behind the run key; and every H1 drift `shows` string survives ("`sequential GI-001, GI-002`", `**Depends on:** C1`).
 - Advisory (non-gating): `governance-intent.yaml:160`'s check still reads `(GI-0XX, …)` while the two sibling checks in the same template went joined. Fix: join it to `GI-0XX-<slug>` in the next migration that touches this template.
 
 VERDICT: PASS
@@ -120,11 +120,11 @@ Issues requiring fix: none.
 ## S2 — schema content `0047-joined-id-minting-rules`
 
 VALIDATE: schema content `plugins/mochiko/migrations/0047-joined-id-minting-rules.yaml` with the views of its 14 reworded rules (10 documents).
-Checklist run: `judgment-items-schema`, the AM-2 five.
+Checklist run: `judgment-items-schema`, the AM-2-required-cli-dependency five.
 Evidence read: `0047-joined-id-minting-rules.yaml` in full · `git diff -- .mochiko/schema-views/commands/{brainstorm,setup,implement}.yaml .mochiko/schema-views/skills/{authoring-requirements,authoring-feature-map,authoring-epic,authoring-architecture-store,authoring-technical-requirements,authoring-constitution,review-feasibility}.yaml` · `plugins/mochiko/skills/authoring-epic/SKILL.md:1-40` · record D1, D3, D4, D9, D11, D12, D13, D19, D21 · schema plan r1 §1 carrier table.
 Pre-pass: `0 rejecting · 113 advisory`; rule-node diff: the 14 rewords changed `text` only.
 - PASS — intent stated: the intent names D1 with D2, D3, D9, D13, D19, D21 and B4. It also names EPIC's new definition line, the owner forms and the IDs-section pointers, and each one is in the ops.
-- PASS — anchor present: `anchor: 2026-10-08 human-readable-ids D1`. No reword is re-anchored, so the prior rulings' anchors survive (for example `brainstorm.decision-cards` keeps `2026-10-06 brainstorm-target-state D9`).
+- PASS — anchor present: "`anchor: 2026-10-08 human-readable-ids D1`". No reword is re-anchored, so the prior rulings' anchors survive (for example `brainstorm.decision-cards` keeps "`2026-10-06 brainstorm-target-state D9`").
 - PASS — ID lifecycle right: 14 `reword-rule` ops, ids kept, no mint, no tombstone.
 - PASS — floor and fail survival: no reworded rule changed class or kind, and all 383 floor/fail rules survive. Each reword keeps its prior clause and adds the joined form. `setup.synthesis-artifact`'s dropped "GI-XXX namespace" survives as "numbered per that template's GI-ID rule".
 - PASS — register: plain rule register, matching the rewords' neighbours.
@@ -140,11 +140,11 @@ Issues requiring fix: none.
 ## S3 — schema content `0049-graders-check-joined-ids`
 
 VALIDATE: schema content `plugins/mochiko/migrations/0049-graders-check-joined-ids.yaml` with its minted rules' views (common block, 5 review skills, 2 desk commands).
-Checklist run: `judgment-items-schema`, the AM-2 five, plus the payload budget of the five member skills and the common row.
+Checklist run: `judgment-items-schema`, the AM-2-required-cli-dependency five, plus the payload budget of the five member skills and the common row.
 Evidence read: `0049-graders-check-joined-ids.yaml` in full · `git diff -- .mochiko/schema-views/common/skill-review-common.yaml .mochiko/schema-views/skills/{review-specifications,review-plan-artifacts,validation-constitution,review-governance-intent,review-brainstorm}.yaml .mochiko/schema-views/commands/{architecture,feature}.yaml` · `mochiko-cli rules review-plan-artifacts --section review-plan-artifacts.sec.verdict` (the stub resolves to the common text) · record D4, D6 (S7), D13 (build), D16 (S8) · wave plan item 3.
 Pre-pass: `0 rejecting · 113 advisory`; `pointer resolution: 88 checked`; no new advisory; budgets as tabled above.
 - PASS — intent stated: the intent names D6 with D4, D13 and D16, the five review skills, the two desk graders, and "No floor or fail". All seven ops match.
-- PASS — anchor present: the migration anchor is `2026-10-08 human-readable-ids D6`, and each minted rule carries it.
+- PASS — anchor present: the migration anchor is "`2026-10-08 human-readable-ids D6`", and each minted rule carries it.
 - PASS — departure 1c (`review-common.joined-ids` carries `anchor:`): the 0008 precedent covers it and validate accepts it. It keeps the common block's provenance where the stubs resolve it.
 - PASS — ID lifecycle right: 8 new ids, unique, no reuse. The 5 stubs are `extends:` with a local `class: must`, which follows the family-common convention.
 - PASS — floor and fail survival: nothing touched; the intent's "No floor or fail" holds.
@@ -228,7 +228,7 @@ Pre-pass: `0 rejecting · 113 advisory`. Section measured at 6,825 characters ov
 - PASS — preserved responsibilities: rule 1 keeps its rule, its eight families and its closing sentence. The v3 version line and the old wording are verbatim in the strip. "a bare ID" became "the ID alone", which keeps the gloss rule's meaning once "bare" is defined.
 - PASS — consumed-by line: it matches the 10 views that cite the IDs section.
 - PASS — flag 6 (size 6,825 against the plan's ~5,500): every overrun source is a ruled obligation (B1 narrowed, A2 with C1, B1's quote clause, A1's file-name exception). The file is read on demand, not budgeted, and nothing restated was found.
-- PASS — flag 9 (`GI-031` for `GI-020`): GI-001 to 022 are decided here. 031 is outside that range, which keeps wave 3 from back-filling an example.
+- PASS — flag 9 (`GI-031` for "`GI-020`"): "GI-001 to 022" are decided here. 031 is outside that range, which keeps wave 3 from back-filling an example.
 - PASS — flag 10 (rekey line): `ids rekey <owning-file> <old-ID> <new-ID>` with "the slug travels with the entry" is true on both the wave-1 surface and the wave-1b debug `--help` (`<OLD_ID>` bare or joined, `<NEW_ID>` bare). `ids rename … (the ID bare)` matches `<ID> The ID, bare`.
 - Advisory (non-gating): "`mochiko-cli ids` never rewrites text inside a `"…"` quote" overstates the tool. `quotes_masked` (`ids.rs:1221`) unmasks quotes in `.html`/`.htm`, where an attribute is a link. Fix: add "(outside `.html` files, where a quoted attribute is a link)".
 - Advisory (non-gating): at wave 1b, the rekey line could name the joined old-ID form for the case where two entries share a number. That case is 0048's landing shape.
@@ -482,7 +482,7 @@ VALIDATE: prose primitive `…/review-feasibility/references/FEASIBILITY-LENS.md
 Checklist run: `judgment-items-prose`.
 Evidence read: `git diff` of the file read in full · 0047's `findings-cite-ids` view · `.mochiko/strips/review-feasibility.md` `[v0.118.0]`.
 Pre-pass: `0 rejecting · 113 advisory`.
-- PASS — coherence: the worked examples are joined as same-file definitions. The `at` contract and the vague-evidence row use the `` `product` `` owner form of 0047. `GI-007` → `GI-031-hexagonal-layer-boundaries` follows the collision guard.
+- PASS — coherence: the worked examples are joined as same-file definitions. The `at` contract and the vague-evidence row use the `` `product` `` owner form of 0047. "`GI-007`" → `GI-031-hexagonal-layer-boundaries` follows the collision guard.
 - PASS — preserved responsibilities: every class, verdict word and anti-pattern is unchanged. `IP-XXX` kind mentions stay.
 
 VERDICT: PASS
@@ -628,7 +628,7 @@ Issues requiring fix: none.
 
 ## Round 3 — S4 and S5, two new schema-content units
 
-Same seat (`w2-gate-audit`) and tier (`opus`), resumed, against the same render (rendered first-hand at round 1; the contract is unchanged since). Both units are new at this round, so each takes a full read under the AM-2 five, and each outcome line reads `1 rounds`.
+Same seat (`w2-gate-audit`) and tier (`opus`), resumed, against the same render (rendered first-hand at round 1; the contract is unchanged since). Both units are new at this round, so each takes a full read under the AM-2-required-cli-dependency five, and each outcome line reads `1 rounds`.
 
 Pre-pass, run first-hand:
 - `mochiko-cli migrate validate --report --plugin-root plugins/mochiko` gives `0 rejecting · 113 advisory`, run twice with identical output. Against the round-1 run, one line changed: `budget · command/implement · - · 114 rules · 34627 resolved characters of rule text` (was 34319, +308). No advisory names `templates/governance-intent`.
@@ -641,11 +641,11 @@ Pre-pass, run first-hand:
 ### S4 — schema content `0048-landing-rekey`
 
 VALIDATE: schema content `plugins/mochiko/migrations/0048-landing-rekey.yaml` with its regenerated view diff (`commands/implement.yaml`).
-Checklist run: `judgment-items-schema`, the AM-2 five, plus the lead's two named checks: the text against `ids rekey --help`, and the ruling that no refusal path enters the rule.
+Checklist run: `judgment-items-schema`, the AM-2-required-cli-dependency five, plus the lead's two named checks: the text against `ids rekey --help`, and the ruling that no refusal path enters the rule.
 Evidence read: `0048-landing-rekey.yaml` in full · the view diff at `implement.yaml:711-733` (one rule) · `implement.yaml:1117-1125` (`impl.fail.unreviewed-baseline-diff`) · `target/debug/mochiko-cli ids rekey --help` · `crates/mochiko-cli/src/rename.rs:205-212`, `:240-325`, `:360-381`, `:771-790`, `:1599-1621` · `crates/mochiko-cli/src/cli.rs:1094-1099` · record D4, D7, D15, Q5 (a).
 Pre-pass: as above.
 - PASS — intent stated: the intent cites D4 as changed at review, D7 V3, D15 V3 and Q5 (a). It names the joined old ID, the slug that travels, the mentions that follow, and the untied mentions settled by hand. It calls the change one reword of a floor rule that keeps its id, class and anchor. Each claim is in the op and the view diff.
-- PASS — anchor present: the migration carries `anchor: 2026-10-08 human-readable-ids D4`, bare as an anchor must be (D12). D4 as changed at review is the rekey ruling, so it covers this floor reword. The rule's own `anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3` is unchanged.
+- PASS — anchor present: the migration carries "`anchor: 2026-10-08 human-readable-ids D4`", bare as an anchor must be (D12). D4 as changed at review is the rekey ruling, so it covers this floor reword. The rule's own "`anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3`" is unchanged.
 - PASS — ID lifecycle right: one `reword-rule` op on `command/implement` `impl.baseline-diff-review`. The id is kept, and nothing is minted or tombstoned.
 - PASS — floor and fail survival: the rule stays `class: floor` with labels `[landing, evidence]`. The reword only adds text: "the second run to land renumbers its own entries" is kept word for word, and the clause after it is new. The landing order is unchanged: the unmarked-write test, then the duplicate-id check and renumber, then the flip. `impl.fail.unreviewed-baseline-diff` still enforces the rule, and its text ("the duplicate-id check") still matches.
 - PASS — register: plain rule register. The command sits in a code span, and its placeholders follow `--help`'s argument names.
@@ -665,11 +665,11 @@ Issues requiring fix: none.
 ### S5 — schema content `0050-governance-intent-check-joined`
 
 VALIDATE: schema content `plugins/mochiko/migrations/0050-governance-intent-check-joined.yaml` with its regenerated view diff (`templates/governance-intent.yaml`).
-Checklist run: `judgment-items-schema`, the AM-2 five, plus whether it closes this seat's round-1 S1 advisory.
+Checklist run: `judgment-items-schema`, the AM-2-required-cli-dependency five, plus whether it closes this seat's round-1 S1 advisory.
 Evidence read: `0050-governance-intent-check-joined.yaml` (header, intent, anchor, the one `replace-document` op) · the view diff against the emit taken before 0050 · `mochiko-cli template governance-intent` producer and `--check` renders · record D12, D21 · this report's S1 advisory.
 Pre-pass: as above.
 - PASS — intent stated: "Join the one GI placeholder 0046 left bare … Nothing else in the template changes." It cites D21 and this audit's S1 advisory, and the view diff holds it to that.
-- PASS — anchor present: `anchor: 2026-10-08 human-readable-ids D21`, bare.
+- PASS — anchor present: "`anchor: 2026-10-08 human-readable-ids D21`", bare.
 - PASS — ID lifecycle right: a whole-document replace of template `governance-intent`. Templates carry no rule ids, and no section name changes.
 - PASS — floor and fail survival: the view diff is the one check, `(GI-0XX,` to `(GI-0XX-<slug>,`, plus its reflow. Every section, every `required:` and `max_lines:`, and `conformance: extra_headings: allow` are unchanged.
 - PASS — register: one token changes, and the check now reads like its siblings.

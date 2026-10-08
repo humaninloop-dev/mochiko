@@ -154,7 +154,7 @@ enum IdsAction {
     Rename {
         /// The file holding the ID's definition.
         owning_file: PathBuf,
-        /// The ID, bare: `GI-004`, `FR-012`, `D7`.
+        /// The ID, bare: "`GI-004`", `FR-012`, `D7`.
         id: String,
         /// Three lower-case words joined by `-`, supplied by the seat.
         new_slug: String,
@@ -942,7 +942,7 @@ fn run_home(
     0
 }
 
-/// Run one `ids` command (`human-readable-ids` D6, D7, D15, R6).
+/// Run one `ids` command (`human-readable-ids` D6-minting-check-enforcement, D7-scoped-rename-command, D15-protected-line-rewrites, R6).
 ///
 /// `ids` reads no migration log: the family table is the binary's own (B3), and every other
 /// fact it reads is the tree's — so its exit codes never speak of a log. `--check` exits 0 clean or

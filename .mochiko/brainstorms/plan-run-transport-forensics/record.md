@@ -32,7 +32,7 @@ TM5 reasoning-correction are genuine catches the loop was built to make).
   (OQ-DM-5) · mapping 3 rounds (at cap) · tasks 3 rounds (at cap). ~14 produce↔review rounds
   total, every one lead-opened and lead-adjudicated.
 - The completeness-seat lineage ran **14+ passes** (10 on the original incarnation, 4+ on the
-  respawn) — matching TC-D4's "plan's completeness reviewer at ≤15 passes" governed-set ranking
+  respawn) — matching `team-lead-strategic-compaction` D4-governed-standing-seats's "plan's completeness reviewer at ≤15 passes" governed-set ranking
   almost exactly.
 - The original completeness seat reached a panel reading of **836k tokens** (user report, line
   1553; F-e(a) caveat — the figure's live-vs-cumulative meaning is undetermined) before the
@@ -94,10 +94,10 @@ the live dogfood evidence for that queued build:
 - The respawn worked and the fresh seat was immediately sharper *and cheaper* (its TM5
   re-grade overturned the author's reasoning, line 1589–1597; bounded verifies at 2m28s).
 - The name-takeover on respawn caused one **silently-failed send** ("Nothing was sent",
-  line 1623) needing an explicit ref — the exact failure TC-D5's versioned-name successors +
+  line 1623) needing an explicit ref — the exact failure `team-lead-strategic-compaction` D5-lifecycle-doctrine-generalized's versioned-name successors +
   name-refusal check exist to prevent.
 - The compact-request ritual was worse than nothing: seven resumes at full prefill, zero
-  durable reclamation, plus narrated housekeeping turns. TC-D1's finding (the model can
+  durable reclamation, plus narrated housekeeping turns. `team-lead-strategic-compaction` D1-seat-only-compaction's finding (the model can
   neither invoke nor observe compaction; kill-and-respawn is the only real lever) was
   re-proven at the user's expense.
 
@@ -143,7 +143,7 @@ verified closures; honest self-corrections) is the production-only depth bet doi
 
 **R1 — execute the queued Layer-2 context-lifecycle rewrite and the transport repair as ONE
 shape revision** (v5→v6, one re-audit ceremony, per the combine-precedented-waves practice):
-the already-ruled TC-D5/TC-D6 + SSL D1–D3 content (per-seat lifecycle [PARAM]; counted
+the already-ruled `team-lead-strategic-compaction` D5-lifecycle-doctrine-generalized/`team-lead-strategic-compaction` D6-overridable-cadence-default + SSL D1–D3 content (per-seat lifecycle [PARAM]; counted
 loop-unit cadence ~≥3 at gate pauses for governed standing multi-unit seats; respawn-as-reset
 briefed from artifacts; versioned-name successors + name-refusal check; end-of-need shutdown)
 **plus** this record's transport findings, which touch the same Layer-2 section and would
@@ -168,7 +168,7 @@ survivable *when recorded*. Evidence for the first: the degrade went unnoticed u
 pane forced it, which is exactly what silent fallbacks do.
 
 **R4 — micro-send hygiene line** *(new ruling needed, small)*: no ritual sends to standing
-seats — no compact requests (TC-D1: not a real lever), no stamp-only resumes; fold one-line
+seats — no compact requests (`team-lead-strategic-compaction` D1-seat-only-compaction: not a real lever), no stamp-only resumes; fold one-line
 confirmations into the next real dispatch. One Layer-2 sentence; token-justified by ~30 min
 of measured pure loss in this run.
 
@@ -186,7 +186,7 @@ ban recorded, no machinery. R2 executed as part of R1.
 
 **Built (plugin v0.38.0, shape v6; command-architect authored, independent
 `validation-command-shape` audit):** Layer 2 re-framed into team transport + per-seat context
-lifecycle (TC-D1–D6 · SSL D1–D3 as amended encoded; SSL D4 and TC-D5's cost rider deliberately
+lifecycle (TC-D1–D6 · SSL D1–D3 as amended encoded; `standing-seat-lifecycle` D4-seat-measurement-probe and `team-lead-strategic-compaction` D5-lifecycle-doctrine-generalized's cost rider deliberately
 not, logged); the first-spawn probe rebuilt on the **documented positive roster check** (team
 config `members` array — found by an independent doc check after the audit's Critical caught
 round 1 re-encoding proof-by-absence), transcript strings demoted to corroboration; **P17**
@@ -197,9 +197,9 @@ across stages** — the exact counter-reset failure this run measured). Audit: F
 3 Important, 4 Minor) → fix round → PASS + two footer/figure sweeps. Run cost stated, not
 offset: shared always-read floor 32,836 → 39,610 B (**+6,774 B/run**).
 
-**Banked from the doc sweep:** TC-D5's P26 watch-item settled — v2.1.199's documented
+**Banked from the doc sweep:** `team-lead-strategic-compaction` D5-lifecycle-doctrine-generalized's P26 watch-item settled — v2.1.199's documented
 name-refusal ("SendMessage… refuses the send rather than delivering it to the wrong agent")
-confirms versioned-name successors as the right shipped default. TC-D4's governed-set ranking
+confirms versioned-name successors as the right shipped default. `team-lead-strategic-compaction` D4-governed-standing-seats's governed-set ranking
 was field-confirmed by this run within one pass (≤15 predicted, 14+ observed).
 
 **Landed:** DECISIONS.md row (2026-08-01) · BACKLOG "Standing-seat build items" → trail ·
@@ -214,5 +214,5 @@ build state).
   origin stays unexplained.)*
 - Whether `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` was set in the `mochiko-app` session — the
   transcript never shows the env check, only the (falsely-passing) probe.
-- TC-D4's governed-set ranking predicted this seat's pass count within one — worth citing in
+- `team-lead-strategic-compaction` D4-governed-standing-seats's governed-set ranking predicted this seat's pass count within one — worth citing in
   the rewrite's rationale as its first field confirmation.

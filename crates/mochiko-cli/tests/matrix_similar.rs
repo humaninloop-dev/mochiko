@@ -968,7 +968,7 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
         // block is not a rule, so it does not enter this scan; the +2 here is `setup`'s two
         // mints, `setup.gate-loop-bound` and `setup.validate-seat-form`. The suppressed count
         // holds at 60 because all three allowlist rows `0008` added are skill-side.
-        // Re-measured after `0009-plan-qa-leg` (2026-09-03 producer-plan-enforcement D8): the
+        // Re-measured after `0009-plan-qa-leg` ("2026-09-03 producer-plan-enforcement D8"): the
         // scan and the pair count are unmoved, because `0009` mints no command rule — every
         // command-side op it carries is a `reword-rule`. The suppressed count *falls*, 60 to 56,
         // and that direction is the point. An allowlisted edge is suppressed only while its two
@@ -1077,7 +1077,7 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // `binding`, `latitude`, `bound` and `duty` buckets, so the pairs lost from the big bucket
     // outnumber the pairs gained in the small ones. No new cluster surfaced and the suppressed
     // set is unchanged — the allowlist was not touched.
-    // Re-measured after `0008` (the gate form, 2026-09-19 author-grader-consolidation D7): the
+    // Re-measured after `0008` (the gate form, "2026-09-19 author-grader-consolidation D7"): the
     // scan moves from 1,043 to 1,067 — two command rules on `setup` and twenty-two skill rules,
     // twenty-one of them the imported `validation-primitive-edit` document. `scored` *rises* here
     // where `0007`'s fell, and the mechanism is the same in both directions: pairs are scored
@@ -1096,7 +1096,7 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // adjudication between two local texts with different read boundaries. Drop or reword any of
     // those three rows and this assertion fails looking like a detector regression when it is an
     // allowlist edit.
-    // Re-measured after `0009-plan-qa-leg` (2026-09-03 producer-plan-enforcement D8): the scan
+    // Re-measured after `0009-plan-qa-leg` ("2026-09-03 producer-plan-enforcement D8"): the scan
     // moves 1,067 to 1,082 on the fifteen rules of the imported `review-seat-plan` document, and
     // `scored` rises with it since `0009` retires nothing. `suppressed_hits` moves 171 to 170 —
     // it does not simply gain P1's four new rows, because the same reword mechanism described in

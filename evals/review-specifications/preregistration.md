@@ -9,7 +9,7 @@
 >
 > Or check the whole archive out: `git worktree add /tmp/eval-evidence eval-evidence-2026-09-19`.
 
-Committed BEFORE any grid (`primitive-eval-harness` D5 slot; `skill-compression-tooling` R6/R9 —
+Committed BEFORE any grid (`primitive-eval-harness` D5-pilot-skill-target slot; `skill-compression-tooling` R6/R9 —
 the grid refuses to run without this file). Kit authored by a seat that neither cut the skill nor
 re-keyed its inventory; the auditor who grades this kit is a third seat (author ≠ grader). No value
 below changes after the first priced run. Fields marked **[measured]** are filled from the grid.

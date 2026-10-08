@@ -85,7 +85,7 @@ the record named is ruled in or out below:
 | `spec.lead-latitude` | **IN** | "teammates or subagents per seat is your call" is the operative new information; "plan the run and orchestrate it" states the standing role, not a discrete always-performed action. |
 | `impl.design-seats-staffing` | **IN** | "Design-seat staffing is your call: typically …" — `class: advisory`, a recommendation inside a grant. |
 | `brainstorm.record-review-independence` | **OUT** → `constraint` | "The record … is yours, **so** its review seat is always someone else" — the ownership clause is a premise; the operative content is an independence obligation. Nothing is left to the lead's judgment. |
-| `spec.epic-proposal-optional` (**not** on the record's list) | **IN** | "the `${pm_seat}` seat **may** propose an epic … a proposal only, never a mint" — grants a discretionary move and bounds it. Beyond the record's candidate set; see [J-4](#j-4--one-latitude-member-beyond-the-records-candidate-list). |
+| `spec.epic-proposal-optional` (**not** on the record's list) | **IN** | "the `${pm_seat}` seat **may** propose an epic … a proposal only, never a mint" — grants a discretionary move and bounds it. Beyond the record's candidate set; see [J-4-extra-latitude-member](#j-4--one-latitude-member-beyond-the-records-candidate-list). |
 
 Latitude is a grant of judgment **to whoever holds it** — seven to the lead, one
 (`spec.epic-proposal-optional`) to a seat. The record's framing ("per-run/per-visit judgment")
@@ -201,7 +201,7 @@ does not settle whether a seat-held grant qualifies; this inventory rules it in 
 | `impl.attempt-per-grade` | `bound` | |
 | `impl.attempt-exemption-user-only` | `reservation` | |
 | `impl.no-progress-stop` | `bound` | Allowance (two consecutive unchanged rounds) with a stated consequence (halt, present). |
-| `impl.epic-member-halt` | `bound` | Declares the **exhaustion route** limb for epic scope — the third limb of the bound triple. See [J-5](#j-5--a-fourth-bound-the-record-named-three). |
+| `impl.epic-member-halt` | `bound` | Declares the **exhaustion route** limb for epic scope — the third limb of the bound triple. See [J-5-fourth-bound-gap](#j-5--a-fourth-bound-the-record-named-three). |
 | `impl.gap-rework-bound` | `bound` | |
 | `impl.gates-never-triaged` | `constraint` | |
 | `impl.minimalism-advisory` | `constraint` | |
@@ -271,7 +271,7 @@ grain review has its name now).
 | `feat.author-grader` | `constraint` | |
 | `feat.advisory-front-door` | `routing` | Door topology — which demands enter where, with a default. |
 | `feat.model-tiering` | `routing` | |
-| `feat.single-flight-lane` | `constraint` | An allowance of one with **no stated exhaustion consequence** — fails the bound test. See [J-5](#j-5--a-fourth-bound-the-record-named-three). |
+| `feat.single-flight-lane` | `constraint` | An allowance of one with **no stated exhaustion consequence** — fails the bound test. See [J-5-fourth-bound-gap](#j-5--a-fourth-bound-the-record-named-three). |
 | `feat.no-git-mutations` | `constraint` | |
 | `feat.rulings-plain-text` | `constraint` | |
 
@@ -516,7 +516,7 @@ an obligation on a path; the artifact homes they name are incidental to the obli
 `fail` total (36) matches D6's "36 fail nodes"; `latitude` (8) matches F3-as-corrected's "~8";
 arch's nine `dm-*` duties and feat's eight match F3 exactly; implement's `duty` count (5) sits
 inside F3's "impl 4–6 run-side analogues"; the three bounds F3 named are all present, with one
-addition flagged in [J-5](#j-5--a-fourth-bound-the-record-named-three).
+addition flagged in [J-5-fourth-bound-gap](#j-5--a-fourth-bound-the-record-named-three).
 
 **Derived eval partition (build item 10's watch).** Under the record's proposed derivation
 (fail + routing + exhaustion routes = contingency), the kind-derived contingency set is
@@ -540,7 +540,7 @@ Two dispositions are recorded:
 - **DECLARE** — the rule is genuinely shape-gated but its condition is carried by the **subject
   noun**, not by a detachable guard clause. Stripping it would leave deixis or a dangling
   referent, which D15 forbids. `when:` is added; `text` is unchanged; no strip is owed (a pure
-  addition rides the decision row). See [J-1](#j-1--single-homing-cannot-be-absolute-subject-carried-conditions)
+  addition rides the decision row). See [J-1-subject-carried-conditions](#j-1--single-homing-cannot-be-absolute-subject-carried-conditions)
   — the record states single-homing absolutely and did not anticipate this class.
 
 **Population: 37 rules gain `when:` — 31 MOVE + 6 DECLARE.** Inside the record's 16–74 bracket.
@@ -652,7 +652,7 @@ Reworded: `The transport floor governs the run's composition and messaging under
 | `impl.absent-surfaces` | A per-surface branch table; also the only implement rule naming `brownfield`, which is *not* a declared implement dimension. |
 | `impl.cards-template`, `impl.gates-fold`, `impl.graded-fold` | Render-degrade / absent-file carves inside a rule that always binds. |
 | `impl.delta-reverification`, `impl.design-outputs-home`, `impl.design-map-assertion` | Mid-sentence carve-outs. |
-| `impl.zero-gap-map-assertion`, `impl.design-phase-fires-on-gap` | Gated on whether the sufficiency check found gaps — a real branch, but **no dimension for it is declared**; see [J-3](#j-3--an-undeclared-branch-dimension-the-zero-gap-path). |
+| `impl.zero-gap-map-assertion`, `impl.design-phase-fires-on-gap` | Gated on whether the sufficiency check found gaps — a real branch, but **no dimension for it is declared**; see [J-3-zero-gap-path](#j-3--an-undeclared-branch-dimension-the-zero-gap-path). |
 
 ### B.2 — feature (2 MOVE)
 
@@ -708,7 +708,7 @@ report both arms of `feature_map`, `governance_region`, and `ux_bearing`:
 **Stays prose:** `spec.prototype-craft` (states both the UX-bearing craft and the waiver line — one
 obligation, two arms) · `spec.fail.screens-flows` (three arms, one conditional) ·
 `spec.frame-greenfield-inputs` ("a thin greenfield intent" — specify declares no `mode` dimension;
-see [J-6](#j-6--greenfieldbrownfield-language-outside-setup)) · `spec.deliverable`,
+see [J-6-greenfield-language-leak](#j-6--greenfieldbrownfield-language-outside-setup)) · `spec.deliverable`,
 `spec.feature-map-craft` (render-degrade) · `spec.epic-proposal-optional` (a judgment trigger) ·
 `spec.reserved-to-user` (one bullet of an aggregate).
 
@@ -734,7 +734,7 @@ architecture declares no `mode` dimension.
 
 **Stays prose:** `arch.tools-brownfield-reconstruction` ("The first visit to an existing repo" —
 a first-visit trigger plus an existing-repo condition, neither a declared arch dimension;
-see [J-6](#j-6--greenfieldbrownfield-language-outside-setup)) · `arch.floor-precedence` ("Where a
+see [J-6-greenfield-language-leak](#j-6--greenfieldbrownfield-language-outside-setup)) · `arch.floor-precedence` ("Where a
 governance floor card asserts the category" gates **a row**, not the visit — the clearest
 row-level-vs-run-level case in the corpus) · `arch.tools-store-schema` (render-degrade).
 
@@ -770,7 +770,7 @@ Reworded: `Confirmation of the reconstructed feature map, entry by entry, is the
 separately reworded by [section I](#i--f8-move)) · `setup.store-scaffold-unconditional`,
 `setup.architecture-scope-handoff`, `setup.map-never-overwrite`,
 `setup.store-ruled-content-never-here`, `setup.fail.no-feature-map` (each names greenfield and
-brownfield together; all also leave `amend` unnamed — see [J-7](#j-7--amend-mode-is-unnamed-in-six-rules-not-two)) ·
+brownfield together; all also leave `amend` unnamed — see [J-7-unnamed-amend-mode](#j-7--amend-mode-is-unnamed-in-six-rules-not-two)) ·
 `setup.user-mode-ruling` (the dimension's **resolution point** — it cannot be gated on the
 dimension it resolves) · `setup.interrogation-inputs` (one limb of a binding list) ·
 `setup.synthesis-artifact` (render-degrade) · `setup.next-step` (a module carve).
@@ -786,7 +786,7 @@ Current: `Where ${km_path} exists, run its close ritual.`
 Reworded: `Run the close ritual of ${km_path}.`
 
 **Stays prose:** `brainstorm.pair-maps-independent` ("In a review pair" — a genuine composition
-branch with no declared dimension; see [J-2](#j-2--two-genuine-branches-with-no-declared-dimension)) ·
+branch with no declared dimension; see [J-2-undeclared-dimension-branches](#j-2--two-genuine-branches-with-no-declared-dimension)) ·
 `brainstorm.next-step-offer`, `brainstorm.user-review-waiver`, `brainstorm.synthesis-on-request`
 (mid-sentence carves) · `brainstorm.reopen-born-verify` (a subject-carried trigger, not a run
 shape) · `brainstorm.index-bookkeeping` (its "where the outcome landed" is a noun, not a guard).
@@ -996,7 +996,7 @@ passes).~~ *(Corrected at audit — V1 M1 / V2 M1 / V3 M2: under the checker's l
 semantics, compound moment names appearing in no rule text warn as unused — `visit-open`
 (feature, architecture) · `stories-confirm` (specify) · `session-open`, `cold-review`
 (brainstorm). The blanket claim was wrong; the warnings are D4's own prescribed advisory and
-carry into the D4 graduation review per the J-12 ruling.)*
+carry into the D4 graduation review per the J-12-single-schema-moments ruling.)*
 
 ### D.1 — implement
 
@@ -1121,7 +1121,7 @@ contrapositives.
 `spec.fail.blocking-gap` mirrors the rule that mandates the grading pass its gaps come from. The
 *closure* obligation ("with no blocking gap left open") lives in specify's `.md` Goal step, not in
 any schema rule — a partial mirror, recorded here so an auditor does not read it as a mismapping.
-See [J-8](#j-8--one-fail-node-mirrors-an-obligation-that-lives-in-the-md).
+See [J-8-mirrored-fail-node](#j-8--one-fail-node-mirrors-an-obligation-that-lives-in-the-md).
 
 ### E.4 — architecture (1)
 
@@ -1224,7 +1224,7 @@ setup: User-facing prose per     templates/output-style.md.
                         ^^^^^^^^^^^^^
 ```
 One word. Recommend **no-bind**: rewording a shipped rule to make it bindable is content churn the
-record did not authorize, and 5 already clears the bar. Flagged in [J-9](#j-9--two-one-token-misses).
+record did not authorize, and 5 already clears the bar. Flagged in [J-9-one-token-misses](#j-9--two-one-token-misses).
 
 **`common.no-git-mutations` vs `impl.no-git-mutations`**
 ```
@@ -1579,7 +1579,7 @@ Recommended entry, as a list:
 
 This requires the checker's anchor-resolution check to accept a list value alongside a string, and
 one line in the sidecar header stating that a rule may carry more than one anchor. Both are small,
-but neither is authorized by the record — see [J-10](#j-10--the-f8-move-needs-three-things-the-record-did-not-name).
+but neither is authorized by the record — see [J-10-provenance-move-prerequisites](#j-10--the-f8-move-needs-three-things-the-record-did-not-name).
 The single-string alternative (replacing the plan-stage-utility anchor) would drop a live anchor and
 is not recommended.
 
@@ -1602,7 +1602,7 @@ D9 names only the schema rule.
    reference points at something that exists in no schema — a D15 referential-closure break
    introduced by the fix itself.
 
-Neither is resolved here. Both are flagged in [J-10](#j-10--the-f8-move-needs-three-things-the-record-did-not-name)
+Neither is resolved here. Both are flagged in [J-10-provenance-move-prerequisites](#j-10--the-f8-move-needs-three-things-the-record-did-not-name)
 for the wave's user gate.
 
 ---
@@ -1612,7 +1612,7 @@ for the wave's user gate.
 Flagged, not resolved — each is either a policy edge the record did not anticipate or a fact that
 contradicts something the record states.
 
-### J-1 — Single-homing cannot be absolute: subject-carried conditions
+### J-1-subject-carried-conditions — Single-homing cannot be absolute: subject-carried conditions
 
 D3 states single-homing without qualification: "rule-level activation conditions live in `when:`
 alone and **leave** the `text`". Six rules are genuinely shape-gated but carry the condition in
@@ -1632,7 +1632,7 @@ their **subject noun**, where removing it either produces deixis or destroys the
 six, which surrenders the coverage benefit on exactly the present/absent pairs that make the report
 useful, or (b) force the reword and accept D15 breaks. Neither looks right. **Needs a ruling.**
 
-### J-2 — Two genuine branches with no declared dimension
+### J-2-undeclared-dimension-branches — Two genuine branches with no declared dimension
 
 Both are real run-shape branches the record's F4 enumeration does not cover, and each is used by
 exactly **one** rule — which fails D3's "only dimensions that schema's rules actually use" spirit
@@ -1649,7 +1649,7 @@ The inconsistency is deliberate but contestable. **A validator should rule wheth
 dimensions are admissible at all**; if not, `baseline` comes out and
 `impl.design-absent-baseline-seed` stays fully prose.
 
-### J-3 — An undeclared branch dimension: the zero-gap path
+### J-3-zero-gap-path — An undeclared branch dimension: the zero-gap path
 
 Three implement rules branch on whether the sufficiency check found gaps —
 `impl.design-phase-fires-on-gap` ("Fire the design phase on any gap"),
@@ -1659,7 +1659,7 @@ real, moment-resolved (`entry`) binary that the F4 dimension survey does not lis
 wave** (D3 permits only declared vocabulary, and the record's enumeration is the referent), but the
 omission is worth recording as a graduation candidate.
 
-### J-4 — One latitude member beyond the record's candidate list
+### J-4-extra-latitude-member — One latitude member beyond the record's candidate list
 
 `spec.epic-proposal-optional` was not on F3's candidate list but matches D1-as-amended's definition
 ("a grant of per-run/per-visit judgment, neither obligation nor prohibition"). It is ruled **IN**
@@ -1671,7 +1671,7 @@ It also raises a definitional question the record does not settle: **`spec.epic-
 grants judgment to a seat, not to the lead.** All seven other latitude rules grant to the lead. If
 latitude is lead-only by definition, this rule is a `constraint` and the total is 7.
 
-### J-5 — A fourth bound; the record named three
+### J-5-fourth-bound-gap — A fourth bound; the record named three
 
 F3 names three bounds, all implement (`attempt-per-grade`, `gap-rework-bound`, `no-progress-stop`).
 This inventory rules **five**:
@@ -1690,7 +1690,7 @@ three limbs in one block**, D12's grain having split the redeclaration points on
 one, no stated consequence) was ruled `constraint` on the same discriminator. **The record's
 three-limb definition does not match its own corpus; the two-limb discriminator does.**
 
-### J-6 — Greenfield/brownfield language outside setup
+### J-6-greenfield-language-leak — Greenfield/brownfield language outside setup
 
 F4 assigns `mode` to setup alone, but three other schemas use greenfield/brownfield language:
 
@@ -1705,7 +1705,7 @@ breaks. But the corpus reads as though a project-level greenfield/brownfield fac
 setup declares as a dimension. If a later ruling promotes it to a shared dimension, these four are
 its population. **No action this wave; recorded so the asymmetry is not mistaken for an oversight.**
 
-### J-7 — `amend` mode is unnamed in six rules, not two
+### J-7-unnamed-amend-mode — `amend` mode is unnamed in six rules, not two
 
 F6-3 names two sites where amend mode is unaddressed (`setup.feature-map-*` and
 `setup.fail.no-feature-map`). The corpus has **six**:
@@ -1721,7 +1721,7 @@ values. `setup.store-ruled-content-never-here` ("on either path") has the same s
 should be scoped to the full six, not the record's two** — otherwise the coverage report will fire
 on four rules the user gate never considered.
 
-### J-8 — One fail node mirrors an obligation that lives in the `.md`
+### J-8-mirrored-fail-node — One fail node mirrors an obligation that lives in the `.md`
 
 `spec.fail.blocking-gap` ("A blocking gap open.") contrapositives an obligation — *close every
 blocking gap before acceptance* — that appears in specify's `.md` Goal step ("with no blocking gap
@@ -1733,7 +1733,7 @@ the closest true statement. A validator may prefer `enforces: []` with the reaso
 obligation is the `.md`'s fixed done condition". **Needs a ruling on whether `.md`-owned is a third
 legal empty-reason class.**
 
-### J-9 — Two one-token misses
+### J-9-one-token-misses — Two one-token misses
 
 Two rules miss exact-duplicate status by a single token, and in one case that token decides whether
 a block clears the 3+ bar:
@@ -1749,7 +1749,7 @@ a block clears the 3+ bar:
 Neither is resolved here: normalizing either would be a text change on a shipped rule requiring a
 strip, and the record authorized no such normalization.
 
-### J-10 — The F8 move needs three things the record did not name
+### J-10-provenance-move-prerequisites — The F8 move needs three things the record did not name
 
 D9 calls the F8 fix "mechanical". It is not:
 
@@ -1768,7 +1768,7 @@ D9 calls the F8 fix "mechanical". It is not:
 **All three belong at the wave's user gate beside the D9 hole content.** Fixing only the site the
 record names would leave the pair inconsistent and introduce a referential break.
 
-### J-11 — The record's 29-token citation population is not "rule text"
+### J-11-citation-population-scope — The record's 29-token citation population is not "rule text"
 
 F5 (as corrected at M2/M3) states the D5 scan population is "every `<cmd>.*` ID token in any rule
 text — is **29** at HEAD (impl 2 · feat 9 · setup 7 · arch 6 · spec 5)". Parsing gives:
@@ -1799,7 +1799,7 @@ Two further facts for the checker's negative tests:
   (20 sites), all of which resolve today. D5's ratified idiom is the parenthetical form; the check
   must cover the bare form too, or three live references go unchecked.
 
-### J-12 — `moments:` clears its demonstrated-consumer bar for one schema only
+### J-12-single-schema-moments — `moments:` clears its demonstrated-consumer bar for one schema only
 
 D4-as-amended (I5) ships `moments:` because "its demonstrated consumer is D3's moment-resolved
 conditions, a dependency inside this same wave" — and deferred `at:` for failing exactly that bar.
@@ -1812,15 +1812,15 @@ D4's statement is unambiguous ("**each** command schema gains a top-level `momen
 this inventory applies it to all six. But a reviewer applying I5's own reasoning would ask why five
 of the six blocks ship. **Recorded, not resolved** — the policy is settled; the asymmetry is not.
 
-### J-13 — Two schema headers say "charter audit" where the scaffold made all six pair-form
+### J-13-charter-audit-headers — Two schema headers say "charter audit" where the scaffold made all six pair-form
 
 `implement.yaml:18` and `architecture.yaml:19` describe `class: floor` as "must-survive under the
 **charter** audit (M3)"; the other four say "**pair** audit". `command-md-scaffold-standardization`
-D1/D2 made all six pair-form with one criteria set. Comment-only, and section G normalizes it — but
+D1-canonical-command-scaffold/D2-superset-scaffold-sections made all six pair-form with one criteria set. Comment-only, and section G normalizes it — but
 it is a live inconsistency in shipped files that no strip records, so a producer should not "fix" it
 silently outside this wave's recorded scope.
 
-### J-14 — Two implement rules changed shape in the working tree before any ruling
+### J-14-premature-rule-changes — Two implement rules changed shape in the working tree before any ruling
 
 `impl.register` and `impl.author-grader-default-fail` currently carry `extends:` with **no local
 `class:`**, so their class is readable only after resolving `common.yaml`. That is precisely the
@@ -1842,7 +1842,7 @@ Every count in this file was produced by parsing the schemas with PyYAML, not by
   against every `common.yaml` block, with `git show HEAD:plugins/mochiko/schemas/implement.yaml`
   supplying text for the two prototype stubs that carry none. Near-misses reported down to
   similarity 0.75.
-- **Citation population** (J-11) — regex over rule text for all six ID prefixes, with file-suffix
+- **Citation population** (J-11-citation-population-scope) — regex over rule text for all six ID prefixes, with file-suffix
   (`.md` / `.yaml`) tokens separated out, resolved against the union of rule IDs and section IDs.
 - **`enforces:` verification** (section E) — all 51 target IDs resolved against the parsed ID set;
   zero unresolved.

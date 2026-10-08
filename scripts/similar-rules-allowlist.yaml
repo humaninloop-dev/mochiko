@@ -6,7 +6,7 @@
 # two-member family forms NEW edges and re-fires the detector, so the tripwire stands.
 suppressions:
   # === Skill-side edges (skill-content-schema conversion wave, v0.100.0; adjudications
-  # per census §C/J-5/J-6 + the P2/P3 recorded deviations, seeded by the lead at the
+  # per census §C/J-5-cross-grammar-duplicates/J-6-verdict-heterogeneity-carriers + the P2/P3 recorded deviations, seeded by the lead at the
   # audit fix round; completed by P4 against the full landed corpus — the same-block
   # skip already covers stub↔stub pairs in both grammars, so every live evidence-floor
   # edge runs through RSUF's LOCAL rule, and those edges are census C1's recorded
@@ -55,7 +55,7 @@ suppressions:
   # stub-versus-local shape already adjudicated above, where the new skill binds a review-common
   # block and the counterparty keeps protected local text. The third is a plain CROSS-PAIR: both
   # sides carry local text and neither binds a block. No extraction is proposed by any of them;
-  # RSP extends no `evidence-floor` by ruling (producer-plan-enforcement D2, the plan is
+  # RSP extends no `evidence-floor` by ruling (producer-plan-enforcement D2-transient-plan-home, the plan is
   # transient), so it forms none of the C1 edges its siblings do. ----------------------------
   - ids: [review-brainstorm.never-default-ready, review-seat-plan.default-fail]
     reason: RB keeps local text — protected tail, same adjudication as its five rows above; RSP binds the block
@@ -76,9 +76,9 @@ suppressions:
   - ids: [review-brainstorm.record-fitness-binding, review-specifications.external-claims]
     reason: different references entirely; frame overlap only — same gate ruling
   - ids: [brainstorm.record-review-independence, review-brainstorm.never-in-the-room]
-    reason: J-5 cross-grammar — command plane vs skill plane, D5 forbids sharing
+    reason: J-5-cross-grammar-duplicates cross-grammar — command plane vs skill plane, D5 forbids sharing
   - ids: [brainstorm.record-review-independence, review-governance-intent.never-a-participant]
-    reason: J-5 cross-grammar — command plane vs skill plane
+    reason: J-5-cross-grammar-duplicates cross-grammar — command plane vs skill plane
   - ids: [review-brainstorm.never-in-the-room, review-governance-intent.never-a-participant]
     reason: 2-member, below bar; different fences (the room vs the session and its framing)
   - ids: [review-brainstorm.dismissed-angle-is-ruling, review-brainstorm.unresolvable-is-commentary]
@@ -104,15 +104,15 @@ suppressions:
   - ids: [review-brainstorm.findings-through-leads-pen, review-governance-intent.findings-through-leads-pen]
     reason: 2-member, below bar (census §C); target artifacts differ (record vs synthesis Review section)
   - ids: [review-specifications.input-not-verdict, review-sufficiency.verdict-is-input]
-    reason: J-6 — RSPEC is a structural non-member of the clearing family (gap-finding input, no clearing verdict); keeps local
+    reason: J-6-verdict-heterogeneity-carriers — RSPEC is a structural non-member of the clearing family (gap-finding input, no clearing verdict); keeps local
   - ids: [impl.adopt-first-user-call, review-code-minimalism.dispute-at-checkpoint-only]
-    reason: J-5 cross-grammar; different reservations (adopt-first/IP halt vs rung-dispute timing)
+    reason: J-5-cross-grammar-duplicates cross-grammar; different reservations (adopt-first/IP halt vs rung-dispute timing)
   - ids: [review-code-minimalism.diff-and-report-both-read, review-sufficiency.fence-never-reads]
     reason: opposite obligations — a must-read set vs a never-read fence; frame overlap only
   - ids: [feat.feature-map-binding, review-specifications.map-mirror]
-    reason: J-5 cross-grammar; owner vs reviewer-mirror of one single-source
+    reason: J-5-cross-grammar-duplicates cross-grammar; owner vs reviewer-mirror of one single-source
   - ids: [impl.minimalism-advisory, review-code-minimalism.advisory-never-cycle-failing]
-    reason: J-5 cross-grammar twin — same substance on two planes, D5-I7 argued keep-separate; drift edge deliberately recorded
+    reason: J-5-cross-grammar-duplicates cross-grammar twin — same substance on two planes, D5-I7 argued keep-separate; drift edge deliberately recorded
   - ids: [review-brainstorm.coverage-severity-mapping, review-specifications.severity-grammar]
     reason: different severity grammars for different artifact classes
   - ids: [review-plan-artifacts.mechanical-verdict, review-plan-artifacts.severity-classification]
@@ -226,7 +226,7 @@ suppressions:
   - ids: [arch.sound-loop-floor, feat.sound-loop-floor]
     reason: below bar (2 commands); sound-loop pointer floor is per-command by charter (D3 scope)
   - ids: [feat.sound-loop-floor, impl.sound-loop-floor]
-    reason: below bar (2 commands); same adjudication as the arch/feat row — the producer-plan-enforcement D8 reword gave the three pointer floors one shared opening clause, and each keeps its command-specific tail (desk delta cards vs this run's seat wiring), so the trio stays local rather than converging (author-grader-consolidation wave 2, v0.112.0)
+    reason: below bar (2 commands); same adjudication as the arch/feat row — the producer-plan-enforcement D8-plan-qa-landing reword gave the three pointer floors one shared opening clause, and each keeps its command-specific tail (desk delta cards vs this run's seat wiring), so the trio stays local rather than converging (author-grader-consolidation wave 2, v0.112.0)
   - ids: [impl.briefs-name-rules-files, spec.governance-briefs]
     reason: parallel brief obligations over different rule surfaces
   - ids: [arch.dispatch-feature-growth-door, feat.architecture-intake]
@@ -271,7 +271,7 @@ suppressions:
     reason: role card vs floor for the same discipline — deliberately paired, not duplicated
 
   # === Wave-2A skill-side edges (authoring-family conversion, v0.101.0; adjudications
-  # per census-authoring §C/J-8 + the wave-2A lead rulings, seeded by P4 against the
+  # per census-authoring §C/J-8-cross-family-duplicates + the wave-2A lead rulings, seeded by P4 against the
   # landed 16-pair corpus). Same-block stub↔stub pairs are structurally skipped; every
   # row below is a LOCAL-rule or cross-family/cross-grammar edge. Census-recorded
   # keep-distincts that fire no live edge need no row (AC never-co-mounted vs the
@@ -283,7 +283,7 @@ suppressions:
   # reference; frame is the sanctioned idiom, not a shared obligation; review-side
   # edges additionally cross-family (D5) ---
   - ids: [authoring-requirements.rfc2119-pointer, review-brainstorm.record-fitness-binding]
-    reason: J-8 cross-family — different references (RFC-2119 vs RECORD-FITNESS); frame overlap only, D5 forbids sharing
+    reason: J-8-cross-family-duplicates cross-family — different references (RFC-2119 vs RECORD-FITNESS); frame overlap only, D5 forbids sharing
   - ids: [authoring-requirements.rfc2119-pointer, authoring-technical-requirements.deliverable-envelope]
     reason: different bindings — a keyword reference pointer vs the envelope stub; frame overlap only
   - ids: [authoring-requirements.rfc2119-pointer, authoring-user-stories.deliverable-envelope]
@@ -295,9 +295,9 @@ suppressions:
   - ids: [authoring-requirements.envelope-binding, authoring-requirements.rfc2119-pointer]
     reason: intra-schema — the envelope stub vs the AR-specific RFC-2119 pointer; distinct referents
   - ids: [authoring-requirements.rfc2119-pointer, review-brainstorm.external-claims-binding]
-    reason: J-8 cross-family — different references entirely; D5 forbids sharing
+    reason: J-8-cross-family-duplicates cross-family — different references entirely; D5 forbids sharing
   - ids: [authoring-requirements.rfc2119-pointer, review-feasibility.external-claims-binding]
-    reason: J-8 cross-family — different references entirely; D5 forbids sharing
+    reason: J-8-cross-family-duplicates cross-family — different references entirely; D5 forbids sharing
 
   # --- [2] two-arm family: AFM's feature-entry copy is a ruled LOCAL (lead Q2 — the
   # twice-bound split: one member binding one block twice keeps the second binding
@@ -311,28 +311,28 @@ suppressions:
   - ids: [authoring-feature-map.feature-entry-two-arm, authoring-prototype.spec-two-arm]
     reason: lead Q2 ruling, same adjudication
   - ids: [authoring-architecture-store.two-arm-schema-binding, review-plan-artifacts.cycle-card-check-mirror]
-    reason: J-8 cross-family — RPA mirrors the tasks --check view, not the plain two-arm; D5 forbids sharing
+    reason: J-8-cross-family-duplicates cross-family — RPA mirrors the tasks --check view, not the plain two-arm; D5 forbids sharing
   - ids: [authoring-constitution.two-arm-schema-binding, review-plan-artifacts.cycle-card-check-mirror]
-    reason: J-8 cross-family, same adjudication
+    reason: J-8-cross-family-duplicates cross-family, same adjudication
   - ids: [authoring-feature-map.features-index-two-arm, review-plan-artifacts.cycle-card-check-mirror]
-    reason: J-8 cross-family, same adjudication
+    reason: J-8-cross-family-duplicates cross-family, same adjudication
   - ids: [authoring-prototype.spec-two-arm, review-plan-artifacts.cycle-card-check-mirror]
-    reason: J-8 cross-family, same adjudication
+    reason: J-8-cross-family-duplicates cross-family, same adjudication
   - ids: [authoring-feature-map.feature-entry-two-arm, review-plan-artifacts.cycle-card-check-mirror]
-    reason: J-8 cross-family, same adjudication
+    reason: J-8-cross-family-duplicates cross-family, same adjudication
 
   # --- [3] letter-is-spirit cross-family: VC's wording family was screened
   # keep-distinct in wave 1; D5 forbids a cross-family block — the two families
   # independently demanding this shape is recorded evidence for the D5 cross-family
   # skill-common.yaml graduation candidate, not actioned ---
   - ids: [authoring-feature-map.letter-is-spirit, validation-constitution.letter-is-spirit]
-    reason: J-8 census edge — VC wording distinct (wave-1 screen); D5 forbids cross-family sharing; graduation-candidate evidence only
+    reason: J-8-cross-family-duplicates census edge — VC wording distinct (wave-1 screen); D5 forbids cross-family sharing; graduation-candidate evidence only
   - ids: [authoring-prototype.letter-is-spirit, validation-constitution.letter-is-spirit]
-    reason: J-8 census edge, same adjudication
+    reason: J-8-cross-family-duplicates census edge, same adjudication
   - ids: [authoring-technical-requirements.letter-is-spirit, validation-constitution.letter-is-spirit]
-    reason: J-8 census edge, same adjudication
+    reason: J-8-cross-family-duplicates census edge, same adjudication
   - ids: [authoring-user-stories.letter-is-spirit, validation-constitution.letter-is-spirit]
-    reason: J-8 census edge, same adjudication
+    reason: J-8-cross-family-duplicates census edge, same adjudication
 
   # --- [4] stories-routing shapes: 3 members share only the ~60-char routing core;
   # member tails carry the real content (trace-by-ID · renders-never-invents ·
@@ -352,9 +352,9 @@ suppressions:
   # --- [5] growth-door mint routing: one handoff deliberately mirrored on both
   # planes; cross-grammar (D5) ---
   - ids: [arch.dispatch-feature-growth-door, authoring-architecture-store.mint-routing]
-    reason: J-5 cross-grammar — command plane vs skill plane, one growth-door handoff; D5 forbids sharing
+    reason: J-5-cross-grammar-duplicates cross-grammar — command plane vs skill plane, one growth-door handoff; D5 forbids sharing
   - ids: [feat.architecture-intake, authoring-architecture-store.mint-routing]
-    reason: J-5 cross-grammar, same adjudication
+    reason: J-5-cross-grammar-duplicates cross-grammar, same adjudication
 
   # --- [6]-[8] AR↔AUS pairs: census §C kept-distinct — 2 members, below the 3+ bar ---
   - ids: [authoring-requirements.pm-frame-boundary, authoring-user-stories.pm-frame-boundary]
@@ -384,17 +384,17 @@ suppressions:
 
   # --- [10]-[15] cross-pair and cross-grammar singles ---
   - ids: [spec.staged-derivation, authoring-feature-map.pre-acceptance-workspace]
-    reason: J-5 cross-grammar twin — one staging discipline on two planes, deliberately recorded drift edge (impl/RCM precedent)
+    reason: J-5-cross-grammar-duplicates cross-grammar twin — one staging discipline on two planes, deliberately recorded drift edge (impl/RCM precedent)
   - ids: [authoring-requirements.fr-numbering, authoring-technical-requirements.sequential-ids]
     reason: census C-A4 sub-evidence — the id-grammar is single-sourced in artifact-format.md and rides the envelope block's pointer; a minted id-grammar block would dual-home the envelope's text (D6)
   - ids: [authoring-feature-map.reconstructed-reverify, review-brainstorm.verify-load-bearing-claims]
-    reason: J-8 cross-family — different duties (map-entry re-verify vs record-claim verify); D5 forbids sharing
+    reason: J-8-cross-family-duplicates cross-family — different duties (map-entry re-verify vs record-claim verify); D5 forbids sharing
   - ids: [authoring-architecture-store.nfr-one-home, authoring-technical-requirements.trace-nfr-to-business]
-    reason: two sides of the ruled NFR seam — the store owns the row home, ATR owns the ids/grammar and the business-source trace (product-architecture-schema D12 split)
+    reason: two sides of the ruled NFR seam — the store owns the row home, ATR owns the ids/grammar and the business-source trace (product-architecture-schema D12-store-absorbs-nfrs split)
   - ids: [spec.filter-rejections-recorded, authoring-feature-map.complete-disposition]
-    reason: J-5 cross-grammar — the command's filter seat row vs the map's disposition invariant; one discipline, two planes
+    reason: J-5-cross-grammar-duplicates cross-grammar — the command's filter seat row vs the map's disposition invariant; one discipline, two planes
   - ids: [impl.epic-design-always-fires, authoring-epic.design-phase-always-fires]
-    reason: J-5 cross-grammar twin — same substance on two planes, deliberately recorded drift edge
+    reason: J-5-cross-grammar-duplicates cross-grammar twin — same substance on two planes, deliberately recorded drift edge
 
   # --- [16] intra-ATR C/D trace family: census D12 grain carried each as its own
   # obligation (8a/8b posture arms · 17a-d mandatory-links set); 8a's MUST arm and
@@ -473,7 +473,7 @@ suppressions:
   - ids: [review-brainstorm.verify-load-bearing-claims, review-specifications.check-existing-first]
     reason: 2-member within review, below bar; different read duties (record's fact-checker map vs existing patterns/decisions before asking)
   - ids: [impl.seat-card-author-independence, patterns-vertical-tdd.author-never-executing-builder]
-    reason: J-5 cross-grammar twin — same substance on command and skill planes, D5-I7 argued keep-separate; drift edge deliberately recorded (the impl.minimalism-advisory precedent)
+    reason: J-5-cross-grammar-duplicates cross-grammar twin — same substance on command and skill planes, D5-I7 argued keep-separate; drift edge deliberately recorded (the impl.minimalism-advisory precedent)
   - ids: [authoring-feature-map.architecture-routing, patterns-architecture-shelves.ax-grammar-routing]
     reason: cross-family (authoring/patterns) — D5; different routed objects (map entry's spine links vs stance-row grammar ownership)
   - ids: [patterns-code-minimalism.adopt-first-binding-constraint, review-feasibility.adopt-first-excess]
@@ -512,10 +512,10 @@ suppressions:
   - ids: [analysis-codebase.artifact-envelope-slimmed-legible, authoring-user-stories.deliverable-envelope]
     reason: cross-family (D5), same adjudication
   # --- [C2] AC two-arm vs the authoring two-arm family (detector [2]): cross-family
-  # (D5); AC's two-arm names its own artifact path + schema verbatim (GI-020 protected,
+  # (D5); AC's two-arm names its own artifact path + schema verbatim (GI-020-plugin-install-model protected,
   # the RPA cycle-card-check-mirror precedent) ---
   - ids: [analysis-codebase.deliverable-two-arm-binding, authoring-architecture-store.two-arm-schema-binding]
-    reason: cross-family (D5) — AC's GI-020 two-arm carries its own artifact path and schema name verbatim; keep-distinct
+    reason: cross-family (D5) — AC's GI-020-plugin-install-model two-arm carries its own artifact path and schema name verbatim; keep-distinct
   - ids: [analysis-codebase.deliverable-two-arm-binding, authoring-constitution.two-arm-schema-binding]
     reason: cross-family (D5), same adjudication
   - ids: [analysis-codebase.deliverable-two-arm-binding, authoring-feature-map.features-index-two-arm]
@@ -539,19 +539,19 @@ suppressions:
     reason: intra-schema — distinct obligations sharing the REPORT-TEMPLATES.md referent (the RPA ISSUE-TEMPLATES precedent)
   - ids: [executing-tdd-cycle.sanctioned-set-of-two, testing-end-user.truncation-bounds]
     reason: cross-pair — register/bounds vocabulary overlap only; different obligations (set closure vs truncation mechanics)
-  # --- [C4] TGF vs the command grammar (detector [5]/[8]/[9]/[11]): J-5 cross-grammar
+  # --- [C4] TGF vs the command grammar (detector [5]/[8]/[9]/[11]): J-5-cross-grammar-duplicates cross-grammar
   # twins — one discipline deliberately mirrored on the command and skill planes, D5
   # forbids sharing; drift edges deliberately recorded (the impl/RCM precedent) ---
   - ids: [impl.delivered-territory-routing, testing-gap-finding.out-of-territory-routing]
-    reason: J-5 cross-grammar twin — one delta-card routing discipline on two planes; drift edge deliberately recorded
+    reason: J-5-cross-grammar-duplicates cross-grammar twin — one delta-card routing discipline on two planes; drift edge deliberately recorded
   - ids: [impl.mutation-lens, testing-gap-finding.lens-alongside-never-inside]
-    reason: J-5 cross-grammar twin — one lens seat-split on two planes; TGF's is the D5 floor, impl's the run-side mirror
+    reason: J-5-cross-grammar-duplicates cross-grammar twin — one lens seat-split on two planes; TGF's is the D5 floor, impl's the run-side mirror
   - ids: [impl.gap-rework-bound, testing-gap-finding.rework-bound]
-    reason: J-5 cross-grammar twin — one attempt economy on two planes; drift edge deliberately recorded
+    reason: J-5-cross-grammar-duplicates cross-grammar twin — one attempt economy on two planes; drift edge deliberately recorded
   - ids: [brainstorm.user-pen-boundary, testing-gap-finding.bound-exhaustion-user-ruled]
-    reason: J-5 cross-grammar — different reservations (record pen vs bound exhaustion) sharing the reserved-to-user frame
+    reason: J-5-cross-grammar-duplicates cross-grammar — different reservations (record pen vs bound exhaustion) sharing the reserved-to-user frame
   - ids: [brainstorm.user-survivor-challenge, testing-gap-finding.bound-exhaustion-user-ruled]
-    reason: J-5 cross-grammar — different reservations sharing the frame
+    reason: J-5-cross-grammar-duplicates cross-grammar — different reservations sharing the frame
   # --- [C5] TGF/AC vs review-family members (detector [6]/[10]) ---
   - ids: [review-code-minimalism.not-test-gates, testing-gap-finding.test-execution-is-testing-end-user]
     reason: 2-member, below bar — two different jurisdictions routing to the same owner (mochiko:testing-end-user); each names its own carve
@@ -569,7 +569,7 @@ suppressions:
   - ids: [brownfield-integration.letter-is-spirit, validation-constitution.letter-is-spirit]
     reason: census J2-5 pre-listed, same adjudication (VC wording distinct since the wave-1 screen)
   - ids: [executing-tdd-cycle.report-not-verdict, review-sufficiency.verdict-is-input]
-    reason: census J2-5 verdict-is-input shape — ETC's lead-owns-verdict (PT-D8 self-disclosure) vs the review-common.verdict-is-input block (RSUF stub, one resolved text across all five binders); different planes of one posture, keep-distinct
+    reason: census J2-5 verdict-is-input shape — ETC's lead-owns-verdict (`ponytail-concepts-integration` D8-lens-input-wiring self-disclosure) vs the review-common.verdict-is-input block (RSUF stub, one resolved text across all five binders); different planes of one posture, keep-distinct
   - ids: [testing-gap-finding.adjudication-lead-and-user, review-sufficiency.verdict-is-input]
     reason: census J2-5 — TGF's adjudication reservation vs the block, same adjudication
   - ids: [testing-gap-finding.zero-findings-clean-pass, review-sufficiency.default-fail]
@@ -618,13 +618,13 @@ suppressions:
   - ids: [review-code-minimalism.minimalism-entries-form, review-design-audit.design-audit-entries-form]
     reason: different entry grammars in different reports (per-cycle verification report with rung claims vs final-validation report with SCR/FLOW trace); form inherited from the V1 sibling
   - ids: [impl.beyond-spec-disposition, review-design-audit.disposition-at-checkpoint]
-    reason: J-5 cross-grammar — different finding kinds (beyond-spec gap findings vs design-audit findings) sharing the fix/backlog/accept reserved-to-user frame
+    reason: J-5-cross-grammar-duplicates cross-grammar — different finding kinds (beyond-spec gap findings vs design-audit findings) sharing the fix/backlog/accept reserved-to-user frame
   - ids: [review-code-minimalism.not-general-code-review, review-design-audit.not-code-minimalism]
     reason: two scopes that point at each other — the ladder lens excludes general review, the design lens excludes ladder discipline; deliberately mirrored boundary
   # --- brainstorm-target-state (0044, v0.117.0) — the three edges its mints raised, each kept distinct ---
   - ids: [brainstorm.frame-changes-users-word, brainstorm.size-users-ruling]
-    reason: two user reservations over different objects — a hardened frame line vs the session size; ruled separately (brainstorm-target-state D3, D11)
+    reason: two user reservations over different objects — a hardened frame line vs the session size; ruled separately (brainstorm-target-state D3-frame-hardening-timing, D11-session-size-tiers)
   - ids: [brainstorm.size-users-ruling, brainstorm.user-pen-boundary]
-    reason: the size ruling carries a raise-freely, never-lower asymmetry the general pen boundary does not (brainstorm-target-state D11)
+    reason: the size ruling carries a raise-freely, never-lower asymmetry the general pen boundary does not (brainstorm-target-state D11-session-size-tiers)
   - ids: [brainstorm.blind-map-dispatch, brainstorm.small-session-review]
     reason: "the two `when: size` arms of one blind-dispatch obligation — front spawn from three frame lines vs today's two-message end dispatch from topic and goal (brainstorm-target-state D10, D11)"

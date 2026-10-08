@@ -16,7 +16,7 @@ entries and their records annotated) · **built 2026-10-06 at v0.117.0** — wav
 provenance test forbade it), prose, strips, budgets (the `review-brainstorm` +1,398 overage
 ruled HOLDS), crate pins and both eval kits; three producer seats under the sound loop (P1 and
 P2 each one failed plan round, P2's second round granted by the user with the Q23 ruling folded
-into D16; P3 clean); 8/8 gate audits PASS round 1; crate gates, views ≡ replay, audit and secret
+into D16-end-reviewer-checks; P3 clean); 8/8 gate audits PASS round 1; crate gates, views ≡ replay, audit and secret
 scan green; the contract suite 97/97, none skipped; the build item → trail, the dogfood watch
 open ·
 **Opened:** 2026-10-04 · **Lead:** session lead (inline questioning via
@@ -157,7 +157,7 @@ Every fact was read first-hand by the lead on 2026-10-04. Counts are greps over
   long idle). A seat spawned earlier in a session is continued "with its context intact" by
   sending it a message under its name or id. Today's two-message blind dispatch already relies on
   this over a short pause. Nothing was found that carries a seat across separate sessions, which
-  is the case D10's fresh-seat fallback covers.
+  is the case D10-cold-review-shape's fresh-seat fallback covers.
 
 ## Stage table — the working surface
 
@@ -166,23 +166,23 @@ column is ruled one row at a time; an unruled cell reads "open".
 
 | Stage | Current | + Interview | + Interview + Wayfinder | Target |
 |---|---|---|---|---|
-| Open | Read index, enter session | Same | Same | Light orient: the index, the records the topic names, the user's earlier rulings on it. No code sweep, no user turn (D1) |
-| Frame | None; the first question starts deciding | Lead states its read and what is missing; restate card with out of scope | Same, plus a named destination | One card in one turn — problem · destination · must not break · betting on · out of scope, plus a size line — each marked as the user's words or the lead's guess; the user strikes or corrects before deciding starts (D2). It hardens at the user's first reply; a line the user cannot answer yet is marked open and becomes an early decision; later changes go one line at a time, by the user's word (D3) |
-| Decision map | None; the lead picks the next question as it goes | None | Askable-now decisions, fog, out of scope | A named map in three parts — askable now · in fog · out of scope — shown with the first question, never a gate, editable in any reply; one status line per turn after (D4) |
-| Order | Lead judgment | Lead judgment | Dependency order; each question says what it unblocks | No question before what it hangs on is settled; which askable item goes first is the lead's judgment, and the user may pick; each question says what it unblocks (D12, as changed by D22) |
-| Facts | Sometimes put to the user, then re-asked | Same | The lead finds them; never asked of the user | Fact first: a decision waits for the fact it hangs on; the lead finds repo, platform and doc facts and attaches the source; a fact only the user holds is asked as a labelled fact question (D5) |
-| Asking | One per turn, options plus a recommendation | One per turn, guess attached; the "need not justify" probe | By type: fact (no turn), probe (react to an artifact), talk (one per turn) | A decision gets its own turn when there is a real choice or a wrong pick is costly to undo; everything else is a named one-line default confirmed in one batch (D6). The lead writes a fork's options under a rule — two real options, the cheaper shape among them, the rejected road named — and on a costly fork a fresh seat returns a blind second list (D7). The question form (D13); show before asking (D14) |
-| Bare yes | Counts as `Confident` | "Sounds good" and "whatever you think" are not a yes; re-ask | Same | A yes that follows the lead's pick stands and is recorded as ratified; after three in a row the lead says so and changes the form of the next fork; "whatever you think" is re-asked as a two-option choice (D8) |
-| Stop rule | None | The lead can predict the next three answers; stuck floor | The way is clear: nothing left to decide before the destination | Finished when the map is empty and any blind map that was started has landed; the user may stop at any time; a map that has not shrunk for three questions sends the lead back to the frame (D15) |
-| Record | Long prose; one fact in several places | Same | One home per decision; the index holds a gist and a link; names, not ids | Inside the record each decision is one named card with fixed parts, and everything else points to it by name with at most a one-line gist; the cross-session index keeps its long entry (D9) |
-| Cold review | Blind map, cold read, six hunt classes | Same | Same, plus "what would a builder still ask" | The blind angle map moves to the front and feeds the decision map without holding the first question; the same seat is resumed at the end for the cold read; no second map (D10). The end reviewer first checks that every card has its parts, reads ratified decisions first and applies the builder test (D16) |
-| Fix and verify | Batch dispositions, a verify round | Same | Same; a fix edits one place | Findings sorted by the two tests; a fix edits one card; one verify pass over the changed cards, a second failure to the user (D17) |
-| Accept | The user's word | An explicit yes on the restated record | Same | One screen before review, one after; the user's explicit word (D18) |
-| Size | One depth, one session | Same | No fog: skip the map. Too big: chart now, resolve the rest later | Three sizes — small · standard · too big — proposed by the lead on the frame card and ruled by the user in the same reply; raised freely, never lowered without the user's word (D11) |
+| Open | Read index, enter session | Same | Same | Light orient: the index, the records the topic names, the user's earlier rulings on it. No code sweep, no user turn (D1-lead-opening-orientation) |
+| Frame | None; the first question starts deciding | Lead states its read and what is missing; restate card with out of scope | Same, plus a named destination | One card in one turn — problem · destination · must not break · betting on · out of scope, plus a size line — each marked as the user's words or the lead's guess; the user strikes or corrects before deciding starts (D2-frame-card-guesses). It hardens at the user's first reply; a line the user cannot answer yet is marked open and becomes an early decision; later changes go one line at a time, by the user's word (D3-frame-hardening-timing) |
+| Decision map | None; the lead picks the next question as it goes | None | Askable-now decisions, fog, out of scope | A named map in three parts — askable now · in fog · out of scope — shown with the first question, never a gate, editable in any reply; one status line per turn after (D4-visible-decision-map) |
+| Order | Lead judgment | Lead judgment | Dependency order; each question says what it unblocks | No question before what it hangs on is settled; which askable item goes first is the lead's judgment, and the user may pick; each question says what it unblocks (D12-question-dependency-order, as changed by D22-august-ruling-guardrails) |
+| Facts | Sometimes put to the user, then re-asked | Same | The lead finds them; never asked of the user | Fact first: a decision waits for the fact it hangs on; the lead finds repo, platform and doc facts and attaches the source; a fact only the user holds is asked as a labelled fact question (D5-facts-before-decisions) |
+| Asking | One per turn, options plus a recommendation | One per turn, guess attached; the "need not justify" probe | By type: fact (no turn), probe (react to an artifact), talk (one per turn) | A decision gets its own turn when there is a real choice or a wrong pick is costly to undo; everything else is a named one-line default confirmed in one batch (D6-question-turn-test). The lead writes a fork's options under a rule — two real options, the cheaper shape among them, the rejected road named — and on a costly fork a fresh seat returns a blind second list (D7-options-second-list). The question form (D13-question-form-style); show before asking (D14-show-before-asking) |
+| Bare yes | Counts as `Confident` | "Sounds good" and "whatever you think" are not a yes; re-ask | Same | A yes that follows the lead's pick stands and is recorded as ratified; after three in a row the lead says so and changes the form of the next fork; "whatever you think" is re-asked as a two-option choice (D8-bare-yes-handling) |
+| Stop rule | None | The lead can predict the next three answers; stuck floor | The way is clear: nothing left to decide before the destination | Finished when the map is empty and any blind map that was started has landed; the user may stop at any time; a map that has not shrunk for three questions sends the lead back to the frame (D15-deciding-stop-rule) |
+| Record | Long prose; one fact in several places | Same | One home per decision; the index holds a gist and a link; names, not ids | Inside the record each decision is one named card with fixed parts, and everything else points to it by name with at most a one-line gist; the cross-session index keeps its long entry (D9-record-card-format) |
+| Cold review | Blind map, cold read, six hunt classes | Same | Same, plus "what would a builder still ask" | The blind angle map moves to the front and feeds the decision map without holding the first question; the same seat is resumed at the end for the cold read; no second map (D10-cold-review-shape). The end reviewer first checks that every card has its parts, reads ratified decisions first and applies the builder test (D16-end-reviewer-checks) |
+| Fix and verify | Batch dispositions, a verify round | Same | Same; a fix edits one place | Findings sorted by the two tests; a fix edits one card; one verify pass over the changed cards, a second failure to the user (D17-findings-fix-verify) |
+| Accept | The user's word | An explicit yes on the restated record | Same | One screen before review, one after; the user's explicit word (D18-accept-screen-summary) |
+| Size | One depth, one session | Same | No fog: skip the map. Too big: chart now, resolve the rest later | Three sizes — small · standard · too big — proposed by the lead on the frame card and ruled by the user in the same reply; raised freely, never lowered without the user's word (D11-session-size-tiers) |
 
 Two decisions sit outside the table because they are not stages of the flow: the target reaches
-brainstorm only (D19), and the blind second list is built untested and tried in the dogfood repo
-(D20).
+brainstorm only (D19-brainstorm-only-reach), and the blind second list is built untested and tried in the dogfood repo
+(D20-second-list-dogfood).
 
 ## Lead's reading of the evidence (not ruled)
 
@@ -211,7 +211,7 @@ restates one fact in several places, so every fold leaves stale echoes (F5).
 
 ## Decisions (D)
 
-### D1 — Open: the lead orients lightly before its first message — `Confident`
+### D1-lead-opening-orientation — Open: the lead orients lightly before its first message — `Confident`
 
 **Statement.** Before its first message the lead reads the index, the records the topic names,
 and the user's earlier rulings on the topic. It takes no user turn and makes no sweep of code or
@@ -230,12 +230,12 @@ correction turn. Put to the user with the question as the case against the lead'
 
 **How it was decided.** Q1; user: "yes A" — the lead's recommendation, ratified.
 
-### D2 — Frame: one card in one turn, guesses marked — `Confident`
+### D2-frame-card-guesses — Frame: one card in one turn, guesses marked — `Confident`
 
 **Statement.** Before any deciding starts, the lead's first message is a frame card of five
 lines: problem · destination · must not break · betting on · out of scope — and, since the
-review (S2), a sixth line proposing the session's size (D11). The lead drafts it
-from the user's opening words and the light orient (D1), and marks every line as the user's
+review (S2), a sixth line proposing the session's size (D11-session-size-tiers). The lead drafts it
+from the user's opening words and the light orient (D1-lead-opening-orientation), and marks every line as the user's
 words or the lead's guess. The user strikes or corrects. A line the lead cannot fill even as a
 guess is asked on its own before the card is shown. The card carries no confidence percentage;
 the guess marks do that job.
@@ -259,7 +259,7 @@ while walking the user's billing example, at first without a question.
 **How it was decided.** Q2; user: "yes A", followed by the user's own question on when the card
 is created and when it hardens (answered in the conversation, lifecycle put as Q3).
 
-### D3 — Frame: hardened at the first reply, amended only by the user's word — `Confident`
+### D3-frame-hardening-timing — Frame: hardened at the first reply, amended only by the user's word — `Confident`
 
 **Statement.** The frame hardens at the user's first reply to the card: every guessed line is
 confirmed, corrected or struck before deciding starts. A line the user cannot answer yet is
@@ -284,7 +284,7 @@ the new one. Said in the lead's walk-through, at first without a question.
 
 **How it was decided.** Q3; user: "as recommeded" — the lead's recommendation, ratified.
 
-### D4 — Decision map: visible, never a gate — `Confident`
+### D4-visible-decision-map — Decision map: visible, never a gate — `Confident`
 
 **Statement.** Once the frame has hardened, the lead shows a decision map in three parts:
 askable now (the decisions it can state sharply, each by name), in fog (loosely stated, with
@@ -309,13 +309,13 @@ late. A full list up front is a separate trap the statement avoids: wayfinder's 
 
 **Detail, confirmed in the wrap-up batch.** The map is the lead's working plan: the lead may add or graduate
 items, always visibly. Ruling something out of scope is a frame change and takes the user's word
-(D3). Told to the user when they asked how the two options differ, at first without a question.
+(D3-frame-hardening-timing). Told to the user when they asked how the two options differ, at first without a question.
 
 **How it was decided.** Q4, put with a weak lean after the streak note; user: "yes A definitely
 matches what i like, however, what would be difference between A and B?" — the difference was
 answered in the conversation.
 
-### D5 — Facts: the fact is in hand before the decision is put — `Confident`
+### D5-facts-before-decisions — Facts: the fact is in hand before the decision is put — `Confident`
 
 **Statement.** A decision that hangs on a fact is not put to the user until the fact is in hand.
 The lead finds what the repo, the platform or the docs can answer — itself or through a cheap
@@ -343,7 +343,7 @@ carries it as an open question. First stated by the lead without a question.
 brainstorm a fact enters the record as a quoted source line with its file and line number, and
 the lead's reading of it is written separately and marked as a reading. The session had never
 looked at how facts are written down. The history it missed: `brainstorm-v2-2-revision` F9 found
-that an over-claim "lived in the paraphrase" of the fact-checker's map, and its D2 made that map
+that an over-claim "lived in the paraphrase" of the fact-checker's map, and its `brainstorm-v2-2-revision` D2-fact-checker-role made that map
 land verbatim; no fact-checker sits in a session like this one, and this record's own F section
 repeated the fault three times (S8, S9, S11). Rejected: leaving it open until after dogfood;
 exploring it as its own topic, for instance a fact-checking seat that writes the facts section.
@@ -351,7 +351,7 @@ Accepted: quoted lines make a record longer, and a quote can still be chosen sel
 record is not rewritten to the new form; its wrong facts are repaired and sources added where
 the reviewer could not verify.
 
-### D6 — Asking: what earns its own turn — `Confident`
+### D6-question-turn-test — Asking: what earns its own turn — `Confident`
 
 **Statement.** A decision gets its own turn when there is a real choice, or when a wrong pick is
 costly to undo. Every other decision is a default: shown by name in one line when it arises, and
@@ -375,7 +375,7 @@ hang on is confirmed before them. First stated by the lead without a question.
 **How it was decided.** Q6; user: "as recommded" — the lead's recommendation, ratified. This
 session already runs that way: the Order row was shown as a default and held (B1).
 
-### D7 — Asking: the lead writes the options, a blind second list on costly forks — `Confident`
+### D7-options-second-list — Asking: the lead writes the options, a blind second list on costly forks — `Confident`
 
 **Statement.** On every fork the lead writes the options under one rule: at least two real
 options, one of them the cheaper shape (do less, reuse, or do nothing), and the rejected road
@@ -403,7 +403,7 @@ folded into a ruling.
 
 **How it was decided.** Q7, put with the lead's uncertainty stated; user: "lets do level 2".
 
-### D8 — Bare yes: the yes stands, a run of them changes the next question — `Confident`
+### D8-bare-yes-handling — Bare yes: the yes stands, a run of them changes the next question — `Confident`
 
 **Statement.** A yes that follows the lead's pick stands as the user's ruling and is recorded as
 ratified. After three ratified rulings in a row the lead says so and puts the next fork in a
@@ -431,7 +431,7 @@ no new confidence mark is added. First stated by the lead without a question.
 **How it was decided.** Q8, put with a weak lean after the second streak note; user: "as
 recommded" — ratified, the fourth in a row. The user did not say whether the flag had helped.
 
-### D9 — Record: one card per decision, the long index kept — `Contested`
+### D9-record-card-format — Record: one card per decision, the long index kept — `Contested`
 
 **Statement.** Inside the record, a decision's card is its only home. The card is titled by the
 decision's name and has fixed parts: statement, why, rejected roads, accepted risk, how it was
@@ -459,7 +459,7 @@ card and its one-line gist only. First stated by the lead without a question.
 and the target differ and was answered with the billing example, then ruled: "I like the target
 format. lets keep the long index" — against the lead's weak lean.
 
-### D10 — Cold review: the blind map at the front, the same seat reading at the end — `Confident`
+### D10-cold-review-shape — Cold review: the blind map at the front, the same seat reading at the end — `Confident`
 
 **Statement.** When the frame hardens in a standard or too-big session, a seat starts drawing a
 blind angle map from the frame's problem, destination and out-of-scope lines — never from the
@@ -489,7 +489,7 @@ thinly. The resumed seat reads the record through its own map, so its blind spot
 end, and an angle neither it nor the lead thought of goes unfound. A grep of
 `cold-review-gap-challenge` finds no sign this move was weighed there (F4).
 
-**Detail, confirmed in the wrap-up batch.** The seat that draws a blind second list on a costly fork (D7) is
+**Detail, confirmed in the wrap-up batch.** The seat that draws a blind second list on a costly fork (D7-options-second-list) is
 never the review seat: a fork's question shows the session's direction, and the review seat must
 not see it. First stated by the lead without a question.
 
@@ -498,8 +498,8 @@ to understand if we need fresh cold seat read the the end?" — answered in the 
 user: "lets do 1" — the lead's recommendation, ratified.
 
 **Changed at review (S2; Q16, user: "yes a").** The statement said the map is drawn "right
-after the frame hardens" and feeds the decision map, while D4 has the decision map arrive with
-the first question and D11 had the size — which decides whether a blind map is drawn at all —
+after the frame hardens" and feeds the decision map, while D4-visible-decision-map has the decision map arrive with
+the first question and D11-session-size-tiers had the size — which decides whether a blind map is drawn at all —
 proposed only once the map existed. Now the seat starts at hardening, for standard and too-big
 only, and nothing waits for it. Added risk: an angle can land after the user has ruled on
 something it bears on; that ruling then comes back to the user.
@@ -519,7 +519,7 @@ put a review pair out of scope without asking. Ruled inline: a pair stays possib
 draws its own front map, as the live rule `brainstorm.pair-maps-independent` has it, and each is
 resumed at the end. "No second map" in the statement means none at the end.
 
-### D11 — Size: three sizes, ruled by the user — `Confident`
+### D11-session-size-tiers — Size: three sizes, ruled by the user — `Confident`
 
 **Statement.** The lead proposes one of three sizes on the frame card and the user rules it in
 the reply that confirms the frame. Small — no fog and a few forks: no front map and no blind
@@ -545,7 +545,7 @@ its open threads, with the fog's own wording. First stated by the lead without a
 
 **Changed at review (S2; Q16, user: "yes a").** The size was to be proposed "when the map is
 first drawn". It could not be: the size decides whether the blind map is drawn, and the blind map
-feeds that same map. It is now a line on the frame card (D2).
+feeds that same map. It is now a line on the frame card (D2-frame-card-guesses).
 
 **Changed at review (S3; Q17, user: "yes A").** Small said "no blind map". That collided with
 the confirmed constraint that the review's blind dispatch stays and with the protected floor
@@ -554,7 +554,7 @@ and skips only the two new pieces. Rejected: a small review with no blind map at
 formally changed for small sessions. Accepted: a small session costs as much to review as a
 session does today.
 
-### D19 — Reach: brainstorm only — `Confident`
+### D19-brainstorm-only-reach — Reach: brainstorm only — `Confident`
 
 **Statement.** The target applies to `/mochiko:brainstorm` alone. `/mochiko:setup` keeps today's
 questioning and today's review, and any other command that might follow is a separate concern,
@@ -586,7 +586,7 @@ change, thats a separate concern."
 
 **Changed at review (S5; Q19, user: "as recommended", ratified on a weak lean).** Brainstorm's
 rule still points at the shared skill, whose Common Mistakes rows say "One question per turn —
-always" and list always-structured options as a mistake, while D6 and D17 batch and D13 fixes a
+always" and list always-structured options as a mistake, while D6-question-turn-test and D17-findings-fix-verify batch and D13-question-form-style fixes a
 form. Brainstorm's own rule now states that where its rules and the skill differ, brainstorm's
 rules apply. The skill's rows stay as they are for setup. Those rows were kept deliberately at
 the v0.63.0 cut (`.mochiko/strips/analysis-iterative.md`, the v0.63.0 entry; the source was
@@ -595,9 +595,9 @@ written down as a supersession for brainstorm at
 landing. Rejected: rewording the shared skill's rows, which changes text setup reads. Accepted:
 two texts that disagree stay in the plugin.
 
-### D20 — The blind second list is built untested and tried in the dogfood repo — `Contested`
+### D20-second-list-dogfood — The blind second list is built untested and tried in the dogfood repo — `Contested`
 
-**Statement.** The blind second list (D7) is built without a prior test. Whether it finds roads
+**Statement.** The blind second list (D7-options-second-list) is built without a prior test. Whether it finds roads
 the lead misses is judged in use, in the dogfooding repo the user has set up, once the
 implementation is done.
 
@@ -610,13 +610,13 @@ against the option the review later found missing, the piece dropped on a fail. 
 lead's lean; the user ruled against it.
 
 **Accepted risk.** A piece that turns out not to work is built before anyone knows. What the
-dogfood runs are judged on was undecided when this was ruled; it is now D23 (corrected at
+dogfood runs are judged on was undecided when this was ruled; it is now D23-dogfood-run-criteria (corrected at
 verify, V5).
 
 **How it was decided.** Q14, put in plain words; user's ruling as quoted, against the lead's
 lean.
 
-### D21 — Shared questioning skill: two repairs, no change in behaviour — `Confident`
+### D21-questioning-skill-repairs — Shared questioning skill: two repairs, no change in behaviour — `Confident`
 
 **Statement.** During the build, two faults in `skills/analysis-iterative/SKILL.md` are repaired.
 The sentence "The adaptive flow above is the single questioning engine" is reworded so that it
@@ -632,31 +632,31 @@ wrong for brainstorm only: setup does conclude with a synthesis, so the repair m
 **Rejected road.** Leave the shared skill untouched and note the faults as a separate concern.
 The user chose the repair.
 
-**Accepted risk.** This is the one place the build edits text that setup also reads. D19's
+**Accepted risk.** This is the one place the build edits text that setup also reads. D19-brainstorm-only-reach's
 "setup is not touched" is to be read as: setup's behaviour is not touched.
 
 **How it was decided.** Proposed by the lead after Q13 as a default awaiting a word either way.
 The lead described the second fault to the user as "names the wrong output file", which is
 looser than the statement above. User: "yes fix the two broken sentences". (This part was
-split from its card when D22 and D23 were inserted; put back at verify, V6.)
+split from its card when D22-august-ruling-guardrails and D23-dogfood-run-criteria were inserted; put back at verify, V6.)
 
-### D22 — The target and the August ruling: guardrails without a fixed order, three counts kept — `Confident`
+### D22-august-ruling-guardrails — The target and the August ruling: guardrails without a fixed order, three counts kept — `Confident`
 
 **Statement.** The target is written into brainstorm's rules as guardrails — what must be true
 before something else happens — and never as a sequence of steps: nothing in the command says
 "first do this, then that". Three counted limits stay as limits: three ratified answers in a row
-(D8), three questions without the map shrinking (D15), and a second failed verify going to the
-user (D17). At landing, `command-architecture-realignment` D1 is annotated as amended in part
+(D8-bare-yes-handling), three questions without the map shrinking (D15-deciding-stop-rule), and a second failed verify going to the
+user (D17-findings-fix-verify). At landing, `command-architecture-realignment` D1-choreography-leaves-commands is annotated as amended in part
 for brainstorm: counted limits return for these three cases; choreography and default pipelines
 stay deleted.
 
-**Rationale.** D1 of that session (`Contested`, `DECISIONS.md:108`) deleted stage and seat
+**Rationale.** `command-architecture-realignment` D1-choreography-leaves-commands of that session (`Contested`, `DECISIONS.md:108`) deleted stage and seat
 choreography, default pipelines and counted bounds from commands, on the user's reasoning that
 "the volume of encoded detail is itself the defect". Most of the target can be said as a
 guardrail — the frame is confirmed before deciding starts, a fact is in hand before its decision
 is put — which the August ruling keeps. The counts are the exception; a later ruling already
 brought one back, the gate loop that sends a second failure to the user
-(`author-grader-consolidation` D6).
+(`author-grader-consolidation` D6-single-reaudit-limit).
 
 **Rejected roads.** Brainstorm as an exception that carries a fixed order and the counts — it
 re-admits the pipeline the August ruling deleted. The August ruling whole, order and counts left
@@ -666,7 +666,7 @@ arose under lead judgment alone (F1, F6).
 **Accepted risk.** Counted limits are back in a command, which is the direction the August
 ruling moved away from.
 
-**Consequence for D12.** Its dependency clause is a guardrail and stands: no question is put
+**Consequence for D12-question-dependency-order.** Its dependency clause is a guardrail and stands: no question is put
 before what it hangs on is settled. Its "a shape-defining fork goes first" clause is an ordering
 preference; under this ruling it is the lead's judgment, not a rule. Told to the user with the
 next question.
@@ -674,17 +674,17 @@ next question.
 **How it was decided.** Review finding S1, a coverage finding put to the user as Q15; user:
 "yes C" — the lead's lean, ratified.
 
-### D23 — What the dogfood runs are judged on — `Confident`
+### D23-dogfood-run-criteria — What the dogfood runs are judged on — `Confident`
 
 **Statement.** The rebuilt brainstorm is judged in the dogfood repo on three counts, each set
 against today's figures: the number of findings a review returns (today 15 to 25 survivors per
 session, F5); the number of coverage findings that still arrive at the end (today 3 to 8, F5);
 and whether the first verify pass comes back clean (today, in at least twenty sessions, it did
-not, F5). The blind second list (D7) is judged inside the same runs: whether it names a road
+not, F5). The blind second list (D7-options-second-list) is judged inside the same runs: whether it names a road
 the lead had not listed.
 
 **Rationale.** The session had ruled a design and no measure for it; the review's blind map
-carried that as a load-bearing angle and S15 found the open question covered only D7.
+carried that as a load-bearing angle and S15 found the open question covered only D7-options-second-list.
 
 **Rejected road.** None was put to the user; the three counts were the lead's proposal.
 
@@ -705,32 +705,32 @@ namespace as the cards above. The same answer confirmed the nine details the lea
 
 **What was rejected, per decision (added at review, S14).** None of the seven was put to the
 user with alternatives, so none has a road the user rejected; what the lead had in view is
-stated here so it is not silently blessed. D12 — order left wholly to the lead's judgment, as
-today. D13 — no alternative considered; it is the form the session itself used. D14 — a runnable
+stated here so it is not silently blessed. D12-question-dependency-order — order left wholly to the lead's judgment, as
+today. D13-question-form-style — no alternative considered; it is the form the session itself used. D14-show-before-asking — a runnable
 prototype by default, as wayfinder's prototype ticket has it (F10); left to the user's request.
-D15 — interview's "predict the next three answers" test, dropped in the decision's own text; and
-no stop rule at all, as today (F1). D16 — a tool check of card parts at write time, rejected at
-review (S4). D17 — today's unsorted hand-off of findings. D18 — no alternative considered.
+D15-deciding-stop-rule — interview's "predict the next three answers" test, dropped in the decision's own text; and
+no stop rule at all, as today (F1). D16-end-reviewer-checks — a tool check of card parts at write time, rejected at
+review (S4). D17-findings-fix-verify — today's unsorted hand-off of findings. D18-accept-screen-summary — no alternative considered.
 
-- **D12 — Order (shown as B1).** Dependency order: a question is put only when what it hangs on is settled.
+- **D12-question-dependency-order — Order (shown as B1).** Dependency order: a question is put only when what it hangs on is settled.
   Among the askable ones, a shape-defining fork goes first because it clears the most fog. The
   user may pick any askable item instead. Each question says in one line what it unblocks.
-  *Changed at review (S1, D22; carried here at verify, V1):* the "shape-defining fork goes
+  *Changed at review (S1, D22-august-ruling-guardrails; carried here at verify, V1):* the "shape-defining fork goes
   first" clause is no longer a rule; which askable item goes first is the lead's judgment. The
   dependency clause stands as a guardrail.
-- **D13 — Question form (shown as B2).** The form this session has used, which the user said they like (session
+- **D13-question-form-style — Question form (shown as B2).** The form this session has used, which the user said they like (session
   format, Topic) and which matches F11: plain words; decisions by name, never a bare id; each
   option one sentence plus one concrete example; the case against the lead's pick; a one-line
   recommendation; the whole question fits one screen. *Changed at review (S5; Q19):* this form
   applies when options are put. It does not forbid an open question to a user who is unsure,
   which is what the shared skill advises.
-- **D14 — Show before asking (shown as B3).** When a question is about how something looks or behaves, the lead
+- **D14-show-before-asking — Show before asking (shown as B3).** When a question is about how something looks or behaves, the lead
   shows a rough artifact inside the message — a mock, a worked scenario with real numbers, or a
   replay on a past case — and the user reacts to it. No files and no code. Anything heavier, such
   as a clickable prototype, is built only on the user's request. Evidence in this session: the
   mock frame card and mock map drew the user's firmest answers, and the user asked for a worked
   billing example before ruling on the frame.
-- **D15 — Stop rule (shown as B4).** Deciding is finished when the map is empty: nothing askable, every patch
+- **D15-deciding-stop-rule — Stop rule (shown as B4).** Deciding is finished when the map is empty: nothing askable, every patch
   of fog ruled, deferred by the user's word or handed to a later session, no open line on the
   frame, and the defaults batch confirmed. The lead does not call it finished with an item still
   on the map. The user may stop at any time; what is left is recorded as open and the record
@@ -739,12 +739,12 @@ review (S4). D17 — today's unsorted hand-off of findings. D18 — no alternati
   test is not used, because nobody but the lead can check it. *Changed at verify (V3; Q22, user:
   "yes"):* one more condition — any blind map that was started has landed, and each of its angles
   is folded into the decision map or listed as dropped. Without it, a session whose first
-  question no longer waits for the map (D10, S2) could finish before the map arrived, and its
+  question no longer waits for the map (D10-cold-review-shape, S2) could finish before the map arrived, and its
   angles would reach the user as end-of-session findings. Accepted: a quick session may wait a
   few minutes for the seat.
-- **D16 — What the end reviewer checks besides today's hunt (shown as B5).** Three additions. The seat's
+- **D16-end-reviewer-checks — What the end reviewer checks besides today's hunt (shown as B5).** Three additions. The seat's
   first step is a checklist that every card has its fixed parts, reported before it reads for
-  judgment. The seat aims first at decisions recorded as ratified (D8). And it runs the
+  judgment. The seat aims first at decisions recorded as ratified (D8-bare-yes-handling). And it runs the
   builder test against the frame's destination: reading only the record, what would a builder
   still have to ask the user. *Changed at review (S4; Q18, user: "as recommeded", ratified on a
   weak lean):* the first addition was worded as "a mechanical check" with no mechanism named,
@@ -759,14 +759,14 @@ review (S4). D17 — today's unsorted hand-off of findings. D18 — no alternati
   under its "any unchecked item blocks `ready`" line and gain a consequence this decision never
   ruled. Rejected: any missing part blocks `ready` — it would make the checklist a gate this
   decision called a report.
-- **D17 — Fix and verify (shown as B6).** Findings reach the user sorted by D6's two tests: a finding that
+- **D17-findings-fix-verify — Fix and verify (shown as B6).** Findings reach the user sorted by D6-question-turn-test's two tests: a finding that
   offers a real choice, is costly to get wrong, or challenges a ruling of the user's gets its own
   turn in the question form (B2); lead repairs of facts, counts and wording go in one named
   batch; a finding that changes nothing is listed with its reason. A fix edits the one card and
-  adds a line under changed at review (D9). The review seat then verifies once, reading only the
+  adds a line under changed at review (D9-record-card-format). The review seat then verifies once, reading only the
   changed cards and their gists; a second failure goes to the user. A coverage finding at the end
   keeps today's routing — explore now, rule inline, or defer, by the user's word.
-- **D18 — Accept (shown as B7).** Before the record freezes for review, one screen: the decisions by name with
+- **D18-accept-screen-summary — Accept (shown as B7).** Before the record freezes for review, one screen: the decisions by name with
   their gists, the defaults batch, what is out of scope, the open questions, and each bet still
   untested with how it would be tested. The user confirms or changes it. After review, one screen
   of what changed. Acceptance is the user's explicit word; anything vaguer is asked once more.
@@ -780,23 +780,23 @@ review (S4). D17 — today's unsorted hand-off of findings. D18 — no alternati
   proved to be a fact and is settled by F13 (wording corrected at review, S13) — and the build plan itself is written after acceptance as a
   separate `wave<n>-<slug>.md` file in this session's home.
 - **OQ2 — Does a blind second list find roads the lead misses?** Still unanswered as a fact. When
-  it gets answered is ruled: in use, in the dogfood repo (D20).
-- **OQ3 — What are the dogfood runs judged on?** Closed → D23.
+  it gets answered is ruled: in use, in the dogfood repo (D20-second-list-dogfood).
+- **OQ3 — What are the dogfood runs judged on?** Closed → D23-dogfood-run-criteria.
 
 ## For the landing (added at review, S1 and S15)
 
 Prior rulings this record touches, each to be annotated when the record lands:
 
-- `command-architecture-realignment` D1 — amended in part for brainstorm: three counted limits
-  return (D22).
-- `cold-review-gap-challenge` D2 and D6 — the blind map and its two-message dispatch move to the
-  front of a standard or too-big brainstorm session (D10); setup's review is unchanged (D19).
+- `command-architecture-realignment` D1-choreography-leaves-commands — amended in part for brainstorm: three counted limits
+  return (D22-august-ruling-guardrails).
+- `cold-review-gap-challenge` D2-blind-angle-map and D6-two-message-dispatch — the blind map and its two-message dispatch move to the
+  front of a standard or too-big brainstorm session (D10-cold-review-shape); setup's review is unchanged (D19-brainstorm-only-reach).
 - `brainstorm-v2-revision` — "all adversarial pressure moved to convergence" gains one
-  exception: a blind second list before the user rules on a costly fork (D7).
+  exception: a blind second list before the user rules on a costly fork (D7-options-second-list).
 - The v0.63.0 guardrails cut (`validator-scope-and-verbosity`) — its kept Common Mistakes rows
-  in the shared skill are superseded for brainstorm only, by a precedence clause (D19, S5).
-- `brainstorm-v2-2-revision` D2 — the verbatim rule for facts is extended to sessions with no
-  fact-checker seated (D5, S6).
+  in the shared skill are superseded for brainstorm only, by a precedence clause (D19-brainstorm-only-reach, S5).
+- `brainstorm-v2-2-revision` D2-fact-checker-role — the verbatim rule for facts is extended to sessions with no
+  fact-checker seated (D5-facts-before-decisions, S6).
 
 Open backlog items this record affects:
 
@@ -804,19 +804,19 @@ Open backlog items this record affects:
   residuals) — for brainstorm it moves to the front map; setup's half is unchanged.
 - **The brainstorm plan-only eval kit** (`BACKLOG.md`, command plan-only eval kits) — its
   expectations are keyed to today's rules and are re-keyed in the build.
-- **Closed — two repairs in the shared questioning skill.** Agreed by the user → D21.
+- **Closed — two repairs in the shared questioning skill.** Agreed by the user → D21-questioning-skill-repairs.
 
 ## Out of scope and not done
 
-- **Other commands.** Setup and any other command that asks questions (D19).
-- **Full designs by several seats** on a shape-defining fork — level 3 of Q7, not chosen (D7).
-- **A thin cross-session index** (D9).
+- **Other commands.** Setup and any other command that asks questions (D19-brainstorm-only-reach).
+- **Full designs by several seats** on a shape-defining fork — level 3 of Q7, not chosen (D7-options-second-list).
+- **A thin cross-session index** (D9-record-card-format).
 - **The build plan.** Written after acceptance as a separate file in this session's home (OQ1).
 - **A review pair under the front map** was listed here by the lead without a ruling; it is now
-  ruled in D10's changed-at-review note (S16).
+  ruled in D10-cold-review-shape's changed-at-review note (S16).
 - **Dropped by the lead without a question to the user:** the glossary and term checks of
   `domain-modeling`, and `idea-refine`'s variation lenses (F9, F10). Interview's confidence
-  percentage is dropped in D2 and its predict-the-next-three test in D15.
+  percentage is dropped in D2-frame-card-guesses and its predict-the-next-three test in D15-deciding-stop-rule.
 
 ## Review (cold, round 1 — `reports/angle-map.md`, `reports/review.md`)
 
@@ -843,52 +843,52 @@ The record was declared frozen and sent to the seat as message 2 once this secti
 Recommended status **`needs-revision`**. Tally: 26 raised, 16 survived — no Critical, 7
 Important, 9 Minor; four of the sixteen are coverage findings (S1, S6, S15, S16). The seat's
 reason for the status: the Destination promises a builder can plan without asking the user a
-design question, and its builder test (D16) run against this record turns up at least five such
+design question, and its builder test (D16-end-reviewer-checks) run against this record turns up at least five such
 questions (S1–S5). Facts: 11 of 13 checked first-hand, F1–F4, F6, F8, F9, F12 and F13 hold.
 Fitness: six of seven items pass, one partial (S14). A third haiku Explore dispatch failed to
 hand back; the seat took all reads itself.
 
 The lead re-read the sources behind S1, S3, S8, S10 and S11 before proposing anything:
-`command-architecture-realignment` D1 and `DECISIONS.md:108` say what S1 quotes; the blind-map
+`command-architecture-realignment` D1-choreography-leaves-commands and `DECISIONS.md:108` say what S1 quotes; the blind-map
 floor's protection is in `.mochiko/strips/review-brainstorm.md` (v0.100.0); S8's count is right;
 S11's reading of `hook-enforcement-field-review` Q3 and Q7 is right and the lead's was wrong;
 S10's quote does exist, at `docs/engineering/wayfinder.md:75` of the clone at `d81f3a1`.
 
 | # | Severity | Touches | Finding, short | Proposed disposition | Ruling |
 |---|---|---|---|---|---|
-| S1 | Important, coverage | D8, D12, D15, D17, D19, constraint 2 | The August ruling that commands are goal plus harness — choreography, default pipelines and counted bounds deleted, not relocated (`command-architecture-realignment` D1, `Contested`) — was never weighed. The target brings back an order of stages and three counts | Candidate topic, put to the user on its own | user: "yes C" → D22 (guardrails without a fixed order, the three counts kept; the August ruling annotated amended in part at landing; D12's "shape fork first" becomes the lead's judgment) |
-| S2 | Important | D4, D10, D11 | The blind map must exist before the decision map is first shown, yet whether to draw it hangs on a size proposed only when the map is first drawn; the size ruling is a user turn while the map is "never a gate"; the wait for the seat is unpriced | Put to the user: the size is proposed on the frame card and ruled in the user's first reply; the seat is spawned at hardening for standard and too-big only; the first question goes out while the map is drawn and its angles are added to the decision map when they land | user: "yes a" — folded into D2, D10 and D11, each with a changed-at-review line or wording |
-| S3 | Important | D11, constraint 1 | Small means "no blind map", while constraint 1 keeps the blind dispatch and `review-brainstorm.blind-map-before-record-contact` is a protected floor | Put to the user: a small session keeps today's review — the blind map drawn at the end, before record contact — or the user's waiver; it skips only the front map and the blind second lists | user: "yes A" — folded into D11 with a changed-at-review line |
-| S4 | Important | D6, D9, D16 | The "mechanical check" of card parts names no mechanism. A tool check changes the record's home, which today has no template; a seat check is not mechanical. By D6's own test this was a fork, batched as a default | Put to the user: the review seat runs it first as a checklist; a tool check waits until dogfood runs show missing parts recurring | user: "as recommeded" — folded into D16 with a changed-at-review note |
-| S5 | Important | D6, D13, D19, D21 | Brainstorm's rule still points at the shared skill, whose Common Mistakes rows say "One question per turn — always" and warn against always-structured options; D6 and D17 batch, D13 fixes one form | Put to the user: brainstorm's own rule states that its rules win where the two differ; the skill's rows stay as they are for setup; the kept-deliberately text gets a recorded supersession for brainstorm at landing | user: "as recommended" — folded into D19 and D13, each with a changed-at-review note |
-| S6 | Important, coverage | D5, the F section | Facts entered this record as the lead's paraphrase and three were wrong (S8, S9, S11) — the failure the fact-checker's verbatim map was introduced to stop | Candidate topic; recommend rule inline: a fact enters the record as a quoted source line with its path and line, and the lead's reading of it is written separately | user ruled the path inline: "as recommended" — folded into D5 with a changed-at-review note |
-| S7 | Important, challenges a user ruling | D10 | The lead told the user a fresh end seat brings "no gain in independence". Inaccurate: under D10 the seat's angles enter the room as map items and the same seat then grades how they were answered, which gives it a stake | Reserved to the user: who reads at the end is re-put with the trade stated accurately | user: "keep 1" — D10 stands; its rejected-road and risk lines corrected, with a changed-at-review note |
-| S8 | Minor | F7, D7 | "Eleven records" overstates: ten other records match, three of them not findings about an unput road — seven genuine | Lead repair | user: "confirmed" (review batch) — applied |
+| S1 | Important, coverage | D8, D12, D15, D17, D19, constraint 2 | The August ruling that commands are goal plus harness — choreography, default pipelines and counted bounds deleted, not relocated (`command-architecture-realignment` D1-choreography-leaves-commands, `Contested`) — was never weighed. The target brings back an order of stages and three counts | Candidate topic, put to the user on its own | user: "yes C" → D22-august-ruling-guardrails (guardrails without a fixed order, the three counts kept; the August ruling annotated amended in part at landing; D12-question-dependency-order's "shape fork first" becomes the lead's judgment) |
+| S2 | Important | D4-visible-decision-map, D10-cold-review-shape, D11-session-size-tiers | The blind map must exist before the decision map is first shown, yet whether to draw it hangs on a size proposed only when the map is first drawn; the size ruling is a user turn while the map is "never a gate"; the wait for the seat is unpriced | Put to the user: the size is proposed on the frame card and ruled in the user's first reply; the seat is spawned at hardening for standard and too-big only; the first question goes out while the map is drawn and its angles are added to the decision map when they land | user: "yes a" — folded into D2-frame-card-guesses, D10-cold-review-shape and D11-session-size-tiers, each with a changed-at-review line or wording |
+| S3 | Important | D11-session-size-tiers, constraint 1 | Small means "no blind map", while constraint 1 keeps the blind dispatch and `review-brainstorm.blind-map-before-record-contact` is a protected floor | Put to the user: a small session keeps today's review — the blind map drawn at the end, before record contact — or the user's waiver; it skips only the front map and the blind second lists | user: "yes A" — folded into D11-session-size-tiers with a changed-at-review line |
+| S4 | Important | D6-question-turn-test, D9-record-card-format, D16-end-reviewer-checks | The "mechanical check" of card parts names no mechanism. A tool check changes the record's home, which today has no template; a seat check is not mechanical. By D6-question-turn-test's own test this was a fork, batched as a default | Put to the user: the review seat runs it first as a checklist; a tool check waits until dogfood runs show missing parts recurring | user: "as recommeded" — folded into D16-end-reviewer-checks with a changed-at-review note |
+| S5 | Important | D6, D13, D19, D21 | Brainstorm's rule still points at the shared skill, whose Common Mistakes rows say "One question per turn — always" and warn against always-structured options; D6-question-turn-test and D17-findings-fix-verify batch, D13-question-form-style fixes one form | Put to the user: brainstorm's own rule states that its rules win where the two differ; the skill's rows stay as they are for setup; the kept-deliberately text gets a recorded supersession for brainstorm at landing | user: "as recommended" — folded into D19-brainstorm-only-reach and D13-question-form-style, each with a changed-at-review note |
+| S6 | Important, coverage | D5-facts-before-decisions, the F section | Facts entered this record as the lead's paraphrase and three were wrong (S8, S9, S11) — the failure the fact-checker's verbatim map was introduced to stop | Candidate topic; recommend rule inline: a fact enters the record as a quoted source line with its path and line, and the lead's reading of it is written separately | user ruled the path inline: "as recommended" — folded into D5-facts-before-decisions with a changed-at-review note |
+| S7 | Important, challenges a user ruling | D10-cold-review-shape | The lead told the user a fresh end seat brings "no gain in independence". Inaccurate: under D10-cold-review-shape the seat's angles enter the room as map items and the same seat then grades how they were answered, which gives it a stake | Reserved to the user: who reads at the end is re-put with the trade stated accurately | user: "keep 1" — D10-cold-review-shape stands; its rejected-road and risk lines corrected, with a changed-at-review note |
+| S8 | Minor | F7, D7-options-second-list | "Eleven records" overstates: ten other records match, three of them not findings about an unput road — seven genuine | Lead repair | user: "confirmed" (review batch) — applied |
 | S9 | Minor | F5 | "`critical-gaps` occurs seven times" is wrong: 22 occurrences, seven of them backticked | Lead repair | user: "confirmed" (review batch) — applied |
 | S10 | Minor | F10 | The prototype-variant report was not found by the seat | No change to the claim; the source line is added (`docs/engineering/wayfinder.md:75`) | user: "confirmed" (review batch) — applied |
-| S11 | Minor | F7, D5 | D5's evidence from `hook-enforcement-field-review` is misread: at Q3 and Q7 the facts were already in that record and the user challenged the premise of the question | Lead repair of F7 and of D5's rationale; D5's statement untouched; the user is told the recommendation leaned on a misread | user: "confirmed" (review batch) — applied |
-| S12 | Minor | F5, D10 | D10 cites F5 for "three to eight coverage gaps", which F5 does not carry | Lead repair: F5 gains the coverage counts | user: "confirmed" (review batch) — applied |
+| S11 | Minor | F7, D5-facts-before-decisions | D5-facts-before-decisions's evidence from `hook-enforcement-field-review` is misread: at Q3 and Q7 the facts were already in that record and the user challenged the premise of the question | Lead repair of F7 and of D5-facts-before-decisions's rationale; D5-facts-before-decisions's statement untouched; the user is told the recommendation leaned on a misread | user: "confirmed" (review batch) — applied |
+| S12 | Minor | F5, D10-cold-review-shape | D10-cold-review-shape cites F5 for "three to eight coverage gaps", which F5 does not carry | Lead repair: F5 gains the coverage counts | user: "confirmed" (review batch) — applied |
 | S13 | Minor | Destination, OQ1 | "A later build session" against the user's same-session ruling; the paused seat called "a fact to test" in one place and closed in another | Lead repair | user: "confirmed" (review batch) — applied |
 | S14 | Minor | D12–D18 | No rejected roads on the seven batch decisions | Lead repair: each states what was considered, or says plainly that no alternative was put to the user | user: "confirmed" (review batch) — applied |
-| S15 | Minor, coverage | D10, OQ3 | The backlog's first-live-run watch on the blind map and the brainstorm eval kit are both affected and unmentioned; OQ3 covers only D7 | Candidate topic; recommend rule inline: both named for the landing, OQ3 widened to the whole target | user: "confirmed" (review batch) — applied |
-| S16 | Minor, coverage | D10, Out of scope | The review pair was put out of scope by the lead, never ruled; `brainstorm.pair-maps-independent` is live and collides with "no second map" | Candidate topic; recommend rule inline: a pair stays possible, each seat drawing its own front map; "no second map" means none at the end | user: "confirmed" (review batch) — applied |
+| S15 | Minor, coverage | D10-cold-review-shape, OQ3 | The backlog's first-live-run watch on the blind map and the brainstorm eval kit are both affected and unmentioned; OQ3 covers only D7-options-second-list | Candidate topic; recommend rule inline: both named for the landing, OQ3 widened to the whole target | user: "confirmed" (review batch) — applied |
+| S16 | Minor, coverage | D10-cold-review-shape, Out of scope | The review pair was put out of scope by the lead, never ruled; `brainstorm.pair-maps-independent` is live and collides with "no second map" | Candidate topic; recommend rule inline: a pair stays possible, each seat drawing its own front map; "no second map" means none at the end | user: "confirmed" (review batch) — applied |
 
 ### Verify round 1 (`reports/review.md`, entry "Verify round 1") — NOT CLEAN, nothing blocking
 
-Eighteen items graded: the sixteen folds, plus D22 and D23 on the bounded grade. Thirteen clean;
-S1, S2, S5, S15 and D23 not clean, for six defects the folds introduced. The seat withdrew S10
+Eighteen items graded: the sixteen folds, plus D22-august-ruling-guardrails and D23-dogfood-run-criteria on the bounded grade. Thirteen clean;
+S1, S2, S5, S15 and D23-dogfood-run-criteria not clean, for six defects the folds introduced. The seat withdrew S10
 as its own error — its grep had cut the line short, and F10 held all along. No fold reopened a
 decision. The seat's closing line: once V1–V6 land, nothing in the review stands against
 acceptance and no further cold read is owed.
 
 | # | Defect the folds introduced | Disposition |
 |---|---|---|
-| V1 | D22's change had not reached D12 or the Order cell | lead-repaired |
-| V2 | D3's accepted risk still said five lines | lead-repaired |
-| V3 | The stop rule could fire before a started blind map had landed | user: "yes" (Q22) — D15 gains the condition |
-| V4 | D19's paragraph on the earlier cut contradicted the S5 note, and F2 was cited for a fact it does not hold | lead-repaired; the strip file is cited |
-| V5 | D20's risk still called the dogfood measure undecided | lead-repaired |
-| V6 | D21's how-it-was-decided part had been split onto D23 | lead-repaired |
+| V1 | D22-august-ruling-guardrails's change had not reached D12-question-dependency-order or the Order cell | lead-repaired |
+| V2 | D3-frame-hardening-timing's accepted risk still said five lines | lead-repaired |
+| V3 | The stop rule could fire before a started blind map had landed | user: "yes" (Q22) — D15-deciding-stop-rule gains the condition |
+| V4 | D19-brainstorm-only-reach's paragraph on the earlier cut contradicted the S5 note, and F2 was cited for a fact it does not hold | lead-repaired; the strip file is cited |
+| V5 | D20-second-list-dogfood's risk still called the dogfood measure undecided | lead-repaired |
+| V6 | D21-questioning-skill-repairs's how-it-was-decided part had been split onto D23-dogfood-run-criteria | lead-repaired |
 
 The six repairs were made after the verify and were not read again by the seat: closed
 seat-unverified, disclosed.
@@ -898,13 +898,13 @@ seat-unverified, disclosed.
 - **Q1 — Open: how much the lead reads before its first message.** Light orient — the index,
   the records the topic names, the user's earlier rulings on the topic, with fact work waiting
   for the map (A, recommended) · deep ground first — A plus a sweep of code and consumers before
-  the frame (B). **Answer:** "yes A" → D1.
+  the frame (B). **Answer:** "yes A" → D1-lead-opening-orientation.
 - **Q2 — Frame: how the session pins down what it is about before deciding starts.** One card in
   one turn — five lines (problem · destination · must not break · betting on · out of scope),
   each marked as the user's words or the lead's guess, the user strikes or corrects; a line the
   lead cannot fill even as a guess is asked on its own (A, recommended) · interview first — who,
   why now, success and limit asked one per turn, the card shown after (B). **Answer:** "yes A"
-  → D2. The user then asked, with a billing-system example: "at what point frame will be created
+  → D2-frame-card-guesses. The user then asked, with a billing-system example: "at what point frame will be created
   or harden". The lead answered with a walk-through — drafted in the lead's first message from
   the opening context, hardened by the user's reply — and put the lifecycle as Q3.
 - **Q3 — Frame: when it hardens and how it changes afterwards.** Hardened at the user's first
@@ -912,7 +912,7 @@ seat-unverified, disclosed.
   and becomes an early decision; later changes go one line at a time, by the user's word only,
   each stamped in the record (A, recommended) · progressive — the card is shown, deciding starts
   at once, and each guessed line is confirmed only when a decision first touches it (B). **Answer:** "as
-  recommeded" → D3.
+  recommeded" → D3-frame-hardening-timing.
 - **Streak note (lead, after Q3).** Three decisions in a row followed the lead's recommendation
   (Q1 "yes A", Q2 "yes A" with a question of the user's own, Q3 "as recommeded"). The lead flagged
   the streak to the user and put Q4 with a weak lean in place of a firm recommendation, because
@@ -922,7 +922,7 @@ seat-unverified, disclosed.
   question after the frame hardens, editable at any time, one status line per turn after (A, weak
   lean) · a visible map the user confirms or edits before the first question (B) · no map, as
   today (C). Only what can be stated sharply is listed; the rest stays as fog. **Answer:** "yes A
-  definitely matches what i like, however, what would be difference between A and B?" → D4. The
+  definitely matches what i like, however, what would be difference between A and B?" → D4-visible-decision-map. The
   difference was answered in the conversation: same content, B adds one round trip and makes the
   list something the user approved, A leaves it the lead's visible working plan.
 - **Order row** — shown to the user as a proposed default and held for the wrap-up batch (B1),
@@ -932,7 +932,7 @@ seat-unverified, disclosed.
   decision with the fact and its source attached; other askable questions proceed meanwhile; a
   fact only the user holds is asked as a fact question, labelled as one (A, recommended) · ask
   first, check after — the decision is put on the lead's best belief and verified later (B).
-  **Answer:** "yes A" → D5.
+  **Answer:** "yes A" → D5-facts-before-decisions.
 - **Asking row** — split by the lead into three questions (what earns its own turn · where the
   options come from · when the lead shows instead of asks); the question form shown as a
   proposed default (B2).
@@ -941,7 +941,7 @@ seat-unverified, disclosed.
   one-line default confirmed in one batch, and the user can pull any default out to its own turn
   (A, recommended) · every decision one per turn, as today's rule says (B) · the whole askable
   set in one round, each with a recommendation, as `grilling` does (C). **Answer:** "as
-  recommded" → D6.
+  recommded" → D6-question-turn-test.
 - **Q7 — Asking, part 2: where the options on a fork come from.** Three levels, each including
   the one before. Level 1 — the lead writes them under a rule: at least two real options, one of
   them the cheaper shape, the rejected road named with its reason. Level 2 — on a fork that is
@@ -949,7 +949,7 @@ seat-unverified, disclosed.
   and returns the roads it sees; the lead shows where the two lists differ (recommended, with
   the lead's uncertainty stated). Level 3 — on the user's request only, two or three seats each
   draft a full design under a different constraint and the lead compares them. **Answer:** "lets
-  do level 2" → D7; the untested premise carried as OQ2.
+  do level 2" → D7-options-second-list; the untested premise carried as OQ2.
 - **Asking, part 3** — show before asking: shown to the user as a proposed default and held for
   the wrap-up batch (B3), not put as a question.
 - **Streak note (lead, after Q7).** Three more rulings in a row followed the lead's pick (Q5,
@@ -961,10 +961,10 @@ seat-unverified, disclosed.
   in a line (B) · leave it — a yes is a yes, as today (C). In all three, "whatever you think" is
   not a ruling and is re-asked as a two-option choice, and an answer that sounds like convention
   draws one "what would you want if you need not justify it" probe. **Answer:** "as recommded"
-  → D8.
+  → D8-bare-yes-handling.
 - **Stop rule row** — shown to the user as a proposed default and held for the wrap-up batch
   (B4), not put as a question.
-- **Q9 — Record: how far the one-home rule goes.** Put with the case against first, per D8. The
+- **Q9 — Record: how far the one-home rule goes.** Put with the case against first, per D8-bare-yes-handling. The
   card is the only home — a decision's card holds its statement, why, rejected roads, risk, how
   it was decided and any review change; everything else, the index included, points by name and
   carries at most a one-line gist (A, weak lean) · cards and names inside the record, the index
@@ -975,7 +975,7 @@ seat-unverified, disclosed.
   parts where a ticket holds a question and a free-form answer; and the card takes review
   changes, which wayfinder has no review to produce. Q9 re-put as the one choice left: whether
   the cross-session index also goes thin. **Answer:** "I like the target format. lets keep the
-  long index" → D9, `Contested` (against the lead's weak lean for a thin index).
+  long index" → D9-record-card-format, `Contested` (against the lead's weak lean for a thin index).
 - **Cold review row** — the end reviewer's three added checks shown to the user as a proposed
   default and held for the wrap-up batch (B5).
 - **Q10 — Cold review: where the blind angle map sits.** At the front — a seat maps angles from
@@ -998,7 +998,7 @@ seat-unverified, disclosed.
   fresh seat with the saved map only when the first seat is gone (1, recommended) · always a
   fresh seat, reading the saved map and the record, no second map (2) · a fresh seat that also
   draws its own second blind map before it reads (3 — option C of Q10). **Answer:** "lets do 1"
-  → D10.
+  → D10-cold-review-shape.
 - **Fix and verify row, Accept row** — each shown to the user as a proposed default and held for
   the wrap-up batch (B6, B7).
 - **Q11 — Size: one depth, or scaled to the topic.** Three sizes, proposed by the lead when the
@@ -1007,18 +1007,18 @@ seat-unverified, disclosed.
   dominates: this session rules the askable forks and hands the fog to named later sessions); the
   size can be raised mid-session and is never lowered without the user's word (A, recommended) ·
   standard plus the too-big split, no small path (B) · one size always, the review waivable as
-  today (C). **Answer:** "yes A" → D11. Every row of the stage table now has a ruled target or
+  today (C). **Answer:** "yes A" → D11-session-size-tiers. Every row of the stage table now has a ruled target or
   a held default.
 - **Wrap-up batch, put 2026-10-04.** One screen for the user to confirm or change: the seven row
   defaults (B1–B7), the eight details the lead carried `Assumed` on D2, D3, D4, D5, D6, D8, D9,
   D10 and D11, and the four frame assumptions (the destination and constraints 1–3). The lead
   marked three for a second look: the stop rule (B4), the rule that the blind-list seat is never
-  the review seat (D10), and constraint 3 — the evidence is the user's own mochiko-design
+  the review seat (D10-cold-review-shape), and constraint 3 — the evidence is the user's own mochiko-design
   sessions, and the billing walk-throughs are the only check on product topics. **Answer:**
   "confirmed, lets do the open questions" → B1–B7 ruled as D12–D18; the nine details and the
   four frame assumptions confirmed.
 - **Streak note (lead, after the batch).** Three ratified in a row again (Q10b, Q11, the batch);
-  Q12 is put with the case against first, per D8.
+  Q12 is put with the case against first, per D8-bare-yes-handling.
 - **Q12 — OQ1: does this record carry a build surface.** A named hand-off — the record lists the
   primitives the target touches and three hard points, each handed to the build session as an
   open item and none ruled here: the reach into setup (F12), the partial reversal of the v0.63.0
@@ -1027,7 +1027,7 @@ seat-unverified, disclosed.
   A full plan by wave is not offered: five of sixteen survivors in F6 hit the build surface. Put
   2026-10-04. The user answered: "ask in simple language" — the question as put used the lead's
   own terms ("build surface", "named hand-off", "hard points") and ran long, against F11 and
-  D13. Re-put in plain words as: should this record also say how to build the new brainstorm —
+  D13-question-form-style. Re-put in plain words as: should this record also say how to build the new brainstorm —
   no (A) · only a short list of what changes and three things the builder must ask the user
   about (B, the lead's lean) · decide those three things now (C). **Answer:** "i plan to build in
   this same session." The lead reads this as: no later session exists to hand anything to, so
@@ -1037,11 +1037,11 @@ seat-unverified, disclosed.
 - **Q13 — Reach: does setup change too.** Brainstorm only — setup keeps today's questioning and
   today's review; brainstorm's new asking rules live in brainstorm's own rules, not in the shared
   skill (A, the lead's lean) · both — setup's interrogation and its review follow the new design
-  (B). **Answer:** "yes A, if other commands needs to change, thats a separate concern." → D19.
+  (B). **Answer:** "yes A, if other commands needs to change, thats a separate concern." → D19-brainstorm-only-reach.
 - **The other two points from Q12, closed without a question.** The earlier cut: not reversed
-  under D19, so nothing to replace (D19). The paused review seat: resuming a seat inside one
+  under D19-brainstorm-only-reach, so nothing to replace (D19-brainstorm-only-reach). The paused review seat: resuming a seat inside one
   session is the harness's stated behaviour and today's dispatch already uses it; across
-  sessions D10's fallback applies (F13).
+  sessions D10-cold-review-shape's fallback applies (F13).
 - **Proposed to the user, awaiting a word either way:** during the build, repair two faults in
   the shared questioning skill that change no behaviour — the sentence pointing at a flow that
   is no longer there, and the output line that names the synthesis where the command names the
@@ -1051,48 +1051,48 @@ seat-unverified, disclosed.
   lead checks whether it names the option the review later found missing; a fail drops that
   piece before it is built (A, the lead's lean) · build it and watch the first real sessions
   (B). **Answer:** "build it , i have setup a dogfooding repo where we can use it in a clean way
-  after the implementation is done." → D20, `Contested`.
+  after the implementation is done." → D20-second-list-dogfood, `Contested`.
 - **Map empty, 2026-10-04.** Every row is ruled, both open questions that were to be put are
   answered, and what is left is listed under Open questions. The lead opened the cold review:
   message 1 (topic and goal line only) sent to the review seat for its blind angle map; the
   record goes to the seat only after the map is back.
 - **The two repairs** — user, while the map was being drawn: "yes fix the two broken sentences"
-  → D21. Written before the record was sent to the review seat.
+  → D21-questioning-skill-repairs. Written before the record was sent to the review seat.
 - **Review round 1 back, 2026-10-04** — `needs-revision`, 16 survivors (Review section). The lead
   told the user the verdict, that three of its facts were wrong (S8, S9, S11) and that one of
-  them had been used to recommend D5, and that seven findings need the user's ruling one at a
+  them had been used to recommend D5-facts-before-decisions, and that seven findings need the user's ruling one at a
   time while nine go in one batch.
 - **Q15 — S1: the August ruling on commands.** Put in plain words. Keep the stages as guardrails
   with no fixed order, and keep the three counts as limits; the August ruling is marked amended
   in part for brainstorm (C, the lead's lean) · brainstorm becomes an exception and carries the
   flow and the counts; the August ruling is marked replaced in part (A) · the August ruling
   stands whole: the design ships as guardrails only, order and counts left to the lead (B).
-  **Answer:** "yes C" → D22.
+  **Answer:** "yes C" → D22-august-ruling-guardrails.
 - **Q16 — S2: the timing clash between size, blind map and first question.** Put in plain words.
   The size is proposed on the frame card and ruled in the reply that confirms the frame; for
   standard and too-big the blind seat starts then; the first question goes out without waiting,
   and the seat's angles are added to the decision map when they land, marked as from the blind
   map (A, the lead's lean and the reviewer's fix) · no question goes out until the blind map is
-  back (B). **Answer:** "yes a" → folded into D2, D10, D11.
+  back (B). **Answer:** "yes a" → folded into D2-frame-card-guesses, D10-cold-review-shape, D11-session-size-tiers.
 - **Q17 — S3: small sessions against the protected blind-map rule.** Put in plain words. A small
   session keeps today's review — the reviewer draws its blind map at the end, before it sees the
   record — or the user waives the review; small skips only the front map and the blind second
   lists (A, the lead's lean) · a small session's reviewer reads the record with no blind map at
   all, and the protected rule is formally changed for small sessions (B). **Answer:** "yes A" →
-  folded into D11.
+  folded into D11-session-size-tiers.
 - **Streak note (lead, after Q17).** Three ratified in a row (Q15, Q16, Q17); Q18 is put with the
-  cases against first and a weak lean, per D8.
+  cases against first and a weak lean, per D8-bare-yes-handling.
 - **Q18 — S4: what does the "mechanical check" of card parts.** Put in plain words. The review
   seat does it first, as a checklist, with no new tooling (A, weak lean) · a tool does it — the
   CLI checks the record when it is written and refuses a card with a missing part, which gives
   the record a fixed template it deliberately lacks today and needs a migration (B).
-  **Answer:** "as recommeded" → folded into D16.
+  **Answer:** "as recommeded" → folded into D16-end-reviewer-checks.
 - **Q19 — S5: the shared skill's "one question per turn — always".** Put in plain words, cases
   against first (the streak stands at four). Brainstorm's own rule says its rules win where the
   two differ; the shared skill stays as it is for setup; the fixed question form applies when
   options are put and does not forbid an open question to an unsure user (A, weak lean) · the
   shared skill's rows are reworded too, which changes text setup reads (B). **Answer:** "as
-  recommended" → folded into D19 and D13.
+  recommended" → folded into D19-brainstorm-only-reach and D13-question-form-style.
 - **Q20 — S6, a coverage finding: facts quoted, not paraphrased.** Put in plain words, cases
   against first (the streak stands at five). Rule it now — in the new brainstorm a fact enters
   the record as a quoted line with its file and line number, and the lead's reading of it is
@@ -1100,7 +1100,7 @@ seat-unverified, disclosed.
   and adds source lines where the reviewer could not verify (A, the lead's lean) · defer it as
   an open item until after dogfood (B) · explore it now as its own topic, for instance a
   fact-checking seat that writes the facts section itself (C). **Answer:** "as recommended" →
-  folded into D5.
+  folded into D5-facts-before-decisions.
 - **Q21 — S7, which challenges the user's ruling on who reads at the end.** Re-put in plain words
   with the trade stated accurately (the streak stands at six): the lead's earlier claim that a
   fresh seat brings no gain in independence was wrong — the resumed seat judges how its own
@@ -1108,7 +1108,7 @@ seat-unverified, disclosed.
   Keep the same seat — cheaper, and it knows what its angles meant (1, the lead's lean, weaker
   than before) · a fresh seat reads the saved map and the record — no attachment, a second pair
   of eyes, one more seat start (2) · a fresh seat that also draws its own second map (3).
-  **Answer:** "keep 1" → D10 stands, corrected.
+  **Answer:** "keep 1" → D10-cold-review-shape stands, corrected.
 - **Review batch, put 2026-10-04.** Seven lead repairs (S8–S14), the lead's proposed inline
   rulings on the two minor coverage findings (S15: the backlog's first-live-run watch moves to
   the front map and the brainstorm eval kit is named for the landing; S16: a review pair stays
@@ -1116,7 +1116,7 @@ seat-unverified, disclosed.
   proposed answer to OQ3 — the dogfood runs are judged on three counts set against today's
   figures: findings per review, coverage findings that still arrive at the end, and whether the
   first verify comes back clean. **Answer:** "confirmed , can we implement" → S8–S16 applied,
-  OQ3 → D23. All sixteen survivors are dispositioned. The user's "can we implement" is read as a
+  OQ3 → D23-dogfood-run-criteria. All sixteen survivors are dispositioned. The user's "can we implement" is read as a
   wish to start the build, not as acceptance of the record; acceptance is asked for after the
   verify pass.
 - **Verify pass opened, 2026-10-04.** The record was declared frozen again and the review seat
@@ -1129,23 +1129,23 @@ seat-unverified, disclosed.
 - **Verify round 1 back, 2026-10-04 — NOT CLEAN, nothing blocking.** 18 items graded, 13 clean,
   5 not clean; six fold-introduced defects V1–V6. The reviewer withdrew S10 as its own error
   (its grep had cut the line short; F10 held all along). V1, V2, V4, V5 and V6 are lead repairs
-  and are applied: D12 and the Order cell carry D22's change (V1); D3's risk says six lines
-  (V2); D19's paragraph on the earlier cut agrees with the S5 note and cites the strip file
-  (V4); D20's risk points at D23 (V5); D21's how-it-was-decided part is back on its card (V6).
+  and are applied: D12-question-dependency-order and the Order cell carry D22-august-ruling-guardrails's change (V1); D3-frame-hardening-timing's risk says six lines
+  (V2); D19-brainstorm-only-reach's paragraph on the earlier cut agrees with the S5 note and cites the strip file
+  (V4); D20-second-list-dogfood's risk points at D23-dogfood-run-criteria (V5); D21-questioning-skill-repairs's how-it-was-decided part is back on its card (V6).
   The reviewer's nits with no action: the 22 in F5 counts every occurrence of the bare string,
-  backticked ones included; D22's "told to the user with the next question" refers to the
+  backticked ones included; D22-august-ruling-guardrails's "told to the user with the next question" refers to the
   lead's message that put Q16.
 - **Q22 — V3, which amends the stop rule and so needs the user's word.** Put in plain words.
   With the first question no longer waiting for the blind map, the stop rule could fire before
   a started map has landed; its angles would then arrive after the record is frozen. Proposed:
   the stop rule also requires that any blind map that was started has landed, with its angles
   folded into the map or listed as dropped (yes, the lead's and the reviewer's proposal) · leave
-  the stop rule as it is (no). **Answer (2026-10-06):** "yes" → D15 gains the condition.
+  the stop rule as it is (no). **Answer (2026-10-06):** "yes" → D15-deciding-stop-rule gains the condition.
 - **Q23 — At build (2026-10-06).** Two questions put together when the prose seat's plan failed
   its peer grade after the wave's one shared re-plan round was spent: whether the seat may
   revise once more (A), be replaced (B) or have its scope narrowed (C); and whether a missing
   card part bars the reviewer from `ready` (A: no, reported only; B: yes). **Answer:** "1A, 2A"
-  — the revision granted; the ruling written into D16's changed-at-build note.
+  — the revision granted; the ruling written into D16-end-reviewer-checks's changed-at-build note.
 - **Accepted, 2026-10-06.** With the verify back, nothing in it blocking, and V3 ruled, the
   user's earlier words — "happy for you to accept and start building" — take effect as the
   acceptance, on the terms the lead had stated to the user. The lead ran the close: this

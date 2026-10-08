@@ -1,12 +1,12 @@
 //! Human-readable IDs: the family table, the in-text scanner, and the advisory `ids --check`.
 //!
 //! An ID's joined form is its number then a slug, `GI-019-kernel-tooling-admission`
-//! (`human-readable-ids` D19); the number inside its owning scope is the key, and the slug at the
+//! (`human-readable-ids` D19-slug-grammar-mechanics); the number inside its owning scope is the key, and the slug at the
 //! definition is the source of truth (D4, D7). This module finds every ID token in a text, says
 //! which ones are verbatim or machine-read and so left alone (D12, D15), resolves each to its
 //! owner (D11 as changed at review and at build), and reports bare IDs and slug drift.
 //!
-//! # What it never does (the bright line, GI-019)
+//! # What it never does (the bright line, GI-019-kernel-tooling-admission)
 //!
 //! It coins no slug — the seat supplies every one ([`crate::rename`]) — and it judges no word
 //! choice: there is no word list here but the C4 model's fixed level names. `ids --check` reports
@@ -21,7 +21,7 @@ use std::path::{Path, PathBuf};
 /// How a family's number is written.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Form {
-    /// Three or more digits after a hyphen: `GI-004`, `FR-012`, `C-001`.
+    /// Three or more digits after a hyphen: "`GI-004`", `FR-012`, `C-001`.
     Padded,
     /// One or more digits: `US-12`, session `D7`, cycle `C3`.
     Unpadded,
@@ -30,7 +30,7 @@ pub enum Form {
 /// Where a family's numbers are unique.
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Scope {
-    /// One sequence per project: `GI-020` means the same thing in every file.
+    /// One sequence per project: `GI-020-plugin-install-model` means the same thing in every file.
     Project,
     /// One sequence per owning artifact: `FR-001` opens every spec.
     Artifact,
@@ -113,7 +113,7 @@ const TECH: &str = "authoring-technical-requirements";
 const TECH_IDS: &str = "authoring-technical-requirements.sequential-ids";
 const TECH_SHOWS: &str = "three-digit padded (C-, D-, IP-, INT-, DS-)";
 
-/// Every numbered family the plugin mints — F24's facts as a table (`human-readable-ids` D6 as
+/// Every numbered family the plugin mints — F24's facts as a table (`human-readable-ids` D6-minting-check-enforcement as
 /// changed at build, B3): prefix, padding (D9), numbering scope, definition site (D4, R3), and the
 /// log rule that mints it, which `tests/ids.rs` replays to catch the table drifting from the log.
 ///
@@ -371,7 +371,7 @@ fn by_prefix() -> &'static [&'static Family] {
     })
 }
 
-/// Whether an ID core — a token's, or one glued into a repo-only form (`AD-D1`) — ends right at
+/// Whether an ID core — a token's, or one glued into a repo-only form ("`AD-D1`") — ends right at
 /// byte `end`.
 fn core_ends_at(text: &str, end: usize) -> bool {
     let digits = text[..end]
@@ -503,7 +503,7 @@ pub(crate) const RANGE_JOINERS: [&str; 3] = ["–", "…", "..."];
 
 /// Every ID token in `text`, outside its masked spans.
 ///
-/// A token is an ID core preceded by neither an alphanumeric nor `-`/`_` (so `PO-D1` and `XFR-001`
+/// A token is an ID core preceded by neither an alphanumeric nor `-`/`_` (so "`PO-D1`" and `XFR-001`
 /// are not tokens), with the slug words that follow it: `-w`, each word `[a-z][a-z0-9]*` (D19).
 /// Every token is returned, a skipped one with its [`Skip`], so a caller can tell a range or a
 /// number-only path from a mention; the masked spans of [`masked`] yield no token at all.
@@ -567,7 +567,7 @@ fn token_at(text: &str, at: usize, previous: Option<usize>) -> Option<Token> {
     let rest = &text[end..];
     let next = rest.chars().next();
 
-    // A `/` right after another ID core — a token's, or one glued into an alias form (`AD-D1/D2`)
+    // A `/` right after another ID core — a token's, or one glued into an alias form ("`AD-D1/D2`")
     // — separates a pair (S4, L4 as ruled at review), never starts a path.
     let before_slash =
         text[..at].ends_with('/') && previous != Some(at - 1) && !core_ends_at(text, at - 1);

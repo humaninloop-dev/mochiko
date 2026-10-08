@@ -22,19 +22,19 @@ angles:
     angle: >-
       A stated sorting test that classifies any obligation as product-agnostic or product-shaped,
       with mixed cases resolved. Example of a mixed case: "auth enforced at every boundary" is
-      agnostic, but kinako GI-004 enumerates five named boundaries including the harness capture
+      agnostic, but kinako "GI-004" enumerates five named boundaries including the harness capture
       crossing SPN-029. Without a test the cut is re-argued card by card at every amend.
-    grounding: kinako .claude/rules/mochiko/engine-port.md; kinako DECISIONS.md 2026-09-03 and 2026-09-19 rows (SPN-037 proposed as a sixth GI-004 boundary)
+    grounding: kinako .claude/rules/mochiko/engine-port.md; kinako DECISIONS.md 2026-09-03 and 2026-09-19 rows (SPN-037 proposed as a sixth "GI-004" boundary)
   - id: A2
     class: A
     load_bearing: true
     angle: >-
       Principle versus instance. May an agnostic principle point at volatile product data (store
       AX rows, spine SPN ids, rules-file project-structure trees)? Is a pointer to a volatile row
-      still coupling? Mochiko's own GI-017 already says governance points at constraint homes and
+      still coupling? Mochiko's own GI-017-pointer-only-region already says governance points at constraint homes and
       never restates them; the record should say whether the cut is new doctrine or enforcement
       of that existing restate-ban.
-    grounding: mochiko CLAUDE.md GI-017; kinako DECISIONS.md 2026-09-05 row (engine-port.md project structure re-enumerated against the built tree)
+    grounding: mochiko CLAUDE.md GI-017-pointer-only-region; kinako DECISIONS.md 2026-09-05 row (engine-port.md project structure re-enumerated against the built tree)
   - id: A3
     class: A
     load_bearing: true
@@ -57,9 +57,9 @@ angles:
     angle: >-
       Deployment is kept by the user's ask, yet deployment content is also volatile product
       detail. Kinako's release gate names the brew tap formula and the plugin tag channel; RUNBOOK
-      was promoted to asserted under OO-D4. Where the deployment standard ends and product
+      was promoted to asserted under `ops-observability-hardening` D4-runbook-floor-promotion. Where the deployment standard ends and product
       distribution detail begins must be ruled, or the same drift returns through dimension 8.
-    grounding: kinako CLAUDE.md Quality gates release-gate line (GI-033); mochiko DECISIONS.md OO-D1 and OO-D4 rows
+    grounding: kinako CLAUDE.md Quality gates release-gate line (GI-033); mochiko DECISIONS.md `ops-observability-hardening` D1-governance-primary-frame and `ops-observability-hardening` D4-runbook-floor-promotion rows
   - id: B1
     class: B
     load_bearing: true
@@ -128,20 +128,20 @@ angles:
     class: D
     load_bearing: true
     angle: >-
-      The supersession chain. The cut reverses recent rulings: impeccable-design-integration D6
+      The supersession chain. The cut reverses recent rulings: impeccable-design-integration D6-product-truth-leg
       (setup's product-truth leg, ruled 2026-09-19), D5 and D7 (design baseline writer paths), the
       product-architecture-schema scope handoff, the feature-map-layer setup obligations, and
-      PO-D3 "setup elicits facts". Protected content leaves only by recorded ruling. The landing
+      `production-only-focus` D3-library-owned-standard "setup elicits facts". Protected content leaves only by recorded ruling. The landing
       needs strips, migration-log entries, the validation-primitive-edit audit, and a plugin
       version class.
-    grounding: mochiko DECISIONS.md 2026-09-19 impeccable row and PO-D3 row; CLAUDE.md "Editing a shipped primitive is itself a landing"
+    grounding: mochiko DECISIONS.md 2026-09-19 impeccable row and `production-only-focus` D3-library-owned-standard row; CLAUDE.md "Editing a shipped primitive is itself a landing"
   - id: D2
     class: D
     load_bearing: true
     angle: >-
       Already-ratified governance in consumer projects. Kinako carries product-shaped GIs:
-      GI-037 "Kinako proposes; the leader rules", GI-036 on prose, the corpus rules GI-011, GI-012
-      and GI-031, engine-port GI-008 and GI-016, and the UI rules GI-028 to GI-030. What happens
+      GI-037 "Kinako proposes; the leader rules", GI-036 on prose, the corpus rules "GI-011", "GI-012"
+      and GI-031, engine-port "GI-008" and "GI-016", and the UI rules GI-028 to GI-030. What happens
       at their next amend? The record needs a legacy-migration clause like the retired-tier one.
       They cannot vanish silently, because trace closure and durables-never-deleted still bind.
     grounding: kinako CLAUDE.md governance region; kinako governance-ledger.md principle index; setup.durables-never-deleted; setup.fail.unclosed-trace
@@ -149,15 +149,15 @@ angles:
     class: D
     load_bearing: false
     angle: >-
-      Self-application. Mochiko's own governance carries product-shaped principles: GI-019 on
-      kernel-class tooling, GI-020 on clone-only install, GI-022 declining a feature map. Does the
+      Self-application. Mochiko's own governance carries product-shaped principles: GI-019-kernel-tooling-admission on
+      kernel-class tooling, GI-020-plugin-install-model on clone-only install, GI-022-no-feature-map declining a feature map. Does the
       cut apply to mochiko's own in-repo governance?
     grounding: mochiko CLAUDE.md Governance Principles
   - id: D4
     class: D
     load_bearing: false
     angle: >-
-      Consistency with the production-only rulings PO-D1 to PO-D7 and adaptive-depth D1 to D8.
+      Consistency with the production-only rulings `production-only-focus` D1-customer-product-target to `production-only-focus` D7-immature-team-onramp and `production-floor-adaptive-depth` D1-declared-level-transition to D8.
       "Product-agnostic" must not read as widening the target to libraries or CLIs, and must not
       read as dropping the production floor.
     grounding: CLAUDE.md "What this is"; catalog/README.md shelf model note
@@ -198,7 +198,7 @@ angles:
       content but point at the architecture store rows instead of restating them. Second, a
       lightweight product-delta amend class. Third, the status quo plus a drift probe at landing
       folds, which the architecture store already runs for itself.
-    grounding: authoring-architecture-store skill description (landing folds, drift probes); GI-017
+    grounding: authoring-architecture-store skill description (landing folds, drift probes); GI-017-pointer-only-region
   - id: F3
     class: F
     load_bearing: false

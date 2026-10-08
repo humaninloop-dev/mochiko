@@ -1,9 +1,9 @@
 """Shared core of the eval layer — the second D10 landing act.
 
-Provenance: .mochiko/brainstorms/primitive-eval-harness-v2/record.md (D10: "extract the
+Provenance: .mochiko/brainstorms/primitive-eval-harness-v2/record.md (D10-persona-runner-layout: "extract the
 shared core — session invocation, judge calls, grid math, report — into `evals/lib/` and
 make the skill runner import it"). Vocabulary for every target: evals/README.md.
-Maintainer-side advisory tooling (GI-019 trace); never shipped (GI-020).
+Maintainer-side advisory tooling (GI-019-kernel-tooling-admission trace); never shipped (GI-020-plugin-install-model).
 
 What lives here is the mechanics each of the three targets (skill · command · persona) had
 carried its own copy of:

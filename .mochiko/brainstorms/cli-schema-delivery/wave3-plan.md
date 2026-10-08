@@ -7,8 +7,8 @@ and skills; absence-only gating; 5-second timeout; fail-open when the hook canno
 amended (contract suite in the sandbox; deterministic set gates, read-back metric reported,
 per-primitive no-Read scope), D9 (wave 3 scope and the pilot abort criteria), the wave-2 run's
 additions (the log moves into the plugin at `plugins/mochiko/migrations/`; `primitive-edits.md`
-globs; `README.md` re-authored), and governance v3.0.0 (GI-020 as superseded — transition
-clause; GI-012 gate 6; GI-004 audit before the bump). **Wave open:** user-confirmed
+globs; `README.md` re-authored), and governance v3.0.0 (GI-020-plugin-install-model as superseded — transition
+clause; GI-012-release-gates-module gate 6; GI-004-primitive-audit-ratchet audit before the bump). **Wave open:** user-confirmed
 2026-09-04 with the four §9 rulings as recommended — Q-A branch A if the platform allows it,
 else B · Q-B follow D3, no hand pin, criterion 3 gains its converted branch under PATCH v3.0.1
 · Q-C wave 3 now, the publish later on the user's word · Q-D the read-back bar 3/3 as stated. **Floor:** sound loop tripped (judgment-authored
@@ -24,7 +24,7 @@ and recorded, the pilot abort criteria are evaluated and stated, every audit is 
 entry exists, and the wave lands as `plugin.json` 0.104.0 with the landing ritual complete
 (`CHANGELOG.md` · `marketplace.json` · `DECISIONS.md` · `BACKLOG.md` · `ROADMAP.md` · record
 wave-3 section · brainstorms index). The four D8 layers green before the bump; a SKIPPED contract
-suite blocks it (GI-012 as amended).
+suite blocks it (GI-012-release-gates-module as amended).
 
 ---
 
@@ -169,7 +169,7 @@ input, committed under `evals/contract/fixture/hook-input/`.
   - present + in range: `mochiko-cli <binary version> · grammar <a..b> · plugin <p> · log grammar <g> · in range` (from `mochiko-cli --version` and `mochiko-cli migrate status --plugin-root "${CLAUDE_PLUGIN_ROOT}"`).
   - absent: `mochiko-cli is not installed — the mochiko plugin depends on it; every converted command halts until it is. Install: cargo install mochiko-cli`.
   - out of range: the binary's own D5 stderr line, verbatim.
-  - best-effort policy detection: if `disableSkillShellExecution` appears in `~/.claude/settings.json` or `./.claude/settings.json`, one line naming the environment as unsupported (GI-020). Detection failing silently is fine; a false negative costs nothing.
+  - best-effort policy detection: if `disableSkillShellExecution` appears in `~/.claude/settings.json` or `./.claude/settings.json`, one line naming the environment as unsupported (GI-020-plugin-install-model). Detection failing silently is fine; a false negative costs nothing.
   Always exit 0. Never blocks.
 - **(b) dependency-halt** → `dependency-halt.sh`, registered twice: `UserPromptExpansion`
   matched on the namespaced command name (`mochiko:*`) and `PreToolUse` matched on `Skill`.
@@ -187,7 +187,7 @@ input, committed under `evals/contract/fixture/hook-input/`.
      already carries the preamble's head line, print one line `mochiko-cli present · rules
      delivered by the command's own render`; otherwise print every block, all seven, to stdout
      (the D3 second channel). Branch B (it cannot): print the one presence line only; the
-     policy-placeholder environment halts on the prose clause, as GI-020 declares it unsupported.
+     policy-placeholder environment halts on the prose clause, as GI-020-plugin-install-model declares it unsupported.
   For `PreToolUse` the same outcomes are emitted in the tool's JSON shape (`permissionDecision:
   "deny"` with the reason, or `additionalContext`). At wave 3 no skill is converted, so the
   `Skill` limb is a tested no-op: a mochiko skill call proceeds with the binary absent.
@@ -290,7 +290,7 @@ Measured in the sandbox and recorded in P3's report and the record's wave-3 sect
 
 **Pilot abort criteria (D9, evaluated by the lead from P3's evidence, stated to the user):**
 (1) read-back below 3/3; (2) delivered read cost above 12,819 chars. Either trips → waves 4–5
-halt and the posture returns to the user (the ledger's GI-020 revisit trigger). Neither trips →
+halt and the posture returns to the user (the ledger's GI-020-plugin-install-model revisit trigger). Neither trips →
 the wave lands and waves 4–5 open on the user's word.
 
 ## 6. Checklist (the done condition, itemized)
@@ -299,7 +299,7 @@ the wave lands and waves 4–5 open on the user's word.
 - [ ] P2: `brainstorm.md` per §3.1; `hooks/hooks.json` + three scripts per §3.2; `.claude/settings.json` maintainer hook; strip entry; `primitive-edits.md` globs (+ Q-B branch); `README.md`
 - [ ] P3: six cases per §4; pending assertion resolved; measurements per §5; `evals/contract/README.md` updated; suite run green with evidence
 - [ ] Audits: V1 crate review (rust-cli.md, non-author) · V2 `mochiko:validator` on the `brainstorm` pair (`.md` + `schemas/brainstorm.yaml`, canonical-scaffold criteria as read under D3 and Q-B) and on the hooks (D7 conformance, fail-open, absence-only) · V3 suite review (assertions keyed to measured shapes; no schema edits; no dispatch)
-- [ ] Landing (lead): `plugin.json` 0.104.0 · `marketplace.json` · `CHANGELOG.md` · `DECISIONS.md` row · `BACKLOG.md` item · `ROADMAP.md` · record wave-3 section (+ F14) · index · governance PATCH v3.0.1 row (the glob obligation discharged; GI-011's ledger home; the CLAUDE.md "today the log lives at the repo root" clauses struck) · four layers green · abort criteria stated
+- [ ] Landing (lead): `plugin.json` 0.104.0 · `marketplace.json` · `CHANGELOG.md` · `DECISIONS.md` row · `BACKLOG.md` item · `ROADMAP.md` · record wave-3 section (+ F14) · index · governance PATCH v3.0.1 row (the glob obligation discharged; GI-011-no-runbook-elective's ledger home; the CLAUDE.md "today the log lives at the repo root" clauses struck) · four layers green · abort criteria stated
 
 ## 7. Seat protocol
 
@@ -326,14 +326,14 @@ the wave lands and waves 4–5 open on the user's word.
   promised before the publish).
 - **V3 (suite):** every assertion keyed to a measured shape, the bar pre-registered in this
   plan and unchanged, `pending` never reads as pass, evidence complete, the suite touches no
-  plugin file and dispatches nothing (GI-019).
+  plugin file and dispatches nothing (GI-019-kernel-tooling-admission).
 
 ## 9. Open decisions at the wave-open gate (the user's)
 
 - **Q-A — what the dependency hook delivers when the binary is present.** Branch A: the full
   rules only when the expanded prompt lacks them (needs the hook to see the expansion — F14);
   branch B: a one-line presence confirmation only, the policy-placeholder environment halting as
-  GI-020 declares it unsupported. Never both channels in the normal case: double delivery
+  GI-020-plugin-install-model declares it unsupported. Never both channels in the normal case: double delivery
   (≈ 20 k chars) would trip abort criterion (2) by construction. **Lead recommends A if F14
   allows it, else B.**
 - **Q-B — the Not-done count.** D3 says the counts are printed by the CLI, never hand-pinned;

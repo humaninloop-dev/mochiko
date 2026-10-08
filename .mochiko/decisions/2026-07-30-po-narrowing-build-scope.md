@@ -8,7 +8,7 @@
 brainstorm's acceptance (`f08bffd`), three waves invalidated parts of its fact-map grounding: the
 plan-absorbs-tasks merge (v0.32.0 — `tasks.md` gone, six commands), the architecture primitive
 (new plan stage), and the goal-shape rebuild (v0.35.0 — all six commands five-block goal-shaped;
-`validation-command-shape` revised per CS-D9). Re-grounding findings: the setup/constitution
+`validation-command-shape` revised per `command-succinctness-strip` D9-grader-shape-revision). Re-grounding findings: the setup/constitution
 skill cluster (~15 files) is byte-identical since acceptance — the F-map cites hold; the two
 command sites moved (setup's sizing gate is now the Review-sizing constraint at `setup.md:74–80`
 **with an amend event-scaling branch the map never recorded**; implement's checkpoint is now the
@@ -39,7 +39,7 @@ now take the `command-architect` + `validation-command-shape` v5 audit regime.
    re-recorded under D4.
 8. **One wave, one landing ceremony** — stages 0–4 internally, per-artifact audits intact,
    single closure row set + trail moves + version bump. Target v0.36.0.
-9. **"production" survives as the floor's name** — it is the identity PO-D1 asserts;
+9. **"production" survives as the floor's name** — it is the identity `production-only-focus` D1-customer-product-target asserts;
    `poc`/`internal`/`regulated` vanish everywhere except the module registry's relocated seed
    content. Post-wave deterministic audit floor: `poc|internal|regulated` residue outside the
    registry and the known non-governance senses = FAIL.

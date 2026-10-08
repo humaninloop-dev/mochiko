@@ -2,7 +2,7 @@
 #
 # Distribution is D4: the user installs `mochiko-cli` as an ordinary developer tool, and the
 # plugin depends on it being on PATH. This workflow is the machinery half of wave 1; the public
-# release itself belongs to wave 2, AFTER the `/mochiko:setup` amend run lands the GI-020
+# release itself belongs to wave 2, AFTER the `/mochiko:setup` amend run lands the GI-020-plugin-install-model
 # rewrite (record D9). So the `publish` job below is present and disabled: wave 2 flips one
 # condition here and lifts `publish = false` in `Cargo.toml`, and nothing else moves.
 #
@@ -95,7 +95,7 @@ jobs:
     name: publish to crates.io (disabled until wave 2)
     needs: build
     # DISABLED BY DESIGN. The first public publish lands at wave 2, after the amend run
-    # rewrites GI-020 (record D9). Wave 2 changes this line to `if: true` — or drops it — and
+    # rewrites GI-020-plugin-install-model (record D9). Wave 2 changes this line to `if: true` — or drops it — and
     # lifts `publish = false` from crates/mochiko-cli/Cargo.toml in the same landing.
     if: false
     runs-on: ubuntu-latest

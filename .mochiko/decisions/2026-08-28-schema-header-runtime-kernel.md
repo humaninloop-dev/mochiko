@@ -7,7 +7,7 @@ the comments that have been added at the top, if it not essential at runtime of 
 ## Context
 
 Every command content schema opened with the canonical full-grammar header comment (~68
-lines), minted per command-content-schema D14 and copied verbatim across all six schemas.
+lines), minted per command-content-schema D14-nested-section-grammar and copied verbatim across all six schemas.
 The header restated the whole reading grammar — field semantics, ID minting ceremony,
 referential closure, provenance sidecar, rule grain, checker pointer — plus decision
 citations. The schemas are Read raw, in full, at every command fire (D1/D7), so the header
@@ -31,7 +31,7 @@ content schemas (`architecture` · `brainstorm` · `feature` · `implement` · `
 `specify`) open with a uniform 8-line kernel: identity line, the read-at-fire /
 interpret-live note pointing at the `.md` Rules block for the reading grammar, and the two
 semantics that live only here (`class:` meanings; `conditions:` resolution points). This is
-a **recorded supersession-by-amendment of command-content-schema D14**: the canonical header
+a **recorded supersession-by-amendment of command-content-schema D14-nested-section-grammar**: the canonical header
 form is now the kernel, still one block copied verbatim with only `<cmd>` substituted. The
 full grammar's homes are unchanged and already single-sourced — runtime: each command `.md`
 Rules block; edit-time: `.claude/rules/mochiko/primitive-edits.md` criterion 11 plus the
@@ -64,7 +64,7 @@ closed-set rule's executable home is `scripts/check-command-schema.py` check 4.
 `codebase-analysis` · `feature-entry` · `features-index` · `governance-intent` ·
 `governance-surfaces` · `spec` · `tasks`) and `architecture-shelf-backend.yaml` keep their
 2–6-line headers: identity plus the raw-Read degraded-path orientation is itself
-runtime-essential on the binary-absent path (GI-020), and the DOCTRINE-DENSE
+runtime-essential on the binary-absent path (GI-020-plugin-install-model), and the DOCTRINE-DENSE
 verbatim-preservation lines govern the producing run. No trim.
 
 ## Consumers assessed

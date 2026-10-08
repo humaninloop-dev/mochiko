@@ -13,7 +13,7 @@ ones.
 
 ## Ground facts
 
-- **F1 — Where author≠grader binds today (five sites).** (1) GI-004, NON-NEGOTIABLE: every
+- **F1 — Where author≠grader binds today (five sites).** (1) GI-004-primitive-audit-ratchet, NON-NEGOTIABLE: every
   shipped-primitive edit passes the author≠grader audit before the `plugin.json` bump that ships
   it. (2) Skill-library axis 5: every reviewable artifact is graded by a structurally independent
   validator. (3) `patterns-sound-loop` floor: judgment-authored write × governing surface obliges
@@ -22,7 +22,7 @@ ones.
   the sizing gate (pair/single/none; "none" = recorded waiver). (5) Pipeline producer↔validator
   pairs (`mochiko:validator`, the `review-*`/`validation-*` skills, qa-engineer's independence).
 
-- **F2 — Prior retention ruling.** `architect-role-pushback-and-abstraction` D3 (2026-08-13)
+- **F2 — Prior retention ruling.** `architect-role-pushback-and-abstraction` D3-library-pushback-posture (2026-08-13)
   explicitly retained author≠grader: the additive bias the session hunted was traced to charter
   asymmetry, not to independence itself. A wholesale change supersedes that ruling — recorded
   supersession, user-ruled.
@@ -30,7 +30,7 @@ ones.
 - **F3 — Wave audit outcomes on record (index, v0.65.0 → v0.81.0).** Zero-fix-round waves:
   v0.65.0 (all PASS round 1) · v0.70.0 (2/2) · v0.71.0 (2/2) · v0.72.0 (8/8) · v0.73.0 (13/13)
   · v0.75.0 (12/12). Catch waves: v0.67.0 (1 of 4 clusters FAIL → fix) · v0.68.0 (desk audit
-  caught the lead's unrecorded coordination ruling — a GI-006 breach, user-ratified mid-wave)
+  caught the lead's unrecorded coordination ruling — a GI-006-primitive-edit-traceability breach, user-ratified mid-wave)
   · v0.76.0 (one fix round: CI cargo-audit flag) · v0.79.0 (V2 FAIL → fix round; V2's F1 catch
   killed a false premise in the review) · v0.81.0 (all 4 clusters FAIL round 1 → fix rounds →
   4/4 PASS). Roughly half the recorded waves produced zero blocking findings; the catch waves
@@ -46,7 +46,7 @@ ones.
   evidence is seat counts and wall time only. Every validator seat is a fresh session-tier agent
   reading the full cluster cold.
 
-- **F6 — GI-004 is governance.** Amending or softening it is a governance event (fact-profile
+- **F6 — GI-004-primitive-audit-ratchet is governance.** Amending or softening it is a governance event (fact-profile
   amendment via `/mochiko:setup` per CLAUDE.md governance operations). This record can rule the
   intent; landing requires the governance amend path.
 

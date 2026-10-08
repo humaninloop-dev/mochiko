@@ -55,7 +55,7 @@ provide enough guidance for the implement team to build.
 
 ## Decisions
 
-- **D1 — Retire `/mochiko:plan` as a command; implement absorbs a conditional design phase
+- **D1-plan-command-retires — Retire `/mochiko:plan` as a command; implement absorbs a conditional design phase
   behind a sufficiency check.** `Contested` (user-ruled at Q5; challenged by review survivor
   S1; re-explored at Q10 with the retain-and-collapse steelman and the full rehoming ledger
   in view; the user ruled retirement again, against the lead's recommendation of
@@ -113,13 +113,13 @@ provide enough guidance for the implement team to build.
   can dispatch. Planning shifts into implement; it is not deprecated. The retain-and-collapse
   alternative was explored and declined by the user with its costs in view (Q10).
 
-- **D2 — The sufficiency check: per-row, independently graded, ten clauses.** `Assumed`
+- **D2-sufficiency-check-clauses — The sufficiency check: per-row, independently graded, ten clauses.** `Assumed`
   (content user-confirmed at Q6 and amended at the review disposition batch — sources
   widened, clause 5 hardened, clauses 8–10 added, verdict ownership stated; re-marked from
   `Confident` at verify V5: the instrument has never been executed, so its calibration is
-  assumed until first live evidence — the D5 falsifier's all-fail arm is a D2 mechanism
+  assumed until first live evidence — the D5-evidence-honesty-falsifier falsifier's all-fail arm is a D2-sufficiency-check-clauses mechanism
   risk).
-  Graded per selected work row (per-card under delta scope — D6), **from the spec, the
+  Graded per selected work row (per-card under delta scope — D6-delta-scope-branch), **from the spec, the
   architecture store, and the product baselines** (`data-model.md`, `contracts/`,
   `constraints-and-decisions.md`), by a seat that authored none of them. A row is *sufficient*
   when all hold:
@@ -137,7 +137,7 @@ provide enough guidance for the implement team to build.
   (6) commodity exposure — any storage/queueing/caching/auth/search/serialization need named
   and adopt-first answerable (unresolved = gap);
   (7) dependency order — in-batch row dependencies resolvable; unresolvable = gap;
-  (8) UX trace (where the spec carries a Screens & Flows manifest — D7) — every FEAT-tagged
+  (8) UX trace (where the spec carries a Screens & Flows manifest — D7-ux-sufficiency-clause) — every FEAT-tagged
   SCR-XXX's data shown has a nameable serving contract surface and every FLOW-XXX action a
   mutation path (existing = cited, new = gap);
   (9) delivered-feature exposure (**selection scope only** — verify V3) — a touched surface
@@ -145,7 +145,7 @@ provide enough guidance for the implement team to build.
   `[MODIFY]` amendment is named in the sufficiency report and written as the marked delta on
   the affected feature's map entry. Under delta scope the desk's delta card is itself the
   `[MODIFY]` instrument — the marked delta on the entry carries the amendment and folds at
-  landing; a delta fix discovered structural re-fires the design phase per D1 mechanics (a);
+  landing; a delta fix discovered structural re-fires the design phase per D1-plan-command-retires mechanics (a);
   (10) in-flight exposure (verify V2, R2) — a touched surface owned by an in-flight feature
   obliges the read of that feature's deltas and owning spec: need covered → cite the planned
   contract, no gap; adjacent → **gap** — the design phase authors the proposed delta
@@ -168,15 +168,15 @@ provide enough guidance for the implement team to build.
   **Rationale:** per-row because the work row is the map's unit of scope, making the check
   size-adaptive by construction; sourced from the three surfaces that survive plan's
   retirement as the product's whole governing design state; seated at implement entry because
-  D1 makes implement the single downstream run. The clause set enumerates every design input
+  D1-plan-command-retires makes implement the single downstream run. The clause set enumerates every design input
   implement's builders and gap-finder consume, so a passing row means no consumer reads a
   missing artifact.
 
-- **D3 — The FR→TR layer dies as a mandatory artifact; it does not move to specify.**
+- **D3-requirements-layer-dies — The FR→TR layer dies as a mandatory artifact; it does not move to specify.**
   `Confident` (user accepted at Q7, reversing the Q2 hypothesis after pushback). No
   per-feature `requirements.md`. Real technical decisions (D-XXX, C-XXX, IP-XXX) land where
   they already live — `constraints-and-decisions.md` and the store — authored by the design
-  phase when the check fails, or at build-time decomposition (gated per D1 mechanics d) when
+  phase when the check fails, or at build-time decomposition (gated per D1-plan-command-retires mechanics d) when
   it passed. Specify stays technology-agnostic; FR/SC unchanged.
   **Fence consequence (review fold):** `requirements.md` is a named member of
   `mochiko:testing-gap-finding`'s explicit inclusion list; its slot re-keys to the
@@ -186,17 +186,17 @@ provide enough guidance for the implement team to build.
   business/technical layer split, and re-fatten specify with the same restatement this
   session is cutting.
 
-- **D4 — Homes and gates in the plan-less pipeline.** `Confident` (user-confirmed at Q8;
+- **D4-planless-homes-gates — Homes and gates in the plan-less pipeline.** `Confident` (user-confirmed at Q8;
   amended at the review disposition batch: card confirm re-seated, report contents widened).
   **Homes:** design-phase outputs land unchanged at `.mochiko/features/FEAT-XXX/` — deltas
   mirroring baselines, the signed store delta; `tasks.md` survives as the cards + progress
   surface; `plan.md` (the summary artifact) dies — no restatement artifact; the sufficiency
   verdict lands as a report under `templates/report-format.md` in the feature dir and is the
   durable assessment record — it additionally carries the `quickstart.md` null-path record
-  and any `[MODIFY]` amendment naming (D2 clause 9).
+  and any `[MODIFY]` amendment naming (D2-sufficiency-check-clauses clause 9).
   **User gates in the new implement:** run-open confirmation carries routing only — batch,
   scope type, attempt bounds, the sufficiency verdict with gap routing, trip dispositions,
-  and in-flight conflict rulings (D2); the design checkpoint — only when the phase ran — signs the design and
+  and in-flight conflict rulings (D2-sufficiency-check-clauses); the design checkpoint — only when the phase ran — signs the design and
   store delta, blocking, before the first cycle; the **card confirm is its own blocking
   checkpoint** after card authoring (which follows the design phase when one ran), ruling the
   slicing before build; cycle checkpoints and final acceptance unchanged.
@@ -208,7 +208,7 @@ provide enough guidance for the implement team to build.
   user gate; the three checkpoints partition plan's two dead gates without loss — routing,
   design, slicing — each at the moment its subject exists.
 
-- **D5 — Evidence honesty, grader disposition, falsifier.** `Confident` (user-confirmed at
+- **D5-evidence-honesty-falsifier — Evidence honesty, grader disposition, falsifier.** `Confident` (user-confirmed at
   Q9; amended at the review disposition batch: falsifier bidirectional, evidence
   qualification added). n=0 — no run has ever executed the sufficiency check or an in-run
   design phase. **The redundancy driver's evidence is pre-treatment:** F5's bloat datapoint
@@ -222,13 +222,13 @@ provide enough guidance for the implement team to build.
   design-phase output and the sufficiency check's own honesty; detail deferred to the build
   wave. **Falsifier (bidirectional):** first live runs showing the check passing everything
   (no discrimination) *or failing everything* (the design phase fires almost always,
-  collapsing D1's economics) weaken D1's premise — revisit. The watch lands as a BACKLOG item
+  collapsing D1-plan-command-retires's economics) weaken D1-plan-command-retires's premise — revisit. The watch lands as a BACKLOG item
   at the landing, its owner the landing ritual.
   **Rationale:** the session's decisions outrun their evidence by construction (the
   instrument cannot have run before it exists); recording that gap, its direction, and its
-  revisit trigger is what keeps D1 falsifiable rather than merely ruled.
+  revisit trigger is what keeps D1-plan-command-retires falsifiable rather than merely ruled.
 
-- **D6 — Delta-scope branch of the check; product lanes inherited-as-is.** `Confident`
+- **D6-delta-scope-branch — Delta-scope branch of the check; product lanes inherited-as-is.** `Confident`
   (reopen-born from review survivor B-C1, user-ruled inline at the disposition gate).
   Implement's delta-scope entry gates on the desk-confirmed card directly — `/mochiko:feature`
   mints it and its existing review leg covers it; implement's run-open absorbs the
@@ -237,21 +237,21 @@ provide enough guidance for the implement team to build.
   trip check run. Product-lane runs are declared inherited-as-is: their thinness predates this
   session (shipped `implement.md` omits lanes from Entry's scope branches); this record
   neither worsens nor repairs them — noted in Open questions. Under delta scope the `[MODIFY]`
-  protection rides the delta card itself, not D2 clause 9 (verify V3 — clause 9 is
+  protection rides the delta card itself, not D2-sufficiency-check-clauses clause 9 (verify V3 — clause 9 is
   selection-scope only).
   **Rationale:** the desk already gives the delta card a mint gate and a review leg; adding a
   plan-style confirmation run would rebuild the ceremony this session retires, while the
   per-card check preserves the entry conditions implement actually needs.
 
-- **D7 — UX sufficiency clause; the Screens & Flows trace rehomes whole.** `Confident`
-  (reopen-born from review survivor B-C2, user-ruled inline at the disposition gate). D2
+- **D7-ux-sufficiency-clause — UX sufficiency clause; the Screens & Flows trace rehomes whole.** `Confident`
+  (reopen-born from review survivor B-C2, user-ruled inline at the disposition gate). D2-sufficiency-check-clauses
   gains clause 8 — where the spec carries a Screens & Flows manifest: every FEAT-tagged
   SCR-XXX's data shown has a nameable serving contract surface, and every FLOW-XXX action a
   mutation path (existing = cited, new = gap); UX-bearing cycle cards' `**TEST:**` gates name
   their FLOW-XXX paths, enforced at card authoring. The plan-era trace obligation rehomes
   whole into check + cards; nothing of it dies.
   **Rationale:** the trace exists to catch screens whose data no contract serves before code
-  is built; the check's entry seat is the only pre-build moment left after D1, so the trace
+  is built; the check's entry seat is the only pre-build moment left after D1-plan-command-retires, so the trace
   must live there or die — and UX-bearing specs are first-class (default-FAIL in specify),
   not an edge to accept losing.
 
@@ -279,15 +279,15 @@ provide enough guidance for the implement team to build.
   types) do the design work when the check fails?
 - **Q5 — full-retirement ruling.** Lead agreed the in-run shape is stronger than its own Q3
   recommendation and recommended retiring plan-the-command with the carry-over floors named.
-  **A:** yes → D1.
+  **A:** yes → D1-plan-command-retires.
 - **Q6 — sufficiency-check content.** Seven-clause per-row checklist proposed. **A:**
-  confirmed → D2 (as amended: ten clauses).
+  confirmed → D2-sufficiency-check-clauses (as amended: ten clauses).
 - **Q7 — FR→TR disposition.** Pushback on the Q2 "move to specify" hypothesis; counter:
-  TR dies as a mandatory artifact. **A:** accepted → D3.
+  TR dies as a mandatory artifact. **A:** accepted → D3-requirements-layer-dies.
 - **Q8 — homes and gates after retirement.** Proposal covering artifact homes, surviving and
-  dead user gates. **A:** confirmed → D4.
+  dead user gates. **A:** confirmed → D4-planless-homes-gates.
 - **Q9 — evidence honesty + residuals.** n=0 marker, watch, grader re-scope, falsifier.
-  **A:** confirmed → D5.
+  **A:** confirmed → D5-evidence-honesty-falsifier.
 - **Review interlude.** Pair cold review ran (user ruled "as recommended" at the sizing gate);
   both seats returned critical-gaps; cross-examination sustained the merged set with zero
   outright kills. The S1 survivor (retain-and-collapse never put to the user) was ruled
@@ -295,44 +295,44 @@ provide enough guidance for the implement team to build.
 - **Q10 — S1 exploration.** What does retirement buy that retain-and-collapse does not,
   and is that purchase worth the rehoming ledger the review surfaced? **A:** the user, with
   the trade table and the lead's contrary recommendation in view, ruled **retire plan** —
-  D1 re-affirmed, re-marked `Contested`; the rehoming ledger accepted as obligatory build
+  D1-plan-command-retires re-affirmed, re-marked `Contested`; the rehoming ledger accepted as obligatory build
   scope. S1 dispositioned.
 
 ## Review + disposition trail
 
 Pair cold review, blind-map two-message dispatch, lens-split: seat A `devils-advocate`
 (decision-quality, 22-angle map) · seat B `validator` (record-integrity, 28-angle map). Both
-verdicts **critical-gaps**. Raised: 12 (A) + 17 (B) + 1 cross-exam-born (the D2 source-scope
+verdicts **critical-gaps**. Raised: 12 (A) + 17 (B) + 1 cross-exam-born (the D2-sufficiency-check-clauses source-scope
 contradiction, corroborated by both). Cross-examination both directions: **zero outright
 kills**; one partial kill (B-C3 leg c — epic minting survives at the desk; only plan's inline
 mint door dies, Minor residue); 7 merges; 2 trims (A-C3's zero-gap diff clause — the trigger
 not firing there is correct behavior; A-I1's ROADMAP-convention clause — corrected to the
 BACKLOG-watch convention); seat A conceded its uniform-`Confident` framing to B-I5's narrower
-D1/D5-contradiction form; seat B withdrew its F4 clearance (fence misstatement, corrected
+D1-plan-command-retires/D5-contradiction form; seat B withdrew its F4 clearance (fence misstatement, corrected
 above). Post-merge: 8 Critical clusters / 10 Important / 6 Minor.
 
 **Dispositions (all user-ruled):**
 - **S1** (retain-and-collapse never surfaced — A-C2 + B-I10's collapse road): **explored now**
-  → Q10 → D1 re-affirmed `Contested`. 
-- **S2** (delta scope + lanes — B-C1): **ruled inline** → D6.
-- **S3** (UX blindness — B-C2): **ruled inline** → D7.
-- **Remainder: one user-ruled batch "as recommended"** — folds applied across D1 (mechanics
-  a–d), D2 (sources, clauses 5/8/9, absent-baseline branch, trips, verdict ownership,
-  rationale), D3 (fence re-key), D4 (card-confirm checkpoint, report contents, mint-door
-  supersession, rationale), D5 (pre-treatment evidence, bidirectional falsifier, rationale),
+  → Q10 → D1-plan-command-retires re-affirmed `Contested`. 
+- **S2** (delta scope + lanes — B-C1): **ruled inline** → D6-delta-scope-branch.
+- **S3** (UX blindness — B-C2): **ruled inline** → D7-ux-sufficiency-clause.
+- **Remainder: one user-ruled batch "as recommended"** — folds applied across D1-plan-command-retires (mechanics
+  a–d), D2-sufficiency-check-clauses (sources, clauses 5/8/9, absent-baseline branch, trips, verdict ownership,
+  rationale), D3-requirements-layer-dies (fence re-key), D4-planless-homes-gates (card-confirm checkpoint, report contents, mint-door
+  supersession, rationale), D5-evidence-honesty-falsifier (pre-treatment evidence, bidirectional falsifier, rationale),
   F4/F5 corrections, build surface additions, Open questions population, provenance line.
   Landing obligations from B-I7 recorded in Build surface.
 
 A bounded verify round (seat B, record-integrity — per the skill's allocation) grades these
-folds plus the reopen-born D6/D7 and the D1 amendment: internal consistency + record-fitness,
+folds plus the reopen-born D6/D7 and the D1-plan-command-retires amendment: internal consistency + record-fitness,
 no fresh coverage hunt, no second reopen.
 
 **Verify round 1: NOT CLEAN** — 4 blocking (V1 map-entry hardening unowned · V2 in-flight
-conflict routing unowned · V3 clause 9 ↔ D6 contradiction · V4 mechanics (d) mis-claimed the
-graded fold as a judgment review leg) + 4 non-blocking (V5 D2 confidence mark · V6 D6/D7
+conflict routing unowned · V3 clause 9 ↔ D6-delta-scope-branch contradiction · V4 mechanics (d) mis-claimed the
+graded fold as a judgment review leg) + 4 non-blocking (V5 D2-sufficiency-check-clauses confidence mark · V6 D6-delta-scope-branch/D7-ux-sufficiency-clause
 rationale labels · V7 clauses 1/7 gap forms · V8 dry-run obligation). All eight user-ruled
-"as proposed" and lead-repaired same round: V1 → D1 mechanic (e) · V2 → D2 clause 10 · V3 →
-clause 9 selection-scope carve + D6 note · V4 → judgment-grade re-route · V5 → D2 re-marked
+"as proposed" and lead-repaired same round: V1 → D1-plan-command-retires mechanic (e) · V2 → D2-sufficiency-check-clauses clause 10 · V3 →
+clause 9 selection-scope carve + D6-delta-scope-branch note · V4 → judgment-grade re-route · V5 → D2-sufficiency-check-clauses re-marked
 `Assumed` · V6 → labeled rationales · V7 → explicit gap forms · V8 → Build surface pre-wave
 obligation.
 
@@ -346,7 +346,7 @@ lead-repaired same round; R4 recorded in the Build surface.
 
 **Verify round 3: CLEAN.** All three repairs verified (the R1 n/a carve checked safe by
 construction — a zero-gap row cannot mint store elements, clauses 2/3 fire the design phase
-first); one non-blocking cosmetic (N1 — D4's run-open census now mirrors clause 10's
+first); one non-blocking cosmetic (N1 — D4-planless-homes-gates's run-open census now mirrors clause 10's
 conflict routing, folded same round). Verify pass complete.
 
 ## Build surface
@@ -354,65 +354,65 @@ conflict routing, folded same round). Verify pass complete.
 *(sketch — the build wave plans in detail; this is the session's scope statement.
 **Discharged: built 2026-08-26 at v0.91.0** — see the DECISIONS.md row's build stamp and
 `CHANGELOG.md` [0.91.0]; the pre-wave dry-run ran first and its instrument findings landed
-as the Addendum below; the D5 falsifier watch survives in BACKLOG.)*
+as the Addendum below; the D5-evidence-honesty-falsifier falsifier watch survives in BACKLOG.)*
 
 - `implement.md` rewrite: entry re-gates on ratified selection (no accepted-package
-  precondition); sufficiency check at entry (D2, D6); conditional design phase with its
-  blocking checkpoint and mid-run re-fire (D1 a); card authoring + card-confirm checkpoint
-  (D1 c, D4); epic spine design always-fired (D1 b); build-time decision gating (D1 d);
+  precondition); sufficiency check at entry (D2-sufficiency-check-clauses, D6-delta-scope-branch); conditional design phase with its
+  blocking checkpoint and mid-run re-fire (D1-plan-command-retires a); card authoring + card-confirm checkpoint
+  (D1-plan-command-retires c, D4-planless-homes-gates); epic spine design always-fired (D1-plan-command-retires b); build-time decision gating (D1-plan-command-retires d);
   Reports tool gains the `templates/report-format.md` envelope binding the sufficiency
   report rides.
 - `plan.md` command retirement: supersession-by-ruling strips per
   `.claude/rules/mochiko/primitive-edits.md` (charter-protected content — every obligation
   rehomed by this record's D1–D7 or explicitly superseded here); author≠grader audit; landing
   ritual whole.
-- Sufficiency-check carrier: likely a new skill (name deferred); D2 is its content spec.
+- Sufficiency-check carrier: likely a new skill (name deferred); D2-sufficiency-check-clauses is its content spec.
 - Re-points across the library: `specify.md` next-step line · `feature.md` growth-row
   routing · `mochiko:authoring-epic` (epic runs enter implement directly; joint-proposal
-  spine artifact re-keys per D1 b) · `mochiko:patterns-plan-minimalism` re-scope to the
+  spine artifact re-keys per D1-plan-command-retires b) · `mochiko:patterns-plan-minimalism` re-scope to the
   design phase · `mochiko:patterns-vertical-tdd` (design-time card authoring now inside
-  implement, D1 c) · `mochiko:review-plan-artifacts` / `mochiko:review-feasibility` re-scope
-  (D5) · **`architecture.md`** (its charter-protected "plan and implement own all delivery"
+  implement, D1-plan-command-retires c) · `mochiko:review-plan-artifacts` / `mochiko:review-feasibility` re-scope
+  (D5-evidence-honesty-falsifier) · **`architecture.md`** (its charter-protected "plan and implement own all delivery"
   line — supersession by ruling) · **`ARCHITECTURE.md`** + **`README.md`** pipeline
-  references · **`mochiko:authoring-technical-requirements`** (its subject dies with D3 —
+  references · **`mochiko:authoring-technical-requirements`** (its subject dies with D3-requirements-layer-dies —
   retire or re-scope, build-wave ruling) · **`mochiko:patterns-adopt-first`** (its trigger
   "at a plan decision" lives in the budgeted `description:` field — description-class edit
-  under the D7 char-budget pre-assert) · **`mochiko:testing-gap-finding`** (fence inclusion
-  list re-key per D3) · router rows · `plan.yaml` schema disposition ·
+  under the D7-ux-sufficiency-clause char-budget pre-assert) · **`mochiko:testing-gap-finding`** (fence inclusion
+  list re-key per D3-requirements-layer-dies) · router rows · `plan.yaml` schema disposition ·
   `feasibility-report-template.md` · index counts · CHANGELOG / marketplace / `plugin.json`.
 - Landing obligations (KM ritual): ROADMAP standing bet "Plan absorbs tasks — start-small
-  surface" ruled **superseded** by D1 (same direction, carried further; its "merged-command
+  surface" ruled **superseded** by D1-plan-command-retires (same direction, carried further; its "merged-command
   dogfood" revisit condition never fired — noted honestly) · the `plan-structure-yagni`
   first-live-run watch and its BACKLOG item close **superseded** (its subject command dies) ·
-  the D5 falsifier watch lands as a new BACKLOG item.
+  the D5-evidence-honesty-falsifier falsifier watch lands as a new BACKLOG item.
 - Build-wave note (verify R4): a delta fix that breaks a *different* delivered feature
   without being structural sits outside clause 9's delta-scope carve — the implement rewrite
   should give the regression-scope territory sweep explicit reach over it.
-- Pre-wave obligation (verify V8): dry-run the D2 check against one existing kinako work row
+- Pre-wave obligation (verify V8): dry-run the D2-sufficiency-check-clauses check against one existing kinako work row
   before the build wave — confound named (kinako's specs were authored under a pipeline where
   plan followed, so verdicts read accordingly); the result is the first discrimination
-  datapoint and seeds the D5 BACKLOG watch.
+  datapoint and seeds the D5-evidence-honesty-falsifier BACKLOG watch.
 - Migration: existing accepted packages are valid frozen history; a feature holding an
   accepted package enters implement with the sufficiency check trivially satisfied.
 
 ## Open questions
 
-- **Discrimination evidence (the D5 watch, bidirectional):** does the check produce mixed
-  verdicts in live runs, or degenerate to all-pass / all-fail? All-fail collapses D1's
-  economics (the design phase fires always — plan reborn inside implement). Revisit D1 on
+- **Discrimination evidence (the D5-evidence-honesty-falsifier watch, bidirectional):** does the check produce mixed
+  verdicts in live runs, or degenerate to all-pass / all-fail? All-fail collapses D1-plan-command-retires's
+  economics (the design phase fires always — plan reborn inside implement). Revisit D1-plan-command-retires on
   first evidence; BACKLOG watch owed at landing.
-- **Gap-finding fence adequacy (D3):** does the sufficiency report + design-phase deltas slot
+- **Gap-finding fence adequacy (D3-requirements-layer-dies):** does the sufficiency report + design-phase deltas slot
   carry what `requirements.md` carried for the blind explorer's expectation derivation?
   Watch at first gap-finding pass under the new shape.
-- **Product-lane runs (D6):** inherited thin — lanes appear in `implement.md` Tools and
+- **Product-lane runs (D6-delta-scope-branch):** inherited thin — lanes appear in `implement.md` Tools and
   Boundaries but not Entry's scope branches; predates this session; unrepaired here.
 - **Depth-dial:** the sufficiency check is deliberately depth-invariant (precedent:
   `architecture.md`'s "No depth-dial coupling"); revisit only if live runs show low-depth
   projects wanting a laxer check.
-- **Design-checkpoint attention:** rubber-stamp risk named in D1's cost paragraph; watched
-  under the D5 first-live-run watch.
+- **Design-checkpoint attention:** rubber-stamp risk named in D1-plan-command-retires's cost paragraph; watched
+  under the D5-evidence-honesty-falsifier first-live-run watch.
 
-## Addendum — pre-wave dry-run + D2 refinement batch (2026-08-26, post-acceptance, user-ruled)
+## Addendum — pre-wave dry-run + D2-sufficiency-check-clauses refinement batch (2026-08-26, post-acceptance, user-ruled)
 
 The V8 pre-wave dry-run ran against kinako row R1-2 (FEAT-001, hook capture / spool / sweep —
 the widest-surface selected row). **Result: the check discriminated** — 3 clauses sufficient
@@ -424,7 +424,7 @@ gaps). Confound held as expected: the sufficient verdicts are an upper bound —
 baselines were plan-run-enriched (reconstructed during the EPIC-001 plan run).
 
 **Six instrument defects surfaced; refinement batch user-ruled "as recommended", amending
-D2's clause text at the skill build:**
+D2-sufficiency-check-clauses's clause text at the skill build:**
 - **A1 (clauses 2/3):** "new = gap" was near-unfalsifiable — the all-fail arm's mechanism.
   Split: *named-and-locatable* (baseline publishes continuation points) = no gap;
   *named-and-unattachable* (no seam exists to attach it) = gap.

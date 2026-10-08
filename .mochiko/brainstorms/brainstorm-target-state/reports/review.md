@@ -45,7 +45,7 @@ survivors:
     kind: coverage (map B1, load-bearing; the record never mentions it)
     decisions: D19 Reach (what it "settles"), D12 Order, D8 Bare yes, D15 Stop rule, D17 Fix and verify, constraint 2
     evidence: >-
-      command-architecture-realignment D1 is Contested and user-ruled (record lines 70-79). It says
+      command-architecture-realignment D1-choreography-leaves-commands is Contested and user-ruled (record lines 70-79). It says
       "Stage/seat choreography, default pipelines, recovery tables, and procedural detail are
       deleted, not relocated", and its rationale is "the volume of encoded detail is itself the
       defect". D6 adds "no stage or gate vocabulary". The DECISIONS.md row 108 lists "counted
@@ -339,7 +339,7 @@ verify_round_1:
       the cut "is not reversed and needs no replacement".
     - >-
       S6, CLEAN. The D5 note reads "a fact enters the record as a quoted source line with its file
-      and line number". v2.2 F9 and D2 are cited accurately (brainstorm-v2-2-revision/record.md:25,
+      and line number". v2.2 F9 and D2-fact-checker-role are cited accurately (brainstorm-v2-2-revision/record.md:25,
       :36). Nit, no action: the resolution's second limb (renaming review-brainstorm's
       "fact-checker map" wording) is not carried. It is build-level, and the binding's "or the files"
       still works.
@@ -378,7 +378,7 @@ verify_round_1:
       'No second map' in the statement means none at the end". The Out of scope bullet points to it.
     - >-
       D22, CLEAN on the bounded grade. It carries statement, rationale, rejected roads, risk and
-      how-decided. It cites DECISIONS.md:108 and author-grader-consolidation D6 ("a second FAIL stops
+      how-decided. It cites DECISIONS.md:108 and author-grader-consolidation D6-single-reaudit-limit ("a second FAIL stops
       and goes to the user") accurately, and agrees with "For the landing". Nit, no action: "Told to
       the user with the next question" (the D12 consequence) has no trace in Q16's trail entry.
     - >-

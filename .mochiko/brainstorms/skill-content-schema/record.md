@@ -12,9 +12,9 @@ aspect-by-aspect against the command-schema precedent.
 **Lead:** session lead (brainstorm charter, run inline in-conversation)
 
 **Prior-session relations:** builds on the command-side lineage — `command-content-schema`
-D1–D16 (pair form, D2 rules-move/narrative-stays split, D12 grain, D16 runtime-only),
+D1–D16 (pair form, `command-content-schema` D2-rules-prose-split rules-move/narrative-stays split, D12 grain, D16 runtime-only),
 `command-schema-ontology` D1–D11 (nine-kind grammar, `conditions:`/`when:`, `moments:`,
-`enforces:`, D8 `extends: common.*`), the near-dup convergence ADR R1–R6
+`enforces:`, `command-schema-ontology` D8-common-extends-adoption `extends: common.*`), the near-dup convergence ADR R1–R6
 (`.mochiko/decisions/2026-08-28-near-dup-convergence.md` — near-identical 3+ bar,
 strongest-wording-wins, allowlist), and the schema-header runtime-kernel ADR
 (`.mochiko/decisions/2026-08-28-schema-header-runtime-kernel.md`). Composes with
@@ -44,8 +44,8 @@ canonical records, both 2026-08-28 ADRs, `converting-command-to-schema/SKILL.md`
   family shares near-identical machinery in prose (default-FAIL posture, author≠grader,
   blind dispatch, verdict grammars); the minimalism trio + sound-loop self-describe as
   siblings.
-- **F3 — extraction-bar lineage (commands).** D3 `Contested` (no shared library; labels the
-  only link) → ontology D8 (exact duplicate across 3+) → near-dup R1–R6 (near-identical
+- **F3 — extraction-bar lineage (commands).** `command-content-schema` D3-no-shared-library `Contested` (no shared library; labels the
+  only link) → `command-schema-ontology` D8-common-extends-adoption (exact duplicate across 3+) → near-dup R1–R6 (near-identical
   3+, strongest-wording-wins, command-specific members keep local text, keep-distinct edges
   allowlisted in `scripts/similar-rules-allowlist.yaml`).
 - **F4 — read-path arithmetic (measured, commands).** `common.yaml` adds ~2.5k chars to
@@ -61,7 +61,7 @@ canonical records, both 2026-08-28 ADRs, `converting-command-to-schema/SKILL.md`
   Not-done count-pin; several ship `references/` files (budget-exempt) and templates.
 - **F6 — evidence state.** Model-interpreted schema delivery is `Assumed` at n=0 live runs
   even command-side; all instrument evidence is plan-only eval proxy (pre/post grids, no
-  attributable regressions at v0.98.0/v0.99.0). The command D10 first-live-run watch is
+  attributable regressions at v0.98.0/v0.99.0). The `command-content-schema` D10-per-command-rollout first-live-run watch is
   still open. Skills currently have their own instrument: the skill-compression LLM-judge
   degradation eval; a plan-only analogue for skills does not exist.
 
@@ -81,14 +81,14 @@ driver 2). Read-cost structure was offered and not taken as a driver.
 
 ## Decisions
 
-### D1 — Pilot corpus: the review family; further families by their own ruling — `Confident`
+### D1-review-family-pilot — Pilot corpus: the review family; further families by their own ruling — `Confident`
 
 **Statement:** the pilot converts the review family — the 8 grader skills
 (`review-brainstorm` · `review-code-minimalism` · `review-feasibility` ·
 `review-governance-intent` · `review-plan-artifacts` · `review-specifications` ·
 `review-sufficiency` · `validation-constitution`) — to the skill schema form in one wave.
 Every further family (patterns, authoring, testing, analysis, singletons) converts by its
-own recorded ruling (the command D10 door-open idiom). Neither a single-skill pilot nor an
+own recorded ruling (the `command-content-schema` D10-per-command-rollout door-open idiom). Neither a single-skill pilot nor an
 all-38 wave.
 
 **Rationale:** drift-control is the primary driver (Q1) and the review family carries the
@@ -107,7 +107,7 @@ the census as prime allowlist territory under strongest-wording-wins. The `mochi
 router is **out of scope for the foreseeable** — a ~41k-char user-invoked index,
 deliberately unbudgeted, where an obligations-only conversion is near-meaningless.
 
-### D2 — Schema home: in-directory, beside `SKILL.md` — `Confident`
+### D2-in-directory-schema — Schema home: in-directory, beside `SKILL.md` — `Confident`
 
 **Statement:** a converted skill's schema lives at
 `plugins/mochiko/skills/<name>/schema.yaml`, inside the skill's own directory — not in the
@@ -121,7 +121,7 @@ precedent); an embedded YAML block would forfeit the change-regime separation th
 exists for. User ruled the recommended option at the Q3 fork. *(Reordered to mint
 position at review, M4.)*
 
-### D3 — Boundary: obligations-only schema; procedure stays prose in `SKILL.md` — `Confident`
+### D3-obligations-only-schema — Boundary: obligations-only schema; procedure stays prose in `SKILL.md` — `Confident`
 
 **Statement:** the skill schema carries **obligation-shaped content only** — floors, fences
 ("never grades own output"), boundary lines (what the skill consumes but never redefines),
@@ -135,8 +135,8 @@ a named graduation candidate, keyed on a demonstrated consumer — not shipped.
 **Rationale:** the drifting machinery the primary driver targets is obligation-shaped
 (default-FAIL, blind dispatch, severity/verdict grammars) — obligations-only serves it
 fully; ordered procedure nodes are exactly the workflow-engine direction the command
-ontology deliberately declined (unordered `moments:`, ontology D4), and doubling the
-structural bet at n=0 delivery evidence (F6) prices badly. Command D2 replayed
+ontology deliberately declined (unordered `moments:`, `command-schema-ontology` D4-moment-anchor-declarations), and doubling the
+structural bet at n=0 delivery evidence (F6) prices badly. `command-content-schema` D2-rules-prose-split replayed
 conservatively. User ruled the recommended option at the Q4 fork.
 
 *(Amended at review, C2 — user-ruled: the three-home boundary.)* The boundary covers
@@ -146,21 +146,21 @@ file gains a schema stub rule — ID, `class:`, `kind:`, `pointer:` naming the r
 file as the procedure home; referenced, never restated, so the obligation is addressable
 and checker-visible while the file stays intact. **Lift by census judgment:** an
 obligation lifts fully into the schema only where its reference home is incidental (a
-standalone floor line, no surrounding procedure) — decided per obligation at the D9
+standalone floor line, no surrounding procedure) — decided per obligation at the D9-census-first-rollout
 census, never ad hoc at conversion. **Non-obligation reference content** (lenses, worked
 examples, deep procedure) stays untouched; its drift control is the existing "Single
 source" + "Consumed by:" convention, hereby named the sanctioned mechanism for
-reference-borne shared content. The D6 anti-dual-homing floor is preserved — a stub
+reference-borne shared content. The D6-load-first-guard anti-dual-homing floor is preserved — a stub
 points, never duplicates.
 
-### D4 — Grammar posture: inherit the command grammar as baseline, named skill deltas — `Confident`
+### D4-inherited-command-grammar — Grammar posture: inherit the command grammar as baseline, named skill deltas — `Confident`
 
 **Statement:** skill schemas reuse the command rule grammar wholesale — three orthogonal
 axes (`class` floor/must/advisory · the nine-kind closed `kind:` set, `constraint` the
 omitted default · registry labels), `conditions:` + `when:` with floors-never-shed,
 `vars:`/`${var}`, mint-once dotted-slug IDs with tombstones, one-obligation grain
-(content-schema D12), referential closure (D15), runtime-only content with the provenance
-sidecar (D16). Named skill deltas: **no `moments:` block** (procedure is prose, D3) · the
+(`command-content-schema` D12-rule-block-grain), referential closure (D15), runtime-only content with the provenance
+sidecar (D16). Named skill deltas: **no `moments:` block** (procedure is prose, D3-obligations-only-schema) · the
 **section set is NOT the command six-set** — minted once from the pilot census of the 8
 graders, uniform across the family, a section with no rules carrying its explicit empty
 marker · **new kinds only by census evidence**, never invented at conversion · labels come
@@ -169,7 +169,7 @@ overlapping command vocabulary (`independence` · `evidence` · `user-gate` ·
 `floor-pointer` transfer cleanly), same registry-edit-first ceremony — the command
 registry's scope statement stays honest.
 
-**Rationale:** the obligations-only boundary (D3) leaves exactly the content class the
+**Rationale:** the obligations-only boundary (D3-obligations-only-schema) leaves exactly the content class the
 command grammar was built for; every field was already priced by the command lineage, and
 live `when:` cases exist in the family today (review-sufficiency's ten-clause/three-clause
 scope collapse, review-feasibility's store-delta pass); a minimal fresh grammar would
@@ -177,7 +177,7 @@ forfeit the B/C secondary drivers day one, and a skill-native redesign is specul
 until a census shows the nine kinds failing. Checker reuse comes near-free. User ruled
 the recommended option at the Q5 fork, sibling-registry lean included.
 
-### D5 — Common form: explicit stubs + per-family common block file; command extends semantics wholesale — `Confident`
+### D5-family-common-blocks — Common form: explicit stubs + per-family common block file; command extends semantics wholesale — `Confident`
 
 **Statement:** the shared surface is a **flat block library per family** —
 `plugins/mochiko/schemas/skill-review-common.yaml` for the pilot — never a whole-section
@@ -212,7 +212,7 @@ the user ranked real at Q1: no IDs (nothing for strips/audits to cite), no `clas
 semantics (non-waivability stays folklore), no machine surface (checker and detector
 blind), no per-member override path (a variant consumer is back to prose drift). Its best
 part is adopted rather than lost: the Single-source convention is the sanctioned drift
-control for non-obligation reference content (D3 as amended, C2). Noted, not decided: the
+control for non-obligation reference content (D3-obligations-only-schema as amended, C2). Noted, not decided: the
 road stays a live candidate at the **patterns-family door** — that family's content is
 judgment-prose more than gradeable obligation, and its own rollout ruling should weigh
 this road explicitly.
@@ -224,11 +224,11 @@ grammars ship on different delivery paths (command fire vs skill invoke) with di
 ceremony domains through one shared file both planes must read, to save 52–434 chars of
 duplicated class text — the allowlist edge is the cheaper drift control at that price.
 
-### D6 — Delivery guard: load-first block + floor-count pin; first-live-run watch — `Confident`
+### D6-load-first-guard — Delivery guard: load-first block + floor-count pin; first-live-run watch — `Confident`
 
 **Statement:** each converted skill's `SKILL.md` body gains a "Rules — load the schema
 first" section: the obligated first action is a raw, whole Read of the skill's
-`schema.yaml` (base-dir-relative per D2) and, where any stub binds,
+`schema.yaml` (base-dir-relative per D2-in-directory-schema) and, where any stub binds,
 `skill-review-common.yaml` in the same first action; the schema's section IDs are
 enumerated in the block; the reading grammar (`when:` interpretation, floors always
 delivered, stub inheritance limits) is carried there. One pinned line — "the N rules of
@@ -237,7 +237,7 @@ halt-and-surface, the command C2 count-guard re-keyed to floors (skills have no 
 set; floors are the content whose silent loss hurts most). Floors are never duplicated
 inline — dual-homing is the drift the session exists to kill. Converted skills join a
 **first-live-run watch** in `BACKLOG.md` (delivery probes: schema read? whole? before the
-first procedural step?), extending the command D10 watch idiom — one item, never a
+first procedural step?), extending the `command-content-schema` D10-per-command-rollout watch idiom — one item, never a
 parallel per-skill item.
 
 **Rationale:** `SKILL.md` is guaranteed delivered at invoke while the schema is an
@@ -253,15 +253,15 @@ never evaluates it. Delivery gains its own mechanism: the load-first block oblig
 partial read produces a visible blank instead of silence. The residual delivery exposure
 is carried, named, by the first-live-run watch alone (n=0).
 
-### D7 — Advisory tooling: checker extension, detector extension, compression-eval as the fidelity instrument — ship `Confident` · efficacy `Assumed (n=0)`
+### D7-advisory-schema-tooling — Advisory tooling: checker extension, detector extension, compression-eval as the fidelity instrument — ship `Confident` · efficacy `Assumed (n=0)`
 
-**Statement:** three pieces, all advisory (GI-019 carve-out), negative-tested per house
+**Statement:** three pieces, all advisory (GI-019-kernel-tooling-admission carve-out), negative-tested per house
 practice. **Checker:** the skill grammar family joins the deterministic checker (extend
 `scripts/check-command-schema.py` or a sibling `check-skill-schema.py` — the build's
-judgment): `kind: skill` discriminator, in-dir path sweep (D2), section-ID grammar, ID
+judgment): `kind: skill` discriminator, in-dir path sweep (D2-in-directory-schema), section-ID grammar, ID
 uniqueness/format/tombstones, registry-label resolution against `skill-labels.yaml`,
 `${var}` binding, `when:` resolution against declared `conditions:`, `extends:` target
-resolution + local-`class:` assert, and the D6 floor-count pin grep. **Detector:**
+resolution + local-`class:` assert, and the D6-load-first-guard floor-count pin grep. **Detector:**
 `scripts/find-similar-rules.py` extends over skill schemas (its layer-1 "similar-items"
 framing already anticipates this); the allowlist grows skill edges. **Instrument:** the
 skill-compression eval harness is reused for conversion fidelity — LLM-judge before/after
@@ -275,21 +275,21 @@ measured degradation exists. User ruled the recommended option at the Q8 fork.
 
 *(Amended at review, I2/M3/M5 — user-ruled in the I/M batch.)* **Instrument claim
 narrowed (I2):** the harness grades a **judged sample of the wave** — two members
-minimum — never all eight; its blocking preconditions are real and priced in D9
+minimum — never all eight; its blocking preconditions are real and priced in D9-census-first-rollout
 (per-skill goldens ×3 authored by a non-author seat · a settled probe run · a
 user-ratified pre-registered ship bar · four-arm × three-replicate grids, metered
 spend), and a conversion's arm shape (pre-conversion baseline vs converted pair, staged
 as full skill-directory copies) is defined at pre-registration. **Detector discovery
 (M3):** `find-similar-rules.py` gains the in-dir sweep —
-`plugins/mochiko/skills/*/schema.yaml` (D2) — beside its flat-glob command home.
-**Scope (M5):** D7 binds this conversion only; the open `primitive-eval-harness`
+`plugins/mochiko/skills/*/schema.yaml` (D2-in-directory-schema) — beside its flat-glob command home.
+**Scope (M5):** D7-advisory-schema-tooling binds this conversion only; the open `primitive-eval-harness`
 session keeps its own instrument question, unforeclosed.
 
-### D8 — Governance envelope: no new kernel admission; shipped primitives under full ceremony; sibling audit criteria block — `Confident`
+### D8-skill-governance-envelope — Governance envelope: no new kernel admission; shipped primitives under full ceremony; sibling audit criteria block — `Confident`
 
 **Statement:** the skill schema family needs **no new kernel-class admission** — schemas
 are data the model interprets at skill invoke; the checker and detector stay advisory
-exit-code signals (GI-019 untouched, the advisory carve-out). GI-020 holds: `schema.yaml`
+exit-code signals (GI-019-kernel-tooling-admission untouched, the advisory carve-out). GI-020-plugin-install-model holds: `schema.yaml`
 files ride the plugin as data in the skill directories, the raw Read is the first-class
 path, no binary, install no heavier. `plugins/mochiko/skills/*/schema.yaml`,
 `plugins/mochiko/schemas/skill-labels.yaml`, and
@@ -301,7 +301,7 @@ present · floor-count pin matching · section enumeration set-wise · floor-sur
 `extends:` conformance (local `class:`, R1–R6 bar) · `description:` untouched and under
 the 1,536-char cap. A **sibling** block beside the command block, never a fork of it.
 
-**Rationale:** the command lineage argued this envelope twice (content-schema D9, ontology
+**Rationale:** the command lineage argued this envelope twice (`command-content-schema` D9-schema-governance-envelope, ontology
 D10); every clause transfers because the delivery mechanism is the same — data plus model
 interpretation. Proposed whole; user adopted as stated at the Q9 wrap.
 
@@ -331,7 +331,7 @@ the protection **transfers** to the schema rule, the rule ID inheriting protecte
 in the provenance sidecar; never a silent move, never read as deletion. **Explicit
 review-feasibility clause:** its whole-body v0.26.0 survivor ruling is superseded by
 this ruling into pair form — the survivor protection re-homes onto the pair (body +
-schema jointly), recorded once, so no per-line ambiguity survives. GI-005/GI-006 hold:
+schema jointly), recorded once, so no per-line ambiguity survives. GI-005-record-layer-integrity/GI-006-primitive-edit-traceability hold:
 every protected line traceable through the strip ledger to its new home, reconstructible
 in both directions.
 
@@ -340,28 +340,28 @@ in both directions.
 the skill-pair criteria block, exactly as it grades a command pair; the "matching
 `validation-*`/`review-*` skill" routing never applies to a converted pair (no
 validator-for-skills exists, and the pilot's own members never grade themselves).
-**GI-012 (M6):** gate 5's `marketplace.json` sync is unaffected — schema files ride the
+**GI-012-release-gates-module (M6):** gate 5's `marketplace.json` sync is unaffected — schema files ride the
 plugin as data; the schema-data/binary consistency gate does not extend, skill schemas
-sitting **explicitly outside the Rust crate's template set** (the content-schema D9
+sitting **explicitly outside the Rust crate's template set** (the `command-content-schema` D9-schema-governance-envelope
 posture), `cargo test` untouched by the wave.
 
-### D9 — Rollout: census-first review-family build; further families by own ruling; repo-level converter skill — census-first + door-open `Confident` · converter-skill + eval-gate limbs `Assumed` *(mark split at review, I8)*
+### D9-census-first-rollout — Rollout: census-first review-family build; further families by own ruling; repo-level converter skill — census-first + door-open `Confident` · converter-skill + eval-gate limbs `Assumed` *(mark split at review, I8)*
 
-**Statement:** the review family converts in one wave (D1). **Build step 0 is the census
+**Statement:** the review family converts in one wave (D1-review-family-pilot). **Build step 0 is the census
 inventory** of the 8 graders: obligation census at D12 grain → the section set minted
-(D4), kind membership validated against the nine-kind set, common-block candidates
+(D4-inherited-command-grammar), kind membership validated against the nine-kind set, common-block candidates
 screened against the R1–R6 bar — the inventory is the audit referent (the ontology I8
 idiom). The conversion procedure lands as a repo-level skill
 `.claude/skills/converting-skill-to-schema/` (sibling of `converting-command-to-schema`,
 never shipped). Each further family — patterns, authoring, testing, analysis, singletons —
 converts by its own recorded ruling. Evidence honesty: model-interpreted delivery for
-skills is n=0; the D6 first-live-run watch and the D7 compression-eval fidelity gate carry
+skills is n=0; the D6-load-first-guard first-live-run watch and the D7-advisory-schema-tooling compression-eval fidelity gate carry
 the honesty, and stage-2 style extensions (phase anchors, global common layer, new kinds)
 graduate benefit-keyed only.
 
 **Rationale:** census-first prevents inventing sections/kinds at conversion time (the
 command wave's costliest lesson — inventory before extraction); per-family door-open
-rollout is the ruled house idiom (content-schema D10). Proposed whole; user adopted as
+rollout is the ruled house idiom (`command-content-schema` D10-per-command-rollout). Proposed whole; user adopted as
 stated at the Q9 wrap.
 
 *(Amended at review, C4 — user-ruled: protected-set reconciliation first.)* The census's
@@ -369,24 +369,24 @@ stated at the Q9 wrap.
 idiom): enumerate every `KEPT:` survivor ruling and every `DECISIONS.md`-traceable line
 across the 8 members — 19 `KEPT:` lines across 7 members at review count — **before any
 obligation is drafted into a schema**; each protected line gets a named census
-disposition: stays-in-body / moves-to-schema / stub-covered (D3 as amended). The
-ceremony class of the move is ruled in D8's amendment.
+disposition: stays-in-body / moves-to-schema / stub-covered (D3-obligations-only-schema as amended). The
+ceremony class of the move is ruled in D8-skill-governance-envelope's amendment.
 
 *(Amended at review, I2/I3/I4/I5/M2 — user-ruled in the I/M batch.)* **Census timing
 (I3):** the census runs **pre-wave as a paper exercise**, before any build commitment
-beyond D1's scope ruling; if it yields materially fewer common blocks than the drift
+beyond D1-review-family-pilot's scope ruling; if it yields materially fewer common blocks than the drift
 driver assumes — fewer than three clearing the 3+ bar — the wave returns to the user
 with the evidence before any conversion begins. **Census question (M2):** whether any
 member asserts a fail predicate — if none, `kind: fail` leaves the skill-side set by
-census evidence (kind retirement, symmetric with D4's admission path). **Eval gate
-priced (I2):** the judged sample per D7 as amended; spend estimated at census, stated at
+census evidence (kind retirement, symmetric with D4-inherited-command-grammar's admission path). **Eval gate
+priced (I2):** the judged sample per D7-advisory-schema-tooling as amended; spend estimated at census, stated at
 the wave gate. **Read cost (I5):** the census states each member's expected per-invoke
 read cost (body + schema + bound common blocks); the user accepts it eyes-open at the
 wave gate or sets a bound; it joins the first-live-run watch as an observable.
 **Rollback (I4):** retreat is **reserved to the user**, its named triggers: the
 first-live-run watch showing schema-carried delivery underperforming the prose baseline,
 or the eval sample degrading past the pre-registered bar. A retreat retires each pair by
-namespace-level tombstone (the content-schema D11 idiom); GI-006 holds — the conversion
+namespace-level tombstone (the `command-content-schema` D11-rule-id-lifecycle idiom); GI-006-primitive-edit-traceability holds — the conversion
 is reconstructible in both directions from strips + `DECISIONS.md` + version stamps.
 
 ## Session trail
@@ -402,26 +402,26 @@ is reconstructible in both directions from strips + `DECISIONS.md` + version sta
   read-cost): user ruled **A primary, B and C named secondary concerns**; D not taken.
   → Problem section.
 - **Q2 — pilot corpus** (A review-family recommended / B single-skill / C common-blocks-only
-  / D all-38): user ruled **A**. → D1.
+  / D all-38): user ruled **A**. → D1-review-family-pilot.
 - **Q3 — schema home** (A in-dir recommended / B central `schemas/skills/` / C embedded):
-  user ruled **as recommended** — in-dir. → D2.
+  user ruled **as recommended** — in-dir. → D2-in-directory-schema.
 - Lead re-ordered the agenda after Q3: the `.md`-vs-schema boundary is walked BEFORE the
   rule grammar — for skills the boundary decides whether the grammar must express ordered
   procedure at all (sequencing latitude, the walk's sharpest fork).
 - **Q4 — boundary** (A obligations-only recommended / B procedure moves as ordered nodes /
   C unordered phase anchors): user ruled **as recommended** — obligations-only, procedure
-  stays prose; phase anchors named a graduation candidate. → D3.
+  stays prose; phase anchors named a graduation candidate. → D3-obligations-only-schema.
 - **Q5 — grammar posture** (A inherit-with-deltas recommended, sibling label registry lean
-  flagged / B fresh minimal / C skill-native redesign): user ruled **as recommended**. → D4.
+  flagged / B fresh minimal / C skill-native redesign): user ruled **as recommended**. → D4-inherited-command-grammar.
 - **Q6 — common form** (A per-family flat block file + explicit stubs recommended / B
-  whole-section family base / C no common file): user ruled **as recommended**. → D5.
+  whole-section family base / C no common file): user ruled **as recommended**. → D5-family-common-blocks.
 - **Q7 — delivery guard** (A load-first block + floor-count pin recommended / B no pin /
   C inline floor duplication): user ruled **as recommended**; first-live-run watch rides
-  the ruling. → D6.
+  the ruling. → D6-load-first-guard.
 - **Q8 — advisory tooling** (A checker + detector + compression-eval-reuse recommended /
-  B plus a skill plan-only eval / C checker only): user ruled **as recommended**. → D7.
+  B plus a skill plan-only eval / C checker only): user ruled **as recommended**. → D7-advisory-schema-tooling.
 - **Q9 — wrap pair, proposed whole** (governance envelope + census-first rollout): user
-  adopted **as stated**. → D8, D9. Agenda complete — every walked aspect ruled.
+  adopted **as stated**. → D8-skill-governance-envelope, D9-census-first-rollout. Agenda complete — every walked aspect ruled.
 - **Sizing gate:** lead recommended solo cold review (pair and waiver offered with their
   trade-offs, the pair's lens-split coverage evidence stated); user ruled **as
   recommended** — solo.
@@ -431,7 +431,7 @@ is reconstructible in both directions from strips + `DECISIONS.md` + version sta
   time); record path withheld until the Phase 0 angle map returns.
 - **Phase 0 map returned:** 38 angles, fence honored (session directory unread, index
   never opened) — grounded in non-session repo reads. Reviewer's own top-five hunt
-  priorities: compression-fence collision (skill-compression D5 topology fence vs
+  priorities: compression-fence collision (`skill-compression-tooling` D5-fenced-file-topology topology fence vs
   conversion-as-relocation) · budget-by-relocation (schema files exempt from
   primitive-cost budgets) · `references/` as the cheaper already-shipping shared-source
   shape · order-bearing procedure vs unordered rule grammar · delivery-guard mechanism +
@@ -449,19 +449,19 @@ grew 302 → 309 lines mid-review (a Session-trail append logging the map's arri
 Decisions and Open questions byte-identical — disclosed by the reviewer, not raised.
 **Verdict:** `critical-gaps` — 4 Critical · 9 Important · 7 Minor survived the reviewer's
 own cross-examination; 13 further angles raised and killed (kill list in the review
-output — headline kills: ordered-procedure destruction answered by D3 · diamond
-inheritance answered by D5 · installed-path resolution answered by D2, called the
-record's strongest decision · the compression D5 topology fence binds the compression
+output — headline kills: ordered-procedure destruction answered by D3-obligations-only-schema · diamond
+inheritance answered by D5-family-common-blocks · installed-path resolution answered by D2-in-directory-schema, called the
+record's strongest decision · the `skill-compression-tooling` D5-fenced-file-topology topology fence binds the compression
 pass, not a ceremonied landing). Ground facts F1–F6 all reviewer-verified exact.
 **Survivor headlines:** C1 the conversion silently defeats the char-budget gate (schema
-data files budget-exempt as "never auto-loaded" — falsified by D6's obligated read) ·
+data files budget-exempt as "never auto-loaded" — falsified by D6-load-first-guard's obligated read) ·
 C2 `references/` is an unruled third obligation home (floor-bearing reference files
 outside IDs/checker/ceremony) · C3 coverage — the shared-`references/` single-source
 mechanism already shipping in the pilot family was never on the Q6 fork · C4 nineteen
 `KEPT:` protected lines across 7 of 8 pilot members move with no supersession path
-(GI-005). I1–I9 (pin honesty · eval-gate pricing · unmeasured cohesion + census timing ·
+(GI-005-record-layer-integrity). I1–I9 (pin honesty · eval-gate pricing · unmeasured cohesion + census timing ·
 no rollback · unpriced read multiplier · unnamed grader · unargued cross-grammar clause ·
-unforked D9 marks · Open-questions contradiction) · M1–M7.
+unforked D9-census-first-rollout marks · Open-questions contradiction) · M1–M7.
 **Lead verification of load-bearing review claims (pre-disposition):** budget exemption
 line verified verbatim (`primitive-cost-budgets.md:24`) · `KEPT:` counts verified
 (review-plan-artifacts 7 · validation-constitution 4 · review-feasibility whole-body
@@ -475,10 +475,10 @@ coverage gate — the shared-`references/` road recorded and rejected on the B/C
 concerns, a live-candidate note left at the patterns-family door · C4 protected-set
 reconciliation as the census's first step + the supersession-transfer ceremony,
 review-feasibility's whole-body ruling re-homed explicitly. I1–I9 + M1–M7 one batch "as
-recommended" — every fold traceable to its finding in the amended decisions (I1→D6 ·
-I2/M3/M5→D7 · I3/M7→D1 · I4/I5/M2→D9 · I6/M6→D8 · I7→D5 · I8→D9 mark split · I9→Open
-questions · M4→D2 reordered to mint position). M1 (the command path-resolution exposure)
-executes at landing as a line on the command D10 first-live-run watch in `BACKLOG.md`.
+recommended" — every fold traceable to its finding in the amended decisions (I1→D6-load-first-guard ·
+I2/M3/M5→D7-advisory-schema-tooling · I3/M7→D1-review-family-pilot · I4/I5/M2→D9-census-first-rollout · I6/M6→D8-skill-governance-envelope · I7→D5-family-common-blocks · I8→D9-census-first-rollout mark split · I9→Open
+questions · M4→D2-in-directory-schema reordered to mint position). M1 (the command path-resolution exposure)
+executes at landing as a line on the `command-content-schema` D10-per-command-rollout first-live-run watch in `BACKLOG.md`.
 One bounded verify round over the folds dispatched to the reviewer per the standing
 offer.
 **Verify round 1 — NOT CLEAN, lead-repaired same round:** 14/14 folds CONFIRMED, none
@@ -487,9 +487,9 @@ protection-transfer, I6's self-grading guard, I3's numeric census abort, C3's
 override-path argument). 2 blocking, both fold-introduced: R1 the C1 ledger edit
 under-specified (the seeding-paths clause also crossed — repaired: "a ruled schema
 conversion" named as a third seeding path, the no-+25%-headroom departure stated) ·
-R2 D3's statement still carried "`references/` files are untouched" against its own C2
+R2 D3-obligations-only-schema's statement still carried "`references/` files are untouched" against its own C2
 amendment (repaired: struck with a supersession marker). 2 nits repaired: N1
-owed-at-build enumeration added to Open questions · N2 D1's whole-family "default-FAIL
+owed-at-build enumeration added to Open questions · N2 D1-review-family-pilot's whole-family "default-FAIL
 posture" phrasing qualified beside its own correction. Reviewer self-correction logged:
 the review's headline tally was 33 raised (20 survivors + 13 killed), not 32 — the
 record's own figures were already consistent. Fitness re-grade: all seven items
@@ -498,7 +498,7 @@ checkable, the three `ready`-blockers repaired. Delta-check of R1/R2 requested.
 (R1 both limbs, the third seeding path named against the ledger's real clause; R2 struck
 with no dangling dependents; N1/N2 landed); repair-introduced surface: none — three
 interactions checked coherent (F5's references-exempt line vs C1 · C2 stubs budgeted
-while their reference targets stay exempt, "the right way round" · the struck D3 clause
+while their reference targets stay exempt, "the right way round" · the struck D3-obligations-only-schema clause
 dependent-free). One non-finding observation logged for the build seats: zero headroom
 means a converted skill's first post-conversion character takes the argued-overage path —
 the ruled choice, compression-regime R11 precedent. Reviewer status recommendation:
@@ -506,10 +506,10 @@ the ruled choice, compression-regime R11 precedent. Reviewer status recommendati
 **Acceptance (2026-09-01):** the user accepted the record after the CLEAN delta-check.
 Landing executed whole: `DECISIONS.md` row (D1–D9 as amended) · index entry to accepted ·
 ROADMAP Next-row merge · BACKLOG "Skill-content schema build" section (census-first build
-item + first-live-run watch) · the M1 path probe added to the command D10 watch · KM close
+item + first-live-run watch) · the M1 path probe added to the `command-content-schema` D10-per-command-rollout watch · KM close
 ritual run (three-part landing; status agreement across record, index, decisions).
 - **Build open (2026-09-01, post-acceptance):** the wave opened on the user's "lets
-  build". Step 0 per D9 as amended: seat P0 spawned to author the census
+  build". Step 0 per D9-census-first-rollout as amended: seat P0 spawned to author the census
   (`census.md`, this directory) — protected-set reconciliation first, obligation census
   at D12 grain, common-block candidates vs R1–R6, numeric abort check, `kind: fail`
   question, per-member read-cost figures, section-set + label-seed proposals, anomalies
@@ -521,14 +521,14 @@ ritual run (three-part landing; status agreement across record, index, decisions
   Headlines: ~200 rules at D12 grain (181 move · 19 reference-stubs · 0 lifts) ·
   protected-set reconciled FIRST — 9 distinct survivor rulings (3 ended by recorded
   supersession), ~34 live protected units all dispositioned, zero deletes, RF whole-body
-  re-home per D8/C4 · **abort check NOT tripped — 6 common blocks clear the 3+ bar**
+  re-home per D8-skill-governance-envelope/C4 · **abort check NOT tripped — 6 common blocks clear the 3+ bar**
   (C1 evidence-floor ×7 · C2 default-FAIL ×6 · C3 author≠grader ×8 · C4 verdict-is-input
   ×5 · C5 its-command-states-them ×3 · C6 never-excess ×5) · `kind: fail`: zero run-fail
   predicates — retirement executes by the D9/M2 census-evidence path (8-kind skill set,
   `enforces:` leaves) · section set minted: independence · scope · inputs · verdict ·
   output · reserved (8/8 coverage; command six-set tested and rejected) · labels: 6
   transfers + 3 new (verdict · boundary · fence) · read cost: family **×2.3**
-  delivered-at-invoke (~37k → ~84k; RF real read ~25k incl. its obligated lens, J-3) ·
+  delivered-at-invoke (~37k → ~84k; RF real read ~25k incl. its obligated lens, J-3-obligated-reference-read) ·
   eval sample RB+RF, 24 grid runs + ~48 judge calls est. · anomalies J-1..J-7, each with
   a recommended disposition. Gate presented to the user.
 - **Wave gate ruled (2026-09-01, user: "as recommended, proceed"):** read cost ×2.3
@@ -536,7 +536,7 @@ ritual run (three-part landing; status agreement across record, index, decisions
   eval sample RB+RF approved (pre-registration + ship bar still take their own user
   ratification per the harness) · J-1..J-7 one batch as recommended · `kind: fail`
   retirement + six-section set + 6+3 label seed execute as census-minted
-  (pre-authorized, D9/M2 + D4). Conversion wave opens: five plan-first producer seats,
+  (pre-authorized, D9/M2 + D4-inherited-command-grammar). Conversion wave opens: five plan-first producer seats,
   strictly disjoint ownership — P1 shared files (`skill-labels.yaml` +
   `skill-review-common.yaml`) · P2 pairs RB/RCM/RF/RGI + their strips · P3 pairs
   RPA/RSPEC/RSUF/VC + their strips · P4 tooling (checker + detector extensions, negative
@@ -586,7 +586,7 @@ ritual run (three-part landing; status agreement across record, index, decisions
   reconstruction: +517 grammatical expansion, judged structural; V2: RSPEC 0.88× ·
   RSUF 0.81× · VC 0.91× · RPA 1.20× census-ruled stubs). FAILs cluster in ceremony:
   **V2** RPA/RSPEC/VC FAIL on one cause — P3's strip insertions each overwrote the
-  file's prior `## [vX]` heading (GI-005 record corruption, lead-verified via git
+  file's prior `## [vX]` heading (GI-005-record-layer-integrity record corruption, lead-verified via git
   diff) + F4–F7 minors; RSUF + shared files PASS. **V1** RB/RCM FAIL — allowlist
   edges asserted in strips but recorded nowhere (criterion 6) + RCM's deleted
   `## Inputs` left two items unstripped and the diff-location mechanic homeless;
@@ -597,7 +597,7 @@ ritual run (three-part landing; status agreement across record, index, decisions
   (`check-command-schema.py:969` hard-codes the old kind; fixture-green, tree-red;
   lead-reproduced) + W-1 allowlist/adjudication owed. **Fix rounds dispatched:** P3
   (heading restores + F4–F7 + accounting lines) · P2 (RCM Inputs strip + mechanic
-  restore, RB-2/RB-3/RCM-3; RCM-4 ruled wave-wide — no `conditions:` = the `when:`
+  restore, RB-2-lens-depth-jurisdiction/RB-3-verdict-input-relocated/RCM-3-code-review-carveout; RCM-4-test-gate-carveout ruled wave-wide — no `conditions:` = the `when:`
   grammar sentence legally omitted) · P4 (both-kinds acceptance + the
   lead-found same-block-extends skip gap: detector cluster [1] fires three stubs of
   ONE block) · P5 (four provenance anchors). **Lead-side executed:** allowlist seeded
@@ -608,7 +608,7 @@ ritual run (three-part landing; status agreement across record, index, decisions
 - **Fix rounds + delta re-grades (2026-09-01):** P3 restored the three strip headings
   byte-exact (git-diff zero deletions — lead- and V2-verified) + F4–F7 + accounting
   lines · P2 restored RCM's diff-location mechanic + the missing Inputs strip entry,
-  RB-2 clean MOVE, RB's +517 argued as grammatical expansion, RCM-3's dropped limb
+  RB-2-lens-depth-jurisdiction clean MOVE, RB's +517 argued as grammatical expansion, RCM-3-code-review-carveout's dropped limb
   carried into `dispute-at-checkpoint-only` · P4 fixed the command-checker kind
   acceptance and took A-2 + two minors (matrices 134/134 · 86/86 · 44/44) — and
   correctly HELD against the lead's wrong structural-skip request, proving with an edge
@@ -638,28 +638,28 @@ ritual run (three-part landing; status agreement across record, index, decisions
 Three family censuses ran as parallel paper exercises (in-repo, this directory:
 `census-authoring.md` · `census-patterns.md` · `census-small-families.md`), each mirroring
 the wave-1 census idiom with the protected-set reconciliation as the literal first step
-(D9/C4). Per D9-I3 the abort evidence returned to the user before any conversion; the user
+(D9-census-first-rollout/C4). Per D9-I3 the abort evidence returned to the user before any conversion; the user
 ruled all four gate questions "as recommended" (`Confident`):
 
 - **Wave shape — three sequential waves**, authoring → patterns → small families. Each wave
   carries its own build, author≠grader audits, version bump, and landing ritual, preserving
-  D9 rollback granularity; a single 22-pair landing was declined for conflating rollback.
+  D9-census-first-rollout rollback granularity; a single 22-pair landing was declined for conflating rollback.
 - **Authoring (8 members, all convert).** Abort not tripped: 4 blocks clear the 3+ bar
   (letter-IS-the-spirit epigraph ×4 · produced-artifact-graded-independently ×4 · two-arm
   template-schema binding ×4 · deliverable-envelope binding ×5) → new
   `plugins/mochiko/schemas/skill-authoring-common.yaml`. The family section set mints
   **`artifact`** (the produced artifact's binding grammar, invariants, and write mechanics)
-  in place of `verdict` — census J-1: `verdict` is empty for all 8 producers and ~124
+  in place of `verdict` — census J-1-producer-family-misfit: `verdict` is empty for all 8 producers and ~124
   artifact-grammar rules had no six-set home — and `primitive-edits.md` criterion 2 is
   amended to per-family section sets (each minted by that family's census, uniform within
   the family, explicit empty markers legal); the amendment rides the wave as a ceremonied
   shipped-rule edit. Labels minted: `artifact-grammar`, `single-home`.
-  INTERROGATION-AGENDA.md stays un-stubbed by ruling (J-2: its obligations bind the setup
+  INTERROGATION-AGENDA.md stays un-stubbed by ruling (J-2-unbound-agenda-reference: its obligations bind the setup
   session, not this skill; a stub would dangle from no §B row). Payload accepted as a band,
   not a point: est. ×2.35 family delivered, honest band ×2.9–×3.3 on the wave-1
   estimate-to-measured drift precedent; the measured figure returns at the landing gate.
 - **Patterns (9 of 13 convert).** The shared-`references/` road is **rejected at its
-  door** — the D5/C3 live-candidate note is discharged. §ROAD evidence: the judgment-prose
+  door** — the D5-family-common-blocks/C3 live-candidate note is discharged. §ROAD evidence: the judgment-prose
   premise holds for only 4 of 13 members (the 2026-08 floor-skill births changed the
   family's character), and the road's F4 arithmetic fails by an order of magnitude
   (~26–52k added family-wide to consolidate under 400 chars); the per-member Single-source
@@ -683,7 +683,7 @@ ruled all four gate questions "as recommended" (`Confident`):
 Cross-cutting census findings carried into the waves: ~30 pre-listed allowlist edges
 (letter-IS-spirit, strict-order, rationalization-STOP, author≠grader mirrors, envelope
 density) · two families independently converging on author≠grader and envelope-density
-shapes is the first live signal for the D5 cross-family `skill-common.yaml` graduation
+shapes is the first live signal for the D5-family-common-blocks cross-family `skill-common.yaml` graduation
 candidate (evidence only, not actioned) · analysis-codebase's dangling "indicators below"
 pointer takes a one-line ruled repair riding its wave, never a silent fix.
 
@@ -737,14 +737,14 @@ pointer takes a one-line ruled repair riding its wave, never a silent fix.
   1 major (AS display-for-override obligation lost at census row grain — restored) +
   11 minors; W3 unit B FAIL on three trail-accuracy majors (stale quiesced-tree claim ·
   one-of-six deliberate absences named · duplicate allowlist row) — all repaired; one VT
-  strip heading overwrite (the GI-005 class) caught by a SIBLING SEAT mid-wave, restored
+  strip heading overwrite (the GI-005-record-layer-integrity class) caught by a SIBLING SEAT mid-wave, restored
   byte-exact, verified thrice. Delta re-grades: **ALL ELEVEN UNITS PASS.**
 - **Measured at landing:** family delivered-at-invoke **95,858** vs 50,379 = **×1.90**,
   +5.1% over the ×1.81 estimate, inside the ±25% band. Matrices 114/114 · 134/134 · 48/48;
   sweeps 25/25 skill pairs · 6/6 command pairs.
 - **Cross-family graduation evidence:** the 4-member read-before-claim convergence
-  (AFM · MM · RB · RSPEC) recorded as the strongest D5 `skill-common.yaml` candidate signal
-  yet — evidence only, suppressed on D5 grounds.
+  (AFM · MM · RB · RSPEC) recorded as the strongest D5-family-common-blocks `skill-common.yaml` candidate signal
+  yet — evidence only, suppressed on D5-family-common-blocks grounds.
 - Landing ritual: §K appendix · DECISIONS row → 2B built · BACKLOG watch extended ·
   ROADMAP · index · CHANGELOG 0.102.0 · marketplace synced · cargo (gate 6). Remaining:
   wave 2C small families (dense five). The four teachers (api-contracts · entity-modeling ·
@@ -781,30 +781,30 @@ pointer takes a one-line ruled repair riding its wave, never a silent fix.
   8 review (v0.100.0) · 8 authoring (v0.101.0) · 9 patterns carriers (v0.102.0) · 5 dense
   five (v0.103.0); 7 stay prose by ruling (analysis-iterative · grooming-operating-docs ·
   testing-governance-injection · the four patterns teachers); the `mochiko` router out of
-  scope (D1). Four grammars' worth of family section sets (review · authoring · patterns ·
+  scope (D1-review-family-pilot). Four grammars' worth of family section sets (review · authoring · patterns ·
   review-reused), two family common files, one label registry at 13, 597 provenance anchors,
   214 allowlist rows at zero detector residue. Measured multipliers by family: review ×3.24 ·
   authoring ×1.84 · patterns ×1.90 · dense five ×1.75.
 - Landing ritual: §K appendix · DECISIONS row → 2C built + arc closed · BACKLOG watch
   extended to all four families · ROADMAP · index · CHANGELOG 0.103.0 · marketplace synced ·
   cargo (gate 6). Standing after the arc: the first-live-run watch (all four families'
-  read-cost observables) · the D7 compression-eval judged sample (own ratification) · the
-  D5 cross-family `skill-common.yaml` graduation candidate (evidence accumulating: the
+  read-cost observables) · the D7-advisory-schema-tooling compression-eval judged sample (own ratification) · the
+  D5-family-common-blocks cross-family `skill-common.yaml` graduation candidate (evidence accumulating: the
   author≠grader/envelope convergence from 2A + the 4-member read-before-claim convergence
   from 2B) · the prose seven revisit on evidence.
 
 ## Open questions
 
-- None blocking. Named graduation candidates (not open questions): phase anchors (D3) ·
-  cross-family global `skill-common.yaml` (D5 — first live signal 2026-09-01: the
+- None blocking. Named graduation candidates (not open questions): phase anchors (D3-obligations-only-schema) ·
+  cross-family global `skill-common.yaml` (D5-family-common-blocks — first live signal 2026-09-01: the
   authoring and small-families censuses independently converge on author≠grader and
   envelope-density shapes; evidence only) · kind admission/retirement by census
-  evidence (D4/D9). The shared-`references/` road at the patterns-family door was
+  evidence (D4-inherited-command-grammar/D9-census-first-rollout). The shared-`references/` road at the patterns-family door was
   discharged 2026-09-01 — rejected by ruling (see Wave-2 family-door rulings). Standing
   watches owed at build: the first-live-run delivery watch with the I5 read-cost
-  observable (D6/D9) · the M1 command path-resolution note on the command D10
+  observable (D6-load-first-guard/D9-census-first-rollout) · the M1 command path-resolution note on the `command-content-schema` D10-per-command-rollout
   watch (`BACKLOG.md`).
 - Owed at build, enumerated once (each durable in its decision — N1): the two-part ledger
-  amendment incl. the third seeding path (D8/C1) · the `primitive-edits.md` skill-pair
-  criteria block with the budget and grader clauses (D8) · the detector in-dir sweep
-  (D7/M3) · the census's protected-set first step (D9/C4).
+  amendment incl. the third seeding path (D8-skill-governance-envelope/C1) · the `primitive-edits.md` skill-pair
+  criteria block with the budget and grader clauses (D8-skill-governance-envelope) · the detector in-dir sweep
+  (D7/M3) · the census's protected-set first step (D9-census-first-rollout/C4).

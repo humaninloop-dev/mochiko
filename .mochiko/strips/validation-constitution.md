@@ -20,7 +20,7 @@ survivor-provenance (KEPT) entries below rather than forcing cuts.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the review family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -30,7 +30,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/validation-constitution/references/QUALITY-CHECKLIST.md`. -->
 
@@ -41,19 +41,39 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/validation-constitution/
 and `…/references/ANTI-PATTERNS.md`. The new "No Product Instance" section is a pure addition (D2)
 and rides the decision row. -->
 
+## [v0.118.0] Wave 3 back-fill: the pointer-only-region cites joined
+
+- **Disposition:** superseded → `references/ANTI-PATTERNS.md`:16 and
+  `references/QUALITY-CHECKLIST.md`:25 now cite GI-017-pointer-only-region.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/human-readable-ids/record.md` D11-cross-session-qualifier,
+  D14-live-layer-backfill and D15-protected-line-rewrites — every live-layer mention joined to its
+  definition's slug, cross-session mentions qualified, verbatim spans masked; wave plan
+  `.mochiko/brainstorms/human-readable-ids/wave3-backfill.md` items 7–9)
+- **Content (superseded):** every changed line at `0b8982a`, verbatim, as `<file>:<line>: <text>`
+  (files under `plugins/mochiko/skills/validation-constitution/`):
+
+  ```text
+  references/ANTI-PATTERNS.md:16: | **Excess governance** | Principle restates a constraint homed elsewhere (GI-017), or has no eliciting fact | Point at the existing home; drop principles no fact justifies (floor/NFR obligations exempt) |
+  references/QUALITY-CHECKLIST.md:25: - [ ] No surface restates a product's instance of a rule — its boundary list, its data's name, its behaviour toward its users; where a principle needs the instance, it points at the instance's home (GI-017: point, never restate)
+  ```
+
+- **Kept deliberately:** `references/QUALITY-CHECKLIST.md`:61's "permanent (D4.1 pending)": a quoted
+  literal, verbatim under `human-readable-ids` D15-protected-line-rewrites.
+
 ## [v0.118.0] Trace-stamp forms joined in QUALITY-CHECKLIST
 
 - **Disposition:** superseded → `` (`**Trace**: GI-XXX-<slug> (…)` in the ledger; … ``) and "Trace stamps are real IDs (e.g., "GI-031-error-response-logging", NOT "GI-XXX-<slug>")".
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; hand-off P8; the collision guard (the example's number sits outside this repo's GI-001–022))
 - **Content (superseded):** "(`**Trace**: GI-XXX (…)` in the ledger;" and "- [ ] Trace stamps are real IDs (e.g., "GI-007", NOT "GI-XXX")".
-- **Kept deliberately:** line 25's `GI-017` and line 61's "permanent (D4.1 pending)" (decided citations, wave 3); the region line's `<!-- GI-… -->` trace comment (machine-read, bare, D12).
+- **Kept deliberately:** line 25's `GI-017-pointer-only-region` and line 61's "permanent (D4.1 pending)" (decided citations, wave 3); the region line's `<!-- GI-… -->` trace comment (machine-read, bare, D12).
 
 ## [v0.115.0] QUALITY-CHECKLIST — the compliance-module checks retired
 
 - **Disposition:** superseded → deleted or cut to their floor-only form; the section is renamed
   "Floor Accounting (all modes)".
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D1, and the verify-round V2 closed list; `DECISIONS.md` 2026-09-24)
+  D1-profile-leaves-setup, and the verify-round V2 closed list; `DECISIONS.md` 2026-09-24)
 - **Content:** eight lines, verbatim.
   1. Traceability — "(floor-asserted / deck-kept / minted / compliance-module obligation — not a
      waiver, exclusion, or template-module row)"
@@ -83,7 +103,7 @@ and rides the decision row. -->
   MAJOR; new principle or waiver change = MINOR; clarification = PATCH)", mirroring the landed
   `validation-constitution.version-bump` rule and the ledger's semver line.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D4; `DECISIONS.md` 2026-09-24)
+  D4-closed-event-set; `DECISIONS.md` 2026-09-24)
 - **Content:** two fragments, verbatim.
   1. "amend route (fact-profile changes — module attach/detach — and un-waives are governance events)"
   2. "(floor-level change / module attach or detach = MAJOR; new principle or waiver change = MINOR;
@@ -97,7 +117,7 @@ and rides the decision row. -->
 
 - **Disposition:** superseded → "(floor/NFR obligations exempt)"
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D1, D6; `DECISIONS.md` 2026-09-24)
+  D1-profile-leaves-setup, D6-cut-ships-first; `DECISIONS.md` 2026-09-24)
 - **Content:** verbatim — "(floor/compliance-module/NFR obligations exempt)"
 - **Kept deliberately:** the whole Excess-governance row otherwise, including the floor and NFR
   exemptions.
@@ -111,8 +131,8 @@ and rides the decision row. -->
   producer↔grader pair; defaults to FAIL; run by a fresh seat that authored none of the set." and
   "(never co-mounted; the grader is a fresh seat that authored no surface)".
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/producer-plan-enforcement/record.md` D3 ·
-  `.mochiko/brainstorms/author-grader-consolidation/record.md` D7; `DECISIONS.md` 2026-09-03
+  (`.mochiko/brainstorms/producer-plan-enforcement/record.md` D3-peer-plan-grader ·
+  `.mochiko/brainstorms/author-grader-consolidation/record.md` D7-fresh-gate-grader; `DECISIONS.md` 2026-09-03
   and 2026-09-19 rows).
 - **Content:** verbatim superseded spans — "Validator-side skill of the governance
   producer↔validator pair; defaults to FAIL; run by an independent validator, never the author." ·
@@ -132,7 +152,7 @@ and rides the decision row. -->
 
 - **Disposition:** superseded → the two CLI forms already named in the same sentence
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** "; when the binary is absent, Read
   `plugins/mochiko/schemas/governance-surfaces.yaml` raw"
 - **Kept deliberately:** both surviving arms — `mochiko-cli template governance-surfaces` for the
@@ -144,7 +164,7 @@ and rides the decision row. -->
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -194,7 +214,7 @@ and rides the decision row. -->
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -204,7 +224,7 @@ and rides the decision row. -->
   continue.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -235,7 +255,7 @@ corrections, not content growth.
 ### Supersession-transfer — [v0.25.0] KEPT: Red Flags + Common Rationalizations pair (table form ended v0.90.0; rules live as Floors clauses)
 - **Disposition:** superseded — protection transfers to schema rules `rationalization-stop` (the
   rationalization family + the STOP-and-restart meta-rule, verbatim), `placeholders-incomplete`,
-  `missing-parts-fail`, `satisfaction-verifies-nothing`, citing skill-content-schema D8/C4 +
+  `missing-parts-fail`, `satisfaction-verifies-nothing`, citing skill-content-schema D8-skill-governance-envelope/C4 +
   `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** "catching yourself rationalizing — 'looks complete enough' · 'just a minor update'
@@ -254,7 +274,7 @@ corrections, not content growth.
 ### Supersession-transfer — [v0.65.0] adaptive-depth extensions (declared-level accounting · MAJOR low→high flip)
 - **Disposition:** superseded — protection transfers to schema rules `version-bump` (the MAJOR
   low→high depth-level flip, verbatim-in-substance) and `validation-result-block` (the declared-level
-  accounting line), citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  accounting line), citing skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** "MAJOR (principle removed or incompatibly redefined; floor-level change, incl. a
   low→high depth-level flip; module attach/detach)" · "floor/module accounting (floor + declared level
@@ -265,17 +285,17 @@ corrections, not content growth.
 ### Supersession-transfer — [v0.76.0] governance-surfaces schema re-key (QUALITY-CHECKLIST header, two-arm)
 - **Disposition:** superseded — protection transfers to schema rule `quality-checklist`
   (reference-stub: `pointer: references/QUALITY-CHECKLIST.md`, the two-arm citation named in the rule
-  text; the reference file stays untouched), citing skill-content-schema D8/C4 + `DECISIONS.md`
+  text; the reference file stays untouched), citing skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md`
   2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** the two-arm governance-surfaces citation carried by QUALITY-CHECKLIST.md's header —
-  referenced by stub, never restated (GI-020 both-arms posture preserved in the reference file).
+  referenced by stub, never restated (GI-020-plugin-install-model both-arms posture preserved in the reference file).
 - **Consumers assessed:** none — skill-local content.
 
 ### Supersession-transfer — [v0.63.0]/[v0.90.0] keep-sets (set-not-file · every-set-MUST-pass · from-file inputs · VALIDATION RESULT contract)
 - **Disposition:** superseded — protection transfers to schema rules `set-not-file`,
   `every-set-must-pass`, `from-file-floor`, `validation-result-block`, citing skill-content-schema
-  D8/C4 + `DECISIONS.md` 2026-09-01 (per the v0.90.0 disposition map).
+  D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01 (per the v0.90.0 disposition map).
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** "**The graded artifact is a set, not a file** … grading only the region is partial
   validation, which is not validation" · "Every set MUST pass — no exceptions" · "Inputs — all read
@@ -295,7 +315,7 @@ corrections, not content growth.
   reviewed it while writing' is not validation" is the common block's own strongest wording — the
   tail "fresh review catches blind spots" is rationale, recorded here) and `evidence-floor`
   (`extends: review-common.evidence-floor`).
-- **Tier failed:** n/a — ruled conversion (skill-content-schema D3/D5).
+- **Tier failed:** n/a — ruled conversion (skill-content-schema D3-obligations-only-schema/D5-family-common-blocks).
 - **Content:** the Not-for line verbatim · "The letter of the rules IS the spirit" · "A missing
   synthesis when the set carries trace keys, a missing manifest, or a missing set member — each is
   itself a FAIL" · the Inputs paragraph's set enumeration · "A `.mochiko/memory/constitution.md` on
@@ -317,7 +337,7 @@ corrections, not content growth.
   the body's identity prose — not censused as a rule; the co-mount fence remains visible at the
   identity surface.
 - **Consumers assessed:** family common blocks C2/C3/C6; cross-grammar near-dup edges with command
-  `common.yaml` are allowlist territory (census J-5); `letter-is-spirit` is a keep-distinct allowlist
+  `common.yaml` are allowlist territory (census J-5-cross-grammar-duplicates); `letter-is-spirit` is a keep-distinct allowlist
   edge vs `review-plan-artifacts` (2-member, below the 3+ bar per census §C).
 
 ## [v0.90.0] User-ruled true-deletion body cut — body 7,630 → 5,103 chars (−33.1%)
@@ -357,7 +377,7 @@ corrections, not content growth.
     never-unselected-fragments.
   - *Quantification Requirements* → Protocol legs 2–3: measurable-criteria rule +
     ANTI-PATTERNS.md pointer with the three named patterns; the excess-governance
-    anti-pattern complete (GI-017 restatement trigger · no-eliciting-fact trigger ·
+    anti-pattern complete (GI-017-pointer-only-region restatement trigger · no-eliciting-fact trigger ·
     admissibility naming the home or the missing fact · floor/module/NFR never-excess ·
     lands-in-the-Anti-patterns-line).
   - *Step 8 table* → Protocol leg 4: all MAJOR/MINOR/PATCH triggers incl. the low→high
@@ -395,9 +415,9 @@ corrections, not content growth.
   survives). Both references untouched; no reference-to-body pointer names a deleted
   section (QUALITY-CHECKLIST.md is checked at audit). No dead pointers created.
 
-## [v0.76.0] QUALITY-CHECKLIST governance-surfaces pointer → schema + `--check` view (D7 re-key) — schema-based-template-guidance D1/D7/D8
+## [v0.76.0] QUALITY-CHECKLIST governance-surfaces pointer → schema + `--check` view (D7 re-key) — schema-based-template-guidance D1-single-plugin-cli/D7-same-schema-grading/D8-schema-data-files
 - **Disposition:** superseded → `mochiko-cli template governance-surfaces` for the shapes, `mochiko-cli template governance-surfaces --check` for the mirror-checklist view, or Read `plugins/mochiko/schemas/governance-surfaces.yaml` raw (D8-first-class). One site: `references/QUALITY-CHECKLIST.md` header "verify … against the shapes in …". D7 re-key: the governance-surfaces structure checklist now cites the `--check` view.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D7 (`--check` grading view, checklists re-key)/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1-single-plugin-cli/D3-pipeline-template-scope/D7-same-schema-grading (`--check` grading view, checklists re-key)/D8; `DECISIONS.md` "Template-schema CLI ruled").
 - **Content (superseded, verbatim):**
   - `verify all items below against the shapes in` / `\`templates/governance-surfaces-template.md\`.`
 - **Kept deliberately:** the "template-module" prose (lines 21, 25 — not a file pointer) and the `templates/constitution-modules/` fragment pointer (line 59 — not in-scope, stays `.md`); every checklist item unchanged.
@@ -405,12 +425,12 @@ corrections, not content growth.
 
 ## [v0.65.0] Adaptive-depth two-row form — floor accounting + threshold check learn the declared level
 - **Disposition:** superseded → two-row (low/high) floor accounting; graders verify the declared depth level's EXISTENCE and surface-agreement, never the level-vs-reality (D6 no-watcher)
-- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth, `DECISIONS.md` 2026-08-11 row; record `.mochiko/brainstorms/production-floor-adaptive-depth/record.md`, D1–D3 / D6 / D8; PO-D2 amended, PO-D7 superseded)
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth, `DECISIONS.md` 2026-08-11 row; record `.mochiko/brainstorms/production-floor-adaptive-depth/record.md`, D1–D3 / D6-flip-setup-rerun / D8-dial-standards-scope; `production-only-focus` D2-tier-axis-retired amended, `production-only-focus` D7-immature-team-onramp superseded)
 - **Content (superseded lines, verbatim old → new).**
-  - SKILL.md ~:68 (Step 9 Floor/module accounting verdict line), a PO-D2 "single asserted production row" descendant:
+  - SKILL.md ~:68 (Step 9 Floor/module accounting verdict line), a `production-only-focus` D2-tier-axis-retired "single asserted production row" descendant:
     - OLD: `Floor/module accounting: [floor asserted (region stamp = ledger) · modules matched to the fact profile · floor categories principled/waived, e.g. 3 principled + 1 waived]`
     - NEW: `Floor/module accounting: [floor + declared level asserted (region stamp = ledger) · modules matched to the fact profile · floor categories principled at the declared level or waived, e.g. 3 principled + 1 waived]`
-  - references/QUALITY-CHECKLIST.md ~:40 (Floor & Module Accounting coverage-threshold check), same PO-D2 descendant:
+  - references/QUALITY-CHECKLIST.md ~:40 (Floor & Module Accounting coverage-threshold check), same `production-only-focus` D2-tier-axis-retired descendant:
     - OLD: `- [ ] Coverage thresholds and gate strictness sit at the asserted floor level ([the floor cards](../../authoring-constitution/references/catalog/universal-floor.md)) or carry a session override recorded in the synthesis`
     - NEW: `- [ ] Coverage thresholds and gate strictness sit at the declared level's row (the low row or the high row) of [the floor card](../../authoring-constitution/references/catalog/universal-floor.md) or carry a session override recorded in the synthesis`
 - **Added (pure additions — ride the decision row, no supersession):**

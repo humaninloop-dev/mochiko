@@ -226,7 +226,7 @@ cd5a333 -- plugins/` is empty and the commit touches only the crate, its fixture
 the seat's own report — no `plugin.json` bump, no `CHANGELOG.md`. The old `run()` and `USAGE` are
 gone from `lib.rs` (23 lines, module declarations only). All six deviations are disclosed in the
 seat's report; the seventh — `views emit`, named in wave-plan §1's P2 deliverables but absent from
-§6's P2 checklist row — is disclosed as deviation 6 under the lead's D-4 delta to P3. GI-019 holds:
+§6's P2 checklist row — is disclosed as deviation 6 under the lead's D-4 delta to P3. GI-019-kernel-tooling-admission holds:
 the CLI renders guidance and validates its own log; it grades no produced artifact, sequences
 nothing, spawns nothing.
 

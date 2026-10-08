@@ -7,7 +7,7 @@ ruled in-wave.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the review family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -19,7 +19,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -71,7 +71,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -81,7 +81,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   continue.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -102,7 +102,7 @@ binds the common block) · 11 `smuggled-posture` · 12 `external-claims` · 13 `
 18 `sf-legal-shapes` · 19 `serve-and-click` · 20 `authority-split` · 21 `sf-critical-checks` ·
 22 `sf-important-checks` · 23 `severity-grammar` · 24 `report-structure` · 25 `density-never-gap` ·
 26a `evidence-floor` (stub) · 26b `gap-bound` · 27a `no-scope-creep` · 27b `check-existing-first`.
-All IDs carry the `review-specifications.` prefix. Per census §C/J-6 this skill binds NEITHER
+All IDs carry the `review-specifications.` prefix. Per census §C/J-6-verdict-heterogeneity-carriers this skill binds NEITHER
 `review-common.default-fail` NOR `review-common.verdict-is-input` — it issues no clearing verdict; its
 local posture rule is `input-not-verdict` (allowlist keep-distinct edge).
 Deviation note (recorded, code correct): census §B marks row 18 `when: manifest-present`, but the
@@ -115,7 +115,7 @@ content growth.
 
 ### Supersession-transfer — [v0.26.0] KEPT lineage: severity table + Core Principle table substance
 - **Disposition:** superseded — protection transfers to schema rules `severity-grammar` and
-  `what-not-how`, citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  `what-not-how`, citing skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** "Critical = cannot build without this answer, ask now · Important = will cause rework,
   should ask now · Minor = polish, log and defer" · "WHAT is missing, never HOW to implement" (+
@@ -124,7 +124,7 @@ content growth.
 
 ### Supersession-transfer — [v0.25.0] RETURNED five-class canonical-home taxonomy
 - **Disposition:** superseded — protection transfers to schema rule `gap-taxonomy` (the canonical-home
-  binding), citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  binding), citing skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** "the canonical hunt taxonomy `devils-advocate` leans on".
 - **Kept deliberately:** the six class descriptors (the per-class parenthetical sub-lists) stay in the
@@ -135,7 +135,7 @@ content growth.
 ### Supersession-transfer — [v0.67.0] class-6 excess row + calibration
 - **Disposition:** superseded — protection transfers to schema rules `excess-admissibility` (local
   admissibility limb) and `never-excess` (`extends: review-common.never-excess`, the C6 carve), citing
-  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** "**excess / unpaid scope** (no user need or ratified driver pays for it — admissible
   only naming the driver it fails to trace to or the cheaper shape; a floor / compliance-module /
@@ -146,7 +146,7 @@ content growth.
 ### Supersession-transfer — [v0.63.0] guardrails keep-set + review-evidence floor line
 - **Disposition:** superseded — protection transfers to schema rules `density-never-gap`,
   `no-scope-creep`, `check-existing-first`, `gap-bound`, and `evidence-floor`
-  (`extends: review-common.evidence-floor`), citing skill-content-schema D8/C4 + `DECISIONS.md`
+  (`extends: review-common.evidence-floor`), citing skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md`
   2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** the Floors paragraph clauses verbatim: "density is never itself a gap
@@ -157,12 +157,12 @@ content growth.
   scope creep is not a gap: clarify existing features, never add new ones as 'missing requirements' ·
   check existing patterns and decisions first — never ask what is already answered."
 - **Consumers assessed:** family common block C1; cross-grammar near-dup edge with command
-  `common.yaml` is allowlist territory (census J-5).
+  `common.yaml` is allowlist territory (census J-5-cross-grammar-duplicates).
 
 ### Supersession-transfer — [v0.58.0] feature-layer 10 checks + R13 git-baseline rule
 - **Disposition:** superseded — protection transfers to schema rules `map-git-baseline`,
   `feature-layer-same-report`, `feature-critical-checks`, `feature-important-checks`, citing
-  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** the **Feature layer** paragraph whole — the baseline rule ("grade staged writes against
   the git state of the map at run open, never a workspace copy"), same-reviewer-same-report, and the
@@ -173,7 +173,7 @@ content growth.
 ### Supersession-transfer — [v0.50.0] S&F 8 checks + serve-and-click + authority split
 - **Disposition:** superseded — protection transfers to schema rules `sf-legal-shapes`,
   `serve-and-click`, `authority-split`, `sf-critical-checks`, `sf-important-checks`, citing
-  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** the **Screens & Flows** paragraph whole — two legal shapes, "Serve the prototype and
   click it … adversarial, not ceremonial", the authority split ("flows, screens, data shown are
@@ -184,7 +184,7 @@ content growth.
 
 ### Supersession-transfer — [v0.53.0] carve-out
 - **Disposition:** superseded — protection transfers to schema rule `not-for`, citing
-  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** "code review (sole carve-out `mochiko:review-code-minimalism`, implement-side)".
 - **Consumers assessed:** `review-plan-artifacts` carries its own copy (its own strip entry covers
@@ -192,7 +192,7 @@ content growth.
 
 ### Supersession-transfer — [v0.82.0] envelope wording
 - **Disposition:** superseded — protection transfers to schema rule `density-never-gap`, citing
-  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** "density is never itself a gap … undisclosed overage past the envelope's size defaults
   is advisory per its rule 8."
@@ -204,7 +204,7 @@ content growth.
   `map-mirror`, `report-structure`, `input-not-verdict`, and the stub `author-grader`
   (`extends: review-common.author-grader`; the body line "Independent reviewer, never the author"
   superseded by the common block's strongest wording per near-dup convergence R2).
-- **Tier failed:** n/a — ruled conversion (skill-content-schema D3, obligations-only boundary).
+- **Tier failed:** n/a — ruled conversion (skill-content-schema D3-obligations-only-schema, obligations-only boundary).
 - **Content:** "Coverage is complete, never sampled: every user story reviewed for completeness, every
   success criterion checked for measurability, edge cases hunted per main flow" · "Every question is a
   decision the stakeholder can make: 2–3 concrete options, what each means for users, why it matters —
@@ -325,7 +325,7 @@ content growth.
 
 ## [v0.67.0] Excess / unpaid-scope class added — defect-class lead-in re-keyed
 - **Disposition:** superseded → the excess posture from the architect-role ruling: the defect-class table gains a remove-shaped sixth class, so the "five ... those questions hunt" lead-in was rewritten.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`, D3 as amended by its F3 calibration clause; DECISIONS.md combined-wave build row).
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`, D3-library-pushback-posture as amended by its F3 calibration clause; DECISIONS.md combined-wave build row).
 - **Content (superseded, verbatim):** OLD lead-in — "The five requirement-defect classes those questions hunt (the canonical hunt taxonomy — the `devils-advocate` persona names these classes and leans on this section for the detail):" → NEW — "The requirement-defect classes — the canonical hunt taxonomy the `devils-advocate` persona leans on this section for the detail. The first five are what the product questions above surface; the sixth is the remove-shaped excess class:".
 - **Kept deliberately:** the five absence/conflict classes (Missing requirements, Ambiguities, Edge cases, Assumption gaps, Contradictions) untouched; the pointer relationship to the `devils-advocate` persona preserved — the dropped "names these classes and" is inert, since the persona points here without a class count (grep-verified), so no ripple. Pure addition riding the decision row (no strip): the "Excess / unpaid scope" table row carrying the calibration clause in one breath.
 - **Consumers assessed:** `devils-advocate` persona (`plugins/mochiko/agents/devils-advocate.md`) points at this skill for "the canonical gap taxonomy" with no hard count — unchanged. No command references the class count.
@@ -368,7 +368,7 @@ content growth.
 
 ## [v0.58.0] Delivery Slices grade superseded by the feature-layer grade (D16)
 - **Disposition:** superseded → the new "The feature layer" section (10-check table: derivation honesty, disposition completeness, dedup at the run-open git baseline, granularity, entry well-formedness, delta legality, SC re-homing, in-flight handling, selection-card deferred-SC honesty, specs-index agreement). Map machinery stays single-sourced in `mochiko:authoring-feature-map`; the table is the reviewer's mirror.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)", record `.mochiko/brainstorms/feature-map-layer/record.md`, D4 slices retire · D16 extended spec review · R13 git-baseline rule · D21 selection-card deferred-SC list · D8 delta legality).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)", record `.mochiko/brainstorms/feature-map-layer/record.md`, D4-slices-leave-pipeline slices retire · D16-map-integrity-review extended spec review · R13 git-baseline rule · D21-deferred-success-criteria selection-card deferred-SC list · D8-sticky-delivered-status delta legality).
 - **Content (verbatim, the superseded section):**
   ```
   ## The Delivery Slices section
@@ -403,7 +403,7 @@ content growth.
 
 ## [v0.53.0] Code-review punt line narrowed — minimalism-lens carve-out
 - **Disposition:** superseded → the same When-NOT-to-Use bullet with a parenthetical carve-out naming `mochiko:review-code-minimalism` (implement-side) as the one exception; general code review stays a different domain.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-05 "Ponytail code-minimalism ruled (PT-D1–D10)", record `.mochiko/brainstorms/ponytail-concepts-integration/record.md`, D2 — punt reversal narrow, lens-only).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-05 "Ponytail code-minimalism ruled (PT-D1–D10)", record `.mochiko/brainstorms/ponytail-concepts-integration/record.md`, D2-qa-seat-lens — punt reversal narrow, lens-only).
 - **Content (verbatim, the superseded bullet):**
   ```
   - **Code review** - Different skill domain entirely
@@ -413,13 +413,13 @@ content growth.
 
 ## [v0.50.0] Gained the Screens & Flows prototype-walk grade
 - **Disposition:** pure addition riding the decision row (new 8-check section + process step + checklist row + description clause; the process-step renumber 6→7/7→8/8→9 is the only touched existing text)
-- **Tier failed:** n/a — addition by ruling (`DECISIONS.md` row 2026-08-02 "UX mocking in specify (UX-D1–D9)"; record `.mochiko/brainstorms/ux-mocking-in-specify/record.md`, D7)
+- **Tier failed:** n/a — addition by ruling (`DECISIONS.md` row 2026-08-02 "UX mocking in specify (UX-D1–D9)"; record `.mochiko/brainstorms/ux-mocking-in-specify/record.md`, D7-stress-test-grading)
 - **Content:** nothing removed from this skill.
 - **Consumers assessed:** devils-advocate (mounts it) · specify (binds it).
 
 ## [v0.49.0] Absorbed the Delivery Slices grade (from retired review-slices)
 - **Disposition:** pure addition riding the decision row (new 11-check section + process step + checklist row + description clause) — recorded here because the absorption is half of a supersession pair (see `review-slices.md`)
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D9)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D9-slice-grading-merges)
 - **Content:** nothing removed from this skill.
 - **Consumers assessed:** devils-advocate (mounts it) · specify (binds it).
 

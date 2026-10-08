@@ -10,7 +10,7 @@ v0.99.0, the header supersession at v0.100.0.
 <!-- Wave context: the schema-header runtime-kernel wave (v0.100.0) — shipped schema
 top-of-file header comments trimmed to runtime-essential content. Ruling for every
 [v0.100.0] entry below: `.mochiko/decisions/2026-08-28-schema-header-runtime-kernel.md`
-(a recorded supersession-by-amendment of command-content-schema D14) + `DECISIONS.md`
+(a recorded supersession-by-amendment of command-content-schema D14-nested-section-grammar) + `DECISIONS.md`
 2026-08-28 row. Pre-edit verbatim text: `git show e44b33d:plugins/mochiko/schemas/<file>`. -->
 
 ## [v0.100.0] `schemas/common.yaml` header — narrative superseded by the binding-resolution kernel

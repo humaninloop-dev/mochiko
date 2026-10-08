@@ -12,7 +12,7 @@ framing).
 
 ## [v0.58.0] Skill retired whole — graduation slices dissolve into the feature map (supersession by ruling)
 - **Disposition:** superseded → `skills/authoring-feature-map/SKILL.md` — the directory `plugins/mochiko/skills/authoring-slices/` is deleted; the feature is the pipeline unit and the slicing invariants re-key onto features there.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md` — **D4** graduation slices retire, the feature selection is the delivery unit; **D18** the Graduation contract re-keys to features verbatim plus the cross-spec extend reach; **D22** foundation softens to an ordering role)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md` — **D4-slices-leave-pipeline** graduation slices retire, the feature selection is the delivery unit; **D18-graduation-contract-rekey** the Graduation contract re-keys to features verbatim plus the cross-spec extend reach; **D22-foundation-ordering-role** foundation softens to an ordering role)
 - **Content (the full SKILL.md at deletion, verbatim):**
 
   ````markdown
@@ -157,7 +157,7 @@ framing).
 
 ## [v0.49.0] Re-scoped overlay → spec section
 - **Disposition:** superseded → same skill, section form: output is `spec.md`'s Delivery Slices section per `spec-template.md`; keyed to the spec's confirmed Intent delivery ruling
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D5+D6+D7)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D5-slice-command-retires+D6-slices-into-spec+D7-specify-intent-stage)
 - **Content:** "The spec stamp (staleness guard)" section · invariant 6's overlay-never-edits-spec framing · the null-exit-writes-nothing rule ("absence of this file IS the whole-spec state — never write a stub") · Process step 9's slices-template fill + stamp · overlay-purity checklist rows · review-slices as the named grader. Full text: git history at v0.48.0.
 - **Kept deliberately:** all six invariants (6 reworded to section-indexes-never-rewrites) · sizing · cross-cutting/un-homeable escalation · Feature-Done declared-now-verified-at-close · the two-slices vocabulary table · single-slice exit (inverted from write-nothing to write-the-one-line, now gradeable).
 - **Consumers assessed:** specify (new binder) · review-specifications (new grader) · spec-template (new shape home) · router.

@@ -158,7 +158,7 @@ row). Pre-edit verbatim text: `git show 5558fd7:plugins/mochiko/skills/patterns-
 - **Disposition:** superseded → the same one-line no-delta claim, recorded in the design-phase
   package.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1: `/mochiko:plan` retires and its
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires: `/mochiko:plan` retires and its
   design work moves into `/mochiko:implement`'s design phase; wording ruled by the wave lead
   2026-08-26).
 - **Content (superseded fragment, verbatim):**

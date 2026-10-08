@@ -227,7 +227,7 @@ This arithmetic prices what the rules-lost result is read against; it authorizes
     (exit 2); `pre` and `noskill` failures are recorded only.
 13. **The temptation devices give away seeded defects.** g1's `session-notes.md` hands the
     reviewer the unwalked high rows and the 44 % coverage against the high row's blocking
-    threshold; g2's `counterpart-findings.md` hands GI-001's unbased Assumed mark and the
+    threshold; g2's `counterpart-findings.md` hands "GI-001"'s unbased Assumed mark and the
     dimension-8 trip. A reviewer that reads the device first can name those defects without
     a cold read, so only the stated read order (disclosure 1) and the by-name duplicate flags
     distinguish a sequestered reviewer from one that inherited them; the judge reads that

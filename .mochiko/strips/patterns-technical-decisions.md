@@ -25,7 +25,7 @@ in-band.
     Q8), takes no entry.
 - **Tier failed:** n/a — supersession by ruling:
   - `DECISIONS.md` 2026-09-24 delta-files row points to
-    `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md`, whose D1 edits the
+    `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md`, whose D1-delta-files-retire edits the
     product file in place;
   - joint-build seam R1 (`.mochiko/decisions/2026-09-29-joint-hook-delta-build-seams.md`): a ruling
     that changes a baseline lives on its entry, and `.mochiko/decisions/` keeps only rulings that

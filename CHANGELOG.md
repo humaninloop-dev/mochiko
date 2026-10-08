@@ -53,6 +53,16 @@ to +159; `review-feasibility`, `authoring-constitution`, `patterns-entity-modeli
 Dependency: the IDs section names `mochiko-cli ids rename` and `rekey`, so this release needs a
 `mochiko-cli` release carrying the `ids` subcommand.
 
+The repo's own back-fill (wave 3, D14-live-layer-backfill): every session decision and GI citation
+in the live layer is joined to its definition's slug — 639 renames, 48 literal series and 628 graded
+hand rows (owner qualifiers, normalized shorthands, quote masks), then a review fix round. Shipped
+prose touched: `authoring-constitution` (SKILL.md and six references), the `mochiko` router,
+`patterns-model-tiering`, `review-brainstorm`'s EXTERNAL-CLAIMS, `validation-constitution`'s two
+references, `validation-primitive-edit`, the `release-gates` module template, and comment lines in
+the `artifact-gate` and `dependency-halt` hook scripts — 9 strip entries stamped [v0.118.0]
+(`validation-primitive-edit.md`, `artifact-gate.md` and `dependency-halt.md` new). No migration;
+the replay is unchanged. `mochiko-cli ids --check` over the live layer: 0 bare · 0 drift.
+
 ## [0.117.0] — 2026-10-06
 
 **The brainstorm target state — MINOR** (`brainstorm-target-state` D1–D23 as review-amended, record

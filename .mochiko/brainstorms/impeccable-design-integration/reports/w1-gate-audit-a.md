@@ -159,7 +159,7 @@ unit_10: |
   Issues requiring fix: none
 unit_11: |
   VALIDATE: schema content · 0011-design-direction-craft-floor · migration + view diff (patterns-design-direction, patterns-craft-floor, authoring-prototype, templates/spec, commands/specify)
-  Checklist run: judgment-items-schema (AM-2 five)
+  Checklist run: judgment-items-schema (AM-2-required-cli-dependency five)
   Evidence read: plugins/mochiko/migrations/0011-design-direction-craft-floor.yaml (full) · git diff HEAD on the five views · new views untracked, equal to replay
   Pre-pass: 0 rejecting; views equal replay
   Intent stated: PASS. Anchor present: PASS — header D3; floors and rewords of anchored rules carry D1/D3/D6/D7/D8/D11.
@@ -170,7 +170,7 @@ unit_11: |
   Issues requiring fix: none
 unit_12: |
   VALIDATE: schema content · 0012-design-verification-lenses · migration + view diff (review-design-audit, testing-gap-finding, testing-end-user)
-  Checklist run: judgment-items-schema (AM-2 five)
+  Checklist run: judgment-items-schema (AM-2-required-cli-dependency five)
   Evidence read: plugins/mochiko/migrations/0012-design-verification-lenses.yaml (full) · rendered blocks of all three skills
   Pre-pass: 0 rejecting; views equal replay
   Intent stated: PASS. Anchor present: PASS — header D8; mints carry D3/D7/D8/D10/D11/D13.
@@ -181,7 +181,7 @@ unit_12: |
   Issues requiring fix: none
 unit_13: |
   VALIDATE: schema content · 0015-product-designer-rekey · migration + view diff (patterns-model-tiering)
-  Checklist run: judgment-items-schema (AM-2 five)
+  Checklist run: judgment-items-schema (AM-2-required-cli-dependency five)
   Evidence read: plugins/mochiko/migrations/0015-product-designer-rekey.yaml (full) · view diff (one token)
   Pre-pass: 0 rejecting; views equal replay
   Intent stated: PASS. Anchor present: PASS — D4. ID lifecycle: PASS — reword keeps the id.
@@ -234,7 +234,7 @@ round2_unit_10: |
   Issues requiring fix: none
 round2_unit_14: |
   VALIDATE: schema content · 0016-direction-per-surface · migration + view diff (patterns-design-direction, authoring-prototype, command/specify, templates/spec)
-  Checklist run: judgment-items-schema (AM-2 five)
+  Checklist run: judgment-items-schema (AM-2-required-cli-dependency five)
   Evidence read: plugins/mochiko/migrations/0016-direction-per-surface.yaml (full) · views equal replay
   Intent stated: PASS. Anchor present: PASS — D5 (mode and contract per surface).
   ID lifecycle: PASS — seven rewords keeping ids; the template replace changes only the Direction heading, the per-surface contract/check, and max_lines 37 → 44.
@@ -244,7 +244,7 @@ round2_unit_14: |
   Issues requiring fix: none
 round2_unit_15: |
   VALIDATE: schema content · 0017-critique-depth-precedence · migration + view diff (testing-gap-finding)
-  Checklist run: judgment-items-schema (AM-2 five)
+  Checklist run: judgment-items-schema (AM-2-required-cli-dependency five)
   Evidence read: plugins/mochiko/migrations/0017-critique-depth-precedence.yaml (full) · views equal replay
   Intent stated: PASS. Anchor present: PASS — D13. ID lifecycle: PASS — one reword, id and `when: {depth: low, ux_bearing: yes}` kept.
   Floor and fail survival: PASS — must-class rule, no exit. Register: PASS.

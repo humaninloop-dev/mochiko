@@ -307,7 +307,7 @@
   `validation-constitution` g1/g3 (floor-accounting line; the ASV waiver re-keyed to the D2
   product-instance ground; module-stamp consistency dropped; the never-excess sentences to
   floor-derived); `review-governance-intent` g1–g3 (status criteria to the product-instance ground
-  on GI-011/GI-012; the risk-posture and lifespan user-declared conflicts dropped; the GDPR/HIPAA
+  on "GI-011"/"GI-012"; the risk-posture and lifespan user-declared conflicts dropped; the GDPR/HIPAA
   module sentences dropped or re-keyed). Token grep over all twelve goldens: none. Open item ruled:
   g2's status sentence re-keyed to `critical-gaps` on the product-instance ground (E8 — a golden
   graded by the retired criteria), one sentence, before G1's unit. H6/H7 stay as ruled.

@@ -257,7 +257,7 @@ newest-first above `[v0.91.0]`, `Content:` verbatim against HEAD, ruling cited a
 **The eleven, identified independently** from the `mint-rule` ops in
 `plugins/mochiko/migrations/0005-artifact-homes.yaml` (17 mints: 6 commands, 11 skills). Each
 minted rule is `class: floor · kind: binding`, anchored
-`2026-09-13 hook-enforced-artifact-schema D1` — the ruled D1a floor.
+"`2026-09-13 hook-enforced-artifact-schema D1`" — the ruled D1a floor.
 
 **How the ruling was decided.** For each row I measured the current delivered payload, then
 re-rendered the same seven sections against a log directory holding `0001`–`0004` only. The
@@ -290,9 +290,9 @@ render exactly one. The delta is the mint and nothing else.
 
 | component | size | ground |
 |---|---|---|
-| D1a mint (wave 3) | +497 to +558 | `class: floor`, anchored `2026-09-13 hook-enforced-artifact-schema D1` |
+| D1a mint (wave 3) | +497 to +558 | `class: floor`, anchored "`2026-09-13 hook-enforced-artifact-schema D1`" |
 | v0.107.0 render-format change | −237, exactly, every skill | verified constant, see below |
-| v0.107.0 two-arm retirement | a further −8 to −189, seven rows | `cli-schema-delivery` D9 |
+| v0.107.0 two-arm retirement | a further −8 to −189, seven rows | `cli-schema-delivery` D9-staged-wave-rollout |
 | v0.107.0 body reword | +1 to +42, **seven** rows | `[v0.107.0]` strip entries |
 
 **The −237 is a verified constant, not an average.** I measured six skills the mint never touched
@@ -304,7 +304,7 @@ its body carries the same +33 reword drift.
 **The residual in seven rows is also ruled.** Four of the eleven shrink exactly −237; seven shrink
 between −245 and −426. `git diff 62aa99d 32c1ed5 --stat` shows the v0.107.0 wave appended 151
 lines to `0003-two-arm-to-cli.yaml` — "Retire the two-arm delivery phrasing and every schema-file
-path from the corpus", anchored `2026-09-03 cli-schema-delivery D9`, retiring rules such as
+path from the corpus", anchored "`2026-09-03 cli-schema-delivery D9`", retiring rules such as
 `analysis-codebase.deliverable-two-arm-binding` and touching `patterns-vertical-tdd`. Those seven
 are exactly the skills that carried a two-arm rule. `0005` itself contains only the mint for each
 of the eleven — two id mentions per skill, no `reword-rule` or tombstone — so it is not the source.
@@ -462,11 +462,11 @@ The figures were plainly re-measured, not derived — `authoring-requirements` a
 figure would not have produced.
 
 **What is missing — the `0003` two-arm residual, absent from all eleven rows.** No row mentions
-`0003`, the two-arm retirement, `cli-schema-delivery` D9, or the v0.107.0 render-format change.
+`0003`, the two-arm retirement, `cli-schema-delivery` D9-staged-wave-rollout, or the v0.107.0 render-format change.
 The consequence is not cosmetic: **as written, no row's arithmetic closes.** A reader
 reconciling `analysis-codebase` takes the recorded render of 9,088, adds the stated mint cost of
 523, expects 9,611, and finds 9,228 — a 383-char hole the row does not account for. That breaks
-the GI-006 reconstruction property the ledger exists to carry.
+the GI-006-primitive-edit-traceability reconstruction property the ledger exists to carry.
 
 | skill | recorded render + mint | actual render | unexplained | of which v0.107.0 format | of which `0003` two-arm |
 |---|---|---|---|---|---|
@@ -493,7 +493,7 @@ no residual are the four that bound neither. Retired ids visible in that diff in
 
 **Fix — one clause per row, no number changes.** Add to each of the eleven the v0.107.0
 render-format change of −237, and to the seven the `0003` two-arm residual with its size and the
-`cli-schema-delivery` D9 anchor. Nothing else in these rows needs touching.
+`cli-schema-delivery` D9-staged-wave-rollout anchor. Nothing else in these rows needs touching.
 
 ## Settled — seven body deltas, not six
 
@@ -542,7 +542,7 @@ lists, on all eleven.
 **The two limbs are now separately and correctly sourced.** The body limb reads "from the
 v0.107.0 two-arm body reword, strip-recorded in that wave's entry"; the render limb reads "from
 the two-arm rule retired by `0003-two-arm-to-cli.yaml` (record `cli-schema-delivery` D9, anchor
-2026-09-03)". That distinction is the one that matters for GI-006: the migration changed log
+2026-09-03)". That distinction is the one that matters for GI-006-primitive-edit-traceability: the migration changed log
 rules and the render, never a `SKILL.md` body, and the body edit has its own record. I confirmed
 all seven body-limb skills carry a `## [v0.107.0]` entry in their strip file, so the pointer
 resolves in every case.
@@ -586,7 +586,7 @@ seven carry the body limb, dropping `authoring-architecture-store` and
 `authoring-requirements` and `authoring-epic` carry neither, correctly. Every row's stated
 component count agrees with the limbs it lists.
 
-**Anchors, budgets and history, checked mechanically.** The `cli-schema-delivery` D9 anchor with
+**Anchors, budgets and history, checked mechanically.** The `cli-schema-delivery` D9-staged-wave-rollout anchor with
 its 2026-09-03 date is present on every one of the seven render limbs and on no row that lacks
 one. The −237 clause is on all eleven. Every budget cell is byte-identical to HEAD, and each
 old row's full parenthetical survives verbatim inside its replacement. Eleven rows changed;

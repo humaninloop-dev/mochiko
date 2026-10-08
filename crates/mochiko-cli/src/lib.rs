@@ -4,7 +4,7 @@
 //! (record D1). The binary reads that log and prints from it: one schema section at a time for a
 //! command or skill's rules (D3 as amended), and the producer or checklist view of an artifact
 //! template. It never gates pipeline progress, dispatches agents, or grades an artifact — the
-//! standing bright line (GI-019).
+//! standing bright line (GI-019-kernel-tooling-admission).
 //!
 //! - [`migration`] — the file grammar, the change ops, the body hash, the version contract
 //! - [`model`] — the typed document model and its canonical encoding

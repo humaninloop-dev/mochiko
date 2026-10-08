@@ -28,8 +28,8 @@ No file outside P1's ownership was opened for writing. The four persona files, t
 
 ## 1. Migration 0007 — 11 ops
 
-`grammar: 1` · `id: 0007-seat-default-key` · `sequence: 7` · header `anchor: 2026-09-19
-orchestrator-model-selection D1` · `hash: sha256:0287aa5d0681d9ebac8a370c7092556e5c9b4a32142063d2ff3773f3856d4ef3`
+`grammar: 1` · `id: 0007-seat-default-key` · `sequence: 7` · header "`anchor: 2026-09-19
+orchestrator-model-selection D1`" · `hash: sha256:0287aa5d0681d9ebac8a370c7092556e5c9b4a32142063d2ff3773f3856d4ef3`
 (the post-fix-round value; §9 carries the trail).
 Every op names `schema: skill/patterns-model-tiering`.
 
@@ -72,8 +72,8 @@ deliberate, ruled by the lead at plan approval, and keeps the floor set at seven
 
 **Flag A, as ruled, plus V1's F1.** Op 9 makes four word-level edits to `class-key-session-tier`
 and nothing else: `Session tier —` → `Seat tier —`; `or a strong seat does` → `or another rostered
-seat does`; `stays on the strong tier` → `stays with the seat` (F1); `(model-tiered-seats D5;` →
-`(orchestrator-model-selection D1/D3;`. The two middle edits are one defect the ruling creates and
+seat does`; `stays on the strong tier` → `stays with the seat` (F1); "`(model-tiered-seats D5;`" →
+"`(orchestrator-model-selection D1/D3;`". The two middle edits are one defect the ruling creates and
 V1 caught the half I missed: under D3 four rostered seats are `down`-class, so "strong" no longer
 names the seat set, and the rule used the collided vocabulary twice. Flag A fixed the first
 occurrence; F1 fixed the second.

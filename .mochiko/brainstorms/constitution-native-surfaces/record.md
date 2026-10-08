@@ -52,7 +52,7 @@ _(checker-authored, pasted verbatim 2026-07-18)_
 - **Producer:** `setup.md` authors it (`setup.md:8,52`); `validator.md:10` grades it; `analysis-codebase` checks for its presence (`skills/analysis-codebase/references/CONTEXT-GATHERING.md:47`).
 - **Read as "governing context" by five downstream commands, none blocking:** `specify.md:27` ("Constitution prerequisite… carry its constraints into the producer's brief"), `plan.md:28`, `tasks.md:30`, `slice.md:30`, `implement.md:30` (all "Read… carry its principles into the producer's brief… Missing → surface it… not a blocking gate — do not auto-resolve"), and `brainstorm.md:21` ("Read… if present and carry it as governing context — never a blocking gate").
 - **Templates referencing it:** `agent-dispatch.md:43-44` (example input/output), `techanalyst-report-template.md:64` and `taskarchitect-report-template.md:77` (a "Constitution Alignment" report section), `patterns-technical-decisions/references/DECISION-RECORD.md:145`.
-- **Consumption mode in every case is an explicit `Read` by a mochiko command that injects the text into a producer brief.** Nothing consumes it via native Claude Code loading — `.mochiko/memory/constitution.md` is not a native memory path (see §3), so absent a mochiko command reading it, no agent session sees it. This matches the brainstorm record's own grep finding: "no downstream workflow reads the floor… no downstream mechanical dependency… none exists today" (`setup-constitution-flexibility/record.md:49,137` — decision D1 / finding A4) *[erratum applied — see Review]*.
+- **Consumption mode in every case is an explicit `Read` by a mochiko command that injects the text into a producer brief.** Nothing consumes it via native Claude Code loading — `.mochiko/memory/constitution.md` is not a native memory path (see §3), so absent a mochiko command reading it, no agent session sees it. This matches the brainstorm record's own grep finding: "no downstream workflow reads the floor… no downstream mechanical dependency… none exists today" (`setup-constitution-flexibility/record.md:49,137` — decision `setup-constitution-flexibility` D1-scope-tiered-floor / finding A4) *[erratum applied — see Review]*.
 
 ---
 
@@ -81,7 +81,7 @@ _(checker-authored, pasted verbatim 2026-07-18)_
 
 **What native surfaces already do that the constitution duplicates:**
 - CLAUDE.md's stated purpose — "Coding standards, workflows, project architecture" — overlaps the constitution's Technology Stack, Quality Gates, and Principles-Summary. The constitution's own sync table concedes this: it requires CLAUDE.md to carry those sections, tech stack + quality gates "MUST match exactly" (`constitution-template.md:217-227`). Today that copy is manual/unported (`authoring-constitution/SKILL.md:368-370`).
-- `.claude/rules/` with `paths` frontmatter does path-scoped rule injection natively — the mechanism the type/tier modules of `setup-constitution-flexibility/record.md` decision D8 (`layer-rules` for backend layers, a planned frontend/accessibility shelf) reach for. *[erratum applied — see Review]* Docs' worked example ("All API endpoints must include input validation… standard error response format… OpenAPI documentation comments") is the same shape as `layer-rules`/API-contract principles.
+- `.claude/rules/` with `paths` frontmatter does path-scoped rule injection natively — the mechanism the type/tier modules of `setup-constitution-flexibility/record.md` decision `setup-constitution-flexibility` D8-core-module-templates (`layer-rules` for backend layers, a planned frontend/accessibility shelf) reach for. *[erratum applied — see Review]* Docs' worked example ("All API endpoints must include input validation… standard error response format… OpenAPI documentation comments") is the same shape as `layer-rules`/API-contract principles.
 - Skills carry repeatable procedure natively (the "how"); mochiko already uses them for that. Constitution principles are "what/governance," not procedure — limited overlap.
 
 **What the constitution does that no native surface does (per docs):**
@@ -140,7 +140,7 @@ _(checker-authored, pasted verbatim)_
 
 _(confidence marks: Confident / Assumed / Contested / Unsure / Deferred)_
 
-### D1 — Complete dissolution; CLAUDE.md is the thin ratified core · `Confident`
+### D1-constitution-file-dissolved — Complete dissolution; CLAUDE.md is the thin ratified core · `Confident`
 
 **Statement:** `.mochiko/memory/constitution.md` ceases to exist. `CLAUDE.md` takes over the thin-ratified-core role: it carries the ratified index of principles, carries universal principles' enforceable content directly as short governance-region lines *(verify-pass propagation C2, per the M3 relocation)*, and points to where the rest lives — agent skills and `paths`-scoped `.claude/rules/` files. Content loads via native disclosure tiers (CLAUDE.md always-on, `paths`-scoped rules on matching-file reads, skills on trigger).
 
@@ -150,31 +150,31 @@ _(confidence marks: Confident / Assumed / Contested / Unsure / Deferred)_
 
 **Ruled:** user, Q2 (2026-07-18). Open follow-ons at time of ruling: where the governance metadata (version, tier, waivers, amendment, trace-IDs) lands; content→surface mapping; what happens to setup's authoring/validation loop and the five downstream constitution-reads.
 
-### D2 — Governance layer splits by audience · `Confident`
+### D2-audience-governance-split — Governance layer splits by audience · `Confident`
 
 **Statement** *(amended at review — M2+M3 user-ruled, M8 lead formulation)***:** `CLAUDE.md` carries what every session needs, all short-form: the ratified stamp (version + date + tier, one line), the principle index with pointers, the universal principles as short imperative lines, the technology stack, and the quality-gates summary. Module detail (knowledge-management operating manual, release-gate detail) sits behind pointers, on-demand. The governance ledger — waiver table with revisit triggers, amendment process, exception registry — lives in `.mochiko/memory/` beside `governance-intent.md`, read only by setup/amend runs and the validator. **Three-Part metadata and GI trace-IDs live ledger-primary, keyed by trace-ID**; HTML trace comments are an optional optimization in CLAUDE.md only (comment-stripping documented there; for rules files checked 2026-07-18: **undocumented**).
 
 > *Original form read "only the stamp and the index"; superseded at the survivor gate by the probe-driven retreat of universal principles into CLAUDE.md (M3) and the always-on budget reconciliation (M2). Trace sentence tightened ledger-primary (M8).*
 
-**Rationale:** The same context-economics logic that motivated D1, applied to governance itself: always-on surfaces carry only what every session acts on; rare governance operations read their ledger on demand. Rejected: all-in-CLAUDE.md (re-imports the verbosity problem into the always-on surface); dissolve-the-ceremony (deletes the amendment/ratification story the setup-v2 session ruled central, and amend runs lose their diff-base).
+**Rationale:** The same context-economics logic that motivated D1-constitution-file-dissolved, applied to governance itself: always-on surfaces carry only what every session acts on; rare governance operations read their ledger on demand. Rejected: all-in-CLAUDE.md (re-imports the verbosity problem into the always-on surface); dissolve-the-ceremony (deletes the amendment/ratification story the setup-v2 session ruled central, and amend runs lose their diff-base).
 
 **Ruled:** user, Q3 (2026-07-18) — adopted the lead's recommendation.
 
-### D3 — Content→surface mapping · `Confident`
+### D3-content-surface-mapping — Content→surface mapping · `Confident`
 
 **Statement:** Every constitution-template section gets the following destination (user kept the proposed table whole):
 
 | Constitution content today | New home | Reasoning / caveat |
 |---|---|---|
-| Ratified stamp (version, date, tier) | `CLAUDE.md` — one line | D2 |
-| Principle index (one line each + pointer) | `CLAUDE.md` | D1 — the thin core |
+| Ratified stamp (version, date, tier) | `CLAUDE.md` — one line | D2-audience-governance-split |
+| Principle index (one line each + pointer) | `CLAUDE.md` | D1-constitution-file-dissolved — the thin core |
 | Universal principles (every session) | `CLAUDE.md` — short imperative lines in the governance region | *Amended at review (M3, user-ruled):* was `.claude/rules/` unconditional files; the empirical probe showed rules delivery to spawned producers can't be assumed, while CLAUDE.md is doc-confirmed for both spawn paths |
 | Scope-bound principles (layers, API standards, test discipline, frontend shelf) | `.claude/rules/` — **`paths`-scoped**, one file per concern | Docs' worked example is this shape. Caveat: fires on matching-file *read* — pure-authoring producers may need the brief to name it |
 | Procedure-shaped standards (how-tos) | Skills | Existing mochiko convention; dispatch briefs keep naming them |
 | Technology stack | `CLAUDE.md` | Docs name this as CLAUDE.md's purpose |
 | Quality gates | `CLAUDE.md` summary; teeth stay CI/hooks | The teeth were never in the file |
 | Three-Part metadata (Enforcement/Testability/Rationale) + GI trace | `.mochiko/memory/` ledger keyed by trace-ID (fallback made primary — rules-file comment stripping is undocumented); HTML comments usable in CLAUDE.md (stripping documented there); empirical stripping test optional at build time | Fact-check addendum 2 |
-| Governance ledger (waivers, amendment, exceptions) | `.mochiko/memory/` | D2 |
+| Governance ledger (waivers, amendment, exceptions) | `.mochiko/memory/` | D2-audience-governance-split |
 | SYNC IMPACT report + CLAUDE.md Synchronization section | **Dies** | Nothing left to sync — the copy problem dissolves with the artifact; the stub-backed `syncing-claude-md` dependency disappears |
 | Module: layer-rules | `paths`-scoped rules | Direct fit |
 | Module: knowledge-management | Pointer from `CLAUDE.md`; operating-manual detail on-demand + command carriers unchanged | *Amended at review (M2, user-ruled):* detail dropped behind a pointer to protect the always-on budget |
@@ -187,9 +187,9 @@ _(confidence marks: Confident / Assumed / Contested / Unsure / Deferred)_
 
 **Ruled:** user, Q4 (2026-07-18) — kept the lead's proposed table whole, including the flagged rows (universal principles as rules files; sync-section death; metadata to ledger after the stripping check came back undocumented).
 
-### D4 — Setup loop survives with a distributed target; trace is the spine · `Confident`
+### D4-distributed-setup-loop — Setup loop survives with a distributed target; trace is the spine · `Confident`
 
-**Statement:** Interrogation and `governance-intent.md` ratification are untouched. The producer authors the full surface set (CLAUDE.md core, rules files, skill pointers, ledger). The cold validator grades the *set* using the trace summary as its instrument: every ratified GI element lands on **one primary enforceable home** (CLAUDE.md governance-region line, rule file, or skill) **with its required companion entries present and complete** (index line, ledger metadata); every surface element traces back to a GI element; the CLAUDE.md index points only at files that exist. *(Amended at review, M4, lead formulation: "exactly one surface" restated — D3 deliberately decomposes one principle across index + home + ledger; the validator grades the full decomposition, which also catches missing companions.)* The CLAUDE.md version stamp is the governance release version. Human acceptance gate unchanged.
+**Statement:** Interrogation and `governance-intent.md` ratification are untouched. The producer authors the full surface set (CLAUDE.md core, rules files, skill pointers, ledger). The cold validator grades the *set* using the trace summary as its instrument: every ratified GI element lands on **one primary enforceable home** (CLAUDE.md governance-region line, rule file, or skill) **with its required companion entries present and complete** (index line, ledger metadata); every surface element traces back to a GI element; the CLAUDE.md index points only at files that exist. *(Amended at review, M4, lead formulation: "exactly one surface" restated — D3-content-surface-mapping deliberately decomposes one principle across index + home + ledger; the validator grades the full decomposition, which also catches missing companions.)* The CLAUDE.md version stamp is the governance release version. Human acceptance gate unchanged.
 
 **Rationale:** The gradable unit stops being "one file" and becomes "the trace closes both ways" — the GI trace machinery setup v2 already built is exactly the cross-check a distributed artifact needs. Rejected: grade-the-core-only (ships unaudited governance surfaces); drop-the-validator (removes the independent grade loop-discipline treats as structural — dissolution changed the container, not the content's worth grading).
 
@@ -197,7 +197,7 @@ _(confidence marks: Confident / Assumed / Contested / Unsure / Deferred)_
 
 > **Streak note (lead, logged where it happened):** D2, D3, D4 are three consecutive unelaborated adoptions of lead recommendations. Per the questioning discipline this was flagged to the user after D4; the next fork (Q6) was posed steelmanned, with no marked recommendation. Outcome: the user engaged and ruled actively at D5 ("option B actually not A") — streak broken.
 
-### D5 — Downstream briefs: native loading plus a one-line governance pointer · `Confident`
+### D5-downstream-brief-pointer — Downstream briefs: native loading plus a one-line governance pointer · `Confident`
 
 **Statement:** The five downstream commands (`specify`, `plan`, `tasks`, `slice`, `implement`) delete their constitution read-and-inject step. Native loading carries the governance content to producers via CLAUDE.md at spawn — the surface doc-confirmed for both spawn paths; scope-bound rules arrive via the obligated read, since the empirical probe showed `.claude/rules/` delivery to spawned producers cannot be assumed. *(Verify-pass propagation C1: former "+ unconditional rules at spawn" clause struck — stale after M3 and contradicted by the probe.)* Each command's dispatch brief carries a one-line **obligated read**: it names the governance surfaces relevant to that producer's work (scoped rule files it will not trigger by reading, skills it should lean on) and instructs the producer to Read the named rule files before authoring — no lead-side file-reads, no text duplication. *(Amended at review, M3/F8, user-ruled: pointer upgraded from awareness to obligated read.)*
 
@@ -205,9 +205,9 @@ _(confidence marks: Confident / Assumed / Contested / Unsure / Deferred)_
 
 **Ruled:** user, Q6 (2026-07-18) — posed without a marked recommendation (streak protocol); user chose B over A explicitly.
 
-### D6 — No backward compatibility; no migration machinery · `Confident`
+### D6-no-backward-compatibility — No backward compatibility; no migration machinery · `Confident`
 
-**Statement:** No migration path, no amend-time offer, no legacy read-and-inject support. Mochiko is in dogfooding stage with no external adopters; existing dogfood constitutions are simply superseded — re-run setup under the new form (or discard). The D5 machinery deletion lands fully and immediately.
+**Statement:** No migration path, no amend-time offer, no legacy read-and-inject support. Mochiko is in dogfooding stage with no external adopters; existing dogfood constitutions are simply superseded — re-run setup under the new form (or discard). The D5-downstream-brief-pointer machinery deletion lands fully and immediately.
 
 **Rationale:** User's own grounds, overriding the lead's amend-time-offer recommendation: backward compatibility is a cost paid for adopters, and there are none. All three offered options (amend-time offer / dual-form coexistence / standalone migration command) built machinery for a constituency that doesn't exist. Also dissolves by the same logic: the amend-time module-offer concern for old constitutions.
 
@@ -215,7 +215,7 @@ _(confidence marks: Confident / Assumed / Contested / Unsure / Deferred)_
 
 > *Amended at review (M7, user-ruled): new-form setup deletes a superseded `.mochiko/memory/constitution.md` on sight — no orphaned second governance source.*
 
-### D7 — Subagents-vs-teams observation: defect thread, out of scope · `Confident`
+### D7-subagent-observation-out — Subagents-vs-teams observation: defect thread, out of scope · `Confident`
 
 **Statement:** The dogfood run's subagent execution is dispositioned as a **defect observation, out of this session's design scope**. It lands as a BACKLOG item at acceptance: reproduce in the dogfood project; determine whether `CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS` was unset with a silent fallback (command-discipline failure — `setup.md:24-29` mandates refusal, not fallback) or set and ignored (instruction non-compliance); harden the refusal if needed. The ROADMAP team-form substrate item stays open — the observed run was not team-form, so the observation it waits on has still not occurred. Nothing in D1–D6 alters setup's substrate mandate.
 
@@ -223,17 +223,17 @@ _(confidence marks: Confident / Assumed / Contested / Unsure / Deferred)_
 
 **Ruled:** user, Q8 (2026-07-18).
 
-### D8 — Setup owns a marked governance region in CLAUDE.md; trace summary is the validator's manifest · `Confident`
+### D8-marked-governance-region — Setup owns a marked governance region in CLAUDE.md; trace summary is the validator's manifest · `Confident`
 
 **Statement:** Setup writes its CLAUDE.md content inside a **marked, setup-owned governance region**, idempotently regenerated on setup/amend runs; content outside the region is never touched. For that region only, this deliberately replaces setup's never-overwrite floor — a governance region must *update* on amend. The trace summary is the validator's **complete grading manifest**, bounding what it grades across the CLAUDE.md region, the rules files, and the ledger.
 
-**Rationale:** Dissolution makes setup a co-author of a human-edited file (review finding F2): regeneration must be surgical or D6's "just re-run setup" clobbers user content, and the validator — which previously graded one bounded file — needs a manifest to separate setup-authored governance from user content across N surfaces.
+**Rationale:** Dissolution makes setup a co-author of a human-edited file (review finding F2): regeneration must be surgical or D6-no-backward-compatibility's "just re-run setup" clobbers user content, and the validator — which previously graded one bounded file — needs a manifest to separate setup-authored governance from user content across N surfaces.
 
 **Ruled:** user, review survivor M6 (2026-07-18) — adopted at the survivor gate.
 
 ## Corrections & reversals
 
-- **Review-stage amendments (2026-07-18), all user-authorized at the survivor gate:** D1 rationale completed (M6/F1); D2 statement re-scoped and made ledger-primary (M2+M3, M8); D3 three rows re-routed + Problem-#3 annotation (M2, M3); D4 invariant restated (M4); D5 pointer upgraded to obligated read (M3/F8); D6 stale-file deletion added (M7); D8 added (M6). Each amendment is annotated in place at its decision; dispositions in the Review section.
+- **Review-stage amendments (2026-07-18), all user-authorized at the survivor gate:** D1-constitution-file-dissolved rationale completed (M6/F1); D2-audience-governance-split statement re-scoped and made ledger-primary (M2+M3, M8); D3-content-surface-mapping three rows re-routed + Problem-#3 annotation (M2, M3); D4-distributed-setup-loop invariant restated (M4); D5-downstream-brief-pointer pointer upgraded to obligated read (M3/F8); D6-no-backward-compatibility stale-file deletion added (M7); D8-marked-governance-region added (M6). Each amendment is annotated in place at its decision; dispositions in the Review section.
 - **Checker erratum applied to the map's self-citations** (M1) — the bare `record.md` references point into `setup-constitution-flexibility/record.md`; inline citations re-pointed with erratum tags, checker-verified line numbers unchanged.
 
 ## Review
@@ -245,26 +245,26 @@ _(confidence marks: Confident / Assumed / Contested / Unsure / Deferred)_
 | # | Merged from | Sev | Target | Finding (compressed) | Route |
 |---|---|---|---|---|---|
 | M1 | RI-1 | Important | Fact map | Map self-citations (`record.md:49,137`, "D1/A4", "D8") don't resolve in this record — self-containment fitness item blocked; external facts confirmed true | fact-checker (erratum) — dispatched |
-| M2 | RI-2 + F4 | Important | D2/D3 | D2 "CLAUDE.md carries *only* stamp+index" vs D3 routing tech stack, gates, KM manual, release gates into CLAUDE.md; always-on load never sized; Problem #3 (marginal cost of governing more) solved only for scope-bound principles | user |
-| M3 | F3 + RI-5 + F8 | Important (→Critical if probe fails) | D3/D5 | Rules-loading for **teammates** undocumented (checker won't assert); D5 pointer covers scoped rules + skills but not unconditional rules; pointer-read is voluntary | empirical probe (running) + user |
-| M4 | F6 + RI-4 | Important | D4 | "Every GI element lands on exactly one surface" contradicts D3's deliberate index+rule+ledger spread; literal reading flags correct authoring, loose reading misses missing companions | lead formulation fix (fold) |
-| M5 | F7 + RI-6 | Important | D2/D3/D4 marks | Three `Confident` marks vs the record's own streak note (unelaborated adoptions); fitness reserves `Assumed` for these | user (re-confirm or re-mark) |
-| M6 | F2 + F1 | Important | D1/D4/D6 | Setup becomes co-author of human-edited CLAUDE.md: needs governance-region ownership markers + idempotent regeneration (never-overwrite is the wrong discipline for a region that must update on amend); trace summary should be the validator's complete grading manifest; D1's written rationale defeated by the @import fact (decisive single-source reason unstated) | user (new decision) + lead rationale fix |
-| M7 | F9 | Minor | D6 | No hygiene step removes a superseded `constitution.md` — orphaned second governance source | user (quick ruling) |
-| M8 | RI-3 | Minor | D2 | Trace-comment main clause overstates; ledger-primary parenthetical should be the main clause | lead formulation fix (fold) |
+| M2 | RI-2 + F4 | Important | D2-audience-governance-split/D3-content-surface-mapping | D2-audience-governance-split "CLAUDE.md carries *only* stamp+index" vs D3-content-surface-mapping routing tech stack, gates, KM manual, release gates into CLAUDE.md; always-on load never sized; Problem #3 (marginal cost of governing more) solved only for scope-bound principles | user |
+| M3 | F3 + RI-5 + F8 | Important (→Critical if probe fails) | D3-content-surface-mapping/D5-downstream-brief-pointer | Rules-loading for **teammates** undocumented (checker won't assert); D5-downstream-brief-pointer pointer covers scoped rules + skills but not unconditional rules; pointer-read is voluntary | empirical probe (running) + user |
+| M4 | F6 + RI-4 | Important | D4-distributed-setup-loop | "Every GI element lands on exactly one surface" contradicts D3-content-surface-mapping's deliberate index+rule+ledger spread; literal reading flags correct authoring, loose reading misses missing companions | lead formulation fix (fold) |
+| M5 | F7 + RI-6 | Important | D2-audience-governance-split/D3-content-surface-mapping/D4-distributed-setup-loop marks | Three `Confident` marks vs the record's own streak note (unelaborated adoptions); fitness reserves `Assumed` for these | user (re-confirm or re-mark) |
+| M6 | F2 + F1 | Important | D1-constitution-file-dissolved/D4-distributed-setup-loop/D6-no-backward-compatibility | Setup becomes co-author of human-edited CLAUDE.md: needs governance-region ownership markers + idempotent regeneration (never-overwrite is the wrong discipline for a region that must update on amend); trace summary should be the validator's complete grading manifest; D1-constitution-file-dissolved's written rationale defeated by the @import fact (decisive single-source reason unstated) | user (new decision) + lead rationale fix |
+| M7 | F9 | Minor | D6-no-backward-compatibility | No hygiene step removes a superseded `constitution.md` — orphaned second governance source | user (quick ruling) |
+| M8 | RI-3 | Minor | D2-audience-governance-split | Trace-comment main clause overstates; ledger-primary parenthetical should be the main clause | lead formulation fix (fold) |
 
 ### Checker erratum — map §2/§4 self-citations (M1 resolution, pasted verbatim 2026-07-18)
 
 Confirmed: the bare `record.md` in my map's §2 closing bullet and the "D1/A4"/"D8" references point into **`.mochiko/brainstorms/setup-constitution-flexibility/record.md`** (the prior, 2026-07-05 accepted session), **not** this session's `constitution-native-surfaces/record.md`. The reviewer is right that a bare `record.md` is ambiguous once the map is pasted inside this session's record.
 
 The line numbers are correct **for that prior file** — verified by re-reading it just now:
-- `setup-constitution-flexibility/record.md:49` — D1's rejected-alternatives line: "…its value is the governance contract with the user, **not a downstream mechanical dependency — none exists today.** *Rationale softened during review, A4.*"
+- `setup-constitution-flexibility/record.md:49` — `setup-constitution-flexibility` D1-scope-tiered-floor's rejected-alternatives line: "…its value is the governance contract with the user, **not a downstream mechanical dependency — none exists today.** *Rationale softened during review, A4.*"
 - `setup-constitution-flexibility/record.md:137` — finding A4 (Minor): "**A4 — D1 rationale leg unsupported:** **no downstream workflow reads the floor** (grep-verified)…"
-- `D1` = that record's line 48 decision "The floor survives, scope-tiered"; `A4` = the Minor review finding at line 137; `D8` (referenced in my §4) = that record's "Template layer: universal core + attachable modules" decision. All three live in `setup-constitution-flexibility/record.md`.
+- `setup-constitution-flexibility D1-scope-tiered-floor` = that record's line 48 decision "The floor survives, scope-tiered"; `A4` = the Minor review finding at line 137; `setup-constitution-flexibility D8-core-module-templates` (referenced in my §4) = that record's "Template layer: universal core + attachable modules" decision. All three live in `setup-constitution-flexibility/record.md`.
 
 My quoted fragment "no downstream workflow reads the floor… no downstream mechanical dependency… none exists today" is a splice of that file's line 137 and line 49; both halves are accurate to it.
 
-**Corrected citation (paste-ready):** replace `(record.md:49,137, decision D1/A4)` with `(setup-constitution-flexibility/record.md:49,137 — decision D1 / finding A4)`, and the §4 `D8` reference with `setup-constitution-flexibility/record.md, decision D8`. No factual claim changes; only the file the citation names. My external file-facts (the `plugins/mochiko/` citations) are unaffected — they already carry full paths.
+**Corrected citation (paste-ready):** replace `(record.md:49,137, decision D1/A4)` with `(setup-constitution-flexibility/record.md:49,137 — decision setup-constitution-flexibility D1-scope-tiered-floor / finding A4)`, and the §4 "`D8`" reference with `setup-constitution-flexibility/record.md, decision setup-constitution-flexibility D8-core-module-templates`. No factual claim changes; only the file the citation names. My external file-facts (the `plugins/mochiko/` citations) are unaffected — they already carry full paths.
 
 ### Empirical probe — rules delivery to spawned agents (lead-run, 2026-07-18)
 
@@ -272,11 +272,11 @@ Method: wrote a marker file `.claude/rules/governance-probe.md` (no `paths` fron
 
 **Dispositions:** _(logged per survivor as resolved / user-ruled / recorded-open)_
 
-- **Verify pass (reviewer-ri):** 6/8 folds verified clean on first pass (M1, M4, M5, M6, M7, M8 — evidence quoted); M2/M3 landed at target but left two propagation misses, both lead-pen fixes of the already-ruled relocation: **C1** — D5's "+ unconditional rules at spawn" struck (stale post-M3, contradicted the probe); **C2** — D1's statement now names CLAUDE.md governance-region lines as universal principles' direct home. Both applied 2026-07-18; reviewer-ri quote-checked and **closed both** — "no new inconsistency introduced; nothing else reopened. My verify pass now clears clean… All 8 folds now verified, plus these two propagation fixes." Non-blocking observations (D8 numbering collision with the prior record's D8 — disambiguated by full paths; D1 correction-in-place style; index-line redundancy for CLAUDE.md-resident principles) noted, not gating.
+- **Verify pass (reviewer-ri):** 6/8 folds verified clean on first pass (M1, M4, M5, M6, M7, M8 — evidence quoted); M2/M3 landed at target but left two propagation misses, both lead-pen fixes of the already-ruled relocation: **C1** — D5-downstream-brief-pointer's "+ unconditional rules at spawn" struck (stale post-M3, contradicted the probe); **C2** — D1-constitution-file-dissolved's statement now names CLAUDE.md governance-region lines as universal principles' direct home. Both applied 2026-07-18; reviewer-ri quote-checked and **closed both** — "no new inconsistency introduced; nothing else reopened. My verify pass now clears clean… All 8 folds now verified, plus these two propagation fixes." Non-blocking observations (D8-marked-governance-region numbering collision with the prior record's `setup-constitution-flexibility` D8-core-module-templates — disambiguated by full paths; D1-constitution-file-dissolved correction-in-place style; index-line redundancy for CLAUDE.md-resident principles) noted, not gating.
 - **M1 — resolved.** Checker erratum obtained and pasted above; the map's self-citations point into `setup-constitution-flexibility/record.md` with line numbers verified against that file; no factual claim changed. Citation re-point applied at fold time.
-- **M7 — user-ruled (2026-07-18).** New-form setup deletes a superseded `.mochiko/memory/constitution.md` on sight. Amends D6. Fold at freeze-lift.
-- **M4 — resolved (lead formulation, accepted without argument).** D4's invariant restated: one primary enforceable home + required companion entries; validator grades the full decomposition. Fold at freeze-lift.
-- **M8 — resolved (lead formulation, accepted without argument).** D2's trace sentence made ledger-primary in the main clause. Fold at freeze-lift.
-- **M5 — user-ruled (2026-07-18): D2/D3/D4 actively re-confirmed** in their amended form (post M2+M3 folds), item-by-item at the survivor gate. Marks stay `Confident`; this disposition line is the recorded re-confirmation the fitness standard requires.
-- **M6 — user-ruled (2026-07-18): adopted as new decision D8.** Marked, setup-owned governance region in CLAUDE.md, idempotently regenerated on amend; user content outside the region never touched (deliberately replaces the never-overwrite floor for that region only); trace summary = the validator's complete grading manifest across CLAUDE.md + rules + ledger. D1-rationale completion (single-source reason vs @import) is a lead formulation fix, folded with it.
-- **M2 + M3 — user-ruled (2026-07-18).** Universal principles move into CLAUDE.md as short imperative lines (probe-driven retreat from unconditional rules files); KM operating-manual and release-gate detail drop behind pointers; tech stack + gates summary stay in CLAUDE.md; D3 records that the marginal-context-cost win (Problem #3) holds fully only for scope-bound principles; D5's pointer becomes an **obligated read** of the named scoped rules before authoring. Amends D2 (index+stamp "only" → index+stamp+universal principles+stack+gates summary, all short-form), D3 (two rows re-routed), D5 (obligated read). Fold at freeze-lift.
+- **M7 — user-ruled (2026-07-18).** New-form setup deletes a superseded `.mochiko/memory/constitution.md` on sight. Amends D6-no-backward-compatibility. Fold at freeze-lift.
+- **M4 — resolved (lead formulation, accepted without argument).** D4-distributed-setup-loop's invariant restated: one primary enforceable home + required companion entries; validator grades the full decomposition. Fold at freeze-lift.
+- **M8 — resolved (lead formulation, accepted without argument).** D2-audience-governance-split's trace sentence made ledger-primary in the main clause. Fold at freeze-lift.
+- **M5 — user-ruled (2026-07-18): D2-audience-governance-split/D3-content-surface-mapping/D4-distributed-setup-loop actively re-confirmed** in their amended form (post M2+M3 folds), item-by-item at the survivor gate. Marks stay `Confident`; this disposition line is the recorded re-confirmation the fitness standard requires.
+- **M6 — user-ruled (2026-07-18): adopted as new decision D8-marked-governance-region.** Marked, setup-owned governance region in CLAUDE.md, idempotently regenerated on amend; user content outside the region never touched (deliberately replaces the never-overwrite floor for that region only); trace summary = the validator's complete grading manifest across CLAUDE.md + rules + ledger. D1-rationale completion (single-source reason vs @import) is a lead formulation fix, folded with it.
+- **M2 + M3 — user-ruled (2026-07-18).** Universal principles move into CLAUDE.md as short imperative lines (probe-driven retreat from unconditional rules files); KM operating-manual and release-gate detail drop behind pointers; tech stack + gates summary stay in CLAUDE.md; D3-content-surface-mapping records that the marginal-context-cost win (Problem #3) holds fully only for scope-bound principles; D5-downstream-brief-pointer's pointer becomes an **obligated read** of the named scoped rules before authoring. Amends D2-audience-governance-split (index+stamp "only" → index+stamp+universal principles+stack+gates summary, all short-form), D3-content-surface-mapping (two rows re-routed), D5-downstream-brief-pointer (obligated read). Fold at freeze-lift.

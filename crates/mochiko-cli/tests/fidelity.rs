@@ -679,19 +679,19 @@ fn the_corpus_census_holds_through_the_log() {
     // does not move at all. `0007` (the seat default key, 2026-09-19) nets +4 on
     // `patterns-model-tiering` — one `supersede-rule` (−1) and five `mint-rule`s (+5), two of the
     // five floors; the command side is untouched. The superseded rule was itself a floor, so the
-    // skill's floor count nets +1 on top of `0005`'s eleven. `0008` (the gate form, 2026-09-19
-    // author-grader-consolidation D7) is pure mints and retires nothing: two command rules on
+    // skill's floor count nets +1 on top of `0005`'s eleven. `0008` (the gate form, "2026-09-19
+    // author-grader-consolidation D7") is pure mints and retires nothing: two command rules on
     // `setup`, one of them a floor, and twenty-two skill rules — one on `patterns-model-tiering`
     // and twenty-one in the imported `validation-primitive-edit` document, eleven of those
     // floors. `common.gate-loop-bound` is a block in the existing command-common library, so it
     // mints no document and falls outside both rule counts. The fail set does not move.
-    // `0009` (the plan-QA leg, 2026-09-03 producer-plan-enforcement D8) imports one skill
+    // `0009` (the plan-QA leg, "2026-09-03 producer-plan-enforcement D8") imports one skill
     // document, `review-seat-plan`, carrying fifteen rules of which five are floors. Everything
     // else it does is a `reword-rule` — on `patterns-sound-loop`, `patterns-plan-minimalism`,
     // `common`, and six command-local rules — and a reword keeps its id, its class and its
     // section, so it mints nothing. Both command figures and the fail set therefore hold, and
     // only the skill side moves.
-    // `0010` (the validator retirement, 2026-09-03 producer-plan-enforcement D3) carries three
+    // `0010` (the validator retirement, "2026-09-03 producer-plan-enforcement D3") carries three
     // `reword-rule` ops and nothing else: `patterns-model-tiering.seat-default-key` drops the
     // retired persona from its `strong` list, and the two `authoring-constitution` rules that
     // named the persona's mechanism re-point to the plain fresh grading seat. Each keeps its id,
@@ -850,8 +850,8 @@ fn the_third_migration_left_every_reworded_rule_naming_its_cli_form() {
             "setup.synthesis-artifact",
             "mochiko-cli template governance-intent",
         ),
-        // `setup.feature-map-brownfield` left this table when the 2026-09-24
-        // setup-product-agnostic D5 ruling tombstoned it in `0023`; `0003`'s reword of it stays in
+        // `setup.feature-map-brownfield` left this table when the "2026-09-24
+        // setup-product-agnostic D5" ruling tombstoned it in `0023`; `0003`'s reword of it stays in
         // the append-only log, and the thirteen rows below still prove the migration.
         (
             DocKind::Command,
@@ -1040,7 +1040,7 @@ fn no_rule_points_at_a_schema_file() {
 /// the two reworded floors still floors, naming both rungs (D5's text since superseded by
 /// `0007`'s seat default key — this test reads the full log, so the current wording is what it
 /// checks); the floor pin now eight, seven after `0007` and one more from `0008`'s
-/// persona-less-grader pin (2026-09-19 author-grader-consolidation D7); the reserved section's
+/// persona-less-grader pin ("2026-09-19 author-grader-consolidation D7"); the reserved section's
 /// note still naming its new reservation.
 #[test]
 fn the_fourth_migration_added_the_worker_rung_to_the_tiering_floor() {

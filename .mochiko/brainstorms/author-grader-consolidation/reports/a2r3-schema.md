@@ -9,10 +9,10 @@ VALIDATE: schema content — `plugins/mochiko/migrations/0008-gate-form.yaml` pl
 view diff (`.mochiko/schema-views/commands/setup.yaml`, `common/common.yaml`,
 `skills/patterns-model-tiering.yaml`, new `skills/validation-primitive-edit.yaml`). 5 files.
 
-Checklist run: the AM-2 five (GI-004 as re-expressed at v3.0.0, `.mochiko/memory/governance-ledger.md`)
+Checklist run: the AM-2-required-cli-dependency five (GI-004-primitive-audit-ratchet as re-expressed at v3.0.0, `.mochiko/memory/governance-ledger.md`)
 — intent stated · anchor present where required · ID lifecycle right · floor and fail survival ·
 register. Plus ruling fidelity against `.mochiko/brainstorms/author-grader-consolidation/record.md`
-D2, D3 (C1 fold), D4, D5, D6, D7, D9, D11 and build-surface item 1.
+D2-gate-input-grading, D3-gate-default-fail (C1 fold), D4, D5, D6, D7, D9, D11 and build-surface item 1.
 
 Evidence read: `plugins/mochiko/migrations/0008-gate-form.yaml` · `git diff HEAD --
 .mochiko/schema-views/` · `.mochiko/schema-views/skills/validation-primitive-edit.yaml` ·
@@ -21,9 +21,9 @@ Evidence read: `plugins/mochiko/migrations/0008-gate-form.yaml` · `git diff HEA
 `.mochiko/schema-views/labels/command-labels.yaml` · `.mochiko/schema-views/labels/skill-labels.yaml` ·
 `.mochiko/schema-views/common/skill-review-common.yaml` ·
 `.mochiko/schema-views/skills/validation-constitution.yaml` ·
-`plugins/mochiko/migrations/README.md` · `.mochiko/memory/governance-ledger.md` GI-004 ·
+`plugins/mochiko/migrations/README.md` · `.mochiko/memory/governance-ledger.md` GI-004-primitive-audit-ratchet ·
 `.mochiko/memory/primitive-cost-budgets.md` · `.mochiko/brainstorms/author-grader-consolidation/record.md`
-D1–D11 + build surface · `.mochiko/brainstorms/cli-schema-delivery/record.md` (AM-2 five wording).
+D1–D11 + build surface · `.mochiko/brainstorms/cli-schema-delivery/record.md` (AM-2-required-cli-dependency five wording).
 
 ### Pre-pass — run first-hand, quoted
 
@@ -91,14 +91,14 @@ Exactly the 11,519 render component of the seeded row in `.mochiko/memory/primit
 against the same log state (`7b58e8c1…` · 74 documents · 1067 rules · floor pin 11 · binary 0.2.0).
 No schema-side overage; no argued overage is owed.
 
-### AM-2 five
+### AM-2-required-cli-dependency five
 
 PASS · **Intent stated** — the header `intent:` is one line naming all four changes: the
 common-block loop bound, setup's bound and validate-seat rule, the persona-less grader tier pin,
 and the `validation-primitive-edit` skill. It matches what the `changes:` list does, and nothing in
 the file falls outside it.
 
-PASS · **Anchor present where required** — header `anchor: 2026-09-19 author-grader-consolidation D7`,
+PASS · **Anchor present where required** — header "`anchor: 2026-09-19 author-grader-consolidation D7`",
 well-formed under the log README's `YYYY-MM-DD <session-slug> D<n>` format. The file carries no
 `supersede-rule`, no `tombstone-rule`, and no `set-rule-field` lowering `class`, `kind`, or
 `anchor`, so the hard set demands no anchor at all; one is carried anyway. Every rule executing a
@@ -130,14 +130,14 @@ own voice rather than the second-person review-family register.
 
 PASS · **D2** — `validation-primitive-edit.gate-job` names the gate as a binary the lead cannot
 ship past, sites it at the shipped `plugins/mochiko/` primitive before the `plugin.json` bump
-(GI-004), and routes the other two jobs away: findings a user rules downstream to the review
+(GI-004-primitive-audit-ratchet), and routes the other two jobs away: findings a user rules downstream to the review
 family, setup's governance surface set to `mochiko:validation-constitution`.
 
 PASS · **D3 and the C1 fold** — the posture survives as `default-fail`, the tamper-proof clause as
 `tamper-proof-clause` (no evidence-read line is FAIL, automatically). The I3 fold lands verbatim in
 `pre-pass-first-hand`, including "a pre-pass result quoted from the brief is not evidence" and the
 never-re-derive clause. The I1 fold lands as three unit-keyed rules, and `judgment-items-schema`
-names the AM-2 five in the ledger's own order. The mechanical items are pushed to the pre-pass and
+names the AM-2-required-cli-dependency five in the ledger's own order. The mechanical items are pushed to the pre-pass and
 read from its output. C1 is honored twice over: `0008` carries no op at all against
 `skill/validation-constitution`, so its completeness floors stand unchanged, and `gate-job` states
 the routing.

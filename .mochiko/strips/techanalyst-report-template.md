@@ -7,7 +7,7 @@ ratified 2026-07-23: producer disclosures machine-first).
 artifact gate ships. Every `.mochiko/` path a shipped primitive names was resolved against the homes
 the migration log declares (`plugins/mochiko/migrations/0005-artifact-homes.yaml`, wave 3), and a
 path the homes do not carry is re-pointed rather than left to be denied at write time. Ruling for
-the [v0.109.0] entry below: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2 (a
+the [v0.109.0] entry below: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2-home-file-sets (a
 report lands in its home's `reports/` directory) and D3 (the homes as the migration declares them),
 with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 `git show 794cea8:plugins/mochiko/templates/techanalyst-report-template.md`. -->
@@ -25,7 +25,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
   home's declared `reports/` directory, where a report is admitted under any name by its `report:`
   type
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2; migration
+  (`.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2-home-file-sets; migration
   `0005-artifact-homes.yaml`, the `spec` home's `reports:` block)
 - **Content:** ``7. **Output location** — `.mochiko/specs/<feature>/techanalyst-report.md`, seeded
   and collected by the lead, alongside the analysis/design artifacts.``
@@ -44,7 +44,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
   the first was written — recorded as its own entry rather than folded into the earlier one, so
   the sweep history stays honest about what was caught when.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/plan-stage-utility/record.md` D3 — the FR→TR layer dies as a mandatory
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D3-requirements-layer-dies — the FR→TR layer dies as a mandatory
   artifact and the real technical decisions land as `D-XXX`, `C-XXX`, and `IP-XXX` rows in
   `constraints-and-decisions.md` plus the store's `NFR-XXX` concern rows; `DECISIONS.md`
   2026-08-26 row.)
@@ -74,7 +74,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
   The comment now names those row classes, so a producer disclosing an analysis round still has a
   precise thing to list rather than an artifact that no longer exists.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/plan-stage-utility/record.md` D3 — "the FR→TR layer dies as a mandatory
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D3-requirements-layer-dies — "the FR→TR layer dies as a mandatory
   artifact … Real technical decisions (D-XXX, C-XXX, IP-XXX) land where they already live —
   `constraints-and-decisions.md` and the store"; `DECISIONS.md` 2026-08-26 row.)
 - **Content (superseded, verbatim, one site):** `produced: [requirements.md,
@@ -95,7 +95,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
   a shape question for the `implement.md` rewrite rather than a dead-artifact reference, so it is
   left for a ruling rather than changed unilaterally.
 
-## [v0.81.0] `produced:` example drops `nfrs.md`, gains the store-delta NFR arm — product-architecture-schema D12
+## [v0.81.0] `produced:` example drops `nfrs.md`, gains the store-delta NFR arm — product-architecture-schema D12-store-absorbs-nfrs
 
 - **Disposition:** superseded → the same field with the store named. The frontmatter's
   `produced:` example listed the analysis artifacts a round emits; `nfrs.md` is no longer one.
@@ -103,7 +103,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
   change an NFR target still has somewhere honest to disclose it — dropping the filename alone
   would have made NFR work invisible in the disclosure.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12; `DECISIONS.md` 2026-08-19).
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12-store-absorbs-nfrs; `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim):**
 
   ```

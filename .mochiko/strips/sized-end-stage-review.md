@@ -79,7 +79,7 @@ the run's declaration, never a silent omission. All of the following hold:
 - **Consumers assessed:** setup + brainstorm (the two binders — their sizing gates unchanged).
 
 ---
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -95,7 +95,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 ## [v0.44.0]  version-history block relocated (class 2, 810 B / 8 lines)
 - **Disposition:** superseded → relocated **verbatim** into this note (below). In-file residue: the
   bare stamp plus the live routing (`Governed by / Pairs with`), which is wiring a run consumes, not history.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim, the whole block as it stood at the scrub):**
 ```
 **Version:** v2 (2026-08-01 — `lead-owned-process-flexibility` D6(c) ratified at A4: this
@@ -112,7 +112,7 @@ substance) · **Governed by:** `mochiko:loop-discipline` · **Pairs with:** `com
 
 ## [v0.44.0] Provenance pointer
 - **Disposition:** superseded → deleted; this note is the home it pointed at.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 (Provenance:
@@ -184,7 +184,7 @@ back only to the two commands whose P6 binds it — it does not reach the shared
 # v0.40.0 — v1 → v2, the sizing gate changes hands and the verify pass becomes floor
 
 **Wave context:** `lead-owned-process-flexibility`
-(`.mochiko/brainstorms/lead-owned-process-flexibility/record.md`), **D6(c)** ratified with the
+(`.mochiko/brainstorms/lead-owned-process-flexibility/record.md`), **D6-derived-consequence-set(c)** ratified with the
 set at acceptance **A4**. Wave note: `.mochiko/strips/command-shape.md` [v0.40.0]. Body
 **2,992 → 5,123 B** (words 423 → 771), measured after the repair round. This file is a
 **conditional** read, so the growth is

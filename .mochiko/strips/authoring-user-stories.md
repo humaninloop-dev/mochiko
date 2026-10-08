@@ -3,13 +3,13 @@
 Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-succinctness wave 4
 (design: `.mochiko/brainstorms/skill-succinctness-strip/record.md`, ratified 2026-07-25);
 [v0.23.0] entries — workflow-token-reduction wave 2 (design:
-`.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4/T1;
+`.mochiko/brainstorms/workflow-token-reduction/record.md` D4-reference-by-id + the wave-2 rulings R1–R4/T1;
 ratified 2026-07-24).
 
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the authoring family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -19,7 +19,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/authoring-user-stories/SKILL.md`. -->
 
@@ -35,7 +35,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 - **Disposition:** superseded → "the delivered density rules"
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** "The story lands in `spec.md`, every field to the schema's density rules. The exact
   structure:"
 - **Kept deliberately:** the sentence's two obligations — that the story lands in `spec.md`, and
@@ -48,7 +48,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -88,7 +88,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -99,7 +99,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
   halt likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -109,7 +109,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 ## [v0.101.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2A)
 
-Ruling for every [v0.101.0] entry: skill-content-schema D3 (three-home boundary) / D8/C4
+Ruling for every [v0.101.0] entry: skill-content-schema D3-obligations-only-schema (three-home boundary) / D8/C4
 (protected transfers), `DECISIONS.md` 2026-09-01 rows (skill-content-schema + the wave-2
 family-door ruling); census: `.mochiko/brainstorms/skill-content-schema/research/census-authoring.md`
 §B (AUS). Schema home: `plugins/mochiko/skills/authoring-user-stories/schema.yaml`. Minted
@@ -124,7 +124,7 @@ ruling: AUS takes the envelope stub, restoring the census ×5 membership) + 5a-i
 `density-fields` · 6 `priority-justified` · 7a `scenario-count-bound` · 7b
 `scenarios-independently-verifiable` · 7c `observable-outcomes` · 8
 `independent-test-required` · 9 `validation-script` (advisory binding, pointer
-`scripts/validate-user-stories.py`, census J-3) · 10 `rationalization-stop`.
+`scripts/validate-user-stories.py`, census J-3-shipped-member-scripts) · 10 `rationalization-stop`.
 Build count 19 vs census 18: the approved 5a lettered split — disclosed for the audit.
 Sections: independence, inputs, and output carry explicit empty markers (census fit —
 AUS independence 0).
@@ -198,7 +198,7 @@ claimed. Description byte-untouched at 425.
 - **Disposition:** superseded — protection transfers per D8/C4, both carve-outs entire:
   `architecture-decisions-routing` + `api-contracts-routing`.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row; original
-  protection: 2026-08-26 plan-stage-utility D1, kept entire at the [v0.91.0] entry below).
+  protection: "2026-08-26 plan-stage-utility D1", kept entire at the [v0.91.0] entry below).
 - **Content (verbatim):** "**Architecture decisions** - Capture technical-decision
   rationale in the design track instead; this skill authors user stories, not technical
   choices" · "**API contract design** - Define endpoints and schemas in the design track
@@ -233,7 +233,7 @@ claimed. Description byte-untouched at 425.
 
 - **Disposition:** superseded → "the design track" at both sites.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1). Raised as an **advisory** by the
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires). Raised as an **advisory** by the
   v0.91.0 wave audit; this skill entered the wave's scope at the fix round, having carried no
   plan-stage vocabulary the earlier sweeps' terms matched — the pair reads as ordinary prose, so
   only the wider fix-round sweep surfaced it.

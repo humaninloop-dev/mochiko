@@ -1,6 +1,6 @@
 # Gate 6 — the full contract run before the bump (plan; awaiting lead approval)
 
-**Author:** QA seat · **Date:** 2026-09-15 · **Ruling home:** GI-012 gate 6 · record D10 · AM-3's
+**Author:** QA seat · **Date:** 2026-09-15 · **Ruling home:** GI-012-release-gates-module gate 6 · record D10 · AM-3-conformance-gate-admission's
 wave-4 hook-ship precondition. **Plan only. No run until the lead opens it.**
 
 ## (a) Which binary each half uses
@@ -45,7 +45,7 @@ the in-sandbox build (30-minute timeout) and `sbx exec` overhead. Budget an hour
 ## (c) Pass criterion
 
 Exit 0 with every case green. Two failures block equally: exit 1, an assertion failed; exit 3, the
-sandbox never started — GI-012 says a SKIPPED suite is not green, and so does the suite: *"the
+sandbox never started — GI-012-release-gates-module says a SKIPPED suite is not green, and so does the suite: *"the
 sandbox cases did not run, so they are evidence of nothing."* `report()` rows never gate.
 
 ## (d) What a red case means for the bump

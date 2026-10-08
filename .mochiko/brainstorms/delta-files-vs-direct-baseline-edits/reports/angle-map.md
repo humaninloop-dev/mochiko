@@ -184,7 +184,7 @@ angles:
       fail.baseline-in-place, fail.ungraded-fold and baseline-delta-grammar. They leave only by
       recorded ruling, strips and migration op, with every site enumerated.
     - >-
-      G2 (LB) Prior rulings that need supersession traces: AD-D3 (2026-07-30), the 2026-08-19 store
+      G2 (LB) Prior rulings that need supersession traces: `architecture-design-primitive` D3-architecture-delta-model (2026-07-30), the 2026-08-19 store
       D10, the 2026-08-14 epic D10, the 2026-08-10 D9, and the 2026-08-26 D7.
     - >-
       G3 Contested handling. Is the user's challenge ruled as theirs, and does the rejected road get
@@ -195,7 +195,7 @@ angles:
       publish gate.
     - >-
       G5 (LB) Git as a hard pipeline dependency. What happens to a repo not under git or a shallow
-      clone? How does it square with GI-020's unsupported-environment list?
+      clone? How does it square with GI-020-plugin-install-model's unsupported-environment list?
   H-excess-watch:
     - >-
       H1 (LB) The replacement must not rebuild the delta model under new names. The candidates are a

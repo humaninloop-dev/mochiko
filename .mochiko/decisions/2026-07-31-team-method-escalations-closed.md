@@ -1,6 +1,6 @@
 # Team-method escalations closed — loop-discipline qualifier · agent-dispatch v7 · cold checkout (v0.39.0)
 
-**Status:** ruled (execution record; underlying rulings: team-method D1/D3 + two user rulings this
+**Status:** ruled (execution record; underlying rulings: `team-method-vs-command-shape` D1-mesh-routing-default/D3-devolved-cycle-clearing + two user rulings this
 date) · **Date:** 2026-07-31
 
 ## Context
@@ -23,7 +23,7 @@ only its own half of the wave — the edit was user-ruled (ruling 3 below) and s
 1. **`loop-discipline` requirement 2 qualified** — the verdict-ownership sentence gains a narrow
    structural exception for a command shape's devolved clean branch, bound by closed reference to
    `command-shape.md` Layer 2 *Clearing under the mesh* (no condition restated); the workflow's
-   done-condition verdict stays the lead's. Closes escalation 1; ruling ground: team-method D3
+   done-condition verdict stays the lead's. Closes escalation 1; ruling ground: `team-method-vs-command-shape` D3-devolved-cycle-clearing
    (DECISIONS.md 2026-07-25). All-consumer pass over the 22 referencing files: one contradiction
    found — `implement.md`, the one the amendment exists to resolve; zero follow-on edits.
 2. **User ruling — ninth briefing field.** The peer-edge + hand-off-hold obligation lands as
@@ -72,7 +72,7 @@ pre-existing v6 stamp post-dates this wave's ruled date. Same anomaly exists on
 
 Decision 3's **fresh clone** mechanism is superseded by the git-semantics filtered snapshot
 (`git ls-files -co --exclude-standard` → copy), ruled at
-`.mochiko/brainstorms/validator-worktree-isolation/record.md` D3(i)/D4 and built at v0.42.0.
+`.mochiko/brainstorms/validator-worktree-isolation/record.md` D3-fixed-core-gate(i)/D4 and built at v0.42.0.
 Ground: executed as written against an uncommitted implementation, a clone of HEAD gates a tree
 that does not contain the work under validation (that record's F22–F24).
 

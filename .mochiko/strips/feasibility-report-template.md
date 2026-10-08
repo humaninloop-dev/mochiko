@@ -17,7 +17,7 @@ ratified 2026-07-23: machine-first YAML, strengths → one-line field).
   surface; `requirements.md` is dead as a mandatory artifact and could no longer head the
   `artifacts_reviewed` example. Four sites re-worded, nothing else touched.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1 (plan retires; the design phase is the
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires (plan retires; the design phase is the
   producing home), D3 (`requirements.md` dies as a mandatory artifact — its gap-finding-fence slot
   re-keys to the sufficiency report plus the design-phase deltas), D4 (dead gates, and the
   sufficiency report as the durable assessment record), and D5 (`review-feasibility` re-scopes at

@@ -213,4 +213,10 @@ The defaults, plus exactly these literal prefixes:
   `.mochiko/brainstorms/hook-enforced-artifact-schema/wave3-census-raw.md`;
 - `evals/<kit>/variants/` and `evals/<kit>/pass-report.md` for each of `patterns-entity-modeling`,
   `review-brainstorm`, `review-governance-intent`, `review-plan-artifacts`,
-  `review-specifications`, `validation-constitution`.
+  `review-specifications`, `validation-constitution`;
+- *added 2026-10-09, at the diff review's fix round (done check only — the apply had run):*
+  `.mochiko/strips/governance-surfaces-template.md` and `.mochiko/strips/validation-constitution.md`.
+  Each holds verbatim text that D18's allowlist covers but the tool misreads: a four-backtick
+  fence whose inner three-backtick lines toggle `fenced_lines` (`crates/mochiko-cli/src/conform.rs`),
+  and a quote inside a quote. Restored to bare, those 5 lines count as bare without these two
+  prefixes. Cost: the check no longer reads the rest of the two files. Booked: the crate fix.

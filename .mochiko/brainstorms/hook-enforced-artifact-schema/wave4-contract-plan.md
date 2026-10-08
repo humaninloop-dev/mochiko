@@ -88,7 +88,7 @@ transcribed in `wave0-probe-report.md` leg 7 for the negative fixture.
 
 1. **`.claude/rules/mochiko/rust-cli.md` still forbids what these cases assert:** "Its hooks MUST
    block only on the binary's absence or a log outside its grammar range, never on behavior."
-   Wave 2's GI-019 amend must land first, or the suite asserts against a live rule that bans it.
+   Wave 2's GI-019-kernel-tooling-admission amend must land first, or the suite asserts against a live rule that bans it.
 2. **D10's reminder clause is superseded by R5** ("reminder fires on a home read and not
    elsewhere"). The Read-time rows are replaced by the five `reminder-input` rows plus G-READ.
 3. **`wave1-plan.md` §3 contradicts its own §4** on non-deny stdout: steps 3 and 8 say "Miss → 0,

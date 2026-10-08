@@ -96,7 +96,7 @@ The four needing a decision, each with my proposal:
 
 **One new template: `report-envelope`.** The `reports:` binding needs a log template to resolve
 against, and the envelope lives today in the shipped markdown `templates/report-format.md`, which
-the binary may not read (GI-020). Wave 3 mints it as `template/report-envelope` carrying
+the binary may not read (GI-020-plugin-install-model). Wave 3 mints it as `template/report-envelope` carrying
 `frontmatter.required: [report, feature]` and the enum `cycle · verification · final-validation ·
 review · feasibility · disclosure` — the same six `report-format.md` line 23 carries, so the
 markdown stays the human home and the log becomes the machine one.
@@ -132,7 +132,7 @@ measures, and no row is derived from it.
 ## 5. The authoring-time rule (D1a second arm)
 
 One rule, minted per producing primitive, `class: floor · kind: binding · labels: [binding]`,
-anchored `2026-09-13 hook-enforced-artifact-schema D1`. Text:
+anchored "`2026-09-13 hook-enforced-artifact-schema D1`". Text:
 
 > Before the first write to an artifact home, render `mochiko-cli home <path>` and hold what it
 > returns: the declared home, its closed file set, the template bound to each file, and the bound. A

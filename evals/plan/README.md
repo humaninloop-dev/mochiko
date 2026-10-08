@@ -2,7 +2,7 @@
 
 Regression instrument for command edits (`.md` + schema pairs) and, through the persona
 target below, for agent-persona edits. Home renamed from `evals/commands/` to `evals/plan/`
-(`primitive-eval-harness-v2` D10, first landing act); vocabulary: `../README.md`. Ruling:
+(`primitive-eval-harness-v2` D10-persona-runner-layout, first landing act); vocabulary: `../README.md`. Ruling:
 `.mochiko/brainstorms/command-plan-only-eval/record.md` (D1–D11, accepted 2026-08-27);
 probe findings: `brainstorm-probe/probe-report.md`. Maintainer-side advisory tooling —
 never shipped; sibling of the skill runner `evals/run.py`.

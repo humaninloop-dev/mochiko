@@ -121,7 +121,7 @@ only; no shared write surface unless disclosed here.
   cases (`wave4-contract-plan.md`), nothing under `evals/` until wave 1 lands.
 - 2026-09-13 · **wave-2 amendment proposal drafted** by the lead (`wave2-amendments.md`) as
   input to the user's `/mochiko:setup` amend run: semver proposed MINOR v3.1.0 (MAJOR reading
-  flagged for the user); CLAUDE.md pointer-only touches; ledger GI-019 gains the AM-3 admission +
+  flagged for the user); CLAUDE.md pointer-only touches; ledger GI-019-kernel-tooling-admission gains the AM-3-conformance-gate-admission admission +
   clause (iv) + hook floor re-ratified + explicit-allow rule + hooks-disabled scope;
   `rust-cli.md` bright-line bullet rewritten (verbatim prior text recorded). Gate: wave 4 does
   not open before ratification. The run is the user's to invoke after wave 1 lands.
@@ -142,14 +142,14 @@ only; no shared write surface unless disclosed here.
 - 2026-09-13 · `wave0-fixtures/` (4 verbatim wave-0 payloads + README) preserved in the session
   dir for the wave-4 rows; the contract plan repointed. Lead ruling on redaction: the narrow
   `transcript_path` home-prefix substitution stands; the username inside other path segments is
-  not a secret (GI-003) and the redirect fixture's absolute path is the tested input.
+  not a secret (GI-003-repo-secret-hygiene) and the redirect fixture's absolute path is the tested input.
 - 2026-09-13 · **wave 1 BUILT** (`se-wave1`; `wave1-reports/cycle-report.md`): 94 tests added,
   445 total / 0 failed across 17 binaries; `cargo test/fmt/clippy/audit` green (31 deps, none
   added); `plugins/mochiko/` byte-identical (lead-verified: `git status --short plugins/mochiko`
   empty); `check` median 36 ms per call = `rules`' 36 ms (process start; CPU 1.2 ms) — cache
   trigger not tripped, seam at `load_for_delivery`. Deviations disclosed: self-deleting
   `KINDS_NOT_SHIPPED_YET` coverage assert (fails the day wave 3 ships a home) · fifth finding
-  code `home-shape` (GI-005: an unreadable home must not skip silently) · six `Resolution`
+  code `home-shape` (GI-005-record-layer-integrity: an unreadable home must not skip silently) · six `Resolution`
   variants · `dispatch_io` in-process exit-code tests · 7/9 tasks kept on the seat (two sonnet
   workers, one reported a real fixture blocker) · `serde_norway` retained over `serde_json` on a
   measured `\/` probe, hand-written JSON emitter with exhaustive control-range escaping · fenced
@@ -234,7 +234,7 @@ only; no shared write surface unless disclosed here.
   `home` view-kind arm, log-determined pin re-keys (docs 50→73, rules 1,022→1,039, floor
   index, similarity pins, producer-view fixtures, contract floor sets/README — `0004`
   precedent). Contract host cases green; 78 sandboxed cases deferred to wave 4's bump. The
-  published-shape binary rejected `0005` loudly until the break-glass install (GI-020 as
+  published-shape binary rejected `0005` loudly until the break-glass install (GI-020-plugin-install-model as
   designed). Lead items: two unreachable skills · five `Home*` codes outside `Code::REJECTING`
   · `migrations/README.md` lacks `home`. `wave3-budget-table.md` (150 lines) is the user's
   ratification artifact. Non-author grade dispatched (`wave3-reports/migration-review.md`).
@@ -266,7 +266,7 @@ only; no shared write surface unless disclosed here.
 
 ## Wave 2 — governance amend (D7)
 
-- 2026-09-14 · **`/mochiko:setup` amend run (AM-3) — DONE; governance v3.0.3 → v3.1.0 (MINOR).**
+- 2026-09-14 · **`/mochiko:setup` amend run (AM-3-conformance-gate-admission) — DONE; governance v3.0.3 → v3.1.0 (MINOR).**
   Input `wave2-amendments.md`; deck of 8 user-ruled "as recommended"; synthesis folded and
   frozen; solo cold intent review (`intent-reviewer`, devils-advocate on
   review-governance-intent, blind-map two-message dispatch, 28 angles → 10 survivors incl. 4
@@ -285,9 +285,9 @@ only; no shared write surface unless disclosed here.
   PATCH · DECISIONS row 2026-09-13 reworded ("strip" → recorded supersession, no strips entry).
   **WAVE 2 CLOSED.** `floor: tripped · seats: intent-reviewer (devils-advocate, cold) /
   gov-producer (tech-lead) / gov-validator (validator)`
-- 2026-09-14 · **wave 2 DONE** — governance v3.1.0 (AM-3), commit `794cea8`, user-ruled MINOR as
-  a recorded departure; GI-019 gains the admission + clause (iv); `rust-cli.md` bullet rewritten
-  (prior text preserved in the ledger); `cli-schema-delivery` D7 narrowly superseded. Two
+- 2026-09-14 · **wave 2 DONE** — governance v3.1.0 (AM-3-conformance-gate-admission), commit `794cea8`, user-ruled MINOR as
+  a recorded departure; GI-019-kernel-tooling-admission gains the admission + clause (iv); `rust-cli.md` bullet rewritten
+  (prior text preserved in the ledger); `cli-schema-delivery` D7-dependency-halt-hooks narrowly superseded. Two
   consequences bind this build: **(a) wave-4 hook-ship precondition (review C5):** the
   `plugin.json` bump that ships the hooks MUST NOT land before the crate's first publish with
   all four controls (cargo audit in CI ✓ · sha256 assets ✓ · `cargo publish` behind a
@@ -317,7 +317,7 @@ only; no shared write surface unless disclosed here.
   un-narrowed `Write|Edit` handler (volume tiny), `if` narrowing on `Bash|PowerShell` only.
   **Wave 4 BUILD OPEN** on `se-wave1` (crate fix → wrappers + hooks.json → five primitive edits +
   three strips → CHANGELOG/marketplace/staged bump) and `qa-wave0` (contract cases under
-  `evals/contract/`, real-log resolution, structural asserts). Bump NOT landed (AM-3 precondition:
+  `evals/contract/`, real-log resolution, structural asserts). Bump NOT landed (AM-3-conformance-gate-admission precondition:
   crate publish with four controls). Wave-3 commit waits on the user's table ruling.
 - 2026-09-14 · `wave4-plan.md` read in full by the lead after the summary approval — holds.
   Accepted the plan's owed ruling: the two analyst report templates re-point to the spec home's
@@ -418,7 +418,7 @@ only; no shared write surface unless disclosed here.
   four contracts homes, all `bounds: elsewhere`; `quickstart.md` absent from feature — a real
   exclusion). **Unit 7 FAIL** on one criterion: the eleven ledger rows reproduce every figure and
   move no budget, but omit the −237 format constant and the `0003` two-arm residual, so no
-  row's arithmetic closes (GI-006). Fix = one clause per row. Body deltas settled at seven.
+  row's arithmetic closes (GI-006-primitive-edit-traceability). Fix = one clause per row. Body deltas settled at seven.
   Routed to `se-wave1` with the W3–W5 confirmation.
 - 2026-09-15 · wave-4 round complete (`se-wave1`): ledger lines rebuilt from pristine HEAD rows
   + fresh measurement; identity closes on all eleven (overage = mint + body delta − 237 − `0003`
@@ -440,13 +440,13 @@ only; no shared write surface unless disclosed here.
   branch), W4 (`tests/hook.rs:232`, `:248` assert `notes.md` in `additionalContext`), W5 (cycle
   report section "The shell parse's known gaps, disclosed"). Ledger rows re-stamped a third
   time from pristine rows: −237 on all eleven + the two-arm limb split by row set with the
-  `cli-schema-delivery` D9 anchor and the full `0003` filename; identity closes 11/11
+  `cli-schema-delivery` D9-staged-wave-rollout anchor and the full `0003` filename; identity closes 11/11
   (`analysis-codebase` 9,088 − 237 − 146 + 523 = 9,228). Validator told the frozen state is the
   current tree.
 - 2026-09-15 · **unit 7 PASS** (`validator`): identity recomputed from the validator's own
   figures closes 11/11; each row names only its limbs (render limb on seven, body limb on a
   different seven, two on neither); limb sourcing separates the migration's render change from
-  the strip-recorded body reword (GI-006); no budget moved, prior history verbatim. **Every
+  the strip-recorded body reword (GI-006-primitive-edit-traceability); no budget moved, prior history verbatim. **Every
   wave-4 audit unit PASS, `blocking: 0`.** Validator's note: an intermediate row version
   mis-credited the body delta to `0003` — the verdict is against the current text; re-run if
   edited again before the bump. QA W6 fixed (header names three deltas vs `32c1ed5`; argv
@@ -460,9 +460,9 @@ only; no shared write surface unless disclosed here.
   `floor: tripped · seats: se-wave1 (mochiko:staff-engineer) + qa-wave0 (mochiko:qa-engineer) / validator (mochiko:validator) + reviewer-2 (mochiko:tech-lead)`
 - 2026-09-15 · **committed `5d8fc69`** — waves 3 + 4 as built and reviewed (104 files incl. the
   staged 0.109.0 release files; not a release: feature branch, no tag, the bump "lands" only
-  under the AM-3 precondition). Tree clean. Wave 5 (violator pass) planning dispatched to
+  under the AM-3-conformance-gate-admission precondition). Tree clean. Wave 5 (violator pass) planning dispatched to
   `qa-wave0` — re-home half independent of the table ruling, size-split half waits on it; mochiko
-  first (AM-3 C10), kinako on the user's word.
+  first (AM-3-conformance-gate-admission C10), kinako on the user's word.
 - 2026-09-15 · reviewer-2 delta-check extended: **CLEAN 6/6** (W6 verified by reconstructing
   the original `claude_args` from `32c1ed5` in isolation — argv identical across three modes).
   Cycle-report carried items 1 and 5 cleared as discharged (reminder golden frozen via
@@ -539,14 +539,14 @@ only; no shared write surface unless disclosed here.
   runnable → skip). Proved via a stub-recorded sandbox (no crate published yet). Review queued on
   `reviewer-2` after the re-key re-check.
 - 2026-09-15 · lead drafted `wave5-bump-patch.md` — the pre-authorized PATCH (v3.1.1) applied at
-  the 0.109.0 bump: GI-019 conformance-testability limb activated; the wave-4 precondition
+  the 0.109.0 bump: GI-019-kernel-tooling-admission conformance-testability limb activated; the wave-4 precondition
   struck once landed; the amnesty paragraph's "bare allow" description corrected on wave-4
   evidence (deny at exit 4 on both limbs pre-fix); one pointer line for the gate's stated limits.
   Graded by `mochiko:validation-constitution` at the bump.
 - 2026-09-15 · re-key reviewed **PASS** (`reviewer-2`: diff = 31 rows + hash, nine probe cells
   clean, views byte-identical); minors R1 (tests inserted inside a doc comment) and R2 (the
   `home` render line unasserted) routed. Status flips transcribed (user's ratification):
-  DECISIONS row → "ratified 2026-09-15 with the C1 amendment"; ledger GI-019 clause (iv)
+  DECISIONS row → "ratified 2026-09-15 with the C1 amendment"; ledger GI-019-kernel-tooling-admission clause (iv)
   condition + trace → DISCHARGED 2026-09-15; recorded in `wave5-bump-patch.md` §(e) for the
   v3.1.1 log row.
 - 2026-09-15 · **WAVE 3 CLOSED — committed `0a03626`** (R1/R2 landed, 463 tests). Remaining

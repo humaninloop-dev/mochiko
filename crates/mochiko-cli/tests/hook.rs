@@ -244,7 +244,7 @@ fn an_amnestied_allow_carries_its_standing_overage_as_additional_context() {
 
 #[test]
 fn an_existing_file_at_an_undeclared_name_is_editable_while_a_new_one_still_denies() {
-    // D4e as ratified at AM-3 — the file set is relaxable, the path is not. Three cells plus the
+    // D4e as ratified at AM-3-conformance-gate-admission — the file set is relaxable, the path is not. Three cells plus the
     // control that keeps the set binding on anything that does not exist yet.
     let (state, dir) = state("file-set-amnesty");
     let cwd = dir.display().to_string();

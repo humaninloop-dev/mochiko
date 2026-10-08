@@ -3,7 +3,7 @@
 **Seat:** census-authoring · **Date:** 2026-09-01 · **Status:** delivered, awaiting wave gate
 **Referent law:** `.mochiko/brainstorms/skill-content-schema/record.md` D1–D9 as amended ·
 the wave-1 census (`census.md`, same directory) as structural referent · command-content-schema
-D12/D15 · near-dup ADR R1–R6 (`.mochiko/decisions/2026-08-28-near-dup-convergence.md`) ·
+D12-rule-block-grain/D15-rule-text-closure · near-dup ADR R1–R6 (`.mochiko/decisions/2026-08-28-near-dup-convergence.md`) ·
 `.claude/rules/mochiko/primitive-edits.md` skill-pair criteria block (v0.100.0).
 **Corpus:** the 8 authoring-family skills under `plugins/mochiko/skills/` — `SKILL.md` whole +
 every `references/*.md` whole (authoring-constitution: **9** reference files — 6 root + 3 under
@@ -59,7 +59,7 @@ Born v0.81.0 by ruling (product-architecture-schema D3/D4/D7/D10/D12/D16, `DECIS
 | Orphan rule (supersedes AT-D6-C In-flight invariant) | D10 | **moves-to-schema** |
 | First-visit reconstruct-and-confirm + archive | D16 migration | **moves-to-schema** |
 | Sound-loop review leg on judgment writes | patterns-sound-loop floor (pointer) | **moves-to-schema** (floor, pointer) |
-| Two-arm schema citation (`mochiko-cli template architecture-store` / raw Read) | GI-020, template-schema D8 | **moves-to-schema**, both arms preserved |
+| Two-arm schema citation (`mochiko-cli template architecture-store` / raw Read) | GI-020-plugin-install-model, `schema-based-template-guidance` D8-schema-data-files | **moves-to-schema**, both arms preserved |
 
 ### AC — authoring-constitution (strips: 12+ entries; the family's richest file)
 
@@ -67,7 +67,7 @@ Born v0.81.0 by ruling (product-architecture-schema D3/D4/D7/D10/D12/D16, `DECIS
 |---|---|---|
 | [v0.28.0] KEPT: the remaining body (under-band survivor ruling) | **live, minus 2 recorded supersessions** — the enforcement-strength table and the brownfield action-mapping paragraph left at v0.63.0 by recorded ruling; survivors named: synthesis contract · surface routing · module-assembly table · both mode contracts · ceiling test · floor-accounting + mode-prerequisites blockquotes · Three-Part Rule · RFC 2119 · inventory behavioral riders | per D8/C4: the whole-body survivor ruling **re-homes onto the pair** (body + schema jointly), recorded once — the RF precedent replayed; the named survivor obligations **move-to-schema**, their narrative stays prose |
 | [v0.65.0] adaptive-depth machinery (D1–D8, 12 supersession entries across SKILL.md + 5 reference files): two-row dial · breadth invariant · level-blind modules · D6 no-watcher flip ceremony · agenda test · no-pruning license | live, spread body + references | body-borne rules **move-to-schema**; reference-borne (floor cards, catalog doctrine, compliance strata) **reference-stub** |
-| [v0.76.0] two-arm governance-surfaces/-intent schema pointers | live (2 body sites + 1 in INTERROGATION-AGENDA) | **moves-to-schema** (body), both arms preserved (GI-020); agenda copy rides the file (J-2) |
+| [v0.76.0] two-arm governance-surfaces/-intent schema pointers | live (2 body sites + 1 in INTERROGATION-AGENDA) | **moves-to-schema** (body), both arms preserved (GI-020-plugin-install-model); agenda copy rides the file (J-2-unbound-agenda-reference) |
 | D8 ownership boundary: markers-only regeneration · preserved domain-registry + output-style blocks · read-and-re-emit · superseded constitution.md | live (DECISIONS 2026-07-18 constitution-native-surfaces lineage) | **moves-to-schema** (floor-class set) |
 | D4/D4.1/D4.2 waiver discipline (permanent-pending-revisit; legal-mandate unwaivable) | live, body + COMPLIANCE-MODULES + universal-floor | body rule **moves-to-schema**; reference copies **reference-stub** with dedup note |
 | [v0.44.0]/[v0.28.0]/[v0.22.0] cuts | ended (recorded) | n/a — historical |
@@ -75,14 +75,14 @@ Born v0.81.0 by ruling (product-architecture-schema D3/D4/D7/D10/D12/D16, `DECIS
 ### AE — authoring-epic (strips: 6 entries; no KEPT lines)
 
 Born v0.72.0 (multi-feature-plan-implement D1–D15, `DECISIONS.md` 2026-08-14); re-keyed v0.81.0
-(product-architecture-schema D3/D10) and v0.91.0 (plan-stage retirement D1/D4).
+(product-architecture-schema D3-store-replaces-artifact/D10-plan-time-contract) and v0.91.0 (plan-stage retirement D1/D4).
 
 | Protected unit | Lineage | Census disposition |
 |---|---|---|
-| Mint-once / resolve-by-lookup; desk the only mint door; overlap guard in full ("surfaces to the user … never a silent duplicate") | D4 (multi-feature) + plan-stage D4, kept deliberately at v0.91.0 | **moves-to-schema** (floors) |
+| Mint-once / resolve-by-lookup; desk the only mint door; overlap guard in full ("surfaces to the user … never a silent duplicate") | `multi-feature-plan-implement` D4-epic-minting-stewardship + `plan-stage-utility` D4-planless-homes-gates, kept deliberately at v0.91.0 | **moves-to-schema** (floors) |
 | One open epic per feature's pending rows | D4 | **moves-to-schema** (floor) |
 | Epic-run-always-fires-design-phase for the joint spine | plan-stage mechanic (b), v0.91.0 strip | **moves-to-schema** |
-| One signed store delta, rendered once signed once | product-arch D3/D10, v0.81.0 strip "Kept deliberately" | **moves-to-schema** (floor) |
+| One signed store delta, rendered once signed once | `product-architecture-schema` D3-store-replaces-artifact/D10-plan-time-contract, v0.81.0 strip "Kept deliberately" | **moves-to-schema** (floor) |
 | Cross-member seam owner named in spine; no later-lander default | D13 | **moves-to-schema** |
 | Shared-baseline single pen-holder; fold each baseline exactly once | D10 review fold C1 | **moves-to-schema** (floor) |
 | Selection-scope only; delta-scope cards cannot join | D11 | **moves-to-schema** (floor) |
@@ -98,9 +98,9 @@ protected-content reconciliations are explicit). Live protection = DECISIONS-tra
 | Protected unit | Lineage | Census disposition |
 |---|---|---|
 | The 8 hard invariants (one-home · disposition · row-level closure · map-owns-status · sticky/fold · sacred-writes/acceptance-batch/stewardship-direct · integrity-fix-on-sight · index-never-rewrite) | pm-role D2/D6/D7/D8 + feature-sizing G4 (`DECISIONS.md` 2026-08-13 / 2026-08-10) | **move-to-schema** (floor-class set, with splits) |
-| Capability/work-row re-type + frame-first + story-wins | pm-role D1/D2/D5 | **moves-to-schema** |
-| Four touchpoints incl. mechanic-(e) zero-gap branch (the +128 declared-overage content, ruled HOLDS) | plan-stage mechanic (e), v0.91.0 strip | **moves-to-schema** — the overage's ruling trail carried in the strip at conversion (J-6) |
-| Two-arm features-index / feature-entry schema bindings | template-schema D8 (v0.76.0) | **moves-to-schema**, both arms |
+| Capability/work-row re-type + frame-first + story-wins | `pm-role-and-feature-derivation` D1-story-feature-mirroring/D2-capabilities-work-rows/D5-pm-specify-front | **moves-to-schema** |
+| Four touchpoints incl. mechanic-(e) zero-gap branch (the +128 declared-overage content, ruled HOLDS) | plan-stage mechanic (e), v0.91.0 strip | **moves-to-schema** — the overage's ruling trail carried in the strip at conversion (J-6-overage-dissolves-reseed) |
+| Two-arm features-index / feature-entry schema bindings | `schema-based-template-guidance` D8-schema-data-files (v0.76.0) | **moves-to-schema**, both arms |
 | Stub discipline (unratified hypotheses · selectability-specify-only · no forced cuts · escalation-is-recommendation) | feature-sizing D2a/D12/D13 + v0.62.0 ruling | **moves-to-schema** |
 | BACKLOG boundary, KM-scoped, extent-growth exception | D13 (feature-sizing) | **moves-to-schema** |
 
@@ -108,7 +108,7 @@ protected-content reconciliations are explicit). Live protection = DECISIONS-tra
 
 | Protected unit | Status | Census disposition |
 |---|---|---|
-| [v0.58.0] FEAT re-tag pass + coming-soon greying grammar + rejected-story invariant (R10, feature-map-layer D4) | live — the v0.63.0 entry reconciles it as protected, kept in full | **moves-to-schema** (invariants 7–8) |
+| [v0.58.0] FEAT re-tag pass + coming-soon greying grammar + rejected-story invariant (R10, feature-map-layer D4-slices-leave-pipeline) | live — the v0.63.0 entry reconciles it as protected, kept in full | **moves-to-schema** (invariants 7–8) |
 | UX-D1–D9 core: two coupled artifacts · bun + file:// degrade path (no build step) · binding-flows/advisory-pixels authority split · lockstep · skeleton-first · scenario keying · manifest↔HTML agreement | live (DECISIONS 2026-08-02) | **move-to-schema** (authority split + degrade path as floors) |
 | [v0.76.0] two-arm spec schema pointer | live | **moves-to-schema**, both arms |
 | [v0.63.0] guardrails kept-set (8 invariants + checklist + red flags) | live | **move-to-schema** per rows above |
@@ -170,13 +170,13 @@ All resolvable as entry-derived or surface-presence; **no new resolution kind ne
 
 **Section fit is graded against the review-family six-set** (`independence` · `scope` · `inputs`
 · `verdict` · `output` · `reserved`) as the skill-pair criteria block currently hard-codes it.
-Headline finding, detailed per member and in J-1: **`verdict` is empty for all 8 members** (these
+Headline finding, detailed per member and in J-1-producer-family-misfit: **`verdict` is empty for all 8 members** (these
 are producers — no clearing grammar exists), and the family's densest rule class — the produced
 artifact's binding grammar and invariants (ID grammars, lifecycle enums, row forms, write gates)
 — has no natural six-set home; `output` absorbs it only by stretching "report contracts" past
 recognition. A family section set swapping `verdict` for an **`artifact`** section (the produced
 artifact's binding grammar, invariants, and write mechanics) covers the corpus 8/8 with no
-stretch. Ruling needed at the wave gate (J-1).
+stretch. Ruling needed at the wave gate (J-1-producer-family-misfit).
 
 ### AAS — authoring-architecture-store (29 rules; source: body)
 
@@ -265,7 +265,7 @@ Reference stubs (obligation-bearing lines only; teaching content untouched):
 | 35 | DOMAIN-DEPENDENCIES.md growth gate — explicit ruling BEFORE registry entry; "the cycle checkpoint MUST NOT auto-approve while `domain_deps_added` is non-empty"; registry only in the marked block, preserved verbatim | must | gate | stub |
 
 INTERROGATION-AGENDA.md, RFC-2119-KEYWORDS.md, EMERGENT-CEILING-PATTERNS.md: no stubs — see
-J-2 (agenda) and prose/teaching dispositions.
+J-2-unbound-agenda-reference (agenda) and prose/teaching dispositions.
 
 Floors 12 · musts 34 · advisory 1. Section fit: independence 1 · scope 5 · inputs 3 ·
 output 6 · reserved 4 · **artifact-class misfits 18** · verdict 0. Stubs distribute the same way.
@@ -481,7 +481,7 @@ candidate only). The family common file would be a new shipped primitive —
 |---|---|---|---|---|
 | C-A1 | **letter-IS-the-spirit epigraph** — "Violating the letter of the rules is violating the spirit of the rules." | AFM · AP · AUS · ATR (4) | byte-identical epigraph line in all four bodies | **CLEARS**. Cross-family note: the review side's RPA/VC "the letter IS the spirit: never skip a check…" is a different wording and was screened keep-distinct in wave 1 — evidence for the D5 cross-family graduation candidate, not a shared block; allowlist edge recorded at build |
 | C-A2 | **produced-artifact-graded-independently** — "graded … by an independent reviewer/validator, never the author"; this skill never grades its own output | AFM · AP · AC · AE (4) | AFM "graded with the spec by `mochiko:review-specifications` (independent reviewer, never the author)" · AP near-identical · AC "graded by an **independent validator** … never co-mounted" · AE "graded by their cluster reviewers; … never grades its own output" | **CLEARS**. `${grader}`-style local tails per R2/R6 (grader name + graded object vary). Edge: AAS expresses the obligation as the sound-loop review leg (rule 23) — related but distinct (review-leg-before-user-ruling vs never-self-grade); kept LOCAL, allowlist edge. Cross-family note: this is the **producer mirror** of `review-common.author-grader` — evidence only (D5), drift edge to the allowlist |
-| C-A3 | **two-arm template-schema binding** — "invoke `mochiko-cli template ${template}` when the binary is available; otherwise Read `plugins/mochiko/schemas/${template}.yaml` raw" | AAS · AC · AFM (×2 templates) · AP (4; +ATR's copy reference-side) | near-verbatim GI-020 two-arm form at every site; only the template name varies — the cleanest `${var}` case in either wave | **CLEARS**. `vars: template:` per binding skill; AFM binds it twice (two templates) — stub shape for a twice-bound block is a conversion detail flagged to the build seat; ATR's copy sits in ARTIFACT-TEMPLATES.md and rides its stub (like RF's C5 membership in wave 1) |
+| C-A3 | **two-arm template-schema binding** — "invoke `mochiko-cli template ${template}` when the binary is available; otherwise Read `plugins/mochiko/schemas/${template}.yaml` raw" | AAS · AC · AFM (×2 templates) · AP (4; +ATR's copy reference-side) | near-verbatim GI-020-plugin-install-model two-arm form at every site; only the template name varies — the cleanest `${var}` case in either wave | **CLEARS**. `vars: template:` per binding skill; AFM binds it twice (two templates) — stub shape for a twice-bound block is a conversion detail flagged to the build seat; ATR's copy sits in ARTIFACT-TEMPLATES.md and rides its stub (like RF's C5 membership in wave 1) |
 | C-A4 | **deliverable-envelope binding** — the artifact "follows the deliverable envelope in `templates/artifact-format.md`" (+ density/ID tails) | AFM · AP · AR · ATR · AUS (5) | all five bind `artifact-format.md` by path; tails vary: AR/ATR carry the verbatim "Density is not a gap; a gap is missing substance", AP the ID-grammar tail, AFM the record-not-essay tail | **CLEARS** — the block carries the envelope binding + pointer only; every density/ID tail stays local (R2/R6). Sub-evidence: "sequential, three-digit padded, no gaps" recurs in AR body · ATR body+reference · AP via envelope — single-sourced in `artifact-format.md`, so it rides this block's pointer rather than minting an `id-grammar` block that would dual-home the envelope's own text (D6 anti-dual-homing) |
 
 **Screened and kept distinct (below bar or R5/R6 fail), recorded for the allowlist:**
@@ -513,7 +513,7 @@ blocks are lighter (bindings and epigraphs rather than verdict machinery) — th
 purchase here is real but smaller; the family's stronger conversion drivers are the B/C
 secondary concerns (addressable IDs for ~48 protected units, checker coverage over 66 floors).
 Per-member verdict: all 8 convertible; no member is obligation-starved (min 18 rules).
-**Family verdict: proceed, conditional on the J-1 section-set ruling landing first.**
+**Family verdict: proceed, conditional on the J-1-producer-family-misfit section-set ruling landing first.**
 
 `kind: fail` re-check (D9/M2 symmetry): zero run-fail predicates in the corpus; the v0.100.0
 retirement holds, no re-admission demanded. No new `kind:` demanded either — the eight-kind set
@@ -555,16 +555,16 @@ estimate-to-measured drift recurs, the authoring family lands nearer **×2.9–�
 measured figure returns at the landing gate per the wave-1 precedent, and the read-cost
 observable joins the first-live-run watch (I5).
 
-No member carries an RF-style obligated reference read — no J-3 analogue; the `references/` mass
+No member carries an RF-style obligated reference read — no J-3-obligated-reference-read analogue; the `references/` mass
 (largest: AC's 68k) stays exempt and on-demand.
 
 Budget mechanics per C1: all six budgeted members re-seed to measured post-conversion payloads
 (current budgets: AC 21,550 · AFM 15,413 · AP 11,123 · AR 5,127 · ATR 13,285 · AUS 6,702 — every
 one lands above its cap, the re-seed path's designed case). **AFM's standing ruled overage
 (+562, HOLDS at v0.91.0) dissolves into its re-seed** — the ruling trail survives in the strip
-(J-6). **AAS and AE are unbudgeted at birth** (hard-cap-only); the conversion re-seed is a legal
+(J-6-overage-dissolves-reseed). **AAS and AE are unbudgeted at birth** (hard-cap-only); the conversion re-seed is a legal
 first seeding (the ledger's third seeding path — "a ruled schema conversion") — flagged so the
-ledger edit names them (J-7). The family common file is budgeted once as its own primitive.
+ledger edit names them (J-7-first-member-budgets). The family common file is budgeted once as its own primitive.
 Descriptions untouched, all ≤ 1,536 (max 598: AFM, ATR).
 
 ---
@@ -580,7 +580,7 @@ carve-out, waivers, flagged proposals) · **independence** (C-A2 cluster, sound-
 selection card, landing-diff reports) · **fence** (read duties: AFM in-flight-territory read,
 AAS code-read, AC codebase-analysis input).
 
-Registry-legal but unused by this family: **verdict** (no clearing grammar exists — see J-1).
+Registry-legal but unused by this family: **verdict** (no clearing grammar exists — see J-1-producer-family-misfit).
 
 New, corpus-demanded (registry-edit-first ceremony; one line each):
 
@@ -598,7 +598,7 @@ Considered, rejected: `write-gate` (covered by `user-gate` + `kind: gate`) · `s
 
 ## J. Anomalies (numbered, each with a recommended disposition)
 
-- **J-1 — the six-set does not fit a producer family (the census's headline).** `verdict` is
+- **J-1-producer-family-misfit — the six-set does not fit a producer family (the census's headline).** `verdict` is
   empty for **all 8 members**, while ~124 of 237 rules (the artifact-grammar/write-mechanics
   class) have no natural six-set home. The skill-pair criteria block
   (`.claude/rules/mochiko/primitive-edits.md`, criterion 2) currently hard-codes "the six-set …
@@ -612,15 +612,15 @@ Considered, rejected: `write-gate` (covered by `user-gate` + `kind: gate`) · `s
   defeating the D4 rationale ("minted once from the pilot census"; the pilot's set encoded the
   *grader* lifecycle). The criteria-block edit is itself a ceremonied shipped-rule edit riding
   the wave. **This ruling must land before any conversion begins.**
-- **J-2 — INTERROGATION-AGENDA.md is an obligation-dense reference with no body binding.**
+- **J-2-unbound-agenda-reference — INTERROGATION-AGENDA.md is an obligation-dense reference with no body binding.**
   Its obligations (agenda test, ten dimensions, no-pruning license, D6 flip ceremony,
   steps 0–5) bind the **setup lead's interrogation session**, not this skill's authoring
   procedure; AC's `SKILL.md` never binds it, and its consumers are cross-primitive
-  (`/mochiko:setup`, and `review-governance-intent` binds it cross-directory — wave-1 J-7).
+  (`/mochiko:setup`, and `review-governance-intent` binds it cross-directory — wave-1 J-7-cross-directory-pointers).
   A stub would dangle from no §B row. *Recommendation:* no stub; the file stays untouched under
   the sanctioned Single-source convention (D3/C2), its cross-directory consumers already
   schema-bound from their own sides. Named at the gate so the omission is a ruling, not a miss.
-- **J-3 — two members ship `scripts/`** (`validate-requirements.py`,
+- **J-3-shipped-member-scripts — two members ship `scripts/`** (`validate-requirements.py`,
   `validate-user-stories.py`) — no wave-1 precedent (no review member shipped scripts). Scripts
   stay budget-exempt; the citing rules convert as `advisory` bindings with `pointer:` into
   `scripts/`. *Recommendation:* confirm the checker's pointer-resolution accepts `scripts/`
@@ -630,21 +630,21 @@ Considered, rejected: `write-gate` (covered by `user-gate` + `kind: gate`) · `s
   rules; both teaching content, both stay prose. *Recommendation:* evidence note only — a
   Single-source consolidation is compression-wave territory, out of this conversion's remit;
   recorded so the detector's future file-level cousin (if any) finds it ruled.
-- **J-5 — description-borne obligations.** AE/AFM/AP descriptions carry `Boundary:`/"Never
+- **J-5-description-borne-obligations — description-borne obligations.** AE/AFM/AP descriptions carry `Boundary:`/"Never
   grades its own output" clauses duplicating body rules that now gain schema IDs.
   `description:` is untouched (D3/D8 criterion 7), so this is a sanctioned dual statement.
   *Recommendation:* none — same posture as wave-1's RSUF row 29 (no rule minted for the
   description copy); noted so the audits don't read it as dual-homing.
-- **J-6 — AFM's standing ruled overage dissolves at re-seed.** The +562 HOLDS ruling
+- **J-6-overage-dissolves-reseed — AFM's standing ruled overage dissolves at re-seed.** The +562 HOLDS ruling
   (mechanic-e zero-gap branch, byte-reconciled at v0.91.0) is protection-relevant history.
   *Recommendation:* the AFM conversion strip entry names the overage ruling explicitly so its
-  trail survives the budget row's supersession (GI-006 reconstruction).
-- **J-7 — two unbudgeted members gain their first budgets via conversion.** AAS and AE are
+  trail survives the budget row's supersession (GI-006-primitive-edit-traceability reconstruction).
+- **J-7-first-member-budgets — two unbudgeted members gain their first budgets via conversion.** AAS and AE are
   hard-cap-only ("budgets never invented"); the third seeding path ("a ruled schema
   conversion") legally seeds them at the measured payload, no headroom. *Recommendation:* the
   ledger amendment names both as first-seeds so the "never invented" clause visibly composes
   with the third path.
-- **J-8 — cross-family and cross-grammar near-dups.** C-A1 vs RPA/VC's letter-IS-the-spirit
+- **J-8-cross-family-duplicates — cross-family and cross-grammar near-dups.** C-A1 vs RPA/VC's letter-IS-the-spirit
   wording · C-A2 vs `review-common.author-grader` · AR/ATR "density is not a gap" vs RSPEC
   rule 25 / RPA's envelope line · AAS/AE/AFM reserved-to-user shapes vs
   `review-common.verdict-is-input`'s reservation posture. All evidence-only under D5;
@@ -653,14 +653,14 @@ Considered, rejected: `write-gate` (covered by `user-gate` + `kind: gate`) · `s
   graduation candidate — surfaced for the user, no action proposed.
 - **J-9 — the brief's reference-file count for AC was 7; the tree holds 9** (6 root + 3 under
   `references/catalog/`). All 9 censused individually in §B (stubs from 6 of them; 3 stay
-  untouched — INTERROGATION-AGENDA per J-2, RFC-2119 and EMERGENT-CEILING as teaching).
+  untouched — INTERROGATION-AGENDA per J-2-unbound-agenda-reference, RFC-2119 and EMERGENT-CEILING as teaching).
   *Recommendation:* none — corrected count recorded here.
 
 ---
 
 *End of census. Per D9-I3 this inventory returns to the user at the wave gate — with the §D
 non-abort result (4 blocks, thinner than the pilot's 6, stated honestly), the §F read-cost band
-(est. ×2.35, honest band to ×3.3 on the wave-1 drift precedent), the J-1 section-set ruling
+(est. ×2.35, honest band to ×3.3 on the wave-1 drift precedent), the J-1-producer-family-misfit section-set ruling
 (gate-blocking), and the label seed — before any conversion begins.*
 
 ---

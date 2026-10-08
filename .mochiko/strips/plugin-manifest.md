@@ -27,7 +27,7 @@ edited as a pair and the superseded phrase lived identically in both.
   the skill library"; "Skills and agents are the primary quality surface"). Only the leading
   identity phrase moved; each manifest's remaining wording (and the two pre-existing manifest
   divergences — see *Kept deliberately*) is untouched.
-- **Tier failed:** n/a — supersession by ruling (`schema-based-template-guidance` D11, the
+- **Tier failed:** n/a — supersession by ruling (`schema-based-template-guidance` D11-kernel-position-softened, the
   no-kernel-non-negotiable softening — `.mochiko/brainstorms/schema-based-template-guidance/record.md`;
   `DECISIONS.md` 2026-08-16 governance v2.0.0 row + template-schema row; **user-ruled rider,
   2026-08-16, DM session** — the stale "kernel-free" tagline flagged at the P6 landing, user
@@ -84,11 +84,11 @@ edited as a pair and the superseded phrase lived identically in both.
     Skills-first agent framework: sound-loop workflows built from native agent teams and skills
     ```
 
-  The ruling's ground: at governance v2.0.0 (AM-1) the no-kernel non-negotiable was softened —
-  kernel-class tooling is admissible by recorded ruling (GI-019), and the first admitted instance,
+  The ruling's ground: at governance v2.0.0 (AM-1-kernel-ban-softened) the no-kernel non-negotiable was softened —
+  kernel-class tooling is admissible by recorded ruling (GI-019-kernel-tooling-admission), and the first admitted instance,
   the template-schema Rust CLI, landed at v0.76.0. "Kernel-free" as the plugin's leading identity
   claim was then factually stale: the plugin ships a Rust crate. "Skills-first" states the surviving
-  bet (skills and agents are the primary quality surface) without the now-false absolute. The AM-1
+  bet (skills and agents are the primary quality surface) without the now-false absolute. The AM-1-kernel-ban-softened
   identity rewording had reached the ROADMAP thesis + CLAUDE.md prose but not the manifests; this
   entry closes that gap.
 - **Kept deliberately:** the two pre-existing manifest divergences the landing auditor called INFO
@@ -105,9 +105,9 @@ edited as a pair and the superseded phrase lived identically in both.
   manifest description strings live only in these two files. The shorter identity phrase
   "kernel-free agent-skill framework" also appears in the governance synthesis
   `.mochiko/memory/governance-intent.md:16` (the frozen Identity line) — but that copy was
-  **already superseded in place at AM-1**: its line-17 annotation (2026-08-16) re-states the
+  **already superseded in place at AM-1-kernel-ban-softened**: its line-17 annotation (2026-08-16) re-states the
   identity as "markdown-first primitive library with kernel-class tooling admissible by recorded
-  ruling" (GI-019), so this rider leaves it untouched — and in `.mochiko/archive/ROADMAP.md:117`
+  ruling" (GI-019-kernel-tooling-admission), so this rider leaves it untouched — and in `.mochiko/archive/ROADMAP.md:117`
   (frozen archive, never edited). The ROADMAP thesis and CLAUDE.md carry the "skills-first /
-  kernel-class by ruling" identity in their own words (reworded at AM-1), independent of the
+  kernel-class by ruling" identity in their own words (reworded at AM-1-kernel-ban-softened), independent of the
   manifest phrasing.

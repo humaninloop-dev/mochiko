@@ -3,7 +3,7 @@
 **Ruling home:** `record.md` D3 as amended, D7, D8 as amended, D9 ("Wave 4: the remaining five
 commands"), the wave-3 section (Q-A branch B measured, Q-B no hand pin, the V2 F1 follow-up: a
 section-reword op plus a migration for the six `fail-conditions` intents), governance v3.0.1
-(`primitive-edits.md` criteria 1/3/11 as amended for converted commands; GI-020's revisit trigger
+(`primitive-edits.md` criteria 1/3/11 as amended for converted commands; GI-020-plugin-install-model's revisit trigger
 live per converted primitive). **Wave open:** on the user's "wave 4" (2026-09-04); the lead's
 standing assumptions are in §7 and hold unless the user redirects. **Floor:** sound loop tripped
 — seats produce on lead-approved plans, fresh validators review, the user accepts; transport
@@ -133,7 +133,7 @@ and goes red on a difference):**
 - `setup` (18): `setup.blind-map-dispatch` · `setup.gate-synthesis-ratification` · `setup.gate-final-acceptance` · `setup.author-grader-default-fail` · `setup.no-git-mutations` · `setup.acceptance-plain-text` · `setup.transport-floor` · `setup.durables-never-deleted` · `setup.governance-region-ownership` · `setup.carve-outs-preserved` · `setup.map-never-overwrite` · `setup.store-ruled-content-never-here` · the six `setup.fail.*` (`pre-ratification-authoring` · `unclosed-trace` · `author-graded` · `floor-category-uncovered` · `no-acceptance` · `no-feature-map`)
 - `specify` (16): `spec.pm-recommends-never-selects` · `spec.gate-selection` · `spec.gate-acceptance` · `spec.author-grader-default-fail` · `spec.transport-floor` · `spec.staged-derivation` · `spec.epic-mint-desk-only` · the nine `spec.fail.*` (`blocking-gap` · `intent-unconfirmed` · `map-unread` · `story-unhomed` · `screens-flows` · `selection-unruled` · `premature-map-write` · `self-graded` · `no-acceptance`)
 
-**Abort criteria, per converted primitive (ledger GI-020 revisit trigger):** (1) read-back below
+**Abort criteria, per converted primitive (ledger GI-020-plugin-install-model revisit trigger):** (1) read-back below
 3/3; (2) delivered bytes above that command's raw baseline in §0. A trip on any command halts
 wave 5 and returns the posture to the user; the lead evaluates from P3's evidence. The
 delivered figure per command is read from the transcript as at wave 3 (blocks + the two hook

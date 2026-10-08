@@ -191,7 +191,7 @@ carried, in case the fix round moves the body.
 ```
 
 730 is above the ~500 family norm and is disclosed rather than trimmed: it carries the entry
-site and the GI-004 gate boundary, the four SHOULD trigger phrases, the unit-keyed grading unit,
+site and the GI-004-primitive-audit-ratchet gate boundary, the four SHOULD trigger phrases, the unit-keyed grading unit,
 the first-hand pre-pass clause, the default-FAIL and plain-seat-independence lines, and the two
 negative boundaries that keep it off `review-*` and `validation-constitution`. Precedent for a
 description above the norm: `testing-gap-finding` 709, `review-sufficiency` 686,
@@ -247,7 +247,7 @@ frontmatter key set beyond the Bash grant, `<cmd>.sec.*` / `<skill>.sec.*` token
 `.md` prose, the Not-done citation and its halt clause, the floor-count read-back sentence, the
 `description:` byte-identity diff, the budget comparison and any overage argument, whether a
 recorded ruling actually covers a protected exit, the near-dup extraction bar, the MOVE/DECLARE
-single-homing call, D3's pair set, the AM-2 five for schema content, and coherence plus
+single-homing call, D3's pair set, the AM-2-required-cli-dependency five for schema content, and coherence plus
 preserved responsibilities for prose.
 
 **Correction to the wave plan §3.4.** It states that "the `.md` scaffold headings/order and the
@@ -710,12 +710,12 @@ this wave has no budget for; disclosed rather than assumed.
 
 **R5 — description at 730 chars becomes the library's largest.** Prior high is
 `testing-gap-finding` at 709. Under the 1,536 delivery cap with 806 to spare, and every clause is
-routing-load-bearing (entry site · GI-004 boundary · four trigger phrases · unit keying ·
+routing-load-bearing (entry site · GI-004-primitive-audit-ratchet boundary · four trigger phrases · unit keying ·
 first-hand pre-pass · default FAIL · plain-seat independence · two negative boundaries). Disclosed
 in §3.3 rather than trimmed, on the `testing-gap-finding` precedent.
 
 **R6 — protected lines leaving `primitive-edits.md`, and the ruling for each.** Three, all under
-`author-grader-consolidation` D3/D7 and record build item 2:
+`author-grader-consolidation` D3-gate-default-fail/D7-fresh-gate-grader and record build item 2:
 
 - "graded by `mochiko:validator`" (the schema-bearing-skill sentence, traceable to
   skill-content-schema D8/I6) becomes "the gate grader". The D8/I6 citation is preserved in place.
@@ -823,7 +823,7 @@ arrived at independently.
 
 The delta over the `[v0.110.0]` payload is **+494, entirely render, and entirely one component**:
 the `persona-less-grader-pin` floor minted on `patterns-model-tiering.sec.discipline` by
-`0008-gate-form.yaml` under `author-grader-consolidation` D7, which closes that record's F12 by
+`0008-gate-form.yaml` under `author-grader-consolidation` D7-fresh-gate-grader, which closes that record's F12 by
 obliging an explicit `model:` alias on every persona-less grader or reviewer spawn. The floor pin
 moved 7 to 8. Body and description are unchanged at 3,112 and 1,208, so nothing in this stamp is
 body or frontmatter growth, and no strip-recorded prose returned.

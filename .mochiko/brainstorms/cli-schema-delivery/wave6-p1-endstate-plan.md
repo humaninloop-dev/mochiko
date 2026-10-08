@@ -58,7 +58,7 @@ the text those numbers score.
 
 ## 4. Migration `0003-two-arm-to-cli.yaml`
 
-Header anchor `2026-09-03 cli-schema-delivery D9`; 23 changes. No op in it requires an anchor by the
+Header anchor "`2026-09-03 cli-schema-delivery D9`"; 23 changes. No op in it requires an anchor by the
 log's own rule — reword and a `pointer:` clear lower no protection — so the anchor is authority the
 migration does not strictly need, carried because the ruling is real.
 
@@ -133,5 +133,5 @@ tier. The Python-parity test must leave in my commit, before P2 deletes
   it gives 605 bytes, 6 lines. Say the word; otherwise §2.2 as written.
 - **`COMMAND_HEADER`.** It opens "The command .md instructs a raw, full Read of this file at command
   fire" — false from wave 6, and committed into every command view. I plan to rewrite that first
-  sentence to the derived-view form and keep the two semantics paragraphs, which carry the GI-006
+  sentence to the derived-view form and keep the two semantics paragraphs, which carry the GI-006-primitive-edit-traceability
   reconstruction value. P2's strips-README note for the deleted snapshots covers it.

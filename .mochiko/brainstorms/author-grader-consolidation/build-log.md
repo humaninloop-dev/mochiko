@@ -21,7 +21,7 @@ Sound-loop floor read back (6 floors); trigger fired; legs 1–3 wired per plan 
   3,449). Lead rulings: R1 P2's correction accepted — scaffold headings/order are **[judgment]**,
   only the `!` enumeration and the `allowed-tools` literal are **[suite]** (wave plan §3.4 fixed) ·
   R2 the ledger gains a fourth seeding path, **a ruled birth seed**, one sentence anchored to this
-  record's build item 1 (precedent-consistent with producer-plan D4's "first-seed budget") · R3
+  record's build item 1 (precedent-consistent with `producer-plan-enforcement` D4-seat-plan-skill's "first-seed budget") · R3
   domain-lens re-pointing approved, CLAUDE.md reconciliation stays wave 3 · R6's three protected
   lines leave under this record's D3/D7 (repo rule — no strip; recorded here as the ruling) ·
   R4/R5/R7/R8 noted. P2 resumed to execute; payload figures filled once P1's render exists.
@@ -101,7 +101,7 @@ log's one-entry-per-event grammar.)*
   blocking** — (1) `validation-primitive-edit.gate-loop-bound` restates the number D4 homes in
   `common.gate-loop-bound` · (2) `judgment-items-pair` lists scaffold headings/order under the
   pre-pass, which asserts no such thing (falls through both legs) · (3) `setup.validate-seat-form`
-  says "a fresh seat", dropping D7's "plain". AM-2 five PASS; views ≡ replay by checksum; pin 11.
+  says "a fresh seat", dropping D7's "plain". AM-2-required-cli-dependency five PASS; views ≡ replay by checksum; pin 11.
   Pre-registration **PASS** (two notes: allowlist comment calls a CROSS-PAIR edge stub-vs-local;
   README absolute case total inherited stale, 84 vs the builder's 89). Fix → P1: amend 0008 in
   place (unshipped), re-stamp, re-validate, re-emit; re-audit by a fresh seat, full read.
@@ -135,7 +135,7 @@ log's one-entry-per-event grammar.)*
 - Lead gate check: `MOCHIKO_FULL_SIMILAR=1 cargo test -p mochiko-cli --test matrix_similar` after
   P1's rewordings — 48 passed, 0 failed (112 s); the frozen full-corpus figures held.
 - **A2 re-audit, schema content — FAIL, 1 blocking** ([reports/a2r-schema.md](reports/a2r-schema.md)):
-  round-1 findings fixed, AM-2 five PASS, D2/D3/D5/D6/D7/D9/D11 PASS; D4 fails — the number is
+  round-1 findings fixed, AM-2-required-cli-dependency five PASS, D2/D3/D5/D6/D7/D9/D11 PASS; D4 fails — the number is
   still implied twice in the skill document: `sec.verdict` intent "the one re-audit the loop
   allows" and `gate-loop-bound`'s tail "a further FAIL halts the landing" (fixes N=1, duplicates
   `second-fail-user`). **Second FAIL on this unit** — admissible under the old form (D10); under
@@ -246,7 +246,7 @@ log's one-entry-per-event grammar.)*
 
 ## Wave 2 — the plan-QA leg — opened 2026-09-19
 
-Plan: [wave2-plan-qa.md](wave2-plan-qa.md). Target 0.112.0. `producer-plan-enforcement` D8 items
+Plan: [wave2-plan-qa.md](wave2-plan-qa.md). Target 0.112.0. `producer-plan-enforcement` D8-plan-qa-landing items
 0–4, 5′, 6–10 under the NEW gate form + the D9 double-grade of the `review-seat-plan` pair. Sequence
 allocated: `0009-plan-qa-leg.yaml`. Seats: P1 schema · P2 prose · P3 crate tests (persona-less,
 `model: opus`); per-producer fresh generic peer graders on PPE D5; one plain gate grader for every
@@ -326,7 +326,7 @@ unit; one old-form `mochiko:validator` for the double-grade. Watch: PPE D8 item 
   figure (→ 162). **P3 resumed to execute; P2 resumed to fill placeholders + read-back.**
 - **P3 HALTED at its Risk 1 (correctly):** 0009 carries five `set-rule-field · anchor` ops; three
   re-anchor sidecar-anchored floors (`leg-1-seat-produces`, `arch.sound-loop-floor`,
-  `feat.sound-loop-floor`: `charter-ritual-balance` → `producer-plan-enforcement D8`) against
+  `feat.sound-loop-floor`: `charter-ritual-balance` → `producer-plan-enforcement D8-plan-qa-landing`) against
   ruling R1; `fidelity.rs:559` fails "the anchor moved". Lead ruled route (a): P1 drops those
   three ops (the two on previously unanchored rules stand — raising protection needs no
   authority), re-stamps, re-validates, re-emits. P3 holds. Pre-edit census: 455 pass / 9 fail
@@ -456,12 +456,12 @@ unit; one old-form `mochiko:validator` for the double-grade. Watch: PPE D8 item 
   to the retirement wave only, the plan-QA half to the trail as DONE · ROADMAP "Floor builds" row
   → wave 2 built · KM invariants run. Commit pending the user.
 - **Wave 2 CLOSED 2026-09-19 at v0.112.0.** Next: wave 3, the `validator` retirement
-  (producer-plan D8 item 5), audited under the gate form — one gate grader, no double-grade.
+  (`producer-plan-enforcement` D8-plan-qa-landing item 5), audited under the gate form — one gate grader, no double-grade.
 
 ## Wave 3 — the `validator` retirement — opened 2026-09-19
 
 Plan: [wave3-validator-retirement.md](wave3-validator-retirement.md). Target 0.113.0.
-`producer-plan-enforcement` D3 / D8 item 5 / D9 wave 2, sequenced as this path's wave 3 (D10).
+`producer-plan-enforcement` D3-peer-plan-grader / D8-plan-qa-landing item 5 / D9 wave 2, sequenced as this path's wave 3 (D10).
 Sequence allocated: `0010-validator-retirement.yaml` (three `reword-rule` ops, no id or pin moves).
 Seats: P1 schema + tiering pair · P2 prose sweep · P3 suite/crate fixtures/eval kit (persona-less,
 `model: opus`); per-producer fresh generic peer graders per `mochiko:review-seat-plan` (installed at
@@ -478,13 +478,13 @@ Seats: P1 schema + tiering pair · P2 prose sweep · P3 suite/crate fixtures/eva
   `plugin.json`, the router (family sentence · roster row · mount doctrine · one hygiene line),
   `validation-constitution/SKILL.md` (description + one body line), one `review-brainstorm`
   reference pointer, `CLAUDE.md` (three mentions + axis 5), `primitive-edits.md` (one
-  parenthetical), `ARCHITECTURE.md` (six lines), the governance ledger (GI-004 + GI-005 detail),
+  parenthetical), `ARCHITECTURE.md` (six lines), the governance ledger (GI-004-primitive-audit-ratchet + GI-005-record-layer-integrity detail),
   the budget ledger (one row), and three log rules (`patterns-model-tiering.seat-default-key`,
   `authoring-constitution.never-co-mounted`, `authoring-constitution.grading-routing`). The contract
   suite's preload case is `devils-advocate` × `review-specifications` — untouched. Role-noun uses
   and frozen records stay (plan §8). `.mochiko/provenance.yaml` no longer exists — D3's anchor item
   is moot; the `validator-scope-and-verbosity` anchor strings in the log are history.
-- **Lead's default, stated to the user:** the ledger's GI-004/GI-005 grader-identity lines are a
+- **Lead's default, stated to the user:** the ledger's GI-004-primitive-audit-ratchet/GI-005-record-layer-integrity grader-identity lines are a
   detail edit under this wave's audit (meaning unchanged), not an amend run; user said "go".
 - **Tree snapshot clean (2 lead paths); P1, P2, P3 plan-only dispatched under the leg** — each plan
   returned verbatim (the notification channel caps near 4,000 chars, so each seat re-sent its
@@ -500,8 +500,8 @@ Seats: P1 schema + tiering pair · P2 prose sweep · P3 suite/crate fixtures/eva
   row (+66 render chars from its two rewords, ruled-HOLDS restamp, covered under unit 1's argued
   overage); P2 gains the router's `patterns-model-tiering` row count (six → five) and the axis-5
   title ("Producer↔grader pairing", the same role-noun alignment §3.2 licenses for the router
-  hygiene line); the GI-005 editorial note drops — that block never named the persona, both lines
-  sit under GI-004 (plan §3.2 misattributed line 126; corrected at approval). The ledger
+  hygiene line); the GI-005-record-layer-integrity editorial note drops — that block never named the persona, both lines
+  sit under GI-004-primitive-audit-ratchet (plan §3.2 misattributed line 126; corrected at approval). The ledger
   amendment-log row (PATCH 3.1.1 + `Ratified:` header, the v3.0.1–v3.0.3 idiom) is put to the
   user: A add the row (recommended) · B no row; P2 executes everything else meanwhile.
 - **P1 plan — `PLAN GRADE: P1w3 · PASS · no items failed`** (peer-p1w3; rule texts re-measured
@@ -515,7 +515,7 @@ Seats: P1 schema + tiering pair · P2 prose sweep · P3 suite/crate fixtures/eva
   so `## Delegating Cheap Reads` (95-105, shared boilerplate homed on `patterns-model-tiering`)
   was missing from the record. Fix sent with the peer's two advisories (porcelain check as a
   before/after delta; the bare-`validator` survivor list gains the two governance references) and
-  the lead rulings (GI-004 only, no GI-005 note · axis-5 title aligned · router row 71 count · the
+  the lead rulings (GI-004-primitive-audit-ratchet only, no GI-005-record-layer-integrity note · axis-5 title aligned · router row 71 count · the
   budget rows held until P1 lands · the amendment-log row held for the user). **Re-plan bound:
   first consumption (1 of 1 shared).** Watch: 1 of 3 first-round FAILs — under half, no halt.
 ## Wave 3 — execution — 2026-09-20
@@ -538,7 +538,7 @@ counted the blank separator. User ruled A: this heading follows the entry with n
 - **P2 LANDED** ([reports/w3-p2-disclosure.md](reports/w3-p2-disclosure.md)): agent file deleted,
   manifest at nine agents; five router lines; two `validation-constitution` edits (description
   475, payload 14,797, both under budget); EXTERNAL-CLAIMS annotated; CLAUDE.md three lines, axis 5
-  re-titled; `primitive-edits.md` parenthetical; six ARCHITECTURE.md lines; GI-004 two lines + one
+  re-titled; `primitive-edits.md` parenthetical; six ARCHITECTURE.md lines; GI-004-primitive-audit-ratchet two lines + one
   editorial note; three budget rows after P1; four strip entries (pre-edit sha `56b44c2`). Sweep:
   `mochiko:validator` 0 hits; bare `validator` 16 hits, each a listed role-noun survivor
   (CLAUDE.md and ARCHITECTURE.md contribute none). One hook deny (Notes of note 16 > 15), trimmed.
@@ -592,8 +592,8 @@ counted the blank separator. User ruled A: this heading follows the entry with n
 - **P2 fix round landed** (six files): EXTERNAL-CLAIMS tail → "consumer retired v0.113.0 with the
   persona, with no successor consumer"; strip D reconciled; strip A's `## Your Judgment` bullet
   discloses the source re-read sub-clause as retired, not re-homed; `ARCHITECTURE.md:26` → 9
-  personas; ledger row `3.1.1` after 3.1.0, the GI-004 note now "recorded as the PATCH 3.1.1 row;
-  no fresh `/mochiko:setup` amend"; `CLAUDE.md:109` → `v3.1.1 · 2026-09-20 (AM-3 + the
+  personas; ledger row `3.1.1` after 3.1.0, the GI-004-primitive-audit-ratchet note now "recorded as the PATCH 3.1.1 row;
+  no fresh `/mochiko:setup` amend"; `CLAUDE.md:109` → `v3.1.1 · 2026-09-20 (AM-3-conformance-gate-admission + the
   validator-retirement PATCH)`, the rest of the line byte-identical. **Disclosed:** P2 made these
   six edits with scripted in-place string replacements rather than the Edit tool — the artifact
   hook's best-effort parse did not catch them; the lead ruled Edit/Write only from here and the
@@ -602,7 +602,7 @@ counted the blank separator. User ruled A: this heading follows the entry with n
   the seat, verified with Read, not re-laid.
 - **Round 2 (same seat, delta) — units 4 · 6 · 7 PASS; unit 8 FAIL (1 blocking, first FAIL);
   unit 11 FAIL as a knock-on (1 blocking, first FAIL).** Unit 8: the ledger's `**Version:**` field
-  still 3.1.0 against the v3.1.1 stamp, and the GI-019 clause-iv paragraph's "pre-authorized PATCH
+  still 3.1.0 against the v3.1.1 stamp, and the GI-019-kernel-tooling-admission clause-iv paragraph's "pre-authorized PATCH
   v3.1.1" pointer reserved that number for the hook-wave's own activation row, never recorded —
   our row took it. Unit 11: the CHANGELOG entry still said "no amendment". Fixes: P2 moves the
   field and re-keys the pointer to "still owed, now v3.1.2"; the lead rewrites the CHANGELOG's
@@ -617,7 +617,7 @@ counted the blank separator. User ruled A: this heading follows the entry with n
 
 - **Round 3 (same seat, delta on units 8 and 11) — both PASS. Wave: 11 PASS · 0 blocking; four
   blocking findings caught over three rounds; no unit reached its second FAIL.** Unit 8: the
-  `**Version:**` field moved in lockstep with the stamp; the GI-019 pointer re-keyed to "still
+  `**Version:**` field moved in lockstep with the stamp; the GI-019-kernel-tooling-admission pointer re-keyed to "still
   owed, now v3.1.2" — the grader checked v3.1.2 is free and the hook-wave PATCH is genuinely
   pre-authorized at the 3.1.0 row. Unit 11: the governance sentence now names the v3.1.0 → v3.1.1
   PATCH. Report: [reports/w3-gate-audit.md](reports/w3-gate-audit.md) (round 3).

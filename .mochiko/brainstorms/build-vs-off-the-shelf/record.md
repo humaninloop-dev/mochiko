@@ -48,7 +48,7 @@ numbers refer to that clone.
   The spec (`.mochiko/specs/corpus-stewardship/spec.md:15`) ratified "corpus is files on disk,
   consistent with D5's file-computable floor; format choice is plan-level" at acceptance
   2026-08-14 — frozen input to the plan. No kinako governance item mandates plain files;
-  `corpus.md` is storage-agnostic, and GI-006's "atomic and durable" is exactly what option D's
+  `corpus.md` is storage-agnostic, and "GI-006"'s "atomic and durable" is exactly what option D's
   pro column offered.
 
 - **F4 — The constraint was a misreading.** The D5 floor's real requirement (Claude-integration
@@ -66,7 +66,7 @@ numbers refer to that clone.
   **domain-layer crates only** (`engine-port.md` registry: `serde` · `uuid` · `jiff` ·
   `thiserror`; kinako `CLAUDE.md:43`), and "an addition would need a human ruling first"
   (`constraints-and-decisions.md:261-264`) refers to that registry. `rusqlite` is adapter-side:
-  adopting it required only a PR-justification line (GI-009, kinako `CLAUDE.md:28`) — no gate,
+  adopting it required only a PR-justification line ("GI-009", kinako `CLAUDE.md:28`) — no gate,
   no ruling. What the evidence does show is a **ceremony asymmetry**: adoption is visible (PR
   line, registry ritual for domain crates, trust-signal levels) while hand-rolling carried no
   ceremony anywhere — the pen wrote "no registry change" (`:292`) as a satisfied consequence,
@@ -249,7 +249,7 @@ numbers refer to that clone.
   (C) retrofit-cost split. Recommendation: C — A prices cheap reversible choices the same as
   six-cycle storage engines; B is what kinako D-005 was, minus the disclosure; the gate exists
   for the irreversible class, and the split line reuses the ratified "nothing expensive to
-  retrofit" principle (adaptive-depth D5). **Ruled: as recommended** *(explicitly confirmed by
+  retrofit" principle (`production-floor-adaptive-depth` D5-low-retrofit-principle). **Ruled: as recommended** *(explicitly confirmed by
   the user at review disposition, 2026-08-15 — C10; option A's "exact dependency-gate mirror"
   framing reads per the C1 correction — the gate analogy is dead, the retrofit-cost basis is
   the ruling's whole ground)*.
@@ -262,7 +262,7 @@ numbers refer to that clone.
 - **Q5 — carrier shape.** Options: (A) new sibling skill, single source, thin references from
   every carrier · (B) fold into `patterns-technical-decisions` · (C) distribute per carrier.
   Recommendation: A — exact precedent (plan-minimalism, map-minimalism, sound-loop,
-  transport-floor all landed as sibling skills with pointer touches); GI-017 surfaces point at
+  transport-floor all landed as sibling skills with pointer touches); GI-017-pointer-only-region surfaces point at
   homes, never restate; B's home is too narrow for the cross-stage D3 valve and specify hygiene;
   C is the known restatement-drift failure mode. Rung-3 widening over new-rung insertion to
   avoid renumbering every rung citation. **Ruled: A.** Name trail (Q5a): user first chose
@@ -349,7 +349,7 @@ author≠grader audit per the landing ritual.
    deliberately: at code altitude, per-task stdlib reuse is the right bias — the adopt-first
    question fires at plan altitude, where whole mechanisms are on the table. This closes
    failure-chain step 5.
-9. **(C4)** Precedent coordination — SD-D5 and OO-D6 already ruled "established, never
+9. **(C4)** Precedent coordination — `security-depth-scoping` D5-oss-area-coverage and `ops-observability-hardening` D6-ops-tooling-stance already ruled "established, never
    hand-rolled" for tooling, with `authoring-constitution/references/STACK-TOOLING.md` the
    defaulted create-or-join home (both Tier-I builds still queued). Relationship ruled:
    `patterns-adopt-first` is the plan-time **decision discipline**; STACK-TOOLING.md is the

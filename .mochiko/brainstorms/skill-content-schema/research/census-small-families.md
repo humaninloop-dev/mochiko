@@ -1,7 +1,7 @@
 # Skill-content schema — wave-2 census: small families (testing · analysis · singletons)
 
 **Seat:** wave-2 census (small families) · **Date:** 2026-09-01 · **Status:** delivered
-**Referent law:** `record.md` D1–D9 as amended (skill-content-schema) · command-content-schema D12/D15 ·
+**Referent law:** `record.md` D1–D9 as amended (skill-content-schema) · command-content-schema D12-rule-block-grain/D15-rule-text-closure ·
 near-dup ADR R1–R6 (`.mochiko/decisions/2026-08-28-near-dup-convergence.md`) · the wave-1 census
 (`census.md`, this directory) as structural referent, its §K build corrections included.
 **Corpus:** 8 skills in three micro-families — **testing** (`testing-end-user` TEU ·
@@ -22,7 +22,7 @@ the D3-as-amended vocabulary: **body-stays-prose** / **moves-to-schema** (move) 
 
 ## A. Protected-set reconciliation (FIRST, per D9/C4)
 
-All 8 members have strip files. Reconciliation is at the unit of **live protection** (the wave-1 J-1
+All 8 members have strip files. Reconciliation is at the unit of **live protection** (the wave-1 J-1-kept-mention-count
 posture): KEPT/RETURNED survivor rulings, keep-deliberately sets riding recorded supersessions, and
 `DECISIONS.md`-traceable ruled machinery. Ended protections listed with their ending ruling. Nothing
 below is dispositioned "delete".
@@ -34,15 +34,15 @@ below is dispositioned "delete".
 | Protected unit | Lineage | Status | Census disposition |
 |---|---|---|---|
 | KEPT: envelope register + prose-on-clean check restated in `references/REPORT-TEMPLATES.md` — "Cut it only with a ruling that also re-homes the check" | [v0.44.0] KEPT entry; verbosity-caveman D4/S2, `DECISIONS.md` 2026-08-01 | live, in reference | **reference-stub** — the stub's `pointer:` names REPORT-TEMPLATES.md; the sanctioned dual-homing (this payload home + `templates/report-format.md`) is ruled, and the stub must not read as the anti-dual-homing violation (see J2-10) |
-| Whole parsing algorithm · field extraction · legacy-marker normalization · grammar-owner banner; legacy task-line form stays parseable by design | [v0.49.0] supersession keep-set; `DECISIONS.md` 2026-08-02 plan-task-granularity D2 | live | grammar-ownership banner rule **moves-to-schema** (binding); parsing algorithm stays in TASK-PARSING.md (**reference-stub** for the grammar-owner-wins line) |
+| Whole parsing algorithm · field extraction · legacy-marker normalization · grammar-owner banner; legacy task-line form stays parseable by design | [v0.49.0] supersession keep-set; `DECISIONS.md` "2026-08-02 plan-task-granularity D2" | live | grammar-ownership banner rule **moves-to-schema** (binding); parsing algorithm stays in TASK-PARSING.md (**reference-stub** for the grammar-owner-wins line) |
 | Guardrails keep-set: Overview + letter/spirit epigraph, When NOT to Use, entire Core Process incl. browser-flow exception, Quality Gates + Execution, Red Flags, Rationalizations, Mistakes, Reference Files | [v0.64.0] supersession keep-set; guardrails Wave 2, `DECISIONS.md` 2026-08-11 | live, compressed | obligations **move-to-schema** per §B; teaching tables (Red Flags, Rationalizations, Mistakes) **body-stays-prose**; the STOP-meta-rule moves |
 | Quality-gate source = `tasks.md` `## Quality Gates` + project build configuration; always-auto-resolve (deterministic ground truth, never judgment); exit-code classification; `quality_gates` frontmatter slot | [v0.91.0] supersession keep-set; plan-stage retirement D4, `DECISIONS.md` 2026-08-26 | live | **moves-to-schema** (gate-source binding + auto-resolve floor) |
-| Browser-flow classification exception (FLOW-XXX Playwright walk → CLI; binding surface is the flow, pixels advisory, never an assert target) | UX-D9, `DECISIONS.md` 2026-08-02 "UX mocking in specify" row ("testing-end-user browser-flow classification") | live | **moves-to-schema**, wording preserved in substance |
+| Browser-flow classification exception (FLOW-XXX Playwright walk → CLI; binding surface is the flow, pixels advisory, never an assert target) | `ux-mocking-in-specify` D9-flow-test-gate, `DECISIONS.md` 2026-08-02 "UX mocking in specify" row ("testing-end-user browser-flow classification") | live | **moves-to-schema**, wording preserved in substance |
 | `**TEST:**` grammar stays with `patterns-vertical-tdd`; TEU consumes | `DECISIONS.md` 2026-08-16 vertical-TDD row ("`**TEST:**` grammar stays with `patterns-vertical-tdd`") | live | **moves-to-schema** (binding + boundary) |
 
 #### TGF — testing-gap-finding (strips: 3 entries, all supersession-by-ruling; born by ruling v0.79.0)
 
-No KEPT lines — a birth-by-ruling body (the RSUF class, wave-1 J-2 idiom). The live protection is the
+No KEPT lines — a birth-by-ruling body (the RSUF class, wave-1 J-2-birth-by-ruling idiom). The live protection is the
 DECISIONS-traceable D1–D10 machinery of the 2026-08-19 "QA gap-finding verification ruled" row, plus
 the v0.79.0 build's V2/F2 fence-delegation guard and the v0.81.0/v0.91.0 re-key keep-sets:
 
@@ -54,7 +54,7 @@ the v0.79.0 build's V2/F2 fence-delegation guard and the v0.81.0/v0.91.0 re-key 
 | Finding split by kind never severity; spec-violation blocks with evidence + clause; lead confirms blocking; disputed kind defaults advisory to the user; finder never gates alone | D6 | live | **moves-to-schema** (constraint + reservation) |
 | Rework bound (whole-run default 2, redeclarable only at run open; exhaustion reserved to the user); out-of-territory routes to `/mochiko:feature` delta card | D6 | live | **moves-to-schema** (bound + reservation + routing) |
 | Fold-back: `gates.md` contract (mint at first fold or card authoring inside the implement run; survives graduation; union read), QA craft authors, never the exploratory seat; as-designed not folded | D7 + v0.91.0 mint-moment re-key keep-set | live | **moves-to-schema** (binding + independence) |
-| Mutation lens: alongside-never-inside, HIGH depth only, diff only, timeboxed, absent/flaky = skipped AND noted, survivors advisory; tool is an advisory post-hoc exit-code checker — never gates, never dispatches, never holds judgment | D5 + D10 (GI-019 carve-out language) | live | **moves-to-schema** |
+| Mutation lens: alongside-never-inside, HIGH depth only, diff only, timeboxed, absent/flaky = skipped AND noted, survivors advisory; tool is an advisory post-hoc exit-code checker — never gates, never dispatches, never holds judgment | D5 + D10 (GI-019-kernel-tooling-admission carve-out language) | live | **moves-to-schema** |
 | Done condition + disclosure (probed-or-unprobeable-with-reason, counts disclosed); zero findings is a clean pass | D8 | live | **moves-to-schema** (duty + constraint; note the inverse-of-default-FAIL polarity, J2-6) |
 | Seat = `mochiko:devils-advocate` | D4 as amended (I1 reseat) | live | **moves-to-schema** (binding) |
 | Scope carve: selection + epic (once over union); delta/lane skipped, skip stated — silent no-op is a defect | D2 | live | **moves-to-schema** |
@@ -76,7 +76,7 @@ the v0.79.0 build's V2/F2 fence-delegation guard and the v0.81.0/v0.91.0 re-key 
 | [v0.24.0] KEPT: four Essential-Floor check tables | strip survivor entry | **ended** at v0.63.0 (recorded supersession; canonical definitions live in `authoring-constitution/references/ESSENTIAL-FLOOR.md`) | n/a — historical. Residual: the dangling "using the indicators below" pointer, an accepted defect shipped byte-faithful to the ruled variant (J2-9) |
 | [v0.24.0] KEPT: Common Mistakes table (incl. CODEOWNERS relocation target) | strip survivor entry, pilot ratification 2026-07-25 | live | rows are teaching **body-stays-prose**; the two obligation-shaped rows (only-report-what-is-found; never-redefine-the-Floor) **move-to-schema** |
 | Assess-status contract: canonical-definition boundary ("Do not redefine the categories here"), intent-blind + waiver-blind rule (never soften absent, never mark waived) | v0.63.0 guardrails keep-set; also the 2026-08-13 architect-role row (tech-lead carries `analysis-codebase`) | live | **moves-to-schema** (floors) |
-| Two-arm output binding: `mochiko-cli template codebase-analysis` or Read `plugins/mochiko/schemas/codebase-analysis.yaml` raw | [v0.76.0] strip, schema-based-template-guidance D1/D8 (GI-020) | live | **moves-to-schema**, both arms preserved verbatim (the RPA two-arm precedent) |
+| Two-arm output binding: `mochiko-cli template codebase-analysis` or Read `plugins/mochiko/schemas/codebase-analysis.yaml` raw | [v0.76.0] strip, schema-based-template-guidance D1-single-plugin-cli/D8-schema-data-files (GI-020-plugin-install-model) | live | **moves-to-schema**, both arms preserved verbatim (the RPA two-arm precedent) |
 | Parked-mode carve-outs (collision/JSON inventory = spec/design-cluster, not wired), meaning preserved | [v0.91.0] strip keep-set, plan-stage retirement D1 vocabulary re-key | live | **moves-to-schema** (routing) |
 
 #### AI — analysis-iterative (strips: 6 entries)
@@ -96,7 +96,7 @@ the v0.79.0 build's V2/F2 fence-delegation guard and the v0.81.0/v0.91.0 re-key 
 |---|---|---|---|
 | Whole body = owned craft (v0.64.0 audited **body no-op** — "the Overview, the 8-step Procedure, and the Boundaries are all owned craft whose obligations survive nowhere else") | [v0.64.0] strip; `DECISIONS.md` 2026-08-11 Wave-2 row names the no-op | live | obligations **move-to-schema** per §B; the 8-step procedure **body-stays-prose** (D3) |
 | Delivery-sweep contract: stated-obligation verification, adjacent-work-never-counts, run-gated-stay-open, delivered claims independently re-verified, closures user-ratified | `DECISIONS.md` 2026-08-01 row + ADR `.mochiko/decisions/2026-08-01-groom-delivery-sweep.md` | live | **moves-to-schema** (duty + reservation) |
-| Compress-and-move-never-delete; never edit session/decision records; trail append-only | v0.64.0 keep-set + OD-D11 lineage (`DECISIONS.md` 2026-07-25) | live | **moves-to-schema** (floors) |
+| Compress-and-move-never-delete; never edit session/decision records; trail append-only | v0.64.0 keep-set + `operating-docs-maintenance` D11-two-new-skills lineage (`DECISIONS.md` 2026-07-25) | live | **moves-to-schema** (floors) |
 | v0.44.0 leak-test keep-set (four adopter-valid sweep sources) | [v0.44.0] strip keep-deliberately | live | rides the delivery-sweep rule's text |
 
 #### BI — brownfield-integration (strips: 6 entries)
@@ -104,17 +104,17 @@ the v0.79.0 build's V2/F2 fence-delegation guard and the v0.81.0/v0.91.0 re-key 
 | Protected unit | Lineage | Status | Census disposition |
 |---|---|---|---|
 | [v0.25.0] KEPT: EXTEND/MODIFY consumption table · Read-Before-Write checklist · Conflict Detection · When to Flag · Rationalizations table | strip survivor entry, batch-2 ratification 2026-07-25 | live, all sections surviving (v0.64.0 reconciliation: "The When-to-Use cut removes NONE of these") | interface MUST-NOTs + read-full-file + flag-routing **move-to-schema**; checklist steps 2–5 and Conflict-Detection items ride two set-rules; Rationalizations table **body-stays-prose** |
-| [v0.49.0] KEPT: entire consumption discipline (read-before-write, interface preservation, EXTEND-never-silently-becomes-MODIFY, conflict escalation) | strip keep-set, plan-task-granularity D2.1, `DECISIONS.md` 2026-08-02 | live | **moves-to-schema** (floors) |
-| Consumes-the-classification boundary (builder classifies at decomposition; declared design-time by `patterns-vertical-tdd`) | [v0.49.0] supersession; PT-D7 (rung-zero thin form pointers here), `DECISIONS.md` 2026-08-05 | live | **moves-to-schema** (boundary) |
+| [v0.49.0] KEPT: entire consumption discipline (read-before-write, interface preservation, EXTEND-never-silently-becomes-MODIFY, conflict escalation) | strip keep-set, plan-task-granularity D2.1-builder-restriction-removed, `DECISIONS.md` 2026-08-02 | live | **moves-to-schema** (floors) |
+| Consumes-the-classification boundary (builder classifies at decomposition; declared design-time by `patterns-vertical-tdd`) | [v0.49.0] supersession; `ponytail-concepts-integration` D7-reading-first-rung (rung-zero thin form pointers here), `DECISIONS.md` 2026-08-05 | live | **moves-to-schema** (boundary) |
 
 #### ETC — executing-tdd-cycle (strips: 11 entries)
 
 | Protected unit | Lineage | Status | Census disposition |
 |---|---|---|---|
 | KEPT: envelope register + prose-on-clean check restated in `references/CYCLE-REPORT-FORMAT.md` ("Cut it only with a ruling that also re-homes the check") | [v0.44.0] KEPT entry; verbosity-caveman D4/S2 | live, in reference | **reference-stub** (same J2-10 dual-homing note as TEU's twin) |
-| [v0.49.0] keep-set: cycle-boundary restriction (does not add/remove/re-scope/reorder cycles — decomposition unlocked, slicing not) · red/green/refactor strict order · rework-only-failed-tasks · fix-pass scoping · verifier boundary | plan-task-granularity D2.1, `DECISIONS.md` 2026-08-02 | live | **move-to-schema** (floors + constraints) |
-| [v0.53.0] keep-set: self-disclosure framing (report is not a verdict), lead's verdict ownership, verifier-grades-independently | PT-D8, `DECISIONS.md` 2026-08-05 | live | **moves-to-schema** (reservation) |
-| Pre-code ladder at decompose, rung disclosed; ladder single-sourced at `mochiko:patterns-code-minimalism` | PT-D4, `DECISIONS.md` 2026-08-05 | live | **moves-to-schema** (floor-pointer duty) |
+| [v0.49.0] keep-set: cycle-boundary restriction (does not add/remove/re-scope/reorder cycles — decomposition unlocked, slicing not) · red/green/refactor strict order · rework-only-failed-tasks · fix-pass scoping · verifier boundary | plan-task-granularity D2.1-builder-restriction-removed, `DECISIONS.md` 2026-08-02 | live | **move-to-schema** (floors + constraints) |
+| [v0.53.0] keep-set: self-disclosure framing (report is not a verdict), lead's verdict ownership, verifier-grades-independently | `ponytail-concepts-integration` D8-lens-input-wiring, `DECISIONS.md` 2026-08-05 | live | **moves-to-schema** (reservation) |
+| Pre-code ladder at decompose, rung disclosed; ladder single-sourced at `mochiko:patterns-code-minimalism` | `ponytail-concepts-integration` D4-ladder-procedure-skill, `DECISIONS.md` 2026-08-05 | live | **moves-to-schema** (floor-pointer duty) |
 | "Whether to rework … and when to stop are the lead's routing decisions" — the line the 2026-08-07 bounds ruling pinned as staying true | `DECISIONS.md` 2026-08-07 row ("`executing-tdd-cycle`'s 'lead's routing decision' line stays true") | live | **moves-to-schema** (reservation, wording preserved in substance) |
 | Test-case-bundle card reading + `Covers` citation contract (reference) | 2026-08-16 vertical-TDD D1/D3, [v0.75.0] strip | live, in TASK-PARSING.md | **reference-stub** |
 | `domain_deps_added` visibility floor: non-empty always forces a human checkpoint — never auto-approved (reference) | CYCLE-REPORT-FORMAT.md field table | live, in reference | **reference-stub** (user-gate) |
@@ -126,7 +126,7 @@ member makes 8 KEPT entries in strip files), of which **3 are fully ended** by r
 enumerated) and 2 partially ended with survivors enumerated. **~30 live protected units** enumerated
 above, every one carrying a named disposition; zero stay-silent; no disposition is "delete". TGF and
 GOD are birth-/craft-by-ruling bodies with no KEPT lines — their moves cite the owning `DECISIONS.md`
-rows per rule (the wave-1 J-2/R-c idiom; ride-along confirmation at the wave gate).
+rows per rule (the wave-1 J-2-birth-by-ruling/R-c idiom; ride-along confirmation at the wave gate).
 
 ---
 
@@ -162,7 +162,7 @@ new kind needed.
 | 7 | report machine-first per REPORT-TEMPLATES.md: all-PASS = frontmatter only; any FAIL/PARTIAL/TIMEOUT/ERROR = `## Failures` | must | binding | move |
 | 8 | "The human decision gates completion — no proceeding without explicit human approval" | floor | gate | move |
 | 9 | runtime classification owned by this skill; CLI / GUI / SUBJECTIVE table decides auto-approve vs human checkpoint | must | constraint | move |
-| 10 | browser-flow exception: FLOW-XXX-cited Playwright walk with machine-evaluable asserts only classifies CLI; a subjective/custom assert anywhere keeps SUBJECTIVE/GUI; "the binding surface is the flow … visual appearance stays advisory and is never an assert target" | must | constraint | move (protected, UX-D9) |
+| 10 | browser-flow exception: FLOW-XXX-cited Playwright walk with machine-evaluable asserts only classifies CLI; a subjective/custom assert anywhere keeps SUBJECTIVE/GUI; "the binding surface is the flow … visual appearance stays advisory and is never an assert target" | must | constraint | move (protected, `ux-mocking-in-specify` D9-flow-test-gate) |
 | 11 | "Default to SUBJECTIVE if uncertain … Ambiguity is a reason to escalate to a human, never a reason to auto-approve. Any failure, on any classification, forces a checkpoint" | floor | constraint | move |
 | 12 | result vocabulary: PASS / FAIL / PARTIAL / TIMEOUT / ERROR | must | constraint | move |
 | 13 | pre-checkpoint completion set (setup done · actions run · asserts evaluated · evidence captured · report generated); "No presenting partial results. No skipping evidence capture" | must | duty | move |
@@ -196,7 +196,7 @@ new kind needed.
 | 15 | mutation lens: HIGH depth only · this feature's diff only · timeboxed | must | bound | move |
 | 16 | "Tool absent = lens skipped AND noted — never silent"; flaky suite = skipped, skip noted | must | duty | move |
 | 17 | "Surviving mutants are beyond-spec advisory findings — never blocking" | must | constraint | move |
-| 18 | the tool "never gates progress, never dispatches agents, never holds judgment this skill owns" (GI-019 posture) | floor | constraint | move |
+| 18 | the tool "never gates progress, never dispatches agents, never holds judgment this skill owns" (GI-019-kernel-tooling-admission posture) | floor | constraint | move |
 | 19 | findings "split by kind, never by severity"; spec-violation blocking "with evidence captured and the spec clause cited"; broken NFR-XXX qualifies | must | constraint | move |
 | 20 | adjudication: finder proposes; "the lead confirms the blocking classification at the checkpoint verdict"; "a disputed kind defaults advisory and goes to the user, who rules. The finder never gates alone" | floor | reservation | move |
 | 21 | rework bound: "whole-run bound, default 2 rounds, redeclarable only at run open"; cycle-localized findings charge that cycle's attempts; "Bound exhaustion or a no-progress round halts the run; the disposition is reserved to the user" | must | bound + reservation | move (21a/21b) |
@@ -232,7 +232,7 @@ new kind needed.
 
 | # | Obligation | class | kind | disp. |
 |---|---|---|---|---|
-| 1 | deliverable binding: `.mochiko/memory/codebase-analysis.md` per the `codebase-analysis` schema — "invoke `mochiko-cli template codebase-analysis` when the binary is available; otherwise Read `plugins/mochiko/schemas/codebase-analysis.yaml` raw" | must | binding | move (both arms verbatim, GI-020 — protected) |
+| 1 | deliverable binding: `.mochiko/memory/codebase-analysis.md` per the `codebase-analysis` schema — "invoke `mochiko-cli template codebase-analysis` when the binary is available; otherwise Read `plugins/mochiko/schemas/codebase-analysis.yaml` raw" | must | binding | move (both arms verbatim, GI-020-plugin-install-model — protected) |
 | 2 | artifact-format envelope, "slimmed but legible": findings in tables with file-cited evidence; judgment prose stays prose | must | binding | move |
 | 3 | Essential-Floor categories "defined canonically" in `authoring-constitution/references/ESSENTIAL-FLOOR.md`; "Do not redefine the categories here"; this skill owns assess-status only | floor | binding + routing | move (cross-dir pointer, J2-7) |
 | 4 | "The assessment is intent-blind and waiver-blind by design. Report what IS — the same codebase gets the same status" | floor | constraint | move |
@@ -307,7 +307,7 @@ new kind needed.
 | 7 | card reading per `references/TASK-PARSING.md`; current cycle = first unchecked card in order | must | binding | move |
 | 8 | decompose at build time "with the code in view"; tasks sized to a single reviewable change, paths named, tests precede implementation | must | duty | move |
 | 9 | "decompose exactly what the card's acceptance criteria require — nothing the card didn't ask for" | must | constraint | move |
-| 10 | pre-code ladder per `mochiko:patterns-code-minimalism` "Before any red-phase test"; each task's rung disclosed in the report | floor | duty | move (protected, PT-D4) |
+| 10 | pre-code ladder per `mochiko:patterns-code-minimalism` "Before any red-phase test"; each task's rung disclosed in the report | floor | duty | move (protected, `ponytail-concepts-integration` D4-ladder-procedure-skill) |
 | 11 | decomposition "disclosed in the cycle report … not written back into `tasks.md`" | must | constraint | move (protected, D2.1) |
 | 12 | red phase: run the test, "verify the failure reason matches expectations"; a test passing without implementation is rewritten | floor | duty | move |
 | 13 | green phase: "the minimum code to make the failing test pass"; no unrequired features/abstractions | must | constraint | move |
@@ -437,7 +437,7 @@ Per-member convert-worthiness on those B/C grounds:
 | AC | 13 | 3 | moderate | converts — moderate pay |
 | TGI | 13 | 3 | moderate (survivor-ruling remnant) | marginal — small body, thin obligations; pays mainly for uniformity |
 | AI | 12 | 1 | low (1 floor line + 1 dispatch seam) | **weak pay** — most body is engine craft the boundary keeps as prose; payload ~doubles for ~12 rules |
-| GOD | 8 | 2 | moderate (ADR + OD-D11) | **weak pay** — smallest body (2,666), highest relative multiplier; strong `reserved` content is the best argument |
+| GOD | 8 | 2 | moderate (ADR + `operating-docs-maintenance` D11-two-new-skills) | **weak pay** — smallest body (2,666), highest relative multiplier; strong `reserved` content is the best argument |
 
 **Plain statement per the brief:** no member's obligation content is so thin that a pair is
 *meaningless* — every member carries at least one non-waivable floor and DECISIONS-traceable
@@ -550,7 +550,7 @@ ceremony unchanged; zero edits proposed.
   honesty mechanism vs the grader's earned-verdict posture). The detector may cluster it against
   `review-common.default-fail`. *Recommendation:* pre-record the keep-distinct edge with this
   polarity note so no build seat "fixes" it.
-- **J2-7 — cross-directory pointers (wave-1 J-7 class).** TEU/ETC →
+- **J2-7 — cross-directory pointers (wave-1 J-7-cross-directory-pointers class).** TEU/ETC →
   `../patterns-vertical-tdd/references/TEST-GRAMMAR.md`; AC →
   `../authoring-constitution/references/ESSENTIAL-FLOOR.md`; skill-name pointers
   (`mochiko:patterns-code-minimalism`, `mochiko:patterns-adopt-first` precedent). Already priced by

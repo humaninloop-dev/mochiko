@@ -274,7 +274,7 @@ to both sentences.
 | exist at all | SQLite, a cache, an index | D1 defers all three to a measured need |
 | exist at all | `.md` scaffold checks | dead under D6 |
 | exist at all | DECISIONS.md anchor resolution | wave-plan §3 scopes wave 1 to format |
-| exist at all | merge logic in `similar.rs` | combining is judgment (GI-019) |
+| exist at all | merge logic in `similar.rs` | combining is judgment (GI-019-kernel-tooling-admission) |
 | exist at all | a `--json` or `--exit-signal` surface | not in the advisory set the wave plan names |
 | in codebase | a second decoder, resolver or hash | reused `from_value`/`to_value`, `canonical_hash`, `resolve_extends`, `derive_prefix`, `Family::of`, `with_hash`, `load_full`, `Finding`/`Code` |
 | in codebase | a second YAML writer | one writer serves genesis and the views |

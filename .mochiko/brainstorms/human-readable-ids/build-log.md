@@ -183,7 +183,7 @@ Append-only. One `##` entry per event, 60 lines at most.
   crossing the re-issue (no double work: item 1 already in the tree). A status pull drew the rest.
 - N1, N2, N5 built test-first: 9 new tests (ids 92, total 673), red lines quoted by the seat;
   one existing fixture changed under N2 (`GI-001-secrets-out-of-repo`, four words, now
-  `GI-001-secrets-outside-repo`). Seat-reported four layers exit 0. Smoke `649 bare · 42 drift`
+  "`GI-001-secrets-outside-repo`"). Seat-reported four layers exit 0. Smoke `649 bare · 42 drift`
   (was 10,148 · 88 before D18's narrowing). Six judgment calls (a)–(f) disclosed; the reviewer rules.
 - Write set held: `crates/mochiko-cli/` only (ids 1,336 · rename 872 · tests 2,111 · cli +262 ·
   conform ±16 · home, lib small). No dependency, no bump.
@@ -378,15 +378,15 @@ Append-only. One `##` entry per event, 60 lines at most.
   Four layers exit 0 first-hand (703 tests); real tree `621 bare · 45 drift`; round-2 items C2
   (ruling C), N1–N4, L1, L2 verified. F1 (High): two specs share `scr-001-week-menu.html`; a root
   file's unqualified cite of the other spec's screen is rewritten to the renamed file, exit 0, diff
-  check passing — a dead pointer and a wrong-owner rewrite (D18 as narrowed; GI-005). Fix named:
+  check passing — a dead pointer and a wrong-owner rewrite (D18 as narrowed; GI-005-record-layer-integrity). Fix named:
   resolve the written path from the citing file's directory or the tree root, as the slash branch
   does; a bare name passes only beside the moved file. A1 (Low): `stale_spots` (:709-745) matches
   by name alone, same fix. A2 (Info): project-wide moves span the tree (D12; confirm).
 - `w2-tests-plan-grader`: `PLAN GRADE: w2-tests · FAIL · 5 (with 1, D18 in scope)`. Regenerated
   template goldens (`crates/mochiko-cli/tests/fixtures/template/`) are live to the check — not in
   `DEFAULT_EXCLUDES` (`src/ids.rs:1050`) — so after 0046 they report "GI-001-project-surface-type"
-  as drift against this repo's bare `GI-001` (probed: 2 drift), and wave 3 would rewrite their
-  decided-ID cites (`setup-product-agnostic D3`), breaking byte-equality. Fix named: a post-T1 check
+  as drift against this repo's bare "`GI-001`" (probed: 2 drift), and wave 3 would rewrite their
+  decided-ID cites ("`setup-product-agnostic D3`"), breaking byte-equality. Fix named: a post-T1 check
   task with expected output, plus a stop routing the goldens' exclusion. Advisories A1–A7. All
   other tree claims verified first-hand.
 - Bounds: wave 1 has spent its fix rounds (round 2 was the user's grant); wave 2's re-plan round
@@ -419,7 +419,7 @@ Append-only. One `##` entry per event, 60 lines at most.
   disclosed: H3's spot name (rename.rs:489) and the N5 fixture's path (`notes.md:2:11` → `:2:39`).
   706 tests (ids 125); four layers exit 0; the r15 scenario rebuilt in scratch: cite untouched.
 - P1's real-tree run showed 46 drift; the +1 was the lead's own build-log line carrying a joined
-  GI-001 example. Fixed on sight by quoting it (D15); the lead's re-run: `621 bare · 45 drift`.
+  "GI-001" example. Fixed on sight by quoting it (D15); the lead's re-run: `621 bare · 45 drift`.
 - Re-review 3 sent to `w1-code-review`, scoped to the fix, with both test changes named for
   scrutiny and named regression hunts (`./`/`../`, anchors, encoded or bracketed targets, absolute
   paths); a FAIL goes to the user.
@@ -637,14 +637,14 @@ Append-only. One `##` entry per event, 60 lines at most.
   - 20 reds and 3 guards; about 950–1,100 lines.
 - Q4 ruled by the lead as P1 leaned: "the number is shared" means two or more holders, or one file
   holding a bare site of a holder's kind. This closes a bare legacy entry silently renumbered
-  beside a joined one (GI-005). It never makes a bare site a holder. Sent to the same grader.
+  beside a joined one (GI-005-record-layer-integrity). It never makes a bare site a holder. Sent to the same grader.
 
 ## 2026-10-08 — wave 1b r1 FAIL (R1, R2); goes to the user
 
 - `PLAN GRADE: p1-wave1b · FAIL · 1, 5 (R1) · 4 (R2)`.
   - R1: the same-kind refusal's reach is stated three ways. Read narrowly, a bare old-ID rekey on
     the identical-slug landing shape renumbers both entries silently. Read strictly, 14
-    session-D keys with amendment or reversal cards (e.g. `cli-schema-delivery` D3, :400 and
+    session-D keys with amendment or reversal cards (e.g. `cli-schema-delivery` D3-rules-delivery-binding, :400 and
     :1037) can never be re-slugged after wave 3.
   - R2: task 9's red is green on arrival; the three-word other-holder token and a bare token,
     which the limb must block, pass today.
@@ -654,7 +654,7 @@ Append-only. One `##` entry per event, 60 lines at most.
   renames.
 - Advisories: B1, the AX guard follows the store template (no `concerns.md` table row). B2, a bare
   legacy entry of different kinds can still tie (no such shape today). B3, wave 3's first rename
-  of `model-tiered-seats` D1 also joins two bold quotes of other sessions' D1 (:86, :92), which
+  of `model-tiered-seats` D1-usage-accounting-unit also joins two bold quotes of other sessions' D1 (:86, :92), which
   goes to wave 3's per-apply review.
 - Put to the user with the W2-prose decision: A, one more round with the refusal on rekey only,
   never rename (the lead's lean); B, one more round, refusal everywhere.
@@ -715,7 +715,7 @@ Append-only. One `##` entry per event, 60 lines at most.
   first-hand by the grader:
   - R1 and R2 closed, and B1's probe reproduced;
   - the AX-catalog red is inside the holder rule, not new scope;
-  - task 17: the real-tree rename preview of `cli-schema-delivery` D3 exits 0 with both cards
+  - task 17: the real-tree rename preview of `cli-schema-delivery` D3-rules-delivery-binding exits 0 with both cards
     rewritten; 0 of 621 numbers are shared;
   - no regression.
 - Approved by the lead, with notes:
@@ -745,7 +745,7 @@ Append-only. One `##` entry per event, 60 lines at most.
 
 - W2-tests' report (seat-reported; evidence in `scratchpad/w2t-build/`):
   - T1–T5 each red first, then green: 14 goldens regenerated, census 362/813/1175, pointers 88,
-    and the matrix figures; T5's new `tests/ids_definition_lines.rs` (11 bare rows exact, a GI-020
+    and the matrix figures; T5's new `tests/ids_definition_lines.rs` (11 bare rows exact, a "GI-020"
     negative control, two red proofs);
   - command kits and five review kits updated (65 insertions, 0 deletions);
   - four layers exit 0, with no red test left; `MOCHIKO_FULL_SIMILAR=1` 48 passed; release build
@@ -777,13 +777,13 @@ Append-only. One `##` entry per event, 60 lines at most.
   refused by A7 (two holders) before the collision check. Ruled: change only its reason assert, and
   keep the fixture and the nothing-lost asserts; L3's test still pins "both move to". P1's read-only
   task 17 previews match the pre-1b binary for an unshared bare rekey and for the
-  `cli-schema-delivery` D3 and `human-readable-ids` D3 renames. A file-scoped alias touches only
+  `cli-schema-delivery` D3-rules-delivery-binding and `human-readable-ids` D3-slugged-id-families renames. A file-scoped alias touches only
   its file; a pathless shorthand is refused.
 - W2-prose built (seat-reported; the report was cut short in transit and the rest is pulled):
   - 32 plugin files, 22 strip entries plus one new strip file, and one unreleased `CHANGELOG.md`
     entry;
   - § IDs is 6,825 characters against ~5,000 planned;
-  - `GI-031` replaces the plan's `GI-020` example under its collision guard;
+  - `GI-031` replaces the plan's "`GI-020`" example under its collision guard;
   - one NFR slug changed to avoid a slug clash.
   - Q1: `validate-requirements.py` counts only the first FR in a bulleted list (pre-existing; the
     SKILL template's own form). Ruled by the lead: fix it test-first in this build (a one-token
@@ -798,7 +798,7 @@ Append-only. One `##` entry per event, 60 lines at most.
   - `ids` 161 tests; T5 green and its API unchanged;
   - four layers exit 0; real tree `621 bare · 45 drift`, unchanged;
   - task 17 previews byte-identical to the pre-1b binary (an unshared bare rekey, the
-    `cli-schema-delivery` D3 and `human-readable-ids` D3 renames); a file-scoped alias touches only
+    `cli-schema-delivery` D3-rules-delivery-binding and `human-readable-ids` D3-slugged-id-families renames); a file-scoped alias touches only
     its file;
   - about 1,290 lines added against 1,000–1,170 planned.
 - Residual risks named: B2, C4, C5, the C2 asymmetry, and the AX link text.
@@ -844,7 +844,7 @@ Append-only. One `##` entry per event, 60 lines at most.
   - Alias scope clean.
 - F1 (High), scratch x4 and x5: one entry whose definition sites carry different slugs groups as
   two holders. A7 refuses the drift fix and advises a joined rekey, which splits the entry with
-  exit 0 and a clean check — a wrong pointer (GI-005) no ruling accepted.
+  exit 0 and a clean check — a wrong pointer (GI-005-record-layer-integrity) no ruling accepted.
 - B2 is broader than booked (x2): a joined old ID also renumbers a legacy bold bare site.
   Advisories: A1 (path normalisation), A2 (list another holder's kept mentions).
 - Fix round ordered (wave 1b's one), with the lead's rulings:
@@ -964,7 +964,7 @@ Append-only. One `##` entry per event, 60 lines at most.
 - W2-schema (seat-reported):
   - S2 re-read 1b's `--help` and probed a scratch landing: a joined rekey moves one holder, the
     other is `kept`, bare is untied, and a bare old ID is refused;
-  - **0048** rewords the floor rule `impl.baseline-diff-review` (anchor `human-readable-ids D4`;
+  - **0048** rewords the floor rule `impl.baseline-diff-review` (anchor "`human-readable-ids D4`";
     id, class and anchors kept) to name the joined old ID, with untied mentions settled by hand;
   - **0050**, its own migration under D21, is a `replace-document` of `template/governance-intent`
     changing one token (`GI-0XX` → `GI-0XX-<slug>`);
@@ -1029,7 +1029,7 @@ Append-only. One `##` entry per event, 60 lines at most.
   195 bare plus 18 drift, 202), C's 12-prefix census (773) and A's H1 lines first-hand; all hold.
 - B sent the one-line fix, quoted; its re-plan round is spent; the same grader re-grades.
 - Advisories taken as binding build notes: A's coins found only in `wave0-read-test.md` (now
-  history, S4) are fresh coins, tagged so; GI-004 and GI-005 carry their second own sites
+  history, S4) are fresh coins, tagged so; GI-004-primitive-audit-ratchet and GI-005-record-layer-integrity carry their second own sites
   (`governance-intent.md:56`, `:57`); C takes `definition` from the index's own sites, not a copy of
   `strip_leaders`.
 - Cross-shard advisory ruled: one writer per hand-row line, by file owner (S3's new sub-bullet in
@@ -1158,7 +1158,7 @@ Append-only. One `##` entry per event, 60 lines at most.
   scratch tree with the hand rows applied, 0 refusals, 46 rows differing exactly as tagged. No hand
   rows for other shards. Residuals left bare and flagged for the diff review: `idi:29` D15 (owner
   unknown), `mts:87` D6a–d, `prfd:172`'s list of four; `peh:194` read as
-  `schema-based-template-guidance` D11 (the map grader to confirm).
+  `schema-based-template-guidance` D11-kernel-position-softened (the map grader to confirm).
 - Lead first-hand: 196 × 7 and 136 × 6, hashes `f471fadc679942a0` and `ab2d27d8bdbda405`; kinds
   56/79. Hand-row sites in this session's lead files: `build-log.md` :186, :388, :389, :786, :967 and
   37 in `record.md` (:44 to :1201); none in the `wave*.md` files. The lead appends to the build log
@@ -1243,3 +1243,368 @@ Append-only. One `##` entry per event, 60 lines at most.
 - Wave 1c closed (`wave1-crate-ids.md` status, same line). Plans line for 1c: `p1-crate:PASS(1)`;
   seats: P1 produced / `p1c-plan-grader` graded the plan / `w1-code-review` reviewed the code.
 - Commit 3: the two crate files, `wave1-crate-ids.md` and this log; not pushed.
+
+## 2026-10-08 — cross-shard folds; a wrong-owner class found and swept
+
+- W3-C refreshed its two `ids.rs` sites for 1c (:504 to :506, :568 to :570); lead first-hand:
+  `hand-c.tsv` `cfb2e72245c129e5`, 80 × 6.
+- W3-A folded 16 of W3-C's 17 relayed rows (the 14 `FP` rows, OMS D4 at AGC :165, the field-review
+  D2 at delta :248), declined `architect-role-pushback-and-abstraction/record.md:62` (the line itself
+  rules that bare D7 there is the record's own; its sibling uses already carry a row), judged both
+  pointers with a row each, and added two rows at `constitution-native-surfaces/record.md:263`.
+  `hand-a.tsv` 109 rows, `c0e2efde7908a1de`.
+- Found by W3-A, ruled by the lead: inside a record, a mention cited through a SHORT path
+  (`` `<other-slug>/record.md` decision D8 ``) is not a qualifier (Q2), so the tool gives the bare
+  `D<n>` to the record it sits in — a wrong owner, confirmed by real previews. Q2 never meant such a
+  mention goes without a row: S3's `qualify` class covers it. W3-A writes rows for
+  `constitution-native-surfaces` :55, :84, :261, :267; W3-B and W3-C sweep their own records for the
+  same class.
+- W3-A wrote six rows there (`hand-a.tsv` 115 rows: 97 `qualify`, 18 `normalize`; lead first-hand
+  `c9a104743bde90ae`, 116 × 6). Flag for the map grader and diff review: at :263 and :267 a code span
+  around the number is dropped so the qualifier attaches, and inside :267's paste-ready code span the
+  qualifier is the plain kebab name — non-token text changes made by hand, outside the tool's diff
+  check. W3-A's simulation: the nine tokens resolve to `setup-constitution-flexibility`, nothing else
+  on those lines moves.
+- W3-C's sweep: 13 candidate lines in its 26 records, 2 with a wrong owner —
+  `verbosity-caveman-ops-separation/record.md:88` (D1–D6 of `workflow-token-reduction`, cited by a
+  short path) and `:92` (its D3). 7 `qualify` rows added; `hand-c.tsv` 86 rows,
+  `7dc0ec040c45210e`; the 1c binary on a scratch tree joins them to the true owner. The stale
+  `hand-joins`/`hand-leaves` tags on 12 keys in `slug-map-c.tsv` are being refreshed on the lead's
+  word, then C's files freeze.
+- W3-C froze: `slug-map-c.tsv` `4de57742270f601f` (12 note cells only), `alias-c.tsv`
+  `9ca41e17cf6cf6b7`, `literal-c.tsv` `59ed7308a230e2a7`, `hand-c.tsv` `7dc0ec040c45210e` (lead
+  re-hashed all four).
+- W3-B folded all 45 of W3-C's rows after its own reading (the 14 "prior" rows checked against
+  `hook-enforced-artifact-schema`'s decisions) and added 9 of its own: two "prior" cites W3-C
+  missed, five `orchestrator-model-selection` cites the tool would give to that record's own numbers,
+  and two `quote` rows masking blind-map labels at `human-readable-ids/record.md:321`, :326 (the lead
+  confirmed `quote` as the kind: D10 keeps labels bare, D15's mask is the only way). `hand-b.tsv` 189
+  rows (98 `qualify`, 91 `quote`), `342de46f4a73ed0e`; `slug-map-b.tsv` note cells on 22 rows,
+  `185dd96dcb25741b`. Lead re-counted both.
+- W3-B's residual risk, for the map grade and the diff review: implicit foreign cites (no qualifier,
+  no other session named on the line) were read token by token only in its `orchestrator-model-selection`
+  record and for prior-style cites across its 22 records; own-number joins in records that follow an
+  earlier session want a reading. Its short-path sweep result was not in the reply; pulled.
+- W3-B's sweep (pulled): 8 candidate lines, no short-path row owed; it found and fixed a defect in its
+  own rows — its `primitive-eval-harness-v2` qualifiers at `primitive-eval-harness/record.md:3`
+  carried through the `·` separator to the record's own D2 and D5 (a real preview showed the wrong
+  join); two `qualify` rows stop the carry. `hand-b.tsv` 191 rows (100 `qualify`, 91 `quote`).
+
+## 2026-10-08 — the map frozen; three map graders dispatched
+
+- Frozen read-only in `scratchpad/map-grade/inputs-r0/` (hashes in `inputs-r0.sha256`):
+  `slug-map-a` `24ee83526f215883` (242), `slug-map-b` `b984d7a51225ce8e` (195), `slug-map-c`
+  `4de57742270f601f` (202); `hand-a` `c9a104743bde90ae` (115), `hand-b` `7505e4a9e0846365` (191),
+  `hand-c` `7dc0ec040c45210e` (86); `alias-c` `9ca41e17cf6cf6b7` (98); `literal-c`
+  `59ed7308a230e2a7` (52). Field counts full in all eight. The producers hold.
+- Lead's deviation, disclosed: the wave plan names one map grader; three are dispatched, one per
+  shard, for throughput (639 map rows, 392 hand rows, 150 alias and literal rows). Each is a fresh
+  `general-purpose` seat on `model: opus` (the producers' tier), wrote nothing it grades, and reads a
+  shared brief (`scratchpad/map-grade/brief.md`) that points at the bar — wave plan items and
+  S1–S11, the record's D9–D22 cards, the tool's requirements — without restating it. Modes per the
+  wave plan: mirror checklist on shape, grammar, uniqueness, keying and hand-row mechanics;
+  adversarial on meaning, owners, missed rows and qualifier carries. `map-grader-c` also runs the
+  cross-shard checks. Findings go back to the owning shard for one fix round; the same grader
+  re-grades; a second FAIL goes to the user.
+
+## 2026-10-08 — map grade C: FAIL (34 blocking, all missed rows); cross-shard PASS
+
+- `MAP GRADE: C · FAIL · 44 findings (34 blocking)` · `CROSS-SHARD: PASS` (639 keys, no duplicate;
+  71 owners each in one shard; 392 hand rows all in owning-shard files, each `before` once, no
+  overlaps; every alias owner has map rows except the two dead `adopt-first` rows). Findings:
+  `scratchpad/map-grade/findings-C.md` (`d6afe09b4b2d1da8`).
+- `slug-map-c` mirror PASS and slugs on meaning; the 86 existing hand rows' owners right. Every
+  blocking finding is one class: 34 sites, 38 tokens in shard-C files where a foreign bare `D<n>`
+  joins the wrong owner with no hand row — the missed-row class the brief named. The grader left
+  verified candidate rows (`map-grader-c/fix-rows.tsv`); W3-C judges them as evidence, not as its own.
+- Lead's rulings on the grader's choices: `DECISIONS.md:85` takes `:78`'s trade (the line then names
+  two sessions; its own `D<n>` stay bare, no wrong owner); `:78` col 601 qualified explicitly;
+  `setup-operating-docs-scaffolding/record.md:103` quotes the labels D8 and D9 with "D6"; `literal-c`
+  adds `a3r-prose.md` to AM-2 and `p2-plan.md` to J-1/J-6, OQ-4's title made verbatim; the prose-loss,
+  "D1 to D8" and residual-bare advisories accepted as is.
+- W3-C's one fix round opened. Relay pending for W3-A: `p2-plan.md:574`, `:576` J-7 (mixed series)
+  owe two hand rows.
+
+## 2026-10-08 — map grade B: FAIL (11 blocking); a new class: anchor cites
+
+- `MAP GRADE: B · FAIL · 23 findings (11 blocking)`. The harness refused the grader's write of its
+  findings file; the lead transcribed its returned list verbatim to `scratchpad/map-grade/findings-B.md`.
+  Mirror clean; all 100 qualify owners and 91 quote rows hold. Blocking: 9 missed `qualify` rows
+  (foreign `D<n>` joined to the record's own) and 3 unmasked verbatims in
+  `orchestrator-model-selection/reports/p1-report.md` (an anchor split over :31–32; :75's old rule text).
+- Lead's rulings on B's advisories: hand rows for `ponytail-concepts-integration/record.md:166` (so the
+  result does not hang on apply order), the D4.1/D4.2 cites, the two GI ranges written in words (quoted
+  so they stay bare, D5-compound-reference-forms) and `human-readable-ids/record.md:551`; the two ambiguous "D7" cites are W3-B's
+  judgment, recorded either way.
+- New class, from B's grader: an anchor cited in prose (`YYYY-MM-DD <session> D<n>`, bare by D12) is
+  joined by a rename. Lead's narrow grep (single-line code span, outside the excluded layers): 50 such
+  cites, 6 already masked, 44 not — 37 in shard-A files (`author-grader-consolidation` 27,
+  `cli-schema-delivery` 8, `brainstorm-target-state` 2), 7 in shard-C files (`setup-product-agnostic`
+  3, `evals/plan` 2, strips 2); list `scratchpad/anchor-uncovered.tsv`. Each shard sweeps its own files
+  wider (split lines, no code span): B within its fix round, C as an add-on to its round, A with its
+  grade's round.
+
+## 2026-10-08 — map grade A: FAIL (37 blocking, all missed rows); anchors ruled for all shards
+
+- `MAP GRADE: A · FAIL · 48 findings (37 blocking)`; findings `scratchpad/map-grade/findings-A.md`
+  (`1a39a7e7f44f65fb`). Mirror clean; the grader replicated the definition-site read and ran all 639
+  previews on a tree with every shard's hand rows (9,505 hunks). All 37 blocking findings are missed
+  `qualify` rows, 17 of them in `command-schema-ontology` and 8 in `cli-schema-delivery`. The flagged
+  points held. Candidate rows left as evidence (`map-grader-a/fix-a.tsv`, 40).
+- Lead's rulings on A's advisories: add the six optional rows; re-coin `architecture-design-primitive`
+  D5-plan-run-artifact (`always-` is a strength word) and `brainstorm-command-rewrite` D8-strip-ledger-check (`-confirmed` is a verdict
+  word); prefer an in-span plain-kebab qualifier at `constitution-native-surfaces` :263 and :267, so
+  the code span stays.
+- Anchor cites ruled for all shards: a migration anchor quoted in prose is a verbatim machine string,
+  bare by D12, and takes a `quote` row. The grader counts 101 tree-wide (49 in A's files), wider than
+  the lead's grep of 50; each shard sweeps wider.
+- W3-A's one fix round opened, carrying the `p2-plan.md` J-7 relay. All three shards are now in their
+  fix rounds. The pattern across all three grades: 82 blocking missed rows, every one a foreign bare
+  `D<n>` the rename would give to the record it sits in — the producers' line test missed implicit
+  cites; the graders' preview reading caught them.
+- Anchor list from shard A's grader, built from previews: `scratchpad/map-grade/map-grader-a/anchor-sites.txt`
+  (`be0860ce8757b920`) — 101 same-line sites plus 7 split across a soft break. By ownership: A 49 + 4,
+  B 0 + 1 (already blocking at `p1-report.md:32`), C 52 + 2. 21 of C's sit in comments of five crate
+  test files and `evals/contract/run.py` (none in a string literal), so the apply's crate-comment
+  edits grow: `cargo test` and the rust-cli review at the apply, as item H10 already books. Relayed
+  to each shard as its fix round's anchor scope.
+
+## 2026-10-08 — W3-B's fix round done; re-grade sent
+
+- W3-B (seat-reported): all 11 blocking findings fixed with 12 rows; two more `production-only-focus`
+  D4-waivers-reach-everything rows of its own (`ops-observability-hardening/record.md:1251`, `:1271`); the advisory rows as
+  ruled; the two ambiguous D7 cites read as the record's own (no row). Anchor sweep: 21 candidates, 16
+  already masked, 4 inside quotes, 1 (the split anchor) covered by a blocking-fix row. Carries
+  checked; 195 previews on a tree with all its rows applied, 0 errors. Disclosed: it wrote with Edit,
+  which trimmed the separator tab on 7 new lines; caught by `cmp`, fixed, re-checked.
+- Lead first-hand: `hand-b.tsv` `bb045fe9420d37c8`, 212 × 6, +20 rows on r0, none changed;
+  `slug-map-b.tsv` `6b0157a6c0591026`, 196 × 7. Frozen in `scratchpad/map-grade/inputs-r1-b/`.
+  Re-grade sent to `map-grader-b`.
+- W3-C's fix round (seat-reported): all 34 blocking findings fixed with 41 rows, each owner judged
+  (it agreed with all 38 of the grader's candidates); the ruled `literal-c` edits; 30 note cells
+  recomputed. `hand-c.tsv` 127 rows `3073ece60ad6da6d`, `slug-map-c.tsv` `8e3be7c3e6faca88`,
+  `literal-c.tsv` `37e33c8e56a3ff41`. Disclosed: the three ruled literal path additions do nothing —
+  the cited lines sit inside code fences the tool masks (`a3r-prose.md` fence from :22, `p2-plan.md`
+  from :270; the lead confirmed both first-hand). For the same reason the `p2-plan.md` J-7 relay to
+  W3-A is voided by a supersession naming it.
+- W3-C's reply did not cover the anchor add-on (its 54 sites); pulled.
+- `MAP GRADE: B · PASS · 1 finding (0 blocking)` on the r1 freeze. The grader re-ran all 195 B-key
+  previews and 11 foreign-owner previews on a tree with every shard's hand rows: every difference sits
+  at a fixed site; the ER-D alias case no longer hangs on order; its own anchor hunt in B's files
+  found 21, all masked. Advisory `ops-observability-hardening/record.md:1261` ("D4/PO-D4", no wrong
+  join) accepted as written by the lead — no reopening of a passed file for a cosmetic row.
+  Shard B is done: `slug-map-b` `6b0157a6c0591026`, `hand-b` `bb045fe9420d37c8`.
+- W3-A's fix round crossed the lead's supersession in transit: it added the two voided `p2-plan.md` J-7
+  rows; the supersession tells it to remove them. A's freeze waits for that.
+- W3-A's fix round (seat-reported): the 37 blocking findings fixed with 40 rows (owners judged; it
+  agreed with all the grader's candidates); six optional rows plus one of the same class; the two
+  slugs re-coined (`plan-run-artifact`, `strip-ledger-check`); :263 in-span, :267's "§4 `D8`" quoted;
+  57 `quote` rows over its 53 anchor sites (its own sweep matched the grader's list exactly); the J-7
+  rows removed on the supersession. Simulation with all shards' rows: 242 previews exit 0, hunks equal
+  its predictions in its files.
+- Lead first-hand: `hand-a.tsv` `be0e72ebced9cdbf`, 220 × 6, no `p2-plan.md` row, 104 added and 3
+  changed on r0; `slug-map-a.tsv` `e3ea2a9a9dea6903`, three rows changed as reported. Frozen in
+  `scratchpad/map-grade/inputs-r1-a/`; re-grade sent to `map-grader-a`.
+- `MAP GRADE: A · PASS · 0 findings (0 blocking)` (record `scratchpad/map-grade/findings-A-r1.md`,
+  `b4eb45c221a3dc39`). All 639 previews on a tree with hand-a r1, hand-b r1 and hand-c r0; every one of
+  the 79 changes in A files explained; the 37 fixes byte-identical to the rows it verified; anchors
+  masked with no join moved. Shard A is done.
+- Its two notes: `team-lead-strategic-compaction/record.md:252` is a false positive in its anchor list
+  (a date then a real cite, already a `qualify` row) — relayed to W3-C, whose anchor share becomes
+  51 + 2; and A's anchors cited in 9 of C's files, plus A's alias-dependent joins, wait on C's r1 (the
+  final cross-check runs on all three r1 files).
+- W3-C's anchor add-on (seat-reported): 71 `quote` rows — 53 same-line and 9 soft-break pairs —
+  covering its 53 listed sites plus 8 its wider sweep found (soft breaks in crate-test comments, an
+  `observable.yaml` comment); TLSC:252 left unquoted as corrected. Its verification: anchor-touch
+  previews 0 of 94, 399 rename previews 0 nonzero, 57 hunk sites lost all on anchor lines.
+- Lead first-hand: `hand-c.tsv` `a9ea747c8c1d5f72`, 199 × 6, +112 on r0 (41 fix, 71 anchor), none
+  changed; `slug-map-c` `6272ebc0913257d9`; `literal-c` `37e33c8e56a3ff41`; `alias-c` unchanged.
+  Frozen in `scratchpad/map-grade/inputs-r1-c/`; re-grade sent to `map-grader-c`, with the
+  cross-shard checks re-run on all three r1 files.
+
+## 2026-10-08 — map re-grade C: FAIL on one overlap; put to the user
+
+- `MAP GRADE: C · FAIL · 1 finding (1 blocking)` · `CROSS-SHARD: FAIL` on the same single overlap,
+  otherwise PASS (639 keys; 628 hand rows, every site in its owning shard's file, every `before`
+  once; alias owners all mapped but the two dead). Findings `scratchpad/map-grade/findings-C-r1.md`
+  (`618e330f24431d06`). The blocker: hand-c rows 95 and 96 at `teammate-message-races/record.md:26`
+  overlap on "shape" — from the grader's own round-1 candidates, copied verbatim; fix: row 96's
+  `before` shortened to `; D1 `Contested``, result byte-identical. Everything else holds: 202 C
+  previews exit 0; all 74 new quote rows mask anchors or labels only; 121 alias previews exit 0.
+- Shard C's second FAIL: put to the user (A: one more one-row fix round; B: stop C and skip that
+  line's rows). Ruled, user: "as recommded" — A. W3-C changes row 96 only; the same grader re-checks
+  that row.
+
+## 2026-10-09 — C's row 96 fixed; re-check sent to map-grader-c
+
+- W3-C: "Row 96 fixed. hand-c.tsv sha256 c046811c185cd831 (was a9ea747c8c1d5f72). Only row 96
+  changed." Read first-hand: 199 lines of 6 fields; the diff against the r1 copy is row 96 alone
+  (`before` now `; D1 `Contested``, `after` `; `command-architecture-realignment` D1-choreography-leaves-commands `Contested``);
+  row 95's `+ D6 v8 shape` is a disjoint span on :26. Frozen as `scratchpad/map-grade/inputs-r2-c/`.
+- Order to map-grader-c: re-check row 96 only (once on :26, disjoint from every A/B/C row there,
+  the `qualify` kind and owner, the diff touches row 96 only); its r1 verdict on every other row
+  stands. Map-grader-a's bounded re-check of A's dependencies on C r1 is still out.
+- Apply brief updated: `hand-c` hash `c046811c185cd831`, HEAD `0b8982a`, and a deviation noted —
+  no merged `inputs/slug-map.tsv`; the apply seat reads the three shard maps directly, a then b then
+  c.
+- `RE-CHECK C: PASS · 0 findings` (map-grader-c). Hash `c046811c185cd831` matches; the diff
+  against r1 is row 96 alone; `before` occurs once on :26; spans on :26 are rows 94 [165,186),
+  95 [187,200), 96 [200,216) — disjoint, no A/B rows there; the result is byte-identical to r1's
+  post-tree line; the owner is `command-architecture-realignment` D1-choreography-leaves-commands (its record :72). Shard C's
+  map closes. Waiting on map-grader-a's re-check of A against C r1.
+
+## 2026-10-09 — map closed on all three shards; apply dispatched
+
+- `RE-CHECK A: PASS` (map-grader-a), on hand-a r1 + hand-b r1 + hand-c r1: all 242 A-key previews
+  with alias rows exit 0; no A-key rename touches a quoted anchor (13 vanished hunks, all inside C's
+  new quote rows); `alias-c` r1 is byte-identical to r0; 25 A-key hunk changes between C r0 and r1,
+  none an alias-form change, each traced to a new C row (11 new joins spot-checked, owners right).
+  Its point 3 — row 96 must still put the qualifier in front of D1 — holds in C r2 (`; `command-
+  architecture-realignment` D1 `Contested``).
+- Fan-in: A PASS r1 + re-check PASS · B PASS r1 (one advisory accepted as is, ops :1261) · C PASS
+  at r2 (row 96). The map is closed: inputs as listed in `scratchpad/apply/brief.md`.
+- Apply brief finalized (sha256 `3dd7d636a191d5a4`): the binary is copied to `scratchpad/apply/bin/`
+  and pinned by hash (`6020cbb8c33d65e1`), since step 4's cargo runs rebuild `target/debug/`; each
+  rename previews, then writes, and checks S3 before the write — every `qualify`/`normalize` hand row
+  owned by that key must show its join on its site line, or the seat stops; after the apply, every
+  `quote` row's `after` text must stand verbatim.
+- Apply seat `w3-apply`: persona-less `general-purpose`, `model: opus` (mechanical execution of a
+  graded ruling — no plan leg, wave plan "Seats"). It is the single writer of the whole working tree
+  until it returns; the lead holds this log and every other file.
+
+## 2026-10-09 — D18-build-done-check's read-test clause ruled; the apply moved to a release binary
+
+- The clause in D18-build-done-check that D8-read-test-bet's read test "has passed" was put to the
+  user with the case against first. User: "as recommended" — lean A: the clause is met by the
+  user's override, and the test stays recorded as failed. Rejected B (a fresh cold read test on the
+  final slugs, its pass rule set after the first result was seen) and C (strike the clause). Written
+  to the record's D18-build-done-check card, changed at build, after the apply returned the pen.
+- Apply progress, step 1: 628 hand rows over 118 files; every dry run `allow`; line counts
+  unchanged. Step 2 measured ~20 s per row (~10–11 s per `ids` call on the debug binary): ~3.5 h.
+- Supersession sent at row ~12, voiding the brief's binary pin (`scratchpad/apply/bin/`, sha256
+  `6020cbb8c33d65e1`) for every row not yet started: a release build of `git archive 0b8982a`
+  (`Cargo.toml`, `Cargo.lock`, `crates/mochiko-cli`) in `scratchpad/relbuild/`, sha256
+  `b82706463b0344b2`, copied to `scratchpad/apply/bin-release/`. Equivalence on map-grader-c's
+  `post-r1` tree: 9 rename previews (3 per shard map) and `ids --check` (639 bare · 12 drift)
+  byte-identical to the debug build, exit codes included; 0.45 s vs 4 s per call
+  (`scratchpad/relprobe/`). The time was the tool, not the tree.
+- Seat: first release row 026 (`slug-map-a.tsv:27`), hash verified, switch logged; rows 001–025
+  stay as written on debug. Disclosed: its first stop ended the wrapper shell, not the runner, so
+  019–025 ran on debug as normal; one read-only debug preview of row 026 was orphaned by the real
+  stop — unlogged, uncaptured, no tree effect; row 026 then re-ran in full on release, logged.
+
+## 2026-10-09 — the apply stopped at row 091 on S3; three hand rows ruled to expect no hunk
+
+- Stop at row 091 (`slug-map-a.tsv:92`, `cli-schema-delivery` D3-rules-delivery-binding): hand row
+  `hand-b.tsv:40` (qualify; site `hook-enforcement-field-review/record.md:34`) showed no hunk on
+  its site line. Nothing was written for the row.
+- Lead forecast before ruling: every remaining rename previewed on a scratch copy of the stopped
+  tree (`scratchpad/s3sim/`, ~1 min, reusing the seat's own call builder and check). Three S3
+  failures in all: `hand-b.tsv:40`; `hand-b.tsv:46` (same record :165, "D2/R2b", which the tool
+  reads as a path); `hand-a.tsv:200` (`delta-files-vs-direct-baseline-edits/record.md:555`,
+  "D2/OQ1", also a path — its own reason already says no rename touches it).
+- Probe (`scratchpad/s3sim/wrongjoin.sh`): no plausible owner's rename puts a hunk on any of the
+  three lines. Each mention stays bare behind its true owner's qualifier; no wrong owner. Line :34
+  is odd — a qualified slash pair joins on the same record's :163 — so a line-start code-span
+  qualifier may not be read. Booked for the backlog (crate) and the diff review.
+- Lead ruling (mechanical, within S3 and D18-build-done-check as narrowed): those three rows expect
+  no hunk, a hunk there is a stop, and every other row keeps the check. Supersession sent naming the
+  voided line; the seat logged it before row 091. The three sites go to the diff review.
+
+## 2026-10-09 — the apply returned: the done check is clean; reviews dispatched
+
+- Stall, disclosed: the seat's runner finished step 2 at 08:06 and step 4 at 08:23 local, and
+  both times the seat was not woken to go on. The lead read the logs first-hand and sent an open
+  order each time (go on with step 3; write the return), each pinned to the brief and voiding
+  nothing.
+- Return (`w3-apply`), checked against the logs first-hand: step 1, 628 hand rows (normalize 18 ·
+  qualify 377 · quote 233) over 118 files; step 2, 639 renames (1,278 calls, preview then write),
+  every call exit 0, every write "ID tokens only", 0 moves; step 3, 48 literals (4 rows with path
+  `-` skipped), all exit 0; refusals 0. The three ruled rows showed no hunk (rows 091, 259, 270);
+  no other S3 failure.
+- Step 4, read first-hand in `scratchpad/apply/out/step4/`: `mochiko-cli ids --check · 0 bare ·
+  0 drift` (exit 0, full Exclude list, release binary) · `cargo test --all` exit 0 (757 passed, 0
+  failed) · `cargo fmt --all --check` 0 · `cargo clippy --all-targets -- -D warnings` 0 · `check`
+  over 403 changed files, none not `allow` · 233 quote rows, none no longer verbatim. `git diff
+  --stat 0b8982a`: 403 files, +7477 −7249 (the +228 gap is this log's pre-apply change). Inputs
+  re-hashed, all 8 unchanged. Apply log sha256 `1d5903ef1969adbb`.
+- Departures (seat): the Explore/haiku locate route returned nothing twice, so the seat grepped
+  the crate source itself; step 1 ran every dry run before any write.
+- Flagged by the seat for the diff review: (1) four added lines carry a doubled qualifier, an alias
+  row having hit an already-qualified mention (the lead's grep agrees: 4 lines); (2) 53 hand rows
+  whose owner no map row carries — 51 FP/J literal-series rows, plus `hand-a.tsv:77` and
+  `hand-b.tsv:47` — had only step 1's mechanical checks, no join check; 52 of the 53 `after` texts
+  still stand, and on `hand-b.tsv:47` a later rename joined the D9 inside it.
+- Lead writes after the return: the D18-build-done-check card's changed-at-build paragraph and this
+  log's last three entries, this one included. The lead now holds the whole tree; it is frozen for the reviews.
+- Dispatched in parallel on the frozen tree: the diff review (persona-less, `model: opus`, brief
+  `scratchpad/post-apply/diff-review-brief.md`, the wave plan's item 8 classes plus residuals and
+  the two flags) and the crate review (`mochiko:tech-lead`, its default tier, brief
+  `scratchpad/post-apply/rust-review-brief.md`). Both are read-only. Strips, the `CHANGELOG.md`
+  line and the gate audit wait on their verdicts.
+
+## 2026-10-09 — both reviews FAIL; one fix round plus the strip entries; the done check holds
+
+- `CRATE REVIEW: FAIL · 4 findings (2 blocking)` (findings sha256 `e8416d8c43d88b15`). Four layers
+  green (757 passed; `cargo audit` run at the workspace root — the brief's `crates/` was wrong, the
+  lockfile is at the root). Blocking: `cli.rs:157`, the `ids rename` help text, gave a joined ID as
+  the "bare" example; `.github/workflows/ci.yml:80`, a joined ID inside the secret scan's `echo`.
+- `DIFF REVIEW: FAIL · 96 findings (56 blocking)` (findings sha256 `0640783fc593d351`). Swept 403
+  files, 11,335 joins. D owners: 6,687 joins, 0 mismatches mechanically, ~1,260 suspects read by
+  hand, 2 wrong (meta-text in this log, :1322 and :1337). The big class: 49 GI mentions that are
+  not mochiko's register entries took mochiko's slugs — kinako's GIs, mochiko-app's "GI-002", eval
+  fixtures' GIs, template slots. A GI rename is project-wide, and no map grader caught a foreign GI.
+  Plus 4 meta-text examples, 4 joins inside a four-backtick fence (a tool defect:
+  `conform.rs` `fenced_lines` ignores fence length), 7 doubled qualifiers (the lead's grep found 4).
+- Lead dispositions (`scratchpad/post-apply/fix-brief.md`, sha256 `c39460c1688fc76a`): every
+  blocking fix as the reviewer wrote it (foreign and example GIs quote-masked, `"GI-004"`, the W3-C
+  form; fenced and nested-quote text restored bare); 20 advisory fixes (the doubled qualifiers, one
+  quote closing mid-token, two meta-text masks in this log, 12 missed shorthand joins with each slug
+  checked against the graded map). Not applied, with reasons: `ci.yml:80` ruled in scope (no code
+  reads the message; a revert leaves a bare ID); the 100-column comment width (a reflow is churn no
+  gate checks); lists of four PO IDs expanded by alias rows (each owner right); 33 joins inside six
+  records' "pasted verbatim" fact-checker sections (inside D15-protected-line-rewrites's letter —
+  only `"…"`, `>` and fences are masked); the booked residuals the reviewer passed.
+- Exclude list amended (wave plan, done check only): `.mochiko/strips/governance-surfaces-template.md`
+  and `.mochiko/strips/validation-constitution.md` — 5 restored verbatim lines the tool misreads.
+  Without them: `5 bare · 0 drift`. The crate fix is booked; it matters before wave 4's release.
+- Fix round (`w3-apply`, foreground only), checked first-hand: 77 edits over 30 files, 0 skipped,
+  every dry run `allow`, line counts unchanged; nine `[v0.118.0]` strip entries for the eight plugin
+  units (three new strip files: `validation-primitive-edit`, `artifact-gate`, `dependency-halt`),
+  superseded lines placed by script inside a fenced `text` block. `mochiko-cli ids --check · 0 bare ·
+  0 drift` with the amended list; cargo test/fmt/clippy/audit all 0; 37 changed files all `allow`.
+  Fix log sha256 `aa8bda68586e8aaa`.
+- Next, in parallel on the frozen tree: each reviewer verifies its own findings' fixes once (changed
+  lines only), and the gate grader runs the eight-unit audit and the done check.
+
+## 2026-10-09 — fix verifies PASS; gate 8 PASS at round 2; the done check is clean
+
+- `FIX VERIFY: PASS · 0 problems` (diff review): all 77 edits exact on their lines; the five
+  restores byte-equal to `0b8982a`; no stray edit; every advisory not applied untouched.
+- `CRATE VERIFY: PASS · 0 problems`: the two help-text lines as written; `ids rename --help` shows
+  the bare quoted example; four layers green (757 passed). Its note that 26 `evals/` markdown files
+  sat outside the crate brief is covered by the diff review, which swept every changed file. My
+  crate brief had said "comments only" where its own bar was "no string literal a test or the
+  binary reads" — the source of the `ci.yml:80` finding, ruled in scope.
+- Gate (`w3-gate`, persona-less, `model: opus`, report `reports/w3-gate-audit.md`): round 1, 7 PASS ·
+  1 FAIL. U2, the mochiko router: "(realignment D5)" at `SKILL.md:71` was a missed one-word
+  shorthand, and its strip entry wrongly called it kept by ruling. Rulings of the grader's own,
+  disclosed: `validation-primitive-edit`'s description grows 730 to 754 against a 730 budget and
+  `patterns-model-tiering`'s standing overage moves to +7,517 — both HOLD under the record's D2;
+  the budget rows update at landing.
+- U2 fix (`w3-apply`): a hand qualify, then `ids rename` of `command-architecture-realignment`
+  D5-transport-neutral-harness. Its first preview also hit four lines of the new gate report (meta
+  text about this very command), so the seat stopped. Lead ruling: exclude the report from that one
+  call, the report being the grader's own; the write then touched `SKILL.md:71` only ("1 files · 1
+  spans · ID tokens only"). The strip entry was rewritten to claim :71; the lead edited its heading.
+- The gate report itself broke the done check (8 bare: example and cited tokens in its own prose).
+  At its re-audit the grader quote-masked its example tokens and joined its cites.
+- Round 2: U2 PASS; `8 PASS · 0 blocking`. Done check by the grader, report included: `mochiko-cli
+  ids --check · 0 bare · 0 drift`, exit 0, the amended Exclude list, the release binary. Lead re-run:
+  the same; `migrate validate` 0 rejecting · 113 advisory. Report sha256 `3839acbfc5aab087`; fix log
+  `aed2c2bb87a9f5ac`.
+- Wave 3's work is done. Commit 4 carries the back-fill, `inputs/`, the strips and the reports.
+  Landing items held for wave 4: the budget rows, one U1 wording advisory (accepted, not fixed), and
+  the backlog items from this wave (the `fenced_lines` fence-length defect before the
+  `mochiko-cli` release, nested quotes, foreign GIs under a project-wide rename, the Explore route,
+  the teammate wake-up).

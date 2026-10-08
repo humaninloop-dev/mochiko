@@ -3,13 +3,13 @@
 Entry formats: `strips/README.md`. Wave context: the combined plan-surface wave —
 `.mochiko/brainstorms/plan-structure-yagni/record.md` (D1–D7, plan overthinking) and
 `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` (D1–D7, architect
-role), landed in one wave per architect-role D5.
+role), landed in one wave per `architect-role-pushback-and-abstraction` D5-combined-sibling-wave.
 
 <!-- Lineage note: from v0.76.0 this primitive IS `plugins/mochiko/schemas/plan.yaml` — the
 template retired into it (entry below) and this file continues as the schema's strip home, one
 file per primitive, one continuous history. Wave context for [v0.81.0]: the
 product-architecture-schema Stage-1 build wave. Ruling:
-`.mochiko/brainstorms/product-architecture-schema/record.md` (D3 · D10 + its S8/S13 folds · D12)
+`.mochiko/brainstorms/product-architecture-schema/record.md` (D3-store-replaces-artifact · D10-plan-time-contract + its S8/S13 folds · D12-store-absorbs-nfrs)
 → `DECISIONS.md` 2026-08-19 product-architecture row. The history CLOSES at v0.91.0: the
 `plan.md` artifact was ruled dead outright by the plan-stage retirement, so `plan.yaml` is
 deleted and no successor primitive exists. The command half of the same retirement is logged at
@@ -23,7 +23,7 @@ deleted and no successor primitive exists. The command half of the same retireme
   set, and its compile-time embedded copy leaves the binary. This closes the primitive's history —
   template (to v0.76.0) then schema (v0.76.0 to v0.91.0).
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-stage-utility/record.md`
-  D4, which names `plan.md` among the dead artifacts — "`plan.md` (the summary artifact) dies — no
+  D4-planless-homes-gates, which names `plan.md` among the dead artifacts — "`plan.md` (the summary artifact) dies — no
   restatement artifact" — and D1, which retires the command that produced it; `DECISIONS.md`
   2026-08-26 "Plan-stage retirement" row. The command-side ledger is
   `.mochiko/strips/plan.md` [v0.91.0].)
@@ -216,7 +216,7 @@ skeleton: |
   the build, since the embed is compile-time. `commands/plan.md`'s Package-artifacts bullet named
   the schema by path in its two-arm render/raw-Read form — that command is deleted in the same
   wave. `skills/mochiko/SKILL.md`'s schema pointer and `evals/review-plan-artifacts/rules.json`
-  are other seats' surfaces in this wave. The raw-Read degraded path (GI-020) stays honest: the
+  are other seats' surfaces in this wave. The raw-Read degraded path (GI-020-plugin-install-model) stays honest: the
   remaining eight schemas are unchanged and still readable without the binary, and
   `every_shipped_schema_file_is_readable_yaml_and_every_known_name_has_one` still covers them.
 
@@ -277,7 +277,7 @@ skeleton: |
 
 ## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/plan.yaml + mochiko-cli template plan
-- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1-single-plugin-cli/D3-pipeline-template-scope/D8-schema-data-files; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
 - **Content (superseded template, full verbatim below):**
 
 ````markdown
@@ -364,12 +364,12 @@ menu to prune to the proposal.
 Run `/mochiko:implement` to execute this package — the accepted design, architecture, and
 cycle cards are its entry condition.
 ````
-- **Kept deliberately:** Every line of guidance preserved — lifted into `plugins/mochiko/schemas/plan.yaml` (skeleton / contract / overview / register / density) and rendered by `mochiko-cli template plan`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). Nothing dropped.
+- **Kept deliberately:** Every line of guidance preserved — lifted into `plugins/mochiko/schemas/plan.yaml` (skeleton / contract / overview / register / density) and rendered by `mochiko-cli template plan`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020-plugin-install-model, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). Nothing dropped.
 - **Consumers assessed:** `commands/plan.md` (re-pointed by P4) · `skills/mochiko/SKILL.md` router row (re-described CLI/schema-delivered by P5). V2 fidelity PASS 2026-08-16 (schema graded 8/8 at the M3 gate).
 
 ## [v0.67.0] Fixed-set Artifacts checklist + always-on architecture section made proposal-conditional
 - **Disposition:** superseded → the re-keyed template: the `## Artifacts` table is captioned as the menu to prune to the run's **approved proposal** (an artifact the proposal did not include is omitted, not listed incomplete), and the `architecture.md` row is qualified "*(only when the proposal included architecture)*"; the `## Architecture` section carries a "*Present only when the approved proposal included `architecture.md`; otherwise omit this section.*" lead-in.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-structure-yagni/record.md` D1/D2 artifact-set demotion + D6a as amended HF-4 conditional architecture; combined wave `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` D5)
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-structure-yagni/record.md` D1-delivery-manager-identity/D2-plan-proposal-gate artifact-set demotion + D6a as amended HF-4 conditional architecture; combined wave `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` D5-combined-sibling-wave)
 - **Content:** `## Artifacts` table presented as a fixed eight-row all-`✅ Complete` checklist (every listed artifact produced every run); row "| `architecture.md` | ✅ Complete — signed off |" (unconditional) · `## Architecture` section opener "The system view … **was designed first among the design work and signed off at the architecture gate**" (architecture assumed always present)
 - **Kept deliberately:** the table's rows as the illustrative menu, the See-X pointer discipline, the `quickstart.md` conditional row, the `## Architecture` **Delta summary** "no structural change" line, every other section.
 - **Consumers assessed:** n/a — template; `plan.md` (same wave, same stamp) re-keys the same fixed-set / conditional-architecture ruling command-side; `review-plan-artifacts` grades the produced `plan.md` against the approved proposal (conformance, sibling seat).

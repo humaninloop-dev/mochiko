@@ -17,7 +17,7 @@ Entry formats: `strips/README.md`.
   gates the plan-stage retirement killed. This is a scope-and-example edit only: no envelope rule
   changed meaning, and the format version stays v3.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/plan-stage-utility/record.md` D4 — `plan.md` and the plan-the-plan
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D4-planless-homes-gates — `plan.md` and the plan-the-plan
   proposal gate die, and the sufficiency report becomes the durable assessment record carrying the
   `quickstart.md` null path; D3 — `requirements.md` dies as a mandatory artifact, taking the
   `TR-XXX` id class's defining artifact with it; D1 mechanic (b) — the epic's joint plan-the-plan
@@ -107,7 +107,7 @@ Entry formats: `strips/README.md`.
   same landing (strip: `.mochiko/strips/review-specifications.md` [v0.82.0])**; the remaining
   review skills grade against their own checklists and carry no restatement (grep swept).
 
-## [v0.81.0] Pipeline artifact chain drops `nfrs.md` — product-architecture-schema D12
+## [v0.81.0] Pipeline artifact chain drops `nfrs.md` — product-architecture-schema D12-store-absorbs-nfrs
 
 - **Disposition:** deleted from the enumeration. The envelope's opening line lists the
   deliverables that follow it; `nfrs.md` is no longer a deliverable (D12 homes NFR-XXX on the
@@ -115,7 +115,7 @@ Entry formats: `strips/README.md`.
   baseline governed by its own schema and the desk's loop, not a per-run pipeline deliverable
   following this envelope.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12; `DECISIONS.md` 2026-08-19).
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12-store-absorbs-nfrs; `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim):**
 
   ```
@@ -134,7 +134,7 @@ Entry formats: `strips/README.md`.
   `strips/tasks-template.md`). Found at the V4 delta pass (B2) — the first pass swept skills and
   the router but not the shared envelopes.
 
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -149,14 +149,14 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 
 ## [v0.49.0] Artifact chain drops task-mapping.md + slices.md
 - **Disposition:** superseded → both artifacts retired (mapping content on cycle cards; slicing a spec section)
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D3+D6)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D3-single-tasks-artifact+D6-slices-into-spec)
 - **Content:** "`task-mapping.md` · " and " · `slices.md`" in the deliverable-chain enumeration.
 - **Consumers assessed:** authoring skills + review checklists named in the footer (all co-edited or retired this wave).
 
 ## [v0.44.0] Format version-history block relocated (class 2, 744 B / 10 lines)
 - **Disposition:** superseded → relocated **verbatim** into this note (below). In-file residue: the
   bare stamp plus the live routing (`Consumed by`), which is wiring a run consumes, not history.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim, the whole block as it stood at the scrub):**
 ```
 **Format version:** v2 (2026-08-01 — `verbosity-caveman-ops-separation` D1/D5: rule 4's

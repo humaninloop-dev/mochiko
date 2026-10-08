@@ -5,16 +5,16 @@ Entry formats: `strips/README.md`.
 ## [v0.110.0] Frontmatter `model: opus` superseded — the seat default key sends this seat to `sonnet`
 
 - **Disposition:** superseded → `model: sonnet` on the same frontmatter key. The seat default key
-  (`orchestrator-model-selection` D1) assigns this persona the `down` class on one criterion —
+  (`orchestrator-model-selection` D1-class-keyed-tier) assigns this persona the `down` class on one criterion —
   does a structurally independent seat stand between this seat's output and the run's verdict —
   and D2 pins the class default in the persona file as a tier alias, never `inherit` and never an
   absent `model:`. D3's ground for this row: "feature-map producer; selection is the user's
   ruling"; D3's G7 fold states the standard that pass rests on — the independent gap-finding pass
   plus the lead's gate plus the user's acceptance.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/orchestrator-model-selection/record.md` D3, the ten-row seat class table,
+  (`.mochiko/brainstorms/orchestrator-model-selection/record.md` D3-seat-class-table, the ten-row seat class table,
   with D1/D2 as its mechanism and D8 as its alias rule; `DECISIONS.md` 2026-09-19 row). The same
-  ruling supersedes `model-tiered-seats` D5 and its fold F6 — the deferral this table discharges.
+  ruling supersedes `model-tiered-seats` D5-seat-tiering-deferred and its fold F6 — the deferral this table discharges.
 - **Content:** verbatim — `model: opus` (frontmatter, line 10).
 - **Kept deliberately:** every other byte of the file — the frontmatter `description:` value
   (v0.63.0 protected prose framing), `name:`, `color:`, the `skills: authoring-feature-map` mount,
@@ -75,7 +75,7 @@ Entry formats: `strips/README.md`.
 - **Kept deliberately:** the persona is capability-first already, so nothing else in the body was
   reworded. Two **pure additions** landed in the same v0.68.0 edit and ride the decision row (no
   strip owed per `strips/README.md` — additions are not supersessions), recorded here only for
-  GI-006 reconstructability: (a) a Core Identity bullet carrying the framing-first posture
+  GI-006-primitive-edit-traceability reconstructability: (a) a Core Identity bullet carrying the framing-first posture
   (frame capabilities as a nouns-and-verbs hypothesis before any story is drafted; stories win a
   genuine conflict — record D5); (b) a "What You Embrace" bullet carrying the pending-rows
   completeness view (an entry's honest state includes the cut-but-undelivered work pending on it —

@@ -144,7 +144,7 @@ item_grades:
     name: anchors
     grade: PASS
     detail: >
-      All 17 mints carry `anchor: 2026-09-13 hook-enforced-artifact-schema D1`, each beside a
+      All 17 mints carry "`anchor: 2026-09-13 hook-enforced-artifact-schema D1`", each beside a
       `class: floor` and its own id; I listed them off the ops rather than sampling. The
       `reword-rule` on `impl.reports-envelope` needs none, confirmed both ways: the rule in the
       committed view carries `labels`, `class`, `kind` and `text` and no `anchor:` field either
@@ -205,7 +205,7 @@ strengths: the census tally reproduces at 346 across both repos and every sample
 
 The first is a release-order dependency the cycle report names and I want to restate in one place: a
 published binary that predates the `home` kind rejects `0005` loudly with an `op-malformed` finding,
-which is GI-020 working as designed. It also means the plugin cannot ship this migration before the
+which is GI-020-plugin-install-model working as designed. It also means the plugin cannot ship this migration before the
 crate publishes. Every `plugin.json` bump from here needs the crate tag ahead of it, and until the
 tag exists every mochiko command in this repo needs the break-glass install. That belongs on the
 release gate, not in a wave report.
@@ -408,7 +408,7 @@ binary, which is not the same as the suite confirming it. Fix: one assertion ove
 
 **Outside the four graded parts, and the lead's to route.** Two governance surfaces still say the
 ratification has not happened. `DECISIONS.md`'s hook-enforced-artifact-schema row reads "wave 3
-built, budget table awaiting ratification", and the ledger's GI-019 clause (iv) still carries
+built, budget table awaiting ratification", and the ledger's GI-019-kernel-tooling-admission clause (iv) still carries
 "**Condition, standing open** (review C1…)". The table now says ratified 2026-09-15. Under the KM
 invariants a status that disagrees across surfaces is a defect to fix on sight, and the C1 condition
 was written to be discharged by exactly this ratification.

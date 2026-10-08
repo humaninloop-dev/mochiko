@@ -6,7 +6,7 @@ convention's application here.
 
 ## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/spec.yaml + mochiko-cli template spec
-- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1-single-plugin-cli/D3-pipeline-template-scope/D8-schema-data-files; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
 - **Content (superseded template, full verbatim below):**
 
 ````markdown
@@ -157,12 +157,12 @@ open `prototype/index.html` directly. Flows and data are binding; layout and sty
 
 {{open_questions}}
 ````
-- **Kept deliberately:** Every line of guidance preserved — lifted into `plugins/mochiko/schemas/spec.yaml` (skeleton / contract / overview / register / density) and rendered by `mochiko-cli template spec`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). Nothing dropped.
+- **Kept deliberately:** Every line of guidance preserved — lifted into `plugins/mochiko/schemas/spec.yaml` (skeleton / contract / overview / register / density) and rendered by `mochiko-cli template spec`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020-plugin-install-model, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). Nothing dropped.
 - **Consumers assessed:** `commands/specify.md` spec read-pointer (re-pointed by P4) · `skills/mochiko/SKILL.md` router row (re-described CLI/schema-delivered by P5) · `skills/authoring-prototype/SKILL.md` (re-pointed by P5). V2 fidelity PASS 2026-08-16 (schema graded 8/8 at the M3 gate).
 
 ## [v0.58.0] Delivery Slices section out — Feature Selection in; stories become an index; slice tags re-key to FEAT
 - **Disposition:** superseded → the feature-map-layer restructure: a **Feature Selection** section (derived-features table, filter rejections, the user's selection with the deferred-SC list per D21); the User Stories section becomes an index over `stories/US-*.md` files (D10 — story text, acceptance scenarios, FEAT-ID mapping live there; only story-native status is `rejected` with the why); Screens & Flows tag grammar re-keys slice → FEAT (R10 re-tag pass, rejected-story screens kept greyed).
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md` — D4 slices retire, D10 workspace restructure, D20 acceptance-time writes, D21 deferred-SC visibility)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md` — D4-slices-leave-pipeline slices retire, D10-spec-workspace-layout workspace restructure, D20-map-write-timing acceptance-time writes, D21-deferred-success-criteria deferred-SC visibility)
 - **Content (superseded, verbatim):**
 
   The Intent section's Delivery comment: `<!-- increments vs whole; first shippable value; sequencing constraints -->` (now `whole vs subset now; …`) and the header comment's `Governs the authoring depth, the Delivery slices shape, and the stress-test rigor.` (now `the feature derivation`).

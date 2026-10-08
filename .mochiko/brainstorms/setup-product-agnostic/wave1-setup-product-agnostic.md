@@ -76,8 +76,8 @@ and `skill/testing-gap-finding.a11y-verification-routing`, `skill/review-design-
 rules (view :103, :288, :349, :410, :444–445, :465) reworded or superseded; a rule carrying D2's test
 (the rule stays, the instance leaves; hand-off recorded); the amend path's legacy clause forward-only.
 `skill/validation-constitution`: :138 semver text drops "module attach/detach"; mint one check — no
-product instance in the set, worked cases = D2's sort (GI-009 stays · GI-008 rule stays/instance leaves ·
-GI-028 stays · GI-004 rule stays/list leaves · GI-006 floor stays/corpus wording leaves · GI-036 leaves ·
+product instance in the set, worked cases = D2's sort ("GI-009" stays · "GI-008" rule stays/instance leaves ·
+GI-028 stays · "GI-004" rule stays/list leaves · "GI-006" floor stays/corpus wording leaves · GI-036 leaves ·
 GI-037 leaves). `skill/review-governance-intent` :168 — the fact-profile angle → the D2 angle (a product
 instance restated in the synthesis). `skill/analysis-codebase`: the 0014 design-system detection stays
 (a code fact); any feature-map or baselines feed bound to setup is narrowed. Read each rule before

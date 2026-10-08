@@ -8,7 +8,7 @@ its shipped text.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the authoring family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -35,7 +35,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
     - It also kept the in-flight-class bullet verbatim, which was false against `lifecycle-statuses`.
       It is now re-worded, as above.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-24 delta-files row →
-  `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D2 (the key set) and D7
+  `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D2-entry-lifecycle-marker (the key set) and D7
   (`proposed` before the checkpoint, flipped at sign-off); `DECISIONS.md` 2026-09-29 joint-build
   row → `.mochiko/decisions/2026-09-29-joint-hook-delta-build-seams.md` R8 (the sign-off flips by
   what the diff shows) and `.mochiko/decisions/2026-09-29-landed-removal-stub.md` R9 (the
@@ -70,7 +70,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -114,7 +114,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -125,7 +125,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   and halt likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -135,7 +135,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 
 ## [v0.101.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2A, authoring family)
 
-Ruling for every entry below: skill-content-schema D3 (three-home boundary) / D8/C4
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (three-home boundary) / D8/C4
 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema ruled ·
 Skill-schema wave-2 family doors ruled — the authoring-family door); census:
 `.mochiko/brainstorms/skill-content-schema/research/census-authoring.md` §A (AAS) + §B (AAS).
@@ -145,7 +145,7 @@ minted ID:
 1 `one-home-one-writer` · 2a `diagram-craft-routing` · 2b `stance-routing` ·
 2c `mint-routing` · 3 `store-layout` · 4 `scope-line-durable-home` · 5a `element-grammar` ·
 5b `two-arm-schema-binding` (C-A3 stub, `extends: authoring-common.two-arm-template`,
-`${template}` = `architecture-store`, both arms inherited verbatim — GI-020) ·
+`${template}` = `architecture-store`, both arms inherited verbatim — GI-020-plugin-install-model) ·
 6 `nfr-one-home` · 7 `work-pointers-only` · 8 `present-tense-no-history` ·
 9 `lifecycle-statuses` · 10 `sign-off-is-write-gate` · 11 `index-regenerated-every-write` ·
 12 `full-ax-table` · 13 `health-view-binding` · 14 `readability-bar` ·
@@ -178,9 +178,9 @@ V1 fix-round folds above); the delta over the
 pre-conversion body is structural overhead (IDs, keys, section scaffolding, reading
 grammar) — no content growth claimed. AAS was unbudgeted at birth (hard-cap-only); the
 conversion re-seed is its first budget, via the ledger's third seeding path, no headroom
-(census J-7 — P5 executes the ledger row).
+(census J-7-first-member-budgets — P5 executes the ledger row).
 
-## [v0.101.0] Write gate — protection transfers (census §A row 1; product-architecture-schema D10, kept byte-for-byte at v0.91.0)
+## [v0.101.0] Write gate — protection transfers (census §A row 1; product-architecture-schema D10-plan-time-contract, kept byte-for-byte at v0.91.0)
 - **Disposition:** superseded — protection transfers to schema rule `authoring-architecture-store.sign-off-is-write-gate` (`class: floor`, `kind: gate`), per D8/C4; the provenance sidecar carries the protected status.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema rows).
 - **Content:** "**Ruled truth is never edited in place by a delivery run.** A design-time write is legal only as an in-flight-class delta, and only after the user's sign-off on the rendered diagram plus the named row changes — the sign-off IS the write gate. No sign-off, no store write."
@@ -228,8 +228,8 @@ conversion re-seed is its first budget, via the ledger's third seeding path, no 
 - **Content:** "Judgment writes — baseline authoring, shelf-walk stance batches, amendments, and every `As-built:`/`Drift:` write — take the independent review leg before the user's ruling, per `mochiko:patterns-sound-loop`. Status flips and orphan cleanup are transcription and ride the landing audit. Do not relabel judgment as mechanical to skip the leg."
 - **Consumers assessed:** `mochiko:patterns-sound-loop` is the floor's single source — pointed at, never restated.
 
-## [v0.101.0] Two-arm schema citation — protection transfers to C-A3 stub (census §A row 9; template-schema D8, GI-020)
-- **Disposition:** superseded — protection transfers to `authoring-architecture-store.two-arm-schema-binding` (`extends: authoring-common.two-arm-template`, must, `kind: binding`, `${template}` = `architecture-store`), per D8/C4; both arms preserved verbatim through the inherited block text (GI-020 — raw Read the first-class degraded path).
+## [v0.101.0] Two-arm schema citation — protection transfers to C-A3 stub (census §A row 9; `schema-based-template-guidance` D8-schema-data-files, GI-020-plugin-install-model)
+- **Disposition:** superseded — protection transfers to `authoring-architecture-store.two-arm-schema-binding` (`extends: authoring-common.two-arm-template`, must, `kind: binding`, `${template}` = `architecture-store`), per D8/C4; both arms preserved verbatim through the inherited block text (GI-020-plugin-install-model — raw Read the first-class degraded path).
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows).
 - **Content:** "The shape is schema-backed: invoke `mochiko-cli template architecture-store`, or Read `plugins/mochiko/schemas/architecture-store.yaml` raw when the binary is absent."
 - **Consumers assessed:** `plugins/mochiko/schemas/skill-authoring-common.yaml` (P1's, this wave) carries the block; `schemas/architecture-store.yaml` untouched.
@@ -245,7 +245,7 @@ conversion re-seed is its first budget, via the ledger's third seeding path, no 
 - **Disposition:** superseded → "delivery run" and "design-time write" for the write-gate rule;
   "the sufficiency check and the design phase" for the index's named reader.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D1**: `/mochiko:plan` retires;
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D1-plan-command-retires**: `/mochiko:plan` retires;
   `/mochiko:implement` is the single downstream run, and its design phase is where store deltas
   are now authored).
 - **Found by sweep, not by brief:** the wave lead's extension named line 61 of this file. These
@@ -291,7 +291,7 @@ conversion re-seed is its first budget, via the ledger's third seeding path, no 
 - **Disposition:** superseded → the same sentence asserting the chain resolves to the business
   source.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D3**, which retires the TR-XXX
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D3-requirements-layer-dies**, which retires the TR-XXX
   layer; the NFR-source consequence is **not** stated on the record and was ruled by the wave
   lead as **R4** during the build: an NFR's source is the FR-XXX / SC-XXX it serves, or the
   concern row's own driver).

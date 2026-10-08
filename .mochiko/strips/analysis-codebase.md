@@ -14,7 +14,7 @@ fixed same day — the audit trail is the wave's ROADMAP row). Consumers assesse
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the dense-five family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -24,7 +24,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/analysis-codebase/`. -->
 
@@ -39,7 +39,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/analysis-codebase/SKILL.
   as the `analysis-codebase.sec.output` rules." The rule the phrase summarized,
   `analysis-codebase.capability-signals-seed-feature-map`, is tombstoned in the same wave.
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D5: setup's brownfield feature-map reconstruction is struck, and the analysis feed to it leaves
+  D5-setup-rules-cut: setup's brownfield feature-map reconstruction is struck, and the analysis feed to it leaves
   setup's binding; `DECISIONS.md` 2026-09-24)
 - **Content:** verbatim — "the production binding, envelope, and capability-signal seeding are
   delivered by `mochiko-cli` as the `analysis-codebase.sec.output` rules."
@@ -54,7 +54,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/analysis-codebase/SKILL.
 
 - **Disposition:** superseded → the CLI forms
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** three lines.
   1. `references/CONTEXT-GATHERING.md`: "`mochiko-cli template codebase-analysis`, or
      `plugins/mochiko/schemas/codebase-analysis.yaml` read raw"
@@ -70,7 +70,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/analysis-codebase/SKILL.
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -105,7 +105,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/analysis-codebase/SKILL.
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -116,7 +116,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/analysis-codebase/SKILL.
   likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -126,7 +126,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/analysis-codebase/SKILL.
 
 ## [v0.103.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2C, small families)
 
-Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (obligations move, procedure stays
 prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
 ruled · Skill-schema wave-2 family doors ruled — the small-families door); census:
 `.mochiko/brainstorms/skill-content-schema/research/census-small-families.md` §A (AC) + §B (AC rows
@@ -146,8 +146,8 @@ census fit table):** scope {3, 7, 12, 13} · inputs {9} · verdict {4, 5, 8} · 
 **Floor count 3 (rows 3 · 4 · 5)** — row grain and census tally agree. No `conditions:`
 block — brownfield setup is the invoking context, unconditional within the skill (the
 census's own "arguably unconditional" read, lead-confirmed); the load-first block legally
-omits the `when:` grammar sentence (wave-1 RCM-4 wave-wide ruling). Row 1's two arms ride
-the rule text VERBATIM (GI-020 — the binary-optional first-class raw-Read path); row 3's
+omits the `when:` grammar sentence (wave-1 RCM-4-test-gate-carveout wave-wide ruling). Row 1's two arms ride
+the rule text VERBATIM (GI-020-plugin-install-model — the binary-optional first-class raw-Read path); row 3's
 `pointer:` carries the cross-directory climb
 `../authoring-constitution/references/ESSENTIAL-FLOOR.md` (census J2-7, checker-resolved).
 Accounting (seat-measured snapshot; the closer re-measures at the gate): body 6,613 → 3,814
@@ -192,7 +192,7 @@ the wave closer executes the ledger row). Description byte-untouched at 349.
 - **Disposition:** superseded — protection transfers per D8/C4 onto
   `analysis-codebase.deliverable-two-arm-binding` (must, binding — both arms verbatim:
   `mochiko-cli template codebase-analysis` when the binary is available, otherwise Read
-  `plugins/mochiko/schemas/codebase-analysis.yaml` raw; GI-020),
+  `plugins/mochiko/schemas/codebase-analysis.yaml` raw; GI-020-plugin-install-model),
   `analysis-codebase.artifact-envelope-slimmed-legible` (must, binding, pointer
   `../../templates/artifact-format.md`), and
   `analysis-codebase.capability-signals-seed-feature-map` (must, binding, pointer
@@ -200,7 +200,7 @@ the wave closer executes the ledger row). Description byte-untouched at 349.
   `analysis-codebase.brownfield-quality-checklist` (must set-rule, all 12 boxes in the
   rule text — none lost), its body section leaving.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows;
-  protecting lineage `DECISIONS.md` 2026-08-16 schema-based-template-guidance D1/D8 for
+  protecting lineage `DECISIONS.md` "2026-08-16 schema-based-template-guidance D1/D8" for
   the two-arm binding — this file's [v0.76.0] entry).
 - **Content:** the Mode section's `**Output**:` paragraph and the
   `### Setup-Brownfield Quality Checklist` section, verbatim in git history
@@ -236,7 +236,7 @@ the wave closer executes the ledger row). Description byte-untouched at 349.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows;
   protecting lineage `DECISIONS.md` 2026-08-10 validator-scope-and-verbosity (the
   v0.63.0 guardrails keep-set: assess-status contract, intent-blind/waiver-blind rule) ·
-  2026-08-26 plan-stage-utility D1 (the [v0.91.0] parked-mode vocabulary re-key — meaning
+  "2026-08-26 plan-stage-utility D1" (the [v0.91.0] parked-mode vocabulary re-key — meaning
   preserved again here: the mode stays parked, only its statement moved) · 2026-07-25
   skill-succinctness-strip (the [v0.24.0] KEPT Common Mistakes table).
 - **Content:** the four sections named above, verbatim in git history (pre-v0.103.0);
@@ -256,7 +256,7 @@ the wave closer executes the ledger row). Description byte-untouched at 349.
 - **Disposition:** superseded → "the spec/design-cluster Brownfield mode (not wired this run)",
   at both sites.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1; wording ruled by the wave lead
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires; wording ruled by the wave lead
   2026-08-26 as a **vocabulary re-key only**).
 - **Scope of the change, stated because this seat flagged it as not-obviously-mechanical:** the
   phrase names a mode that has never been wired, so the risk was re-keying a label whose referent
@@ -297,9 +297,9 @@ the wave closer executes the ledger row). Description byte-untouched at 349.
   unwired mode is operating-doc content, outside `plugins/`, and its meaning is preserved per the
   ruling above.
 
-## [v0.76.0] `codebase-analysis-template.md` read-pointers → `codebase-analysis` schema (two-arm) — schema-based-template-guidance D1/D8
+## [v0.76.0] `codebase-analysis-template.md` read-pointers → `codebase-analysis` schema (two-arm) — schema-based-template-guidance D1-single-plugin-cli/D8-schema-data-files
 - **Disposition:** superseded → `mochiko-cli template codebase-analysis`, or Read `plugins/mochiko/schemas/codebase-analysis.yaml` raw (D8-first-class). Two sites: `SKILL.md` Output pointer + `references/CONTEXT-GATHERING.md` scope-note mention.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1-single-plugin-cli/D3-pipeline-template-scope/D8-schema-data-files; `DECISIONS.md` "Template-schema CLI ruled").
 - **Content (superseded, verbatim):**
   - `following` / `[\`codebase-analysis-template.md\`](../../templates/codebase-analysis-template.md).` — `SKILL.md` Output
   - `its findings flow into \`.mochiko/memory/codebase-analysis.md\` (per` / `> \`codebase-analysis-template.md\`).` — `references/CONTEXT-GATHERING.md`

@@ -9,7 +9,7 @@ standard binding, none of which the cut line removes.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the review family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -19,7 +19,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/review-code-minimalism/SKILL.md`. -->
 
@@ -27,7 +27,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 - **Disposition:** superseded → "the delivered output contract"
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** "**5. Emit findings** as the schema's output contract shapes them, one line of
   evidence each (the grep hit, the stdlib call, the manifest entry)."
 - **Kept deliberately:** the whole step — the output contract as the shaper of the findings, and
@@ -39,7 +39,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -79,7 +79,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -90,7 +90,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
   halt likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -100,7 +100,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 ## [v0.100.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave)
 
-Ruling for every entry below: skill-content-schema D3 (boundary) / D8/C4 (protected
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (boundary) / D8/C4 (protected
 transfers), `DECISIONS.md` 2026-09-01 row; census:
 `.mochiko/brainstorms/skill-content-schema/research/census.md` §B (RCM). Schema home:
 `plugins/mochiko/skills/review-code-minimalism/schema.yaml`. Minted IDs carry the
@@ -126,13 +126,13 @@ pre-conversion content, relocated not grown).
 
 ## [v0.100.0] Inputs section framing — the two items without obligations of their own (V1 fix round, RCM-1)
 - **Disposition:** superseded → item 1's diff-location mechanic RESTORED to the body (Procedure intro line: "Locate the diff first: files created/modified per the cycle report locate it; `git diff` over those paths"); item 1's and item 3's framing otherwise carried by schema rules `review-code-minimalism.diff-and-report-both-read` and `review-code-minimalism.codebase-read-rungs-2-3-5`.
-- **Tier failed:** n/a — supersession by ruling (skill-content-schema D3; `DECISIONS.md` 2026-09-01 row; V1 audit finding RCM-1).
+- **Tier failed:** n/a — supersession by ruling (skill-content-schema D3-obligations-only-schema; `DECISIONS.md` 2026-09-01 row; V1 audit finding RCM-1).
 - **Content (verbatim, the two Inputs items):** "1. **The cycle's git diff** — what was actually built (files created/modified per the cycle report locate it; `git diff` over those paths)." · "3. **The codebase around the diff** — obligated for rungs 2/3/5 (below)."
 - **Kept deliberately:** the diff-location mechanic, now in the Procedure intro — teaching prose per D3.
 - **Consumers assessed:** none (skill-local framing).
 
 ## [v0.100.0] Codebase-read floor — protection transfers (census RCM-8; PT-D1–D10 protected)
-- **Disposition:** superseded — protection transfers to schema rule `review-code-minimalism.codebase-read-rungs-2-3-5` (class: floor), per skill-content-schema D8/C4; provenance sidecar carries the protected status. The per-rung mechanics (greps · stdlib · manifest) stay in Procedure step 3 per D3.
+- **Disposition:** superseded — protection transfers to schema rule `review-code-minimalism.codebase-read-rungs-2-3-5` (class: floor), per skill-content-schema D8-skill-governance-envelope/C4; provenance sidecar carries the protected status. The per-rung mechanics (greps · stdlib · manifest) stay in Procedure step 3 per D3.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema row).
 - **Content:** "**3. Never take reuse claims on trust — the codebase-read obligation.** For rungs 2 (reuse), 3 (stdlib), and 5 (installed dependency), diff + disclosure alone cannot verify \"should have reused\"" + checklist twin "Rung-2/3/5 claims verified by codebase read (greps / stdlib / manifest), not trusted"
 - **Kept deliberately:** Procedure step 3's three verification mechanics, body prose.
@@ -161,12 +161,12 @@ pre-conversion content, relocated not grown).
 - **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
 - **Content:** "It runs inside the per-cycle verification the verification seat already performs; no separate stage, no final-pass sweep"
 
-## [v0.100.0] General-code-review carve-out relocated (census RCM-3)
+## [v0.100.0] General-code-review carve-out relocated (census RCM-3-code-review-carveout)
 - **Disposition:** relocated → schema.yaml `review-code-minimalism.not-general-code-review`
 - **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
 - **Content:** "**General code review** — naming, patterns, framework choices, correctness beyond tests: out of scope; this lens grades ladder discipline only" + checklist twin "No general-code-review findings smuggled in (naming, style, patterns)"
 
-## [v0.100.0] TEST-gate carve-out relocated (census RCM-4)
+## [v0.100.0] TEST-gate carve-out relocated (census RCM-4-test-gate-carveout)
 - **Disposition:** relocated → schema.yaml `review-code-minimalism.not-test-gates` (pointer: `mochiko:testing-end-user`)
 - **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
 - **Content:** "**Executing `**TEST:**` gates or quality gates** — `mochiko:testing-end-user`, the same seat's other craft"
@@ -196,7 +196,7 @@ pre-conversion content, relocated not grown).
 - **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
 - **Content:** "A builder-vs-reviewer rung dispute escalates to the user only at the checkpoint, never as a mid-cycle stop."
 
-## [v0.100.0] Findings-ride-to-checkpoint COMPRESSED into C4 stub (no census §B row — mint reported; relabeled at the V1 fix round, RCM-3)
+## [v0.100.0] Findings-ride-to-checkpoint COMPRESSED into C4 stub (no census §B row — mint reported; relabeled at the V1 fix round, RCM-3-code-review-carveout)
 - **Disposition:** superseded → schema.yaml `review-code-minimalism.verdict-is-input` (`extends: review-common.verdict-is-input`, class: must, kind: reservation) carries the input-not-clearing core; the dropped limb "the lead decides rework-now or carry" is CARRIED into `review-code-minimalism.dispute-at-checkpoint-only`'s text (V1 fix round). Census §B carried no RCM row; minted per census §C (C4 ×5), deviation reported to the wave lead, never silent.
 - **Tier failed:** n/a — supersession by ruling (D3/D5 + near-dup R2; `DECISIONS.md` 2026-09-01 row).
 - **Content:** "Findings ride the verification report to the lead's checkpoint verdict; the lead decides rework-now or carry."
@@ -208,7 +208,7 @@ pre-conversion content, relocated not grown).
 - **Disposition:** superseded → "the design-phase and spec reviewers own those surfaces; the
   design-time sibling of this lens…".
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 and D5; wording ruled by the wave
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires and D5-evidence-honesty-falsifier; wording ruled by the wave
   lead 2026-08-26).
 - **Content (superseded text, verbatim):**
 

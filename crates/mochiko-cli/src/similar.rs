@@ -2,7 +2,7 @@
 //!
 //! A port of `scripts/find-similar-rules.py`, whose 48-probe matrix it inherits. It **proposes**
 //! candidate clusters and nothing else: it never merges, never edits, and never gates. Combining
-//! rules is judgment, which the bright line (GI-019) keeps with the skills that own it — so this
+//! rules is judgment, which the bright line (GI-019-kernel-tooling-admission) keeps with the skills that own it — so this
 //! module reports and stops, and every finding it produces is advisory.
 //!
 //! # Reproducing `difflib`

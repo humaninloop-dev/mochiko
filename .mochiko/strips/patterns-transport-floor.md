@@ -8,7 +8,7 @@ removed content, so no strips file existed before the conversion.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the patterns family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -20,7 +20,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -61,7 +61,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -72,7 +72,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -119,7 +119,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
     `patterns-transport-floor.neither-lane-waivable`, the lanes declared as the
     `conditions:` dimensions `messaging` / `shared_write_surface` (surface-presence).
   - `## The seven legs` (numbered list 1–7, each with its lane tag) →
-    `patterns-transport-floor.composition-steer` (leg 1, teammate-message-races D4) ·
+    `patterns-transport-floor.composition-steer` (leg 1, teammate-message-races D4-safe-writer-shapes) ·
     `patterns-transport-floor.single-writer-per-surface` (leg 2) ·
     `patterns-transport-floor.mesh-hold` (leg 3) ·
     `patterns-transport-floor.content-pinned-supersession` (leg 4) ·
@@ -145,7 +145,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   collisions made concrete) · the `## Sibling` paragraph with the sound-loop neutrality
   cross-pointer · the `description:` byte-identical (450 chars), including its
   non-waivable-lane and governs-use-never-choice clauses — the discovery surface never
-  moves (skill-content-schema D3).
+  moves (skill-content-schema D3-obligations-only-schema).
 - **Consumers assessed:** `patterns-sound-loop` (its neutrality line points here —
   boundary intact, wording untouched on its side) · `authoring-epic` (two
   `mochiko:patterns-transport-floor` pointers in its schema — name-shaped, unaffected) ·

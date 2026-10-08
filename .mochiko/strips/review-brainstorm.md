@@ -13,7 +13,7 @@ text), so the probe re-runs in a fresh session.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the review family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -29,12 +29,43 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/review-brainstorm/refere
 the reviewer's side of the target state through migration `0045-review-brainstorm-target-state.yaml`,
 recorded by the log (no strip owed); the Protocol follows them, and `references/RECORD-FITNESS.md`
 gains the card-parts checklist with its intro scoped to the fitness list. Ruling for the
-[v0.117.0] entries below: `.mochiko/brainstorms/brainstorm-target-state/record.md` D8, D10, D16
+[v0.117.0] entries below: `.mochiko/brainstorms/brainstorm-target-state/record.md` D8-bare-yes-handling, D10-cold-review-shape, D16-end-reviewer-checks
 (`DECISIONS.md` 2026-10-06 row), and for the intro D16's "Changed at build (Q23; 2026-10-06,
 user: "2A")" note — a missing card part does not block `ready` — with the wave 1 `build-log.md`
 entry "the user's word on P2". Pre-edit verbatim text:
 `git show 2e4c57c:plugins/mochiko/skills/review-brainstorm/SKILL.md` and
 `git show 2e4c57c:plugins/mochiko/skills/review-brainstorm/references/RECORD-FITNESS.md`. -->
+
+## [v0.118.0] Wave 3 back-fill: EXTERNAL-CLAIMS cites qualified and joined
+
+- **Disposition:** superseded → seven lines of `references/EXTERNAL-CLAIMS.md` (the :10, :30, :36,
+  :43, :70 and :76 headings, and :98) now cite `external-research-in-review` D2-load-bearing-trigger
+  · `external-research-in-review` D3-verify-at-review ·
+  `external-research-in-review` D4-inline-reviewer-checks (three lines) ·
+  `external-research-in-review` D5-no-review-paths ·
+  `external-research-in-review` D6-shared-reference-carrier.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/human-readable-ids/record.md` D11-cross-session-qualifier,
+  D14-live-layer-backfill and D15-protected-line-rewrites — every live-layer mention joined to its
+  definition's slug, cross-session mentions qualified, verbatim spans masked; wave plan
+  `.mochiko/brainstorms/human-readable-ids/wave3-backfill.md` items 7–9)
+- **Content (superseded):** every changed line at `0b8982a`, verbatim, as `<file>:<line>: <text>`
+  (files under `plugins/mochiko/skills/review-brainstorm/`):
+
+  ```text
+  references/EXTERNAL-CLAIMS.md:10: ## The trigger — load-bearing (ER-D2)
+  references/EXTERNAL-CLAIMS.md:30: ## Architecture — verify-at-review, pure (ER-D3)
+  references/EXTERNAL-CLAIMS.md:36: ## Inline-check mechanics (ER-D4)
+  references/EXTERNAL-CLAIMS.md:43: ## The source re-read clause (ER-D4)
+  references/EXTERNAL-CLAIMS.md:70: ## No-review paths (ER-D5)
+  references/EXTERNAL-CLAIMS.md:76: ## Fact-checker role — flag, don't fetch (ER-D4 residual)
+  references/EXTERNAL-CLAIMS.md:98: only; added with the v0.52.0 build, beyond ER-D6's eight ruled touches) — consumer retired
+  ```
+
+- **Kept deliberately:** `references/EXTERNAL-CLAIMS.md`:8's "(ER-D1–D6, 2026-08-04)": a range over
+  six decisions inside a `>` blockquote, left bare
+  (`human-readable-ids` D5-compound-reference-forms;
+  `human-readable-ids` D15-protected-line-rewrites).
 
 ## [v0.118.0] RECORD-FITNESS card heading names the joined ID
 
@@ -50,7 +81,7 @@ entry "the user's word on P2". Pre-edit verbatim text:
   builder test, and on a front map the taken angles read for depth and the dropped ones checked.
   It names the steps; the obligations are the `0045` rules (`card-parts-first`, `ratified-first`,
   `builder-test`, `resumed-end-read`).
-- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D10 with its S2 and S16
+- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D10-cold-review-shape with its S2 and S16
   notes and its fallback-seat sentence; D16 as changed at review, S4; D8's reviewer clause)
 - **Content:** verbatim —
 
@@ -85,7 +116,7 @@ entry "the user's word on P2". Pre-edit verbatim text:
   unchecked fitness item blocks `ready`." The new `## Card parts` section says its list is
   reported, that a missing part does not itself block `ready`, and that what blocks `ready` is the
   fitness list.
-- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D16 as changed at
+- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D16-end-reviewer-checks as changed at
   review, S4: the card-parts check is the seat's own checklist, reported before it reads for
   judgment; and D16's "Changed at build (Q23; 2026-10-06, user: "2A")" note in the record — a
   missing card part does not block `ready` — with the wave 1 `build-log.md` entry "the user's word
@@ -118,7 +149,7 @@ entry "the user's word on P2". Pre-edit verbatim text:
 - **Disposition:** superseded → "mapping regulations to obligations is not setup's (retired from setup
   2026-09-24; no setup run attaches a module)"
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D1, D6; `DECISIONS.md` 2026-09-24)
+  D1-profile-leaves-setup, D6-cut-ships-first; `DECISIONS.md` 2026-09-24)
 - **Content:** verbatim — "mapping regulations to modules is `COMPLIANCE-MODULES.md`'s job;"
 - **Kept deliberately:** the exclusion bullet itself and "this file only governs how a stated
   regulatory claim gets verified at review."
@@ -132,12 +163,12 @@ entry "the user's word on P2". Pre-edit verbatim text:
   successor** — the persona's copy of the source re-read clause retired with it rather than
   being re-homed, and the clause's live consumers are the others listed in that paragraph.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/producer-plan-enforcement/record.md` D3 ·
-  `.mochiko/brainstorms/author-grader-consolidation/record.md` D7; `DECISIONS.md` 2026-09-03
+  (`.mochiko/brainstorms/producer-plan-enforcement/record.md` D3-peer-plan-grader ·
+  `.mochiko/brainstorms/author-grader-consolidation/record.md` D7-fresh-gate-grader; `DECISIONS.md` 2026-09-03
   and 2026-09-19 rows).
 - **Content:** verbatim superseded span — "`agents/validator.md` (evidence-hierarchy rung — the
   source re-read clause only; added with the v0.52.0 build, beyond ER-D6's eight ruled touches)."
-- **Kept deliberately:** the consumer line itself and its ER-D6 provenance note — nothing leaves
+- **Kept deliberately:** the consumer line itself and its `external-research-in-review` D6-shared-reference-carrier provenance note — nothing leaves
   the list, because the list is the edit-time guard's own record of who reads this file.
 - **Consumers assessed:** `EXTERNAL-CLAIMS.md` is a `references/` file, unbudgeted and read on
   demand; no skill quotes this line, and the "assessed against all consumers" obligation is
@@ -148,7 +179,7 @@ entry "the user's word on P2". Pre-edit verbatim text:
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -190,7 +221,7 @@ entry "the user's word on P2". Pre-edit verbatim text:
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -201,7 +232,7 @@ entry "the user's word on P2". Pre-edit verbatim text:
   likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -211,7 +242,7 @@ entry "the user's word on P2". Pre-edit verbatim text:
 
 ## [v0.100.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave)
 
-Ruling for every entry below: skill-content-schema D3 (boundary) / D8/C4 (protected
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (boundary) / D8/C4 (protected
 transfers), `DECISIONS.md` 2026-09-01 row; census: `.mochiko/brainstorms/skill-content-schema/research/census.md`
 §B (RB). Schema home: `plugins/mochiko/skills/review-brainstorm/schema.yaml`. All minted IDs
 carry the `review-brainstorm.` prefix (omitted below). Map — census row → minted ID:
@@ -233,12 +264,12 @@ row; §A v0.46.0 + census §C) `its-command-states-them`.
 Accounting (V1 fix round): pre-conversion body 2,748; relocated content measures 3,265
 across the pair — the +517 content growth is grammatical expansion only (compressed body
 fragments rewritten as standalone, referentially-closed rule sentences per
-command-content-schema D12/D15), no restored playbook prose — the argued-overage path per
-skill-content-schema D8/C1; the remainder of the pair's payload over the body figure is
+command-content-schema D12-rule-block-grain/D15-rule-text-closure), no restored playbook prose — the argued-overage path per
+skill-content-schema D8-skill-governance-envelope/C1; the remainder of the pair's payload over the body figure is
 structural overhead (IDs, keys, section scaffolding, reading grammar).
 
 ## [v0.100.0] Blind-map floor — protection transfers (census RB-4; v0.60.0 + v0.88.0 protected)
-- **Disposition:** superseded — protection transfers to schema rule `review-brainstorm.blind-map-before-record-contact` (class: floor), per skill-content-schema D8/C4; provenance sidecar carries the protected status.
+- **Disposition:** superseded — protection transfers to schema rule `review-brainstorm.blind-map-before-record-contact` (class: floor), per skill-content-schema D8-skill-governance-envelope/C4; provenance sidecar carries the protected status.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema row).
 - **Content:** "Phase 0 blind angle map from the topic only, produced as its own deliverable before record contact"
 - **Kept deliberately:** the Protocol's sequencing prose (map first, then cold read) stays in the body per D3.
@@ -258,7 +289,7 @@ structural overhead (IDs, keys, section scaffolding, reading grammar).
 - **Consumers assessed:** none (skill-local clause).
 
 ## [v0.100.0] Reopen-born grade — protection transfers (census RB-22; v0.60.0 protected)
-- **Disposition:** superseded — protection transfers to `review-brainstorm.reopen-born-verify-grade`, per D8/C4. "this grade" deixis resolved to "the verify-pass grade" (command-content-schema D15).
+- **Disposition:** superseded — protection transfers to `review-brainstorm.reopen-born-verify-grade`, per D8/C4. "this grade" deixis resolved to "the verify-pass grade" (command-content-schema D15-rule-text-closure).
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
 - **Content:** "Reopen-born decisions get this grade, never a fresh cold read."
 - **Consumers assessed:** `commands/brainstorm.md` "reopen-born verify" vocabulary — survives in the rule ID and text.
@@ -295,7 +326,7 @@ structural overhead (IDs, keys, section scaffolding, reading grammar).
 - **Consumers assessed:** nine consumers named in the reference's Single-source header — file untouched, pointers hold.
 
 ## [v0.100.0] CROSS-EXAM binding — protection transfers (census RB-16; v0.52.0-adjacent protected)
-- **Disposition:** superseded — protection transfers to `review-brainstorm.cross-exam-binding` (`when: {pairing: pair}`, pointer: `references/CROSS-EXAM.md`), per D8/C4. File untouched. V1 fix round (RB-2): the "pair only" text limb DROPPED from the rule text — the guard is single-homed in `when:` (criterion-11 MOVE); the verbatim clause is the Content line below.
+- **Disposition:** superseded — protection transfers to `review-brainstorm.cross-exam-binding` (`when: {pairing: pair}`, pointer: `references/CROSS-EXAM.md`), per D8/C4. File untouched. V1 fix round (RB-2-lens-depth-jurisdiction): the "pair only" text limb DROPPED from the rule text — the guard is single-homed in `when:` (criterion-11 MOVE); the verbatim clause is the Content line below.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
 - **Content:** "cross-examination per `references/CROSS-EXAM.md` (pair only; fact substrate: the record's fact-checker map; fact authority: the seated fact-checker, else the files)"
 - **Consumers assessed:** `review-governance-intent` shares the file (its own binding rule, same wave).
@@ -314,15 +345,15 @@ structural overhead (IDs, keys, section scaffolding, reading grammar).
 
 ## [v0.100.0] Never-in-the-room floor relocated (census RB-1)
 - **Disposition:** relocated → `plugins/mochiko/skills/review-brainstorm/schema.yaml` `review-brainstorm.never-in-the-room` (class: floor)
-- **Tier failed:** n/a — supersession by ruling (skill-content-schema D3; `DECISIONS.md` 2026-09-01 row).
+- **Tier failed:** n/a — supersession by ruling (skill-content-schema D3-obligations-only-schema; `DECISIONS.md` 2026-09-01 row).
 - **Content:** "paired or solo, **never in the room**"
 
-## [v0.100.0] Lens depth-never-jurisdiction relocated (census RB-2)
+## [v0.100.0] Lens depth-never-jurisdiction relocated (census RB-2-lens-depth-jurisdiction)
 - **Disposition:** relocated → schema.yaml `review-brainstorm.lens-depth-never-jurisdiction`
 - **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
 - **Content:** "A lens brief (*decision-quality*: scenario stress, classes 1–4, steelmans · *record-integrity*: inconsistencies, fitness, the map audit) sets depth, never jurisdiction."
 
-## [v0.100.0] Verdict-is-input relocated to C4 stub (census RB-3; body stated it twice)
+## [v0.100.0] Verdict-is-input relocated to C4 stub (census RB-3-verdict-input-relocated; body stated it twice)
 - **Disposition:** relocated → schema.yaml `review-brainstorm.verdict-is-input` (`extends: review-common.verdict-is-input`, class: floor)
 - **Tier failed:** n/a — supersession by ruling (D3/D5; `DECISIONS.md` 2026-09-01 row).
 - **Content:** "You recommend; **the lead owns every verdict**." + "your status is input; the lead owns the clearing verdict" (one obligation, deduped at conversion per census).
@@ -506,7 +537,7 @@ structural overhead (IDs, keys, section scaffolding, reading grammar).
 
 ## [v0.67.0] Sixth hunt class (excess machinery / unpaid decision) added — three "five hunt classes" counts re-keyed
 - **Disposition:** superseded → the excess posture from the architect-role ruling: a sixth, remove-shaped hunt class is added, so the three "five hunt classes" counts become "six".
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`, D3 as amended by its F3 calibration clause; DECISIONS.md combined-wave build row).
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`, D3-library-pushback-posture as amended by its F3 calibration clause; DECISIONS.md combined-wave build row).
 - **Content (superseded, verbatim — count reconciliations):**
   - Phase 1 item 2 — OLD: "2. **The five hunt classes**, per decision:" → "2. **The six hunt classes**, per decision:".
   - Coverage-findings paragraph — OLD: "a first-class finding beside the five hunt classes above." → "...beside the six hunt classes above.".
@@ -527,7 +558,7 @@ structural overhead (IDs, keys, section scaffolding, reading grammar).
 
 ## [v0.60.0] Hunt class 2 narrowed to intra-decision scope; topic-level coverage moves to the new coverage class
 - **Disposition:** superseded → the new "Coverage findings — the map-vs-record diff" class (topic-level never-visited dimensions) + a re-keyed class 2 (intra-decision missing factors)
-- **Tier failed:** n/a — supersession by ruling (record `.mochiko/brainstorms/cold-review-gap-challenge/record.md` D10; DECISIONS.md 2026-08-10 row)
+- **Tier failed:** n/a — supersession by ruling (record `.mochiko/brainstorms/cold-review-gap-challenge/record.md` D10-hunt-class-narrowing; DECISIONS.md 2026-08-10 row)
 - **Content:** `| 2 | **Missing dimension** | What angle (cost, failure mode, actor, timescale) was never visited? |`
 - **Kept deliberately:** the intra-decision reading — a decision that never weighed cost/failure-mode/actor/timescale is a real miss the map-diff will not catch, so class 2 survives re-keyed rather than deleted (keep-both-unbounded and full-supersession both rejected in D10).
 - **Consumers assessed:** `review-governance-intent` keeps its own hunt class 1 (agenda-diff) — a different class, unaffected; the shared `CROSS-EXAM.md` is substrate-agnostic and carries no class text. No other consumer references class 2 text.
@@ -536,7 +567,7 @@ structural overhead (IDs, keys, section scaffolding, reading grammar).
 - **Disposition:** superseded → `references/EXTERNAL-CLAIMS.md` (external-claim disputes only;
   every other fact dispute keeps routing to the session's fact authority exactly as shipped)
 - **Tier failed:** n/a — supersession by ruling (DECISIONS.md 2026-08-04 external-research row,
-  ER-D4 as amended at review fold F1; record
+  `external-research-in-review` D4-inline-reviewer-checks as amended at review fold F1; record
   `.mochiko/brainstorms/external-research-in-review/record.md`)
 - **Content:** the fact-dispute bullet's totalizing reading — "route it to the session's fact
   authority… one route per fact" as the *only* route, with no path for a fact that authority
