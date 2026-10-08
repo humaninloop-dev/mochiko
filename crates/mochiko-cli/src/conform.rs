@@ -852,16 +852,28 @@ fn line_count(body: &str) -> usize {
 /// `###` count** (plan §3.7): `#` is the document title and `####` and deeper are past the scope
 /// D4c declares.
 fn heading_scan(body: &str) -> Vec<Option<(usize, &str)>> {
+    body.lines()
+        .zip(fenced_lines(body))
+        .map(|(line, fenced)| if fenced { None } else { heading_of(line) })
+        .collect()
+}
+
+/// Per line of `body`, whether it is a fence line or inside a fenced block.
+///
+/// The one fence classifier in the crate: [`heading_scan`] reads it here, and the ID scanner
+/// ([`crate::ids`]) reads it to leave a fenced quotation as written (`human-readable-ids` D15). A
+/// second copy is how the fence trap would come back one module away from where it was closed.
+pub(crate) fn fenced_lines(body: &str) -> Vec<bool> {
     let mut out = Vec::with_capacity(body.lines().count());
     let mut fenced = false;
     for line in body.lines() {
         let trimmed = line.trim_start();
         if trimmed.starts_with("```") || trimmed.starts_with("~~~") {
             fenced = !fenced;
-            out.push(None);
+            out.push(true);
             continue;
         }
-        out.push(if fenced { None } else { heading_of(line) });
+        out.push(fenced);
     }
     out
 }

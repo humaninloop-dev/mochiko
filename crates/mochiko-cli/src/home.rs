@@ -313,7 +313,7 @@ fn is_prefixed_id(prefix: &str, segment: &str, slug_required: bool) -> bool {
 /// `<owner>-run<n>` (seams R5): the owner is a FEAT or EPIC id in its existing shape, or
 /// `lane-<slug>`; then `-run` and one or more digits. The split is at the last `-run`, so an
 /// owner's own slug may contain the word.
-fn is_run_id(segment: &str) -> bool {
+pub(crate) fn is_run_id(segment: &str) -> bool {
     let Some(at) = segment.rfind("-run") else {
         return false;
     };
