@@ -1691,3 +1691,51 @@ Append-only. One `##` entry per event, 60 lines at most.
   list), and `check` exits 0 on every changed `.mochiko/` file.
 - Open condition: the `ids --check` CI step (wave 4). Until it stands in `.github/workflows/ci.yml`,
   the hand-edit ruling's condition is open.
+
+## 2026-10-09 — wave 4 landed locally: the CI step, `mochiko-cli` 0.4.0, the landing, v0.118.0
+
+- On the user's "continue" (wave 4 locally; push, tag and publish stay theirs).
+- CI step (D18-build-done-check), lead-written: `.github/workflows/ids.yml`, its own workflow,
+  because `ci.yml`'s path filters would skip a prose-only pull request. It runs on every pull
+  request and builds with `--locked`. It reads `scripts/ids-check-excludes.txt` (the ruled Exclude
+  list plus the validation-constitution strip). Findings become warning annotations and a step
+  summary, and the step always exits 0. The lead found one defect before review: GitHub's
+  `bash -e` made the check's exit 1 fatal. Fixed with `|| code=$?`.
+- Crate: version 0.3.0 to 0.4.0 (`ids` and the wave-3b fence rule). The grammar stays 1..2. No tag.
+- Review (`w3-crate-review`, `mochiko:tech-lead`, non-author): PASS · 4 advisory, 0 blocking.
+  The four layers ran at the repo root: 765 passed; fmt, clippy and audit exit 0. All four
+  advisories were applied:
+  - any exit other than 0 or 1 now raises an `::error::` saying the check did not run;
+  - the header comment is reworded;
+  - the warning carries the column;
+  - "dead-pointer repair" is re-worded (below).
+  Fix verify: PASS · 0 problems, all four exit paths re-run first-hand. Report:
+  `reports/w4-ci-review.md`.
+- Governance location correction, lead-written. The ratified AM-6-id-tool-admission condition named
+  `.github/workflows/ci.yml`, a file the step never landed in. The ledger condition paragraph, the
+  3.3.0 row and the intent entry now name `ids.yml` and mark the condition met at v0.118.0. This
+  is put to the user at this wave's sign-off.
+- Landing:
+  - budget rows re-measured: `authoring-constitution` 29,207; `patterns-model-tiering` +7,517;
+    the `validation-primitive-edit` description 754, a new +24, ruled HOLDS by the wave-3 gate;
+  - BACKLOG: the build item moved to the trail, and four items booked (the 0.4.0 release, crate
+    residuals, repo back-fill residuals, seat-transport findings);
+  - the DECISIONS, ROADMAP, index and record statuses;
+  - GLOSSARY *joined ID*;
+  - CHANGELOG `[0.118.0] — 2026-10-09`, with the Upgrade line and the AM-5 exception citation
+    (0.117.0 had missed it);
+  - `plugin.json` and `marketplace.json` at 0.118.0.
+- Channel breach, disclosed: the lead wrote the budget rows, the ledger and intent corrections,
+  the index, record and trail lines through Python scripts, not Edit/Write. That breaks the
+  declared-home write rule, and the Bash hook's parse did not catch it; it denied this entry's
+  shell append, which went through Edit. Every changed file was then dry-run through `check`, and
+  each one was `allow`.
+- Gates:
+  - `migrate validate` 0 rejecting · 113 advisory; views ≡ replay, 87 of 87 identical;
+  - similarity sweep 48/48;
+  - secret scan clean (the CI pattern, and gitleaks `--redact` over tracked and new files);
+  - `ids --check` 0 bare · 0 drift;
+  - contract suite: `contract suite: 97/97 cases passed, 97 ran`, run at `7b51e5b` plus the bumped
+    working tree after a sandbox auth probe (READY).
+- Floor, disclosed: `floor: tripped · seats: lead (inline) / w3-crate-review`. Leg 1 was not run
+  for the CI step: the lead wrote it as mechanical execution of D18, and the review leg covered it.

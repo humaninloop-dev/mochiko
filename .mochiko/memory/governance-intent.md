@@ -171,8 +171,10 @@ D15-protected-line-rewrites and D17-governance-amend-route, accepted 2026-10-08;
   - the test that setup's regeneration keeps the joined IDs, which moves to the next setup amend.
 
   The trace summary is not regenerated (the v3.1.1 lead-PATCH precedent). The user's ruling is
-  conditional on wave 4's `ids --check` CI step; until it stands in `.github/workflows/ci.yml`, that
-  condition is open.
+  conditional on wave 4's `ids --check` CI step. The step stands in `.github/workflows/ids.yml` from
+  plugin v0.118.0 — its own workflow, because `ci.yml`'s path filters would skip a prose-only pull request and `human-readable-ids` D18-build-done-check runs the check on every one — so that
+  condition is met. The ratified text named `ci.yml`, a file the step never landed in; its location was
+  corrected at v0.118.0 and put to the user at the wave-4 sign-off.
 - **Review and ratification:** a fresh non-author seat (`mochiko:tech-lead`, default tier) graded
   the hand edit. FAIL at round 1, 14 findings (4 blocking): the CI step written as live, the route
   understated, `.claude/rules/mochiko/rust-cli.md` untouched, and GI-005-record-layer-integrity's

@@ -1,0 +1,31 @@
+# Paths `mochiko-cli ids --check` leaves alone in CI, one tree-relative prefix per line, each passed
+# as `--exclude`. Blank lines and `#` lines are skipped. The tool's own defaults (the migration log,
+# the derived views, `.mochiko/archive/`, …) apply on top of these.
+#
+# Ruled at `.mochiko/brainstorms/human-readable-ids/wave3-backfill.md` ("Exclude list") under
+# `human-readable-ids` D18-build-done-check: history and evidence the back-fill must not read as live
+# mentions — eval stimuli and pass reports, the slug maps' own inputs, raw census dumps, and one
+# strip whose verbatim nested quote the tool misreads (booked for the crate).
+evals/.work/
+crates/mochiko-cli/tests/ids.rs
+.mochiko/benchmarks/
+.mochiko/brainstorms/human-readable-ids/inputs/
+.mochiko/brainstorms/author-grader-consolidation/inputs/
+.mochiko/brainstorms/lead-owned-process-flexibility/inputs/
+.mochiko/brainstorms/plan-run-transport-forensics/inputs/
+.mochiko/brainstorms/team-method-vs-command-shape/inputs/
+.mochiko/brainstorms/human-readable-ids/wave0-read-test.md
+.mochiko/brainstorms/hook-enforced-artifact-schema/wave3-census-raw.md
+evals/patterns-entity-modeling/variants/
+evals/patterns-entity-modeling/pass-report.md
+evals/review-brainstorm/variants/
+evals/review-brainstorm/pass-report.md
+evals/review-governance-intent/variants/
+evals/review-governance-intent/pass-report.md
+evals/review-plan-artifacts/variants/
+evals/review-plan-artifacts/pass-report.md
+evals/review-specifications/variants/
+evals/review-specifications/pass-report.md
+evals/validation-constitution/variants/
+evals/validation-constitution/pass-report.md
+.mochiko/strips/validation-constitution.md

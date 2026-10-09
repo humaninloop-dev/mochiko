@@ -23,23 +23,40 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 
 ## Human-readable IDs build
 
-*(ruled + accepted 2026-10-08, `human-readable-ids` D1–D22 as review-amended; provenance:
-`.mochiko/brainstorms/human-readable-ids/record.md`)*
+*(ruled + accepted 2026-10-08, `human-readable-ids` D1–D22 as review-amended; built
+2026-10-09 at v0.118.0 (trail); provenance: `.mochiko/brainstorms/human-readable-ids/record.md`)*
 
-- [ ] **Build the joined ID form** (2026-10-08; provenance: D1–D22, F20/F24 for the family list and
-  scopes) — wave 0 first: D8's two-arm read test on hand-coined slugs (arm 1 bare, arm 2 slugged; pass
-  = arm 2 ≥15 "knew", ≥5 over arm 1, 0 "misled"); a fail stops the build. Then: the minting rules and
-  templates of every family (D1, D3, D9, D10, D13, D19), the report label `C<n>` → `Q<n>` (D10),
-  `validate-requirements.py` and the other plugin scripts (F21); the crate — `mochiko-cli ids --check`
-  incl. mention drift (D6, D18) and `ids rename` / `ids rekey`, scoped and preview-first, skipping
-  quotes across line breaks (D7, D15); the slug map drafted and graded, then applied to the live layer
-  (D14), history layer frozen (D12, D14, D21); one `/mochiko:setup` amend recording the GI-019-kernel-tooling-admission
-  admission and the GI-005-record-layer-integrity ruling (D17); CI report wired (D18); minor bump with the break in
-  `CHANGELOG.md` (D20); a `GLOSSARY.md` entry for the joined form (record § For the landing).
 - [ ] **Opt-in back-fill pass for user projects** (2026-10-08; provenance: D16, OQ3) — D14's method
   packaged for a consumer project (slug map drafted by a seat, graded, applied by `ids rename`).
   Trigger: D14's run on this repo has proven the method. Until then projects like kinako keep both
   forms, and the D6 check lists their old bare IDs.
+- [ ] **Release `mochiko-cli` 0.4.0** (2026-10-09; provenance: D7-scoped-rename-command,
+  `CHANGELOG.md` [0.118.0]) — plugin v0.118.0 names `ids rename` / `rekey` in its IDs section and
+  so needs a `mochiko-cli` carrying `ids`; 0.4.0 is unpublished (`publish = false`, the
+  `release.yml` publish job `if: false`, no `mochiko-cli-v*` tag yet). Until then only the
+  maintainer break-glass (`cargo install --path crates/mochiko-cli`) has `ids`. The user's call:
+  the tag and the publish are outward-facing; GI-012-release-gates-module sets the tag's gates.
+- [ ] **`ids` crate residuals** (2026-10-09; provenance: the wave-3 `build-log.md` and
+  `reports/w3-gate-audit.md`) — (a) a quote inside a quote breaks D15-protected-line-rewrites'
+  quote pairing: `.mochiko/strips/validation-constitution.md` stays on the Exclude list
+  (`scripts/ids-check-excludes.txt`) until fixed; (b) a GI rename is project-wide, so a foreign
+  GI (another project's, an eval fixture, a template slot) is indistinguishable from this
+  register's — 49 were joined wrongly at wave 3 and fixed by hand; any consumer repo citing
+  another project's GI hits the same; (c) the refusal texts; (d) `tests/matrix_similar.rs`
+  `a_log_whose_own_tree_carries_no_allowlist_keeps_walking_up` assumes `CARGO_TARGET_TMPDIR`
+  sits inside the repo — an out-of-repo `CARGO_TARGET_DIR` gives a false red (fix: build both
+  trees inside its scratch root). Crate units, so each takes `.claude/rules/mochiko/rust-cli.md`.
+- [ ] **ID back-fill residuals in the repo** (2026-10-09; provenance: the wave-3 slug maps,
+  `wave3-backfill.md`) — decisions cited in `build-vs-off-the-shelf` and `agent-decoupling` that
+  no index row carries; clause pointers; the heads the back-fill left bare (FD, HF, F, FC, O, RI,
+  DQ, TR, BD) and `R-n`. Gate advisory U1 (accepted, not fixed): the `authoring-constitution`
+  strip's "unindexed mention" should read "a session mention with no resolvable owner". The
+  next `/mochiko:setup` amend owes the test that regeneration keeps the joined IDs (AM-6).
+- [ ] **Seat-transport findings from the build** (2026-10-09; provenance: the wave-3
+  `build-log.md`) — the native `Explore` + `model: haiku` locate route returned nothing in every
+  seat attempt this build: probe before relying on it (`mochiko:patterns-model-tiering`); a
+  teammate waiting on a background runner was not woken on its exit (twice) — briefs now say
+  foreground only; a platform probe owes whether that is a defect or by design.
 
 ## Brainstorm target-state build
 

@@ -4,7 +4,11 @@ name = "mochiko-cli"
 # world under `.mochiko/`, the raw-output home, the per-entry budget kind and `check --path`. The
 # new home fields are grammar 2 — an older binary would ignore them and read the run folder as an
 # ordinary home — so the range becomes 1..2. No `mochiko-cli-v*` tag rides this bump (seams R4).
-version = "0.3.0"
+# 0.4.0 at the 2026-10-09 human-readable-ids build: the `ids` subcommand (`--check`, `rename`,
+# `rekey`, `literal`) and the CommonMark fence-closing rule (wave 3b). Grammar unchanged (1..2), so
+# the dependency halt cannot tell 0.3.0 from 0.4.0; the version is how a user sees that `ids` is
+# there. No `mochiko-cli-v*` tag rides this bump either.
+version = "0.4.0"
 edition = "2021"
 description = "Template-schema guidance renderer for the mochiko plugin (foundation seed CLI)."
 license = "MIT OR Apache-2.0"

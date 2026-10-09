@@ -5,7 +5,7 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
-## [Unreleased] — 0.118.0, MINOR (bump at wave 4)
+## [0.118.0] — 2026-10-09
 
 **Human-readable IDs — MINOR, with a break in the written ID form** (`human-readable-ids` D1–D22
 as review- and build-amended, record `.mochiko/brainstorms/human-readable-ids/record.md`). Every
@@ -17,6 +17,14 @@ question B4), which brainstorm records and governance surfaces also follow. It c
 and local labels, the joined form, topic words, file-name slugs, compounds, owners, sub-decisions,
 the bare machine-read spots, quotes, the definition-decides rule, and renames and renumbers through
 `mochiko-cli ids rename` / `rekey`. Rule 1's examples are joined.
+
+**Upgrade: this plugin needs `mochiko-cli` 0.4.0** (grammar 1..2, unchanged — so the dependency
+halt cannot tell 0.3.0 from 0.4.0: a 0.3.0 binary still serves every rule, and only an `ids` call
+fails). 0.4.0 is not published; the maintainer reinstalls with `cargo install --path
+crates/mochiko-cli` (the break-glass), and the release is booked. **Ships under the AM-5 exception
+row** (governance ledger, Exception registry, first row): the conformance hooks still ship before
+the first `mochiko-cli` publish carrying the four named controls. 0.117.0 shipped under the same
+row without citing it; recorded here.
 
 Template-visible breaks: the tasks cycle heading `### - [ ] C<n>-<slug> — <title>`; the story
 heading `### US-<n>-<slug> — …`; FR and SC definition lines `- **FR-001-<slug>**:`, SC at three
@@ -62,10 +70,34 @@ references, `validation-primitive-edit`, the `release-gates` module template, an
 the `artifact-gate` and `dependency-halt` hook scripts — 9 strip entries stamped [v0.118.0]
 (`validation-primitive-edit.md`, `artifact-gate.md` and `dependency-halt.md` new). No migration;
 the replay is unchanged. `mochiko-cli ids --check` over the live layer: 0 bare · 0 drift.
+Budgets (ruled HOLDS by the wave-3 gate audit): `validation-primitive-edit`'s description 730 → 754,
+a new +24 over a no-headroom budget, from the joined `GI-004-primitive-audit-ratchet` cite;
+`patterns-model-tiering`'s standing overage +7,495 → +7,517; `authoring-constitution` 29,207,
+inside its 29,614.
 The same `mochiko-cli` release reads fenced blocks by the CommonMark closing rule (wave 3b): a fence
 closes only on a run of its own character at least as long as the opener, so a three-backtick block
 inside a four-backtick fence stays fenced — for `ids`' verbatim mask and for `check`'s heading scan
 alike.
+
+Governance v3.3.0, AM-6-id-tool-admission (repo-only; nothing shipped changes): `mochiko-cli ids`
+admitted as kernel-class tooling under GI-019-kernel-tooling-admission, and ID-token-only rewrites
+ruled non-semantic under GI-005-record-layer-integrity — recorded by hand at the user's ruling, not
+by a `/mochiko:setup` run (`human-readable-ids` D17-governance-amend-route, changed at build). The
+ruling's condition stands in `.github/workflows/ids.yml`: `ids --check` on every pull request,
+findings as warning annotations and a step summary, never a red check (D18-build-done-check).
+GLOSSARY: *joined ID*.
+
+Ran under the sound loop through waves 0–4; `.mochiko/brainstorms/human-readable-ids/build-log.md`
+carries every seat, plan grade and review round. Audited under the gate form: wave 2's gate audit
+PASS on every unit (S4 and S5 at round 3), wave 3's 8 units PASS at round 2; each crate unit through
+a non-author `mochiko:tech-lead` review; the CI step and the 0.4.0 bump PASS with 4 advisories,
+applied and verified (`reports/w4-ci-review.md`). Gates: `mochiko-cli migrate validate` 0 rejecting ·
+113 advisory · views ≡ replay (`views emit` to a temp dir, 87 of 87 identical) · `cargo test --all`
+765 green · fmt · clippy · audit (exit 0) · full-corpus similarity sweep 48/48 · secret scan clean
+(the CI pattern and `gitleaks detect --no-git --redact` over tracked and new files) · `ids --check`
+0 bare · 0 drift · **contract suite 97/97, 97 ran, none skipped** (on the bumped tree; host cases
+against the rebuilt 0.4.0 release binary, the rest in the `claude-mochiko` Docker sandbox) ·
+`plugin.json` and `marketplace.json` synced at 0.118.0.
 
 ## [0.117.0] — 2026-10-06
 

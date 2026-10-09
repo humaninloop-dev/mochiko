@@ -4,7 +4,7 @@
 before review, D21–D22 born at review; accept screen confirmed "screen ok" before the freeze) ·
 **Landed:** `DECISIONS.md` row 2026-10-08 · `BACKLOG.md` *Human-readable IDs build* section (the build
 item + the opt-in pass for user projects, OQ3) · `ROADMAP.md` folded into the Next row *Template-schema
-CLI build* (caps held: Now 5 · Next 7) · the brainstorms index entry · not built · **Opened:** 2026-10-08
+CLI build* (caps held: Now 5 · Next 7) · the brainstorms index entry · **built 2026-10-09 at v0.118.0** (`build-log.md`; trail; `GLOSSARY.md` *joined ID*) · **Opened:** 2026-10-08
 · **Lead:** session lead (inline questioning via `mochiko:analysis-iterative`) · **Review:** solo cold
 review — blind map (48 angles, 19 load-bearing), cold read `critical-gaps` (15 survivors, 15/15
 dispositioned), verify round 1 NOT CLEAN (1 blocking, user-ruled), verify round 2 NOT CLEAN with
