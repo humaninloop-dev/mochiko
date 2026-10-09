@@ -1650,3 +1650,18 @@ Append-only. One `##` entry per event, 60 lines at most.
   `3601ba4976b7b411`): `mochiko-cli ids --check · 0 bare · 0 drift` with the Exclude list now
   minus the template strip. Without the validation-constitution strip: `1 bare` (its nested-quote
   line, :68). `migrate validate` 0 rejecting · 113 advisory. The wave plan's Exclude list is updated.
+
+## 2026-10-09 — the plugin contract suite is green on `4d8bdb3` (gate 6 evidence for wave 4)
+
+- First run, after the user's `sbx login`: 7/7 host cases passed, sandbox cases SKIPPED (exit 3) —
+  not green. The suite's probe said "run `sbx login`", but the real error inside the sandbox was
+  "Failed to authenticate: OAuth session expired and could not be refreshed": the sandbox's
+  stored Anthropic credential, a separate sign-in from Docker's. The user refreshed it.
+- Second run, the full suite (`python3 evals/contract/run.py`), no filter: `contract suite: 97/97
+  cases passed, 97 ran, 327 measurement(s) recorded and not asserted`, exit 0. The tree is HEAD
+  `4d8bdb3`, clean; the plugin is the working tree's `plugins/mochiko/` (0.117.0 in `plugin.json`,
+  unbumped). `target/release/mochiko-cli` was rebuilt from the same source first (sha256
+  `3601ba4976b7b411`, the wave-3b release build).
+- This is the deterministic-set evidence GI-012-release-gates-module gate 6 asks for at the bump.
+  It holds while `plugins/mochiko/` and the crate stay as committed here; any wave-4 change to
+  either re-runs the suite.
