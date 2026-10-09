@@ -1665,3 +1665,29 @@ Append-only. One `##` entry per event, 60 lines at most.
 - This is the deterministic-set evidence GI-012-release-gates-module gate 6 asks for at the bump.
   It holds while `plugins/mochiko/` and the crate stay as committed here; any wave-4 change to
   either re-runs the suite.
+
+## 2026-10-09 — the governance amend recorded by hand (AM-6-id-tool-admission, v3.3.0), ratified
+
+- The user asked whether the lead could make the amend's edits instead of a setup run. Put with the
+  case against first (the setup precedent broken; the regeneration test deferred) and a weak lean
+  to the hand edit, on condition that wave 4's CI step lands. User: "Hand edit by lead". Recorded on
+  D17-governance-amend-route as changed at build.
+- Lead edits:
+  - the ledger: the GI-019-kernel-tooling-admission admission bullet, the GI-005-record-layer-integrity
+    carve with Testability limbs, both Traces, the 3.3.0 row, the addendum and the version line;
+  - `CLAUDE.md`: the region stamp and two GI-019-kernel-tooling-admission pointers;
+  - `governance-intent.md`: the AM-6-id-tool-admission entry and note;
+  - `.claude/rules/mochiko/rust-cli.md`;
+  - the `DECISIONS.md` row.
+  The semver is MINOR under the policy's "principle significantly expanded" limb, as at
+  AM-3-conformance-gate-admission. The trace summary is not regenerated (the v3.1.1 lead-PATCH
+  precedent).
+- Review (`am6-review`, `mochiko:tech-lead`, non-author): round 1 FAIL · 14 findings (4 blocking).
+  The blocking four: the CI step written as live, the route understated (the first MINOR outside a
+  setup run), `rust-cli.md` untouched, and the GI-005-record-layer-integrity carve untestable. All 14
+  fixed. Verify: PASS · 1 advisory (the GI-019-kernel-tooling-admission Trace naming the
+  `rust-cli.md` change), applied.
+- The user ratified the reviewed text: "ratify". `ids --check` 0 bare · 0 drift (the amended Exclude
+  list), and `check` exits 0 on every changed `.mochiko/` file.
+- Open condition: the `ids --check` CI step (wave 4). Until it stands in `.github/workflows/ci.yml`,
+  the hand-edit ruling's condition is open.

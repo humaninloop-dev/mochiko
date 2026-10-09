@@ -1,7 +1,7 @@
 # Governance Ledger
 
 **Governance Floor:** production (asserted) · **Depth level:** high (user-declared, one-way; `high` terminal — GI-021-depth-level-declaration, minted at AM-1-kernel-ban-softened discharging the legacy-default pointer; set up under the single floor pre-adaptive-depth, already conformed to full depth #7 fold 2026-08-11) · **Modules:** compliance: none (GI-001-project-fact-profile negatives confirmed, incl. no-UI) · template: knowledge-management (core + CHANGELOG elective) · release-gates · **Trace:** GI-001-project-fact-profile (fact profile) · GI-021-depth-level-declaration (depth level)
-**Version:** 3.2.1 (must match the region stamp)
+**Version:** 3.3.0 (must match the region stamp)
 
 ## Waivers
 
@@ -179,14 +179,27 @@ the plugin path's contract suite on GI-012-release-gates-module)
   The **schema-rule limb becomes mechanical**: protected content in schema rules leaves only
   through a migration carrying a ruling anchor, rejected at apply by `mochiko-cli`'s hard set.
   The rule grammar itself lives in the schema and the log, referenced not restated (GI-017-pointer-only-region).
+- **ID-token rewrites (AM-6-id-tool-admission, v3.3.0).** A rewrite that changes only ID tokens —
+  same number, with a slug added or renamed — is not protected content leaving. The ruling that
+  covers it for `KEPT:` lines, `DECISIONS.md`-traceable lines and records' protected sets is
+  `human-readable-ids` D15-protected-line-rewrites, so no per-line supersession entry is written.
+  Condition: `mochiko-cli ids` checks every apply (a changed span that is not an ID token blocks it),
+  and the edit's grader cites the logged `diff check: … ID tokens only` line — the
+  GI-004-primitive-audit-ratchet audit for a shipped primitive, the run's gate grader otherwise.
+  Verbatim spans keep their text (the masks: `human-readable-ids` D15-protected-line-rewrites).
+  Shipped primitives still take the per-primitive audit (GI-004-primitive-audit-ratchet).
 
 **Testability**:
 - Pass: every `ROADMAP.md`/`DECISIONS.md`/`BACKLOG.md` pointer resolves or carries the
   `provenance: unrecoverable` terminal stamp; no silent deletion of protected lines; the log's
   hard set rejects nothing at validate (`mochiko-cli migrate validate --log-dir migrations
-  --plugin-root plugins/mochiko`, 0 rejecting at ratification, 2026-09-04).
+  --plugin-root plugins/mochiko`, 0 rejecting at ratification, 2026-09-04); every protected line
+  whose ID tokens changed was changed by a `mochiko-cli ids … --write` apply whose diff-check line
+  is logged and cited by its grader (AM-6-id-tool-admission).
 - Fail: a broken pointer without the stamp; a protected line gone with no strip entry; a
-  protected schema rule superseded or tombstoned by a migration carrying no ruling anchor.
+  protected schema rule superseded or tombstoned by a migration carrying no ruling anchor; an
+  ID-token change to a protected line made outside `mochiko-cli ids`, or with no logged diff check;
+  a protected-line change that is not ID tokens only, with no strip entry (AM-6-id-tool-admission).
 
 **Rationale**: This repo's failure mode isn't runtime corruption — it's provenance corruption.
 Translation of FLOOR-ERR: the record layer is the data that must never silently corrupt.
@@ -194,7 +207,9 @@ Translation of FLOOR-ERR: the record layer is the data that must never silently 
 **Trace**: GI-005-record-layer-integrity (floor-asserted: FLOOR-ERR; expression translated; runtime clauses subsumed
 inapplicable per GI-007-no-application-machinery; **re-expressed AM-2-required-cli-dependency v3.0.0** — the schema-rule limb mechanized at
 migration apply, the prose limb unchanged; driver
-`.mochiko/brainstorms/cli-schema-delivery/record.md` D2-full-schema-scope)
+`.mochiko/brainstorms/cli-schema-delivery/record.md` D2-full-schema-scope; **extended
+AM-6-id-tool-admission v3.3.0** — ID-token-only rewrites ruled non-semantic behind the tool's diff
+check; driver `.mochiko/brainstorms/human-readable-ids/record.md` D15-protected-line-rewrites)
 
 ### GI-006-primitive-edit-traceability — Traceability as Observability · home: CLAUDE.md region line
 
@@ -511,6 +526,44 @@ any rule is where drift starts. User ruling, dimension 9: "leave these out."
   what remains there (the procedural author≠grader ceremony), it grants no support; a ratified
   consequence, not a defect. The environments GI-020-plugin-install-model already declares unsupported are unchanged;
   the `PowerShell` matcher arm ships on the doc quote, unverifiable on macOS (wave 0).
+- **Admission ruling — the ID tool (AM-6-id-tool-admission, v3.3.0):** `human-readable-ids`
+  (accepted 2026-10-08) D7-scoped-rename-command is the recorded admission for `ids rename` and,
+  at its V3, `ids rekey`. `ids literal` is the lead's build ruling R6 read under it
+  (`.mochiko/brainstorms/human-readable-ids/build-log.md`). `ids check` rides the advisory clause
+  (`human-readable-ids` D6-minting-check-enforcement) and needs no admission.
+  - `check` reports bare and drifted ID mentions. It is advisory: an exit code, plus a CI report
+    once wave 4's step lands, never a gate (`human-readable-ids` D6-minting-check-enforcement,
+    `human-readable-ids` D18-build-done-check).
+  - `rename` rewrites every mention of one ID to its joined form, keyed on the number within its
+    owning scope plus mentions that name that scope. It previews by default and writes only with
+    `--write`. It also moves a file whose name carries the ID, and refuses while any link still
+    names the old file.
+  - `rekey` moves one ID to a new number, each mention keeping its slug; `literal` gives a
+    repo-only token (such as an amendment number) a slug inside the given paths only. Both preview
+    unless `--write`.
+
+  Bright-line text unchanged. The seat supplies every slug and the tool coins none; it grades
+  nothing and dispatches nothing. Every write checks itself: a changed span that is not an ID token
+  blocks that apply (`human-readable-ids` D15-protected-line-rewrites; GI-005-record-layer-integrity).
+  The fence reading the mask shares with `check` follows the CommonMark closing rule (wave 3b).
+  Tested by `crates/mochiko-cli/tests/ids.rs`. First used on this repo's own back-fill (2026-10-09):
+  `ids --check` 0 bare · 0 drift under `wave3-backfill.md`'s Exclude list, with one strip still
+  excluded for the booked nested-quote misread.
+
+  Route: recorded by hand by the lead at the user's ruling, not by a `/mochiko:setup` run
+  (`human-readable-ids` D17-governance-amend-route, changed at build). What that gives up:
+  - the Amendment policy's route (`/mochiko:setup` amend mode; the region's "Amend via
+    `/mochiko:setup`"). This is the first MINOR recorded outside a setup run; every earlier one was
+    a PATCH.
+  - with it, setup's cold intent review and the `validation-constitution` grade over the trace
+    summary. One fresh non-author review stands in for both graders, and the user ratifies the
+    reviewed text.
+  - the routing precedent for admissions (`hook-enforced-artifact-schema`
+    D7-governance-routing-supersession).
+  - the test that setup's regeneration keeps the joined IDs, which moves to the next setup amend.
+
+  The user's ruling is conditional on wave 4's `ids --check` CI step. Until that step stands in
+  `.github/workflows/ci.yml`, the condition is open.
 
 *Recorded supersession — `.claude/rules/mochiko/rust-cli.md`'s bright-line bullet (D7d, Card 4).*
 The bullet was rewritten at AM-3-conformance-gate-admission and its prior text is preserved here so the change is
@@ -547,6 +600,17 @@ behaves per the AM-3 text until the field-review wave-1 + wave-2 bump)", pre-rul
 "per-section and per-entry size" re-worded "per-section, per-entry and whole-file size" (lead
 ruling 2026-09-29, `hook-enforcement-field-review/build-log.md`, the S10 plan rulings).
 
+*Recorded supersession at AM-6-id-tool-admission (v3.3.0) — `.claude/rules/mochiko/rust-cli.md`.*
+Its admitted-by sentence gained the ID-tool ruling, and its bright-line bullet gained one sentence
+naming the `ids` rewrite role; nothing else in the bullet changed. The prior admitted-by sentence,
+verbatim:
+
+> Admitted by three recorded rulings: `schema-based-template-guidance`
+> D11-kernel-position-softened (template delivery, 2026-08-16), `cli-schema-delivery`
+> D11-widened-kernel-admission (the widened role, 2026-09-03), and `hook-enforced-artifact-schema`
+> D1-conformance-deny-channels/D7-governance-routing-supersession (mechanical conformance gates on
+> artifact writes, 2026-09-13).
+
 **Testability** — two tiers, in the GI-020-plugin-install-model idiom: the conformance tier below is active from AM-5-field-review-fold.
 **Assertable at ratification (2026-09-14):**
 - Pass: every kernel-class component in the tree traces to a recorded admission ruling and
@@ -576,7 +640,11 @@ delivery/composition roles, never the judgment or orchestration skills own. Soft
 v1.0.0 absolute no-kernel position per the D11 ruling (evidence basis n=0 — the recorded concession
 is that template delivery alone would not carry the CLI; the machine rides the foundation bet).
 
-**Trace**: GI-019-kernel-tooling-admission (minted at AM-1-kernel-ban-softened; driver: `.mochiko/brainstorms/schema-based-template-guidance/record.md` D11-kernel-position-softened · **widened admission: `cli-schema-delivery` D11-widened-kernel-admission (AM-2-required-cli-dependency, v3.0.0)** — bright-line text unchanged, the three clauses recorded as its argument; AM-1-kernel-ban-softened's template-scope limb discharged, the no-general-kernel and no-orchestration limbs standing; **conformance-gate admission: `hook-enforced-artifact-schema` D1-conformance-deny-channels/D7-governance-routing-supersession (AM-3-conformance-gate-admission, v3.1.0)** — bright-line text unchanged, clause (iv) recorded with its C1 budget-table condition discharged 2026-09-15 by the ratified table; `cli-schema-delivery` D7-dependency-halt-hooks narrowly superseded, its judgment/sequencing decline standing; `.claude/rules/mochiko/rust-cli.md`'s bright-line bullet superseded by ruling, prior text preserved above · **AM-5-field-review-fold (v3.2.0)** — check-source predicate widened to the repository's own layout with no judgment (R1), check-kind list and clause (iv) argument body with it; Reach / amnesty / reads re-worded for `hook-enforcement-field-review` D3–D7 as amended, stated as the gate with a build-state line (Q2 `Contested`, struck at the wave-1 + wave-2 bump); C1 note gains the field result; amnesty known-gap corrected (wave-4 measurement); stated-limits pointer; Testability conformance tier activated; `rust-cli.md` bright-line bullet re-worded, AM-3-conformance-gate-admission text preserved above; drivers `.mochiko/brainstorms/hook-enforcement-field-review/record.md` · `.mochiko/brainstorms/hook-enforced-artifact-schema/wave5-bump-patch.md` (a, c, d, e))
+**Trace**: GI-019-kernel-tooling-admission (minted at AM-1-kernel-ban-softened; driver: `.mochiko/brainstorms/schema-based-template-guidance/record.md` D11-kernel-position-softened · **widened admission: `cli-schema-delivery` D11-widened-kernel-admission (AM-2-required-cli-dependency, v3.0.0)** — bright-line text unchanged, the three clauses recorded as its argument; AM-1-kernel-ban-softened's template-scope limb discharged, the no-general-kernel and no-orchestration limbs standing; **conformance-gate admission: `hook-enforced-artifact-schema` D1-conformance-deny-channels/D7-governance-routing-supersession (AM-3-conformance-gate-admission, v3.1.0)** — bright-line text unchanged, clause (iv) recorded with its C1 budget-table condition discharged 2026-09-15 by the ratified table; `cli-schema-delivery` D7-dependency-halt-hooks narrowly superseded, its judgment/sequencing decline standing; `.claude/rules/mochiko/rust-cli.md`'s bright-line bullet superseded by ruling, prior text preserved above · **AM-5-field-review-fold (v3.2.0)** — check-source predicate widened to the repository's own layout with no judgment (R1), check-kind list and clause (iv) argument body with it; Reach / amnesty / reads re-worded for `hook-enforcement-field-review` D3–D7 as amended, stated as the gate with a build-state line (Q2 `Contested`, struck at the wave-1 + wave-2 bump); C1 note gains the field result; amnesty known-gap corrected (wave-4 measurement); stated-limits pointer; Testability conformance tier activated; `rust-cli.md` bright-line bullet re-worded, AM-3-conformance-gate-admission text preserved above; drivers `.mochiko/brainstorms/hook-enforcement-field-review/record.md` · `.mochiko/brainstorms/hook-enforced-artifact-schema/wave5-bump-patch.md` (a, c, d, e) · **ID-tool
+admission: `human-readable-ids` D7-scoped-rename-command (AM-6-id-tool-admission, v3.3.0)** —
+bright-line text unchanged; `.claude/rules/mochiko/rust-cli.md`'s admitted-by sentence and
+bright-line bullet extended, prior text preserved above; recorded by hand at the user's ruling
+(`human-readable-ids` D17-governance-amend-route, changed at build))
 
 ### GI-020-plugin-install-model — Clone-Only Install with a Required `mochiko-cli` Dependency · home: CLAUDE.md `## Non-negotiable constraints` (prose)
 
@@ -715,6 +783,15 @@ category is live in translated form; application-shaped machinery inapplicable i
 | 3.1.2 | 2026-09-23 | AM-4-glossary-deviation-discharged — GI-009-knowledge-management-core's carried `GLOSSARY.md` deviation discharged (PATCH — a recorded deviation discharged, no principle added, removed, or redefined; user-ruled). Driver: the standing amend trigger "GLOSSARY.md gains content" fired when `impeccable-design-integration` build item 10 scaffolded `GLOSSARY.md` with eight terms at plugin v0.114.0 (`18b533c`); stress test waived by user ruling (recorded in the synthesis) | GI-009-knowledge-management-core deviation discharged — `GLOSSARY.md` a live operating doc under the pinned term format · KM invariants' deferral clause + revisit trigger retired · standing amend trigger struck (amendment policy · region governance-operations line) · region operating-docs line gains `GLOSSARY.md` (FP-1, user-ruled at acceptance) · the hook wave's owed pre-authorized PATCH re-keyed v3.1.2 → v3.1.3 (GI-019-kernel-tooling-admission clause-iv pointer) |
 | 3.2.0 | 2026-09-24 | AM-5-field-review-fold — the hook field review folded into GI-019-kernel-tooling-admission, the owed hook-ship PATCH folded with it, the 0.109.0 publish-gate breach recorded as a GI-012-release-gates-module exception (MINOR — the exception excuses a MUST NOT for a bounded window, waiver-class; the gate's reach and reads widen, "principle significantly expanded"; user-ruled Q4, PATCH v3.1.3 rejected). Drivers: `hook-enforcement-field-review` D1–D9 as review-amended (accepted 2026-09-23; superseded in part 2026-09-24 by `delta-files-vs-direct-baseline-edits` D1-delta-files-retire/D6a — nothing carried rests on those parts) · the owed PATCH at `.mochiko/brainstorms/hook-enforced-artifact-schema/wave5-bump-patch.md`. Cold intent review solo (critical-gaps, 9 survivors folded, verify CLEAN on blocking); synthesis ratified 2026-09-24 | GI-019-kernel-tooling-admission: predicate widened (R1) with check list + clause (iv) body · Reach / amnesty / reads re-worded, build-state line (Q2 `Contested`, strike PATCH pre-ruled) · C1 field result · amnesty known-gap corrected (c) · stated-limits pointer (d) · Testability conformance tier activated (a) · `rust-cli.md` bright-line bullet aligned, AM-3-conformance-gate-admission text preserved · GI-012-release-gates-module: precondition marked breached with pointers, held-bump rule (R3), Testability pointers · amendment policy first-publish paragraph points at the exception · region gates line (`CLAUDE.md` release-gates line) and amend-triggers line marked breached with pointers · exception registry first row (expiry strike set, tripwire, 2026-12-31 backstop; the amend-triggers strike-set item (FP-1-strike-set-clause, user-accepted at acceptance)) · **(e) carried:** the `DECISIONS.md` 2026-09-13 row ("ratified 2026-09-15 with the C1 amendment") and GI-019-kernel-tooling-admission clause (iv)'s condition + trace ("DISCHARGED 2026-09-15"), both transcribed 2026-09-15 under the KM status-agreement invariant · **v3.1.3 retired unminted** (AM-3-conformance-gate-admission pre-authorized only a and b; c, d, e ruled at AM-5-field-review-fold Q1; b replaced by the exception) · **the AM-3-conformance-gate-admission pre-authorized precondition strike void** (it could never fire) · fact profile, modules, floor, waivers, depth `high` unchanged; no principle minted |
 | 3.2.1 | 2026-09-29 | PATCH — the hook build's strike, pre-ruled at AM-5-field-review-fold (GI-019-kernel-tooling-admission build-state line). The trigger fired at plugin 0.116.0, the bump carrying both the wave-1 binary range (`mochiko-cli` 0.3.0, grammar 1..2; migrations 0033 and 0034 written in grammar 2) and the wave-2 home migration (0032–0035: `runs/`, `archive/`, `strips/`, `schema-views/` declared). **Struck:** GI-019-kernel-tooling-admission's build-state line, kept as a dated struck note (the v3.0.3 idiom) holding the `8f4e5ab` (AM-3-conformance-gate-admission) and `bbe303f` (pre-3.2.1) pointers · `.claude/rules/mochiko/rust-cli.md`'s bright-line build-state parenthetical, its text preserved in GI-019-kernel-tooling-admission. **Drift corrected against the built binary** (`hook.rs` · `conform.rs` · `home.rs` · `shell.rs`, after the wave-3 crate fixes): the report sniff's `## Header` signature limb struck, never built (seams R7, user-ruled, `.mochiko/decisions/2026-09-29-joint-hook-delta-build-seams.md`) · outside `<root>/.mochiko/` the sniff reads a write of any extension, not `.md` only (R7's routed drift; a wider deny than the AM-5-field-review-fold text, grounded in R7) · "What the gate reads" gains the on-disk file as the amnesty's baseline on `Write` as on `Edit` (R7's routed drift) · the in-home sniff places read as a class — a declared sub-directory at a level no home document governs, `features/desk/` itself included — in the check list and Reach (field review V2, user-ruled, with the lead build ruling 2026-09-29 at `hook-enforcement-field-review/build-log.md` § "plan round — S1 v1", :47–48; a wider deny than the AM-5-field-review-fold list) · the closed world names an undeclared sub-directory beside an undeclared home in the check list, the amnesty and Reach, and "never wedged" is scoped to files a home measures and to the relaxable measures (field review D3 and the census ratification's rows L1–L3, user-ruled; built since 0.109.0) · the amnesty's baseline scoped to files a home measures, matching "What the gate reads" · the nested-home example qualified by "without its own `.git`" · the check list's size kinds gain whole-file line budgets, and `rust-cli.md`'s bright-line bullet the same phrase — `rust-cli.md`'s touch widened to that phrase by lead ruling 2026-09-29 (`hook-enforcement-field-review/build-log.md` § "wave 2 committed · wave 3 planned, approved, opened", :853–856), built since AM-3-conformance-gate-admission · the stated-limits line re-pointed: the root operating docs reached only by the report sniff, the shell scan's open shapes at `crates/mochiko-cli/src/shell.rs` and the joint build log, evasion 3 closed at the decision but open end to end under `hooks.json`'s `.mochiko` narrowing of the shell arms (the same lead ruling), a tree with no `.git` ungated · Reach's shell carve into `runs/` re-worded to named non-`.md` files, a directory target refused (the lead build ruling on S1's plan question 3, same § "plan round — S1 v1", :48–49; the no-stat edge at `hook.rs` `carve_refusal`) · "What the gate reads" names `cwd`, which a relative path resolves against · Testability's crate matrices gain `tests/shell.rs`. Mints no principle; no fresh `/mochiko:setup` amend (the v3.0.1–v3.0.3 idiom) | GI-019-kernel-tooling-admission |
+| 3.3.0 | 2026-10-09 | AM-6-id-tool-admission — `mochiko-cli ids` admitted as kernel-class tooling under GI-019-kernel-tooling-admission (`human-readable-ids` D7-scoped-rename-command for `rename` and `rekey`, `literal` read under it, `check` on the advisory clause), and ID-token-only rewrites of protected lines ruled non-semantic under GI-005-record-layer-integrity (`human-readable-ids` D15-protected-line-rewrites), with a Testability limb for the carve. MINOR under the policy's "a principle significantly expanded" limb, as AM-3-conformance-gate-admission read a widened admission; GI-005-record-layer-integrity's carve rides the same bump. **Recorded by hand by the lead at the user's ruling, not by a `/mochiko:setup` run** (`human-readable-ids` D17-governance-amend-route, changed at build) — the first MINOR outside a setup run, every earlier one a PATCH. What that gives up: the Amendment policy's route, and with it setup's cold intent review and the `validation-constitution` grade over the trace summary (one fresh non-author review stands in for both graders, and the user ratifies the reviewed text); the routing precedent for admissions; and the test that setup's regeneration keeps the joined IDs, which moves to the next setup amend. The user's ruling is conditional on wave 4's `ids --check` CI step; until it stands in `.github/workflows/ci.yml` that condition is open. Touched: this ledger (GI-019-kernel-tooling-admission admission bullet, its `rust-cli.md` supersession note and Trace; GI-005-record-layer-integrity enforcement bullet, Testability and Trace; this row; the AM-6-id-tool-admission addendum; the version line); `CLAUDE.md` (the region's version stamp and GI-019-kernel-tooling-admission line, and the `## Non-negotiable constraints` kernel-class paragraph's trace parenthetical, per the addendum below); `.claude/rules/mochiko/rust-cli.md` (the admitted-by sentence and one bright-line sentence); `governance-intent.md` (its AM-6-id-tool-admission entry and a GI-019-kernel-tooling-admission note); the driver record's D17-governance-amend-route card (changed at build). The trace summary is not regenerated (the v3.1.1 lead-PATCH precedent). Mints no principle. Driver: `.mochiko/brainstorms/human-readable-ids/record.md` | GI-019-kernel-tooling-admission · GI-005-record-layer-integrity |
+
+*AM-6-id-tool-admission addendum (2026-10-09):* outside the governance region, under the user's
+route ruling (`human-readable-ids` D17-governance-amend-route, changed at build), the
+`## Non-negotiable constraints` kernel-class paragraph's trace parenthetical in `CLAUDE.md` gained
+the ID-tool admission pointer (GI-019-kernel-tooling-admission), and `.claude/rules/mochiko/rust-cli.md`
+gained the ID-tool ruling in its admitted-by sentence and one bright-line sentence (prior text in
+the GI-019-kernel-tooling-admission entry above). No other content outside the markers was touched.
+Mints no principle.
 
 *AM-3-conformance-gate-admission addendum (2026-09-14):* outside the governance region, and under the Card 2 ruling ratified
 2026-09-14, the `## Non-negotiable constraints` kernel-class paragraph's trace parenthetical in

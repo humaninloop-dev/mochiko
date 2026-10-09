@@ -1061,6 +1061,21 @@ user: "as recommded" — the weak lean, ratified (ratified run: 8).
 
 **Changed at review.** —
 
+**Changed at build.** 2026-10-09, at wave 4. The user asked whether the lead could make the amend's
+edits instead of a setup run. Put with the case against first (the F23 precedent broken; the
+regeneration test this card relied on deferred) and a weak lean to the hand edit, on condition that
+wave 4's CI step lands; user: "Hand edit by lead". **The two events and the version bump are
+recorded by hand by the lead**: the ledger, the `CLAUDE.md` version line and GI-019-kernel-tooling-admission pointers,
+`.claude/rules/mochiko/rust-cli.md`'s admitted-by sentence and bright line (added at review: that
+touch-time rule still read "three recorded rulings" and a tool that only renders, replays and
+validates), and an entry in `governance-intent.md`, as AM-6-id-tool-admission (v3.3.0). A fresh
+non-author seat reviews them, and the user ratifies the reviewed text. Rejected: the `/mochiko:setup` amend in a new session on the working-tree plugin
+(this card's road), which costs a session, setup's questions and its review round. Accepted risk:
+this card's own — setup's template and the back-fill may disagree. That is now first tested at the
+next setup amend, where the `ids --check` CI step reports any ID the regeneration unjoins, as a
+report, never a block. The trace summary is not regenerated: the v3.1.1 lead-PATCH precedent
+carried no manifest.
+
 ### D18-build-done-check — Done check: one clean run of the D6-minting-check-enforcement check closes the build; CI reports drift afterwards — `Confident`
 
 **Statement.** The build is done when `mochiko-cli ids --check` exits clean over the live layer —

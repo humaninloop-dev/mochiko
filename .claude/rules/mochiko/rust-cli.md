@@ -14,10 +14,11 @@ paths:
 
 `crates/mochiko-cli/` is mochiko's admitted kernel-class tool: it serves every command's and
 skill's rules from the migration log — carried in the plugin at `plugins/mochiko/migrations/`
-since wave 3 — replayed in memory at fire, and it validates the log's own data. Admitted by three
+since wave 3 — replayed in memory at fire, and it validates the log's own data. Admitted by four
 recorded rulings: `schema-based-template-guidance` D11-kernel-position-softened (template delivery, 2026-08-16),
-`cli-schema-delivery` D11-widened-kernel-admission (the widened role, 2026-09-03), and `hook-enforced-artifact-schema`
-D1-conformance-deny-channels/D7-governance-routing-supersession (mechanical conformance gates on artifact writes, 2026-09-13). The standing bright line
+`cli-schema-delivery` D11-widened-kernel-admission (the widened role, 2026-09-03), `hook-enforced-artifact-schema`
+D1-conformance-deny-channels/D7-governance-routing-supersession (mechanical conformance gates on artifact writes, 2026-09-13), and
+`human-readable-ids` D7-scoped-rename-command (the `ids` ID-rewrite tool, 2026-10-08). The standing bright line
 binds it.
 
 - **Bright line (GI-019-kernel-tooling-admission).** The tool renders, replays, and validates its own data — including
@@ -25,7 +26,9 @@ binds it.
   closed under `.mochiko/` · file set · headings · frontmatter · placeholders · per-section,
   per-entry and whole-file size; `mochiko-cli check`, AM-3-conformance-gate-admission), decided against the log's data and
   the repository's own layout — yes/no facts such as whether `.gitignore` carries
-  `.mochiko/runs/` or a path sits under a git worktree — with no judgment (AM-5-field-review-fold). It MUST NOT grade an artifact's
+  `.mochiko/runs/` or a path sits under a git worktree — with no judgment (AM-5-field-review-fold). It also rewrites ID tokens in
+  the repository's text (`mochiko-cli ids rename|rekey|literal`, AM-6-id-tool-admission): preview by default, every slug
+  supplied by the seat, any write blocked by a changed span that is not an ID token. It MUST NOT grade an artifact's
   meaning or quality, MUST NOT dispatch or sequence agents, and MUST NOT hold judgment that
   skills own. Its hooks block on exactly two grounds:
   the binary's absence or a log outside its grammar range (the dependency halt), and a
