@@ -60,7 +60,7 @@ The captures are the **shape** source; the case substitutes only the `command_na
 
 `stage()` gains a `source` argument so one function stages either the fixture or `plugins/mochiko/`; the copy is `shutil.copytree` into the case root, which is also the evidence directory — about 2.3 MB per staged case, seven per full run. The binary is the sandbox build at `/home/agent/mochiko-target/release/mochiko-cli`, on `PATH` by prepending its directory (the D4 install shape in miniature, replaced by `cargo install mochiko-cli` after the publish). `sandbox_path()` already verifies the binary's absence from the sandbox `PATH` and skips rather than lying if it is present.
 
-I touch `evals/contract/run.py`, `evals/contract/README.md`, and additive files under `evals/contract/fixture/`. Nothing under `plugins/mochiko/`, no schema. The suite dispatches no agent and grades no content (GI-019). Exit codes stay 0 / 1 / 3, the case list still prints on every path, and every case still writes `stream.jsonl`, `argv.txt`, `script.sh`, `stderr.txt` and `verdict.json` to disk.
+I touch `evals/contract/run.py`, `evals/contract/README.md`, and additive files under `evals/contract/fixture/`. Nothing under `plugins/mochiko/`, no schema. The suite dispatches no agent and grades no content (GI-019-kernel-tooling-admission). Exit codes stay 0 / 1 / 3, the case list still prints on every path, and every case still writes `stream.jsonl`, `argv.txt`, `script.sh`, `stderr.txt` and `verdict.json` to disk.
 
 ## 6. README changes
 
@@ -102,7 +102,7 @@ I touch `evals/contract/run.py`, `evals/contract/README.md`, and additive files 
 - **`hook-input` gained two rows beyond §3's eight**: the dependency hook against an out-of-range
   log (its only gate other than absence, and it needed no session to test), and `SessionStart`
   against a settings file carrying `disableSkillShellExecution` (the unsupported-environment notice
-  GI-020 obliges). Thirteen assertions, all green.
+  GI-020-plugin-install-model obliges). Thirteen assertions, all green.
 - **The no-Read assertion was too narrow to survive staging.** It matched
   `plugins/mochiko/schemas/` and a `schema.yaml` suffix, and the staged copy's own
   `schemas/brainstorm.yaml` matched neither — the assertion would have passed a run that did the

@@ -150,7 +150,7 @@ This log file is retained as the primitive's history anchor now that the primiti
 
 ## [v0.67.0] Seat rotation — renamed to `architect-report-template.md`; seat re-keyed system-architect → architecture producer (principal-architect)
 - **Disposition:** superseded → `templates/architect-report-template.md` (git mv rename) with the seat naming re-keyed in place; the report machinery survives, only the retired seat name rotates.
-- **Tier failed:** n/a — supersession by ruling (record `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` **D1** — the two-architect split dies; the architecture producer is now `principal-architect`; `DECISIONS.md` 2026-08-13 row L13).
+- **Tier failed:** n/a — supersession by ruling (record `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` **D1-architect-split-retires** — the two-architect split dies; the architecture producer is now `principal-architect`; `DECISIONS.md` 2026-08-13 row L13).
 - **Content (verbatim re-keys — retired-seat text → rotated text):**
   - Title: `# System Architect Report Template` → `# Architect Report Template`
   - Header: `The system-architect's self-disclosure report — authored alongside \`architecture.md\` and the …` → `The architecture producer's (principal-architect) self-disclosure report — authored alongside \`architecture.md\` and the …`

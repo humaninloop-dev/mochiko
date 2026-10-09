@@ -34,18 +34,18 @@ git — and, if directly, what of the delta model's stated purposes survives and
 hardened decision record.
 
 **Prior-session relations.** The delta model was ruled in five sessions and one floor rule:
-`architecture-design-primitive` D3 (2026-07-30) · `feature-sizing-and-entry-points` D9/D15
-(2026-08-10) · `multi-feature-plan-implement` D2/D10 (2026-08-14) · `product-architecture-schema`
-D3/D10/D12 (2026-08-19) · `impeccable-design-integration` D6/D7 (2026-09-19; migrations `0013`,
+`architecture-design-primitive` D3-architecture-delta-model (2026-07-30) · `feature-sizing-and-entry-points` D9-plan-implement-rekey/D15-graded-baseline-folds
+(2026-08-10) · `multi-feature-plan-implement` D2-shared-spine-storage/D10-spine-baseline-deltas (2026-08-14) · `product-architecture-schema`
+D3-store-replaces-artifact/D10-plan-time-contract/D12-store-absorbs-nfrs (2026-08-19) · `impeccable-design-integration` D6-product-truth-leg/D7-design-system-landing (2026-09-19; migrations `0013`,
 `0018` — the design baseline's landing write from shipped code) · `impl.baselines-never-in-place`
 (floor, `0001-genesis.yaml`) with its companion store floor
 `authoring-architecture-store.sign-off-is-write-gate`. The sibling `hook-enforcement-field-review`
 session was **accepted and landed 2026-09-23** (its `DECISIONS.md` row, its four-wave `BACKLOG.md`
 build item) while this record was frozen for review; it rules per-entry budgets for the same
-stores (its D2, amended at its review to leave `contracts/*` out — no gate bound applies to them),
+stores (its `hook-enforcement-field-review` D2-cumulative-store-budgets, amended at its review to leave `contracts/*` out — no gate bound applies to them),
 and its OQ1 census table now explicitly rules "the fold shape (dated fold block appended vs
 in-place `[EXTEND]`)" and lists `baseline-delta.md` as an entry-class candidate — both answered
-here (D1, D5); this record supersedes those two clauses in part (D6a).
+here (D1-delta-files-retire, D5-kinako-upgrade-cleanup); this record supersedes those two clauses in part (D6a).
 
 ## Ground facts (F)
 
@@ -58,23 +58,23 @@ re-verification: F1–F11 confirmed against source; corrections folded where not
 
 - **F1 — The delta model was ruled four times for the baselines, each with a reason; the design
   baseline's path a fifth time (F13).**
-  (a) `architecture-design-primitive` D3: plan's architecture artifact is a *delta view* — current
+  (a) `architecture-design-primitive` D3-architecture-delta-model: plan's architecture artifact is a *delta view* — current
   state plus proposed target, sign-off approves the target, landing folds the built reality in.
   Reason given: "editing `ARCHITECTURE.md` directly would inject unbuilt proposals into a doc whose
   contract is present-tense/current-state-only, and an abandoned plan would leave a lie in the
   living view."
-  (b) `feature-sizing-and-entry-points` D9 (user-shaped): two altitudes — product baselines say what
+  (b) `feature-sizing-and-entry-points` D9-plan-implement-rekey (user-shaped): two altitudes — product baselines say what
   the product HAS, the feature directory says what the feature CHANGES; acceptance folds deltas into
   baselines in the landing that flips map status. D15: every fold is graded by a three-way diff
   (pre-fold baseline + delta vs folded result), so deltas must be in appliable before/after form.
   Reason: "the fold is the highest-blast-radius write in the pipeline — a corrupted baseline poisons
   every later extend-mode run silently."
-  (c) `product-architecture-schema` D3/D10: one store whose elements carry lifecycle statuses
+  (c) `product-architecture-schema` D3-store-replaces-artifact/D10-plan-time-contract: one store whose elements carry lifecycle statuses
   (`ruled` → `in-flight (FEAT-XXX)` → `built`); a delta is drafted in the package with the store
   untouched, the user's sign-off is the write gate, the signed delta lands *into the store* as
   in-flight elements, landing flips `built`. Reason: "sign-off-as-write-gate keeps the store
   ruled-truth-only"; marked `Assumed` — "designed live, never walked against a real feature."
-  (d) `multi-feature-plan-implement` D2/D10: an epic keeps a spine plus per-feature deltas; a
+  (d) `multi-feature-plan-implement` D2-shared-spine-storage/D10-spine-baseline-deltas: an epic keeps a spine plus per-feature deltas; a
   shared-baseline delta is authored once under a single pen-holder
   (`impl.epic-shared-baseline-single-pen`, `authoring-epic.shared-baseline-single-pen-holder`).
 - **F2 — The floor rule, its one carve, and the carve's timing.** `impl.baselines-never-in-place`
@@ -155,11 +155,11 @@ re-verification: F1–F11 confirmed against source; corrections folded where not
   reviewer)*.
 - **F9 — The write-time gate compounds the fold problem, and the sibling session answered the
   size half.** Field review F4: every product baseline stands 2–4× over the `product` home's
-  300-line whole-file bound, a fold only adds lines, so no seat can land one. Its D2 (accepted):
+  300-line whole-file bound, a fold only adds lines, so no seat can land one. Its `hook-enforcement-field-review` D2-cumulative-store-budgets (accepted):
   cumulative stores take a per-entry budget and no whole-file bound; `contracts/*` are out of its
   scope (no gate bound applies to them today); the guarantee is conditional on its OQ1 census
   admitting the largest honest entry (177 lines observed). An in-place amendment to an entry
-  already over its budget still worsens it and denies — D1 hits the same wall the fold hit until
+  already over its budget still worsens it and denies — D1-delta-files-retire hits the same wall the fold hit until
   that census lands.
 - **F10 — Git and worktrees are already in the loop; runs commit on `main` mid-run.**
   `impl.cold-verification` snapshots ride `.claude/worktrees/`; run 3 ran in
@@ -206,12 +206,12 @@ re-verification: F1–F11 confirmed against source; corrections folded where not
 
 ## Constraints carried in
 
-- GI-004 / primitive-edits ceremony: any change lands through strips + audits + the migration log;
+- GI-004-primitive-audit-ratchet / primitive-edits ceremony: any change lands through strips + audits + the migration log;
   `impl.baselines-never-in-place` and `authoring-architecture-store.sign-off-is-write-gate` are
   floors and leave only by recorded supersession.
-- GI-019 bright line: no gate may hold judgment or sequence a run — whatever replaces the fold stays
+- GI-019-kernel-tooling-admission bright line: no gate may hold judgment or sequence a run — whatever replaces the fold stays
   procedural or mechanical-only.
-- The accepted field-review session's D2 and OQ1 govern the size of every in-place write D1 makes
+- The accepted field-review session's `hook-enforcement-field-review` D2-cumulative-store-budgets and OQ1 govern the size of every in-place write D1-delta-files-retire makes
   (`contracts/*` excepted); this record's amendments to that record are supersessions in part,
   landed as annotations on its `DECISIONS.md` row, its `BACKLOG.md` build item and its
   `.mochiko/brainstorms/index.md` entry (D6a; delta-check d3).
@@ -220,18 +220,18 @@ re-verification: F1–F11 confirmed against source; corrections folded where not
 
 *(recorded as ruled — statement · rationale · confidence; review folds marked)*
 
-### D1 — Product baselines are edited in place; the change is the diff against a pinned base; delta files and the landing fold go
+### D1-delta-files-retire — Product baselines are edited in place; the change is the diff against a pinned base; delta files and the landing fold go
 
 **Statement:** A seat that needs a product baseline to say something new — the analyst or architect
 in the design phase, the builder at a build-time technical decision — writes it into the product
 file itself (`.mochiko/product/data-model.md`, `constraints-and-decisions.md`, `contracts/*`,
 `quickstart.md`, the truth part of `design/`, and the architecture store), on the run's working
-tree, with a lifecycle marker on the entry (grammar: D2; timing against the checkpoint: D7). The
+tree, with a lifecycle marker on the entry (grammar: D2-entry-lifecycle-marker; timing against the checkpoint: D7-lifecycle-write-timing). The
 change is what git shows against the run's pinned base (D3c) — committed and uncommitted alike. No
 per-feature delta copy of a baseline is authored (`data-model.md`, `constraints-and-decisions.md`,
 `contracts/*.md` in the feature home), no `baseline-delta.md` ledger, no fold package, no
 three-way transcription grade. The feature home keeps the run's own artifacts — plan, tasks,
-reports, and the architecture delta's diagram surface (D4). The judgment review of the change
+reports, and the architecture delta's diagram surface (D4-signed-architecture-drawing). The judgment review of the change
 stays: a non-author seat reads the diff (D3c). **Carve (I6):** the design baseline's *system part*
 stays as `impeccable-design-integration` ruled it — written from shipped code at the landing, the
 first write the user's (`impl.design-first-write`); that landing write is already an in-place
@@ -245,7 +245,7 @@ better execution removes: a transcription step that must be graded (F5's 14 find
 the copy, not the design), two copies of every entry, and the renumbering at every fold (F6). F5/F8
 — in practice the fold was applied by the user's shell or not at all, and 8,068 lines of build-time
 decisions were never folded. F12 — everything a delta file carried has a carrier under git. **What
-D1 does not cure:** the gate's size denies (F9) — D1 depends on the field review's D2 per-entry
+D1-delta-files-retire does not cure:** the gate's size denies (F9) — D1-delta-files-retire depends on the field review's `hook-enforcement-field-review` D2-cumulative-store-budgets per-entry
 budgets and OQ1 census to make an in-place write to an over-budget store legal at all. Rejected:
 **B** (keeps the fold for the design deltas — the transcription step stays) · **C** (better fold
 hygiene keeps the transcription step, the renumbering, and the two copies of every entry; its
@@ -254,16 +254,16 @@ defects the field review already addresses).
 
 **Confidence:** Confident (user-ruled "yes as recommended" at Q1; carve and scope user-ruled at
 review, I5/I6 inline). Supersedes in part, recorded at build: `feature-sizing-and-entry-points`
-D9's fold clause and D15 · `architecture-design-primitive` D3's fold-at-landing clause ·
-`product-architecture-schema` D10's "drafted in the plan package (store untouched)" step ·
-`multi-feature-plan-implement` D2/D10's per-feature delta storage · `impeccable-design-integration`
-D6's `baseline-delta.md` path · the `impl.baselines-never-in-place` floor and its fail rules · the
-`authoring-architecture-store.sign-off-is-write-gate` floor (D7).
+D9-plan-implement-rekey's fold clause and `feature-sizing-and-entry-points` D15-graded-baseline-folds · `architecture-design-primitive` D3-architecture-delta-model's fold-at-landing clause ·
+`product-architecture-schema` D10-plan-time-contract's "drafted in the plan package (store untouched)" step ·
+`multi-feature-plan-implement` D2-shared-spine-storage/D10-spine-baseline-deltas's per-feature delta storage · `impeccable-design-integration`
+D6-product-truth-leg's `baseline-delta.md` path · the `impl.baselines-never-in-place` floor and its fail rules · the
+`authoring-architecture-store.sign-off-is-write-gate` floor (D7-lifecycle-write-timing).
 
-### D2 — Every baseline entry carries a lifecycle marker in its own field, keyed by the run's owner
+### D2-entry-lifecycle-marker — Every baseline entry carries a lifecycle marker in its own field, keyed by the run's owner
 
 **Statement:** An entry written or amended during a run carries a lifecycle field of its own —
-`**Lifecycle:** proposed (<key>)` before the checkpoint, `in-flight (<key>)` after sign-off (D7),
+`**Lifecycle:** proposed (<key>)` before the checkpoint, `in-flight (<key>)` after sign-off (D7-lifecycle-write-timing),
 `built` at landing — separate from any stance field an entry already has (kinako
 `constraints-and-decisions.md`'s `**Status:** new · recommended · delivered` is the stance axis and
 stays; I4). The key is the run's owner: `FEAT-XXX` for a feature run, `EPIC-XXX` for an epic's
@@ -287,13 +287,13 @@ store's vocabulary is the ready one, but its axis is lifecycle only and its buil
 key; putting lifecycle words into the constraints file's stance field would make `recommended`
 and `in-flight` indistinguishable. Rejected: **B** no marker (fails at the first mid-run commit)
 · **C** a per-feature manifest of touched entries (a side file that must agree with the baseline
-— the shape D1 just removed) · prior text kept beside new (the two-copies cost D1 rejected road C
+— the shape D1-delta-files-retire just removed) · prior text kept beside new (the two-copies cost D1-delta-files-retire rejected road C
 for; the diff carries it).
 
 **Confidence:** Confident (user-ruled "as recommended" at Q2; the field split, key set, built
 form and diff-read sweep user-ruled at review — I3/I4/I5/M1/M6 as recommended).
 
-### D3 — Ids from the product sequence at write · the why on the entry · reviews read the diff against a pinned base
+### D3-product-sequence-ids — Ids from the product sequence at write · the why on the entry · reviews read the diff against a pinned base
 
 **Statement:** **(a) Ids.** A new entry takes the next free id of the product file's own sequence
 at write time (the analyst reads the high-water `D-049`, writes `D-050`); no feature-local
@@ -305,14 +305,14 @@ entries (I2). Alternatives dealt (M4): block reservation per run (a registry to 
 feature-qualified provisional ids flipped at landing (renumbering by another name). **(b) The
 why.** An entry's rationale lives on the entry: the constraints file's existing `Source` · `Shaped
 by` · `Impact`, and on every baseline a build-raised entry's `Raised: <cycle>` and one-line
-`Weighed:` (fields declared at the census, D2); the cycle report discloses the decision as it does
+`Weighed:` (fields declared at the census, D2-entry-lifecycle-marker); the cycle report discloses the decision as it does
 today. The commit message is **not** a required carrier (I1) — the run cannot rely on writing it.
 No ledger. Alternative dealt (M4): a ledger-lite rationale file per run (a side file again).
 **(c) Review.** No new seat. The run pins its **base commit** at run-open and again at the design
 checkpoint's sign-off, recorded in the run's log and on the checkpoint card (I1). The sign-off pin
 is the commit the checkpoint card asks the user to make — suggested, never run by the lead
 (`impl.no-git-mutations` stands); where no commit is made, the card records the flipped entry
-set, and the built-vs-signed diff and `impl.deviation-gate` read the checkpoint table (D4) as the
+set, and the built-vs-signed diff and `impl.deviation-gate` read the checkpoint table (D4-signed-architecture-drawing) as the
 signed state (verify V1, user-ruled "as recommended"). Every baseline
 review reads `git diff <base> -- .mochiko/product/` — the committed and uncommitted change since
 the base, whoever committed it. In the design phase the existing feasibility and plan-artifact
@@ -337,14 +337,14 @@ mid-run commit hides an edit from every review, the silent corruption F1(b) name
 item's recommendation named; the pinned base, the duplicate-id check and the dropped commit-message
 carrier user-ruled at review — I1 inline, I2 and M4 as recommended).
 
-### D4 — `architecture.md` stays as the drawing the principal signs; the feature home loses its baseline copies
+### D4-signed-architecture-drawing — `architecture.md` stays as the drawing the principal signs; the feature home loses its baseline copies
 
 **Statement:** The feature home keeps `architecture.md` scoped to the sign-off drawing: the
 C4-container delta diagram, the sequence diagrams for qualifying flows, the deployment view when
 `IP-XXX` rows exist, and the checkpoint table of changed elements. It carries no delta-register
 text and no current-state narrative — the register is the pinned-base diff of `spine.md` /
 `concerns.md`, which the architect writes in place as `proposed` elements before the checkpoint
-and which the sign-off flips to `in-flight` (D7; the store's own carve was at sign-off only — F2,
+and which the sign-off flips to `in-flight` (D7-lifecycle-write-timing; the store's own carve was at sign-off only — F2,
 corrected at review, C1). Overwritten per run, as today. The `feature` home's declared set becomes
 `tasks.md` · `plan.md` · `requirements.md` · `design-closure.md` · `sufficiency-report.md` ·
 `architecture.md` · `proposal.md` · `contest-brief.md` · `gates.md` plus `reports/`;
@@ -362,7 +362,7 @@ type whose 15-line section budgets fight a diagram).
 
 **Confidence:** Confident (user-ruled "yes A" at Q4).
 
-### D5 — kinako clean-up at the plugin upgrade: apply run 4's fold first, freeze the ledgers, re-home the fold blocks, re-point every link
+### D5-kinako-upgrade-cleanup — kinako clean-up at the plugin upgrade: apply run 4's fold first, freeze the ledgers, re-home the fold blocks, re-point every link
 
 **Statement:** At the kinako pass that rides the plugin upgrade, in this order: **(i) Run 4's
 graded fold text is applied in place first** (C2) — `reports/landing-fold-text-run4-2026-09-23.md`
@@ -404,16 +404,16 @@ recommended" at review, C2; the pointer sweep and the epic exemption user-ruled 
 Consumer-side work, booked in kinako's `BACKLOG.md`; rides the same pass as the field review's
 D9(b) evidence clean-up.
 
-### D6 — Wrap-up: the accepted field-review record superseded in part · epics one pen per file · no governance amend · build rides the field review's waves
+### D6-wrap-up-batch — Wrap-up: the accepted field-review record superseded in part · epics one pen per file · no governance amend · build rides the field review's waves
 
 **Statement:** **(a) The accepted `hook-enforcement-field-review` session (I8).** This record
 supersedes two of its clauses in part, landed as annotations on its `DECISIONS.md` row, its
 four-wave `BACKLOG.md` build item and its `.mochiko/brainstorms/index.md` entry at this record's
 landing (both indexes, per the KM landing step 3 — verify N12): its OQ1 "fold shape" question is
-answered — there is no fold, entries are written in place (D1) — and its `baseline-delta.md`
-entry-class candidate dissolves (the file no longer exists). What stands: its D2 per-entry
+answered — there is no fold, entries are written in place (D1-delta-files-retire) — and its `baseline-delta.md`
+entry-class candidate dissolves (the file no longer exists). What stands: its `hook-enforcement-field-review` D2-cumulative-store-budgets per-entry
 budgets and the census table, which now also carry the `Lifecycle:` field, the per-baseline
-fields of D2/D3b, and the feature/epic/product-lane home sets of D4; `contracts/*` stay outside
+fields of D2-entry-lifecycle-marker/D3b, and the feature/epic/product-lane home sets of D4-signed-architecture-drawing; `contracts/*` stay outside
 its size scope (no gate bound applies to them), so an in-place contract edit is size-ungated —
 stated, not changed. Its reviewer's S6(b) stands against this record too — an in-place amendment
 to an entry already over its budget denies — carried as OQ1 here and ruled at that table. **(b)
@@ -422,11 +422,11 @@ time per file, the transport floor's single-writer leg as today, keyed `EPIC-XXX
 drops its baseline copies and keeps `architecture.md` as the one signed drawing for the whole epic.
 **(c) No governance amendment** (checked true by the reviewer). No principle in the `CLAUDE.md`
 governance region names the fold; the floor rules live in the migration log and leave by recorded
-supersession (GI-005/GI-006 satisfied by this record and the strips). The field review's own
+supersession (GI-005-record-layer-integrity/GI-006-primitive-edit-traceability satisfied by this record and the strips). The field review's own
 wave-3 ledger amendment is unaffected. **(d) Build.** Rides the field review's waves under the
 primitive-edits ceremony. **Its migration wave** takes: the `impl.baselines-never-in-place` floor
 superseded by a new-id floor stating the in-place-with-marker rule; `authoring-architecture-store.sign-off-is-write-gate`
-superseded by the D7 form; `impl.fail.baseline-in-place` → an unmarked baseline write (D3c);
+superseded by the D7-lifecycle-write-timing form; `impl.fail.baseline-in-place` → an unmarked baseline write (D3c);
 `impl.fail.ungraded-fold` → an unreviewed baseline diff; `impl.graded-fold` → the pinned-base diff
 review; `impl.baseline-delta-grammar` → the entry grammar with marker; `impl.landing-verifier-folds`;
 `impl.landing-lane` ("the graded folds"); `impl.design-outputs-home` ("Design outputs land at
@@ -441,7 +441,7 @@ files overwrite only via the graded fold"); `feat.author-grader` and `feat.delta
 `.shared-baseline-single-pen-holder`; `authoring-architecture-store.fold-duty` → the landing flip
 over every baseline; `.lifecycle-statuses` gaining `proposed` and the wider key set ("each
 in-flight-class element MUST name the `FEAT-XXX`" → the run's key); `.orphan-rule` (keys beyond
-`FEAT-XXX`, readers per D2); the spine template's status legend and check ("a FEAT-XXX key on
+`FEAT-XXX`, readers per D2-entry-lifecycle-marker); the spine template's status legend and check ("a FEAT-XXX key on
 every in-flight/modifying/removing element and none on ruled/built" — verify N3); `impl.design-landing`,
 `impl.design-first-write` and the `0013`/`0018` design-baseline template lines that name
 `baseline-delta.md` (the landing write itself stands, I6); `review-plan-artifacts.store-delta-checklists`'
@@ -454,7 +454,7 @@ wave** takes the skills (`authoring-technical-requirements` · `authoring-archit
 `patterns-adopt-first` · `authoring-epic` · `review-plan-artifacts` checklists ·
 `review-feasibility` · `review-sufficiency` · `testing-gap-finding` · the design-direction skills
 where they name the ledger · the `mochiko` router lines) and the entry templates; **its kinako
-wave** carries D5. The five prior `DECISIONS.md` rows (2026-07-30 · 2026-08-10 feature-sizing ·
+wave** carries D5-kinako-upgrade-cleanup. The five prior `DECISIONS.md` rows (2026-07-30 · 2026-08-10 feature-sizing ·
 2026-08-14 multi-feature · 2026-08-19 product-architecture store · 2026-09-19 Impeccable) are
 annotated superseded in part (M3). **Audit gap 3 (M5)** — the mid-run spine groom — dissolves
 into one line: a groom of a baseline during a run is deferred past the landing, or, by the user's
@@ -474,18 +474,18 @@ templates).
 census table is where both numbers land; the sibling closed while this record was frozen, so the
 amendment lands as an annotation, the KM module's shape for a supersession of an accepted record;
 (b) the single-pen rule was about shared *deltas*, and the shared *file* is the same object under
-D1; (c) the admission scope is unchanged, no gate gains judgment; (d) the field review already
+D1-delta-files-retire; (c) the admission scope is unchanged, no gate gains judgment; (d) the field review already
 sequences a crate → migration → prose → kinako pass over the same homes and templates, and a
 second sequence over the same files would collide.
 
 **Confidence:** Confident on (a)–(c) (user-ruled "yes" at Q6; (a) restated at review, I8, as
 recommended); **Assumed** on (d)'s completeness until the build-step sweep (M4/I7).
 
-### D7 — Write timing: `proposed` before the checkpoint, `in-flight` from sign-off — the sign-off flips the word
+### D7-lifecycle-write-timing — Write timing: `proposed` before the checkpoint, `in-flight` from sign-off — the sign-off flips the word
 
 **Statement:** A design-phase write to any baseline or to the store before the design checkpoint
 carries `Lifecycle: proposed (<key>)`. The user's sign-off at the checkpoint — on the rendered
-diagram, the changed-element table (D4) and the pinned-base diff of the baselines (D3c) — flips
+diagram, the changed-element table (D4-signed-architecture-drawing) and the pinned-base diff of the baselines (D3c) — flips
 every `proposed (<key>)` of that run to `in-flight (<key>)`; the flip is a mechanical
 transcription — through `mochiko:authoring-architecture-store` for the store, which regenerates
 the derived `ARCHITECTURE.md`, and directly on the other baselines — made as the checkpoint's
@@ -500,7 +500,7 @@ verification seat (D3c). `authoring-architecture-store.sign-off-is-write-gate` (
 store write") is superseded by this ruling: the sign-off is the gate between `proposed` and
 `in-flight`, not between nothing and a write.
 
-**Rationale:** C1 — D1 puts writes before the checkpoint so the review pair can read them, while
+**Rationale:** C1 — D1-delta-files-retire puts writes before the checkpoint so the review pair can read them, while
 the store's floor allowed a write only at sign-off; without a pre-sign word an unsigned draft and a
 signed element read the same to every other seat, and a second feature would be graded sufficient
 against a design the user then reshaped. Rejected: **B** write only at sign-off, drafts held
@@ -521,10 +521,10 @@ unfolded design) · 9 Important (I1–I9) · 6 Minor (M1–M6); coverage survivo
 M5. **Cross-examination:** eight questions answered from the record alone, five "not in the
 record" (Q-b base, Q-c merge reviewer, Q-d run 4's owed folds, Q-e non-entry structures, Q-f lane
 key); Q-h (the sibling's state) was answered wrongly by the record (I8).
-**Verification honesty (reviewer):** F1–F11 confirmed against source; wrong: D5's header premise
-(C2), D3a's merge claim (I2), D2's vocabulary claim (I4), D3b's fields claim (I4), the
+**Verification honesty (reviewer):** F1–F11 confirmed against source; wrong: D5-kinako-upgrade-cleanup's header premise
+(C2), D3a's merge claim (I2), D2-entry-lifecycle-marker's vocabulary claim (I4), D3b's fields claim (I4), the
 feature-sizing date (M3), the sibling's state (I8); not verified: F8's citation-shift and `BD-220`
-claims, F5's "PASSed at revision 1", D5's "built without them since 2026-09-03". **Lead's own
+claims, F5's "PASSed at revision 1", D5-kinako-upgrade-cleanup's "built without them since 2026-09-03". **Lead's own
 re-checks (2026-09-24):** C1 — `sign-off-is-write-gate` text confirmed verbatim; C2 — product
 `constraints-and-decisions.md` high-water `D-049`, zero R1-9/10/11 lines in the three product
 files, the map entry's `D-061` citation confirmed; I2 — the four-step merge reproduction re-run in
@@ -540,36 +540,36 @@ the sound-loop leg placement, crash/resume.
 
 | Finding | Lands on | Disposition |
 |---|---|---|
-| **C1** Critical · coverage | D1, D3c, D4, F2, F11 | **User-ruled A** on a three-option put: pre-sign status `proposed`, sign-off flips to `in-flight`, store floor superseded → **D7**; F2/F11/D4 corrected |
-| **C2** Critical | D5, F4, F5 | **User-ruled A**: apply run 4's fold text in place before the copies go; high-water `C-011`/`D-061`; premise corrected; epic landings cited for FEAT-002/006 → D5(i)/(iii) |
-| I1 Important · coverage | D1, D3, F10 | Ruled inline as recommended: base commit pinned at run-open and sign-off; reviews read `git diff <base>`; unmarked write = hunk outside a marked entry; commit message not a required carrier → D3b/D3c, F10 |
-| I2 Important | D3 | As recommended: duplicate-id check by the non-author seat in the landing diff review; alternatives recorded; reproduction re-run by the lead → D3a, F10 |
-| I3 Important | D2 | As recommended: the sweep reads the pinned-base diff, not markers alone; non-entry structures named → D2, F7 |
-| I4 Important | D2, D3, F11 | As recommended: `Lifecycle:` in its own field, stance `Status:` untouched; built form `built` with key cleared; per-baseline fields declared at the census → D2, D3b, F11 |
-| I5 Important · coverage | D2, D4, D6 | Ruled inline as recommended: keys `FEAT-XXX` / `EPIC-XXX` / `lane-<slug>`; orphan rule over all keys; ledger withdrawn from the product-lane home; out-of-run fixes write `built` directly → D1 scope, D2, D4 |
-| I6 Important · coverage | D1, D6, relations | Ruled inline as recommended: `design/` system part carved out, landing write from shipped code stands, first-write floor stands; Impeccable ruling added to relations; `0018`, `impl.design-landing`, `impl.design-first-write` added to D6d → D1, F13, D6d |
-| I7 Important | D6 | As recommended: twelve sites added; full-text sweep as a build step; list `Assumed` until the sweep → D6d |
-| I8 Important | D6, relations | As recommended: sibling restated as accepted; supersession in part by annotation; home sets and "no fold" carried into its census; contracts scope stated → relations, F9, D6a |
-| I9 Important · coverage | D5 | Ruled inline as recommended: links re-pointed mechanically, no stubs; BD ids valid into the archive; epic dirs closed record, exempt → D5(v), F6 |
-| M1 Minor | D2, OQ2 | As recommended: "prior text beside new" struck; OQ2 closed — marker only, the diff shows prior text → D2 |
-| M2 Minor | D1 | As recommended: rationale restated on residual costs; dependence on field-review D2/OQ1 recorded → D1 |
-| M3 Minor | relations, D6 | As recommended: 2026-08-10 → relations, D6d |
-| M4 Minor | D3, D6 | As recommended: alternatives recorded per sub-item; D6d `Assumed` on completeness → D3, D6 |
-| M5 Minor · coverage | D1, D6 | Ruled inline as recommended: gap 3 dissolves — groom deferred past landing or in its own commit, no marker → D6d |
-| M6 Minor | D2 | As recommended: orphan readers named — sufficiency check at run-open, landing verifier for the run's own key → D2 |
+| **C1** Critical · coverage | D1-delta-files-retire, D3c, D4-signed-architecture-drawing, F2, F11 | **User-ruled A** on a three-option put: pre-sign status `proposed`, sign-off flips to `in-flight`, store floor superseded → **D7-lifecycle-write-timing**; F2/F11/D4 corrected |
+| **C2** Critical | D5-kinako-upgrade-cleanup, F4, F5 | **User-ruled A**: apply run 4's fold text in place before the copies go; high-water `C-011`/`D-061`; premise corrected; epic landings cited for FEAT-002/006 → D5-kinako-upgrade-cleanup(i)/(iii) |
+| I1 Important · coverage | D1-delta-files-retire, D3-product-sequence-ids, F10 | Ruled inline as recommended: base commit pinned at run-open and sign-off; reviews read `git diff <base>`; unmarked write = hunk outside a marked entry; commit message not a required carrier → D3b/D3c, F10 |
+| I2 Important | D3-product-sequence-ids | As recommended: duplicate-id check by the non-author seat in the landing diff review; alternatives recorded; reproduction re-run by the lead → D3a, F10 |
+| I3 Important | D2-entry-lifecycle-marker | As recommended: the sweep reads the pinned-base diff, not markers alone; non-entry structures named → D2-entry-lifecycle-marker, F7 |
+| I4 Important | D2-entry-lifecycle-marker, D3-product-sequence-ids, F11 | As recommended: `Lifecycle:` in its own field, stance `Status:` untouched; built form `built` with key cleared; per-baseline fields declared at the census → D2-entry-lifecycle-marker, D3b, F11 |
+| I5 Important · coverage | D2-entry-lifecycle-marker, D4-signed-architecture-drawing, D6-wrap-up-batch | Ruled inline as recommended: keys `FEAT-XXX` / `EPIC-XXX` / `lane-<slug>`; orphan rule over all keys; ledger withdrawn from the product-lane home; out-of-run fixes write `built` directly → D1-delta-files-retire scope, D2-entry-lifecycle-marker, D4-signed-architecture-drawing |
+| I6 Important · coverage | D1-delta-files-retire, D6-wrap-up-batch, relations | Ruled inline as recommended: `design/` system part carved out, landing write from shipped code stands, first-write floor stands; Impeccable ruling added to relations; `0018`, `impl.design-landing`, `impl.design-first-write` added to D6d → D1-delta-files-retire, F13, D6d |
+| I7 Important | D6-wrap-up-batch | As recommended: twelve sites added; full-text sweep as a build step; list `Assumed` until the sweep → D6d |
+| I8 Important | D6-wrap-up-batch, relations | As recommended: sibling restated as accepted; supersession in part by annotation; home sets and "no fold" carried into its census; contracts scope stated → relations, F9, D6a |
+| I9 Important · coverage | D5-kinako-upgrade-cleanup | Ruled inline as recommended: links re-pointed mechanically, no stubs; BD ids valid into the archive; epic dirs closed record, exempt → D5-kinako-upgrade-cleanup(v), F6 |
+| M1 Minor | D2-entry-lifecycle-marker, OQ2 | As recommended: "prior text beside new" struck; OQ2 closed — marker only, the diff shows prior text → D2-entry-lifecycle-marker |
+| M2 Minor | D1-delta-files-retire | As recommended: rationale restated on residual costs; dependence on `hook-enforcement-field-review` D2/OQ1 recorded → D1-delta-files-retire |
+| M3 Minor | relations, D6-wrap-up-batch | As recommended: 2026-08-10 → relations, D6d |
+| M4 Minor | D3-product-sequence-ids, D6-wrap-up-batch | As recommended: alternatives recorded per sub-item; D6d `Assumed` on completeness → D3-product-sequence-ids, D6-wrap-up-batch |
+| M5 Minor · coverage | D1-delta-files-retire, D6-wrap-up-batch | Ruled inline as recommended: gap 3 dissolves — groom deferred past landing or in its own commit, no marker → D6d |
+| M6 Minor | D2-entry-lifecycle-marker | As recommended: orphan readers named — sufficiency check at run-open, landing verifier for the run's own key → D2-entry-lifecycle-marker |
 
 **Verify round 1 (`reports/review.md` § verify_round_1):** NOT CLEAN — all 17 folds landed where
-the table says, in the form ruled; 1 blocking + 13 nits. **V1** (blocking; D3c, D7, D6d — from
+the table says, in the form ruled; 1 blocking + 13 nits. **V1** (blocking; D3c, D7-lifecycle-write-timing, D6d — from
 the reviewer's own I1 resolution): the sign-off pin is a commit no rule guarantees, so the
 built-vs-signed diff and the deviation gate could read an unsigned state → re-put to the user
 as three options (the user's commit or the checkpoint table, recommended · rule the per-run
 commit carve here · pin by content only) → **user-ruled A** ("as recommended"), folded into D3c,
-D7, D6d. **N1–N13** (nits) lead-repaired the same round: N1 unmarked-write exclusions (D3c) · N2
+D7-lifecycle-write-timing, D6d. **N1–N13** (nits) lead-repaired the same round: N1 unmarked-write exclusions (D3c) · N2
 grooms read around, not excluded (D6d) · N3 three more rule sites + two sweep terms (D6d, build
-surface) · N4 the flip through the store skill, index regenerated (D7) · N5 a missing field reads
-`built`; D5's writes carry no marker (D2, D5) · N6 the epic home never declared the ledger (F3) ·
+surface) · N4 the flip through the store skill, index regenerated (D7-lifecycle-write-timing) · N5 a missing field reads
+`built`; D5-kinako-upgrade-cleanup's writes carry no marker (D2-entry-lifecycle-marker, D5-kinako-upgrade-cleanup) · N6 the epic home never declared the ledger (F3) ·
 N7 the code-file count's scope (F6, § Review) · N8 F13's quotes verbatim · N9 F1 "four times for
-the baselines, a fifth for the design baseline" · N10 D7's confidence line · N11 the Q1 answer's
+the baselines, a fifth for the design baseline" · N10 D7-lifecycle-write-timing's confidence line · N11 the Q1 answer's
 original words restored · N12 the field review's index entry added to D6a and build item 2 · N13
 the eleven ids + the `0018` template, and Q-d for Q-h in the cross-exam summary. **Delta-check
 (`reports/review.md` § delta_check):** CLEAN on blocking — V1 and N1–N13 all landed as stated,
@@ -581,17 +581,17 @@ brainstorms-index entry too. Reviewer's final status recommendation: `ready`.
 
 ## Build surface (cold-buildable — rides the field review's waves, D6d)
 
-1. Migration (with the field review's wave 2): rule supersessions and rewords as D6(d) lists them
+1. Migration (with the field review's wave 2): rule supersessions and rewords as D6-wrap-up-batch(d) lists them
    (the two floors by new id; the fail rules re-keyed to the unmarked write and the unreviewed
-   diff; `lifecycle-statuses` gaining `proposed`) · the three home sets in `0005` per D4/D6(b) ·
+   diff; `lifecycle-statuses` gaining `proposed`) · the three home sets in `0005` per D4-signed-architecture-drawing/D6-wrap-up-batch(b) ·
    the entry grammar per baseline with the `Lifecycle:` field and the build-raised fields (one
    table with the per-entry budgets, user-ratified) · the log full-text sweep ("delta" · "fold" ·
    "appliable" · "in place" · "in-flight" · "FEAT-XXX") as the step before the op, audited
    against the list.
-2. Prose (with the field review's wave 3): the skills D6(d) lists · templates · strips · audits ·
+2. Prose (with the field review's wave 3): the skills D6-wrap-up-batch(d) lists · templates · strips · audits ·
    `plugin.json` bump · five `DECISIONS.md` annotations · the field review's row, build item and
    brainstorms-index entry annotated (D6a).
-3. Kinako (with the field review's wave 4): D5 in order — run 4's fold applied (i), ledgers to
+3. Kinako (with the field review's wave 4): D5-kinako-upgrade-cleanup in order — run 4's fold applied (i), ledgers to
    `archive/` (ii), copies deleted (iii), fold blocks re-homed (iv), links re-pointed (v); each
    write graded by a non-author diff read.
 
@@ -600,7 +600,7 @@ brainstorms-index entry too. Reviewer's final status recommendation: `ready`.
 - **OQ1 — The per-entry budget must admit the largest honest entry (D6a; field review S6(b)).**
   kinako's largest entity entry is 177 lines; an in-place amendment to an entry over its budget
   denies under the gate's non-worsening rule. Ruled at the field review's census table, which now
-  also declares the `Lifecycle:` field and the per-baseline fields of D2/D3b.
+  also declares the `Lifecycle:` field and the per-baseline fields of D2-entry-lifecycle-marker/D3b.
 - **OQ2 — closed at review (M1):** an amendment carries the marker only; the pinned-base diff shows
   the prior text.
 
@@ -609,32 +609,32 @@ brainstorms-index entry too. Reviewer's final status recommendation: `ready`.
 - **Q1** — the shape of the replacement: edit in place on the run's working tree with a status
   marker on the entry (A, recommended) · keep design-phase deltas as the sign-off surface, drop the
   build-time ledger (B) · keep the model, fix the fold mechanics (C). → **A** ("yes as
-  recommended") → D1. User then asked why a diff still needs to happen given the commit —
+  recommended") → D1-delta-files-retire. User then asked why a diff still needs to happen given the commit —
   answered: the diff is not authored, it is how a reviewer sees the edit; the old three-way check
   graded a hand transcription that no longer exists; the commit is the user's acceptance, so the
   review reads the working-tree diff before it and `git show` after it. *(Review I1 sharpened
   this: the diff is read against a pinned base, since the user commits mid-run.)*
 - **Q2** — the in-flight marker: the store's lifecycle words on every baseline entry (A,
   recommended) · no marker, the branch is the state (B) · a per-feature manifest of touched
-  entries (C). → **A** ("as recommended") → D2.
+  entries (C). → **A** ("as recommended") → D2-entry-lifecycle-marker.
 - **Q3** — three mechanics as one question: ids from the product sequence at write · the why on
   the entry · no new reviewer, existing graders read the diff. → **all three** ("as recommended")
-  → D3.
+  → D3-product-sequence-ids.
 - **Q4** — the drawing: keep `architecture.md` scoped to the diagrams and checkpoint table, feature
   home loses its baseline copies (A, recommended) · diagrams into the store (B) · diagrams as a
-  report (C). → **A** ("yes A") → D4.
+  report (C). → **A** ("yes A") → D4-signed-architecture-drawing.
 - **Q5** — kinako clean-up: freeze the ledgers, re-home the fold blocks, no entry pass (A,
   recommended) · one-time fold pass over 238 entries (B) · leave as is (C). → **A** ("as
-  recommended") → D5.
+  recommended") → D5-kinako-upgrade-cleanup.
 - **Q6** — wrap-up batch: field-review session amended · epics one pen per file · no governance
-  amend · build rides the field review's waves, each with its recommendation. → **"yes"** → D6.
+  amend · build rides the field review's waves, each with its recommendation. → **"yes"** → D6-wrap-up-batch.
 - **Review dispositions (2026-09-24)** — the user ruled "one by one for critical and rest as
   recommended". **C1** put as three options (pre-sign `proposed` status, recommended · write only
   at sign-off · write as `in-flight` with a read-only checkpoint) → **A** ("as recommended") →
-  D7. **C2** put as three options (apply run 4's fold first, recommended · archive the copies
-  unapplied · void run 4's ids) → **A** ("as recommended") → D5(i). The five coverage survivors
+  D7-lifecycle-write-timing. **C2** put as three options (apply run 4's fold first, recommended · archive the copies
+  unapplied · void run 4's ids) → **A** ("as recommended") → D5-kinako-upgrade-cleanup(i). The five coverage survivors
   (I1, I5, I6, I9, M5) took the "rule inline" path with the recommended ruling; the I/M batch
   landed as recommended.
 - **Verify V1 (2026-09-24)** — the sign-off pin: the user's commit at the checkpoint, or the
   checkpoint table where none is made (A, recommended) · rule the per-run commit carve here (B) ·
-  pin by content only (C). → **A** ("as recommended") → D3c, D7, D6d.
+  pin by content only (C). → **A** ("as recommended") → D3c, D7-lifecycle-write-timing, D6d.

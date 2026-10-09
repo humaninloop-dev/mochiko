@@ -220,6 +220,10 @@ sections:
           Hold the record to the builder test against the frame's destination: reading only the
           record, what would a builder still have to ask the user?
         anchor: 2026-10-06 brainstorm-target-state D16
+      - id: review-brainstorm.joined-ids
+        class: must
+        extends: review-common.joined-ids
+        anchor: 2026-10-08 human-readable-ids D6
   - id: review-brainstorm.sec.output
     title: Output — the survivor report
     intent: How findings leave the seat and where evidence lands.

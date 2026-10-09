@@ -133,7 +133,7 @@ outcome line each): `product-designer` persona · `patterns-design-direction` pa
 `testing-gap-finding` pair · `patterns-vertical-tdd` pair · `testing-end-user` pair ·
 `review-sufficiency` pair · `review-specifications` pair · `analysis-codebase` pair · setup command pair
 · implement command pair · specify command pair (if touched) · `patterns-code-minimalism` pair (if
-touched) · `patterns-model-tiering` pair · schema content 0011–0015 + view diff (AM-2 five) · design
+touched) · `patterns-model-tiering` pair · schema content 0011–0015 + view diff (AM-2-required-cli-dependency five) · design
 home + template · router · staff-engineer + qa-engineer personas · budget ledger · pre-registration ·
 CHANGELOG + manifests · strips. Splits into a second seat only if the files will not fit, and says so.
 **Re-audit:** the owning seat fixes; the same grader, resumed, reads only the delta; a second FAIL

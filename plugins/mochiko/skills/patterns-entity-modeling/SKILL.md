@@ -212,7 +212,7 @@ Density is not a gap; a gap is a missing entity, classification, or relationship
 
 **Lifecycle:** proposed (<key>)
 
-A registered account holder. **Traceability:** FR-001, FR-002, US#1
+A registered account holder. **Traceability:** `<spec-slug>` FR-001-<slug>, FR-002-<slug>, US-1-<slug>
 
 #### Attributes
 
@@ -229,14 +229,14 @@ A registered account holder. **Traceability:** FR-001, FR-002, US#1
 
 | Attribute | Level | Retention | Access | Deviations | Compliance |
 |-----------|-------|-----------|--------|------------|------------|
-| passwordHash | Restricted | Until account deletion; purge on delete | System-only; no user/admin read | — | NIST 800-63 (DS-001) |
+| passwordHash | Restricted | Until account deletion; purge on delete | System-only; no user/admin read | — | NIST 800-63 (`<spec-slug>` DS-001-<slug>) |
 | email | Confidential | Delete ≤ 30d after account closure | Users read own; admins read all | Log masking: j***@example.com | GDPR Art. 6, Art. 17 |
 
 ### Entity: Session
 
 **Lifecycle:** proposed (<key>)
 
-User authentication session. **Traceability:** FR-003, US#2
+User authentication session. **Traceability:** `<spec-slug>` FR-003-<slug>, US-2-<slug>
 
 #### Attributes
 

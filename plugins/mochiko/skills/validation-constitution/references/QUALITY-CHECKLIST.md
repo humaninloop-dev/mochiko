@@ -11,7 +11,7 @@ core + exactly the selected modules.
 - [ ] Every principle's ledger record has an Enforcement section
 - [ ] Every principle's ledger record has a Testability section
 - [ ] Every principle's ledger record has a Rationale section
-- [ ] Every principle carries a Trace stamp (`**Trace**: GI-XXX (…)` in the ledger; the region line's trace comment where the home is the region)
+- [ ] Every principle carries a Trace stamp (`**Trace**: GI-XXX-<slug> (…)` in the ledger; the region line's trace comment where the home is the region)
 - [ ] All MUST statements have enforcement mechanisms
 - [ ] All quantifiable criteria have specific thresholds
 - [ ] No vague language without measurable criteria
@@ -22,7 +22,7 @@ Governance holds the rule, never the product's instance of it: a principle passe
 checked from the code, the pipeline, or the stack without knowing what the product does for its
 users.
 
-- [ ] No surface restates a product's instance of a rule — its boundary list, its data's name, its behaviour toward its users; where a principle needs the instance, it points at the instance's home (GI-017: point, never restate)
+- [ ] No surface restates a product's instance of a rule — its boundary list, its data's name, its behaviour toward its users; where a principle needs the instance, it points at the instance's home (GI-017-pointer-only-region: point, never restate)
 - [ ] No elicited intent that failed the test is authored as a principle or flagged as a proposal — it sits in the synthesis's Handed off list under Deliberate exclusions
 
 Worked cases — a principle as elicited, and what the set may hold of it:
@@ -97,7 +97,7 @@ at the bottom of that module's file in `templates/constitution-modules/`:
 - [ ] Coverage thresholds are numeric (e.g., "≥80%", NOT "[THRESHOLD]%")
 - [ ] Security tools are named (e.g., "Trivy + Snyk", NOT "[SECURITY_COMMAND]")
 - [ ] Test commands are complete (e.g., "`pytest --cov`", NOT "`[TEST_COMMAND]`")
-- [ ] Trace stamps are real IDs (e.g., "GI-007", NOT "GI-XXX")
+- [ ] Trace stamps are real IDs (e.g., "GI-031-error-response-logging", NOT "GI-XXX-<slug>")
 
 ## Governance Quality
 

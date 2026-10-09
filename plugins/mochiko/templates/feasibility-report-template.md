@@ -24,7 +24,7 @@ findings:
   - {id: F1,
      taxonomy: cross-artifact | constraint-decision | nfr-impossibility,
      sev: Critical | Important,
-     at: "{{the conflicting pair, shown as A ↔ B with IDs (e.g. C-003 ↔ D-007)}}",
+     at: "{{the conflicting pair, shown as A ↔ B with IDs (e.g. `product` C-003-no-network-egress ↔ `product` D-007-hosted-vector-store)}}",
      gap: "{{the conflict, one line}}",
      impact: "{{the design consequence, one line}}",
      fix: "{{proposed resolution or escalation, one line}}"}

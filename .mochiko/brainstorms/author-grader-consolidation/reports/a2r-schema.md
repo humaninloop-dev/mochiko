@@ -12,10 +12,10 @@ regenerated derived-view diff (`.mochiko/schema-views/commands/setup.yaml`,
 `.mochiko/schema-views/skills/validation-primitive-edit.yaml`). Round-2 seat, fresh, authored
 nothing in the unit.
 
-Checklist run: the AM-2 five for schema content (governance ledger GI-004 as re-expressed at
+Checklist run: the AM-2-required-cli-dependency five for schema content (governance ledger GI-004-primitive-audit-ratchet as re-expressed at
 v3.0.0) — intent stated · anchor present where required · ID lifecycle right · floor and fail
 survival · register. Ruling fidelity against
-`.mochiko/brainstorms/author-grader-consolidation/record.md` D2, D3 (with its C1 fold), D4, D5,
+`.mochiko/brainstorms/author-grader-consolidation/record.md` D2-gate-input-grading, D3-gate-default-fail (with its C1 fold), D4, D5,
 D6, D7, D9, D11 and build-surface item 1.
 
 Evidence read: `plugins/mochiko/migrations/0008-gate-form.yaml` (whole file) ·
@@ -23,7 +23,7 @@ Evidence read: `plugins/mochiko/migrations/0008-gate-form.yaml` (whole file) ·
 `git diff HEAD -- .mochiko/schema-views/` for `commands/setup.yaml`, `common/common.yaml`,
 `skills/patterns-model-tiering.yaml` · `.mochiko/brainstorms/author-grader-consolidation/record.md`
 (Decisions D1–D11, Build surface, Evidence honesty, Open questions, Session trail) ·
-`.mochiko/memory/governance-ledger.md` (GI-004 block, AM-2 re-expression) ·
+`.mochiko/memory/governance-ledger.md` (GI-004-primitive-audit-ratchet block, AM-2-required-cli-dependency re-expression) ·
 `plugins/mochiko/migrations/README.md` (grammar, anchor rule, change ops) ·
 `.mochiko/schema-views/labels/skill-labels.yaml` · `.mochiko/schema-views/labels/command-labels.yaml`
 · `.mochiko/schema-views/skills/validation-constitution.yaml` (six-set comparator) ·
@@ -83,7 +83,7 @@ All six sections rendered individually (21 rules total, matching the budget line
 --section setup.sec.roles` renders 5 rules including `setup.validate-seat-form`; `--section
 setup.sec.boundaries` renders 7 including `setup.gate-loop-bound` resolved from the common block.
 
-AM-2 five:
+AM-2-required-cli-dependency five:
 
 - **Intent stated — PASS.** Header `intent:` is one folded line naming all four changes and their
   purpose: "Ship the primitive-edit gate form: the one-place FAIL loop bound in the command common
@@ -93,7 +93,7 @@ AM-2 five:
   supersession, a tombstone of protected content, or a lowering of protection
   (`plugins/mochiko/migrations/README.md`, "The anchor rule"). This migration performs none — its
   ops are four `mint-rule` and one `import-document`. A well-formed header anchor is present
-  anyway (`2026-09-19 author-grader-consolidation D7`), and fifteen of the twenty-five new rules
+  anyway ("`2026-09-19 author-grader-consolidation D7`"), and fifteen of the twenty-five new rules
   carry rule-level anchors naming their deciding decision.
 - **ID lifecycle right — PASS.** Every id is new and namespaced to its own document
   (`common.gate-loop-bound`, `setup.gate-loop-bound`, `setup.validate-seat-form`,
@@ -117,7 +117,7 @@ Ruling fidelity:
 
 - **D2, gate job and its one site — PASS.** `validation-primitive-edit.gate-job` states the binary
   the lead cannot ship past, scopes it to a shipped `plugins/mochiko/` primitive before the
-  `plugin.json` bump citing GI-004, and routes the input job to the review family and the
+  `plugin.json` bump citing GI-004-primitive-audit-ratchet, and routes the input job to the review family and the
   governance surface set to `mochiko:validation-constitution`.
 - **D3 posture, tamper-proof clause and pre-pass — PASS.** `default-fail` carries the posture by
   `extends:`; `tamper-proof-clause` states that a verdict with no evidence-read line is FAIL
@@ -125,7 +125,7 @@ Ruling fidelity:
   `mochiko-cli migrate validate --report` and the char-budget measurement as the grader's own run
   and adding that nothing the output asserts is re-derived by judgment.
 - **D3 judgment sets keyed by unit — PASS.** `unit-keyed` keys the criteria by unit kind and
-  `judgment-items-schema` carries the AM-2 five verbatim. The round-1 finding on
+  `judgment-items-schema` carries the AM-2-required-cli-dependency five verbatim. The round-1 finding on
   `judgment-items-pair` is fixed correctly: scaffold headings and order now sit on the judgment
   side, and the mechanical list is confined to what `migrate validate` actually asserts. I checked
   that inventory rather than assuming it — the crate carries a `FailSegment` code, pointer
@@ -197,7 +197,7 @@ line now carries the number in words. Both go stale the moment the number change
 single failure D4 exists to prevent, and the rule asserts "never restated" immediately before
 restating. The fix is two rewordings in
 `plugins/mochiko/migrations/0008-gate-form.yaml`, both additive to the log, then a re-stamp and a
-re-emit. Everything else on the AM-2 five and the other eight decisions holds.
+re-emit. Everything else on the AM-2-required-cli-dependency five and the other eight decisions holds.
 
 ## Notes of note
 

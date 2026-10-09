@@ -270,10 +270,11 @@ sections:
         class: must
         text: >-
           ID sequences are sequential per prefix, three-digit padded (C-, D-, IP-, INT-, DS-),
-          continuing the product file's own sequence at write time — the next free id after its
-          high-water mark, a `removed` stub's id counting as taken — never a feature-local run
-          from `001`. A landed id is never reused; a gap left when an abandoned run's reverted
-          entries were minted over is legal.
+          each written joined (`D-012-<slug>`) per the IDs section of
+          `templates/artifact-format.md`, continuing the product file's own sequence at write time
+          — the next free id after its high-water mark, a `removed` stub's id counting as taken
+          — never a feature-local run from `001`. A landed id is never reused; a gap left when
+          an abandoned run's reverted entries were minted over is legal.
       - id: authoring-technical-requirements.declaration-rows-complete
         labels: [artifact-grammar]
         class: must

@@ -106,7 +106,7 @@ Substituting `subprocess.run(["claude", "-p", ...])` and capturing the transcrip
 
 **What maps cleanly:** `ToolCorrectnessMetric` against `expected_tools` per golden, comparing declared tool expectations to tools actually called in the transcript. It's deterministic, it's meaningful for skill artifacts (did the skill cause the right reads/writes/subagent dispatches), and it would be a genuine gate. It's also roughly fifty lines to reimplement without deepeval.
 
-**Environment friction for this repo specifically:** dependency tree pulls `openai`, `grpcio`, `opentelemetry-api/sdk`, `posthog`, `pytest-xdist`, `textual`, `pyfiglet`. This is a markdown-plugin plus Rust-crate repo; deepeval would be a third toolchain, and GI-020 confines it to maintainer-side like the crate. Two default behaviors to know: PostHog telemetry is on (`DEEPEVAL_TELEMETRY_OPT_OUT=1` to disable), and `.env.local` then `.env` are read at import time (`DEEPEVAL_DISABLE_DOTENV=1` to disable).
+**Environment friction for this repo specifically:** dependency tree pulls `openai`, `grpcio`, `opentelemetry-api/sdk`, `posthog`, `pytest-xdist`, `textual`, `pyfiglet`. This is a markdown-plugin plus Rust-crate repo; deepeval would be a third toolchain, and GI-020-plugin-install-model confines it to maintainer-side like the crate. Two default behaviors to know: PostHog telemetry is on (`DEEPEVAL_TELEMETRY_OPT_OUT=1` to disable), and `.env.local` then `.env` are read at import time (`DEEPEVAL_DISABLE_DOTENV=1` to disable).
 
 ## 6. Confident AI platform coupling
 
@@ -125,7 +125,7 @@ Against adopting it:
 1. **Thin value-add for this system under test.** The hard 80% — launch a Claude Code session against a candidate artifact, capture the transcript, normalize it — is entirely on you. deepeval contributes a test runner and a judge wrapper.
 2. **Its gate is soft where you need it hard.** Judged scores are non-deterministic by the vendor's own documentation, the recommended remedy is `flaky=True` (report, don't fail), the deterministic alternative `DAGMetric` has an open determinism bug (#3055), and baseline-vs-current regression comparison is a SaaS feature.
 3. **Trace metrics don't reach a subprocess.** The agentic metrics that would matter most need `@observe` instrumentation inside the process under test. A Claude Code session is not that process. Replay stubs work but are scaffolding you own forever.
-4. **Toolchain cost.** A Python eval harness with a heavy dep tree, in a markdown-plus-Rust repo, maintainer-side only under GI-020.
+4. **Toolchain cost.** A Python eval harness with a heavy dep tree, in a markdown-plus-Rust repo, maintainer-side only under GI-020-plugin-install-model.
 5. **The checks that would genuinely gate don't need it.** Did the transcript read the right files, dispatch the right subagent, call the right tools, emit output matching a schema — all deterministic, all cheap in plain Python or Rust, none requiring an LLM judge.
 
 Worth borrowing regardless of the adoption call:

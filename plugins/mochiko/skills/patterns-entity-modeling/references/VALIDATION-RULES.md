@@ -107,9 +107,9 @@ When uniqueness spans multiple fields:
 
 | Rule ID | Fields | Condition | Error Message |
 |---------|--------|-----------|---------------|
-| BR-001 | startDate, endDate | endDate >= startDate | End date must be after start date |
-| BR-002 | minPrice, maxPrice | maxPrice >= minPrice | Max price must exceed min price |
-| BR-003 | quantity, maxQuantity | quantity <= maxQuantity | Quantity exceeds maximum |
+| BR-001-date-range-order | startDate, endDate | endDate >= startDate | End date must be after start date |
+| BR-002-price-range-order | minPrice, maxPrice | maxPrice >= minPrice | Max price must exceed min price |
+| BR-003-quantity-ceiling-check | quantity, maxQuantity | quantity <= maxQuantity | Quantity exceeds maximum |
 ```
 
 ### State-Dependent Rules

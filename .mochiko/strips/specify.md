@@ -4,7 +4,7 @@
 convert, `specify` among them: its rules are rendered at fire by `mochiko-cli` from the migration
 log the plugin carries at `plugins/mochiko/migrations/`, and the command reads no schema file for
 its rules. Ruling for every [v0.105.0] entry below:
-`.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended (delivery binding,
+`.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended (delivery binding,
 positive-confirmation halt, counts printed by the CLI) and D9 ("Wave 4: the remaining five
 commands"), the wave-open Q-B ruling recorded in that session's `wave3-plan.md` §9, the
 `DECISIONS.md` 2026-09-04 wave-3 row, and this wave's row. Pre-edit verbatim text:
@@ -13,7 +13,7 @@ commands"), the wave-open Q-B ruling recorded in that session's `wave3-plan.md` 
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/commands/specify.md`. -->
 
@@ -21,7 +21,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 - **Disposition:** superseded → the single CLI form `(rendered by mochiko-cli template spec)`
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** "to the spec template (rendered by `mochiko-cli template spec`, or its schema
   `plugins/mochiko/schemas/spec.yaml` Read raw when the binary is absent — the shipped schema
   is the first-class source of truth) with no placeholder tokens"
@@ -37,7 +37,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
   The reading grammar the block carried is now printed by the binary as the preamble's `legend`
   block; the `common.yaml` co-Read obligation is discharged in the render, which resolves every
   `extends: common.<slug>` stub before the model sees it (specify binds eight).
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended)
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended)
 - **Content:** verbatim —
 
   ```
@@ -90,7 +90,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- kind: fail · N rules`
   line under `pins` in the preamble block, and the `.md` now cites that pin and halts when a
   delivered fail-conditions end line disagrees with it, rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the count pins are
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the count pins are
   computed and printed by the CLI, never hand-pinned"; wave-3 Q-B, 2026-09-04)
 - **Content:** verbatim —
 
@@ -111,7 +111,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 <!-- Wave context: the schema-header runtime-kernel wave (v0.100.0) — shipped schema
 top-of-file header comments trimmed to runtime-essential content. Ruling for every
 [v0.100.0] entry below: `.mochiko/decisions/2026-08-28-schema-header-runtime-kernel.md`
-(a recorded supersession-by-amendment of command-content-schema D14) + `DECISIONS.md`
+(a recorded supersession-by-amendment of command-content-schema D14-nested-section-grammar) + `DECISIONS.md`
 2026-08-28 row. Pre-edit verbatim text: `git show e44b33d:plugins/mochiko/schemas/<file>`. -->
 
 ## [v0.100.0] `schemas/specify.yaml` header — full-grammar comment superseded by the runtime kernel
@@ -121,7 +121,7 @@ top-of-file header comments trimmed to runtime-essential content. Ruling for eve
   `command-schema-ontology` records (edit-time)
 - **Tier failed:** n/a — supersession by ruling (`2026-08-28-schema-header-runtime-kernel.md` R1)
 - **Content:** the ~68-line canonical D14 header, faithfully compressed: provenance paragraph
-  (D1/D7 citations, GI-020 note, narrative-stays-in-.md note) · full grammar block (section id ·
+  (D1/D7 citations, GI-020-plugin-install-model note, narrative-stays-in-.md note) · full grammar block (section id ·
   id minting/freeze/tombstones D11 · labels D8 · class incl. M3 audit note · nine-kind vocabulary ·
   when semantics · enforces · extends resolution · text/${var} D5 · provenance sidecar D16 ·
   pointer) · conditions/moments block explanations · referential-closure paragraph (D15, deixis,
@@ -132,7 +132,7 @@ top-of-file header comments trimmed to runtime-essential content. Ruling for eve
   vocabulary (the two semantics no `.md` restates). The `advisory` gloss is restated on the
   runtime axis ("guidance, not binding"), not carried verbatim — the ceremony-axis meaning
   ("may change without supersession ceremony") stays homed at
-  `.claude/rules/mochiko/primitive-edits.md` criterion 5 and content-schema D6.
+  `.claude/rules/mochiko/primitive-edits.md` criterion 5 and `command-content-schema` D6-rule-block-grammar.
 - **Consumers assessed:** the command's own `.md` (self-carries the reading grammar; unchanged) ·
   `.claude/skills/converting-command-to-schema/SKILL.md` (updated this wave to mint the kernel) ·
   `scripts/check-command-schema.py` (does not read header comments; post-edit `--all` PASS,
@@ -230,13 +230,13 @@ over the `.md` + schema pair: a closed `kind:` set with `constraint` as the omit
 single-homed out of `text` (D3), a per-schema `moments:` block (D4), `enforces:` on every
 `kind: fail` node (D6), and `extends: common.<slug>` binding the shared blocks in
 `plugins/mochiko/schemas/common.yaml` (D8 — a narrow supersession of command-content-schema
-D3). Ruling for every [v0.98.0] entry below:
+D3-no-shared-library). Ruling for every [v0.98.0] entry below:
 `.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as amended → `DECISIONS.md`
 2026-08-27 command-schema-ontology row. Clause inventory (the audit referent): that session's
 `conversion-inventory.md`. Pure additions ride the decision row and are not entered here —
 the `kind:` lines, the `conditions:` and `moments:` blocks, the C4 floor-semantics comment,
 the `.md` Rules-block grammar breath, and the four **DECLARE**-disposition `when:` fields
-(D3 as amended at build anomaly J-1: `spec.map-obligated-read` · `spec.missing-map-surfaced`
+(D3 as amended at build anomaly J-1-subject-carried-conditions: `spec.map-obligated-read` · `spec.missing-map-surfaced`
 · `spec.governance-region-absent` · `spec.whole-feature-prototype`, each shape-gated by its
 own subject noun, so `when:` is added and the text is unchanged — nothing left, nothing to
 record). -->
@@ -349,7 +349,7 @@ record). -->
   `plugins/mochiko/schemas/common.yaml`; all four stubs keep their `spec.*` IDs as the
   citable IDs. Specify is the only command binding all four blocks.
 - **Tier failed:** n/a — supersession by ruling (record D8 as amended by C2 and C3 — a
-  narrow supersession-by-ruling of command-content-schema D3, legal only for text that is an
+  narrow supersession-by-ruling of command-content-schema D3-no-shared-library, legal only for text that is an
   exact duplicate across three or more command schemas; `DECISIONS.md` 2026-08-27. Member
   counts at the bar: `register` 5 · `no-git-mutations` 5 · `acceptance-plain-text` 3 ·
   `transport-floor` 3 — inventory section F.0/F.1).
@@ -462,7 +462,7 @@ Assessed, ruled resolvable, kept; nothing left the rule, so no entry is owed. --
 - **Disposition:** superseded → `plugins/mochiko/commands/specify.md`: the opener's
   `$ARGUMENTS` handling into `## Adaptive Goal Protocol` step 1 (Entry, N1), the `## Goal`
   body verbatim into step 2; the file's section order re-laid to the canonical D2 order.
-- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D1 as
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D1-canonical-command-scaffold as
   narrowed at review C2, D2, N1; the F4 order drift; `DECISIONS.md` 2026-08-27 row).
 - **Content:** verbatim — "**Goal:** turn `$ARGUMENTS` (the feature description) into an
   accepted spec workspace. Empty → ask the user for the description." · the heading
@@ -492,8 +492,8 @@ Assessed, ruled resolvable, kept; nothing left the rule, so no entry is owed. --
   reserved to the user" to `spec.sec.reserved`; "selection" splits — the recommendation duty
   to `roles`, the selection gate to `reserved`. The bindings gloss "paths, templates, and
   skill bindings" carries whole onto `spec.sec.tools`.
-- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D3,
-  D4, D5; `DECISIONS.md` 2026-08-27 row).
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D3-section-set-unification,
+  D4-six-set-vocabulary, D5-section-breadth-invariant; `DECISIONS.md` 2026-08-27 row).
 - **Content:** verbatim — "run's binding rules, nested in three sections, each addressable by
   its section ID: `spec.sec.harness` (seat wiring, the intent stage and capability frame,
   lockstep prototyping, derivation and selection, independence, decisions reserved to the
@@ -580,9 +580,9 @@ refinement) → `DECISIONS.md` 2026-08-26 command-content-schema row. -->
   dangling sidecar keys a finding, both negative-tested; sidecar absent degrades to a
   warning for plugin-standalone checkouts); the conversion skill's step 7 re-pointed; the
   pair-form audit criteria in `.claude/rules/mochiko/primitive-edits.md` gained the sidecar
-  home. The sidecar is repo-side and never shipped — plugin install unchanged (GI-020).
+  home. The sidecar is repo-side and never shipped — plugin install unchanged (GI-020-plugin-install-model).
 
-<!-- Wave context: the command-content-schema D10 rollout wave (v0.95.0) —
+<!-- Wave context: the command-content-schema D10-per-command-rollout rollout wave (v0.95.0) —
 `commands/specify.md` splits into a narrative `.md` (frontmatter · Goal statement and
 goal-state prose · the obligated schema read · the label-keyed Not-done line) and
 `plugins/mochiko/schemas/specify.yaml` (mint-once `spec.*` rules at D12 grain under three
@@ -590,11 +590,11 @@ goal-state prose · the obligated schema read · the label-keyed Not-done line) 
 step-0 referent is the shipped v0.94.0 text, frozen at
 `.mochiko/brainstorms/command-content-schema/referents/specify-shipped-v0.94.0.md`; meaning
 survives whole, no simplification pass. Ruling for every [v0.95.0] entry below:
-`.mochiko/brainstorms/command-content-schema/record.md` (D2 · D6 as amended by D14/D15 ·
+`.mochiko/brainstorms/command-content-schema/record.md` (D2-rules-prose-split · D6-rule-block-grammar as amended by D14-nested-section-grammar/D15-rule-text-closure ·
 D10's per-command rollout ruling, Session trail "D10 rollout ruling 2026-08-26" · D12 ·
 build item 4's M4 verbatim rule) → `DECISIONS.md` 2026-08-26 command-content-schema row.
 Every Content field quotes the SHIPPED v0.94.0 text — what actually left the file (the
-GI-006 referent); the schema's wording lives in `specify.yaml`, never restated here. -->
+GI-006-primitive-edit-traceability referent); the schema's wording lives in `specify.yaml`, never restated here. -->
 
 ## [v0.95.0] `## Harness` — the whole section moves to the schema (D2/D10)
 
@@ -808,7 +808,7 @@ given.
 - **Disposition:** superseded → the same Bindings line pointing at `/mochiko:implement`, which
   is now the single downstream run and carries the sufficiency check at its entry.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1: `/mochiko:plan` retires as a
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires: `/mochiko:plan` retires as a
   command; implement absorbs a conditional design phase behind a sufficiency check).
 - **Content (superseded text, verbatim):**
 
@@ -829,7 +829,7 @@ given.
 - **Disposition:** superseded → the same Harness line naming `/mochiko:feature`'s desk as the
   only door that mints an epic.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D4: "Plan's inline epic mint door
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D4-planless-homes-gates: "Plan's inline epic mint door
   (declare-and-contest from a bare feature list) dies with it — epic minting is desk-only
   (`/mochiko:feature`), recorded supersession").
 - **Content (superseded text, verbatim):**
@@ -877,7 +877,7 @@ changed. Schema data files authored by the parallel schemas seat; paths are fixe
   **feature-entry** and **features-index** (Feature-map craft binding).
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Template-schema CLI
   ruled (D1–D11 as amended at review)" row; record
-  `.mochiko/brainstorms/schema-based-template-guidance/record.md`, **D1** (a single plugin CLI is
+  `.mochiko/brainstorms/schema-based-template-guidance/record.md`, **D1-single-plugin-cli** (a single plugin CLI is
   the guidance authority, static `.md` exemplars retired) + **D8** (schemas ship as structured data
   files, the binary renders over them, raw Read is the first-class fallback); build plan §5 re-point
   inventory)
@@ -908,7 +908,7 @@ Command stays v8. -->
 
 ## [v0.68.0] Stories-first derivation superseded by frame-first hypothesis + post-stories confirm
 - **Disposition:** superseded → the reworded Harness block "**Confirm frame, cut work rows, filter (after stories)**" (the PM confirms/adjusts the intent-stage capability frame — stories win conflicts — then cuts work rows grouped per capability per the extend-vs-mint tests), the new pure-addition "**Capability frame at intent (before stories)**" bullet (D5.1 — frame as nouns+verbs hypothesis, stories win, greenfield sources), and the intent-stage stub clause reworded to derive frame-first.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-13 "PM role & feature derivation ruled (D1–D12)"; record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, D5 + the D6 per-clause inventory: "specify.md — derive-after-stories clause *amended* (frame-first + confirm, D5)"; feature-map-layer D7 stories-first *amended* to frame-first-hypothesis per the same inventory)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-13 "PM role & feature derivation ruled (D1–D12)"; record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, D5 + the D6 per-clause inventory: "specify.md — derive-after-stories clause *amended* (frame-first + confirm, D5)"; feature-map-layer D7-stories-first-derivation stories-first *amended* to frame-first-hypothesis per the same inventory)
 - **Content (superseded, verbatim):**
   - Harness block: "**Derivation + filter after stories.** The `product-manager` seat, via `mochiko:authoring-feature-map`, derives proposed features and deltas from the drafted stories against the actual map files, maps every SC-XXX to its verifying feature, and runs the filter — a story that earns no place on the map is rejected with the why recorded in its story file, never silently dropped."
   - Intent-stage stub clause: "derivation ignores stub text and derives from the stories; a stub matching a derived feature is confirmation"
@@ -919,7 +919,7 @@ Command stays v8. -->
 
 ## [v0.68.0] Leaf/feature selection superseded by work rows grouped per capability
 - **Disposition:** superseded → the reworded "**Selection.**" block (the user picks work rows, grouped per capability, row-level dependency order, the per-capability completeness view of pending rows), the Goal's "**Feature Selection**" description (the confirmed frame + derived work rows grouped per capability + per-capability completeness view), and the reserved-to-user item "**the selection** (which work rows build now)".
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-13 "PM role & feature derivation ruled (D1–D12)"; record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, D2 (durable capabilities + transient pending/live work rows; completeness view) / D5.2 (selection re-key) / D7 (selection picks work rows, row-level ordering) + the D6 inventory "leaf selection *amended* (rows grouped per capability, D7)")
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-13 "PM role & feature derivation ruled (D1–D12)"; record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, D2-capabilities-work-rows (durable capabilities + transient pending/live work rows; completeness view) / D5.2 (selection re-key) / D7-capability-batch-pipeline (selection picks work rows, row-level ordering) + the D6-leaf-nesting-superseded inventory "leaf selection *amended* (rows grouped per capability, D7)")
 - **Content (superseded, verbatim):**
   - Selection block: "**Selection.** The user picks which derived features build now, from the PM's selection card — recommendation, dependency order, the deferred-SC list, and, per parent capability in the spec's territory, the completeness ledger (delivered/undelivered leaves, parked stubs, kills), visible at the moment of choice."
   - Goal: "a **Feature Selection** section (derived features, filter verdicts with reasons, the user's selection with its deferred-SC list)"
@@ -931,7 +931,7 @@ Command stays v8. -->
 
 ## [v0.68.0] Acceptance-batch map-write, story-homing, and derivation vocabulary re-keyed to capabilities + work rows
 - **Disposition:** superseded → the re-keyed Goal / Not-done / Independence / Next-step / craft lines: capabilities land or extend and work rows attach (pending; selected rows flip `live`, the capability `in-flight` while live rows exist); a story homes to exactly one work row under a capability; the stress-test grades capability/row derivation; next step is one run per capability-batch in the rows' dependency order.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-13 "PM role & feature derivation ruled (D1–D12)"; record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, D2 (map object model; pending/live rows) + D6 (parent/leaf superseded as re-typing + transience) + D7 (capability-batch, row-level ordering))
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-13 "PM role & feature derivation ruled (D1–D12)"; record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, D2-capabilities-work-rows (map object model; pending/live rows) + D6-leaf-nesting-superseded (parent/leaf superseded as re-typing + transience) + D7-capability-batch-pipeline (capability-batch, row-level ordering))
 - **Content (superseded, verbatim):**
   - Goal map-write: "entries land (`proposed`; selected ones flip `in-flight`), deltas attach"
   - Goal stress-test: "spec + stories + derivation + map delta in one pass"
@@ -947,7 +947,7 @@ Command stays v8. -->
 
 ## [v0.58.0] Delivery Slices machinery out — feature derivation, selection, and the map write in
 - **Disposition:** superseded → the feature-map-layer rebuild of this command: the Intent stage gains the obligated map-read (D7 rider, D12); a derivation + filter stage (`product-manager` seat via `mochiko:authoring-feature-map`) follows stories; **Selection replaces Delivery Slices** (user-ruled, deferred-SC list on the card per D21); the workspace restructures per D10 (`stories/US-*.md`, specs `index.md`); the map write batch executes at spec acceptance per D20; next step is per-feature `/mochiko:plan` per D17.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md` — D4 retires graduation slices, D18/D22 re-key the invariants onto features inside `authoring-feature-map`)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md` — D4-slices-leave-pipeline retires graduation slices, D18-graduation-contract-rekey/D22-foundation-ordering-role re-key the invariants onto features inside `authoring-feature-map`)
 - **Content (superseded lines, verbatim):**
   - description: `Turn a feature description into an accepted, independently stress-tested spec.md — intent-governed, delivery-sliced.`
   - Goal deliverable clauses: `prioritized P1/P2/P3 user stories` (in-`spec.md` stories; now `stories/US-*.md` files) · `and a **Delivery Slices** section (a graduation-slice decomposition, or the single line "Single slice — whole spec.")` · acceptance covering `intent, requirements, experience, and slicing together`.
@@ -971,7 +971,7 @@ Command stays v8. -->
 
 ## [v0.49.0] Sparse-input enrichment line superseded by the intent stage
 - **Disposition:** superseded → the Harness's "Intent stage first" block (adaptive-probe agenda via `analysis-iterative`: scope · delivery · depth-rigor · constraints · out-of-scope; one-screen user-confirmed synthesis governing brief/slicing/rigor, landing as the spec's Intent section)
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D7+D8)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D7-specify-intent-stage+D8-intent-spec-section)
 - **Content:** "Sparse input (Who / Problem / Value unclear) → enrich it yourself, inline, via `mochiko:analysis-iterative` before authoring starts." and the Goal/Bindings tails "or enrich from scratch with their consent" · "Next step: /mochiko:plan (or /mochiko:slice for a multi-story spec)".
 - **Kept deliberately:** the rest of the v8 harness whole (plan approval · independence · governance-region surfacing · no-git-mutations · plain blocking acceptance). Command grew ~15 lines against the v8 ~30–50 guideline — accepted: the intent stage and Delivery Slices additions are ruled scope, not choreography creep.
 - **Consumers assessed:** router entry row · ARCHITECTURE.md Specify section · spec-template (co-edited).
@@ -1169,7 +1169,7 @@ is cold by design.
 - **Consumers assessed:** none — a command has no downstream consumers.
 
 ---
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -1185,7 +1185,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 ## [v0.44.0] KEPT survivor's evidence pointer (lead-inline enrichment triage)
 - **Disposition:** superseded → the pointer lives here; the `KEPT:` marker and its claim stay in
   the command per the amended P9.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above), executed under the lead's stage-A ruling (option (a)).
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above), executed under the lead's stage-A ruling (option (a)).
 - **Content (verbatim, the pointer only):**
 ```
  — evidence: `.mochiko/strips/specify.md`
@@ -1455,7 +1455,7 @@ precedent.
 
 ### R21 light-site measurement — the light half of the estimate closes
 
-**R21's obligation** (`lead-owned-process-flexibility` OQ-1, verify N3, narrowed by **A3** to the
+**R21's obligation** (`lead-owned-process-flexibility` OQ-1-default-carriers-encoding, verify N3, narrowed by **A3** to the
 estimate alone) named *one light and one heavy run*. implement took the heavy site at this same
 wave; specify is the light site — a twice-stripped entry command (v0.13.0 and v0.31.0) with the
 library's smallest protected surface. Figures are `wc`-measured after the last edit. **The one
@@ -1560,11 +1560,11 @@ paragraph is updated to say so.
 - **Consumers assessed:** five-command recovery — see the shared consumer list in the `strips/plan.md` v0.37.0 entry; specify/brainstorm remove attribution only, plan/implement/slice keep a detected-feature confirm.
 - **Protected-set note:** as recorded in the plan entry — record §7's protection premise for this recovery is spent now the bug is resolved; deliberate supersession, not a check-14 re-drop.
 
-# v0.35.0 — the goal-shape rebuild wave (CS-D10 step 4)
+# v0.35.0 — the goal-shape rebuild wave (`command-succinctness-strip` D10-pilot-first-execution step 4)
 
 **Wave context:** command goal-shape rebuild, **step 4 of 4** — the five-command wave after the
 audit-PASSed plan pilot (design: `.mochiko/brainstorms/command-succinctness-strip/record.md`,
-CS-D3/D4/D5 + D8 + D10; `DECISIONS.md` 2026-07-30 rows). Authored against **shape v5** with the
+`command-succinctness-strip` D3-goal-shaped-documents/D4-flow-narrative-removal/D5-goal-command-anatomy + D8 + D10; `DECISIONS.md` 2026-07-30 rows). Authored against **shape v5** with the
 obligated `loop-discipline` read **retained** — the drop is deferred to a named live-run trigger
 (pilot-checkpoint ADR `.mochiko/decisions/2026-07-30-goal-shape-pilot-checkpoint.md`), so a v5
 command that omits it is non-conformant, not early. specify declares the **in-loop critique
@@ -1586,7 +1586,7 @@ arithmetic (`round = 1`, `round += 1`).
 
 **Measured: 1,273 → 1,100 words (−13.6%), 9,390 → 7,901 B (−15.9%)** — `wc`-measured after the
 re-derivation fix round landed, per the pilot's standing habit. Against the pre-wave measured floor
-of 991 w: **+109 w (+11.0%)** — over, not under, which is the safe side of CS-D8 (landing materially
+of 991 w: **+109 w (+11.0%)** — over, not under, which is the safe side of `command-succinctness-strip` D8-kept-line-regrading (landing materially
 *under* a floor row would signal dropped content). The overage is accounted, measured not estimated:
 the P4 not-done states are new v5 content the floor row's arithmetic did not carry (**44 w**), the
 Recovery table's `accepted` row absorbed the whole Finalize paragraph rather than dropping it
@@ -1604,9 +1604,9 @@ true: (a) charged per run, the goal-shape rebuild is
 net-negative on an already-twice-stripped light command — specify was cut at v0.13.0 and again at
 v0.31.0, so there was little narration left to delete; (b) charged once across the surface, the
 shared floor is a surface-wide investment that plan's −19,749 B alone repays roughly six times
-over. Not a reason to cut protected content (CS-D8 forbids it), but the wave ceremony should have
+over. Not a reason to cut protected content (`command-succinctness-strip` D8-kept-line-regrading forbids it), but the wave ceremony should have
 the datapoint: **the anatomy pays for itself on heavy commands and is byte-neutral-to-negative on
-light ones.** Conformance, not a percentage, is CS-D2′'s success criterion — that is what this file
+light ones.** Conformance, not a percentage, is `command-succinctness-strip` D2-strip-success-criterion′'s success criterion — that is what this file
 is delivered against.
 
 **Correction to a pilot figure:** plan's v0.34.0 note records the shared read-floor delta as
@@ -1642,12 +1642,12 @@ floor would sit at 145/126, a FAIL. Second live datapoint for confirming the ter
   `accepted` row + **Report hygiene** + the KM binding. The `Contract` section's four clauses →
   **Goal** (done-condition + not-done states), the **Seats & checks** table and its validation-model
   line (producer↔validator), **Constraints** (bounds + the four gate lines).
-- **Tier failed:** n/a — supersession by ruling (**CS-D3** condition-first documents · **CS-D4** the
-  connective procedure is deleted and what survives is *restructured* · **CS-D5** the five-block
+- **Tier failed:** n/a — supersession by ruling (**`command-succinctness-strip` D3-goal-shaped-documents** condition-first documents · **`command-succinctness-strip` D4-flow-narrative-removal** the
+  connective procedure is deleted and what survives is *restructured* · **`command-succinctness-strip` D5-goal-command-anatomy** the five-block
   anatomy and the Contract-as-document inversion).
 - **Content:** five `## `-level sections of ordered procedure and appendix (`Recovery` is the sixth
   and survives, restructured). Not reproduced verbatim — every *rule* inside them is resolved
-  individually in the CS-D8 ledger below, and the deleted remainder is connective narration
+  individually in the `command-succinctness-strip` D8-kept-line-regrading ledger below, and the deleted remainder is connective narration
   (`initialize round = 1`, "loop to produce", "then apply the bounds", the round-arithmetic sentence,
   and the lead's job description restated per section). Recoverable in full at
   `git show 7898d86:plugins/mochiko/commands/specify.md`.
@@ -1661,7 +1661,7 @@ floor would sit at 145/126, a FAIL. Second live datapoint for confirming the ter
     declaration survives in `description:` — which is also what makes the file grep-detectable as
     team-form for check 1.
   - "Transport mechanics + the addressability check: `templates/agent-dispatch.md` (Seat transport)"
-    → **superseded**: at v5 Seat transport was absorbed *into* `command-shape.md` Layer 2 (CS-D6),
+    → **superseded**: at v5 Seat transport was absorbed *into* `command-shape.md` Layer 2 (`command-succinctness-strip` D6-read-chain-scope),
     so this pointer named a section that no longer exists in the file it points at. A stale
     cross-reference, retired rather than re-aimed — the shape home is already an obligated read, so
     re-aiming it would restate a read the preamble mandates.
@@ -1709,9 +1709,9 @@ floor would sit at 145/126, a FAIL. Second live datapoint for confirming the ter
   branch to be **named**, not the other branch to be denied, so "unsized by design" carries the
   declaration with no token to trip on.
 
-## [v0.35.0] CS-D8 survivor re-grade ledger — every protected line resolved
+## [v0.35.0] `command-succinctness-strip` D8-kept-line-regrading survivor re-grade ledger — every protected line resolved
 
-CS-D8 (extended by user ruling U4) protects two sets: `KEPT:`/Tier-2-evidenced lines, **and** every
+`command-succinctness-strip` D8-kept-line-regrading (extended by user ruling U4) protects two sets: `KEPT:`/Tier-2-evidenced lines, **and** every
 line traceable to a `DECISIONS.md` row. specify carries **one live `KEPT:` entry** (the v0.13.0
 enrichment-boundary survivor, re-graded in full below) plus the *Kept deliberately* field of the
 v0.31.0 supersession and the DECISIONS row trace. Grepped before any cut. **All 15 rows survive,
@@ -1767,8 +1767,8 @@ specify port's rehome ruling (`.mochiko/transform/specify/reconcile.md`).
 | The `review-*` family boundary — a reviewer produces **lead-adjudicated input**, never the authoritative grade | setup-adversarial-review row (the `validation-*`/`review-*` split) | Validation-model line, once (deduped to a single site at v0.13.0 and still single) |
 | Governance region is a **prerequisite, surfaced never auto-resolved**; `paths`-scoped rules do not fire for from-scratch authoring, so the producer gets a one-line obligated read | constitution-native-surfaces + governance-injection-probe rows | **G1** (surface + the two exits) and Bindings' **Governance brief** (the obligated-read line) |
 | A knowledge gap routes to a native `Explore` pass — the cheap-explorer avenue, never the user | model-tiered-seats row | **G2** and Bindings' **Fact route** |
-| KM landing ritual + invariants under fix-on-sight, naming the **project copy** `.mochiko/memory/knowledge-management.md` | OD-D6 (subtractive landing) + the CS step-1 adjudication making the KM reference mandatory in KM-carrying commands | Bindings' **KM landing**; check 1's KM member greps the project path, and it is the project path |
-| New domain terms minted into `GLOSSARY.md` | OD-D10 (glossary joins core, `Contested`) | Bindings' KM landing |
+| KM landing ritual + invariants under fix-on-sight, naming the **project copy** `.mochiko/memory/knowledge-management.md` | `operating-docs-maintenance` D6-maintenance-carrier-floor (subtractive landing) + the CS step-1 adjudication making the KM reference mandatory in KM-carrying commands | Bindings' **KM landing**; check 1's KM member greps the project path, and it is the project path |
+| New domain terms minted into `GLOSSARY.md` | `operating-docs-maintenance` D10-module-admission-rule (glossary joins core, `Contested`) | Bindings' KM landing |
 | Round reports cleaned by default; **never offer to delete the deliverable** | current body | **Report hygiene** invariant |
 | Uncertainty rides the spec template's **Assumptions / Open Questions**, not confidence marks (the shape's producer-authored branch) | current body (P11) | Bindings' **Uncertainty carrier** |
 
@@ -1780,7 +1780,7 @@ specify's gate set countable at **G=4**.
 
 ## [v0.31.0] Lead-relayed gap lists superseded by the in-loop mesh (shape v4 conforming edit)
 - **Disposition:** superseded → `templates/command-shape.md` v4 (Layer 2 — "Independence by structure" + "In-loop mesh"). Rewritten in place: the critic is still cold-spawned at first critique, and the producer↔critic peer edge is declared on the roster.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/team-method-vs-command-shape/record.md` **D1**, scoped by **D2**), not a minimalism strip. Permanent no-contact was the falsified claim; cold *arrival* survives as a property of the stage.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/team-method-vs-command-shape/record.md` **D1-mesh-routing-default**, scoped by **D2-in-loop-mesh**), not a minimalism strip. Permanent no-contact was the falsified claim; cold *arrival* survives as a property of the stage.
 - **Content (superseded, verbatim):**
   - producer seat: "Round > 1 is a message to the same seat carrying the critic's gap list verbatim"
   - critic seat: "spawned **cold at first critique**, never in contact with the producer"

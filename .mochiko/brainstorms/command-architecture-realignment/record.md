@@ -1,8 +1,8 @@
 # Command Architecture Realignment — Decision Record
 
 **Status:** accepted (2026-08-02) — un-reviewed bare session; no cold review ordered, no
-recorded waiver beyond the user's "settled" acceptance · **D1 amended in part 2026-10-06,
-brainstorm only** — three counted limits return (`brainstorm-target-state` D22; built 2026-10-06
+recorded waiver beyond the user's "settled" acceptance · **D1-choreography-leaves-commands amended in part 2026-10-06,
+brainstorm only** — three counted limits return (`brainstorm-target-state` D22-august-ruling-guardrails; built 2026-10-06
 at v0.117.0)
 **When:** 2026-08-02
 **Form:** bare session (direct `analysis-iterative` invocation; lead + user)
@@ -27,7 +27,7 @@ not fit for purpose.
 - Current anatomy (shape v7/v8 lineage, `command-succinctness-strip` CS-D1–D10 +
   `lead-owned-process-flexibility`): five blocks — Goal · Seats & checks · Constraints ·
   Bindings · Recovery. "The Contract becomes the document." Runtime `/goal` was **rejected
-  as additive** at CS-D1; the ruling was goal-*shaped documents*, not the `/goal` feature.
+  as additive** at `command-succinctness-strip` D1-loaded-surface-scope; the ruling was goal-*shaped documents*, not the `/goal` feature.
 - Shape v7 already moved rigor to lead judgment: stated default pipeline, lead departs at
   will, departures recorded, non-waivable floor (user gates · cold-graded folds ·
   self-declared bounds · departure trail).
@@ -69,7 +69,7 @@ that the goal needs; achieving the goal within that harness is the lead's judgme
 
 ## Decisions
 
-### D1 — Commands become goal + harness; all choreography dies in place `Contested`
+### D1-choreography-leaves-commands — Commands become goal + harness; all choreography dies in place `Contested`
 A command carries (a) the goal — a verifiable completion condition — and (b) the harness
 required for that goal: the non-waivable floor the lead operates under. Stage/seat
 choreography, default pipelines, recovery tables, and procedural detail are deleted, not
@@ -92,7 +92,7 @@ User: **holds, deliberate** — and adds the harness should heavily rely on **pl
 (agent-teams doc: teammate plan approval — teammate works read-only until the lead approves
 its plan; lead approves autonomously, user criteria can steer it).
 
-### D2 — Harness keep/drop set ruled; plan approval replaces procedural control `Confident`
+### D2-harness-keep-drop — Harness keep/drop set ruled; plan approval replaces procedural control `Confident`
 Keep in the command: goal condition (measurable end state + stated check + not-done list) ·
 decisions reserved to the user, one line each · author≠grader, one sentence · team-transport
 requirement, one sentence · bindings (artifact paths + templates). Drop, dying in place:
@@ -110,7 +110,7 @@ Options: A universal (every seat) · B producers only (graders/fact-finders exem
 C replaces grading (rejected framing — conflicts with the kept author≠grader line).
 User: **B**, per the lead's recommendation.
 
-### D3 — Plan approval for producer seats only `Confident`
+### D3-producer-seat-approval — Plan approval for producer seats only `Confident`
 Any seat that writes artifacts or code spawns with plan approval required and works
 read-only until the lead approves its plan; grading and fact-finding seats are exempt.
 Plan approval controls work before it is spent; author≠grader checks it after it exists —
@@ -118,9 +118,9 @@ two different failure modes, both kept, approval spent only where mistakes cost 
 
 **Q5 — rollout: pilot-first or one wave?**
 Lead recommended A (pilot on `plan`, live-run, then convert the five) — the new shape's bet
-is unproven and pilot-first is the CS-D10 precedent. User: **B — one wave, all six.**
+is unproven and pilot-first is the `command-succinctness-strip` D10-pilot-first-execution precedent. User: **B — one wave, all six.**
 
-### D4 — One conversion wave across all six commands `Contested`
+### D4-single-conversion-wave — One conversion wave across all six commands `Contested`
 All six commands are rebuilt to the goal+harness shape in a single wave — one ceremony, one
 audit round. Marked `Contested`: the lead recommended pilot-first; the user ruled the wave.
 Risk accepted: a shape defect discovered post-wave is six commands wide.
@@ -128,23 +128,23 @@ Risk accepted: a shape defect discovered post-wave is six commands wide.
 **Q6 — the v8 anatomy skeleton.** Lead proposed Goal · Harness · Bindings (~30–50 lines per
 command), goals rewritten in artifact-and-acceptance terms with no stage/gate vocabulary.
 User's response raised one objection: **"I don't want to discount subagents"** — reopening
-the team-transport line kept at D2.
+the team-transport line kept at D2-harness-keep-drop.
 
 **Q7 — how transport-neutral?**
 Options: A fully neutral (no transport line; lead picks teammates vs subagents per seat,
 per the platform doc's own split) · B team default with subagents allowed (soft steer).
 User: **A.**
 
-### D5 — Transport-neutral harness; the team-transport line dies `Confident`
+### D5-transport-neutral-harness — Transport-neutral harness; the team-transport line dies `Confident`
 The harness carries no transport mandate. The lead chooses per seat: teammates where seats
 must talk to each other or the user needs to address them; subagents for focused
-report-back work (cold grades, fact-finding). Amends D2 within this session: the kept
+report-back work (cold grades, fact-finding). Amends D2-harness-keep-drop within this session: the kept
 "team-transport requirement, one sentence" line is dropped from the keep-set. Note: the two
 documented transport failures (v0.9.1, v0.38.0 forensics) were failures to satisfy a
 *mandate* that teams form; with the mandate gone, that defect class dissolves — a subagent
 is now a legitimate choice, not a silent breach.
 
-### D6 — Shape v8 anatomy: Goal · Harness · Bindings `Confident`
+### D6-shape-v8-anatomy — Shape v8 anatomy: Goal · Harness · Bindings `Confident`
 Three blocks. **Goal**: measurable end state + stated check + not-done list, written in
 artifact-and-acceptance terms only — no stage or gate vocabulary (existing Goal blocks
 referencing G-numbers are rewritten). **Harness**: plan approval for producer seats ·
@@ -161,20 +161,20 @@ supersession-by-ruling, this record being the ruling; strip notes will be large 
 multiple prior DECISIONS rows gain supersession annotations. User: **"settled."**
 
 Streak note: Q4/Q5/Q7 were three consecutive single-letter rulings; flagged at wrap. Two of
-the three went against or past the lead's recommendation (D4 wave-over-pilot, D5 fully
+the three went against or past the lead's recommendation (D4-single-conversion-wave wave-over-pilot, D5-transport-neutral-harness fully
 neutral), so the streak was read as engagement, not passive acceptance — no re-deal forced.
 
 ## Supersessions this ruling causes (annotate at build)
 
-- CS-D1–D10 five-block anatomy (`command-succinctness-strip`) → D6 three-block anatomy.
+- CS-D1–D10 five-block anatomy (`command-succinctness-strip`) → D6-shape-v8-anatomy three-block anatomy.
 - Shape v7 stated-default-pipeline + weight card + departure trail + counted bounds
-  (`lead-owned-process-flexibility`) → D1/D2.
-- TC-D1–D6 seat-lifecycle cadence carriers in commands → D2 (lines die in place; the
+  (`lead-owned-process-flexibility`) → D1-choreography-leaves-commands/D2-harness-keep-drop.
+- TC-D1–D6 seat-lifecycle cadence carriers in commands → D2-harness-keep-drop (lines die in place; the
   session-record rationale stays historical).
-- Team-transport mandate rows (`setup-v3-team-defect` D1 · `plan-run-transport-forensics`
+- Team-transport mandate rows (`setup-v3-team-defect` D1-shared-spawn-recipe · `plan-run-transport-forensics`
   probe · the "Hard-require agent teams, no fallback" standing bet, `Contested` 2026-07-04)
-  → D5 transport-neutral.
-- Recovery tables, seat tables, KM-landing command steps across all six commands → D2.
+  → D5-transport-neutral-harness transport-neutral.
+- Recovery tables, seat tables, KM-landing command steps across all six commands → D2-harness-keep-drop.
 
 ## Build obligations
 
@@ -188,7 +188,7 @@ neutral), so the streak was read as engagement, not passive acceptance — no re
 
 ## Build (2026-08-02, plugin v0.48.0)
 
-Built same day, one wave per D4. Six commands rewritten to Goal · Harness · Bindings
+Built same day, one wave per D4-single-conversion-wave. Six commands rewritten to Goal · Harness · Bindings
 (45–73 lines; 346 total from 1,249). Six independent author≠grader audits
 (`mochiko:validator`, each against the command's own text + the strip note's kept-set):
 specify · setup · plan PASS clean; brainstorm FAIL→fix→PASS (lead's-pen boundary + pipeline
@@ -200,21 +200,21 @@ restored to the reserved set). Plan's brownfield codebase-analysis surfacing add
 pure addition on an audit advisory.
 
 **Wave-level lead rulings at the audits (recorded so future auditors don't re-flag):**
-- Entry lines home in **Harness** on all six commands — D6's "entry conditions" assignment
+- Entry lines home in **Harness** on all six commands — D6-shape-v8-anatomy's "entry conditions" assignment
   to Bindings is satisfied in substance; cross-command consistency wins.
-- D6's ~30–50 line figure is a target, not a ceiling — plan (67) and implement (75) carry
+- D6-shape-v8-anatomy's ~30–50 line figure is a target, not a ceiling — plan (67) and implement (75) carry
   kept-responsibility content, not choreography.
 
 Ripple: router re-worded to goal+harness · repo `ARCHITECTURE.md` command-form section +
 diagram labels · `primitive-edits.md` audit bar · G-refs swept from
 `review-governance-intent`, `devils-advocate`, `FEASIBILITY-LENS`, `INTERROGATION-AGENDA` ·
 plugin.json 0.48.0. Strip notes `[v0.48.0]` ×6 with verbatim superseded files. DECISIONS
-supersession annotations: shape-v7 wave row · lead-owned-process-flexibility row · TC-D5 /
-TC-D6 rows · CS-D5 row · team-transport row · validator snapshot-isolation carrier note.
+supersession annotations: shape-v7 wave row · lead-owned-process-flexibility row · `team-lead-strategic-compaction` D5-lifecycle-doctrine-generalized /
+`team-lead-strategic-compaction` D6-overridable-cadence-default rows · `command-succinctness-strip` D5-goal-command-anatomy row · team-transport row · validator snapshot-isolation carrier note.
 
 ## Open questions
 
-- Whether the KM landing ritual, dropped from command text (D2), still fires reliably from
+- Whether the KM landing ritual, dropped from command text (D2-harness-keep-drop), still fires reliably from
   CLAUDE.md/rules alone — watch at the first post-wave command run.
-- First live run of a v8 command is the shape's first evidence (no pilot, D4) — watch and
+- First live run of a v8 command is the shape's first evidence (no pilot, D4-single-conversion-wave) — watch and
   record.

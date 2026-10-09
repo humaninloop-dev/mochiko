@@ -59,7 +59,7 @@ All four aggregates reproduce exactly in both units. My per-family baseline sums
 
 Real bug, real fix. `message = event.get("message") or {}` then `message.get("content")` raises `AttributeError` on a row carrying `message` as a string; the guarded form skips non-dict messages and non-list content, and a string message carries no content blocks, so nothing previously reachable is now skipped. To rule out a quiet weakening I extracted every `ok()`, `report()` and `pending()` name literal from both revisions: three `ok` names disappear and all three reappear widened by a parameter, 17 are genuinely new, none was dropped.
 
-## 8. Evidence, scope, GI-019 — PASS, with one open item
+## 8. Evidence, scope, GI-019-kernel-tooling-admission — PASS, with one open item
 
 All 81 sweep directories are complete — three suffixed streams, transcripts, argv, script and stderr per delivery case, `latency.json`, the single-session equivalents elsewhere, the preload pair, and a staged plugin in every one. 151 session streams on disk in the window.
 

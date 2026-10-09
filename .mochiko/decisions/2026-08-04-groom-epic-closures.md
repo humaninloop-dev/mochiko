@@ -11,7 +11,7 @@
   per-command dogfood items open.
 - **Decision:** close to the trail:
   1. **Command orchestration substrate — teams vs `Task`-subagents** (open design decision,
-     2026-06-30) — superseded by command-architecture-realignment D5 (2026-08-02):
+     2026-06-30) — superseded by command-architecture-realignment D5-transport-neutral-harness (2026-08-02):
      transport-neutral commands, teammates vs subagents per-seat lead judgment. The question
      the item held open was ruled.
   2. **Team-form confirm-or-revert — instrumented run (residual A)** (2026-07-24) —

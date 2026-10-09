@@ -4,15 +4,15 @@ feature: hook-enforced-artifact-schema
 round: 2
 ---
 
-# AM-3 — cold intent review of the frozen governance synthesis
+# AM-3-conformance-gate-admission — cold intent review of the frozen governance synthesis
 
 **Reviewer:** solo cold intent reviewer (`mochiko:review-governance-intent`), spawned by the
 blind-map two-message protocol — message one carried the amend topic and the allowed surface
 list only; the synthesis path, the ledger, the driver record, and everything else under
 `.mochiko/` were withheld until the 28-angle map returned.
-**Artifact reviewed:** `.mochiko/memory/governance-intent.md` (frozen; the AM-3 delta marked in
-place — the `**Governs:**` line, the `*AM-3 (2026-09-14, Card 6)*` note under GI-002, the
-`*AM-3 (2026-09-14, Cards 2–5)*` paragraph under GI-019, and the `**AM-3 — 2026-09-14 …**`
+**Artifact reviewed:** `.mochiko/memory/governance-intent.md` (frozen; the AM-3-conformance-gate-admission delta marked in
+place — the `**Governs:**` line, the `*AM-3-conformance-gate-admission (2026-09-14, Card 6)*` note under GI-002-project-type-shelves, the
+`*AM-3-conformance-gate-admission (2026-09-14, Cards 2–5)*` paragraph under GI-019-kernel-tooling-admission, and the `**AM-3-conformance-gate-admission — 2026-09-14 …**`
 amendment-log entry).
 **Lens:** single seat, both lenses (coverage and coherence); the verify pass is this seat's too.
 **Date:** 2026-09-14. **Single writer of this file.**
@@ -32,7 +32,7 @@ driver record pins them (F8, doc-quoted and re-verified at the brainstorm's own 
 the wave-0 probe measured them. The brownfield analysis at `.mochiko/memory/codebase-analysis.md`
 was read beside the synthesis; it is dated **2026-08-06**, predating the crate, the migration
 log, and every hook, so it grounds only the fact-profile negatives (no services, no DB, no user
-data) that the AM-3 delta leaves untouched.
+data) that the AM-3-conformance-gate-admission delta leaves untouched.
 
 ---
 
@@ -55,11 +55,11 @@ offer · A8 the waiver sweep · A9 the depth-level element's survival · A10 the
 the gate actually gates · A11 the `SubagentStart` reminder's own justification.
 
 **B — must-not-contradict (coherence).**
-B12 the `rust-cli.md` sentence named and superseded in terms · B13 GI-019's "never gates
+B12 the `rust-cli.md` sentence named and superseded in terms · B13 GI-019-kernel-tooling-admission's "never gates
 pipeline progress" · B14 a stated test for the mechanical/judgment line · B15 the advisory
 post-hoc carve-out · B16 the non-negotiable supersession route and its ruling anchor ·
-B17 `PowerShell` in the matcher against the declared-unsupported limb · B18 GI-020's dependency
-widening and the halt-never-degrade clause · B19 GI-017, a reminder that restates rules ·
+B17 `PowerShell` in the matcher against the declared-unsupported limb · B18 GI-020-plugin-install-model's dependency
+widening and the halt-never-degrade clause · B19 GI-017-pointer-only-region, a reminder that restates rules ·
 B20 the crate side already built · B21 mark discipline against echo-rationales.
 
 **C — must-price.**
@@ -75,7 +75,7 @@ MAJOR precedent · C27 the external-claims route · C28 the too-thin bar.
 
 #### C1 — Clause (iv) ratifies "not a pipeline gate" as settled, while the open question it rests on is still open in the driver and uncarried into the synthesis
 
-**Severity:** Critical. **Element:** GI-019 (the AM-3 conformance-gate admission, clause iv);
+**Severity:** Critical. **Element:** GI-019-kernel-tooling-admission (the AM-3-conformance-gate-admission conformance-gate admission, clause iv);
 touches the standing bright line in `CLAUDE.md ## Non-negotiable constraints`.
 
 **The contradiction, cited.** The synthesis records clause (iv) unconditionally: the gate is
@@ -96,7 +96,7 @@ here." OQ1 is the premise clause (iv) stands on, and the synthesis carries no tr
   record is a deliverable, not a report.
 - **The upstream route is not an in-run route.** D2's own deny text says a new deliverable kind
   "takes a migration in the plugin's log and a plugin release."
-- The remaining exit is `disableAllHooks`, which per D7e drops the project outside GI-020's
+- The remaining exit is `disableAllHooks`, which per D7e drops the project outside GI-020-plugin-install-model's
   supported set.
 
 **Measured evidence that this is the expected case, not an edge.** The homes migration already
@@ -146,7 +146,7 @@ hard).
 
 #### C2 — The synthesis scopes first-touch amnesty to line budgets; the built binary applies it to shape as well *(emergent, outside the map)*
 
-**Severity:** Important. **Element:** GI-019 (AM-3 admission paragraph, the amnesty clause and
+**Severity:** Important. **Element:** GI-019-kernel-tooling-admission (AM-3-conformance-gate-admission admission paragraph, the amnesty clause and
 its framing sentence).
 
 **The contradiction, measured.** The synthesis lists the checks as "… declared placeholder
@@ -170,7 +170,7 @@ violation: the gate holds nothing, allows the write, and prints an advisory. The
 the durable record of what was admitted, and it currently understates the amnesty and overstates
 the reach.
 
-**Failure scenario.** A future reader of GI-019 — the next amend's producer, or the validator
+**Failure scenario.** A future reader of GI-019-kernel-tooling-admission — the next amend's producer, or the validator
 grading the authored surface — reads that headings are hard-denied on existing files and that
 the gate holds until conformance. Both are wrong about the shipped mechanism, and the surface
 set authored from this synthesis inherits both errors.
@@ -178,9 +178,9 @@ set authored from this synthesis inherits both errors.
 **Resolution path.** One check: restate the amnesty over checks (a)–(d) as D4e writes it, and
 qualify the framing sentence to a conforming baseline.
 
-#### C3 — The AM-3 mark does not mirror the record, repeating AM-2's own survivor C2
+#### C3 — The AM-3-conformance-gate-admission mark does not mirror the record, repeating AM-2-required-cli-dependency's own survivor C2
 
-**Severity:** Important. **Element:** GI-019 (AM-3 mark line).
+**Severity:** Important. **Element:** GI-019-kernel-tooling-admission (AM-3-conformance-gate-admission mark line).
 
 **The contradiction, cited.** The element carries one mark: "Confident (user-ruled deck of 8,
 all 'as recommended' 2026-09-14; …)". The driver record marks its pieces unevenly. **D3** — the
@@ -193,10 +193,10 @@ concede the shape: the explicit-allow rule is "a lead repair inside D7's fail-op
 disclosed at the brainstorm's acceptance."
 
 An eight-for-eight "as recommended" deck is an adoption streak, and this skill's floor holds
-that echo-rationales and adoption streaks outrank any mark. AM-2's review raised the identical
+that echo-rationales and adoption streaks outrank any mark. AM-2-required-cli-dependency's review raised the identical
 finding as its survivor **C2** ("marks upgraded past the record"), dispositioned by splitting the
 mark to mirror the record — `Contested` on D4's basis, `Assumed` on the transition clause.
-AM-3 does not carry that precedent forward.
+AM-3-conformance-gate-admission does not carry that precedent forward.
 
 Two parts of the deck genuinely are user-arbitrated and should keep `Confident`: R1 (the user
 chose the deny-now road against the review's declare-and-measure road with both costs named),
@@ -207,13 +207,13 @@ contract that decides which of the CLI's five exit codes may deny a consumer's w
 recorded at the same confidence as the rulings the user arbitrated. A later reader auditing why
 exit 2 passes through has no signal that the answer was derived, not chosen.
 
-**Resolution path.** Split the mark as AM-2 did: `Confident` on the admission and the
+**Resolution path.** Split the mark as AM-2-required-cli-dependency did: `Confident` on the admission and the
 user-arbitrated rulings (R1 · R2b · R3); `Assumed` on the D3-derived exit-code contract and
 interface, with the reason the record gives.
 
 #### C4 — The admission records what the gate denies and never records what it leaves alone
 
-**Severity:** Important. **Elements:** GI-019 (AM-3 admission), GI-002 (risk surface).
+**Severity:** Important. **Elements:** GI-019-kernel-tooling-admission (AM-3-conformance-gate-admission admission), GI-002-project-type-shelves (risk surface).
 
 **The gap.** For a mechanism that ships to every consuming project and fires on the consumer's
 `Write`, `Edit`, `Bash`, and `PowerShell` calls, the reach boundary is the sentence a consumer
@@ -233,16 +233,16 @@ the plugin gates every markdown write in their repository. The governance surfac
 nothing to correct that, and the honest answer — a narrow declared tree plus a frontmatter sniff
 — is the strongest argument the admission has.
 
-**Resolution path.** One check: carry D9's reach boundary into the GI-019 admission beside the
+**Resolution path.** One check: carry D9's reach boundary into the GI-019-kernel-tooling-admission admission beside the
 scope-of-guarantee clause — the declared homes, the frontmatter sniff, and the knowingly
 uncovered writers.
 
 #### C5 — The widened vector raises what two still-owed supply-chain controls protect, and the conditional discharge is not re-touched *(emergent, outside the map)*
 
-**Severity:** Important. **Elements:** GI-002 (risk surface, the first-public-release trigger),
-GI-019 (AM-3), GI-012 (the crate release train).
+**Severity:** Important. **Elements:** GI-002-project-type-shelves (risk surface, the first-public-release trigger),
+GI-019-kernel-tooling-admission (AM-3-conformance-gate-admission), GI-012-release-gates-module (the crate release train).
 
-**The contradiction, cited.** AM-2 fired GI-002's first-public-release trigger and made its
+**The contradiction, cited.** AM-2-required-cli-dependency fired GI-002-project-type-shelves's first-public-release trigger and made its
 discharge conditional on four named controls, two of them owed. Both are still owed in the tree
 today:
 
@@ -253,9 +253,9 @@ today:
 | `cargo publish` behind manual approval | owed — the job is `if: false` at `.github/workflows/release.yml:100` |
 | signed release tags | owed — no signing exists in the repo |
 
-AM-3 records the vector widening and rules "Fact profile unchanged; no module; no surface
+AM-3-conformance-gate-admission records the vector widening and rules "Fact profile unchanged; no module; no surface
 change — synthesis note only (user-ruled)." What changes and is not priced is the **kind** of
-authority the installed binary holds. Until AM-3 it renders and halts; after AM-3 it denies a
+authority the installed binary holds. Until AM-3-conformance-gate-admission it renders and halts; after AM-3-conformance-gate-admission it denies a
 consumer's writes in every permission mode, `bypassPermissions` included. Meanwhile D11 makes
 **wave 1's exit condition the crate's first publish** — precisely the event the two owed
 controls gate.
@@ -271,23 +271,23 @@ the first publish, given that wave 4 is where deny authority reaches consumers?
 
 #### C6 — MINOR is ruled on "the text is unchanged" while the same bullet concedes the meaning changes, against two MAJOR precedents on the identical phrase *(user-declared fact — route, do not argue)*
 
-**Severity:** Important. **Elements:** the AM-3 amendment-log Semver line; the ledger's
-amendment policy; the amendment log's AM-1 and AM-2 rows.
+**Severity:** Important. **Elements:** the AM-3-conformance-gate-admission amendment-log Semver line; the ledger's
+amendment policy; the amendment log's AM-1-kernel-ban-softened and AM-2-required-cli-dependency rows.
 
 **The contradiction, cited.** The ledger's policy reads: "MAJOR — principle removal /
 **incompatible redefinition** / floor-level change / module attach or detach · MINOR — **new
-principle or waiver change** · PATCH — clarification." AM-3 mints no principle and changes no
-waiver, so the MINOR limb does not describe it. The AM-3 Semver line rules MINOR on the ground
+principle or waiver change** · PATCH — clarification." AM-3-conformance-gate-admission mints no principle and changes no
+waiver, so the MINOR limb does not describe it. The AM-3-conformance-gate-admission Semver line rules MINOR on the ground
 that "the non-negotiable's text [is] unchanged," then concedes in the same parenthesis:
 "GI-019's Testability rows flip meaning and the `rust-cli.md` hook clause changes meaning." Both
 prior amendments were ruled **MAJOR** on that exact ground — the log's own rows read "AM-1 …
 (MAJOR: a non-negotiable's meaning changes; user-ruled)" and "AM-2 … (MAJOR: a non-negotiable's
 meaning changes — user-ruled)."
 
-The ledger's own Testability row for GI-019 is the concrete thing flipping: it currently passes
+The ledger's own Testability row for GI-019-kernel-tooling-admission is the concrete thing flipping: it currently passes
 only if "every shipped hook blocks only on the binary's absence or a log outside its grammar
 range," and fails on "a shipped hook that blocks on anything other than the binary's absence or
-grammar skew." After AM-3 the same hook passes. That is a Pass/Fail inversion on a
+grammar skew." After AM-3-conformance-gate-admission the same hook passes. That is a Pass/Fail inversion on a
 NON-NEGOTIABLE's test.
 
 **This is a user-declared fact.** Card 1 was user-ruled "with the MAJOR reading in view." It is
@@ -305,11 +305,11 @@ should be recorded as a deliberate one.
 
 #### C7 — The risk note states execution frequency but not what the hook reads
 
-**Severity:** Minor. **Element:** GI-002 (AM-3 risk-surface note).
+**Severity:** Minor. **Element:** GI-002-project-type-shelves (AM-3-conformance-gate-admission risk-surface note).
 
-AM-2 priced its vector precisely: the binary is required, the hooks "execute on every consumer's
+AM-2-required-cli-dependency priced its vector precisely: the binary is required, the hooks "execute on every consumer's
 machine at every session start and at every mochiko fire … under a 5-second timeout, fail-open
-by platform design." AM-3's note widens the frequency — "on **every gated artifact write** in a
+by platform design." AM-3-conformance-gate-admission's note widens the frequency — "on **every gated artifact write** in a
 consuming project … and once per spawned seat" — but never says what crosses the boundary. Per
 D3 the wrapper pipes the raw `PreToolUse` payload to the binary, which parses `tool_input.content`,
 `old_string`/`new_string`, and `command`; on `Edit` the CLI additionally reads the on-disk file to
@@ -318,11 +318,11 @@ write and the files it edits. Nothing leaves the machine, which is why this is M
 fact-profile question — but it is the sentence a security-minded consumer reads the risk surface
 for.
 
-**Resolution path.** One line in the AM-3 note stating what the gate reads.
+**Resolution path.** One line in the AM-3-conformance-gate-admission note stating what the gate reads.
 
-#### C8 — The build-state disclosure is less complete than AM-2's own precedent
+#### C8 — The build-state disclosure is less complete than AM-2-required-cli-dependency's own precedent
 
-**Severity:** Minor. **Element:** the AM-3 amendment-log header.
+**Severity:** Minor. **Element:** the AM-3-conformance-gate-admission amendment-log header.
 
 The header discloses "wave 0 probe PROCEED; wave 1 crate built and accepted 2026-09-13." It does
 not disclose that **wave 3 is already authored in the working tree** —
@@ -331,7 +331,7 @@ not disclose that **wave 3 is already authored in the working tree** —
 and mint the authoring-time home rule on every producing primitive the log carries"). D11 puts
 wave 2, this amend, **before** wave 3. Nothing is shipped and no ceremony is breached, so this is
 disclosure, not violation. But the ratification is being taken with more of the mechanism built
-than the recorded order contemplates, and AM-2 disclosed its build state more fully.
+than the recorded order contemplates, and AM-2-required-cli-dependency disclosed its build state more fully.
 
 Two verified claims in the same block are accurate and should be recorded as verified:
 `EXIT_CONFORMANCE = 4` is at `crates/mochiko-cli/src/hook.rs:37` exactly as the lead-check cites,
@@ -341,9 +341,9 @@ and `mochiko-cli check --hook-json -` is present in the installed binary (0.1.0,
 
 #### C9 — The one cost bound the design names is ruled out of governance, and nothing at the bump checks it *(emergent, outside the map)*
 
-**Severity:** Minor. **Elements:** GI-002 (AM-3 note), GI-012 (release gates), agenda dimension 8.
+**Severity:** Minor. **Elements:** GI-002-project-type-shelves (AM-3-conformance-gate-admission note), GI-012-release-gates-module (release gates), agenda dimension 8.
 
-The AM-3 note rules that "the aggregate per-run hook cost cap (≤ 60 s, record OQ4) is a
+The AM-3-conformance-gate-admission note rules that "the aggregate per-run hook cost cap (≤ 60 s, record OQ4) is a
 build-side watch, not governance." The driver of this entire brainstorm was cost — the user's
 Q2: "I am strugging to control the verbosity … I dont want the files to be generated and then we
 fix it . token wastage." The gate answers token cost by adding wall-clock cost to every consumer
@@ -352,18 +352,18 @@ transcripts, with Bash at 85–86 % of gated volume). Under the current gates no
 `plugin.json` bump blocks a ship that regresses past 60 s. Dimension 8 asks what blocks a
 release; this names a bound and then places it where nothing does.
 
-**Resolution path.** One question: does the ≤ 60 s cap join GI-012's gate 6, or stand as a watch
+**Resolution path.** One question: does the ≤ 60 s cap join GI-012-release-gates-module's gate 6, or stand as a watch
 by ruling? Either answer is fine recorded; it is currently ruled by a clause inside a risk note.
 
 #### C10 — Mochiko's own tree gets no violator pass, so its flagship governance artifact rides amnesty permanently *(emergent, outside the map)*
 
-**Severity:** Minor. **Elements:** GI-019 (AM-3), GI-005 (record layer).
+**Severity:** Minor. **Elements:** GI-019-kernel-tooling-admission (AM-3-conformance-gate-admission), GI-005-record-layer-integrity (record layer).
 
 D11 wave 5 orders a violator pass over **kinako's** live tree, deliberately run "with the
 consumer's plugin still at the pre-gate version" before the upgrade. D5 puts **mochiko's own**
 `.mochiko/` in the census as a second sample, but no violator pass is scheduled for this
 repository. The measurement in C2 shows the consequence: the governance synthesis itself is a
-standing violator — the required heading `## Depth level declaration` is absent (GI-021's depth
+standing violator — the required heading `## Depth level declaration` is absent (GI-021-depth-level-declaration's depth
 declaration lives inside `## Minted principle intents`), the live `## Real commands (dimension
 6/8 → the validator's placeholder bar)` does not match the declared `## Real commands`, and
 `## Confrontation rulings (brownfield)` is undeclared. Amnesty allows every future write, so the
@@ -385,20 +385,20 @@ Twenty mapped angles died on read. Retrievable in full on ask.
 | Angle | Why it died |
 |---|---|
 | A1 amend-scope slice | The fact profile is unchanged and no floor is un-waived, so no governance-event slice is owed; dimension 4 is worked at Card 6 and dimension 10 is untouched by ruling. |
-| A4 CI path filter | `plugins/mochiko/hooks/**` is outside `ci.yml`'s filter, but CI carries only the crate layers and never ran the hook scripts; their real gate is GI-012 gate 6, the contract suite at the bump, which D10 extends with the new hook cases. |
-| A5 release gate for the gate | Card 7 keeps GI-012 standing and D10 names the deterministic cases for both hooks; the gate exists. |
-| A6 exclusion confronted | D7's rationale confronts `cli-schema-delivery` D7 directly and quotes its own from-zero reservation; the decline is superseded on its own terms, not around them. |
-| A7 module once-offer | Every module on the surface carries a recorded ruling — GI-009 through GI-014 — so the once-per-amend offer is satisfied vacuously. |
-| A8 waiver sweep | No waiver changes; GI-008 is untouched and nothing is narrowed by waiver. |
-| A9 depth level | GI-021 `high` survives untouched, is ledger-recorded, and MINOR implies no flip; the one-way ratchet is unaffected. |
+| A4 CI path filter | `plugins/mochiko/hooks/**` is outside `ci.yml`'s filter, but CI carries only the crate layers and never ran the hook scripts; their real gate is GI-012-release-gates-module gate 6, the contract suite at the bump, which D10 extends with the new hook cases. |
+| A5 release gate for the gate | Card 7 keeps GI-012-release-gates-module standing and D10 names the deterministic cases for both hooks; the gate exists. |
+| A6 exclusion confronted | D7's rationale confronts `cli-schema-delivery` D7-dependency-halt-hooks directly and quotes its own from-zero reservation; the decline is superseded on its own terms, not around them. |
+| A7 module once-offer | Every module on the surface carries a recorded ruling — "GI-009 through GI-014" — so the once-per-amend offer is satisfied vacuously. |
+| A8 waiver sweep | No waiver changes; GI-008-script-test-waiver is untouched and nothing is narrowed by waiver. |
+| A9 depth level | GI-021-depth-level-declaration `high` survives untouched, is ledger-recorded, and MINOR implies no flip; the one-way ratchet is unaffected. |
 | A11 reminder justification | Paid for by elicited facts: F10's EPIC-001 read as "report shape only", and wave 0's leg 8 proving the injection lands before the first turn. |
-| B12 supersession named in terms | Card 4 quotes the prior bullet verbatim and preserves it in the ledger GI-019 entry; the strips ceremony does not reach `.claude/rules/` because it is a governance surface, not a `plugins/mochiko/` primitive, and GI-006 reconstructibility is met by the preserved text. |
+| B12 supersession named in terms | Card 4 quotes the prior bullet verbatim and preserves it in the ledger GI-019-kernel-tooling-admission entry; the strips ceremony does not reach `.claude/rules/` because it is a governance surface, not a `plugins/mochiko/` primitive, and GI-006-primitive-edit-traceability reconstructibility is met by the preserved text. |
 | B14 mechanical/judgment test | The Card 3 Testability re-key supplies one: Fail on "a `check` grading meaning or quality, or a hook that sequences", Pass on `check` "reading no meaning, naming no seat, order, or stage". |
 | B15 advisory carve-out | The synthesis does not shelter under it — it takes the full admission-by-ruling route explicitly, which is the correct route for a blocking, pre-hoc, non-optional gate. |
-| B16 non-negotiable supersession route | The ruling anchor is present (`hook-enforced-artifact-schema` D1/D7, accepted 2026-09-13), the superseded clause is named, and the surviving limb — judgment and sequencing — is stated. |
-| B17 PowerShell vs declared-unsupported | No contradiction. GI-020's unsupported limb is about the shell the hook script needs (`shell: bash`, Git Bash absent); the matcher arm names the Windows shell **tool**, on the docs' own instruction that a `Bash` match alone leaves it uncovered. The synthesis flags the arm unverifiable on macOS. |
+| B16 non-negotiable supersession route | The ruling anchor is present (`hook-enforced-artifact-schema` D1-conformance-deny-channels/D7-governance-routing-supersession, accepted 2026-09-13), the superseded clause is named, and the surviving limb — judgment and sequencing — is stated. |
+| B17 PowerShell vs declared-unsupported | No contradiction. GI-020-plugin-install-model's unsupported limb is about the shell the hook script needs (`shell: bash`, Git Bash absent); the matcher arm names the Windows shell **tool**, on the docs' own instruction that a `Bash` match alone leaves it uncovered. The synthesis flags the arm unverifiable on macOS. |
 | B18 dependency widening | Resolved by the explicit-allow rule: with the binary absent or out of range the wrapper exits 0 and allows, so the gate never denies a consumer's writes on dependency grounds. The halt stays the existing hooks' job. |
-| B19 GI-017 restatement | The reminder line points at `mochiko-cli home <path>` rather than restating any rule; no second home is created. |
+| B19 GI-017-pointer-only-region restatement | The reminder line points at `mochiko-cli home <path>` rather than restating any rule; no second home is created. |
 | B20 already-built crate side | Verified accurate rather than hidden — `EXIT_CONFORMANCE = 4` at `hook.rs:37` and `check --hook-json -` in the installed binary, both as the lead-check states. Survives only as C8's narrower disclosure point. |
 | C22 reminder removal test | It survives removal: D1b's channel answers a distinct elicited failure (the model reaching for a sibling artifact as its shape source) at zero re-emit cost, which the write-time gate does not address. |
 | C24 contract-suite perturbation | D10 names deterministic cases for both hooks, including fail-open with no binary and a wrong-event payload, and gate 6 takes them at the wave-4 bump. |
@@ -421,7 +421,7 @@ the expected one rather than an edge.
 
 The remaining nine are session-resolvable. Five Important findings are each closed by one
 question or one restatement: mirror D4e's amnesty scope and qualify the gate's reach (C2), split
-the mark to mirror the record as AM-2 did (C3), carry D9's reach boundary into the admission
+the mark to mirror the record as AM-2-required-cli-dependency did (C3), carry D9's reach boundary into the admission
 (C4), put the two owed supply-chain controls' standing to the user against the widened vector
 (C5), and route the semver class back to the user with the two MAJOR precedents on the table
 (C6). Four Minor findings are one line or one question each.
@@ -447,7 +447,7 @@ and the C2 fold over-corrected past both the record and the binary.
 
 **Self-correction, disclosed.** This report's header said four survivors emerged outside the
 blind map while its body tagged only three. C9 was the untagged fourth — the map's nearest
-angles (A5, C24) were both killed, and the cost-cap question arose on reading the GI-002 note.
+angles (A5, C24) were both killed, and the cost-cap question arose on reading the GI-002-project-type-shelves note.
 The C9 heading now carries the tag; header and body agree at four.
 
 ### Confirmed faithful
@@ -465,10 +465,10 @@ The C9 heading now carries the tag; header and body agree at four.
 - **C4 — reach boundary.** Faithful to D9 on all three limbs: the frontmatter sniff outside
   declared homes, `NotebookEdit` and consumer MCP writers knowingly uncovered, and the reviewer's
   residual duty.
-- **C6 — the departure reason is honest to both precedents.** AM-1 redefined a principle
-  (absolute ban to admissible-by-ruling) and AM-2 withdrew GI-020's degraded path; both are
-  redefinitions, and AM-3 is not. The reason understates its own best support: AM-2 *also*
-  widened GI-019's admission, and its MAJOR came from the GI-020 supersession, not from that
+- **C6 — the departure reason is honest to both precedents.** AM-1-kernel-ban-softened redefined a principle
+  (absolute ban to admissible-by-ruling) and AM-2-required-cli-dependency withdrew GI-020-plugin-install-model's degraded path; both are
+  redefinitions, and AM-3-conformance-gate-admission is not. The reason understates its own best support: AM-2-required-cli-dependency *also*
+  widened GI-019-kernel-tooling-admission's admission, and its MAJOR came from the GI-020-plugin-install-model supersession, not from that
   widening. The Testability inversion is fairly read as re-keying a formulation narrower than the
   principle — the bright-line text never said hooks may block on dependency grounds only; the
   ledger row operationalized it when only dependency-halt hooks existed.
@@ -487,17 +487,17 @@ The C9 heading now carries the tag; header and body agree at four.
 ### Residuals
 
 **R1 — Important — the C5 fold left a contradiction behind it.**
-*Where:* the `Untouched (Card 7)` clause of the GI-019 AM-3 paragraph.
+*Where:* the `Untouched (Card 7)` clause of the GI-019-kernel-tooling-admission AM-3-conformance-gate-admission paragraph.
 *What:* it still reads "GI-012 (wave 4's `plugin.json` bump takes the contract suite with the new
-hook cases, D10)" with no qualification, while the GI-002 AM-3 note and the Amendment Log's Scope
-bullet both record GI-012 as narrowed by the C5 wave-4 precondition clause. A reader of GI-019
-alone is told GI-012 is untouched; the other two surfaces say otherwise.
+hook cases, D10)" with no qualification, while the GI-002-project-type-shelves AM-3-conformance-gate-admission note and the Amendment Log's Scope
+bullet both record GI-012-release-gates-module as narrowed by the C5 wave-4 precondition clause. A reader of GI-019-kernel-tooling-admission
+alone is told GI-012-release-gates-module is untouched; the other two surfaces say otherwise.
 *Fix:* qualify that one entry — "GI-012 untouched but for the wave-4 precondition clause (review
 C5)".
 
 **R2 — Important — the C2 fold over-corrected, measured against the binary.**
 *Where:* the `First-touch amnesty (D4e, all four measures)` clause and the qualified framing
-sentence, both in the GI-019 AM-3 paragraph.
+sentence, both in the GI-019-kernel-tooling-admission AM-3-conformance-gate-admission paragraph.
 *What:* three defects in one clause.
 (i) It lists **path** among the amnestied measures. A write outside every declared home is
 ungated, not amnestied, so path is not a measure amnesty can relax. D4e's own four are checks
@@ -522,7 +522,7 @@ governing every future amend, carried by no card. Its merits check out and the c
 does not hold: `validation-constitution.version-bump` already reads "MINOR (principle added or
 significantly expanded; waiver added/removed)", so the ledger is the narrower of two surfaces
 that already disagree, and the C6 reason cites a grammar it did not invent. The defect is only
-that the durable scope record omits it, which GI-006 reconstructibility needs.
+that the durable scope record omits it, which GI-006-primitive-edit-traceability reconstructibility needs.
 *Fix:* name it in the Scope bullet as a lead addition outside the deck.
 
 **R4 — Minor — the C10 fold's sequencing is impossible as written.**
@@ -563,7 +563,7 @@ behind the R4 repair and now reproduces the defect R4 closed.
 
 - **R1 — landed.** The Card 7 clause now reads "GI-012 untouched but for the wave-4 precondition
   clause ruled at review C5 (wave 4's `plugin.json` bump takes the contract suite with the new
-  hook cases, D10)". GI-019, the GI-002 note, and the Scope bullet now agree on GI-012's status.
+  hook cases, D10)". GI-019-kernel-tooling-admission, the GI-002-project-type-shelves note, and the Scope bullet now agree on GI-012-release-gates-module's status.
 - **R2 — landed on all three limbs, and the repaired claim is measured.** Path is excluded in
   terms: "path is not a measure amnesty relaxes (a write outside every declared home is ungated,
   not amnestied)", which is consistent with the D9 reach clause in the same paragraph. The
@@ -592,13 +592,13 @@ split stays `Confident` on the admission and the R1 / R2b / R3 forks, `Assumed` 
 D3-derived exit-code contract and interface.
 
 Two further propagations are correct rather than defects: the Scope bullet's Card 6 entry and the
-GI-002 note both dropped "no surface change", which the C5 clause makes true — that clause lands
-on GI-002's conditional-discharge line and GI-012's release line.
+GI-002-project-type-shelves note both dropped "no surface change", which the C5 clause makes true — that clause lands
+on GI-002-project-type-shelves's conditional-discharge line and GI-012-release-gates-module's release line.
 
 ### Residual
 
 **R6 — Minor — the R4 repair left its sibling summary stale.**
-*Where:* the Dispositions sentence in the AM-3 Review bullet.
+*Where:* the Dispositions sentence in the AM-3-conformance-gate-admission Review bullet.
 *What:* it still reads "C10 user-ruled violator pass **at wave 5**". Before R4 that matched the
 C10 bullet; now the bullet says the pass is scheduled here ahead of the local wave-4 install, and
 "at wave 5" is the exact phrasing R4 established is impossible for this repository. A reader of

@@ -114,7 +114,7 @@ confirmed, not assumed.
   commit message itself says the version bump is "written but held out of this commit." The
   record's own version stamp is therefore false at the point this commit lands — it names a
   version that does not exist yet. `mochiko-cli`'s own render confirms the live plugin version is
-  `0.109.0`. Given `CLAUDE.md`'s GI-006 ("every primitive edit MUST be reconstructible from strips
+  `0.109.0`. Given `CLAUDE.md`'s GI-006-primitive-edit-traceability ("every primitive edit MUST be reconstructible from strips
   + the migration log + `DECISIONS.md` + version stamps" — NON-NEGOTIABLE), a wrong version stamp
   is exactly the kind of defect this audit exists to catch.
 - **No `DECISIONS.md` row was appended.** `primitive-edits.md`'s own ceremony requires "citing the
@@ -149,7 +149,7 @@ This is the correct and minimal change.
 
 1. **(High)** Append the missing `DECISIONS.md` row for this ruling, pointing at
    `.mochiko/decisions/2026-09-19-leads-pen-copy-loophole.md`. Without it the anchor
-   `2026-09-19 primitive-evals-v2 four-slot read` has nothing to resolve against, and GI-006's
+   `2026-09-19 primitive-evals-v2 four-slot read` has nothing to resolve against, and GI-006-primitive-edit-traceability's
    reconstructability chain is broken.
 2. **(High)** Correct the decision record's version stamp. It should not claim "built... at plugin
    v0.110.0" while `plugin.json` is still `0.109.0` and the bump is explicitly deferred. State the
@@ -253,7 +253,7 @@ Checked each of the five fixes against the artifacts directly, and re-ran the me
      "the governance-intent floor was reworded **at v0.110.0**" — the identical false version
      stamp, untouched by `f9be912`. This is the same defect criterion 5 originally failed on,
      surviving in a second location. Low severity (one sentence, in a backlog item, not a
-     status line load-bearing for GI-006 reconstructability the way the decision record's own
+     status line load-bearing for GI-006-primitive-edit-traceability reconstructability the way the decision record's own
      header is) — flagged below as a fix item rather than grounds to hold the verdict at FAIL.
    - Also worth a note: the commit message says "both the backlog entry and the decisions row
      record the disagreement" on the sibling scope question. The `DECISIONS.md` row does

@@ -2,7 +2,7 @@
 
 **Seat:** census-patterns · **Date:** 2026-09-01 · **Status:** delivered, awaiting user gate
 **Referent law:** `.mochiko/brainstorms/skill-content-schema/record.md` D1–D9 as amended ·
-command-content-schema D12/D15 · near-dup ADR R1–R6
+command-content-schema D12-rule-block-grain/D15-rule-text-closure · near-dup ADR R1–R6
 (`.mochiko/decisions/2026-08-28-near-dup-convergence.md`) · the wave-1 census
 (`.mochiko/brainstorms/skill-content-schema/research/census.md`) as structural referent, its §K
 build-corrections included.
@@ -40,14 +40,14 @@ purchase.
 
 ## A. Protected-set reconciliation (FIRST, per D9/C4)
 
-**Counting note (the wave-1 J-1 idiom).** Grep across the 11 existing strip files finds **15
+**Counting note (the wave-1 J-1-kept-mention-count idiom).** Grep across the 11 existing strip files finds **15
 lines containing `KEPT`**, of which the distinct live KEPT/RETURNED survivor rulings number
 **6** (several strips contain reconciliation mentions, and TD's v0.27.0 KEPT was half-superseded
 by a recorded v0.64.0 ruling). Two members (**AS, TF**) have **no strips file at all** — legal
 (no post-birth edit has removed content), so their protection basis is DECISIONS-traceability
 only. Seven members are **birth-by-ruling bodies** in the RSUF class: no KEPT line exists, and
 the D2-analog machinery is `DECISIONS.md`-traceable per rule (each move recorded at conversion
-citing the ruling row, the wave-1 J-2/R-c ceremony class). Reconciliation below is at the unit
+citing the ruling row, the wave-1 J-2-birth-by-ruling/R-c ceremony class). Reconciliation below is at the unit
 of **live protection**.
 
 ### AF — patterns-adopt-first (strips: 3 entries, all v0.91.0 supersessions; no KEPT)
@@ -149,7 +149,7 @@ only-real-seats honesty rule. Moves cite the 2026-08-13/14 rows.
 
 | Protected unit | Status | Census disposition |
 |---|---|---|
-| **[v0.81.0] the relocated no-delta protected line** — "The no-delta judgment is always shown, never made silently" survives **word-for-word** by ruling (D3/D10 fold S13; lineage AD-D7 2026-07-30) | live, verbatim-bound | **moves-to-schema** as `class: floor`, wording verbatim; supersession-transfer per D8/C4, protection re-homes onto the rule ID |
+| **[v0.81.0] the relocated no-delta protected line** — "The no-delta judgment is always shown, never made silently" survives **word-for-word** by ruling (D3/D10 fold S13; lineage `architecture-design-primitive` D7-dedicated-architect-persona 2026-07-30) | live, verbatim-bound | **moves-to-schema** as `class: floor`, wording verbatim; supersession-transfer per D8/C4, protection re-homes onto the rule ID |
 | **[v0.81.0] KEPT:** the density rule — "Density is not a gap; a gap is a missing component, an unlabelled arrow, or a qualifying flow with no sequence diagram" + the `artifact-format.md` envelope pointer | live | **moves-to-schema** (see §C P4) |
 | [v0.64.0] RETURNED: current-state-baseline clause in the `description:` (probe-demanded, user-ruled) | live, description-borne | **body-stays-prose** — description never moves |
 | [v0.67.0] altitude bar hardened (container-not-level-3 register check; node-count override must assert altitude) — architect-restructure lineage 2026-08-13 | live | **moves-to-schema** (floor + bound) |
@@ -178,7 +178,7 @@ leg's move cites the 2026-08-14 row.
 | [v0.27.0] KEPT: Markers table · rationalizations · checklist · mapping shape · epigraph | **mostly ended by later recorded rulings**: markers table and mapping shape superseded at v0.75.0 (test-case-bundle re-anchor, `DECISIONS.md` 2026-08-16); rationalizations compressed out through the recorded trail. **Live residue:** the letter/spirit epigraph + the Quality Checklist | epigraph + checklist **body-stays-prose**; nothing further owed — the endings are already recorded |
 | [v0.22.0] TEST-grammar relocation — **ownership stays with this skill**; TEST-GRAMMAR.md the single source, 4 external consumers | live | **reference-stub** — the ownership/consumption binding stubs the pointer; the file stays intact |
 | [v0.75.0]/2026-08-16 cycle re-anchor: cycles = test-case bundles; no foundation/feature type; **infra-only cards never minted**; `[P]` derives from dependencies; walking-skeleton condition; qa-engineer authors test-case content | live | **moves-to-schema** (floors + constraints) |
-| [v0.76.0] two-arm schema read-pointer (`mochiko-cli template tasks`, or Read `plugins/mochiko/schemas/tasks.yaml` when the binary is absent) — GI-020 | live | **moves-to-schema**, both arms preserved verbatim (the RPA two-arm precedent) |
+| [v0.76.0] two-arm schema read-pointer (`mochiko-cli template tasks`, or Read `plugins/mochiko/schemas/tasks.yaml` when the binary is absent) — GI-020-plugin-install-model | live | **moves-to-schema**, both arms preserved verbatim (the RPA two-arm precedent) |
 | [v0.91.0] card authorship re-homed inside the implement run + **card-author-is-never-the-executing-builder** (plan-stage retirement D1(c); the +226 body growth ruled HOLDS and byte-reconciled in the budget ledger) | live | **moves-to-schema** (constraint + floor) |
 
 **Reconciliation totals:** 6 distinct live KEPT/RETURNED survivor rulings (EM whole-body ·
@@ -421,7 +421,7 @@ member owns a distinct discipline, so convergence is thin. Candidates, graded ho
 - *transcription/mechanical exemption honesty* — SL only (1; AS's waiver routing is different).
 - *"aid, never a gate"* — MM noun+verbs + SD node-count-override (2, loosely).
 
-**Cross-grammar note (wave-1 J-5 idiom):** P1's core resembles command `common.yaml`
+**Cross-grammar note (wave-1 J-5-cross-grammar-duplicates idiom):** P1's core resembles command `common.yaml`
 reservation blocks and review-common `verdict-is-input`; P5 resembles RCM's codebase-read
 floor. D5 forbids cross-grammar and cross-family sharing; evidence only, allowlist edges at
 build.
@@ -610,7 +610,7 @@ Considered, rejected: `disclosure` (covered by `reporting`) · `stance` (AS-only
   D8/C4-style clause re-homing the survivor protection onto the pair (body + schema jointly),
   recorded once — the review-feasibility precedent, verbatim ceremony.
 - **J-P5 — VT's protected two-arm citation + standing overage.** The v0.76.0 two-arm
-  `tasks` pointer (GI-020) must survive verbatim in its schema rule (the RPA two-arm
+  `tasks` pointer (GI-020-plugin-install-model) must survive verbatim in its schema rule (the RPA two-arm
   precedent), and the ledgered +294 HOLDS overage is superseded by the conversion re-seed.
   *Recommendation:* both named in VT's audit brief; the re-seed row cites the overage history.
 - **J-P6 — `scripts/` in two members** (AC `validate-openapi.py`, EM `validate-model.py`).
@@ -623,13 +623,13 @@ Considered, rejected: `disclosure` (covered by `reporting`) · `stance` (AS-only
   six-set proposed in §B (`trigger · scope · discipline · inputs · disclosure · reserved`),
   uniform across the family, explicit empty markers where thin — a per-family mint the D4/D9
   door-open idiom already sanctions; NOT a new grammar (kinds/axes unchanged).
-- **J-P8 — cross-directory pointers** (the wave-1 J-7 class): AF →
+- **J-P8 — cross-directory pointers** (the wave-1 J-7-cross-directory-pointers class): AF →
   `../review-brainstorm/references/EXTERNAL-CLAIMS.md` and
   `../authoring-constitution/references/catalog/backend-service.md` (BE-DEP); TD-ref →
   EXTERNAL-CLAIMS the same way; AS → `plugins/mochiko/schemas/architecture-shelf-backend.yaml`
   (a `schemas/`-home data file — a new pointer target class); VT →
   `plugins/mochiko/schemas/tasks.yaml` (two-arm). *Recommendation:* legal under D3/C2;
-  checker's climb-out resolution (built at v0.100.0 for J-7) covers the `../` cases; the
+  checker's climb-out resolution (built at v0.100.0 for J-7-cross-directory-pointers) covers the `../` cases; the
   `schemas/`-home targets resolve via `../../schemas/` — priced here so the build does not
   rediscover it; both ride the first-live-run watch's path probe (M1 class).
 - **J-P9 — one advisory-heavy member with zero floors** (TD). Its conversion yields a schema
@@ -678,7 +678,7 @@ the 9 discipline carriers converted; the four teachers (AC · EM · TD · SD) st
   obligation the census row grain had dropped (census-inherited loss, restored by ruling) ·
   MT regained the sound-loop cross-floor pointer (census §I carrier) · SL regained two
   governing-surface regime descriptors · VT shed one undisclosed added sentence · one
-  VT strip heading overwrite (the wave-1 GI-005 class) caught mid-wave by a sibling seat
+  VT strip heading overwrite (the wave-1 GI-005-record-layer-integrity class) caught mid-wave by a sibling seat
   and restored byte-exact.
 - **Final measures** — family delivered-at-invoke **95,858** vs 50,379 pre-conversion =
   **×1.90**, +5.1% over the §F 9-carrier estimate (×1.81, ~91.2k), inside the census ±25%

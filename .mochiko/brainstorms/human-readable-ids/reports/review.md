@@ -17,7 +17,7 @@ verify_round_2: NOT CLEAN (0 blocking, 2 non-blocking new defects; V1–V5 close
 
 ## Failure narrative
 
-One Critical and eight Important survivors. The Critical one is a broken load-bearing claim. D15 rules that an ID-token-only rewrite is non-semantic because "the line's content does not leave". That claim fails for verbatim quotes. D14 rewrites every session record and every strip, and those files hold at least 213 double-quoted spans carrying GI/D IDs, across 84 files. Many of them quote sources that stay bare by ruling: the migration log, the archive, git history, and the user's own words. Rewriting them falsifies the quote, and D15's own guard (the diff check) passes them, because only ID tokens change. This is silent corruption of the record layer under GI-005 (NON-NEGOTIABLE).
+One Critical and eight Important survivors. The Critical one is a broken load-bearing claim. D15 rules that an ID-token-only rewrite is non-semantic because "the line's content does not leave". That claim fails for verbatim quotes. D14 rewrites every session record and every strip, and those files hold at least 213 double-quoted spans carrying GI/D IDs, across 84 files. Many of them quote sources that stay bare by ruling: the migration log, the archive, git history, and the user's own words. Rewriting them falsifies the quote, and D15's own guard (the diff check) passes them, because only ID tokens change. This is silent corruption of the record layer under GI-005-record-layer-integrity (NON-NEGOTIABLE).
 
 The Important set clusters in two places:
 - The back-fill's layer boundary (D14): the replayed rule text, and the genesis fixture corpus that `cargo test` compares against.
@@ -34,7 +34,7 @@ Each one leaves a builder with a question the record does not answer. Resolution
   - F9's quote `"anchor: 2026-09-03 cli-schema-delivery D9"` names a session, so under D11 the tool rewrites it to `cli-schema-delivery D9-<slug>`.
   - The migration file it quotes stays bare (D12, D14).
   - The quote is now false. D15's diff check passes it, because only an ID token changed.
-  - The same happens to F4's quote of `0019-setup-agnostic-modules-out.yaml:49`, to F13's `git show dc01941` quote, and to strips quoting removed primitive text (GI-006 reconstruction).
+  - The same happens to F4's quote of `0019-setup-agnostic-modules-out.yaml:49`, to F13's `git show dc01941` quote, and to strips quoting removed primitive text (GI-006-primitive-edit-traceability reconstruction).
 - **Size.** Floor count `grep -rhoE '"[^"]{0,200}\b(GI-[0-9]{3}|D[0-9]{1,3})\b[^"]{0,200}"'` over `.mochiko/brainstorms/*/record.md` and `.mochiko/strips`: 213 spans in 84 files. Blockquotes and multi-line quotes are not counted.
 - **Resolution.** Add a quoted-span clause to D14/D15:
   - Verbatim quotes keep their source's form.
@@ -93,12 +93,12 @@ Each one leaves a builder with a question the record does not answer. Resolution
   - D7 answers with a rename tool, not a detector.
   - D18's check counts bare IDs only.
   - Yet Untested bets claims the slug-stays-true bet is "tested by D18's CI report showing no stale slugs over time". No ruled check sees a stale slug.
-- **Scenario.** A partial apply, a hand edit, or S4's scope miss leaves `GI-020-additive-plugin-install` beside a definition reading `GI-020-plugin-install-model`. CI stays clean.
+- **Scenario.** A partial apply, a hand edit, or S4's scope miss leaves "`GI-020-additive-plugin-install`" beside a definition reading `GI-020-plugin-install-model`. CI stays clean.
 - **Resolution.** Extend D6's check: a joined mention whose slug differs from its in-scope definition's slug is reported. This is mechanical, and the definition site is the source D7 already relies on. Otherwise, move the bet to OQ as untested.
 
 **S8 · non-coverage · D16.**
 - **Gap.** "Graders accept a bare ID that predates the upgrade". Nothing tells a grader when an ID was minted. IDs carry no mint date, and spec or ledger dates are not upgrade-relative.
-- **Second gap.** Unruled: a new artifact in a user project citing an old bare `GI-004`. D2 demands the joined form, but no slug exists at the definition, so the citing seat would coin one. That is a second source of truth, which D7 rejected.
+- **Second gap.** Unruled: a new artifact in a user project citing an old bare "`GI-004`". D2 demands the joined form, but no slug exists at the definition, so the citing seat would coin one. That is a second source of truth, which D7 rejected.
 - **Scenario.** Kinako after upgrade: a grader either fails pre-upgrade artifacts and wedges a run, or accepts every bare ID, and enforcement is void.
 - **Resolution.** Rule a test (e.g. a bare ID whose definition is bare is accepted, and its citations stay bare) and the citation form for old IDs.
 
@@ -141,7 +141,7 @@ All 20 cards carry Statement · Why · Rejected roads · Accepted risk · How it
 ## Fitness (cited evidence)
 
 - **Self-contained:** partial. F20 rests on an unpersisted scratchpad report (record l.224). See S15.
-- **Decisions attackable:** yes. Each Why is concrete (e.g. D4 via F13's GI-020 replay).
+- **Decisions attackable:** yes. Each Why is concrete (e.g. D4 via F13's GI-020-plugin-install-model replay).
 - **Decision trail present:** yes, as how-decided lines and ratified-run counts, l.447–891. The Review section is still owed.
 - **Confidence marks honest:** mostly. D3 is `Contested` (l.480). D10 is generous (S13).
 - **Rejected roads recorded:** yes, on all 20.
@@ -309,7 +309,7 @@ I also checked each fix against the other cards.
 
 - **W1: non-blocking. D21's new Statement against D1, D2 and D19.**
   - D21 says rule text in the log "cites IDs bare — the text already there and any rule a later migration writes". The plugin's minting rules are themselves rule text that later migrations write (D1).
-  - Example: the governance-intent template's fixed definition line `- **GI-001 — Type:** …` (`.mochiko/schema-views/templates/governance-intent.yaml:63`). Under D2, that line must emit a joined definition in every user project.
+  - Example: the governance-intent template's fixed definition line "`- **GI-001 — Type:** …`" (`.mochiko/schema-views/templates/governance-intent.yaml:63`). Under D2, that line must emit a joined definition in every user project.
   - Read literally, D21 keeps that line bare, along with the template's example citations (`US-1, US-3` · `SC-1, SC-2`, `templates/spec.yaml:220`). Seats copy examples, so they would keep minting bare IDs, which defeats D1.
   - D21's Why shows the intended scope: citations of decided IDs, which a rename can't follow.
   - **Fix:** add one clause to D21. It binds citations of decided IDs only. Minting grammar, placeholders, template definition lines and example IDs follow D1, D9 and D19.

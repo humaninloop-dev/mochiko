@@ -3,7 +3,7 @@ report: review
 round: 2
 seat: gate-grader-w2
 tier: opus
-wave: author-grader-consolidation wave 2 (producer-plan-enforcement D8)
+wave: author-grader-consolidation wave 2 (producer-plan-enforcement D8-plan-qa-landing)
 units: 14 of 14
 verdict: 14 PASS · 0 blocking (unit 1 FAILed at round 1, fixed and cleared at round 2)
 ---
@@ -111,7 +111,7 @@ Issues requiring fix:
    `[v0.111.0]` row already uses — payload 12,581 = body 2,812 + render 9,769, measured with the
    canonical snippet at log state `sha256:d5cb369a…` · 75 documents · 1,082 rules · floor pin 6,
    binary 0.2.0. The whole delta is render, attributed to `0009-plan-qa-leg.yaml` rewording two
-   rules under anchor `2026-09-03 producer-plan-enforcement D8` (`leg-1-seat-produces` +177,
+   rules under anchor "`2026-09-03 producer-plan-enforcement D8`" (`leg-1-seat-produces` +177,
    `disclosure-line` +253 = +430, less the v0.107.0 render-format constant −237, net +193); ruled
    a genuine new obligation, never restored prose, since both rewords are user-ruled landing-set
    items D8 1 and D8 4. No content cut is warranted.
@@ -129,7 +129,7 @@ Pre-pass: re-run first-hand. `mochiko-cli migrate validate --report --plugin-roo
 
 - PASS — item 8, argued overage: the row now carries a standing **+193 ruled-HOLDS overage at [v0.112.0]**. Every figure it asserts reproduces against my own measurement — payload 12,581, body 2,812, render 9,769, description 505, floor pin 6.
 - PASS — the components sum exactly: `leg-1-seat-produces` +177 and `disclosure-line` +253 against the v0.107.0 render-format constant −237 gives +193. I reached the same three numbers independently in round 1 from the view diff, by a different route than the row's log-replay method, and they agree.
-- PASS — the overage argument holds: both rewords are user-ruled landing-set items (D8 items 1 and 4) under anchor `2026-09-03 producer-plan-enforcement D8`, so this is a genuine new obligation. No restored playbook prose is involved, and no content cut is warranted.
+- PASS — the overage argument holds: both rewords are user-ruled landing-set items (D8 items 1 and 4) under anchor "`2026-09-03 producer-plan-enforcement D8`", so this is a genuine new obligation. No restored playbook prose is involved, and no content cut is warranted.
 - PASS — nothing the fix could have broken did: the budget column stays `12,388 (no headroom)`, as a ruled-HOLDS overage requires; the prior row's text survives verbatim as the row's history tail; the floor pin, the ids, the body and the description are all unmoved; and the run-wide pre-pass, the log state and the views diff are byte-identical to round 1.
 - PASS — unit 11 re-check: the edit is one row replacement plus the round-1 additions, and no other row, figure, note or seeding path in the ledger moved. Unit 11's round-1 PASS stands unchanged.
 
@@ -171,7 +171,7 @@ Pre-pass: `mochiko-cli migrate validate --report --plugin-root plugins/mochiko` 
 
 - PASS — scaffold headings and order: frontmatter with all four required keys, `# Architecture — The Product Architecture Desk`, `## Identity & Mission`, `## Rules — delivered by mochiko-cli`, `## Adaptive Goal Protocol` with Entry, Goal, Not done last. No `**Goal:**` opener, no extra top-level section.
 - PASS — preserved responsibilities: all three rewords extend the existing clause rather than replace it. `seat-architect-producer` keeps "Recommends with reasons; never rules"; `author-grader-separation` keeps the full produces-list and the no-self-clearing clause; `sound-loop-floor` keeps the user's-ruling-never-substitutes clause, the transcription carve and the referenced-never-restated tail.
-- PASS — floor survival: pin `class: floor · 23 rules`; `author-grader-separation` and `sound-loop-floor` both survive as floors with their ids, and `author-grader-separation` gains the `2026-09-03 producer-plan-enforcement D8` anchor it previously lacked.
+- PASS — floor survival: pin `class: floor · 23 rules`; `author-grader-separation` and `sound-loop-floor` both survive as floors with their ids, and `author-grader-separation` gains the "`2026-09-03 producer-plan-enforcement D8`" anchor it previously lacked.
 - PASS — independence, no seat grading its own row: `arch.seat-tech-lead-grader` remains the separate grading seat; the reworded producer rule names a fresh peer, never the author.
 - PASS — reserved-to-user content: `arch.sec.reserved` carries `arch.user-reserved-rulings`; nothing reserved leaked into another section.
 - PASS — done-condition branch (desk): step 2 converges per visit to a one-line goal and its explicit done condition and closes with a verdict against it. No fixed done condition is demanded here.
@@ -213,7 +213,7 @@ Pre-pass: `0 rejecting · 106 advisory`; for this document only `zero-member-lab
 
 - PASS — scaffold headings and order: canonical set in canonical order; Not done cites the printed `kind: fail` pin and obliges the halt when a delivered section's end-line count disagrees.
 - PASS — preserved responsibilities: all four rewords are additive. `plan-approval-producers` keeps its exemption set with `verification` intact; `design-gaps-only` keeps "exactly the named gaps, nothing more" and its rung-justification pointer; `builder-decompose-disclose` keeps the disclosure and test-first clauses; `sound-loop-floor` keeps "This run's seat wiring already carries it end to end".
-- PASS — floor survival: pin `class: floor · 20 rules`; `impl.sound-loop-floor` survives as a floor with its id and gains the `2026-09-03 producer-plan-enforcement D8` anchor it previously lacked.
+- PASS — floor survival: pin `class: floor · 20 rules`; `impl.sound-loop-floor` survives as a floor with its id and gains the "`2026-09-03 producer-plan-enforcement D8`" anchor it previously lacked.
 - PASS — independence: `impl.builder-never-designs` and `impl.seat-verification-independence` stand; the exemption set keeps grading and verification seats out of the plan loop, so no seat grades its own plan.
 - PASS — reserved-to-user content: `impl.sec.reserved` carries eight rules including the three user gates and the run-open rulings.
 - PASS — done-condition branch (run, plus the implement rider): step 2 states a fixed done condition; Entry names the existing run-open confirmation with batch, scope type, both attempt bounds at their only redeclaration point, and the done condition stated, closing at the existing final-acceptance gate. No new ceremony was added.
@@ -270,14 +270,14 @@ outcome: `audit: review-seat-plan pair · gate-grader-w2 · opus · 3 files · 1
 ## Unit 8 — schema content `0009-plan-qa-leg.yaml`
 
 VALIDATE: schema content — the migration file plus its regenerated derived-view diff.
-Checklist run: the AM-2 five — intent stated · anchor present where the exit requires one · ID lifecycle right · floor and fail survival · register.
+Checklist run: the AM-2-required-cli-dependency five — intent stated · anchor present where the exit requires one · ID lifecycle right · floor and fail survival · register.
 Evidence read: `plugins/mochiko/migrations/0009-plan-qa-leg.yaml` (all 283 lines) · `git diff HEAD -- .mochiko/schema-views/` across the six modified files and the one new file.
 Pre-pass: `mochiko-cli migrate validate --report --plugin-root plugins/mochiko` → `0 rejecting · 106 advisory`; `mochiko-cli migrate status --plugin-root plugins/mochiko` → `sequences 1..9 (9 migrations)`, `75 documents · 1082 rules`.
 
 ## Unit 8 — item grades
 
 - PASS — intent stated: the header `intent:` names all five moves — the leg-1 and disclosure rewords, the common-block and six-command sweep, the plan-minimalism re-point, and the new skill document.
-- PASS — anchor where the exit requires one: no `supersede-rule` and no `tombstone-rule` op exists, so the log's hard set demands no exit anchor. The header carries `anchor: 2026-09-03 producer-plan-enforcement D8` regardless, and the binary's `protected-exit` and `anchor-format` checks passed. Two `set-rule-field` ops raise protection by adding anchors, which the log's README says needs no authority.
+- PASS — anchor where the exit requires one: no `supersede-rule` and no `tombstone-rule` op exists, so the log's hard set demands no exit anchor. The header carries "`anchor: 2026-09-03 producer-plan-enforcement D8`" regardless, and the binary's `protected-exit` and `anchor-format` checks passed. Two `set-rule-field` ops raise protection by adding anchors, which the log's README says needs no authority.
 - PASS — ID lifecycle right: 13 `reword-rule`, 2 `set-rule-field`, 1 `import-document`, and nothing else. Every reword keeps its id — confirmed rule by rule against the view diff, which shows text changes under unchanged `- id:` keys. No split, no merge, no tombstone, so no parent-recording or loser-tombstoning is owed.
 - PASS — floor and fail survival: the four touched floors (`patterns-sound-loop.leg-1-seat-produces`, `arch.author-grader-separation`, `arch.sound-loop-floor`, `feat.sound-loop-floor`, `impl.sound-loop-floor`) all survive as floors with their ids and pins unchanged — sound-loop 6, architecture 23, feature 14, implement 20. No `kind: fail` rule is touched by any op.
 - PASS — register: sequence 9 allocated by the lead at wave open, the `hash:` header stamped and accepted by replay, the document count moving 74 to 75 and the rule count to 1,082, the derived views regenerated and proved identical to replay, and the new member pre-registered in the contract suite (unit 9).
@@ -340,7 +340,7 @@ Pre-pass: not a schema document; run-wide pre-pass stands.
 
 - PASS — coherence: the replacement reads "A producing seat's plan graded by a fresh peer per `mochiko:review-seat-plan` and approved by the lead only on PASS before it works", which is exactly the standard D8 item 5-prime names and exactly what migration 0009 now ships in the schemas. The cited skill exists as of this wave, so the pointer resolves. The rest of criterion 6 — independence, reserved content, bindings, the floor, the DM-chartered pointer carve — is untouched and still reads as one sentence-chain.
 - PASS — preserved responsibilities: a two-line replacement of one clause. Nothing else in the file moves; the grader-identity prose still describes the gate grader rather than the retiring `validator`, which is correct at wave 2.
-- PASS — strip ceremony: none owed. This file is a repo rule under `.claude/rules/`, not a `plugins/mochiko/` primitive, and the ledger records the same disposition for AM-2's full rewrite of it.
+- PASS — strip ceremony: none owed. This file is a repo rule under `.claude/rules/`, not a `plugins/mochiko/` primitive, and the ledger records the same disposition for AM-2-required-cli-dependency's full rewrite of it.
 
 VERDICT: PASS
 

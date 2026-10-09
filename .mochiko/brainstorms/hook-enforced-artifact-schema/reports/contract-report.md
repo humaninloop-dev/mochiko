@@ -73,7 +73,7 @@ last touched 2026-09-05 (`32c1ed5`). `preflight()` raises `AttributeError: modul
 'mochiko_eval_runner' has no attribute 'SANDBOX'` before any sandbox case runs — an unhandled
 exception, not a clean skip. Separately `run_probe()` calls `claude_args` positionally against a
 signature that changed, so it asks for `--plugin-dir True --add-dir True`; verified by calling it.
-That is 77 of 82 cases and roughly 151 metered sessions, both of mine included. GI-012 gate 6 makes
+That is 77 of 82 cases and roughly 151 metered sessions, both of mine included. GI-012-release-gates-module gate 6 makes
 the suite green a condition of a `plugin.json` bump and says a SKIPPED suite is not green; this is
 worse than skipped. Not fixed here: the repair is a design call between re-adding the sandbox
 helpers and porting the suite to host mode, it touches every existing sandbox case, and it is
@@ -102,7 +102,7 @@ header. `load_runner()` imports that file instead, and `run_probe()` calls `clau
 keyword rather than positionally, which is what let the 2026-09-11 signature change rebind
 `plugin` to `True` without a single test going red.
 
-The duplication is deliberate and the header says so: this suite is a release gate under GI-012,
+The duplication is deliberate and the header says so: this suite is a release gate under GI-012-release-gates-module,
 and a gate may not be at the mercy of a research harness that owes it nothing and is free to change
 whenever the skill-eval work needs it. If `evals/run.py` converges again, this file does not move.
 

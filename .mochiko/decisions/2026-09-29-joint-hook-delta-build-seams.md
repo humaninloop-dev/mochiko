@@ -18,8 +18,8 @@ it (the field review's OQ1 "fold shape" question and its `baseline-delta.md` ent
 delta D1/D6a). It did find seven seams where both records rule the same object and neither says
 what happens, and two smaller ones.
 
-Two things changed after both records were accepted. AM-5 (governance v3.2.0, 2026-09-24) landed
-the field review's wave-3 ledger amendment and recorded the 0.109.0 hook ship as a GI-012
+Two things changed after both records were accepted. AM-5-field-review-fold (governance v3.2.0, 2026-09-24) landed
+the field review's wave-3 ledger amendment and recorded the 0.109.0 hook ship as a GI-012-release-gates-module
 exception-registry row, which lets further `plugin.json` bumps ship the hooks until the first
 `mochiko-cli` publish with all four controls. Plugin v0.115.0 (`setup-product-agnostic`) took
 migrations 0019–0023 and struck setup's design-truth write, leaving the design truth part's writer
@@ -47,8 +47,8 @@ the per-feature delta files and the fold that an open run would need to finish. 
 S16(ii) posture — a run in flight reads the new homes at its next write, no run pins a plugin
 version — stands for every other upgrade.
 
-**R4 — The joint build ships under the AM-5 exception row (publish).** The joint `plugin.json` bump
-ships the hooks under the GI-012 exception-registry row (only the maintainer installs, from git
+**R4 — The joint build ships under the AM-5-field-review-fold exception row (publish).** The joint `plugin.json` bump
+ships the hooks under the GI-012-release-gates-module exception-registry row (only the maintainer installs, from git
 `main`), its `CHANGELOG.md` entry citing the row as the row requires. The field review's wave-1
 publish stays owed: the crate version is bumped, and no `mochiko-cli-v*` tag lands until the two
 owed controls (a manual-approval publish environment, signed tags) exist; that publish closes the
@@ -66,7 +66,7 @@ after the user's acceptance. No `mochiko-cli run close` subcommand is built.
 (`hook-enforced-artifact-schema` record :542–544) gates a write outside every declared home when its
 content opens with report frontmatter *or a template's `## Header` signature*. Only the frontmatter
 half was ever built; S1's clause-walk of the ledger found the gap. The limb is struck by this
-ruling: the sniff stays report frontmatter only. The ledger's GI-019 "Reach of the gate" sentence is
+ruling: the sniff stays report frontmatter only. The ledger's GI-019-kernel-tooling-admission "Reach of the gate" sentence is
 corrected at the wave-3 text-vs-build check, together with two text drifts S1 found (the ledger's
 "a `.md` write" where the binary sniffs every extension; "What the gate reads" naming the on-disk
 file for `Edit` only, where `Write` also reads it as the amnesty baseline).

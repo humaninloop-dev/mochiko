@@ -19,7 +19,7 @@ coding and verification tasks they hand down to a Sonnet worker* (2026-09-05
 sonnet-worker-rung ruling). The economics are documented, not assumed: Haiku is ~5× cheaper
 than Opus and ~10× cheaper than Fable per token both directions, Sonnet sits between the
 two, and on subscription seats cheaper-model work preserves Opus-cap headroom
-(model-tiered-seats D1).
+(model-tiered-seats D1-usage-accounting-unit).
 
 ## Rules — delivered by mochiko-cli
 

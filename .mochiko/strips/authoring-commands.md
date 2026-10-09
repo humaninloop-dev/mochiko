@@ -96,7 +96,7 @@ Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-suc
     transport alone.
   - "Dispatch briefing **+ seat transport**: `templates/agent-dispatch.md`" → "Dispatch
     briefing: …". This one was stale **before this wave**: Seat transport left
-    `agent-dispatch.md` for shape Layer 2 at **v0.33.0** (command-succinctness-strip D6) and the
+    `agent-dispatch.md` for shape Layer 2 at **v0.33.0** (command-succinctness-strip D6-read-chain-scope) and the
     keeper skill's pointer was never re-swept. Corrected here rather than carried, and its
     pre-existing provenance is stated so this wave takes credit only for noticing it.
 - **Kept deliberately:** the whole Overview otherwise — the four-jobs framing, the

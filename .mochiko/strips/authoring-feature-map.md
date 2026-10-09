@@ -12,7 +12,7 @@ the same wave superseded.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the authoring family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -22,7 +22,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/authoring-feature-map/SKILL.md`. -->
 
@@ -30,7 +30,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 - **Disposition:** superseded → "delivered by `mochiko-cli` in the artifact section"
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** "(bindings in the schema's artifact section)"
 - **Kept deliberately:** the row itself — that the `features-index` and `feature-entry` schemas own
   the repo-root `FEATURES.md` index shape and the per-capability entry shape this skill fills — and
@@ -41,7 +41,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -91,7 +91,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -101,7 +101,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
   silent continue.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -111,7 +111,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 ## [v0.101.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2A, authoring family)
 
-Ruling for every [v0.101.0] entry below: skill-content-schema D3 (three-home boundary) /
+Ruling for every [v0.101.0] entry below: skill-content-schema D3-obligations-only-schema (three-home boundary) /
 D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (record + wave-2 family-door
 rulings); census: `.mochiko/brainstorms/skill-content-schema/research/census-authoring.md` §A/§B (AFM).
 Schema home: `plugins/mochiko/skills/authoring-feature-map/schema.yaml`. Minted IDs carry the
@@ -156,10 +156,10 @@ census's teaching dispositions.
 delivered-at-invoke quantity; census est. ~36,100) — ×1.35 vs the pre-conversion body, the
 delta structural overhead (IDs, keys, section scaffolding, reading grammar), no content growth
 claimed.
-**J-6 — the standing +562 ruled overage dissolves at re-seed:** the +562 declared overage
+**J-6-overage-dissolves-reseed — the standing +562 ruled overage dissolves at re-seed:** the +562 declared overage
 (mechanic-(e) zero-gap branch, ruled **HOLDS** by the v0.91.0 wave audit V2, byte-reconciled to
 the ruled obligation) dissolves into the C1 conversion re-seed of the budget row. Named here so
-its ruling trail survives the budget row's supersession (GI-006 reconstruction); the zero-gap
+its ruling trail survives the budget row's supersession (GI-006-primitive-edit-traceability reconstruction); the zero-gap
 clause itself transfers verbatim-in-meaning to `four-touchpoints` (entry below).
 
 ## [v0.101.0] The 8 hard invariants — protection transfers (pm-role D2/D6/D7/D8 + feature-sizing G4)
@@ -184,13 +184,13 @@ clause itself transfers verbatim-in-meaning to `four-touchpoints` (entry below).
   the invariants, now schema-carried and ID-citable; `mochiko:review-specifications` grades map
   integrity by reference — contracts intact.
 
-## [v0.101.0] Re-type core + frame-first + story-wins — protection transfers (pm-role D1/D2/D5)
+## [v0.101.0] Re-type core + frame-first + story-wins — protection transfers (`pm-role-and-feature-derivation` D1-story-feature-mirroring/D2-capabilities-work-rows/D5-pm-specify-front)
 
 - **Disposition:** superseded — protection transfers to `capability-work-row` ·
   `work-rows-transient` · `stories-inform-never-define` · `frame-first` (which carries the
   story-wins clause), per D8/C4.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; original
-  protection: 2026-08-13 pm-role-and-feature-derivation D1/D2/D5).
+  protection: "2026-08-13 pm-role-and-feature-derivation D1/D2/D5").
 - **Content:** the Overview's two-row-type sentences, "Stories inform *which* capabilities
   exist and sharpen their extents; they never define them", and the frame-first paragraph incl.
   "where a story and the frame conflict, the **story wins** and the frame adjusts".
@@ -204,21 +204,21 @@ clause itself transfers verbatim-in-meaning to `four-touchpoints` (entry below).
   D8/C4; the zero-gap branch ("on a zero-gap verdict, where no design phase runs, the
   card-authoring seat performs the dependency and extent assertion instead") carried
   verbatim-in-meaning. The +562 HOLDS overage this clause anchored dissolves at the re-seed —
-  see the J-6 clause in the map entry above.
+  see the J-6-overage-dissolves-reseed clause in the map entry above.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; original
-  protection: 2026-08-26 plan-stage-utility D1 mechanic (e), V2 B1 wording).
+  protection: "2026-08-26 plan-stage-utility D1" mechanic (e), V2 B1 wording).
 - **Content:** the Overview four-touchpoints sentence, all four duties and the zero-gap branch.
 - **Consumers assessed:** `mochiko:patterns-vertical-tdd` carries the card-authoring seat the
   branch names; `implement.md` owns the design phase — both untouched by this relocation.
 
-## [v0.101.0] Two-arm features-index / feature-entry bindings — protection transfers (template-schema D8, GI-020)
+## [v0.101.0] Two-arm features-index / feature-entry bindings — protection transfers (`schema-based-template-guidance` D8-schema-data-files, GI-020-plugin-install-model)
 
 - **Disposition:** superseded — protection transfers to `features-index-two-arm`
   (`extends: authoring-common.two-arm-template`, `${template}` = features-index) and
   `feature-entry-two-arm` (LOCAL twin), per D8/C4. Both arms preserved at both sites — CLI
-  invoke + first-class raw Read (GI-020).
+  invoke + first-class raw Read (GI-020-plugin-install-model).
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; original
-  protection: 2026-08-16 schema-based-template-guidance D1/D8, the v0.76.0 entry below).
+  protection: "2026-08-16 schema-based-template-guidance D1/D8", the v0.76.0 entry below).
 - **Content:** the Overview two-arm parenthetical and the two `## Related` two-arm lines.
 - **Kept deliberately:** the Related list keeps both schema names as navigation pointers,
   mechanics now schema-carried.
@@ -232,8 +232,8 @@ clause itself transfers verbatim-in-meaning to `four-touchpoints` (entry below).
   `escalation-never-forced-cut` (floor, reservation) · `backlog-boundary` ·
   `selection-user-ruling` (floor, reservation), per D8/C4.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; original
-  protections: 2026-08-10 feature-sizing-and-entry-points D2a/D12/D13 · 2026-08-10
-  pm-requirements-stacking D2/D2a/D4 + the v0.62.0 entry below).
+  protections: "2026-08-10 feature-sizing-and-entry-points D2a/D12/D13" · "2026-08-10
+  pm-requirements-stacking D2/D2a/D4" + the v0.62.0 entry below).
 - **Content:** the red-flag and checklist rows carrying the stub/selectability/escalation
   discipline and the When-NOT BACKLOG boundary line (KM degrade path and extent-growth
   exception intact in `backlog-boundary`).
@@ -246,7 +246,7 @@ clause itself transfers verbatim-in-meaning to `four-touchpoints` (entry below).
 - **Disposition:** superseded → the design phase confirms and hardens (with the zero-gap branch
   naming the card-authoring seat); "implement's surface"; "one implement run".
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 mechanic **(e)**, the map-entry
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires mechanic **(e)**, the map-entry
   hardening mechanic: "the design phase, when it runs, asserts the design-implied dependency
   relations and sharpened extent onto the feature's map entry with provenance … on the zero-gap
   path the card-authoring seat performs the dependency/extent assertion at card authoring").
@@ -277,14 +277,14 @@ clause itself transfers verbatim-in-meaning to `four-touchpoints` (entry below).
   the design phase and the card-confirm checkpoint; the router's `authoring-feature-map` row
   describes the map's own grammar and never named the plan stage — no re-key owed there.
 
-## [v0.81.0] Three architecture pointers re-keyed to the store — product-architecture-schema D3/D4/D7
+## [v0.81.0] Three architecture pointers re-keyed to the store — product-architecture-schema D3-store-replaces-artifact/D4-store-file-structure/D7-architecture-desk-crew
 
 - **Disposition:** superseded → the architecture store and its spine. The map's peer view is no
   longer a prose `ARCHITECTURE.md` but the store (`.mochiko/product/architecture/`), of which the
   root doc is a derived index; the retired `authoring-architecture` skill is replaced by
   `authoring-architecture-store` in the Related list.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3/D4 (one store, derived index) ·
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3-store-replaces-artifact/D4-store-file-structure (one store, derived index) ·
   D7 (crew — `authoring-architecture` retired); `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim — three fragments):**
 
@@ -343,9 +343,9 @@ clause itself transfers verbatim-in-meaning to `four-touchpoints` (entry below).
   15,413 budget — declared and ruled HOLDS at the v0.76.0 V3 audit — narrows to +433. This edit
   shrinks the body; it adds no obligation and needs no fresh overage justification.
 
-## [v0.76.0] `features-index-template.md` / `feature-entry-template.md` read-pointers → schemas (two-arm) — schema-based-template-guidance D1/D8
+## [v0.76.0] `features-index-template.md` / `feature-entry-template.md` read-pointers → schemas (two-arm) — schema-based-template-guidance D1-single-plugin-cli/D8-schema-data-files
 - **Disposition:** superseded → `mochiko-cli template features-index` / `template feature-entry`, or Read `plugins/mochiko/schemas/features-index.yaml` / `plugins/mochiko/schemas/feature-entry.yaml` raw (D8-first-class). Three sites (four pointer instances): the Overview one-living-map sentence (both templates) + the two Related-section pointers.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1-single-plugin-cli/D3-pipeline-template-scope/D8-schema-data-files; `DECISIONS.md` "Template-schema CLI ruled").
 - **Content (superseded, verbatim):**
   - `a succinct repo-root [\`FEATURES.md\`](../../templates/features-index-template.md) index (one line per capability, work rows as sublines) over per-capability entry files (\`.mochiko/features/FEAT-XXX-<slug>.md\`, shaped by [\`feature-entry-template.md\`](../../templates/feature-entry-template.md)).`
   - `- [\`features-index-template.md\`](../../templates/features-index-template.md) — owns the repo-root \`FEATURES.md\` index shape`
@@ -388,7 +388,7 @@ not a silent drop.
   - "| **Feature — parent** | Product | The capability a product person names in one breath; navigation + status roll-up over its leaves, never built directly | **this skill** (map entry) |"
   - "| **Feature — leaf** | Pipeline unit | A deliverable built capability; graduates through plan/implement as its own unit (a flat entry is a leaf) | **this skill** (map entry) |"
   - vertical-slice row cell "Implementation, within one leaf" (re-keyed → "within one capability-batch run")
-- **Protected-content reconciliation:** these two rows were the "Kept deliberately" survivors of the v0.63.0 guardrails cut and trace to feature-sizing D2 (nested entries) / D3 (two-level cap) — superseded now by pm-role D6 (nesting dies as re-typing + transience). Not a silent drop.
+- **Protected-content reconciliation:** these two rows were the "Kept deliberately" survivors of the v0.63.0 guardrails cut and trace to `feature-sizing-and-entry-points` D2-nested-feature-entries (nested entries) / D3 (two-level cap) — superseded now by `pm-role-and-feature-derivation` D6-leaf-nesting-superseded (nesting dies as re-typing + transience). Not a silent drop.
 - **Kept deliberately:** the user-story row unchanged; the vertical-slice row survives, re-keyed leaf→capability-batch run.
 - **Consumers assessed:** `mochiko:patterns-vertical-tdd` (Related line re-keyed same edit — cuts one capability-batch run now) · plan/implement re-key to capability-batch in parallel seats.
 
@@ -396,7 +396,7 @@ not a silent drop.
 - **Disposition:** superseded → "**Delivered is sticky; delivered rows fold.**" — a `live` row folds into extent at landing and vanishes; a `pending` row persists as open obligation; a `delivered` capability keeps status while carrying live rows, the change riding on the row until its fold; status never regresses
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-13 pm-role-and-feature-derivation; record D2 fold + pending/live, D6 — parent-roll-up superseded by the fold)
 - **Content (verbatim):** "5. **Delivered is sticky.** A later spec or lane run touching a `delivered` feature never regresses its status; the change rides as a marked delta until that work's landing folds it. Roll-up yields to stickiness: a delivered parent gaining an in-flight child keeps `delivered`, the child riding as a delta. `retired` is terminal: entry kept, dated, provenance intact — never deleted."
-- **Protected-content reconciliation:** the parent-roll-up sentence ("a delivered parent gaining an in-flight child keeps `delivered`") was a feature-sizing D2 survivor (v0.61.0 delta-grammar entry, "Kept deliberately"); superseded now — the fold replaces roll-up (D6). The delta-carry re-types onto the work row.
+- **Protected-content reconciliation:** the parent-roll-up sentence ("a delivered parent gaining an in-flight child keeps `delivered`") was a `feature-sizing-and-entry-points` D2-nested-feature-entries survivor (v0.61.0 delta-grammar entry, "Kept deliberately"); superseded now — the fold replaces roll-up (D6). The delta-carry re-types onto the work row.
 - **Kept deliberately:** no-status-regression survives (now capability-level); `retired`-terminal survives verbatim; sticky-delivered itself survives as the capability + live-rows rule.
 - **Consumers assessed:** review-specifications carries map-integrity by reference; implement's landing seat executes the fold (parallel seat, same wave).
 
@@ -412,7 +412,7 @@ not a silent drop.
 - **Disposition:** superseded → the work-row integrity form: every work row names its run; every `live` row / `in-flight` status points at an open run; a row whose run ended without folding is a defect; closed-spec-pointed-at and specs-index-contradiction defects survive
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-13 pm-role-and-feature-derivation; record D6 — the fold removes parent roll-up; delta re-types to work row)
 - **Content (verbatim):** "7. **Map integrity — fix on sight.** No dangling FEAT-IDs; index lines and entry files agree on status; no orphaned deltas; every delta names its spec or lane run; every `in-flight` status or delta points at an open spec or a live lane run — live from dispatch until its acceptance landing; a delta whose lane run ended without folding is a defect, fix-on-sight. A closed spec still pointed at is a defect; a parent whose status contradicts its children's roll-up is a defect; a specs-index row contradicting the map is a defect."
-- **Protected-content reconciliation:** the "parent whose status contradicts its children's roll-up is a defect" clause was a feature-sizing D2 survivor (v0.61.0 invariant-7 entry, "Kept deliberately") — superseded now (no parents; the fold replaces roll-up). The delta-integrity clauses re-type to work rows verbatim-in-meaning.
+- **Protected-content reconciliation:** the "parent whose status contradicts its children's roll-up is a defect" clause was a `feature-sizing-and-entry-points` D2-nested-feature-entries survivor (v0.61.0 invariant-7 entry, "Kept deliberately") — superseded now (no parents; the fold replaces roll-up). The delta-integrity clauses re-type to work rows verbatim-in-meaning.
 - **Kept deliberately:** dangling-FEAT-ID, index/entry agreement, closed-spec-defect, specs-index-contradiction — all survive; the delta-names-its-run and live-until-landing rules survive re-typed onto work rows.
 - **Consumers assessed:** review-specifications (pipeline-core map-integrity invariants by reference) · the lane run's verification seat (parallel seat).
 
@@ -441,7 +441,7 @@ not a silent drop.
   - Checklist: "Selection card prepared with recommendation, deferred-SC list, per-parent completeness ledger line (delivered/undelivered leaves · stubs · kills), and ordering — the ruling left to the user"
   - Checklist: "Territory-touching parents' parked stubs and undelivered leaves re-surfaced on the selection card; any dependency-blocked leaf/stub escalated as a recommendation (leaf via asserted map relation, stub via flagged-unverified judgment), never a forced cut"
   - Checklist: "Any leaf cut as an across-round phase is independently useful — a working increment, not a horizontal layer"
-- **Protected-content reconciliation:** the nesting red flags, the two-level/sizing-bar checklist lines, and the per-parent completeness-ledger line were feature-sizing D1–D4 survivors ("Kept deliberately" across the v0.61.0/v0.63.0 entries) — superseded now by pm-role D6 (no nesting) / D2 (fold + pending rows) / D7 (capability-batch). The escalation-never-forced-cut, re-verify, phase-stands-alone, and story-mirror-ban rules survive re-keyed, not dropped.
+- **Protected-content reconciliation:** the nesting red flags, the two-level/sizing-bar checklist lines, and the per-parent completeness-ledger line were feature-sizing D1–D4 survivors ("Kept deliberately" across the v0.61.0/v0.63.0 entries) — superseded now by `pm-role-and-feature-derivation` D6-leaf-nesting-superseded (no nesting) / D2 (fold + pending rows) / D7 (capability-batch). The escalation-never-forced-cut, re-verify, phase-stands-alone, and story-mirror-ban rules survive re-keyed, not dropped.
 - **Kept deliberately:** the extend-beats-mint mirror ban (re-keyed to capability), the phase-stands-alone rule (re-keyed to work row), escalation-is-recommendation-never-forced-cut, first-touch-re-verify, stub-is-hypothesis, selectability-specify-only, pseudo-capability ban — all survive; per-parent completeness re-homes as per-capability completeness (pending rows · folded rows · deferred SCs).
 - **Consumers assessed:** product-manager agent applies this skill's guardrails at derivation — no restatement in its persona (decoupling holds); review-specifications grades the derivation output.
 
@@ -532,7 +532,7 @@ not a silent drop.
 
 ## [v0.61.0] BACKLOG boundary line superseded — KM-scoped, extent-growth exception (D13)
 - **Disposition:** superseded → "**Tracking defects, tooling, or process work** — those live in `BACKLOG.md` where KM exists (a non-KM product has no queue; lane runs accept direct requests — the stated degrade path, never silently assumed away). Extent-growth improvement ideas are the exception: they ride the map as `proposed` deltas or obligation lines — the map is the capability backlog." Rationalization row extended to match.
-- **Tier failed:** n/a — supersession by ruling (record D13, review finding 12 — R15 boundary scoped to KM-adopting repos; extent-growth ideas ride the map per feature-map D9)
+- **Tier failed:** n/a — supersession by ruling (record D13, review finding 12 — R15 boundary scoped to KM-adopting repos; extent-growth ideas ride the map per `feature-map-layer` D9-spec-delivery-events)
 - **Content:** "**Tracking defects, tooling, or process work** — those live in `BACKLOG.md`; the map carries product capabilities only" · rationalization reality cell "The map states what the product does, not what needs fixing. Defects, tooling, and process live in `BACKLOG.md`."
-- **Kept deliberately:** defects/tooling/process still never become entries; the feature-map D22 pseudo-feature ban untouched.
+- **Kept deliberately:** defects/tooling/process still never become entries; the `feature-map-layer` D22-foundation-ordering-role pseudo-feature ban untouched.
 - **Consumers assessed:** the feature command's triage (D13/D14) is the runtime consumer — bound by reference in the parallel seat.

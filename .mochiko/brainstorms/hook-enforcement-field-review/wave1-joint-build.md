@@ -2,8 +2,8 @@
 
 **Rulings:** `record.md` D1–D9 as review-amended (accepted 2026-09-23) · `delta-files-vs-direct-baseline-edits/record.md`
 D1–D7 as review-amended (accepted 2026-09-24) · the joint-build seams R1–R4
-(`.mochiko/decisions/2026-09-29-joint-hook-delta-build-seams.md`, ruled 2026-09-29) · governance v3.2.0 (AM-5:
-GI-019 already re-worded for this gate, its build-state line strikes at the wave-1 + wave-2 bump; the GI-012
+(`.mochiko/decisions/2026-09-29-joint-hook-delta-build-seams.md`, ruled 2026-09-29) · governance v3.2.0 (AM-5-field-review-fold:
+GI-019-kernel-tooling-admission already re-worded for this gate, its build-state line strikes at the wave-1 + wave-2 bump; the GI-012-release-gates-module
 exception row covers shipping the hooks before the first publish — R4).
 **Build surface:** this record § Build surface 1–4; the delta record § Build surface 1–3, which rides waves 2–4.
 **Lead:** the session lead. Produces nothing on a governing surface; owns the branch, the wave plans,
@@ -12,7 +12,7 @@ exception row covers shipping the hooks before the first publish — R4).
 (`.claude/rules/mochiko/primitive-edits.md`) · the crate rules (`.claude/rules/mochiko/rust-cli.md`).
 **Branch:** `joint-hook-delta` off `main` at `be46e16` (plugin 0.115.0, binary 0.2.0, migrations through 0023).
 **Targets:** crate `0.3.0`, grammar range 1..2, no `mochiko-cli-v*` tag (R4); one plugin bump, `0.116.0`, at the
-close of wave 3 (MINOR: homes, rules and templates change). Under the held-bump rule (AM-5) nothing merges to `main`
+close of wave 3 (MINOR: homes, rules and templates change). Under the held-bump rule (AM-5-field-review-fold) nothing merges to `main`
 before that bump's gates are green; waves 1–3 merge once.
 
 ## 0. The joint wave map
@@ -21,7 +21,7 @@ before that bump's gates are green; waves 1–3 merge once.
 |---|---|---|---|
 | 1 crate | build surface 1, all of it | nothing directly; its D1 needs the per-entry budget kind built here | R4: version bump, no tag |
 | 2 census + homes + rule supersessions | build surface 2 and the one census table | build surface 1 (sweep first, then supersessions, home sets, entry grammar) | seams 2–5 and the smaller one land in the census table |
-| 3 rule rewords + prose + ceremony | build surface 3, less the ledger (done at AM-5) | build surface 2 | R1 in `impl.artifact-home`; R2 in the report rules; the smaller two put to the user at plan approval |
+| 3 rule rewords + prose + ceremony | build surface 3, less the ledger (done at AM-5-field-review-fold) | build surface 2 | R1 in `impl.artifact-home`; R2 in the report rules; the smaller two put to the user at plan approval |
 | 4 kinako, after the merge | build surface 4 | build surface 3, D5 (i)–(v) in order | R3 checked first |
 
 Waves 2 and 3 are split only because the census table must be ratified by the user before the rule rewords that
@@ -57,7 +57,7 @@ carries). Only `<root>/.mochiko/` is a home tree; a `.mochiko/` nested deeper un
 workspaces) is never a home. A worktree resolves to its own homes. A path in another tree resolves against that
 tree's root. A path whose tree has no `.git` at all (an `impl.cold-verification` snapshot) has no home tree and
 resolves outside (delta-check N4). The root operating docs are unchanged (not watched). The ancestor walk is one of
-the reads GI-019's "What the gate reads" paragraph lists as widened at AM-5; S1 reads that paragraph and builds
+the reads GI-019-kernel-tooling-admission's "What the gate reads" paragraph lists as widened at AM-5-field-review-fold; S1 reads that paragraph and builds
 exactly what it names. `check` and `home` share the resolver. Matrix: root-relative · relative from inside a
 worktree · absolute · nested fixture · the run folder · another tree · a tree with no `.git`.
 
@@ -71,7 +71,7 @@ or `reports/` file of the nearest home, or, for raw output, the run folder by ab
 `home` prints the same. The undeclared-sub-directory reason drops "A new sub-directory takes a migration … and a
 plugin release" in favor of the run-folder route (D3's last sentence). Outside `.mochiko/` nothing changes: the D9
 sniff stays. The first-touch amnesty never covers a path in no home (unchanged). The ledger's "Reach of the gate"
-paragraph (AM-5) is the text this wave must meet: S1 walks it clause by clause, and any clause the binary does not do
+paragraph (AM-5-field-review-fold) is the text this wave must meet: S1 walks it clause by clause, and any clause the binary does not do
 today and this plan does not name (for example the sniff's "template's `## Header` signature" limb) goes to the lead
 at plan time, never built or dropped silently. Tests declare their own homes in
 fixtures; the real census is wave 2's, and the closed world only reaches a consumer in the same bump.
@@ -85,7 +85,7 @@ file opening with report frontmatter (the existing sniff test, nothing new) is r
 four declared sub-directories without home documents: `prototype/`, `inputs/`, `research/`, `referents/` (V2).
 `implement-log.md` is allowed by name (V7). Shape and size are otherwise unchecked. **Main tree only (V3):** a write
 to a worktree's own `.mochiko/runs/` is refused, and the reason names the main tree's run folder by absolute path,
-read from the worktree's `.git` pointer file (`gitdir: …/.git/worktrees/<name>`), the third read GI-019 names.
+read from the worktree's `.git` pointer file (`gitdir: …/.git/worktrees/<name>`), the third read GI-019-kernel-tooling-admission names.
 
 **2.5 The per-entry budget kind (D2, OQ1).** A deliverable form `entries`: `entry_heading` (`##` or `###`) and
 `entry_max_lines`, each entry counted from its heading to the next heading at the same or a higher level. The
@@ -108,7 +108,7 @@ older binary ignores unknown keys and would treat the run folder as an ordinary 
 `(1, 2)`. Grammar 2 is grammar 1 plus the fields of 2.4 and 2.5. `migrate validate` checks them: `entry_heading`
 only `##`/`###`; the raw-output fields on at most one home; `entry_max_lines` required with `form: entries`. A
 consumer on 0.2.0 meeting a grammar-2 log halts at first use and says why, which is the dependency halt working
-(GI-020). Crate version `0.3.0`, with a `Cargo.toml` comment in the file's style.
+(GI-020-plugin-install-model). Crate version `0.3.0`, with a `Cargo.toml` comment in the file's style.
 
 ## 3. S2 — the shell leg reads write positions only (D5 as amended at S12, V1/N2)
 
@@ -171,8 +171,8 @@ documents; the two floors superseded by new ids; the fail rules re-keyed; the D6
 final-validation report rules · `testing-end-user`'s scratch path to the run folder, plus the dry-run rule · the
 `SubagentStart` and `SessionStart` lines (the latter lists every `runs/*` folder) · the run-close step (OQ5) · the
 skills the delta record's D6d lists · strips · the gate audit (`mochiko:validation-primitive-edit`) · `CHANGELOG.md`
-citing the AM-5 exception row (R4) · `plugin.json` `0.116.0` and `marketplace.json` · the contract suite green
-against the branch binary · the GI-019 build-state line's text-vs-build check, run by the lead. The report
+citing the AM-5-field-review-fold exception row (R4) · `plugin.json` `0.116.0` and `marketplace.json` · the contract suite green
+against the branch binary · the GI-019-kernel-tooling-admission build-state line's text-vs-build check, run by the lead. The report
 commit-citation question (the smaller two) is put to the user at this wave's plan approval.
 
 **Wave 4 — kinako, after the merge.** R3 first: no implement run open. The maintainer installs crate 0.3.0 (the

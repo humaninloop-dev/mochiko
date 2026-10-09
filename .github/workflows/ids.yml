@@ -1,0 +1,68 @@
+# mochiko ID check — reports bare and drifted human-readable IDs on every pull request.
+#
+# `human-readable-ids` D18-build-done-check: after landing, the build's done check runs on every
+# pull request, reporting only and never blocking — `mochiko-cli ids --check` is advisory, its exit
+# code its only signal (D6-minting-check-enforcement). So the check step always exits 0: findings
+# become warning annotations and a step summary, never a red check. (A checkout, toolchain or build
+# failure still fails the job, as any build would.) It has no path filter, since an
+# ID drifts in prose, which the crate workflow's filter would never see. The exclude list lives in
+# `scripts/ids-check-excludes.txt`.
+name: ids
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Rust toolchain
+        uses: dtolnay/rust-toolchain@stable
+
+      - name: Build mochiko-cli
+        run: cargo build --locked -p mochiko-cli
+
+      - name: ids --check (report only)
+        run: |
+          # The default shell is `bash -e`: the check's exit 1 on findings is caught, never fatal.
+          set -u
+          args=()
+          while IFS= read -r line; do
+            case "$line" in ''|'#'*) continue ;; esac
+            args+=(--exclude "$line")
+          done < scripts/ids-check-excludes.txt
+          code=0
+          out=$(target/debug/mochiko-cli ids --check "${args[@]}" 2>&1) || code=$?
+          printf '%s\n' "$out"
+          {
+            echo '### `mochiko-cli ids --check`'
+            echo
+            echo '```'
+            printf '%s\n' "$out"
+            echo '```'
+          } >> "$GITHUB_STEP_SUMMARY"
+          # One annotation per finding line: `<path>:<line>:<col> · <kind> · <ID>`.
+          printf '%s\n' "$out" | while IFS= read -r finding; do
+            case "$finding" in
+              *' · bare · '*|*' · drift · '*)
+                loc=${finding%% · *}
+                file=${loc%%:*}
+                rest=${loc#*:}
+                lineno=${rest%%:*}
+                col=${rest#*:}
+                echo "::warning file=${file},line=${lineno},col=${col}::${finding#* · }"
+                ;;
+            esac
+          done
+          # 1 means findings; anything else means the check itself did not run. Neither fails the step.
+          case "$code" in
+            0) ;;
+            1) echo "::warning::ids --check reported findings (exit 1); advisory only, never blocking" ;;
+            *) echo "::error::ids --check did not run (exit $code); this run checked nothing" ;;
+          esac
+          exit 0

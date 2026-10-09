@@ -47,7 +47,7 @@ is inlined into each command rather than dropped.
 3. **Obligated reads dropped.** The `mochiko:loop-discipline` and `command-shape.md` reads
    leave every command preamble. The v5/v7 transition note's "a command that omits the read is
    non-conformant" clause is superseded; the read-drop deferral and its live-run trigger
-   (2026-07-30 pilot-checkpoint ruling 5; CS-D7 V1) are superseded — the read is not dropped
+   (2026-07-30 pilot-checkpoint ruling 5; `command-succinctness-strip` D7-shared-primitive-wall V1) are superseded — the read is not dropped
    *from* the shape, the shape itself is gone.
 4. **Command audit bar re-keyed.** With no shared checklist, `mochiko:validator` grades a
    command edit against **the command's own text**: internal coherence (default-FAIL goal,

@@ -1,7 +1,7 @@
 //! The six conformance checks (record D4), the first-touch amnesty, and the `Edit`-in-memory leg.
 //!
 //! Each check is decidable by string and count, which is what keeps the write-time gate on the
-//! admitted side of the bright line: nothing here reads meaning or grades quality (GI-019).
+//! admitted side of the bright line: nothing here reads meaning or grades quality (GI-019-kernel-tooling-admission).
 //!
 //! Every fixture is written under `CARGO_TARGET_TMPDIR`, inside `target/`.
 
@@ -215,7 +215,7 @@ fn an_undeclared_file_name_is_denied_and_the_reason_names_the_set_and_the_route(
 
 #[test]
 fn an_undeclared_name_on_a_file_already_on_disk_is_amnestied_and_names_the_violation() {
-    // D4e as ratified at AM-3: the file set is a relaxable measure. A mis-homed file that already
+    // D4e as ratified at AM-3-conformance-gate-admission: the file set is a relaxable measure. A mis-homed file that already
     // exists stays editable, with the violation reported rather than hidden, because a gate that
     // refuses every write to it is a gate that wedges it.
     let state = state("set-amnesty");
@@ -415,6 +415,21 @@ fn a_heading_inside_a_fenced_code_block_is_not_a_heading() {
     let verdict = grade(&state, SPEC, unfenced);
     assert!(denied(&verdict));
     assert!(verdict.reason.unwrap_or_default().contains("## Invented"));
+}
+
+#[test]
+fn a_heading_inside_a_nested_shorter_fence_is_not_a_heading() {
+    let state = state("head-nested-fence");
+    // A four-backtick fence quoting a three-backtick block: the inner fence lines are content, so
+    // the `## Invented` between them stays inside the outer block.
+    let fenced =
+        format!("{CONFORMING}\n## Examples\n\n````\n```markdown\n## Invented\n```\n````\n");
+    let verdict = grade(&state, SPEC, &fenced);
+    assert!(
+        allowed(&verdict),
+        "a heading quoted inside a nested fence must not read as a heading: {:?}",
+        verdict.reason
+    );
 }
 
 // ---------------------------------------------------------------------------

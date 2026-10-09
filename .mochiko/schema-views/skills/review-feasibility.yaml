@@ -177,7 +177,9 @@ sections:
       - id: review-feasibility.findings-cite-ids
         labels: [evidence, reporting]
         class: must
-        text: Findings cite the IDs in tension (`C-003 ↔ D-007`) with the four gate-fuel fields.
+        text: >-
+          Findings cite the IDs in tension, each joined behind its product file's owner (``
+          `product` C-003-<slug> ↔ `product` D-007-<slug> ``), with the four gate-fuel fields.
       - id: review-feasibility.gate-fuel-field-names
         labels: [reporting]
         class: must

@@ -2,7 +2,7 @@
 report: review
 round: 1
 session: hook-enforcement-field-review
-reviewed: .mochiko/memory/governance-intent.md — the AM-5 entry at the top of `## Amendment Log` plus the header `Governs:` line (frozen 2026-09-24, Q1–Q5, pending ratification as v3.2.0 MINOR); AM-1–AM-4 read as context only
+reviewed: .mochiko/memory/governance-intent.md — the AM-5-field-review-fold entry at the top of `## Amendment Log` plus the header `Governs:` line (frozen 2026-09-24, Q1–Q5, pending ratification as v3.2.0 MINOR); AM-1–AM-4 read as context only
 reviewer: intent-reviewer — cold intent seat (opus), mochiko:review-governance-intent, solo, blind-map two-message dispatch
 blind_map: "sent to the lead as message 1 before synthesis contact (25 angles, 4 classes — A gate re-description · B owed PATCH · C breach · D cross-cutting); not written to disk"
 floor_read_back: "class: floor · 16 rules — never-a-participant · author-grader · authored-surfaces-out · formulation-quality-excluded · its-command-states-them · default-fail · too-thin-first-finding · contested-audit-first · echo-rationales-outrank · declared-level-discipline · yardstick-never-taste · no-in-session-confirmation · evidence-floor · verdict-is-input · ratification-user-owned · findings-through-leads-pen"
@@ -10,7 +10,7 @@ recommended_status: critical-gaps
 status_basis: >-
   One unrecorded ruling on a bright-line element (R1): the amend widens what the write-time gate
   reads (`.gitignore`, the `.git` pointer file) and checks (the ignore guard, the worktree `runs/`
-  refusal) past the GI-019 admission paragraph's "decidable by string and count against data the
+  refusal) past the GI-019-kernel-tooling-admission admission paragraph's "decidable by string and count against data the
   log carries", with no ruling on whether clause (iv) covers it and the admission paragraph left
   off the moving-surface list. Resolvable in session by one user ruling; every other survivor is
   needs-revision class.
@@ -37,23 +37,23 @@ survivors:
     severity: Critical
     coverage: true
     map_angles: [A4, A6]
-    elements: [AM-5 Q1, AM-5 Q4, GI-019 admission paragraph (ledger ~385–399), GI-019 clause (iv), .claude/rules/mochiko/rust-cli.md bright-line bullet]
+    elements: [AM-5-field-review-fold Q1, AM-5-field-review-fold Q4, GI-019-kernel-tooling-admission admission paragraph (ledger ~385–399), GI-019-kernel-tooling-admission clause (iv), .claude/rules/mochiko/rust-cli.md bright-line bullet]
     finding: >-
       The admission paragraph admits the gate on "a mechanical check" from a closed list (path ·
       file set · headings · frontmatter/enums · placeholders · per-section budgets · shell write
       operator) and asserts "Every check is decidable by string and count against data the log
       carries"; clause (iv) argues the gate is "structural validity of an artifact against the
-      store's own declared shape". AM-5 adopts checks outside both predicates — the ignore guard
+      store's own declared shape". AM-5-field-review-fold adopts checks outside both predicates — the ignore guard
       (write refused unless `.gitignore` carries `.mochiko/runs/`, a repo-configuration read) and
       the worktree `runs/` refusal (reads the `.git` pointer file) — and a new size kind (per-entry).
       Q4 says reach and reads "widen" under "significantly expanded"; the driver's S8 said "no
       admission widened". The synthesis rules neither reading (cross-exam Q1) and the admission
       paragraph is not in the moving-surface list, so the producer would leave it false.
     failure_scenario: >-
-      Ratified as drafted, the ledger's GI-019 carries a reads paragraph naming `.gitignore` and the
+      Ratified as drafted, the ledger's GI-019-kernel-tooling-admission carries a reads paragraph naming `.gitignore` and the
       `.git` pointer beside an admission paragraph saying every check is decided against log data —
       two homes contradicting each other on a bright-line element whose admission is valid ONLY by
-      recorded ruling. The next audit of an admitting change (GI-019 Enforcement bullet 2) has no
+      recorded ruling. The next audit of an admitting change (GI-019-kernel-tooling-admission Enforcement bullet 2) has no
       argument on record to grade the ignore guard against.
     resolution: >-
       One user ruling in session: does clause (iv) admit repo-state preconditions on a write (ignore
@@ -65,7 +65,7 @@ survivors:
     severity: Important
     coverage: true
     map_angles: [A5, D1]
-    elements: [AM-5 Q2 (Contested), build-state line]
+    elements: [AM-5-field-review-fold Q2 (Contested), build-state line]
     finding: >-
       Q2's `Contested` passes its rationale audit (trade-off put, roads A and C named and rejected,
       simplicity given) and is honored; its strike trigger is not. The line is struck at "the
@@ -79,7 +79,7 @@ survivors:
       Wave 1 tags; the line is struck; the plugin still carries the pre-census log, so the ledger
       states a `runs/` home and closed world the installed plugin does not declare — or wave 2's
       census re-rules a control (D4 was already reversed twice) and the struck ledger silently
-      disagrees with the gate (GI-005 record-layer integrity).
+      disagrees with the gate (GI-005-record-layer-integrity record-layer integrity).
     resolution: >-
       Re-key the strike to the plugin bump that carries both the wave-1 binary range and the wave-2
       home migration, and make the strike PATCH include a read of the re-worded paragraphs against
@@ -88,13 +88,13 @@ survivors:
     severity: Important
     coverage: true
     map_angles: [C1, C5]
-    elements: [AM-5 Q3, exception-registry row]
+    elements: [AM-5-field-review-fold Q3, exception-registry row]
     finding: >-
       Goal (3) is to record the breach honestly. The entry records that 0.109.0 reached main at
       2f92b09 but not how: git shows the bump was committed 2026-09-15 as "bump staged, not
       landed", with the CHANGELOG 0.109.0 "Release precondition" hold in the tree, and reached main
       inside PR #36 (primitive-evals-v2), an unrelated merge four days later; two governance events
-      (v3.1.1, AM-4) then passed over it. The AM-3 guard on this gate was path-scoped globs on
+      (v3.1.1, AM-4-glossary-deviation-discharged) then passed over it. The AM-3-conformance-gate-admission guard on this gate was path-scoped globs on
       rust-cli.md, which inject on Read and cannot reach a PR merge. No recurrence measure is
       recorded (cross-exam Q3).
     failure_scenario: >-
@@ -109,7 +109,7 @@ survivors:
     severity: Important
     coverage: true
     map_angles: [C3, C4, D3]
-    elements: [AM-5 Q3, GI-002 risk surface (AM-2/AM-3 annotations), exception-registry row]
+    elements: [AM-5-field-review-fold Q3, GI-002-project-type-shelves risk surface (AM-2-required-cli-dependency/AM-3-conformance-gate-admission annotations), exception-registry row]
     finding: >-
       The exception excuses a supply-chain MUST NOT but never states the exposure it accepts. The
       live consumer route (README:25) builds unpinned main HEAD — no tag, no checksum, no signature,
@@ -123,13 +123,13 @@ survivors:
       accepted an exposure nobody named — the review evidence of it lives only in conversation.
     resolution: >-
       Route to the user as confirmation: are there consumers besides the maintainer? Then state
-      the accepted exposure in one line on the row (or a GI-002 AM-5 risk annotation), and put one
+      the accepted exposure in one line on the row (or a GI-002-project-type-shelves AM-5-field-review-fold risk annotation), and put one
       lighter road (a pinned `--rev` install line) beside B and C for the user's ruling.
   - id: R5
     severity: Minor
     coverage: true
     map_angles: [C3]
-    elements: [AM-5 Q3, exception-registry row]
+    elements: [AM-5-field-review-fold Q3, exception-registry row]
     finding: >-
       The exception expires only at an event (the wave-1 publish carrying all four controls) and
       wave 1 has not started; no revisit date or backstop (cross-exam Q5).
@@ -143,24 +143,24 @@ survivors:
     severity: Minor
     coverage: true
     map_angles: [C6]
-    elements: [AM-5 Q3, ledger amendment policy (~56–64), GI-012 Testability]
+    elements: [AM-5-field-review-fold Q3, ledger amendment policy (~56–64), GI-012-release-gates-module Testability]
     finding: >-
       The expiry strike set names the region gates line and "GI-012's two paragraphs". The clause
-      also lives in the amendment-policy first-publish paragraph and in GI-012 Testability's Pass
+      also lives in the amendment-policy first-publish paragraph and in GI-012-release-gates-module Testability's Pass
       limb ("the wave-4 hook-shipping bump lands only after a first publish") and Fail limb; the
-      synthesis does not say those are struck or rewritten at expiry (cross-exam Q6). GI-012 holds
-      one precondition paragraph; "two paragraphs" at AM-3 meant the policy one plus GI-012's.
+      synthesis does not say those are struck or rewritten at expiry (cross-exam Q6). GI-012-release-gates-module holds
+      one precondition paragraph; "two paragraphs" at AM-3-conformance-gate-admission meant the policy one plus GI-012-release-gates-module's.
     failure_scenario: >-
-      At expiry the strike PATCH clears the region and GI-012 prose but leaves a live precondition
+      At expiry the strike PATCH clears the region and GI-012-release-gates-module prose but leaves a live precondition
       in the amendment policy and a Testability limb testing a clause that no longer exists.
     resolution: >-
-      Enumerate the full strike set in Q3: region gates line · amendment-policy paragraph · GI-012
-      precondition paragraph · GI-012 Testability Pass and Fail limbs.
+      Enumerate the full strike set in Q3: region gates line · amendment-policy paragraph · GI-012-release-gates-module
+      precondition paragraph · GI-012-release-gates-module Testability Pass and Fail limbs.
   - id: R7
     severity: Minor
     coverage: true
     map_angles: [A1, A8]
-    elements: [AM-5 Q1 (clause-iv field-result note), AM-5 driver line]
+    elements: [AM-5-field-review-fold Q1 (clause-iv field-result note), AM-5-field-review-fold driver line]
     finding: >-
       The note says the table failed on "nine whole-file denies on product baselines and feature
       entry-class files". F2's nine are on `baseline-delta.md`, the feature
@@ -168,10 +168,10 @@ survivors:
       none a product baseline (F4's product baselines stand over bound at HEAD; their folds went
       through the user's shell, not a deny). `baseline-delta.md`'s entry-class candidacy and OQ1's
       fold-shape clause were superseded 2026-09-24 by `delta-files-vs-direct-baseline-edits`
-      D1/D6a, which the driver line ("accepted 2026-09-23") does not note (cross-exam Q7).
+      D1-delta-files-retire/D6a, which the driver line ("accepted 2026-09-23") does not note (cross-exam Q7).
     failure_scenario: >-
       A mis-stated field result enters the ledger as the discharge annotation of a ratified
-      condition — a quiet record-layer error (GI-005) that the next reader of clause (iv) inherits.
+      condition — a quiet record-layer error (GI-005-record-layer-integrity) that the next reader of clause (iv) inherits.
     resolution: >-
       Re-word from F2/F4 as they stand (nine whole-file denies on feature-home and desk
       deliverables; product baselines 2–4× over bound, folded outside the gate) and add the
@@ -180,15 +180,15 @@ survivors:
     severity: Minor
     coverage: true
     map_angles: [D1, D3, D6]
-    elements: [AM-5 Q1, AM-5 Q5, AM-5 entry as a whole]
+    elements: [AM-5-field-review-fold Q1, AM-5-field-review-fold Q5, AM-5-field-review-fold entry as a whole]
     finding: >-
       Too-thin in three spots: Q1's bundling ruling carries no rationale (the reason given in the
-      room — both drivers edit the same GI-019 paragraphs and the owed PATCH's trigger already
-      fired — is unwritten); Q5 carries no mark; and AM-5, unlike AM-2 and AM-3, does not state
+      room — both drivers edit the same GI-019-kernel-tooling-admission paragraphs and the owed PATCH's trigger already
+      fired — is unwritten); Q5 carries no mark; and AM-5-field-review-fold, unlike AM-2-required-cli-dependency and AM-3-conformance-gate-admission, does not state
       the fact profile, modules, and depth level unchanged (cross-exam Q8). Four of five questions
       closed "as recommended"; the marks are the lead's own.
     failure_scenario: >-
-      A later amend cannot tell whether AM-5 considered the fact profile at all while excusing a
+      A later amend cannot tell whether AM-5-field-review-fold considered the fact profile at all while excusing a
       supply-chain gate, and the bundling that retired v3.1.3 has no reason on record.
     resolution: >-
       Write the room's bundling reason into Q1, mark Q5, and add one line: fact profile, modules,
@@ -196,15 +196,15 @@ survivors:
   - id: R9
     severity: Minor
     coverage: false
-    elements: [AM-5 Q1 (owed PATCH folded), wave5-bump-patch.md]
+    elements: [AM-5-field-review-fold Q1 (owed PATCH folded), wave5-bump-patch.md]
     finding: >-
-      The entry calls the folded items "the AM-3 pre-authorized PATCH", but AM-3 pre-authorized
+      The entry calls the folded items "the AM-3 pre-authorized PATCH", but AM-3-conformance-gate-admission pre-authorized
       only (a) the Testability activation and (b) the precondition strike; (c) the amnesty
       correction and (d) the stated-limits line are the lead draft's own additions (the draft's
-      Authority paragraph says so). Harmless now, since AM-5 rules them, but the provenance is
+      Authority paragraph says so). Harmless now, since AM-5-field-review-fold rules them, but the provenance is
       mis-stated.
     failure_scenario: >-
-      A future reader reconstructing GI-006 provenance credits AM-3 with authorizing (c) and (d),
+      A future reader reconstructing GI-006-primitive-edit-traceability provenance credits AM-3-conformance-gate-admission with authorizing (c) and (d),
       text it never saw.
     resolution: >-
       Say "(a) and (b) pre-authorized at AM-3; (c) and (d) added by the draft and ruled here".
@@ -249,12 +249,12 @@ verify_round_1:
 
 ## Failure narrative
 
-Blocking: R1. AM-5 moves GI-019's reads and reach past the admission paragraph's own predicate
+Blocking: R1. AM-5-field-review-fold moves GI-019-kernel-tooling-admission's reads and reach past the admission paragraph's own predicate
 ("every check is decidable by string and count against data the log carries") — the ignore guard
 reads `.gitignore`, the worktree refusal reads the `.git` pointer — and neither the synthesis nor
 the driver rules whether clause (iv) covers that. The driver claimed "no admission widened" (S8);
-AM-5's Q4 says the reads widen; nothing reconciles them, and the admission paragraph is not on the
-moving list. Under GI-019 an admission stands only by recorded ruling, so this is an unrecorded
+AM-5-field-review-fold's Q4 says the reads widen; nothing reconciles them, and the admission paragraph is not on the
+moving list. Under GI-019-kernel-tooling-admission an admission stands only by recorded ruling, so this is an unrecorded
 ruling on a bright-line element: `critical-gaps` by the status criteria, resolvable by one user
 ruling in session. Tried: cross-exam Q1 — confirmed not in the synthesis.
 

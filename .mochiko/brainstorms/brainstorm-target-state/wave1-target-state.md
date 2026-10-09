@@ -45,7 +45,7 @@ ruled decision takes that decision as its rule-level anchor (`… D10`).
 | **P3 tests and kits** | the crate's frozen-census tests under `crates/mochiko-cli/tests/` (no crate source, no crate version bump) · `evals/contract/` expectations and README figures, only where a count or pin they freeze moved · `evals/plan/brainstorm/` (the kit re-keyed to the new rule set) · `evals/review-brainstorm/` if it freezes rule ids | P1 landed |
 
 The manifests (`plugin.json`, `marketplace.json`) are the lead's last mechanical step, after
-the audit passes and before the gates run (GI-004: no bump before the audit).
+the audit passes and before the gates run (GI-004-primitive-audit-ratchet: no bump before the audit).
 
 Order: P1 plan → peer grade → approve → build · then P2 and P3 in parallel, each plan → peer
 grade → approve → build · §4 audit · manifests · §5 gates · §6 landing.

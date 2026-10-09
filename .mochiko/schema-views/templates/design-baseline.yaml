@@ -163,4 +163,4 @@ skeleton: |
 
   ## Drift
 
-  - color.primary — declared [value], shipped [value] (FEAT-012)
+  - color.primary — declared [value], shipped [value] (FEAT-012-tenant-workspace-admin)

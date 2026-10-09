@@ -12,7 +12,7 @@ retrofit hold identically at both levels, while addable rigor (merge-blocking ga
 thresholds) may relax at `low`. A deviation from either row is only ever a **recorded waiver**
 (D4: a per-check *fit* exception justified in the governance ledger, available at both levels,
 permanent pending the D4.1 revisit), never a loosened card; staged adoption is the `low` level,
-not a waiver (PO-D7 superseded). Absence is always deliberate and auditable, never silent.
+not a waiver (`production-only-focus` D7-immature-team-onramp superseded). Absence is always deliberate and auditable, never silent.
 
 The canonical **category definitions** (what each category must address) live in
 [../ESSENTIAL-FLOOR.md](../ESSENTIAL-FLOOR.md) — cards here carry the two-row `low`/`high` depth,
@@ -34,7 +34,7 @@ never a second definition. Worked example principles also live there.
 | **low** | secrets out of the repo (env vars + `.gitignore`) · input validation at boundaries · auth enforced at all boundaries · secret scanning runs (pre-commit or CI) · dependency vulnerability scanning runs |
 | **high** | low, and: secret scanning **blocks merge** in CI · dependency vulnerability scanning **blocks merge** at high/critical severity |
 
-**Waiver posture:** D4 — recorded justification in the ledger, available at either level as a per-check *fit* exception; prefer narrowing over waiving (e.g. "no auth — single-user local companion" as a *tightened scope*, not a dropped category). Staged adoption is the **low** level, not a waiver (PO-D7 superseded).
+**Waiver posture:** D4 — recorded justification in the ledger, available at either level as a per-check *fit* exception; prefer narrowing over waiving (e.g. "no auth — single-user local companion" as a *tightened scope*, not a dropped category). Staged adoption is the **low** level, not a waiver (`production-only-focus` D7-immature-team-onramp superseded).
 **Content:** category definition + example principle in [../ESSENTIAL-FLOOR.md](../ESSENTIAL-FLOOR.md) (Security).
 
 ---
@@ -48,7 +48,7 @@ never a second definition. Worked example principles also live there.
 | **low** | a smoke test on the critical path exists from day one · ratchet rule (baseline MUST NOT decrease) · coverage measured and reported on every PR |
 | **high** | low, and: coverage thresholds enforced — ≥80% warning, ≥60% blocking (session-overridable) |
 
-**Waiver posture:** D4 — recorded justification in the ledger, available at either level as a per-check *fit* exception. The young-team on-ramp is the **low** level, not a waiver (PO-D7 superseded): coverage is measured and ratcheted from reality before the blocking threshold is asserted at `high`.
+**Waiver posture:** D4 — recorded justification in the ledger, available at either level as a per-check *fit* exception. The young-team on-ramp is the **low** level, not a waiver (`production-only-focus` D7-immature-team-onramp superseded): coverage is measured and ratcheted from reality before the blocking threshold is asserted at `high`.
 **Content:** category definition + example principle in [../ESSENTIAL-FLOOR.md](../ESSENTIAL-FLOOR.md) (Testing).
 
 ---
@@ -76,5 +76,5 @@ never a second definition. Worked example principles also live there.
 | **low** | logs exist on the critical path · no PII in logs |
 | **high** | low, and: structured logs · correlation IDs · health checks (in the form that fits the type) |
 
-**Waiver posture:** D4 — recorded justification in the ledger, available at either level as a per-check *fit* exception (historically the most-waived category on immature stacks — the recorded waiver, not a silent gap, is the honest state). Staged adoption is the **low** level, not a waiver (PO-D7 superseded).
+**Waiver posture:** D4 — recorded justification in the ledger, available at either level as a per-check *fit* exception (historically the most-waived category on immature stacks — the recorded waiver, not a silent gap, is the honest state). Staged adoption is the **low** level, not a waiver (`production-only-focus` D7-immature-team-onramp superseded).
 **Content:** category definition + example principle in [../ESSENTIAL-FLOOR.md](../ESSENTIAL-FLOOR.md) (Observability).

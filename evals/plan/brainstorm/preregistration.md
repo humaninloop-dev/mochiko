@@ -1,7 +1,7 @@
 # Preregistration — brainstorm plan-only eval
 
 Committed BEFORE any grid (`command-plan-only-eval` D1–D11 as amended, accepted 2026-08-27;
-the band and stopping-rule form of `primitive-eval-harness-v2` D11 with folds I7 · M5 · M6;
+the band and stopping-rule form of `primitive-eval-harness-v2` D11-preregistration-noise-guard with folds I7 · M5 · M6;
 the probe findings in `../brainstorm-probe/probe-report.md`). The runner refuses a grid
 without this file. Amending it after results exist is a recorded, deliberate act — never a
 quiet retro-fit. Kit authored by an independent seat (author ≠ grader: this seat authored
@@ -41,7 +41,7 @@ the new text) · removed 0 · added 25 (23 observable)**. Recompute before readi
 buckets move with every edit — and name the SHA explicitly; `HEAD` is never the pre arm.
 
 History: at authoring the kit was a baseline kit whose edit under read was migration 0005
-(`2026-09-13 hook-enforced-artifact-schema D1`, commit `5d8fc69`), read at `--old-ref 794cea8`
+("`2026-09-13 hook-enforced-artifact-schema D1`", commit `5d8fc69`), read at `--old-ref 794cea8`
 (unchanged 29 · changed 0 · removed 0 · added 1). No grid ran against it; it retired at the
 0044 re-key under the positive-control section's own rule.
 
@@ -118,7 +118,7 @@ observable; `brainstorm.own-rules-win` is out as `precedence` (a new reason term
 - **Judges advisory** (harness D2): the runner exits 0 on judged degradation; only the load
   gate, auth, a failed scripted assert, or a broken partition set a nonzero exit.
 
-## Positive control (harness-v2 D11 as re-cut at C2 and M5) — gates the INSTRUMENT, never the command
+## Positive control (`primitive-eval-harness-v2` D11-preregistration-noise-guard as re-cut at C2 and M5) — gates the INSTRUMENT, never the command
 
 On the first grid against `--old-ref 2e4c57c`, `brainstorm.frame-card` must read
 **`absent` in `pre` on every golden** (the rule did not exist) **and `reflected` under pass^k
@@ -133,7 +133,7 @@ the pair's next edit lands, that edit's added or removed rules become the contro
 one retires. (History: `brainstorm.artifact-home` at `--old-ref 794cea8` was the control
 from authoring to the 0044 re-key and retired under this rule before any grid ran.)
 
-## Noise band (harness-v2 D11 · I7, in the command form) and noise guard (F2)
+## Noise band (`primitive-eval-harness-v2` D11-preregistration-noise-guard · I7, in the command form) and noise guard (F2)
 
 - **Denominator: all pairs.** Command goldens carry no `tempts`; every observable rule is
   judged on every golden, so the band is the **all-pairs** flaky share per arm — pairs with

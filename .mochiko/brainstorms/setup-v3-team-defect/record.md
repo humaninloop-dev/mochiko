@@ -29,7 +29,7 @@ Claude Code v2.1.214; plugin cache path shows `mochiko/0.9.0` (setup v3, not sta
 
 ## Decisions
 
-**D1 — Fix altitude: shared transport recipe + spawn self-check (option A).** `Confident` — lead-recommended with steelmanned alternatives, user-adopted.
+**D1-shared-spawn-recipe — Fix altitude: shared transport recipe + spawn self-check (option A).** `Confident` — lead-recommended with steelmanned alternatives, user-adopted.
 - **Statement:** the seat-spawn mechanics land **once** in `templates/agent-dispatch.md` (the template every spawn brief in both team-form commands already cites): a seat = one Agent call carrying `name:`; use the official docs' trigger vocabulary ("create an agent team," "spawn a teammate") alongside mochiko's "seat"; round > 1 = `SendMessage` to the same name, never a fresh spawn. Both team-form commands' hard-requirement sections gain two sentences: the discriminating line (**a spawn without a `name:` is a subagent — the forbidden form**) and the post-spawn addressability check (**verify the seat can be messaged; if not, kill it and respawn as a teammate before proceeding**).
 - **Rationale:** the only option that both *prevents* (mechanics legibility + docs-native vocabulary at the decision moment) and *enforces* (the addressability check catches the substrate's documented "may sometimes use subagents" residue), while staying single-sourced against future harness churn where every current and future team-form command already looks.
 - **Rejected:** B (in-command mechanics — duplicated, churn-exposed, erodes the command-altitude ruling) · C (self-check only — detection without prevention) · D (reopening D9 — its Contested revisit trigger hasn't fired, and forfeiting the pilot with zero compliant team-form runs observed would decide the experiment by default).
@@ -37,21 +37,21 @@ Claude Code v2.1.214; plugin cache path shows `mochiko/0.9.0` (setup v3, not sta
 ## Open threads
 
 - OT-1: **resolved** → F1 (fork B).
-- OT-2: **resolved into D1** — root cause characterized as both mechanism illegibility (teammate spawn is one thin parameter away from subagent dispatch) and documented substrate nondeterminism; D1's two halves address them respectively.
+- OT-2: **resolved into D1-shared-spawn-recipe** — root cause characterized as both mechanism illegibility (teammate spawn is one thin parameter away from subagent dispatch) and documented substrate nondeterminism; D1-shared-spawn-recipe's two halves address them respectively.
 - OT-3: **resolved** (user, Q3) — the run was stopped at the interrupt and never continued. The "completed to acceptance" recap is residue, probably summarizing the earlier D7-era run in the same project (consistent with `.mochiko/memory` pre-existing and detection finding no CLAUDE.md governance region — the v2-era form wrote `constitution.md`, not a region). Consequences: **no full subagent-transport datapoint was acquired**; kinako sits mid-run at a defined recovery state (synthesis ratified, surface set absent → resume at *loop (produce)* per setup.md's recovery table), so a compliant re-run is cheap.
-- OT-4: **resolved** → D1.
+- OT-4: **resolved** → D1-shared-spawn-recipe.
 
 ## Consequences (bookkeeping owed on acceptance)
 
-- `BACKLOG.md:126` (D7 investigation) **closes**: diagnostic ran, fork B (env set and verified, instruction non-compliance at the tool-call level), v3 seat-idiom mitigation refuted, fix ruled (D1).
-- `BACKLOG.md:129` (v3 dogfood) **stays open** and inherits verification: D1's acceptance test is the kinako re-run (resume at loop/produce) showing its already-named check — *team-form observed: standing producer seat messaged across rounds* — which also feeds the ROADMAP substrate item.
+- `BACKLOG.md:126` (D7 investigation) **closes**: diagnostic ran, fork B (env set and verified, instruction non-compliance at the tool-call level), v3 seat-idiom mitigation refuted, fix ruled (D1-shared-spawn-recipe).
+- `BACKLOG.md:129` (v3 dogfood) **stays open** and inherits verification: D1-shared-spawn-recipe's acceptance test is the kinako re-run (resume at loop/produce) showing its already-named check — *team-form observed: standing producer seat messaged across rounds* — which also feeds the ROADMAP substrate item.
 - Ruling lands in `ROADMAP.md` (Key Decisions or Decision Trail) with a pointer to this record.
-- Build surface for D1: `templates/agent-dispatch.md` (transport recipe) + `commands/setup.md` and `commands/brainstorm.md` hard-requirement sections (discriminating line + addressability check).
+- Build surface for D1-shared-spawn-recipe: `templates/agent-dispatch.md` (transport recipe) + `commands/setup.md` and `commands/brainstorm.md` hard-requirement sections (discriminating line + addressability check).
 
 ## Landed (built 2026-07-18, same session, on acceptance — plugin v0.9.1)
 
 - `plugins/mochiko/templates/agent-dispatch.md` → **v3**: new "Seat transport (team-form commands only)" section — seat = one Agent call carrying `name:` in the docs' idiom; round > 1 = `SendMessage` to the same name; post-spawn addressability check with kill-and-respawn remedy; explicit non-applicability to the one-shot-dispatch commands.
 - `plugins/mochiko/commands/setup.md` + `commands/brainstorm.md` — hard-requirement sections gained the discriminating line (spawn without `name:` = the forbidden subagent form) + the addressability check, each pointing at the agent-dispatch recipe.
-- `BACKLOG.md` — D7 investigation item closed `[x]` with the fork-B resolution; the v3 dogfood item now carries D1's acceptance test (kinako resume at *loop (produce)*); the substrate item gained the 2026-07-18 datapoint ("the team mandate alone doesn't produce teams").
+- `BACKLOG.md` — D7 investigation item closed `[x]` with the fork-B resolution; the v3 dogfood item now carries D1-shared-spawn-recipe's acceptance test (kinako resume at *loop (produce)*); the substrate item gained the 2026-07-18 datapoint ("the team mandate alone doesn't produce teams").
 - `ROADMAP.md` Key Decisions — "Team-transport legibility" row (2026-07-18), D9 no-fallback standing, pointer to this record.
-- **Verification pending:** the kinako re-run under BACKLOG's v3 dogfood item — team-form observed (standing producer seat messaged across rounds) is both that item's named check and D1's acceptance test.
+- **Verification pending:** the kinako re-run under BACKLOG's v3 dogfood item — team-form observed (standing producer seat messaged across rounds) is both that item's named check and D1-shared-spawn-recipe's acceptance test.

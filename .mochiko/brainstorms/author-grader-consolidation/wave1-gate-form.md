@@ -4,7 +4,7 @@
 one new skill, schema additions, no protected exits) · **Audited under:** the OLD form
 (`mochiko:validator`, full read, one fresh seat per cluster — the old form's last full wave, D10).
 
-Ruling anchors: `2026-09-19 author-grader-consolidation D2` (job split) · `D3` (gate contract) ·
+Ruling anchors: "`2026-09-19 author-grader-consolidation D2`" (job split) · `D3` (gate contract) ·
 `D4` (loop-bound home) · `D5` (scope) · `D6` (one re-audit, second FAIL to the user) · `D7`
 (plain seat + rendered contract + explicit tier) · `D9` (outcome line) · `D11` (one seat per wave).
 
@@ -40,11 +40,11 @@ Order: P1 plan → approve → P1 execute → (P2 ∥ P3) plan → approve → e
 
 ### 3.1 Migration `0008-gate-form.yaml` (P1)
 
-`grammar: 1 · id: 0008-gate-form · sequence: 8 · intent:` one line · header `anchor: 2026-09-19
-author-grader-consolidation D7` · hash by `mochiko-cli migrate stamp`. Changes, in this order:
+`grammar: 1 · id: 0008-gate-form · sequence: 8 · intent:` one line · header "`anchor: 2026-09-19
+author-grader-consolidation D7`" · hash by `mochiko-cli migrate stamp`. Changes, in this order:
 
 1. **`mint-rule` on `command-common/common`** — `common.gate-loop-bound`, labels `[user-gate,
-   independence]`, anchor `2026-09-19 author-grader-consolidation D6`. Text (the number lives
+   independence]`, anchor "`2026-09-19 author-grader-consolidation D6`". Text (the number lives
    here and nowhere else): *"A gate verdict of FAIL allows one fix and one re-audit — by the same
    grader seat resumed, reading only what the fix touched and what it could have broken; a second
    FAIL halts the landing and goes to the user with both fix lists, fix again or drop; no run
@@ -84,7 +84,7 @@ author-grader-consolidation D7` · hash by `mochiko-cli migrate stamp`. Changes,
      said so).
    - `sec.scope`: `.gate-job` (must, routing, `[boundary, verdict]`, anchor D2: the gate job —
      binary, the lead cannot ship past it — at the primitive-edit gate only, a shipped
-     `plugins/mochiko/` primitive before the `plugin.json` bump (GI-004); input-job reviews are the
+     `plugins/mochiko/` primitive before the `plugin.json` bump (GI-004-primitive-audit-ratchet); input-job reviews are the
      `review-*` family's, setup's governance set is `validation-constitution`'s) · `.unit-keyed`
      (must, binding, `[boundary, binding]`: the unit is keyed by kind — command pair · skill pair ·
      prose primitive · schema content (migration + regenerated view diff); the criteria follow the
@@ -107,7 +107,7 @@ author-grader-consolidation D7` · hash by `mochiko-cli migrate stamp`. Changes,
      mechanical items — scaffold headings/order, section-set enumeration, `kind: fail` ↔ `.fail.*`,
      id continuity/tombstones, ontology grammar, `extends:` conformance, pointer resolution — are
      the pre-pass's, read from its output) · `.judgment-items-schema` (must, binding, `[verdict]`,
-     anchor D3: for schema content the AM-2 five — intent stated · anchor present where required ·
+     anchor D3: for schema content the AM-2-required-cli-dependency five — intent stated · anchor present where required ·
      ID lifecycle right · floor and fail survival · register) · `.judgment-items-prose` (must,
      `[verdict]`: prose primitive — coherence + preserved responsibilities; a kitted persona edit
      also reads the advisory grid the brief cites, never a gate) · `.gate-loop-bound` (floor,
@@ -135,7 +135,7 @@ Then: `mochiko-cli migrate stamp` → `migrate validate --report` (0 rejecting; 
 **Contract-suite pre-registration (P1, same unit, derived under ruling — `evals/contract/README.md`
 "When a migration legitimately moves a floor set"):** `expected-skills.json` gains the member
 `validation-primitive-edit` (family `review`, `floor_ids` + `floor_pin` from the render; the four
-byte columns `0` with a `note`: *post-freeze member, 2026-09-19 author-grader-consolidation D7 —
+byte columns `0` with a `note`: *post-freeze member, "2026-09-19 author-grader-consolidation D7" —
 no pre-conversion baseline exists, never measured*) and `families.review.members` lists it;
 `patterns-model-tiering` moves `floor_ids`/`floor_pin` only (+1). `run.py` `EXPECTED["setup"]`
 gains `setup.gate-loop-bound`, `baseline_bytes` untouched. README floor-count prose updated.
@@ -190,7 +190,7 @@ cross-family + class-local, `when`/conditions/moments, `enforces` resolution/req
 fail-segment ↔ kind, skill grammar, class/kind sets, text presence, protected exit + anchor
 format, depth, citations, pointers, superseded/unknown fields, flat rules, home shape, and the
 advisory set (budget, coverage, similar-rule clusters). **Judgment** — everything in D3's pair set,
-the AM-2 five for schema content, coherence + preserved responsibilities for prose. The `!`-line
+the AM-2-required-cli-dependency five for schema content, coherence + preserved responsibilities for prose. The `!`-line
 enumeration and the literal `allowed-tools` grant are checked by the contract suite's
 `converted-shape` host case — tag **[suite]**; the `.md` scaffold headings and their order are
 checked by nothing mechanical — tag **[judgment]** (corrected at P2 plan approval, lead-ruled).
@@ -202,7 +202,7 @@ Three fresh `mochiko:validator` seats (persona default `opus`), full read, one p
 - **A1 — pairs:** `setup` pair (`commands/setup.md` + `mochiko-cli rules setup`) on the command
   criteria; `patterns-model-tiering` pair and `validation-primitive-edit` pair on the skill-pair
   criteria (12 items) — the new skill's `description` byte-identity item reads "≤ 1,536 chars" only.
-- **A2 — schema content + pre-registration:** `0008-gate-form.yaml` + the view diff on the AM-2
+- **A2 — schema content + pre-registration:** `0008-gate-form.yaml` + the view diff on the AM-2-required-cli-dependency
   five; `expected-skills.json` / `run.py` / README changes as a field-scoped diff against the
   render (floor fields only moved; byte columns untouched on existing rows; the new row's note).
 - **A3 — prose + crate:** `primitive-edits.md` (coherence, preserved responsibilities, the §3.4

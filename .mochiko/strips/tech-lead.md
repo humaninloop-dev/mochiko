@@ -8,7 +8,7 @@ Entry formats: `strips/README.md`. First entry (new file, created v0.78.0).
   from you here — the feasibility and completeness reviews already grade them, and the user
   signs off on the design."
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1 — `/mochiko:plan` retired, implement
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires — `/mochiko:plan` retired, implement
   absorbs a conditional design phase; D4 — the design checkpoint replaces plan's package
   acceptance and the user signs the store delta there; `DECISIONS.md` 2026-08-26 row).
 - **Content (superseded, verbatim):**
@@ -36,7 +36,7 @@ Entry formats: `strips/README.md`. First entry (new file, created v0.78.0).
 - **Disposition:** superseded → the re-keyed bullet: "**`mochiko:review-feasibility`** — the
   cross-artifact feasibility review of design artifacts (never the governance surface itself)."
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1 + D5 — the plan package ceases to
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires + D5 — the plan package ceases to
   exist and `review-feasibility` re-scopes onto the in-run design phase's output;
   `DECISIONS.md` 2026-08-26 row).
 - **Content (superseded, verbatim):** `the cross-artifact feasibility review of plan analysis/design artifacts (never the governance surface itself).`

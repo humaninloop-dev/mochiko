@@ -32,7 +32,7 @@ attribution of the measured instantiation floor. Every Critical has a named repa
 
 Verified against the tree at v0.110.0, not against the record's own summaries: the rendered
 rule sets of `validation-constitution` and `patterns-sound-loop`, the F13 measurement table,
-`setup`'s ratification ordering in the derived views, the GI-004 and GI-012 ledger blocks,
+`setup`'s ratification ordering in the derived views, the GI-004-primitive-audit-ratchet and GI-012-release-gates-module ledger blocks,
 and `evals/run.py`'s cost fields.
 
 Two of the record's own flags cleared on check: OQ5's "default FAIL" ambiguity, and D2's gate
@@ -73,22 +73,22 @@ mechanical pre-pass this shrink relies on has no counterpart on the governance s
 
 ### C2 — D6's "ship with the finding recorded" is a bump the release gate does not admit
 
-**Anchors:** D6 · GI-012.
+**Anchors:** D6 · GI-012-release-gates-module.
 
 **Failure.** D6 gives the user three options after a second FAIL: fix again, ship with the
-finding recorded, or drop the edit. GI-012 states that a `plugin.json` bump MUST NOT land
+finding recorded, or drop the edit. GI-012-release-gates-module states that a `plugin.json` bump MUST NOT land
 without audits PASS, alongside strips recorded, landing complete, the CHANGELOG entry and the
 marketplace sync. A bump carrying a recorded-but-unfixed FAIL is a bump without audits PASS.
-The record never routes that option through the ledger's waiver mechanism. GI-004's testability
-is satisfied by it, since an audit trail exists, while GI-012's is not — so the conflict is
+The record never routes that option through the ledger's waiver mechanism. GI-004-primitive-audit-ratchet's testability
+is satisfied by it, since an audit trail exists, while GI-012-release-gates-module's is not — so the conflict is
 invisible to the one principle the record does check.
 
 **Challenges a user ruling** — D6 was ruled "as recommended", and the three-option shape is the
 substance of the ruling.
 
 **Disposition — rule (user).** Three paths, in ascending cost: strike the middle option, leaving
-fix-again or drop; keep it and route each use through a recorded GI-012 waiver at the ledger; or
-keep it and amend GI-012's gate text to admit a user-ruled recorded exception. The second
+fix-again or drop; keep it and route each use through a recorded GI-012-release-gates-module waiver at the ledger; or
+keep it and amend GI-012-release-gates-module's gate text to admit a user-ruled recorded exception. The second
 preserves the user's authority without touching a release gate, and the waiver mechanism already
 exists.
 
@@ -148,7 +148,7 @@ are recorded side by side and are the baseline the later lines are read against.
 
 **Anchors:** D3 · Build surface items 2 and 5.
 
-**Failure.** GI-004 as re-expressed at AM-2 keys the schema-content audit unit to the migration
+**Failure.** GI-004-primitive-audit-ratchet as re-expressed at AM-2-required-cli-dependency keys the schema-content audit unit to the migration
 file plus the regenerated view diff, graded on five criteria: intent stated, anchor present where
 required, ID lifecycle right, floor and fail survival, register. D3's judgment items are the
 markdown-pair set — preserved responsibilities, floor survival, independence, reserved-to-user,
@@ -158,7 +158,7 @@ build item 5 nonetheless specifies pair-form audits of the `setup` and `patterns
 pairs, with no schema-content audit of the migration itself.
 
 **Disposition — repair.** Name both judgment sets in D3, keyed by unit: the pair set for markdown
-primitives, the AM-2 five for schema content. Correct build item 5 to add the migration file plus
+primitives, the AM-2-required-cli-dependency five for schema content. Correct build item 5 to add the migration file plus
 its regenerated view diff as its own graded unit.
 
 ### I2 — D7's cost rationale attributes a measured floor it was never measured against
@@ -308,7 +308,7 @@ completeness claim.
 
 ### M2 — `author-grader-value-tiering` is claimed by two supersession sets
 
-**Anchors:** Build surface item 6 · `producer-plan-enforcement` D3.
+**Anchors:** Build surface item 6 · `producer-plan-enforcement` D3-peer-plan-grader.
 
 That record is superseded here at wave 1 and also sits in the four supersession rows D3 owes at
 its own wave 2, which is this record's wave 3. **Disposition — repair:** note in build item 6 that
@@ -396,10 +396,10 @@ statement.
 | Fold | Landed at | Carry-through |
 |---|---|---|
 | C1 (D3 narrowed to the primitive-edit gate) | D3 statement, closing sentence, naming all three `validation-constitution` floors | build item 1 setup bullet ("floors are untouched"); D2's two gate sites intact; D5's loop bound still spans both, correctly — see N1 |
-| C2 (middle option struck) | D6 statement, with the ledger waiver path named | build item 2 ("fix-again or drop"); `common.gate-loop-bound` text carries no struck option; GI-012 conflict cleared |
+| C2 (middle option struck) | D6 statement, with the ledger waiver path named | build item 2 ("fix-again or drop"); `common.gate-loop-bound` text carries no struck option; GI-012-release-gates-module conflict cleared |
 | C3 (contract ships as `validation-primitive-edit`) | D7 statement: family, log-resident rules, two-way `review-seat-plan` delivery, dispatcher writes unit/paths/pre-pass only, hand-written = floor miss | build items 1 (new schema), 2 (render pasted verbatim), 5 (its pair audited) — see N2 |
 | C4 (wave-2 double-grade) | D9 Baseline clause and D10 statement, sets side by side | build rider 7; D9 line gains `<seat>` — see B1 |
-| I1 (two judgment sets keyed by unit) | D3 clause 2, pair set + AM-2 five, citing ledger GI-004 at v3.0.0 | build items 2 and 5; AM-2 wording verified verbatim against the ledger this round |
+| I1 (two judgment sets keyed by unit) | D3 clause 2, pair set + AM-2-required-cli-dependency five, citing ledger GI-004-primitive-audit-ratchet at v3.0.0 | build items 2 and 5; AM-2-required-cli-dependency wording verified verbatim against the ledger this round |
 | I2 (cost limb unsupported) | D7 rationale rewritten onto the prior user ruling; Confidence split to `Assumed` on the cost limb | evidence honesty gains the F13-composition bullet; build rider 7; D9 names the spawn as the measurement |
 | I3 (grader runs the pre-pass) | D3 clause 1, with "a pre-pass result quoted from the brief is not evidence" | build item 2; D7's dispatcher clause consistent (names the command, does not run it) |
 | I4 (no unit graded both ways) | closed by C4 at D10 | same clause as C4 |
@@ -468,7 +468,7 @@ names its user ruling. The four named consistency pairs check out:
 - **D6 vs D9's watch** — coherent. The cap bounds rounds at two, and the watch trigger keys on
   blocking-finding counts rather than rounds, so the cap cannot mask the signal.
 - **D7's skill vs the build surface and wave 3** — coherent. The skill is created at item 1,
-  audited at item 5, pointed at from item 2, and named as the carrier producer-plan D3's wave 2
+  audited at item 5, pointed at from item 2, and named as the carrier `producer-plan-enforcement` D3-peer-plan-grader's wave 2
   waits on; CLAUDE.md's sweep stays at wave 3 as ruled.
 - **D11 vs D6 and D9** — coherent. Per-unit verdict blocks and per-unit lines tagged with the
   seat, re-audits resuming that seat, and the context-fit split disclosed in the lines.

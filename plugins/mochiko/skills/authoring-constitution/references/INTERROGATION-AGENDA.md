@@ -11,7 +11,7 @@ schema — `mochiko-cli template governance-intent`).
 selects and filters the deck (type) is elicited. Minted principles trace to elicited intent, never
 to shallow prompting.
 
-**The agenda test (PO-D3, adaptive-depth 2026-08-11, setup-product-agnostic 2026-09-24):** every
+**The agenda test (`production-only-focus` D3-library-owned-standard, adaptive-depth 2026-08-11, setup-product-agnostic 2026-09-24):** every
 question elicits an **engineering fact** — one the codebase, the team, or the pipeline answers — and
 no question negotiates a per-check standard or asks what the product is, whom it serves, or what its
 failure costs. The **one** exception is a single project-wide **depth level** declaration
@@ -20,7 +20,7 @@ agenda, never a revived per-check tier ladder and never per-check haggling. The 
 floor's *depth level* (the single dial), its *shape* (type facts translate each floor category into
 its correct expression), and its *path* (brownfield facts set the ratchet's starting point, never
 its target). The one deliberately arbitrated card layer is the architecture-opinion card set
-(PO-D3's S7 carve-out).
+(`production-only-focus` D3-library-owned-standard's S7 carve-out).
 
 ## The seven dimensions (in order, adaptively)
 
@@ -28,7 +28,7 @@ Work through these **adaptively, not as a fixed script** — one question per tu
 answer has already settled, probing deeper where answers are vague.
 
 The numbers are stable: dimensions 1 (project identity & intent), 2 (fact profile) and 4 (risk
-surface) were struck by ruling (setup-product-agnostic D1, D3), and the seven that stay keep their
+surface) were struck by ruling (setup-product-agnostic D1-profile-leaves-setup, D3-seven-dimension-agenda), and the seven that stay keep their
 numbers.
 
 | # | Dimension | What it elicits | Feeds |
@@ -59,7 +59,7 @@ collision (name taken, different meaning — e.g. a product feature roadmap at `
 to the user with the evidence on the table — adopt the existing doc into the role, or nest the
 module's artifact under `.mochiko/` — and the ruling lands in the synthesis.
 
-**Dimension 8 carries rules, not product values** (setup-product-agnostic D3). An SLO is declared
+**Dimension 8 carries rules, not product values** (setup-product-agnostic D3-seven-dimension-agenda). An SLO is declared
 and measured — that rule stays in governance; the app-level SLO number set is a product value and
 lives in the architecture store as a concern row, never as a governance element. The trust-vector
 answers land in the synthesis's Trust vectors line.
@@ -67,7 +67,7 @@ answers land in the synthesis's Trust vectors line.
 **Dimension 9 phrasing pre-filters for enforceability and for product instances.** Probe for values
 as *enforceable behavior* ("what should CI or review block?"), not moods ("quality matters"). A value
 becomes a minted-principle intent only if it can be checked from the code, the pipeline or the stack
-without knowing what the product does for its users (setup-product-agnostic D2): the rule stays, the
+without knowing what the product does for its users (setup-product-agnostic D2-rule-not-instance): the rule stays, the
 product's instance of it — its boundary list, its data's name, its behaviour toward its users —
 leaves, and where governance needs the instance it points at its home. Elicited intent that fails
 this test is neither authored nor flagged: it goes to the synthesis's **Handed off** list under
@@ -77,14 +77,14 @@ producer flags it as a proposal for the user to rule on at acceptance.
 
 ## No pruning license
 
-The retired tier ladder's low-tier pruning license is gone (PO-D2): every project here is a
+The retired tier ladder's low-tier pruning license is gone (`production-only-focus` D2-tier-axis-retired): every project here is a
 deployed, operated, customer-facing product, so no dimension is foreclosed by declaration —
 deployment reality in particular is always interrogated. Adaptive convergence still applies —
 skip what an answer has already settled, and say so — but a convergence skip is bookkeeping,
 never a scope ruling.
 
 A **struck** dimension is the one exception, and it is not a skip: dimensions 1, 2 and 4 left the
-agenda by a single recorded scope ruling that binds every project (setup-product-agnostic D1, D3) —
+agenda by a single recorded scope ruling that binds every project (setup-product-agnostic D1-profile-leaves-setup, D3-seven-dimension-agenda) —
 not by declaration and not by convergence — and no session re-asks them.
 
 The depth-level declaration (below) does **not** revive that license: it is one project-wide
@@ -106,7 +106,7 @@ The interrogation runs in **all three modes** — it covers only what the mode l
   synthesis. A declared fact the analysis contradicts (a declared type or toolchain the code
   belies) is confronted the same way.
 - **Amend** — a micro-session scoped to the delta. A governance event opens an amend and gets the
-  agenda slice it touches; the event set is closed at six (setup-product-agnostic D4): (1) the
+  agenda slice it touches; the event set is closed at six (setup-product-agnostic D4-closed-event-set): (1) the
   depth-level flip `low`→`high` (the ceremony below) · (2) a waiver added, lifted or re-grounded ·
   (3) a stack, toolchain or layout change — a real command changes, a surface type is added and a
   new shelf deals, or the repo layout the `paths`-scoped rules files bind to moves · (4) an
@@ -122,8 +122,8 @@ The interrogation runs in **all three modes** — it covers only what the mode l
   decline is never re-asked (permanent until the user reopens it). **Legacy migration
   (forward-only):** an amend run meeting a synthesis that still carries a retired element
   supersedes it in place, once — never renumbered, never carried forward: a tier declaration (the
-  retired axis), its existing waivers re-recorded under the PO-D4 waiver model; a fact profile,
-  attached compliance modules, or product-instance principles (setup-product-agnostic D4 — no
+  retired axis), its existing waivers re-recorded under the `production-only-focus` D4-waivers-reach-everything waiver model; a fact profile,
+  attached compliance modules, or product-instance principles (setup-product-agnostic D4-closed-event-set — no
   interim marker; the new agenda is the only agenda). A
   **depth-level flip** (`low`→`high`) is itself a governance-event amend — the flip ceremony
   below; a legacy synthesis carrying no depth declaration defaults to `high` at this amend
@@ -161,7 +161,7 @@ tightens live checks under the team.
    waiver (step 5).
 2. **Deal the arbitrated deck** — shelf cards selected by type (dimension 3), presets tuned by
    deployment reality and values (dimensions 8, 9). Architecture-opinion cards (BE-HEX and kin) are the
-   deliberately arbitrated layer (PO-D3's S7 carve-out): present with recommendations; the user
+   deliberately arbitrated layer (`production-only-focus` D3-library-owned-standard's S7 carve-out): present with recommendations; the user
    **keeps / tightens / drops / re-ranks** each. Use the recommend-then-arbitrate format from
    `analysis-iterative` — the user sorts and arbitrates supplied content, they are not asked to
    generate it. Every ruling is recorded.

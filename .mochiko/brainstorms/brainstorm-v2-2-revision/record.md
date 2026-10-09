@@ -28,35 +28,35 @@
 
 ## Decisions
 
-### D1 — The pair survives, lens-split, contact compressed
+### D1-lens-split-pair — The pair survives, lens-split, contact compressed
 Two reviewers stay (F4 kills a naive halving: either single seat loses Important-class findings). Codify the observed specialization: one **decision-quality lens** (hunt classes 1–4, scenario stress, steelmans), one **record-integrity lens** (class 5, fitness, reality-grounding as map-audit). Both consume the fact-checker's map as the fact substrate instead of re-reading the tree (kills F2); cross-exam collapses to **one attack message + one response each way**; **verify pass runs on the integrity reviewer only** (F7). The lens split lives in the **spawn briefs** — `validation-brainstorm` stays one document. Est. pair cost ~270k → ~150–170k.
 - **Rejected:** one reviewer, full protocol (~50% cut but loses single-finder Important coverage both directions; the only remaining challenger of the record would be its author); keep-two-as-is with turn caps only (~25–30% cut, keeps paying for accidental redundancy).
 - **Mark:** Confident *(adopted from lead's recommendation unmodified)*.
 
-### D2 — Fact-checker: seat kept; map lands verbatim; substrate audited by sample
-The conditional seat stays (BACKLOG's earns-its-keep check: met by the map, F6). The map becomes a **checker-authored record section pasted unedited** — the lead may write around it, never restate it (kills the F9/M1 paraphrase layer). The pair consumes it as the fact substrate; the integrity reviewer's grounding charter becomes *spot-check the map against files + check record claims against the map* — sampling, not re-derivation (keeps the M1 class catchable under D1's read-reduction). Seat remains the peer-messageable neutral referee.
+### D2-fact-checker-role — Fact-checker: seat kept; map lands verbatim; substrate audited by sample
+The conditional seat stays (BACKLOG's earns-its-keep check: met by the map, F6). The map becomes a **checker-authored record section pasted unedited** — the lead may write around it, never restate it (kills the F9/M1 paraphrase layer). The pair consumes it as the fact substrate; the integrity reviewer's grounding charter becomes *spot-check the map against files + check record claims against the map* — sampling, not re-derivation (keeps the M1 class catchable under D1-lens-split-pair's read-reduction). Seat remains the peer-messageable neutral referee.
 - **Rejected:** demote to Explore dispatches (BACKLOG's named fallback — optimizes a ~5% pool and re-routes review-stage fact disputes through the lead, the relay pattern v2's forensics indicted); status quo (keeps the M1 injection point open).
 - **Mark:** Confident *(adopted from lead's recommendation unmodified)*.
 
-### D3 — Review sizing becomes a named human gate at convergence
+### D3-review-sizing-gate — Review sizing becomes a named human gate at convergence
 When the lead confirms the wrap it states the record's weight (decisions, confidence marks, reality-surface load) and estimated review cost, recommends **pair / single / none**, and **the user rules**. Default recommendation for a heavyweight record stays full pair.
-- **Precedent against, weighed openly:** v2.1 rejected *risk-graded selection* ("puts the producer in charge of its own review coverage"). Defused here: sizing is a named human gate — the lead only recommends; the user rules with the cost in view. Precedents for: the fact-checker seat is already conditional; depth-proportionality is settled repo doctrine (setup session D5).
+- **Precedent against, weighed openly:** v2.1 rejected *risk-graded selection* ("puts the producer in charge of its own review coverage"). Defused here: sizing is a named human gate — the lead only recommends; the user rules with the cost in view. Precedents for: the fact-checker seat is already conditional; depth-proportionality is settled repo doctrine (setup session `setup-constitution-flexibility` D5-three-mode-session).
 - **Rejected:** uniform always-pair (cost-blind — a lean 3-decision session pays the heavyweight tail); deterministic decision-count threshold (arbitrary line; a lean record with one load-bearing ruling gets under-reviewed with nobody asked).
 - **Mark:** Confident *(adopted from lead's recommendation unmodified — third consecutive; streak flagged to the user immediately after, per `analysis-iterative`)*.
 
-### D4 — The assembled review-stage shape, verified against the as-ran transcripts (with two hole-fixes)
-The new flow: convergence → **sizing gate (D3)** → freeze → spawn per ruling with lens briefs (D1) → cold reads → findings-formed counts → **one-shot four-message cross-exam** (a→b findings · b→a findings+attacks · a→b attacks+defenses/withdrawals · b→a defenses/withdrawals+close) with a **fact-route dedup rule** (a fact the counterpart already routed is cited, never re-routed — F3) → survivor reports; **cross-set merge/tally is lead-owned** (it drifted to reviewer-b as-ran) → routing/dispositions unchanged (2-exchange cap kept as a watch item, F11) → **verify by the integrity reviewer only** → acceptance. Hole-fixes found by the verification itself: **(a)** the "none" path gets a **recorded review waiver** in the record's Review section (who waived, at which gate, why) — otherwise the default-FAIL loop loses its validator silently, the same bug-class the dry run's F5 caught in the setup design; **(b)** single-reviewer mode names its verify owner explicitly — the sole reviewer verifies the lead's folds (sound: it grades the lead's repairs, not its own findings).
+### D4-review-stage-shape — The assembled review-stage shape, verified against the as-ran transcripts (with two hole-fixes)
+The new flow: convergence → **sizing gate (D3-review-sizing-gate)** → freeze → spawn per ruling with lens briefs (D1-lens-split-pair) → cold reads → findings-formed counts → **one-shot four-message cross-exam** (a→b findings · b→a findings+attacks · a→b attacks+defenses/withdrawals · b→a defenses/withdrawals+close) with a **fact-route dedup rule** (a fact the counterpart already routed is cited, never re-routed — F3) → survivor reports; **cross-set merge/tally is lead-owned** (it drifted to reviewer-b as-ran) → routing/dispositions unchanged (2-exchange cap kept as a watch item, F11) → **verify by the integrity reviewer only** → acceptance. Hole-fixes found by the verification itself: **(a)** the "none" path gets a **recorded review waiver** in the record's Review section (who waived, at which gate, why) — otherwise the default-FAIL loop loses its validator silently, the same bug-class the dry run's F5 caught in the setup design; **(b)** single-reviewer mode names its verify owner explicitly — the sole reviewer verifies the lead's folds (sound: it grades the lead's repairs, not its own findings).
 - **Mark:** Confident *(ratified after the user independently probed the machinery — agent count, devils-advocate role — and requested the recommendation)*.
 
-### D5 — The synthesis is codified: on-request, derived-marked, fidelity-checked
-`synthesis.md` becomes a sanctioned second artifact (F10's demand is real), shaped: produced **only on request after acceptance**, never auto-generated; stamped *derived — record canonical*; before it ships, the reviewer that ran the verify pass — still seated at that moment — **sample-checks synthesis↔record fidelity** (every ruling present, no confidence mark inflated, no rejected alternative resurrected). If review was waived (D3), the synthesis carries a plain **"derived, unchecked"** stamp — the same recorded-absence discipline as the review waiver.
+### D5-on-request-synthesis — The synthesis is codified: on-request, derived-marked, fidelity-checked
+`synthesis.md` becomes a sanctioned second artifact (F10's demand is real), shaped: produced **only on request after acceptance**, never auto-generated; stamped *derived — record canonical*; before it ships, the reviewer that ran the verify pass — still seated at that moment — **sample-checks synthesis↔record fidelity** (every ruling present, no confidence mark inflated, no rejected alternative resurrected). If review was waived (D3-review-sizing-gate), the synthesis carries a plain **"derived, unchecked"** stamp — the same recorded-absence discipline as the review waiver.
 - **Rejected:** codify bare, as the dry run did (trusts exactly the protection M1 proved weak — the user eyeballing a lead paraphrase — at the highest-stakes location: the next workflow's input, where `specify`'s critic cannot catch a flipped ruling); refuse the second artifact (rules against the user's own revealed behavior and makes every downstream consumer pay the 29k record read forever).
 - **Mark:** Confident *(recommendation marked only after post-streak re-engagement; adopted with acknowledgment)*.
 
 ## Deliberate non-decisions
 
-- **The lead's 355k — the largest single pool — is left alone, eyes open.** The spend is mostly the session itself (the user-facing product) plus the tail; D1/D4 trim the tail indirectly (fewer messages to process, one verify report, lead-owned merge it effectively did anyway). Accepted, not overlooked.
-- **Limit/concurrency at review (F8):** no redesign. D1's cheaper cold reads shrink the burst that tripped the limit; recovery posture held as-ran. Watch, don't engineer.
+- **The lead's 355k — the largest single pool — is left alone, eyes open.** The spend is mostly the session itself (the user-facing product) plus the tail; D1-lens-split-pair/D4-review-stage-shape trim the tail indirectly (fewer messages to process, one verify report, lead-owned merge it effectively did anyway). Accepted, not overlooked.
+- **Limit/concurrency at review (F8):** no redesign. D1-lens-split-pair's cheaper cold reads shrink the burst that tripped the limit; recovery posture held as-ran. Watch, don't engineer.
 
 ## Open threads — named checks for the v2.2 dogfood
 
@@ -66,15 +66,15 @@ The new flow: convergence → **sizing gate (D3)** → freeze → spawn per ruli
 - **Sizing gate:** fires sensibly; the "none" waiver text actually lands in the record; single mode's self-verify reads clearly.
 - **Synthesis fidelity check:** runs when requested; the "derived, unchecked" stamp appears on the waived path.
 - **Cost re-measure vs this run:** target pair ≈150–170k (from 270k), total materially under 654k, from transcripts.
-- **This record is un-reviewed** — a cold pass (one reviewer, per D3's own logic: lean record, five decisions) can be requested.
+- **This record is un-reviewed** — a cold pass (one reviewer, per D3-review-sizing-gate's own logic: lean record, five decisions) can be requested.
 
 ## Build plan — executed 2026-07-16 (v0.6.0)
 
-1. `plugins/mochiko/commands/brainstorm.md`: team section (lens briefs, map-verbatim discipline), convergence section (sizing gate + recorded waiver), review flow (4-message exchange, fact-route dedup, lead-owned merge, integrity-reviewer verify + single-mode owner), post-acceptance synthesis clause (D5), contract fill update (new gate; waiver variant; bounds).
+1. `plugins/mochiko/commands/brainstorm.md`: team section (lens briefs, map-verbatim discipline), convergence section (sizing gate + recorded waiver), review flow (4-message exchange, fact-route dedup, lead-owned merge, integrity-reviewer verify + single-mode owner), post-acceptance synthesis clause (D5-on-request-synthesis), contract fill update (new gate; waiver variant; bounds).
 2. `plugins/mochiko/skills/validation-brainstorm/SKILL.md`: map-as-substrate + sample-audit in Phase 1; one-shot message shape + dedup rule in Phase 2; verify-when-assigned; lens-scoping note (dispatch-level, skill stays whole).
 3. `BACKLOG.md`: close the v2.1 dogfood item with this record's outcomes (incl. F1 cost + earns-its-keep verdicts); open the v2.2 item with the named checks above.
 4. `ROADMAP.md` Key Decisions row; version bump 0.5.0 → 0.6.0 on build.
 
 ## Provenance
 
-Session: lead + user via bare `mochiko:analysis-iterative`; opened 2026-07-05 with transcript forensics over the completed v2.1 dogfood run (`.mochiko/brainstorms/setup-constitution-flexibility/` + its four `.jsonl` transcripts), concluded 2026-07-16. Five decisions ruled live by the user. A three-adoption ratification streak was flagged after D3 per the questioning skill; the user re-engaged (parked the then-open fork, independently probed the review mechanics, then ruled D4/D5). Build deliberately not executed in-session.
+Session: lead + user via bare `mochiko:analysis-iterative`; opened 2026-07-05 with transcript forensics over the completed v2.1 dogfood run (`.mochiko/brainstorms/setup-constitution-flexibility/` + its four `.jsonl` transcripts), concluded 2026-07-16. Five decisions ruled live by the user. A three-adoption ratification streak was flagged after D3-review-sizing-gate per the questioning skill; the user re-engaged (parked the then-open fork, independently probed the review mechanics, then ruled D4-review-stage-shape/D5-on-request-synthesis). Build deliberately not executed in-session.

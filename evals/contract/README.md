@@ -1,6 +1,6 @@
 # evals/contract/ — the plugin contract suite (maintainer-side, never shipped)
 
-Provenance: `.mochiko/brainstorms/cli-schema-delivery/record.md` **D8 as amended**. This is the
+Provenance: `.mochiko/brainstorms/cli-schema-delivery/record.md` **D8-layered-test-regime as amended**. This is the
 layer the crate's own tests can never be: `cargo test` proves the store is sound, and proves
 nothing at all about whether a real Claude Code session, loading a real plugin, actually receives
 the rules before the model acts. That claim — "the plugin doesn't fail" — is what the user asked
@@ -507,7 +507,7 @@ with the migration, by ruling, under the audit.
 line, a nine-line legend on a command and a six-line legend on a skill — against plugin 0.106.0
 after migration `0003`. The crate version
 does not move before the first publish, so a render-shape change like the `floors:` line is named
-by the `plugin.json` bump rather than by a binary version (GI-012); every figure here is therefore
+by the `plugin.json` bump rather than by a binary version (GI-012-release-gates-module); every figure here is therefore
 keyed to the plugin version plus the preamble shape, not to a crate release. Comparisons are
 **bytes to bytes**; chars are reported beside them and are never the criterion.
 
@@ -575,7 +575,7 @@ line, one model turn, and **no schema file read as a fallback** — the posture 
 What differed is the model's own response: three runs surfaced the not-delivered line and refused
 to proceed, two replied `FLOOR: none`, which invents nothing but does not halt in the way the
 clause asks. The prose clause is the only guard in that environment, and it is not reliable there.
-GI-020 already declares the environment unsupported; this is the evidence for that, not against
+GI-020-plugin-install-model already declares the environment unsupported; this is the evidence for that, not against
 it.
 
 ## Evidence
@@ -632,7 +632,7 @@ session cost.
 set to the cases named, and an unknown name is a usage error rather than a silently empty run.
 When the selection contains no sandbox case the sandbox is never brought up at all — no preflight,
 no build, no session — which is what makes re-running a host-side red free. Both `--case` and
-`--host-only` say `FILTERED` before the cases and again beside the verdict, because GI-012 gate 6
+`--host-only` say `FILTERED` before the cases and again beside the verdict, because GI-012-release-gates-module gate 6
 wants the whole declared set and a green line from a subset — of either kind — is the easiest
 thing here to quote as if it were one.
 
@@ -705,7 +705,7 @@ sandbox is the D4 shape and this step is replaced by it.
 ## Gate split, and the cost
 
 Per D8 as amended: the **full contract suite is a maintainer-side gate at `plugin.json` bumps**,
-run in the sandbox at no metered cost, and a SKIPPED suite is not green (GI-012 gate 6). **GitHub
+run in the sandbox at no metered cost, and a SKIPPED suite is not green (GI-012-release-gates-module gate 6). **GitHub
 CI keeps the four crate layers** (`cargo test` · `fmt` · `clippy` · `audit`) and runs no headless
 sessions — the original D8's "API key in CI secrets" clause is withdrawn. The sandbox is Linux and
 the host is macOS; together they are the two OS rows, and there is no CI matrix.
@@ -729,8 +729,8 @@ is the file a future maintainer reads before running the suite.
 ## What is not here
 
 The suite never edits the plugin and never grades a primitive's content — it asserts delivery
-mechanics and nothing else (GI-019). It dispatches no agent of its own; the one case that involves
+mechanics and nothing else (GI-019-kernel-tooling-admission). It dispatches no agent of its own; the one case that involves
 a subagent, `preload`, has the headless session under test dispatch it, which is the behaviour
 being measured. From wave 6 the suite reads no schema file either, because none ships: every
 expectation it holds a run to comes from the binary's own render, from a frozen table, or from the
-primitive's `.md`. Nothing in this directory ships with the plugin (GI-020).
+primitive's `.md`. Nothing in this directory ships with the plugin (GI-020-plugin-install-model).

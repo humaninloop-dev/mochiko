@@ -1,7 +1,7 @@
 # Skill-content schema — census inventory (build step 0)
 
 **Seat:** P0 (census producer) · **Date:** 2026-09-01 · **Status:** delivered, awaiting user gate
-**Referent law:** `record.md` D1–D9 as amended (this directory) · command-content-schema D12/D15 ·
+**Referent law:** `record.md` D1–D9 as amended (this directory) · command-content-schema D12-rule-block-grain/D15-rule-text-closure ·
 near-dup ADR R1–R6 (`.mochiko/decisions/2026-08-28-near-dup-convergence.md`) · lead rulings R-a/R-b/R-c
 (P0 plan approval, 2026-09-01).
 **Corpus:** the 8 review-family skills, `SKILL.md` whole + every `references/*.md` whole + strips
@@ -26,7 +26,7 @@ provenance sidecar.
 
 ## A. Protected-set reconciliation (FIRST, per D9/C4)
 
-**Counting note (see J-1).** The record's "19 `KEPT:` lines across 7 members" is the count of
+**Counting note (see J-1-kept-mention-count).** The record's "19 `KEPT:` lines across 7 members" is the count of
 strip-file lines containing the string `KEPT:` — reconciliation mentions included. The distinct
 KEPT/RETURNED **survivor rulings** number 9, several already superseded-in-form by the 2026-08-26
 true-deletion cuts; the live protection sits on the compressed keep-sets and the DECISIONS-traceable
@@ -59,7 +59,7 @@ are listed with their ending ruling.
 | Protected unit | Status | Census disposition |
 |---|---|---|
 | [v0.26.0] KEPT: entire remaining body | **ended as body-residency claim** at v0.82.0; named cores live across body + lens | per D8/C4's explicit clause: the survivor protection **re-homes onto the pair** (body + schema jointly), recorded once at conversion — no per-line ambiguity |
-| AD-D7 architecture pass (DECISIONS 2026-07-30) — lens A1–A3 + body governance floor | live | **reference-stub** for the pass rules (mandatory-on-store-delta gate, A3 two-exits, boundary watches); the body's never-silently-approved floor **moves-to-schema** |
+| `architecture-design-primitive` D7-dedicated-architect-persona architecture pass (DECISIONS 2026-07-30) — lens A1–A3 + body governance floor | live | **reference-stub** for the pass rules (mandatory-on-store-delta gate, A3 two-exits, boundary watches); the body's never-silently-approved floor **moves-to-schema** |
 | [v0.64.0] review-evidence floor line | live (body floor) | **moves-to-schema** via common stub (C1) |
 | [v0.67.0] class 7 (blocking-capable · never-alone-`infeasible` · calibration · interrogatory round) | live, in lens + body verdict line | **reference-stub** (calibration → common C6); never-alone-`infeasible` limb rides the verdict rule (**moves-to-schema**) |
 | [v0.81.0] element-not-file narrowing + D14 floor-asserted bullet | live, in lens | **reference-stub** |
@@ -71,7 +71,7 @@ are listed with their ending ruling.
 |---|---|---|
 | [v0.26.0] KEPT whole-body — two elements surviving v0.63.0: pair-protocol-by-reference with substrate bindings · D1 formulation-quality exclusion | live, compressed | **moves-to-schema** (cross-exam binding + fact-authority split; D1 exclusion as scope floor) |
 | [v0.63.0] guardrails keep-set (verdict table + never-default-`ready` · Common-Mistakes obligations · FAIL posture · jurisdiction floor) | live, compressed at v0.89.0 | **moves-to-schema** per the v0.89.0 disposition map |
-| [v0.65.0] declared-level row + missing-declaration critical-gaps arm (adaptive-depth D1/D2/D6) | live, complete | **moves-to-schema** (floor; D6 no-watcher fence preserved verbatim in the rule text) |
+| [v0.65.0] declared-level row + missing-declaration critical-gaps arm (`production-floor-adaptive-depth` D1-declared-level-transition/D2-one-way-ratchet/D6-flip-setup-rerun) | live, complete | **moves-to-schema** (floor; D6 no-watcher fence preserved verbatim in the rule text) |
 | [v0.64.0] review-evidence floor line | live, compressed | **moves-to-schema** via common stub (C1) |
 | [v0.46.0] its-command-states-them | live | **moves-to-schema** → common C5 |
 
@@ -85,7 +85,7 @@ are listed with their ending ruling.
 | [v0.67.0] three-lens machinery + material-divergence precedence override + class-7 seam sentence | live (re-keyed v0.91.0 to the gap list) | **moves-to-schema** (conformance gate + override as floor-class) |
 | [v0.53.0] code-review carve-out (`review-code-minimalism` sole exception) | live | **moves-to-schema** (routing) |
 | [v0.75.0] oracle-semantics check (ruled wording; no time anchor, no foundation word) | live in the cycle-card set | **moves-to-schema** inside the cycle-card rule, wording verbatim |
-| [v0.76.0] two-arm `--check` citation (`mochiko-cli template tasks --check` / raw Read) | live | **moves-to-schema**, both arms preserved (GI-020) |
+| [v0.76.0] two-arm `--check` citation (`mochiko-cli template tasks --check` / raw Read) | live | **moves-to-schema**, both arms preserved (GI-020-plugin-install-model) |
 | [v0.81.0] store-delta re-key incl. the kept-verbatim qualifying-flow guard ("a P1 journey is the floor, never the cap") and deployment-view row | live — guard + checklists in ARTIFACT-CHECKLISTS.md | **reference-stub** (checklists stay; body lens clause moves) |
 | [v0.91.0] gap-list floor + BLOCKING strength (plan-stage retirement D4/D5) | live | **moves-to-schema** (floor) |
 
@@ -104,11 +104,11 @@ are listed with their ending ruling.
 
 ### RSUF — review-sufficiency (no strips)
 
-Birth-by-ruling body (plan-stage-utility D2 as amended + Addendum; v0.91.0). Per lead ruling R-c:
+Birth-by-ruling body (plan-stage-utility D2-sufficiency-check-clauses as amended + Addendum; v0.91.0). Per lead ruling R-c:
 **not wholesale-protected** — no KEPT line exists. The D2-ruled machinery (the ten clauses, the
 fence + clause-10 carve, delta-scope collapse, default-FAIL, report binding) is DECISIONS-traceable
 content: each such rule's move is recorded at conversion citing the `DECISIONS.md` 2026-08-26
-plan-stage-retirement row, same ceremony class, no whole-body claim. Flagged as J-2 for
+plan-stage-retirement row, same ceremony class, no whole-body claim. Flagged as J-2-birth-by-ruling for
 confirmation ride-along at the wave gate.
 
 ### VC — validation-constitution (strips: 9 entries)
@@ -197,7 +197,7 @@ Body:
 |---|---|---|---|---|
 | 1 | sibling split: sibling owns "coverage / measurability / consistency / presence; you own contradiction / impossibility / buildability" | must | routing | move |
 | 2 | "Never author or fix what you grade" | floor | constraint | move → C3 |
-| 3 | "Load references/FEASIBILITY-LENS.md before hunting" | must | duty | move (folds into the D6 load-first sequencing at conversion — see J-3) |
+| 3 | "Load references/FEASIBILITY-LENS.md before hunting" | must | duty | move (folds into the D6 load-first sequencing at conversion — see J-3-obligated-reference-read) |
 | 4 | "Never default to `feasible` — earned only by a completed hunt; absence of looking is not evidence" | floor | constraint | move → C2 |
 | 5 | hunt coverage "discloses as one line per class in the report, never a narrative" | floor | duty | move |
 | 6 | "`infeasible` never flattens into `needs-revision` … escalates to the human" | floor | constraint | move |
@@ -422,7 +422,7 @@ text with allowlist edges (R6).
 `sufficient`/gap-list · PASS/FAIL), and RCM (advisory-only) and RSPEC (gap-finding input) issue no
 clearing verdict — C2/C4 membership above is drawn accordingly.
 
-**Cross-grammar note (J-5):** C1/C2/C3 are near-identical to command `common.yaml` blocks
+**Cross-grammar note (J-5-cross-grammar-duplicates):** C1/C2/C3 are near-identical to command `common.yaml` blocks
 (`author-grader-default-fail` family). D5 forbids cross-grammar sharing; these are separate
 skill-side blocks with the drift edge recorded in `scripts/similar-rules-allowlist.yaml` at build.
 
@@ -469,7 +469,7 @@ action wherever any stub binds (all 8 members bind ≥1).
 |---|---|---|---|---|---|---|---|---|---|
 | RB | 2,748 | 490 | 9,799 | 26 | ~5,270 | ~1,550 | ~6,820 | ~8,720 | ×3.2 |
 | RCM | 3,884 | 492 | — | 12 | ~4,270 | ~2,000 | ~6,270 | ~8,170 | ×2.1 |
-| RF | 1,901 | 599 | 17,514 | 23 | ~4,400 | ~1,210 | ~5,610 | ~7,510 (+17,514 lens, obligated read today and after — J-3) | ×3.9 |
+| RF | 1,901 | 599 | 17,514 | 23 | ~4,400 | ~1,210 | ~5,610 | ~7,510 (+17,514 lens, obligated read today and after — J-3-obligated-reference-read) | ×3.9 |
 | RGI | 5,562 | 483 | — | 27 | ~7,080 | ~2,670 | ~9,750 | ~11,650 | ×2.1 |
 | RPA | 4,938 | 598 | 27,827 | 33 | ~7,420 | ~2,430 | ~9,850 | ~11,750 | ×2.4 |
 | RSPEC | 6,187 | 490 | — | 27 | ~7,450 | ~2,930 | ~10,380 | ~12,280 | ×2.0 |
@@ -550,16 +550,16 @@ registry's scope statement stays honest (no skill labels enter it).
 
 ## J. Anomalies (numbered, each with a recommended disposition)
 
-- **J-1 — "19 KEPT lines" is a mention count, not a ruling count.** The 19 counts strip-file
+- **J-1-kept-mention-count — "19 KEPT lines" is a mention count, not a ruling count.** The 19 counts strip-file
   lines containing `KEPT:`, including reconciliation references; distinct survivor rulings number
   9, of which 3 are already ended by recorded supersession (§A). *Recommendation:* the D8/C4
   supersession-transfer executes at the unit of **live protection** as enumerated in §A; the
   census's table is the reconciliation artifact the audits cite. No record amendment needed — C4's
   figure was "at review count", and the reconciliation is exactly what C4 ordered.
-- **J-2 — RSUF's birth-by-ruling body.** No strips, no KEPT lines; R-c confirms no wholesale
+- **J-2-birth-by-ruling — RSUF's birth-by-ruling body.** No strips, no KEPT lines; R-c confirms no wholesale
   protection. *Recommendation:* conversion moves cite the plan-stage-retirement `DECISIONS.md` row
   per rule; ride-along confirmation at the wave gate.
-- **J-3 — RF's obligated reference read.** "Load FEASIBILITY-LENS.md before hunting" makes a
+- **J-3-obligated-reference-read — RF's obligated reference read.** "Load FEASIBILITY-LENS.md before hunting" makes a
   17,514-char reference an obligated invoke-time read, while C1 keys the budget on body+schema
   and exempts `references/`. No contradiction — C1's exemption text ("never auto-loaded") was
   amended for schemas specifically — but the I5 **real** per-invoke read for RF is ~25k, not
@@ -570,15 +570,15 @@ registry's scope statement stays honest (no skill labels enter it).
   collision exists, and resolvable addresses beat short ones (the RPA slug precedent).
   *Recommendation:* stems stand as ruled; no user decision needed unless the wave gate wants the
   mnemonic alternative priced again.
-- **J-5 — cross-grammar near-dups.** C1/C2/C3 nearly duplicate command `common.yaml` blocks. D5
+- **J-5-cross-grammar-duplicates — cross-grammar near-dups.** C1/C2/C3 nearly duplicate command `common.yaml` blocks. D5
   forbids sharing. *Recommendation:* separate skill-side blocks; allowlist edges recorded at
   build (the D5-I7 argued posture).
-- **J-6 — verdict heterogeneity carriers.** RCM (advisory-only) and RSPEC (input-only) have real
+- **J-6-verdict-heterogeneity-carriers — verdict heterogeneity carriers.** RCM (advisory-only) and RSPEC (input-only) have real
   `verdict`-section content but bind neither C2 nor C4's clearing limb. *Recommendation:* both
   members carry local verdict-posture rules (RCM §B-11, RSPEC §B-1); the common blocks' member
   lists are drawn as in §C; allowlist notes the two structural non-members so detector reruns
   stay quiet.
-- **J-7 — cross-directory stub pointers.** RGI's obligations bind references living in **other
+- **J-7-cross-directory-pointers — cross-directory stub pointers.** RGI's obligations bind references living in **other
   skills' directories** (`../review-brainstorm/references/CROSS-EXAM.md`, `EXTERNAL-CLAIMS.md`,
   `../authoring-constitution/references/INTERROGATION-AGENDA.md`); RF and RSPEC bind
   EXTERNAL-CLAIMS the same way. Stubs will carry cross-dir relative `pointer:` values.

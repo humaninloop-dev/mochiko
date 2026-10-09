@@ -5,7 +5,7 @@ Entry formats: `strips/README.md`. First entry for this skill.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the patterns family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -15,7 +15,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/patterns-plan-minimalism/SKILL.md`. -->
 
@@ -23,7 +23,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 - **Disposition:** superseded → "are delivered by `mochiko-cli`"
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** "Rung by rung — the stop rule, the rung scopes, and the read duty live in the schema:"
 - **Kept deliberately:** the rung-by-rung framing and all three named subjects — the stop rule, the
   rung scopes, and the read duty — as rules rather than prose in this body. The five rungs beneath
@@ -34,7 +34,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -68,7 +68,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -79,7 +79,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
   likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -89,7 +89,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 ## [v0.102.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2B, patterns family)
 
-Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (obligations move, procedure stays
 prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
 ruled · the patterns-family door); census:
 `.mochiko/brainstorms/skill-content-schema/research/census-patterns.md` §A (PM) + §B (PM rows 1–10).
@@ -103,7 +103,7 @@ minted ID: 1 `three-firing-sites` · 2 `not-for-routes` · 3 `rung-1-never-delet
 discipline {3, 4, 5, 7} · inputs {6} · disclosure {8} · reserved {} (`rules: []` + note —
 no user-reserved decision at census grain). No `conditions:` block — census §B's
 live-`when:` dimension list omits PM; the load-first block legally omits the `when:`
-grammar sentence (wave-1 RCM-4 wave-wide ruling).
+grammar sentence (wave-1 RCM-4-test-gate-carveout wave-wide ruling).
 **The rung-3 widening double-statement (lead-ruled OQ3):** the [v0.73.0] widening clause
 rides `read-before-claim`'s schema text as the binding obligation, while the ladder's
 rung-3 body prose keeps its procedural wording verbatim — the sanctioned D3
@@ -137,7 +137,7 @@ ledger row).
 
 ## [v0.102.0] Three firing sites + epic joint plan — protection transfers (census §A PM row 3; [v0.91.0] re-scope)
 - **Disposition:** superseded — protection transfers to `patterns-plan-minimalism.three-firing-sites` (must) and `patterns-plan-minimalism.epic-joint-plan-one-plan` (must), per D8/C4.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; protecting ruling `DECISIONS.md` 2026-08-26 plan-stage-utility D1/D4, wording ruled at the v0.91.0 wave).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; protecting ruling `DECISIONS.md` "2026-08-26 plan-stage-utility D1/D4", wording ruled at the v0.91.0 wave).
 - **Content:** "It fires at three generation-time sites inside the implement run's **design phase**: **what the design phase authors** — scoped to the sufficiency gap list, signed by the user at the design checkpoint — **each producing seat's plan**, and the **epic joint design-phase plan** (one plan over all members)."
 - **Consumers assessed:** the router's row names the three surviving sites (re-keyed at v0.91.0, unchanged now); `mochiko:authoring-epic` carries the joint design-phase plan the third site names.
 
@@ -158,7 +158,7 @@ ledger row).
 - **Disposition:** superseded → "Every **authored** artifact and major element carries a
   disclosed rung stop".
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D4**, the dead-gates ruling that
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D4-planless-homes-gates**, the dead-gates ruling that
   retired the proposal). Raised as an **advisory** by the wave audit: "proposed" was the last
   word in this skill still presupposing a proposal gate — with the artifact gone, an element is
   *authored* by the design phase, never *proposed* for approval.
@@ -186,7 +186,7 @@ ledger row).
   authors** (scoped to the sufficiency gap list, signed at the design checkpoint), **each
   producing seat's plan**, and the **epic joint design-phase plan**.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D4**, which lists plan's
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D4-planless-homes-gates**, which lists plan's
   plan-the-plan proposal approval among the **dead gates**, and D1 mechanic (b) for the epic
   site). Raised by the v0.91.0 wave audit as **V1**; wording ruled by the wave lead 2026-08-26.
 - **This entry corrects this seat's own main-pass work, stated plainly:** the main pass re-keyed
@@ -234,7 +234,7 @@ ledger row).
   phase's authoring proposal inside `/mochiko:implement`, each producing seat's plan, the
   principal-architect's contest, and any design-artifact decision.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 carry-overs: "plan-minimalism
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires carry-overs: "plan-minimalism
   ladder governs what the design phase authors").
 - **Content (superseded text, verbatim):**
 
@@ -260,7 +260,7 @@ ledger row).
 - **Disposition:** superseded → the same ladder governing the design phase's authoring proposal
   and any design-artifact decision.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1).
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires).
 - **Content (superseded fragments, verbatim):**
 
   1. Overview, both paragraphs:

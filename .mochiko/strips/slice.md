@@ -11,7 +11,7 @@ command goal-shaped; the v0.31.0 entry's "now v4" claim is likewise frozen histo
 
 ## [v0.49.0] Command retired — `/mochiko:slice` dissolved into `/mochiko:specify`
 - **Disposition:** superseded → `commands/specify.md` (intent stage + the spec's Delivery Slices section, co-accepted with the spec); file deleted
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D5+D6)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D5-slice-command-retires+D6-slices-into-spec)
 - **Content:** the whole v8 goal+harness command (Goal: accepted `slices.md` conforming to `slices-template.md` or a reviewed null exit in `slicer-report.md`; Harness incl. the un-homeable-story spec-amendment offer and the graduated-slice halt; Bindings incl. S#/US-#/SC-# ID discipline and the plan-next-step pointer). Full text: git history at v0.48.0.
 - **Kept deliberately:** the un-homeable-story amendment offer (folded into specify's Reserved-to-user) · the slicing invariants and Feature-Done machinery (live on in `authoring-slices` + `spec-template.md`'s Delivery Slices section) · the Graduation contract (relocated into `spec-template.md`, staleness-guard bullet dropped — a section cannot drift from its own spec). The graduated-slice halt died (nothing can be graduated at spec time). Accepted cost, ruled: standalone re-slicing of an old accepted spec becomes a specify amend path.
 - **Consumers assessed:** router (slice rows removed) · plan/implement (slice-scope re-keyed to the spec section) · ARCHITECTURE.md (section merged into Specify) · `SLICE_STOP` kill-switch retired.
@@ -208,7 +208,7 @@ context `phase` field, respawning only what the stage needs — a respawned prod
 - **Consumers assessed:** none.
 
 ---
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -223,7 +223,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 
 ## [v0.44.0] Design-record citation, preamble
 - **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 Design record:
@@ -318,7 +318,7 @@ merely fits is not a re-key case.
   artifacts + the report and confirm no blocking gap remains;
   ```
 - **Protected content, checked at source before removal — none of it left the file.** The [v0.35.0]
-  CS-D8 survivor re-grade ledger is the authority on where each protected line lives, and it homes
+  `command-succinctness-strip` D8-kept-line-regrading survivor re-grade ledger is the authority on where each protected line lives, and it homes
   none of this text in the Goal:
   - *"Cold reviewer **arrival**; producer↔reviewer peer edge; **every verdict the lead's**"*
     (DECISIONS 2026-07-30, Layer-2 mesh + v0.31.0) → ledgered to "the **validation-model line**",
@@ -432,7 +432,7 @@ which a composed run leaves exactly as a default run does.
 That entry relocated "Fill `templates/workflow-contract.md` → `.mochiko/specs/<feature>/slice-contract.md`
 … The filled artifact is the inspectable proof — not this command body", on the ground that the shape
 retired per-run fills whose **values are constant at authoring time**. P19 revives the same filename on
-the opposite ground: **OQ-2 as ruled at A2** makes a departing run's values genuinely vary per run,
+the opposite ground: **OQ-2-declaration-durable-home as ruled at A2** makes a departing run's values genuinely vary per run,
 which is what un-does that premise — and only for departing runs, a default run writing one line
 instead. Different trigger, different ground, ruling-created, so it is logged here as an addition
 rather than as a `RETURNED:` entry. implement's conversion made the identical call for
@@ -488,11 +488,11 @@ structure — the flexibility is bought by the line, and a default run never tou
 - **Consumers assessed:** five-command recovery — see the shared consumer list in the `strips/plan.md` v0.37.0 entry.
 - **Protected-set note:** as recorded in the plan entry — record §7's protection premise for this recovery is spent now the bug is resolved; deliberate supersession, not a check-14 re-drop.
 
-# v0.35.0 — the goal-shape rebuild, step 4 of 4 (CS-D10)
+# v0.35.0 — the goal-shape rebuild, step 4 of 4 (`command-succinctness-strip` D10-pilot-first-execution)
 
 **Wave context:** command goal-shape rebuild, **step 4** — the remaining-five wave
 (`brainstorm` · `specify` · **slice** · `implement` · `setup`), design
-`.mochiko/brainstorms/command-succinctness-strip/record.md` (CS-D3/D4/D5 + D8 + D10; `DECISIONS.md`
+`.mochiko/brainstorms/command-succinctness-strip/record.md` (`command-succinctness-strip` D3-goal-shaped-documents/D4-flow-narrative-removal/D5-goal-command-anatomy + D8-kept-line-regrading + D10-pilot-first-execution; `DECISIONS.md`
 2026-07-30), against **shape v5** with the obligated `mochiko:loop-discipline` read **retained** —
 its drop is deferred to a named live-run trigger (pilot-checkpoint ruling 5), so a v5 command that
 omits it is non-conformant, not early. Worked example: the audit-PASSed `plan` pilot (v0.34.0).
@@ -505,7 +505,7 @@ appear in it — grepped, absent (check 1's negative direction).
 final edit round, per the pilot's standing habit (re-sweep every figure after *each* round; three
 stale-headline instances in the pilot build all traced to a summary written before the last edit
 landed). Against the wave's pre-authored floor of **1,076 w: +166 (+15.4%)** — over, the safe side
-of CS-D8, since landing materially *under* a floor row would signal dropped content. slice's
+of `command-succinctness-strip` D8-kept-line-regrading, since landing materially *under* a floor row would signal dropped content. slice's
 reduction is the shallowest of the wave by design: it was already a *converted, twice-stripped*
 command (v0.14.0 wave + v0.31.0 mesh re-conform), so the flow/Contract narrative it carried was
 thinner than the pilot's 2,873 words.
@@ -561,7 +561,7 @@ mis-classed, or missing.
 - **Disposition:** superseded → the goal-shaped anatomy's ordered gate list, via a contiguous
   **gate renumber**. The survivor-provenance entry below (`[v0.14.0] KEPT: "No G2 …"`) is retired;
   the note no longer appears in the command.
-- **Tier failed:** n/a — supersession by ruling (**CS-D8** re-grade against the new anatomy,
+- **Tier failed:** n/a — supersession by ruling (**`command-succinctness-strip` D8-kept-line-regrading** re-grade against the new anatomy,
   "never auto-carried"), executed under the step-4 briefing's instruction to re-grade this entry
   honestly.
 - **Content (the retired note, verbatim as it last shipped):** "**No G2** — slice is
@@ -602,8 +602,8 @@ mis-classed, or missing.
   re-derived). The `Contract` section's four clauses → **Goal**
   (done-condition + not-done states), the **Seats & checks** table (producer↔validator), and
   **Constraints** (bounds + gates).
-- **Tier failed:** n/a — supersession by ruling (**CS-D3** condition-first documents · **CS-D4** the
-  connective procedure is deleted and what survives is restructured · **CS-D5** the five-block
+- **Tier failed:** n/a — supersession by ruling (**`command-succinctness-strip` D3-goal-shaped-documents** condition-first documents · **`command-succinctness-strip` D4-flow-narrative-removal** the
+  connective procedure is deleted and what survives is restructured · **`command-succinctness-strip` D5-goal-command-anatomy** the five-block
   anatomy and the Contract-as-document inversion).
 - **Content:** the `## Team-form parameters` / `## Session constraints` / `## The seats` /
   `## The flow` / `## Contract` / `## Recovery` sections plus the closing footer — 1,611 words of
@@ -643,7 +643,7 @@ mis-classed, or missing.
   mechanics + the addressability check: `templates/agent-dispatch.md` (Seat transport). The
   no-fallback bet is the same `Contested` dogfood-pilot ruling as the other team-form commands."
 - **Note — the relocated pointer was also stale:** Seat transport left `agent-dispatch.md` for
-  `command-shape.md` Layer 2 at **v5** (CS-D6), so the command's citation had been pointing at a
+  `command-shape.md` Layer 2 at **v5** (`command-succinctness-strip` D6-read-chain-scope), so the command's citation had been pointing at a
   section its target no longer carried. The rebuild retires the pointer rather than repairing it.
 
 ## [v0.35.0] Governance dispatch-brief line relocated to the briefing home
@@ -688,9 +688,9 @@ mis-classed, or missing.
     **Kept deliberately:** "a **single reviewer**", which is slice's own cardinality and the
     surviving half of the retired "No G2" evidence.
 
-## [v0.35.0] CS-D8 survivor re-grade ledger — every protected line resolved
+## [v0.35.0] `command-succinctness-strip` D8-kept-line-regrading survivor re-grade ledger — every protected line resolved
 
-CS-D8 (extended by user ruling U4) protects two sets: `KEPT:`/Tier-2-evidenced lines, **and** every
+`command-succinctness-strip` D8-kept-line-regrading (extended by user ruling U4) protects two sets: `KEPT:`/Tier-2-evidenced lines, **and** every
 line traceable to a `DECISIONS.md` row. slice carries **one** `KEPT:` entry (the "No G2" note) plus
 the *Kept deliberately* fields of the v0.31.0 supersession and the v0.14.0 conversion note, plus the
 row trace. Grepped before any cut. **19 rows: 17 survive translated · 1 superseded with grounds · 1
@@ -725,7 +725,7 @@ end-state elements above were caught.
 
 ## [v0.31.0] Lead-relayed gap lists superseded by the in-loop mesh (shape v4 conforming edit)
 - **Disposition:** superseded → `templates/command-shape.md` v4 (Layer 2 — "Independence by structure" + "In-loop mesh"). Rewritten in place: the reviewer is still cold-spawned at first review, and the producer↔reviewer peer edge is declared on the roster.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/team-method-vs-command-shape/record.md` **D1**, scoped by **D2**), not a minimalism strip. Permanent no-contact was the falsified claim; cold *arrival* survives as a property of the stage.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/team-method-vs-command-shape/record.md` **D1-mesh-routing-default**, scoped by **D2-in-loop-mesh**), not a minimalism strip. Permanent no-contact was the falsified claim; cold *arrival* survives as a property of the stage.
 - **Content (superseded, verbatim):**
   - producer seat: "Round > 1 is a message to the same seat carrying the reviewer's gap list verbatim"
   - reviewer seat: "spawned **cold at first review**, never in contact with the producer"
@@ -826,7 +826,7 @@ end-state elements above were caught.
   entries consume it. Design record: `.mochiko/brainstorms/vertical-graduation/synthesis.md`."
 
 ## [v0.14.0] KEPT: "No G2 — slice is single-reviewer, so plan's feasibility-rejection slot is intentionally unused."
-- **RETIRED at v0.35.0** — superseded with grounds by the CS-D8 re-grade at the top of this file
+- **RETIRED at v0.35.0** — superseded with grounds by the `command-succinctness-strip` D8-kept-line-regrading re-grade at the top of this file
   (the gate renumber leaves the gap-misreading no path). Kept here as provenance; the evidence below
   is the standing claim as it read at v0.14.0, not a live one.
 - **Tier-2 evidence:** prevents a false-defect reading of the gate sequence — without it, an

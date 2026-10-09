@@ -51,9 +51,9 @@ file (for `technical-analyst.md`, below its frozen lineage-note comment). Each c
 `Kept deliberately`, `Consumers assessed`.
 
 Stamp: `[v0.110.0]` on all four. Ruling cited on all four:
-`.mochiko/brainstorms/orchestrator-model-selection/record.md` D3 (the ten-row seat class table),
+`.mochiko/brainstorms/orchestrator-model-selection/record.md` D3-seat-class-table (the ten-row seat class table),
 with D1/D2 as mechanism and D8 as the alias rule, plus the `DECISIONS.md` 2026-09-19 row, and the
-note that the same ruling supersedes `model-tiered-seats` D5 and fold F6.
+note that the same ruling supersedes `model-tiered-seats` D5-seat-tiering-deferred and fold F6.
 
 Per-entry variation:
 

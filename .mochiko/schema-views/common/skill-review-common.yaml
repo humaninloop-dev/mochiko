@@ -27,3 +27,13 @@ rules:
   - id: review-common.never-excess
     labels: [boundary]
     text: A floor- or NFR-derived obligation is never excess, however heavy it looks.
+  - id: review-common.joined-ids
+    labels: [verdict, artifact-grammar]
+    text: >-
+      Hold every durable ID the artifact mints or cites to the IDs section of
+      `templates/artifact-format.md`: a new mint is joined, its three slug words naming the topic
+      — never a strength word, a removal ruling's direction word kept; a citation carries its
+      definition's slug, or stays bare where the definition is bare; match on the number within
+      its scope. A bare new mint, a drifted slug, or a slug that misreads its topic is a finding.
+    pointer: ../../templates/artifact-format.md
+    anchor: 2026-10-08 human-readable-ids D6

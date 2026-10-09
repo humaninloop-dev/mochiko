@@ -11,7 +11,7 @@
 - **Validation mechanism** — producer↔validator skill pairing at artifact granularity: different agent + different skill, structural independence.
 - **Primary quality surface** — skill library + agents, not plumbing.
 - **Build approach / order** — workflow-first, one at a time; `setup` then `specify`.
-- **Migration tracking** — explicit REGISTRY (superseded 2026-07-25: REGISTRY retired, operating-docs-maintenance D8).
+- **Migration tracking** — explicit REGISTRY (superseded 2026-07-25: REGISTRY retired, operating-docs-maintenance D8-registry-retires-archive).
 - **Human-gate placement** (2026-06-27, confirmed by ports) — gated dispositions + escalations, plus a named acceptance gate on the deliverable.
 - **Memory model** (2026-06-27) — in-session + workspace-as-state under `.mochiko/`; no context-handoff file.
 - **Gap classification** (2026-06-27) — FAIL-routing folded into `loop-discipline` (knowledge → research · preference → human gate · scope → halt).

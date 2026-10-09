@@ -164,8 +164,8 @@ coverage surface reviewers verify against, per `templates/artifact-format.md`):
 
 | Endpoint | Method | FR | US | Description |
 |----------|--------|-----|-----|-------------|
-| /auth/login | POST | FR-001 | US#1 | User login |
-| /users/me | GET | FR-004 | US#4 | Get current user |
+| /auth/login | POST | `<spec-slug>` FR-001-<slug> | `<spec-slug>` US-1-<slug> | User login |
+| /users/me | GET | `<spec-slug>` FR-004-<slug> | `<spec-slug>` US-4-<slug> | Get current user |
 
 ## The Quickstart (`quickstart.md`) — the product's integration guide
 

@@ -4,7 +4,7 @@ Entry formats: `strips/README.md`.
 
 ## [v0.113.0] the `validator` persona retired whole — 105 lines, eight sections
 
-- **Disposition:** superseded → the carrier (`author-grader-consolidation` D7): a plain fresh seat
+- **Disposition:** superseded → the carrier (`author-grader-consolidation` D7-fresh-gate-grader): a plain fresh seat
   running the rendered `mochiko:validation-primitive-edit` contract at the primitive-edit gate, and
   `mochiko:validation-constitution` at setup's validate step per the `setup.validate-seat-form`
   rule. Section by section:
@@ -33,8 +33,8 @@ Entry formats: `strips/README.md`.
     shared boilerplate carried on every persona file, so nothing unique to this persona leaves
     with it.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/producer-plan-enforcement/record.md` D3 ·
-  `.mochiko/brainstorms/author-grader-consolidation/record.md` D7; `DECISIONS.md` 2026-09-03
+  (`.mochiko/brainstorms/producer-plan-enforcement/record.md` D3-peer-plan-grader ·
+  `.mochiko/brainstorms/author-grader-consolidation/record.md` D7-fresh-gate-grader; `DECISIONS.md` 2026-09-03
   and 2026-09-19 rows).
 - **Content:** the frontmatter (`name`, the 269-char `description`, `model: opus`, `color: red`,
   `skills: validation-constitution`) plus the eight sections above, each named with its operative
@@ -49,7 +49,7 @@ Entry formats: `strips/README.md`.
   reworded (strip `mochiko.md`) · `review-brainstorm/references/EXTERNAL-CLAIMS.md` pointer
   annotated (strip `review-brainstorm.md`) · `CLAUDE.md` item 3, the shipped-primitive paragraph,
   and axis 5 · `.claude/rules/mochiko/primitive-edits.md` parenthetical · `ARCHITECTURE.md` six
-  lines · the governance ledger's GI-004 detail and editorial note · the budget ledger's agent row
+  lines · the governance ledger's GI-004-primitive-audit-ratchet detail and editorial note · the budget ledger's agent row
   struck · migration `0010-validator-retirement.yaml` drops the persona from
   `patterns-model-tiering.seat-default-key` and rewords the two `authoring-constitution` rules ·
   the crate census tests and the frozen eval kit at `evals/agents/validator/`.

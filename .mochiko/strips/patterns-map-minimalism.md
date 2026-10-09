@@ -6,7 +6,7 @@ wave); this file opens with the first edit that superseded any of its shipped te
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the patterns family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -18,7 +18,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -54,7 +54,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -65,7 +65,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -75,7 +75,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 
 ## [v0.102.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2B, patterns family)
 
-Ruling for every entry below: skill-content-schema D3 (three-home boundary) / D8/C4
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (three-home boundary) / D8/C4
 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema ruled ·
 Skill-schema wave-2 family doors ruled — the patterns-family door); census:
 `.mochiko/brainstorms/skill-content-schema/research/census-patterns.md` §A (MM) + §B (MM row
@@ -126,14 +126,14 @@ seeding path, no headroom (the ceremony seat executes the ledger row).
 - **Kept deliberately:** the v0.81.0 dormant-domains re-keyed wording survives **unchanged in substance** inside `domains-dormant`'s text — "the store's domain-to-spine mapping line and the co-sign duty are deferred to the first real cap-trip: neither is built until a live map actually approaches the cap" (the entry below records that re-key; the deferral's force and trigger are untouched by this conversion). Also kept body-side as teaching: the three tests' explanations with the kinako examples, and the Sessions/Knowledge domains line.
 - **Consumers assessed:** `mochiko:authoring-feature-map` owns the vocabulary this skill routes to (untouched); `/mochiko:feature` grooming reaches this skill at cap-trip and restates nothing; `mochiko:review-specifications`' map-layer checks reference the tests by pointer (untouched).
 
-## [v0.81.0] Dormant-domains pointer re-keyed: `ARCHITECTURE.md` mapping → the store's domain-to-spine mapping — product-architecture-schema D3/D4
+## [v0.81.0] Dormant-domains pointer re-keyed: `ARCHITECTURE.md` mapping → the store's domain-to-spine mapping — product-architecture-schema D3-store-replaces-artifact/D4-store-file-structure
 
 - **Disposition:** superseded → the architecture store's domain-to-spine mapping line. The
   deferral is unchanged in force and in trigger; only the surface the deferred line would one day
   be written on has moved, since `ARCHITECTURE.md` is now a derived index rather than a
   hand-maintained doc.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3/D4; `DECISIONS.md`
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3-store-replaces-artifact/D4-store-file-structure; `DECISIONS.md`
   2026-08-19).
 - **Content (superseded, verbatim — two fragments):**
 

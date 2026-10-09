@@ -8,7 +8,7 @@ reviewed: >-
   `bbbcf10`: the tracked diff (21 files) plus untracked `src/shell.rs`, `tests/shell.rs` and
   `reports/w1-shell-census.md`; against the wave plan §2, §3, §5, §7, §8, S1 `plan-v3.md`, S2
   `plan-v2.md`, every 2026-09-29 build-log ruling, record D3/D4/D5/D7 as amended, S3, S4, S6/V9,
-  S7/V2, S12, S15, V1–V4, V7, N2, N4, the seams record R5/R7, ledger GI-019 "Reach of the gate" and
+  S7/V2, S12, S15, V1–V4, V7, N2, N4, the seams record R5/R7, ledger GI-019-kernel-tooling-admission "Reach of the gate" and
   "What the gate reads", and `rust-cli.md`
 verdict: FAIL
 blocking_count: 2
@@ -271,7 +271,7 @@ write set. S1's files need no change for this verdict.
 - The differential used today's real log and a scratch tree with its own `.git`, under the
   session scratchpad; no binary was installed. Besides this file, the only repo writes are under
   the gitignored `target/g1/` (build outputs, HEAD's extracted crate, the views emit).
-- The reads audit found nothing outside GI-019's list. A9 (Write reads the file before it is
+- The reads audit found nothing outside GI-019-kernel-tooling-admission's list. A9 (Write reads the file before it is
   resolved) sits inside drift (b), which is already booked for the wave-3 text-vs-build check.
 - The census count holds: 25 rows, each asserted on its exact targets. The re-extraction from the
   transcripts was not repeated; P2 re-derived 79/21 in the plan round.

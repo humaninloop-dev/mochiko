@@ -14,7 +14,7 @@
   pile no reviewer reads line by line. A third defect was found while measuring: the `**Evidence:**`
   pointer at `.mochiko/strips/review-brainstorm.md:268` names
   `evals/review-brainstorm/runs/20260826-110222/`, which was never committed at all. That pointer
-  resolved only on the machine that ran the grid, which is a dead pointer under GI-005 for every
+  resolved only on the machine that ran the grid, which is a dead pointer under GI-005-record-layer-integrity for every
   other reader.
 - **Decision:**
   1. **Run evidence lives on an archive ref, not the working branch.** The raw sessions behind a

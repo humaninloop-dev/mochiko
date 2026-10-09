@@ -44,7 +44,7 @@ rather than writing a strip outside my row.
 ## Reads
 
 - `wave2-plan-qa.md` whole — my row in §2, the section ids in §3.1 item 6, the deliverables in §3.2, the gate form in §4, the gates in §5.
-- `producer-plan-enforcement/record.md` lines 169–425 — D2 (transient plan, verdict grammar), D3 (fresh peer), D4 (two-way delivery), D5 (the seven items verbatim), D6 (approval, bound), D7 (dispatch shape), D8 (items 5′ and 6).
+- `producer-plan-enforcement/record.md` lines 169–425 — D2-transient-plan-home (transient plan, verdict grammar), D3-peer-plan-grader (fresh peer), D4-seat-plan-skill (two-way delivery), D5-plan-qa-criteria (the seven items verbatim), D6-approval-rework-semantics (approval, bound), D7-plan-resume-dispatch (dispatch shape), D8-plan-qa-landing (items 5′ and 6).
 - `plugins/mochiko/skills/validation-primitive-edit/SKILL.md` whole — the mirrored shape: frontmatter keys, the Rules paragraph, the seven `!` lines, the read-back sentence, the Procedure.
 - `plugins/mochiko/skills/validation-constitution/SKILL.md` whole — the second sibling; confirms `allowed-tools: Bash(mochiko-cli *)` and the same Rules boilerplate.
 - `ls` of both skill directories — no `schema.yaml` ships; only `validation-constitution` carries `references/`. Basis for the no-`references/` claim above.

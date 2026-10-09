@@ -38,13 +38,14 @@ sections:
     required: true
     max_lines: 40
     contract: >-
-      The element table, one row per element: `SPN-XXX` id · kind (container | boundary | flow)
-      · name · one-line responsibility · what it talks to and in which style · lifecycle
+      The element table, one row per element: `SPN-XXX-<slug>` id · kind (container | boundary |
+      flow) · name · one-line responsibility · what it talks to and in which style · lifecycle
       status (the value set and its run keys per mochiko:authoring-architecture-store). Two
-      further columns, `Raised` (its cycle) and `Weighed` (its why, one line), are filled on a
-      build-raised element and read `—` elsewhere. A `removed` element keeps its row, reduced to
-      id, kind, name and status. One line per element; a row that needs a paragraph is hiding a
-      concern row or a graduated file.
+      further columns, `Raised` (its cycle, cited behind its run's key in a code span — a joined
+      FEAT or EPIC ID, or `lane-<slug>`: `` `FEAT-012-<slug>` C3-<slug> ``) and `Weighed` (its
+      why, one line), are filled on a build-raised element and read `—` elsewhere. A `removed`
+      element keeps its row, reduced to id, kind, name and status. One line per element; a row
+      that needs a paragraph is hiding a concern row or a graduated file.
     check: >-
       Is every element one row with an id, a kind, a responsibility and a status — Raised and
       Weighed filled only on a build-raised element, a removed element reduced to id, kind, name
@@ -83,10 +84,10 @@ skeleton: |
 
   | ID | Kind | Name | Responsibility | Talks to (style) | Status | Raised | Weighed |
   |----|------|------|----------------|------------------|--------|--------|---------|
-  | SPN-001 | container | [name] | [one line] | SPN-002 (sync REST) | built | — | — |
-  | SPN-002 | container | [name] | [one line] | SPN-003 (queue) | in-flight (FEAT-012) | [cycle] | [why, one line] |
-  | SPN-003 | boundary | [name] | [what changes across it — trust, ownership, tenancy] | — | ruled | — | — |
-  | SPN-004 | flow | [name] | — | — | removed | — | — |
+  | SPN-001-<slug> | container | [name] | [one line] | SPN-002-<slug> (sync REST) | built | — | — |
+  | SPN-002-<slug> | container | [name] | [one line] | SPN-003-<slug> (queue) | in-flight (FEAT-012-tenant-workspace-admin) | [`FEAT-012-tenant-workspace-admin` C<n>-<slug>] | [why, one line] |
+  | SPN-003-<slug> | boundary | [name] | [what changes across it — trust, ownership, tenancy] | — | ruled | — | — |
+  | SPN-004-<slug> | flow | [name] | — | — | removed | — | — |
 
   ## Key flows
 
@@ -94,4 +95,4 @@ skeleton: |
 
   ## As-built notes
 
-  - SPN-002 — [what the fold found built, one line]
+  - SPN-002-<slug> — [what the fold found built, one line]

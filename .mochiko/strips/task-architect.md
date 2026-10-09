@@ -6,7 +6,7 @@ names both consumers assessed.
 
 ## [v0.49.0] Agent retired — seat dies, crafts become lead-dispatched skills
 - **Disposition:** superseded → no successor seat; `patterns-vertical-tdd` (slimmed) and `authoring-slices` (re-scoped) are lead-dispatched to whichever producer seat fits the run, per v8 lead-owned seating; file deleted, plugin.json agents 9→8
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D4)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D4-task-architect-retires)
 - **Content:** the full persona — Core Identity (four scars), What You Produce (task-mapping.md · tasks.md · slices.md), Quality Standards (vertical/test-first/verified-against-reality/traceable/file-anchored/independently-completable/minimally-coupled), What You Reject/Embrace, Brownfield Awareness. Full text: git history at v0.48.0.
 - **Kept deliberately:** the quality bar itself — it lives on in `patterns-vertical-tdd`'s principles/checklist and `review-plan-artifacts`' cycle-card checks; nothing of the persona's judgment was lost, its enforcement surface moved from a seat to the skill + grader pair.
 - **Consumers assessed:** plugin.json (array edited) · router (agent row removed) · ARCHITECTURE.md (shared-seats paragraph re-counted) · both former dispatching commands (plan, the retired slice).

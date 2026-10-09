@@ -17,14 +17,14 @@ record in the ledger's Waivers section, not a gap):
 
 | Category | Status | Response |
 |----------|--------|----------|
-| Security | [present / partial / absent] | [codified existing pattern / MUST-implement → GAP-XXX / waived (see Waivers)] |
+| Security | [present / partial / absent] | [codified existing pattern / MUST-implement → GAP-XXX-<slug> / waived (see Waivers)] |
 | Testing | [status] | [response] |
 | Error Handling | [status] | [response] |
 | Observability | [status] | [response] |
 
 **Confrontations resolved in session:** [detected-reality-vs-floor conflicts and their
 rulings, from the synthesis — e.g. "the floor requires tests and the codebase has none: ruled
-MUST-implement, GAP-002." Or "none."]
+MUST-implement, GAP-002-test-coverage-shortfall." Or "none."]
 
 See `.mochiko/memory/evolution-roadmap.md` for the improvement plan.
 <!-- Roadmap stub (moved-to-other-cluster): producing evolution-roadmap.md is the roadmap

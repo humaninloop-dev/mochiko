@@ -43,7 +43,7 @@ The story lands in `spec.md`, every field to the delivered density rules. The ex
 structure:
 
 ```markdown
-### User Story N - [Brief Title] (Priority: P#)
+### US-<n>-<slug> — [Brief Title] (Priority: P#)
 
 [The user journey in plain language — ≤ 2 lines]
 

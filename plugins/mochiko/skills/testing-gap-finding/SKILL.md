@@ -114,12 +114,12 @@ Folded findings land in the durable gate set — the grammar, authorship, and ar
 are delivered by `mochiko-cli`; the artifact looks like this:
 
 ```markdown
-# FEAT-014 — Durable gates
+# FEAT-014-<slug> — Durable gates
 <!-- Folded gap findings. Persist past graduation; read at every later final validation. -->
 
 **TEST:** Rejects a session token replayed after logout
 - **Setup** / **Action** / **Assert** / **Capture** per the TEST grammar
-- Source: gap-finding pass, FEAT-014 final validation (spec-violation, SC-003)
+- Source: gap-finding pass, FEAT-014-<slug> final validation (spec-violation, `<spec-slug>` SC-003-<slug>)
 ```
 
 ## Anti-patterns

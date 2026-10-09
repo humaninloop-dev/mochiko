@@ -76,5 +76,5 @@ the wave lead released (`crates/mochiko-cli/src/`). Pre-edit verbatim text:
   The criterion is widened, not replaced. An existing file changing meaning still bumps. A new home
   field is added because it is the one change an older binary ignores rather than rejects.
 - **Consumers assessed:** no primitive restates the range. The crate's doc comments
-  (`migration.rs:12–21`, `home.rs:138–143`) state the same criterion and range. The ledger's GI-020
+  (`migration.rs:12–21`, `home.rs:138–143`) state the same criterion and range. The ledger's GI-020-plugin-install-model
   amendments name no range number.

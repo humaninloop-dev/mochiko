@@ -1,11 +1,11 @@
 # Wave 4 — the hook ship (staff-engineer seat; plan only, awaiting lead approval)
 
 **Ruling home:** record D1 (as amended 2026-09-13 — the `SubagentStart` line), D3, D7, D9, D11
-wave 4 · ledger AM-3 (GI-019 clause iv, the GI-012 wave-4 precondition, the amnesty paragraph and
+wave 4 · ledger AM-3-conformance-gate-admission (GI-019-kernel-tooling-admission clause iv, the GI-012-release-gates-module wave-4 precondition, the amnesty paragraph and
 its known gap) · `.claude/rules/mochiko/rust-cli.md` and `primitive-edits.md` as rewritten ·
 `.mochiko/strips/README.md` · `wave0-probe-report.md` legs 5–7 · `wave4-contract-plan.md`.
 **Scope line:** build everything, stage the bump, land nothing. The `plugin.json` bump that ships
-these hooks MUST NOT land before the crate's first publish carrying all four controls (GI-012, AM-3
+these hooks MUST NOT land before the crate's first publish carrying all four controls (GI-012-release-gates-module, AM-3-conformance-gate-admission
 review C5); a maintainer break-glass install never substitutes for consumers.
 
 ## (a) `hooks/hooks.json` — two registrations, `if` on the handler objects
@@ -46,7 +46,7 @@ exists to catch a report written *outside* every home, which is mostly outside `
 set still bind. Both patterns together cover each, and a `.mochiko/**/*.md` call matches two
 handlers and fires the wrapper twice. The wrapper is stateless and reads only stdin, so a double
 fire is two identical answers; a deny from either is the platform's answer. **Assumed, and wave 4
-measures it:** double-fire behaviour and its cost against the ≤ 60 s aggregate watch (GI-012 note,
+measures it:** double-fire behaviour and its cost against the ≤ 60 s aggregate watch (GI-012-release-gates-module note,
 never a bump gate). If the double fire proves costly, the fallback is one unnarrowed handler and a
 cost line, not a narrowing that drops the sniff.
 
@@ -89,7 +89,7 @@ otherwise (`R-WRONG-EVENT`). No binary on `PATH` → silent exit 0, no line (`R-
 `permissionDecision` key at all (`R-INJECT`), and nothing at the top level (`R-NO-TOPLEVEL`).
 
 Both wrappers carry `timeout: 5` and fail open on absence, timeout, or any unexpected output — the
-D7c hook floor, re-ratified for these two at AM-3.
+D7c hook floor, re-ratified for these two at AM-3-conformance-gate-admission.
 
 ## (c) Shipped-primitive edits — five, three of them taking a strip entry
 
@@ -122,7 +122,7 @@ and `impl.reports-envelope` was already re-keyed in `0005`.
 
 ## (d) The crate fix — first-touch amnesty over the file set
 
-AM-3's amnesty paragraph makes **file set relaxable**: an undeclared name in a declared home, on an
+AM-3-conformance-gate-admission's amnesty paragraph makes **file set relaxable**: an undeclared name in a declared home, on an
 existing file, is amnestied where the write does not worsen it, and "existing files are never
 wedged". **Reproduced against the built binary today, both legs deny:** a `Write` and an `Edit`
 over an existing `.mochiko/specs/<slug>/notes.md` each return exit 4 with the undeclared-file
@@ -189,7 +189,7 @@ contract freeze needs no re-key and the two seats share no file.
 
 ## (i) Question for the lead
 
-The amnesty item is the one I would not decide alone. AM-3 ratifies file set as a relaxable measure
+The amnesty item is the one I would not decide alone. AM-3-conformance-gate-admission ratifies file set as a relaxable measure
 and says existing files are never wedged; the built binary denies every write to an existing
 mis-homed file, and the ledger's own description of the gap (a bare allow with no context) does not
 reproduce. **Do I implement D4e as ratified — an existing undeclared name becomes editable, with

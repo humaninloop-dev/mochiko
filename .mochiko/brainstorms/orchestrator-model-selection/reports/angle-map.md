@@ -11,17 +11,17 @@ what the impact is (cost, quality, independence, doctrine, delivery).
 
 **Goal line as given:** one hardened decision record on who selects a seat's model tier, the
 per-seat defaults, the bounds on the lead's choice, the evidence gate, and the build surface —
-under mochiko's standing floors (GI-019 no kernel-class dispatch or gating; whatever is ruled must
+under mochiko's standing floors (GI-019-kernel-tooling-admission no kernel-class dispatch or gating; whatever is ruled must
 resolve on both spawn transports, subagent and agent-team teammate; author≠grader; the
-`patterns-model-tiering` floor and the `model-tiered-seats` D5 deferral it cites).
+`patterns-model-tiering` floor and the `model-tiered-seats` D5-seat-tiering-deferred deferral it cites).
 
 **Repo grounding used (session artifacts excluded):** `patterns-model-tiering` rendered floor set
 (6 floors, binary 0.1.0 / grammar 1 / plugin 0.109.0); `.mochiko/brainstorms/model-tiered-seats/record.md`
-D4/D5 + the F6 review fold; `.mochiko/decisions/2026-08-16-model-tiering-build.md`;
+D4-explore-tier-restoration/D5-seat-tiering-deferred + the F6 review fold; `.mochiko/decisions/2026-08-16-model-tiering-build.md`;
 `.mochiko/decisions/2026-09-05-sonnet-worker-rung.md`; the 2026-08-19 explorer-retarget row; the ten
 persona files under `plugins/mochiko/agents/` and their `## Delegating Cheap Reads` /
 `## Delegating Bounded Work` standing sections; `evals/agents/` persona kits;
-`BACKLOG.md` token-reduction epic; `ROADMAP.md`; `DECISIONS.md`; `CLAUDE.md` GI-019 / GI-020.
+`BACKLOG.md` token-reduction epic; `ROADMAP.md`; `DECISIONS.md`; `CLAUDE.md` GI-019-kernel-tooling-admission / GI-020-plugin-install-model.
 
 ---
 
@@ -46,7 +46,7 @@ persona files under `plugins/mochiko/agents/` and their `## Delegating Cheap Rea
 
 ## C. Bounds on the lead
 
-14. Hard floor tier below which no seat goes; what enforces it under doctrine-only (GI-019).
+14. Hard floor tier below which no seat goes; what enforces it under doctrine-only (GI-019-kernel-tooling-admission).
 15. Bound axis: work class (judgment vs execution) or seat identity.
 16. Does the bound include the lead's own tier.
 17. May a grader ever run below its producer.
@@ -59,8 +59,8 @@ persona files under `plugins/mochiko/agents/` and their `## Delegating Cheap Rea
 21. D5 deferral is a scope ruling with a re-pointed gate (F6); satisfied or reopened.
 22. Is this session the "dedicated future brainstorm" D5 named, stated as such.
 23. Blast radius: skill `description:`, router row, migration, contract-suite frozen `floor_ids`.
-24. GI-019: no proposed mechanism gates or dispatches mechanically.
-25. GI-020 / migration bump; nothing reads a schema file instead.
+24. GI-019-kernel-tooling-admission: no proposed mechanism gates or dispatches mechanically.
+25. GI-020-plugin-install-model / migration bump; nothing reads a schema file instead.
 26. `patterns-sound-loop`: lead choosing both producer and grader tiers concentrates what the pair splits.
 27. Independence doctrine is seat+skill separation — does tier become a fourth independence axis.
 

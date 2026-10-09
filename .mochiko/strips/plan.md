@@ -409,7 +409,7 @@ conversion at the top of this note.
 <!-- Wave context: the product-architecture-schema Stage-1 build wave (v0.81.0) — one schema-backed
 architecture store replaces the five-surface architecture split, and the whole pipeline re-keys in
 one wave (D15). Ruling for every [v0.81.0] entry below:
-`.mochiko/brainstorms/product-architecture-schema/record.md` (D3 · D10 + its S6/S8/S9/S13 folds ·
+`.mochiko/brainstorms/product-architecture-schema/record.md` (D3-store-replaces-artifact · D10-plan-time-contract + its S6/S8/S9/S13 folds ·
 D12 · D16) → `DECISIONS.md` 2026-08-19 product-architecture row. -->
 
 ## [v0.81.0] The In-flight pointer tool bullet — deleted whole (D10 orphan rule)
@@ -610,7 +610,7 @@ changed. Schema data files authored by the parallel schemas seat; paths are fixe
   card source) and **plan** (`plan.md` summary source).
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Template-schema CLI
   ruled (D1–D11 as amended at review)" row; record
-  `.mochiko/brainstorms/schema-based-template-guidance/record.md`, **D1** (a single plugin CLI is
+  `.mochiko/brainstorms/schema-based-template-guidance/record.md`, **D1-single-plugin-cli** (a single plugin CLI is
   the guidance authority, static `.md` exemplars retired) + **D8** (schemas ship as structured data
   files, the binary renders over them, raw Read is the first-class fallback); build plan §5 re-point
   inventory)
@@ -641,7 +641,7 @@ design-time test-case-authoring seat in the plan run; the foundation/feature car
 
 ## [v0.75.0] "foundation/feature type" struck from the per-card field list (D3)
 - **Disposition:** superseded → the Tools → Package artifacts `tasks.md` cycle-card description drops the `foundation/feature type` field from its per-card list; the field dies as a card type (the walking skeleton absorbs the sequencing role it existed for).
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Vertical-TDD cycle anchor + QA test-case authorship (D1–D4 as review-amended)" row; record `.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md` D3 — foundation/feature classification dies as a card type).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Vertical-TDD cycle anchor + QA test-case authorship (D1–D4 as review-amended)" row; record `.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md` D3-foundation-type-retired — foundation/feature classification dies as a card type).
 - **Content (verbatim, superseded):** "foundation/feature type" — from "per card: stories + feature rationale, foundation/feature type, dependencies, acceptance criteria by ID, a `**TEST:**` real-infrastructure gate, cycle-level brownfield exposure".
 - **Kept deliberately:** the rest of the per-card field list is untouched — stories + feature rationale, dependencies, acceptance criteria by ID, the `**TEST:**` real-infrastructure gate, cycle-level brownfield exposure, no task lists / no file paths. The card's re-shaping to test-case-bundle form (D1) is P1's `tasks-template.md` / `patterns-vertical-tdd` work, not restated in this charter.
 - **Consumers assessed:** none mount commands (entry points). The QA design-time seat wiring added to Roles & Responsibilities in this same edit is a pure addition (rides the D2 clause, no strip). The field-kill co-lands in P1's `tasks-template.md` (same ruling, different file — no collision); this strike removes the charter's reference to the same dead field so the two stay consistent.
@@ -659,7 +659,7 @@ one-run-per-capability-batch invariant is amended (not deleted) to admit epic co
   spine per `mochiko:authoring-epic`.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-14 "Multi-feature plan &
   implement ruled (D1–D13)" row; record `.mochiko/brainstorms/multi-feature-plan-implement/record.md`
-  D6 (plan run over an epic: one unit, one plan) + D9 (supersessions owed at build: plan.md's "One run
+  D6-epic-plan-run (plan run over an epic: one unit, one plan) + D9 (supersessions owed at build: plan.md's "One run
   per capability-batch" line — amended, not deleted))
 - **Content (superseded, verbatim):** "One run per capability-batch, ordered by the selected rows'
   dependency closure."
@@ -672,7 +672,7 @@ one-run-per-capability-batch invariant is amended (not deleted) to admit epic co
   riding the same ruling (no strip owed): plan.md epic Entry / gates / spine / D10 · implement.md epic
   run whole (D7) · feature.md epic stewardship (D4) · specify.md epic proposal (D4) · the new
   `mochiko:authoring-epic` carrier + the `authoring-feature-map` row-marker/seam-owner touch
-  (producer-skills seat, own strips). pm-role-and-feature-derivation D7's pipeline-key clause is
+  (producer-skills seat, own strips). pm-role-and-feature-derivation D7-capability-batch-pipeline's pipeline-key clause is
   annotated on its DECISIONS.md row at the landing (record layer, not a command strip).
 
 ---
@@ -888,7 +888,7 @@ Command stays v8. -->
 
 ## [v0.68.0] Feature (leaf) run-unit superseded by the capability-batch + row-level dependency ordering
 - **Disposition:** superseded → the re-keyed description / Goal / Entry: the run unit is the capability-batch (a capability plus the work rows selected for this run), `$ARGUMENTS` the capability ID with the run covering its selected rows, one run per capability-batch ordered by the selected rows' dependency closure; per-capability artifacts.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-13 "PM role & feature derivation ruled (D1–D12)"; record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, D7 (pipeline keys to the capability-batch; run size preserved; two-altitude baselines scoped-in untouched; row-level cross-capability ordering) + the D6 inventory "plan.md / implement.md — leaf keying *superseded* (capability-batch, D7)"; feature-map-layer D17 one-plan-run-per-feature *superseded* + D4/D22 the-feature-is-the-pipeline-unit *superseded at the leaf tier* per the same inventory)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-13 "PM role & feature derivation ruled (D1–D12)"; record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, D7 (pipeline keys to the capability-batch; run size preserved; two-altitude baselines scoped-in untouched; row-level cross-capability ordering) + the D6 inventory "plan.md / implement.md — leaf keying *superseded* (capability-batch, D7)"; feature-map-layer D17-per-feature-runs one-plan-run-per-feature *superseded* + D4/D22 the-feature-is-the-pipeline-unit *superseded at the leaf tier* per the same inventory)
 - **Content (superseded, verbatim):**
   - description: "Turn one feature carrying ratified scope into its accepted implementation package — its artifact set scaled to the feature"
   - Goal: "turn one feature carrying ratified scope on its map entry into its accepted implementation package — the artifacts its approved proposal names, scaled to the feature. One run per feature, in the map's dependency order. `$ARGUMENTS` = the feature ID (`FEAT-XXX`); empty → resolve the next undelivered feature carrying ratified scope from the map"
@@ -901,7 +901,7 @@ Command stays v8. -->
 
 ## [v0.68.0] Two-source scope enumeration superseded by the growth-rows-selection / bug-delta-scope split
 - **Disposition:** superseded → the Entry + Feature-scope binding re-word: the scope source is a spec's accepted selection or a feature-command card — growth rows enter as selection scope, a bug/improvement delta as delta scope.
-- **Tier failed:** n/a — supersession by ruling (record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, **D8 "Build-time rider" (user-ratified 2026-08-13, at the v0.68.0 build)**: a growth-door dispatch enters selection scope, a bug/improvement delta card stays delta scope — the split's recorded home, minted because the desk-cluster audit flagged it as a lead coordination call with no recorded home (GI-006); also annotated on the `DECISIONS.md` 2026-08-13 "PM role & feature derivation ruled" pm-role row as the "Build rider". Carried verbatim in `feature.md` (Tools + Boundaries) and `plan.md` / `implement.md` (Entry).)
+- **Tier failed:** n/a — supersession by ruling (record `.mochiko/brainstorms/pm-role-and-feature-derivation/record.md`, **D8-feature-growth-door "Build-time rider" (user-ratified 2026-08-13, at the v0.68.0 build)**: a growth-door dispatch enters selection scope, a bug/improvement delta card stays delta scope — the split's recorded home, minted because the desk-cluster audit flagged it as a lead coordination call with no recorded home (GI-006-primitive-edit-traceability); also annotated on the `DECISIONS.md` 2026-08-13 "PM role & feature derivation ruled" pm-role row as the "Build rider". Carried verbatim in `feature.md` (Tools + Boundaries) and `plan.md` / `implement.md` (Entry).)
 - **Content (superseded, verbatim):**
   - Entry: "the scope source is a spec's accepted Feature Selection or a feature-command delta card"
   - Feature-scope binding: "the feature's map entry governs scope and order — its ratified scope sourced from the spec's accepted Feature Selection (selection scope) or the feature-command delta card (delta scope)"
@@ -912,46 +912,46 @@ Command stays v8. -->
 
 <!-- Wave context: the combined plan-surface wave — `.mochiko/brainstorms/plan-structure-yagni/record.md`
 (D1–D7, plan overthinking) and `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`
-(D1–D7, architect role), landed in one wave per architect-role D5. -->
+(D1–D7, architect role), landed in one wave per `architect-role-pushback-and-abstraction` D5-combined-sibling-wave. -->
 
 ## [v0.67.0] Fixed artifact set demoted to the approved proposal's menu
 - **Disposition:** superseded → the re-keyed Goal/Harness in the same file: the package is the artifacts the run's **approved plan-the-plan proposal** names (the lead is a delivery manager; the artifact set is risk-scaled guidance, not a fixed checklist); the proposal is user-reserved (selection scope), rung-justified per `mochiko:patterns-plan-minimalism`, and the approved list becomes the run's own default-FAIL floor.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-structure-yagni/record.md` D1 delivery-manager identity + D2 plan-the-plan gate, as amended HF-5 = selection-scope only; combined wave `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` D5)
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-structure-yagni/record.md` D1-delivery-manager-identity delivery-manager identity + D2 plan-the-plan gate, as amended HF-5 = selection-scope only; combined wave `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md` D5-combined-sibling-wave)
 - **Content:** frontmatter description "analysis, a user-signed architecture, detailed design, and the task breakdown" · Goal intro "implementation package — analysis, architecture, detailed design, and the task breakdown." · Goal body head "**Per-feature artifacts land at `.mochiko/features/FEAT-XXX/`** — what the feature CHANGES:" (the enumerated set as invariant goal-conditions — every listed artifact mandatory every run)
 - **Kept deliberately:** each artifact's bound SHAPE (requirements FR→TR, delta grammar mirroring baseline filenames + appliable before/after prose form, cycle-card shape, `plan.md` summary-never-new-design), the product-baseline block + Baseline-seed binding (D6b invariant substrate, untouched), the map-hardening clause, the Screens & Flows trace, every reserved-to-user item and both grading lenses. The plan-the-plan proposal reserved item + `patterns-plan-minimalism` reference are pure additions riding D2 — no strip note.
 - **Consumers assessed:** commands are entry points — nothing mounts them. Ripple this wave: `implement.md` entry + design inputs (same stamp, its own strip entry), `review-plan-artifacts` (conformance re-key — sibling seat), `plan-template.md` / `tasks-template.md` (fixed-set restatements — same wave, their own strips).
 
 ## [v0.67.0] Unconditional missing-artifact FAIL re-keyed to the proposed-artifact floor
 - **Disposition:** superseded → the re-keyed FAIL line: a **proposed** artifact missing is the failure; an artifact absent because the approved proposal did not include it is correct, not a failure.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-structure-yagni/record.md` D2 — the approved proposal is the run's own default-FAIL floor; combined wave architect-role D5)
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-structure-yagni/record.md` D2-plan-proposal-gate — the approved proposal is the run's own default-FAIL floor; combined wave `architect-role-pushback-and-abstraction` D5-combined-sibling-wave)
 - **Content:** "**Not done — default FAIL:** a missing artifact,"
 - **Kept deliberately:** every other FAIL clause — the `quickstart.md` null path, product baseline absent/edited-in-place, prose-delta appliable form, the `[MODIFY]` amendment, graded-by-non-authors, user acceptance.
 - **Consumers assessed:** n/a — command entry point; `review-plan-artifacts`' conformance grade (sibling seat, per plan-structure-yagni D5/HF-2) is the mechanical check against the same floor.
 
 ## [v0.67.0] Always-on architecture sign-off made proposal-conditional, with the quiet tie-back
 - **Disposition:** superseded → conditional-but-reserved architecture: the delta enters the package only when the approved proposal includes it; whenever present, sign-off stays user-reserved on a rendered diagram, unchanged; when the proposal omits architecture there is no sign-off — no In-flight pointer added and no built-vs-approved close-diff owed (matching `authoring-architecture`'s "no structural change → no update").
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-structure-yagni/record.md` D6a as amended HF-4 quiet tie-back; combined wave architect-role D5)
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/plan-structure-yagni/record.md` D6a as amended HF-4 quiet tie-back; combined wave `architect-role-pushback-and-abstraction` D5-combined-sibling-wave)
 - **Content:** Goal "with `architecture.md` **signed off by the user, on a rendered diagram, before any detailed design was built on it**" (the unconditional signed-off assertion) · Goal map-hardening "alongside the architecture — architecture link filled" (architecture assumed always produced) · Goal grading "conforms to the signed-off architecture" (unconditional) · FAIL "an unsigned architecture" · Harness "The architecture is designed and signed off **before** detailed design builds on it" · Reserved-to-user first item "architecture sign-off, presented on a rendered diagram" (unconditional) · In-flight pointer binding carried no omit-architecture carve-out
 - **Kept deliberately:** the sign-off mechanics themselves whenever architecture IS present (rendered diagram, no-render-surface degrade-with-record path, before-detailed-design ordering), the `[MODIFY]`-amendment machinery (a structural break necessarily carries architecture into the proposal), and the In-flight pointer's add-at-sign-off behavior when architecture is present.
 - **Consumers assessed:** `implement.md`'s entry gate + design inputs carried the same always-on architecture assumption — re-keyed same stamp (its own strip entry); `authoring-architecture` unchanged (already "no structural change → no update"); `plan-template.md` architecture section + row re-keyed same wave.
 
 ## [v0.61.0] Spec-keyed entry + spec-root accumulation superseded by feature-keyed entry + two-altitude design surface
 - **Disposition:** superseded → the feature-keyed rewrite in the same file: the canonical entry gate (ratified scope on the map entry — a spec's accepted Feature Selection = `selection scope`, a feature-command delta card = `delta scope`; delta scope collapses the run to confirming the card against the entry, no package authoring where no design surface changes), product baselines at `.mochiko/product/` (describing what the product HAS) + per-feature deltas at `.mochiko/features/FEAT-XXX/` (describing what the feature CHANGES) incl. per-feature `requirements.md` (FR→TR is per-feature analysis), deltas against prose baselines in appliable before/after form, the reworked Feature-scope and In-flight-inputs bindings
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Land feature-sizing & entry-points rulings (D1–D15)"; record `.mochiko/brainstorms/feature-sizing-and-entry-points/record.md`, D8-as-amended / D9 / D15 — D9's supersession note retires feature-map D17/D18 (artifact layout inside the spec folder, extend-mode-at-spec-root, cross-spec reach), feature-map D10's plan-artifacts-in-spec-folder clause, and feature-map D19's read mechanics)
-- **Content:** frontmatter description "Turn one selected feature of an accepted spec into its accepted implementation package — analysis, a user-signed architecture, detailed design, and the task breakdown." · header "turn one selected feature of an accepted spec into its accepted implementation package" / "One run per selected feature" / "empty → resolve the next undelivered selected feature from the spec's Feature Selection and confirm with the user." · Goal opener "The package exists. **Shared artifacts accumulate at spec root** (`.mochiko/specs/<spec>/`): `requirements.md` (FR→TR) · `constraints-and-decisions.md` (C-XXX / D-XXX / IP-XXX) · `nfrs.md` (NFR-XXX) · `data-model.md` · `contracts/api.yaml` · `quickstart.md` when a real external-integration surface exists (its null path recorded in `plan.md`) — created scoped by the selection's first feature; every later feature's run opens them in **extend-mode**: read first, extend in place, never re-derive a parallel copy. **Per-feature artifacts land under `features/FEAT-XXX/`**:" · Goal "status stays as spec acceptance set it" · Goal "It is `/mochiko:implement`'s unchanged entry condition." (the "unchanged" qualifier leaves — implement's entry now branches by scope type; the package stays the selection-scope entry condition) · Not-done "a shared artifact re-derived instead of extended" · Entry bullet "an absent or unaccepted `spec.md` blocks — point to `/mochiko:specify`. A feature absent from the spec's Feature Selection, or a selected feature ordered earlier and not yet `delivered`, blocks — one run per feature, strictly sequential." · Feature-scope binding "the spec's Feature Selection section and the feature's map entry govern scope and order;" plus the whole Cross-spec reach sentence, dying with feature-map D18: "**Cross-spec reach:** a run touching a feature last shipped by another spec reads that spec's artifacts, found via the entry's owning-spec provenance." · In-flight-inputs clause "under another spec is an obligated read into that spec's artifacts — stories, plan, architecture delta —" (the obligated read's design half now resolves to `.mochiko/features/FEAT-XXX/` dirs; stories stay with the owning spec, per the D19 supersession)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Land feature-sizing & entry-points rulings (D1–D15)"; record `.mochiko/brainstorms/feature-sizing-and-entry-points/record.md`, D8-as-amended / D9 / D15 — D9's supersession note retires `feature-map-layer` D17-per-feature-runs/D18-graduation-contract-rekey (artifact layout inside the spec folder, extend-mode-at-spec-root, cross-spec reach), `feature-map-layer` D10-spec-workspace-layout's plan-artifacts-in-spec-folder clause, and `feature-map-layer` D19-in-flight-features's read mechanics)
+- **Content:** frontmatter description "Turn one selected feature of an accepted spec into its accepted implementation package — analysis, a user-signed architecture, detailed design, and the task breakdown." · header "turn one selected feature of an accepted spec into its accepted implementation package" / "One run per selected feature" / "empty → resolve the next undelivered selected feature from the spec's Feature Selection and confirm with the user." · Goal opener "The package exists. **Shared artifacts accumulate at spec root** (`.mochiko/specs/<spec>/`): `requirements.md` (FR→TR) · `constraints-and-decisions.md` (C-XXX / D-XXX / IP-XXX) · `nfrs.md` (NFR-XXX) · `data-model.md` · `contracts/api.yaml` · `quickstart.md` when a real external-integration surface exists (its null path recorded in `plan.md`) — created scoped by the selection's first feature; every later feature's run opens them in **extend-mode**: read first, extend in place, never re-derive a parallel copy. **Per-feature artifacts land under `features/FEAT-XXX/`**:" · Goal "status stays as spec acceptance set it" · Goal "It is `/mochiko:implement`'s unchanged entry condition." (the "unchanged" qualifier leaves — implement's entry now branches by scope type; the package stays the selection-scope entry condition) · Not-done "a shared artifact re-derived instead of extended" · Entry bullet "an absent or unaccepted `spec.md` blocks — point to `/mochiko:specify`. A feature absent from the spec's Feature Selection, or a selected feature ordered earlier and not yet `delivered`, blocks — one run per feature, strictly sequential." · Feature-scope binding "the spec's Feature Selection section and the feature's map entry govern scope and order;" plus the whole Cross-spec reach sentence, dying with `feature-map-layer` D18-graduation-contract-rekey: "**Cross-spec reach:** a run touching a feature last shipped by another spec reads that spec's artifacts, found via the entry's owning-spec provenance." · In-flight-inputs clause "under another spec is an obligated read into that spec's artifacts — stories, plan, architecture delta —" (the obligated read's design half now resolves to `.mochiko/features/FEAT-XXX/` dirs; stories stay with the owning spec, per the D19 supersession)
 - **Kept deliberately:** architecture-first sign-off on a rendered diagram, with the degrade-with-record path · the `[MODIFY]` amendment machinery and its marked map delta · the UX-input binding and the Goal's Screens & Flows trace clause · the Baseline binding (repo-root `ARCHITECTURE.md` seed, bootstrap-confirm) and the In-flight-pointer binding · the map-hardening Goal clause · the `quickstart.md` conditional + null-path recording (re-homed to `.mochiko/product/`, condition and recording unchanged) · one-run-per-feature in the map's dependency order · both grading lenses, package acceptance, and every reserved-to-user item · the In-flight-inputs need-covered/adjacent/conflicting fork and the no-locks rule (only its artifact addresses re-keyed). Pure additions riding the decision row: the delta-scope collapse, the repeat-run append rule (cards/reports append dated; delta files overwrite only via the graded fold), the appliable-form requirement (D15).
 - **Consumers assessed:** none mount commands — entry points. Ripple assessed: `implement` (same cluster, same stamp — entry + landing re-keyed in step) · the new feature command (consumes the delta-scope entry; built in a parallel seat this wave) · `specify` and `setup` (spec-as-delivery-record + baseline bootstrap, parallel seat this wave) · the router skill (when-to-reach guidance unaffected; artifact paths not restated there).
 
 ## [v0.58.0] Slice scope superseded by per-feature runs; feature-map re-key
 - **Disposition:** superseded → the feature-scoped rewrite in the same file: one run per selected feature (`$ARGUMENTS` = FEAT-XXX), shared artifacts accumulating at spec root with extend-mode + cross-spec reach, per-feature artifacts under `features/FEAT-XXX/`, the map-hardening Goal clause, the `[MODIFY]`-amendment Harness line, the Feature-scope / In-flight-inputs Bindings (machinery per `mochiko:authoring-feature-map`)
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md`, D4/D5/D17/D18/D19; D18 re-keys the Graduation contract verbatim onto features)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md`, D4/D5/D17/D18/D19; D18-graduation-contract-rekey re-keys the Graduation contract verbatim onto features)
 - **Content:** header Goal line "`$ARGUMENTS` = optional feature ID; empty → resolve from `.mochiko/specs/` and confirm with the user." · Goal opener "The package exists under `.mochiko/specs/<feature>/`:" (whole package in one folder; `architecture.md` listed among the flat artifact set) · Goal cycle-card clause "stories + slice rationale" · UX binding closing sentence "Slice-scoped runs consume only their slice's SCR/FLOW rows." · the whole **Slice scope** binding: "**Slice scope** (the spec's Delivery Slices section holds a decomposition): its Graduation contract is the single home for slice resolution, scope, extend-mode, and layout — `plan.md`, `architecture.md`, and `tasks.md` land under `slices/<slice>/`; the architecture delta seeds from the accumulated feature-root `architecture.md` / `ARCHITECTURE.md`, never per-slice from scratch."
-- **Kept deliberately:** architecture-first sign-off on a rendered diagram · both grading lenses and the Screens & Flows trace clause (rows now FEAT-tagged) · the accumulated-baseline seeding rule (now the repo-root Baseline binding; the delta still seeds from `ARCHITECTURE.md`, never from scratch) · the In-flight pointer line (AT-D2/D4 machinery, unchanged) · package acceptance and every reserved-to-user item, plus the new in-flight-conflict escalation (D19). The Graduation contract's machinery (extend-mode, never re-derive, `[MODIFY]` amendments, shared-vs-scoped artifact split) survives whole, re-keyed slices→features per D18.
+- **Kept deliberately:** architecture-first sign-off on a rendered diagram · both grading lenses and the Screens & Flows trace clause (rows now FEAT-tagged) · the accumulated-baseline seeding rule (now the repo-root Baseline binding; the delta still seeds from `ARCHITECTURE.md`, never from scratch) · the In-flight pointer line (`architecture-tieback` D2-slice-landing-folds/D4-in-flight-pointers machinery, unchanged) · package acceptance and every reserved-to-user item, plus the new in-flight-conflict escalation (D19). The Graduation contract's machinery (extend-mode, never re-derive, `[MODIFY]` amendments, shared-vs-scoped artifact split) survives whole, re-keyed slices→features per D18.
 - **Consumers assessed:** none — commands are entry points, nothing mounts them. Ripple noted: implement (entry condition re-keyed same wave) · review-plan-artifacts + tasks-template (same wave) · specify/spec-template rebuilt in parallel seat.
 
 ## [v0.50.0] Goal grading sentence reshaped for the Screens & Flows trace
 - **Disposition:** superseded → the extended form: the independently-graded sentence gains the conditional Screens & Flows trace clause (SCR data → serving contract surface, FLOW action → mutation path, UX-bearing cycle cards' `**TEST:**` gates naming FLOW-XXX paths, pixels never traced), with "The user accepted it whole." split to its own sentence
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "UX mocking in specify (UX-D1–D9)"; record `.mochiko/brainstorms/ux-mocking-in-specify/record.md`, D4/D9)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "UX mocking in specify (UX-D1–D9)"; record `.mochiko/brainstorms/ux-mocking-in-specify/record.md`, D4-binding-flow-authority/D9-flow-test-gate)
 - **Content:** "The package was independently graded — feasibility and completeness — traces the business requirements through to the task breakdown, carries no cross-artifact contradiction, conforms to the signed-off architecture, and the user accepted it whole."
 - **Kept deliberately:** every clause of the sentence survives verbatim inside the extended form. Pure addition alongside: the **UX input** binding (manifest as obligated design read, slice-scoped SCR/FLOW consumption).
 - **Consumers assessed:** none — commands are entry points, nothing mounts them.
@@ -960,7 +960,7 @@ Command stays v8. -->
 
 ## [v0.49.0] Task breakdown superseded by cycle cards; slice re-key
 - **Disposition:** superseded → the Goal's cycle-card `tasks.md` clause + Bindings slice-scope re-key (Graduation contract read from the spec's Delivery Slices section)
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2+D3+D6; partially supersedes the v0.32.0 plan-absorbs-tasks task-half)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2-cycle-card-stop+D3-single-tasks-artifact+D6-slices-into-spec; partially supersedes the v0.32.0 plan-absorbs-tasks task-half)
 - **Content:** Goal artifact-list clause "`task-mapping.md` · `tasks.md` (`[US#]` tags, its Story→Cycle table a derived echo of the mapping)" · Bindings "**Slice scope** (accepted `slices.md` present): its Graduation contract … `plan.md`, `architecture.md`, and task artifacts land under `slices/<slice>/`".
 - **Kept deliberately:** architecture-first sign-off, both grading lenses, package acceptance, the accumulated-baseline seeding rule — untouched. The task-breakdown *responsibility* stays in the Goal (as cycle cards); only its granularity and artifact count changed.
 - **Consumers assessed:** implement (entry condition matches the new package) · review-plan-artifacts (grades the cards) · router · ARCHITECTURE.md plan section · plan-template (rows edited).
@@ -1307,12 +1307,12 @@ targets — so Bindings is 90 + 12·15 + 30 (KM) **plus the new +110 P19/P20 ter
   artifacts and reports and found no blocking gap;
   ```
 - **Protected content: none of it is in plan's protected set, and this was checked before the cut.**
-  The v0.34.0 **CS-D8 survivor re-grade ledger** below resolves all 23 protected rows, and not one
+  The v0.34.0 **`command-succinctness-strip` D8-kept-line-regrading survivor re-grade ledger** below resolves all 23 protected rows, and not one
   names the Goal's **end state** as its home: verdict-ownership / no-devolved-branch → the Ordering
   invariants + the validation-model line · feasibility's lead-gated fire-once engagement → the seat
   row + ordering invariant · the mode-selecting message → the validation-model line ·
-  **AD-D1/D2/D5/D8** → **G3** and the ordering invariant · **AD-D9** → **G4** · **AD-D3** → **G2**,
-  Bindings and the KM binding · **AD-D7** → two seat rows + Bindings. **Every one of those homes is
+  **AD-D1/D2/D5/D8** → **G3** and the ordering invariant · **`architecture-design-primitive` D9-design-governance-integration** → **G4** · **`architecture-design-primitive` D3-architecture-delta-model** → **G2**,
+  Bindings and the KM binding · **`architecture-design-primitive` D7-dedicated-architect-persona** → two seat rows + Bindings. **Every one of those homes is
   untouched by this conversion** — the architecture-primitive content from the v0.32.0 merge is
   carried, not edited.
 - **Kept deliberately:**
@@ -1355,7 +1355,7 @@ targets — so Bindings is 90 + 12·15 + 30 (KM) **plus the new +110 P19/P20 ter
   - `a reviewer status taken as the gate without your read`
 - **Protected content, leaving by ruling and named as such:** the second is the Goal-side echo of
   the v0.31.0 *Kept deliberately* row "Every verdict stays the lead's; **no devolved branch**",
-  whose CS-D8 ledger home is the **Ordering invariants** line ("**No devolved branch** — every
+  whose `command-succinctness-strip` D8-kept-line-regrading ledger home is the **Ordering invariants** line ("**No devolved branch** — every
   review here is a judgment grade, so no gate is skipped and no unit clears unread") **plus** the
   validation-model line ("every verdict is yours") — not this Goal state. The protected content
   stays where the ledger put it; only the echo left. Same disposition implement's conversion made
@@ -1374,7 +1374,7 @@ targets — so Bindings is 90 + 12·15 + 30 (KM) **plus the new +110 P19/P20 ter
   `plan.md` at run start, *file presence* no longer discriminates the assemble and acceptance
   stages; *assembly* does. Left unfixed, a resumed lead reading "`plan.md` present, unaccepted"
   would jump a run's first minute straight to G7.
-- **Tier failed:** n/a — supersession by ruling (**OQ-2 / A2**, 2026-08-01 — the run-start
+- **Tier failed:** n/a — supersession by ruling (**OQ-2-declaration-durable-home / A2**, 2026-08-01 — the run-start
   declaration's home; this re-key is that ruling's consequence in this file).
 - **Content (v6, verbatim → v7):**
   - `| all stages cleared, no `plan.md` | assemble |` → `| all stages cleared, `plan.md` unassembled | assemble |`
@@ -1487,10 +1487,10 @@ run, plus ~15–25 w per departure, plus — departing runs only — `templates/
 - **Consumers assessed:** the recovery spanned five commands — `specify` · `plan` · `implement` · `slice` · `brainstorm`; each carries its own v0.37.0 entry. plan/implement/slice keep the detected-feature confirm; specify/brainstorm keep their empty-args ask (attribution only removed).
 - **Protected-set note:** `command-succinctness-strip` record §7 named the `@`-reference recovery among the hard-won fixes verbosity encodes, and this pilot (v0.34.0) restored it under independent-audit check 14 after a first draft dropped it (see that entry's ledger row below). That protection premise — "a platform bug silently corrupts `$ARGUMENTS`" — is spent now the bug is resolved; this entry is the deliberate supersession a future check-14 pass should read, not a re-drop.
 
-# v0.34.0 — the goal-shape pilot (CS-D10 step 2)
+# v0.34.0 — the goal-shape pilot (`command-succinctness-strip` D10-pilot-first-execution step 2)
 
 **Wave context:** command goal-shape rebuild, **step 2 of 4** — the pilot (design:
-`.mochiko/brainstorms/command-succinctness-strip/record.md`, CS-D3/D4/D5 + D8 + D10;
+`.mochiko/brainstorms/command-succinctness-strip/record.md`, `command-succinctness-strip` D3-goal-shaped-documents/D4-flow-narrative-removal/D5-goal-command-anatomy + D8-kept-line-regrading + D10-pilot-first-execution;
 `DECISIONS.md` 2026-07-30). plan was chosen as the pilot because it is the heaviest file and
 carries every content class: 6 seats, 7 gates, slice-scoping, the architecture stage. Authored
 against **shape v5** (`.mochiko/strips/command-shape.md` v0.33.0) with the obligated
@@ -1502,7 +1502,7 @@ in-loop branch, so it must **not** reference `sized-end-stage-review.md` — it 
 **Measured: 4,439 → 1,950 words (−56.1%), 33,833 → 14,084 B (−58.4%)** — `wc`-measured after the
 fix round, superseding this headline's pre-fix figures (1,940 w / 14,053 B / −56.3% / −58.5%).
 Against the pre-pilot measured floor of 1,791 w: **+159 w (+8.9%)** — over, not under, which is the
-safe side of CS-D8 (landing materially *under* a floor row would signal dropped content). The
+safe side of `command-succinctness-strip` D8-kept-line-regrading (landing materially *under* a floor row would signal dropped content). The
 overage is accounted line by line: the completeness reviewer's mode-selection binding (~45 w, a
 v0.31.0 *Kept deliberately* item the floor draft compressed too far), the G3 render fallback
 promoted from an HTML comment to visible body text (~50 w), G2's greenfield-degeneration case
@@ -1562,8 +1562,8 @@ run.
   binding + the Recovery table's accepted row. The `Contract` section's four clauses →
   **Goal** (done-condition + not-done states), the **Seats & checks** table (producer↔validator),
   **Constraints** (bounds + gates).
-- **Tier failed:** n/a — supersession by ruling (**CS-D3** condition-first documents · **CS-D4**
-  "the connective procedure is deleted, and what survives is *restructured*" · **CS-D5** the
+- **Tier failed:** n/a — supersession by ruling (**`command-succinctness-strip` D3-goal-shaped-documents** condition-first documents · **`command-succinctness-strip` D4-flow-narrative-removal**
+  "the connective procedure is deleted, and what survives is *restructured*" · **`command-succinctness-strip` D5-goal-command-anatomy** the
   five-block anatomy and the Contract-as-document inversion).
 - **Content:** ten `## Phase`/`## Contract`/`## State recovery` sections, 2,873 words of ordered
   procedure and appendix. Not reproduced verbatim here — every *rule* inside them survives in the
@@ -1571,7 +1571,7 @@ run.
   to step 1", step numbering, and the lead's job description restated per phase). Recoverable in
   full at `git show c47684d:plugins/mochiko/commands/plan.md`.
 - **Kept deliberately:** every gate, bound, routing decision, trigger, ordering rule and artifact
-  binding — see the CS-D8 ledger below, which resolves each one individually.
+  binding — see the `command-succinctness-strip` D8-kept-line-regrading ledger below, which resolves each one individually.
 
 ## [v0.34.0] The `What you own (not the seats)` footer deleted
 - **Disposition:** deleted.
@@ -1587,10 +1587,10 @@ run.
   evidence-driven resume (a missing artifact *is* a resume row) plus G6's escalation menu.
 
 ## [v0.34.0] The `shape-exception` marker retired — its ground dissolved at v5
-- **Disposition:** superseded → the AD-D8/R5 degrade-with-record fallback survives as **visible
+- **Disposition:** superseded → the `architecture-design-primitive` D8-rendered-diagram-signoff/R5 degrade-with-record fallback survives as **visible
   Constraints content** on the G3 line; the `<!-- shape-exception: ... -->` marker around it is
   retired. plan now carries **zero** exception markers.
-- **Tier failed:** n/a — supersession by ruling (**CS-D8** re-grade + the checkpoint's
+- **Tier failed:** n/a — supersession by ruling (**`command-succinctness-strip` D8-kept-line-regrading** re-grade + the checkpoint's
   re-justify-or-supersede instruction).
 - **Content (the retired marker, verbatim):** `<!-- shape-exception: D8/R5 — when an attended
   session has none of those render surfaces, the gate degrades with record: present the diagram
@@ -1635,9 +1635,9 @@ run.
     conversion entry, which records the retention bet in full. The Seats table carries the
     operative fact (standing, and across which stages).
 
-## [v0.34.0] CS-D8 survivor re-grade ledger — every protected line resolved
+## [v0.34.0] `command-succinctness-strip` D8-kept-line-regrading survivor re-grade ledger — every protected line resolved
 
-CS-D8 (extended by user ruling U4) protects two sets: `KEPT:`/Tier-2-evidenced lines, **and** every
+`command-succinctness-strip` D8-kept-line-regrading (extended by user ruling U4) protects two sets: `KEPT:`/Tier-2-evidenced lines, **and** every
 line traceable to a `DECISIONS.md` row. plan carries **no `KEPT:` survivor-provenance entries**;
 its protection set is the *Kept deliberately* fields of the two prior supersessions plus the
 DECISIONS row trace. Grepped before any cut, per D8's enumeration procedure. **All 23 rows survive
@@ -1663,13 +1663,13 @@ per command rather than trusting a gate line that looks whole.
 | Slice binding 3 — per-slice outputs → the done-condition's artifact set | same | Bindings' artifact preamble (per-slice layout → the Goal's artifact set) |
 | Slice binding 4 — the reviewer briefing sets {this slice + extensions} / {prior accumulated} | same | Slice-scope constraint, third binding |
 | Graduation contract is the single home; do not restate | v0.15.0 audit catch (the D1 churn liability) | Slice-scope constraint opens by naming it as the single home for the six rules, and restates none of them — the defect that entry was written about is not reintroduced |
-| AD-D1 · AD-D2 — design-time architecture, first design artifact, own early sign-off | DECISIONS rows | Ordering invariant ("the **first** artifact of the design work") + **G3** |
-| AD-D3 — delta model, baseline bootstrap, landing fold | DECISIONS row | **G2** (bootstrap + confirm-before-delta) · Bindings' `architecture.md` · the KM-landing binding (baseline → `ARCHITECTURE.md` via the scribe) |
-| AD-D4 — artifact contents (C4 diagram, sequence, component table, deployment view) | DECISIONS row | Referenced, never restated: Bindings names `patterns-system-design` as the owner of structure **and** scope bound |
-| AD-D5 — always-on, no-delta included | DECISIONS row | G3: "*(always-on)*" + the no-delta presentation with its one-line claim, "the judgment is shown, never silently made by the producer" |
-| AD-D7 — `system-architect` × `patterns-system-design`; feasibility gains the architecture pass; structural D-XXX architect-authored | DECISIONS row (`Contested`) | Two seat rows + Bindings' designated structural-decisions section |
-| AD-D8 / R5 — rendered-diagram sign-off, plan supervisor presents, degrade-with-record | DECISIONS row | G3, in full — presenter named, render surfaces enumerated, raw-mermaid prohibition, and the fallback now visible (marker retired above) |
-| AD-D9 — governance binds the design; conflicts route to amendment/waiver, never overruled at a feature gate | DECISIONS row | **G4**, the two-exit with "the feature gate never overrules the constitution" |
+| `architecture-design-primitive` D1-design-time-signoff · `architecture-design-primitive` D2-first-design-artifact — design-time architecture, first design artifact, own early sign-off | DECISIONS rows | Ordering invariant ("the **first** artifact of the design work") + **G3** |
+| `architecture-design-primitive` D3-architecture-delta-model — delta model, baseline bootstrap, landing fold | DECISIONS row | **G2** (bootstrap + confirm-before-delta) · Bindings' `architecture.md` · the KM-landing binding (baseline → `ARCHITECTURE.md` via the scribe) |
+| `architecture-design-primitive` D4-architecture-artifact-content — artifact contents (C4 diagram, sequence, component table, deployment view) | DECISIONS row | Referenced, never restated: Bindings names `patterns-system-design` as the owner of structure **and** scope bound |
+| `architecture-design-primitive` D5-plan-run-artifact — always-on, no-delta included | DECISIONS row | G3: "*(always-on)*" + the no-delta presentation with its one-line claim, "the judgment is shown, never silently made by the producer" |
+| `architecture-design-primitive` D7-dedicated-architect-persona — `system-architect` × `patterns-system-design`; feasibility gains the architecture pass; structural D-XXX architect-authored | DECISIONS row (`Contested`) | Two seat rows + Bindings' designated structural-decisions section |
+| `architecture-design-primitive` D8-rendered-diagram-signoff / R5 — rendered-diagram sign-off, plan supervisor presents, degrade-with-record | DECISIONS row | G3, in full — presenter named, render surfaces enumerated, raw-mermaid prohibition, and the fallback now visible (marker retired above) |
+| `architecture-design-primitive` D9-design-governance-integration — governance binds the design; conflicts route to amendment/waiver, never overruled at a feature gate | DECISIONS row | **G4**, the two-exit with "the feature gate never overrules the constitution" |
 | Team-method D4/D5 — plan absorbs tasks; **one** package acceptance | DECISIONS row | The mapping and tasks stages in the seat table + the mapping-before-tasks ordering invariant; **G7** declared as "the package's **one** standing acceptance". The *provenance* of the merge — which two signatures dissolved into G7 — is **not** in the command: it is history, already single-sourced in this note's v0.32.0 gate-renumber entry. Relocated at the fix round (see the ceiling note below); the ruling is encoded by the file's structure, not by narrating what the file used to be. |
 | Vertical-graduation — slice-scoped entry variant | DECISIONS row | The Slice-scope constraint + Bindings' per-slice layout |
 | The **`@`-reference recovery** — empty `$ARGUMENTS` has a *named cause* (the `@`-reference drop bug) and a two-option prompt (re-enter, or confirm the detected feature) | record §7 protected set (the `command-altitude` retrofit-regression warning names the `@`-reference recovery among the hard-won fixes verbosity encodes); still carried by `implement.md` | **G1** decides-clause. **Restored at the pilot fix round** — the first draft compressed G1's evidence list and lost both the cause and the prompt, leaving "empty is resolved at G1" with no recovery behavior. Exactly the retrofit-regression class §7 warned about, caught by the audit's check 14. |
@@ -1680,7 +1680,7 @@ per command rather than trusting a gate line that looks whole.
 
 ## [v0.32.0] Build note + shape-v4 re-conform — merged design-room command: absorbs `/mochiko:tasks` + gains the architecture stage (2026-07-30)
 
-Design records: `.mochiko/brainstorms/team-method-vs-command-shape/record.md` (D4/D5 — plan absorbs
+Design records: `.mochiko/brainstorms/team-method-vs-command-shape/record.md` (D4-tasks-into-plan/D5-final-package-acceptance — plan absorbs
 tasks) + `.mochiko/brainstorms/architecture-design-primitive/record.md` (AD-D1–D9 with folds R1–R10,
 seam notes N1–N3). Not a strip wave — a feature build; the architecture-stage **additions** are recorded
 in the `DECISIONS.md` rows AD-D1–D9 (lead-owned landing), not here (Job-4 rule: pure additions ride the
@@ -1698,7 +1698,7 @@ re-conform** the merge required. Overall command surface 7 → 6 — see the tas
   (`review-task-artifacts`) reviewer in its early-mapping-then-cumulative modes, the two-sub-stage round
   loop, and the task-artifact deliverables (`task-mapping.md` · `tasks.md`) — relocated into plan's
   **Phase 4**. tasks' standalone `tasks.md`-acceptance gate (its G5) **dissolves** into plan's single
-  final **package acceptance (G7)** per team-method D5 (the standalone signature was load-bearing only
+  final **package acceptance (G7)** per `team-method-vs-command-shape` D5-final-package-acceptance (the standalone signature was load-bearing only
   while a command boundary sat there). The `review-task-artifacts` validator is **unchanged** in
   structure — same agent, same skill, same checklists; only its caller moved. The completeness reviewer
   is now **one standing `devils-advocate` seat** that runs `review-plan-artifacts` across the design
@@ -1756,7 +1756,7 @@ re-conform** the merge required. Overall command surface 7 → 6 — see the tas
 
 ## [v0.31.0] Lead-relayed gap lists superseded by the in-loop mesh (shape v4 conforming edit)
 - **Disposition:** superseded → `templates/command-shape.md` v4 (Layer 2 — "Independence by structure" + "In-loop mesh"). Rewritten in place: both reviewers are still cold-spawned at their own stage (a spawn-timing parameter), and the producer↔reviewer peer edges are declared on the roster.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/team-method-vs-command-shape/record.md` **D1**, scoped by **D2**), not a minimalism strip. Permanent no-contact was the falsified claim; cold *arrival* survives as a property of the stage.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/team-method-vs-command-shape/record.md` **D1-mesh-routing-default**, scoped by **D2-in-loop-mesh**), not a minimalism strip. Permanent no-contact was the falsified claim; cold *arrival* survives as a property of the stage.
 - **Content (superseded, verbatim):**
   - producer seat: "Round > 1 within a phase is a message to the same seat carrying the reviewers' gap list verbatim"
   - feasibility reviewer: "spawned **cold after the Phase-1 analysis is authored**, never in contact with the producer"

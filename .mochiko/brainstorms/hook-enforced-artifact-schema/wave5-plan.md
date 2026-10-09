@@ -1,7 +1,7 @@
 # Wave 5 — the violator pass (plan; awaiting lead approval)
 
 **Author:** QA seat · **Date:** 2026-09-15 · **Ruling home:** record D11 wave 5 as amended (V5:
-pass → upgrade → dogfood) · D10 watch · wave-3 R1/R4 and the seat's calls · AM-3 review C10 (this
+pass → upgrade → dogfood) · D10 watch · wave-3 R1/R4 and the seat's calls · AM-3-conformance-gate-admission review C10 (this
 repo's pass before the local wave-4 install) · the pending C1 table amendment.
 **Nothing is moved, split, or committed until the lead opens it. I run no git mutation.**
 
@@ -93,7 +93,7 @@ moved-path references"*.
 **kinako** — same shape, after the mochiko pass and the §7 rulings. Its plugin resolves through a
 **project-scoped 0.103.0** pin, not the user-scoped 0.108.0, so the mochiko upgrade does not gate
 it; both entries verified in `installed_plugins.json`. The check before its pass opens is that the
-pin still reads pre-gate. **The upgrade** is V5 step 2 and not mine — it follows the AM-3 wave-4
+pin still reads pre-gate. **The upgrade** is V5 step 2 and not mine — it follows the AM-3-conformance-gate-admission wave-4
 precondition, so the sequence is mochiko pass → bump → install → kinako pass → upgrade → dogfood.
 
 ## 6. D10 watch instrumentation for the dogfood run

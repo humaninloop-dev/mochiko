@@ -11,8 +11,8 @@
   [the seams record](../../decisions/2026-09-29-joint-hook-delta-build-seams.md). Landed: its
   `DECISIONS.md` row, annotations on both sessions' rows and index entries, a pointer in the delta
   `BACKLOG.md` item and the Template-schema CLI `ROADMAP.md` Next row (cap held).
-- State read before planning: governance v3.2.0 (AM-5) already carries this gate's GI-019 text and
-  the GI-012 exception row the bump ships under (R4); plugin 0.115.0 took migrations 0019–0023;
+- State read before planning: governance v3.2.0 (AM-5-field-review-fold) already carries this gate's GI-019-kernel-tooling-admission text and
+  the GI-012-release-gates-module exception row the bump ships under (R4); plugin 0.115.0 took migrations 0019–0023;
   installed binary `mochiko-cli 0.2.0 · grammar 1..1`; installed plugin cache 0.112.0–0.114.0.
 - Plan: [wave1-joint-build.md](wave1-joint-build.md). User: GO. Branch `joint-hook-delta` off
   `main` at `be46e16`; the records above committed there on the user's GO.
@@ -42,7 +42,7 @@
   `--target-directory`, zsh `>!`/`>>!`, `mv` every non-flag argument, BSD `sed -I` (write positions
   the old scan caught or zsh opens; (i) avoids a regression) · Q3 verbatim commands with heredoc
   bodies trimmed, **after a secrets scan** of all 25 (tokens, keys, `Bearer`, `ANTHROPIC_`,
-  passwords) — any hit redacted and disclosed (GI-003) · Q4 agreed, the 23 out-of-set denies are a
+  passwords) — any hit redacted and disclosed (GI-003-repo-secret-hygiene) · Q4 agreed, the 23 out-of-set denies are a
   count on one Notes line, no matrix cases.
 - **Lead rulings on S1's questions:** Q2 (B) the V2 sniff on every `Resolution::Deferred`, keeping
   sub-directory names in the log (adds a file directly under `features/desk/`, disclosed) · Q3 a
@@ -53,7 +53,7 @@
   `entry_heading: "##"` rejected as `home-bounds` · Q8 yes, ten render-target cases replace "seven".
 - **S1 Q1 split:** drifts (a) the ledger's "a `.md` write" vs every extension sniffed and (b) `Write`
   also reading the on-disk file are text corrections, carried to the wave-3 text-vs-build check.
-  The **`## Header` signature limb** was ruled (`hook-enforced-artifact-schema` D9, record :543)
+  The **`## Header` signature limb** was ruled (`hook-enforced-artifact-schema` D9-stateless-deny-discipline, record :543)
   and never built — striking it removes ruled content, so it is put to the user; S1 builds nothing
   for it meanwhile.
 - Hand-off booked for the wave-3 plan (S1): the contract suite's gate workspaces
@@ -195,7 +195,7 @@
 - **S1 disclosures:** a `runs/` sub-directory named without its trailing slash reads as a non-`.md`
   file and is allowed (no stat) · the `tests/hook.rs` `shell()` helper now JSON-escapes newlines ·
   a `mv` of a `.md` out of `runs/` denies (a removal is a write).
-- **Lead ruling on the no-stat gap:** accepted and disclosed, no directory stat (a read GI-019
+- **Lead ruling on the no-stat gap:** accepted and disclosed, no directory stat (a read GI-019-kernel-tooling-admission
   does not list). The carve never bounded content in the first place — `cp report.md
   runs/<id>/x.txt` already lands a report's text under a non-`.md` name, the limit control 4 states
   ("the gate cannot see what a shell write puts in a file") — so the gap adds no new exposure.
@@ -206,7 +206,7 @@
 - G1 ran the four layers itself (556 passed; fmt, clippy, audit exit 0), `migrate validate` 0
   rejecting, views identical, and drove HEAD's 0.2.0 binary beside the new one on write-shaped
   commands. All S1 clauses PASS; S1's not-red-first tests confirmed to fail at HEAD; `shell.rs`
-  intact after the fmt incident; no read outside GI-019's list, no network call.
+  intact after the fmt incident; no read outside GI-019-kernel-tooling-admission's list, no network call.
   [reports/w1-code-review.md](reports/w1-code-review.md).
 - **B1** (S2): a `-t` inside a short-flag cluster (`cp -rt`, `-vt`, `-at`, `install -Dt`) is missed —
   a deny-to-allow regression the Q2 ruling meant to prevent. **B2** (S2): writes HEAD denied now
@@ -783,7 +783,7 @@
   stop to the lead with its output; a repair takes a new slot), one slot for E1–E3, A1 handed to
   the lead. **P5 re-review: PASS**, 0 blocking, 0 new advisory. `plans: S5:PASS(2)`.
 - **GO S5 with its one cargo slot** (E1–E3). S3 and S4 idle, no other cargo in flight. S5's crate
-  test edits take an independent non-author code review (`rust-cli.md`, GI-004) before the wave
+  test edits take an independent non-author code review (`rust-cli.md`, GI-004-primitive-audit-ratchet) before the wave
   closes; that reviewer also checks the command-family `scored` figure against S5's E1 output (A3).
 
 ## 2026-09-29 · S5 done (E1–E3 green) · lead gates green · G2 reviewing
@@ -837,7 +837,7 @@
 - Plan: [wave3-joint-rewords-ceremony.md](wave3-joint-rewords-ceremony.md) — S6 crate fixes · S7
   rule rewords 0036–0039 · S8 prose, hooks, README, strips · S9 pins, evals, contract suite (after S6
   and S7) · S10 the pre-ruled governance strike PATCH v3.2.1 · G3 crate review · V1–V3 the gate
-  audit · the lead's ceremony and landing; the bump 0.116.0 under the AM-5 exception row.
+  audit · the lead's ceremony and landing; the bump 0.116.0 under the AM-5-field-review-fold exception row.
 - User at plan approval: the "smaller two" → "Base + diff fingerprint (Recommended)", recorded as
   seam R10 (`.mochiko/decisions/2026-09-29-uncommitted-evidence-citation.md`, new `DECISIONS.md`
   row) · "Approve and start (Recommended)".
@@ -852,7 +852,7 @@
   installed-gate false deny on a read (`sed -n …; echo`), not retried.
 - Ruled: Q1 the PATCH states evasion 3's end-to-end gap; no `hooks.json` change this wave; BACKLOG
   with the latency/coverage trade · Q2 the build-state line kept as a struck note (the v3.0.3 idiom)
-  · Q3 the missing whole-file bounds taken as drift into `rust-cli.md` · Q4 no GI-019 text for the
+  · Q3 the missing whole-file bounds taken as drift into `rust-cli.md` · Q4 no GI-019-kernel-tooling-admission text for the
   SessionStart listing unless the ledger enumerates what that hook prints.
 - S10 v2 frozen (203 lines, `79484692…`); P10 grading.
 - S7's plan (`s7/plan.md`, 246 lines): 0036 field D4 (mints `impl.run-folder` — R5, R6, the
@@ -930,7 +930,7 @@
 - P10 on S10 (`p10/verdict.md`): FAIL, 1 blocking, 11 advisory, 25 claims checked (1 inexact,
   cosmetic). B1: plan §4 re-words the governance text to fit whatever S6 lands, where §6 stops — a
   new repository read is the conformance tier's Fail limb, and describing it would widen the
-  admission (MINOR at AM-5, never a PATCH); a P1 built otherwise contradicts the ratified census row;
+  admission (MINOR at AM-5-field-review-fold, never a PATCH); a P1 built otherwise contradicts the ratified census row;
   RA3 has no not-landed branch; the re-read set omits `home.rs` and the `Cargo.toml` version line.
   Items 1–4 and 6 pass; E1–E14 are PATCH-class. Read-only probes: the report sniff's reach confirmed;
   "never wedged" false today (census L3); evasion 3 closed at the decision, open end to end.
@@ -1476,7 +1476,7 @@ audit: schema 0041-sweep-hunk-exception · V2 · opus · 6 files · 1 rounds · 
 - P9 (`scratchpad/p9/verdict.md`): S9's plan FAIL, one blocker — B1, the Q2(a) dated preregistration
   note not in the plan (§4, §7's anchor, "pending Q2"). Everything else passes: every pin traced and
   re-run byte-identical on the final build at 1..43, the scope inside the five items, the Docker slot
-  last, no contract case renamed or added (97 hold, the GI-012 list). Fix round to S9 with B1 and
+  last, no contract case renamed or added (97 hold, the GI-012-release-gates-module list). Fix round to S9 with B1 and
   advisories A1–A4, A6, A7 folded; A5's four BACKLOG items booked by the lead (g1–g3,
   `sf-direction-checks`, the architecture g3 path, a session-start contract row). One re-review.
 
@@ -1568,7 +1568,7 @@ audit: schema 0041-sweep-hunk-exception · V2 · opus · 6 files · 1 rounds · 
 - Final lead checks on the landing tree: `migrate validate` 0 rejecting · 113 advisory · the views
   equal the replay · the secret scan clean (the CI pattern over tracked and untracked files, gitleaks
   over the working diff) · no `.mochiko/runs/` folder left · `target/` ignored.
-- Landing ritual: `CHANGELOG.md` 0.116.0 entry (cites the AM-5 exception row and seam R4, the
+- Landing ritual: `CHANGELOG.md` 0.116.0 entry (cites the AM-5-field-review-fold exception row and seam R4, the
   `mochiko-cli` 0.3.0 reinstall from `main`, R3) · `plugin.json` and `marketplace.json` at 0.116.0 ·
   `DECISIONS.md` — the five 2026-09-29 rows, the delta and field-review rows "built at v0.116.0" with
   wave 4 owed, the v3.2.0 row noting PATCH v3.2.1, and the setup-agnostic row's stale "build queued"

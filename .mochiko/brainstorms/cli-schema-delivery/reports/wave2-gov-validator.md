@@ -4,7 +4,7 @@ feature: cli-schema-delivery
 round: 2
 ---
 
-# AM-2 — independent validation of the governance surface set v3.0.0
+# AM-2-required-cli-dependency — independent validation of the governance surface set v3.0.0
 
 **VALIDATION RESULT: PASS**
 
@@ -17,25 +17,25 @@ round: 2
 
 - **Checklist items:** 60/61 passed · 1 n-a by recorded ruling. Core 49 + 2 selected module
   fragments (`release-gates` 4 · `knowledge-management` 8). `layer-rules` and `evolution-notes`
-  fragments not run — declined durable (GI-013, GI-014).
+  fragments not run — declined durable (GI-013-no-layer-rules, GI-014-no-evolution-notes).
 - **Surface integrity:** region markers present, nothing outside them changed but the two
   user-ruled prose paragraphs · index → home → ledger closes both ways for GI-003, GI-004,
   GI-005, GI-006, GI-009, GI-012, GI-017, GI-019, GI-020, GI-022 · all 4 rules files
   `paths`-scoped with valid globs · scope coverage complete for the concerns changed this run ·
   standing new-file read line present (advisory A3) · no universal principle relocated into a
   rules file.
-- **Trace closure:** forward — every AM-2 synthesis element reaches a surface line and, where
+- **Trace closure:** forward — every AM-2-required-cli-dependency synthesis element reaches a surface line and, where
   principle-bearing, a Three-Part ledger entry. Reverse — every changed surface line reaches a
-  synthesis element. GI-022 new and minted. GI-020 superseded-by-ruling with its trace and the
-  AM-1 text preserved in place.
+  synthesis element. GI-022-no-feature-map new and minted. GI-020-plugin-install-model superseded-by-ruling with its trace and the
+  AM-1-kernel-ban-softened text preserved in place.
 - **Floor / module accounting:** production floor + depth `high` asserted in both the region
-  stamp and the ledger header, agreeing · compliance modules none, matching the GI-001 fact
-  profile · template modules match GI-009/GI-010/GI-012 one-for-one, declines recorded · all four
+  stamp and the ledger header, agreeing · compliance modules none, matching the GI-001-project-fact-profile fact
+  profile · template modules match GI-009-knowledge-management-core/GI-010-changelog-elective-module/GI-012-release-gates-module one-for-one, declines recorded · all four
   Essential Floor categories carry a principle (GI-003 · GI-004 · GI-005 · GI-006), none waived ·
-  waiver GI-008 unchanged, one-for-one with the synthesis, naming no legal-mandate obligation.
+  waiver GI-008-script-test-waiver unchanged, one-for-one with the synthesis, naming no legal-mandate obligation.
 - **Anti-patterns found:** none.
-- **Version bump:** MAJOR — 2.0.1 → 3.0.0. GI-020 incompatibly redefined (the raw-Read degraded
-  path withdrawn) and GI-022 minted. Matches the ledger semver policy, the region stamp, the
+- **Version bump:** MAJOR — 2.0.1 → 3.0.0. GI-020-plugin-install-model incompatibly redefined (the raw-Read degraded
+  path withdrawn) and GI-022-no-feature-map minted. Matches the ledger semver policy, the region stamp, the
   ledger version line, and the amendment-log row.
 - **Issues requiring fix:** none blocking.
 - **Advisory:** 9, below. All non-blocking; none changes a ruling.
@@ -49,23 +49,23 @@ FAIL is discharged item by item in §2 and §3.
 
 ## 2 — What was checked, and the result
 
-### Trace closure — forward (AM-2 element → surface + ledger)
+### Trace closure — forward (AM-2-required-cli-dependency element → surface + ledger)
 
-| AM-2 element | Surface line | Ledger Three-Part | Result |
+| AM-2-required-cli-dependency element | Surface line | Ledger Three-Part | Result |
 |---|---|---|---|
-| GI-002 identity + risk live, trigger fired conditional | CLAUDE.md:119 tech stack · :139 amend triggers | none — flagged FP-3; GI-002 is a fact element, not principle-bearing; obligations routed to ledger:42–49 and GI-012 | PASS |
-| Real commands | CLAUDE.md:130 · rust-cli.md:31–37 · ledger:236–241, 249–252 | GI-012, GI-005 | PASS |
-| GI-004 floor note (schema audit unit, count self-check retired, PATCH activation, code author≠grader) | CLAUDE.md:114 | ledger:105–117 | PASS |
-| GI-005 floor note (schema-rule limb mechanical, two regimes) | CLAUDE.md:115 | ledger:143–147 | PASS |
-| GI-006 row (migration log as carrier) | CLAUDE.md:116 | ledger:171–174 | PASS |
-| GI-019 AM-2 (widened admission, three clauses, advisory placement) | CLAUDE.md:72 prose · :118 index | ledger:313–335 | PASS |
-| GI-020 AM-2 (superseded-by-ruling) | CLAUDE.md:74 prose · :119 index | ledger:352–422 | PASS |
-| GI-008 note | — (row unchanged) | ledger:18–24 | PASS |
-| GI-012 row | CLAUDE.md:131–132 | ledger:225–280 | PASS |
-| GI-007 notes (narrowed to markdown primitives) | — | ledger GI-004/005/006 trace lines | PASS (advisory A6) |
-| GI-022 | CLAUDE.md:120 | ledger:424–444 | PASS |
+| GI-002-project-type-shelves identity + risk live, trigger fired conditional | CLAUDE.md:119 tech stack · :139 amend triggers | none — flagged FP-3-ledger-entry-declined; GI-002-project-type-shelves is a fact element, not principle-bearing; obligations routed to ledger:42–49 and GI-012-release-gates-module | PASS |
+| Real commands | CLAUDE.md:130 · rust-cli.md:31–37 · ledger:236–241, 249–252 | GI-012-release-gates-module, GI-005-record-layer-integrity | PASS |
+| GI-004-primitive-audit-ratchet floor note (schema audit unit, count self-check retired, PATCH activation, code author≠grader) | CLAUDE.md:114 | ledger:105–117 | PASS |
+| GI-005-record-layer-integrity floor note (schema-rule limb mechanical, two regimes) | CLAUDE.md:115 | ledger:143–147 | PASS |
+| GI-006-primitive-edit-traceability row (migration log as carrier) | CLAUDE.md:116 | ledger:171–174 | PASS |
+| GI-019-kernel-tooling-admission AM-2-required-cli-dependency (widened admission, three clauses, advisory placement) | CLAUDE.md:72 prose · :118 index | ledger:313–335 | PASS |
+| GI-020-plugin-install-model AM-2-required-cli-dependency (superseded-by-ruling) | CLAUDE.md:74 prose · :119 index | ledger:352–422 | PASS |
+| GI-008-script-test-waiver note | — (row unchanged) | ledger:18–24 | PASS |
+| GI-012-release-gates-module row | CLAUDE.md:131–132 | ledger:225–280 | PASS |
+| GI-007-no-application-machinery notes (narrowed to markdown primitives) | — | ledger GI-004/005/006 trace lines | PASS (advisory A6) |
+| GI-022-no-feature-map | CLAUDE.md:120 | ledger:424–444 | PASS |
 | Store scaffold disclosure | — (not a ruling) | — | PASS — scaffold present, `Scope:` line matches the disclosed text verbatim |
-| AM-2 amendment-log entry | — | ledger:466 + addendum :468–472 | PASS |
+| AM-2-required-cli-dependency amendment-log entry | — | ledger:466 + addendum :468–472 | PASS |
 
 ### Trace closure — reverse (changed surface line → element)
 
@@ -78,32 +78,32 @@ No orphan line.
 
 | Entry | Enforcement | Testability (Pass + Fail) | Rationale | Trace |
 |---|---|---|---|---|
-| GI-004 | ✓ | ✓ | ✓ | ✓ |
-| GI-005 | ✓ | ✓ | ✓ | ✓ |
-| GI-006 | ✓ | ✓ | ✓ | ✓ |
-| GI-012 | ✓ | ✓ | ✓ | ✓ |
-| GI-019 | ✓ | ✓ | ✓ | ✓ |
-| GI-020 | ✓ | ✓ two tiers | ✓ + Marks | ✓ |
-| GI-022 | ✓ | ✓ | ✓ | ✓ |
+| GI-004-primitive-audit-ratchet | ✓ | ✓ | ✓ | ✓ |
+| GI-005-record-layer-integrity | ✓ | ✓ | ✓ | ✓ |
+| GI-006-primitive-edit-traceability | ✓ | ✓ | ✓ | ✓ |
+| GI-012-release-gates-module | ✓ | ✓ | ✓ | ✓ |
+| GI-019-kernel-tooling-admission | ✓ | ✓ | ✓ | ✓ |
+| GI-020-plugin-install-model | ✓ | ✓ two tiers | ✓ + Marks | ✓ |
+| GI-022-no-feature-map | ✓ | ✓ | ✓ | ✓ |
 
 ### The named checks
 
-- **GI-020 two-tier Testability.** Split present at ledger:384–395. Assertable tier names the
+- **GI-020-plugin-install-model two-tier Testability.** Split present at ledger:384–395. Assertable tier names the
   contract suite's absence/skew cases and the log's hard set; dormant tier explicitly labelled
   "Dormant until the wave-3 pilot re-points the first primitive". Revisit trigger present at
   :397–400 (pilot abort criteria, reversal cost priced).
 - **Transition clause.** Present with expiry at CLAUDE.md:74 and ledger:374–377. Expiry
   pre-authorized as PATCH at ledger:50–54. Unsupported set at ledger:378–382 includes
   PowerShell-only Windows and scopes the no-build-step property to the plugin.
-- **GI-019.** Three clauses (i)(ii)(iii) present at ledger:320–331. Widened admission named
-  (`cli-schema-delivery` D11) at ledger:313 and CLAUDE.md:72, :118. Bright-line text at
+- **GI-019-kernel-tooling-admission.** Three clauses (i)(ii)(iii) present at ledger:320–331. Widened admission named
+  (`cli-schema-delivery` D11-widened-kernel-admission) at ledger:313 and CLAUDE.md:72, :118. Bright-line text at
   CLAUDE.md:72 unchanged — the diff touches only the trace parenthetical.
-- **GI-012.** Gate 6 with contract suite ✓ · SKIPPED blocks ✓ (:239–241) · gate 5 = view ≡ replay
+- **GI-012-release-gates-module.** Gate 6 with contract suite ✓ · SKIPPED blocks ✓ (:239–241) · gate 5 = view ≡ replay
   ✓ (:234–235) · crate release train ✓ (:247–255) · Contested substrate mark ✓ (:260–265) ·
   read-back metric reported not gating ✓ (:257–258).
 - **GI-003 / GI-009 / GI-010 / GI-017 / GI-021 verbatim.** Confirmed — no diff hunk touches them.
   Depth `high` re-recorded in both the region stamp and the ledger header, agreeing.
-- **Pointer-only region (GI-017).** `sed -n '106,141p' CLAUDE.md | grep -E
+- **Pointer-only region (GI-017-pointer-only-region).** `sed -n '106,141p' CLAUDE.md | grep -E
   "SessionStart|UserPromptExpansion|PreToolUse|ruling anchor|class: floor|kind: fail|hash:|anchor:"`
   → zero hits. No migration grammar, no anchor rule, no hook mechanics restated.
 - **Output-style carve-out.** `shasum` of the block before and after: both
@@ -161,15 +161,15 @@ table.
 **`knowledge-management` (8/8).** All three enforcement surfaces present and untouched this run —
 `.mochiko/memory/knowledge-management.md` · `.claude/rules/mochiko/operating-docs.md` ·
 CLAUDE.md:141. Core artifacts on disk: ROADMAP · BACKLOG · DECISIONS · ARCHITECTURE, plus the
-adopted CHANGELOG elective. GLOSSARY.md absent, matching the recorded GI-009 deviation. RUNBOOK
-absent, matching the GI-011 decline. Landing ritual, invariants, and never-overwrite floor
+adopted CHANGELOG elective. GLOSSARY.md absent, matching the recorded GI-009-knowledge-management-core deviation. RUNBOOK
+absent, matching the GI-011-no-runbook-elective decline. Landing ritual, invariants, and never-overwrite floor
 unchanged.
 
 ## 3 — Advisory findings (non-blocking)
 
 **A1 — `.mochiko/memory/governance-ledger.md:49` overclaims by one.** "The first two are also
 release-train gates under GI-012." `cargo audit --deny warnings` is one of the four crate layers
-at :249–250. sha256-published release assets appear nowhere in GI-012's release train. *Fix:*
+at :249–250. sha256-published release assets appear nowhere in GI-012-release-gates-module's release train. *Fix:*
 strike "The first two" to "`cargo audit` is", or add the sha256 assets to the train.
 
 **A2 — `.mochiko/memory/governance-ledger.md:45–46` gives an imprecise reason for "owed."**
@@ -180,9 +180,9 @@ only the reason is off. *Fix:* "the environment's approval rule is not tree-visi
 `if: false` today".
 
 **A3 — `CLAUDE.md:139` new-file read line omits `.github/workflows/`.** `rust-cli.md` now scopes
-`.github/workflows/**` (FP-1), so a newly created workflow file gets no read reminder; the rule
+`.github/workflows/**` (FP-1-workflow-paths-glob), so a newly created workflow file gets no read reminder; the rule
 still injects on Read of an existing one. *Fix:* add `.github/workflows/` to the list, or accept
-that FP-1's carrier is Read-only.
+that FP-1-workflow-paths-glob's carrier is Read-only.
 
 **A4 — `.claude/rules/mochiko/primitive-edits.md:2–8` will not cover the plugin's wave-3
 additions.** Its globs name `commands/`, `skills/`, `agents/`, `templates/`, `schemas/`. From
@@ -191,33 +191,33 @@ pre-authorized wave-6 re-key at ledger:52–54 is scoped to "schema strips → m
 hooks are uncovered by either. *Fix:* name hooks in the wave-6 re-key scope, or record it as a
 wave-3 obligation.
 
-**A5 — GI-011 has no ledger home.** Producer O-1, confirmed. The declined-durable line at
-ledger:55–56 names GI-013 and GI-014 only; GI-011's decline lives in the synthesis alone. The line
-is literally accurate ("declined durable **at AM-1**"), since GI-011 was declined at v1.0.0.
-Pre-existing, outside AM-2 scope. *Fix:* fold at the next PATCH.
+**A5 — GI-011-no-runbook-elective has no ledger home.** Producer O-1, confirmed. The declined-durable line at
+ledger:55–56 names GI-013-no-layer-rules and GI-014-no-evolution-notes only; GI-011-no-runbook-elective's decline lives in the synthesis alone. The line
+is literally accurate ("declined durable **at AM-1**"), since GI-011-no-runbook-elective was declined at v1.0.0.
+Pre-existing, outside AM-2-required-cli-dependency scope. *Fix:* fold at the next PATCH.
 
-**A6 — GI-007's AM-2 narrowing is realized only indirectly.** The synthesis narrows the
+**A6 — GI-007-no-application-machinery's AM-2-required-cli-dependency narrowing is realized only indirectly.** The synthesis narrows the
 "inapplicable in kind" exclusion so that the crate, the migration log, and the plugin path all
-carry real executable gates. GI-004's trace line names the crate only; the log's gate rides GI-005
-and the plugin path's rides GI-012. Trace closes, thinly. GI-007 is an exclusion, not
-principle-bearing, so no principle is owed. *Fix:* extend GI-004's trace parenthetical, or none.
+carry real executable gates. GI-004-primitive-audit-ratchet's trace line names the crate only; the log's gate rides GI-005-record-layer-integrity
+and the plugin path's rides GI-012-release-gates-module. Trace closes, thinly. GI-007-no-application-machinery is an exclusion, not
+principle-bearing, so no principle is owed. *Fix:* extend GI-004-primitive-audit-ratchet's trace parenthetical, or none.
 
 **A7 — the amendment-log row does not name the CLAUDE.md prose rewording.** Row 3.0.0
 (ledger:466) names the `rust-cli.md` rewrite and the `paths` widening; the addendum (:468–472)
 records only the `paths` proposals. Neither names the two `## Non-negotiable constraints`
-paragraphs the producer edited. Reconstructibility (GI-006) is served by the synthesis's own AM-2
+paragraphs the producer edited. Reconstructibility (GI-006-primitive-edit-traceability) is served by the synthesis's own AM-2-required-cli-dependency
 Scope bullet plus git. *Fix:* one clause on the addendum.
 
-**A8 — `mochiko-cli` is not on PATH in this worktree.** GI-005's Testability Pass row and
+**A8 — `mochiko-cli` is not on PATH in this worktree.** GI-005-record-layer-integrity's Testability Pass row and
 rust-cli.md cite the bare command form; I ran it as `cargo run -q --`. Not a fictional command —
 the install routes and the break-glass are both recorded — but the row as written is not runnable
 in a source tree without one of them. *Fix:* none needed; noted for the next reader.
 
 **A9 — I did not re-run the contract suite.** Deliberate: it drives headless sessions on the
-sandbox's stored consumer subscription, the substrate GI-012 itself marks `Contested` against
+sandbox's stored consumer subscription, the substrate GI-012-release-gates-module itself marks `Contested` against
 adverse Terms-of-Service evidence. `sbx` and `docker` are both present, so a run would not have
 skipped. I verified the suite exists, its case list is exactly the two the ledger's "2/2" names,
-and its three-valued exit contract matches GI-012's SKIPPED clause. The "2/2 green, 2026-09-04"
+and its three-valued exit contract matches GI-012-release-gates-module's SKIPPED clause. The "2/2 green, 2026-09-04"
 instance is dated and attributed but not independently re-observed by this seat.
 
 ## 4 — Method
@@ -229,13 +229,13 @@ report, the cold intent review and its verify pass. Diffed `CLAUDE.md`,
 changed line, then walked closure in both directions against the synthesis. Ran every command
 named on a surface (table above) plus the mirror-checklist view. Checked the four first-publish
 controls against `ci.yml` and `release.yml` directly rather than against the ledger's account of
-them. Confirmed the output-style carve-out by checksum, not by eye. Verified GI-022's own
+them. Confirmed the output-style carve-out by checksum, not by eye. Verified GI-022-no-feature-map's own
 Testability Pass row against the tree (no `FEATURES.md`, no `.mochiko/features/`). Confirmed the
 head-and-tail output shape the crate release train gates on has a real test carrier
 (`crates/mochiko-cli/tests/render.rs:316`, `:363`), so that clause is not a vague MUST.
 
-The `evolution-notes` fragment was not run. Brownfield mode normally selects it, but GI-014
-records a durable user decline at AM-1, and the checklist forbids checking a fragment the
+The `evolution-notes` fragment was not run. Brownfield mode normally selects it, but GI-014-no-evolution-notes
+records a durable user decline at AM-1-kernel-ban-softened, and the checklist forbids checking a fragment the
 synthesis did not select. Graded as n-a by recorded ruling, not as a gap; the brownfield context
 it would carry lives in the synthesis, the ledger's confrontation-rulings table, and the
 floor-status paragraph.
@@ -252,12 +252,12 @@ lines, plus the three integrity re-checks. No fresh read, no new angles.
 
 | # | Fix | Where | Result |
 |---|---|---|---|
-| A1 | The sha256 overclaim struck. Now reads "`cargo audit --deny warnings` is also one of the four crate layers in GI-012's release train." | ledger:50–51 | **CONFIRMED** — and true: GI-012's train names `cargo audit --deny warnings` at ledger:256. sha256 is no longer claimed as a train gate. |
+| A1 | The sha256 overclaim struck. Now reads "`cargo audit --deny warnings` is also one of the four crate layers in GI-012's release train." | ledger:50–51 | **CONFIRMED** — and true: GI-012-release-gates-module's train names `cargo audit --deny warnings` at ledger:256. sha256 is no longer claimed as a train gate. |
 | A2 | The "owed" reason corrected: the `crates-io` environment is declared, its approval rule is a GitHub setting not visible in the tree, and the job is `if: false`. | ledger:46–47 | **CONFIRMED** — matches release.yml:100 (`if: false`) and :102 (`environment: crates-io`). Verdict stays "owed", the conservative direction. |
 | A3 | `.github/workflows/` added to the standing new-file read line. | CLAUDE.md:139 | **CONFIRMED** — the line now covers all six roots `rust-cli.md` scopes. |
 | A4 | The pre-authorized PATCH scope now names both halves, and rules the `paths`-glob half a **wave-3** obligation, landing when those directories ship rather than at wave 6. | ledger:55–59 | **CONFIRMED** — closes the hole. See the residual note below. |
-| A6 | GI-004's Trace gains a routing sentence: the three executable gates live one per home — crate `cargo test` on GI-004, the log's hard set on GI-005, the plugin path's contract suite on GI-012. | ledger:138–140 | **CONFIRMED** — all three routings check out against GI-004's enforcement, GI-005's Testability, and GI-012 gate 6. |
-| A7 | The AM-2 addendum now names both `## Non-negotiable constraints` paragraphs, attributes them to the Card 1 ruling, and asserts nothing else outside the markers changed. | ledger:475–479 | **CONFIRMED** — and the assertion is independently true: `git diff -U0 -- CLAUDE.md` yields exactly two hunks outside the markers, at :72 and :74. |
+| A6 | GI-004-primitive-audit-ratchet's Trace gains a routing sentence: the three executable gates live one per home — crate `cargo test` on GI-004-primitive-audit-ratchet, the log's hard set on GI-005-record-layer-integrity, the plugin path's contract suite on GI-012-release-gates-module. | ledger:138–140 | **CONFIRMED** — all three routings check out against GI-004-primitive-audit-ratchet's enforcement, GI-005-record-layer-integrity's Testability, and GI-012-release-gates-module gate 6. |
+| A7 | The AM-2-required-cli-dependency addendum now names both `## Non-negotiable constraints` paragraphs, attributes them to the Card 1 ruling, and asserts nothing else outside the markers changed. | ledger:475–479 | **CONFIRMED** — and the assertion is independently true: `git diff -U0 -- CLAUDE.md` yields exactly two hunks outside the markers, at :72 and :74. |
 
 ### No new break introduced
 
@@ -265,7 +265,7 @@ lines, plus the three integrity re-checks. No fresh read, no new angles.
   element — GI-002/GI-012 · GI-002 · GI-020 delivery caveat · GI-004/GI-020 · GI-004/GI-007 ·
   GI-019/GI-020. No GI-ID minted, none orphaned, no principle added or removed. Version correctly
   stays 3.0.0 in all three places.
-- **Region pointer-only (GI-017).** Re-run over lines 106–141: zero hits for `SessionStart`,
+- **Region pointer-only (GI-017-pointer-only-region).** Re-run over lines 106–141: zero hits for `SessionStart`,
   `UserPromptExpansion`, `PreToolUse`, `ruling anchor`, `class: floor`, `kind: fail`, `hash:`,
   `anchor:`. Nothing restated. All six fixes land in the ledger and the operations line, not as
   new normative region text.
@@ -289,7 +289,7 @@ lives in the ledger where the next amend will see it. The amendment-log row 3.0.
 the wave-3 half; the policy bullet is its home, so this is a summary gap, not a contradiction.
 Worth one line at the acceptance gate so the user rules it knowingly.
 
-**A5 remains open by design** — GI-011's decline still has no ledger home, correctly deferred to
+**A5 remains open by design** — GI-011-no-runbook-elective's decline still has no ledger home, correctly deferred to
 the next PATCH.
 
 **DELTA-CONFIRM RESULT: PASS.** Six of six fixed, none partially. No new trace break, restatement,

@@ -70,7 +70,7 @@ Append-only. One `##` entry per event, 60 lines at most.
   boundaries 1 · fail-conditions 4); `review-brainstorm` 30 → 34. Render sizes as measured by
   the seat: 20,693 and 11,126 characters.
 - **Stop raised by the seat, ruled by the lead (F-1).** The approved plan re-anchored
-  `brainstorm.blind-map-dispatch` from `2026-08-10 cold-review-gap-challenge D6` to this
+  `brainstorm.blind-map-dispatch` from "`2026-08-10 cold-review-gap-challenge D6`" to this
   session's D10. That failed `fidelity::the_sidecar_anchors_ride_their_rules`, which holds that
   an anchor genesis gave a rule stays where genesis put it and names only retirement and
   clearing as exits. Ruled: the re-anchor is dropped (the op removed from the unlanded 0044, the
@@ -215,7 +215,7 @@ Verdict blocks: `reports/gate-audit.md`. Outcome lines, in the contract's gramma
 - The user ran `sbx login`; the full contract suite ran against this worktree: `contract suite:
   97/97 cases passed, 97 ran, 327 measurement(s) recorded and not asserted`, exit 0 — 7 host
   cases against the rebuilt release binary, 90 in the `claude-mochiko` Docker sandbox, none
-  SKIPPED or FILTERED. Gate 6 green; every release gate of GI-012 now holds at 0.117.0.
+  SKIPPED or FILTERED. Gate 6 green; every release gate of GI-012-release-gates-module now holds at 0.117.0.
 - Closing transcription: the `CHANGELOG.md` gates paragraph filled (seats, plans, audit, gates,
   suite); the record's status header reads the suite green; no other surface carried the
   pending wording (grep over the index, `DECISIONS.md`, `ROADMAP.md`, `BACKLOG.md`: none).

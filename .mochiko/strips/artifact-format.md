@@ -2,13 +2,22 @@
 
 Entry formats: `strips/README.md`.
 
+## [v0.118.0] The IDs section added; rule 1's examples joined; the header and format-version lines superseded
+
+- **Disposition:** superseded → the joined form, written once by the new `## IDs` section (a pure addition, riding the decision row; record B4: one copy of the grammar, in this file). Three existing sites change: the header scope sentence, rule 1, and the format-version line (v3 → v4); the consumed-by line gains the IDs section's readers.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; B4 for the home; D1–D22 as the section transcribes them)
+- **Content (superseded):** (1) Header: "Brainstorm records and the governance surfaces are governed by their own doctrine, not here.)" — now followed by "except the IDs section, which every surface that mints or cites a durable ID follows". (2) Rule 1: "Downstream artifacts cite upstream IDs (`FR-003`, `D-012`, `C-001`, `NFR-002`, `US-4`, `SC-005`, `SCR-004`, `FLOW-002`) without re-quoting their text. A one-line gloss is allowed only where a bare ID would be unreadable at the point of use." (3) "**Format version:** v3 (2026-08-22 — scope widened to command-minted deliverables; rule 4/8 overage made gradeable-advisory; rule 13 added. ADR: `.mochiko/decisions/2026-08-22-verbosity-envelope-enforcement.md`)".
+- **Kept deliberately:** rule 1's rule, its eight families in the same order, and its closing sentence; rules 2–13 untouched; the consumed-by list's existing members. "a bare ID" became "the ID alone": the IDs section gives "bare" a defined meaning (no slug) in this file, and the gloss rule means an ID with no gloss, not an ID with no slug.
+- **HTML exception added after the gate (advisory P1 of the wave-2 gate audit, `.mochiko/brainstorms/human-readable-ids/reports/w2-gate-audit.md`; the lead's 2026-10-08 resume):** the IDs section's quotes bullet gains "(except in HTML files, where a quoted attribute is a link)", because `mochiko-cli ids` lifts the `"…"` mask in `.html`/`.htm` files (wave-1 review finding N4 as narrowed by the lead, `.mochiko/brainstorms/human-readable-ids/build-log.md` 2026-10-08; `crates/mochiko-cli/src/ids.rs` `quotes_masked`). The `>` blockquote and code-fence masks hold in every file. A pure addition: nothing is superseded.
+- **Consumers assessed:** every envelope consumer reads rule 1 by meaning, not by its example tokens. The ten landed views that cite "the IDs section" (brainstorm, setup, implement, feature and architecture rules; authoring-epic and authoring-technical-requirements minting rules; `review-common.joined-ids`; the governance-intent and tasks templates) were read, and the section covers each one's expectation.
+
 ## [v0.91.0] Dead plan-stage surfaces struck from the envelope's scope, ID example, and null-path rule
 
 - **Disposition:** superseded → the plan-less pipeline's surfaces. Four sites named artifacts or
   gates the plan-stage retirement killed. This is a scope-and-example edit only: no envelope rule
   changed meaning, and the format version stays v3.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/plan-stage-utility/record.md` D4 — `plan.md` and the plan-the-plan
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D4-planless-homes-gates — `plan.md` and the plan-the-plan
   proposal gate die, and the sufficiency report becomes the durable assessment record carrying the
   `quickstart.md` null path; D3 — `requirements.md` dies as a mandatory artifact, taking the
   `TR-XXX` id class's defining artifact with it; D1 mechanic (b) — the epic's joint plan-the-plan
@@ -98,7 +107,7 @@ Entry formats: `strips/README.md`.
   same landing (strip: `.mochiko/strips/review-specifications.md` [v0.82.0])**; the remaining
   review skills grade against their own checklists and carry no restatement (grep swept).
 
-## [v0.81.0] Pipeline artifact chain drops `nfrs.md` — product-architecture-schema D12
+## [v0.81.0] Pipeline artifact chain drops `nfrs.md` — product-architecture-schema D12-store-absorbs-nfrs
 
 - **Disposition:** deleted from the enumeration. The envelope's opening line lists the
   deliverables that follow it; `nfrs.md` is no longer a deliverable (D12 homes NFR-XXX on the
@@ -106,7 +115,7 @@ Entry formats: `strips/README.md`.
   baseline governed by its own schema and the desk's loop, not a per-run pipeline deliverable
   following this envelope.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12; `DECISIONS.md` 2026-08-19).
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12-store-absorbs-nfrs; `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim):**
 
   ```
@@ -125,7 +134,7 @@ Entry formats: `strips/README.md`.
   `strips/tasks-template.md`). Found at the V4 delta pass (B2) — the first pass swept skills and
   the router but not the shared envelopes.
 
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -140,14 +149,14 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 
 ## [v0.49.0] Artifact chain drops task-mapping.md + slices.md
 - **Disposition:** superseded → both artifacts retired (mapping content on cycle cards; slicing a spec section)
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D3+D6)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D3-single-tasks-artifact+D6-slices-into-spec)
 - **Content:** "`task-mapping.md` · " and " · `slices.md`" in the deliverable-chain enumeration.
 - **Consumers assessed:** authoring skills + review checklists named in the footer (all co-edited or retired this wave).
 
 ## [v0.44.0] Format version-history block relocated (class 2, 744 B / 10 lines)
 - **Disposition:** superseded → relocated **verbatim** into this note (below). In-file residue: the
   bare stamp plus the live routing (`Consumed by`), which is wiring a run consumes, not history.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim, the whole block as it stood at the scrub):**
 ```
 **Format version:** v2 (2026-08-01 — `verbosity-caveman-ops-separation` D1/D5: rule 4's

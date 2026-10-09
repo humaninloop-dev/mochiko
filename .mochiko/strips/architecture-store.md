@@ -2,7 +2,7 @@
 
 Entry formats: `strips/README.md`. Schema born at v0.81.0 (the product-architecture-schema
 Stage-1 wave) with no template ancestor, so this file opens its history rather than continuing
-one. Schema data files are shipped primitives from v0.76.0 (schema-based-template-guidance D8 —
+one. Schema data files are shipped primitives from v0.76.0 (schema-based-template-guidance D8-schema-data-files —
 data is the source of truth, the binary renders over it), so an edit here takes the same strip +
 author≠grader ceremony as any command, skill, agent, or template edit.
 
@@ -11,7 +11,7 @@ author≠grader ceremony as any command, skill, agent, or template edit.
 - **Disposition:** superseded → the `Targets` field sources an NFR from the business promise it
   serves; the derived index names the sufficiency check and the design phase as its readers.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D3** (the TR-XXX layer retires) and
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D3-requirements-layer-dies** (the TR-XXX layer retires) and
   **D1** (`/mochiko:plan` retires; implement is the single downstream run). The NFR-source
   consequence is not stated on the record and was ruled by the wave lead as **R4** during the
   build: the source is the FR-XXX / SC-XXX the target serves, or the concern row's own driver).

@@ -8,17 +8,24 @@ doctrine reversed).
 artifact gate ships. Every `.mochiko/` path a shipped primitive names was resolved against the homes
 the migration log declares (`plugins/mochiko/migrations/0005-artifact-homes.yaml`, wave 3), and a
 path the homes do not carry is re-pointed rather than left to be denied at write time. Ruling for
-the [v0.109.0] entry below: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2 (a
+the [v0.109.0] entry below: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2-home-file-sets (a
 report lands in its home's `reports/` directory) and D3 (the homes as the migration declares them),
 with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 `git show 794cea8:plugins/mochiko/templates/analyst-report-template.md`. -->
+
+## [v0.118.0] `changed_this_round` example story ID joined and family-corrected
+
+- **Disposition:** superseded → `"{{G3: added expiry edge case to `lunch-orders` US-2-order-expiry-handling}}"`.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; the lead's 2026-10-08 rulings at W2-prose's plan: Q-B (family-form corrections while joining, on D9) and Q-A (a template slot citing outside its file carries its owner, D11 as changed at review, S4))
+- **Content (superseded):** "  - "{{G3: added expiry edge case to US2}}"".
+- **Kept deliberately:** `G3` and `A1` (report labels, local, D10).
 
 ## [v0.109.0] Usage Note 5's output location sits at an undeclared name in the spec home
 
 - **Disposition:** superseded → `.mochiko/specs/<slug>/reports/analyst-report.md`, the spec home's
   declared `reports/` directory, where a report is admitted under any name by its `report:` type
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2; migration
+  (`.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2-home-file-sets; migration
   `0005-artifact-homes.yaml`, the `spec` home's `reports:` block)
 - **Content:** ``5. **Output location** — `.mochiko/specs/<feature>/analyst-report.md`, seeded and
   collected by the lead.``

@@ -7,7 +7,7 @@ Entry formats: `strips/README.md`.
   full body at the pre-v0.45.0 tree, last shipped v0.44.0)
 - **Tier failed:** n/a — supersession by ruling (user ruling 2026-08-02; ADR
   `.mochiko/decisions/2026-08-02-framework-trio-deleted.md`; supersedes the D6 move plan,
-  `verbosity-caveman-ops-separation` D6 + the v0.44.0 DEFERRED entry in
+  `verbosity-caveman-ops-separation` D6-maintenance-trio-moved + the v0.44.0 DEFERRED entry in
   `strips/authoring-commands.md`)
 - **Content:** the whole `command-architect` persona — framework smith authoring/converting
   commands to the codified shape, executing ruled shape-home revisions (Job 4), first-passing

@@ -2,11 +2,11 @@
 
 **Opened:** 2026-09-19 · **Lead:** the brainstorm session lead · **Target version:** 0.112.0 (MINOR —
 one new skill, floor rewords, no protected exits) · **Sequenced by:** `author-grader-consolidation`
-D10 (this is that path's wave 2) · **Audited under:** the NEW gate form (D3 · D6 · D7 · D11) — one
+D10-consolidation-wave-order (this is that path's wave 2) · **Audited under:** the NEW gate form (D3 · D6 · D7 · D11) — one
 plain seat, rendered contract, one re-audit by the same seat — plus the D9 double-grade of one unit.
 
-Ruling anchors: `2026-09-03 producer-plan-enforcement D8` (the landing set; D1–D7 as amended) ·
-`2026-09-19 author-grader-consolidation D9/D10` (the double-grade and the sequencing).
+Ruling anchors: "`2026-09-03 producer-plan-enforcement D8`" (the landing set; D1–D7 as amended) ·
+"`2026-09-19 author-grader-consolidation D9/D10`" (the double-grade and the sequencing).
 
 ## 0. Sound-loop wiring — this wave runs under the leg it ships (PPE D9)
 
@@ -44,7 +44,7 @@ approve → execute · §4 audits · §5 gates · §6 landing.
 
 ## 3. Content
 
-### 3.1 Migration `0009-plan-qa-leg.yaml` (P1) — header anchor `2026-09-03 producer-plan-enforcement D8`
+### 3.1 Migration `0009-plan-qa-leg.yaml` (P1) — header anchor "`2026-09-03 producer-plan-enforcement D8`"
 
 1. **`reword-rule` `patterns-sound-loop.leg-1-seat-produces`** (floor; id survives; pin stays 6;
    rule-level anchor `… D8`) — the user-authored text, verbatim from D8 item 1: *"Leg 1 — the
@@ -146,13 +146,13 @@ persona-less. Its brief carries: the verbatim render of `mochiko-cli rules valid
 pre-pass commands. It runs the pre-pass itself and quotes it (D3). Units, one verdict block and
 one D9 line each: `patterns-sound-loop` pair · `patterns-plan-minimalism` pair · the six command
 pairs (arch · feat · impl locally reworded; brainstorm · setup · specify via the common stub) ·
-`review-seat-plan` pair · schema content (0009 + view diff, AM-2 five) · pre-registration diff ·
+`review-seat-plan` pair · schema content (0009 + view diff, AM-2-required-cli-dependency five) · pre-registration diff ·
 router · budget ledger · `primitive-edits.md` · CHANGELOG + manifests · crate fixtures. It splits
 into a second seat only if the files will not fit, and says so in the lines. **Re-audit (D6):** on a
 FAIL the owning seat fixes and the SAME grader seat is resumed to read only the delta; a second FAIL
 halts to the user.
 
-**Double-grade (author-grader-consolidation D9/C4):** the **`review-seat-plan` pair** is also graded
+**Double-grade (author-grader-consolidation D9-audit-outcome-line/C4):** the **`review-seat-plan` pair** is also graded
 by a fresh `mochiko:validator` under the old form (full read, skill-pair criteria) — the two finding
 sets recorded side by side in that unit's line; this is the baseline later lines read against.
 **Cost read (I2):** the plain seat's sidechain transcript

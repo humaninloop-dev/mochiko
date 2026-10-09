@@ -6,7 +6,7 @@ D1–D15); this file opens with the first edit that superseded any of its shippe
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the authoring family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -24,7 +24,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
     baselines are edited in place in the product files, one pen per file, keyed `EPIC-XXX`". That
     restated the floor, so it left in the same wave.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-24 delta-files row →
-  `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D6(b): an epic writes
+  `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D6-wrap-up-batch(b): an epic writes
   shared baselines in place, one pen per file; D1: no delta files; the delivered floor
   `authoring-epic.shared-baseline-single-pen-holder` (0028)).
 - **Content (superseded text, verbatim):** `run consumes: the joint design-phase plan, the joint
@@ -42,7 +42,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -83,7 +83,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -94,7 +94,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -104,7 +104,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 
 ## [v0.101.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2A, authoring family)
 
-Ruling for every entry below: skill-content-schema D3 (three-home boundary) / D8/C4
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (three-home boundary) / D8/C4
 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema ruled ·
 Skill-schema wave-2 family doors ruled — the authoring-family door); census:
 `.mochiko/brainstorms/skill-content-schema/research/census-authoring.md` §A (AE) + §B (AE).
@@ -131,7 +131,7 @@ emits and how it lands), artifact = the 15 rows above minus those two plus the m
 discipline (15 · 16 · 17a ride `sec.artifact`/`sec.reserved` as write mechanics /
 reservations: 17a sits in `sec.reserved`). `sec.inputs` is deliberately empty
 (`rules: []` + note — census: inputs 0). No `conditions:` block — no rule carries `when:`;
-the load-first block legally omits the `when:` grammar sentence (wave-1 RCM-4 wave-wide
+the load-first block legally omits the `when:` grammar sentence (wave-1 RCM-4-test-gate-carveout wave-wide
 ruling).
 **Deleted as dedup, no content loss:** `## Red Flags — STOP` (4 lines — each a mirror of
 `mint-once` / `one-open-epic-per-pending-rows` + `overlap-surfaces-to-user` /
@@ -146,15 +146,15 @@ schema 10,475 = **payload 13,044** (census §F estimate was ~18,800); the delta 
 pre-conversion body is structural overhead (IDs, keys, section scaffolding, reading
 grammar) — no content growth claimed. AE was unbudgeted at birth (hard-cap-only); the
 conversion re-seed is its first budget, via the ledger's third seeding path, no headroom
-(census J-7 — P5 executes the ledger row).
+(census J-7-first-member-budgets — P5 executes the ledger row).
 
-## [v0.101.0] Mint-once + desk-only door + overlap guard — protection transfers (census §A row 1; multi-feature D4 + plan-stage D4, kept deliberately at v0.91.0)
+## [v0.101.0] Mint-once + desk-only door + overlap guard — protection transfers (census §A row 1; `multi-feature-plan-implement` D4-epic-minting-stewardship + `plan-stage-utility` D4-planless-homes-gates, kept deliberately at v0.91.0)
 - **Disposition:** superseded — protection transfers to `authoring-epic.mint-once` (floor), `authoring-epic.desk-only-mint-door` (floor), `authoring-epic.overlap-surfaces-to-user` (floor, reservation), and `authoring-epic.implement-resolves-by-lookup` (must), per D8/C4; the provenance sidecar carries the protected status.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema rows).
 - **Content:** "**Mint-once.** Every workflow resolves `EPIC-XXX` by **lookup**; re-minting does not exist." · "**The desk is the only mint door.** An implement run resolves its `EPIC-XXX` by lookup and mints nothing." · "any **membership overlap with an existing epic surfaces to the user** (join it / rule on the overlap), never a silent duplicate"
 - **Consumers assessed:** `feature.md` (the desk) and `specify.md` reference the skill, never restate the guard (untouched).
 
-## [v0.101.0] One open epic per feature's pending rows — protection transfers (census §A row 2; multi-feature D4)
+## [v0.101.0] One open epic per feature's pending rows — protection transfers (census §A row 2; `multi-feature-plan-implement` D4-epic-minting-stewardship)
 - **Disposition:** superseded — protection transfers to `authoring-epic.one-open-epic-per-pending-rows` (floor), per D8/C4.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows).
 - **Content:** "A feature's pending rows belong to **at most one open epic at a time**."
@@ -166,37 +166,37 @@ conversion re-seed is its first budget, via the ledger's third seeding path, no 
 - **Content:** "An epic run **always fires the design phase** for this joint spine, whatever the sufficiency verdict said."
 - **Consumers assessed:** `implement.md` fires the epic spine design phase always (untouched).
 
-## [v0.101.0] One signed store delta — protection transfers (census §A row 4; product-architecture-schema D3/D10, kept deliberately at v0.81.0)
+## [v0.101.0] One signed store delta — protection transfers (census §A row 4; product-architecture-schema D3-store-replaces-artifact/D10-plan-time-contract, kept deliberately at v0.81.0)
 - **Disposition:** superseded — protection transfers to `authoring-epic.one-signed-store-delta` (floor), per D8/C4.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows).
 - **Content:** "**one signed store delta** for the whole epic, rendered once and signed off once"
 - **Consumers assessed:** `mochiko:authoring-architecture-store` owns the write gate the sign-off feeds (its own pair converted this wave, same seat).
 
-## [v0.101.0] Cross-member seam owner named — protection transfers (census §A row 5; multi-feature D13)
+## [v0.101.0] Cross-member seam owner named — protection transfers (census §A row 5; `multi-feature-plan-implement` D13-epic-seam-ownership)
 - **Disposition:** superseded — protection transfers to `authoring-epic.seam-owner-named` (must), per D8/C4.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows).
 - **Content:** "**each cross-member seam names its owner explicitly** (members land simultaneously, so no later-lander default applies). The assignment lives here; the map writes it at close."
 - **Consumers assessed:** `mochiko:authoring-feature-map` owns the marker/seam grammar the assignment lands in (P3's member this wave, untouched by this seat).
 
-## [v0.101.0] Shared-baseline single pen-holder + fold exactly once — protection transfers (census §A row 6; multi-feature D10 review fold C1)
+## [v0.101.0] Shared-baseline single pen-holder + fold exactly once — protection transfers (census §A row 6; `multi-feature-plan-implement` D10-spine-baseline-deltas review fold C1)
 - **Disposition:** superseded — protection transfers to `authoring-epic.shared-baseline-single-pen-holder` (floor), per D8/C4.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows).
 - **Content:** "A product baseline touched by **two or more members** gets **one joint delta authored in the spine** under a **single pen-holder** … The landing folds each baseline **exactly once** — spine delta for shared baselines, feature delta otherwise — preserving the singular-delta-per-baseline graded fold."
 - **Consumers assessed:** `implement.md`'s landing consumes the fold contract by reference (untouched).
 
-## [v0.101.0] Selection-scope only — protection transfers (census §A row 7; multi-feature D11)
+## [v0.101.0] Selection-scope only — protection transfers (census §A row 7; `multi-feature-plan-implement` D11-selection-scope-epics)
 - **Disposition:** superseded — protection transfers to `authoring-epic.selection-scope-only` (floor), per D8/C4; the correct-by-constraint rationale line stays with the rule's context, not restated in the body.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows).
 - **Content:** "Every member enters as **selection scope** — a spec-accepted selection or growth rows. **Delta-scope cards** (bug/improvement deltas on delivered capabilities) **cannot join an epic**; the graduation-shaped close is thereby correct by constraint, not presumption."
-- **Consumers assessed:** the `description:` boundary clause carries a sanctioned dual statement (census J-5 — no rule minted for the description copy).
+- **Consumers assessed:** the `description:` boundary clause carries a sanctioned dual statement (census J-5-description-borne-obligations — no rule minted for the description copy).
 
-## [v0.101.0] Carve-out / hold reserved to the user — protection transfers (census §A row 8; multi-feature D7)
+## [v0.101.0] Carve-out / hold reserved to the user — protection transfers (census §A row 8; `multi-feature-plan-implement` D7-epic-implement-run)
 - **Disposition:** superseded — protection transfers to `authoring-epic.halt-disposition-user-owned` (floor, reservation), per D8/C4.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows).
 - **Content:** "A member that **exhausts its attempt bound or hits the no-progress stop** halts **member-scoped**. The disposition — **carve the member out** (its rows return to `pending`, the epic continues, manifest status `closed-partial`) or **hold the whole run** — is **reserved to the user**, never the lead's: carve-out breaks the one-unit promise."
 - **Consumers assessed:** `implement.md`'s member-halt gate references the reservation (untouched).
 
-## [v0.101.0] Transient role + directory persists + two-typed map — protection transfers (census §A row 9; multi-feature D3)
+## [v0.101.0] Transient role + directory persists + two-typed map — protection transfers (census §A row 9; `multi-feature-plan-implement` D3-transient-epic-unit)
 - **Disposition:** superseded — protection transfers to `authoring-epic.transient-role` (floor), per D8/C4.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows).
 - **Content:** "The epic's **role is transient** … **The directory persists as readable record — never as a living map layer.** The map stays two-typed (durable capabilities + transient work rows); an epic is not a third type."
@@ -212,7 +212,7 @@ conversion re-seed is its first budget, via the ledger's third seeding path, no 
 
 - **Disposition:** superseded → "the relatedness stated at the **desk mint** that opened it".
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D4**: plan's inline epic mint door
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D4-planless-homes-gates**: plan's inline epic mint door
   dies with the command; epic minting is desk-only). Caught by V1's **multiline-aware** sweep —
   this seat's greps were line-scoped, and the phrase "declare-and-contest" names the dead
   mechanism without containing any of the plan-vocabulary terms the sweeps matched on.
@@ -237,7 +237,7 @@ conversion re-seed is its first budget, via the ledger's third seeding path, no 
 - **Disposition:** superseded → "the design-phase and implement outputs are graded by their
   cluster reviewers".
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1). Raised by the v0.91.0 wave audit
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires). Raised by the v0.91.0 wave audit
   as **V2 B5** — the main pass re-keyed six plan/implement pointers in this file and missed this
   seventh.
 - **Content (superseded text, verbatim):**
@@ -259,7 +259,7 @@ conversion re-seed is its first budget, via the ledger's third seeding path, no 
 - **Disposition:** superseded → the **Joint design-phase plan** — one plan over all members,
   authored in the epic implement run's design phase.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 mechanic (b): "an epic run always
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires mechanic (b): "an epic run always
   fires the design phase for the joint spine … the epic's 'joint plan-the-plan proposal' spine
   artifact re-keys to the joint design-phase plan").
 - **Content (superseded text, verbatim):**
@@ -285,7 +285,7 @@ conversion re-seed is its first budget, via the ledger's third seeding path, no 
 - **Disposition:** superseded → two doors instead of three; the desk is the only mint door, and
   the overlap guard relocated onto the desk door it now qualifies.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D4: "Plan's inline epic mint door
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D4-planless-homes-gates: "Plan's inline epic mint door
   (declare-and-contest from a bare feature list) dies with it — epic minting is desk-only
   (`/mochiko:feature`), recorded supersession". The review's cross-examination recorded this as
   a *partial* kill of survivor B-C3: epic minting itself survives at the desk; only plan's
@@ -323,7 +323,7 @@ conversion re-seed is its first budget, via the ledger's third seeding path, no 
 
 - **Disposition:** superseded → the same five pointers naming `implement` alone.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1).
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires).
 - **Content (superseded fragments, verbatim — five sites):**
 
   1. `description:` boundary clause: `NOT plan/implement mechanics`
@@ -347,14 +347,14 @@ conversion re-seed is its first budget, via the ledger's third seeding path, no 
   `authoring-epic` row (re-keyed same wave). `plan.md` is deleted by P2 in the same wave, so no
   dead pointer survives.
 
-## [v0.81.0] Joint architecture delta = one signed store delta; In-flight pointer clear → store key clear — product-architecture-schema D3/D10
+## [v0.81.0] Joint architecture delta = one signed store delta; In-flight pointer clear → store key clear — product-architecture-schema D3-store-replaces-artifact/D10-plan-time-contract
 
 - **Disposition:** superseded → the epic's joint architecture output is **one signed store
   delta** for the whole epic (rendered once, signed once), and its close semantics re-key from
   the retired In-flight-pointer machinery to the store's own lifecycle: in-flight-class elements
   flip `built` and their `FEAT-XXX` keys clear.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3 (one store) · D10 (six-step
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3-store-replaces-artifact (one store) · D10 (six-step
   delta lifecycle; the orphan rule supersedes the pinned AT-D6-C In-flight-pointer invariant);
   `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim — two fragments):**

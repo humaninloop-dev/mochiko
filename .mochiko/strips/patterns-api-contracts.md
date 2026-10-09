@@ -8,7 +8,7 @@ ratified 2026-07-24).
 
 <!-- Wave context: the joint hook/delta build, wave 3 (v0.116.0) — contracts and the quickstart are
 product baselines edited in place. Rulings for every [v0.116.0] entry below: the delta record
-`.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D1 (in place, no per-feature
+`.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` D1-delta-files-retire (in place, no per-feature
 copies), D2 (the lifecycle marker), D4 (the feature home loses its baseline copies) and D6(b) (epic
 copies withdrawn) (`DECISIONS.md` 2026-09-24 row); census rows H5 (no `quickstart.md` in the spec
 home) and Q1 (the product `quickstart.md`, bounded per entry),
@@ -16,6 +16,13 @@ home) and Q1 (the product `quickstart.md`, bounded per entry),
 `.mochiko/brainstorms/hook-enforcement-field-review/reports/w2-census-table.md` (`DECISIONS.md`
 2026-09-29 row); the wave-3 lead's ruling on P8's B2. Pre-edit verbatim text:
 `git show 5558fd7:plugins/mochiko/skills/patterns-api-contracts/SKILL.md`. -->
+
+## [v0.118.0] Traceability table FR and US cells joined and qualified
+
+- **Disposition:** superseded → `` `<spec-slug>` FR-001-<slug> `` / `` `<spec-slug>` US-1-<slug> `` and the `FR-004` / `US-4` row the same.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; the lead's Q-B ruling (`US#n` → `US-<n>-…`, on D9); D11 (S4) for the owner)
+- **Content (superseded):** "| /auth/login | POST | FR-001 | US#1 | User login |" and "| /users/me | GET | FR-004 | US#4 | Get current user |".
+- **Kept deliberately:** the table shape and the endpoint columns.
 
 ## [v0.116.0] OPENAPI-TEMPLATE header — the per-feature placeholders and "Copy and customize" re-keyed
 
@@ -124,7 +131,7 @@ home) and Q1 (the product `quickstart.md`, bounded per entry),
 - **Disposition:** superseded → the design ladder / design-phase package / design-phase proposal
   in the blockquote; "the independent design-phase reviewer" in both self-check disclaimers.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 carry-over (the ladder governs
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires carry-over (the ladder governs
   what the design phase authors) and D5 (the two graders re-scope to the design-phase output)).
   Wording follows the wave lead's 2026-08-26 rulings for the parallel sites — "the plan proposal"
   → "the design-phase proposal" (ruled for `patterns-entity-modeling:12`, whose blockquote is
@@ -173,7 +180,7 @@ home) and Q1 (the product `quickstart.md`, bounded per entry),
   wording is the wave lead's, ruled 2026-08-26; an earlier pass of this edit read "the
   sufficiency report" without the possessive and was aligned to the ruling before the audit.)
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D4**: "`plan.md` (the summary
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D4-planless-homes-gates**: "`plan.md` (the summary
   artifact) dies — no restatement artifact; the sufficiency verdict lands as a report under
   `templates/report-format.md` in the feature dir and is the durable assessment record — it
   additionally carries the `quickstart.md` null-path record"). Scope for this file was opened by

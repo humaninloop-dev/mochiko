@@ -385,7 +385,7 @@ seats write to).
 - **Consumers assessed:** 6 commands (read dropped, mechanics absorbed) · `templates/agent-dispatch.md`, `templates/sized-end-stage-review.md`, `templates/workflow-contract.md` (citations reworded) · `templates/report-format.md` (devolved-branch cite → implement.md) · `templates/output-style.md` (binding restated locally) · router `skills/mochiko` (row deleted) · `CLAUDE.md` + `.claude/rules/mochiko/primitive-edits.md` (audit bar re-keyed) · `ARCHITECTURE.md` (doctrine rows folded).
 
 ---
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -401,7 +401,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 ## [v0.44.0] Shape version-history block relocated (class 2, 6,418 B / 70 lines)
 - **Disposition:** superseded → relocated **verbatim** into this note (below). In-file residue: the
   bare stamp plus the live routing (`Governed by / Pairs with`), which is wiring a run consumes, not history.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim, the whole block as it stood at the scrub):**
 ```
 **Shape version:** v8 (2026-08-01 — `verbosity-caveman-ops-separation`
@@ -495,7 +495,7 @@ strip note; v2 2026-07-19 — the S8 home-revision checkpoint) · **Governed by:
 
 ## [v0.44.0] Design-provenance pointer, preamble
 - **Disposition:** superseded → deleted from the shipped file; this note is the home it pointed at.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 (Design provenance, revision history, and the v4→v5 slot
@@ -506,7 +506,7 @@ map: `.mochiko/strips/command-shape.md`.)
 ## [v0.44.0] The preservation standard's exemplar citation — **doctrine-clause citation, verify-path**
 - **Disposition:** superseded → the citation relocates here; **the claim stays whole in the
   doctrine.** A maintainer verifying the exemplar walks: this entry → the session record named below.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim, the citation only):**
 ```
 is fold (a) of D5 in
@@ -519,7 +519,7 @@ is fold (a) of D5 in
 ## [v0.44.0] The transition note's reopening-trigger citations — **doctrine-clause citation, verify-path**
 - **Disposition:** superseded → citations relocate here; the trigger and its two measurable terms
   stay in the note verbatim. Verify-path: this entry → the ADR and records named below.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 > (ADR `.mochiko/decisions/2026-07-30-goal-shape-pilot-checkpoint.md`; `command-succinctness-strip`
@@ -530,7 +530,7 @@ is fold (a) of D5 in
 
 ## [v0.44.0] The git-ban carve-out's citation — **doctrine-clause citation, verify-path**
 - **Disposition:** superseded → citation relocates here; the carve-out rule stays in Ground rules.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 (`validator-worktree-isolation` U1,
@@ -543,7 +543,7 @@ is fold (a) of D5 in
 ## [v0.44.0] P9's KEPT-survivor clause: evidence pointer moves out of the command
 - **Disposition:** superseded → the amended P9 clause, which now reads "*any `KEPT:` survivor with
   its claim, its evidence pointer living in the strip note rather than in the command*".
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above), executed under the lead's stage-A ruling (option (a), 2026-08-01):
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above), executed under the lead's stage-A ruling (option (a), 2026-08-01):
   a KEPT evidence pointer **is** a class-1 pointer, so leaving it carved an exception into the
   user's `Contested` full-scrub ruling — the user's to narrow, not the build's.
 - **Content (verbatim, the superseded clause):**
@@ -583,7 +583,7 @@ below, alongside the relocated history and the three doctrine-clause citations.
 - **Disposition:** superseded → the **ban-as-principle** in the same Layer 1 paragraph, the three
   terms surviving in place as **non-exhaustive worked examples**; the growth mechanism relocates
   to `templates/output-style.md` (the style home minted this wave).
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D3 as folded
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D3-plain-language-fold as folded
   at review, S11; the `DECISIONS.md` row above).
 - **Content (verbatim, the superseded clause):**
   ```
@@ -688,7 +688,7 @@ for a mixed-form interim came down when the interim ended. No doctrine changed, 
   binds nor states them."
 - **Kept deliberately:** **P18 · P19 · P20 themselves**, wording unchanged, in their blocks — and
   the conditionals that are *real* rather than form-scoped: P2's team-form, P13's sized-review-only,
-  P14's devolved-branch-only, and **P17's silent-absence carve-out**, which is a TC-D6 ruling and
+  P14's devolved-branch-only, and **P17's silent-absence carve-out**, which is a `team-lead-strategic-compaction` D6-overridable-cadence-default ruling and
   has nothing to do with form. Retirement by omission is forbidden here as everywhere: nothing was
   retired but the scoping sentence.
 - **Consumers assessed:** `validation-command-shape` check 12 carried the matching carve-out
@@ -822,7 +822,7 @@ conformant commands. This addendum's set:
 pair-reviewed 40 raised → 39 survived → 31 lead-merged, 31/31 dispositioned, verify CLEAN at
 round 3), rulings **D1–D6 as amended at review (U1–U4)** plus acceptance **A1–A4**;
 `DECISIONS.md` 2026-08-01 row. BACKLOG build spec: "Lead-owned process flexibility build
-(shape v7)". Five primitives revised in one wave under the primitive-edit ceremony (OQ-3).
+(shape v7)". Five primitives revised in one wave under the primitive-edit ceremony (OQ-3-landing-ceremony-owed).
 **No `commands/*.md` file was edited** — D4 (`Contested`) rules convert-on-touch, so all six
 stay v6-form and the library runs mixed-form in the interim.
 
@@ -832,7 +832,7 @@ doctrine**, both new Layer-1 subsections · the default-pipeline / departure-by-
 opening the anatomy · the `<!-- shape-form: v7 -->` marker and its Conformance bullet · the v7
 interim note · **P18 · P19 · P20** in the slot index · the Recovery counter-state clause · the
 Seats-&-checks capability-roster clause · the Layer-2 cadence clause naming a departing run's
-counted unit (OQ-4) · "who **composes the run**" in One lead.
+counted unit (OQ-4-transport-lifecycle-split) · "who **composes the run**" in One lead.
 
 **Slot map — no v6 slot moves.** **P1–P17 are unchanged in binding, wording, and block.** Three
 slots are **new**, and all three are **v7-form only**: **P18** floor gates + the
@@ -845,7 +845,7 @@ file is out of their scope entirely rather than silently conformant within it.
 **Run cost — re-measured with `wc` after the edit, and it is the largest growth the shape has
 taken.** Measured **after the repair round**, which is the only basis these figures have:
 `command-shape.md` **23,060 → 31,626 B** (+8,566; words 3,518 → 4,860) · `loop-discipline`
-**12,291 → 15,124 B** (+2,833) · `agent-dispatch.md` **unchanged at 5,770 B** (OQ-4 ruled
+**12,291 → 15,124 B** (+2,833) · `agent-dispatch.md` **unchanged at 5,770 B** (OQ-4-transport-lifecycle-split ruled
 transport unaffected). The shared always-read floor for a team-form run therefore goes
 **41,121 → 52,520 B, +11,399 B on every run** — larger than v6's +6,774 and v5's +3,225
 combined. *(Floor figure superseded at the v0.43.0 wave close: the dual-form scaffolding retired
@@ -866,7 +866,7 @@ whose *own* overhead is still unmeasured (next paragraph). A reader is entitled 
 11 KB/run against that themselves; the strip discipline's job is to keep the bytes visible.
 
 **R21's recorded-open cost obligation — carried here, deliberately not encoded in the shape.**
-OQ-1 carries R21: *a measured cost estimate for declaration + trail + composition on one light
+OQ-1-default-carriers-encoding carries R21: *a measured cost estimate for declaration + trail + composition on one light
 and one heavy run* (verify N3). It is logged in this note rather than written into
 `command-shape.md` because the shape's own **Run-cost entry element was dropped by user ruling
 at v5** ([v0.33.0] entry below), which took cost measurement out of the command layer entirely;
@@ -919,7 +919,7 @@ run rides each converted command's first-run checkpoint (D4), not this obligatio
   a departing run instantiates**; a default run declares in one line on its deliverable (P19).
   The anatomy sentence is rewritten in place; the footer's Pairs-with line is re-keyed to
   "conditional — the per-run carrier a **departing** run instantiates".
-- **Tier failed:** n/a — supersession by ruling (`lead-owned-process-flexibility` **OQ-2**,
+- **Tier failed:** n/a — supersession by ruling (`lead-owned-process-flexibility` **OQ-2-declaration-durable-home**,
   proposed answer adopted verbatim at acceptance **A2**, 2026-08-01; raised as **R17**).
 - **Content (v6, verbatim):** "There is no `Contract` section, and no per-run contract file is
   written — a per-run form whose values are constant at authoring time is ritual, not proof
@@ -1005,7 +1005,7 @@ run rides each converted command's first-run checkpoint (D4), not this obligatio
 - **Disposition:** superseded → rewritten in place. The obligated `mochiko:loop-discipline` read
   is **unchanged and still obligated**; both of the trigger's terms are re-keyed to surfaces the
   lead-composed form actually produces.
-- **Tier failed:** n/a — supersession by ruling (**R16**, lead fold on D4/OQ-1, ratified with the
+- **Tier failed:** n/a — supersession by ruling (**R16**, lead fold on D4/OQ-1-default-carriers-encoding, ratified with the
   record at A4: the v0.34.0 trigger's terms *survive, re-keyed* — "the gates were not
   rationalized" measurable against the stated default plus recorded departures, "the bounds held"
   against declared bounds under U1-D's counter-and-no-silent-re-declaration rule).
@@ -1035,14 +1035,14 @@ conformant commands. This revision's set, all owed to the independent audit:
 2. **`skills/loop-discipline/SKILL.md`** · **`templates/sized-end-stage-review.md`** ·
    **`templates/workflow-contract.md`** · **`skills/validation-command-shape/SKILL.md`** — the
    four sibling primitives, each graded against its own ruling set and its strip entries
-   (OQ-3's named obligation set; author ≠ grader holds — this revision's author wrote all five).
+   (OQ-3-landing-ceremony-owed's named obligation set; author ≠ grader holds — this revision's author wrote all five).
 3. **All six `commands/*.md`** — a **confirmatory** pass under check 20's v6 branch, and it is a
    real check rather than a formality: the claim under grade is that each is **still conformant
    unconverted**, its gate lines and bounds standing as written, checks 1–19 passing exactly as
    they did at v6, and checks 21–23 correctly not run. A grader that finds any of the six
    degraded by this revision has found a defect in the interim branch, not in the command.
 4. **`templates/agent-dispatch.md`** — **not** in the set, and the absence is ruled rather than
-   assumed: OQ-4 split transport from lifecycle and confirmed transport unaffected. Byte-verified
+   assumed: OQ-4-transport-lifecycle-split split transport from lifecycle and confirmed transport unaffected. Byte-verified
    unchanged this wave.
 
 **Deliberately not encoded, with the reason** — so the audit grades an absence rather than
@@ -1094,7 +1094,7 @@ is still unexplained and has nothing to do with this bump.)
 **Coordination markers discharged.** Both deferral markers below are now **spent** by this
 revision: the `[v0.31.0]` marker ("the next Layer-2 rewrite … whoever builds it starts from v4")
 and the `[v0.33.0]` marker that re-based it to v5. The rewrite started from **v5** as that marker
-directed, and `standing-seat-lifecycle` D3 is no longer unbuilt.
+directed, and `standing-seat-lifecycle` D3-transport-lifecycle-reframe is no longer unbuilt.
 
 **Additions this revision** — recorded for the decision row, not as strips (the v3 run-cost
 precedent, since retired): the whole **Per-seat context lifecycle** subsection (seats-only lead
@@ -1108,7 +1108,7 @@ read as "never recycle" — without it every recycled seat's P5 row contradicts 
 **Slot map — no v5 slot moves.** **P1–P16 are unchanged in binding, wording, and block.** One
 slot is **new: P17** — the per-command lifecycle override, team-form, **override-only**. P17 is
 the one slot in the set whose *absence is silent by ruling*: check 3's stated-absence rule does
-not reach it, because TC-D6 explicitly rejected forced per-command explicitness ("a mandatory
+not reach it, because `team-lead-strategic-compaction` D6-overridable-cadence-default explicitly rejected forced per-command explicitness ("a mandatory
 line in every command while a differing command writes the same override line under either
 option"). Retirement by omission is forbidden and nothing is retired here — the v4→v5 map above
 stands untouched.
@@ -1143,7 +1143,7 @@ hidden.
   per seat, never assumed"); the "Seats, not dispatches" sentence keeps its live half.
 - **Tier failed:** n/a — supersession by ruling (`standing-seat-lifecycle` **D3**, ruled Q7
   option b: *"the sentence 'that continuity is what a standing seat buys' is retired"*; carried
-  into Layer 2 shape-wide by **TC-D5**). Ground on record: the map's arithmetic **inverts** the
+  into Layer 2 shape-wide by **`team-lead-strategic-compaction` D5-lifecycle-doctrine-generalized**). Ground on record: the map's arithmetic **inverts** the
   claim for exactly the longest-lived seats — the transcript a standing seat carries stops being
   the cheaper carrier once it exceeds the artifact set a fresh successor would read.
 - **Content (v5, verbatim):** "…and every follow-up goes to the **same named seat**, which is
@@ -1173,7 +1173,7 @@ hidden.
   anti-pattern itself — the setup-v3 defect stays guarded, now named by what actually causes it
   rather than by spawn frequency. The `name:`-discriminator bullet above it and its
   `forbidden transport` marker (grader check 8) are **untouched**.
-- **Amended against the record:** D3 wrote the carve-out as "**same seat name**"; TC-D5
+- **Amended against the record:** D3 wrote the carve-out as "**same seat name**"; `team-lead-strategic-compaction` D5-lifecycle-doctrine-generalized
   superseded that to **versioned names** pending the v2.1.199 name-refusal check. The rewrite
   encodes the versioned-name form, and the forensics run supplies the field evidence D3 lacked —
   a live respawn's name takeover produced a silently-failed send ("Nothing was sent", transcript
@@ -1221,10 +1221,10 @@ hidden.
   transcript string.
 
 ## [v0.38.0] SSL D3's per-roster lifecycle declaration — superseded before it was built
-- **Disposition:** superseded → **TC-D6**: the lifecycle policy's home is the **Layer-2 default
+- **Disposition:** superseded → **`team-lead-strategic-compaction` D6-overridable-cadence-default**: the lifecycle policy's home is the **Layer-2 default
   cadence** with per-command **override** lines, not a declaration in every command's seat
   roster. Nothing was removed from the shape, because this clause never landed in it.
-- **Tier failed:** n/a — supersession by ruling (`team-lead-strategic-compaction` **TC-D5**
+- **Tier failed:** n/a — supersession by ruling (**`team-lead-strategic-compaction` D5-lifecycle-doctrine-generalized**
   marking, U4a: *"the lifecycle rulings are absorbed with one ruled exception: D6 supersedes
   standing-seat D3's clause 'declared in each command's seat-roster [PARAM]'"*; `DECISIONS.md`
   2026-07-23 row carries the same supersession).
@@ -1233,7 +1233,7 @@ hidden.
   each command's seat-roster [PARAM]."
 - **What was built instead:** the axis is Layer-2 doctrine with **P17** as an override-only
   slot. Under the superseded clause all six commands would have carried a lifecycle declaration
-  per seat (≈20 rows); under TC-D6 **three** carry one line each and three carry nothing.
+  per seat (≈20 rows); under `team-lead-strategic-compaction` D6-overridable-cadence-default **three** carry one line each and three carry nothing.
 - **Kept deliberately:** D3's substance — the two axes, the per-seat continuity choice, the
   transport retarget, the end-of-need shutdown norm with its S6 gate — all encoded. Only the
   *location* of the policy moved.
@@ -1243,7 +1243,7 @@ hidden.
   with the seven existing paragraphs gathered under `### Team transport` and the new doctrine
   under `### Per-seat context lifecycle`.
 - **Tier failed:** n/a — supersession by ruling (`standing-seat-lifecycle` **D3**: *"Layer 2 of
-  `command-shape.md` is rewritten around two axes"*, with team transport "unchanged"; **TC-D2**
+  `command-shape.md` is rewritten around two axes"*, with team transport "unchanged"; **`team-lead-strategic-compaction` D2-layer-two-binding**
   binds the site).
 - **Content (v5, verbatim):** "## Layer 2 — team transport".
 - **Kept deliberately — and this is the load-bearing claim of the whole revision:** the transport
@@ -1308,17 +1308,17 @@ deferrable to a later ceremony:
 hunting one. Three, and the ruled set is **SSL D1–D4** and **TC-D1–D6** (this note's earlier
 "D1–D3" was the *encoded* subset, not the ruled one — corrected):
 
-1. **TC-D2's known limit** — the Layer-2 home enters the lead's context as message history and
+1. **`team-lead-strategic-compaction` D2-layer-two-binding's known limit** — the Layer-2 home enters the lead's context as message history and
    is summarized away by the lead's own compaction; an unmitigated, accepted risk. Encoding it
    would require a post-compaction re-read duty on the lead, which is **exactly the lead-side
-   lever TC-D1 rejected at Q8**. Writing it in would contradict the ruling that scopes this whole
+   lever `team-lead-strategic-compaction` D1-seat-only-compaction rejected at Q8**. Writing it in would contradict the ruling that scopes this whole
    doctrine to the seats. It stays a recorded risk in the record, not shape text.
 2. **SSL D4 — per-seat measurement rides the epic's OTel probe.** No shape surface, **by
    design**: D4 extends a *measurement* decision (probe scope, `agent.name` attribution, the
    §5 unknowns, a manual `/usage` reading at gates) and binds no command behavior. A shape that
    mandated telemetry would also be the first step toward the kernel the project forbids. Its
    absence here is the ruling's intent, not an omission.
-3. **TC-D5's cost rider** — no per-respawn token figure exists for any seat, so the **~≥3
+3. **`team-lead-strategic-compaction` D5-lifecycle-doctrine-generalized's cost rider** — no per-respawn token figure exists for any seat, so the **~≥3
    default is probe-tunable**, not measured. Encoded as the *value* only, never as a claim about
    it: Layer 2 states "recycles at **~≥3**" and says nothing about what it saves. The tilde is
    load-bearing and deliberate. When the probe lands, one shape edit re-tunes all six commands —
@@ -1337,7 +1337,7 @@ below before any command is re-authored. **No command file was edited this step*
 remain v4-conformant by ruling.
 
 **Re-audit coverage.** The shape's own rule is one edit here plus a re-audit of the conformant
-commands. By CS-D10 that re-audit set is **the pilot (`plan`, step 2) plus the five-command wave
+commands. By `command-succinctness-strip` D10-pilot-first-execution that re-audit set is **the pilot (`plan`, step 2) plus the five-command wave
 (step 4)** — not a step-1 sweep: the commands are deliberately left at v4 this step, so there is
 nothing conformant-to-v5 to grade yet. The v5 revision itself is graded now under
 `validation-command-shape`'s shape-revision checks (16–19). The step-4 ceremony carries its own
@@ -1397,7 +1397,7 @@ command.
   **+2,664 / +1,149 / −748 / −2,313 / −10,642 / −17,681, total −27,571**, against a `before the
   split` total of −20,583. **Cause:** those rows are `today (B) − floor (B)` — a projection of the
   measured floor, computed before any command shipped — and the wave then landed every command
-  *above* its floor row (deliberately, per CS-D8), so the projection overstated the saving on all
+  *above* its floor row (deliberately, per `command-succinctness-strip` D8-kept-line-regrading), so the projection overstated the saving on all
   six. It was never a run cost.
 - **Two prose claims corrected, both false of the shipped surface:** `slice` does **not** flip
   net-better (**+49**, marginally worse), and **four** commands regress per run at landed sizes —
@@ -1440,7 +1440,7 @@ command.
   that **authoring-loop evidence cannot settle the question**. The pilot proved a goal-shaped file
   can *carry* the four requirements structurally; it cannot prove a lead *obeys* them mid-loop
   under rationalization pressure, which is the actual risk on record from the prior wave
-  (`command-altitude/synthesis.md:47`). CS-D7's replacement guarantee is therefore not
+  (`command-altitude/synthesis.md:47`). `command-succinctness-strip` D7-shared-primitive-wall's replacement guarantee is therefore not
   discharged by the pilot.
 - **Content (the superseded note, verbatim):** "Its command-layer drop is checkpoint-gated, not
   pending: the pilot runs with the read retained, the pilot checkpoint rules the drop on that
@@ -1452,7 +1452,7 @@ command.
 - **Kept deliberately:** the retention itself, its non-conformance consequence, and the
   transition note's presence in the always-read home — so the retention keeps reading as *ruled*
   rather than as an oversight, which was the note's original purpose.
-- **Consequence for step 4:** the wave ceremony no longer carries a second shape-home edit. CS-D10
+- **Consequence for step 4:** the wave ceremony no longer carries a second shape-home edit. `command-succinctness-strip` D10-pilot-first-execution
   step 4's "approved read-drop lands inside this same ceremony" is **spent** — with it, the named
   delta re-audit of pilot `plan` that existed only to cover that edit. The wave's re-audit surface
   is the five re-authored commands, nothing more.
@@ -1713,7 +1713,7 @@ would be the quota-override D1 names.
   producer↔validator on its own. Only the declaration's home moved.
 
 ## [v0.33.0] KEPT: the obligated `mochiko:loop-discipline` read
-- **Tier-2 evidence:** the read is retained at v5 **by ruling**, not by inertia. CS-D7's
+- **Tier-2 evidence:** the read is retained at v5 **by ruling**, not by inertia. `command-succinctness-strip` D7-shared-primitive-wall's
   preferred first move is to drop it at the command layer, but the drop is checkpoint-gated:
   the pilot runs *with* the read, the pilot checkpoint rules the drop on evidence that the
   goal-shaped structure alone held a bounded loop (gates un-rationalized, bounds honored), and
@@ -1724,7 +1724,7 @@ would be the quota-override D1 names.
   shape states this as a transition note so the retention reads as ruled, not as an oversight,
   and so no command omits the read "early".
 
-## [v0.33.0] Slot map — v4's 13 `[PARAM]` tags → v5's P1–P16 (CS-D10 step 1)
+## [v0.33.0] Slot map — v4's 13 `[PARAM]` tags → v5's P1–P16 (`command-succinctness-strip` D10-pilot-first-execution step 1)
 
 **No v4 slot is retired.** Thirteen v4 tags land in eleven v5 slots (two merges); five slots are
 new, and one of those (**P9**) is the declared home for content v4 left unslotted. Retirement by
@@ -1765,7 +1765,7 @@ step-4 ceremony. **The user ruled the other way: the element is dropped from the
 (supersession entry above; ADR `2026-07-30-goal-shape-step1-adjudications`). So the slot set stays
 at **P1–P16** and no P17 exists. Nothing in v5 is now shape-mandated-but-unslotted.
 
-## [v0.33.0] Per-command parameter-floor arithmetic (CS-D10 step 1) — floor EXCEEDS the projection
+## [v0.33.0] Per-command parameter-floor arithmetic (`command-succinctness-strip` D10-pilot-first-execution step 1) — floor EXCEEDS the projection
 
 **Method.** The floor is the *minimum* goal-shaped size: every v5 slot bound + one constraint
 line per gate carrying all three of (opening evidence · who rules · what it decides) + one seat
@@ -1814,7 +1814,7 @@ zero *numbered* gates. Counts for the four un-drafted commands are fitted from t
 gate inventories, not measured.
 
 **Verdict against the record's projection (~5–6k words surface-wide): the floor EXCEEDED it.**
-7,713 w was **+28.6% over the 6k top of the band and +54.3% over the 5k bottom.** Per CS-D10
+7,713 w was **+28.6% over the 6k top of the band and +54.3% over the 5k bottom.** Per `command-succinctness-strip` D10-pilot-first-execution
 step 1 ("a floor exceeding the projection changes the anatomy or the ambition *before* the
 pilot") this went to a **user checkpoint before the pilot** rather than an author's judgment.
 
@@ -1892,7 +1892,7 @@ Three findings the checkpoint needs:
    homes counts as zero.
 
 ## [v0.33.0] Coordination marker — the deferred Layer-2 rewrite now starts from v5
-- `standing-seat-lifecycle`'s **D3** (`.mochiko/brainstorms/standing-seat-lifecycle/record.md`)
+- `standing-seat-lifecycle`'s **D3-transport-lifecycle-reframe** (`.mochiko/brainstorms/standing-seat-lifecycle/record.md`)
   is still unbuilt and still targets Layer 2's "Seats, not dispatches" paragraph. The v0.31.0
   marker below said to start from **v4**; it now starts from **v5**, where that paragraph is
   unchanged in wording but Layer 2 additionally carries **Seat transport**, and the
@@ -1903,17 +1903,17 @@ Three findings the checkpoint needs:
 ---
 
 ## [v0.31.0] "Independence by structure" re-carved — routing no longer carries independence for in-loop seats
-- **Ruling source:** `.mochiko/brainstorms/team-method-vs-command-shape/record.md` — **D1** (the in-loop mesh becomes Layer 2's default) and **D2** (mesh scope = in-loop traffic only; cold end-stage review restated as a property of the review *stage*). Shape v3 → v4.
+- **Ruling source:** `.mochiko/brainstorms/team-method-vs-command-shape/record.md` — **D1-mesh-routing-default** (the in-loop mesh becomes Layer 2's default) and **D2-in-loop-mesh** (mesh scope = in-loop traffic only; cold end-stage review restated as a property of the review *stage*). Shape v3 → v4.
 - **Disposition:** superseded → re-carved in place (Layer 2: "Independence by structure", plus the new "In-loop mesh — the default"). Two halves of the old sentence survive, restated: cold seats are still never in the room before their stage (now framed as a property of the stage, not of the traffic), and independence is still never carried by a persona's say-so.
 - **Tier failed:** n/a — a ruled doctrine reversal, not a minimalism strip. The claim was falsified by dogfood evidence: in the kinako MVP-H1 run the qa seat was independent *behaviorally* — re-ran every `**TEST:**` task, checked premises — while never routing through the lead (30 peer-to-peer messages vs 2 lead messages).
 - **Content (the removed clause, verbatim):** "…and producer↔validator traffic routes through the lead — who talks to whom is the independence guarantee, carried by the roster…"
 - **Consumers assessed:** all seven commands read this run — `implement` · `plan` · `tasks` · `specify` · `slice` · `setup` restate lead-routed in-loop producer↔validator traffic and are in the handed-off re-audit set; `brainstorm` has no conflicting clause (its only teammate-to-teammate surface is the cold convergence review, which D2 preserves). Keeper skills `authoring-commands` and `validation-command-shape` reference the shape without restating routing — unaffected. **`loop-discipline`** (the shape's Governed-by skill) — two lines assessed: **SKILL.md:72** (the hard round cap, "a deterministic ceiling counted by the supervisor") is **unaffected** — every round that consumes a cap follows a failure, and under the Clearing block failures return to the lead, so no round can open unseen (this holds because the peer-routable retry clause was removed at audit fix 1; it would not have held with it). **SKILL.md:56** ("The lead/referee owns the verdict") is **narrowly qualified** by D3 and **needs a companion revision** — its paragraph's core (never let the producer self-grade; a different agent, a different skill, graded from the artifact) is untouched and D3 preserves it, but read literally the sentence forbids the devolved clean branch. Raised, **not ruled here**: `loop-discipline` is a ≥3-consumer shared primitive, so per `authoring-commands` Job 3 step 3 it escalates to a scheduled all-consumer pass rather than being edited in this wave.
-- **Coordination — the next Layer-2 rewrite:** a marker so the deferred work finds this revision. `standing-seat-lifecycle`'s **D3** (`.mochiko/brainstorms/standing-seat-lifecycle/record.md`) is a still-unbuilt Layer-2 doctrine reframe targeting the **same surface at v4+**: it retires "continuity is what a standing seat buys" as written and re-splits Layer 2 into *team transport* (roster, messaging, independence-by-structure) versus *per-seat context lifecycle* (standing / stage-scoped / per-round recycled), retargeting the fresh-spawn anti-pattern line at transport only. **Sequencing decision (wave lead, 2026-07-30):** deliberately **not** combined into the D1–D3 mesh revision. Whoever builds it starts from **v4**, not v3 — the paragraph it rewrites ("Seats, not dispatches") now also carries the seat roster's peer-edge parameter, and "Independence by structure" is the re-carved text above, not the sentence its record quotes.
+- **Coordination — the next Layer-2 rewrite:** a marker so the deferred work finds this revision. `standing-seat-lifecycle`'s **D3-transport-lifecycle-reframe** (`.mochiko/brainstorms/standing-seat-lifecycle/record.md`) is a still-unbuilt Layer-2 doctrine reframe targeting the **same surface at v4+**: it retires "continuity is what a standing seat buys" as written and re-splits Layer 2 into *team transport* (roster, messaging, independence-by-structure) versus *per-seat context lifecycle* (standing / stage-scoped / per-round recycled), retargeting the fresh-spawn anti-pattern line at transport only. **Sequencing decision (wave lead, 2026-07-30):** deliberately **not** combined into the D1–D3 mesh revision. Whoever builds it starts from **v4**, not v3 — the paragraph it rewrites ("Seats, not dispatches") now also carries the seat roster's peer-edge parameter, and "Independence by structure" is the re-carved text above, not the sentence its record quotes.
 
 ## [v0.22.0] HTML comment header relocated (runtime-loaded provenance)
 - **Disposition:** relocated → here (D6c). The live kernel stayed in the visible body: the obligated-read consumption rule, the [PARAM] tagging meaning, the `<!-- shape-exception: why -->` marker, the two-layer conformance statement.
 - **Tier failed:** pure waste (map §5): Read-tool template loads do not strip HTML comments — the 1,373 B header cost context on every run of every command.
 - **Content (the relocated provenance, faithfully compressed):**
-  - **Design provenance:** the shape /mochiko:brainstorm and /mochiko:setup were built in; design `.mochiko/brainstorms/pattern-codification-and-minimalism/record.md` — D1 codifies the artifact shape, D3/D8 make this template the surface, fold S2 makes it the SOLE home. Commands and the keeper skills (authoring-commands, validation-command-shape) reference it; a shape revision is one edit here plus a re-audit of the conformant commands (the D1 churn constraint, carried structurally).
+  - **Design provenance:** the shape /mochiko:brainstorm and /mochiko:setup were built in; design `.mochiko/brainstorms/pattern-codification-and-minimalism/record.md` — D1-artifact-shape-codification codifies the artifact shape, D3-surface-keeper-vehicle/D8-author-agent-build make this template the surface, fold S2 makes it the SOLE home. Commands and the keeper skills (authoring-commands, validation-command-shape) reference it; a shape revision is one edit here plus a re-audit of the conformant commands (the D1-artifact-shape-codification churn constraint, carried structurally).
   - **Layering provenance:** two layers deliberately (fold S2 closed D2's layering thread) — Layer 1 form-agnostic core, Layer 2 team transport.
   - **S8 checkpoint history:** the home-revision checkpoint ran at the first one-shot→team-form conversion (specify, 2026-07-19) → shape v2: the artifact's uncertainty carrier became a [PARAM] (lead-penned records carry confidence marks; producer-authored artifacts carry their own assumption/open-question surface), the sized end-stage review's applicability was scoped (an in-loop independent critique satisfies validation via the Contract clause), and the ground rules (kernel-free · no git mutations) were homed here from the command footers.

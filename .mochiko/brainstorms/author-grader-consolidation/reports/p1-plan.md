@@ -15,12 +15,12 @@ scored 150489 · clusters 0 · suppressed 168.
 ### 1. Header
 
 `grammar: 1` · `id: 0008-gate-form` · `sequence: 8` · `intent:` one line ·
-`anchor: 2026-09-19 author-grader-consolidation D7` · `hash:` written by `migrate stamp`.
+"`anchor: 2026-09-19 author-grader-consolidation D7`" · `hash:` written by `migrate stamp`.
 
 ### 2. Change list, in order
 
 **C1 — `mint-rule` on `command-common/common`.** `id: common.gate-loop-bound`,
-`labels: [user-gate, independence]`, `anchor: 2026-09-19 author-grader-consolidation D6`. No
+`labels: [user-gate, independence]`, "`anchor: 2026-09-19 author-grader-consolidation D6`". No
 `class:`/`kind:`/`when:`/`enforces:` — the validator rejects any of those on a common block
 (`extends-class-local`; `validate.rs` around line 1790). Text, verbatim from the wave plan (the
 number lives here and nowhere else):
@@ -33,13 +33,13 @@ number lives here and nowhere else):
 
 **C2 — `mint-rule` on `command/setup`, section `setup.sec.boundaries`.**
 `id: setup.gate-loop-bound`, `class: floor`, `extends: common.gate-loop-bound`,
-`anchor: 2026-09-19 author-grader-consolidation D6`. No labels and no text — both inherit
+"`anchor: 2026-09-19 author-grader-consolidation D6`". No labels and no text — both inherit
 (`setup.transport-floor` is the shape; `setup.model-tiering` is the precedent for a stub carrying
 an anchor). `class:` is local by rule and must be declared.
 
 **C3 — `mint-rule` on `command/setup`, section `setup.sec.roles`.**
 `id: setup.validate-seat-form`, `labels: [independence, seats]`, `class: must`, `kind: binding`,
-`anchor: 2026-09-19 author-grader-consolidation D7`. Text:
+"`anchor: 2026-09-19 author-grader-consolidation D7`". Text:
 
 > The validate step's grader is a fresh seat that authored no surface, running
 > `mochiko:validation-constitution` with its floors unchanged, spawned with an explicit `model:`
@@ -49,7 +49,7 @@ an anchor). `class:` is local by rule and must be declared.
 **C4 — `mint-rule` on `skill/patterns-model-tiering`, section
 `patterns-model-tiering.sec.discipline`.** `id: patterns-model-tiering.persona-less-grader-pin`,
 `labels: [boundary]`, `class: floor`, `kind: bound`,
-`anchor: 2026-09-19 author-grader-consolidation D7`. Text, reworded off the wave plan's draft to
+"`anchor: 2026-09-19 author-grader-consolidation D7`". Text, reworded off the wave plan's draft to
 break the shingle overlap with `patterns-model-tiering.override-is-the-pin` (risk R3):
 
 > A persona-less grader or reviewer spawn carries an explicit `model:` alias, never omitted — the

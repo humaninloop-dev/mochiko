@@ -291,7 +291,7 @@ fn is_markdown(path: &Path) -> bool {
 /// A write into the run folder refused by its layout controls, or `None` when both hold.
 ///
 /// Both read the repository, not the body: the worktree's `.git` pointer (V3) and the main
-/// tree's `.gitignore` (control 3) — the two reads GI-019's "What the gate reads" names for this.
+/// tree's `.gitignore` (control 3) — the two reads GI-019-kernel-tooling-admission's "What the gate reads" names for this.
 fn run_folder_refusal(
     homes: &Homes,
     raw_home: &home::Home,

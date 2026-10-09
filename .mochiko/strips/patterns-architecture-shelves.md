@@ -8,7 +8,7 @@ before this, so the conversion entry is the file's first).
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the patterns family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -20,7 +20,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -54,7 +54,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -65,7 +65,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -75,7 +75,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 
 ## [v0.102.0] Schema conversion — ruled shelf machinery relocated, census-row → minted-ID map (skill-content-schema wave 2B, patterns family)
 
-- **Disposition:** relocated → `plugins/mochiko/skills/patterns-architecture-shelves/schema.yaml` (skill-content-schema D3, the three-home boundary). Per the census R-c idiom the body is birth-by-ruling, **not wholesale-protected** (no KEPT line exists); each move below is recorded here citing the birth row, and the DECISIONS-traceable core rules inherit protected status through the provenance sidecar (D8/C4).
+- **Disposition:** relocated → `plugins/mochiko/skills/patterns-architecture-shelves/schema.yaml` (skill-content-schema D3-obligations-only-schema, the three-home boundary). Per the census R-c idiom the body is birth-by-ruling, **not wholesale-protected** (no KEPT line exists); each move below is recorded here citing the birth row, and the DECISIONS-traceable core rules inherit protected status through the provenance sidecar (D8/C4).
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows: Skill-content schema ruled · Skill-schema wave-2 family doors ruled — the patterns-family door; birth/protecting ruling `DECISIONS.md` 2026-08-19 product-architecture-schema — shelves dealt recommend-then-arbitrate under three-strata floor precedence. Census: `.mochiko/brainstorms/skill-content-schema/research/census-patterns.md` §A (AS) + §B (AS row inventory)).
 
 **Census-row → minted-ID map.** Minted IDs carry the `patterns-architecture-shelves.` prefix
@@ -97,7 +97,7 @@ owner-pointer) `na-reason-axis` · 13 (`not-now` upgrade trigger) `not-now-carri
 revisit-firing rule, lead-confirmed over an empty marker} · scope {2, 3, 4, 16} · discipline
 {8, 9, 10, 14} · inputs {1, 7} · disclosure {6, 11, 12, 13} · reserved {5, 15}. No
 `conditions:` block — census §B: none obvious, none forced; the load-first block legally
-omits the `when:`-grammar sentence (wave-1 RCM-4 wave-wide ruling).
+omits the `when:`-grammar sentence (wave-1 RCM-4-test-gate-carveout wave-wide ruling).
 
 **Pointer disclosures.** `opinions-in-data` carries
 `pointer: ../../schemas/architecture-shelf-backend.yaml` — the census J-P8 schemas-home data

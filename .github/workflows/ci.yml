@@ -1,4 +1,4 @@
-# mochiko CI — the repo's first executable gate (M6 → GI-012).
+# mochiko CI — the repo's first executable gate (M6 → GI-012-release-gates-module).
 # Scope: the Rust crate, the migration log it replays, and the derived views it emits. No schema
 # file ships from wave 6, so the old `plugins/mochiko/schemas/**` filter names nothing; the views
 # at `.mochiko/schema-views/**` are what the view ≡ replay test compares against, so a hand edit
@@ -69,7 +69,7 @@ jobs:
         # only fails on vulnerability advisories.
         run: cargo audit --deny warnings
 
-      # GI-003: secrets stay out of the repo. Plain grep over tracked files for high-signal
+      # GI-003-repo-secret-hygiene: secrets stay out of the repo. Plain grep over tracked files for high-signal
       # secret token formats — no third-party scanner action. This workflow file is excluded so
       # its own pattern definitions cannot self-match.
       - name: Secret scan
@@ -77,7 +77,7 @@ jobs:
           set -euo pipefail
           pattern='AKIA[0-9A-Z]{16}|-----BEGIN [A-Z ]*PRIVATE KEY-----|ghp_[A-Za-z0-9]{36}|github_pat_[A-Za-z0-9_]{22,}|xox[baprs]-[A-Za-z0-9-]{10,}|AIza[0-9A-Za-z_-]{35}'
           if git grep -EnI "$pattern" -- ':(exclude).github/workflows/ci.yml'; then
-            echo '::error::potential secret detected in tracked files (GI-003)'
+            echo '::error::potential secret detected in tracked files (GI-003-repo-secret-hygiene)'
             exit 1
           fi
           echo 'secret scan clean'

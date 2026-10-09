@@ -243,6 +243,10 @@ sections:
           The three-state verdict — `ready` / `needs-revision` / `critical-gaps` — maps from
           the issue counts per the Verdict Criteria of references/ISSUE-TEMPLATES.md.
         pointer: references/ISSUE-TEMPLATES.md
+      - id: review-plan-artifacts.joined-ids
+        class: must
+        extends: review-common.joined-ids
+        anchor: 2026-10-08 human-readable-ids D6
   - id: review-plan-artifacts.sec.output
     title: Output — report contracts
     intent: Where the grade lands and the shapes it lands in.

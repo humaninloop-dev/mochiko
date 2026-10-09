@@ -473,6 +473,19 @@
   ]
  },
  {
+  "id": "review-plan-artifacts.joined-ids",
+  "rule": "Hold every durable ID the artifact mints or cites to the IDs section of `templates/artifact-format.md`: a new mint is joined, its three slug words naming the topic — never a strength word, a removal ruling's direction word kept; a citation carries its definition's slug, or stays bare where the definition is bare; match on the number within its scope. A bare new mint, a drifted slug, or a slug that misreads its topic is a finding.",
+  "class": "must",
+  "source": "log:review-plan-artifacts.joined-ids",
+  "section": "review-plan-artifacts.sec.verdict",
+  "pointer": "../../templates/artifact-format.md",
+  "labels": [
+   "verdict",
+   "artifact-grammar"
+  ],
+  "mapped_from": []
+ },
+ {
   "id": "review-plan-artifacts.issue-templates",
   "rule": "Issues are classified and shaped per references/ISSUE-TEMPLATES.md.",
   "class": "must",

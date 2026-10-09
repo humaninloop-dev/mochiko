@@ -968,7 +968,7 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
         // block is not a rule, so it does not enter this scan; the +2 here is `setup`'s two
         // mints, `setup.gate-loop-bound` and `setup.validate-seat-form`. The suppressed count
         // holds at 60 because all three allowlist rows `0008` added are skill-side.
-        // Re-measured after `0009-plan-qa-leg` (2026-09-03 producer-plan-enforcement D8): the
+        // Re-measured after `0009-plan-qa-leg` ("2026-09-03 producer-plan-enforcement D8"): the
         // scan and the pair count are unmoved, because `0009` mints no command rule — every
         // command-side op it carries is a `reword-rule`. The suppressed count *falls*, 60 to 56,
         // and that direction is the point. An allowlisted edge is suppressed only while its two
@@ -1019,7 +1019,14 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
         // three keep-distinct rows `0044` added to the allowlist, all three edges between its own
         // `brainstorm` rules; no reword in the wave moves an allowlisted pair. SUPPRESSED zero
         // unchanged.
-        (360, 15_402, 0, 57),
+        // Re-measured after the 2026-10-08 human-readable-ids wave 2 (`0046`–`0050`):
+        // `0049` mints `arch.grader-checks-joined-ids` and `feat.grader-checks-joined-ids`, two
+        // command rules that declare no kind and join `constraint`, 155 → 157 (+155 +156) —
+        // moving the scan 360 to 362 and the pair count 15,402 to 15,713, the whole of the move.
+        // The rewords of `0047` and `0048` — `0048`'s on `impl.baseline-diff-review` — move no
+        // allowlisted pair, so the suppressed count holds at 57.
+        // SUPPRESSED zero unchanged.
+        (362, 15_713, 0, 57),
         "rules scanned · in-kind pairs scored · clusters · allowlist-suppressed edges"
     );
 }
@@ -1070,7 +1077,7 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // `binding`, `latitude`, `bound` and `duty` buckets, so the pairs lost from the big bucket
     // outnumber the pairs gained in the small ones. No new cluster surfaced and the suppressed
     // set is unchanged — the allowlist was not touched.
-    // Re-measured after `0008` (the gate form, 2026-09-19 author-grader-consolidation D7): the
+    // Re-measured after `0008` (the gate form, "2026-09-19 author-grader-consolidation D7"): the
     // scan moves from 1,043 to 1,067 — two command rules on `setup` and twenty-two skill rules,
     // twenty-one of them the imported `validation-primitive-edit` document. `scored` *rises* here
     // where `0007`'s fell, and the mechanism is the same in both directions: pairs are scored
@@ -1089,7 +1096,7 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // adjudication between two local texts with different read boundaries. Drop or reword any of
     // those three rows and this assertion fails looking like a detector regression when it is an
     // allowlist edit.
-    // Re-measured after `0009-plan-qa-leg` (2026-09-03 producer-plan-enforcement D8): the scan
+    // Re-measured after `0009-plan-qa-leg` ("2026-09-03 producer-plan-enforcement D8"): the scan
     // moves 1,067 to 1,082 on the fifteen rules of the imported `review-seat-plan` document, and
     // `scored` rises with it since `0009` retires nothing. `suppressed_hits` moves 171 to 170 —
     // it does not simply gain P1's four new rows, because the same reword mechanism described in
@@ -1157,8 +1164,16 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // allowlist the corpus reports 78 clusters over 185 edges (77 over 182 before the wave), and
     // the repository allowlist leaves none unsuppressed, both read from a raw-versus-pinned pair
     // of `migrate validate --report` runs over one state.
-    assert_eq!(report.scanned, 1168, "rules scanned");
-    assert_eq!(report.scored, 188_198, "in-kind pairs scored");
+    // Re-measured after the 2026-10-08 human-readable-ids wave 2 (`0046`–`0050`): seven rules
+    // minted and none retired move the scan 1,168 to 1,175 and the pair count 188,198 to
+    // 192,052. All seven declare no kind and join `constraint`, 549 → 556 — 7 × 549 + 21 = 3,864
+    // pairs, less the ten pairs among `0049`'s five stubs over the one `review-common.joined-ids`
+    // block, which the detector skips: +3,854, the whole of the move. `suppressed_hits` holds at
+    // 185: no mint raises an edge and no reword moves an allowlisted pair. SUPPRESSED zero: with
+    // an empty allowlist the corpus still reports 78 clusters over 185 edges, read from a
+    // raw-versus-pinned pair of `migrate validate --report` runs over one state.
+    assert_eq!(report.scanned, 1175, "rules scanned");
+    assert_eq!(report.scored, 192_052, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
     assert_eq!(report.suppressed_hits, 185, "allowlist-suppressed edges");
 }

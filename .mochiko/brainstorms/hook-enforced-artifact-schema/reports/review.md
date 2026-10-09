@@ -11,7 +11,7 @@ graded: .mochiko/brainstorms/hook-enforced-artifact-schema/record.md (frozen 202
 dispatch: blind-map two-message; map sent before record contact, fence held (no read of the session dir or the brainstorms index before message 2)
 status: critical-gaps
 tally: {raised: 30, survived: 25, critical: 5, important: 12, minor: 8}
-strengths: F10/F13 are real field evidence with the drift class named, not asserted; D7 routes the supersession through an amend run instead of landing a carve in a script; D4 draws the mechanical/judgment line explicitly against GI-019; D6 refuses to derive budgets from observed sizes; D8 carries an abort criterion and absorbs the backlog's owed channel probe; F8 marks its own inferences unverified; the adoption streak is disclosed, not hidden.
+strengths: F10/F13 are real field evidence with the drift class named, not asserted; D7 routes the supersession through an amend run instead of landing a carve in a script; D4 draws the mechanical/judgment line explicitly against GI-019-kernel-tooling-admission; D6 refuses to derive budgets from observed sizes; D8 carries an abort criterion and absorbs the backlog's owed channel probe; F8 marks its own inferences unverified; the adoption streak is disclosed, not hidden.
 ---
 
 ## Failure narrative
@@ -41,7 +41,7 @@ what any deny can guarantee in a consumer repo.
 
 Confirmed as claimed: F1 (hooks.json, three registrations), F2 (`cli-schema-delivery`
 record.md:579 "if ever wanted it takes its own ruling from zero"; D7(c) maintainer-side
-PostToolUse at :571), F3 (GI-019 wording), F4 (eight templates, no `check`/`validate`
+PostToolUse at :571), F3 (GI-019-kernel-tooling-admission wording), F4 (eight templates, no `check`/`validate`
 subcommand), F6 (eval-v2 F12, probe 2026-09-05), F9 (four `paths:`-scoped rules files; no
 machine path check anywhere), F10's EPIC-002 file set, the `## EPIC-002 cycles — 2026-09-10`
 append, the `C2-n` card ids (144 occurrences), the missing `## Header` / `## Cycle Cards`,
@@ -75,7 +75,7 @@ aims at the right moment.
 16. Hooks merge across settings levels; a consumer can disable them.
 17. mochiko's ratified posture is fail-open, absence-or-skew only, 5-s timeout (D7).
 18. `.claude/rules/mochiko/rust-cli.md` forbids hooks blocking on behavior.
-19. `producer-plan-enforcement` D1 already declined behavior gating.
+19. `producer-plan-enforcement` D1-detection-review-enforcement already declined behavior gating.
 20. Which output channel carries the finding: `additionalContext` / `systemMessage` / exit-2 stderr.
 21. Non-blocking hook failure is near-silent; a timeout discards output.
 22. Timeout budget against a per-write replay.
@@ -84,7 +84,7 @@ aims at the right moment.
 
 ### C. CLI-side design
 25. No validating verb exists; `migrate validate` validates the log, not an artifact.
-26. GI-019: grading a produced file is the nearest approach yet to the bright line.
+26. GI-019-kernel-tooling-admission: grading a produced file is the nearest approach yet to the bright line.
 27. The mechanical/judgment split drawn explicitly.
 28. Where location truth is minted — a registry in the log, named.
 29. Variable path segments (`<feature>`, `FEAT-XXX`, dated desks).
@@ -103,8 +103,8 @@ aims at the right moment.
 40. One delivered precedence rule: the render outranks any on-disk file.
 
 ### E. Governance interactions
-41. GI-020: a new subcommand raises the required-binary floor and forces a coordinated bump.
-42. GI-012: crate tests, contract cases, view-equals-replay, unchanged render shape.
+41. GI-020-plugin-install-model: a new subcommand raises the required-binary floor and forces a coordinated bump.
+42. GI-012-release-gates-module: crate tests, contract cases, view-equals-replay, unchanged render shape.
 43. Primitive-edits ceremony scope and the edit count committed to.
 44. Path-scoped rules inject on Read, not Write — never fire for a first write.
 45. Consumer reach: the plugin's hooks are the only channel that arrives with the plugin.
@@ -690,7 +690,7 @@ context. No new angles.
   PowerShell hook input section explains why matching `Bash` alone is not enough." D1(c) matches
   `Write|Edit|Bash`, so on Windows the write-time gate has the hole C5 was raised to close.
   **Repair:** restore the clause as a pinned quote, and either extend the matcher to
-  `Write|Edit|Bash|PowerShell` or record the Windows carve explicitly against GI-020's supported
+  `Write|Edit|Bash|PowerShell` or record the Windows carve explicitly against GI-020-plugin-install-model's supported
   set (Windows with Git Bash is supported; PowerShell-only is not, which does not by itself
   remove the PowerShell tool from a supported session).
 - **V7 — held.** `FileChanged` sits in D1's rejected roads with both reasons, post-write by

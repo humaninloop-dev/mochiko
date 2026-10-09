@@ -8,7 +8,7 @@ deeply under-band — whole-skill survivor ruling below.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the review family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -26,6 +26,13 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/review-feasibility/refer
 row). The three entries below edit lines under the v0.26.0 KEPT whole-body lineage and leave only
 as supersession-by-ruling. Pre-edit verbatim text:
 `git show 5558fd7:plugins/mochiko/skills/review-feasibility/references/FEASIBILITY-LENS.md`. -->
+
+## [v0.118.0] FEASIBILITY-LENS worked examples joined; the `at` and cite forms behind `product`
+
+- **Disposition:** superseded → each worked-example definition joined (`C-002-on-premises-only-hosting`, `D-004-hosted-vector-database`, `NFR-003-global-p95-latency`, `C-005-single-region-deployment`, `FR-009-mobile-push-notifications`, `C-007-polling-only-connections`, `D-001-postgres-only-datastore`, `D-006-elasticsearch-text-search`, `NFR-002-list-endpoint-latency`, `C-004-no-new-infrastructure`, `NFR-004-request-path-latency`, `C-006-no-managed-infrastructure`, `AX-001-identity-auth-boundary — Identity & auth`); the example "`GI-007`" → `GI-031-hexagonal-layer-boundaries`; the `at` form and the cite form read `` `product` C-XXX-<slug> `` ↔ `` `product` D-XXX-<slug> ``, matching `review-feasibility.findings-cite-ids` (0047).
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; D11 (S4) for the owner; the collision guard of W2-prose's approved plan: "`GI-007`" is a decided ID in this repo, so an example using it would read as a citation of it)
+- **Content (superseded):** the bare worked-example IDs at lines 14, 26, 38, 50, 62, 74, 113, 125, 135 and 137 (e.g. "`C-002: the system MUST run fully on-premises…`", "`respects BE-HEX layering per GI-007`", "`AX-001 Identity & auth` reads `decided`"), the `at` form "always "C-XXX requires X, D-XXX requires not-X."" and the cite form "(`C-XXX` ↔ `D-XXX`)". Pre-edit file: `git show bf410cc:plugins/mochiko/skills/review-feasibility/references/FEASIBILITY-LENS.md`.
+- **Kept deliberately:** the seam and evidence lines (family names); line 84's "C4 level-3" (a C4 model level, not an ID).
 
 ## [v0.116.0] FEASIBILITY-LENS "What this lens is NOT" — "keyed to this feature" re-keyed to the run's owner
 
@@ -71,7 +78,7 @@ as supersession-by-ruling. Pre-edit verbatim text:
 
 - **Disposition:** superseded → "a floor- or NFR-derived obligation is never excess"
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D1, D6; `DECISIONS.md` 2026-09-24)
+  D1-profile-leaves-setup, D6-cut-ships-first; `DECISIONS.md` 2026-09-24)
 - **Content:** verbatim — "a floor-, compliance-module-, or NFR-derived obligation is never excess"
 - **Kept deliberately:** the calibration bar (the cheaper alternative or the specific bar breached)
   and the floor and NFR exemptions.
@@ -83,7 +90,7 @@ as supersession-by-ruling. Pre-edit verbatim text:
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -128,7 +135,7 @@ as supersession-by-ruling. Pre-edit verbatim text:
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -139,7 +146,7 @@ as supersession-by-ruling. Pre-edit verbatim text:
   likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -149,16 +156,16 @@ as supersession-by-ruling. Pre-edit verbatim text:
 
 ## [v0.100.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave)
 
-Ruling for every entry below: skill-content-schema D3 (three-home boundary) / D8/C4
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (three-home boundary) / D8/C4
 (protected transfers + the explicit review-feasibility whole-body clause), `DECISIONS.md`
 2026-09-01 row; census: `.mochiko/brainstorms/skill-content-schema/research/census.md` §B (RF).
 Schema home: `plugins/mochiko/skills/review-feasibility/schema.yaml`. Minted IDs carry the
 `review-feasibility.` prefix (omitted below). Map — census row → minted ID:
 1 `sibling-split` · 2 `author-grader` (C3 stub) · 3 `lens-load-first` (also sequenced in
-the SKILL.md load-first block per D6/J-3) · 4 `default-fail` (C2 stub, `${verdict}` =
+the SKILL.md load-first block per D6/J-3-obligated-reference-read) · 4 `default-fail` (C2 stub, `${verdict}` =
 `feasible`) · 5 `hunt-coverage-disclosure` · 6 `infeasible-never-flattens` ·
 7 `governance-two-exits` · 8 `evidence-floor` (C1 stub) · 9 `report-template-binding` ·
-10 `findings-cite-ids` · 11 `external-claims-binding` (cross-dir pointer, census J-7) ·
+10 `findings-cite-ids` · 11 `external-claims-binding` (cross-dir pointer, census J-7-cross-directory-pointers) ·
 12a `verdict-is-input` (C4 stub) + 12b `design-phase-only` (lettered split) ·
 13 `verdict-vocabulary` · reference stubs (lens file untouched, stub points):
 14 `skipped-lens-not-clean` · 15 `seam-is-elements` · 16 `single-artifact-routing` ·
@@ -177,13 +184,13 @@ scaffolding, reading grammar — the +294 body delta is the load-first Rules blo
 not content) — no content growth claimed.
 
 ## [v0.100.0] Whole-body survivor protection re-homes onto the pair (D8/C4 explicit clause)
-- **Disposition:** superseded — the v0.26.0 whole-body survivor ruling (already ended as a body-residency claim at v0.82.0) re-homes onto the PAIR: `SKILL.md` body + `schema.yaml` jointly, recorded once here per skill-content-schema D8/C4's explicit review-feasibility clause; no per-line ambiguity survives. Every named core's home after conversion: floors and bindings in `schema.yaml` (rules mapped above), sequencing and hunt framing in the body, class/pass/guardrail procedure in `references/FEASIBILITY-LENS.md` (untouched).
+- **Disposition:** superseded — the v0.26.0 whole-body survivor ruling (already ended as a body-residency claim at v0.82.0) re-homes onto the PAIR: `SKILL.md` body + `schema.yaml` jointly, recorded once here per skill-content-schema D8-skill-governance-envelope/C4's explicit review-feasibility clause; no per-line ambiguity survives. Every named core's home after conversion: floors and bindings in `schema.yaml` (rules mapped above), sequencing and hunt framing in the body, class/pass/guardrail procedure in `references/FEASIBILITY-LENS.md` (untouched).
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema row).
 - **Content:** the v0.26.0 "KEPT: the entire remaining body" ruling as a protection claim — see the [v0.26.0] and [v0.82.0] entries below for its lineage.
 - **Kept deliberately:** `description:` byte-untouched; all `references/` and `templates/` targets untouched.
-- **Consumers assessed:** GI-005/GI-006 hold — every protected line traceable through this ledger to its new home, reconstructible in both directions.
+- **Consumers assessed:** GI-005-record-layer-integrity/GI-006-primitive-edit-traceability hold — every protected line traceable through this ledger to its new home, reconstructible in both directions.
 
-## [v0.100.0] Never-silently-approved floor — protection transfers (census RF-7; AD-D7 protected)
+## [v0.100.0] Never-silently-approved floor — protection transfers (census RF-7; `architecture-design-primitive` D7-dedicated-architect-persona protected)
 - **Disposition:** superseded — protection transfers to schema rule `review-feasibility.governance-two-exits` (class: floor), per D8/C4; provenance sidecar carries the protected status.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
 - **Content:** "**Governance is never silently approved** — two exits only: redesign to conform, or a user-ruled amendment/waiver via `governance-ledger.md`."
@@ -213,7 +220,7 @@ not content) — no content growth claimed.
 - **Content:** lens: "the seam is between two *elements*, never merely between two files"
 - **Consumers assessed:** none restate it (v0.81.0 entry's grep stands).
 
-## [v0.100.0] Architecture-pass gate + boundary watch — protection transfers to reference stubs (census RF-21/RF-22; AD-D7 protected)
+## [v0.100.0] Architecture-pass gate + boundary watch — protection transfers to reference stubs (census RF-21/RF-22; `architecture-design-primitive` D7-dedicated-architect-persona protected)
 - **Disposition:** superseded — protection transfers to `review-feasibility.architecture-pass-gate` (`when: {store_delta: present}` — the surface-presence guard now declared, criterion-11 MOVE) and `review-feasibility.governance-conformance-only`, per D8/C4; lens A1–A3 untouched as the procedure home.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
 - **Content:** lens: "Fires when the design-phase package carries a **store delta**" · "you grade the *topology's conformance* to governance (a **design-phase artifact** against an input), never whether the governance itself is well-formed"
@@ -229,8 +236,8 @@ not content) — no content growth claimed.
 - **Tier failed:** n/a — supersession by ruling (D3/D5; `DECISIONS.md` 2026-09-01 row).
 - **Content:** "Never author or fix what you grade."
 
-## [v0.100.0] Lens load duty relocated (census RF-3; J-3 sequencing)
-- **Disposition:** relocated → schema.yaml `review-feasibility.lens-load-first`; the SKILL.md load-first block sequences schema + common + lens in one declared first action per D6 as amended and census J-3.
+## [v0.100.0] Lens load duty relocated (census RF-3; J-3-obligated-reference-read sequencing)
+- **Disposition:** relocated → schema.yaml `review-feasibility.lens-load-first`; the SKILL.md load-first block sequences schema + common + lens in one declared first action per D6 as amended and census J-3-obligated-reference-read.
 - **Tier failed:** n/a — supersession by ruling (D3/D6; `DECISIONS.md` 2026-09-01 row).
 - **Content:** "**Load [references/FEASIBILITY-LENS.md](references/FEASIBILITY-LENS.md) before hunting** — classes 1–6, class 7 (excess / wrong altitude, remove-shaped, blocking-capable), the architecture pass A1–A3 (mandatory on a drafted store delta), worked examples, the sibling boundary, and the reviewer guardrails."
 
@@ -250,7 +257,7 @@ not content) — no content growth claimed.
 - **Content:** "**Findings cite the IDs in tension** (`C-003 ↔ D-007`) with the four gate-fuel fields"
 
 ## [v0.100.0] External-premises binding relocated (census RF-11)
-- **Disposition:** relocated → schema.yaml `review-feasibility.external-claims-binding` (cross-directory pointer `../review-brainstorm/references/EXTERNAL-CLAIMS.md`, legal per census J-7)
+- **Disposition:** relocated → schema.yaml `review-feasibility.external-claims-binding` (cross-directory pointer `../review-brainstorm/references/EXTERNAL-CLAIMS.md`, legal per census J-7-cross-directory-pointers)
 - **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
 - **Content:** "external premises verify per `../review-brainstorm/references/EXTERNAL-CLAIMS.md`."
 - **Consumers assessed:** the shared reference file untouched; its Single-source header governs.
@@ -269,7 +276,7 @@ not content) — no content growth claimed.
 
 - **Disposition:** superseded → "(a **design-phase artifact** against an input)".
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D5). Raised as **V2 N4** on the
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D5-evidence-honesty-falsifier). Raised as **V2 N4** on the
   audit's **untruncated** re-sweep — a round-1 truncation miss on the auditor's side, not a
   regression introduced here: the phrase sits deep in `FEASIBILITY-LENS.md` past the point the
   first pass read.
@@ -295,7 +302,7 @@ not content) — no content growth claimed.
 - **Disposition:** superseded → hunt class 3's seam is now requirements (FR-XXX / SC-XXX) ↔
   constraints, with a re-keyed worked example; two plan-run phrases re-keyed to the design phase.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D3 (the TR-XXX layer retires) and D5
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D3-requirements-layer-dies (the TR-XXX layer retires) and D5
   (this grader re-scopes to the design-phase output)). Reference-file scope was opened by the
   wave lead's extension ruling of 2026-08-26.
 - **Content (superseded fragments, verbatim — three sites):**
@@ -329,7 +336,7 @@ not content) — no content growth claimed.
 - **Disposition:** superseded → the same description grading design-phase analysis/design
   artifacts, as the adversarial half of the design-phase review pair.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D5: "`review-plan-artifacts` and
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D5-evidence-honesty-falsifier: "`review-plan-artifacts` and
   `review-feasibility` re-scope at build time to grade the design-phase output and the
   sufficiency check's own honesty").
 - **Content (superseded fragments, verbatim — three phrases in one field):**
@@ -352,7 +359,7 @@ not content) — no content growth claimed.
 
 - **Disposition:** superseded → the same G1 floor scoping the reviewer to design-phase artifacts.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D5).
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D5-evidence-honesty-falsifier).
 - **Content (superseded text, verbatim):**
 
   ```
@@ -397,7 +404,7 @@ not content) — no content growth claimed.
     interrogatory round, the adopt-first limb with its `patterns-adopt-first` pointer.
   - *External premises* — compressed into a body floor bullet; the
     `EXTERNAL-CLAIMS.md` binding survives by path.
-  - *Architecture pass (AD-D7 PROTECTED)* — body restatement deleted; the pass survives
+  - *Architecture pass (`architecture-design-primitive` D7-dedicated-architect-persona PROTECTED)* — body restatement deleted; the pass survives
     whole in lens sections A1–A3 (which already carried the full text), renumbered from
     7/8/9 to clear the class-7 numbering collision; the group-B conformance surface (layer
     rules · dependency allowlist · GI-linked principles · floor-asserted obligations) maps to
@@ -433,7 +440,7 @@ not content) — no content growth claimed.
     six-class content and boundary content in the lens, the `infeasible`-never-flattened and
     never-default-`feasible` floors in the body, the Mistakes/Rationalizations failure modes
     in the lens guardrails.
-  - **AD-D7 architecture pass** (`DECISIONS.md` 2026-07-30) — verified fully present after
+  - **`architecture-design-primitive` D7-dedicated-architect-persona architecture pass** (`DECISIONS.md` 2026-07-30) — verified fully present after
     the edit: lens A1–A3 carry topology feasibility, governance conformance, the
     floor-asserted limb, and the two-exit routing; the body carries the
     never-silently-approved floor.
@@ -463,7 +470,7 @@ not content) — no content growth claimed.
   The `description:` re-key travels with it because the pass's trigger is a model-invocation
   routing condition.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3 · D10 (sign-off is the write
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3-store-replaces-artifact · D10-plan-time-contract (sign-off is the write
   gate, so the pass grades a draft) · D12 (`nfrs.md` absorbed — NFR targets ride concern rows) ·
   D14 (floor precedence); `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim — five fragments):**
@@ -525,7 +532,7 @@ not content) — no content growth claimed.
   reading of "feasibility lives between two artifacts" would have disqualified the NFR↔topology
   lens the same ruling keeps. The rule now keys on elements.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12 — the absorb whose stated
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12-store-absorbs-nfrs — the absorb whose stated
   consequence is "`review-feasibility` NFR↔topology lens (simpler after — both sides one
   artifact)"; `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim — the bullet's closing sentence):**
@@ -542,12 +549,12 @@ not content) — no content growth claimed.
 
 ## [v0.67.0] Class 7 (unjustified structure / wrong altitude) added — section scope + verdict cells re-keyed
 - **Disposition:** superseded → the excess/altitude posture from the architect-role ruling: the hunt gains a seventh, **remove-shaped** class, so the "contradictions only" section scope and the contradiction-scoped verdict cells no longer hold and were rewritten to admit class-7 findings.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`, D3 as amended by its F3 calibration clause; DECISIONS.md combined-wave build row [architect-role-pushback-and-abstraction + plan-structure-yagni]).
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`, D3-library-pushback-posture as amended by its F3 calibration clause; DECISIONS.md combined-wave build row [architect-role-pushback-and-abstraction + plan-structure-yagni]).
 - **Content (superseded lines, verbatim):**
   - Section scope — OLD: "Cross-artifact contradictions / impossibilities / buildability only. Each class is a *lens* onto a seam between artifacts where an impossibility hides — not a checkbox. Hunting heuristics and worked examples for each are in [references/FEASIBILITY-LENS.md](references/FEASIBILITY-LENS.md)." → NEW scopes classes 1–6 to contradiction/impossibility/buildability, names class 7 as the one remove-shaped class whose rules sit under the table, and re-scopes the lens-reference pointer to "classes 1–6".
   - Verdict `feasible` when-cell — OLD: "every lens hunted, zero cross-artifact contradictions" → NEW: "every lens hunted, zero cross-artifact contradictions, no surviving class-7 finding".
   - Verdict `needs-revision` when-cell — OLD: "≥1 contradiction, all **resolvable**" → NEW: "≥1 contradiction or class-7 finding, all **resolvable**".
-- **Kept deliberately:** the six cross-artifact contradiction classes (rows 1–6) untouched; the "six classes"/"six lenses" phrasing at the architecture-pass line, Core-Process Step 2, and `references/FEASIBILITY-LENS.md` all left literally true — class 7 is the seventh, single-artifact, non-lens class (non-renumber design, user-approved Q6); the `infeasible` verdict row unchanged (class 7 is never alone `infeasible`); the entire architecture pass (AD-D7 protected) untouched. Pure additions riding the decision row (no strip): the class-7 table row; the class-7 rules paragraph (necessity rung-1 pointer to `mochiko:patterns-plan-minimalism`, altitude test, calibration clause, interrogatory round); the heading "+ class 7 (excess / altitude)" append; the Step-2 class-7 hunt clause; the description "plus unjustified structure / wrong altitude" append.
+- **Kept deliberately:** the six cross-artifact contradiction classes (rows 1–6) untouched; the "six classes"/"six lenses" phrasing at the architecture-pass line, Core-Process Step 2, and `references/FEASIBILITY-LENS.md` all left literally true — class 7 is the seventh, single-artifact, non-lens class (non-renumber design, user-approved Q6); the `infeasible` verdict row unchanged (class 7 is never alone `infeasible`); the entire architecture pass (`architecture-design-primitive` D7-dedicated-architect-persona protected) untouched. Pure additions riding the decision row (no strip): the class-7 table row; the class-7 rules paragraph (necessity rung-1 pointer to `mochiko:patterns-plan-minimalism`, altitude test, calibration clause, interrogatory round); the heading "+ class 7 (excess / altitude)" append; the Step-2 class-7 hunt clause; the description "plus unjustified structure / wrong altitude" append.
 - **Consumers assessed:** commands — plan orchestrates by dispatch, no class-count reference (grep clean). Sibling `review-plan-artifacts` references this skill by name in its boundary — unchanged; class 7 is an independent hunt, not the sibling's rung-honesty disclosure (architect-role consistency note 7). The new tech-lead persona (cluster-agents) declares this skill; the persona-agnostic body is unaffected (no principal-architect reference existed to re-key — grep clean).
 
 ## [v0.64.0] Guardrails Wave 2 — body deletions (When to Use, Steps 1 & 6) + slim description + review-evidence floor line
@@ -560,10 +567,10 @@ not content) — no content growth claimed.
   - **Old description (verbatim):** "This skill MUST be invoked to grade plan analysis and design artifacts for cross-artifact FEASIBILITY — adversarially hunting contradictions, impossibilities, and buildability conflicts that no single artifact reveals in isolation: constraint-decision conflicts, NFR-constraint impossibilities, requirement-constraint contradictions, decision-decision conflicts, NFR-design feasibility, and constraint-design buildability — plus, when `architecture.md` is in scope, the architecture pass: topology feasibility (NFR↔topology, constraint↔topology) and governance conformance (layer rules, dependency allowlist, GI-linked principles) routed to amendment/waiver, never silently passed — emitting a 3-state `feasible / needs-revision / infeasible` verdict with per-issue evidence, impact, and suggested resolution. SHOULD also invoke whenever a producer's analysis or design artifacts (requirements, constraints-and-decisions, NFRs, architecture, data-model, contracts) need an independent buildability review, or when re-reviewing after a structural revision (new or changed constraints, expanded requirement scope, modified NFR targets). The feasibility reviewer's driver — the adversarial-critique half of the cross-artifact review pair: its sibling grades coverage / measurability / consistency / presence, this skill grades contradiction / impossibility / buildability. Never defaults to `feasible`; grades a different agent's artifacts, never the author's own; operates over plan artifacts, NOT the constitution."
   - Verbatim homes for the removed body + description text: git history of this SKILL.md (pre-v0.64.0); archive branch `worktree-brainstorm-validator-scope`.
 - **Floor line added (pure addition, cross-cutting finding 1 / F-X1 mitigation):** "The independent review leaves its verdict and per-finding dispositions in the reviewed artifacts themselves — review evidence that lives only in conversation is a floor violation." Placed in `## Independence (stated by role)`, as a new bullet after the "grade artifacts authored by a different agent … never review your own authoring" bullet. Rides the same decision row. Note: this restores and strengthens the deleted Step 6's "write the verdict … into the feasibility report" obligation.
-- **Kept deliberately (the guardrails keep-set):** the six-class hunt table; the External-premises paragraph and its `EXTERNAL-CLAIMS.md` pointer; the entire **architecture pass** (topology-feasibility table + governance-conformance list + the never-silent-approval routing) — AD-D7 ruled content, protected; the boundary table + the architecture-boundary paragraph; Core Process **Steps 2 (Hunt each class), 3 (gate fuel — the cite-the-IDs rule and the resolution taxonomy kept inline per the v0.26.0 strip), 4 (resolvable-vs-fundamental classification), 5 (the 3-state verdict table + the `infeasible`-never-flattened and never-default-`feasible` floors)**; Common Mistakes; Red Flags; Common Rationalizations; Related.
+- **Kept deliberately (the guardrails keep-set):** the six-class hunt table; the External-premises paragraph and its `EXTERNAL-CLAIMS.md` pointer; the entire **architecture pass** (topology-feasibility table + governance-conformance list + the never-silent-approval routing) — `architecture-design-primitive` D7-dedicated-architect-persona ruled content, protected; the boundary table + the architecture-boundary paragraph; Core Process **Steps 2 (Hunt each class), 3 (gate fuel — the cite-the-IDs rule and the resolution taxonomy kept inline per the v0.26.0 strip), 4 (resolvable-vs-fundamental classification), 5 (the 3-state verdict table + the `infeasible`-never-flattened and never-default-`feasible` floors)**; Common Mistakes; Red Flags; Common Rationalizations; Related.
 - **MANDATORY KEPT reconciliation:**
   - **[v0.26.0] KEPT: the entire remaining body (whole-skill survivor ruling).** This cut removes three members of that KEPT body — When to Use, Step 1, Step 6 — recorded here as superseded-by-this-ruling. The v0.26.0 evidence for the KEEP named "Common Mistakes and Rationalizations are already tables … the six-class table and the boundary table are the skill's core unique content … the `infeasible`-never-flattened and never-default-`feasible` paragraphs"; every one of those named survivors is untouched. The three removed sections were procedure/when-to-use, not among the v0.26.0 evidence's named cores, and each removed obligation survives in a kept table/floor (enumerated above).
-  - The AD-D7 architecture pass (DECISIONS.md 2026-07-30 architecture-design-primitive row) is RULED, protected content — verified fully present after the edit.
+  - The `architecture-design-primitive` D7-dedicated-architect-persona architecture pass (DECISIONS.md 2026-07-30 architecture-design-primitive row) is RULED, protected content — verified fully present after the edit.
   - The Red Flags line "Stop and restart from Step 2" still resolves — Step 2 is retained.
 - **Consumers assessed:** commands — `plugins/mochiko/commands/` grep clean (plan orchestrates by dispatch). Agents — `plugins/mochiko/agents/principal-architect.md` declares the feasibility review in its persona; the kept six-class table, architecture pass, verdict table, and boundary leave that composition intact. `review-plan-artifacts` (the sibling) references this skill by name in its boundary — unchanged. Contract intact.
 

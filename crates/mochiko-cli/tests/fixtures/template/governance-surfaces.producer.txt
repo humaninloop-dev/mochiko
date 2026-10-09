@@ -89,7 +89,7 @@ paths:
 - [Operative rule]
 - [Operative rule]
 
-Metadata (enforcement · testability · rationale): `.mochiko/memory/governance-ledger.md`, GI-XXX.
+Metadata (enforcement · testability · rationale): `.mochiko/memory/governance-ledger.md`, GI-XXX-<slug>.
 ```
 
 ## Shape 3 — the governance ledger
@@ -99,7 +99,7 @@ Read by setup/amend runs and the validator only — never force-loaded into work
 ```markdown
 # Governance Ledger
 
-**Governance Floor:** production (asserted) · **Depth level:** [low | high] (user-declared, one-way; `high` terminal) · **Trace:** GI-0XX (depth level)
+**Governance Floor:** production (asserted) · **Depth level:** [low | high] (user-declared, one-way; `high` terminal) · **Trace:** GI-0XX-<slug> (depth level)
 **Version:** [X.Y.Z] (must match the region stamp)
 
 ## Waivers
@@ -108,7 +108,7 @@ Any asserted standard, with a recorded justification (D4); permanent pending the
 
 | Standard | Justification | Revisit trigger (optional) | Trace |
 |----------|---------------|----------------------------|-------|
-| [floor category / card / template-module obligation, or "None."] | [recorded reason] | [or "permanent (D4.1 pending)"] | GI-XXX |
+| [floor category / card / template-module obligation, or "None."] | [recorded reason] | [or "permanent (D4.1 pending)"] | GI-XXX-<slug> |
 
 ## Amendment policy
 
@@ -141,7 +141,7 @@ rules file's `mochiko:domain-registry` block — preserved across regenerations,
 
 ## Principles (Three-Part metadata, keyed by GI-ID)
 
-### GI-XXX — [Principle Name] · home: [CLAUDE.md | rules/mochiko/<file>.md | skill:<name>]
+### GI-XXX-<slug> — [Principle Name] · home: [CLAUDE.md | rules/mochiko/<file>.md | skill:<name>]
 
 **Enforcement**:
 - [How compliance is verified — specific commands or processes]
@@ -151,7 +151,7 @@ rules file's `mochiko:domain-registry` block — preserved across regenerations,
 
 **Rationale**: [Failure mode prevented; success enabled.]
 
-**Trace**: GI-XXX (floor-asserted: CARD-ID | deck-kept: CARD-ID | minted)
+**Trace**: GI-XXX-<slug> (floor-asserted: CARD-ID | deck-kept: CARD-ID | minted)
 
 [## Evolution notes (brownfield — the evolution-notes module's ledger section)]
 [Floor status table · gap references · session confrontation rulings.]
@@ -173,9 +173,9 @@ validator's grading surface. One row per principle-bearing GI element:
 
 | GI-ID | Principle | Source | Primary home | Companions present |
 |-------|-----------|--------|--------------|--------------------|
-| GI-003 | [name] | deck-kept: CARD-ID | CLAUDE.md region line | index ✓ · ledger ✓ |
-| GI-004 | [name] | minted | rules/mochiko/api.md | index ✓ · ledger ✓ |
-| GI-005 | [name] | floor-asserted: CARD-ID | skill:mochiko:executing-tdd-cycle | index ✓ · ledger ✓ |
+| GI-003-<slug> | [name] | deck-kept: CARD-ID | CLAUDE.md region line | index ✓ · ledger ✓ |
+| GI-004-<slug> | [name] | minted | rules/mochiko/api.md | index ✓ · ledger ✓ |
+| GI-005-<slug> | [name] | floor-asserted: CARD-ID | skill:mochiko:executing-tdd-cycle | index ✓ · ledger ✓ |
 
 Flagged proposals: [none | list — each awaiting the user's ruling at acceptance]
 Waivers: [none | GI-IDs]

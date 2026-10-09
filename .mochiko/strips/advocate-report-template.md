@@ -4,6 +4,14 @@ Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 1
 `.mochiko/brainstorms/workflow-token-reduction/record.md`; wave rulings ratified 2026-07-23:
 all report formats machine-first YAML, strengths → one-line field).
 
+## [v0.118.0] Clarification label `C<n>` → `Q<n>`
+
+- **Disposition:** superseded → `### Q1: {{question_title}}   ({{gap_id}})`.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D10-durable-id-boundary as changed at review, S6: the report clarification label is renamed so it no longer shares a cycle's `C<n>` form)
+- **Content (superseded):** "### C1: {{question_title}}   ({{gap_id}})".
+- **Kept deliberately:** the label stays a local, bare label (D10); the rest of the template is unchanged.
+- **Consumers assessed:** no other prose, no view and no eval file names the label (greps over `plugins/mochiko/`, `.mochiko/schema-views/` and `evals/`).
+
 ## [v0.91.0] `incremental:` examples re-keyed off plan's Phase-2 mode (both sites)
 
 - **Disposition:** superseded → a surviving incremental case. Both sites illustrated the
@@ -13,7 +21,7 @@ all report formats machine-first YAML, strengths → one-line field).
   moved to a delta review that still happens: a re-review of the design-phase output after a fix
   round.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1 — plan retires, and the design phase it
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires — plan retires, and the design phase it
   is replaced by is graded by a non-author seat; D4 — the design checkpoint and card confirm are
   where that grading lands; `DECISIONS.md` 2026-08-26 row.)
 - **Content (superseded, verbatim, two sites):**
@@ -37,7 +45,7 @@ all report formats machine-first YAML, strengths → one-line field).
 - **Disposition:** superseded → "The shared emit shape for the specify and implement review
   seats."
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1: `/mochiko:plan` retires and
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires: `/mochiko:plan` retires and
   `/mochiko:implement` becomes the single downstream run; wording ruled by the wave lead
   2026-08-26).
 - **Content (superseded fragment, verbatim):**

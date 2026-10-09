@@ -8,7 +8,7 @@ Entry formats: `strips/README.md`. Wave context: [v0.27.0] entries — skill-suc
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the patterns family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -18,7 +18,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/patterns-vertical-tdd/SKILL.md`. -->
 
@@ -27,11 +27,19 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 review-amended (`DECISIONS.md` 2026-09-24 "Setup goes product-agnostic ruled" row). Pre-edit
 verbatim text: `git show bbe303f:plugins/mochiko/skills/patterns-vertical-tdd/references/TEST-GRAMMAR.md`. -->
 
+## [v0.118.0] Cycle and story example IDs joined in `SKILL.md`, `BUNDLE-IDENTIFICATION.md` and `TEST-GRAMMAR.md`
+
+- **Disposition:** superseded → cycle IDs in the joined `C<n>-<slug>` form (the slicing blocks, the worked example's cards written `C1-walking-skeleton-path — Walking skeleton: …` as the tasks template heads them, the anti-pattern blocks), the step-1 story list joined, the Story→Cycle table's stories behind `` `task-tracker` `` and cycles joined, and the TEST examples' FLOW and SCR IDs behind `` `storefront` ``.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; hand-off P5; D11 (S4) and the lead's Q-A ruling for owners on the modeled `tasks.md` table and TEST lines)
+- **Content (superseded):** `SKILL.md`: "Cycle 1: All models        Cycle 2: All services        Cycle 3: All endpoints", "Cycle 1: User creation (…)", "Cycle 2: User authentication (…)". `BUNDLE-IDENTIFICATION.md`: the story list "US-1 (P1): …" to "US-5 (P3): …", "C1 is the walking skeleton…", the table rows "| US-1 | C1 (walking skeleton) |…" to "| US-5 | C5 |…", "If C4 depends on C3, and C3 is P2 while C4 is P3…", the cards "C1: Walking skeleton — …" to "C4: [P] Filtering — …", and the anti-pattern lines "Cycle 1: All database models" … "Cycle 2: Apply to all entities" with "…until Cycle 4 completes." `TEST-GRAMMAR.md`: "**TEST:** FLOW-002 checkout path walks end-to-end in the built app", "(per FLOW-002 steps)", "**TEST:** SCR-004 settings screen meets the measurable UI floor…". Pre-edit file: `git show bf410cc:plugins/mochiko/skills/patterns-vertical-tdd/references/BUNDLE-IDENTIFICATION.md`.
+- **Kept deliberately:** `C2, C3, C4, C5` (a list of four, D5); "Cycle A / Cycle B" (generic letters); TEST-GRAMMAR:105 (`FLOW-XXX`, a family name). Each anti-pattern block and the worked example model a different `tasks.md`, so `C1`–`C4` take one slug per block.
+- **Consumers assessed:** `patterns-vertical-tdd.sec.discipline` and the tasks template (0046) already head cards `### - [ ] C<n>-<slug> — <title>`.
+
 ## [v0.115.0] TEST-GRAMMAR's accessibility assert — the attached a11y module
 
 - **Disposition:** superseded → "the checks the design baseline's Accessibility pointer names, else"
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D1, D6, and the review fold S9; `DECISIONS.md` 2026-09-24)
+  D1-profile-leaves-setup, D6-cut-ships-first, and the review fold S9; `DECISIONS.md` 2026-09-24)
 - **Content:** verbatim fragment — "the checks its attached `a11y` compliance module names, else"
 - **Kept deliberately:** the standard-of-record frame, the floor-line fallback to
   `mochiko:patterns-code-minimalism`, and "cite it; never restate it here".
@@ -43,7 +51,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/patterns-vertical-tdd/re
 
 - **Disposition:** superseded → "are delivered by `mochiko-cli`", id unchanged
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** "no infra-only cards — live in the schema (`patterns-vertical-tdd.sec.discipline`)."
 - **Kept deliberately:** the id, which still resolves, and the three binding forms it points at —
   when the skeleton fires, how infrastructure homes, no infra-only cards — plus the whole
@@ -54,7 +62,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/patterns-vertical-tdd/re
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -79,7 +87,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/patterns-vertical-tdd/re
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -87,7 +95,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/patterns-vertical-tdd/re
   The floor pin: the 5 rules of `class: floor` are non-waivable. Before the first slicing step, state the floor count back — a skipped or partial read leaves that count blank: halt and surface it, and halt likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -107,7 +115,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/patterns-vertical-tdd/re
   load the schema first" block (floor pin 5 + read-back). The frontmatter
   `description:` is byte-untouched. `references/TEST-GRAMMAR.md` and
   `references/BUNDLE-IDENTIFICATION.md` are untouched — the three TEST-GRAMMAR stubs
-  point, never restate (skill-content-schema D3/C2).
+  point, never restate (skill-content-schema D3-obligations-only-schema/C2).
 - **Tier failed:** n/a — supersession by ruling (`skill-content-schema` D1–D9 as
   amended, `DECISIONS.md` 2026-09-01, D8/C4 supersession-transfer; the wave-2 patterns
   family-door ruling, same date). Protection transfers to the rule IDs via
@@ -121,7 +129,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/patterns-vertical-tdd/re
      rationale, dependencies, the named test-case list (the card's content), cycle-level
      brownfield exposure, and the Simple/Split/Merge case.` →
      `patterns-vertical-tdd.tasks-binding-two-arm` (row 1) — **both arms preserved
-     verbatim in the rule text** (census J-P5, GI-020; the RPA two-arm precedent),
+     verbatim in the rule text** (census J-P5, GI-020-plugin-install-model; the RPA two-arm precedent),
      promoted `class: floor` per the lead's plan-approval ruling reconciling census §B's
      table (5 floors) with §D ("5 floors incl. two protected two-arm/authorship rules");
      the §B detail line's `must` marker on this row is queued for the census §K
@@ -195,7 +203,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/patterns-vertical-tdd/re
   conversion's re-seed**: the budget re-seeds to the measured delivered-at-invoke
   payload (body + own schema, no +25% headroom) via the ledger's third seeding path, and
   the overage trail survives here and in the `primitive-cost-budgets.md` v0.80.0/v0.91.0
-  paragraphs (GI-006 reconstruction). The wave-2B ledger row names this supersession.
+  paragraphs (GI-006-primitive-edit-traceability reconstruction). The wave-2B ledger row names this supersession.
 - **Kept deliberately:** the letter/spirit epigraph and the Quality Checklist whole
   (v0.27.0 KEPT live residue — census §A body-stays-prose disposition) · all teaching
   prose named in the Disposition line · the `'vertical slice'` SHOULD-trigger in the
@@ -219,7 +227,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/patterns-vertical-tdd/re
   `/mochiko:implement` run, after the design phase or directly on a zero-gap sufficiency
   verdict, never a separate plan run.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1 mechanic (c): "cards are authored
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires mechanic (c): "cards are authored
   by a technical-analyst-class design seat, never the builder who will execute them"; and D1's
   spine: "cycle cards + TEST cases are authored after the design phase (or directly on a
   zero-gap verdict), then build proceeds").
@@ -256,7 +264,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/patterns-vertical-tdd/re
 ## [v0.80.0] Slice-as-unit vocabulary purged; `SLICE-IDENTIFICATION.md` renamed `BUNDLE-IDENTIFICATION.md`
 
 - **Disposition:** superseded → "vertical increment" / "bundle" / "cycle" as the unit nouns, per the replacement language the ruling fixes. The reference file is renamed (`git mv`, history preserved), not deleted; every heuristic in it survives.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`, "Slice vocabulary purged from shipped primitives", ruled 2026-08-19; `DECISIONS.md` row of the same date). Ground: the slice died as a pipeline unit at v0.57.0 (`feature-map-layer` D4/D22) and as a TDD unit at v0.75.0 (D1's test-case-bundle anchor), but the noun outlived both units and a post-v0.75.0 dogfood run reified it — a fresh lead read the residue and minted slices alongside cycles.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/decisions/2026-08-19-slice-vocabulary-purge.md`, "Slice vocabulary purged from shipped primitives", ruled 2026-08-19; `DECISIONS.md` row of the same date). Ground: the slice died as a pipeline unit at v0.57.0 (`feature-map-layer` D4-slices-leave-pipeline/D22-foundation-ordering-role) and as a TDD unit at v0.75.0 (D1's test-case-bundle anchor), but the noun outlived both units and a post-v0.75.0 dogfood run reified it — a fresh lead read the residue and minted slices alongside cycles.
 - **Content (superseded, verbatim — old → new):**
   - `SKILL.md` frontmatter `description:` — `structuring a feature's implementation into vertical-slice cycle cards` → `structuring a feature's implementation into cycle cards`
   - `SKILL.md` Overview — `Transform a plan's stories into **cycle cards** — vertical slices that each deliver observable, testable value.` → `… — vertical increments that each deliver observable, testable value.`
@@ -272,9 +280,9 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/patterns-vertical-tdd/re
 - **Measurements (D7 pre-assert, canonical snippet per `.mochiko/memory/primitive-cost-budgets.md`):** `SKILL.md` description **512 → 497** chars (budget 620) — shrank, well inside. `SKILL.md` body **6,543 → 6,555** chars against a 6,487 budget — **+12 from this edit, 68 over budget in total, and the overage is declared for the grader's ruling.** The +12 is arithmetically forced by the ruling's own replacement language: "increments" is four chars longer than "slices" at two sites (+8) and "BUNDLE-" one char longer than "SLICE-" at four link sites (+4). No prose was added and none restored. **Pre-existing drift, not this wave's:** the body was 6,457 (inside budget) at v0.75.0 and reached 6,543 at the v0.76.0 `mochiko-cli` merge's two-arm schema re-point, which shipped without a ledger re-measure — so 56 of the 68 predate this edit. The `authoring-feature-map` +450 from the same v0.76.0 re-point *was* declared and ruled HOLDS; this file's +86 was missed. Recommend the ledger record the v0.76.0 drift and re-derive or re-affirm the budget; this entry does not invent one.
 - **Consumers assessed:** the renamed reference had exactly one live inbound link — `SKILL.md`, re-pointed here (both sites). No other shipped primitive, command, agent, template, or schema references `SLICE-IDENTIFICATION.md`; remaining repo hits are `.mochiko/brainstorms/` records and this strip log, which are historical and correctly keep the old name. `references/TEST-GRAMMAR.md` is consumed by `testing-end-user` (executes the grammar) and `executing-tdd-cycle` (parses cards): the anti-pattern line is prose in a "Why This Matters" section, parsed by nothing, so both are unaffected. `schemas/tasks.yaml` carries the same "vertical slice" sentence and is re-worded in the same wave (its own strip entry).
 
-## [v0.76.0] `tasks-template.md` read-pointer → `tasks` schema (two-arm) — schema-based-template-guidance D1/D8
+## [v0.76.0] `tasks-template.md` read-pointer → `tasks` schema (two-arm) — schema-based-template-guidance D1-single-plugin-cli/D8-schema-data-files
 - **Disposition:** superseded → `mochiko-cli template tasks`, or Read `plugins/mochiko/schemas/tasks.yaml` raw (D8-first-class). One site: the Overview cycle-card-shape pointer.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1/D3/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D1-single-plugin-cli/D3-pipeline-template-scope/D8-schema-data-files; `DECISIONS.md` "Template-schema CLI ruled").
 - **Content (superseded, verbatim):**
   - `in the cycle-card shape ([\`tasks-template.md\`](../../templates/tasks-template.md) is the canonical skeleton):`
 - **Kept deliberately:** the `**TEST:**`-grammar ownership and all descriptive text; the in-skill reference pointers to `TEST-GRAMMAR.md` / `SLICE-IDENTIFICATION.md` (untouched — not in-scope templates).
@@ -283,7 +291,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/patterns-vertical-tdd/re
 ## [v0.75.0] Cycle anchor re-keyed to test-case bundles; foundation/feature classification + time-based sizing superseded (SKILL.md + SLICE-IDENTIFICATION.md)
 
 - **Disposition:** superseded → the test-case-bundle anchor + walking-skeleton first-cycle rule in SKILL.md (Overview + Core Principles 1–3, Quick heuristics, Case column, Quality Checklist) and the bundle-identification re-key of `references/SLICE-IDENTIFICATION.md`.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Vertical-TDD cycle anchor + QA test-case authorship (D1–D4)"; record `.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md`, D1 test-case-bundle anchor + walking skeleton, D2 two-author split, D3 foundation/feature type dies, D4 grammar ownership unchanged).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Vertical-TDD cycle anchor + QA test-case authorship (D1–D4)"; record `.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md`, D1-test-bundle-cycles test-case-bundle anchor + walking skeleton, D2-qa-authored-cases two-author split, D3-foundation-type-retired foundation/feature type dies, D4-test-grammar-ownership grammar ownership unchanged).
 - **Content (faithfully compressed; body 5,189 → 6,457 chars, description 496 → 512):**
   - **SKILL.md — superseded whole (protected, D3):** Core Principle **2. Foundation + Parallel**, verbatim: "Foundation cycles run sequentially and establish what every feature depends on — platform infrastructure (IP-XXX items from constraints-and-decisions.md), data models, auth, API framework, error handling. **Identification:** ask \"Could ANY user story work **in production** without this?\" If no, it's foundation. Feature cycles deliver user value incrementally — mapping directly to user stories, independently completable, parallel-eligible `[P]` once foundation is complete unless dependent on another feature cycle. **Identification:** ask \"Does this deliver value a user could observe?\" If yes, it's a feature." → replaced by **2. Walking Skeleton First, Infrastructure Homed by Need** (skeleton first-cycle under the greenfield/new-path carve; no foundation/feature type; infra homed inside the first bundle that needs it, skeleton-path infra in the skeleton; infra-only cards never minted; `[P]` derives from dependencies).
   - **SKILL.md — Overview card-field list:** "per card — stories + feature rationale, foundation/feature type, dependencies, acceptance criteria (by ID), the closing `**TEST:**` gate, and cycle-level brownfield exposure" → "per card — stories + rationale, dependencies, the named test-case list (the card's content), cycle-level brownfield exposure, and the Simple/Split/Merge case"; anchor sentence added (cycle = coherent bundle of named test cases demonstrating together; done = green on real infra). The **Two authors, one card** line added (D2: design seat keeps slicing judgment; qa-engineer authors test-case content).
@@ -313,14 +321,14 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/patterns-vertical-tdd/re
 
 ## [v0.58.0] Graduation-slice vocabulary re-keyed to feature
 - **Disposition:** superseded → "stories + feature rationale" in the Overview card-field list · the When-NOT-to-Use feature boundary line ("Deriving or scoping features — the feature is the pipeline unit, owned by `mochiko:authoring-feature-map`, upstream (its vocabulary table disambiguates feature vs cycle); a cycle is a within-one-feature increment") · "its rationale" in the Case-column paragraph
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md`, D4 — graduation slices retire, `authoring-slices` superseded by `authoring-feature-map`)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-10 "Feature-map layer ruled (D1–D22)"; record `.mochiko/brainstorms/feature-map-layer/record.md`, D4-slices-leave-pipeline — graduation slices retire, `authoring-slices` superseded by `authoring-feature-map`)
 - **Content:** Overview "per card — stories + slice rationale, …" · When NOT to Use "**Grouping stories into graduation slices** — spec-level decomposition is `mochiko:authoring-slices`, upstream (that skill's vocabulary table disambiguates the two 'slices')" · Case paragraph "The story→cycle decision and its slice rationale live **on the card** (Stories line)"
 - **Kept deliberately:** every use of "vertical slice"/"slice" naming the implementation-level cycle unit (title, Core Principles, SLICE-IDENTIFICATION.md pointer, quick heuristics) — that vocabulary is this skill's own and survives D4; only graduation-slice (spec-level) references left. TEST-grammar ownership and the build-time-decomposition boundary untouched.
 - **Consumers assessed:** tasks-template (re-keyed same wave) · executing-tdd-cycle (consumes cards, wording unaffected — grep-verified no graduation-slice reference) · plan command (re-keyed same wave) · authoring-feature-map (wave 1, already points here as downstream cycle owner).
 
 ## [v0.49.0] Slimmed to cycle-card structuring — task-level content superseded
 - **Disposition:** superseded → build-time decomposition in `executing-tdd-cycle` (step 2 of its execution sequence); `references/CYCLE-STRUCTURE.md` deleted
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2+D2.1)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2-cycle-card-stop+D2.1-builder-restriction-removed)
 - **Content:** the task-mapping.md canonical compact shape section (story→cycle + cycles tables + slicing notes) · the TDD Task Sequence section (red/green/refactor as pre-ordered task rows) · the task-level Markers table · Layered Testability · the Common Rationalizations table and Red Flags list (plan-time task-ordering framing) · checklist rows "each cycle has TDD structure (failing test first)" / "every task has a specific file path" · CYCLE-STRUCTURE.md whole (cycle anatomy, task-ID format, file-path conventions, worked task examples). Full text: git history at v0.48.0.
 - **Kept deliberately:** vertical-over-horizontal · foundation/feature test · TEST-gate ownership (TEST-GRAMMAR.md untouched as grammar owner) · SLICE-IDENTIFICATION.md (one stale task-mapping paragraph re-keyed to on-card rationale) · Simple/Split/Merge cases (now card fields). Red/green/refactor discipline was double-encoded design+runtime; the runtime copy (`executing-tdd-cycle`) is now the sole carrier — deliberate, not a loss.
 - **Consumers assessed:** router · tasks-template · executing-tdd-cycle (boundary flipped: builder now decomposes) · testing-end-user (grammar pointer intact) · brownfield-integration (marker-source wording re-keyed).

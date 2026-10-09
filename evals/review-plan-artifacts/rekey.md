@@ -128,3 +128,40 @@ New (log-keyed, = render `floors:`): `review-plan-artifacts.author-grader`, `rev
 - Every rule id in `.mochiko/schema-views/skills/review-plan-artifacts.yaml` appears exactly once; the view's id list equals the live render's id list.
 - No id appears twice; every old `R-XXX` is either mapped (possibly to more than one log rule) or retired, never both, never dropped.
 - `evals/run.py` fields preserved: `id`, `class` (read), `rule` and the rest passed through to the judge as JSON.
+
+## Re-key 2026-10-08 — human-readable-ids
+
+```json
+{
+  "rekeyed": {
+    "at": "2026-10-08T03:34:34Z",
+    "ruling": "human-readable-ids D6 (DECISIONS.md 2026-10-08), migration 0049; wave 2 test plan r1 §8",
+    "source": ".mochiko/schema-views/skills/review-plan-artifacts.yaml (stubs: .mochiko/schema-views/common/skill-review-common.yaml) + mochiko-cli floors line"
+  }
+}
+```
+
+Field-scoped, as the 2026-10-06 re-key was: the one minted id is added at its view position with
+`mapped_from: []` (no pre-cut `R-XXX` entry maps to it), its `rule`, `labels` and `pointer`
+resolved from the `review-common.joined-ids` block it extends; every other field and entry is
+byte-identical, `git diff` the proof. Script: one insert pass over the landed view and the common
+view; the file round-trips byte for byte through the script's writer before the insert.
+
+### Counts
+
+- Rules: 36 → 37. Floors: 11 → 11 — equals the render's `floors:` line and its pin.
+- Retired: 0. Added: 1.
+
+### Added
+
+| log rule | class | section | when / pointer | note |
+|---|---|---|---|---|
+| `review-plan-artifacts.joined-ids` | must | `sec.verdict` | `../../templates/artifact-format.md` | D6 — an `extends: review-common.joined-ids` stub; labels `verdict`, `artifact-grammar` carried from the block |
+
+### Invariants verified
+
+- Id set and order equal to the view's.
+- `class: floor` set equal to the render's `floors:` line; every `tempts` id resolves.
+- `review-plan-artifacts.joined-ids` sits in no golden's `tempts` — the wave ruled no
+  change to `tempts` for the new stub — so the run reads it `untempted`, disclosed and never read,
+  until a golden plants an ID to grade.

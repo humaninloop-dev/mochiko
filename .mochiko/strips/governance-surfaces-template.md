@@ -15,7 +15,7 @@ event recorded via amendment-log rows (no new ledger structure).
 
 ## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/governance-surfaces.yaml + mochiko-cli template governance-surfaces
-- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1-single-plugin-cli/D3-pipeline-template-scope/D8-schema-data-files; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
 - **Content (superseded template, full verbatim below):**
 
 ````markdown
@@ -236,31 +236,31 @@ values, and any line the user adds to it survives every regeneration. Full rules
 mochiko (the `output-style` template; deliverable envelope `artifact-format.md` rule 11) — this
 file cites them and never restates them.
 ````
-- **Kept deliberately:** Doctrine-dense, multi-shape canonical reference — every operative line is protected / `DECISIONS.md`-traceable governance doctrine. All of it was carried **verbatim** into `plugins/mochiko/schemas/governance-surfaces.yaml` (shape-blocks preserved over uniform per-section fields, per plan §3 I3) and renders through `mochiko-cli template governance-surfaces`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). V2 confirmed **no doctrine dropped** — nothing removed.
+- **Kept deliberately:** Doctrine-dense, multi-shape canonical reference — every operative line is protected / `DECISIONS.md`-traceable governance doctrine. All of it was carried **verbatim** into `plugins/mochiko/schemas/governance-surfaces.yaml` (shape-blocks preserved over uniform per-section fields, per plan §3 I3) and renders through `mochiko-cli template governance-surfaces`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020-plugin-install-model, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). V2 confirmed **no doctrine dropped** — nothing removed.
 - **Consumers assessed:** `skills/authoring-constitution/SKILL.md` (re-pointed by P5) · `skills/validation-constitution/references/QUALITY-CHECKLIST.md` (D7 re-key — governance-surfaces structure cites the `--check` view, re-pointed by P5) · `templates/output-style.md` (contextual pointer reword, re-pointed by P5). V2 fidelity PASS 2026-08-16 (schema graded 8/8 at the M3 gate).
 
 ## [v0.65.0] Shape 1 region stamp — single-floor Ratified line superseded (carries depth level)
 - **Disposition:** superseded → the `**Ratified:**` region stamp in Shape 1 of `templates/governance-surfaces-template.md`; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1/D2, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1-declared-level-transition/D2-one-way-ratchet, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
 - **Content (verbatim):**
 ```
 **Ratified:** v[X.Y.Z] · [YYYY-MM-DD] · production floor · modules: [attached compliance modules, or "none"] <!-- GI-001 (fact profile) -->
 ```
 - **Also reworded for disambiguation (lead ruling #2, same citation):** the Shape 1 Quality-gates line `Coverage ≥ [asserted floor level, session-overridable]%` → `Coverage ≥ [floor card's coverage threshold, session-overridable]%`. "Asserted floor level" there named the coverage-threshold number, not the new depth level; reworded so "level" is reserved for the depth declaration.
-- **Kept deliberately:** the stamp's every other field verbatim — version, ratified date, `production floor`, the modules field, and the `GI-001 (fact profile)` trace comment; the depth field and its `GI-0XX (depth level)` trace are additions within the same line.
+- **Kept deliberately:** the stamp's every other field verbatim — version, ratified date, `production floor`, the modules field, and the "`GI-001 (fact profile)`" trace comment; the depth field and its `GI-0XX (depth level)` trace are additions within the same line.
 - **Consumers assessed:** grep across `plugins/` — `authoring-constitution/SKILL.md` mandatory-content-inventory item 1 (Ratified stamp) re-keyed to name the declared depth level this same wave (cluster B); `validation-constitution` grades the stamp fields (Cluster C re-keys it to the two-row form). No removed anchor.
 
 ## [v0.65.0] Shape 3 ledger Governance-Floor line — single-floor line superseded (carries depth level)
 - **Disposition:** superseded → the `**Governance Floor:**` line in Shape 3 (the ledger) of `templates/governance-surfaces-template.md`; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1/D2, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth D1-declared-level-transition/D2-one-way-ratchet, ratified 2026-08-11; `DECISIONS.md` 2026-08-11 adaptive-depth row).
 - **Content (verbatim):**
 ```
 **Governance Floor:** production (asserted) · **Modules:** [attached compliance modules with strata, or "none"] · **Trace:** GI-001 (fact profile)
 ```
-- **Kept deliberately:** `production (asserted)`, the Modules field with its strata note, and the `GI-001 (fact profile)` trace, all verbatim; the **Depth level** field (user-declared, one-way, `high` terminal) and its `GI-0XX (depth level)` trace are additions within the same line.
+- **Kept deliberately:** `production (asserted)`, the Modules field with its strata note, and the "`GI-001 (fact profile)`" trace, all verbatim; the **Depth level** field (user-declared, one-way, `high` terminal) and its `GI-0XX (depth level)` trace are additions within the same line.
 - **Consumers assessed:** the ledger is read by setup/amend runs and `validation-constitution` only; the amendment-policy semver + Route lines below it gained the flip event as pure additions this wave. No removed anchor.
 
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -275,7 +275,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 
 ## [v0.44.0] Design-record citation in the ownership header
 - **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 (design: .mochiko/brainstorms/constitution-native-surfaces/record.md,

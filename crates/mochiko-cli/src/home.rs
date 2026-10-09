@@ -6,13 +6,13 @@
 //! the kind-to-template binding per file, the size posture, and whether the home opens a
 //! `reports/` directory. The store holds it opaquely, like a template, and this module decodes it
 //! at the point of use — so the log stays the single editing surface and no schema file ships
-//! (GI-020).
+//! (GI-020-plugin-install-model).
 //!
 //! # What this module does and does not do
 //!
 //! It resolves a repository-relative path to at most one home and one verdict about the name
 //! inside it. It grades no content: deciding whether a *write* conforms is [`crate::conform`]'s
-//! job, and neither module holds judgment a skill owns (GI-019).
+//! job, and neither module holds judgment a skill owns (GI-019-kernel-tooling-admission).
 //!
 //! # Where a path's repository is (field review D7, as amended at S3)
 //!
@@ -313,7 +313,7 @@ fn is_prefixed_id(prefix: &str, segment: &str, slug_required: bool) -> bool {
 /// `<owner>-run<n>` (seams R5): the owner is a FEAT or EPIC id in its existing shape, or
 /// `lane-<slug>`; then `-run` and one or more digits. The split is at the last `-run`, so an
 /// owner's own slug may contain the word.
-fn is_run_id(segment: &str) -> bool {
+pub(crate) fn is_run_id(segment: &str) -> bool {
     let Some(at) = segment.rfind("-run") else {
         return false;
     };

@@ -233,7 +233,7 @@ by running the live detector over the real tree: **1,016 rules scanned, 146,572 
 scored, 0 clusters, 181 allowlist-suppressed edges**, against a 214-row allowlist.
 
 **Surface.** `similar::clusters(&state, threshold, allowlist) -> Vec<Cluster>` and
-`similar::render_report(...) -> String`. Advisory, exit 0, never a gate — the GI-019 posture the
+`similar::render_report(...) -> String`. Advisory, exit 0, never a gate — the GI-019-kernel-tooling-admission posture the
 detector already holds. The allowlist is read from `scripts/similar-rules-allowlist.yaml`,
 maintainer-side, never shipped.
 
@@ -317,7 +317,7 @@ as the user's own action, and the sandbox-auth Terms-of-Service caveat the recor
 | exist at all | SQLite, a persistent cache, an index file | D1 defers all three to a measured need; none is measured |
 | exist at all | `.md` scaffold checks (the Python 7c/7d class) | dead under D6; the `.md` no longer enumerates sections or pins counts |
 | exist at all | `DECISIONS.md` anchor resolution | wave-plan §3 scopes wave 1 to anchor format; resolution stays advisory |
-| exist at all | merge or promotion logic in `similar.rs` | layer 2 is judgment, which GI-019's bright line keeps out of the tool |
+| exist at all | merge or promotion logic in `similar.rs` | layer 2 is judgment, which GI-019-kernel-tooling-admission's bright line keeps out of the tool |
 | exist at all | anything in P1's or P2's files | pen discipline; needed changes are named as deltas at (j3) |
 | in codebase | a second decoder, inheritance resolver, or hash | `Document::from_value`/`to_value`, `canonical_hash`, `resolve_extends`, `placeholders`, `derive_prefix`, `Family::of`, `migration::with_hash`, `replay::load_full`, `Finding`/`Code` are all reused as they stand |
 | in codebase | a second YAML writer | one writer serves both genesis and the views |

@@ -7,7 +7,8 @@ Checks:
 - Given/When/Then syntax completeness
 - Independent test presence
 - Priority justification
-- Header format
+- Header format (### US-<n>-<w1>-<w2>-<w3> — …, a bare ### US-<n> — …, or the legacy
+  ### User Story <n> - …)
 
 Usage:
     python validate-user-stories.py <path-to-spec.md>
@@ -26,9 +27,10 @@ def find_user_stories(content: str) -> list[dict]:
     """Extract user stories from markdown content."""
     stories = []
 
-    # Pattern for user story headers
+    # Pattern for user story headers: joined (any slug is found here; check_header_format judges
+    # its shape), bare, or the legacy `User Story <n>` form
     header_pattern = re.compile(
-        r'^###\s+User\s+Story\s+(\d+)\s*[-–—]\s*(.+?)\s*\(Priority:\s*(P[123])\)',
+        r'^###\s+(?:User\s+Story\s+(\d+)|US-(\d+)(?:-[a-z][a-z0-9]*)*)\s*[-–—]\s*(.+?)\s*\(Priority:\s*(P[123])\)',
         re.MULTILINE | re.IGNORECASE
     )
 
@@ -42,9 +44,9 @@ def find_user_stories(content: str) -> list[dict]:
 
         story_content = content[start:end]
         stories.append({
-            'number': int(match.group(1)),
-            'title': match.group(2).strip(),
-            'priority': match.group(3).upper(),
+            'number': int(match.group(1) or match.group(2)),
+            'title': match.group(3).strip(),
+            'priority': match.group(4).upper(),
             'content': story_content,
             'line': content[:start].count('\n') + 1
         })
@@ -54,8 +56,10 @@ def find_user_stories(content: str) -> list[dict]:
 
 def check_header_format(story: dict) -> dict:
     """Check if story header follows the correct format."""
+    # Legacy, bare (whitespace before the separator), or joined with exactly three lowercase slug
+    # words, each starting with a letter
     pattern = re.compile(
-        r'^###\s+User\s+Story\s+\d+\s*[-–—]\s*.+\s*\(Priority:\s*P[123]\)',
+        r'^###\s+(?:User\s+Story\s+\d+\s*|US-\d+(?-i:(?:-[a-z][a-z0-9]*){3})?\s+)[-–—]\s*.+\s*\(Priority:\s*P[123]\)',
         re.IGNORECASE
     )
 

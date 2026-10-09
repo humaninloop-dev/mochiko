@@ -1,7 +1,7 @@
 # Verbosity, Caveman & Ops-vs-Shipped Separation — Decision Record
 
 **Status:** **accepted (user, 2026-08-01)** — acceptance explicitly covered the two flagged
-formulations (D2's F72 payload-homes fold · D3's sweep-scope reading) per Landing
+formulations (D2-default-on-adoption's F72 payload-homes fold · D3-plain-language-fold's sweep-scope reading) per Landing
 obligation 7 · verify round 1 NOT CLEAN (1 blocking + 5 non-blocking, all repaired same
 round) → round 2 CLEAN, 20/20 verified · pair-reviewed (lens-split: 20+9 raised → 18+8 survived cross-exam → 20
 lead-merged → 20/20 dispositioned incl. the 8-item user batch — items 2–8 adopted "all
@@ -85,11 +85,11 @@ All paths relative to `/Users/deepeshadmin/Documents/GitHub/mochiko` unless mark
 
 **F12.** Token-reduction epic scope, `.mochiko/brainstorms/workflow-token-reduction/record.md:9-14`. Reality surface = *"the plugin source (`plugins/mochiko/` commands, agents, skills, templates: what each run loads and spawns)"* plus prior records with token measurements, expanded to the kinako dogfood repo. User constraints (Q1, Confident): library-wide scope · latency not a constraint · *"Target is **low-hanging fruit** — high savings-to-effort ratio, not a redesign"* · *"Quality floor: no drastic quality hit."*
 
-**F13.** The six decisions and what layer each targets (`record.md:252-279`): **D1** hunt order (pure waste, then quality-machinery sizing) · **D2** per-run recorded cost entry, manual baseline + OTel probe · **D3** slim implement's per-cycle + verification reports · **D4** reference-by-ID down the artifact chain · **D5** review sizing gates + verification-depth floor · **D6** four pure-waste fixes (reference splits, orphan refs, runtime HTML comment headers, round-report clean-by-default). **Every one targets context loads, report files, artifact files, or reviewer counts. None targets lead→user prose.**
+**F13.** The six decisions and what layer each targets (`record.md:252-279`): **`workflow-token-reduction` D1-waste-first-order** hunt order (pure waste, then quality-machinery sizing) · **`workflow-token-reduction` D2-run-cost-entry** per-run recorded cost entry, manual baseline + OTel probe · **`workflow-token-reduction` D3-cycle-report-slimming** slim implement's per-cycle + verification reports · **`workflow-token-reduction` D4-reference-by-id** reference-by-ID down the artifact chain · **`workflow-token-reduction` D5-review-sizing-gates** review sizing gates + verification-depth floor · **`workflow-token-reduction` D6-pure-waste-fixes** four pure-waste fixes (reference splits, orphan refs, runtime HTML comment headers, round-report clean-by-default). **Every one targets context loads, report files, artifact files, or reviewer counts. None targets lead→user prose.**
 
 **F14.** The who-reads-reports finding, `record.md:169-181` (F-c Part 1), verbatim conclusion: *"**The user gets a summary, never the report files:** implement.md Phase 3 (G5) — "Present the verified implementation (cycle / task / fix-pass counts, quality-gate results, an **evidence summary**, any noted gaps)." A lead-authored summary, not the reports. **This matches the user's report of never reading them** — the machinery never routes a cycle/verification report to the user."* Supporting quotes in the same block: `implement.md:119`, `:138`, `:173`, `executing-tdd-cycle/SKILL.md:28`, `:87`, `CYCLE-REPORT-FORMAT.md:3` — all name the lead as report reader.
 
-**F15.** D3's rationale re-states it (`record.md:263`): *"the sole live consumer is the lead's verdict (frontmatter + evidence); the user never reads them (Q4)."*
+**F15.** `workflow-token-reduction` D3-cycle-report-slimming's rationale re-states it (`record.md:263`): *"the sole live consumer is the lead's verdict (frontmatter + evidence); the user never reads them (Q4)."*
 
 **F16. Notable absence — the boundary F2 asserts is not a ruling in the record.** Grep `user-facing|user-visible|prose to the user|conversation` over `record.md` (311 lines) returns 3 hits, all unrelated (`:50` SKILL.md persistence "enters the conversation"; `:258` "user-visible usage figure" from `/usage`). The record contains **no statement scoping user-facing prose in or out**. The exclusion list `record.md:284-290` ("Considered and not pursued") names five items — wholesale reference loads · stopping cold-reviewer re-reads · humaninloop plugin manifest · lead-side doctrine reads · skill-description manifest trimming — and user-facing prose is not among them. So the boundary is **true by the avenue set's construction (F13) but never ruled**; BACKLOG's parenthetical is a summary, not a quotable ruling.
 
@@ -303,7 +303,7 @@ Selection was mechanical (zero-ID + file-head position + longest such block). No
 11. **The router already discloses the ops/product split in prose, without acting on it** — heading *"Framework maintenance … reached when authoring or auditing mochiko's own commands"* (F39). End users see the two skills indexed and labelled; nothing hides or gates them.
 12. **Packaging has one precedent and no ruling.** The 2026-07-21 submodule removal was done *"so the plugin installs cleanly for other users"* (F46) — but it never landed a `DECISIONS.md` row or an ADR (F47). It is the only install-cleanliness precedent, and by the repo's own subtractive-landing ritual it is under-recorded.
 13. **Version surfaces disagree by design and are worth stating once:** plugin `0.43.0` vs marketplace `0.10.0` (F32).
-14. **The dense forms half-landed, and the split is clean.** Structural conformance is complete — every report carries the sanctioned `report:` envelope with rich structured YAML payloads (F57), every ID-bearing deliverable carries its ID index (F62), reference-by-ID is in dense use (F63). The rule that did not hold is the **conditional-prose** one: 8 of 8 passing reports carry prose, 79.9% of report bytes (F58). D3's saving was specified as *dropping* the prose scaffold of passing reports; the frontmatter it specified was added, the prose it targeted stayed.
+14. **The dense forms half-landed, and the split is clean.** Structural conformance is complete — every report carries the sanctioned `report:` envelope with rich structured YAML payloads (F57), every ID-bearing deliverable carries its ID index (F62), reference-by-ID is in dense use (F63). The rule that did not hold is the **conditional-prose** one: 8 of 8 passing reports carry prose, 79.9% of report bytes (F58). `workflow-token-reduction` D3-cycle-report-slimming's saving was specified as *dropping* the prose scaffold of passing reports; the frontmatter it specified was added, the prose it targeted stayed.
 15. **The reports are the smaller half.** 240,901 B of 816,601 B (29.5%). Deliverables carry 70.5% (F55) — and per `artifact-format.md:14-16` those are the files re-paid at ~10 model reads per feature, versus reports' one lead read.
 16. **The verbosity concentrates in files whose own envelope permits it.** The four longest prose blocks in the tree are all in `constraints-and-decisions.md` (F63), governed by `artifact-format.md`, whose rule 8 states *"Brevity is never itself a finding"* (F11) and whose rule 4 calls its size guidance a default, not a cap (F64).
 17. **F59 is a genuine textual out for the reports.** Every cycle report has a non-empty `failed_tasks:` by design (the verifier-owned gate the producer must not run), and `CYCLE-REPORT-FORMAT.md:69` makes the narrative mandatory when *"any task failed"* — so the producer following the shipped text arrives at prose even on a passing cycle. That is a format-text interaction, not obviously an author's departure.
@@ -314,9 +314,9 @@ Selection was mechanical (zero-ID + file-head position + longest such block). No
 
 ## Fact map — second delivery (F70–F74, carrier verification)
 
-*(fact-checker authored, verbatim — settling D2's pending-verification flag)*
+*(fact-checker authored, verbatim — settling D2-default-on-adoption's pending-verification flag)*
 
-**F70. All three D2 carriers exist under the names the record uses. Verified.**
+**F70. All three D2-default-on-adoption carriers exist under the names the record uses. Verified.**
 - `plugins/mochiko/templates/command-shape.md:196-198` — the paragraph the record proposes to extend is titled *"**The conversation is the production surface.**"* (full text at F4). It sits in Layer 1, obligated-read by all six commands.
 - `plugins/mochiko/templates/report-format.md` — exists, 74 lines, `**Format version:** v1 (2026-07-23 — workflow-token-reduction wave 1)`.
 - `plugins/mochiko/templates/artifact-format.md` — exists, 69 lines, `**Format version:** v1 (2026-07-24 — workflow-token-reduction wave 2)`.
@@ -329,16 +329,16 @@ Selection was mechanical (zero-ID + file-head position + longest such block). No
 
 **F73. The switch's proposed home has no section that fits it today.** `templates/governance-surfaces-template.md:29-59` gives the region's full shape between `<!-- mochiko:governance:begin -->` and `<!-- mochiko:governance:end -->`: a `**Ratified:**` stamp line, then `### Principles` · `### Technology stack` · `### Quality gates` · `### Governance operations`. `### Governance operations` (`:53-59`) currently carries five line types — ledger pointer, amend-via-setup, the path-scoped-rules injection note, the KM operating-docs pointer, release gates — every one a pointer or a governance mechanic, none a response-style setting. So a default-on style line lands either as a sixth line in `Governance operations` or as a new section; neither exists yet. Both are additions to a setup-owned, regenerated-in-place region.
 
-**F74. Two record claims already verified in the map, restated so D1/D2 are self-contained:** the `lite/full/ultra` level machinery is `CLAUDE.md:33-34` (F26, default `full`); and the operator spec's artifact exemption the record's Contested note flags is `CLAUDE.md:30-31` — *"**Written artifacts are exempt** — code, comments, commit messages, PR bodies, and every file in the repo are written normally"* (F25). The record's reading is correct: ruling artifacts at `full` does go beyond the operator spec, which exempts them entirely rather than assigning them a level.
+**F74. Two record claims already verified in the map, restated so D1-caveman-surface-levels/D2-default-on-adoption are self-contained:** the `lite/full/ultra` level machinery is `CLAUDE.md:33-34` (F26, default `full`); and the operator spec's artifact exemption the record's Contested note flags is `CLAUDE.md:30-31` — *"**Written artifacts are exempt** — code, comments, commit messages, PR bodies, and every file in the repo are written normally"* (F25). The record's reading is correct: ruling artifacts at `full` does go beyond the operator spec, which exempts them entirely rather than assigning them a level.
 
 ## Decisions
 
-### D1 — Diagnosis + per-surface caveman levels · `Confident` (artifacts-at-full: `Contested`)
+### D1-caveman-surface-levels — Diagnosis + per-surface caveman levels · `Confident` (artifacts-at-full: `Contested`)
 
 **Statement:** The verbosity disease is **prose bloat** (too many words per fact), not fact
 count — so the fix is substance-preserving compression, not content cuts, and it does not
 fight the record-is-the-audit-trail doctrine. Caveman levels assign per surface: **chat
-`full` · machine reports `ultra` (failure narratives `full` — see D4) · human-read artifacts
+`full` · machine reports `ultra` (failure narratives `full` — see D4-report-format-repair) · human-read artifacts
 `full`** — with the spec's ambiguity
 guardrail riding (drop caveman wherever compression makes technical meaning ambiguous).
 
@@ -353,13 +353,13 @@ Note: this goes beyond the operator spec, which exempts written artifacts entire
 **Review folds (2026-08-01):** *(S12/I8)* precedence when terse and plain-English pull apart
 on an end-user surface: plain-English wins the conflict — the ambiguity guardrail is the
 tiebreak, stated so producers don't pick per run. *(S20/M4, Contested-adjacent, raised on the
-new-angle exception)* what distinguishes D10's exempted classes from D1's `full` classes:
+new-angle exception)* what distinguishes D10-operator-spec-unchanged's exempted classes from D1-caveman-surface-levels's `full` classes:
 records/decisions are quotable audit surfaces (exact wording load-bearing); requirements/
 contracts are ID-structured with the guardrail protecting every precision-critical clause.
 *(S16/I14′, user-ruled at review)* the reported pain is each file's **prose**, not the
 artifact-set size — file-count concern closed, no new capture.
 
-### D2 — Adoption model: default-on, switch in the project's CLAUDE.md · `Confident`
+### D2-default-on-adoption — Adoption model: default-on, switch in the project's CLAUDE.md · `Confident`
 
 **Statement:** The style ships **default-on across all surfaces** with a documented off
 switch. The style text is single-sourced in one shipped home (small template), bound by
@@ -381,8 +381,8 @@ conversation paragraph (F4/F70), `report-format.md` v1 (F8–F9), `artifact-form
 (F10–F11). The governance region exists with four sections and **no prose/style section**
 (F29/F73) — the switch line is an addition (sixth `Governance operations` line or a new
 section), a build obligation, not an edit to an existing shape. No platform output-style
-mechanism is documented anywhere in the repo (F31) — D2 relies on none. Note F25/cut 5: the
-operator caveman spec as written touches only the conversation layer; D1's extension to
+mechanism is documented anywhere in the repo (F31) — D2-default-on-adoption relies on none. Note F25/cut 5: the
+operator caveman spec as written touches only the conversation layer; D1-caveman-surface-levels's extension to
 reports and artifacts is deliberate new scope, not a port.
 
 **Lead fold on F72 (formulation, flagged):** the reports binding reaches the **payload
@@ -400,7 +400,7 @@ setup/`authoring-constitution`, so a user's set value survives every amend. *(S5
 switch-home adoption was ruled at **Q7** ("go with recommended") — citation added; not an
 unconfirmed formulation. *(S10/I6, user-ruled)* the switch line carries **per-surface level
 values** (`off/lite/full/ultra` per chat · reports · artifacts), not a boolean — a user can
-run chat `lite` without forfeiting report savings; this also makes D9's supersession honest.
+run chat `lite` without forfeiting report savings; this also makes D9-intensity-modes-superseded's supersession honest.
 *(S3/R2 + I5, user-ruled)* the style home ships a **clause manifest**: F25's five safety
 exemptions ship **whole**; F22–F24 port with one amendment — the **never-announce clause is
 dropped for end users**, replaced by a one-time disclosure (the first styled session names
@@ -408,9 +408,9 @@ the style and points at the switch line). *(S9/I4b, user-ruled)* adoption bounda
 project mid-feature adopts at the **next feature boundary** — no accumulating artifact
 (F67) carries two registers; in-flight features finish in the register they started.
 
-### D3 — Plain-language principle folds into the style home; sweep stays open · `Confident`
+### D3-plain-language-fold — Plain-language principle folds into the style home; sweep stays open · `Confident`
 
-**Statement:** The minted style home carries **both** rules: terse (caveman levels per D1)
+**Statement:** The minted style home carries **both** rules: terse (caveman levels per D1-caveman-surface-levels)
 **and plain-English-for-end-users** — including the growth mechanism for the user-facing
 vocabulary ban (today the three-term list at `command-shape.md:196-198`, F4). The
 plain-language **sweep work itself** (term hunting, "Layer -2"-class leaks) stays its own
@@ -427,7 +427,7 @@ internal shape or architecture vocabulary in end-user-facing prose — with the 
 terms as **non-exhaustive examples**, so a term like "Layer -2" is banned by class before
 any list catches up; the term list remains the growth surface for worked examples.
 
-### D4 — Reports fix: format repair + `ultra` + enforcement teeth · `Confident`
+### D4-report-format-repair — Reports fix: format repair + `ultra` + enforcement teeth · `Confident`
 
 **Statement:** Three parts, one landing:
 1. **Format repair** — close the F59 clause (a verifier-owned, deliberately-skipped task
@@ -452,9 +452,9 @@ text itself (F59). Unenforced format rules demonstrably don't land (same story a
 dense-forms miss). A style rule added without repair + teeth would be a second wish on the
 same shelf. User adopted the recommendation (Q9, option C).
 
-**Boundary vs D5:** D4's "teeth" are a *structural binary check* — prose present on a clean
-report, mechanically detectable — not a prose-quality review dimension. D5 rules out
-verbosity *grading*; D4's check survives that ruling because it grades presence, not quality.
+**Boundary vs D5-verbosity-grading-declined:** D4-report-format-repair's "teeth" are a *structural binary check* — prose present on a clean
+report, mechanically detectable — not a prose-quality review dimension. D5-verbosity-grading-declined rules out
+verbosity *grading*; D4-report-format-repair's check survives that ruling because it grades presence, not quality.
 
 **Review folds (2026-08-01):** *(S2 — C1/R3 merged, Critical repair)* the "validator check"
 had no host — no `validation-*`/`review-*` skill reads report format, and the lead accepted
@@ -468,18 +468,18 @@ the check restated in both payload homes. Executed, not judged. *(S13/I9, user-r
 retry-scoping instrument (F68's TARGETED RETRY) and compressing them costs more than it
 saves; `ultra` governs the non-diagnostic remainder.
 
-### D5 — Artifacts: no verbosity grading; enforcement by injection · `Confident`
+### D5-verbosity-grading-declined — Artifacts: no verbosity grading; enforcement by injection · `Confident`
 
 **Statement:** Deliverables get **no verbosity grading** — `artifact-format.md` rule 8
 ("brevity is never itself a finding") stands, and no reviewer dimension for bloat is added.
-Enforcement of artifacts-`full` (D1) is **injection-side** — the style rides the context
+Enforcement of artifacts-`full` (D1-caveman-surface-levels) is **injection-side** — the style rides the context
 surfaces the producer already loads at authoring time:
 1. **setup command** writes the style (default-on line + levels per surface) into the user
-   project's `CLAUDE.md` governance region (D2's switch home; new section/line per F73);
+   project's `CLAUDE.md` governance region (D2-default-on-adoption's switch home; new section/line per F73);
 2. **`paths`-scoped `.claude/rules/` style file** over artifact-producing paths (e.g.
-   `.mochiko/specs/**`) delivers the artifact rule at touch time — precedent: OO-D3's
+   `.mochiko/specs/**`) delivers the artifact rule at touch time — precedent: `ops-observability-hardening` D3-app-level-slos's
    SLO rules file over the same glob (audit-cleared pattern);
-3. **shipped templates** carry the style by reference (D2's carriers + F72's payload homes).
+3. **shipped templates** carry the style by reference (D2-default-on-adoption's carriers + F72's payload homes).
 
 **Rationale:** User-ruled with reasoning: grading verbosity *spends* the tokens caveman
 exists to save — a big part of caveman is output-token reduction; a review dimension on
@@ -496,7 +496,7 @@ reading)* two mechanism repairs and one honesty note:
   reinforcement*, and its inject-on-Read limitation is named here rather than discovered at
   build. The escalation trigger both reviewers named resolves FOR the record on this
   reading, which the user confirmed (batch item 8).
-- **Precedent honesty:** OO-D3's SLO rules file is ruled but **unbuilt** (open BACKLOG
+- **Precedent honesty:** `ops-observability-hardening` D3-app-level-slos's SLO rules file is ruled but **unbuilt** (open BACKLOG
   item) — the citation is to a cleared *pattern*, not a shipped mechanism. No sequencing
   dependency: whichever build lands first creates the rules-file mechanism, the other joins
   (the `STACK-TOOLING.md` create-or-join precedent).
@@ -509,7 +509,7 @@ reading)* two mechanism repairs and one honesty note:
   delta (e.g. "overview 9 lines vs ≤3 default"), giving the lead a signal with no reviewer
   dimension and no re-open of the no-grading ruling.
 
-### D6 — Framework-maintenance trio moves repo-side; ops leakage is a defect class · `Confident` (leakage boundary ruled at D7)
+### D6-maintenance-trio-moved — Framework-maintenance trio moves repo-side; ops leakage is a defect class · `Confident` (leakage boundary ruled at D7-full-leakage-scrub)
 
 **Statement:** Two parts:
 1. **The trio moves out of the plugin** — `command-architect` (agent), `authoring-commands`
@@ -523,7 +523,7 @@ reading)* two mechanism repairs and one honesty note:
    and session-slug references in shipped templates). A **leakage sweep** is a build item:
    enumerate per class, disposition per line under the primitive-edit ceremony — this
    record supplies the class-level ruling; per-line removal still takes its strip entry +
-   independent audit. Class boundary ruled at D7 (S4 fold: the groups collapse into D7's
+   independent audit. Class boundary ruled at D7-full-leakage-scrub (S4 fold: the groups collapse into D7-full-leakage-scrub's
    two classes; session slugs count as pointers).
 
 **Rationale:** F41's ruled rationale generalizes verbatim — "the plugin directory is the
@@ -544,7 +544,7 @@ runtime doctrine** (obligated-read by every command run); the *authoring half* i
 **deliberately withheld** from adopters — an adopter wanting their own command in the shape
 is the C re-open trigger, already named.
 
-### D7 — Leakage boundary: full scrub, changelog-worthy detail preserved repo-side · `Contested`
+### D7-full-leakage-scrub — Leakage boundary: full scrub, changelog-worthy detail preserved repo-side · `Contested`
 
 **Statement:** **Full scrub** — both leakage classes leave the shipped tree: the one-line
 provenance pointers *and* the fat version-history blocks. Hard constraint from the user:
@@ -563,23 +563,23 @@ version blocks load in every command run (obligated-read), so the scrub also shr
 always-read floor — a token-epic win.
 
 **Review folds (2026-08-01):** *(S4/R4, user-ruled)* scrub mechanics vs protected content:
-**per-line supersession entries in the strip notes, each citing this record's D7 as the
+**per-line supersession entries in the strip notes, each citing this record's D7-full-leakage-scrub as the
 class ruling**, satisfy "protected content leaves only by ruling" — the audit reads the
 strip entry, not silence; and **session-slug provenance counts as one-line provenance
-pointers** (the reviewers' reconciliation adopted), so D6's leakage groups collapse into
-D7's two classes cleanly. *(S17/R8)* size figure corrected: the v7 version block measures
+pointers** (the reviewers' reconciliation adopted), so D6-maintenance-trio-moved's leakage groups collapse into
+D7-full-leakage-scrub's two classes cleanly. *(S17/R8)* size figure corrected: the v7 version block measures
 **5,118 B / 55 lines** (`command-shape.md:359`–EOF of 31,235 B), not "~2.5 KB" — measured,
 direction unchanged, reusable as a token-epic baseline. *(Review note: the one finding aimed
 at this `Contested` ruling — the mitigation leaning on an unprobed mechanism — was
 **withdrawn in cross-exam**: removal/supersession entails a Read, so the paths rule fires;
 the mitigation holds.)*
 
-### D8 — Token-epic seam ruled explicit · `Confident`
+### D8-token-epic-seam — Token-epic seam ruled explicit · `Confident`
 
 **Statement:** The boundary the epic's record never stated (F16) is ruled here: **the
 token-reduction epic owns context loads and machinery tokens; this session's style work owns
-prose style on all three output layers** (conversation · reports · deliverables). D4's
-format repair is explicitly **finishing epic D3's intent** — the conditional-prose rule D3
+prose style on all three output layers** (conversation · reports · deliverables). D4-report-format-repair's
+format repair is explicitly **finishing epic `workflow-token-reduction` D3-cycle-report-slimming's intent** — the conditional-prose rule `workflow-token-reduction` D3-cycle-report-slimming
 specified and the driver run shows never landed (F58, cut 14). One seam, no overlap; neither
 work item re-opens the other.
 
@@ -588,33 +588,33 @@ report tokens, not user-facing prose") stays a summary citing nothing. User conf
 Q13 batch.
 
 **Review fold (2026-08-01):** *(S8/M1)* the seam is crossed twice by this record's own
-rulings, both declared here so the epic's bookkeeping sees them: **D4.1 finishes epic D3's
-intent** (the conditional-prose rule), and **D7's scrub shrinks the always-read floor** the
+rulings, both declared here so the epic's bookkeeping sees them: **D4.1 finishes epic `workflow-token-reduction` D3-cycle-report-slimming's
+intent** (the conditional-prose rule), and **D7-full-leakage-scrub's scrub shrinks the always-read floor** the
 epic tracks (52,129 B/run figure) — any later epic re-measure re-baselines against both
 before attributing deltas.
 
-### D9 — "Intensity modes" backlog item superseded by D1+D2 · `Confident`
+### D9-intensity-modes-superseded — "Intensity modes" backlog item superseded by D1-caveman-surface-levels+D2-default-on-adoption · `Confident`
 
 **Statement:** The open design decision **Intensity modes** (BACKLOG, 2026-06-27, provenance
-unrecoverable) is superseded: D1 supplies the per-surface level pattern it deferred for
+unrecoverable) is superseded: D1-caveman-surface-levels supplies the per-surface level pattern it deferred for
 ("defer until the pattern is clear from real runs" — the driver run is that evidence), and
-D2 supplies the dial's home and off switch. Honest note: the item never stated what the dial
+D2-default-on-adoption supplies the dial's home and off switch. Honest note: the item never stated what the dial
 modulates — vocabulary match, not provable identity (F27, cut 6) — so this is a supersession
 by covering, not by exact answer. Closes to the trail at landing.
 
 **Rationale:** User confirmed in the Q13 batch.
 
 **Review folds (2026-08-01):** *(S10/I6)* the supersession is now honest on the dial's four
-positions — D2's switch carries per-surface `off/lite/full/ultra` values, matching F27's
+positions — D2-default-on-adoption's switch carries per-surface `off/lite/full/ultra` values, matching F27's
 vocabulary exactly. *(S18/M2)* the **trail entry carries the supersession-by-covering
 caveat** verbatim, so the unrecoverable-provenance nuance survives the item leaving BACKLOG.
 
-### D10 — Operator caveman spec unchanged · `Confident`
+### D10-operator-spec-unchanged — Operator caveman spec unchanged · `Confident`
 
 **Statement:** This repo's own `CLAUDE.md` caveman spec keeps its written-artifacts
-exemption (F25). D1's artifacts-`full` governs pipeline deliverables in mochiko-run
+exemption (F25). D1-caveman-surface-levels's artifacts-`full` governs pipeline deliverables in mochiko-run
 projects; if the pipeline ever produces such artifacts in this repo, the shipped injection
-(D5) styles them by mechanism. The operator's hand-authored governance/audit layer (records,
+(D5-verbosity-grading-declined) styles them by mechanism. The operator's hand-authored governance/audit layer (records,
 decisions, strips) stays normal prose — exact wording is load-bearing there.
 
 **Rationale:** Lead-recommended, user confirmed in the Q13 batch. Consistency-by-mechanism
@@ -642,33 +642,33 @@ I1+M1 → S8 (−1) — 26 − 6 = 20. (I4 survived as its scenario-B half only,
 scenario-A half was conceded to R1 in cross-exam, no merge reduction; M5 was withdrawn by
 its owner, so it is not among the 26.) Both reviewers recommended
 **needs-revision**; neither read either Critical as wholesale. The one finding aimed at the
-`Contested` D7 (I12) was withdrawn in cross-exam — D7's mitigation holds. One fact-map
+`Contested` D7 (I12) was withdrawn in cross-exam — D7-full-leakage-scrub's mitigation holds. One fact-map
 defect (F43) was found, checker-settled, erratum above.
 
 **Dispositions — 20/20:**
 
 | S# | source | severity | decision(s) | disposition |
 |---|---|---|---|---|
-| S1 | R1 (+I4a) | Critical | D2, D5 | **folded** — switch line joins the region's preserve-on-regenerate carve-outs (D2 folds) |
-| S2 | C1≡R3 | Critical | D4 | **folded** — check named mechanically, hosts named (D4 folds) |
-| S3 | R2+I5 | Important | D1, D2 | **user-ruled** (batch items 2+3) — F25 exemptions ship whole; never-announce dropped for end users, disclose-once (D2 folds) |
-| S4 | R4 | Important | D6, D7 | **user-ruled** (batch item 7) — per-line strip entries citing D7; slugs = pointers (D7 folds) |
-| S5 | R5 | Important | D2, D3 | **folded** — Q7 citation added; the two flagged formulations (F72 fold, D3 sweep reading) remain flagged and are confirmed at acceptance of this record |
-| S6 | R6+emergent+I2+I3 | Important | D5 | **user-confirmed** (batch item 8) — leg 1 reaches creates; inject-on-Read named; unbuilt-precedent honesty; binding depth widened; size-guidance reported-not-graded (D5 folds). Escalation trigger resolved FOR the record |
+| S1 | R1 (+I4a) | Critical | D2-default-on-adoption, D5-verbosity-grading-declined | **folded** — switch line joins the region's preserve-on-regenerate carve-outs (D2-default-on-adoption folds) |
+| S2 | C1≡R3 | Critical | D4-report-format-repair | **folded** — check named mechanically, hosts named (D4-report-format-repair folds) |
+| S3 | R2+I5 | Important | D1-caveman-surface-levels, D2-default-on-adoption | **user-ruled** (batch items 2+3) — F25 exemptions ship whole; never-announce dropped for end users, disclose-once (D2-default-on-adoption folds) |
+| S4 | R4 | Important | D6-maintenance-trio-moved, D7-full-leakage-scrub | **user-ruled** (batch item 7) — per-line strip entries citing D7-full-leakage-scrub; slugs = pointers (D7-full-leakage-scrub folds) |
+| S5 | R5 | Important | D2-default-on-adoption, D3-plain-language-fold | **folded** — Q7 citation added; the two flagged formulations (F72 fold, D3-plain-language-fold sweep reading) remain flagged and are confirmed at acceptance of this record |
+| S6 | R6+emergent+I2+I3 | Important | D5-verbosity-grading-declined | **user-confirmed** (batch item 8) — leg 1 reaches creates; inject-on-Read named; unbuilt-precedent honesty; binding depth widened; size-guidance reported-not-graded (D5-verbosity-grading-declined folds). Escalation trigger resolved FOR the record |
 | S7 | R7+I13 | Important | record-wide | **folded** — Landing obligations + Build shape sections below |
-| S8 | I1+M1 | Important | D1, D8 | **folded** — Measurement obligation below; seam crossings declared (D8 fold) |
-| S9 | I4b | Important | D2 | **user-ruled** (batch item 6) — adoption at next feature boundary (D2 folds) |
-| S10 | I6 | Important | D2, D9 | **user-ruled** (batch item 4) — switch carries per-surface level values (D2/D9 folds) |
-| S11 | I7 | Important | D3 | **folded** — ban becomes principle + non-exhaustive examples (D3 fold) |
-| S12 | I8 | Important | D1, D3 | **folded** — plain-English wins conflicts on end-user surfaces (D1 fold) |
-| S13 | I9 | Important | D4 | **user-ruled** (batch item 5) — failure narratives stay `full` (D4 fold) |
-| S14 | I10 | Important | D6 | **folded** — probe-first obligation + discoverability surface (D6 fold) |
-| S15 | I11 | Important | D6 | **folded** — runtime-doctrine-only statement, authoring half withheld (D6 fold) |
-| S16 | I14′ | Important | D1 | **user-ruled** (batch item 1, re-asked and answered separately: "file prose") — closed, no new capture (D1 fold) |
-| S17 | R8 | Minor | D7 | **folded** — figure corrected to measured 5,118 B (D7 fold) |
-| S18 | M2 | Minor | D9 | **folded** — caveat carries into the trail entry (D9 fold) |
-| S19 | M3 | Minor | D10 | **folded** — injected-rule precedence line (D10 fold) |
-| S20 | M4 | Minor | D1, D10 | **folded** — class-distinction line (D1 fold; Contested-adjacent, raised on the new-angle exception) |
+| S8 | I1+M1 | Important | D1-caveman-surface-levels, D8-token-epic-seam | **folded** — Measurement obligation below; seam crossings declared (D8-token-epic-seam fold) |
+| S9 | I4b | Important | D2-default-on-adoption | **user-ruled** (batch item 6) — adoption at next feature boundary (D2-default-on-adoption folds) |
+| S10 | I6 | Important | D2-default-on-adoption, D9-intensity-modes-superseded | **user-ruled** (batch item 4) — switch carries per-surface level values (D2-default-on-adoption/D9-intensity-modes-superseded folds) |
+| S11 | I7 | Important | D3-plain-language-fold | **folded** — ban becomes principle + non-exhaustive examples (D3-plain-language-fold fold) |
+| S12 | I8 | Important | D1-caveman-surface-levels, D3-plain-language-fold | **folded** — plain-English wins conflicts on end-user surfaces (D1-caveman-surface-levels fold) |
+| S13 | I9 | Important | D4-report-format-repair | **user-ruled** (batch item 5) — failure narratives stay `full` (D4-report-format-repair fold) |
+| S14 | I10 | Important | D6-maintenance-trio-moved | **folded** — probe-first obligation + discoverability surface (D6-maintenance-trio-moved fold) |
+| S15 | I11 | Important | D6-maintenance-trio-moved | **folded** — runtime-doctrine-only statement, authoring half withheld (D6-maintenance-trio-moved fold) |
+| S16 | I14′ | Important | D1-caveman-surface-levels | **user-ruled** (batch item 1, re-asked and answered separately: "file prose") — closed, no new capture (D1-caveman-surface-levels fold) |
+| S17 | R8 | Minor | D7-full-leakage-scrub | **folded** — figure corrected to measured 5,118 B (D7-full-leakage-scrub fold) |
+| S18 | M2 | Minor | D9-intensity-modes-superseded | **folded** — caveat carries into the trail entry (D9-intensity-modes-superseded fold) |
+| S19 | M3 | Minor | D10-operator-spec-unchanged | **folded** — injected-rule precedence line (D10-operator-spec-unchanged fold) |
+| S20 | M4 | Minor | D1-caveman-surface-levels, D10-operator-spec-unchanged | **folded** — class-distinction line (D1-caveman-surface-levels fold; Contested-adjacent, raised on the new-angle exception) |
 
 Counted unit: 0 lead↔reviewer argument exchanges consumed (no survivor argued — every one
 resolved by fold or user ruling).
@@ -680,24 +680,24 @@ At acceptance, the KM close ritual covers, explicitly:
    to the trail: this record is the brainstorm it called for; the build surface below is its
    successor.
 2. **"Plain-language sweep + internal-jargon leak"** — stays open, **amended**: the ban's
-   term-list growth mechanism moves to the style home (D3); the sweep work remains.
-3. **"Intensity modes"** — closes to the trail via D9, the supersession-by-covering caveat
+   term-list growth mechanism moves to the style home (D3-plain-language-fold); the sweep work remains.
+3. **"Intensity modes"** — closes to the trail via D9-intensity-modes-superseded, the supersession-by-covering caveat
    carried verbatim.
-4. **Token-epic seam** — the epic's D3 is annotated as finished-by-D4.1 at build (no BACKLOG
-   edit now; guard against a wave-3 re-open duplicating D4).
+4. **Token-epic seam** — the epic's `workflow-token-reduction` D3-cycle-report-slimming is annotated as finished-by-D4.1 at build (no BACKLOG
+   edit now; guard against a wave-3 re-open duplicating D4-report-format-repair).
 5. **DECISIONS.md row** for this session; **ROADMAP.md** touch (Now/Next per the build
    shape); index entry updated with the landing.
 6. **New BACKLOG build item(s)** per the build shape below, carrying the S1/S2 Critical
-   repairs, the D2 carve-out obligation, the D6 probe-first obligation, and the primitive-
+   repairs, the D2-default-on-adoption carve-out obligation, the D6-maintenance-trio-moved probe-first obligation, and the primitive-
    edit ceremony note from the F43 erratum (all three template carriers under the
    touch-time rule).
 7. **At acceptance, the user explicitly confirms the two still-flagged lead formulations**
-   (S5's resolution carrier): D2's F72 payload-homes fold, and D3's sweep-scope reading of
+   (S5's resolution carrier): D2-default-on-adoption's F72 payload-homes fold, and D3-plain-language-fold's sweep-scope reading of
    the Q8 "A" ruling — both marked in place; acceptance closes the flags.
 
 ### Build shape (S7/I13 — sequencing by yield, waves under the ceremony)
 
-- **Wave 1 — D4 report repair** (cheapest, highest yield: 192,570 B of prose on the driver
+- **Wave 1 — D4-report-format-repair report repair** (cheapest, highest yield: 192,570 B of prose on the driver
   run, 79.9% of report bytes): the F59 clause fix + sanctioned-section bound + the S2
   mechanical check + `ultra`-with-`full`-narratives at the payload homes. **Carrier question
   to settle at build open (N3):** does the new clearing condition enter `command-shape.md`'s
@@ -709,7 +709,7 @@ At acceptance, the KM close ritual covers, explicitly:
   governance-region section + preserve-on-regenerate carve-out (S1) + rules file, setup
   changes.
 - **Wave 3 — ops separation**: the trio move (probe-first, S14) + the leakage scrub
-  (per-line supersession entries citing D7, S4).
+  (per-line supersession entries citing D7-full-leakage-scrub, S4).
 Each wave: primitive-edit ceremony per touched file, independent audit, no partial-carrier
 landing inside a wave (mixed-register output is worse than uniform verbosity).
 
@@ -718,12 +718,12 @@ landing inside a wave (mixed-register output is worse than uniform verbosity).
 Metric: **bytes + prose-share by class** (deliverables / reports / conversation excluded)
 per slice-run, the F53–F55 method. Baseline: **816,601 B · 79.9% report-prose share ·
 575,700 B deliverables** (author-navigate S1, F53–F55). Re-measure: the first comparable
-slice-run after each wave lands; deltas attributed against the D8 seam-crossing note.
+slice-run after each wave lands; deltas attributed against the D8-token-epic-seam seam-crossing note.
 Surface: the run's BACKLOG build item carries the figure forward.
 
 ### Verify pass
 
-**Owner:** reviewer-integrity. **Round 1 (2026-08-01): NOT CLEAN** — 1 blocking (B1: D4's
+**Owner:** reviewer-integrity. **Round 1 (2026-08-01): NOT CLEAN** — 1 blocking (B1: D4-report-format-repair's
 statement not amended at fold time — part 2 contradicted the S13 user ruling, part 3
 asserted the validator the S2 repair established does not exist; "statements outrank folds
 for a cold builder") + 5 non-blocking (N1 merge arithmetic · N2 batch count unmapped ·
@@ -732,8 +732,8 @@ N3 Wave-1 carrier question unnamed · N4 S5's resolution had no landing carrier 
 substance. **All six repaired same round → Round 2 (bounded): CLEAN, no residue** — verifier
 quoted each repaired surface, independently re-derived the 26−6=20 merge arithmetic and the
 batch-item mapping (every item exactly once), and confirmed no dropped responsibilities in
-the D4 rewrite ("bounces on sight" carried as "returns to the lead"; the rule-8-twin clause
-intact). One recorded observation, not a defect: D4's statement says "the
+the D4-report-format-repair rewrite ("bounces on sight" carried as "returns to the lead"; the rule-8-twin clause
+intact). One recorded observation, not a defect: D4-report-format-repair's statement says "the
 deterministic-and-clean clearing conditions" while the S2 fold says "Layer 2's…" — the
 statement is deliberately the more careful pending N3's carrier ruling; no contradiction.
 **Combined verdict: 20/20 dispositions verified — no fold contradicts another decision, no
@@ -759,7 +759,7 @@ paths:
 
 **Corrected F43 clause:** `primitive-edits.md`, `paths`-scoped to `plugins/mochiko/commands/**`, `skills/**`, `agents/**`, **and `templates/**`**.
 
-**The correction has a live consequence for this session's D2, in the session's favour.** All three D2 carriers — `templates/command-shape.md`, `templates/report-format.md`, `templates/artifact-format.md` — sit under `plugins/mochiko/templates/**`. Under the three-glob reading none of them was covered by the touch-time reminder; under the true four-glob scope **all three are**. So the primitive-edit ceremony (version-stamped entry in `.mochiko/strips/<primitive>.md` + the independent author ≠ grader audit) binds on every carrier the D2 build would touch, and the reminder fires at edit time on each. That is a build obligation the session should carry forward, and it was invisible under my erroneous F43.
+**The correction has a live consequence for this session's D2-default-on-adoption, in the session's favour.** All three D2-default-on-adoption carriers — `templates/command-shape.md`, `templates/report-format.md`, `templates/artifact-format.md` — sit under `plugins/mochiko/templates/**`. Under the three-glob reading none of them was covered by the touch-time reminder; under the true four-glob scope **all three are**. So the primitive-edit ceremony (version-stamped entry in `.mochiko/strips/<primitive>.md` + the independent author ≠ grader audit) binds on every carrier the D2-default-on-adoption build would touch, and the reminder fires at edit time on each. That is a build obligation the session should carry forward, and it was invisible under my erroneous F43.
 
 **No other surface carries the wrong count — checked, not assumed.** The ruling's ADR states the scope correctly and completely: `.mochiko/decisions/2026-08-01-primitive-edit-ceremony-codified.md:23-25` — *"a new `paths`-scoped rule over `plugins/mochiko/{commands,skills,agents,templates}/**` that fires the checklist at edit time"*. The `DECISIONS.md:20` row names the file without enumerating globs, so it cannot disagree. The error existed only in my F43 line.
 

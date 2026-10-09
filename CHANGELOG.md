@@ -5,6 +5,100 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.118.0] — 2026-10-09
+
+**Human-readable IDs — MINOR, with a break in the written ID form** (`human-readable-ids` D1–D22
+as review- and build-amended, record `.mochiko/brainstorms/human-readable-ids/record.md`). Every
+durable numbered ID the plugin mints is now written joined — its number, then three lowercase topic
+words (`FR-012-order-cutoff-time`, `D2-billing-leaves-checkout`) — at every mention, the definition
+included (D1–D3, D9, D13, D19). The break ships as an ordinary minor bump and is named here (D20).
+The grammar has one home: a new **IDs section** in `templates/artifact-format.md` (format v4; build
+question B4), which brainstorm records and governance surfaces also follow. It covers durable IDs
+and local labels, the joined form, topic words, file-name slugs, compounds, owners, sub-decisions,
+the bare machine-read spots, quotes, the definition-decides rule, and renames and renumbers through
+`mochiko-cli ids rename` / `rekey`. Rule 1's examples are joined.
+
+**Upgrade: this plugin needs `mochiko-cli` 0.4.0** (grammar 1..2, unchanged — so the dependency
+halt cannot tell 0.3.0 from 0.4.0: a 0.3.0 binary still serves every rule, and only an `ids` call
+fails). 0.4.0 is not published; the maintainer reinstalls with `cargo install --path
+crates/mochiko-cli` (the break-glass), and the release is booked. **Ships under the AM-5 exception
+row** (governance ledger, Exception registry, first row): the conformance hooks still ship before
+the first `mochiko-cli` publish carrying the four named controls. 0.117.0 shipped under the same
+row without citing it; recorded here.
+
+Template-visible breaks: the tasks cycle heading `### - [ ] C<n>-<slug> — <title>`; the story
+heading `### US-<n>-<slug> — …`; FR and SC definition lines `- **FR-001-<slug>**:`, SC at three
+digits; cross-file citations behind their owner — US, FR and SC behind the spec's slug, the C-, D-,
+IP-, INT- and DS- families behind `` `product` `` or the spec's slug, cycles behind the run's key
+(a joined FEAT or EPIC ID, or `lane-<slug>`); the EPIC manifest heading; the report clarification
+label `C<n>` → `Q<n>` (D10). The three plugin scripts accept the joined form (D12):
+`validate-requirements.py` and `validate-user-stories.py` check the slug's shape and still accept
+bare IDs (D16) — the story script also reads a bare `### US-<n> —` and the legacy
+`### User Story <n> -` heading — and `check-artifacts.py` counts each ID once by its number.
+`validate-requirements.py` also counts every FR in a bulleted list, so FR counts rise on specs
+written in the template's own bulleted form (Q1, the lead's ruling).
+
+Migrations **`0046-joined-id-templates`**, **`0047-joined-id-minting-rules`**,
+**`0048-landing-rekey`**, **`0049-graders-check-joined-ids`** and
+**`0050-governance-intent-check-joined`** carry the schema half: templates, minting rules, the
+landing renumber through `mochiko-cli ids rekey` by the joined old ID, untied bare mentions
+settled by hand (D4), the graders checking the joined form (D6, D16), and the governance-intent
+template's check reading `GI-0XX-<slug>` (D21). The log, sequences 1..50, replays to 87 documents
+and 1,175 rules (1,168 → 1,175); `migrate validate` 0 rejecting · 113 advisory, clusters 0,
+allowlist-suppressed edges 185. Prose primitives superseded: 23 strip entries stamped [v0.118.0]
+(`evolution-notes-module.md` new).
+Budgets (`.mochiko/memory/primitive-cost-budgets.md`, each figure from stepped prefix replays and
+ruled HOLDS by the wave-2 gate audit): `0049`'s grader check adds +564 to +571 to each of its five
+review members, so `review-governance-intent` (+497), `validation-constitution` (+348) and
+`review-plan-artifacts` (+259) go over budget and `review-specifications` (+1,184) and
+`review-brainstorm` (+1,962) grow; the `skill-review-common.yaml` row is re-seeded to the measured
+1,917 by the lead's ruling. The minting-rule rewords and the joined definition lines grow
+`authoring-requirements` (+501), `authoring-epic` (+388), `authoring-feature-map` (+382),
+`authoring-architecture-store` (+2,146), `authoring-technical-requirements` (+939),
+`authoring-user-stories` (+284) and `testing-gap-finding` (+3,231); `patterns-vertical-tdd` falls
+to +159; `review-feasibility`, `authoring-constitution`, `patterns-entity-modeling` and
+`patterns-api-contracts` stay inside their budgets.
+Dependency: the IDs section names `mochiko-cli ids rename` and `rekey`, so this release needs a
+`mochiko-cli` release carrying the `ids` subcommand.
+
+The repo's own back-fill (wave 3, D14-live-layer-backfill): every session decision and GI citation
+in the live layer is joined to its definition's slug — 639 renames, 48 literal series and 628 graded
+hand rows (owner qualifiers, normalized shorthands, quote masks), then a review fix round. Shipped
+prose touched: `authoring-constitution` (SKILL.md and six references), the `mochiko` router,
+`patterns-model-tiering`, `review-brainstorm`'s EXTERNAL-CLAIMS, `validation-constitution`'s two
+references, `validation-primitive-edit`, the `release-gates` module template, and comment lines in
+the `artifact-gate` and `dependency-halt` hook scripts — 9 strip entries stamped [v0.118.0]
+(`validation-primitive-edit.md`, `artifact-gate.md` and `dependency-halt.md` new). No migration;
+the replay is unchanged. `mochiko-cli ids --check` over the live layer: 0 bare · 0 drift.
+Budgets (ruled HOLDS by the wave-3 gate audit): `validation-primitive-edit`'s description 730 → 754,
+a new +24 over a no-headroom budget, from the joined `GI-004-primitive-audit-ratchet` cite;
+`patterns-model-tiering`'s standing overage +7,495 → +7,517; `authoring-constitution` 29,207,
+inside its 29,614.
+The same `mochiko-cli` release reads fenced blocks by the CommonMark closing rule (wave 3b): a fence
+closes only on a run of its own character at least as long as the opener, so a three-backtick block
+inside a four-backtick fence stays fenced — for `ids`' verbatim mask and for `check`'s heading scan
+alike.
+
+Governance v3.3.0, AM-6-id-tool-admission (repo-only; nothing shipped changes): `mochiko-cli ids`
+admitted as kernel-class tooling under GI-019-kernel-tooling-admission, and ID-token-only rewrites
+ruled non-semantic under GI-005-record-layer-integrity — recorded by hand at the user's ruling, not
+by a `/mochiko:setup` run (`human-readable-ids` D17-governance-amend-route, changed at build). The
+ruling's condition stands in `.github/workflows/ids.yml`: `ids --check` on every pull request,
+findings as warning annotations and a step summary, never a red check (D18-build-done-check).
+GLOSSARY: *joined ID*.
+
+Ran under the sound loop through waves 0–4; `.mochiko/brainstorms/human-readable-ids/build-log.md`
+carries every seat, plan grade and review round. Audited under the gate form: wave 2's gate audit
+PASS on every unit (S4 and S5 at round 3), wave 3's 8 units PASS at round 2; each crate unit through
+a non-author `mochiko:tech-lead` review; the CI step and the 0.4.0 bump PASS with 4 advisories,
+applied and verified (`reports/w4-ci-review.md`). Gates: `mochiko-cli migrate validate` 0 rejecting ·
+113 advisory · views ≡ replay (`views emit` to a temp dir, 87 of 87 identical) · `cargo test --all`
+765 green · fmt · clippy · audit (exit 0) · full-corpus similarity sweep 48/48 · secret scan clean
+(the CI pattern and `gitleaks detect --no-git --redact` over tracked and new files) · `ids --check`
+0 bare · 0 drift · **contract suite 97/97, 97 ran, none skipped** (on the bumped tree; host cases
+against the rebuilt 0.4.0 release binary, the rest in the `claude-mochiko` Docker sandbox) ·
+`plugin.json` and `marketplace.json` synced at 0.118.0.
+
 ## [0.117.0] — 2026-10-06
 
 **The brainstorm target state — MINOR** (`brainstorm-target-state` D1–D23 as review-amended, record

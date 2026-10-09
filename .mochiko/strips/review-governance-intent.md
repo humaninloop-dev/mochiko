@@ -13,7 +13,7 @@ text), so the probe re-runs in a fresh session.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the review family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -30,7 +30,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/review-governance-intent
 - **Disposition:** superseded → the synthesis's contents open at "floor-expression and deck rulings";
   the coherence lens reads "fact↔ruling alignment".
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/setup-product-agnostic/record.md`
-  D1 for the fact profile, D3 for the risk surface; `DECISIONS.md` 2026-09-24)
+  D1-profile-leaves-setup for the fact profile, D3 for the risk surface; `DECISIONS.md` 2026-09-24)
 - **Content:** two fragments, verbatim.
   1. "— fact profile, floor-expression and"
   2. "(fact↔risk↔ruling alignment,"
@@ -45,7 +45,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/review-governance-intent
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -89,7 +89,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/review-governance-intent
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -100,7 +100,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/review-governance-intent
   halt likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -110,7 +110,7 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/review-governance-intent
 
 ## [v0.100.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave)
 
-Ruling for every entry below: skill-content-schema D3 (boundary) / D8/C4 (protected
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (boundary) / D8/C4 (protected
 transfers), `DECISIONS.md` 2026-09-01 row; census:
 `.mochiko/brainstorms/skill-content-schema/research/census.md` §B (RGI). Schema home:
 `plugins/mochiko/skills/review-governance-intent/schema.yaml`. Minted IDs carry the
@@ -127,7 +127,7 @@ falsify, criterion-11 DECLARE latitude, reported) · 7 `authored-surfaces-out` �
 the census-named dimension is genuinely used; reported) · 11 `finding-contract` ·
 12 `unresolvable-is-commentary` · 13 `over-governance-admissibility` · 14 `never-excess`
 (C6 stub) · 15 `cross-exam-binding` (`when: {pairing: pair}`, cross-dir pointer, census
-J-7) · 16 `substrate-bindings` · 17 `reality-facts-checked` · 18 `user-facts-flagged` ·
+J-7-cross-directory-pointers) · 16 `substrate-bindings` · 17 `reality-facts-checked` · 18 `user-facts-flagged` ·
 19 `external-facts-binding` · 20 `survivor-report-form` · 21
 `status-vocabulary-and-criteria` · 22a `default-fail` (C2 stub, `${verdict}` = `ready`;
 the "never by looking reasonable" tail R2-absorbed by the block's "earned only by a
@@ -141,7 +141,7 @@ the delta over the pre-conversion body is structural overhead (IDs, keys, sectio
 scaffolding, reading grammar) — no content growth claimed.
 
 ## [v0.100.0] Jurisdiction floor — protection transfers (census RGI-7; v0.63.0 keep-set)
-- **Disposition:** superseded — protection transfers to schema rule `review-governance-intent.authored-surfaces-out` (class: floor), per skill-content-schema D8/C4; provenance sidecar carries the protected status.
+- **Disposition:** superseded — protection transfers to schema rule `review-governance-intent.authored-surfaces-out` (class: floor), per skill-content-schema D8-skill-governance-envelope/C4; provenance sidecar carries the protected status.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 skill-content-schema row).
 - **Content:** "**Permanently out of jurisdiction:** the authored surface set and its Tier-2 grading (`mochiko:validation-constitution`, downstream — different artifact, different family)"
 - **Consumers assessed:** `mochiko:validation-constitution` named as the other family — untouched (P3's member).
@@ -153,7 +153,7 @@ scaffolding, reading grammar) — no content growth claimed.
 - **Consumers assessed:** none restate it (v0.89.0 map stands).
 
 ## [v0.100.0] Pair-protocol-by-reference + substrate bindings — protection transfers (census RGI-15/RGI-16; v0.26.0 surviving element)
-- **Disposition:** superseded — protection transfers to `review-governance-intent.cross-exam-binding` (`when: {pairing: pair}`, cross-directory pointer per census J-7) and `review-governance-intent.substrate-bindings`, per D8/C4. `CROSS-EXAM.md` untouched — the single source, shared with `mochiko:review-brainstorm`. V1 fix round (RB-2 counterpart): the rule text KEEPS its pair/solo wording beside the `when:` — a DECLARE, not a double-home: the solo branch carries its own behavior ("solo skips to the report"), so extracting the guard would falsify the text (criterion-11 DECLARE latitude).
+- **Disposition:** superseded — protection transfers to `review-governance-intent.cross-exam-binding` (`when: {pairing: pair}`, cross-directory pointer per census J-7-cross-directory-pointers) and `review-governance-intent.substrate-bindings`, per D8/C4. `CROSS-EXAM.md` untouched — the single source, shared with `mochiko:review-brainstorm`. V1 fix round (RB-2-lens-depth-jurisdiction counterpart): the rule text KEEPS its pair/solo wording beside the `when:` — a DECLARE, not a double-home: the solo branch carries its own behavior ("solo skips to the report"), so extracting the guard would falsify the text (criterion-11 DECLARE latitude).
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row).
 - **Content:** "cross-examination (pair only; solo skips to the report): after the lead introduces the counterpart, the one-shot four-message exchange per [../review-brainstorm/references/CROSS-EXAM.md] (the single source, shared with `mochiko:review-brainstorm`); bindings — *artifact*: the frozen synthesis; *fact substrate*: `codebase-analysis.md` + detect-stack baseline (brownfield; the files otherwise)"
 - **Consumers assessed:** the shared file's charter ("An edit here changes both skills") — file untouched, both binders now schema rules.
@@ -238,7 +238,7 @@ scaffolding, reading grammar) — no content growth claimed.
 - **Content:** "sequestration — the entire attack formed before counterpart contact; the lead withholds the name until findings are formed"
 
 ## [v0.100.0] Read set relocated, lettered split (census RGI-10a/10b)
-- **Disposition:** relocated → schema.yaml `review-governance-intent.read-set-binding` (10a, agenda pointer `../authoring-constitution/references/INTERROGATION-AGENDA.md`, census J-7) + `review-governance-intent.brownfield-analysis-read` (10b, `when: {analysis: present}` — the census-named brownfield dimension declared and used; split reported).
+- **Disposition:** relocated → schema.yaml `review-governance-intent.read-set-binding` (10a, agenda pointer `../authoring-constitution/references/INTERROGATION-AGENDA.md`, census J-7-cross-directory-pointers) + `review-governance-intent.brownfield-analysis-read` (10b, `when: {analysis: present}` — the census-named brownfield dimension declared and used; split reported).
 - **Tier failed:** n/a — supersession by ruling (D3/D4; `DECISIONS.md` 2026-09-01 row).
 - **Content:** "read the frozen synthesis, the agenda ([../authoring-constitution/references/INTERROGATION-AGENDA.md] — its ten dimensions are the coverage yardstick), and, brownfield, `.mochiko/memory/codebase-analysis.md`"
 
@@ -263,7 +263,7 @@ scaffolding, reading grammar) — no content growth claimed.
 - **Content:** "a floor-, compliance-module-, or NFR-derived obligation is never excess"
 
 ## [v0.100.0] Three fact routes relocated (census RGI-17/18/19)
-- **Disposition:** relocated → schema.yaml `review-governance-intent.reality-facts-checked` (17) + `review-governance-intent.user-facts-flagged` (18) + `review-governance-intent.external-facts-binding` (19, cross-dir pointer, census J-7).
+- **Disposition:** relocated → schema.yaml `review-governance-intent.reality-facts-checked` (17) + `review-governance-intent.user-facts-flagged` (18) + `review-governance-intent.external-facts-binding` (19, cross-dir pointer, census J-7-cross-directory-pointers).
 - **Tier failed:** n/a — supersession by ruling (D3; `DECISIONS.md` 2026-09-01 row).
 - **Content:** "a **reality-surface fact** is checked against the analysis or files, never argued · a **user-declared fact** (team size, risk posture, lifespan, values) is checkable against nothing on disk — flag for the lead to route to the user as confirmation, never to argument · an **external-sourced fact** (a floor-class claim fed from outside the repo) runs per [../review-brainstorm/references/EXTERNAL-CLAIMS.md], never argued."
 
@@ -337,13 +337,13 @@ scaffolding, reading grammar) — no content growth claimed.
 
 ## [v0.65.0] Adaptive-depth two-row form — level DECLARATION becomes reviewable; missing declaration is a critical gap
 - **Disposition:** superseded → the Common-Mistakes row flips from "never review the level" to "review the level DECLARATION (exists / recorded / recommend-then-arbitrated / greenfield-got-low), never the level-vs-reality" (D6 no-watcher); strictness-beyond-the-declared-level stays non-negotiable
-- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth, `DECISIONS.md` 2026-08-11 row; record `.mochiko/brainstorms/production-floor-adaptive-depth/record.md`, D1 / D2 / D6; PO-D2 amended, PO-D7 superseded)
+- **Tier failed:** n/a — supersession by ruling (production-floor-adaptive-depth, `DECISIONS.md` 2026-08-11 row; record `.mochiko/brainstorms/production-floor-adaptive-depth/record.md`, D1-declared-level-transition / D2-one-way-ratchet / D6-flip-setup-rerun; `production-only-focus` D2-tier-axis-retired amended, `production-only-focus` D7-immature-team-onramp superseded)
 - **Content (superseded line, verbatim old → new).** SKILL.md ~:103, Common Mistakes table. Protected lineage: descends from the `[v0.26.0] KEPT` "tier-consistency vs tier-choice" survivor row (PO-D2-reworded to "the floor's *level*"), and sits inside the `[v0.63.0]` guardrails Common-Mistakes keep-set:
   - OLD: `| Re-litigating the floor's *level* | The level is the library's, asserted (PO-D2) — challenge expression, waivers, and fact consistency, never the level itself. |`
   - NEW: `| Arguing the declared level is wrong for the project | The declared level is the user's recorded ruling (D1/D2) — challenge its expression, waivers, and fact consistency, and verify it exists in the ledger, was recommend-then-arbitrated, and greenfield got the low recommendation (D2). Never flag it against real users or deployment state (D6 no-watcher), and never grade a check stricter than the declared level sets. |`
 - **Added (pure addition — rides the decision row, no supersession):** SKILL.md ~:79 critical-gaps verdict criterion gains the missing/unrecorded depth-level declaration case ("(a missing or unrecorded depth-level declaration among them)").
 - **D6 fence honored:** the new row makes the DECLARATION reviewable — its existence, its ledger record, recommend-then-arbitrate protocol fidelity, and greenfield low-recommendation fidelity (all `/mochiko:setup` process facts, per ruling keyed to greenfield/brownfield mode) — while explicitly forbidding any level-vs-reality flag ("(D6 no-watcher)") and preserving per-check strictness as non-negotiable ("never grade a check stricter than the declared level sets"). No watcher of any kind added.
-- **Rationale (PO-D2 → D2).** Under PO-D2 the level was the library's single asserted row, hence off-limits to challenge; under D1/D2 the level is a user-declared, ledger-recorded ruling elicited by a recommend-then-arbitrate protocol, so the DECLARATION's existence and protocol fidelity become reviewable — its correctness for the project does not.
+- **Rationale (`production-only-focus` D2-tier-axis-retired → D2).** Under `production-only-focus` D2-tier-axis-retired the level was the library's single asserted row, hence off-limits to challenge; under D1/D2 the level is a user-declared, ledger-recorded ruling elicited by a recommend-then-arbitrate protocol, so the DECLARATION's existence and protocol fidelity become reviewable — its correctness for the project does not.
 - **Body budget:** 7,273 → 7,592 chars (budget 8,862). Description untouched (483).
 - **Kept deliberately:** the v0.63.0 guardrails keep-set intact, incl. the rest of the Common Mistakes table; the row's positive jurisdiction (expression, waivers, fact consistency) is preserved and extended, never dropped.
 - **Consumers assessed:** no command references this skill (grep `plugins/mochiko/commands/` clean). `agents/devils-advocate.md` declares it in `skills:`; the extended row leaves that composition intact.

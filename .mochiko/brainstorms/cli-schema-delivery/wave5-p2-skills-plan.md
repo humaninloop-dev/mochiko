@@ -66,7 +66,7 @@ Nothing outside that section changes, verified by a diff restricted to the front
 ## 5. Strip-entry shape
 
 Two `[v0.106.0]` supersession-by-ruling entries per skill, appended newest-first to `.mochiko/strips/<skill>.md` under
-one wave-context comment per file citing `cli-schema-delivery` D3 as amended (skill-side form), D7, D9, the wave-open
+one wave-context comment per file citing `cli-schema-delivery` D3-rules-delivery-binding as amended (skill-side form), D7, D9, the wave-open
 rulings in `wave5-plan.md`, the `DECISIONS.md` row, and the pre-edit ref `git show <pre-wave
 HEAD>:plugins/mochiko/skills/<skill>/SKILL.md`. Entry one supersedes the load-first block: `Disposition: superseded →
 ## Rules — delivered by mochiko-cli`, `Tier failed: n/a — supersession by ruling`, Content the old section verbatim

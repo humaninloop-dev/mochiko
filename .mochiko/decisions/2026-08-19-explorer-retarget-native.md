@@ -3,7 +3,7 @@
 - **Status:** ruled
 - **Date:** 2026-08-19
 - **Context:** The v0.77.0 model-tiering build (ADR 2026-08-16-model-tiering-build, executing
-  model-tiered-seats D4) shipped the cheap rung as a plugin-scoped seat, `mochiko:explorer`
+  model-tiered-seats D4-explore-tier-restoration) shipped the cheap rung as a plugin-scoped seat, `mochiko:explorer`
   (`model: haiku` pinned in frontmatter). Dogfood failure, user-reported 2026-08-19: **when an
   agent-team teammate tries to spawn `mochiko:explorer`, the spawn fails** — plugin-scoped
   agent names do not resolve from agent-team teammates. That breaks the build's own primary
@@ -33,7 +33,7 @@
      the native dispatch; each supersession is stripped per primitive.
   This is a recorded supersession of the v0.77.0 mechanism (the 2026-08-16 ADR's items 1 and
   4-in-part, and its "per-spawn `model` parameter as the sole mechanism — rejected as
-  primary" alternative ruling). model-tiered-seats D1 (economics), D5 (rostered seats never
+  primary" alternative ruling). model-tiered-seats D1-usage-accounting-unit (economics), D5 (rostered seats never
   retier), and the doctrine-only enforcement posture stand untouched.
 - **Rationale:** The tiering floor's value is that any seat can run it; a rung only the main
   session can dispatch inverts the design (the seats doing the most exploration are exactly

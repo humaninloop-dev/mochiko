@@ -1,13 +1,13 @@
 # Strip notes — `skills/executing-tdd-cycle/`
 
 Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 1 (design:
-`.mochiko/brainstorms/workflow-token-reduction/record.md`, D3 + S8 + Q6; rulings ratified
+`.mochiko/brainstorms/workflow-token-reduction/record.md`, D3-cycle-report-slimming + S8 + Q6; rulings ratified
 2026-07-23) — reports strip to their verified consumers, machine-first. Skill-succinctness
 wave-1 entries atop (batch-ratified 2026-07-25): body 164 → 140 lines, 24 cut = 15% — in the
 10–40 previously-stripped band.
 
 Verbosity/caveman wave-1 entries atop (design:
-`.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md`, D4 as folded at review
+`.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md`, D4-report-format-repair as folded at review
 (S2/S13); ruling: `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation
 ruled" row) — the report repair: the format text that forced prose onto passing cycles is
 corrected, and the envelope's register and prose-on-clean check are bound where the report is
@@ -16,7 +16,7 @@ actually authored.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the dense-five family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -26,7 +26,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/executing-tdd-cycle/SKILL.md`. -->
 
@@ -34,17 +34,24 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 artifact gate ships. Every `.mochiko/` path a shipped primitive names was resolved against the homes
 the migration log declares (`plugins/mochiko/migrations/0005-artifact-homes.yaml`, wave 3), and a
 path the homes do not carry is re-pointed rather than left to be denied at write time. Ruling for
-the [v0.109.0] entry below: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2 (a
+the [v0.109.0] entry below: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D2-home-file-sets (a
 report lands in its home's `reports/` directory) and D3 (the homes as the migration declares them),
 with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 `git show 794cea8:plugins/mochiko/skills/executing-tdd-cycle/SKILL.md`. -->
+
+## [v0.118.0] Card pattern and cycle citations joined in `TASK-PARSING.md` and `CYCLE-REPORT-FORMAT.md`
+
+- **Disposition:** superseded → the card pattern `### - [ ] C{N}-<slug> — {title} `[P]`?`, `` - **Stories:** `<spec-slug>` US-#-<slug> — rationale ``, `- **Depends on:** — | C{M}-<slug>`, the checkbox field "on the card's `###` heading line", plus one line keeping the pre-upgrade `### - [ ] Cycle {N}:` heading readable; the cycle report's deviation example behind `` `product` `` and its narrative's `C3` behind the run key `` `FEAT-XXX-<slug>` ``.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; hand-off P5; D16 (a pre-upgrade card stays readable; the crate keeps the same reader, C1); D11 (S4) and R4 for the run-key owner)
+- **Content (superseded):** `TASK-PARSING.md`: "### - [ ] Cycle {N}: {title} `[P]`?", "- **Stories:** US-# — rationale", "- **Depends on:** — | C{M}", "…— on the `### Cycle` heading line". `CYCLE-REPORT-FORMAT.md`: "(e.g. `"T3.4: argon2 over bcrypt (C-012 allows)"`)", "…before C3's write commits…", "(touches C3 code)".
+- **Kept deliberately:** line 25's "Cycle 1 of a new end-to-end path" (an ordinal in doctrine prose, not an ID); the integer `cycle:` field; `T3.4`/`T4.2`/`T4.3` (local task labels); the example run key `feature: user-auth`, a non-ID value the user booked for the backlog.
 
 ## [v0.109.0] the `description:` names `tasks.md` under the spec home
 
 - **Disposition:** superseded → `.mochiko/features/<FEAT-ID>/tasks.md`, where the feature home
   declares `tasks.md` as a templated deliverable
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D3; migration
+  (`.mochiko/brainstorms/hook-enforced-artifact-schema/record.md` D3-home-document-kind; migration
   `0005-artifact-homes.yaml`, the `feature` home)
 - **Content:** `turning one card from \`.mochiko/specs/<feature>/tasks.md\` into working code`
 - **Kept deliberately:** the whole of the rest of the `description:` value — the MUST clause, the
@@ -60,7 +67,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 
 - **Disposition:** superseded → "delivered by `mochiko-cli`", section ids unchanged
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** two lines.
   1. "card reading legally goes, are the schema's `executing-tdd-cycle.sec.inputs` rules."
   2. "is the schema's `executing-tdd-cycle.sec.scope` rules"
@@ -77,7 +84,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -112,7 +119,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -123,7 +130,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
   halt likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -184,7 +191,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
     card's acceptance criteria require — nothing the card didn't ask for" →
     `executing-tdd-cycle.decompose-only-the-card` (row 9); the pre-code ladder sentence
     (per `mochiko:patterns-code-minimalism`, rung disclosed) →
-    `executing-tdd-cycle.pre-code-ladder` (row 10, floor, PT-D4); "disclosed in the
+    `executing-tdd-cycle.pre-code-ladder` (row 10, floor, `ponytail-concepts-integration` D4-ladder-procedure-skill); "disclosed in the
     cycle report … not written back into `tasks.md`" →
     `executing-tdd-cycle.decomposition-disclosed` (row 11).
   - Step-3 red-phase items 2–4 (verify it fails; failure reason matches expectations; a
@@ -262,7 +269,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 
 - **Disposition:** superseded → "spec/design IDs" at both sites in the reference.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1). Raised as an **advisory** by the
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires). Raised as an **advisory** by the
   v0.91.0 wave audit: the main pass re-keyed the SKILL.md body's "spec/plan artifacts" but left
   the reference file that defines the `Covers` field still saying "spec/plan IDs" — producer and
   parser would have described the same field in two vocabularies.
@@ -284,7 +291,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 
 - **Disposition:** superseded → cited IDs resolve against the spec and the design artifacts.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1; wording ruled by the wave lead
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires; wording ruled by the wave lead
   2026-08-26).
 - **Content (superseded fragment, verbatim):**
 
@@ -334,7 +341,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 ## [v0.75.0] TASK-PARSING.md — foundation/feature card-type field superseded; test-case-bundle + Covers extraction added
 
 - **Disposition:** superseded → the re-keyed `references/TASK-PARSING.md` Card Pattern and Fields-to-Extract: no card-type annotation, `[P]` derived from dependencies, the card's `**TEST:**` blocks parsed as the named test-case bundle (each with a `Covers` citation line). Execution discipline unchanged.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Vertical-TDD cycle anchor + QA test-case authorship (D1–D4)"; record `.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md`, D1/D3 + the D2 acceptance-ID-relocation amendment). Scope is the reference only — the `executing-tdd-cycle` SKILL.md body is untouched.
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Vertical-TDD cycle anchor + QA test-case authorship (D1–D4)"; record `.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md`, D1-test-bundle-cycles/D3-foundation-type-retired + the D2-qa-authored-cases acceptance-ID-relocation amendment). Scope is the reference only — the `executing-tdd-cycle` SKILL.md body is untouched.
 - **Content:**
   - Card Pattern heading "`### - [ ] Cycle {N}: {title} *({Foundation|Feature})* ` `[P]`?`" → "`### - [ ] Cycle {N}: {title} ` `[P]`?`" (the `*({Foundation|Feature})*` type annotation removed); the pattern gains a `- **Covers**: spec/plan IDs this case covers` line inside the `**TEST:**` block and a note that a card may carry more than one `**TEST:**` block (the bundle) with Cycle 1 of a new path a walking skeleton.
   - Fields-to-Extract row "`Type + [P] | Foundation cards run sequentially, first; [P] marks parallel-eligible feature cards`" → "`[P] | Marks a parallel-eligible card — derived from dependencies, not a card type`".
@@ -380,7 +387,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 
 ## [v0.53.0] Cycle-report consumer line: lead-only → lead + verification seat
 - **Disposition:** superseded → `references/CYCLE-REPORT-FORMAT.md`'s widened consumer line: the verification seat's code-minimalism lens (`mochiko:review-code-minimalism`) now reads the disclosed decomposition and its rung claims alongside the cycle's diff.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-05 "Ponytail code-minimalism ruled (PT-D1–D10)", record `.mochiko/brainstorms/ponytail-concepts-integration/record.md`, D8).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-05 "Ponytail code-minimalism ruled (PT-D1–D10)", record `.mochiko/brainstorms/ponytail-concepts-integration/record.md`, D8-lens-input-wiring).
 - **Content (verbatim, the superseded consumer statement):**
   ```
   Consumers: the lead's checkpoint
@@ -392,7 +399,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 
 ## [v0.49.0] Decomposition restriction removed — builder decomposes the card (step 2)
 - **Disposition:** superseded → the same skill's new "Decompose the Card" step (build-time tasks + file paths, code in view, disclosed in `cycle-report.md`'s new `decomposition` field); `references/TASK-PARSING.md` rewritten from `TN.X` task-line parsing to cycle-card reading
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2.1)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2.1-builder-restriction-removed)
 - **Content:** the restriction, both homes — Overview "it does not structure the cycles or decide when they run" (structuring half) and When-NOT-to-Use bullet 1 "Structuring the cycles — identifying the vertical slices, ordering a cycle's tasks test-first, or authoring the `tasks.md` skeleton — is design-time work owned by `patterns-vertical-tdd` … it does not create, split, or reorder tasks." · TASK-PARSING.md's task grammar (`- [ ] **T{N}.{X}**:` pattern, ID-prefix cycle identification, backtick path extraction, `[EXTEND]`/`[MODIFY]` marker table, multi-line sub-bullets, Checkpoint pattern) · "Mark each task `[x]` in `tasks.md` immediately after completing it" (now: flip the card at cycle close). Full text: git history at v0.48.0.
 - **Kept deliberately:** the cycle-boundary restriction (does not add/remove/re-scope *cycles*) — decomposition is unlocked, slicing is not · red/green/refactor strict order · rework-only-failed-tasks · fix-pass scoping · verifier boundary (TEST gates + quality gates never this skill's).
 - **Consumers assessed:** staff-engineer (persona wording re-keyed) · implement · CYCLE-REPORT-FORMAT.md (decomposition field added same wave) · router.
@@ -401,7 +408,7 @@ with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 - **Disposition:** superseded → `references/CYCLE-REPORT-FORMAT.md`'s corrected trigger, *"or a
   task failed in execution"*, plus a carve-out paragraph under the same section naming the
   verifier-owned case explicitly.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D4 part 1,
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D4-report-format-repair part 1,
   the F59 clause fix; `DECISIONS.md` 2026-08-01 row above).
 - **Content (verbatim, the whole superseded line):**
   ```

@@ -1,0 +1,203 @@
+family	owner	number	slug	definition	title	note
+D	primitive-eval-harness-v2	1	eval-layer-targets	.mochiko/brainstorms/primitive-eval-harness-v2/record.md:43	One eval layer, three targets	hand-leaves=2
+D	primitive-eval-harness-v2	2	agent-plan-observable	.mochiko/brainstorms/primitive-eval-harness-v2/record.md:48	Agent observable: plan-only elicitation (the command target's substrate), traps planted in the fixture text	hand-leaves=2
+D	primitive-eval-harness-v2	3	persona-session-substrate	.mochiko/brainstorms/primitive-eval-harness-v2/record.md:54	Substrate: the persona is seated as the headless session itself via `--agent`	hand-leaves=2
+D	primitive-eval-harness-v2	4	agents-schema-door	.mochiko/brainstorms/primitive-eval-harness-v2/record.md:61	Agents-as-schema: a door, not a wave	hand-leaves=3
+D	primitive-eval-harness-v2	5	persona-rubric-derivation	.mochiko/brainstorms/primitive-eval-harness-v2/record.md:68	Persona rubric: derived from the persona's own body, ids minted, partitioned, control-pruned	hand-leaves=1
+D	primitive-eval-harness-v2	6	default-grid-arms	.mochiko/brainstorms/primitive-eval-harness-v2/record.md:75	Default grid: `pre` and `post`, the persona alone (no skills preload)	-
+D	primitive-eval-harness-v2	7	nopersona-pruning-pass	.mochiko/brainstorms/primitive-eval-harness-v2/record.md:82	`nopersona` is a one-time pruning pass at rubric mint, never a grid arm	-
+D	primitive-eval-harness-v2	8	synthetic-persona-goldens	.mochiko/brainstorms/primitive-eval-harness-v2/record.md:89	Goldens: three to five hand-authored synthetic fixtures per persona, each keyed to the claims it tempts	hand-leaves=5
+D	primitive-eval-harness-v2	9	persona-pilot-order	.mochiko/brainstorms/primitive-eval-harness-v2/record.md:96	Pilots: `staff-engineer` first, `validator` second	-
+D	primitive-eval-harness-v2	10	persona-runner-layout	.mochiko/brainstorms/primitive-eval-harness-v2/record.md:101	Layout: the persona target lands inside the plan-only runner now; one runner is the promotion target, reached in landing acts	-
+D	primitive-eval-harness-v2	11	preregistration-noise-guard	.mochiko/brainstorms/primitive-eval-harness-v2/record.md:108	Pre-registration with a positive control; noise guard gates the read	-
+D	primitive-eval-harness-v2	12	old-record-superseded	.mochiko/brainstorms/primitive-eval-harness-v2/record.md:115	Cleanup is this session's landing act: the old record superseded by number, stale backlog to the trail, one build section	direction
+D	primitive-eval-harness-v2	13	old-open-questions	.mochiko/brainstorms/primitive-eval-harness-v2/record.md:122	The old record's four open questions, ruled	-
+D	producer-plan-enforcement	1	detection-review-enforcement	.mochiko/brainstorms/producer-plan-enforcement/record.md:135	Enforcement class: detection plus review, no hook gate, no worktree	-
+D	producer-plan-enforcement	2	transient-plan-home	.mochiko/brainstorms/producer-plan-enforcement/record.md:169	Plan home: transient — verbatim text in the grader's brief and the lead's approval; the verdict survives, the plan does not	-
+D	producer-plan-enforcement	3	peer-plan-grader	.mochiko/brainstorms/producer-plan-enforcement/record.md:187	Plan grader: a fresh spawn of the author's own persona type; `validator` retires library-wide, timing deferred to a second wave; devils-advocate stays out of the plan loop for now	hand-leaves=3
+D	producer-plan-enforcement	4	seat-plan-skill	.mochiko/brainstorms/producer-plan-enforcement/record.md:236	Criteria carrier: a new review skill, `review-seat-plan`, pair form	-
+D	producer-plan-enforcement	5	plan-qa-criteria	.mochiko/brainstorms/producer-plan-enforcement/record.md:258	The plan-QA criteria, ratified as proposed; item 4 renamed at review (X4)	hand-leaves=1
+D	producer-plan-enforcement	6	approval-rework-semantics	.mochiko/brainstorms/producer-plan-enforcement/record.md:294	Approval and rework semantics	-
+D	producer-plan-enforcement	7	plan-resume-dispatch	.mochiko/brainstorms/producer-plan-enforcement/record.md:330	Dispatch shape: one seat plans, stops, and is resumed to execute on the approved plan	-
+D	producer-plan-enforcement	8	plan-qa-landing	.mochiko/brainstorms/producer-plan-enforcement/record.md:359	Landing set	hand-leaves=9
+D	producer-plan-enforcement	9	two-wave-rollout	.mochiko/brainstorms/producer-plan-enforcement/record.md:422	Rollout: two waves, the first running under the leg it ships	-
+D	product-architecture-schema	1	architecture-desk-command	.mochiko/brainstorms/product-architecture-schema/record.md:92	Product architecture becomes a first-class workflow: its own living-desk command.	-
+D	product-architecture-schema	2	two-layer-schema	.mochiko/brainstorms/product-architecture-schema/record.md:100	Schema shape: two layers.	-
+D	product-architecture-schema	3	store-replaces-artifact	.mochiko/brainstorms/product-architecture-schema/record.md:105	One schema-backed architecture store; the per-feature architecture artifact dies.	direction
+D	product-architecture-schema	4	store-file-structure	.mochiko/brainstorms/product-architecture-schema/record.md:118	Store file structure: root index over two levels.	-
+D	product-architecture-schema	5	opinionated-surface-shelves	.mochiko/brainstorms/product-architecture-schema/record.md:134	Opinionated shelves, exhaustive, per surface, dealt never asserted.	-
+D	product-architecture-schema	6	row-stance-vocabulary	.mochiko/brainstorms/product-architecture-schema/record.md:147	Row stance vocabulary.	-
+D	product-architecture-schema	7	architecture-desk-crew	.mochiko/brainstorms/product-architecture-schema/record.md:158	Crew.	-
+D	product-architecture-schema	8	store-schema-carrier	.mochiko/brainstorms/product-architecture-schema/record.md:181	Schema carrier.	-
+D	product-architecture-schema	9	no-depth-coupling	.mochiko/brainstorms/product-architecture-schema/record.md:193	No coupling to the governance depth dial.	direction
+D	product-architecture-schema	10	plan-time-contract	.mochiko/brainstorms/product-architecture-schema/record.md:198	Plan-time contract: consult always, author on structural change; six-step delta lifecycle.	-
+D	product-architecture-schema	11	store-write-review	.mochiko/brainstorms/product-architecture-schema/record.md:229	Store-write review cadence: judgment writes graded, mechanical writes ride the landing audit.	hand-leaves=1
+D	product-architecture-schema	12	store-absorbs-nfrs	.mochiko/brainstorms/product-architecture-schema/record.md:242	Absorb: the store swallows `nfrs.md` and the structural half of `constraints-and-decisions.md`; store homed at `.mochiko/product/architecture/`.	direction;hand-leaves=2
+D	product-architecture-schema	13	upgrade-trigger-pull	.mochiko/brainstorms/product-architecture-schema/record.md:268	Pull origination: a fired upgrade trigger routes through `/mochiko:feature`'s growth door.	hand-leaves=1
+D	product-architecture-schema	14	opinion-precedence-strata	.mochiko/brainstorms/product-architecture-schema/record.md:278	Opinion precedence across three strata; F7 corrected.	-
+D	product-architecture-schema	15	two-stage-delivery	.mochiko/brainstorms/product-architecture-schema/record.md:291	Delivery shape: two stages.	-
+D	product-architecture-schema	16	reconstruct-confirm-migration	.mochiko/brainstorms/product-architecture-schema/record.md:303	Migration posture: reconstruct-and-confirm at the first desk visit.	-
+D	production-floor-adaptive-depth	1	declared-level-transition	.mochiko/brainstorms/production-floor-adaptive-depth/record.md:36	Level transition is a user declaration, never derived	-
+D	production-floor-adaptive-depth	2	one-way-ratchet	.mochiko/brainstorms/production-floor-adaptive-depth/record.md:41	Low→high is one-way; setup asks, recommending low for greenfield	-
+D	production-floor-adaptive-depth	3	project-wide-dial	.mochiko/brainstorms/production-floor-adaptive-depth/record.md:46	One project-wide dial; per-check level tags carry the nuance	-
+D	production-floor-adaptive-depth	4	waiver-fit-escape	.mochiko/brainstorms/production-floor-adaptive-depth/record.md:51	Waivers survive at both levels as the per-check fit escape; staged adoption moves to the low level	-
+D	production-floor-adaptive-depth	5	low-retrofit-principle	.mochiko/brainstorms/production-floor-adaptive-depth/record.md:56	Low's authoring principle: nothing expensive to retrofit	hand-leaves=1
+D	production-floor-adaptive-depth	6	flip-setup-rerun	.mochiko/brainstorms/production-floor-adaptive-depth/record.md:61	The flip is a setup rerun in high mode; nothing watches for the moment	hand-joins=1;hand-leaves=1
+D	production-floor-adaptive-depth	7	level-blind-modules	.mochiko/brainstorms/production-floor-adaptive-depth/record.md:68	Compliance modules are level-blind	hand-leaves=1
+D	production-floor-adaptive-depth	8	dial-standards-scope	.mochiko/brainstorms/production-floor-adaptive-depth/record.md:73	The dial governs asserted code standards only; pipeline process rigor stays uniform	hand-leaves=1
+D	production-only-focus	1	customer-product-target	.mochiko/brainstorms/production-only-focus/record.md:113	Target boundary: deployed, operated, customer-facing product software	-
+D	production-only-focus	2	tier-axis-retired	.mochiko/brainstorms/production-only-focus/record.md:119	The tier axis dies: one production floor + fact-triggered modules	direction
+D	production-only-focus	3	library-owned-standard	.mochiko/brainstorms/production-only-focus/record.md:125	Mochiko owns the production standard; setup elicits facts, not standards	-
+D	production-only-focus	4	waivers-reach-everything	.mochiko/brainstorms/production-only-focus/record.md:133	Waivers reach everything, floor included — recorded, auditable, never silent	hand-joins=4
+D	production-only-focus	4.1	waiver-revisit-timing	.mochiko/brainstorms/production-only-focus/record.md:137	Waiver expiry: `Deferred`.	adopted=.mochiko/brainstorms/human-readable-ids/record.md:1185
+D	production-only-focus	4.2	legal-mandate-exception	.mochiko/brainstorms/production-only-focus/record.md:138	Legal-mandate exception (S1 fold, review, user-ruled)	-
+D	production-only-focus	5	production-depth-agenda	.mochiko/brainstorms/production-only-focus/record.md:140	The production-depth agenda: three ratified tiers	-
+D	production-only-focus	6	identity-landing-docs	.mochiko/brainstorms/production-only-focus/record.md:149	Identity landing: the boundary gets written into the operating docs	-
+D	production-only-focus	7	immature-team-onramp	.mochiko/brainstorms/production-only-focus/record.md:156	The immature-but-in-scope team is served: full floor + recorded waivers as the staged on-ramp	-
+D	qa-gap-finding-verification	1	deterministic-plus-exploration	.mochiko/brainstorms/qa-gap-finding-verification/record.md:55	Deterministic layer stays; exploration is added on top.	-
+D	qa-gap-finding-verification	2	final-validation-exploration	.mochiko/brainstorms/qa-gap-finding-verification/record.md:69	Exploration runs at final validation only	hand-leaves=1
+D	qa-gap-finding-verification	3	blind-spec-explorer	.mochiko/brainstorms/qa-gap-finding-verification/record.md:95	The explorer is blind to code and cards: spec-derived expectations first	hand-leaves=2
+D	qa-gap-finding-verification	4	explorer-seat-persona	.mochiko/brainstorms/qa-gap-finding-verification/record.md:117	Explorer seat: devils-advocate persona under two-message dispatch	-
+D	qa-gap-finding-verification	5	gap-finding-lenses	.mochiko/brainstorms/qa-gap-finding-verification/record.md:141	Gap-finding lenses	hand-leaves=1
+D	qa-gap-finding-verification	6	finding-kind-split	.mochiko/brainstorms/qa-gap-finding-verification/record.md:166	Findings split by kind: spec-violation blocks, beyond-spec advises	hand-leaves=1
+D	qa-gap-finding-verification	7	gap-test-foldback	.mochiko/brainstorms/qa-gap-finding-verification/record.md:189	Confirmed gaps fold back as durable `**TEST:**` cases	hand-leaves=3
+D	qa-gap-finding-verification	8	gap-finding-skill	.mochiko/brainstorms/qa-gap-finding-verification/record.md:205	Carrier: one new model-invoked skill `testing-gap-finding`	hand-leaves=1
+D	qa-gap-finding-verification	9	non-functional-families	.mochiko/brainstorms/qa-gap-finding-verification/record.md:227	Non-functional families: security/abuse IN, runtime NFR IN, observability IN, accessibility declined	-
+D	qa-gap-finding-verification	10	mutation-not-kernel	.mochiko/brainstorms/qa-gap-finding-verification/record.md:246	Mutation tooling is not kernel-class (GI-019 recorded ruling)	direction;hand-leaves=1
+D	schema-based-template-guidance	1	single-plugin-cli	.mochiko/brainstorms/schema-based-template-guidance/record.md:52	Delivery mechanism is a single plugin CLI.	hand-leaves=3
+D	schema-based-template-guidance	2	kernel-constraint-amended	.mochiko/brainstorms/schema-based-template-guidance/record.md:60	The no-kernel constraint is amended, not argued around.	-
+D	schema-based-template-guidance	3	pipeline-template-scope	.mochiko/brainstorms/schema-based-template-guidance/record.md:74	Scope: pipeline artifact templates first.	-
+D	schema-based-template-guidance	4	cli-output-shape	.mochiko/brainstorms/schema-based-template-guidance/record.md:83	CLI output = schema + example + normative guidance; the agent never selects depth.	-
+D	schema-based-template-guidance	5	guidance-variation-release	.mochiko/brainstorms/schema-based-template-guidance/record.md:93;.mochiko/brainstorms/schema-based-template-guidance/record.md:284	Guidance variation is baked into the CLI release, not read from project config.	sites=2
+D	schema-based-template-guidance	6	rust-compiled-runtime	.mochiko/brainstorms/schema-based-template-guidance/record.md:103	Runtime: Rust, compiled binary.	-
+D	schema-based-template-guidance	7	same-schema-grading	.mochiko/brainstorms/schema-based-template-guidance/record.md:118	Validators grade against the same schema, role-shaped.	-
+D	schema-based-template-guidance	8	schema-data-files	.mochiko/brainstorms/schema-based-template-guidance/record.md:126	Schemas live as structured data files; the binary is a renderer; raw Read is the fallback.	hand-leaves=3
+D	schema-based-template-guidance	9	cli-only-exception	.mochiko/brainstorms/schema-based-template-guidance/record.md:134	No-kernel position: this-CLI-only exception; the broader move-away is deferred.	-
+D	schema-based-template-guidance	10	single-wave-build	.mochiko/brainstorms/schema-based-template-guidance/record.md:150	Build stages as one wave: CLI + all 8 conversions in a single landing.	-
+D	schema-based-template-guidance	11	kernel-position-softened	.mochiko/brainstorms/schema-based-template-guidance/record.md:158	No-kernel position ruled now: softened, skills-first, foundation owned.	direction;hand-joins=1
+D	security-depth-scoping	1	security-woven-seats	.mochiko/brainstorms/security-depth-scoping/record.md:298	Structural form: woven into existing seats; the craft lands in new model-invoked skills	-
+D	security-depth-scoping	2	threat-modeling-annotation	.mochiko/brainstorms/security-depth-scoping/record.md:325	Threat modeling = trust-boundary annotation + a security-keyed flow sweep inside `architecture.md`	-
+D	security-depth-scoping	3	security-requirement-class	.mochiko/brainstorms/security-depth-scoping/record.md:355	SEC-XXX minted: a dedicated security-requirement class, full plumbing at birth	-
+D	security-depth-scoping	4	sast-floor-row	.mochiko/brainstorms/security-depth-scoping/record.md:387	SAST joins FLOOR-SEC's asserted row	hand-leaves=4
+D	security-depth-scoping	5	oss-area-coverage	.mochiko/brainstorms/security-depth-scoping/record.md:422	OSS-leveraged security, organized by area coverage	-
+D	security-depth-scoping	6	security-lens-sites	.mochiko/brainstorms/security-depth-scoping/record.md:497	The security lens lands at three sites, never a new seat	-
+D	setup-adversarial-review	1	ratified-synthesis-target	.mochiko/brainstorms/setup-adversarial-review/record.md:16	Target surface: the ratified synthesis, at G3.	-
+D	setup-adversarial-review	2	confidence-marked-synthesis	.mochiko/brainstorms/setup-adversarial-review/record.md:19	Substrate: the synthesis, enriched with confidence marks.	-
+D	setup-adversarial-review	3	tier-sizing-gate	.mochiko/brainstorms/setup-adversarial-review/record.md:21	Sizing: a tier-driven sizing gate.	-
+D	setup-adversarial-review	4	dedicated-procedure-skill	.mochiko/brainstorms/setup-adversarial-review/record.md:23	Procedure home: a new dedicated skill.	-
+D	setup-adversarial-review	5	review-family-split	.mochiko/brainstorms/setup-adversarial-review/record.md:25	The library's review-shaped skills split into two named families: `validation-*` vs `review-*`.	-
+D	setup-adversarial-review	6	amend-event-sizing	.mochiko/brainstorms/setup-adversarial-review/record.md:33	Amend runs: event-scaled sizing.	-
+D	setup-adversarial-review	7	assembled-review-flow	.mochiko/brainstorms/setup-adversarial-review/record.md:35	The assembled flow.	-
+D	setup-constitution-flexibility	1	scope-tiered-floor	.mochiko/brainstorms/setup-constitution-flexibility/record.md:48	The floor survives, scope-tiered.	-
+D	setup-constitution-flexibility	2	low-tier-waiver	.mochiko/brainstorms/setup-constitution-flexibility/record.md:53	Explicit waiver at low tiers.	-
+D	setup-constitution-flexibility	3	principle-content-source	.mochiko/brainstorms/setup-constitution-flexibility/record.md:57	Content source: catalog-seeded, generation-open, interrogation-led.	-
+D	setup-constitution-flexibility	4	nine-dimension-agenda	.mochiko/brainstorms/setup-constitution-flexibility/record.md:61	The interrogation agenda (nine dimensions).	-
+D	setup-constitution-flexibility	5	three-mode-session	.mochiko/brainstorms/setup-constitution-flexibility/record.md:75	The session runs in all three modes, depth-proportional.	-
+D	setup-constitution-flexibility	6	tier-taxonomy-preset	.mochiko/brainstorms/setup-constitution-flexibility/record.md:79	Tier axis: named taxonomy as preset, elicited overrides on top.	-
+D	setup-constitution-flexibility	7	synthesis-traceable-contract	.mochiko/brainstorms/setup-constitution-flexibility/record.md:83	The session synthesis is a traceable contract on the producer, not a brief.	-
+D	setup-constitution-flexibility	8	core-module-templates	.mochiko/brainstorms/setup-constitution-flexibility/record.md:88	Template layer: universal core + attachable modules; the skills change accordingly.	-
+D	setup-constitution-flexibility	9	catalog-graduation-seam	.mochiko/brainstorms/setup-constitution-flexibility/record.md:92	Catalog graduation: deferred, with a named seam.	-
+D	setup-operating-docs-scaffolding	1	operating-docs-governance	.mochiko/brainstorms/setup-operating-docs-scaffolding/record.md:11	The operating-docs layer is a governance concern.	-
+D	setup-operating-docs-scaffolding	2	elective-default-module	.mochiko/brainstorms/setup-operating-docs-scaffolding/record.md:14;.mochiko/brainstorms/setup-operating-docs-scaffolding/record.md:117	The layer enters the constitution as an elective module, recommended default-on.	sites=2
+D	setup-operating-docs-scaffolding	3	fixed-module-bundle	.mochiko/brainstorms/setup-operating-docs-scaffolding/record.md:17	The module's contents are a fixed bundle, adopted or declined whole.	-
+D	setup-operating-docs-scaffolding	4	enforcement-carrier-chain	.mochiko/brainstorms/setup-operating-docs-scaffolding/record.md:20	Enforcement rides three carriers, adopted as a chain.	-
+D	setup-operating-docs-scaffolding	5	km-dimension-elicitation	.mochiko/brainstorms/setup-operating-docs-scaffolding/record.md:23	Elicitation: a new knowledge-management dimension slotted after "existing practices & tools" (agenda becomes ten dimensions, KM at #7); materialization: G5 finalize scaffolds the adopted bundle.	-
+D	setup-operating-docs-scaffolding	6	brownfield-collision-policy	.mochiko/brainstorms/setup-operating-docs-scaffolding/record.md:26	Brownfield collision policy: codify + per-project ruling, on a never-overwrite floor.	hand-leaves=1
+D	setup-operating-docs-scaffolding	7	amend-module-surfacing	.mochiko/brainstorms/setup-operating-docs-scaffolding/record.md:29	Amend runs surface any module the constitution has no recorded ruling on — once, with the answer recorded either way.	-
+D	setup-product-agnostic	1	profile-leaves-setup	.mochiko/brainstorms/setup-product-agnostic/record.md:124	The fact profile and the compliance-module layer leave setup	adopted=.mochiko/brainstorms/human-readable-ids/wave3-backfill.md:30;direction;hand-leaves=1
+D	setup-product-agnostic	2	rule-not-instance	.mochiko/brainstorms/setup-product-agnostic/record.md:162	Governance holds the rule, never the product's instance of it	-
+D	setup-product-agnostic	3	seven-dimension-agenda	.mochiko/brainstorms/setup-product-agnostic/record.md:204	The interrogation agenda after the cut: seven dimensions and the depth level	-
+D	setup-product-agnostic	4	closed-event-set	.mochiko/brainstorms/setup-product-agnostic/record.md:247	Governance events after the cut: a closed set; a product change opens no amend except through event (3)	-
+D	setup-product-agnostic	5	setup-rules-cut	.mochiko/brainstorms/setup-product-agnostic/record.md:289	Setup's rule set and done condition after the cut	hand-leaves=3
+D	setup-product-agnostic	6	cut-ships-first	.mochiko/brainstorms/setup-product-agnostic/record.md:353	Shipping order: the cut ships now; the rehome is a named, queued session	hand-leaves=2
+D	setup-v3-team-defect	1	shared-spawn-recipe	.mochiko/brainstorms/setup-v3-team-defect/record.md:32	Fix altitude: shared transport recipe + spawn self-check (option A).	-
+D	skill-compression-tooling	1	new-dependent-session	.mochiko/brainstorms/skill-compression-tooling/record.md:104	New dependent session, not a resume and not a supersession.	hand-leaves=2
+D	skill-compression-tooling	2	staged-compression-arms	.mochiko/brainstorms/skill-compression-tooling/record.md:111	Two compression arms, staged low-risk to high-risk, against a recorded baseline.	hand-leaves=3
+D	skill-compression-tooling	3	single-skill-substrate	.mochiko/brainstorms/skill-compression-tooling/record.md:126	Substrate is one skill in isolation; command-level runs are out of scope, permanently.	-
+D	skill-compression-tooling	4	rule-coverage-instrument	.mochiko/brainstorms/skill-compression-tooling/record.md:139	Instrument: rule-coverage checklist primary, holistic pairwise read secondary.	hand-leaves=1
+D	skill-compression-tooling	5	fenced-file-topology	.mochiko/brainstorms/skill-compression-tooling/record.md:155	File topology is fenced.	hand-joins=1;hand-leaves=3
+D	skill-compression-tooling	6	description-scoped-out	.mochiko/brainstorms/skill-compression-tooling/record.md:160	`description:` frontmatter is out of scope for this primitive.	direction
+D	skill-compression-tooling	7	compression-pilot-set	.mochiko/brainstorms/skill-compression-tooling/record.md:167	Pilot set: `patterns-entity-modeling` plus the two biggest — `mochiko` (router) and `review-feasibility`.	hand-leaves=2
+D	skill-compression-tooling	8	compression-execution-details	.mochiko/brainstorms/skill-compression-tooling/record.md:183	Execution details.	hand-joins=1
+D	skill-content-schema	1	review-family-pilot	.mochiko/brainstorms/skill-content-schema/record.md:84	Pilot corpus: the review family; further families by their own ruling	-
+D	skill-content-schema	2	in-directory-schema	.mochiko/brainstorms/skill-content-schema/record.md:110	Schema home: in-directory, beside `SKILL.md`	hand-leaves=2
+D	skill-content-schema	3	obligations-only-schema	.mochiko/brainstorms/skill-content-schema/record.md:124	Boundary: obligations-only schema; procedure stays prose in `SKILL.md`	hand-leaves=1
+D	skill-content-schema	4	inherited-command-grammar	.mochiko/brainstorms/skill-content-schema/record.md:156	Grammar posture: inherit the command grammar as baseline, named skill deltas	hand-leaves=1
+D	skill-content-schema	5	family-common-blocks	.mochiko/brainstorms/skill-content-schema/record.md:180	Common form: explicit stubs + per-family common block file; command extends semantics wholesale	hand-leaves=1
+D	skill-content-schema	6	load-first-guard	.mochiko/brainstorms/skill-content-schema/record.md:227	Delivery guard: load-first block + floor-count pin; first-live-run watch	-
+D	skill-content-schema	7	advisory-schema-tooling	.mochiko/brainstorms/skill-content-schema/record.md:256	Advisory tooling: checker extension, detector extension, compression-eval as the fidelity instrument	-
+D	skill-content-schema	8	skill-governance-envelope	.mochiko/brainstorms/skill-content-schema/record.md:288	Governance envelope: no new kernel admission; shipped primitives under full ceremony; sibling audit criteria block	hand-leaves=2
+D	skill-content-schema	9	census-first-rollout	.mochiko/brainstorms/skill-content-schema/record.md:348	Rollout: census-first review-family build; further families by own ruling; repo-level converter skill	-
+D	skill-succinctness-strip	1	calibration-bar-target	.mochiko/brainstorms/skill-succinctness-strip/record.md:62	Target semantics: calibration bar, criterion rules	-
+D	skill-succinctness-strip	2	three-surface-scope	.mochiko/brainstorms/skill-succinctness-strip/record.md:75	Scope: all three surfaces, each under its own rule	-
+D	skill-succinctness-strip	3	per-skill-ratification	.mochiko/brainstorms/skill-succinctness-strip/record.md:90	Execution: wave production, per-skill ratification	-
+D	skill-succinctness-strip	4	true-reduction-accounting	.mochiko/brainstorms/skill-succinctness-strip/record.md:109	Accounting: true reductions only	-
+D	skill-succinctness-strip	5	cold-review-close	.mochiko/brainstorms/skill-succinctness-strip/record.md:124	Close shape: cold review → conclude → defer execution	-
+D	standing-seat-lifecycle	1	checkpoint-seat-recycling	.mochiko/brainstorms/standing-seat-lifecycle/record.md:262	Checkpoint-scoped seat recycling in implement (from A1, ruled Q5)	hand-joins=3;hand-leaves=1
+D	standing-seat-lifecycle	2	artifact-only-respawn	.mochiko/brainstorms/standing-seat-lifecycle/record.md:270	Respawn brief from existing artifacts only (from A2, ruled Q6)	hand-joins=1;hand-leaves=6
+D	standing-seat-lifecycle	3	transport-lifecycle-reframe	.mochiko/brainstorms/standing-seat-lifecycle/record.md:280	Doctrine reframe: transport vs context lifecycle (from A4, ruled Q7)	hand-joins=4;hand-leaves=3
+D	standing-seat-lifecycle	4	seat-measurement-probe	.mochiko/brainstorms/standing-seat-lifecycle/record.md:290;.mochiko/brainstorms/standing-seat-lifecycle/record.md:202	Per-seat measurement rides the epic's `workflow-token-reduction` D2 probe (from A6)	sites=2;title-after-hand;hand-joins=2
+D	team-lead-strategic-compaction	1	seat-only-compaction	.mochiko/brainstorms/team-lead-strategic-compaction/record.md:262	Scope: the lead manages the seats' compaction, not its own	hand-leaves=4
+D	team-lead-strategic-compaction	2	layer-two-binding	.mochiko/brainstorms/team-lead-strategic-compaction/record.md:315	Binding site: `command-shape.md` Layer 2	hand-leaves=2
+D	team-lead-strategic-compaction	3	structural-cadence-trigger	.mochiko/brainstorms/team-lead-strategic-compaction/record.md:345	Trigger: structural cadence at boundaries, plain	hand-leaves=4
+D	team-lead-strategic-compaction	4	governed-standing-seats	.mochiko/brainstorms/team-lead-strategic-compaction/record.md:373	Governed seats: standing multi-unit seats only	hand-leaves=2
+D	team-lead-strategic-compaction	5	lifecycle-doctrine-generalized	.mochiko/brainstorms/team-lead-strategic-compaction/record.md:405	One doctrine: the lifecycle rulings generalize into Layer 2	-
+D	team-lead-strategic-compaction	6	overridable-cadence-default	.mochiko/brainstorms/team-lead-strategic-compaction/record.md:460	Cadence default lives in Layer 2, command-overridable	-
+D	team-method-vs-command-shape	1	mesh-routing-default	.mochiko/brainstorms/team-method-vs-command-shape/record.md:57	F1 routing topology: the mesh becomes Layer 2's default.	-
+D	team-method-vs-command-shape	2	in-loop-mesh	.mochiko/brainstorms/team-method-vs-command-shape/record.md:66	Mesh scope: in-loop traffic only; cold review stays cold, reframed as a stage property.	-
+D	team-method-vs-command-shape	3	devolved-cycle-clearing	.mochiko/brainstorms/team-method-vs-command-shape/record.md:77	Cycle clearing under the mesh: the clean-cycle verdict devolves to the pair; the lead rules on escalations and the endgame.	-
+D	team-method-vs-command-shape	4	tasks-into-plan	.mochiko/brainstorms/team-method-vs-command-shape/record.md:101	Surface reduction, first step: `/mochiko:tasks` merges into `/mochiko:plan`.	direction
+D	team-method-vs-command-shape	5	final-package-acceptance	.mochiko/brainstorms/team-method-vs-command-shape/record.md:115	The merged plan's human gate: one final acceptance on the whole package.	-
+D	teammate-message-races	1	doctrine-hardening-frame	.mochiko/brainstorms/teammate-message-races/record.md:43	Frame: harden doctrine regardless; research settles the platform half	hand-leaves=2
+D	teammate-message-races	2	two-layer-fix	.mochiko/brainstorms/teammate-message-races/record.md:48	Fix bites at both layers: topology AND message semantics	hand-leaves=1
+D	teammate-message-races	3	transport-floor-skill	.mochiko/brainstorms/teammate-message-races/record.md:52	Carrier: a new kind-keyed floor skill, sound-loop's sibling	hand-leaves=1
+D	teammate-message-races	4	safe-writer-shapes	.mochiko/brainstorms/teammate-message-races/record.md:56	The floor names safe shapes: composition steer is binding	hand-leaves=1
+D	teammate-message-races	5	seven-floor-legs	.mochiko/brainstorms/teammate-message-races/record.md:61	The seven floor legs, non-waivable when triggered	hand-leaves=8
+D	teammate-message-races	6	version-floor-only	.mochiko/brainstorms/teammate-message-races/record.md:79	Platform half: version floor only, no upstream filing	hand-leaves=2
+D	teammate-message-races	7	live-run-watch	.mochiko/brainstorms/teammate-message-races/record.md:84	Verification: standing first-live-run watch only; no dedicated re-run probe	hand-leaves=1
+D	ux-mocking-in-specify	1	clickable-prototype-fidelity	.mochiko/brainstorms/ux-mocking-in-specify/record.md:35	Driver + fidelity	-
+D	ux-mocking-in-specify	2	lockstep-prototype-placement	.mochiko/brainstorms/ux-mocking-in-specify/record.md:33	Placement: lockstep co-evolution	-
+D	ux-mocking-in-specify	3	intent-ruled-conditionality	.mochiko/brainstorms/ux-mocking-in-specify/record.md:31	Conditionality: intent-ruled	-
+D	ux-mocking-in-specify	4	binding-flow-authority	.mochiko/brainstorms/ux-mocking-in-specify/record.md:29	Plan-stage authority: binding flows, advisory pixels	-
+D	ux-mocking-in-specify	5	prototype-id-manifest	.mochiko/brainstorms/ux-mocking-in-specify/record.md:27	Contract surface: prototype dir + ID manifest	-
+D	ux-mocking-in-specify	6	prototype-producer-seat	.mochiko/brainstorms/ux-mocking-in-specify/record.md:25	Producer seat: new staff-level agent + prototyping as a skill	-
+D	ux-mocking-in-specify	7	stress-test-grading	.mochiko/brainstorms/ux-mocking-in-specify/record.md:23	Grading: devils-advocate's stress-test extends	-
+D	ux-mocking-in-specify	8	whole-feature-prototype	.mochiko/brainstorms/ux-mocking-in-specify/record.md:21	Slices: one whole-feature prototype, slice-annotated	-
+D	ux-mocking-in-specify	9	flow-test-gate	.mochiko/brainstorms/ux-mocking-in-specify/record.md:19	Implement-side teeth: FLOW-XXX rides the TEST gate	-
+D	validator-scope-and-verbosity	1	measure-then-gate	.mochiko/brainstorms/validator-scope-and-verbosity/record.md:27	Measure-then-gate: benchmark first, cost gate second.	hand-joins=1
+D	validator-scope-and-verbosity	2	setup-specify-substrate	.mochiko/brainstorms/validator-scope-and-verbosity/record.md:32	Benchmark substrate: the setup + specify skill clusters.	-
+D	validator-scope-and-verbosity	3	model-played-principal	.mochiko/brainstorms/validator-scope-and-verbosity/record.md:40	Model-played principal for run comparability.	-
+D	validator-scope-and-verbosity	4	guardrails-cut-line	.mochiko/brainstorms/validator-scope-and-verbosity/record.md:45	The guardrails-only cut line.	-
+D	validator-scope-and-verbosity	5	neutral-rubric-judge	.mochiko/brainstorms/validator-scope-and-verbosity/record.md:49	Grading: neutral rubric, LLM-as-judge.	-
+D	validator-scope-and-verbosity	6	ten-percent-threshold	.mochiko/brainstorms/validator-scope-and-verbosity/record.md:53	Decision rule: 10% threshold, cost-aggressive.	-
+D	validator-scope-and-verbosity	7	empirical-budget-gate	.mochiko/brainstorms/validator-scope-and-verbosity/record.md:62	Cost gate: empirical budgets enforced in the existing audit.	hand-joins=5
+D	validator-scope-and-verbosity	8	prior-doctrine-superseded	.mochiko/brainstorms/validator-scope-and-verbosity/record.md:70	Prior-doctrine supersession + execution venue.	direction
+D	validator-worktree-isolation	0	null-option-killed	.mochiko/brainstorms/validator-worktree-isolation/record.md:46	The null option, killed on the record.	direction
+D	validator-worktree-isolation	1	validator-only-isolation	.mochiko/brainstorms/validator-worktree-isolation/record.md:56	Scope: validator-only isolation.	-
+D	validator-worktree-isolation	2	commit-gate-declined	.mochiko/brainstorms/validator-worktree-isolation/record.md:68	No user-commit gate.	direction
+D	validator-worktree-isolation	3	fixed-core-gate	.mochiko/brainstorms/validator-worktree-isolation/record.md:76	Gate scope: fixed core + composable option.	-
+D	validator-worktree-isolation	4	filtered-snapshot-mechanism	.mochiko/brainstorms/validator-worktree-isolation/record.md:106	Cold-tree mechanism: the git-semantics filtered snapshot.	-
+D	validator-worktree-isolation	5	cycle-option-trigger	.mochiko/brainstorms/validator-worktree-isolation/record.md:137	Per-cycle option trigger: lead judgment, guidance recorded.	-
+D	validator-worktree-isolation	6	snapshot-composition-details	.mochiko/brainstorms/validator-worktree-isolation/record.md:158	Composition details.	-
+D	validator-worktree-isolation	7	carry-set-policy	.mochiko/brainstorms/validator-worktree-isolation/record.md:191	Per-cycle carry-set policy.	-
+D	validator-worktree-isolation	8	snapshot-independence-reading	.mochiko/brainstorms/validator-worktree-isolation/record.md:201	Independence reading.	-
+D	verbosity-caveman-ops-separation	1	caveman-surface-levels	.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md:336	Diagnosis + per-surface caveman levels	hand-leaves=1
+D	verbosity-caveman-ops-separation	2	default-on-adoption	.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md:362	Adoption model: default-on, switch in the project's CLAUDE.md	hand-leaves=1
+D	verbosity-caveman-ops-separation	3	plain-language-fold	.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md:411	Plain-language principle folds into the style home; sweep stays open	hand-leaves=6
+D	verbosity-caveman-ops-separation	4	report-format-repair	.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md:430	Reports fix: format repair + `ultra` + enforcement teeth	hand-leaves=1
+D	verbosity-caveman-ops-separation	5	verbosity-grading-declined	.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md:471	Artifacts: no verbosity grading; enforcement by injection	direction;hand-leaves=1
+D	verbosity-caveman-ops-separation	6	maintenance-trio-moved	.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md:512	Framework-maintenance trio moves repo-side; ops leakage is a defect class	direction;hand-leaves=1
+D	verbosity-caveman-ops-separation	7	full-leakage-scrub	.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md:547	Leakage boundary: full scrub, changelog-worthy detail preserved repo-side	-
+D	verbosity-caveman-ops-separation	8	token-epic-seam	.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md:577	Token-epic seam ruled explicit	-
+D	verbosity-caveman-ops-separation	9	intensity-modes-superseded	.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md:596	"Intensity modes" backlog item superseded by D1+D2	direction
+D	verbosity-caveman-ops-separation	10	operator-spec-unchanged	.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md:612	Operator caveman spec unchanged	-
+D	vertical-tdd-complexity-and-qa-role	1	test-bundle-cycles	.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md:27	Cycles anchor on test-case bundles, walking skeleton first.	-
+D	vertical-tdd-complexity-and-qa-role	2	qa-authored-cases	.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md:33	qa-engineer authors the design-time test cases; the design seat keeps the slicing judgment; plan review gains an oracle-semantics check; staff-engineer keeps build-time unit tests.	-
+D	vertical-tdd-complexity-and-qa-role	3	foundation-type-retired	.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md:38	Foundation/feature classification dies as a card type.	direction
+D	vertical-tdd-complexity-and-qa-role	4	test-grammar-ownership	.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md:43	`**TEST:**` grammar ownership stays with `patterns-vertical-tdd`; QA authors within it.	-
+D	workflow-token-reduction	1	waste-first-order	.mochiko/brainstorms/workflow-token-reduction/record.md:252	Hunt order: pure waste first, quality-machinery sizing second	hand-joins=2
+D	workflow-token-reduction	2	run-cost-entry	.mochiko/brainstorms/workflow-token-reduction/record.md:257	Every workflow run ends with a recorded cost entry	hand-joins=8
+D	workflow-token-reduction	3	cycle-report-slimming	.mochiko/brainstorms/workflow-token-reduction/record.md:261	Slim implement's per-cycle reports to their verified consumers	hand-joins=9
+D	workflow-token-reduction	4	reference-by-id	.mochiko/brainstorms/workflow-token-reduction/record.md:266	Reference-by-ID: kill restatement down the artifact chain	hand-joins=1
+D	workflow-token-reduction	5	review-sizing-gates	.mochiko/brainstorms/workflow-token-reduction/record.md:272	Review sizing gates generalized; verification depth split out with a floor	hand-joins=1
+D	workflow-token-reduction	6	pure-waste-fixes	.mochiko/brainstorms/workflow-token-reduction/record.md:277	Four small pure-waste fixes	hand-joins=1

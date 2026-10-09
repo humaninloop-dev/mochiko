@@ -98,22 +98,22 @@ Issues requiring fix: none
 ## Unit 4a — schema content `0019-setup-agnostic-modules-out`
 
 VALIDATE: schema content — `plugins/mochiko/migrations/0019-setup-agnostic-modules-out.yaml` + view diffs `templates/{governance-intent,governance-surfaces,design-baseline}.yaml`, `common/skill-review-common.yaml`, `skills/{patterns-plan-minimalism,authoring-constitution,validation-constitution,patterns-design-direction,patterns-craft-floor}.yaml`
-Checklist run: AM-2 five
+Checklist run: AM-2-required-cli-dependency five
 Evidence read: the migration's op headers and all 15 rule ops in full · each view diff above · `patterns-code-minimalism.lazy-not-negligent` (the new pointer target) · record D1–D5
 Pre-pass: `0 rejecting · 113 advisory`. Views equal replay. Budget effect is a shrink on every touched skill; see the skill-pair units.
 - PASS intent stated: `intent:` names D1 and the template folds of D2–D5, and each hunk maps to one of them.
-- PASS anchor: the header anchor is `2026-09-24 setup-product-agnostic D1`. The supersession of `authoring-constitution.module-mechanical-attachment`, anchored to adaptive-depth D7, carries its own anchor. The CLI `protected-exit` check is clean.
-- PASS ID lifecycle: the supersede of `module-mechanical-attachment` and the tombstone of `s4-fail-safe` match D1 ("the fact-validation fail-safe goes with the dimension it guarded"). Rewords keep their ids. `GI-002`→`GI-001` is a template example id, forward-only per D4/Q8.
+- PASS anchor: the header anchor is "`2026-09-24 setup-product-agnostic D1`". The supersession of `authoring-constitution.module-mechanical-attachment`, anchored to `production-floor-adaptive-depth` D7-level-blind-modules, carries its own anchor. The CLI `protected-exit` check is clean.
+- PASS ID lifecycle: the supersede of `module-mechanical-attachment` and the tombstone of `s4-fail-safe` match D1 ("the fact-validation fail-safe goes with the dimension it guarded"). Rewords keep their ids. "`GI-002`"→"`GI-001`" is a template example id, forward-only per D4/Q8.
 - PASS floor and fail survival: the floor rewords are `waivers-authored-not-skipped`, `no-accessibility-content`, `code-floor-in-view`, `floor-both-ways` and `every-principle-traces`. Each drops only module or D4.2 text, which record build step 5 rules moot. The "Essential Floor line carried by `patterns-code-minimalism`" claim holds: `lazy-not-negligent` names accessibility explicitly.
 - PASS register: full register, consistent with sibling templates.
-- Advisory: the region's "Amend via" line and the ledger's Amendment policy both list the six events. That puts one fact in two homes, a GI-017 tension, but the prior template had the same pattern.
+- Advisory: the region's "Amend via" line and the ledger's Amendment policy both list the six events. That puts one fact in two homes, a GI-017-pointer-only-region tension, but the prior template had the same pattern.
 VERDICT: PASS
 Issues requiring fix: none
 
 ## Unit 4b — schema content `0020-setup-agnostic-rule-not-instance`
 
 VALIDATE: schema content — `plugins/mochiko/migrations/0020-setup-agnostic-rule-not-instance.yaml` + view diffs `skills/{authoring-constitution,validation-constitution,review-governance-intent}.yaml`
-Checklist run: AM-2 five
+Checklist run: AM-2-required-cli-dependency five
 Evidence read: the migration in full · three view hunks · record D2 · `validation-constitution/references/QUALITY-CHECKLIST.md`, which holds the worked cases the reword cites
 - PASS intent stated: mint, check and re-key are all named.
 - PASS anchor: D2 on the header and on the minted rule.
@@ -126,7 +126,7 @@ Issues requiring fix: none
 ## Unit 4c — schema content `0021-setup-agnostic-seven-dimensions`
 
 VALIDATE: schema content — `plugins/mochiko/migrations/0021-setup-agnostic-seven-dimensions.yaml` + view diff `skills/review-governance-intent.yaml`
-Checklist run: AM-2 five
+Checklist run: AM-2-required-cli-dependency five
 Evidence read: the migration in full · two view hunks · record D3
 - PASS intent stated · PASS anchor (D3) · PASS ID lifecycle: two rewords, ids kept. · PASS floor and fail survival: neither rule is a floor. · PASS register.
 VERDICT: PASS
@@ -135,7 +135,7 @@ Issues requiring fix: none
 ## Unit 4d — schema content `0022-setup-agnostic-closed-event-set`
 
 VALIDATE: schema content — `plugins/mochiko/migrations/0022-setup-agnostic-closed-event-set.yaml` + view diffs `skills/authoring-constitution.yaml`, `commands/architecture.yaml`
-Checklist run: AM-2 five
+Checklist run: AM-2-required-cli-dependency five
 Evidence read: the migration in full · the view hunks for `amend-preserves-verbatim`, `ledger-riders-and-trace-manifest` and `arch.dm-store-integrity-close` · record D4 and Q8
 - PASS intent stated: the three changes are named.
 - PASS anchor: D4.
@@ -148,7 +148,7 @@ Issues requiring fix: none
 ## Unit 4e — schema content `0023-setup-agnostic-setup-rule-set`
 
 VALIDATE: schema content — `plugins/mochiko/migrations/0023-setup-agnostic-setup-rule-set.yaml` + view diffs `commands/{setup,specify,architecture}.yaml`, `skills/analysis-codebase.yaml`
-Checklist run: AM-2 five
+Checklist run: AM-2-required-cli-dependency five
 Evidence read: the migration in full · the four view diffs · `.mochiko/schema-views/commands/implement.yaml` lines 608–671 (`impl.design-landing` and the baseline-fold floor) · `.mochiko/schema-views/templates/design-baseline.yaml` diff · record D5 and build surface step 4
 Pre-pass: `0 rejecting · 113 advisory`. One advisory bears on this unit: `allowlist names analysis-codebase.capability-signals-seed-feature-map: not a live rule ID (stale entry?)`.
 - PASS intent stated: strike five, amend seven, re-point consumers.
@@ -347,7 +347,7 @@ Checklist run: the failed item (ID lifecycle) plus what the appended op could br
 Evidence read: the migration header and its appended `reword-rule` on `command/implement` `impl.design-landing` · `git diff -- .mochiko/schema-views/commands/implement.yaml` · the rendered `impl.design-landing` and a render sweep of all six implement sections for setup-leg, seed and bootstrap claims · `.mochiko/schema-views/templates/design-baseline.yaml` writer sentence
 Pre-pass: `0 rejecting · 113 advisory`. Views equal replay.
 - PASS ID lifecycle: `impl.design-landing` keeps its id, `class: must`, `when: {ux_bearing: present}` and its anchor. Only the last sentence changes, and everything before it is verbatim in the view diff. The new sentence matches the `0019` template and `setup.design-scaffold-unconditional`: the lead writes only the empty scaffold, and the designer seat writes content on two paths. No surviving rule text in `.mochiko/schema-views/` still names the retired setup leg.
-- PASS anchor: the header anchor stays `2026-09-24 setup-product-agnostic D5`, and the reworded rule keeps `2026-09-19 impeccable-design-integration D7`. A reword is not an exit, so no protected-exit anchor is owed. The hash is restamped and the log replays.
+- PASS anchor: the header anchor stays "`2026-09-24 setup-product-agnostic D5`", and the reworded rule keeps "`2026-09-19 impeccable-design-integration D7`". A reword is not an exit, so no protected-exit anchor is owed. The hash is restamped and the log replays.
 - PASS register: consistent with the rule's own voice.
 - PASS unchanged items: intent, and floor and fail survival, stand as graded in round 1. The appended op touches no floor.
 VERDICT: PASS
@@ -390,7 +390,7 @@ Pre-pass (run first-hand):
 - PASS fixture recapture: each of the six fixtures equals the live `mochiko-cli template <name> [--check]` output minus its trailing `schemas:` line, which is the comparison `render.rs` performs. Each diff carries only `0019`'s template text.
 - PASS `rules.json` parity: by script against the seven-block render, all four kits have zero text, class or section mismatches, and floor sets equal the render's `floors:` line. The id sets are equal except `review-specifications` (30 vs 31, missing `sf-direction-checks`), the pre-existing H6 gap, ruled out of this wave and disclosed in its `rekey.md`. Every `tempts` id resolves: 68 in validation-constitution, 76 in review-governance-intent. The moved entries equal the entries each `rekey.md` names, and only `rule` fields moved. The `findings-through-leads-pen` drift repair is disclosed.
 - PASS `rekey.md`: zero removed lines in all four. Each adds one `## Re-key 2026-09-24 — setup-product-agnostic` section in the file's own shape: JSON stamp, counts, text re-keyed, invariants.
-- PASS goldens: in the two skill kits only `expected_output` moved. Assertions, prompts, tempts and fixtures are byte-identical, and the fixture directories are untouched. No retired term survives in any `expected_output`; the only hits are in frozen prompts. The review-governance-intent status sentences use the landed `critical-gaps` ground ("a principle intent restating a product instance, not the rule"), and the grounds they cite exist in the fixtures: tidewell GI-011, halyard GI-011, quillon GI-012. The plan/setup kit also rewrites `assertions`, which `evals/plan/README.md` says nothing reads, so no instrument moves.
+- PASS goldens: in the two skill kits only `expected_output` moved. Assertions, prompts, tempts and fixtures are byte-identical, and the fixture directories are untouched. No retired term survives in any `expected_output`; the only hits are in frozen prompts. The review-governance-intent status sentences use the landed `critical-gaps` ground ("a principle intent restating a product instance, not the rule"), and the grounds they cite exist in the fixtures: tidewell "GI-011", halyard "GI-011", quillon "GI-012". The plan/setup kit also rewrites `assertions`, which `evals/plan/README.md` says nothing reads, so no instrument moves.
 - PASS `observable.yaml`: the three struck ids are gone. The whys are re-keyed against landed text: `blind-map-dispatch` project name, and `feature-map-greenfield` and `map-never-overwrite` on every path. The three pre-existing uncovered ids are added as observable (`design-scaffold-unconditional`, `validate-seat-form`, `gate-loop-bound`). The unplanted-branch note is edited in place, which is correct for that list.
 - Advisory: the validation-constitution g3 golden reads the planted pci-dss waiver row as a product instance under the new check. That reading is defensible under the checklist's named-data case, but it is the loosest re-key of the set.
 VERDICT: PASS

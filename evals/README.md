@@ -2,16 +2,16 @@
 
 Provenance: `.mochiko/brainstorms/skill-compression-tooling/record.md` (D1–D8 as amended) and
 `primitive-eval-harness` D1–D5 (this directory is that session's ruled home; the pilot here
-fills its D5 slot). Advisory tooling under GI-019's recorded trace — it never gates pipeline
+fills its D5 slot). Advisory tooling under GI-019-kernel-tooling-admission's recorded trace — it never gates pipeline
 progress, never dispatches pipeline agents, never holds judgment skills own. Nothing in this
-directory ships with the plugin (GI-020 untouched).
+directory ships with the plugin (GI-020-plugin-install-model untouched).
 
 ## Targets and the one vocabulary
 
 The eval layer has three **targets** — skills (`evals/run.py` itself), commands and agents (the
 plan-only package `evals/plan/`: `run.py` + `agents.py`) — behind one CLI,
 `evals/run.py <target> <subcommand> <name>` (D10 act 3), sharing one core (`evals/lib/`, act 2),
-under one ruling set and one vocabulary (`primitive-eval-harness-v2` D1, accepted 2026-09-08).
+under one ruling set and one vocabulary (`primitive-eval-harness-v2` D1-eval-layer-targets, accepted 2026-09-08).
 Every runner cites this file for it:
 
 | term | meaning |
@@ -26,7 +26,7 @@ Every runner cites this file for it:
 | **baseline/** | a committed frozen result, regenerated only as a landing act (v2 D13(1)); never the name of a live arm |
 | **model-native** | a claim the bare model satisfies without the primitive — tagged at mint by the control pass, excluded from the regression read, never deleted |
 
-`evals/contract/` is **not** an eval target: it is the GI-012 release gate.
+`evals/contract/` is **not** an eval target: it is the GI-012-release-gates-module release gate.
 
 ## What one run is
 

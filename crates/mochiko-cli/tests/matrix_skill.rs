@@ -724,7 +724,7 @@ fn probes() -> Vec<Probe> {
 
     // --- unit 1b: the family-2 checks, re-claimed from OUTSIDE_THE_HARD_SET ---
 
-    // Pointer resolution (J-7). Base-directory-relative from the skill's own directory, which is
+    // Pointer resolution (J-7-cross-directory-pointers). Base-directory-relative from the skill's own directory, which is
     // the path the installed cache is read on — so a root-relative path dangles where it is used.
     p.push(Probe::new(
         "the in-directory and cross-directory pointers of the baseline resolve",

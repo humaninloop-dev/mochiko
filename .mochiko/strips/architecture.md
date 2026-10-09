@@ -4,7 +4,7 @@
 convert, `architecture` among them: its rules are rendered at fire by `mochiko-cli` from the
 migration log the plugin carries at `plugins/mochiko/migrations/`, and the command reads no schema
 file. Ruling for every [v0.105.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
-D3 as amended (delivery binding, positive-confirmation halt, counts printed by the CLI) and D9
+D3-rules-delivery-binding as amended (delivery binding, positive-confirmation halt, counts printed by the CLI) and D9
 ("Wave 4: the remaining five commands"), the wave-open Q-B ruling recorded in that session's
 `wave3-plan.md` §9, the `DECISIONS.md` 2026-09-04 wave-3 row, and this wave's row. Pre-edit
 verbatim text: `git show 9732de0:plugins/mochiko/commands/architecture.md`. -->
@@ -37,7 +37,7 @@ verbatim text: `git show 9732de0:plugins/mochiko/commands/architecture.md`. -->
   The reading grammar the block carried is now printed by the binary as the preamble's `legend`
   block; the `common.yaml` co-Read obligation is discharged in the render, which resolves every
   `extends: common.<slug>` stub before the model sees it (architecture binds five).
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended)
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended)
 - **Content:** verbatim —
 
   ```
@@ -84,7 +84,7 @@ verbatim text: `git show 9732de0:plugins/mochiko/commands/architecture.md`. -->
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- kind: fail · N rules`
   line under `pins` in the preamble block, and the `.md` now cites that pin and halts when a
   delivered fail-conditions end line disagrees with it, rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the count pins are
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the count pins are
   computed and printed by the CLI, never hand-pinned"; wave-3 Q-B, 2026-09-04)
 - **Content:** verbatim —
 
@@ -105,7 +105,7 @@ verbatim text: `git show 9732de0:plugins/mochiko/commands/architecture.md`. -->
 <!-- Wave context: the schema-header runtime-kernel wave (v0.100.0) — shipped schema
 top-of-file header comments trimmed to runtime-essential content. Ruling for every
 [v0.100.0] entry below: `.mochiko/decisions/2026-08-28-schema-header-runtime-kernel.md`
-(a recorded supersession-by-amendment of command-content-schema D14) + `DECISIONS.md`
+(a recorded supersession-by-amendment of command-content-schema D14-nested-section-grammar) + `DECISIONS.md`
 2026-08-28 row. Pre-edit verbatim text: `git show e44b33d:plugins/mochiko/schemas/<file>`. -->
 
 ## [v0.100.0] `schemas/architecture.yaml` header — full-grammar comment superseded by the runtime kernel
@@ -115,7 +115,7 @@ top-of-file header comments trimmed to runtime-essential content. Ruling for eve
   `command-schema-ontology` records (edit-time)
 - **Tier failed:** n/a — supersession by ruling (`2026-08-28-schema-header-runtime-kernel.md` R1)
 - **Content:** the ~68-line canonical D14 header, faithfully compressed: provenance paragraph
-  (D1/D7 citations, GI-020 note, narrative-stays-in-.md note) · full grammar block (section id ·
+  (D1/D7 citations, GI-020-plugin-install-model note, narrative-stays-in-.md note) · full grammar block (section id ·
   id minting/freeze/tombstones D11 · labels D8 · class incl. M3 audit note · nine-kind vocabulary ·
   when semantics · enforces · extends resolution · text/${var} D5 · provenance sidecar D16 ·
   pointer) · conditions/moments block explanations · referential-closure paragraph (D15, deixis,
@@ -126,7 +126,7 @@ top-of-file header comments trimmed to runtime-essential content. Ruling for eve
   vocabulary (the two semantics no `.md` restates). The `advisory` gloss is restated on the
   runtime axis ("guidance, not binding"), not carried verbatim — the ceremony-axis meaning
   ("may change without supersession ceremony") stays homed at
-  `.claude/rules/mochiko/primitive-edits.md` criterion 5 and content-schema D6.
+  `.claude/rules/mochiko/primitive-edits.md` criterion 5 and `command-content-schema` D6-rule-block-grammar.
 - **Consumers assessed:** the command's own `.md` (self-carries the reading grammar; unchanged) ·
   `.claude/skills/converting-command-to-schema/SKILL.md` (updated this wave to mint the kernel) ·
   `scripts/check-command-schema.py` (does not read header comments; post-edit `--all` PASS,
@@ -206,7 +206,7 @@ over the `.md` + schema pair: a closed `kind:` set with `constraint` as the omit
 single-homed out of `text` (D3), a per-schema `moments:` block (D4), `enforces:` on every
 `kind: fail` node (D6), and `extends: common.<slug>` binding the shared blocks in
 `plugins/mochiko/schemas/common.yaml` (D8 — a narrow supersession of command-content-schema
-D3). Ruling for every [v0.98.0] entry below:
+D3-no-shared-library). Ruling for every [v0.98.0] entry below:
 `.mochiko/brainstorms/command-schema-ontology/record.md` D1–D11 as amended → `DECISIONS.md`
 2026-08-27 command-schema-ontology row. Clause inventory (the audit referent): that session's
 `conversion-inventory.md`. Pure additions ride the decision row and are not entered here —
@@ -248,7 +248,7 @@ and the `.md` Rules-block grammar breath. -->
   this desk's own legal self-reference set ("this schema", "the desk", "the visit"), the D12
   grain line, and the D13 advisory-checker line. Two changes inside the kept material are
   deliberate and recorded here rather than silently: `charter audit` → **`pair audit`**
-  (inventory J-13; the corpus in fact held three stragglers, not the two J-13 named —
+  (inventory J-13-charter-audit-headers; the corpus in fact held three stragglers, not the two J-13-charter-audit-headers named —
   `architecture.yaml`, `feature.yaml`, `implement.yaml`), and the dropped "First mint — no
   tombstones yet" clause, which the canonical header does not carry for any of the six. The
   section-ID line's placeholder is also resolved from `<cmd>.sec.<slug>` to the concrete
@@ -310,7 +310,7 @@ and the `.md` Rules-block grammar breath. -->
   `plugins/mochiko/schemas/common.yaml`; both stubs keep their `arch.*` IDs as the citable
   IDs.
 - **Tier failed:** n/a — supersession by ruling (record D8 as amended by C2 and C3 — a
-  narrow supersession-by-ruling of command-content-schema D3, legal only for text that is an
+  narrow supersession-by-ruling of command-content-schema D3-no-shared-library, legal only for text that is an
   exact duplicate across three or more command schemas; `DECISIONS.md` 2026-08-27. Both
   blocks cleared the bar at five members each — inventory section F.0/F.1).
 - **Content:** the local rule bodies as shipped at v0.97.0, verbatim —
@@ -397,7 +397,7 @@ D14 precedent). Ruling for every [v0.97.0] entry below:
 - **Disposition:** superseded → the six-section enumeration in
   `plugins/mochiko/commands/architecture.md`, `## Rules — load the schema first`; the
   reserved-rulings gloss re-homed onto the newly minted `arch.sec.reserved`.
-- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D3 +
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D3-section-set-unification +
   D4; `DECISIONS.md` 2026-08-27 row).
 - **Content:** verbatim — "desk's binding rules, nested in five sections, each addressable by
   its section ID: `arch.sec.roles` (the Delivery Manager's always-happens floor, seat wiring,
@@ -418,7 +418,7 @@ D14 precedent). Ruling for every [v0.97.0] entry below:
 - **Disposition:** superseded → `## Adaptive Goal Protocol` steps 1–3 in
   `plugins/mochiko/commands/architecture.md`; every sentence relocated, the step labels
   folded to inline bold inside the canonical steps.
-- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D1 as
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D1-canonical-command-scaffold as
   narrowed at review C2, D2; `DECISIONS.md` 2026-08-27 row).
 - **Content:** verbatim, the labels and the free-standing `$ARGUMENTS` line that left their
   positions — "1. **Health first, then the ask.**" · "2. **Converge to a goal and its done
@@ -501,9 +501,9 @@ refinement) → `DECISIONS.md` 2026-08-26 command-content-schema row. -->
   dangling sidecar keys a finding, both negative-tested; sidecar absent degrades to a
   warning for plugin-standalone checkouts); the conversion skill's step 7 re-pointed; the
   pair-form audit criteria in `.claude/rules/mochiko/primitive-edits.md` gained the sidecar
-  home. The sidecar is repo-side and never shipped — plugin install unchanged (GI-020).
+  home. The sidecar is repo-side and never shipped — plugin install unchanged (GI-020-plugin-install-model).
 
-<!-- Wave context: the command-content-schema D10 rollout wave (v0.95.0) —
+<!-- Wave context: the command-content-schema D10-per-command-rollout rollout wave (v0.95.0) —
 `commands/architecture.md` splits into a narrative `.md` (Identity & Mission · the obligated
 schema read · Adaptive Goal Protocol) and `plugins/mochiko/schemas/architecture.yaml`
 (mint-once rules at D12 grain, prefix `arch`; sections mirror the command's own groups per
@@ -514,7 +514,7 @@ structure-only extraction, no simplification pass. Ruling for every [v0.95.0] en
 `.mochiko/brainstorms/command-content-schema/record.md` (D2 · D6 · D7 · D12 · D14 · D15 +
 the Session-trail "D10 rollout ruling 2026-08-26" naming `architecture.md`, prefix `arch`) →
 `DECISIONS.md` 2026-08-26 command-content-schema row. Every Content field quotes the SHIPPED
-v0.94.0 text — what actually left the file (the GI-006 referent); the schema's rewording
+v0.94.0 text — what actually left the file (the GI-006-primitive-edit-traceability referent); the schema's rewording
 lives at the named new homes, never restated here. -->
 
 ## [v0.95.0] `## Roles & Responsibilities` — the whole section moves to the schema (D2/D7/D10 rollout)
@@ -588,7 +588,7 @@ and run the visit is yours to shape.
   "the D13 mint at the feature
   desk" — a bare decision-number reference — becomes "the capability mint at
   `/mochiko:feature`'s growth door (`arch.dispatch-feature-growth-door`)", the D13 provenance
-  carried by the rule's `ruling:` anchor (`2026-08-19 product-architecture-schema D13`). The
+  carried by the rule's `ruling:` anchor ("`2026-08-19 product-architecture-schema D13`"). The
   always-happens list keeps its floor force as `class: floor` on all nine DM rules.
 - **Consumers assessed:** the pair-form audit criteria in
   `.claude/rules/mochiko/primitive-edits.md` were re-keyed lead-side in the same wave (D10
@@ -710,7 +710,7 @@ Each tool below is referenced, never restated — its procedure lives in its hom
 - **Kept deliberately:** nothing of the section remains in the `.md`. D15 rewordings inside
   the move, IDs unaffected (first mint): "its skill" and "the store skill" name their
   referent, `mochiko:authoring-architecture-store`. The author ≠ grader bullet carries
-  `class: floor` in the schema — non-waivable house law (GI-004), matching the exemplar
+  `class: floor` in the schema — non-waivable house law (GI-004-primitive-audit-ratchet), matching the exemplar
   `implement.yaml`'s treatment of the same obligation; the Explore model rides
   `${explore_model}` per D5.
 - **Consumers assessed:** the model-tiering bullet's protected provenance
@@ -819,7 +819,7 @@ Each tool below is referenced, never restated — its procedure lives in its hom
 - **Disposition:** superseded → the same Tools dispatch-targets clause naming `/mochiko:implement`
   as the sole owner of delivery.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1: `/mochiko:plan` retires as a
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires: `/mochiko:plan` retires as a
   command and `/mochiko:implement` becomes the single downstream run; the record's Build surface
   names this line explicitly as charter-protected content requiring a supersession by ruling).
 - **Content (superseded text, verbatim):**

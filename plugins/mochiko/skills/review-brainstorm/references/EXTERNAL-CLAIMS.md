@@ -7,7 +7,7 @@
 > the doctrine is never duplicated. Ruled at
 > `.mochiko/brainstorms/external-research-in-review/record.md` (ER-D1–D6, 2026-08-04).
 
-## The trigger — load-bearing (ER-D2)
+## The trigger — load-bearing (`external-research-in-review` D2-load-bearing-trigger)
 
 External verification fires when a claim is **load-bearing**: a decision, verdict, or gate
 would flip if the claim were false. Non-load-bearing color ("popular", "modern",
@@ -27,20 +27,20 @@ Under the load-bearing rule, these classes **always** fire:
 Floor, not ceiling: any outside-repo, load-bearing claim qualifies even when it matches no
 row here — the classes guide the hunt, they never gate it.
 
-## Architecture — verify-at-review, pure (ER-D3)
+## Architecture — verify-at-review, pure (`external-research-in-review` D3-verify-at-review)
 
 Producers **disclose**; review seats **verify**. No producer carries a verification duty
 anywhere in the pipeline — the checker is never the claimant, so motivated reading is
 structurally out at the fact layer.
 
-## Inline-check mechanics (ER-D4)
+## Inline-check mechanics (`external-research-in-review` D4-inline-reviewer-checks)
 
 The review seat runs the check itself — WebSearch/WebFetch mid-review, at the moment the
 claim is hit, not as a separate pass or a dispatched sub-check. Hunt disconfirming sources
 against the producer's claim, not confirming ones. Cite what you fetched as **quotable
 text** — never a paraphrase, never a summary.
 
-## The source re-read clause (ER-D4)
+## The source re-read clause (`external-research-in-review` D4-inline-reviewer-checks)
 
 A finding whose premise is an external claim must cite its fetched source (quotable text).
 Before that finding survives: the **counterpart reviewer** (pair review) or the **lead**
@@ -67,13 +67,13 @@ Every externally-sourced claim in an artifact carries exactly one of:
 floor-class claims regardless of the line, but the omission is reported so the audit
 signal is never silently lost.
 
-## No-review paths (ER-D5)
+## No-review paths (`external-research-in-review` D5-no-review-paths)
 
 Waiving a review waives external verification with it — the waiver's stated cost names
 both ("un-reviewed record, externally-unverified claims"). Bare sessions ride the user's
 own premise-checking practice; there is no residual gate check.
 
-## Fact-checker role — flag, don't fetch (ER-D4 residual)
+## Fact-checker role — flag, don't fetch (`external-research-in-review` D4-inline-reviewer-checks residual)
 
 The fact-checker seat keeps its file jurisdiction unchanged. Its claim map **may flag**
 external premises as `memory-asserted` — a pre-built hunt list for the reviewers — but the
@@ -95,7 +95,7 @@ seat never fetches: external verification belongs to the review seats alone.
 (disclosure-presence check only) · `patterns-technical-decisions` (disclosure grammar) ·
 `templates/artifact-format.md` (disclosure grammar) · `CROSS-EXAM.md` (external-claim
 carve-out) · `agents/validator.md` (evidence-hierarchy rung — the source re-read clause
-only; added with the v0.52.0 build, beyond ER-D6's eight ruled touches) — consumer retired
+only; added with the v0.52.0 build, beyond `external-research-in-review` D6-shared-reference-carrier's eight ruled touches) — consumer retired
 v0.113.0 with the persona, with no successor consumer; this clause's live consumers are the
 others listed above.
 Edit-time guard: a change here is assessed against **all** consumers.

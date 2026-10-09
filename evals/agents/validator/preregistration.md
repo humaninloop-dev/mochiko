@@ -15,7 +15,7 @@
 >
 > Or check the whole archive out: `git worktree add /tmp/eval-evidence eval-evidence-2026-09-19`.
 
-Committed BEFORE the first grid (`primitive-eval-harness-v2` D11 with folds C2 · I7 · I8 · I9 · M5
+Committed BEFORE the first grid (`primitive-eval-harness-v2` D11-preregistration-noise-guard with folds C2 · I7 · I8 · I9 · M5
 · M6, and the pilot-1 ruling `2026-09-09-persona-pilot-1-latitude-out-of-instrument`). The runner
 refuses `agent-grid` without this file. Amending it after results exist is a recorded, deliberate
 act. Fields marked **[measured at probe]** are filled from the probe run before the grid.

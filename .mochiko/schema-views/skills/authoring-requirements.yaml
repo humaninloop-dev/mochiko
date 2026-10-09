@@ -105,8 +105,9 @@ sections:
         labels: [artifact-grammar]
         class: must
         text: >-
-          Functional requirements use the FR-XXX form with RFC 2119 keywords — MUST (absolute;
-          no exceptions) · SHOULD (recommended; valid exceptions may exist) · MAY (optional).
+          Functional requirements use the FR-XXX form, each requirement's ID joined to a
+          three-word topic slug (`FR-007-<slug>`), with RFC 2119 keywords — MUST (absolute; no
+          exceptions) · SHOULD (recommended; valid exceptions may exist) · MAY (optional).
         anchor: 2026-07-25 skill-succinctness-strip
       - id: authoring-requirements.rfc2119-pointer
         labels: [binding]
@@ -120,8 +121,8 @@ sections:
         labels: [artifact-grammar]
         class: must
         text: >-
-          FR numbering is sequential, three-digit padded, no gaps (FR-001, FR-002…); related
-          requirements group together.
+          FR numbering is sequential, three-digit padded, no gaps (FR-001-<slug>,
+          FR-002-<slug>…); related requirements group together.
         anchor: 2026-07-25 skill-succinctness-strip
       - id: authoring-requirements.edge-cases
         labels: [artifact-grammar]
@@ -138,7 +139,9 @@ sections:
         labels: [artifact-grammar]
         class: must
         kind: duty
-        text: Define 3–5 measurable outcomes in SC-XXX form.
+        text: >-
+          Define 3–5 measurable outcomes in SC-XXX form — three-digit padded, written joined
+          (`SC-001-<slug>`).
         anchor: 2026-07-25 skill-succinctness-strip
       - id: authoring-requirements.sc-rules
         labels: [artifact-grammar]

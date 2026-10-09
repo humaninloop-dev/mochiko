@@ -369,6 +369,19 @@
   ]
  },
  {
+  "id": "review-specifications.joined-ids",
+  "rule": "Hold every durable ID the artifact mints or cites to the IDs section of `templates/artifact-format.md`: a new mint is joined, its three slug words naming the topic — never a strength word, a removal ruling's direction word kept; a citation carries its definition's slug, or stays bare where the definition is bare; match on the number within its scope. A bare new mint, a drifted slug, or a slug that misreads its topic is a finding.",
+  "class": "must",
+  "source": "log:review-specifications.joined-ids",
+  "section": "review-specifications.sec.verdict",
+  "pointer": "../../templates/artifact-format.md",
+  "labels": [
+   "verdict",
+   "artifact-grammar"
+  ],
+  "mapped_from": []
+ },
+ {
   "id": "review-specifications.question-format",
   "rule": "Every question is a decision the stakeholder can make: 2–3 concrete options, what each means for users, why it matters — specific, never vague.",
   "class": "must",

@@ -29,9 +29,9 @@ pass; two non-blocking advisories recorded (parenthetical omits ritual part 1, c
 landing). The pin's deviation clause and its revisit-trigger half struck per the pin's own
 stated trigger.
 
-Same bump discharges the two standing release-gate debts (GI-012): `marketplace.json` synced
-0.10.0 → 0.54.0 (gate 5, GI-016 first execution) and the `CHANGELOG.md` 0.54.0 entry appended
-(gate 4, GI-010).
+Same bump discharges the two standing release-gate debts (GI-012-release-gates-module): `marketplace.json` synced
+0.10.0 → 0.54.0 (gate 5, GI-016-marketplace-metadata-lag first execution) and the `CHANGELOG.md` 0.54.0 entry appended
+(gate 4, GI-010-changelog-elective-module).
 
 ## Rationale
 

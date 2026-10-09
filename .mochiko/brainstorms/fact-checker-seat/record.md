@@ -16,12 +16,12 @@
 
 ## Decisions
 
-### D1 — Keep the seat; fix its legibility; judge it on the planned re-run
+### D1-seat-legibility-fix — Keep the seat; fix its legibility; judge it on the planned re-run
 Keep the conditional at-start seat. Rename **grounder → fact-checker** (the old name affords "tests whether findings are grounded" — it confused its own designer one day after shipping). Rewrite the two misleading phrasings (`brainstorm.md` description + line 10; router entry). Add a spawn-announcement rule: filling the seat is announced in one line — what reality surface warrants it, and that a factual map is coming.
 - **Mark:** Confident (recommendation-led; adopted with the removal steelman in full view — the user's revealed preference trail toward end-weighted simplicity, and the precedent that experienced-confusion killed the higher-yielding advocate, were both argued before the ruling).
 - **Rejected:** demote-to-on-demand now (Explore one-shots preserve the function but discard the volunteering + warm context that produced F4's catches, and the seat has never been watched to completion by the user); remove entirely (incoherent — review-stage fact disputes need a checker; the Explore fallback already exists at `brainstorm.md` survivor routing).
 
-### D2 — Pre-register the kill check instead of arguing n=1 further
+### D2-preregistered-kill-check — Pre-register the kill check instead of arguing n=1 further
 The seat's evidence is one audited run. Rather than relitigate, the doubt becomes a named check on the already-planned v2.1 dogfood (BACKLOG): **in a run watched to completion, the fact-checker's map or checks produce something the user visibly values — else demote to on-demand Explore dispatches** (end-only grounding, the fallback the v2 design named at D5). Same idiom that resolved I-6 the first time.
 - **Mark:** Confident (user-ruled via adoption of the packaged recommendation).
 

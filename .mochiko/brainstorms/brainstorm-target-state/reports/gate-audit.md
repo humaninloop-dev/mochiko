@@ -39,11 +39,11 @@ overage_ruling: review-brainstorm +1,398 HOLDS — genuine new obligation (D8, D
 ## Unit 1 — schema content `0044-brainstorm-target-state`
 
 VALIDATE: schema content `plugins/mochiko/migrations/0044-brainstorm-target-state.yaml` + `.mochiko/schema-views/commands/brainstorm.yaml` diff + `scripts/similar-rules-allowlist.yaml` (three rows)
-Checklist run: the AM-2 five, with wave plan §3.0 (D22) as the register bar
+Checklist run: the AM-2-required-cli-dependency five, with wave plan §3.0 (D22) as the register bar
 Evidence read: the migration whole · the view diff · the allowlist diff · the render of all seven `brainstorm` blocks · record cards D1–D15, D17–D19, D22 (`record.md:205–764`) · `wave1-target-state.md` §3 · `build-log.md` P1 entries
 Pre-pass: `0 rejecting`. `brainstorm` advisories are the pre-existing set (`km_file`/`seats` coverage, two unused moments, `enforces-coverage` 7, `budget 55 rules`). Sections 8 · 8 · 9 · 25 · 1 · 4 = 55; end lines agree with the preamble.
 - PASS intent stated: the header names the decisions, the three counted limits, the `size` condition at a new moment, the moved blind map with the small arm kept, four rewords, the mints, and "No floor and no fail is minted, retired or lowered". The ops match: 2 `set-moment`, 1 `set-condition`, 4 `reword-rule`, 1 `set-rule-field`, 25 `mint-rule`.
-- PASS anchor present where required: header `2026-10-06 brainstorm-target-state`; each single-decision mint carries its D; `user-steers` carries the bare session anchor (D4/D6/D12/D15). `blind-map-dispatch` keeps `2026-08-10 cold-review-gap-challenge D6` by the lead's F-1 ruling; the reword rides the header anchor and intent, and the cold-review record and `DECISIONS.md` row are annotated "D2/D6 amended in part 2026-10-06". No exit occurs, so no exit anchor is owed.
+- PASS anchor present where required: header `2026-10-06 brainstorm-target-state`; each single-decision mint carries its D; `user-steers` carries the bare session anchor (D4/D6/D12/D15). `blind-map-dispatch` keeps "`2026-08-10 cold-review-gap-challenge D6`" by the lead's F-1 ruling; the reword rides the header anchor and intent, and the cold-review record and `DECISIONS.md` row are annotated "D2/D6 amended in part 2026-10-06". No exit occurs, so no exit anchor is owed.
 - PASS ID lifecycle: the four rewords keep their ids (partition `changed` lists exactly them); 25 new ids; no tombstone; 30 → 55. `small-session-review` is D11's mint for the small arm, not a split — the parent id lives on, reworded and `when:`-gated.
 - PASS floor and fail survival: 8 floors and 4 fails, `floors:` line identical pre/post; no reword touches a floor or fail; `fail.survivor-undispositioned` still enforces `non-coverage-survivors`, whose routing survives the reword.
 - PASS register: every mint is one or two plain sentences in second person; no "first … then", no numbered step; counted limits only in `ratified-yes`, `stop-rule`, `fix-one-card-verify-once`. Each text sits inside its card, review notes included: S2 (`blind-map-fold`'s late angle), S5 (`question-form`'s open question), S6 (`facts-quoted`), V3 (`stop-rule`'s blind-map clause), S16 (`blind-map-dispatch`'s pair), D22 on D12 (`dependency-order` leaves the order to the lead).
@@ -54,7 +54,7 @@ Issues requiring fix: none
 ## Unit 2 — schema content `0045-review-brainstorm-target-state`
 
 VALIDATE: schema content `plugins/mochiko/migrations/0045-review-brainstorm-target-state.yaml` + `.mochiko/schema-views/skills/review-brainstorm.yaml` diff
-Checklist run: the AM-2 five
+Checklist run: the AM-2-required-cli-dependency five
 Evidence read: the migration whole · the view diff · the render of all seven `review-brainstorm` blocks · record D8, D10 (with S2, S7, S16 notes), D11 S3, D16 (with S4 and the Q23 build note), D17 · `wave1-target-state.md` §3.2
 Pre-pass: `0 rejecting`; `budget · skill/review-brainstorm · 34 rules · 3800`; new advisory `map_timing` "end" uncovered. Sections 4 · 6 · 6 · 13 · 3 · 2 = 34.
 - PASS intent stated: names D8, D10, D16, D17, the condition, the floor reword "(id, class, kind and anchor kept)", the narrowed verify, four mints, "No floor is minted, retired or lowered". Ops match: 1 `set-condition`, 2 `reword-rule`, 4 `mint-rule`.

@@ -1,5 +1,5 @@
 # D8 partition — /mochiko:architecture rule set, plan-observable vs out-of-instrument.
-# Ruling: command-plan-only-eval D8 (accepted 2026-08-27, review fold C1).
+# Ruling: command-plan-only-eval D8-rule-partition-grid (accepted 2026-08-27, review fold C1).
 # The `observable` list IS the D2 rubric; `out_of_instrument` rules are declared here,
 # never silently absent at coverage 0. Validated by `run.py check-rubric architecture`:
 # every rule ID in the derived view appears in exactly one list.
@@ -37,6 +37,7 @@ observable:
   - {id: arch.dm-close-verdict, why: every plan closes with a verdict against the converged done condition}
   - {id: arch.seat-architect-producer, why: the producing seat for the baseline (g1), the stance batch (g2), and the as-built/drift write (g3) is named as recommending never ruling, on an approved plan}
   - {id: arch.seat-tech-lead-grader, why: the grader is named AND its read is described — the authored files rather than the producer's report, with a stated refusal reason; g3 separates the transcription flip from the graded as-built line}
+  - {id: arch.grader-checks-joined-ids, why: g1's baseline mints every spine and concern row, so the grading seat's read names the ID check — new rows joined, slug naming the row; g2/g3 cite the fixtures' bare rows, which stay bare}
   - {id: arch.seat-drift-probe-empirical, why: g3 asks the desk to copy the as-built from the approved delta, so the probe seat reading the code, never the claim's author, is the visible refusal}
   # reserved
   - {id: arch.user-reserved-rulings, why: row stances (g2), the baseline confirmation (g1), the drift disposition (g3), the growth-door mint (g2), and the waiver route (g2) each described as the user's, with branches}
@@ -110,7 +111,7 @@ out_of_instrument:
 # bar in their assertions, requiring the plan to say what the grader reads and what would make
 # it refuse. Grade the evidence quotes, never the boilerplate.
 
-# Declared unplanted facets (fixture-design record, not a partition class): three rules are
+# Declared unplanted facets (fixture-design record, not a partition class): four rules are
 # observable through one half of their subject only, because no scenario plants the other
 # half. Each is a plant candidate if a later grid wants it graded whole.
 #   arch.shelf-scope-source — the override half (an ordinary store write to the Scope line as
@@ -121,3 +122,6 @@ out_of_instrument:
 #     code, which no scenario carries.
 #   arch.tools-drift-probe-scope — the "touched since the last desk visit" half is planted in
 #     g3 only; g1 and g2 grade the probe on its sampling half (rows the visit itself touches).
+#   arch.grader-checks-joined-ids — the citation half that follows a joined definition needs a
+#     store whose rows are already joined; every fixture row is bare, so the rule is graded on
+#     the new-row half (g1's minted rows) and on bare citations staying bare (g2, g3).

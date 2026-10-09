@@ -8,7 +8,7 @@ second pass generates the survivor-provenance (KEPT) entries below.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the dense-five family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -20,7 +20,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -55,7 +55,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -66,7 +66,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -76,7 +76,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 
 ## [v0.103.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2C, small families)
 
-Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (obligations move, procedure stays
 prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
 ruled · Skill-schema wave-2 family doors ruled — the small-families door); census:
 `.mochiko/brainstorms/skill-content-schema/research/census-small-families.md` §A (BI) + §B (BI rows
@@ -104,7 +104,7 @@ vertical-tdd precedent: a protected-set naming beats a class-mix cell). The cens
 landing appendix. Row 9 stays must (the §A "protected escalation seam" carries no floor
 claim). No `conditions:` block — EXTEND/MODIFY is the rules' own subject (content-derived;
 census §B's live-`when:` dimension list omits BI); the load-first block legally omits the
-`when:` grammar sentence (wave-1 RCM-4 wave-wide ruling).
+`when:` grammar sentence (wave-1 RCM-4-test-gate-carveout wave-wide ruling).
 Accounting (seat-measured snapshot; the closer re-measures at the gate): body 6,342 → 3,903
 (obligations out + the load-first Rules block in) + schema 6,674 = **payload 10,577**
 (census §F estimate ~10,100, ×1.67 vs est ×1.6 — inside the ±30% band); the delta over the
@@ -130,7 +130,7 @@ the wave closer executes the ledger row). Description byte-untouched at 491.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01
   skill-content-schema rows; protecting lineage the [v0.25.0] KEPT entry below —
   batch-2 ratification, `DECISIONS.md` 2026-07-25 skill-succinctness-strip — and the
-  [v0.49.0] keep-set, `DECISIONS.md` 2026-08-02 plan-task-granularity D2.1).
+  [v0.49.0] keep-set, `DECISIONS.md` "2026-08-02 plan-task-granularity D2.1").
 - **Content:** the five `## Core Process` subsections whole — table cells, five checklist
   steps, three preservation bullets, four conflict checks, five flag bullets — wording
   preserved verbatim in substance in the rule texts; verbatim originals in git history
@@ -158,8 +158,8 @@ the wave closer executes the ledger row). Description byte-untouched at 491.
   `brownfield-integration.refactoring-out-of-scope` (must), the bullet itself slimming to
   its category name.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows;
-  protecting lineage `DECISIONS.md` 2026-08-05 ponytail-concepts-integration PT-D7
-  (rung-zero thin-form pointers) + 2026-08-02 plan-task-granularity D2.1 for the boundary;
+  protecting lineage `DECISIONS.md` "2026-08-05 ponytail-concepts-integration PT-D7"
+  (rung-zero thin-form pointers) + "2026-08-02 plan-task-granularity D2.1" for the boundary;
   the epigraph's home ruling is the wave-1 RPA/VC verdict-section precedent).
 - **Content:** "Brownfield tasks arrive tagged `[EXTEND]` or `[MODIFY]` by the builder's
   own decomposition — classified from the cycle card's **brownfield exposure** line, which
@@ -217,7 +217,7 @@ the wave closer executes the ledger row). Description byte-untouched at 491.
 
 ## [v0.49.0] Marker source re-keyed — builder classifies at decomposition
 - **Disposition:** superseded → tasks arrive tagged by the builder's own decomposition, classified from the cycle card's brownfield-exposure line (declared by patterns-vertical-tdd at design time)
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2.1)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2.1-builder-restriction-removed)
 - **Content:** "the marker **vocabulary** is defined by `patterns-vertical-tdd`, which stamps those markers onto tasks at design time" and the parallel description/interface-table clauses.
 - **Kept deliberately:** the entire consumption discipline (read-before-write, interface preservation, EXTEND-never-silently-becomes-MODIFY, conflict escalation) — untouched.
 - **Consumers assessed:** staff-engineer · executing-tdd-cycle (co-fires).

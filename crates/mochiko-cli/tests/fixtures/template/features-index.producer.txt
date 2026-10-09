@@ -18,7 +18,7 @@ Title "# Features" plus the three orienting lines:
 
 ## Index
 
-One line per capability: ID (linked to its entry file) · name · status · one-breath
+One line per capability: joined ID (`FEAT-XXX-<slug>`, linked to its entry file) · name · status · one-breath
 capability hook. Ordering: newest-relevant first — in-flight and row-carrying entries at
 the top, then delivered, then proposed, then retired. Keep the hook to one breath; the
 entry file carries everything else.
@@ -39,9 +39,9 @@ _Density:_ one line per capability; hook = one breath
 Good example:
 | ID | Capability | Status | Hook |
 |----|------------|--------|------|
-| [FEAT-001](.mochiko/features/FEAT-001-{{slug}}.md) | {{capability_name}} | {{status}} | {{one_breath_hook}} |
+| [FEAT-001-{{slug}}](.mochiko/features/FEAT-001-{{slug}}.md) | {{capability_name}} | {{status}} | {{one_breath_hook}} |
 |  | ↳ `live` {{work_row}} | in {{spec-slug}} | {{increment_hook}} |
-| [FEAT-002](.mochiko/features/FEAT-002-{{slug}}.md) | {{stub_name}} | proposed (unrefined) | {{one_breath_hook}} |
+| [FEAT-002-{{slug}}](.mochiko/features/FEAT-002-{{slug}}.md) | {{stub_name}} | proposed (unrefined) | {{one_breath_hook}} |
 
 ## Skeleton
 
@@ -54,8 +54,8 @@ Good example:
 
 | ID | Capability | Status | Hook |
 |----|------------|--------|------|
-| [FEAT-001](.mochiko/features/FEAT-001-{{slug}}.md) | {{capability_name}} | {{status}} | {{one_breath_hook}} |
+| [FEAT-001-{{slug}}](.mochiko/features/FEAT-001-{{slug}}.md) | {{capability_name}} | {{status}} | {{one_breath_hook}} |
 |  | ↳ `live` {{work_row}} | in {{spec-slug}} | {{increment_hook}} |
-| [FEAT-002](.mochiko/features/FEAT-002-{{slug}}.md) | {{stub_name}} | proposed (unrefined) | {{one_breath_hook}} |
+| [FEAT-002-{{slug}}](.mochiko/features/FEAT-002-{{slug}}.md) | {{stub_name}} | proposed (unrefined) | {{one_breath_hook}} |
 
 ---

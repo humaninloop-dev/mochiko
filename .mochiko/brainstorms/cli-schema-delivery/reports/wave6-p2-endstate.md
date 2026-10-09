@@ -76,7 +76,7 @@ survives untouched in all eighteen; only the delivery noun moved.
 
 One supersession-by-ruling entry per touched primitive, stamped `[v0.107.0]`, newest-first, each
 under a wave-context comment naming `git show 62aa99d:<path>` for the verbatim pre-edit text. Every
-entry cites `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6 and the `DECISIONS.md`
+entry cites `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6 and the `DECISIONS.md`
 2026-09-05 row, carries the superseded text verbatim, and states what survived.
 
 Sixteen from the plan plus `review-code-minimalism.md` and `authoring-user-stories.md` for the

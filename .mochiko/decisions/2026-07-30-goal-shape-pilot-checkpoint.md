@@ -4,7 +4,7 @@
 
 ## Context
 
-CS-D10 step 2: the plan pilot — the goal-shaped rewrite of the surface's heaviest command —
+`command-succinctness-strip` D10-pilot-first-execution step 2: the plan pilot — the goal-shaped rewrite of the surface's heaviest command —
 completed its full loop (author → independent audit FAIL on check 14 → bounded fix round →
 re-verify CLEAN → PASS). Measured: 4,439 → 1,950 w (−56.1%), 33,833 → 14,084 B (−58.4%),
 +159 w (+8.9%) over the calibrated floor (the safe side), run-level −16,854 B per plan run;
@@ -20,13 +20,13 @@ re-verify CLEAN → PASS). Measured: 4,439 → 1,950 w (−56.1%), 33,833 → 14
    ceiling forced one correct trade (provenance relocated to its non-loaded home, rules kept).
    Caveat recorded: plan future edits must trim to add.
 3. **Cardinality: trigger not met** (1.81× the other-five median vs the 2× line; all seven
-   gates fit one 123-word Goal paragraph). The six-command surface stands, per CS-D10's own
+   gates fit one 123-word Goal paragraph). The six-command surface stands, per `command-succinctness-strip` D10-pilot-first-execution's own
    terms — no ruling needed, recorded as the trigger's first evaluation.
 4. **Grader marker dropped:** check 8's `out of rounds = escalate` marker forbade a phrase the
    ruled D5 exemplar mandates in every Constraints bounds line — mis-specified (same class as
    `unsized by design`). The exemplar governs.
-5. **The `loop-discipline` read-drop is DEFERRED** — CS-D10 step 3's ruling point, resolved
-   against executing at the step-4 ceremony: the evidence CS-D7's replacement guarantee demands
+5. **The `loop-discipline` read-drop is DEFERRED** — `command-succinctness-strip` D10-pilot-first-execution step 3's ruling point, resolved
+   against executing at the step-4 ceremony: the evidence `command-succinctness-strip` D7-shared-primitive-wall's replacement guarantee demands
    is a bounded loop holding during a live **run** of a goal-shaped command, and the pilot
    *authored* plan rather than running it. Named trigger: the first live dogfooded run of a
    rebuilt command with gates un-rationalized; the drop then lands as a one-clause shape edit +

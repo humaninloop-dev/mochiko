@@ -11,7 +11,7 @@ Throughout: feasibility findings are **cross-artifact** — the seam is between 
 **Seam:** hard constraints (C-XXX) ↔ technology decisions (D-XXX).
 **Question:** does any technology choice violate a stated hard constraint?
 
-**Worked example.** `C-002: the system MUST run fully on-premises with no external network egress.` `D-004: use a hosted SaaS vector database.` The decision cannot satisfy the constraint — egress is required to reach the SaaS. Conflict.
+**Worked example.** `C-002-on-premises-only-hosting: the system MUST run fully on-premises with no external network egress.` `D-004-hosted-vector-database: use a hosted SaaS vector database.` The decision cannot satisfy the constraint — egress is required to reach the SaaS. Conflict.
 
 **Evidence a finding needs:** the `C-XXX` and the `D-XXX`, plus the specific incompatibility (what the decision requires that the constraint forbids).
 **Resolvable vs fundamental:** swapping to a self-hosted equivalent is a *resolvable* revision; if the constraint and the only viable technology are mutually exclusive, it is *fundamental* (→ `infeasible`).
@@ -23,7 +23,7 @@ Throughout: feasibility findings are **cross-artifact** — the seam is between 
 **Seam:** non-functional targets ↔ constraints / chosen technologies.
 **Question:** can the NFR target be met *given* the constraints or the technologies already chosen?
 
-**Worked example.** `NFR-003: p95 latency < 50 ms for users worldwide.` `C-005: single region, no CDN or edge presence.` Physics and network distance make the target unreachable for distant users under that constraint. Impossible.
+**Worked example.** `NFR-003-global-p95-latency: p95 latency < 50 ms for users worldwide.` `C-005-single-region-deployment: single region, no CDN or edge presence.` Physics and network distance make the target unreachable for distant users under that constraint. Impossible.
 
 **Evidence:** the `NFR-XXX`, the `C-XXX`/`D-XXX`, and *why* the target is unachievable under it.
 **Boundary watch:** "the NFR has no measurement method" is the sibling's *measurability* finding. "The NFR target cannot be met under the constraints" is yours. If both are true, you take the impossibility, the sibling takes the measurability.
@@ -35,7 +35,7 @@ Throughout: feasibility findings are **cross-artifact** — the seam is between 
 **Seam:** requirements (FR-XXX / SC-XXX) ↔ constraints.
 **Question:** does any requirement assume a capability not available under the stated constraints?
 
-**Worked example.** `FR-009: deliver real-time push notifications to mobile clients.` `C-007: no persistent connections permitted; polling only.` The requirement assumes a capability the constraint removes. Contradiction.
+**Worked example.** `FR-009-mobile-push-notifications: deliver real-time push notifications to mobile clients.` `C-007-polling-only-connections: no persistent connections permitted; polling only.` The requirement assumes a capability the constraint removes. Contradiction.
 
 **Evidence:** the `FR-XXX` / `SC-XXX`, the `C-XXX`, and the missing capability the requirement depends on.
 **Resolvable vs fundamental:** if a constraint-compatible mechanism exists (e.g. scheduled polling that meets the intent), *resolvable*; if the requirement's core value cannot survive the constraint, *fundamental*.
@@ -47,7 +47,7 @@ Throughout: feasibility findings are **cross-artifact** — the seam is between 
 **Seam:** technology decisions ↔ each other (D-XXX ↔ D-XXX).
 **Question:** are any two technology choices mutually incompatible?
 
-**Worked example.** `D-001: Postgres as the only datastore; no additional services.` `D-006: use Elasticsearch for full-text search.` The second decision introduces the service the first forbids. The choices contradict each other.
+**Worked example.** `D-001-postgres-only-datastore: Postgres as the only datastore; no additional services.` `D-006-elasticsearch-text-search: use Elasticsearch for full-text search.` The second decision introduces the service the first forbids. The choices contradict each other.
 
 **Evidence:** both `D-XXX`, and the incompatibility (one decision's premise denies the other).
 **Resolvable vs fundamental:** usually *resolvable* (drop or replace one decision — e.g. Postgres full-text search), unless both are load-bearing commitments to external parties, then *fundamental*.
@@ -59,7 +59,7 @@ Throughout: feasibility findings are **cross-artifact** — the seam is between 
 **Seam:** non-functional targets ↔ the design (data-model, contracts).
 **Question:** can the design **as specified** actually meet the NFR targets?
 
-**Worked example.** `NFR-002: list endpoint returns in < 100 ms over 1M rows.` The data-model defines the entity with no index or denormalization path, and the contract's list endpoint specifies an unfiltered full-collection read. The design cannot hit the target. Infeasible-as-designed.
+**Worked example.** `NFR-002-list-endpoint-latency: list endpoint returns in < 100 ms over 1M rows.` The data-model defines the entity with no index or denormalization path, and the contract's list endpoint specifies an unfiltered full-collection read. The design cannot hit the target. Infeasible-as-designed.
 
 **Evidence:** the `NFR-XXX`, the specific design element (entity/attribute/endpoint), and why that design cannot achieve the target.
 **Boundary watch:** "the schema doesn't match the data model" is the sibling's *consistency* finding. "The design, even if internally consistent, cannot meet the NFR" is yours.
@@ -71,7 +71,7 @@ Throughout: feasibility findings are **cross-artifact** — the seam is between 
 **Seam:** constraints / captured infrastructure (IP-XXX) ↔ the design (data-model, contracts).
 **Question:** are the design artifacts buildable and deployable *given* the constraints and the infrastructure actually captured?
 
-**Worked example.** The contract's event flow requires a managed message queue, but `C-004` forbids new infrastructure and no `IP-XXX` provisions a queue. The design names capability the constraints/infrastructure do not allow to exist. Not buildable as drawn.
+**Worked example.** The contract's event flow requires a managed message queue, but `C-004-no-new-infrastructure` forbids new infrastructure and no `IP-XXX` provisions a queue. The design names capability the constraints/infrastructure do not allow to exist. Not buildable as drawn.
 
 **Evidence:** the design element that needs the capability, the `C-XXX`/`IP-XXX` that withholds or fails to provision it, and the buildability gap.
 **Resolvable vs fundamental:** adding the missing `IP-XXX` (if the constraint permits) is *resolvable*; if the constraint categorically forbids the only infrastructure the design needs, *fundamental*.
@@ -110,7 +110,7 @@ topology (the `SPN-XXX` spine elements as the delta amends them). Both sides liv
 the seam is between two *elements*, and reading it is no less cross-artifact for that.
 **Question:** can the *component shape and the way the pieces talk* meet the NFR targets — before any data-model or contract detail exists?
 
-**Worked example.** `NFR-004: p95 end-to-end < 120 ms.` The container diagram routes a single user request synchronously through four services in series, each with its own network hop and datastore call. The serial hop budget alone exceeds the target. The topology cannot meet the NFR as drawn.
+**Worked example.** `NFR-004-request-path-latency: p95 end-to-end < 120 ms.` The container diagram routes a single user request synchronously through four services in series, each with its own network hop and datastore call. The serial hop budget alone exceeds the target. The topology cannot meet the NFR as drawn.
 
 **Evidence:** the `NFR-XXX`, the specific topology element (the sync chain, the single region, the missing cache/queue), and why the shape cannot hit the target.
 **Resolvable vs fundamental:** collapsing the chain, adding async/caching, or co-locating is *resolvable*; if the NFR and the only shape the constraints allow are mutually exclusive, *fundamental*.
@@ -122,7 +122,7 @@ the seam is between two *elements*, and reading it is no less cross-artifact for
 `constraints-and-decisions.md`) ↔ the topology the delta proposes.
 **Question:** is the topology buildable and deployable *given* the constraints and the infrastructure actually provisioned?
 
-**Worked example.** The delta introduces a managed message queue as a new `proposed` component, but `C-006` forbids new managed infrastructure and no `IP-XXX` row provisions a queue. The topology names a component the constraints do not allow to exist. Not buildable as drawn.
+**Worked example.** The delta introduces a managed message queue as a new `proposed` component, but `C-006-no-managed-infrastructure` forbids new managed infrastructure and no `IP-XXX` row provisions a queue. The topology names a component the constraints do not allow to exist. Not buildable as drawn.
 
 **Evidence:** the `SPN-XXX` element needing the capability, the `C-XXX`/`IP-XXX` that withholds it, and the buildability gap.
 **Resolvable vs fundamental:** adding the missing `IP-XXX` (if the constraint permits) or re-shaping to an allowed mechanism is *resolvable*; a categorical forbiddance of the only infrastructure the shape needs is *fundamental*. This is class 6 (constraint↔design) lifted one level up.
@@ -132,9 +132,9 @@ the seam is between two *elements*, and reading it is no less cross-artifact for
 **Seam:** the proposed topology ↔ the constitution's architectural surface (governance region + layer-rules + domain-dependency registry), read **as input**.
 **Question:** does the topology conform to the governance the project already ratified — layer-import rules, the dependency allowlist, and the principles the architecture cites as binding it?
 
-**Worked example.** The governance region carries a BE-HEX layer rule: `domain MUST NOT import infrastructure`. The container diagram draws the domain service calling the datastore adapter directly, crossing the forbidden boundary. Or: the architecture asserts `respects BE-HEX layering per GI-007`, but a drawn dependency violates exactly that principle. Non-conforming.
+**Worked example.** The governance region carries a BE-HEX layer rule: `domain MUST NOT import infrastructure`. The container diagram draws the domain service calling the datastore adapter directly, crossing the forbidden boundary. Or: the architecture asserts `respects BE-HEX layering per GI-031-hexagonal-layer-boundaries`, but a drawn dependency violates exactly that principle. Non-conforming.
 
-**Worked example — the floor-asserted limb.** `AX-001 Identity & auth` reads `decided`, but the delta's topology routes an internal admin surface around the boundary the FLOOR-SEC card asserts ("auth enforced at all boundaries"). The stance is legal vocabulary; the shape does not honor it. Non-conforming — and note the split: *whether the stance word is legal* on a floor-asserted category is the completeness sibling's mechanical check, *whether the shape honors it* is yours.
+**Worked example — the floor-asserted limb.** `AX-001-identity-auth-boundary — Identity & auth` reads `decided`, but the delta's topology routes an internal admin surface around the boundary the FLOOR-SEC card asserts ("auth enforced at all boundaries"). The stance is legal vocabulary; the shape does not honor it. Non-conforming — and note the split: *whether the stance word is legal* on a floor-asserted category is the completeness sibling's mechanical check, *whether the shape honors it* is yours.
 
 **Evidence:** the governance surface (the layer rule / allowlist entry / `GI-XXX` / the floor card), the topology element that breaks it, and the specific violation. "Cites the principle" is not "satisfies the principle" — verify, don't take the assertion.
 **The two exits (never a silent pass):** a non-conforming topology surfaces with exactly two exits — **redesign to conform**, or a **user-ruled amendment/waiver** through `governance-ledger.md`. The feature-level review never overrules the constitution. A conflict with a conforming redesign available is *resolvable* (`needs-revision`); one where the governance and the required shape are mutually exclusive is *fundamental* (`infeasible`, escalates for the amendment/waiver decision).
@@ -160,7 +160,7 @@ A finding's severity and its resolvable/fundamental classification together set 
 This is the **output contract** of the review — what each finding must carry so the lead can route it and the human can decide. (The report's markdown *shape* — headers, tables, frontmatter — is owned by `templates/feasibility-report-template.md`, which the review fills under the `templates/report-format.md` envelope; these are the template's own field names.)
 
 - **gap** — the conflict in one sentence.
-- **at** — the artifact IDs in tension and the specific incompatibility. Never "they seem to conflict"; always "C-XXX requires X, D-XXX requires not-X."
+- **at** — the artifact IDs in tension and the specific incompatibility. Never "they seem to conflict"; always "`product` C-XXX-<slug> requires X, `product` D-XXX-<slug> requires not-X."
 - **impact** — what breaks downstream if it ships unresolved.
 - **fix** — one concrete, actionable move: *relax the NFR* / *change the decision* / *add the IP-XXX* / *escalate for a business decision*.
 
@@ -199,6 +199,6 @@ Catch yourself at any of these and restart the hunt at the class where you cut t
 | "While I'm here I'll check the coverage too" / "this is basically a completeness gap" | Boundary creep — route by the boundary to the sibling, don't absorb its territory. |
 | "I can tell from the summary" / "I'll trust the analyst's report" | Independence means grading the artifacts themselves, never the author's account of them. |
 | Reviewing one artifact in isolation | Feasibility lives *between* elements; a single-artifact gap is the sibling's — class 7 the sole exception. |
-| Vague evidence ("these seem to conflict") | Not a finding. Cite the IDs in tension (`C-XXX` ↔ `D-XXX`). |
+| Vague evidence ("these seem to conflict") | Not a finding. Cite the IDs in tension (`` `product` C-XXX-<slug> `` ↔ `` `product` D-XXX-<slug> ``). |
 | Reviewing the constitution | G1: design-phase artifacts only. The constitution has its own validator. |
 | Restating the loop / round cap / human-gate mechanics | Those are the lead's — its command states them. Reference, never restate. |

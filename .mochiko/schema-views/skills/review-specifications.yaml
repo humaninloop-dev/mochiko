@@ -228,6 +228,10 @@ sections:
           Critical; a vague Contract or a missing Incumbent world is Important.
         when: {manifest-present: present}
         anchor: 2026-09-19 impeccable-design-integration D5
+      - id: review-specifications.joined-ids
+        class: must
+        extends: review-common.joined-ids
+        anchor: 2026-10-08 human-readable-ids D6
   - id: review-specifications.sec.output
     title: Output — questions and report contracts
     intent: The question craft and the shapes the findings land in.

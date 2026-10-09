@@ -1,5 +1,5 @@
 # D8 partition — /mochiko:feature rule set, plan-observable vs out-of-instrument.
-# Ruling: command-plan-only-eval D8 (accepted 2026-08-27, review fold C1).
+# Ruling: command-plan-only-eval D8-rule-partition-grid (accepted 2026-08-27, review fold C1).
 # The `observable` list IS the D2 rubric; `out_of_instrument` rules are declared here,
 # never silently absent at coverage 0. Validated by `run.py check-rubric feature`:
 # every schema rule ID appears in exactly one list.
@@ -59,6 +59,7 @@ observable:
   - {id: feat.proactive-report, why: the health report opens the visit before the ask (twin of dm-health-first — one quote may credit both; disclosed in the preregistration)}
   - {id: feat.reference-never-restate, why: implement's bounds · verification seats · evidence rules are pointed at from the desk and never restated}
   - {id: feat.author-grader, why: cards · baseline entries written in place under a lifecycle marker · grooming proposals · the derivation are produced on an approved plan and cleared by a non-author}
+  - {id: feat.grader-checks-joined-ids, why: s1/s3 map writes cite entries whose file names carry their slug, and s3 cites the bare epic, so the non-author's grade names the cite-follows-definition check}
   - {id: feat.advisory-front-door, why: bug · improvement · growth intake taken at the desk; the s2 route-out and the s3 ceiling tell the user specify stays directly invocable (thin — s2/s3 only)}
   - {id: feat.model-tiering, why: locate and enumerate reads (entries · specs index · store rows) routed to a cheap Explore subagent; interpretive reads stay on the session; briefs carry the rule}
   - {id: feat.single-flight-lane, why: s2 plants a live product-lane run so the new no-owner request queues behind it rather than opening a second lane run}
@@ -86,7 +87,7 @@ out_of_instrument:
   # fail-conditions (the one `kind: fail` rule — end-state failure, not forward-plan content; C1)
   - {id: feat.fail.no-verdict, why: fail-condition}
 
-# Declared unplanted branches (fixture-design record, not a partition class): three rule
+# Declared unplanted branches (fixture-design record, not a partition class): four rule
 # facets are observable through one half of their subject only, because no scenario plants
 # the other half. Each is a plant candidate if a later grid wants it graded whole.
 #   feat.lane-never-widens — its mid-run-outgrowth clause (a lane run outgrows its framing,
@@ -98,5 +99,8 @@ out_of_instrument:
 #   feat.advisory-front-door — the default-entry-when-unsure clause needs an unsure user;
 #     every scenario arrives with a concrete demand, so the rule is graded on the intake and
 #     the route-out clauses only.
+#   feat.grader-checks-joined-ids — the mint half (a minted ID joined, its slug matching its
+#     entry file's or manifest heading's) needs a scenario that mints at the desk; none does,
+#     so the rule is graded on the citation half only.
 # The empty-`$ARGUMENTS` entry (health, then ask what the visit is for) is likewise
 # unplanted: every scenario carries a demand, and `feat.dm-health-first` fires either way.

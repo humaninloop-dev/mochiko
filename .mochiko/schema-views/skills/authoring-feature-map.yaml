@@ -217,8 +217,8 @@ sections:
         class: floor
         text: >-
           `retired` is terminal: entry kept, dated, provenance intact — never deleted. An epic
-          member's pending or live work row carries an inline `[EPIC-XXX]` marker that vanishes
-          with the row at its graduation fold.
+          member's pending or live work row carries an inline `[EPIC-XXX-<slug>]` marker that
+          vanishes with the row at its graduation fold.
         anchor: 2026-08-10 feature-map-layer
       - id: authoring-feature-map.capability-writes-sacred
         labels: [artifact-grammar, user-gate]

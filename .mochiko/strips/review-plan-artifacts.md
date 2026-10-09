@@ -13,7 +13,7 @@ the `loop-discipline` reference the strip disposition would add.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the review family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -23,7 +23,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md`. -->
 
@@ -34,6 +34,14 @@ row); census: `.mochiko/decisions/2026-09-29-census-table-ratified.md`, rows in
 `.mochiko/brainstorms/hook-enforcement-field-review/reports/w2-census-table.md` (`DECISIONS.md`
 2026-09-29 row). Pre-edit verbatim text:
 `git show 5558fd7:plugins/mochiko/skills/review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md`. -->
+
+## [v0.118.0] `check-artifacts.py` counts distinct IDs by their core; one checklist example joined
+
+- **Disposition:** superseded → `fr_matches`/`us_matches` key each match on its ID core, prefix plus number (`m.rstrip('-').upper()`), so `FR-012-csv…` and `FR-012` count once; `ARTIFACT-CHECKLISTS.md:279` reads `` `<spec-slug>` FR-003-<slug> not addressed in contracts ``.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; D4 (the number in its scope is the key) and D12/F21 for the script; D11 for the owner)
+- **Content (superseded):** script: "fr_matches = set(re.findall(fr_pattern, content, re.IGNORECASE))" and the same for `us_matches`; checklist: "| Missing requirement trace | Important | FR-003 not addressed in contracts |".
+- **Kept deliberately:** the two patterns themselves, with the legacy `FR-ABC-001` acceptance; every pass/fail outcome (only the counts change), which matters because `review-plan-artifacts.tier1-preassert` folds a failed count in as a floor; the file mode (644); the checklist's other 25 placeholders (family names).
+- **Consumers assessed:** `evals/run.py:69` names the script as a tier-1 pre-assert; W2-tests is told `fr_count`/`us_count` now count distinct IDs.
 
 ## [v0.116.0] ARTIFACT-CHECKLISTS Tier-1 examples — the per-feature spec paths re-pointed to the product baselines
 
@@ -165,7 +173,7 @@ row); census: `.mochiko/decisions/2026-09-29-census-table-ratified.md`, rows in
 
 - **Disposition:** superseded → the CLI form `mochiko-cli template architecture-store --check`
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** ", or Read `plugins/mochiko/schemas/architecture-store.yaml` raw when the binary is
   absent"
 - **Kept deliberately:** the `--check` arm, the store-wide id uniqueness statement for `SPN-XXX`
@@ -177,7 +185,7 @@ row); census: `.mochiko/decisions/2026-09-29-census-table-ratified.md`, rows in
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -230,7 +238,7 @@ row); census: `.mochiko/decisions/2026-09-29-census-table-ratified.md`, rows in
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -240,7 +248,7 @@ row); census: `.mochiko/decisions/2026-09-29-census-table-ratified.md`, rows in
   continue.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -274,7 +282,7 @@ content growth.
   `letter-is-spirit`, `na-justified`, `critical-blocks`, and the incremental set
   (`incremental-consistency-scope` · `no-prior-waiver` · `escalate-full-reread` ·
   `incremental-read-bound` · `caller-names-sets` · `contradiction-routing` ·
-  `unsure-targeted-review`), citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  `unsure-targeted-review`), citing skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** the Floors clauses "feature size, producer seniority, time pressure, found-enough never
   shrink the review; a vague spec is a gap to flag, not permission to propagate, and 'obvious' never
@@ -289,7 +297,7 @@ content growth.
 
 ### Supersession-transfer — [v0.15.0] KEPT: incremental report-shape block
 - **Disposition:** superseded — protection transfers to schema rule `incremental-report`, citing
-  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** "The report adds `incremental: true`, `full_review:` / `consistency_only:` scope lists,
   and pass/fail `consistency_checks:` frontmatter (entity_names · schemas · decisions_honored ·
@@ -299,18 +307,18 @@ content growth.
 
 ### Supersession-transfer — [v0.64.0] review-evidence floor line
 - **Disposition:** superseded — protection transfers to schema rule `evidence-floor`
-  (`extends: review-common.evidence-floor`, `class: floor` local), citing skill-content-schema D8/C4 +
+  (`extends: review-common.evidence-floor`, `class: floor` local), citing skill-content-schema D8-skill-governance-envelope/C4 +
   `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** "verdict and per-finding dispositions land in the reviewed artifacts themselves — review
   evidence only in conversation is a floor violation."
 - **Consumers assessed:** the common block `review-common.evidence-floor` is the family home; the
-  cross-grammar near-dup edge with command `common.yaml` is allowlist territory (census J-5).
+  cross-grammar near-dup edge with command `common.yaml` is allowlist territory (census J-5-cross-grammar-duplicates).
 
 ### Supersession-transfer — [v0.67.0] three-lens machinery + material-divergence precedence override + class-7 seam sentence
 - **Disposition:** superseded — protection transfers to schema rules `conformance-blocking`,
   `material-divergence-autofail`, `rung-honesty-advisory`, `feasibility-handoff`, citing
-  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** "*conformance* — BLOCKING: every named gap closed, within the gap list's depth;
   **material divergence** (an artifact no gap named, or an element class materially past the gap list)
@@ -322,7 +330,7 @@ content growth.
 
 ### Supersession-transfer — [v0.53.0] code-review carve-out (`review-code-minimalism` sole exception)
 - **Disposition:** superseded — protection transfers to schema rule `not-for`, citing
-  skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** "Not for: code review (sole carve-out `mochiko:review-code-minimalism`, implement-side) ·
   specs (`review-specifications`) · constitution (`validation-constitution`) · artifacts still being
@@ -332,7 +340,7 @@ content growth.
 
 ### Supersession-transfer — [v0.75.0] oracle-semantics check (ruled wording)
 - **Disposition:** superseded — protection transfers to schema rule `cycle-card-checks`, the wording
-  carried verbatim inside the rule text, citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  carried verbatim inside the rule text, citing skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** "oracle semantics (Asserts graded semantically against the acceptance scenario /
   criteria they cite — the *right* expected behaviour, not merely present and in-grammar)".
@@ -340,7 +348,7 @@ content growth.
 
 ### Supersession-transfer — [v0.76.0] two-arm `--check` citation
 - **Disposition:** superseded — protection transfers to schema rule `cycle-card-check-mirror`, both
-  arms preserved (GI-020), citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  arms preserved (GI-020-plugin-install-model), citing skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** "Mirrors the `tasks` `--check` view (`mochiko-cli template tasks --check`, or Read
   `plugins/mochiko/schemas/tasks.yaml` when the binary is absent)."
@@ -349,7 +357,7 @@ content growth.
 ### Supersession-transfer — [v0.81.0] store-delta re-key incl. the qualifying-flow guard and deployment-view row
 - **Disposition:** superseded — protection transfers to schema rule `store-delta-checklists`
   (reference-stub: `pointer: references/ARTIFACT-CHECKLISTS.md`; the checklist tables stay in the
-  reference file untouched), citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  reference file untouched), citing skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** the body lens clause "*completeness within scope* — … (analysis · store delta when the
   package carries one, else the no-delta claim · design · cross-artifact), over whichever sets the
@@ -360,7 +368,7 @@ content growth.
 
 ### Supersession-transfer — [v0.91.0] gap-list floor + BLOCKING strength (plan-stage retirement D4/D5)
 - **Disposition:** superseded — protection transfers to schema rules `gap-list-scope` and
-  `conformance-blocking`, citing skill-content-schema D8/C4 + `DECISIONS.md` 2026-09-01.
+  `conformance-blocking`, citing skill-content-schema D8-skill-governance-envelope/C4 + `DECISIONS.md` 2026-09-01.
 - **Tier failed:** n/a — supersession by ruling.
 - **Content:** "The run's floor is **the sufficiency report's gap list** (the named gaps the design
   phase was scoped to close), never a fixed artifact set."
@@ -372,7 +380,7 @@ content growth.
   `report-template`, `adopt-first-lens`, `cycle-card-checks` (the six non-oracle checks),
   `severity-classification`, `verdict-criteria`, `analysis-checklists`, `design-cross-checklists`,
   `boundary-table`, `tier1-forms-envelope`.
-- **Tier failed:** n/a — ruled conversion (skill-content-schema D3, obligations-only boundary).
+- **Tier failed:** n/a — ruled conversion (skill-content-schema D3-obligations-only-schema, obligations-only boundary).
 - **Content:** the Protocol paragraph's obligation clauses ("Tier-1 pre-assert first — `python
   scripts/check-artifacts.py .mochiko/specs/<feature>/<artifact>.md …` — a `failed` count is ground
   truth, folded straight into the issue list → run every applicable check → classify and shape issues
@@ -388,12 +396,12 @@ content growth.
 - **Disposition:** relocated → `default-fail` (`extends: review-common.default-fail`, `class: floor`
   local, `${verdict}` = `ready`); the member tail superseded by the common block's strongest wording
   per near-dup convergence R2 (`.mochiko/decisions/2026-08-28-near-dup-convergence.md`).
-- **Tier failed:** n/a — ruled conversion (skill-content-schema D5).
+- **Tier failed:** n/a — ruled conversion (skill-content-schema D5-family-common-blocks).
 - **Content:** "defaults to FAIL — good enough is never ready: evidence or rejection".
 - **Kept deliberately:** nothing of the tail needs a local rule — "evidence or rejection" is the
   default-posture obligation the common text states as "earned only by a completed hunt; absence of
   looking is never evidence".
-- **Consumers assessed:** family common block; allowlist edge vs command `common.yaml` (census J-5).
+- **Consumers assessed:** family common block; allowlist edge vs command `common.yaml` (census J-5-cross-grammar-duplicates).
 
 ## [v0.91.0] Fix round 4 — the four sibling "Plan Artifact" sites re-titled with the H1; slug still retained — plan-stage retirement D1/D5
 
@@ -407,7 +415,7 @@ content growth.
   - `scripts/check-artifacts.py` module docstring → `Design-Phase Artifact Validation Script
     (Tier-1 deterministic pre-assert)`
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1/D5). Raised by this seat as a
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires/D5-evidence-honesty-falsifier). Raised by this seat as a
   five-site expansion of the H1 question rather than edited unilaterally; **ruled by the wave lead
   2026-08-26** — "take ALL FIVE, slug untouched", one strip entry covering the family, with the
   report-block header called out as the point of the ruling.
@@ -452,7 +460,7 @@ content growth.
 - **Disposition:** superseded → `# Reviewing Design-Phase Artifacts`. The directory slug
   `review-plan-artifacts` is **deliberately retained**.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1/D5). Raised by this seat as an
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires/D5-evidence-honesty-falsifier). Raised by this seat as an
   explicit judgment call rather than edited unilaterally; **ruled by the wave lead 2026-08-26**,
   who directed the re-title and named the `authoring-technical-requirements` precedent as
   governing — that skill likewise kept its slug this wave while its H1 was re-titled to state the
@@ -485,7 +493,7 @@ content growth.
 
 - **Disposition:** superseded → "cited spec/design IDs real" in the story-traceability check.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1). Caught on the fix round's own
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires). Caught on the fix round's own
   re-sweep: earlier passes matched "plan artifacts" and "plan package" but not the compact
   "spec/plan" form, so this and three sibling sites survived two sweeps.
 - **Content (superseded fragment, verbatim):**
@@ -510,7 +518,7 @@ content growth.
   exists); the Tier-1 checker's `requirements.md` required-sections rule is **deleted**; four
   further sites superseded by re-key.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D3** ("No per-feature
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D3-requirements-layer-dies** ("No per-feature
   `requirements.md`") and **D4** ("`plan.md` (the summary artifact) dies"; the `quickstart.md`
   null-path record moves to the sufficiency report)). Reference and script scope was opened by
   the wave lead's extension ruling of 2026-08-26.
@@ -583,7 +591,7 @@ content growth.
 - **Disposition:** superseded → the same description grading the design-phase output package
   against the sufficiency report's gap list.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D5: "`review-plan-artifacts` and
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D5-evidence-honesty-falsifier: "`review-plan-artifacts` and
   `review-feasibility` re-scope at build time to grade the design-phase output"; D4 records the
   death of plan's proposal-approval gate, which was this skill's former floor).
 - **Content (superseded text, verbatim):**
@@ -609,7 +617,7 @@ content growth.
 
 - **Disposition:** superseded → the sufficiency report's gap list as the run's floor.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D4: "Dead gates: plan's
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D4-planless-homes-gates: "Dead gates: plan's
   plan-the-plan proposal approval and package acceptance"; D2: "Any gap → the design phase
   authors exactly those gaps, nothing else").
 - **Content (superseded fragments, verbatim):**
@@ -745,7 +753,7 @@ content growth.
   `.mochiko/product/architecture/`. The per-feature `architecture.md` artifact this section
   graded no longer exists (D3).
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3 (per-feature artifact dies) ·
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3-store-replaces-artifact (per-feature artifact dies) ·
   D10 (consult contract, delta lifecycle, S13 no-delta claim) · D12 (`nfrs.md` absorbed,
   structural `D-XXX` die into store deltas) · D14 (floor precedence); `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim — the whole `## Architecture Artifact` section):**
@@ -805,7 +813,7 @@ content growth.
   row that carries them and fires as part of the store-delta grade instead of a standalone
   artifact pass.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12, `Contested` — user ruled
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12-store-absorbs-nfrs, `Contested` — user ruled
   absorb against the lead's coexist recommendation; `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim):**
 
@@ -854,7 +862,7 @@ content growth.
   seat) · router design-surface paragraph (this seat). `plan.md` / `implement.md` baseline lists
   are P2's in the same wave.
 
-## [v0.81.0] Dead `nfrs.md` entry deleted from the Tier-1 checker's REQUIRED_SECTIONS — product-architecture-schema D12
+## [v0.81.0] Dead `nfrs.md` entry deleted from the Tier-1 checker's REQUIRED_SECTIONS — product-architecture-schema D12-store-absorbs-nfrs
 
 - **Disposition:** deleted. `scripts/check-artifacts.py` keyed a required-sections rule to a file
   D12 abolished. The map is keyed by filename, so with no `nfrs.md` on disk the entry could never
@@ -862,7 +870,7 @@ content growth.
   Nothing replaces it: the NFR grade moved to the store-delta checklist (see the NFR-checklist
   entry above), and the store is not a `.md` artifact this checker reads.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12; `DECISIONS.md` 2026-08-19).
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12-store-absorbs-nfrs; `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim):**
 
   ```python
@@ -889,7 +897,7 @@ content growth.
 
 - **Disposition:** superseded → the same rows, keyed on the signed store delta.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3/D10/D12; `DECISIONS.md`
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D3-store-replaces-artifact/D10-plan-time-contract/D12-store-absorbs-nfrs; `DECISIONS.md`
   2026-08-19).
 - **Content (superseded, verbatim — four fragments):**
 
@@ -928,9 +936,9 @@ content growth.
   `mochiko:review-feasibility`'s *The boundary* section — both sides re-keyed in this same edit
   set by this seat, so the mirror holds. No command restates these rows (grep clean).
 
-## [v0.76.0] Cycle-card Review Focus row cites the `tasks --check` view (D7 re-key, thin) — schema-based-template-guidance D7/D8
+## [v0.76.0] Cycle-card Review Focus row cites the `tasks --check` view (D7 re-key, thin) — schema-based-template-guidance D7-same-schema-grading/D8-schema-data-files
 - **Disposition:** superseded → the Cycle cards row's Key-checks cell now cites `mochiko-cli template tasks --check` (or Read `plugins/mochiko/schemas/tasks.yaml` raw) as the source its cycle-card criteria mirror. THIN scope (contest-accepted per plan §5): only the tasks in-scope-template checklist is re-keyed; `references/ARTIFACT-CHECKLISTS.md` and all out-of-scope artifact checklists (requirements / constraints / nfrs / data-model / contracts / quickstart / architecture — their templates are in-skill refs, D3 leaves them `.md`) are left untouched.
-- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D7 (`--check` grading view, checklists re-key)/D8; `DECISIONS.md` "Template-schema CLI ruled").
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/schema-based-template-guidance/record.md` D7-same-schema-grading (`--check` grading view, checklists re-key)/D8; `DECISIONS.md` "Template-schema CLI ruled").
 - **Content (superseded, verbatim):** the Cycle cards row previously ended without a checklist-source citation —
   - `… brownfield exposure stated (\`none\` counts), **no task lists or file paths** (pre-written decomposition is a finding — the builder decomposes at build time) |`
 - **Kept deliberately:** every existing cycle-card criterion (vertical integrity · `**TEST:**` gate · story traceability · sizing · dependency minimality · brownfield exposure · no-task-lists) — the `--check` citation is additive; `references/ARTIFACT-CHECKLISTS.md` untouched (out-of-scope per D3).
@@ -938,7 +946,7 @@ content growth.
 
 ## [v0.75.0] Cycle-cards Review-Focus row re-keyed to the vertical-TDD cycle anchor (D1) + foundation-type kill (D3); oracle-semantics check added (D2, pure addition)
 - **Disposition:** superseded → the Cycle cards row's time-based **sizing** check and its **foundation-sequenced** ordering token are retired; the row now grades test-case-bundle cycles (no time anchor) and dependency minimality without the foundation word. The `references/ARTIFACT-CHECKLISTS.md` cycle-card summary line was aligned in the same edit (dropped `sizing`, added the oracle-semantics token). The **oracle-semantics** check itself and the matching Quality-Checklist item are pure additions (D2), riding this ruling row — not strips.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Vertical-TDD cycle anchor + QA test-case authorship (D1–D4 as review-amended)" row; record `.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md` D1 [the test-case-bundle anchor supersedes the time-based sizing tables] + D3 [foundation/feature card type dies; the skeleton absorbs sequencing]).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-16 "Vertical-TDD cycle anchor + QA test-case authorship (D1–D4 as review-amended)" row; record `.mochiko/brainstorms/vertical-tdd-complexity-and-qa-role/record.md` D1-test-bundle-cycles [the test-case-bundle anchor supersedes the time-based sizing tables] + D3 [foundation/feature card type dies; the skeleton absorbs sequencing]).
 - **Content (verbatim, superseded):**
   - From the Cycle cards Review-Focus row: "sizing (1–3 sessions or justified)" — the whole check clause, deleted.
   - From the same row's dependency check "dependency minimality/explicitness (foundation sequenced, `[P]` only where truly independent)": the token "foundation sequenced" — deleted, leaving "dependency minimality/explicitness (`[P]` only where truly independent)".
@@ -949,19 +957,19 @@ content growth.
 
 ## [v0.67.0] Re-keyed from fixed-checklist completeness to approved-proposal conformance (blocking) + rung-honesty (advisory)
 - **Disposition:** superseded → the three-lens Overview (conformance BLOCKING · rung-honesty advisory · completeness-within-scope), the re-keyed Scope Completeness question, the Verdict-Criteria precedence override, and the re-keyed description — plan re-identified as delivery of a package per the *approved artifact proposal*, not a fixed mandated artifact set.
-- **Tier failed:** n/a — supersession by ruling (`plan-structure-yagni` record D5 as amended HF-2 [with D1/D2 artifact-set demotion], `.mochiko/brainstorms/plan-structure-yagni/record.md`; combined-wave landing `architect-role-pushback-and-abstraction` D3/D5, `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`; DECISIONS.md combined-wave row).
+- **Tier failed:** n/a — supersession by ruling (`plan-structure-yagni` record D5 as amended HF-2 [with D1/D2 artifact-set demotion], `.mochiko/brainstorms/plan-structure-yagni/record.md`; combined-wave landing `architect-role-pushback-and-abstraction` D3-library-pushback-posture/D5-combined-sibling-wave, `.mochiko/brainstorms/architect-role-pushback-and-abstraction/record.md`; DECISIONS.md combined-wave row).
 - **Content (verbatim, superseded):**
   - Overview framing: "Find gaps in planning artifacts and emit issues that must be resolved before the plan proceeds. This is a **mirror checklist**: a fixed set of named checks, each with a fixed question and a severity, producing a verdict derived mechanically from the issue counts. Focus on design completeness, coverage, measurability, and cross-artifact consistency — not implementation details, and not whether the design can be built (that is a separate review; see *Scope* below)."
   - Scope Completeness question: "Is everything present, traceable, measurable, and internally consistent with the decisions that were made?"
   - Verdict Criteria: "Derived mechanically from the issue counts — the mapping itself carries no judgment; it is single-sourced in [ISSUE-TEMPLATES.md → Verdict Criteria](references/ISSUE-TEMPLATES.md#verdict-criteria)."
   - Old description (verbatim): "This skill MUST be invoked to grade plan artifacts against the completeness checklist — analysis, design, and cycle-card (`tasks.md`) sets — checking coverage, measurability, architecture coverage, cycle-card quality, and consistency. Emits a 3-state verdict (ready / needs-revision / critical-gaps). The completeness (mirror-checklist) half of the plan pair; does NOT cover feasibility/buildability (that is `review-feasibility`); defaults to FAIL; run by an independent validator, never the author."
 - **What replaced it:** the run's default-FAIL floor is now the approved artifact proposal. Three lenses — (1) **conformance** BLOCKING: every proposed artifact present + within approved depth; material divergence (unproposed artifact, or element class materially past approved depth) auto-FAILs the package, stated as a body-level precedence override on the count mapping (`references/ISSUE-TEMPLATES.md` untouched, per the team-lead Q3 ruling); (2) **rung-claim honesty** advisory, graded against `mochiko:patterns-plan-minimalism` (the ladder, never restated here); (3) **completeness within scope** — the mirror checklist survives here, applied to the proposed artifacts. Related + Quality Checklist gained the matching pointer/items (pure additions).
-- **Kept deliberately:** the mirror-checklist mechanic itself (named checks, fixed question, severity, count-derived verdict) survives as lens 3, applied to the proposed set — never deleted; the completeness-vs-feasibility Scope split; the Review Focus by Artifact Type table (incl. the `plan-task-granularity` D4 architecture-coverage + cycle-card rows); Review-Process Step 2 deterministic pre-assert (non-waivable floor); Incremental Review Mode; Red Flags; Common Mistakes; Common Rationalizations. One architect-role-sourced seam sentence added to lens 2 (consistency-note-7: rung-honesty is a disclosure grade, distinct from `review-feasibility`'s independent hunt class 7) — a clarifying seam, not a new mechanism; review-plan-artifacts stays sibling-D5-only otherwise.
+- **Kept deliberately:** the mirror-checklist mechanic itself (named checks, fixed question, severity, count-derived verdict) survives as lens 3, applied to the proposed set — never deleted; the completeness-vs-feasibility Scope split; the Review Focus by Artifact Type table (incl. the `plan-task-granularity` D4-task-architect-retires architecture-coverage + cycle-card rows); Review-Process Step 2 deterministic pre-assert (non-waivable floor); Incremental Review Mode; Red Flags; Common Mistakes; Common Rationalizations. One architect-role-sourced seam sentence added to lens 2 (consistency-note-7: rung-honesty is a disclosure grade, distinct from `review-feasibility`'s independent hunt class 7) — a clarifying seam, not a new mechanism; review-plan-artifacts stays sibling-D5-only otherwise.
 - **MANDATORY KEPT reconciliation:**
   - **[v0.64.0] guardrails keep-set** (Scope table · Review Focus table · Issue/Verdict pointers · Step 2 pre-assert · Incremental mode · Quality Checklist · Common Mistakes · Red Flags · Common Rationalizations · Related) — all intact; this edit re-keyed the Overview / Scope-question / Verdict framing and the description, and added to Quality Checklist + Related, deleting none of the kept set.
   - **[v0.26.0] KEPT: Red Flags, Common Rationalizations, Incremental Review Mode** — untouched. Intact.
   - **[v0.15.0] KEPT: the "Report shape (incremental mode)" block** — untouched. Intact.
-- **Consumers assessed:** agents — `devils-advocate` mounts this skill (its plan seat per `plan-structure-yagni` D5 / `architect-role` D2); the re-key changes what it grades against (the approved proposal), not the composition. Commands — `plan.md` binds it; the combined-wave `plan.md` re-key (separate seat) supplies the approved-proposal floor this grader now reads — the two land together (D5 one-wave ruling). Sibling `review-feasibility` is referenced by name — unchanged; the seam line names its hunt class 7 without moving it. Contract intact.
+- **Consumers assessed:** agents — `devils-advocate` mounts this skill (its plan seat per `plan-structure-yagni` D5-ladder-carrier-teeth / `architect-role-pushback-and-abstraction` D2-feasibility-to-techlead); the re-key changes what it grades against (the approved proposal), not the composition. Commands — `plan.md` binds it; the combined-wave `plan.md` re-key (separate seat) supplies the approved-proposal floor this grader now reads — the two land together (D5 one-wave ruling). Sibling `review-feasibility` is referenced by name — unchanged; the seam line names its hunt class 7 without moving it. Contract intact.
 
 ## [v0.64.0] Guardrails Wave 2 — body deletions (When to Use, Review-Process Steps 1/3/4/5) + slim description + review-evidence floor line
 - **Disposition:** superseded → the guardrails-vs-detail Wave 2 editorial cut (D4 cut line): the "When to Use" list and the generic Review-Process walkthrough steps whose obligations already live in the Review-Focus table / Verdict-Criteria pointer / Quality Checklist / Common-Mistakes are deleted; description slimmed; one sanctioned floor line added. The deterministic pre-assert (Step 2) is retained as a non-waivable floor.
@@ -984,7 +992,7 @@ content growth.
 
 ## [v0.53.0] Code-review punt line narrowed — minimalism-lens carve-out
 - **Disposition:** superseded → the same When-NOT-to-Use bullet with a parenthetical carve-out naming `mochiko:review-code-minimalism` (implement-side) as the one exception; general code review stays punted.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-05 "Ponytail code-minimalism ruled (PT-D1–D10)", record `.mochiko/brainstorms/ponytail-concepts-integration/record.md`, D2 — punt reversal narrow, lens-only).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-05 "Ponytail code-minimalism ruled (PT-D1–D10)", record `.mochiko/brainstorms/ponytail-concepts-integration/record.md`, D2-qa-seat-lens — punt reversal narrow, lens-only).
 - **Content (verbatim, the superseded bullet):**
   ```
   - **Implementation code review** — use code-review tooling instead
@@ -994,7 +1002,7 @@ content growth.
 
 ## [v0.49.0] Absorbed the cycle-card checks (from retired review-task-artifacts); boundary line removed
 - **Disposition:** superseded → the new Cycle cards row in Review Focus (the absorption); the When-NOT-to-Use "Task artifact review — use `mochiko:review-task-artifacts`" line deleted with its target
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D4)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D4-task-architect-retires)
 - **Content:** the one boundary bullet; the absorbed checks are additions.
 - **Kept deliberately:** the feasibility hand-off boundary — unchanged; the plan-review pair (completeness vs feasibility) survives whole.
 - **Consumers assessed:** devils-advocate · plan · router.

@@ -26,7 +26,7 @@ findings:
 
 ## Clarifications needed   <!-- only when user input is required; omit otherwise -->
 
-### C1: {{question_title}}   ({{gap_id}})
+### Q1: {{question_title}}   ({{gap_id}})
 
 **Question**: {{question}}
 **Options**: 1. {{option_1}} · 2. {{option_2}} · 3. {{option_3}}

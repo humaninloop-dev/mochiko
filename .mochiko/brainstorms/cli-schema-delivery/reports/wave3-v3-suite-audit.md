@@ -69,7 +69,7 @@ chars in all three replicates, identical to the byte as claimed, and with the 80
 12,819-byte baseline. Plugin sizes recompute exactly — 1,366,116 before the move, 626,780 for the log and its README, 1,992,896 after, genesis 618,122, growth 45.9 % — as does the
 largest render at 2,055 chars / 2,102 bytes. Latency is the one set I could not reproduce; see V3-d.
 
-## 6. Scope (GI-019 / GI-020) — PASS
+## 6. Scope (GI-019-kernel-tooling-admission / GI-020-plugin-install-model) — PASS
 
 `git status` after my full run shows no file changed under `plugins/mochiko/` beyond P1's move and P2's own work. P3's unit is `evals/contract/run.py` and `evals/contract/README.md` and
 nothing else, with no new file under `evals/contract/fixture/`. Every perturbation acts on a staged copy, including the stub `SKILL.md` the hook-input case writes and the log swap. The
@@ -110,7 +110,7 @@ that the tolerant union was interim, the shipped code keeps it, and no deviation
   `README.md` says "Two cases need no session and no sandbox at all" and calls `hook-input` "the only one that needs neither sandbox nor session", while its own table and Running
   section correctly say three.
 - **For the lead, not a defect.** The policy environment's prose clause has now held in one observation of three, not one of two: both post-fix runs on disk and my own re-run replied
-  `FLOOR: none` rather than surfacing the halt line. It strengthens the GI-020 unsupported declaration rather than weakening it, but the number should be corrected before the record
+  `FLOOR: none` rather than surfacing the halt line. It strengthens the GI-020-plugin-install-model unsupported declaration rather than weakening it, but the number should be corrected before the record
   quotes it.
 
 ## Fix list

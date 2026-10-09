@@ -17,7 +17,8 @@ overview: |
     or surfaced as a flagged proposal at the acceptance gate.
   - Producer latitude is confined to FORMULATION (wording, enforcement mechanics, three-part
     structure with real commands) — never SELECTION.
-  - The validator string-matches trace-IDs both ways (deterministic). Semantic fidelity of a
+  - The validator matches trace IDs both ways on the GI number (deterministic; the `CLAUDE.md`
+    markers carry it bare, every other mention carries the slug). Semantic fidelity of a
     stamped trace is judgment-grade residual risk, mitigated by the synthesis-confirmation
     checkpoint and the acceptance gate's trace summary.
 
@@ -32,8 +33,9 @@ overview: |
   declaration defaults to `high` on its next amend (adaptive-depth 2026-08-11, review fold #7) —
   recorded as the declared level without a flip ceremony, since it never operated at `low`.
 
-  GI-ID rule: sequential GI-001, GI-002, … — unique forever within this file; never reuse a
-  retired ID.
+  GI-ID rule: sequential GI-001, GI-002, … — each written joined with its three-word topic slug
+  (`GI-001-<slug>`) per the IDs section of `templates/artifact-format.md`; unique forever within this file;
+  never reuse a retired ID.
 
   CONFIDENCE MARKS: every GI element carries a mark from
   `Confident / Assumed / Contested / Unsure / Deferred`, assigned by the lead at assembly from the
@@ -60,16 +62,16 @@ sections:
   - name: Project identity & type
     required: true
     contract: |
-      - **GI-001 — Type:** [frontend | backend | fullstack | service | mobile | desktop] → shelves
+      - **GI-001-project-surface-type — Type:** [frontend | backend | fullstack | service | mobile | desktop] → shelves
         dealt: [list] · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
       - **Team reality:** [solo/team, review culture — what enforcement can lean on]
       - **Trust vectors:** [what ships where — a binary, hooks, a public package, a deploy target's
         exposure — and the supply-chain or exposure controls each calls for (interrogation dimension
         8); "none beyond the repo" is a recorded answer]
     check: >-
-      Does Project identity & type carry GI-001 (type + shelves dealt + mark), the team reality,
-      and the trust vectors (what ships where and its controls) — and no identity, audience or
-      product-harm line (setup-product-agnostic D3)?
+      Does Project identity & type carry GI-001-project-surface-type (type + shelves dealt +
+      mark), the team reality, and the trust vectors (what ships where and its controls) — and
+      no identity, audience or product-harm line (setup-product-agnostic D3)?
     heading: Project identity & type
     max_lines: 10
   - name: Depth level declaration
@@ -81,15 +83,16 @@ sections:
       (process rigor is uniform — D8). The
       level is the user's declaration alone — never fact-derived (D1); setup recommends, the user rules.
 
-      - **GI-0XX — Declared level:** [low | high] · **Declared:** [YYYY-MM-DD] by [user] ·
+      - **GI-0XX-<slug> — Declared level:** [low | high] · **Declared:** [YYYY-MM-DD] by [user] ·
         **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
       - **Rationale:** [why this level — setup recommends `low` for greenfield, `high` where reality
         warrants it; the user's ruling, recorded]
       - **Ratchet:** one-way — `high` is terminal; a later `low`→`high` move happens only through a
         flip ceremony (a conscious `/mochiko:setup` rerun in high mode), never silently, never reversed.
     check: >-
-      Is there one project-wide Depth level declaration (GI-0XX: low|high, declared date + by
-      user, mark, rationale, one-way ratchet), the user's declaration alone (never fact-derived)?
+      Is there one project-wide Depth level declaration (GI-0XX-<slug>: low|high, declared date +
+      by user, mark, rationale, one-way ratchet), the user's declaration alone (never
+      fact-derived)?
     heading: Depth level declaration
     max_lines: 6
   - name: Convergence skips
@@ -128,8 +131,8 @@ sections:
 
       | GI-ID | Card | Layer | Ruling / Expression | Mark |
       |-------|------|-------|---------------------|------|
-      | GI-0XX | FLOOR-SEC | floor-asserted | [expression shaped how, or "at floor level"] | [Confident] |
-      | GI-0XX | BE-HEX | arbitrated | [kept/tightened/dropped + user's stated reason] | [Confident] |
+      | GI-0XX-<slug> | FLOOR-SEC | floor-asserted | [expression shaped how, or "at floor level"] | [Confident] |
+      | GI-0XX-<slug> | BE-HEX | arbitrated | [kept/tightened/dropped + user's stated reason] | [Confident] |
       | … | | | | |
 
       *(On an amend whose governance event touches them — a waiver lifted, a stack or layout change,
@@ -150,13 +153,13 @@ sections:
       toward users, an app-level SLO number) is pointed at its home, never restated. Intent that fails
       the test is not minted — it goes to Deliberate exclusions' Handed off list:
 
-      - **GI-0XX — [Intent name]:** [what to enforce, how strictly — the user's words distilled]
+      - **GI-0XX-<slug> — [Intent name]:** [what to enforce, how strictly — the user's words distilled]
         · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
         *Elicited from:* [dimension 9 answer, quoted or closely paraphrased]
     check: >-
-      Is each minted principle intent one element (GI-0XX, what to enforce + how strictly, mark)
-      traced to an elicited answer (never to prompting), and checkable without knowing what the
-      product does for its users — no product instance restated (D2)?
+      Is each minted principle intent one element (GI-0XX-<slug>, what to enforce + how strictly,
+      mark) traced to an elicited answer (never to prompting), and checkable without knowing what
+      the product does for its users — no product instance restated (D2)?
     heading: Minted principle intents
     max_lines: 25
   - name: Waivers
@@ -175,8 +178,8 @@ sections:
 
       | GI-ID | Standard (floor category / card / template-module obligation) | Justification | Revisit trigger (optional) | Mark |
       |-------|---------------------------------------------------------------|---------------|---------------------------|------|
-      | GI-0XX | [e.g. FLOOR-TEST coverage gate] | [recorded reason] | [or "permanent (D4.1 pending)"] | [Confident] |
-      | GI-0XX | [e.g. FLOOR-OBS SLO formalization] | interim transition delta (high declared [date]) | transition — dies when the item conforms | [Confident] |
+      | GI-0XX-<slug> | [e.g. FLOOR-TEST coverage gate] | [recorded reason] | [or "permanent (D4.1 pending)"] | [Confident] |
+      | GI-0XX-<slug> | [e.g. FLOOR-OBS SLO formalization] | interim transition delta (high declared [date]) | transition — dies when the item conforms | [Confident] |
     check: >-
       Is every waiver auditable (GI-ID, standard, justification, revisit-or-permanent, mark), and
       interim transition deltas (D6) recorded as bounded transition-scoped exceptions that do not
@@ -194,8 +197,8 @@ sections:
 
       | GI-ID | Module | Ruling | Because | Mark |
       |-------|--------|--------|---------|------|
-      | GI-0XX | [layer-rules] | adopted | [BE-HEX kept \| layered intent minted] | [Confident] |
-      | GI-0XX | [knowledge-management] | [adopted \| declined] | [offered default-on at dimension 7; a decline also memorializes in dimension 10] | [Confident] |
+      | GI-0XX-<slug> | [layer-rules] | adopted | [BE-HEX kept \| layered intent minted] | [Confident] |
+      | GI-0XX-<slug> | [knowledge-management] | [adopted \| declined] | [offered default-on at dimension 7; a decline also memorializes in dimension 10] | [Confident] |
       | … | | | | |
     check: >-
       Does Module selections rule the template modules in-session (adopted/declined, each with a
@@ -212,7 +215,7 @@ sections:
 
       | GI-ID | Dependency | Signal level | Ruling | Mark |
       |-------|------------|--------------|--------|------|
-      | GI-0XX | [equatable] | [1 — Flutter Favorites, live-verified] | [kept \| dropped] | [Confident] |
+      | GI-0XX-<slug> | [equatable] | [1 — Flutter Favorites, live-verified] | [kept \| dropped] | [Confident] |
       | … | | | | |
     check: >-
       When layer-rules is adopted, are domain-dependency seeds session-arbitrated
@@ -225,7 +228,7 @@ sections:
     contract: |
       (dimension 10)
 
-      - **GI-0XX:** [what governance will not cover + why — never a floor category (the floor leaves
+      - **GI-0XX-<slug>:** [what governance will not cover + why — never a floor category (the floor leaves
         only by recorded waiver, above)]
         · **Mark:** [Confident | Assumed | Contested | Unsure | Deferred]
 
@@ -265,7 +268,7 @@ sections:
 
         | # | Sev | GI element(s) | Finding | Disposition |
         |---|-----|---------------|---------|-------------|
-        | S1 | [Critical] | [GI-0XX] | [one line] | [resolved / user-ruled / recorded-open — overruled → element marked `Contested`] |
+        | S1 | [Critical] | [GI-0XX-<slug>] | [one line] | [resolved / user-ruled / recorded-open — overruled → element marked `Contested`] |
 
       - **Verify pass:** [PASS — folds confirmed by the coherence-lens/sole reviewer | pending]
       - *(if any)* **G3-edit delta-pass:** [edited elements + the still-seated reviewer's outcome]
@@ -296,13 +299,13 @@ skeleton: |
 
   ## Project identity & type
 
-  - **GI-001 — Type:** [frontend | backend | fullstack | service | mobile | desktop] → shelves dealt: [list] · **Mark:** [...]
+  - **GI-001-project-surface-type — Type:** [frontend | backend | fullstack | service | mobile | desktop] → shelves dealt: [list] · **Mark:** [...]
   - **Team reality:** [solo/team, review culture]
   - **Trust vectors:** [what ships where + its controls]
 
   ## Depth level declaration
 
-  - **GI-0XX — Declared level:** [low | high] · **Declared:** [YYYY-MM-DD] by [user] · **Mark:** [...]
+  - **GI-0XX-<slug> — Declared level:** [low | high] · **Declared:** [YYYY-MM-DD] by [user] · **Mark:** [...]
   - **Rationale:** [why this level]
   - **Ratchet:** one-way — `high` is terminal; a later `low`→`high` move happens only through a flip ceremony.
 
@@ -321,25 +324,25 @@ skeleton: |
 
   | GI-ID | Card | Layer | Ruling / Expression | Mark |
   |-------|------|-------|---------------------|------|
-  | GI-0XX | FLOOR-SEC | floor-asserted | [expression, or "at floor level"] | [Confident] |
-  | GI-0XX | BE-HEX | arbitrated | [kept/tightened/dropped + reason] | [Confident] |
+  | GI-0XX-<slug> | FLOOR-SEC | floor-asserted | [expression, or "at floor level"] | [Confident] |
+  | GI-0XX-<slug> | BE-HEX | arbitrated | [kept/tightened/dropped + reason] | [Confident] |
 
   ## Minted principle intents
 
-  - **GI-0XX — [Intent name]:** [what to enforce, how strictly] · **Mark:** [...] *Elicited from:* [dimension 9 answer]
+  - **GI-0XX-<slug> — [Intent name]:** [what to enforce, how strictly] · **Mark:** [...] *Elicited from:* [dimension 9 answer]
 
   ## Waivers
 
   | GI-ID | Standard | Justification | Revisit trigger (optional) | Mark |
   |-------|----------|---------------|---------------------------|------|
-  | GI-0XX | [e.g. FLOOR-TEST coverage gate] | [recorded reason] | [or "permanent (D4.1 pending)"] | [Confident] |
+  | GI-0XX-<slug> | [e.g. FLOOR-TEST coverage gate] | [recorded reason] | [or "permanent (D4.1 pending)"] | [Confident] |
 
   ## Module selections
 
   | GI-ID | Module | Ruling | Because | Mark |
   |-------|--------|--------|---------|------|
-  | GI-0XX | [layer-rules] | adopted | [reason] | [Confident] |
-  | GI-0XX | [knowledge-management] | [adopted | declined] | [reason] | [Confident] |
+  | GI-0XX-<slug> | [layer-rules] | adopted | [reason] | [Confident] |
+  | GI-0XX-<slug> | [knowledge-management] | [adopted | declined] | [reason] | [Confident] |
 
   ## Domain-dependency seeds
 
@@ -347,11 +350,11 @@ skeleton: |
 
   | GI-ID | Dependency | Signal level | Ruling | Mark |
   |-------|------------|--------------|--------|------|
-  | GI-0XX | [equatable] | [1 — Flutter Favorites, live-verified] | [kept | dropped] | [Confident] |
+  | GI-0XX-<slug> | [equatable] | [1 — Flutter Favorites, live-verified] | [kept | dropped] | [Confident] |
 
   ## Deliberate exclusions
 
-  - **GI-0XX:** [what governance will not cover + why] · **Mark:** [...]
+  - **GI-0XX-<slug>:** [what governance will not cover + why] · **Mark:** [...]
 
   **Handed off:**
 
@@ -367,7 +370,7 @@ skeleton: |
 
     | # | Sev | GI element(s) | Finding | Disposition |
     |---|-----|---------------|---------|-------------|
-    | S1 | [Critical] | [GI-0XX] | [one line] | [disposition] |
+    | S1 | [Critical] | [GI-0XX-<slug>] | [one line] | [disposition] |
 
   - **Verify pass:** [PASS | pending]
 

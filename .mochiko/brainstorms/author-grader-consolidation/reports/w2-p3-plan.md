@@ -40,7 +40,7 @@ To be read at resume, after P1 lands: `plugins/mochiko/migrations/0009-plan-qa-l
 
 ## Assertions to move
 
-Every right-hand value is read from the tree at resume, never predicted. `N` is `review-seat-plan`'s rule count and `F` its floor count, both from the render. Each site gains a comment naming `0009-plan-qa-leg.yaml` and the ruling it executes — `2026-09-03 producer-plan-enforcement D8` — in the wave-1 comment's form.
+Every right-hand value is read from the tree at resume, never predicted. `N` is `review-seat-plan`'s rule count and `F` its floor count, both from the render. Each site gains a comment naming `0009-plan-qa-leg.yaml` and the ruling it executes — "`2026-09-03 producer-plan-enforcement D8`" — in the wave-1 comment's form.
 
 - `fidelity.rs:170` docs `74` → `migrate status` documents · `:172-176` `vec![1,…,8]` → `vec![1,…,9]`, comment tail gains "`0009`'s plan-QA leg" · `:625` skill rules `738` → +N · `:626` total `1067` → +N · `:627` skill floors `252` → +F · census comment `:611-623` gains a `0009` paragraph stating one imported skill document, N rules, F floors, every other op a reword that keeps its id and pin, so the command side and the fail set do not move.
 - `validate.rs:1101` docs `74` → `75` · `:1120` `738` → +N · `:1121` `1067` → +N · `:1122` `252` → +F · comment `:1108-1118` gains the same `0009` paragraph. Mechanical twin of `fidelity.rs`: identical figures, independently re-derived, different reader.
@@ -105,7 +105,7 @@ The first two run before any edit as well, to reproduce the post-`0009` failures
 
 **HALTED at Risk 1 before any edit.** Nothing in the write set was touched; `git status --porcelain crates/` is empty. The probe was never added, so no scratchpad path exists in any test file.
 
-`0009` carries five `op: set-rule-field · field: anchor` ops setting `2026-09-03 producer-plan-enforcement D8` (lines 20-24 and 121-140). Three targets carry frozen sidecar anchors of `2026-08-13 charter-ritual-balance` and are therefore re-anchored, not merely reworded: `patterns-sound-loop.leg-1-seat-produces`, `arch.sound-loop-floor`, `feat.sound-loop-floor`. The other two, `impl.sound-loop-floor` and `arch.author-grader-separation`, carry no sidecar anchor. `patterns-sound-loop.disclosure-line` is reworded with no `set-rule-field`, so its anchor survives. Pre-edit, `cargo build` was clean and `cargo test -p mochiko-cli --no-fail-fast` gave 9 failures — 8 of them the census sites this plan named, 1 the declared stop:
+`0009` carries five `op: set-rule-field · field: anchor` ops setting "`2026-09-03 producer-plan-enforcement D8`" (lines 20-24 and 121-140). Three targets carry frozen sidecar anchors of `2026-08-13 charter-ritual-balance` and are therefore re-anchored, not merely reworded: `patterns-sound-loop.leg-1-seat-produces`, `arch.sound-loop-floor`, `feat.sound-loop-floor`. The other two, `impl.sound-loop-floor` and `arch.author-grader-separation`, carry no sidecar anchor. `patterns-sound-loop.disclosure-line` is reworded with no `set-rule-field`, so its anchor survives. Pre-edit, `cargo build` was clean and `cargo test -p mochiko-cli --no-fail-fast` gave 9 failures — 8 of them the census sites this plan named, 1 the declared stop:
 
 ```
 fidelity.rs:559  arch.sound-loop-floor: the anchor moved

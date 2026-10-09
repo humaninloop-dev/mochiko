@@ -11,7 +11,7 @@ graded_artifact: >-
 graded_against: >-
   wave4-plan.md (a)/(b)/(d) as superseded by the lead's two calls — one un-narrowed `Write|Edit`
   handler with `if` on `Bash`/`PowerShell` only, and D4e file-set amnesty as ratified ·
-  wave0-probe-report.md legs 3/5/7 · ledger AM-3 (the amnesty paragraph, the explicit-allow rule,
+  wave0-probe-report.md legs 3/5/7 · ledger AM-3-conformance-gate-admission (the amnesty paragraph, the explicit-allow rule,
   the bright line's clause iv) · record D3/D7/D9/D10 · .claude/rules/mochiko/rust-cli.md ·
   reports/contract-report.md § Sandbox repair
 reviewer_role: >-
@@ -84,7 +84,7 @@ item_grades:
     no_schema_read: >-
       Confirmed structurally. The crate's read sites are the migration directory (`replay.rs`), the
       plugin manifest for its version stamp (`cli.rs`), and — on an `Edit` — the on-disk baseline
-      (`hook.rs:174`), which is exactly what AM-3's "what the gate reads" clause licenses. No schema
+      (`hook.rs:174`), which is exactly what AM-3-conformance-gate-admission's "what the gate reads" clause licenses. No schema
       file ships in the plugin for a run to read instead.
     findings: [W1, W4]
   - id: 3
@@ -120,7 +120,7 @@ item_grades:
       pre-convergence parameter *order* — the point of the exercise — and produces the same argv;
       `acceptEdits` is hoisted to a module constant at the same value, and `--setting-sources ''`
       survives with its reason. The header states the provenance commit and the decoupling reason:
-      a release gate under GI-012 may not depend on a research harness free to change under it,
+      a release gate under GI-012-release-gates-module may not depend on a research harness free to change under it,
       and it names the 2026-09-11 convergence as the failure it is answering.
     import_and_call: >-
       `load_runner()` loads that file by path under its own module name, with a docstring recording
@@ -384,7 +384,7 @@ the new function and `HEAD`'s `conform.rs` has none. It is an integer method sta
 1.87, and `crates/mochiko-cli/Cargo.toml` declares no `rust-version`. CI is unaffected, since it
 installs `dtolnay/rust-toolchain@stable` and there is no pinned toolchain file. The exposure is a
 consumer running `cargo install mochiko-cli` on an older toolchain, who gets
-`no method named is_multiple_of` instead of a clear minimum-version message — and GI-020 makes that
+`no method named is_multiple_of` instead of a clear minimum-version message — and GI-020-plugin-install-model makes that
 binary a hard dependency of the plugin. Fix: declare `rust-version` in `Cargo.toml`, or write
 `% 2 == 0`, which costs nothing and reads the same.
 
@@ -426,7 +426,7 @@ installed binary reports a different version refuses outright, which is the one 
 `cargo install` leaves an earlier binary in place when a build fails partway, so asserting the
 version rather than assuming it from the pin is the difference between grading the released artifact
 and grading yesterday's. All three return a skip reason, and I followed that to its exit: the caller
-turns it into `SKIPPED (sandbox cases)` and `exit 3`, and GI-012 says a SKIPPED suite is not green,
+turns it into `SKIPPED (sandbox cases)` and `exit 3`, and GI-012-release-gates-module says a SKIPPED suite is not green,
 so a bad pin blocks the bump instead of passing quietly.
 
 **`--case` — held on my own runs.** An unknown name is a usage error at exit 2, alone or mixed with

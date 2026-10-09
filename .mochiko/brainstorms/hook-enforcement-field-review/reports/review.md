@@ -179,7 +179,7 @@ survivors:
     decisions: [D9c, D3]
     kind: inconsistency (governance surface)
     finding: >-
-      D9c says "the ledger pointer is untouched", but the ledger's GI-019 detail restates what D3
+      D9c says "the ledger pointer is untouched", but the ledger's GI-019-kernel-tooling-admission detail restates what D3
       changes. "Reach of the gate (D9, review C4): outside every declared home a `.md` write is gated
       only when its content opens with mochiko report frontmatter …", and the amnesty paragraph says
       "a write outside every declared home is ungated, not amnestied". Under D3 both are false for
@@ -187,7 +187,7 @@ survivors:
       not admit honest content (F4, 9 whole-file denies in F2).
     failure_scenario: >-
       The build lands a governance surface that contradicts the gate it describes, a record-layer
-      corruption under GI-005.
+      corruption under GI-005-record-layer-integrity.
     resolution: >-
       Add a ledger text amendment (PATCH, recorded in the amendment log) to wave 3, or state in D9c
       why those paragraphs stay true.
@@ -210,7 +210,7 @@ survivors:
   - id: S10
     severity: Important
     decisions: [F1, D9d]
-    kind: inconsistency (governance floor GI-012)
+    kind: inconsistency (governance floor GI-012-release-gates-module)
     finding: >-
       mochiko-cli is not on crates.io (https://crates.io/api/v1/crates/mochiko-cli returns HTTP
       404), no `mochiko-cli-v*` tag exists, and the installed binary is a local-path `cargo install`.
@@ -340,7 +340,7 @@ verification:
     - D4 "the same ignore line covers it" (S9) · "the gate does not watch `.claude/`" (S13) · path viability (S2)
     - D6 / F16 "nothing reads it after acceptance" (S1)
     - D7 rejected-B "for the same answer" (S3)
-    - F1 BACKLOG line "stale" on the GI-012 reading (S10)
+    - F1 BACKLOG line "stale" on the GI-012-release-gates-module reading (S10)
   could_not_verify:
     - F7 edit counts (95 and 130)
     - F10 kinako memory files on report trims and usage-limit recoveries
@@ -430,14 +430,14 @@ verify_round_1:
       lines: "D9 amendment 391–393 · § Review 494–498 · Build 552–553 · control 3 446–447 · D7 325–326, 464–466"
       residual: >-
         The PATCH re-words only the ledger's "Reach of the gate" and amnesty paragraphs. The
-        GI-019 paragraph "What the gate reads (review C7): the raw PreToolUse payload … and, on
+        GI-019-kernel-tooling-admission paragraph "What the gate reads (review C7): the raw PreToolUse payload … and, on
         Edit, the on-disk file" also becomes false: control 3 reads `.gitignore` on every write
         under `runs/`, and amended D7 walks ancestors for `.git`. This is S8's defect again, on a
         paragraph the folds themselves falsify.
       resolution: >-
         Add the "What the gate reads" paragraph to the wave-3 PATCH. State why the change is a
         PATCH clarification and not the amendment policy's MINOR "a principle significantly
-        expanded" (ledger line 32; AM-3 itself was ruled MINOR).
+        expanded" (ledger line 32; AM-3-conformance-gate-admission itself was ruled MINOR).
   nits:
     - "V5: headings, statements and confidence lines still state reversed rulings without an inline pointer: D4 heading 226, 230–235, Confidence 243; D6 heading 277, 279 (\"never under a declared home\"), 284–287; D7 heading 307, 309–315, Confidence 323; D9 heading 350 (\"no governance amend\"); D9d 362–379 (segment resolution, frontmatter line budgets, header caps, `.claude/mochiko-runs/`, render target unchanged). D9's amendment block does not withdraw the header caps or segment resolution from the waves. Add an \"amended, see below\" marker on each."
     - "V6: F3 55–62 still gives the (a) mechanism and the `git show` example that S12 corrected, and F8 88–91 still reads brainstorm-only. § Review 511 says \"F3(a)'s mechanism corrected\", but F3 itself is not."
@@ -497,7 +497,7 @@ repo that are outside every home today (S3). Eight Important survivors widen the
 render-target fix to six rules (S4), show the header cap cannot separate the log from honest
 reports (S5), correct D2's contracts premise and its unconditional guarantee (S6), move the
 closed-world census to the primitives' write sets (S7), and flag three missed surfaces: the
-ledger's GI-019 text, the ignore line, and the GI-012 publish gate (S8–S10). Each survivor names a
+ledger's GI-019-kernel-tooling-admission text, the ignore line, and the GI-012-release-gates-module publish gate (S8–S10). Each survivor names a
 resolution; none needs a new session.
 
 ## Notes of note

@@ -5,6 +5,13 @@ batch-3 ratified 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-st
 First strip assessment of this skill (never-stripped band 30–70): body 161 → 89 lines = **45%**,
 in-band.
 
+## [v0.118.0] `DECISION-RECORD.md` decision IDs corrected to the `D-XXX` family and joined
+
+- **Disposition:** superseded → `Superseded by D-XXX-<slug>`; the dependency table and impact chain read `D-001-auth-token-mechanism`, `D-002-server-session-storage`, `D-003-client-token-storage`, `D-005-token-refresh-endpoint`, with the row names kept after the ID.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; the lead's Q-B ruling, widened to `DR-XXX` (line 42 of the same file says these records are the constraints file's `D-XXX` entries, so they take that family's form, D9))
+- **Content (superseded):** `:14` "[Proposed | Accepted | Deprecated | Superseded by DR-XXX]"; the table rows "| D2: Session storage | D1: Auth mechanism |…", "| D3: Token storage | D1: Auth mechanism |…", "| D5: Refresh endpoint | D1: Auth mechanism |…"; the chain "D1 (JWT auth) → D2 (No server sessions) → D3 (Token in httpOnly cookie) → D5 (Refresh endpoint required)".
+- **Kept deliberately:** `:42`'s `D-XXX` and `C-XXX`↔`D-XXX` (family names); the ADR section headings; the chain's lines are single mentions, one per line, not a list.
+
 ## [v0.116.0] Where decisions are recorded — "Feature-scope decision records" and the project-scope clause re-routed to the landed decision-technique routing
 
 - **Disposition:** superseded →
@@ -18,7 +25,7 @@ in-band.
     Q8), takes no entry.
 - **Tier failed:** n/a — supersession by ruling:
   - `DECISIONS.md` 2026-09-24 delta-files row points to
-    `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md`, whose D1 edits the
+    `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md`, whose D1-delta-files-retire edits the
     product file in place;
   - joint-build seam R1 (`.mochiko/decisions/2026-09-29-joint-hook-delta-build-seams.md`): a ruling
     that changes a baseline lives on its entry, and `.mochiko/decisions/` keeps only rulings that

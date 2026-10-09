@@ -218,7 +218,7 @@ mochiko-cli rules end · <primitive> · <id> · <N> rules
 Grade the seat's diff and report against §2–§6 and the record's rulings: every §6 item
 present and green · the hard set complete (each D6 clause has a rejecting test) · the
 render contract byte-exact to §4 · fidelity green over all 50 files · no shipped file
-changed · no `unsafe`, no network, no writes outside `target/` at test time · GI-019
+changed · no `unsafe`, no network, no writes outside `target/` at test time · GI-019-kernel-tooling-admission
 bright line intact (no artifact grading, no dispatch) · plan deviations disclosed ·
 matrix-port completeness (every Python probe accounted for). Verdict PASS/FAIL with a fix
 list; default FAIL.

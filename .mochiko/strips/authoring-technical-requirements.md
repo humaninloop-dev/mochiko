@@ -3,13 +3,13 @@
 Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-succinctness wave 4
 (design: `.mochiko/brainstorms/skill-succinctness-strip/record.md`, ratified 2026-07-25);
 [v0.23.0] entries — workflow-token-reduction wave 2 (design:
-`.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4/T2;
+`.mochiko/brainstorms/workflow-token-reduction/record.md` D4-reference-by-id + the wave-2 rulings R1–R4/T2;
 ratified 2026-07-24).
 
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the authoring family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -19,7 +19,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/authoring-technical-requirements/references/ARTIFACT-TEMPLATES.md`. -->
 
@@ -28,6 +28,14 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` (`DECISIONS.md` 2026-09-24
 row). Pre-edit verbatim text: `git show 5558fd7:<path>` for `SKILL.md` and
 `references/ARTIFACT-TEMPLATES.md`. -->
+
+## [v0.118.0] Example IDs and Format cells joined in `ARTIFACT-TEMPLATES.md` and `TRACEABILITY-PATTERNS.md`
+
+- **Disposition:** superseded → every example ID joined (`<slug>` placeholders in the document template and Format cells; coined slugs in the patterns, chains, rules and matrix), cross-file FR/SC citations behind `` `<spec-slug>` ``, the NFR row's `Applies to` behind `` `product` ``; numbering rule 4 gains a pointer to the IDs section of `templates/artifact-format.md`.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; hand-off P8; D11 as changed at review (S4) for owners; the lead's Q-A ruling for where owners go)
+- **Content (superseded):** `ARTIFACT-TEMPLATES.md`: the document template's concrete IDs (`C-001`, `C-002`, `D-001`, `D-002`, `C-003`, `IP-001`, `IP-002`, `C-004`, `NFR-001`–`NFR-003`, `INT-001`, `DS-001`, and the `FR-001`/`FR-004` sources), the Format cells `C-XXX`, `D-XXX`, `IP-XXX`, `INT-XXX / DS-XXX`, `NFR-XXX`, `C-XXX / NFR-XXX`, `IP-XXX refs`, `FR-XXX / SC-XXX`, `C-XXX / IP-XXX`, the NFR example `NFR-001 — API Response Latency` with source `FR-001` and `Applies to: C-001 · IP-002`, and numbering rules 1 ("C-001, not C-1") and 4 (""See C-001" not "See constraint 1""). `TRACEABILITY-PATTERNS.md`: 53 concrete tokens on 29 lines — the pattern headings (`## C-001: Existing PostgreSQL Infrastructure` ×2, `## D-001: Primary Database`, `## NFR-001: API Response Latency`, `## IP-001: Compute Provisioning`, `## INT-004: Identity Provider`), their sources, the two chains and their "Reading this chain" lines, the rule 1–3 examples, and the matrix rows. Pre-edit file: `git show bf410cc:plugins/mochiko/skills/authoring-technical-requirements/references/ARTIFACT-TEMPLATES.md`. Pre-edit file: `git show bf410cc:plugins/mochiko/skills/authoring-technical-requirements/references/TRACEABILITY-PATTERNS.md`.
+- **Kept deliberately:** family names and kind lists (`C-XXX`, `FR-XXX / SC-XXX`, …), number-only paths, local labels, ranges and lists of four or more (D5), and citations of decided IDs (wave 3 back-fills them) stay as written — `ARTIFACT-TEMPLATES.md` lines 3, 66, 94, 132, 209, 211 and 219–220; TRACEABILITY's 9–26 diagram and :65 blockquote. `C-001` carries three slugs in `TRACEABILITY-PATTERNS.md`, one per example world (the PostgreSQL patterns and rules, the IP pattern's AWS environment, the sign-in chain and matrix): the pre-existing examples give it three topics, and a per-artifact ID is scoped to its artifact; renumbering is outside a token-only edit.
+- **Consumers assessed:** `authoring-technical-requirements.sequential-ids` (0047) already shows `D-012-<slug>`; the pointer line points at the grammar rather than restating it.
 
 ## [v0.116.0] ARTIFACT-TEMPLATES id rules — "Sequential, … no gaps" superseded by the product file's high-water mark
 
@@ -118,7 +126,7 @@ row). Pre-edit verbatim text: `git show 5558fd7:<path>` for `SKILL.md` and
 
 - **Disposition:** superseded → the CLI form `mochiko-cli template architecture-store`
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** ", or Read `plugins/mochiko/schemas/architecture-store.yaml` raw when the binary is
   absent"
 - **Kept deliberately:** the whole of the surrounding rule — that there is no `nfrs.md` template,
@@ -131,7 +139,7 @@ row). Pre-edit verbatim text: `git show 5558fd7:<path>` for `SKILL.md` and
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -174,7 +182,7 @@ row). Pre-edit verbatim text: `git show 5558fd7:<path>` for `SKILL.md` and
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -185,7 +193,7 @@ row). Pre-edit verbatim text: `git show 5558fd7:<path>` for `SKILL.md` and
   and halt likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -195,7 +203,7 @@ row). Pre-edit verbatim text: `git show 5558fd7:<path>` for `SKILL.md` and
 
 ## [v0.101.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2A)
 
-Ruling for every [v0.101.0] entry: skill-content-schema D3 (three-home boundary) / D8/C4
+Ruling for every [v0.101.0] entry: skill-content-schema D3-obligations-only-schema (three-home boundary) / D8/C4
 (protected transfers), `DECISIONS.md` 2026-09-01 rows (skill-content-schema + the wave-2
 family-door ruling); census: `.mochiko/brainstorms/skill-content-schema/research/census-authoring.md`
 §B (ATR). Schema home: `plugins/mochiko/skills/authoring-technical-requirements/schema.yaml`.
@@ -288,7 +296,7 @@ recorded below — no content growth claimed. Description byte-untouched at 598.
 - **Disposition:** superseded — protection transfers to `nfr-store-home` (floor),
   `no-topology-decisions` (floor), and `entangled-decision-route`, per D8/C4.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row; original
-  protection: 2026-08-19 product-architecture-schema D12, `Contested`, user-ruled absorb).
+  protection: "2026-08-19 product-architecture-schema D12", `Contested`, user-ruled absorb).
 - **Content (verbatim, the load-bearing lines):** "**There is no `nfrs.md`:** an NFR-XXX
   row lives as fields on its architecture-store concern row, so one concern has one home —
   stance, pattern, targets, as-built, drift together. The **ids and the grammar are this
@@ -311,7 +319,7 @@ recorded below — no content growth claimed. Description byte-untouched at 598.
   → `design-ladder-binding`. The TR-layer death is a conversion guard, not a rule — no
   TR-XXX rule exists in the schema (nothing to mint).
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 row; original
-  protection: 2026-08-26 plan-stage-utility D3 + wave-lead R1/R4).
+  protection: "2026-08-26 plan-stage-utility D3" + wave-lead R1/R4).
 - **Content (verbatim, the load-bearing lines):** "**An NFR's source is its business
   source** — the FR-XXX or SC-XXX whose promise the target serves — so the trace chain
   resolves FR-XXX / SC-XXX → NFR-XXX." · "**Optimistic integration maps are incomplete.**
@@ -347,7 +355,7 @@ recorded below — no content growth claimed. Description byte-untouched at 598.
 - **Disposition:** superseded → "the simplest-execution stops are disclosed by the design phase
   as it authors, never re-derived here".
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D4**, which lists plan's proposal
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D4-planless-homes-gates**, which lists plan's proposal
   approval among the dead gates). Ripple of the fix round's **V1** ruling: the design-phase
   authoring proposal does not survive in any form — the sufficiency gap list is the scope
   contract, the design checkpoint the user gate.
@@ -372,7 +380,7 @@ recorded below — no content growth claimed. Description byte-untouched at 598.
 - **Disposition:** superseded → deleted with no replacement artifact. The skill re-scopes to the
   `constraints-and-decisions.md` layer it already owned.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D3**: "The FR→TR layer dies as a
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D3-requirements-layer-dies**: "The FR→TR layer dies as a
   mandatory artifact; it does not move to specify. No per-feature `requirements.md`. Real
   technical decisions (D-XXX, C-XXX, IP-XXX) land where they already live —
   `constraints-and-decisions.md` and the store". Rationale on the record: moving TR into specify
@@ -431,7 +439,7 @@ recorded below — no content growth claimed. Description byte-untouched at 598.
 - **Disposition:** superseded → an NFR's source is the FR-XXX or SC-XXX whose promise the target
   serves; the trace chain resolves `FR-XXX / SC-XXX → NFR-XXX`.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D3). The record is **silent** on this
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D3-requirements-layer-dies). The record is **silent** on this
   consequence; it was surfaced by this seat during the build and **ruled by the wave lead (R4)**
   before the edit, because D3 kills the upper link of a chain this skill asserts still resolves.
 - **Content (superseded text, verbatim):**
@@ -466,7 +474,7 @@ recorded below — no content growth claimed. Description byte-untouched at 598.
   `constraints-and-decisions.md`, alongside IP-XXX, with their downstream authoring pointers
   unchanged.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D3, **as extended by the wave lead's
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D3-requirements-layer-dies, **as extended by the wave lead's
   R1 ruling of 2026-08-26**). Recorded honestly: **D3 itself is silent on INT-XXX and DS-XXX** —
   it names only D-XXX, C-XXX and IP-XXX as landing in `constraints-and-decisions.md`. Both
   declarations lived in the dying `requirements.md`, so D3 would have deleted them by side
@@ -510,7 +518,7 @@ recorded below — no content growth claimed. Description byte-untouched at 598.
 - **Disposition:** superseded → the same description naming `constraints-and-decisions.md` as
   the authored artifact and the design phase as the firing site.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D3).
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D3-requirements-layer-dies).
 - **Content (superseded text, verbatim):**
 
   ```
@@ -529,7 +537,7 @@ recorded below — no content growth claimed. Description byte-untouched at 598.
   mounts this skill and describes its artifacts as including `requirements.md` — **out of this
   seat's writable scope, reported to the wave lead**.
 
-## [v0.81.0] `nfrs.md` dies as a file; the Structural Decisions subsection dies whole — product-architecture-schema D12
+## [v0.81.0] `nfrs.md` dies as a file; the Structural Decisions subsection dies whole — product-architecture-schema D12-store-absorbs-nfrs
 
 - **Disposition:** superseded → the architecture store. Two independent absorbs land in one edit:
   (a) **NFR-XXX** loses its `nfrs.md` document home and becomes fields on the store's concern
@@ -538,7 +546,7 @@ recorded below — no content growth claimed. Description byte-untouched at 598.
   the store delta, whose ruling **is** the decision record, so the `Origin` axis has nothing left
   to distinguish and goes with it.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12, `Contested` — user ruled
+  (`.mochiko/brainstorms/product-architecture-schema/record.md` D12-store-absorbs-nfrs, `Contested` — user ruled
   absorb against the lead's coexist recommendation, blast radius priced and accepted;
   `DECISIONS.md` 2026-08-19).
 - **Content (superseded, verbatim — SKILL.md):**
@@ -597,7 +605,7 @@ recorded below — no content growth claimed. Description byte-untouched at 598.
   seat). `mochiko:testing-gap-finding` runtime-NFR probes re-pointed by this seat.
   `mochiko:patterns-technical-decisions` owns the decision *technique* and names no origin axis —
   verified unedited. `mochiko:patterns-system-design` (P3) no longer authors rows into this
-  artifact. `plan.md` / `implement.md` baseline lists and the `feature-sizing` D9/D15
+  artifact. `plan.md` / `implement.md` baseline lists and the `feature-sizing-and-entry-points` D9-plan-implement-rekey/D15-graded-baseline-folds
   baseline-set clauses are P2's this wave.
 - **Consumers assessed — second pass (V4 delta, B2 + B2-extension).** The first pass swept skills
   and the router but missed the artifact-chain carriers that name this skill's outputs by

@@ -37,7 +37,7 @@ Favorites and equivalents), (3) no Dart/Flutter presence in the catalog at all.
 
 ## Decisions
 
-- **D1 — Seed eagerly, grow lazily** (`Confident`, adopted on recommendation): when a
+- **D1-allowlist-seed-growth — Seed eagerly, grow lazily** (`Confident`, adopted on recommendation): when a
   layered-architecture card is kept, setup seeds the approved-domain-dependencies registry with
   a small arbitrated set for the detected stack (recommended from the ecosystem's trust source,
   user keeps/drops/tightens), AND the authored principle carries the qualification criteria +
@@ -51,7 +51,7 @@ Favorites and equivalents), (3) no Dart/Flutter presence in the catalog at all.
   with F1's composition filter the seed pool is small (~3–5 libs) and cheap to arbitrate, and
   a non-empty day-one registry is what kills the empty-list-reads-as-prohibition defect.
 
-- **D2 — Tier-keyed add-gate with a visibility floor** (`Confident`, adopted on recommendation;
+- **D2-tier-keyed-gate — Tier-keyed add-gate with a visibility floor** (`Confident`, adopted on recommendation;
   streak-watch: 2nd consecutive unelaborated adoption): implementation-time registry additions
   are self-serve-with-justification at `poc`/`internal` but MUST be reported in the cycle
   report (visible, contestable, non-blocking); at `production`/`regulated` the addition
@@ -61,7 +61,7 @@ Favorites and equivalents), (3) no Dart/Flutter presence in the catalog at all.
   where the gate is open. Rejected: A (pure self-serve — registry becomes a log of decisions
   already taken), B (always-gated — poc ceremony outweighs risk).
 
-- **D3 — Codified signal hierarchy, table-seeded** (`Confident`, adopted on recommendation;
+- **D3-signal-hierarchy-table — Codified signal hierarchy, table-seeded** (`Confident`, adopted on recommendation;
   streak-watch: 3rd consecutive — streak flagged to user after this ruling): the card codifies
   a durable hierarchy of trust signals — official curation > semi-official stewardship >
   credible community curation > quantitative proxies + qualification criteria — with a starter
@@ -69,7 +69,7 @@ Favorites and equivalents), (3) no Dart/Flutter presence in the catalog at all.
   blessed.rs; table verified for freshness at build time). Seeding walks the hierarchy top-down
   and cites which level each seed rests on; unlisted ecosystems get live research constrained
   to filling hierarchy levels. Level-citation makes weak/hallucinated sources challengeable at
-  the D1 arbitration gate. Rejected: A (pure table — fallback case is the common case and
+  the D1-allowlist-seed-growth arbitration gate. Rejected: A (pure table — fallback case is the common case and
   reproduces the unguided collapse), B (pure research — can confidently cite curated lists
   that don't exist).
   **Amended by review (F1 disposition, user-confirmed):** trust and domain-admissibility are
@@ -79,28 +79,28 @@ Favorites and equivalents), (3) no Dart/Flutter presence in the catalog at all.
   admissible pure-Dart libs. **(F8 fold):** starter-table entries are pointers re-verified
   live at seed time, never copied as snapshots.
 
-**Streak flag (after D3):** three consecutive unelaborated recommendation-adoptions →
+**Streak flag (after D3-signal-hierarchy-table):** three consecutive unelaborated recommendation-adoptions →
 per the ratification-streak discipline, Q4 posed with steelmanned options and NO marked
 recommendation, forcing a genuine read.
 
-- **D4 — Rules-file-as-registry with a policy/list ownership split** (`Confident` — user
+- **D4-rules-file-registry — Rules-file-as-registry with a policy/list ownership split** (`Confident` — user
   initially leaned B ledger-canonical, arbitrated to A after counter-argument; streak broken,
-  genuine read given): the registry's **list** (dependency rows: dep, justification, D3
-  signal-level citation, D2 add-gate provenance) lives ONLY in a marked, preserve-in-place
+  genuine read given): the registry's **list** (dependency rows: dep, justification, D3-signal-hierarchy-table
+  signal-level citation, D2-tier-keyed-gate add-gate provenance) lives ONLY in a marked, preserve-in-place
   block inside the `paths`-scoped domain-layer rules file — delivered natively to any agent
-  editing domain code, writable at implement-time under D2's gate, preserved across setup/amend
+  editing domain code, writable at implement-time under D2-tier-keyed-gate's gate, preserved across setup/amend
   regeneration (marker idiom precedent: CLAUDE.md governance region, KM never-overwrite floor).
-  The **policy** (qualification criteria, D3 hierarchy, D2 add-process + tier gate) is stable
+  The **policy** (qualification criteria, D3-signal-hierarchy-table hierarchy, D2-tier-keyed-gate add-process + tier gate) is stable
   setup-authored content: ledger-recorded, regenerated into the rules file's preamble. No copy
   of the list exists anywhere → nothing can drift; the validator checks the block's rows for
   required metadata at the next setup/amend run. Rejected: B (projection drift is
   invisible-by-design between setup runs — re-creates the surface≠intent defect; no clean
   implement-time write path: relaxing ledger read-only or micro-amend ceremony both
-  contradict D2), C (pointer delivery is the failure mode the session exists to kill).
+  contradict D2-tier-keyed-gate), C (pointer delivery is the failure mode the session exists to kill).
 
-- **D5 — Trigger keys to `layer-rules` module attachment, dealt or minted** (`Confident`,
+- **D5-layer-rules-trigger — Trigger keys to `layer-rules` module attachment, dealt or minted** (`Confident`,
   adopted on recommendation — first post-streak-break adoption): the allowlist sub-arbitration
-  (D1) and registry authoring (D4) hang off `layer-rules` module attachment, whose attach
+  (D1-allowlist-seed-growth) and registry authoring (D4-rules-file-registry) hang off `layer-rules` module attachment, whose attach
   condition widens from "the synthesis kept a layered-architecture card" to "kept **or
   minted**" — one choke point covering every path a layered architecture enters a session,
   including the minted-intent path the Flutter dogfood project actually took. The mobile/app
@@ -120,54 +120,54 @@ implement.md confidence-gate auto-approve; authoring-constitution SKILL.md "rege
 module table; governance-surfaces-template.md ledger-canonical note; governance-intent-template.md
 module-selections table; setup.md amend-only module offer).
 
-- **F1 (Critical, CONFIRMED — hits D1/D3):** trust and domain-admissibility are orthogonal axes
-  the session never composed. D3's walk is ordered by trust only; Flutter Favorites skews I/O/UI
+- **F1 (Critical, CONFIRMED — hits D1-allowlist-seed-growth/D3-signal-hierarchy-table):** trust and domain-admissibility are orthogonal axes
+  the session never composed. D3-signal-hierarchy-table's walk is ordered by trust only; Flutter Favorites skews I/O/UI
   (dio, riverpod, shared_preferences — fail the no-I/O criterion) while genuinely admissible
   pure-Dart libs (equatable, dartz, collection) are largely not Favorites. Repair is a
   composition rule, not a redesign: domain-relevance filters the candidate pool FIRST; the trust
-  hierarchy ranks and grounds what passes. → amendment to D3's text, user to confirm.
-- **F2 (Critical, CONFIRMED — hits D2):** D2's runtime half has no landing surface: cycle-report
+  hierarchy ranks and grounds what passes. → amendment to D3-signal-hierarchy-table's text, user to confirm.
+- **F2 (Critical, CONFIRMED — hits D2-tier-keyed-gate):** D2-tier-keyed-gate's runtime half has no landing surface: cycle-report
   frontmatter has no dependency field, and implement's confidence gate auto-approves
   all-deterministic-CLI cycles — so the production-tier "ruling before entry" can never fire and
   the visibility floor can't be met. → build items on implement-side machinery (cycle-report
   field + gate hook), missing from the session's list.
-- **F3 (Critical, CONFIRMED — hits D4):** SKILL.md says rules files are "regenerated **whole**";
-  D4's preserve-in-place block inverts that invariant, its cited precedents are different
+- **F3 (Critical, CONFIRMED — hits D4-rules-file-registry):** SKILL.md says rules files are "regenerated **whole**";
+  D4-rules-file-registry's preserve-in-place block inverts that invariant, its cited precedents are different
   semantics (setup-regenerated block in user file; never-touched scaffolding), and until
   SKILL.md is edited the producer follows SKILL.md — silent loss of implement-added rows on the
   next amend. Lead nuance: the ledger-canonical-metadata half is weaker than stated (that rule
   exists because rules-file *comments* are undocumented; registry rows are body content). →
   build items: SKILL.md invariant amendment + preserve-block mechanics + validator fragment.
-- **F4 (Important, CONFIRMED — hits D5):** module attachment is driven by a synthesis GI ruling
+- **F4 (Important, CONFIRMED — hits D5-layer-rules-trigger):** module attachment is driven by a synthesis GI ruling
   (module-selections table), not the attach comment; the minted path needs an
   interrogation-side module-offer trigger, and the condition lives in ≥3 places (layer-rules.md,
-  SKILL.md module table, interrogation flow). → D5's build items expand.
-- **F5 (Important, CONFIRMED — missing dimension):** single-stack assumption throughout (D1
-  "the detected stack", D4 "the domain-layer rules file"); a monorepo with two domain layers in
+  SKILL.md module table, interrogation flow). → D5-layer-rules-trigger's build items expand.
+- **F5 (Important, CONFIRMED — missing dimension):** single-stack assumption throughout (D1-allowlist-seed-growth
+  "the detected stack", D4-rules-file-registry "the domain-layer rules file"); a monorepo with two domain layers in
   two ecosystems reproduces the SDK-only collapse for the second stack. → needs a user ruling:
   design for it now, or explicit out-of-scope.
 - **F6 (Minor after pressure-test, WEAKENED):** wrong-paths-glob risk (src/ vs lib/) is
   mitigated for the brownfield dogfood case (codebase-analysis supplies real paths; validator
   fragment requires real names + per-layer paths coverage) but real for greenfield Flutter
   until the mobile shelf lands. → noted on the BACKLOG mobile-shelf item.
-- **F7 (REFRAMED — re-ratification question on D1):** the rejected "lazy-only" was its weakest
+- **F7 (REFRAMED — re-ratification question on D1-allowlist-seed-growth):** the rejected "lazy-only" was its weakest
   form; the steelman (no eager seed; guided just-in-time elicitation on first need + authored
   criteria/process) was never weighed. Lead counter: with F1's composition fix the eager pool
   is small and cheap, and a non-empty day-one block is what kills the
   empty-registry-reads-as-prohibition defect. → user re-ratifies D1 or switches.
 - **F8 (Minor, CONFIRMED):** freshness inversion — listed ecosystems seed from a build-time
   snapshot, unlisted get live research. Fix: table entries are pointers re-verified live at
-  seed time, never copied as snapshots. → fold into D3.
+  seed time, never copied as snapshots. → fold into D3-signal-hierarchy-table.
 - **F9 (Minor, CONFIRMED):** proportionality never sized (~3–5 row expected list vs full
   machinery). Lead counter: plugin-side machinery is once-authored; per-project cost is one
   small sub-arbitration + a small block. → noted; no change proposed.
 
 ## Dispositions (9/9)
 
-F1 → D3 amended, user-confirmed · F2 → implement-side build items · F3 → SKILL.md invariant
-amendment + preserve-block mechanics build items · F4 → D5 build items expanded (3 edit sites +
+F1 → D3-signal-hierarchy-table amended, user-confirmed · F2 → implement-side build items · F3 → SKILL.md invariant
+amendment + preserve-block mechanics build items · F4 → D5-layer-rules-trigger build items expanded (3 edit sites +
 interrogation trigger) · F5 → ruled out-of-scope, BACKLOG item (user ruling) · F6 → note on the
-mobile-shelf BACKLOG item · F7 → D1 re-ratified (user ruling) · F8 → folded into D3 · F9 →
+mobile-shelf BACKLOG item · F7 → D1-allowlist-seed-growth re-ratified (user ruling) · F8 → folded into D3-signal-hierarchy-table · F9 →
 noted, no change.
 
 ## Out of scope (explicit)
@@ -180,12 +180,12 @@ noted, no change.
 
 ## Build items
 
-1. **BE-HEX card + `layer-rules` module — allowlist sub-arbitration (D1, D3):** seed procedure
+1. **BE-HEX card + `layer-rules` module — allowlist sub-arbitration (D1-allowlist-seed-growth, D3-signal-hierarchy-table):** seed procedure
    with the F1 composition rule (domain-relevance filters candidates first; trust hierarchy
    ranks and grounds survivors, level-cited); signal hierarchy + starter table (Flutter
    Favorites / golang.org/x / .NET Foundation / PyPA-partial / blessed.rs — entries are
    pointers re-verified live at seed time, F8); user arbitrates keep/drop/tighten.
-2. **`layer-rules.md` (D4, D5):** attach condition widens to layered card **kept or minted**;
+2. **`layer-rules.md` (D4-rules-file-registry, D5-layer-rules-trigger):** attach condition widens to layered card **kept or minted**;
    registry-block spec — marked preserve-in-place list block (rows: dep · justification ·
    signal-level citation · add-gate provenance) + regenerated policy preamble (criteria,
    hierarchy, add-process, tier gate); validator checklist fragment adds marker integrity +
@@ -196,9 +196,9 @@ noted, no change.
 4. **Interrogation / synthesis (F4):** minting a layered-architecture intent triggers the
    module offer so a `layer-rules | adopted` GI ruling lands in the module-selections table;
    `governance-intent-template.md` "Because" column admits minted provenance.
-5. **Ledger template (D4):** policy section (criteria, hierarchy, add-process, tier gate) as
+5. **Ledger template (D4-rules-file-registry):** policy section (criteria, hierarchy, add-process, tier gate) as
    the setup-owned canonical policy record.
-6. **Implement-side (D2, F2):** cycle-report frontmatter field for domain-dependency
+6. **Implement-side (D2-tier-keyed-gate, F2):** cycle-report frontmatter field for domain-dependency
    additions (`executing-tdd-cycle` CYCLE-REPORT-FORMAT.md — the `poc`/`internal` visibility
    floor); implement.md confidence-gate hook — a registry addition at `production`/`regulated`
    forces a human checkpoint regardless of deterministic-CLI pass.
@@ -209,8 +209,8 @@ noted, no change.
 ## Kinako (dogfood) path
 
 After the build lands: run `/mochiko:setup` amend on kinako — the minted-layered module offer
-(build item 4) fires the allowlist sub-arbitration, seeding the registry per D1/D3 and
-authoring the D4 registry block. Interim, the domain rules can be hand-edited; the amend run
+(build item 4) fires the allowlist sub-arbitration, seeding the registry per D1-allowlist-seed-growth/D3-signal-hierarchy-table and
+authoring the D4-rules-file-registry registry block. Interim, the domain rules can be hand-edited; the amend run
 supersedes them.
 
 ## Landing

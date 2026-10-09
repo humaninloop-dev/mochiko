@@ -25,8 +25,8 @@ evidence is unchecked, and any unchecked fitness item blocks `ready`.
 
 ## Card parts
 
-The checklist `review-brainstorm.card-parts-first` points at. Every decision card is titled by
-the decision's name and carries these six parts. This list is reported; a missing part does not
+The checklist `review-brainstorm.card-parts-first` points at. Every decision card is headed by
+its joined ID and the decision's name (`### D<n>-<slug> — <name>`) and carries these six parts. This list is reported; a missing part does not
 itself block `ready` — what blocks `ready` is the fitness list above.
 
 - [ ] **Statement**

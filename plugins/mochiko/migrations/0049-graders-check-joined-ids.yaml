@@ -1,0 +1,94 @@
+grammar: 1
+id: 0049-graders-check-joined-ids
+sequence: 49
+intent: >-
+  Graders check the joined ID form (human-readable-ids D6, with D4, D13 and D16): one
+  review-family common block, bound by stub in the five review skills that grade a minting
+  producer — review-specifications, review-plan-artifacts, validation-constitution,
+  review-governance-intent and review-brainstorm — and one must rule in each desk command
+  pointing its grader at the same check, the architecture desk's tech-lead grade of store writes
+  and the feature desk's non-author grade of map writes. No floor or fail.
+anchor: 2026-10-08 human-readable-ids D6
+hash: sha256:b01061078dca45d437a9a2ace789a99193d486879b41896cd7b10aafcc8722a1
+changes:
+  - op: mint-rule
+    schema: skill-common/skill-review-common
+    rule:
+      id: review-common.joined-ids
+      labels: [verdict, artifact-grammar]
+      text: >-
+        Hold every durable ID the artifact mints or cites to the IDs section of
+        `templates/artifact-format.md`: a new mint is joined, its three slug words naming the
+        topic — never a strength word, a removal ruling's direction word kept; a citation
+        carries its definition's slug, or stays bare where the definition is bare; match on the
+        number within its scope. A bare new mint, a drifted slug, or a slug that misreads its
+        topic is a finding.
+      pointer: ../../templates/artifact-format.md
+      anchor: 2026-10-08 human-readable-ids D6
+  - op: mint-rule
+    schema: skill/review-specifications
+    section: review-specifications.sec.verdict
+    rule:
+      id: review-specifications.joined-ids
+      class: must
+      extends: review-common.joined-ids
+      anchor: 2026-10-08 human-readable-ids D6
+  - op: mint-rule
+    schema: skill/review-plan-artifacts
+    section: review-plan-artifacts.sec.verdict
+    rule:
+      id: review-plan-artifacts.joined-ids
+      class: must
+      extends: review-common.joined-ids
+      anchor: 2026-10-08 human-readable-ids D6
+  - op: mint-rule
+    schema: skill/validation-constitution
+    section: validation-constitution.sec.verdict
+    rule:
+      id: validation-constitution.joined-ids
+      class: must
+      extends: review-common.joined-ids
+      anchor: 2026-10-08 human-readable-ids D6
+  - op: mint-rule
+    schema: skill/review-governance-intent
+    section: review-governance-intent.sec.verdict
+    rule:
+      id: review-governance-intent.joined-ids
+      class: must
+      extends: review-common.joined-ids
+      anchor: 2026-10-08 human-readable-ids D6
+  - op: mint-rule
+    schema: skill/review-brainstorm
+    section: review-brainstorm.sec.verdict
+    rule:
+      id: review-brainstorm.joined-ids
+      class: must
+      extends: review-common.joined-ids
+      anchor: 2026-10-08 human-readable-ids D6
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.roles
+    rule:
+      id: arch.grader-checks-joined-ids
+      labels: [independence]
+      class: must
+      text: >-
+        ${grader_seat}'s grade of a store write also covers its AX, SPN and NFR IDs, against the
+        IDs section of `templates/artifact-format.md`: each new row's ID joined, its slug naming
+        the row's topic; each citation carrying its definition's slug, or bare where that
+        definition is bare.
+      anchor: 2026-10-08 human-readable-ids D6
+  - op: mint-rule
+    schema: command/feature
+    section: feat.sec.ways-of-working
+    rule:
+      id: feat.grader-checks-joined-ids
+      labels: [independence]
+      class: must
+      text: >-
+        The non-author seat grading a map write checks the FEAT and EPIC IDs it mints or cites
+        against the IDs section of `templates/artifact-format.md`: a minted ID is joined, its slug
+        naming the capability's topic and matching its entry file's or manifest heading's slug; a
+        cited ID follows its definition — joined with that slug, or bare where the definition is
+        bare.
+      anchor: 2026-10-08 human-readable-ids D6

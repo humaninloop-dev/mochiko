@@ -14,7 +14,7 @@ Evidence read: `.claude/rules/mochiko/primitive-edits.md` ·
 (`preamble` · `sec.trigger` · `sec.scope` · `sec.discipline` · `sec.inputs` · `sec.disclosure` ·
 `sec.reserved`), each rendered first-hand by this seat · `plugins/mochiko/migrations/0008-gate-form.yaml`
 · `.mochiko/memory/primitive-cost-budgets.md` (row + canonical snippet) ·
-`.mochiko/brainstorms/author-grader-consolidation/record.md` (D7, F12, wave-1 build item 1) ·
+`.mochiko/brainstorms/author-grader-consolidation/record.md` (D7-fresh-gate-grader, F12, wave-1 build item 1) ·
 `DECISIONS.md` 2026-09-19 row · `evals/contract/expected-skills.json` ·
 `.mochiko/strips/patterns-model-tiering.md`. No seat's plan or report was opened.
 
@@ -93,7 +93,7 @@ version string is the same character length on both, so no measurement depends o
    `floors:` id and the section count. The justification holds on both limbs. Genuine new
    obligation: the rule binds a persona-less grader or reviewer spawn to an explicit `model:`
    alias, which record D7 mints to close F12, whose finding is precisely that nothing bound such
-   a spawn before — `orchestrator-model-selection` D2's no-`inherit` rule binds persona *files*
+   a spawn before — `orchestrator-model-selection` D2-persona-default-override's no-`inherit` rule binds persona *files*
    only. Never restored prose: `persona-less` appears nowhere in
    `.mochiko/strips/patterns-model-tiering.md`, nor does any phrase of the new text; the
    block-by-block diff shows nothing else returning. The nearest-sounding strip content,
@@ -108,7 +108,7 @@ version string is the same character length on both, so no measurement depends o
     skill set. No `kind: fail` and no `enforces:` anywhere in this schema; no `when:` on the new
     rule and so nothing to resolve against `conditions:`; no `moments:` block. `skill-grammar`,
     `rule-kind-unknown`, `when-undeclared` and `moment-declaration` raised nothing.
-12. **Provenance anchors — PASS.** The mint carries `anchor: 2026-09-19 author-grader-consolidation D7`
+12. **Provenance anchors — PASS.** The mint carries "`anchor: 2026-09-19 author-grader-consolidation D7`"
     in the migration that writes it, and `anchor-format` raised nothing. The ruling covers the
     content: record D7 states the obligation in the same terms the rule text carries, wave-1 build
     item 1 names `patterns-model-tiering` as its home, and the `DECISIONS.md` 2026-09-19 row

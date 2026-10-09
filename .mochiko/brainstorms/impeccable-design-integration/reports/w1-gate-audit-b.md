@@ -155,7 +155,7 @@ Issues requiring fix: none. Advisory only: the body's "What to Extract" list doe
 ## Unit 6 — schema content `0013-design-baseline-home`
 
 VALIDATE: schema content · `0013-design-baseline-home` (migration + view diff: homes/product-design, homes/product, templates/design-baseline, commands/implement, skills/review-sufficiency, skills/review-specifications)
-Checklist run: the AM-2 five — intent stated · anchor present where required · ID lifecycle right · floor and fail survival · register
+Checklist run: the AM-2-required-cli-dependency five — intent stated · anchor present where required · ID lifecycle right · floor and fail survival · register
 Evidence read: `plugins/mochiko/migrations/0013-design-baseline-home.yaml` (all 395 lines) · the six view files (the diff plus the new untracked views) · `mochiko-cli template design-baseline` with and without `--check` · `mochiko-cli home .mochiko/product/design/design.md` · record D5/D6/D7/D8/D11/D12/D13
 Pre-pass: 0 rejecting, and the views equal the replay. The `home` lookup resolves `product-design`, where `design.md` is a declared deliverable bound to template `design-baseline`.
 - Intent stated — PASS.
@@ -170,7 +170,7 @@ Issues requiring fix:
 ## Unit 7 — schema content `0014-setup-product-truth-leg`
 
 VALIDATE: schema content · `0014-setup-product-truth-leg` (migration + view diff: commands/setup, skills/analysis-codebase, templates/codebase-analysis)
-Checklist run: the AM-2 five
+Checklist run: the AM-2-required-cli-dependency five
 Evidence read: `plugins/mochiko/migrations/0014-setup-product-truth-leg.yaml` (all 327 lines) · the three view diffs · the sibling `setup.store-scaffold-unconditional` · record D6 · the S4 ruling in `build-log.md`
 Pre-pass: 0 rejecting, and the views equal the replay.
 - Intent stated — PASS.
@@ -287,7 +287,7 @@ passed, 0 failed. `python3 evals/contract/run.py --host-only`: `7/7 cases passed
 ## Round 2 — unit 6 `0013-design-baseline-home` (fix: `0018-design-baseline-platform-placeholder`)
 
 VALIDATE: schema content · `0018-design-baseline-platform-placeholder` + view `templates/design-baseline.yaml` + fixtures `design-baseline.{producer,check}.txt`, graded as the fix to unit 6
-Checklist run: the AM-2 five on the fix, plus the prior issue's closure
+Checklist run: the AM-2-required-cli-dependency five on the fix, plus the prior issue's closure
 Evidence read: `plugins/mochiko/migrations/0018-design-baseline-platform-placeholder.yaml` · a text diff of its template `content:` against 0013's (one line differs, `web` becomes `[web | ios | android | adaptive | desktop — or "not yet recorded"]`) · `mochiko-cli template design-baseline` Skeleton · both fixtures against the live render (identical except the `schemas:` footer, which `render.rs:1227` appends)
 Pre-pass: as above.
 - Intent stated — PASS: "so a scaffold never carries a silent platform default."

@@ -1,7 +1,7 @@
 """Persona (agent) target of the plan-only runner.
 
 Provenance: .mochiko/brainstorms/primitive-eval-harness-v2/record.md (D1-D13, accepted
-2026-09-08). Maintainer-side advisory tooling (GI-019 trace); never shipped (GI-020).
+2026-09-08). Maintainer-side advisory tooling (GI-019-kernel-tooling-admission trace); never shipped (GI-020-plugin-install-model).
 Vocabulary shared with the other targets: evals/README.md.
 
 One run = one headless `claude -p` session seated AS the persona (`--agent

@@ -12,7 +12,7 @@ strip owed); two passages of the `.md` the new rules make false are reworded. Ru
   staffed beyond that is your call." Which decision takes a turn of its own and which rides the
   defaults batch is now the rules' (`brainstorm.own-turn-or-batch`; `brainstorm.lead-inline-questioning`
   reworded by `0044` to drop "one question per turn").
-- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D6)
+- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D6-question-turn-test)
 - **Content:** verbatim —
 
   ```
@@ -35,7 +35,7 @@ strip owed); two passages of the `.md` the new rules make false are reworded. Ru
   `brainstorm.sec.tools`) and a confidence mark (`Confident` / `Assumed` / `Contested` / `Unsure`
   / `Deferred`)". The parts are `brainstorm.decision-cards`' to name (`0044`, `sec.tools`); the
   Goal cites the section and never the list.
-- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D9: a decision's card is
+- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D9-record-card-format: a decision's card is
   its only home in the record, titled by its name, with fixed parts)
 - **Content:** verbatim —
 
@@ -64,7 +64,7 @@ strip owed); two passages of the `.md` the new rules make false are reworded. Ru
 converted command: its rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin now carries at `plugins/mochiko/migrations/`, and the command reads no schema file.
 Ruling for every [v0.104.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
-D3 as amended (delivery binding, positive-confirmation halt, counts printed by the CLI) and D7
+D3-rules-delivery-binding as amended (delivery binding, positive-confirmation halt, counts printed by the CLI) and D7
 (hooks), with the wave-open Q-A and Q-B rulings of 2026-09-04 recorded in that session's
 `wave3-plan.md` §9, plus the `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 1ed5c19:plugins/mochiko/commands/brainstorm.md`. -->
@@ -76,7 +76,7 @@ D3 as amended (delivery binding, positive-confirmation halt, counts printed by t
   The reading grammar the block carried is now printed by the binary as the preamble's `legend`
   block; the `common.yaml` co-Read obligation is discharged in the render, which resolves every
   `extends: common.<slug>` stub before the model sees it (brainstorm binds seven).
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended)
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended)
 - **Content:** verbatim —
 
   ```
@@ -113,14 +113,14 @@ D3 as amended (delivery binding, positive-confirmation halt, counts printed by t
   and the interpretation rules the block taught are printed with every fire.
 - **Consumers assessed:** none shared — the block was this command's own text. The five
   unconverted commands keep their identical-in-form blocks and their raw schema Reads under the
-  GI-020 transition clause, which expires when no schema file ships in the plugin.
+  GI-020-plugin-install-model transition clause, which expires when no schema file ships in the plugin.
 
 ## [v0.104.0] the hand-pinned `kind: fail` count in Not-done
 
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- kind: fail · N rules`
   line under `pins` in the preamble block, and the `.md` now cites that pin and halts when a
   delivered fail-conditions end line disagrees with it, rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the count pins are
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the count pins are
   computed and printed by the CLI, never hand-pinned"; wave-open Q-B, 2026-09-04)
 - **Content:** verbatim —
 
@@ -141,7 +141,7 @@ D3 as amended (delivery binding, positive-confirmation halt, counts printed by t
 <!-- Wave context: the schema-header runtime-kernel wave (v0.100.0) — shipped schema
 top-of-file header comments trimmed to runtime-essential content. Ruling for every
 [v0.100.0] entry below: `.mochiko/decisions/2026-08-28-schema-header-runtime-kernel.md`
-(a recorded supersession-by-amendment of command-content-schema D14) + `DECISIONS.md`
+(a recorded supersession-by-amendment of command-content-schema D14-nested-section-grammar) + `DECISIONS.md`
 2026-08-28 row. Pre-edit verbatim text: `git show e44b33d:plugins/mochiko/schemas/<file>`. -->
 
 ## [v0.100.0] `schemas/brainstorm.yaml` header — full-grammar comment superseded by the runtime kernel
@@ -151,7 +151,7 @@ top-of-file header comments trimmed to runtime-essential content. Ruling for eve
   `command-schema-ontology` records (edit-time)
 - **Tier failed:** n/a — supersession by ruling (`2026-08-28-schema-header-runtime-kernel.md` R1)
 - **Content:** the ~68-line canonical D14 header, faithfully compressed: provenance paragraph
-  (D1/D7 citations, GI-020 note, narrative-stays-in-.md note) · full grammar block (section id ·
+  (D1/D7 citations, GI-020-plugin-install-model note, narrative-stays-in-.md note) · full grammar block (section id ·
   id minting/freeze/tombstones D11 · labels D8 · class incl. M3 audit note · nine-kind vocabulary ·
   when semantics · enforces · extends resolution · text/${var} D5 · provenance sidecar D16 ·
   pointer) · conditions/moments block explanations · referential-closure paragraph (D15, deixis,
@@ -162,7 +162,7 @@ top-of-file header comments trimmed to runtime-essential content. Ruling for eve
   vocabulary (the two semantics no `.md` restates). The `advisory` gloss is restated on the
   runtime axis ("guidance, not binding"), not carried verbatim — the ceremony-axis meaning
   ("may change without supersession ceremony") stays homed at
-  `.claude/rules/mochiko/primitive-edits.md` criterion 5 and content-schema D6.
+  `.claude/rules/mochiko/primitive-edits.md` criterion 5 and `command-content-schema` D6-rule-block-grammar.
 - **Consumers assessed:** the command's own `.md` (self-carries the reading grammar; unchanged) ·
   `.claude/skills/converting-command-to-schema/SKILL.md` (updated this wave to mint the kernel) ·
   `scripts/check-command-schema.py` (does not read header comments; post-edit `--all` PASS,
@@ -171,7 +171,7 @@ top-of-file header comments trimmed to runtime-essential content. Ruling for eve
 
 Entry formats: `strips/README.md`. Wave context: the D4 codification pre-shrink — the
 shared team-form prose relocated into `templates/command-shape.md` (design:
-`.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`, D3/D4/D9). **Stale as a standing claim:**
+`.mochiko/brainstorms/pattern-codification-and-minimalism/record.md`, D3-surface-keeper-vehicle/D4-codify-then-strip/D9-cluster-wave-strip). **Stale as a standing claim:**
 the shape is now **v5** (2026-07-30) — see the v0.35.0 section below.
 
 <!-- Wave context: the near-dup convergence wave (v0.99.0) — three brainstorm rules
@@ -252,7 +252,7 @@ Brainstorm has no DECLARE case — both of its shape-gated rules took the MOVE d
 - **Disposition:** superseded → the `when:` field on each rule, resolving against the new
   top-level `conditions:` block; both IDs kept, both rewords tabled in the inventory's
   section B.6.
-- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` D3, single-homing:
+- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` D3-declared-condition-dimensions, single-homing:
   "rule-level activation conditions live in `when:` alone and leave the `text`";
   `DECISIONS.md` 2026-08-27.)
 - **Content:** the two texts as they stood at v0.97.0, verbatim (block scalars quoted in their
@@ -278,7 +278,7 @@ Brainstorm has no DECLARE case — both of its shape-gated rules took the MOVE d
   `common.transport-floor` now carries (next entry but one). Guards that are NOT rule-level
   activation stayed in prose untouched, per the inventory's stays-prose table:
   `brainstorm.pair-maps-independent`'s "In a review pair" (a genuine composition branch with
-  no declared dimension — the inventory's J-2 recommends prose this wave),
+  no declared dimension — the inventory's J-2-undeclared-dimension-branches recommends prose this wave),
   `brainstorm.reopen-born-verify`'s subject-carried trigger,
   `brainstorm.index-bookkeeping`'s "where the outcome landed",
   `brainstorm.next-step-offer`, `brainstorm.user-review-waiver`, and
@@ -295,7 +295,7 @@ Brainstorm has no DECLARE case — both of its shape-gated rules took the MOVE d
 
 - **Disposition:** superseded → `kind: fail` on each of the four nodes in
   `plugins/mochiko/schemas/brainstorm.yaml`, section `brainstorm.sec.fail-conditions`.
-- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` D1 and
+- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` D1-rule-kind-set and
   build-surface item 4, "`kind: fail` replaces the `fail-condition` label as the operative
   selector"; `DECISIONS.md` 2026-08-27. The label is retired from the registry the same wave —
   entry in `.mochiko/strips/command-labels.md`.)
@@ -351,9 +351,9 @@ Brainstorm has no DECLARE case — both of its shape-gated rules took the MOVE d
   `plugins/mochiko/schemas/common.yaml`, each bound by a stub carrying
   `extends: common.<slug>` plus its local `class:` (and, where they apply, local `kind:`,
   `when:`, and `labels:`).
-- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` D8 as narrowed at
+- **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` D8-common-extends-adoption as narrowed at
   C2 and given its precedence clause at C3 — itself a recorded supersession-by-ruling of
-  command-content-schema D3, amended not reversed; `DECISIONS.md` 2026-08-27. The
+  command-content-schema D3-no-shared-library, amended not reversed; `DECISIONS.md` 2026-08-27. The
   3-or-more-exact-duplicate bar and the bind/no-bind table: inventory F.0/F.1. Brainstorm is
   the only command that binds all four surviving blocks.)
 - **Content:** the fields as they stood at v0.97.0, verbatim —
@@ -398,7 +398,7 @@ Brainstorm has no DECLARE case — both of its shape-gated rules took the MOVE d
   would be inherited but always overridden. Each resolved text is byte-identical to what was
   removed except `transport-floor`'s single-homed guard, so no rule's meaning changes.
   `brainstorm.model-tiering` was a prototype stub and does **not** bind: its block failed the
-  3+ bar (two members) and, per the inventory's J-9, brainstorm's text differs from the block
+  3+ bar (two members) and, per the inventory's J-9-one-token-misses, brainstorm's text differs from the block
   by two backticks around `Explore` — it stays a full per-command rule, restored
   byte-identical to v0.97.0, and the prototype was never committed so nothing shipped in stub
   form and no tombstone is due.
@@ -420,7 +420,7 @@ Brainstorm has no DECLARE case — both of its shape-gated rules took the MOVE d
   substituted), which keeps every surviving D6/D11/D12/D14/D15/D16 line and adds the D1–D8
   grammar. `at:` is deliberately absent (D4 as amended at I5 — deferred to graduation).
 - **Tier failed:** n/a — supersession by ruling (`command-schema-ontology` D1–D8 amend
-  command-content-schema D6's rule-block grammar; `DECISIONS.md` 2026-08-27.)
+  command-content-schema D6-rule-block-grammar's rule-block grammar; `DECISIONS.md` 2026-08-27.)
 - **Content:** the superseded header lines as they stood at v0.97.0, verbatim —
 
   ```
@@ -438,11 +438,11 @@ Brainstorm has no DECLARE case — both of its shape-gated rules took the MOVE d
 - **Kept deliberately:** every grammar line the amendment does not touch survives verbatim —
   the ID mint-once/reword/split/merge rules, the `brainstorm.fail.*` segment line, the labels
   registry line, the `class:` value definitions (already reading "pair audit", so brainstorm
-  was not one of the inventory's two J-13 stragglers), the `text:`/`${var}` line, the D16
+  was not one of the inventory's two J-13-charter-audit-headers stragglers), the `text:`/`${var}` line, the D16
   provenance sidecar line, the `pointer:` line, the deixis ban and its curated-marker note,
   the legal self-reference pair ("this schema" and "the run" — brainstorm is a run command, so
   the desks' third term is correctly absent), the D12 grain line, and the D13
-  advisory-checker line. The command-content-schema D10 rollout citation is superseded by the
+  advisory-checker line. The command-content-schema D10-per-command-rollout rollout citation is superseded by the
   canonical header's D1/D7 citation, which every schema now shares; the rollout fact survives
   in that record's Session trail, which the old line itself pointed at.
 - **Consumers assessed:** the other five command schemas take the same canonical header the
@@ -464,7 +464,7 @@ D14 precedent). Ruling for every [v0.97.0] entry below:
 - **Disposition:** superseded → `plugins/mochiko/commands/brainstorm.md` `## Adaptive Goal
   Protocol`; the opener's mission clause and `$ARGUMENTS` handling into step 1 (Entry, N1),
   the `## Goal` body verbatim into step 2.
-- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D1 as
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D1-canonical-command-scaffold as
   narrowed at review C2, D2, N1; `DECISIONS.md` 2026-08-27 row) — the goal-form half of the
   F3 two-form split.
 - **Content:** verbatim — "**Goal:** think `$ARGUMENTS` through with the user and leave one
@@ -487,8 +487,8 @@ D14 precedent). Ruling for every [v0.97.0] entry below:
   `brainstorm.sec.roles` and `brainstorm.sec.reserved`, the bindings gloss carries whole onto
   `brainstorm.sec.tools`, and `ways-of-working` / `boundaries` are newly enumerated under the
   D5 breadth invariant.
-- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D3,
-  D4, D5; `DECISIONS.md` 2026-08-27 row).
+- **Tier failed:** n/a — supersession by ruling (`command-md-scaffold-standardization` D3-section-set-unification,
+  D4-six-set-vocabulary, D5-section-breadth-invariant; `DECISIONS.md` 2026-08-27 row).
 - **Content:** verbatim — "run's binding rules, nested in three sections, each addressable by
   its section ID: `brainstorm.sec.harness` (lead role, seat wiring, review independence, and
   the decisions reserved to the user) · `brainstorm.sec.bindings` (deliverable, index,
@@ -580,7 +580,7 @@ refinement) → `DECISIONS.md` 2026-08-26 command-content-schema row. -->
   dangling sidecar keys a finding, both negative-tested; sidecar absent degrades to a
   warning for plugin-standalone checkouts); the conversion skill's step 7 re-pointed; the
   pair-form audit criteria in `.claude/rules/mochiko/primitive-edits.md` gained the sidecar
-  home. The sidecar is repo-side and never shipped — plugin install unchanged (GI-020).
+  home. The sidecar is repo-side and never shipped — plugin install unchanged (GI-020-plugin-install-model).
 
 ## [v0.95.0] `## Harness` — the whole section moves to the schema (D2, exercised by the D10 rollout ruling)
 
@@ -599,7 +599,7 @@ refinement) → `DECISIONS.md` 2026-08-26 command-content-schema row. -->
   `mochiko:patterns-model-tiering`); the blind-map / coverage-routing / reopen-verify trio
   carries `ruling:` anchors to the 2026-08-10 cold-review-gap-challenge row, the model-tiering
   rule to the 2026-08-16 model-tiered-seats row.
-- **Tier failed:** n/a — supersession by ruling (command-content-schema D2 — rules move to the
+- **Tier failed:** n/a — supersession by ruling (command-content-schema D2-rules-prose-split — rules move to the
   schema, narrative stays — as exercised for this command by the D10 rollout ruling
   2026-08-26, record Session trail, structure-only extraction against the frozen referent
   `.mochiko/brainstorms/command-content-schema/referents/brainstorm-shipped-v0.94.0.md`;
@@ -670,7 +670,7 @@ refinement) → `DECISIONS.md` 2026-08-26 command-content-schema row. -->
   `brainstorm.index-bookkeeping` · `brainstorm.km-close-ritual` ·
   `brainstorm.synthesis-on-request` · `brainstorm.register` · `brainstorm.next-step-offer`.
   The repeated paths declare once in `vars:` (`record_path` · `index_path` · `km_path`, D5).
-- **Tier failed:** n/a — supersession by ruling (command-content-schema D2 as exercised by the
+- **Tier failed:** n/a — supersession by ruling (command-content-schema D2-rules-prose-split as exercised by the
   D10 rollout ruling 2026-08-26, record Session trail, against the frozen referent
   `.mochiko/brainstorms/command-content-schema/referents/brainstorm-shipped-v0.94.0.md`;
   `DECISIONS.md` 2026-08-26 command-content-schema row).
@@ -713,7 +713,7 @@ refinement) → `DECISIONS.md` 2026-08-26 command-content-schema row. -->
   Not-done line re-keys to the count pointer — "the 4 rules labeled `fail-condition` in
   `plugins/mochiko/schemas/brainstorm.yaml`" — N=4 pinned, the C2 guard, the count match
   checker-verified (D13).
-- **Tier failed:** n/a — supersession by ruling (command-content-schema D7's fail-condition
+- **Tier failed:** n/a — supersession by ruling (command-content-schema D7-stage-one-scope's fail-condition
   form as exercised for this command by the D10 rollout ruling 2026-08-26, record Session
   trail; `DECISIONS.md` 2026-08-26 command-content-schema row).
 - **Content:** verbatim —
@@ -959,7 +959,7 @@ cold re-read cheap, and a respawn is cold by design).
 - **Consumers assessed:** none.
 
 ---
-**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7 as
+**Wave context (v0.44.0 — the D7 leakage scrub).** `verbosity-caveman-ops-separation` D7-full-leakage-scrub as
 folded at review (S4): **full scrub** of ops leakage from the shipped tree, with no
 changelog-worthy detail lost — every removed block is preserved verbatim below. Ruling:
 `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation ruled" row.
@@ -974,7 +974,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 
 ## [v0.44.0] v2-revision evidence citation (standing-advocate rule)
 - **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 (`.mochiko/brainstorms/brainstorm-v2-revision/record.md`)
@@ -983,7 +983,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 
 ## [v0.44.0] v2-2-revision evidence citation (lens-split rule)
 - **Disposition:** superseded → deleted from the shipped file; preserved verbatim here.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above)
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above)
 - **Content (verbatim):**
 ```
 (Both rules'
@@ -994,7 +994,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 ## [v0.44.0] KEPT survivor's evidence pointer (no-fallback transport bet)
 - **Disposition:** superseded → the pointer lives here; the `KEPT:` marker and its claim stay in
   the command per the amended P9.
-- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7 + S4; the `DECISIONS.md` 2026-08-01 row above), executed under the lead's stage-A ruling (option (a)).
+- **Tier failed:** n/a — supersession by ruling (`verbosity-caveman-ops-separation` D7-full-leakage-scrub + S4; the `DECISIONS.md` 2026-08-01 row above), executed under the lead's stage-A ruling (option (a)).
 - **Content (verbatim, the pointer only):**
 ```
 , its
@@ -1004,7 +1004,7 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 - **Kept deliberately:** `KEPT:` plus the survivor's claim — the no-fallback transport bet stays
   `Contested`. The audit still sees a marked survivor; only its evidence moved.
 - **Tier-2 evidence (the pointer, preserved for the verify-path):** this command's own v2 design
-  record, `.mochiko/brainstorms/brainstorm-command-rewrite/record.md`, D9.
+  record, `.mochiko/brainstorms/brainstorm-command-rewrite/record.md`, D9-no-fallback-transport.
 
 ## [v0.43.0] The `<!-- shape-form: v7 -->` marker retired from the preamble
 - **Disposition:** superseded → deleted. The marker was added by this same version's conversion
@@ -1091,7 +1091,7 @@ file and the next editor should know it before adding to it.
   dispositioned** and the verify
   pass confirming the folds landed — or the ruling was **none** and the waiver is recorded
   ```
-- **Protected traces checked at source before removing anything:** the v0.35.0 CS-D8 ledger
+- **Protected traces checked at source before removing anything:** the v0.35.0 `command-succinctness-strip` D8-kept-line-regrading ledger
   homes the Brainstorm v2.2 sized-review row ("weight-statement inputs · heavyweight→pair
   default · none→waiver") at the **Review sizing gate line**, not at the Goal, so this entry
   supersedes only the Goal's echo of it and the row's home stands. *(That home was itself edited
@@ -1124,7 +1124,7 @@ file and the next editor should know it before adding to it.
 - **Content (v6, verbatim → v7):** `Zero survivors is vacuously clean — the tally is still
   reported` → `the tally is on the record even at zero survivors, which is vacuously clean`
 - **Protected content:** `DECISIONS.md`-traceable (Brainstorm v2.2 tally rule; the v0.35.0
-  CS-D8 ledger row homes it at "**Goal**, final clause"). The home survives in the converted
+  `command-succinctness-strip` D8-kept-line-regrading ledger row homes it at "**Goal**, final clause"). The home survives in the converted
   Goal, so the row is **preserved** and this entry records a rewording, not a supersession of
   the row.
 - **Kept deliberately:** both halves — the vacuous-clean reading and the still-reported tally.
@@ -1168,7 +1168,7 @@ file and the next editor should know it before adding to it.
   provenance paragraph above).
 - **Protected content, leaving by ruling and named as such:** the `rules: the user` clause is
   `DECISIONS.md`-traceable — the Brainstorm v2.2 row (the sized lens-split review), whose
-  v0.35.0 CS-D8 ledger entry reads "Sized review: weight-statement inputs · heavyweight→pair
+  v0.35.0 `command-succinctness-strip` D8-kept-line-regrading ledger entry reads "Sized review: weight-statement inputs · heavyweight→pair
   default · none→waiver → **Review sizing** gate line, all three parts + the default keying P7
   requires". Only the *owner* of the sizing call leaves; all three parts stay.
 - **Content (v6, verbatim — the clause that left):**
@@ -1256,7 +1256,7 @@ command-local doctrine.
 - **Consumers assessed:** five-command recovery — see the shared consumer list in the `strips/plan.md` v0.37.0 entry.
 - **Protected-set note:** as recorded in the plan entry — record §7's protection premise for this recovery is spent now the bug is resolved; deliberate supersession, not a check-14 re-drop.
 
-# v0.35.0 — the goal-shape rebuild wave (CS-D10 step 4)
+# v0.35.0 — the goal-shape rebuild wave (`command-succinctness-strip` D10-pilot-first-execution step 4)
 
 **Wave context:** command goal-shape rebuild, **step 4 of 4** — the five-command wave after the
 audit-PASSed plan pilot (design: `.mochiko/brainstorms/command-succinctness-strip/record.md`,
@@ -1292,8 +1292,8 @@ mandates, and `Explore`/`Status` gaining code formatting.
 - **Disposition:** superseded → the file's own v5 blocks (Goal · Seats & checks · Constraints ·
   Bindings · Recovery)
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/command-succinctness-strip/record.md`, CS-D3 · CS-D4 · CS-D5; executed
-  per CS-D10 step 4)
+  (`.mochiko/brainstorms/command-succinctness-strip/record.md`, `command-succinctness-strip` D3-goal-shaped-documents · `command-succinctness-strip` D4-flow-narrative-removal · `command-succinctness-strip` D5-goal-command-anatomy; executed
+  per `command-succinctness-strip` D10-pilot-first-execution step 4)
 - **Content:** the v4 headings `## Team-form parameters (shape Layer 2)` · `## Session
   parameters` · `## The seats` · `## Convergence — this workflow's review bindings` ·
   `## Done-condition and acceptance` · `## Contract (authoring-time fill)`, and the narrative
@@ -1347,13 +1347,13 @@ mandates, and `Explore`/`Status` gaining code formatting.
 P14 (clearing unit + checkpoint keying) does not bind: brainstorm has no devolved branch — its
 only teammate-to-teammate surface is the cold convergence review, and every verdict is judgment.
 
-## [v0.35.0] CS-D8 survivor re-grade ledger — every protected line resolved
+## [v0.35.0] `command-succinctness-strip` D8-kept-line-regrading survivor re-grade ledger — every protected line resolved
 
-CS-D8 (extended by user ruling) protects two sets: `KEPT:`/Tier-2-evidenced lines **and** every
+`command-succinctness-strip` D8-kept-line-regrading (extended by user ruling) protects two sets: `KEPT:`/Tier-2-evidenced lines **and** every
 line traceable to a `DECISIONS.md` row. brainstorm's prior strip notes carry **no live `KEPT:`
 entry** — all seven v0.11.0 entries are relocations — so the protected set is derived from the v4
 text against the `DECISIONS.md` rows that rule in this file (brainstorm v1 → v2 → v2.1 → v2.2,
-fact-checker-seat, constitution-native-surfaces, OD-D6/D7/D9, model-tiered-seats,
+fact-checker-seat, constitution-native-surfaces, `operating-docs-maintenance` D6-maintenance-carrier-floor/D7-enforcement-surface-split/D9-knowledge-module-redesign, model-tiered-seats,
 command-altitude). **43 protected rules enumerated; all 43 resolved — 39 translated into the new
 blocks, 4 relocated to a confirmed home. Zero dropped.**
 
@@ -1375,7 +1375,7 @@ holds the content.
 
 | protected line | source | resolved |
 |---|---|---|
-| No standing challenger — the v2 standing episodic advocate's 3:1 machine-to-user traffic and unconsented amendment folds | Brainstorm v2.1 row (2026-07-05); `brainstorm-v2-revision/record.md` F1 + D2 | **Constraints invariants**, evidence intact. Re-homed from the validation-model line where v4 kept it: P6 is "one line naming which validation branch", P9 is where an out-of-scope ruling with its evidence belongs |
+| No standing challenger — the v2 standing episodic advocate's 3:1 machine-to-user traffic and unconsented amendment folds | Brainstorm v2.1 row (2026-07-05); `brainstorm-v2-revision/record.md` F1 + D2-episodic-advocate-failure | **Constraints invariants**, evidence intact. Re-homed from the validation-model line where v4 kept it: P6 is "one line naming which validation branch", P9 is where an out-of-scope ruling with its evidence belongs |
 | The checker's map lands **verbatim** — a checker-authored section the lead writes around, never restates | Brainstorm v2.2 row; `brainstorm-v2-2-revision/record.md` F9/M1 | **Constraints invariants** + the evidence pointer newly bound |
 | Reviewers do **not** re-read the reality surface the map covers (the pair's dominant cost) | Brainstorm v2.2 row, same record | **Constraints invariants**, cost evidence intact |
 | Sized review: weight-statement inputs · heavyweight→pair default · none→waiver | Brainstorm v2.2 row (the sized lens-split review) | **Review sizing** gate line, all three parts + the default keying P7 requires |
@@ -1391,9 +1391,9 @@ holds the content.
 | One-off fact-fetches with no standing-perspective value go to `Explore` | Fact-checker-seat row; model-tiered-seats row (the cheap-explorer avenue) | Bindings' **Fact route** |
 | Hard-require agent teams, **no fallback transport** (`Contested` dogfood-pilot bet) | Brainstorm v2 row (2026-07-04), `brainstorm-command-rewrite/record.md` D9 | `description:` declaration + `command-shape.md` Layer 2 + a `KEPT:` provenance pointer — see the survivor-provenance entry below |
 | Governance is native: the CLAUDE.md region loads with the session; the ledger is read only for waiver/amendment detail, never a blocking gate | constitution-native-surfaces row (D1–D8) | **Constraints invariants** |
-| Index bookkeeping — read before opening, entry on open, update at acceptance or supersession naming where the outcome landed | OD-D6/D7 + the KM module's command carrier | Bindings' **KM landing** |
-| Open/close invariants + the **subtractive landing ritual** from the **project copy** `.mochiko/memory/knowledge-management.md`, under fix-on-sight | OD-D6 (subtractive landing) + the CS step-1 adjudication making the project-copy reference mandatory in KM-carrying commands | Bindings' **KM landing**; check 1's KM member greps the project path, and it is the project path |
-| No index and no module → skip without ceremony (the layer was declined) | OD-D9 (the module is elective) | Bindings' **KM landing**, closing clause |
+| Index bookkeeping — read before opening, entry on open, update at acceptance or supersession naming where the outcome landed | `operating-docs-maintenance` D6-maintenance-carrier-floor/D7-enforcement-surface-split + the KM module's command carrier | Bindings' **KM landing** |
+| Open/close invariants + the **subtractive landing ritual** from the **project copy** `.mochiko/memory/knowledge-management.md`, under fix-on-sight | `operating-docs-maintenance` D6-maintenance-carrier-floor (subtractive landing) + the CS step-1 adjudication making the project-copy reference mandatory in KM-carrying commands | Bindings' **KM landing**; check 1's KM member greps the project path, and it is the project path |
+| No index and no module → skip without ceremony (the layer was declined) | `operating-docs-maintenance` D9-knowledge-module-redesign (the module is elective) | Bindings' **KM landing**, closing clause |
 | The `@`-reference recovery — empty `$ARGUMENTS` has a named cause and a prompt | command-altitude row (its retrofit-regression warning names this class); the class the pilot dropped and had restored under audit | **Preamble** goal line, both halves. Grepped, not assumed — the pilot's named failure mode |
 | Uncertainty rides the **lead-penned record** (the shape's lead-penned branch, not producer-authored) | current body (P11) | Bindings' **Uncertainty carrier** |
 | Verify-pass owner = the record-integrity reviewer, or the sole reviewer in single mode | Brainstorm v2.2 row | Bindings' **Verify-pass owner** (P13) |

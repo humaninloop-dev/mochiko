@@ -48,7 +48,7 @@ likewise touched no sibling. Stamping a scratchpad copy of the committed genesis
 byte-identical, reproducing P1's claim.
 
 **4. Migration `0002` — PASS.** Header carries `grammar` · `id` · `sequence: 2` · `intent` ·
-`anchor` · `hash` in the README's shapes, the anchor `2026-09-03 cli-schema-delivery D3` matching
+`anchor` · `hash` in the README's shapes, the anchor "`2026-09-03 cli-schema-delivery D3`" matching
 the documented form. Six `reword-section` changes, one per command schema, nothing else in the
 file. The hash is genuinely enforced — one altered word on a scratch copy gives `hash-mismatch ·
 … the header records sha256:47abe5a3… but the body canonicalises to sha256:5755cf79…`, exit 1;

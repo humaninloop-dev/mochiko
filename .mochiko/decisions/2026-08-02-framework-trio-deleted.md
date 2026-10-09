@@ -17,7 +17,7 @@ finding recorded in the v0.44.0 DEFERRED entry), and the trio's own files.
 obligate-read it as the shape's single-sourced home.
 
 The standing plan was the D6 trio **move** to `.claude/` (verbosity-caveman-ops-separation
-D6, 2026-08-01), DEFERRED behind the S14 probe, which had failed in-session (repo-side
+D6-maintenance-trio-moved, 2026-08-01), DEFERRED behind the S14 probe, which had failed in-session (repo-side
 agents load only at session start; the spawn instantiated generic).
 
 ## Decision

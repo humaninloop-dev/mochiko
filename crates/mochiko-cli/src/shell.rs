@@ -1,7 +1,7 @@
 //! The shell leg's parse: which paths a `Bash` or `PowerShell` command writes.
 //!
 //! A path is a write target only where the command's grammar puts a write (record
-//! `hook-enforcement-field-review` D5, as amended at S12): the right side of a redirect, every
+//! `hook-enforcement-field-review` D5-shell-leg-deny, as amended at S12): the right side of a redirect, every
 //! argument of `tee`, the destination of `cp` and `install`, every argument of `mv` (a source is a
 //! removal from its home), the file operands of an in-place `sed` or `perl`, and `dd of=`. Every
 //! other position is a read. The scan this replaces fired a command's arm on any word, read a `-i`

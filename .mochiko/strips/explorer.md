@@ -1,7 +1,7 @@
 # Strip notes — `agents/explorer.md` (deleted v0.78.0)
 
 Entry formats: `strips/README.md`. First and final entry — the agent was born v0.77.0
-(model-tiered-seats D4 executed, ADR 2026-08-16-model-tiering-build) and deleted whole one
+(model-tiered-seats D4-explore-tier-restoration executed, ADR 2026-08-16-model-tiering-build) and deleted whole one
 version later.
 
 ## [v0.78.0] Agent deleted — cheap rung retargeted to native `Explore` + explicit `model: haiku` override

@@ -129,6 +129,15 @@ sections:
         text: >-
           The drift-probe seat is an empirical read of the codebase grading the store's
           `As-built:` claims. Never the seat that wrote the claim; evidence, never memory.
+      - id: arch.grader-checks-joined-ids
+        labels: [independence]
+        class: must
+        text: >-
+          ${grader_seat}'s grade of a store write also covers its AX, SPN and NFR IDs, against the
+          IDs section of `templates/artifact-format.md`: each new row's ID joined, its slug naming
+          the row's topic; each citation carrying its definition's slug, or bare where that
+          definition is bare.
+        anchor: 2026-10-08 human-readable-ids D6
   - id: arch.sec.reserved
     title: Reserved to the user — never the desk's
     intent: 'Decisions held by the user: gates, rulings, and escalations no seat may take.'

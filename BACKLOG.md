@@ -23,23 +23,40 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 
 ## Human-readable IDs build
 
-*(ruled + accepted 2026-10-08, `human-readable-ids` D1–D22 as review-amended; provenance:
-`.mochiko/brainstorms/human-readable-ids/record.md`)*
+*(ruled + accepted 2026-10-08, `human-readable-ids` D1–D22 as review-amended; built
+2026-10-09 at v0.118.0 (trail); provenance: `.mochiko/brainstorms/human-readable-ids/record.md`)*
 
-- [ ] **Build the joined ID form** (2026-10-08; provenance: D1–D22, F20/F24 for the family list and
-  scopes) — wave 0 first: D8's two-arm read test on hand-coined slugs (arm 1 bare, arm 2 slugged; pass
-  = arm 2 ≥15 "knew", ≥5 over arm 1, 0 "misled"); a fail stops the build. Then: the minting rules and
-  templates of every family (D1, D3, D9, D10, D13, D19), the report label `C<n>` → `Q<n>` (D10),
-  `validate-requirements.py` and the other plugin scripts (F21); the crate — `mochiko-cli ids --check`
-  incl. mention drift (D6, D18) and `ids rename` / `ids rekey`, scoped and preview-first, skipping
-  quotes across line breaks (D7, D15); the slug map drafted and graded, then applied to the live layer
-  (D14), history layer frozen (D12, D14, D21); one `/mochiko:setup` amend recording the GI-019
-  admission and the GI-005 ruling (D17); CI report wired (D18); minor bump with the break in
-  `CHANGELOG.md` (D20); a `GLOSSARY.md` entry for the joined form (record § For the landing).
 - [ ] **Opt-in back-fill pass for user projects** (2026-10-08; provenance: D16, OQ3) — D14's method
   packaged for a consumer project (slug map drafted by a seat, graded, applied by `ids rename`).
   Trigger: D14's run on this repo has proven the method. Until then projects like kinako keep both
   forms, and the D6 check lists their old bare IDs.
+- [ ] **Release `mochiko-cli` 0.4.0** (2026-10-09; provenance: D7-scoped-rename-command,
+  `CHANGELOG.md` [0.118.0]) — plugin v0.118.0 names `ids rename` / `rekey` in its IDs section and
+  so needs a `mochiko-cli` carrying `ids`; 0.4.0 is unpublished (`publish = false`, the
+  `release.yml` publish job `if: false`, no `mochiko-cli-v*` tag yet). Until then only the
+  maintainer break-glass (`cargo install --path crates/mochiko-cli`) has `ids`. The user's call:
+  the tag and the publish are outward-facing; GI-012-release-gates-module sets the tag's gates.
+- [ ] **`ids` crate residuals** (2026-10-09; provenance: the wave-3 `build-log.md` and
+  `reports/w3-gate-audit.md`) — (a) a quote inside a quote breaks D15-protected-line-rewrites'
+  quote pairing: `.mochiko/strips/validation-constitution.md` stays on the Exclude list
+  (`scripts/ids-check-excludes.txt`) until fixed; (b) a GI rename is project-wide, so a foreign
+  GI (another project's, an eval fixture, a template slot) is indistinguishable from this
+  register's — 49 were joined wrongly at wave 3 and fixed by hand; any consumer repo citing
+  another project's GI hits the same; (c) the refusal texts; (d) `tests/matrix_similar.rs`
+  `a_log_whose_own_tree_carries_no_allowlist_keeps_walking_up` assumes `CARGO_TARGET_TMPDIR`
+  sits inside the repo — an out-of-repo `CARGO_TARGET_DIR` gives a false red (fix: build both
+  trees inside its scratch root). Crate units, so each takes `.claude/rules/mochiko/rust-cli.md`.
+- [ ] **ID back-fill residuals in the repo** (2026-10-09; provenance: the wave-3 slug maps,
+  `wave3-backfill.md`) — decisions cited in `build-vs-off-the-shelf` and `agent-decoupling` that
+  no index row carries; clause pointers; the heads the back-fill left bare (FD, HF, F, FC, O, RI,
+  DQ, TR, BD) and `R-n`. Gate advisory U1 (accepted, not fixed): the `authoring-constitution`
+  strip's "unindexed mention" should read "a session mention with no resolvable owner". The
+  next `/mochiko:setup` amend owes the test that regeneration keeps the joined IDs (AM-6).
+- [ ] **Seat-transport findings from the build** (2026-10-09; provenance: the wave-3
+  `build-log.md`) — the native `Explore` + `model: haiku` locate route returned nothing in every
+  seat attempt this build: probe before relying on it (`mochiko:patterns-model-tiering`); a
+  teammate waiting on a background runner was not woken on its exit (twice) — briefs now say
+  foreground only; a platform probe owes whether that is a defect or by design.
 
 ## Brainstorm target-state build
 
@@ -90,21 +107,21 @@ provenance: `.mochiko/brainstorms/hook-enforced-artifact-schema/record.md`)*
 
 - [ ] **Hook-enforced artifact schema — what is left** (2026-09-15; provenance: the record's
   § Build trail + `build-log.md`; delivered through `9738a90`). Waves 0–3 CLOSED (probe · crate
-  463 tests · governance v3.1.0 AM-3 · `0005` with the ratified budget table); wave 4 BUILT +
+  463 tests · governance v3.1.0 AM-3-conformance-gate-admission · `0005` with the ratified budget table); wave 4 BUILT +
   audited, on public `main` from 0.109.0 (2026-09-19) before any publish; wave 5 mochiko half DONE (path 0 ·
   set 0). Owed, each gated on the user:
   1. **Crate publish** — the two first-publish controls (manual-approval publish environment ·
-     signed tags), then the `mochiko-cli-v*` tag. Gates 2 and 3 (GI-012 as amended, AM-3 C5).
+     signed tags), then the `mochiko-cli-v*` tag. Gates 2 and 3 (GI-012-release-gates-module as amended, AM-3-conformance-gate-admission C5).
   2. **Gate-6 full run** against the published binary (`MOCHIKO_GATE_VERSION=<tag>`; 87 cases,
      ≈155 sessions, $13–16, ≈1 h — `wave5-gate6-plan.md`), then the release commit. The owed
-     pre-authorized PATCH (`wave5-bump-patch.md`) was **folded into AM-5, governance v3.2.0,
-     2026-09-24** — v3.1.3 retired unminted; the 0.109.0 breach is a GI-012 exception-registry
+     pre-authorized PATCH (`wave5-bump-patch.md`) was **folded into AM-5-field-review-fold, governance v3.2.0,
+     2026-09-24** — v3.1.3 retired unminted; the 0.109.0 breach is a GI-012-release-gates-module exception-registry
      row that expires at the publish in 1.
   3. **Kinako violator pass** — done 2026-10-01 (field review wave 4, kinako PR #24); watch below.
   4. **Size survivors** — ruling owed on the recommendation: rewrite nothing, existing
      over-budget files ride D4e amnesty (mochiko 65 · kinako 102).
 - [ ] **Gate first-live-run watch — D10, with S15's metrics restored** (2026-10-01; provenance:
-  `.mochiko/brainstorms/hook-enforcement-field-review/record.md` D9(d) and S15; the wave-4 plan
+  `.mochiko/brainstorms/hook-enforcement-field-review/record.md` D9-wrap-up-build(d) and S15; the wave-4 plan
   `wave4-kinako-pass.md` § 4) — on kinako's next implement run under plugin 0.116.0 or later,
   measure the deny count by kind, the false-positive share of the shell leg, the files per run
   under `.mochiko/`, and S15's displacement metrics (per-home total volume · reports per run ·
@@ -178,7 +195,7 @@ verdicts in `.mochiko/brainstorms/hook-enforcement-field-review/build-log.md`; n
 - [ ] **CLI schema delivery — post-build residuals** (2026-09-05; the six-wave build is DONE →
   trail; provenance: `.mochiko/brainstorms/cli-schema-delivery/record.md` waves 3–6). Owed on the
   user's side: **the wave-2 publish tail** — signed release tags + the `crates-io` environment
-  approval rule (GI-002's two owed controls), then lift `publish = false` / `if: false`, tag
+  approval rule (GI-002-project-type-shelves's two owed controls), then lift `publish = false` / `if: false`, tag
   `mochiko-cli-v0.1.0`, publish to crates.io + the tap — what makes the hooks' and D5's
   `cargo install mochiko-cli` line true (README carries the git-install line until then).
   Follow-ups: wrap `mochiko-cli template` output in head/end lines like `rules` and `doc` · the
@@ -260,7 +277,7 @@ trail (2026-09-08); their open residue is carried below.)*
   lists (tech-lead *Three-Part Rule*, requirements-analyst *Your Process*) — `not_claims` them at mint.
   Then **fill the four post-cut eval slots** — `review-governance-intent` · `review-plan-artifacts`
   · `review-specifications` · `validation-constitution` — with goldens + pre-registration from the
-  re-keyed inventories, never the stale ones (`skill-content-schema` D7's judged-sample-of-two
+  re-keyed inventories, never the stale ones (`skill-content-schema` D7-advisory-schema-tooling's judged-sample-of-two
   floor stands).
   **Status 2026-09-19 — three slots CLOSED by user ruling, one open.**
   `review-specifications` — **accepted as read, re-key declined** (post 8/8 floors vs pre 4/8,
@@ -291,7 +308,7 @@ trail (2026-09-08); their open residue is carried below.)*
 - [ ] **Agents-as-schema channel probe** (D4 door) — does a plugin hook fire for a `--agent`
   session, an `Agent` subagent, and an agent-team teammate, with injected text landing before the
   first model turn? `!` injection in agent bodies is ruled out (record F12). **Absorbed 2026-09-13
-  into the hook-enforced artifact schema wave-0 probe** (`hook-enforced-artifact-schema` D8).
+  into the hook-enforced artifact schema wave-0 probe** (`hook-enforced-artifact-schema` D8-transport-coverage-probe).
   **Result (wave 0, leg 8, user-ruled R5):** POSITIVE for the `Agent` subagent leg — a
   `SubagentStart` hook's `hookSpecificOutput.additionalContext` lands in every spawned seat's
   context before its first turn, named and unnamed spawns alike (proof: `attachment:
@@ -421,14 +438,14 @@ strictly disjoint file ownership (schemas · crate + CI · template deletions + 
 re-points · skill re-points + D7 re-key) + 3 fresh author≠grader validator seats: Rust crate
 `crates/mochiko-cli` (mochiko's first non-markdown code) + 8 schema data files + 8 template
 supersessions (byte-exact strips) + 14-surface re-points + thin D7 re-key + governance PATCH
-2.0.1 activating the AM-1 dormant crate gates; audits V1 crate PASS + delta-confirm, V2 8/8
+2.0.1 activating the AM-1-kernel-ban-softened dormant crate gates; audits V1 crate PASS + delta-confirm, V2 8/8
 fidelity + 8/8 strips, V3 13/13 re-points, `authoring-feature-map` budget overage HOLDS, one
 fix round (CI `cargo audit --deny`); trail. Open residual:
 
 - [ ] **Template-guidance residuals** (carried from the closed first-live-run watch,
   2026-09-05): the artifact-quality question — does CLI-delivered template guidance guide
   artifact quality at least as well as the old `.md` exemplars? — stays n=0 until a live
-  authoring run is judged (`schema-based-template-guidance` D11 null-road concession); the
+  authoring run is judged (`schema-based-template-guidance` D11-kernel-position-softened null-road concession); the
   **D5 reopen condition** (a real per-project depth need; the governance depth dial and
   template guidance visibly diverge) reopens by explicit user ruling only. The raw-Read
   fallback question and the M7 revert-the-wave trigger closed at wave 6 (no fallback exists;
@@ -477,7 +494,7 @@ ships — 2 plan-approved producer seats with disjoint file ownership + 2 fresh 
 validator seats, 2/2 PASS round 1, zero fix rounds; trail). Open residual:
 
 - [ ] **Transport-floor first-live-run watch** (2026-08-14; provenance:
-  [teammate-message-races](.mochiko/brainstorms/teammate-message-races/record.md) D7 `Assumed`
+  [teammate-message-races](.mochiko/brainstorms/teammate-message-races/record.md) D7-live-run-watch `Assumed`
   + CV4 limitation) — watch the floor's first live multi-seat run (any command composing >1
   seat): trigger lanes fire as split-keyed (message legs on messaging alone, topology legs on
   shared writes) · composition steer consulted at composition time · fan-in confirmation held
@@ -509,7 +526,7 @@ trail). Open residual:
   4 blocking caught (two authoring misses, two follow-throughs of a user-ruled ledger row) —
   read against wave 1's 8 and wave 2's 1 at the five-line read.
 - [ ] **D5 rules-file leg (first-miss trigger) + first-live-run watch** (2026-08-13; provenance:
-  [charter-ritual-balance](.mochiko/brainstorms/charter-ritual-balance/record.md) D5 `Contested` +
+  [charter-ritual-balance](.mochiko/brainstorms/charter-ritual-balance/record.md) D5-runtime-delivery-legs `Contested` +
   D7) — the path-injected `.claude/rules/mochiko/sound-loop.md` leg (setup-scaffolded, path-scoped
   to the governing surfaces) stays deliberately unbuilt; **the first observed floor miss in live
   use — a judgment-authored governing-surface write that runs without the loop — builds it
@@ -575,13 +592,13 @@ Ruling: DECISIONS.md row 2026-08-10 (D1–D15 as amended); build delivered same 
   stub lifecycle (no expiry rule; grooming surfaces, never auto-retires) · size signal at
   selection · D11 concurrent-fold watch (`Assumed` — first real concurrent fold re-opens it).
   2026-08-13: **re-scoped** — the v0.61.0 surface this watches is superseded by the
-  capability-map rebuild (pm-role-and-feature-derivation D6); the watch transfers to the
+  capability-map rebuild (pm-role-and-feature-derivation D6-leaf-nesting-superseded); the watch transfers to the
   rebuilt surface and rides that section's D11 probe + first-fold item from its build on.
 ## Cold-review gap-challenge residuals
 
 Ruling: DECISIONS.md row 2026-08-10 (D1–D10); build delivered same day at v0.60.0 (trail).
 
-- [ ] **First-live-run watch, both carriers** (2026-08-10; provenance: D9): watch the first live brainstorm review and first live setup G3 review post-build — does the blind map produce material coverage findings (not generic noise), does reopen routing fire, does the materiality bar hold solo? Feeds the record's I8 padding open thread too. **2026-10-06:** brainstorm's half moves to the front map once the target-state build ships (`brainstorm-target-state` D10) and rides that section's dogfood watch; setup's half is unchanged (D19).
+- [ ] **First-live-run watch, both carriers** (2026-08-10; provenance: D9): watch the first live brainstorm review and first live setup G3 review post-build — does the blind map produce material coverage findings (not generic noise), does reopen routing fire, does the materiality bar hold solo? Feeds the record's I8 padding open thread too. **2026-10-06:** brainstorm's half moves to the front map once the target-state build ships (`brainstorm-target-state` D10-cold-review-shape) and rides that section's dogfood watch; setup's half is unchanged (D19).
 
 ## Feature-map layer residuals
 
@@ -649,10 +666,10 @@ Ruling: DECISIONS.md row 2026-08-02 (D1–D9); built same day at v0.49.0 (trail)
 
 ## Adversarial-review ceiling benchmark
 
-Ruling: DECISIONS.md row 2026-08-04 (AR-D1–D6); test deliberately parked for a dedicated session (AR-D5).
+Ruling: DECISIONS.md row 2026-08-04 (AR-D1–D6); test deliberately parked for a dedicated session (`adversarial-review-generality` D5-dedicated-test-session).
 
 - [ ] **Run the seeded-defect benchmark** (2026-08-04; provenance:
-  `.mochiko/brainstorms/adversarial-review-generality/record.md`, AR-D3/D4/D6 as amended at
+  `.mochiko/brainstorms/adversarial-review-generality/record.md`, `adversarial-review-generality` D3-seeded-defect-benchmark/D4-spec-review-substrate/D6-precommitted-decision-rule as amended at
   review) — cold-runnable spec: one real spec artifact (kinako or mochiko-app); independent
   seeder pre-sweeps (labels pre-existing defects) then injects ~10 seeds, ~60/40
   in/off-taxonomy, off-taxonomy seeds **off-list-but-in-jurisdiction only** (wrong domain
@@ -661,7 +678,7 @@ Ruling: DECISIONS.md row 2026-08-04 (AR-D1–D6); test deliberately parked for a
   misses pass the same filter). Four arms on `review-specifications`: baseline · A floor-line
   · B free-hunt-first · C disjoint lens briefs; ≥2 replicates/arm, hit = strict majority
   (2 replicates = both). Scoring: separate cold scorer holds seed key (never seeder/arm);
-  match = location + substance; borderlines escalate to user. Verdict shape (AR-D6):
+  match = location + substance; borderlines escalate to user. Verdict shape (`adversarial-review-generality` D6-precommitted-decision-rule):
   off-taxonomy recall primary · in-taxonomy non-regression + precision guards · per-arm
   counts reported · null → no build. A+B composite a build-time option on a B win. Extension
   to other review skills staged on a positive result (review-brainstorm second, only then).
@@ -675,9 +692,9 @@ Ruling: DECISIONS.md row 2026-08-04 (AR-D1–D6); test deliberately parked for a
   one interrogation dimension per future module, or a consolidated modules beat? Datapoints:
   `layer-rules` landed as a *beat* (2026-07-21); compliance modules ruled fact-triggered off
   dimension 2, agenda stays ten (PO 2026-07-30); ops SLOs elicited at dimension 8, no new
-  dimension (OO-D3 2026-07-31). Three-for-three consolidated — open only for a genuinely new
+  dimension (`ops-observability-hardening` D3-app-level-slos 2026-07-31). Three-for-three consolidated — open only for a genuinely new
   *constitution* module. **Revisit: next module design.** *2026-09-24: dimension 2 struck
-  (`setup-product-agnostic` D1) — the compliance datapoint no longer applies; the question
+  (`setup-product-agnostic` D1-profile-leaves-setup) — the compliance datapoint no longer applies; the question
   stands for engineering modules only.*
 - [ ] **D9 catalog-graduation seam** (2026-07-16, `setup-constitution-flexibility` record) —
   after real sessions mint principles, harvest candidates from trace stamps and design the
@@ -699,31 +716,31 @@ mochiko's own migration executed same day (this file's shape is its result).
   mochiko-app *amend* run): injection probe ran at G5, landing ritual observed at 2 of 5
   boundaries (amend + plan) — the fresh-setup half and the seeded cap trip remain.
 - [ ] **Governance first-live-run watches** (2026-08-06, governance v1.0.0, DECISIONS row) —
-  standing amend triggers to observe: public-product transition (GI-002) · CI arrival un-narrows
-  FLOOR-SEC scanning (GI-003) · ~~GLOSSARY.md content → scaffold (GI-009)~~ fired and discharged
-  at AM-4, governance v3.1.2, 2026-09-23 · helper-script waiver
-  trigger (GI-008) · evolution-notes/layer-rules remain offerable on amend (GI-013/014, FP-1).
+  standing amend triggers to observe: public-product transition (GI-002-project-type-shelves) · CI arrival un-narrows
+  FLOOR-SEC scanning (GI-003-repo-secret-hygiene) · ~~GLOSSARY.md content → scaffold (GI-009-knowledge-management-core)~~ fired and discharged
+  at AM-4-glossary-deviation-discharged, governance v3.1.2, 2026-09-23 · helper-script waiver
+  trigger (GI-008-script-test-waiver) · evolution-notes/layer-rules remain offerable on amend (GI-013/014, FP-1).
   (Gates 4+5 executed first time at the v0.54.0 bump 2026-08-06 — `marketplace.json` synced
-  0.10.0→0.54.0, CHANGELOG entry appended; the obligation is now routine per-bump, GI-012.)
+  0.10.0→0.54.0, CHANGELOG entry appended; the obligation is now routine per-bump, GI-012-release-gates-module.)
 - [ ] **Expansion-heavy-surface watch HIT — ROADMAP stamp line vs CHANGELOG** (2026-08-06;
   provenance: groom-pass watch, `grooming-operating-docs` step 8; recorded re-open trigger for
-  the report-writer ruling, OD-D12 + the "Scribe/report-writer closed" standing bet) — the
+  the report-writer ruling, `operating-docs-maintenance` D12-no-report-writer + the "Scribe/report-writer closed" standing bet) — the
   ROADMAP last-groomed stamp had grown to a ~700-word per-version build changelog whose every
   clause was a mechanical derivation from DECISIONS rows, trail entries, and strip notes; with
-  `CHANGELOG.md` adopted (GI-010, 2026-08-06) the per-bump detail now has a dedicated owner,
+  `CHANGELOG.md` adopted (GI-010-changelog-elective-module, 2026-08-06) the per-bump detail now has a dedicated owner,
   and the 0.53.0 CHANGELOG entry was itself "reconstructed from the ROADMAP stamp line" —
   derivation running in both directions. Logged for the user per the skill's never-act-here
   rule: decide whether this re-opens the report-writer/scribe question or whether the fix is
   purely contractual (stamp = date + baseline figures only; per-bump detail lives in
   CHANGELOG). The 2026-08-06 groom compressed the stamp to contract shape either way.
-- [ ] **Governance follow-up amend — AM-4 validator residuals** (2026-09-23; provenance: AM-4
+- [ ] **Governance follow-up amend — AM-4-glossary-deviation-discharged validator residuals** (2026-09-23; provenance: AM-4-glossary-deviation-discharged
   validate grade, `.mochiko/memory/governance-trace-summary.md` validator record A2/A3;
   user-ruled to BACKLOG at acceptance) — three small items for the next setup amend, none in
-  AM-4's scope: (a) `GLOSSARY.md` has no named writer moment — the KM pin carries the term
+  AM-4-glossary-deviation-discharged's scope: (a) `GLOSSARY.md` has no named writer moment — the KM pin carries the term
   format only, and the template's "spec landing when new terms mint" did not fit the brainstorm
   build item that minted the first eight terms (candidate: "a ruling's landing when it mints a
   term"); (b) the region's standing-amend-triggers line (`CLAUDE.md` governance region) omits
-  the helper-script waiver trigger the ledger still lists as standing; (c) GI-009 Testability
+  the helper-script waiver trigger the ledger still lists as standing; (c) GI-009-knowledge-management-core Testability
   still names "in-flight agreement", which the KM pin records as superseded by the orphan rule.
 - [ ] **Brainstorm bookkeeping watch** (2026-07-17, carried) — on a KM project:
   read-index-before-open fires, entries land/update with named landings, close invariants catch
@@ -756,7 +773,7 @@ build item in the trail.
   entered) · the rendered-diagram primary path · implement's cycle open/close deviation
   self-check + built-vs-approved diff at the acceptance gate (seam-N1) · the
   `ARCHITECTURE.md` fold staying distinct (no implement run yet). (Team-form rider dropped
-  2026-08-04 groom — transport-neutral ruled 2026-08-02, command-architecture-realignment D5.)
+  2026-08-04 groom — transport-neutral ruled 2026-08-02, command-architecture-realignment D5-transport-neutral-harness.)
 
 ## Pipeline dogfood
 
@@ -830,13 +847,13 @@ together. Model-tiered D4 explorer build DELIVERED 2026-08-16 at v0.77.0, retarg
 `mochiko:explorer` seat deleted (agent-team teammates cannot spawn plugin-scoped agents),
 native `Explore` + explicit `model: haiku` override now the rung (ADR
 `2026-08-19-explorer-retarget-native`); D5 seat-tiering stays deferred (Later), D6's three watches
-ride the probe below — D6-ii already positively evidenced by the in-session spawn test. **Worker rung ADDED 2026-09-05 at v0.108.0** — `staff-engineer` and `qa-engineer` may hand decided coding/verification tasks to a disposable `model: sonnet` general-purpose subagent, read back before it counts (ADR `2026-09-05-sonnet-worker-rung`; migration `0004`); D5 still untouched — seats stay opus. **D5 SUPERSEDED 2026-09-19** by `orchestrator-model-selection` D1–D4 — the seat default key (six `opus` / four `sonnet`, lead deviation with disclosure, dogfood-gated); build item below. Seam note (2026-08-01, `verbosity-caveman-ops-separation` D8): epic D3's
+ride the probe below — D6-ii already positively evidenced by the in-session spawn test. **Worker rung ADDED 2026-09-05 at v0.108.0** — `staff-engineer` and `qa-engineer` may hand decided coding/verification tasks to a disposable `model: sonnet` general-purpose subagent, read back before it counts (ADR `2026-09-05-sonnet-worker-rung`; migration `0004`); D5 still untouched — seats stay opus. **D5 SUPERSEDED 2026-09-19** by `orchestrator-model-selection` D1–D4 — the seat default key (six `opus` / four `sonnet`, lead deviation with disclosure, dogfood-gated); build item below. Seam note (2026-08-01, `verbosity-caveman-ops-separation` D8-token-epic-seam): epic D3's
 conditional-prose intent was **finished by the output-style build wave 1** (v0.44.0) — never a
 wave-3 candidate again; the always-read floor re-baselined at that build (−4,490 B/run on
 `command-shape.md`). Epic D5 (sizing-gate generalization) closed 2026-08-04 — superseded at
 the v8 rebuild (trail; ADR `2026-08-04-groom-epic-closures`).
 
-- [ ] **Seat default dogfood watch** (2026-09-19; `orchestrator-model-selection` D4) — per
+- [ ] **Seat default dogfood watch** (2026-09-19; `orchestrator-model-selection` D4-dogfood-evidence-gate) — per
   down-tiered producer seat: review-round count vs the ≤3 cap and grader first-round FAIL findings;
   revert trigger (`Assumed`, confirm at first trip): a seat hits the round cap, or a grader catches
   a defect class its Opus-era runs never produced, in two runs — revert = one alias flip + strip.
@@ -844,7 +861,7 @@ the v8 rebuild (trail; ADR `2026-08-04-groom-epic-closures`).
   ruling (G2 accepted as is). OQ2 split-pane probe · OQ3 instantiation floor · OQ7/OQ8 ride here.
 - [ ] **D2 upgrade — the one-shot OTel probe** — enable documented config in a dogfood run;
   observe console/per-run aggregation/teammate attribution; automation graduates on probe
-  evidence only. Standing-seat D4 + model-tiered D6 probe questions ride it, plus TC's three
+  evidence only. `standing-seat-lifecycle` D4-seat-measurement-probe + `model-tiered-seats` D6-unknowns-measurement-track probe questions ride it, plus TC's three
   recorded-open (2026-07-31): `CLAUDE_AUTOCOMPACT_PCT_OVERRIDE` teammate applicability ·
   `subagentStatusLine` teammate coverage + `tokenCount` semantics · cost-one-recycle.
 - [ ] **Wave-3 candidates (candidates, not commitments)** — (1) governance/memory layer
@@ -897,16 +914,16 @@ trail** (scope ADR `2026-07-30-po-narrowing-build-scope`). Tier-I depth items op
   (adaptive-depth 2026-08-11, #6 fold): every check this build ships gets a low/high
   determination at build time under the D5 retrofit-cost cut line; scoping record not
   reopened.
-- [ ] **Shelf builds — the translation tables (Tier I)** (2026-07-30, PO-D5) — order:
+- [ ] **Shelf builds — the translation tables (Tier I)** (2026-07-30, `production-only-focus` D5-production-depth-agenda) — order:
   frontend → mobile → desktop (map F30: only backend/service seeded; desktop net-new).
   Frontend (`catalog/frontend.md`; 2026-07-16 user-ruled in-scope): type principles +
   frontend-appropriate floor examples (universal shelf examples are backend-flavored);
-  CLI/library shelves retire under PO-D1 — never author speculatively. Mobile (2026-07-21):
+  CLI/library shelves retire under `production-only-focus` D1-customer-product-target — never author speculatively. Mobile (2026-07-21):
   flavored clean-architecture-for-apps card selecting `layer-rules`; acceptance: a Flutter
   setup session deals flavored layered material; carries F6 — greenfield app sessions risk
   backend-flavored paths globs until it lands. (Absorbed the two Deferred-tracks shelf items
   at the 2026-08-01 groom.)
-- [ ] **IaC / deployment engineering — staged (Tier II)** (2026-07-30, PO-D5) — stage 1:
+- [ ] **IaC / deployment engineering — staged (Tier II)** (2026-07-30, `production-only-focus` D5-production-depth-agenda) — stage 1:
   release gates + environment discipline asserted; stage 2: infrastructure-code authoring (new
   artifact class, map F23). Own scoping session; data lifecycle + reliability/resilience ride
   Tier II behind it.
@@ -953,7 +970,7 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   rules file into a real project; watch the preserve-on-regenerate carve-out and disclose-once
   fire as designed.
 - [ ] **Plain-language sweep + internal-jargon leak to end users** (2026-08-01; provenance:
-  capture session; amended 2026-08-01 by `verbosity-caveman-ops-separation` D3) — the
+  capture session; amended 2026-08-01 by `verbosity-caveman-ops-separation` D3-plain-language-fold) — the
   language across mochiko is too complex; needs a plain-English sweep. Concrete leak: the
   plugin's end user is shown "Layer -2" (internal vocabulary); it appears in no shipped file —
   the leak is runtime lead prose, so a file sweep won't find it. **The rule's home is now
@@ -972,7 +989,7 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   before landing; a failing gate gets a ruled disposition or fails the run. (2)
   `impl.dm-landing-whole` / `impl.fail.ungraded-fold`: the budget deny blocks seats and lead on
   over-budget baselines, so graded fold text stayed "owed by the principal's pen" (run 3: the user
-  ran `APPLY.sh`) — **superseded 2026-09-23 by `hook-enforcement-field-review` D2**. (3)
+  ran `APPLY.sh`) — **superseded 2026-09-23 by `hook-enforcement-field-review` D2-cumulative-store-budgets**. (3)
   `impl.baselines-never-in-place`: the B116 spine groom (`f4c3ae5`, 646 → 227) edited the store
   mid-run — **dissolved 2026-09-24, `delta-files-vs-direct-baseline-edits` D6d**. (4)
   `impl.artifact-home`: evidence and the run log — **superseded 2026-09-23 by that record's
@@ -1048,7 +1065,7 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   of calling `SendMessage`), whether a structural nudge or gate can force tool-call dispatch at
   hand-off boundaries, and detection (a hand-off round that produced no `SendMessage` tool call).
   (Its former companions — residual A + the substrate decision — closed 2026-08-04, superseded
-  by transport-neutral D5.) Related 2026-08-14 (`teammate-message-races` record, CV3): the
+  by `command-architecture-realignment` D5-transport-neutral-harness.) Related 2026-08-14 (`teammate-message-races` record, CV3): the
   transport floor's **leg 7 fan-in confirmation is this defect's detector** — a hand-off round
   whose expected deliverable never arrives fails the fan-in confirm regardless of cause
   (narrated-not-dispatched, silent drop, died seat); the brainstorm scope here (root cause +
@@ -1079,7 +1096,7 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   team-config roster check (v0.38.0) — the worked precedent for the next firing. (The roster
   probe itself died with the team mandate at the v8 rebuild, 2026-08-02 D5; the watch
   survives — commands still name spawn/messaging capabilities.) Rider (2026-08-14,
-  `teammate-message-races` D6): this watch carries the transport floor's **version-floor
+  `teammate-message-races` D6-version-floor-only): this watch carries the transport floor's **version-floor
   re-verify** — agent-teams ≥v2.1.224 (below it, sends report success on failed mailbox
   writes) — plus the per-transport semantics the floor cites (teammate delivery
   documented-automatic, ordering undocumented); re-verify both at the next firing, no
@@ -1095,14 +1112,14 @@ Raw captures (2026-08-01) — to triage/brainstorm; grooming may re-key into fin
   against real infra; human FEATURE-DONE gate. Scoping decides whole-workflow vs branch; the
   journey-gate class (Cluster 2) gives the pass its hard gate class; the cold-checkout step
   (ruled into implement's final validation 2026-07-31) migrates here if audit takes feature-close.
-  Parked rider (AT-D5, 2026-08-04, `architecture-tieback` record): at feature close, before the
+  Parked rider (`architecture-tieback` D5-feature-close-diff, 2026-08-04, `architecture-tieback` record): at feature close, before the
   `ARCHITECTURE.md` In-flight pointer is removed, diff shipped code vs the accumulated
   feature-root `architecture.md` — catches descoped/partially-built slices per-slice diffs miss.
   Rider (2026-08-05, ADR `2026-08-05-orphan-plan-artifacts`): runtime NFR verification —
   p95/availability targets from `nfrs.md` re-checked against the built system — joins the
   feature-close verification scope when audit is scoped (no TEST-grammar NFR assert exists;
   implement got the minimal Design-inputs wire only). **NFR rider discharged 2026-08-19**
-  (`qa-gap-finding-verification` D9): runtime NFR verification now runs inside the
+  (`qa-gap-finding-verification` D9-non-functional-families): runtime NFR verification now runs inside the
   gap-finding pass at implement's final validation; it migrates with the pass. **Rider
   (2026-08-19, same record D2/I8):** the gap-finding pass itself homes in implement's final
   validation now and **migrates here if audit takes feature-close** — same clause as the

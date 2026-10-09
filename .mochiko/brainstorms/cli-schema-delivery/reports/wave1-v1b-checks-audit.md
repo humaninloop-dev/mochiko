@@ -121,7 +121,7 @@ No network or subprocess in the new code. No cwd-dependent lookup added — the 
 as an argument, and the corpus pointer test resolves through `CARGO_MANIFEST_DIR`; the fixture
 tree is written under `CARGO_TARGET_TMPDIR`. No file under `plugins/` changed.
 `replay::load` keeps its meaning: `validate_pointers` is a separate rooted pass with no caller
-inside `replay`, pinned by `the_state_only_validator_makes_no_pointer_claim`. GI-019 holds — the
+inside `replay`, pinned by `the_state_only_validator_makes_no_pointer_claim`. GI-019-kernel-tooling-admission holds — the
 new checks are structural facts about the store's own data, and the one filesystem check asks
 whether a reference resolves, never what the pointed-to file says.
 
@@ -211,7 +211,7 @@ this unit adds. It measures fine: the whole `migrate validate` pass is 0.06s of 
 | 2 | the ledger moves are honest; the 81 sums; the seven stale C3 rows corrected | **pass** — `accounted_for` is a bidirectional partition and passes; ledger arrays are 8/14/18 and 7/9/9, forcing ported 94 and 89, so the 81 resolves as 54 + 12 + 3 + 11 + 1; the seven C3 rows are removed from both `OUTSIDE_THE_HARD_SET` arrays and re-claimed with no new code; probes assert the id via `RejectOn`/`AdvisoryOn` and bare `Expect::Reject` is unused. Report bookkeeping error at A1 |
 | 3 | the `extra` map is lossless; the round trip pins it; genesis hash unchanged | **pass** — decoded, re-emitted last in document order, canonical-hash equality asserted for a rule carrying `ruling:`; `migrations/` untouched in the diff so the genesis file is byte-identical, and `tests/fidelity.rs` stays green. Corner at A8 |
 | 4 | corpus stays 0 rejecting; the 13 new advisories match the Python one-for-one | **pass** — reproduced by running both checkers: 0 findings each, the same nine zero-member labels on the same documents and the same four inherited absences on the same rules, and 87 pointers on both sides. 105 findings, 105 distinct, all advisory |
-| 5 | hygiene | **pass** — no dependency change, no `unsafe`, no cwd-dependent lookup, no shipped file changed, fixtures under `CARGO_TARGET_TMPDIR`, `replay::load` unchanged and pinned by a test, GI-019 intact |
+| 5 | hygiene | **pass** — no dependency change, no `unsafe`, no cwd-dependent lookup, no shipped file changed, fixtures under `CARGO_TARGET_TMPDIR`, `replay::load` unchanged and pinned by a test, GI-019-kernel-tooling-admission intact |
 | 6 | what a skeptical senior would refuse | **A1–A9.** No quadratic scan that will not scale (see the observation). The citation scanner does not match inside a word — that is the whole point of `dotted_tail`'s backtracking, and it reproduces the Python's own token choice — and cannot match inside a `${var}`, whose names admit no dot. No panic path: every slice index is either a checked char boundary or the end of an ASCII run. No dead code. The pointer check does follow climbs out of the root, which is A3 |
 
 ---

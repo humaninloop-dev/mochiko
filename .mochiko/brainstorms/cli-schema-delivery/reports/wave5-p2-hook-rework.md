@@ -102,7 +102,7 @@ Added beyond the eight, to confirm the fix opens no escape hatch. All silent, ex
 | `mochiko:no-such-thing` (neither) · absent | exit 0, silent |
 
 An unconverted skill carries no `!` line, so the converted check at line 62 exits 0 — it is covered
-by the GI-020 transition clause and correctly never gated. A name that is neither a command nor a
+by the GI-020-plugin-install-model transition clause and correctly never gated. A name that is neither a command nor a
 skill resolves to a path that does not exist, the check fails, and the hook stays silent.
 
 ## Ceremony

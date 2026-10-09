@@ -4,7 +4,7 @@
 //! (record D1). The binary reads that log and prints from it: one schema section at a time for a
 //! command or skill's rules (D3 as amended), and the producer or checklist view of an artifact
 //! template. It never gates pipeline progress, dispatches agents, or grades an artifact — the
-//! standing bright line (GI-019).
+//! standing bright line (GI-019-kernel-tooling-admission).
 //!
 //! - [`migration`] — the file grammar, the change ops, the body hash, the version contract
 //! - [`model`] — the typed document model and its canonical encoding
@@ -20,14 +20,18 @@
 //! - [`genesis`] — the generator behind `plugins/mochiko/migrations/0001-genesis.yaml`
 //! - [`views`] — the derived views, regenerated from the replayed state
 //! - [`similar`] — the advisory similar-rule detector
+//! - [`ids`] — the ID family table, the in-text ID scanner, and the advisory `ids --check`
+//! - [`rename`] — `ids rename`, `ids rekey` and `ids literal`: preview-first rewrites behind a diff check
 
 pub mod cli;
 pub mod conform;
 pub mod genesis;
 pub mod home;
 pub mod hook;
+pub mod ids;
 pub mod migration;
 pub mod model;
+pub mod rename;
 pub mod render;
 pub mod replay;
 pub mod schema;

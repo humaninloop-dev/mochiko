@@ -1,13 +1,13 @@
 # Strip notes — `skills/testing-end-user/`
 
 Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 1 (design:
-`.mochiko/brainstorms/workflow-token-reduction/record.md`, D3 + D6a/b; rulings ratified
+`.mochiko/brainstorms/workflow-token-reduction/record.md`, D3-cycle-report-slimming + D6a/b; rulings ratified
 2026-07-23). Skill-succinctness wave-1 entries atop (design:
 `.mochiko/brainstorms/skill-succinctness-strip/record.md`, batch-ratified 2026-07-25): body
 246 → 208 lines, 38 cut = 15% — in the 10–40 previously-stripped band.
 
 Verbosity/caveman wave-1 entry atop (design:
-`.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md`, D4 as folded at review
+`.mochiko/brainstorms/verbosity-caveman-ops-separation/record.md`, D4-report-format-repair as folded at review
 (S2/S13); ruling: `DECISIONS.md` 2026-08-01 "Output verbosity, caveman & ops separation
 ruled" row). The wave's edits to `references/REPORT-TEMPLATES.md` are **pure additions** —
 the sanctioned-set closure, the register binding, and the prose-on-clean check — so they ride
@@ -18,7 +18,7 @@ whose right to exist is contested in advance.
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the dense-five family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -28,13 +28,13 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/testing-end-user/SKILL.md`. -->
 
 <!-- Wave context: the joint hook/delta build, wave 3 (v0.116.0) — evidence moves to the run folder
 and the report cites command plus commit, never a log path. Rulings for every [v0.116.0] entry
-below: the hook field review `.mochiko/brainstorms/hook-enforcement-field-review/record.md` D4 as
+below: the hook field review `.mochiko/brainstorms/hook-enforcement-field-review/record.md` D4-raw-output-folder as
 amended (`.mochiko/runs/<run-id>/` is the declared raw-output home; reports cite command and
 commit, never a full-log path) (`DECISIONS.md` 2026-09-23 row); joint-build seam R6 (the lead
 removes the run folder after the user's acceptance,
@@ -46,6 +46,13 @@ the delivered rules `testing-end-user.evidence-capture-binding`, `.truncation-bo
 lead's ruling that the full-log lines are withdrawn, not re-pointed. Pre-edit verbatim text:
 `git show 5558fd7:<path>` for `SKILL.md`, `references/EVIDENCE-CAPTURE.md` and
 `references/REPORT-TEMPLATES.md`. -->
+
+## [v0.118.0] Gate-boundary and owning-cycle reading moved to the joined card heading
+
+- **Disposition:** superseded → END "Next cycle-card heading (`### - [ ] C<n>-…`; a pre-upgrade card's `### - [ ] Cycle <n>:`)", and the cycle number read from "the digits after `C` in the enclosing `### - [ ] C{N}-<slug> —` heading (a pre-upgrade card: `### - [ ] Cycle {N}:`)".
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; hand-off P5; D16 for the legacy heading)
+- **Content (superseded):** "END: Next `### Cycle` heading, next task line, OR end of the block" and "take the cycle number from the enclosing `### - [ ] Cycle {N}:` heading."
+- **Kept deliberately:** the legacy task-line form and every other parse step; the gate-ID labels (`C3-gate`, local).
 
 ## [v0.116.0] SKILL.md Common Mistakes — "include log-file locations" re-keyed to the citation
 
@@ -185,7 +192,7 @@ lead's ruling that the full-log lines are withdrawn, not re-pointed. Pre-edit ve
 
 - **Disposition:** superseded → "delivered by `mochiko-cli`", ids unchanged
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** four lines.
   1. "the uncertain-default posture live in the schema's `testing-end-user.sec.verdict` section."
   2. "(source per the schema's `testing-end-user.gate-source-binding`)"
@@ -205,7 +212,7 @@ lead's ruling that the full-log lines are withdrawn, not re-pointed. Pre-edit ve
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -240,7 +247,7 @@ lead's ruling that the full-log lines are withdrawn, not re-pointed. Pre-edit ve
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -251,7 +258,7 @@ lead's ruling that the full-log lines are withdrawn, not re-pointed. Pre-edit ve
   likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -316,7 +323,7 @@ lead's ruling that the full-log lines are withdrawn, not re-pointed. Pre-edit ve
     approval." → `testing-end-user.human-gate` (row 8, floor).
   - The Task Classification criteria table + "owned by this skill" →
     `testing-end-user.runtime-classification-owned` (row 9); the browser-flow exception
-    paragraph → `testing-end-user.browser-flow-exception` (row 10, UX-D9 wording
+    paragraph → `testing-end-user.browser-flow-exception` (row 10, `ux-mocking-in-specify` D9-flow-test-gate wording
     preserved in substance); "Default to SUBJECTIVE if uncertain … Any failure, on any
     classification, forces a checkpoint." → `testing-end-user.default-subjective`
     (row 11, floor).
@@ -376,7 +383,7 @@ lead's ruling that the full-log lines are withdrawn, not re-pointed. Pre-edit ve
 - **Disposition:** superseded → quality-gate commands come from `tasks.md`'s `## Quality Gates`
   section **and the project's own build configuration**.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D4**: "`plan.md` (the summary
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` **D4-planless-homes-gates**: "`plan.md` (the summary
   artifact) dies — no restatement artifact"). Scope for this file was opened by the wave lead's
   second extension ruling of 2026-08-26.
 - **Content (superseded text, verbatim):**
@@ -477,7 +484,7 @@ lead's ruling that the full-log lines are withdrawn, not re-pointed. Pre-edit ve
 
 ## [v0.49.0] TEST-gate source re-keyed to cycle cards
 - **Disposition:** superseded → gate blocks at the foot of cycle cards; legacy task-line form kept parseable
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2)
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` row 2026-08-02 "Task layer de-granularized + slice dissolved into specify (D1–D9)"; record `.mochiko/brainstorms/plan-task-granularity/record.md`, D2-cycle-card-stop)
 - **Content:** the `- [ ] **TN.X**: **TEST:**` detection sample in SKILL.md · TASK-PARSING.md's task-line boundary rules (`START: - [ ] **T{N}.{X}**: **TEST:`) and task-ID extraction as the primary form · `T{N}.{X}` / `verify-T2.4` keys in REPORT-TEMPLATES.md and EVIDENCE-CAPTURE.md (now `C{N} gate` / `verify-C{N}-gate`).
 - **Kept deliberately:** the whole parsing algorithm, field extraction, legacy-marker normalization, grammar-owner banner (TEST-GRAMMAR.md still owns the vocabulary) — the legacy task-line form remains parseable by design.
 - **Consumers assessed:** qa-engineer (mounts it) · implement · patterns-vertical-tdd (grammar owner, co-edited).

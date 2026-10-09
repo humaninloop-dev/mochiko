@@ -16,7 +16,7 @@ naming the upstream repository and the commit below.
 - Pinned commit: e0881d2de397d5e9761d7b35ff5017d8f5ebf69b
 - Copyright 2025 Paul Bakaus
 - License: Apache License, Version 2.0 (full text retained at the end of this file)
-- Ruling: .mochiko/brainstorms/impeccable-design-integration/record.md (D2, D14)
+- Ruling: .mochiko/brainstorms/impeccable-design-integration/record.md (D2-port-no-dependency, D14-license-notice-posture)
 
 Derived content is distributed under the Apache License, Version 2.0.
 

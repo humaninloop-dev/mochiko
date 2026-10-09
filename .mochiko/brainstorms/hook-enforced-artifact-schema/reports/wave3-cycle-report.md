@@ -13,7 +13,7 @@ deliverables_declared: 68
 templates_new: report-envelope · architecture-spine · architecture-concerns
 report_envelope_sections: 4 — Header (heading-less) · Failure narrative 15 · Notes of note 15 · Null-exit reasoning 15; frontmatter required [report] + the six-type enum; extra_headings allow
 templates_replaced: spec · tasks · feature-entry · governance-intent · codebase-analysis
-rule_mints: 17 (6 command · 11 skill), each class floor · kind binding, anchored 2026-09-13 hook-enforced-artifact-schema D1
+rule_mints: 17 (6 command · 11 skill), each class floor · kind binding, anchored "2026-09-13 hook-enforced-artifact-schema D1"
 migrate_validate: 0 rejecting · 104 advisory (105 before; one zero-member-label cleared)
 similar_clusters: 0 (scanned 1022 → 1039, in-kind pairs 148,353 → 150,665, allowlist untouched at 169)
 views_emitted: 73 documents · 26 view files added or changed
@@ -166,7 +166,7 @@ text and breaks no row.
   (`cargo install --path crates/mochiko-cli`, the lead's working assumption for waves 3–4), the
   published binary rejected `0005` loudly, with an `op-malformed` finding naming
   `0005-artifact-homes.yaml: changes[0]` and saying that `home` is not a document kind. That is
-  GI-020 working, and it means every mochiko command in this repo needs the break-glass build until
+  GI-020-plugin-install-model working, and it means every mochiko command in this repo needs the break-glass build until
   the crate is published.
 
 ## Carried for the reviewer and the lead

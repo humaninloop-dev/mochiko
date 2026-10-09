@@ -105,9 +105,9 @@ A **downstream verification step classifies tasks at runtime** and decides wheth
 Screens & Flows manifest is the source of the FLOW-XXX path — cite the ID, restate only the
 steps):
 ```markdown
-**TEST:** FLOW-002 checkout path walks end-to-end in the built app
+**TEST:** `storefront` FLOW-002-cart-checkout-path walks end-to-end in the built app
 - **Setup**: `npm start` (background) (timeout 30s)
-- **Action**: Playwright: navigate localhost:3000 → click "Cart" → click "Checkout" → submit payment form (per FLOW-002 steps)
+- **Action**: Playwright: navigate localhost:3000 → click "Cart" → click "Checkout" → submit payment form (per `storefront` FLOW-002-cart-checkout-path steps)
 - **Assert**: Screen reached: /checkout/confirmation
 - **Assert**: Page contains "Order confirmed"
 - **Capture**: screenshot
@@ -125,7 +125,7 @@ steps):
 the executor measures through the browser driver's computed styles and layout, then a human
 rules on at the checkpoint):
 ```markdown
-**TEST:** SCR-004 settings screen meets the measurable UI floor at every Contract-declared viewport
+**TEST:** `storefront` SCR-004-account-settings-screen meets the measurable UI floor at every Contract-declared viewport
 - **Setup**: `npm start` (background) (timeout 30s)
 - **Action**: Playwright: open localhost:3000/settings at each viewport the Direction block's Contract declares
 - **Assert**: Body and label text contrast ≥ 4.5:1 against its rendered background

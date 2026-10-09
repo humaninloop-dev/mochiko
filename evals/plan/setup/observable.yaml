@@ -1,5 +1,5 @@
 # D8 partition — /mochiko:setup rule set, plan-observable vs out-of-instrument.
-# Ruling: command-plan-only-eval D8 (accepted 2026-08-27, review fold C1).
+# Ruling: command-plan-only-eval D8-rule-partition-grid (accepted 2026-08-27, review fold C1).
 # The `observable` list IS the D2 rubric; `out_of_instrument` rules are declared here,
 # never silently absent at coverage 0. Validated by `run.py check-rubric setup`:
 # every schema rule ID appears in exactly one list.
@@ -75,8 +75,8 @@ out_of_instrument:
 # Declared unplanted branches (fixture-design record, not a partition class): two
 # rule facets are observable through one half of their subject only, because no scenario
 # plants the other half. Each is a plant candidate if a later grid wants it graded whole.
-# (setup.fail.no-feature-map's amend-clause facet left this list when the 2026-09-24
-# setup-product-agnostic D5 ruling narrowed the rule to one clause — no feature-map index at
+# (setup.fail.no-feature-map's amend-clause facet left this list when the "2026-09-24
+# setup-product-agnostic D5" ruling narrowed the rule to one clause — no feature-map index at
 # close, absent and not scaffolded.)
 #   setup.carve-outs-preserved — the mochiko:domain-registry half needs the layer-rules
 #     module attached and a domain-layer rules file; only the output-style pair is planted.

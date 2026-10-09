@@ -1,7 +1,7 @@
 # Validator Worktree Isolation in Implement — Decision Record
 
 - **Session:** `.mochiko/brainstorms/validator-worktree-isolation/` · 2026-08-01
-- **Status:** **accepted** (user, 2026-08-01) · **superseded in part 2026-09-20** — the grader identity (the `validator` persona) retired at v0.113.0 (`producer-plan-enforcement` D3 · `author-grader-consolidation` D7, built as that path's wave 3; strip `.mochiko/strips/validator.md` [v0.113.0]); the always-cold snapshot mechanism and its intent stand — pair-reviewed, 19/19 survivors dispositioned incl. the U1–U7 batch; verify round 1 NOT CLEAN (B1/B2 repaired same round + 7 polish) → round 2 CLEAN. Landed: DECISIONS.md row (2026-08-01) · BACKLOG build item + Layer-2 working-tree capture. Synthesis: not generated (on request). **Built 2026-08-01 at v0.42.0** — audit PASS (fix round folded); build item → trail, U5 watches open in BACKLOG; Open threads 1/5/7 dispositioned below. Sizing trail: pair, user-sized at convergence on the lead's weight statement (6 decisions at freeze · 58-fact surface at freeze · supersedes a shipped ruled constraint). *(Resume: re-read this record; if the verify pass has not reported, re-dispatch it to reviewer-integrity; then user acceptance.)*
+- **Status:** **accepted** (user, 2026-08-01) · **superseded in part 2026-09-20** — the grader identity (the `validator` persona) retired at v0.113.0 (`producer-plan-enforcement` D3-peer-plan-grader · `author-grader-consolidation` D7-fresh-gate-grader, built as that path's wave 3; strip `.mochiko/strips/validator.md` [v0.113.0]); the always-cold snapshot mechanism and its intent stand — pair-reviewed, 19/19 survivors dispositioned incl. the U1–U7 batch; verify round 1 NOT CLEAN (B1/B2 repaired same round + 7 polish) → round 2 CLEAN. Landed: DECISIONS.md row (2026-08-01) · BACKLOG build item + Layer-2 working-tree capture. Synthesis: not generated (on request). **Built 2026-08-01 at v0.42.0** — audit PASS (fix round folded); build item → trail, U5 watches open in BACKLOG; Open threads 1/5/7 dispositioned below. Sizing trail: pair, user-sized at convergence on the lead's weight statement (6 decisions at freeze · 58-fact surface at freeze · supersedes a shipped ruled constraint). *(Resume: re-read this record; if the verify pass has not reported, re-dispatch it to reviewer-integrity; then user acceptance.)*
 - **Driver (BACKLOG › Ergonomics, 2026-08-01, to-brainstorm):** give the implement command's
   validation/QA step the option to run in a git worktree for cleaner separation from the
   producer's working tree — isolate the grader from uncommitted producer state / avoid
@@ -24,10 +24,10 @@
   pollution / outbound contamination / parallelism / observed incident) · Q2 timing (true
   overlap / alternation residue / unsure) · Q3 incident trace (capture exists / run named /
   memory only) · Q4 scope — (a) validator-only, (b) symmetric separation, (c) facts-decide →
-  ruled (a), D1 · Q5 commit boundary — (a) user-commit gate before final validation, (b)
-  diff-transport, (c) demote cold checkout → (a) rejected, D2 · Q6 evidence posture / gate
+  ruled (a), D1-validator-only-isolation · Q5 commit boundary — (a) user-commit gate before final validation, (b)
+  diff-transport, (c) demote cold checkout → (a) rejected, D2-commit-gate-declined · Q6 evidence posture / gate
   scope — (a) fixed core + composable option, (b) always-on per-cycle, (c) fact-backed core
-  only → ruled (a), D3 · Q7 batch — mechanism card (→ D4) + per-cycle trigger card ((a) lead
+  only → ruled (a), D3-fixed-core-gate · Q7 batch — mechanism card (→ D4-filtered-snapshot-mechanism) + per-cycle trigger card ((a) lead
   judgment / (b) deterministic triggers / (c) run-start ask → (a)) — both as recommended ·
   U1–U7 — the review ruling batch, stems in the Review section.
 - **Reality surface (fact-checker seat filled — probe):**
@@ -43,7 +43,7 @@
 *(D1… as ruled — statement + rationale + confidence mark each; user corrections and reversals
 logged where they happen.)*
 
-**D0 — The null option, killed on the record.** `Confident` (user-ruled at review, U6)
+**D0-null-option-killed — The null option, killed on the record.** `Confident` (user-ruled at review, U6)
 Build-versus-don't-build was never dealt during questioning (review finding S10); ruled at
 review: the map's against-column (F7 no concurrent writers · F19 independence never required
 filesystem separation · F35 "ergonomics alone can't justify" · F49 the one prior worktree
@@ -51,21 +51,21 @@ primitive abandoned for no demand) loses to one fact alone — **F24: the shippe
 constraint, executed as written against an uncommitted implementation, gates a tree that does
 not contain the work under validation.** That is a defect in ruled doctrine requiring repair
 regardless of the incident's evidence grade; the per-cycle option rides as optional
-ergonomics (D3(ii), D5) and would not have justified the build alone (consistent with F35).
+ergonomics (D3-fixed-core-gate(ii), D5-cycle-option-trigger) and would not have justified the build alone (consistent with F35).
 
-**D1 — Scope: validator-only isolation.** `Confident` (user-ruled, Q4)
+**D1-validator-only-isolation — Scope: validator-only isolation.** `Confident` (user-ruled, Q4)
 The design separates the **qa/verifier side** only; the producer keeps owning the working
 tree, which stays the single source of truth. Symmetric seat-per-worktree separation (each
 seat in its own tree with a merge point) is out of scope for this session — it attacks the
 driver more directly but opens merge/ownership semantics against the sequential-cycle
 doctrine, and the **filed capture** was validator-side (F47 for provenance; the Driver
 line's own scope — "the implement command's validation/QA step" — for the validator-side
-reading) — the incident itself is `Assumed`, per D3(iii) (qualified at review, S9).
+reading) — the incident itself is `Assumed`, per D3-fixed-core-gate(iii) (qualified at review, S9).
 Revisit trigger (S12): if the sequential-only deferral (F7 — an explicit
 `deliberate-shortcut-ledger` deferral, not a permanent property) is ever lifted for parallel
 cycle execution, this rejected road re-opens.
 
-**D2 — No user-commit gate.** `Confident` (user-ruled, Q5 — rejecting the lead's recommended
+**D2-commit-gate-declined — No user-commit gate.** `Confident` (user-ruled, Q5 — rejecting the lead's recommended
 option (a))
 A mid-run commit checkpoint ("pause, you commit, then cold validation runs on the commit") is
 **out**: "will create friction with too much approval." Binding consequence for everything
@@ -73,7 +73,7 @@ downstream: every isolation mechanism must work on the **uncommitted** working s
 user action added to the run — which also rules out closing the F24 cold-checkout gap by
 commit-gating it.
 
-**D3 — Gate scope: fixed core + composable option.** `Confident` (user-ruled, Q6 — adopting
+**D3-fixed-core-gate — Gate scope: fixed core + composable option.** `Confident` (user-ruled, Q6 — adopting
 the lead's recommendation; (i) enumerated and (ii) amended at review, S1 / S15(U5))
 (i) **Final validation always runs against a cold tree built from the uncommitted working
 state** — superseding the 2026-07-31 cold-checkout ruling's "fresh clone" **mechanism** while
@@ -82,7 +82,7 @@ uncommitted work; F22–F24). *What is preserved, enumerated:* the works-warm-on
 (F14/F15 — gitignored dirs absent either way, F32/F57c) and G5 evidence status. *What
 changes, enumerated:* the clone gated **what the repository contains**; the snapshot gates
 **what the disk contains** — a strict superset (untracked non-ignored files ride, F57b).
-Residual, accepted under D2: a selective user commit that later omits a file the snapshot
+Residual, accepted under D2-commit-gate-declined: a selective user commit that later omits a file the snapshot
 contained can still ship the works-warm class — uncatchable without a commit boundary; the
 tracked-only snapshot variant (F59/F60: commit-equivalent; hard-fails loudly on deleted
 tracked files) is recorded as **available, not canonical**, since it drops exactly what a TDD
@@ -103,38 +103,38 @@ this session lacked.
 working-tree state in kinako) and F48 (three authoring-side working-tree collisions), with no
 citable run artifact (incident-trace dispatch, F41–F49 and its verdict block).
 
-**D4 — Cold-tree mechanism: the git-semantics filtered snapshot.** `Confident` (user-ruled,
+**D4-filtered-snapshot-mechanism — Cold-tree mechanism: the git-semantics filtered snapshot.** `Confident` (user-ruled,
 Q7 batch — adopting the lead's recommendation; caveat (i) resolved by U1 at review, scope
 bound added per S17)
 The canonical mechanism for every cold tree this design creates is a **filtered snapshot
 driven by `git ls-files -co --exclude-standard`** (working-tree file list → copy to a
 disposable location): git-read-only, so it performs none of the writes the F18 ban could even
 arguably cover (no `.git/worktrees` metadata write, F31 avoided); carries the uncommitted
-work per D2/D3 (F57a/b); drops gitignored dirs, preserving the works-warm-only catch
+work per D2-commit-gate-declined/D3-fixed-core-gate (F57a/b); drops gitignored dirs, preserving the works-warm-only catch
 (F14/F15, F57c); cheapest of the three measured mechanisms **at the measured 5.9M sample** —
 F56's own bound rides: it copies real bytes and scales with working-tree size, so the
 ordering can invert on a large tree; matches git's own ignore semantics where the rsync
 variant fails two cases (F58.1/2). Native harness isolation is ruled out **by docs**: all
 paths are commit-based/tracked-only, and `.worktreeinclude` copies exactly the gitignored set
 — it would defeat the catch (F50–F53). The tracked-only variant (F59/F60) is available, not
-canonical (D3(i)) — measured (0.023s) but in a different repo against a different question,
+canonical (D3-fixed-core-gate(i)) — measured (0.023s) but in a different repo against a different question,
 so outside F56's three-way comparison. The listing always **explicitly excludes the whole
 `.claude/worktrees/` parent** (e.g. the `:!.claude/worktrees` pathspec on the `ls-files`
-call) — covering the snapshot home and the D4(i) fallback replica alike, independent of the
-target repo's ignore state (D6; B1 repair, round-2 notes 2–3). Caveats:
+call) — covering the snapshot home and the D4-filtered-snapshot-mechanism(i) fallback replica alike, independent of the
+target repo's ignore state (D6-snapshot-composition-details; B1 repair, round-2 notes 2–3). Caveats:
 (i) the snapshot is **not a git repository** (F58.5). For a stack whose quality gates shell
 out to git (version-from-describe, changed-files selectors), the lead composes the
 **fallback, fully specified under the U1 ban ruling**: `git worktree add --detach` under
 `.claude/worktrees/` — an ephemeral, self-removed verification worktree, **ruled not a
 banned mutation (U1: the F18 ban protects refs, index, tracked content, and history)** —
-plus an overlay of the D4 snapshot file-set over the worktree and removal of the
+plus an overlay of the D4-filtered-snapshot-mechanism snapshot file-set over the worktree and removal of the
 `git ls-files -d` deleted set, yielding a working-tree replica with a functional `.git`.
-The composition is recorded on D5's carrier.
+The composition is recorded on D5-cycle-option-trigger's carrier.
 (ii) a snapshot-only gate failure is checked against the **dangling-symlink** class (F58.4)
-and, per-cycle, against **carry-set gaps** (D7) before being read as a real cold bug — the
-snapshot is retained until that disposition (D6, teardown).
+and, per-cycle, against **carry-set gaps** (D7-carry-set-policy) before being read as a real cold bug — the
+snapshot is retained until that disposition (D6-snapshot-composition-details, teardown).
 
-**D5 — Per-cycle option trigger: lead judgment, guidance recorded.** `Confident` (user-ruled,
+**D5-cycle-option-trigger — Per-cycle option trigger: lead judgment, guidance recorded.** `Confident` (user-ruled,
 Q7 batch; triggers re-derived from F7 and the visibility carrier re-ruled at review —
 S12/U7)
 The interference model the facts leave standing (S12): doctrine permits no concurrent
@@ -142,20 +142,20 @@ writers (F7 — sequential-only, verification paired per round), so the open cha
 **alternation residue** — state one seat's run leaves for the other's next turn — and
 **off-doctrine runs** (the class F48 evidences). The lead composes per-cycle qa isolation in
 on those signals: GUI/subjective verification in the cycle set (residue-sensitive; the
-carry-set question is live there, D7) · state-heavy stacks with generated-file churn ·
+carry-set question is live there, D7-carry-set-policy) · state-heavy stacks with generated-file churn ·
 interference observed mid-run — this trigger fires *after* the suspect cycle, so
-already-cleared cycles are backstopped by the always-cold final validation (D3(i)), not
+already-cleared cycles are backstopped by the always-cold final validation (D3-fixed-core-gate(i)), not
 re-verified · a prior recorded incident in this codebase. Never mechanically, never via an
-added run-start approval (rejected as friction, consistent with D2; deterministic named
+added run-start approval (rejected as friction, consistent with D2-commit-gate-declined; deterministic named
 triggers rejected as brittle before a citable incident exists). **Visibility carrier (U7 —
 implement is v6-form, P19/P20 out of its scope, F65/F66):** every verification report,
 per-cycle and final, **names the tree that produced its evidence** — warm working tree, or
-snapshot path + variant (filtered snapshot, tracked-only, or the D4(i) worktree-replica
+snapshot path + variant (filtered snapshot, tracked-only, or the D4-filtered-snapshot-mechanism(i) worktree-replica
 fallback) + carry-set; at implement's v7 conversion the composed choice
 additionally lands per P19/P20. This build touches implement, so the convert-on-touch
 decision (F66) fires at build scoping — the user's call there.
 
-**D6 — Composition details.** `Confident` (user-ruled at review, U3 — promoted from the
+**D6-snapshot-composition-details — Composition details.** `Confident` (user-ruled at review, U3 — promoted from the
 lead's `Assumed` formulation; teardown and location amended per S13/S14; citations repaired
 per S16)
 - **Report routing and reads:** qa always **writes** verification reports into the **real**
@@ -165,7 +165,7 @@ per S16)
   read or write surface.
 - **Dependency posture:** the final-validation snapshot is always dependency-cold — install
   from lockfiles; the coldness **is** the catch (F14/F15, F32/F57c; F33/F54 price it, they
-  do not justify it). Per-cycle dependencies follow D7's carry-set policy: **copy or fresh
+  do not justify it). Per-cycle dependencies follow D7-carry-set-policy's carry-set policy: **copy or fresh
   install, linking forbidden** — `npm ci` measurably wipes the dependency dir (F70), so a
   linked dir turns qa's cold install into destruction of the producer's real
   `node_modules`, the exact contamination this design exists to prevent.
@@ -174,31 +174,31 @@ per S16)
   Implement's scaffolding step, which today only creates missing ignore files (F9), is
   extended at build to ensure the target repo's `/.claude/worktrees` ignore entry — F38
   establishes that line in *this* repo only, and F54 records it as a manual docs tip; and
-  the D4 listing excludes the snapshot home explicitly besides, so a missing ignore line
+  the D4-filtered-snapshot-mechanism listing excludes the snapshot home explicitly besides, so a missing ignore line
   cannot recurse retained snapshots into the `-co` set. In-repo placement also sits inside
   the `acceptEdits` auto-accept path scope (F62). The qa seat runs gates **by absolute
-  path** (plain shell, no `EnterWorktree`, no session-CWD move — F55 never fires). D2's
+  path** (plain shell, no `EnterWorktree`, no session-CWD move — F55 never fires). D2-commit-gate-declined's
   no-added-approval posture holds on the documented permission model (F61/F62:
   command-pattern prompts, path-scoped auto-accept only under `acceptEdits` — both closed by
   the in-repo home); the honest residual is stack-specific command patterns a repo has not
   yet approved — and the cold path adds install patterns (`npm ci`) a warm run may never
   have invoked: a one-time approval per repo per pattern (F61), paid at the first cold run.
 - **Teardown (S13):** the snapshot is torn down only after its evidence is captured **and**
-  any snapshot-only failure is dispositioned — the F58.4 symlink check and the D7
+  any snapshot-only failure is dispositioned — the F58.4 symlink check and the D7-carry-set-policy
   carry-set-gap check run against the live snapshot, before teardown; on the per-cycle path
   a failed cycle's snapshot is retained until the retry's disposition.
 
-**D7 — Per-cycle carry-set policy.** `Confident` (user-ruled at review, U2)
+**D7-carry-set-policy — Per-cycle carry-set policy.** `Confident` (user-ruled at review, U2)
 A per-cycle snapshot's purpose is interference isolation, not coldness — so it MAY carry
 warm gitignored items, but only as a **lead-declared carry-set**, named in the composition
-record (D5's carrier): runtime config (`.env` — F53's class, without which a subjectively
+record (D5-cycle-option-trigger's carrier): runtime config (`.env` — F53's class, without which a subjectively
 verified app will likely not boot) and generated dirs a gate consumes (codegen output,
 `dist/`). Dependencies enter by **copy or fresh install — linking forbidden** (F70: `npm ci`
 wipes the dependency dir; a link would propagate that wipe into the real tree). Carrying
 warm items defeats the cold catch **by design and by ruling** — acceptable per-cycle, never
-at final validation, whose snapshot stays exactly D4's filtered set plus nothing.
+at final validation, whose snapshot stays exactly D4-filtered-snapshot-mechanism's filtered set plus nothing.
 
-**D8 — Independence reading.** `Confident` (user-ruled at review, U4)
+**D8-snapshot-independence-reading — Independence reading.** `Confident` (user-ruled at review, U4)
 Snapshot isolation is **ergonomics + evidence fidelity**, not part of the shape's
 independence definition — F19's "who fills the seats and when they arrive… the whole of it"
 stands untouched. No independence claim rides a snapshot-produced report, and a lead who
@@ -212,7 +212,7 @@ declines the option composes a fully independent verification regardless.
    ceremony). **Dispositioned at build (2026-08-01):** user ruled yes — the sentence landed
    in Layer 1 Ground rules as a pure addition (audit-verified zero deletions), citing U1.
 2. **Per-cycle cost is unmeasured** (F33 UNVERIFIED) — measured at the first composed-in run
-   (U5); until then D3(ii)'s optionality is priced by judgment.
+   (U5); until then D3-fixed-core-gate(ii)'s optionality is priced by judgment.
 3. **No citable incident artifact exists** (F41–F47) — every future interference observation
    is recorded on the run (U5); trigger: the next observed interference.
 4. **Non-npm dependency behavior** (F71 — UNVERIFIED beyond npm) — checked at the first
@@ -223,12 +223,12 @@ declines the option composes a fully independent verification regardless.
    wave — this wave stayed surgical v6-form; the deferral is recorded in the `[v0.42.0]`
    strip entry and the F66 trigger stays live.
 6. **Layer 2 says nothing about seats sharing a working tree** (F19) while F48 documents
-   three real authoring-side collisions — out of D1's scope; captured as a new BACKLOG item
+   three real authoring-side collisions — out of D1-validator-only-isolation's scope; captured as a new BACKLOG item
    at close (wrap ruling).
 7. **`.claude/worktrees/` is harness-managed** (F50/F54: the default worktree home; F52
    documents a periodic sweep) — whether the sweep touches non-worktree directories there is
    unestablished (verify-pass polish note 3). Fact-checked at build; if it does, the
-   snapshot home moves to a sibling ignored directory — the D6 ruling carries the property
+   snapshot home moves to a sibling ignored directory — the D6-snapshot-composition-details ruling carries the property
    (in-repo + ignored + explicitly excluded), not the literal path. **Dispositioned at
    build (2026-08-01):** F72–F75 — the sweep is worktree-registry-scoped; a plain snapshot
    directory is not a target (small version-sensitive residual, honestly marked). The real
@@ -389,7 +389,7 @@ Caveat carried honestly: all three are **authoring-wave** collisions in mochiko'
 
 ### isolation mechanics — uncommitted state (third dispatch, F50–F58)
 
-Headline against D2: **native harness worktree isolation cannot reproduce uncommitted working state — established from the official docs, not inferred.** A gitignore-filtered snapshot can, at 0.16s on this repo, with four measured sharp edges. Scratch copies deleted; mochiko repo untouched (`git status` shows only your record edits; `git worktree list` shows main only).
+Headline against D2-commit-gate-declined: **native harness worktree isolation cannot reproduce uncommitted working state — established from the official docs, not inferred.** A gitignore-filtered snapshot can, at 0.16s on this repo, with four measured sharp edges. Scratch copies deleted; mochiko repo untouched (`git status` shows only your record edits; `git worktree list` shows main only).
 
 #### (1) native worktree vs dirty state — VERIFIED BY DOCS
 
@@ -403,7 +403,7 @@ Headline against D2: **native harness worktree isolation cannot reproduce uncomm
 
 **F54** — Other documented mechanics bearing on the design. Worktrees share `.git`: "git commands in a worktree write to the main repository's shared `.git` directory, and sandboxing allows those writes, so commands such as `git commit` work from inside a worktree with the sandbox enabled." Project-scope plugins load in worktrees without reinstall (v2.1.200+); permission approvals granted in a worktree save to the main checkout (v2.1.211+). Default path `.claude/worktrees/<name>/` on branch `worktree-<name>` — and the docs' own tip, "Add `.claude/worktrees/` to your `.gitignore`", is verbatim the origin of F38's line in this repo. Dependency cost is explicitly the caller's: "A worktree is a fresh checkout, so initialize your development environment there: ask Claude to install dependencies, or run your project's setup yourself in the worktree directory" — documentary confirmation of F33.
 
-**F55** — Placement friction, relevant to D2's no-added-approval constraint: "When Claude enters a path outside the repository's `.claude/worktrees/` directory, Claude Code asks for your approval first, because the move takes the session's working directory, write access, and project configuration such as `CLAUDE.md` and settings to that location. An `EnterWorktree` permission rule or choosing 'don't ask again' doesn't suppress this prompt; only `bypassPermissions` mode skips it." Also: while an agent runs, "Claude runs `git worktree lock` on its worktree so that concurrent cleanup cannot remove it."
+**F55** — Placement friction, relevant to D2-commit-gate-declined's no-added-approval constraint: "When Claude enters a path outside the repository's `.claude/worktrees/` directory, Claude Code asks for your approval first, because the move takes the session's working directory, write access, and project configuration such as `CLAUDE.md` and settings to that location. An `EnterWorktree` permission rule or choosing 'don't ask again' doesn't suppress this prompt; only `bypassPermissions` mode skips it." Also: while an agent runs, "Claude runs `git worktree lock` on its worktree so that concurrent cleanup cannot remove it."
 
 **Net: no empirical corroboration needed — the docs answer it outright.** Every native path (default `--worktree`, `isolation: worktree`, both `baseRef` values, `.worktreeinclude`) is commit-based or gitignored-only. None reproduces uncommitted tracked edits plus untracked non-ignored files.
 
@@ -444,7 +444,7 @@ Four headlines: (1) yes, a tracked-only snapshot variant exists and reproduces a
 
 **F60 — one sharp edge, and it fails loudly rather than silently: a tracked file deleted from the working tree breaks the pipe.** `git ls-files` still lists a tracked-but-deleted path (after `rm src/a.txt`, `git ls-files | grep -c src/a.txt` = 1), and tar then errors: `tar: src/a.txt: Cannot stat: No such file or directory` / `tar: Exiting with failure status due to previous errors`. Any cycle that deletes a tracked file — a refactor moving a module — trips this. (`git ls-files -d` enumerates the deleted set; stated as mechanism, not as a recommendation.)
 
-How it differs from the D4 snapshot (F56/F57): the `-co` form carries **untracked new files**, which is most of what a TDD cycle *creates* — new test files, new modules, and the `.mochiko/specs/**` reports themselves (F25). The tracked-only form drops all of those. The two variants answer different questions: "what would a commit of tracked changes contain" versus "what does the producer's tree actually hold".
+How it differs from the D4-filtered-snapshot-mechanism snapshot (F56/F57): the `-co` form carries **untracked new files**, which is most of what a TDD cycle *creates* — new test files, new modules, and the `.mochiko/specs/**` reports themselves (F25). The tracked-only form drops all of those. The two variants answer different questions: "what would a commit of tracked changes contain" versus "what does the producer's tree actually hold".
 
 #### Route 2 — build/install at an out-of-repo path
 
@@ -521,63 +521,63 @@ four fact **routes** opened instead (answered as F59–F71).
 **User ruling batch (all adopted as recommended, 2026-08-01):**
 - **U1** — F18 ban reading: the ban protects refs, index, tracked content, and history; an
   ephemeral, self-removed verification worktree (`git worktree add --detach` + `remove`) is
-  **not** a banned mutation (→ D4(i)).
-- **U2** — per-cycle carry-set policy (→ D7).
-- **U3** — D6 promoted lead-`Assumed` → user-ruled; reads pinned to the real tree; snapshot
-  home `.claude/worktrees/<name>/` (→ D6).
-- **U4** — independence reading: ergonomics + evidence fidelity, shape untouched (→ D8).
+  **not** a banned mutation (→ D4-filtered-snapshot-mechanism(i)).
+- **U2** — per-cycle carry-set policy (→ D7-carry-set-policy).
+- **U3** — D6-snapshot-composition-details promoted lead-`Assumed` → user-ruled; reads pinned to the real tree; snapshot
+  home `.claude/worktrees/<name>/` (→ D6-snapshot-composition-details).
+- **U4** — independence reading: ergonomics + evidence fidelity, shape untouched (→ D8-snapshot-independence-reading).
 - **U5** — falsifiability: interference observations always recorded; F33 cost measured at
-  first composed-in run; the BACKLOG item closes to an open watch, never silently (→ D3(ii),
+  first composed-in run; the BACKLOG item closes to an open watch, never silently (→ D3-fixed-core-gate(ii),
   Open threads 2–3).
-- **U6** — the null option killed on F24 alone (→ D0).
+- **U6** — the null option killed on F24 alone (→ D0-null-option-killed).
 - **U7** — visibility carrier: every verification report names its evidence tree now;
   P19/P20 take over at implement's v7 conversion; convert-on-touch fires at build scoping
-  (→ D5, Open thread 5).
+  (→ D5-cycle-option-trigger, Open thread 5).
 
 **Survivor dispositions (19/19):**
 - **S1** (int-C1 + dec-C2, **Critical**) — supersession under-executed: carriers
-  unenumerated, "substance preserved" asserted → **resolved**: D3(i) rewritten — three
+  unenumerated, "substance preserved" asserted → **resolved**: D3-fixed-core-gate(i) rewritten — three
   carriers with one disposition each, the disk-vs-repo delta enumerated, the F59/F60
   variant recorded, `Consumers assessed` sourced.
 - **S2** (dec-C1 + int-I5, **Critical**) — F18 reading unruled, fallback mechanism unnamed,
-  deferral unmarked inside a `Confident` decision → **user-ruled (U1)**; D4(i) rewritten
+  deferral unmarked inside a `Confident` decision → **user-ruled (U1)**; D4-filtered-snapshot-mechanism(i) rewritten
   with the fully specified fallback.
 - **S3** (dec-C3, **Critical**) — no carry-set policy; purpose≠mechanism; deps clause
-  pointed the wrong way → **user-ruled (U2)** → D7; the gate-flip risk absorbed into
-  D4(ii) + D6 teardown.
-- **S4** (int-I2 + dec-I7) — D6 unowned / mis-credited marks → **resolved**: U3 promotion,
+  pointed the wrong way → **user-ruled (U2)** → D7-carry-set-policy; the gate-flip risk absorbed into
+  D4-filtered-snapshot-mechanism(ii) + D6-snapshot-composition-details teardown.
+- **S4** (int-I2 + dec-I7) — D6-snapshot-composition-details unowned / mis-credited marks → **resolved**: U3 promotion,
   header mark present.
 - **S5** (int-I3) — Q4–Q7 stems missing; "(a)" untraceable → **resolved**: questioning-trail
   block added to the header.
 - **S6** (int-I4 + dec-M1) — map header/scope/verdict-anchor confusion, both lenses'
-  substrate at stake → **resolved**: lead scope note over the map; D3(iii) citation widened
+  substrate at stake → **resolved**: lead scope note over the map; D3-fixed-core-gate(iii) citation widened
   to F41–F49.
 - **S7** (int-I6) — no open-threads register → **resolved**: section added (six items at
   fold; a seventh added at verify polish 3), a trigger each.
 - **S8** (int-I7 + dec-I4) — the v7 visibility carrier load-bearing and unmapped →
-  **fact-routed (F64–F67) + user-ruled (U7)** → D5.
-- **S9** (int-I8) — D1 stated the `Assumed` incident as established → **resolved**: clause
-  qualified ("filed capture", F47), cross-referenced to D3(iii).
+  **fact-routed (F64–F67) + user-ruled (U7)** → D5-cycle-option-trigger.
+- **S9** (int-I8) — D1-validator-only-isolation stated the `Assumed` incident as established → **resolved**: clause
+  qualified ("filed capture", F47), cross-referenced to D3-fixed-core-gate(iii).
 - **S10** (dec-I1) — the null option never argued, the against-column unengaged →
-  **user-ruled (U6)** → D0.
+  **user-ruled (U6)** → D0-null-option-killed.
 - **S11** (dec-I2) — F19's closed independence definition never ruled against →
-  **user-ruled (U4)** → D8.
-- **S12** (dec-I3) — F7 never folded back → **resolved**: D5 carries the interference model
-  and re-derived triggers; D1 carries the parallel-cycles revisit trigger; the
+  **user-ruled (U4)** → D8-snapshot-independence-reading.
+- **S12** (dec-I3) — F7 never folded back → **resolved**: D5-cycle-option-trigger carries the interference model
+  and re-derived triggers; D1-validator-only-isolation carries the parallel-cycles revisit trigger; the
   final-validation backstop named.
-- **S13** (dec-I5) — teardown destroyed the F58.4 check surface → **resolved**: D6 binds
+- **S13** (dec-I5) — teardown destroyed the F58.4 check surface → **resolved**: D6-snapshot-composition-details binds
   teardown to disposition.
 - **S14** (dec-I6) — "holds mechanically" upgraded confidence across an inference →
   **fact-routed (F61–F63) + resolved**: the U3 location ruling closes the `acceptEdits`
-  path caveat; the residual stated honestly in D6.
-- **S15** (dec-I9) — the option unpriced and unfalsifiable → **user-ruled (U5)** → D3(ii) +
+  path caveat; the residual stated honestly in D6-snapshot-composition-details.
+- **S15** (dec-I9) — the option unpriced and unfalsifiable → **user-ruled (U5)** → D3-fixed-core-gate(ii) +
   Open threads 2–3.
-- **S16** (int-M1) — deps bullet cited cost facts as the catch → **resolved**: D6 cites
+- **S16** (int-M1) — deps bullet cited cost facts as the catch → **resolved**: D6-snapshot-composition-details cites
   F14/F15/F57c for the catch, F33/F54 for the price.
-- **S17** (int-M2) — "cheapest" unbounded → **resolved**: F56's scale bound carried in D4.
+- **S17** (int-M2) — "cheapest" unbounded → **resolved**: F56's scale bound carried in D4-filtered-snapshot-mechanism.
 - **S18** (int-M3) — resume line unactionable → **resolved**: Status line rewritten to the
   live state.
-- **S19** (int-M4) — the snapshot's read path unruled → **user-ruled (U3)** → D6's reads
+- **S19** (int-M4) — the snapshot's read path unruled → **user-ruled (U3)** → D6-snapshot-composition-details's reads
   clause.
 
 Withdrawn during cross-exam (retrievable from the reviewers' reports): int-I1 entire ·
@@ -585,15 +585,15 @@ dec-I8 entire · five single legs across both lenses.
 
 **Verify pass (owner: reviewer-integrity):** round 1 — **NOT CLEAN**: 19/19 folds confirmed
 landed with evidence quoted; 2 blockers introduced by the folds themselves, both repaired
-same round — **B1**: D6's snapshot-home safety cited F9/F38 for a property neither
+same round — **B1**: D6-snapshot-composition-details's snapshot-home safety cited F9/F38 for a property neither
 establishes in a target repo → repaired as an explicit **build obligation** on implement's
 scaffolding step (ensure the `/.claude/worktrees` ignore entry) plus an explicit
-snapshot-home exclusion in D4's listing; **B2**: the tallies paragraph misstated the
+snapshot-home exclusion in D4-filtered-snapshot-mechanism's listing; **B2**: the tallies paragraph misstated the
 reviewers' escalation conditions as one → restated per lens above. All 7 non-blocking
-polish notes taken (D1 driver-scope cite · D3 header S15 cite · D3(i) ADR line range · D4
-F59-comparison note · D5 fallback named in the carrier · D6 residual qualifier · Open
+polish notes taken (D1-validator-only-isolation driver-scope cite · D3-fixed-core-gate header S15 cite · D3-fixed-core-gate(i) ADR line range · D4-filtered-snapshot-mechanism
+F59-comparison note · D5-cycle-option-trigger fallback named in the carrier · D6-snapshot-composition-details residual qualifier · Open
 thread 7, harness-managed home). Round 2 — **CLEAN**: both blockers confirmed closed (B1 on
 both legs — the build obligation and the mechanical exclusion; B2 faithful per lens), all
 seven polish landings verified, no new defect. Three round-2 cosmetic notes, all taken (S7
-count updated · the D4 exclusion given a concrete form · the exclusion widened to the
+count updated · the D4-filtered-snapshot-mechanism exclusion given a concrete form · the exclusion widened to the
 `.claude/worktrees/` parent, covering the fallback replica).

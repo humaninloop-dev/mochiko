@@ -16,7 +16,7 @@ all recorded in the session synthesis (`.mochiko/memory/governance-intent.md`):
 ## Shelf model
 
 One file per shelf. A project's **type** (declared in the session) selects which shelves are
-dealt. Mochiko's target is customer-facing product applications (PO-D1): SaaS, web, mobile,
+dealt. Mochiko's target is customer-facing product applications (`production-only-focus` D1-customer-product-target): SaaS, web, mobile,
 desktop.
 
 | Shelf | File | Dealt to | Status |
@@ -27,7 +27,7 @@ desktop.
 | Mobile | `mobile.md` | mobile | **planned — Tier-I roadmap work** |
 | Desktop | `desktop.md` | desktop | **planned — Tier-I roadmap work** |
 
-*(The former CLI and library shelves retired with their types under PO-D1's deferral of
+*(The former CLI and library shelves retired with their types under `production-only-focus` D1-customer-product-target's deferral of
 building-block software — libraries, SDKs, CLIs are out of scope, deferred not rejected.)*
 
 **Planned shelves are honest gaps, not silent ones** (the identity docs carry the same
@@ -37,7 +37,7 @@ category requirements to the type — never on copying misfitting examples.
 
 ## The two-row production floor
 
-The floor is one production standard at **two depth levels — `low` and `high`** (PO-D2, as amended
+The floor is one production standard at **two depth levels — `low` and `high`** (`production-only-focus` D2-tier-axis-retired, as amended
 by D1–D8 2026-08-11). It is one project-wide dial, declared by the user at setup and moved only by
 an explicit user re-declaration, one-way `low`→`high` (D1/D2) — nothing derives or auto-advances
 it, and no watcher flips it. The retired `poc → internal → production → regulated` ladder stays
@@ -51,7 +51,7 @@ addable rigor may relax at `low`). What else varies per project:
   the governance ledger (D4; a per-check *fit* exception, available at both levels, permanent
   pending the D4.1 revisit). A waiver is never
   silent: recorded in the synthesis and the ledger. Staged adoption is the `low` level, not a
-  waiver (PO-D7 superseded); accumulated waivers remain the governance re-entry checklist as the
+  waiver (`production-only-focus` D7-immature-team-onramp superseded); accumulated waivers remain the governance re-entry checklist as the
   team matures.
 
 ## Card format

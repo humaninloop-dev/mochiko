@@ -48,10 +48,10 @@ procedure — referenced, never restated.
 ```markdown
 ## Functional Requirements
 
-- **FR-001**: System MUST [specific capability]
-- **FR-002**: Users MUST be able to [specific action]
-- **FR-003**: System SHOULD [recommended behavior]
-- **FR-004**: System MAY [optional capability]
+- **FR-001-<slug>**: System MUST [specific capability]
+- **FR-002-<slug>**: Users MUST be able to [specific action]
+- **FR-003-<slug>**: System SHOULD [recommended behavior]
+- **FR-004-<slug>**: System MAY [optional capability]
 ```
 
 ## Success Criteria Format
@@ -59,9 +59,9 @@ procedure — referenced, never restated.
 ```markdown
 ## Success Criteria
 
-- **SC-001**: Users complete the task creation flow in under 2 minutes
-- **SC-002**: 95% of users successfully create their first recurring task
-- **SC-003**: Support tickets related to task scheduling decrease by 50%
+- **SC-001-task-creation-time**: Users complete the task creation flow in under 2 minutes
+- **SC-002-recurring-task-adoption**: 95% of users successfully create their first recurring task
+- **SC-003-scheduling-ticket-volume**: Support tickets related to task scheduling decrease by 50%
 ```
 
 ## Key Entities (Optional)

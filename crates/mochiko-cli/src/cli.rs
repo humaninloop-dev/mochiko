@@ -8,6 +8,10 @@
 //! unsound log indistinguishable from a non-conforming artifact — and the hook contract turns
 //! exactly one of those two into a deny.
 //!
+//! `ids` reads no log, so its codes never speak of one: `0` ok — a clean check, a preview, or a
+//! write made · `1` findings (`--check`, advisory: nothing blocks on it), or a write the diff check
+//! or the disk refused · `2` a usage error or a refused rewrite (see [`run_ids`]).
+//!
 //! Output goes to caller-supplied sinks rather than straight to the process streams, so the
 //! integration suite asserts on the exact bytes each stream carried without spawning a binary.
 
@@ -125,6 +129,78 @@ enum Command {
     Genesis {
         #[command(subcommand)]
         action: GenesisAction,
+    },
+    /// Check human-readable IDs, or rewrite one: `--check [<path>…]`, `rename`, `rekey`, `literal`.
+    #[command(args_conflicts_with_subcommands = true)]
+    Ids {
+        /// List bare IDs and slug drift. Advisory: the exit code is its only signal, and nothing
+        /// blocks on it.
+        #[arg(long)]
+        check: bool,
+        /// The files or directories to check; the tree root when none is given.
+        #[arg(value_name = "PATH")]
+        paths: Vec<PathBuf>,
+        /// A tree-relative path prefix to leave alone, beside the defaults. Repeatable.
+        #[arg(long = "exclude", value_name = "PATH")]
+        exclude: Vec<String>,
+        #[command(subcommand)]
+        action: Option<IdsAction>,
+    },
+}
+
+#[derive(Subcommand)]
+enum IdsAction {
+    /// Rewrite every in-scope mention of one ID to a new slug. Previews unless `--write`.
+    Rename {
+        /// The file holding the ID's definition.
+        owning_file: PathBuf,
+        /// The ID, bare: "`GI-004`", `FR-012`, `D7`.
+        id: String,
+        /// Three lower-case words joined by `-`, supplied by the seat.
+        new_slug: String,
+        /// Write the rewrite, after its diff check passes.
+        #[arg(long)]
+        write: bool,
+        /// A literal written before the number that also means this ID (`PO-D`), rewritten to
+        /// the qualified form; `=PATH` limits it to that file or directory. A shorthand — a kebab
+        /// name in front, `feature-map D` — needs `=FILE`. Repeatable.
+        #[arg(long = "alias", value_name = "LITERAL[=PATH]")]
+        alias: Vec<String>,
+        /// A tree-relative path prefix to leave alone, beside the defaults. Repeatable.
+        #[arg(long = "exclude", value_name = "PATH")]
+        exclude: Vec<String>,
+    },
+    /// Move one ID to a new number, each mention keeping its slug. Previews unless `--write`.
+    Rekey {
+        /// The file holding the ID's definition.
+        owning_file: PathBuf,
+        /// Bare (`D-012`), or joined (`D-012-csv-export-format`) to pick one entry when two
+        /// share the number.
+        old_id: String,
+        /// The new ID, bare: the slug travels with the entry.
+        new_id: String,
+        /// Write the rewrite, after its diff check passes.
+        #[arg(long)]
+        write: bool,
+        /// A tree-relative path prefix to leave alone, beside the defaults. Repeatable.
+        #[arg(long = "exclude", value_name = "PATH")]
+        exclude: Vec<String>,
+    },
+    /// Give a repo-only token (`AM-5`) a slug, inside the given paths only. Previews unless
+    /// `--write`.
+    Literal {
+        token: String,
+        /// Three lower-case words joined by `-`, supplied by the seat.
+        new_slug: String,
+        /// The files or directories to rewrite in.
+        #[arg(required = true, value_name = "PATH")]
+        paths: Vec<PathBuf>,
+        /// Write the rewrite, after its diff check passes.
+        #[arg(long)]
+        write: bool,
+        /// A tree-relative path prefix to leave alone, beside the defaults. Repeatable.
+        #[arg(long = "exclude", value_name = "PATH")]
+        exclude: Vec<String>,
     },
 }
 
@@ -266,6 +342,12 @@ pub fn dispatch_io(
         Command::Genesis { action } => match action {
             GenesisAction::Emit { out: dest, root } => run_genesis_emit(&root, &dest, out, err),
         },
+        Command::Ids {
+            check,
+            paths,
+            exclude,
+            action,
+        } => run_ids(check, &paths, &exclude, action, out, err),
     }
 }
 
@@ -858,4 +940,210 @@ fn run_home(
         render::home_view(&replay.state, path, located.as_ref(), &ctx)
     );
     0
+}
+
+/// Run one `ids` command (`human-readable-ids` D6-minting-check-enforcement, D7-scoped-rename-command, D15-protected-line-rewrites, R6).
+///
+/// `ids` reads no migration log: the family table is the binary's own (B3), and every other
+/// fact it reads is the tree's — so its exit codes never speak of a log. `--check` exits 0 clean or
+/// 1 with findings, and is advisory: no hook or gate reads it (D6, D18). A rewrite previews and
+/// exits 0; with `--write` it exits 0 once written, or 1 when the diff check or the disk refused
+/// the write — naming the files already written when it failed partway (M2). A refused rewrite —
+/// no such ID, no definition in the owning file, a slug that is not three words, an alias that is
+/// no alias, a move collision — exits 2 with the reason, and so does a write whose plan leaves a
+/// spot naming a moved file by its old name (N5), refused by the write itself.
+fn run_ids(
+    check: bool,
+    paths: &[PathBuf],
+    exclude: &[String],
+    action: Option<IdsAction>,
+    out: &mut dyn Write,
+    err: &mut dyn Write,
+) -> i32 {
+    match action {
+        Some(IdsAction::Rename {
+            owning_file,
+            id,
+            new_slug,
+            write,
+            alias,
+            exclude,
+        }) => run_ids_rewrite("rename", &[owning_file], write, out, err, |root, rels| {
+            crate::rename::plan_rename(root, owning(rels)?, &id, &new_slug, &alias, &exclude)
+        }),
+        Some(IdsAction::Rekey {
+            owning_file,
+            old_id,
+            new_id,
+            write,
+            exclude,
+        }) => run_ids_rewrite("rekey", &[owning_file], write, out, err, |root, rels| {
+            crate::rename::plan_rekey(root, owning(rels)?, &old_id, &new_id, &exclude)
+        }),
+        Some(IdsAction::Literal {
+            token,
+            new_slug,
+            paths,
+            write,
+            exclude,
+        }) => run_ids_rewrite("literal", &paths, write, out, err, |root, rels| {
+            crate::rename::plan_literal(root, &token, &new_slug, rels, &exclude)
+        }),
+        None if check => run_ids_check(paths, exclude, out, err),
+        None => {
+            let _ = writeln!(
+                err,
+                "error: ids takes --check [<PATH>...], or rename, rekey or literal\n\ntry \
+                 'mochiko-cli ids --help'"
+            );
+            2
+        }
+    }
+}
+
+/// The owning file a rename or rekey names: a path inside the tree, never the tree itself (L1).
+fn owning(rels: &[PathBuf]) -> Result<&Path, crate::rename::Refused> {
+    rels.first().map(PathBuf::as_path).ok_or_else(|| {
+        crate::rename::Refused(
+            "the owning file must be a file inside the tree, not the tree".into(),
+        )
+    })
+}
+
+/// The tree the given paths sit in, and each path relative to it; the working directory's tree
+/// when none is given. Every path must sit in one tree.
+fn ids_tree(paths: &[PathBuf], err: &mut dyn Write) -> Result<(PathBuf, Vec<PathBuf>), i32> {
+    let cwd = std::env::current_dir().ok();
+    let named: Vec<PathBuf> = if paths.is_empty() {
+        vec![PathBuf::from(".")]
+    } else {
+        paths.to_vec()
+    };
+    let mut root: Option<PathBuf> = None;
+    let mut rels = Vec::new();
+    for path in &named {
+        let located = crate::home::absolute(path, cwd.as_deref())
+            .and_then(|absolute| crate::home::locate(&absolute));
+        let Some(located) = located else {
+            let _ = writeln!(err, "error: {} is not inside a git tree", path.display());
+            return Err(2);
+        };
+        match &root {
+            Some(held) if *held != located.root => {
+                let _ = writeln!(
+                    err,
+                    "error: {} is in another tree than {}",
+                    path.display(),
+                    held.display()
+                );
+                return Err(2);
+            }
+            _ => root = Some(located.root.clone()),
+        }
+        if !located.relative.as_os_str().is_empty() {
+            rels.push(located.relative);
+        }
+    }
+    Ok((root.unwrap_or_default(), rels))
+}
+
+fn run_ids_check(
+    paths: &[PathBuf],
+    exclude: &[String],
+    out: &mut dyn Write,
+    err: &mut dyn Write,
+) -> i32 {
+    let (root, rels) = match ids_tree(paths, err) {
+        Ok(tree) => tree,
+        Err(code) => return code,
+    };
+    let findings = crate::ids::check(&root, &rels, exclude);
+    for finding in &findings {
+        let _ = writeln!(out, "{finding}");
+    }
+    let count = |kind| findings.iter().filter(|f| f.kind == kind).count();
+    let _ = writeln!(
+        out,
+        "mochiko-cli ids --check · {} bare · {} drift",
+        count(crate::ids::Kind::Bare),
+        count(crate::ids::Kind::Drift)
+    );
+    if findings.is_empty() {
+        0
+    } else {
+        1
+    }
+}
+
+/// Plan a rewrite, print its preview, and write it when asked.
+fn run_ids_rewrite<F>(
+    name: &str,
+    paths: &[PathBuf],
+    write: bool,
+    out: &mut dyn Write,
+    err: &mut dyn Write,
+    plan: F,
+) -> i32
+where
+    F: FnOnce(&Path, &[PathBuf]) -> Result<crate::rename::Plan, crate::rename::Refused>,
+{
+    let (root, rels) = match ids_tree(paths, err) {
+        Ok(tree) => tree,
+        Err(code) => return code,
+    };
+    let plan = match plan(&root, &rels) {
+        Ok(plan) => plan,
+        Err(refused) => {
+            let _ = writeln!(err, "error: {}", refused.0);
+            return 2;
+        }
+    };
+    let _ = write!(out, "{}", crate::rename::preview(&plan));
+    let mut summary = format!(
+        "mochiko-cli ids {name} · {} files · {} moves",
+        plan.edits.len(),
+        plan.moves.len()
+    );
+    if !plan.untied.is_empty() {
+        summary.push_str(&format!(" · {} untied", plan.untied.len()));
+    }
+    if !write {
+        let _ = writeln!(out, "{summary} · nothing written; --write applies it");
+        return 0;
+    }
+    match crate::rename::write(&root, &plan) {
+        Ok((files, spans)) => {
+            let _ = writeln!(
+                out,
+                "diff check: {files} files · {spans} spans · ID tokens only"
+            );
+            let _ = writeln!(out, "{summary} · written");
+            0
+        }
+        Err(crate::rename::WriteError::Stale(spots)) => {
+            let _ = writeln!(
+                err,
+                "error: nothing written: {} spots still name a moved file by its old name; fix each \
+                 link, or pass --exclude <file> for a verbatim quote, then rerun",
+                spots.len()
+            );
+            for stale in &spots {
+                let _ = writeln!(err, "  {stale}");
+            }
+            2
+        }
+        Err(crate::rename::WriteError::Blocked { reason, written }) if written.is_empty() => {
+            let _ = writeln!(err, "error: nothing written: {reason}");
+            1
+        }
+        Err(crate::rename::WriteError::Blocked { reason, written }) => {
+            let written: Vec<String> = written.iter().map(|p| p.display().to_string()).collect();
+            let _ = writeln!(
+                err,
+                "error: partially written: {}; then {reason}",
+                written.join(", ")
+            );
+            1
+        }
+    }
 }

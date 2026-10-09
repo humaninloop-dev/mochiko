@@ -1,7 +1,7 @@
 # Wave 2 — governance amendment proposal (input to the `/mochiko:setup` amend run)
 
 **Status:** lead-drafted proposal, 2026-09-13 · **Ruling home:** `record.md` D1 (the narrow
-supersession of `cli-schema-delivery` D7), D7 (routing, the hook floor re-ratified, the
+supersession of `cli-schema-delivery` D7-dependency-halt-hooks), D7 (routing, the hook floor re-ratified, the
 `rust-cli.md` strip, the hooks-disabled scope line), D3 (exit-code contract), D9, F8 (platform
 facts), and the wave-0 probe (`wave0-probe-report.md`, reviewed PASS) · **Authority:** none of
 this text lands by this file. Governance surfaces are written only by the `/mochiko:setup` amend
@@ -12,14 +12,14 @@ file is the run's input, verbatim where marked, delta where marked.
 non-negotiable's *text* is unchanged — the bright line still reads "never gates pipeline
 progress, never dispatches or sequences agents, never holds judgment that skills own" — and the
 change is a **widened admission** (a new admitted instance class) plus a changed clause in a
-rules file. **MAJOR reading, for the user to rule:** `cli-schema-delivery` D7's "behavior-gating
+rules file. **MAJOR reading, for the user to rule:** `cli-schema-delivery` D7-dependency-halt-hooks's "behavior-gating
 hooks are declined" is a ruled decision being narrowly superseded, and `rust-cli.md`'s "hooks
 MUST block only on the binary's absence or a log outside its grammar range, never on behavior"
 changes meaning. If the user reads that as an incompatible redefinition, the class is MAJOR
 (v4.0.0); the content below is the same either way.
 
-**Trigger, stated:** `hook-enforced-artifact-schema` D1/D7 (accepted 2026-09-13) — the
-from-zero ruling `cli-schema-delivery` D7 reserved ("if ever wanted it takes its own ruling from
+**Trigger, stated:** `hook-enforced-artifact-schema` D1-conformance-deny-channels/D7-governance-routing-supersession (accepted 2026-09-13) — the
+from-zero ruling `cli-schema-delivery` D7-dependency-halt-hooks reserved ("if ever wanted it takes its own ruling from
 zero"); wave 0 (probe) done and PROCEED user-ruled; wave 1 (crate) in build; **wave 4 (the hooks
 ship) MUST NOT open before this amendment is ratified** (D11 wave order).
 
@@ -27,30 +27,30 @@ ship) MUST NOT open before this amendment is ratified** (D11 wave order).
 
 ## A. CLAUDE.md `## Non-negotiable constraints` — the kernel-class paragraph: pointer only
 
-**Leave the paragraph text.** The trace comment gains one pointer (GI-017 — no restatement):
-`(softened per the schema-based-template-guidance D11 ruling; governance trace GI-019 · widened
-admission: cli-schema-delivery D11 · conformance-gate admission: hook-enforced-artifact-schema
-D1/D7)`.
+**Leave the paragraph text.** The trace comment gains one pointer (GI-017-pointer-only-region — no restatement):
+`(softened per the schema-based-template-guidance D11-kernel-position-softened ruling; governance trace GI-019-kernel-tooling-admission · widened
+admission: cli-schema-delivery D11-widened-kernel-admission · conformance-gate admission: hook-enforced-artifact-schema
+D1-conformance-deny-channels/D7-governance-routing-supersession)`.
 
-The GI-020 paragraph is untouched (clone-only install, required binary, no schema file ships —
+The GI-020-plugin-install-model paragraph is untouched (clone-only install, required binary, no schema file ships —
 the `home` registry rides the migration log like every other kind).
 
 ## B. CLAUDE.md `## Governance` region
 
-1. **Ratified line** → `**Ratified:** v3.1.0 · <date> (AM-3) · production floor · depth: high ·
+1. **Ratified line** → `**Ratified:** v3.1.0 · <date> (AM-3-conformance-gate-admission) · production floor · depth: high ·
    modules: compliance none · knowledge-management (core + CHANGELOG) · release-gates`
-   (GI-001 / GI-021 comments unchanged).
-2. **Principles — GI-019 pointer line** → `- Kernel-class tooling admission — see
-   `## Non-negotiable constraints` (detail: ledger GI-019; widened admission: `cli-schema-delivery`
-   D11; conformance-gate admission: `hook-enforced-artifact-schema` D1/D7) <!-- GI-019 -->`.
+   (GI-001-project-fact-profile / GI-021-depth-level-declaration comments unchanged).
+2. **Principles — GI-019-kernel-tooling-admission pointer line** → `- Kernel-class tooling admission — see
+   `## Non-negotiable constraints` (detail: ledger GI-019-kernel-tooling-admission; widened admission: `cli-schema-delivery`
+   D11-widened-kernel-admission; conformance-gate admission: `hook-enforced-artifact-schema` D1-conformance-deny-channels/D7-governance-routing-supersession) <!-- GI-019 -->`.
 3. **Governance operations — path-scoped rules line:** no change (`plugins/mochiko/hooks/` is
    already in the list).
 
-## C. Ledger `### GI-019` — the admission entry gains a fourth ruling and a fourth argument clause
+## C. Ledger `### GI-019-kernel-tooling-admission` — the admission entry gains a fourth ruling and a fourth argument clause
 
-**Add under Enforcement, after the AM-2 admission bullet (delta):**
+**Add under Enforcement, after the AM-2-required-cli-dependency admission bullet (delta):**
 
-- **Admission ruling — mechanical conformance gates on artifact writes (AM-3):**
+- **Admission ruling — mechanical conformance gates on artifact writes (AM-3-conformance-gate-admission):**
   `hook-enforced-artifact-schema` (accepted 2026-09-13) is the recorded admission for two
   plugin-shipped hooks beyond the dependency halt: **(1)** a `PreToolUse` gate on
   `Write|Edit|Bash|PowerShell` that pipes the hook payload to `mochiko-cli check --hook-json -`
@@ -62,7 +62,7 @@ the `home` registry rides the migration log like every other kind).
   home; **(2)** a `SubagentStart` hook injecting one self-identified reminder line per seat.
   Every check is decidable by string and count against data the log carries (the `home`
   document kind and each template's conformance block). **Narrow supersession:**
-  `cli-schema-delivery` D7's "behavior-gating hooks are declined" stands for **judgment and
+  `cli-schema-delivery` D7-dependency-halt-hooks's "behavior-gating hooks are declined" stands for **judgment and
   sequencing** — no hook grades a seat's work, sequences seats, or gates a pipeline stage; the
   gate holds one write until it conforms, and a passing draft pays nothing.
 - **The bright-line argument, clause (iv) (D1/D4):** mechanical conformance is structural
@@ -87,8 +87,8 @@ the `home` registry rides the migration log like every other kind).
   Windows) are unchanged; the `PowerShell` matcher arm ships on the doc quote, unverifiable on
   macOS (wave 0).
 
-**Trace line** gains: `· conformance-gate admission: hook-enforced-artifact-schema D1/D7 (AM-3,
-v3.1.0) — bright-line text unchanged, clause (iv) recorded; cli-schema-delivery D7 narrowly
+**Trace line** gains: `· conformance-gate admission: hook-enforced-artifact-schema D1-conformance-deny-channels/D7-governance-routing-supersession (AM-3-conformance-gate-admission,
+v3.1.0) — bright-line text unchanged, clause (iv) recorded; cli-schema-delivery D7-dependency-halt-hooks narrowly
 superseded (judgment/sequencing decline standing)`.
 
 ## D. `.claude/rules/mochiko/rust-cli.md` — the bright-line bullet (delta; recorded supersession)
@@ -115,20 +115,20 @@ a plugin primitive — no `.mochiko/strips/` entry; the verbatim prior text abov
 
 ## E. Amendment-log row (delta)
 
-`| 3.1.0 | <date> | AM-3 — mechanical conformance gates on artifact writes (MINOR: widened
+`| 3.1.0 | <date> | AM-3-conformance-gate-admission — mechanical conformance gates on artifact writes (MINOR: widened
 admission, bright-line text unchanged; user-ruled — or MAJOR if ruled an incompatible
 redefinition of the hook clause). Driver: hook-enforced-artifact-schema D1–D11, wave-0 probe |
-GI-019 admission widened (clause iv: mechanical conformance ≠ judgment) · cli-schema-delivery D7
+GI-019-kernel-tooling-admission admission widened (clause iv: mechanical conformance ≠ judgment) · cli-schema-delivery D7-dependency-halt-hooks
 narrowly superseded · hook floor re-ratified + explicit-allow rule + hooks-disabled scope ·
 `.claude/rules/mochiko/rust-cli.md` bright-line bullet rewritten |`
 
 ## F. What this amendment does NOT touch
 
-- `producer-plan-enforcement` D1 (no hook gate on plan mode) — standing.
-- GI-020 (clone-only, required binary, no schema file ships) — standing; `home` documents and
+- `producer-plan-enforcement` D1-detection-review-enforcement (no hook gate on plan mode) — standing.
+- GI-020-plugin-install-model (clone-only, required binary, no schema file ships) — standing; `home` documents and
   conformance blocks ride the migration log.
-- GI-012 release gates — standing; wave 4's `plugin.json` bump takes the contract suite with the
+- GI-012-release-gates-module release gates — standing; wave 4's `plugin.json` bump takes the contract suite with the
   new hook cases (D10), and the crate publish (wave 1's exit) takes the release train.
-- GI-004/GI-005/GI-006 — standing; the hook scripts and the migration are shipped-primitive
+- GI-004-primitive-audit-ratchet/GI-005-record-layer-integrity/GI-006-primitive-edit-traceability — standing; the hook scripts and the migration are shipped-primitive
   edits under the primitive-edits ceremony (strips where content is removed, audits, version
   stamps).

@@ -3,9 +3,9 @@
 Validate functional requirements and success criteria format in specification files.
 
 Checks:
-- FR-XXX format and sequential numbering
+- FR-XXX format (bare, or joined with a three-word slug: FR-XXX-<w1>-<w2>-<w3>) and sequential numbering
 - RFC 2119 keywords present (MUST, SHOULD, MAY)
-- SC-XXX format and sequential numbering
+- SC-XXX format (bare, or joined with a three-word slug) and sequential numbering
 - Technology-agnostic language (no banned terms)
 
 Usage:
@@ -54,14 +54,16 @@ def find_requirements(content: str, prefix: str) -> list[dict]:
     """Extract requirements with given prefix (FR or SC) from content."""
     requirements = []
 
-    # Pattern for requirements like **FR-001**: or **SC-001**:
+    # Pattern for requirements like **FR-001**: or **FR-001-order-history-export**: (any slug is
+    # captured here; check_format judges its shape)
     pattern = re.compile(
-        rf'\*\*({prefix}-(\d{{3}}))[\*:]+\s*(.+?)(?=\n\*\*{prefix}-|\n##|\n\n##|\Z)',
+        rf'\*\*({prefix}-(\d{{3}})(?:-[a-z][a-z0-9]*)*)[\*:]+\s*(.+?)(?=\n\s*(?:[-*]\s+)?\*\*{prefix}-|\n##|\n\n##|\Z)',
         re.DOTALL | re.IGNORECASE
     )
 
     for match in pattern.finditer(content):
-        req_id = match.group(1).upper()
+        # Only the prefix is upper-cased, so a slug keeps its case for check_format
+        req_id = prefix + match.group(1)[len(prefix):]
         req_num = int(match.group(2))
         req_text = match.group(3).strip()
 
@@ -80,9 +82,9 @@ def check_format(requirements: list[dict], prefix: str) -> dict:
     issues = []
 
     for req in requirements:
-        # Check format is correct (already matched by regex, so mostly valid)
-        if not re.match(rf'^{prefix}-\d{{3}}$', req['id'], re.IGNORECASE):
-            issues.append(f"{req['id']}: Invalid format (expected {prefix}-XXX)")
+        # Bare, or joined with exactly three lowercase slug words, each starting with a letter
+        if not re.match(rf'^{prefix}-\d{{3}}(?-i:(?:-[a-z][a-z0-9]*){{3}})?$', req['id'], re.IGNORECASE):
+            issues.append(f"{req['id']}: Invalid format (expected {prefix}-XXX or {prefix}-XXX-<w1>-<w2>-<w3>)")
 
     return {
         'check': f'{prefix.lower()}_format',

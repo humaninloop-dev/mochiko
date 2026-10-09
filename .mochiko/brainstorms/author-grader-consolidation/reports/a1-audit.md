@@ -90,7 +90,7 @@ Pre-pass: quoted in the shared section above; `0 rejecting · 105 advisory`.
    `tombstone-integrity` non-rejecting. The prose reference inside `setup.validate-seat-form`
    ("bounded by setup.gate-loop-bound") resolves to the node minted in the same migration.
 5. `class: floor` must-survive — PASS. Nothing left; the wave is a pure addition. The one new
-   floor, `setup.gate-loop-bound`, carries `anchor: 2026-09-19 author-grader-consolidation D6`;
+   floor, `setup.gate-loop-bound`, carries "`anchor: 2026-09-19 author-grader-consolidation D6`";
    `protected-exit` and `anchor-format` non-rejecting.
 6. Substance across the pair — PASS. Plan approval (`setup.plan-approval-producers`) ·
    independence with no self-grading row (`setup.author-grader-default-fail` floor,
@@ -147,8 +147,8 @@ measurement `body 3112 · render 15246 · payload 18358 · description 1208`.
    hard-coded number. `expected-skills.json` re-keyed `floor_pin` 7 to 8 with the new id, and the
    suite confirms the frozen set matches the render at 8 ids.
 4. Floor survival — PASS. Nothing left. The one new floor,
-   `patterns-model-tiering.persona-less-grader-pin`, carries `anchor: 2026-09-19
-   author-grader-consolidation D7`, and D7 rules exactly that obligation, closing F12.
+   `patterns-model-tiering.persona-less-grader-pin`, carries "`anchor: 2026-09-19
+   author-grader-consolidation D7`", and D7 rules exactly that obligation, closing F12.
 5. ID continuity — PASS. `tombstone-integrity`, `mint-once`, `id-duplicate`, `cite-unresolved`
    non-rejecting; migration 0008 mints one id here and retires none.
 6. `extends:` conformance — PASS. The minted rule declares its own text and binds no stub;

@@ -171,9 +171,9 @@ existing doc into the role, or nest the module's artifact under `.mochiko/`.
 
 **Collision rulings:** [none — clean names | e.g. "`ROADMAP.md` is a product feature
 roadmap; the module's forward view lives at `.mochiko/ROADMAP.md`" — from the synthesis,
-GI-XXX]
+GI-XXX-<slug>]
 
-**Trace**: GI-XXX (module selection)
+**Trace**: GI-XXX-<slug> (module selection)
 
 <!-- ── Validator checklist fragment (checked only when this module is attached) ──
 - [ ] Core artifacts named with read-job, writer moment, and carrier (the admission rule holds for every scaffolded doc); electives present only when adopted, declines recorded

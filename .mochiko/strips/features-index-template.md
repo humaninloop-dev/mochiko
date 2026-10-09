@@ -11,7 +11,7 @@ dir-beside-entry layout note); one comment line was superseded.
 the template retired into it (entry below) and this file continues as the schema's strip home,
 one file per primitive, one continuous history. Wave context for [v0.81.0]: the
 product-architecture-schema Stage-1 build wave. Ruling:
-`.mochiko/brainstorms/product-architecture-schema/record.md` (D3 · D4) → `DECISIONS.md`
+`.mochiko/brainstorms/product-architecture-schema/record.md` (D3-store-replaces-artifact · D4-store-file-structure) → `DECISIONS.md`
 2026-08-19 product-architecture row. -->
 
 ## [v0.81.0] Capability-peer framing re-pointed from `ARCHITECTURE.md` to the store (D3/D4)
@@ -38,7 +38,7 @@ product-architecture-schema Stage-1 build wave. Ruling:
 
 ## [v0.76.0] Template retired — superseded by schema-based template guidance (D1/D3/D8)
 - **Disposition:** superseded → plugins/mochiko/schemas/features-index.yaml + mochiko-cli template features-index
-- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1/D3/D8; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
+- **Tier failed:** n/a — supersession by ruling (schema-based-template-guidance D1-single-plugin-cli/D3-pipeline-template-scope/D8-schema-data-files; record `.mochiko/brainstorms/schema-based-template-guidance/record.md`; `DECISIONS.md` "Template-schema CLI ruled")
 - **Content (superseded template, full verbatim below):**
 
 ````markdown
@@ -78,7 +78,7 @@ product-architecture-schema Stage-1 build wave. Ruling:
 |  | ↳ `live` {{work_row}} | in {{spec-slug}} | {{increment_hook}} |
 | [FEAT-002](.mochiko/features/FEAT-002-{{slug}}.md) | {{stub_name}} | proposed (unrefined) | {{one_breath_hook}} |
 ````
-- **Kept deliberately:** Every line of guidance preserved — lifted into `plugins/mochiko/schemas/features-index.yaml` (skeleton / contract / overview / register / density) and rendered by `mochiko-cli template features-index`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). Nothing dropped.
+- **Kept deliberately:** Every line of guidance preserved — lifted into `plugins/mochiko/schemas/features-index.yaml` (skeleton / contract / overview / register / density) and rendered by `mochiko-cli template features-index`; the `.yaml` ships in the plugin as the raw-Read first-class degraded path (D8, GI-020-plugin-install-model, no install regression). Net-new per-section `check` lines were authored under D7 (disclosed, not lifted). Nothing dropped.
 - **Consumers assessed:** `commands/specify.md` (re-pointed by P4) · `commands/setup.md` (re-pointed by P4) · `skills/authoring-feature-map/SKILL.md` (re-pointed by P5). V2 fidelity PASS 2026-08-16 (schema graded 8/8 at the M3 gate).
 
 ## [v0.68.0] Re-type: capability lines + transient work-row sublines; leaf/parent nesting removed (wave context)
@@ -98,7 +98,7 @@ decision row.
   - Comment (newlines collapsed): `Nesting: a leaf's row sits directly under its parent's row, name prefixed "↳ " (two levels max — parent then leaves; a parent's status is its roll-up).`
   - Comment (re-keyed "delta-carrying" → "row-carrying"): `Ordering: newest-relevant first — in-flight and delta-carrying entries at the top`
   - Table rows: "| ID | Feature | Status | Capability |" · "| [FEAT-001](.mochiko/features/FEAT-001-{{slug}}.md) | {{parent_name}} | {{status}} | {{one_breath_hook}} |" · "| [FEAT-002](.mochiko/features/FEAT-002-{{slug}}.md) | ↳ {{leaf_name}} | {{status}} | {{one_breath_hook}} |" · "| [FEAT-003](.mochiko/features/FEAT-003-{{slug}}.md) | {{stub_name}} | proposed (unrefined) | {{one_breath_hook}} |"
-- **Protected-content reconciliation:** the nesting-row rule (leaf under parent, "↳" prefix, two-level cap, parent-status-is-roll-up) was the feature-sizing D2/D3 ruling (v0.61.0 header entry's "pure additions", carried as index shape) — superseded now by pm-role D6 (nesting dies) and D2 (sublines are transient rows, not sub-features). Not a silent drop.
+- **Protected-content reconciliation:** the nesting-row rule (leaf under parent, "↳" prefix, two-level cap, parent-status-is-roll-up) was the `feature-sizing-and-entry-points` D2-nested-feature-entries/D3-two-level-cap ruling (v0.61.0 header entry's "pure additions", carried as index shape) — superseded now by `pm-role-and-feature-derivation` D6-leaf-nesting-superseded (nesting dies) and D2 (sublines are transient rows, not sub-features). Not a silent drop.
 - **Kept deliberately:** the "↳ " prefix survives, re-purposed for transient work-row sublines; ordering-newest-relevant-first survives (re-keyed to row-carrying); the `unrefined` mark convention and the dir-beside-entry layout note survive verbatim.
 - **Consumers assessed:** `authoring-feature-map` (dropped the leaf-lines-under-parent checklist line same wave — its strip) · the feature command writes index lines in this shape (parallel seat).
 

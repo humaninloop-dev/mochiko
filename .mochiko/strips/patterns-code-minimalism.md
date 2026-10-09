@@ -8,7 +8,7 @@ primitives; design: `.mochiko/brainstorms/validator-scope-and-verbosity/record.m
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the patterns family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
@@ -18,7 +18,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 <!-- Wave context: wave 6 of the CLI schema-delivery build (v0.107.0) — the end state. No schema
 file ships in the plugin: the 20 files under `plugins/mochiko/schemas/` and the 30
 `skills/*/schema.yaml` were deleted, and every delivery they served now has a CLI form. Ruling for
-the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9 wave 6, with
+the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D9-staged-wave-rollout wave 6, with
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/patterns-code-minimalism/SKILL.md`. -->
 
@@ -26,7 +26,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 - **Disposition:** superseded → "are delivered by `mochiko-cli`"
 - **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/cli-schema-delivery/record.md`
-  D9 wave 6; `DECISIONS.md` 2026-09-05)
+  D9-staged-wave-rollout wave 6; `DECISIONS.md` 2026-09-05)
 - **Content:** "Rung by rung — the stop rule and every bound on the walk live in the schema:"
 - **Kept deliberately:** the rung-by-rung framing, and the claim the sentence exists to make — that
   the stop rule and the walk's bounds are rules, not prose in this body. The seven rungs beneath it
@@ -37,7 +37,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -71,7 +71,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -82,7 +82,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
   likewise if the schema's `class: floor` count disagrees with the pin.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -92,7 +92,7 @@ the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit v
 
 ## [v0.102.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2B, patterns family)
 
-Ruling for every entry below: skill-content-schema D3 (obligations move, procedure stays
+Ruling for every entry below: skill-content-schema D3-obligations-only-schema (obligations move, procedure stays
 prose) / D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (Skill-content schema
 ruled · Skill-schema wave-2 family doors ruled — the patterns-family door); census:
 `.mochiko/brainstorms/skill-content-schema/research/census-patterns.md` §A (CM) + §B (CM rows 1–10).
@@ -106,7 +106,7 @@ the `patterns-code-minimalism.` prefix (omitted below). Map — census §B row �
 discipline {3, 6, 8, 9, 10} · inputs {5} · disclosure {2} · reserved {7 — the
 domain-registry ruling is a reservation: never auto-approved}. No `conditions:` block —
 census §B's live-`when:` dimension list omits CM; the load-first block legally omits the
-`when:` grammar sentence (wave-1 RCM-4 wave-wide ruling).
+`when:` grammar sentence (wave-1 RCM-4-test-gate-carveout wave-wide ruling).
 **Floor count 3 (rows 7, 9, 10), per the wave lead's OQ1 ruling:** the census summary
 table's "4 floor" cell disagrees with its own row-grain enumeration (three `(floor)`
 markers); the row grain wins, and the summary-cell correction is queued for the census §K
@@ -143,7 +143,7 @@ growth claimed. The old 4,319 body budget is superseded by the conversion re-see
 
 ## [v0.102.0] Adopt-first binding-constraint carve + new-dependency reservation — protection transfers (census §A CM rows 2–3; [v0.91.0] design-time re-key)
 - **Disposition:** superseded — protection transfers to `patterns-code-minimalism.adopt-first-binding-constraint` (must) and `patterns-code-minimalism.new-dep-not-a-rung` (floor, reservation), per D8/C4; rung 5's body prose loses the carve sentence and the new-dependency parenthetical.
-- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; the carve's protecting ruling `DECISIONS.md` 2026-08-26 plan-stage-utility D1, wording ruled at the v0.91.0 wave).
+- **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; the carve's protecting ruling `DECISIONS.md` "2026-08-26 plan-stage-utility D1", wording ruled at the v0.91.0 wave).
 - **Content:** "(Adding a NEW dependency is not a rung — it rides the domain-registry ruling where `references/DOMAIN-DEPENDENCIES.md` applies, and is never auto-approved.) A design-committed adopt-first choice reaches these cards as a binding constraint, not a rung to re-open — the design-time discipline is `mochiko:patterns-adopt-first`."
 - **Kept deliberately:** rung 5's core line ("A dependency already in the manifest does this — use it.") stays body prose; the carve's wording survives verbatim-in-substance in the schema rule; the dangling reference path is repaired in the pointer per the map entry's OQ5 note.
 - **Consumers assessed:** `mochiko:patterns-adopt-first` (its Siblings pointer cites this ladder by name, unchanged); `mochiko:patterns-plan-minimalism` rung 3 cites adopt-first on its own side.
@@ -165,7 +165,7 @@ growth claimed. The old 4,319 body budget is superseded by the conversion re-see
 - **Disposition:** superseded → "design-time sibling" and "the design-time discipline"; the
   adopt-first constraint arrives design-committed rather than plan-committed.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1; wording ruled by the wave lead
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires; wording ruled by the wave lead
   2026-08-26).
 - **Content (superseded fragments, verbatim — two sites):**
 

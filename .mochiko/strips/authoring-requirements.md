@@ -3,25 +3,34 @@
 Entry formats: `strips/README.md`. Wave context: [v0.28.0] entries — skill-succinctness wave 4
 (design: `.mochiko/brainstorms/skill-succinctness-strip/record.md`, ratified 2026-07-25);
 [v0.23.0] entries — workflow-token-reduction wave 2 (design:
-`.mochiko/brainstorms/workflow-token-reduction/record.md` D4 + the wave-2 rulings R1–R4;
+`.mochiko/brainstorms/workflow-token-reduction/record.md` D4-reference-by-id + the wave-2 rulings R1–R4;
 ratified 2026-07-24).
 
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the authoring family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for
-every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3 as amended
+every [v0.106.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md` D3-rules-delivery-binding as amended
 (the skill-side form — `!` runs in `SKILL.md` and at subagent preload), D7 (the `PreToolUse`
 `Skill` limb), D9 (families in the arc's order), and D10 clause 6 (the budgeted quantity re-keys
 to body + rendered output), with the wave-open rulings in that session's `wave5-plan.md` and the
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/authoring-requirements/SKILL.md`. -->
 
+## [v0.118.0] FR and SC definition lines joined; `validate-requirements.py` accepts the joined form
+
+- **Disposition:** superseded → `SKILL.md` FR lines `- **FR-00N-<slug>**: …` (placeholder text, so a placeholder slug) and SC lines with coined slugs (`SC-001-task-creation-time`, `SC-002-recurring-task-adoption`, `SC-003-scheduling-ticket-volume`). The script's capture takes an optional slug, only the prefix is upper-cased, and `check_format` accepts bare `FR-XXX` (D16) or exactly three lowercase slug words (D19), the slug checked case-sensitively inside the `IGNORECASE` pattern.
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; D12 and F21 for the script; hand-off P10)
+- **Content (superseded):** `SKILL.md`: "- **FR-001**: System MUST [specific capability]", "- **FR-002**: Users MUST be able to [specific action]", "- **FR-003**: System SHOULD [recommended behavior]", "- **FR-004**: System MAY [optional capability]", "- **SC-001**: Users complete…", "- **SC-002**: 95% of users…", "- **SC-003**: Support tickets…". Script: the capture `rf'\*\*({prefix}-(\d{{3}}))[\*:]+…'`, `req_id = match.group(1).upper()`, and `check_format`'s `rf'^{prefix}-\d{{3}}$'` with "Invalid format (expected {prefix}-XXX)". Pre-edit file: `git show bf410cc:plugins/mochiko/skills/authoring-requirements/scripts/validate-requirements.py`.
+- **Kept deliberately:** the RFC 2119 keywords and the requirement text; numbering stays keyed on the number (D4); the file mode (644).
+- **Pre-existing bug fixed under this edit (the lead's 2026-10-08 ruling Q1, a scope addition):** the requirement-text lookahead `(?=\n\*\*{prefix}-|…)` became `(?=\n\s*(?:[-*]\s+)?\*\*{prefix}-|…)`. Before it, a bulleted list — the `SKILL.md` template's own form, `- **FR-001**:` — ended each requirement's text only at the next `##`, so the first requirement swallowed the rest and the script found one FR per section, bare or joined (a real eval spec with six bulleted FRs read as one). Red: a bulleted bare-plus-joined fixture found 1, expected 2; green: 2, and no other fixture regressed. Superseded text: `(?=\n\*\*{prefix}-|\n##|\n\n##|\Z)`.
+- **Consumers assessed:** `authoring-requirements.validation-script` (advisory) reads the script's output; W2-tests is told FR IDs now keep their slug's case.
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation
   halt clause plus seven `!` lines, one per rendered block (the preamble and the six sections),
   and the read-back sentence.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3 as amended, the
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding as amended, the
   skill-side form)
 - **Content:** verbatim —
 
@@ -73,7 +82,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 - **Disposition:** superseded → the CLI-printed pin. The count is the `- class: floor · N rules`
   line under `pins` in the preamble block, and the `floors:` line beneath it lists the ids; the
   read-back sentence now cites both rather than carrying a number of its own.
-- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3, "the counts are computed
+- **Tier failed:** n/a — supersession by ruling (`cli-schema-delivery` D3-rules-delivery-binding, "the counts are computed
   and printed by the CLI, never hand-pinned"; the wave-4 re-key ruling adding the `floors:` index)
 - **Content:** verbatim —
 
@@ -83,7 +92,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
   a silent continue.
   ```
 
-- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6 as amended),
+- **Kept deliberately:** the read-back obligation itself (skill-content-schema D6-load-first-guard as amended),
   re-keyed from a hand-pinned number to the printed pin and its id list — the skill still states
   the floor set back before its first procedural step, and a blank or partial read-back still
   halts. The independent second number the `.md` used to hold is booked as a loss, per D3's own
@@ -93,7 +102,7 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 
 ## [v0.101.0] Schema conversion — census-row → minted-ID map (skill-content-schema wave 2A, authoring family)
 
-Ruling for every [v0.101.0] entry below: skill-content-schema D3 (three-home boundary) /
+Ruling for every [v0.101.0] entry below: skill-content-schema D3-obligations-only-schema (three-home boundary) /
 D8/C4 (protected transfers), `DECISIONS.md` 2026-09-01 rows (record + wave-2 family-door
 rulings); census: `.mochiko/brainstorms/skill-content-schema/research/census-authoring.md` §A/§B (AR).
 Schema home: `plugins/mochiko/skills/authoring-requirements/schema.yaml`. Minted IDs carry
@@ -107,7 +116,7 @@ missing substance") · 4a `pm-frame-boundary` · 4b `boundary-escalates-to-user`
 5f `stories-routing` · 6a `fr-format` · 6b `rfc2119-pointer` · 7 `fr-numbering` ·
 8 `edge-cases` · 9a `sc-format` · 9b `sc-rules` · 10 `entities-conceptual` ·
 11 `validation-script` (advisory binding, `pointer: scripts/validate-requirements.py` —
-census J-3).
+census J-3-shipped-member-scripts).
 **Rule count 20** (4 floor · 15 must · 1 advisory) — exactly the census figure; no splits, no
 merges. Two sections ship the explicit empty marker (`independence`, `inputs` — census 0 for
 both).
@@ -121,7 +130,7 @@ Rules` → rule 10; `## Validation Script` → rule 11; `## Quality Checklist` r
 (RFC keywords → 6a · sequential-no-gaps → 7 · no-tech-details → 1 · 3–5 edge cases → 8 ·
 measurable SCs → 9a/9b · user/business value → 9b · conceptual entities → 10). The FR/SC
 fenced format blocks and the Key Entities compact-form intro stay prose — the artifact
-grammar's teaching renderings (sanctioned dual statement, the census J-5 posture).
+grammar's teaching renderings (sanctioned dual statement, the census J-5-description-borne-obligations posture).
 **Accounting:** body 4,413 → 2,761 (−1,652) + schema 8,035 = **payload 10,796** (the C1
 delivered-at-invoke quantity; census est. ~9,800) — ×2.45 vs the pre-conversion body, the
 delta structural overhead (IDs, keys, section scaffolding, reading grammar), no content
@@ -180,7 +189,7 @@ growth claimed.
   (floor) + `boundary-escalates-to-user` (floor, reservation); the two design-track carve-outs
   transfer to `api-endpoints-routing` + `data-model-routing`, per D8/C4.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-09-01 rows; original
-  protections: 2026-08-10 feature-map-layer D15 (PM-owns-which / analyst-owns-how-well) ·
+  protections: "2026-08-10 feature-map-layer D15" (PM-owns-which / analyst-owns-how-well) ·
   2026-08-26 plan-stage-utility (the carve-outs kept entire, name re-keyed — the [v0.91.0]
   entry below)).
 - **Content:** the Overview Boundary paragraph and the two When-NOT carve-out bullets
@@ -194,7 +203,7 @@ growth claimed.
 
 - **Disposition:** superseded → "the design track" at both sites.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1). Raised as an **advisory** by the
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires). Raised as an **advisory** by the
   v0.91.0 wave audit: with the plan stage retired there is one downstream track, so the
   "design/plan" pair named a distinction that no longer exists.
 - **Content (superseded fragments, verbatim — two sites):**
@@ -217,7 +226,7 @@ growth claimed.
 
 - **Disposition:** superseded → the same rule, naming a design-time choice.
 - **Tier failed:** n/a — supersession by ruling (`DECISIONS.md` 2026-08-26 plan-stage-retirement
-  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1; wording ruled by the wave lead
+  row → `.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires; wording ruled by the wave lead
   2026-08-26). The lowest-stakes site of the wave's residue batch — "plan-time" reads as ordinary
   English here rather than as a stage pointer — re-keyed for vocabulary consistency across the
   library on the lead's ruling, with the stakes noted honestly rather than overstated.

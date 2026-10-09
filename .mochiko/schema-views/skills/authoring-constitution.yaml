@@ -154,8 +154,9 @@ sections:
         kind: duty
         text: >-
           Every authored principle carries its GI trace — on `CLAUDE.md` as an HTML comment
-          beside the line, and always in the ledger as the `GI-XXX (floor-asserted: CARD-ID |
-          deck-kept: CARD-ID | minted)` key, the canonical trace record.
+          beside the line, the bare number, and always in the ledger as the `GI-XXX-<slug>
+          (floor-asserted: CARD-ID | deck-kept: CARD-ID | minted)` key, the canonical trace
+          record.
       - id: authoring-constitution.realized-or-flagged
         labels: [evidence]
         class: floor

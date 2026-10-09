@@ -105,7 +105,7 @@ paths, and the header test compares against the committed command view. `tests/r
 committed, human-readable, never shipped — they live outside `plugins/`).
 
 ### 2.4 Migration `0003-two-arm-to-cli.yaml`
-Anchor `2026-09-03 cli-schema-delivery D9` (some reworded rules are floors or anchored — the
+Anchor "`2026-09-03 cli-schema-delivery D9`" (some reworded rules are floors or anchored — the
 header anchor is required). Changes: `set-var` ×6 — `tasks_schema` → `mochiko-cli template tasks`
 (implement and feature), `spec_schema` → `mochiko-cli template spec`, `feature_entry_schema` →
 `mochiko-cli template feature-entry`, `features_index_schema` → `mochiko-cli template
@@ -185,7 +185,7 @@ the plugin ships no schema file, and `mochiko-cli doc` in the usage block.
 
 ## 5. Governance PATCH v3.0.3 (lead, at landing, pre-authorized)
 Transition clause struck: `CLAUDE.md` lines 74 and 119 (the clause sentence and the pointer's
-parenthetical); ledger GI-020 clause (line 384: replaced by "expired at v3.0.3 / plugin v0.107.0 —
+parenthetical); ledger GI-020-plugin-install-model clause (line 384: replaced by "expired at v3.0.3 / plugin v0.107.0 —
 no schema file ships; the contract suite's run-wide no-Read assert holds it"), Testability row
 (line 407 stays true and is now live), amendment-log row 3.0.3; `rust-cli.md` line 25; the region
 stamp v3.0.3; `primitive-edits.md` per §3.4 (P2). The three delivery watches (`BACKLOG.md` lines

@@ -3,7 +3,7 @@
 //! Given what the log declares for a path ([`crate::home`]) and the body a write would leave on
 //! disk, this module answers allow or deny. That is the whole of it: **every check is decidable by
 //! string and count**, and none of them reads meaning, grades quality, or sequences a seat — which
-//! is what keeps the write-time gate on the admitted side of the bright line (GI-019). The tool is
+//! is what keeps the write-time gate on the admitted side of the bright line (GI-019-kernel-tooling-admission). The tool is
 //! checking an artifact against the log's own declaration, never against a standard of its own.
 //!
 //! # The six checks, in the order a deny reports them (record D4)
@@ -171,7 +171,7 @@ pub fn check(
         // controls — the ignore guard, the main-tree rule, the report sniff on `.md` — are the
         // hook's, because they read the repository's layout rather than the body.
         Resolution::Raw { .. } => Verdict::allow(),
-        // The file set is a *relaxable* measure (D4e, as ratified at AM-3): an undeclared name on a
+        // The file set is a *relaxable* measure (D4e, as ratified at AM-3-conformance-gate-admission): an undeclared name on a
         // file that is already on disk is amnestied and named in `additionalContext`, so a
         // mis-homed file is never wedged — those are exactly the files the violator pass rewrites.
         // A *new* file at an undeclared name has no baseline and still denies, so the set binds on
@@ -852,18 +852,59 @@ fn line_count(body: &str) -> usize {
 /// `###` count** (plan §3.7): `#` is the document title and `####` and deeper are past the scope
 /// D4c declares.
 fn heading_scan(body: &str) -> Vec<Option<(usize, &str)>> {
+    body.lines()
+        .zip(fenced_lines(body))
+        .map(|(line, fenced)| if fenced { None } else { heading_of(line) })
+        .collect()
+}
+
+/// Per line of `body`, whether it is a fence line or inside a fenced block.
+///
+/// The one fence classifier in the crate: [`heading_scan`] reads it here, and the ID scanner
+/// ([`crate::ids`]) reads it to leave a fenced quotation as written (`human-readable-ids` D15-protected-line-rewrites). A
+/// second copy is how the fence trap would come back one module away from where it was closed.
+///
+/// The rule is CommonMark's fenced code block, less its indent limit. An opener is a run of three
+/// or more backticks or three or more tildes after any leading whitespace, and it records its
+/// character and its run length; a backtick run whose info string holds a backtick is inline code,
+/// not an opener. Inside a block, a line closes it only when it is a run of the same character, at
+/// least the opener's length, with nothing but whitespace after it; every other fence-looking line
+/// is content, which is how a four-backtick fence quotes a three-backtick block whole. An unclosed
+/// block runs to the end of the text, and the opener and closer lines are fenced themselves. The
+/// 0–3-space indent limit is not applied: any leading whitespace is tolerated, as it always was.
+pub(crate) fn fenced_lines(body: &str) -> Vec<bool> {
     let mut out = Vec::with_capacity(body.lines().count());
-    let mut fenced = false;
+    // The open block's fence character and run length, or `None` outside a block.
+    let mut open: Option<(char, usize)> = None;
     for line in body.lines() {
-        let trimmed = line.trim_start();
-        if trimmed.starts_with("```") || trimmed.starts_with("~~~") {
-            fenced = !fenced;
-            out.push(None);
-            continue;
+        let run = fence_run(line.trim_start());
+        match open {
+            Some((mark, length)) => {
+                if let Some((c, n, rest)) = run {
+                    if c == mark && n >= length && rest.trim().is_empty() {
+                        open = None;
+                    }
+                }
+                out.push(true);
+            }
+            None => match run {
+                Some((mark, length, info)) if mark == '~' || !info.contains('`') => {
+                    open = Some((mark, length));
+                    out.push(true);
+                }
+                _ => out.push(false),
+            },
         }
-        out.push(if fenced { None } else { heading_of(line) });
     }
     out
+}
+
+/// A line's leading fence run: its character, its length (three or more), and the text after it.
+fn fence_run(text: &str) -> Option<(char, usize, &str)> {
+    let mark = text.chars().next().filter(|c| matches!(c, '`' | '~'))?;
+    let rest = text.trim_start_matches(mark);
+    let length = text.len() - rest.len();
+    (length >= 3).then_some((mark, length, rest))
 }
 
 /// One string with its backticked code spans removed, the segments joined by a space.

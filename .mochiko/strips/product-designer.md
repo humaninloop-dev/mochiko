@@ -12,7 +12,7 @@ below); the entries after it were written against the old name and are kept as w
   workflow trace. Procedure sits in the new `mochiko:patterns-design-direction` skill, now
   mounted beside `authoring-prototype`.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/impeccable-design-integration/record.md` D3 — the judgment's home on
+  (`.mochiko/brainstorms/impeccable-design-integration/record.md` D3-no-new-persona — the judgment's home on
   this persona, the `ui-designer` Design track superseded; D4 — the rename, this wave, MINOR,
   no deprecation alias, revert only as a second supersession by ruling; `DECISIONS.md`
   2026-09-19 row). Wave: `wave1-design-integration.md`, seat S1.
@@ -44,7 +44,7 @@ below); the entries after it were written against the old name and are kept as w
   - "A design system's language where one exists — at low fidelity, not reproduction" (now
     "The product's own design language where one exists — …")
 - **Kept deliberately:** `model: sonnet` (the seat default key, `orchestrator-model-selection`
-  D3 — S1 ran deviated at `opus` for this wave only, disclosed in the roster line), `color:
+  D3-seat-class-table — S1 ran deviated at `opus` for this wave only, disclosed in the roster line), `color:
   green`, the Skills Available framing, the five remaining Core Identity bullets (build-time
   discovery, fidelity honesty, honest data shape, scope invention, disposable code), the
   Quality Standards and Reject/Embrace lines not listed above, and the Delegating Cheap Reads
@@ -80,16 +80,16 @@ below); the entries after it were written against the old name and are kept as w
 ## [v0.110.0] Frontmatter `model: opus` superseded — the seat default key sends this seat to `sonnet`
 
 - **Disposition:** superseded → `model: sonnet` on the same frontmatter key. The seat default key
-  (`orchestrator-model-selection` D1) assigns this persona the `down` class on one criterion —
+  (`orchestrator-model-selection` D1-class-keyed-tier) assigns this persona the `down` class on one criterion —
   does a structurally independent seat stand between this seat's output and the run's verdict —
   and D2 pins the class default in the persona file as a tier alias, never `inherit` and never an
   absent `model:`. D3's ground for this row: "prototype producer, graded"; D3's G7 fold states the
   standard that pass rests on — the independent gap-finding pass plus the lead's gate plus the
   user's acceptance.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/orchestrator-model-selection/record.md` D3, the ten-row seat class table,
+  (`.mochiko/brainstorms/orchestrator-model-selection/record.md` D3-seat-class-table, the ten-row seat class table,
   with D1/D2 as its mechanism and D8 as its alias rule; `DECISIONS.md` 2026-09-19 row). The same
-  ruling supersedes `model-tiered-seats` D5 and its fold F6 — the deferral this table discharges.
+  ruling supersedes `model-tiered-seats` D5-seat-tiering-deferred and its fold F6 — the deferral this table discharges.
 - **Content:** verbatim — `model: opus` (frontmatter, line 9).
 - **Kept deliberately:** every other byte of the file — the frontmatter `description:` value
   (v0.63.0 protected prose framing), `name:`, `color:`, the `skills: authoring-prototype` mount,

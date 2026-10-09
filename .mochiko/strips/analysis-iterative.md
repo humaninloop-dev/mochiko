@@ -14,7 +14,7 @@ Pre-edit verbatim text: `git show 2e4c57c:plugins/mochiko/skills/analysis-iterat
 
 - **Disposition:** superseded → "Conclude with the deliverable your calling command names; when it
   names none, generate the synthesis document using [SYNTHESIS.md](SYNTHESIS.md)."
-- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D21)
+- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D21-questioning-skill-repairs)
 - **Content:** verbatim — "Generate the synthesis document using [SYNTHESIS.md](SYNTHESIS.md)."
 - **Kept deliberately:** the [v0.63.0] entry's kept-deliberately line protects "Output's
   synthesis-doc contract" (the goal/output contract, with the Overview). By this ruling it is
@@ -37,7 +37,7 @@ Pre-edit verbatim text: `git show 2e4c57c:plugins/mochiko/skills/analysis-iterat
 
 - **Disposition:** superseded → "The adaptive questioning the Overview describes is the single
   questioning engine."
-- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D21)
+- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D21-questioning-skill-repairs)
 - **Content:** verbatim — "The adaptive flow above is the single questioning engine." It pointed
   at `## Adaptive Flow`, removed whole at [v0.63.0].
 - **Kept deliberately:** the rest of the section byte for byte — one engine, two output shapes,
@@ -51,7 +51,7 @@ Pre-edit verbatim text: `git show 2e4c57c:plugins/mochiko/skills/analysis-iterat
 - **Disposition:** superseded for `/mochiko:brainstorm` only → `brainstorm.own-rules-win`
   (`0044-brainstorm-target-state.yaml`, `brainstorm.sec.roles`): where this skill and brainstorm's
   own rules differ, brainstorm's rules win. No text leaves this file.
-- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D19 as changed at review,
+- **Tier failed:** n/a — supersession by ruling (`brainstorm-target-state` D19-brainstorm-only-reach as changed at review,
   S5, and at verify, V4; `DECISIONS.md` 2026-10-06 row)
 - **Content (the kept table, verbatim):**
 

@@ -22,30 +22,30 @@ No session artifact was opened. **40 angles.**
 
 ### Group I — governance envelope
 
-1. **GI-020 head-on collision.** Ledger testability reads: "Pass: a fresh plugin install with no
+1. **GI-020-plugin-install-model head-on collision.** Ledger testability reads: "Pass: a fresh plugin install with no
    binary present is fully functional; schema data files Read raw. Fail: install requires a build
    step, fetches a binary, or fails without the binary." No-fallback is that exact Fail row. The
-   record must amend GI-020 by recorded ruling or show why it does not bind. Silence is fatal.
+   record must amend GI-020-plugin-install-model by recorded ruling or show why it does not bind. Silence is fatal.
 2. **Amendment semver and route.** Ledger policy: MAJOR for "principle removal / incompatible
    redefinition". Killing additive install is MAJOR, routed through `/mochiko:setup`, user-ruled.
    Version, route, and approver must be named.
-3. **GI-019 bright line, clause 1.** "Never gates pipeline progress." A CLI that is the sole
+3. **GI-019-kernel-tooling-admission bright line, clause 1.** "Never gates pipeline progress." A CLI that is the sole
    delivery path for every command and skill gates every run by construction. The record must show
    how the line survives, or rule it superseded.
-4. **Kernel-class admission is per-instance.** GI-019 admits by recorded ruling; the D11 admission
+4. **Kernel-class admission is per-instance.** GI-019-kernel-tooling-admission admits by recorded ruling; the D11 admission
    was scoped to template-schema delivery. The record must mint a fresh, wider admission, not ride
    the old one.
-5. **GI-019 named-ban proximity.** "Capability catalogs" stay banned absent ruling. A queryable
+5. **GI-019-kernel-tooling-admission named-ban proximity.** "Capability catalogs" stay banned absent ruling. A queryable
    store of all rules is close. The distinction must be argued, not asserted.
-6. **D8 supersession named.** `schema-based-template-guidance` D8 ruled "binary = renderer, raw
+6. **D8 supersession named.** `schema-based-template-guidance` D8-schema-data-files ruled "binary = renderer, raw
    Read the fallback". It must be cited and superseded explicitly, with a strip entry.
-7. **command-content-schema D1 contradiction.** D1 ruled "runtime interpretation, no build-time
+7. **command-content-schema D1-yaml-source-truth contradiction.** D1 ruled "runtime interpretation, no build-time
    render". Pointing every `.md` at the CLI reintroduces a render step.
-8. **GI-002 supply-chain trigger.** The ledger annotates a dormant shipped-executable vector,
+8. **GI-002-project-type-shelves supply-chain trigger.** The ledger annotates a dormant shipped-executable vector,
    revisit at first public release. A mandatory binary plus shipped hooks fires it.
-9. **GI-012 gate rewrite.** Gate 5 is "schema-data/binary consistency, asserted by a crate test
+9. **GI-012-release-gates-module gate rewrite.** Gate 5 is "schema-data/binary consistency, asserted by a crate test
    parsing the shipped YAML". If YAML dies, gate 5 has no referent.
-10. **GI-008 waiver trigger.** Six helper scripts are waived while "not load-bearing in a shipped
+10. **GI-008-script-test-waiver waiver trigger.** Six helper scripts are waived while "not load-bearing in a shipped
     flow". Migration tooling and DB checkers are load-bearing.
 
 ### Group II — store shape
@@ -70,7 +70,7 @@ No session artifact was opened. **40 angles.**
 19. **Three-way version skew.** Plugin, binary, DB grammar. Old-binary/new-data and the reverse both
     occur in a marketplace install.
 20. **Migration ownership.** Who runs migrations, when, on whose machine, with what permission.
-21. **Migration reversibility.** GI-006 requires every primitive edit reconstructible. What replaces
+21. **Migration reversibility.** GI-006-primitive-edit-traceability requires every primitive edit reconstructible. What replaces
     the byte-exact strip when the source is rows?
 22. **Corruption and backup.** A single-file store is a single point of loss for the rule library.
 
@@ -94,7 +94,7 @@ No session artifact was opened. **40 angles.**
 29. **Per-platform distribution actually priced.** Under mandatory the price changes: multiple
     targets, signing, checksums, and a git-based marketplace that ships source, not artifacts.
 30. **How the binary reaches the user.** No install-time build hook exists. The mechanism must be
-    concrete and must not be an install-time build step, which GI-020 bans by name.
+    concrete and must not be an install-time build step, which GI-020-plugin-install-model bans by name.
 31. **Rollback path.** Once YAML is deleted and the `.md` files are re-pointed, reversal is a second
     wave. Trigger, cost, and caller must be stated.
 
@@ -103,16 +103,16 @@ No session artifact was opened. **40 angles.**
 32. **Name the oracle.** Deterministic failures with exit codes versus guidance-quality regressions
     with none. The repo's own eval work found plan-only grids noise-dominated.
 33. **Checker fate.** ~5,225 lines of Python parse YAML. Rewritten into the crate, the advisory
-    carve-out that keeps them outside GI-019 may no longer hold.
+    carve-out that keeps them outside GI-019-kernel-tooling-admission may no longer hold.
 34. **CI path filter.** CI triggers on `crates/**` and `plugins/mochiko/schemas/**`. Content moving
     out of that path silently drops coverage.
 
 ### Group VII — hooks
 
 35. **Hooks versus the bright line.** A blocking `PreToolUse` hook gates progress and can sequence
-    work — GI-019 clauses 1 and 2 directly.
+    work — GI-019-kernel-tooling-admission clauses 1 and 2 directly.
 36. **Hooks are shell on the user's machine.** Plugin-shipped hooks execute in every consuming
-    project. Consent, trust, and the GI-002 annotation attach.
+    project. Consent, trust, and the GI-002-project-type-shelves annotation attach.
 37. **Scope discipline.** "Explore hooks" is a fourth workstream on three large ones. Fence it or
     defer it; an unfenced exploration riding a ruling is an unowned decision.
 
@@ -135,7 +135,7 @@ while the binary rejects it — **confirmed**, the binary prints `error: unknown
 'architecture-shelf-backend'` · F4 `${CLAUDE_PLUGIN_ROOT}` appears only in `setup.yaml` — correct ·
 two-arm string occurs 32 times across 24 files ("~30 sites" — fair) · F5 script line counts
 1,239 / 1,094 / 457 and allowlist 214 rows — correct; `check-command-schema.py` re-run: `0
-findings, 14 warnings — PASS` · F6 99 strip files, 2.8 MB — correct · F7 GI-019 / GI-020 quoted
+findings, 14 warnings — PASS` · F6 99 strip files, 2.8 MB — correct · F7 GI-019-kernel-tooling-admission / GI-020-plugin-install-model quoted
 text — matches the ledger verbatim · F8 no hooks anywhere — correct · F10 10 agents, 76,008 bytes,
 all `model: opus` — correct · F11 `converting-skill-to-schema` absent — correct ·
 `producer-plan-enforcement` absent from this worktree — correct.
@@ -195,10 +195,10 @@ declared out of scope, and add both to D8's contract-suite variants beside absen
 
 ---
 
-**C2 — D9, D10.1. The rewritten GI-020 is false for waves 2 through 5. A ratified non-negotiable
+**C2 — D9, D10.1. The rewritten GI-020-plugin-install-model is false for waves 2 through 5. A ratified non-negotiable
 the tree violates by design for four waves.**
 
-D10.1 rewrites GI-020 to read, in part, "it depends on the separately installed `mochiko-cli` for
+D10.1 rewrites GI-020-plugin-install-model to read, in part, "it depends on the separately installed `mochiko-cli` for
 every command and skill; absence or version skew halts loudly at first use and never degrades; **no
 file-read fallback exists**". D9 lands that amendment at wave 2, explicitly "**before any `.md`
 points at the CLI**", and wave 1 regenerates derived snapshots "in today's exact file shapes … so
@@ -206,7 +206,7 @@ every unconverted `.md` keeps reading them raw".
 
 So on the day the amended principle is ratified, zero commands depend on the binary and all six read
 files. The file-read fallback the principle says does not exist is the only delivery path in the
-tree. It stays that way through wave 5. Meanwhile GI-012 gates every wave's `plugin.json` bump
+tree. It stays that way through wave 5. Meanwhile GI-012-release-gates-module gates every wave's `plugin.json` bump
 against a governance surface that is false on its face.
 
 This is not a wording nit. Governance principles in this repo are ratified as live constraints with
@@ -214,7 +214,7 @@ Pass/Fail testability rows, and `validation-constitution` grades them. A princip
 aspirational for four releases either forces the validator to pass a false statement or blocks every
 intermediate bump.
 
-*Disposition:* pick one. Either move the GI-020 amendment to wave 6 and give waves 3–5 a recorded
+*Disposition:* pick one. Either move the GI-020-plugin-install-model amendment to wave 6 and give waves 3–5 a recorded
 transition allowance, or write the amended principle with an explicit transition clause naming the
 conversion window and its end condition. Say which in D10.1, and re-state D9's wave-2 rationale
 accordingly.
@@ -227,7 +227,7 @@ no question's menu and is nowhere recorded as rejected.**
 The Problem section ranks **B (change management) high**, **C (integrity) high**, **A (delivery)
 medium**, **D (run control) medium**. D1's migration log, D2's scope, and D6's Rust validator serve
 B and C completely. None of them requires the `.md` to point at the CLI, requires no-fallback,
-touches GI-020, touches GI-019, or needs a binary on any user's machine. The store could be
+touches GI-020-plugin-install-model, touches GI-019-kernel-tooling-admission, or needs a binary on any user's machine. The store could be
 maintainer-side only: log as truth, Rust validator, generated YAML snapshots committed exactly as
 they are today, every `.md` unchanged.
 
@@ -257,41 +257,41 @@ state plainly in the Problem section or D10 that the governance cost is bought b
 ---
 
 **I1 — D10.2. "GI-019 is argued, not amended" narrows a non-negotiable's operative verb by attached
-clause, while the narrower GI-020 change is routed as MAJOR. The asymmetry is unexplained and the
+clause, while the narrower GI-020-plugin-install-model change is routed as MAJOR. The asymmetry is unexplained and the
 argument is asserted, not made.**
 
 Three limbs.
 
 *(a) The species distinction is stated, not argued.* D10.2 says a required binary whose absence
 halts a run is "an infrastructure dependency, a different species from the output-gating the bright
-line names — the binary gates nothing by its output". But GI-019's testability Fail row reads "an
+line names — the binary gates nothing by its output". But GI-019-kernel-tooling-admission's testability Fail row reads "an
 admitted binary that **gates the pipeline**, sequences agents, or holds skill-owned judgment". It
 does not say "gates by output". The record introduces the by-output reading in the same clause that
-benefits from it and never engages GI-019's own rationale text, which frames the line as keeping
+benefits from it and never engages GI-019-kernel-tooling-admission's own rationale text, which frames the line as keeping
 admitted tooling "to delivery/composition roles". The reading is defensible — delivery is the
 licensed role — but it must be argued against the ledger's actual words.
 
 *(b) The route is inconsistent.* The ledger's amendment policy sets MAJOR for "incompatible
 redefinition". Attaching clauses that narrow what "gates pipeline progress" means is a redefinition
-of scope even with the text unchanged. D10.1 correctly routes the GI-020 change through
+of scope even with the text unchanged. D10.1 correctly routes the GI-020-plugin-install-model change through
 `/mochiko:setup` as MAJOR. D10.2 routes a change to the project's single bright line through a
 record entry. Same run, two standards.
 
 *(c) D6's hard reject sits closer to the line than admitted.* D6 has the CLI reject a migration
 outright, and D10.2 defends it as "maintainer-time definition of the store's own data … nothing here
 runs inside a pipeline". But the primitive-edit landing ritual is a pipeline with gates in this
-repo — GI-012 gates the bump, `primitive-edits.md` gates the edit. A binary that refuses a
+repo — GI-012-release-gates-module gates the bump, `primitive-edits.md` gates the edit. A binary that refuses a
 maintainer's rule change is a pass/fail checkpoint on pipeline work.
 
-Also unaddressed: GI-019 admits kernel-class tooling "ONLY by a recorded ruling", per instance. The
+Also unaddressed: GI-019-kernel-tooling-admission admits kernel-class tooling "ONLY by a recorded ruling", per instance. The
 D11 admission was scoped to template-schema delivery. This record widens the role to all content
 delivery plus hard constraints, and D10 records supersessions but never states that it is itself the
 fresh admission ruling for the widened role.
 
-*Disposition:* fold the GI-019 clauses into the wave-2 `/mochiko:setup` amend run alongside GI-020,
+*Disposition:* fold the GI-019-kernel-tooling-admission clauses into the wave-2 `/mochiko:setup` amend run alongside GI-020-plugin-install-model,
 argued against the ledger's Fail-row wording rather than a fresh paraphrase; state explicitly that
 this record is the admission ruling for the widened kernel-class role; and answer (c) directly —
-either the landing ritual is not a pipeline for GI-019 purposes, or D6's hard set needs the
+either the landing ritual is not a pipeline for GI-019-kernel-tooling-admission purposes, or D6's hard set needs the
 maintainer-time carve stated as a ruled exception.
 
 ---
@@ -349,12 +349,12 @@ probe item if a Windows runner is available".
 
 Second limb: D4's priced consequences say "Windows served by cargo only". `cargo install
 mochiko-cli` requires a Rust toolchain on the user's machine and compiles from source. That is an
-install-time build step, relocated from the plugin to the tool. D10.1's rewritten GI-020 is worded to
+install-time build step, relocated from the plugin to the tool. D10.1's rewritten GI-020-plugin-install-model is worded to
 permit it, so there is no contradiction — but the cost line reads as a distribution footnote when it
 is a toolchain prerequisite.
 
 *Disposition:* rule Windows in or out. If in, the `shell:` key is a D3 design element and a D8
-contract-suite axis, not a probe. If out, say so in D4's cost line and in the amended GI-020, and
+contract-suite axis, not a probe. If out, say so in D4's cost line and in the amended GI-020-plugin-install-model, and
 name it in the record's Open threads as a declared unsupported platform. Either way, restate D4's
 Windows cost as "install a Rust toolchain and compile", which is what it is.
 
@@ -385,7 +385,7 @@ sound; the defect is the routing, not the likely answer.
 
 ---
 
-**I5 — D6, D10.6. GI-004's author≠grader expression for schema content is left undefined, and the
+**I5 — D6, D10.6. GI-004-primitive-audit-ratchet's author≠grader expression for schema content is left undefined, and the
 only independent text read of effective state is assigned to builder's room.**
 
 D2 ends strips for schema content. D6 collapses the `.md` audit criteria to "the `!` line and halt
@@ -393,7 +393,7 @@ clause are present and name the right primitive". D10.6 re-keys `primitive-edits
 ceremony becomes "a migration carrying its ruling anchor". Every one of those replaces a *strip*
 obligation. None replaces the *audit* obligation.
 
-GI-004 is non-negotiable: "Every shipped-primitive edit MUST pass the author≠grader audit before the
+GI-004-primitive-audit-ratchet is non-negotiable: "Every shipped-primitive edit MUST pass the author≠grader audit before the
 `plugin.json` bump that ships it", and `plugins/mochiko/schemas/**` entered that path scope at
 v0.76.0. After wave 6, an ordinary rule reword is one migration file. No seat is named to grade it,
 and the criteria that seat would use no longer exist.
@@ -403,11 +403,11 @@ after `${var}` substitution, `extends:` resolution, and log replay is visible on
 or through D1's derived snapshots. The snapshots are therefore the independent read path that keeps
 the audit honest. Yet Open threads treat their long-term format as free: "whether the long-term
 derived view is the same YAML or a readable render is builder's room, decided when no `.md` reads a
-snapshot anymore". GI-004 and GI-006 constrain that choice; the record does not say so.
+snapshot anymore". GI-004-primitive-audit-ratchet and GI-006-primitive-edit-traceability constrain that choice; the record does not say so.
 
 *Disposition:* state the steady-state audit unit and criteria for a schema migration in D6 or D10.6.
 Add to the snapshot open thread that the derived view MUST stay human-readable text, because it is
-the author≠grader read path and the GI-006 reconstruction surface — that is a constraint, not
+the author≠grader read path and the GI-006-primitive-edit-traceability reconstruction surface — that is a constraint, not
 builder's room.
 
 ---
@@ -415,7 +415,7 @@ builder's room.
 **I6 — D8. The release gate is a stochastic test with no sample size, no pass bar, an unpriced run
 cost, and a substrate whose own recorded finding was noise dominance.**
 
-D8 makes the plugin contract suite blocking under GI-012 gate 6: headless `claude -p` runs "per
+D8 makes the plugin contract suite blocking under GI-012-release-gates-module gate 6: headless `claude -p` runs "per
 command and per converted skill", plus absence and skew variants, asserting "the `!` line executed,
 the version triple present, the floor read-back stated, and no schema file Read anywhere".
 
@@ -449,7 +449,7 @@ F8 verifies that the plugin ships no hooks today and the repo configures none. D
 mochiko. That is a new capability class for this plugin: code the plugin author controls, executing
 on the consumer's machine, on every session start, without a per-run prompt.
 
-D10.4 fires GI-002's risk line and discharges it "at wave 1 (signed tags, `cargo audit`,
+D10.4 fires GI-002-project-type-shelves's risk line and discharges it "at wave 1 (signed tags, `cargo audit`,
 checksum-published artifacts as builder's room)" — all crate-publication controls. None of them
 covers the shipped hook, which reaches users through the plugin, not through crates.io.
 
@@ -458,7 +458,7 @@ is slow degrades every session in every consuming project, for a benefit D7 itse
 "earlier loudness".
 
 *Disposition:* extend D10.4's discharge to name shipped hooks explicitly, or record hooks as a
-separate GI-002 revisit. Add a timeout and a fail-open requirement to D7(a) — a presence check must
+separate GI-002-project-type-shelves revisit. Add a timeout and a fail-open requirement to D7(a) — a presence check must
 never be able to break a session. State that the hook ships to all consumers so the user ratifies
 that knowingly.
 
@@ -482,8 +482,8 @@ wave 2. Name whichever in D9.
 inherits `Confident` from a bundle vote.**
 
 Q11 offered "adopt D10 as stated · amend a clause" and the answer was "adopt as stated". D10 carries
-five distinct governance moves — a MAJOR GI-020 rewrite, the GI-019 reinterpretation, a GI-012
-widening, a GI-002 discharge, and six supersessions — plus a ceremony re-key. The GI-019 limb (I1) is
+five distinct governance moves — a MAJOR GI-020-plugin-install-model rewrite, the GI-019-kernel-tooling-admission reinterpretation, a GI-012-release-gates-module
+widening, a GI-002-project-type-shelves discharge, and six supersessions — plus a ceremony re-key. The GI-019-kernel-tooling-admission limb (I1) is
 the one a skeptical reader is most likely to refuse, and it was never put on its own.
 
 Related pattern: nine of twelve questions were answered "as recommended", with D4 the single
@@ -530,9 +530,9 @@ print both sides, so the check becomes self-consistent by construction and detec
 single delivery channel with no fallback, that is a real loss the record books as pure gain.
 *Disposition:* acknowledge the trade in D3's rationale, or keep one independently sourced pin.
 
-**M3 — D10 misses GI-008.** The waiver covers "the 6 helper scripts"; D6 retires three of them into
+**M3 — D10 misses GI-008-script-test-waiver.** The waiver covers "the 6 helper scripts"; D6 retires three of them into
 the crate. The waiver's own revisit trigger is "a script becomes load-bearing in a shipped flow", and
-the amendment policy makes un-waives governance events. *Disposition:* add a GI-008 scope line to the
+the amendment policy makes un-waives governance events. *Disposition:* add a GI-008-script-test-waiver scope line to the
 wave-2 amend run.
 
 **M4 — CI path filter.** `.github/workflows/ci.yml` triggers only on `crates/**`,
@@ -588,7 +588,7 @@ priced consequences, accepted eyes-open.
 | Self-contained | PASS | F1–F11 ground facts, six constraints, ranked driver table, ten decisions with rationale, Q1–Q12 trail, build surface, evidence honesty, open threads. A cold reader can reconstruct the session. |
 | Decisions attackable | PASS | Every decision carries a Rationale and a named Rejected line. No bare assertions. |
 | Decision trail present | PASS | Q1–Q12 record options and answers; D3 shows its Q8 amendment; D4 shows the recommendation declined. |
-| Confidence marks honest | PARTIAL | D3/D8/D9 split choice from efficacy; D4 `Contested` with inferred reasons marked `Assumed`. But D10 is `Confident` over a five-limb bundle whose GI-019 limb was never separately tested (I9), and D1 is `Confident` while its store engine is unmade (I4). |
+| Confidence marks honest | PARTIAL | D3/D8/D9 split choice from efficacy; D4 `Contested` with inferred reasons marked `Assumed`. But D10 is `Confident` over a five-limb bundle whose GI-019-kernel-tooling-admission limb was never separately tested (I9), and D1 is `Confident` while its store engine is unmade (I4). |
 | Rejected roads recorded | FAIL | Per-question alternatives are named, but the maintainer-side-only road — which serves both `high` drivers at zero governance cost — appears in no menu and no Rejected line (C3). |
 | Honest about the open | PASS | "Evidence honesty" states n=0 everywhere that matters; eight open threads listed; D4's inferred rationale flagged for user correction. |
 | Provenance stated | PASS | Lead, date, worktree and commit, prior-session relations, reviewer sizing at Q12. Review section not yet present — expected at `Status: open`. |
@@ -640,7 +640,7 @@ angles. New surface raised only where a fold introduced a contradiction or a fac
 | Finding | Fold | Verdict |
 |---|---|---|
 | **C3** | Problem section gains "Roads rejected at the frame": the null road and the maintainer-side-only road recorded rejected with reasons, plus the attribution — "the governance cost of this design … is bought by driver A at `medium` rank on the user's explicit instruction, not by the two `high` drivers". D3's Rejected line names the road too. | CLEAN — applied in full, attribution included. |
-| **I1** | Split out as its own **D11**, `Assumed` until the wave-2 validator, routed through the amend run beside GI-020, argued against the ledger's Fail row and rationale (both now quoted in F7), fresh admission ruling stated, limb (ii) ruling the landing-ritual carve openly rather than denying the pipeline. | CLEAN — all three limbs; the rationale concedes the asymmetry had "no defense". |
+| **I1** | Split out as its own **D11**, `Assumed` until the wave-2 validator, routed through the amend run beside GI-020-plugin-install-model, argued against the ledger's Fail row and rationale (both now quoted in F7), fresh admission ruling stated, limb (ii) ruling the landing-ritual carve openly rather than denying the pipeline. | CLEAN — all three limbs; the rationale concedes the asymmetry had "no defense". |
 | **I2** | D9 wave 0 rebuilt against D4: plugin-`bin/` probe dropped, `${CLAUDE_PLUGIN_ROOT}` closed as documented (F9.2), `PATH` visibility minted as **the numeric abort**. | CLEAN — matches the recommendation exactly. |
 | **I3** | D4 states the Rust-toolchain compile plainly, declares PowerShell-only Windows **unsupported**, F9.3 carries the verbatim failure string, D8's CI matrix re-scoped to Windows-with-Git-Bash. | CLEAN. |
 | **I4** | D1 rewritten: in-memory replay, cache on measured need in `${CLAUDE_PLUGIN_DATA}`, SQLite deferred with `rusqlite` named, criterion stated, measured at pilot. The note concedes the earlier wording rode the ask's example "without a requirement paying for it"; `build-vs-off-the-shelf` D4 cited as making it the user's ruling. | CLEAN — exceeds the recommendation. |
@@ -697,7 +697,7 @@ any `.md` points at the CLI".
 At the wave-2 bump the ratified principle says the plugin "depends on the separately installed
 `mochiko-cli` for every command and skill" — false, nothing is converted — while its transition
 clause does not yet apply by its own words. That is C2's failure recurring in a one-wave window, at
-exactly the moment `validation-constitution` and GI-012's gates grade the amended text.
+exactly the moment `validation-constitution` and GI-012-release-gates-module's gates grade the amended text.
 
 *Repair:* change the window's start from "from the wave-3 pilot" to ratification — "from this
 amendment's landing until the wave-6 landing". The expiry condition and Testability rows are
@@ -737,7 +737,7 @@ view ≡ replay tests."
 
 ---
 
-**Defect 5 — BLOCKING. M3's fold, and a correction to my own finding. GI-008's waiver does not
+**Defect 5 — BLOCKING. M3's fold, and a correction to my own finding. GI-008-script-test-waiver's waiver does not
 cover the three retired scripts, so it does not narrow.**
 
 D10.7 rules: "**GI-008 narrows at the amend run:** the waiver's scope drops the three retired
@@ -767,11 +767,11 @@ and schedules that change into the wave-2 amend run where `validation-constituti
 trace. It would not close. It also leaves the surviving set wrong: six, not three.
 
 **My M3 carried the same misreading and is withdrawn as stated.** The correct residual is narrower
-and still real: the three repo-level checkers sit outside GI-008 and inside GI-019's advisory
+and still real: the three repo-level checkers sit outside GI-008-script-test-waiver and inside GI-019-kernel-tooling-admission's advisory
 carve-out (F5 states this correctly), and D6 moves their function into the admitted binary as
 **rejecting**, not advisory — a transition argued at D11 limb (ii), needing no waiver change.
 
-*Repair:* strike D10.7 and Constraint 7's narrowing claim. Replace with: GI-008 is untouched — its
+*Repair:* strike D10.7 and Constraint 7's narrowing claim. Replace with: GI-008-script-test-waiver is untouched — its
 six in-plugin skill scripts are unaffected by this design; the three retired repo-level checkers
 were never in its scope, and their move from advisory to rejecting is governed by D11 limb (ii). If
 the waiver's membership is judged genuinely ambiguous, the amend run resolves the ambiguity rather
@@ -822,7 +822,7 @@ All five round-1 defects verified repaired against the repaired record.
    The three surfaces now describe one behavior.
 2. **Repaired.** D10.1's clause opens "*from ratification at wave 2 until the wave-6 landing*",
    with the reason stated inline. The wave-2 window is closed.
-3. **Repaired.** D10.7 rewritten to GI-008 untouched, naming all six skill-shipped scripts and
+3. **Repaired.** D10.7 rewritten to GI-008-script-test-waiver untouched, naming all six skill-shipped scripts and
    the three repo-level checkers' post-dating (v0.92.0 · v0.99.0 · v0.100.0), with retirement
    covered by D11's admission. Constraint 7 agrees. A-M3 recorded withdrawn in the disposition
    table.
@@ -835,8 +835,8 @@ All five round-1 defects verified repaired against the repaired record.
 
 **R1 — Build surface, Wave 2 line, stale echo of the superseded D10.7.** It still lists the amend
 run's contents as "GI-002 discharge naming hooks · **GI-008 narrowing** · unsupported environments
-named". D10.7 now rules GI-008 untouched and says "the amend run records this as a note, not a
-change". D9's own wave-2 sentence is fine — it names GI-008 without characterizing it. Only the
+named". D10.7 now rules GI-008-script-test-waiver untouched and says "the amend run records this as a note, not a
+change". D9's own wave-2 sentence is fine — it names GI-008-script-test-waiver without characterizing it. Only the
 build surface carries the stale word.
 
 *Repair:* "GI-008 note (untouched — D10.7)".

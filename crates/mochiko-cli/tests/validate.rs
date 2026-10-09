@@ -1096,9 +1096,9 @@ fn each_empty_enforces_mirror_still_carries_its_reason_as_a_note() {
 fn the_shipped_corpus_matches_its_recorded_census() {
     let state = shipped_state();
     // 50 through wave 6; `0005-artifact-homes` added twenty `home` documents and three templates;
-    // `0008-gate-form` imported the `validation-primitive-edit` skill (2026-09-19
-    // author-grader-consolidation D7); `0009-plan-qa-leg` imported `review-seat-plan`
-    // (2026-09-03 producer-plan-enforcement D8); the 2026-09-19 impeccable-design-integration
+    // `0008-gate-form` imported the `validation-primitive-edit` skill ("2026-09-19
+    // author-grader-consolidation D7"); `0009-plan-qa-leg` imported `review-seat-plan`
+    // ("2026-09-03 producer-plan-enforcement D8"); the 2026-09-19 impeccable-design-integration
     // wave imported three skills (`0011`, `0012`), the `product-design` home and the
     // `design-baseline` template (`0013`); the 2026-09-29 census table ratification imported seven
     // home documents (`0032` six, `0033` the `runs` home).
@@ -1114,17 +1114,17 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // eleven skills. `0007` (the seat default key, 2026-09-19) nets +4 on the same skill — one
     // `supersede-rule` (−1) and five `mint-rule`s (+5), two of the five floors; the command side
     // is untouched. The superseded rule was itself a floor, so the skill's floor count nets +1 on
-    // top of `0005`'s eleven. `0008` (the gate form, 2026-09-19 author-grader-consolidation D7) is
+    // top of `0005`'s eleven. `0008` (the gate form, "2026-09-19 author-grader-consolidation D7") is
     // pure mints and retires nothing: two command rules on `setup`, one of them a floor, and
     // twenty-two skill rules — one on `patterns-model-tiering` and twenty-one in the imported
     // `validation-primitive-edit` document, eleven of those floors. `common.gate-loop-bound` is a
     // block in the existing command-common library, so it mints no document and falls outside both
-    // rule counts. The fail set does not move. `0009` (the plan-QA leg, 2026-09-03
-    // producer-plan-enforcement D8) imports one skill document, `review-seat-plan`, carrying
+    // rule counts. The fail set does not move. `0009` (the plan-QA leg, "2026-09-03
+    // producer-plan-enforcement D8") imports one skill document, `review-seat-plan`, carrying
     // fifteen rules of which five are floors; every other op it carries is a `reword-rule`,
     // which keeps its rule's id, class and section and so mints nothing. The command figures
     // and the fail set hold; only the skill side moves.
-    // `0010` (the validator retirement, 2026-09-03 producer-plan-enforcement D3) is three
+    // `0010` (the validator retirement, "2026-09-03 producer-plan-enforcement D3") is three
     // `reword-rule` ops and nothing else — one on `patterns-model-tiering` and two on
     // `authoring-constitution`, each keeping its id, class, kind and section — so it mints and
     // retires nothing and every figure below holds unmoved.
@@ -1160,9 +1160,16 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // musts, none a floor or a fail node — command 335 → 360, skill 804 → 808, the floor figures
     // and the fail set unmoved. The rest are rewords keeping id, class and kind, a `when:` set,
     // two moments and two conditions.
-    assert_eq!(command_rules, 360, "live command rules");
-    assert_eq!(skill_rules, 808, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1168, "live rules in total");
+    // `0046`–`0050` (the 2026-10-08 human-readable-ids wave 2) mint seven counted
+    // rules and retire none: `0049`'s five must stubs extending `review-common.joined-ids` on the
+    // review skills (the common block itself sits outside this count) and its two must command
+    // rules, `arch.grader-checks-joined-ids` and `feat.grader-checks-joined-ids`, none a floor or a
+    // fail node — command 360 → 362, skill 808 → 813, the floor figures and the fail set unmoved.
+    // `0046` and `0050` replace templates, and the fifteen rewords of `0047` and `0048` keep id,
+    // class and kind — `impl.baseline-diff-review` stays a floor.
+    assert_eq!(command_rules, 362, "live command rules");
+    assert_eq!(skill_rules, 813, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1175, "live rules in total");
     assert_eq!(skill_floors, 264, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
@@ -2396,7 +2403,7 @@ fn a_common_block_carrying_no_labels_is_never_itself_a_finding() {
     );
 }
 
-// --- the flat top-level `rules:` grammar (content-schema D14) ---
+// --- the flat top-level `rules:` grammar (`command-content-schema` D14-nested-section-grammar) ---
 
 #[test]
 fn a_command_schema_carrying_top_level_rules_is_rejected() {
@@ -2794,10 +2801,12 @@ fn every_shipped_pointer_resolves_from_its_own_skill_directory() {
     // `references/COMPLIANCE-MODULES.md` (`authoring-constitution.module-mechanical-attachment`
     // and `authoring-constitution.s4-fail-safe`); 83 from the 2026-10-06 brainstorm target state,
     // where `0045` minted `review-brainstorm.card-parts-first` pointing at
-    // `references/RECORD-FITNESS.md`.
+    // `references/RECORD-FITNESS.md`; 88 from the 2026-10-08 human-readable-ids wave 2, where
+    // `0049`'s five `extends: review-common.joined-ids` stubs each inherit the common block's
+    // `pointer: ../../templates/artifact-format.md`.
     assert_eq!(
-        report.checked, 83,
-        "the corpus carries 83 path-shaped pointers"
+        report.checked, 88,
+        "the corpus carries 88 path-shaped pointers"
     );
     assert!(
         report.findings.is_empty(),

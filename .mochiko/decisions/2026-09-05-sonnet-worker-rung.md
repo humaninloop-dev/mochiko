@@ -2,7 +2,7 @@
 
 - **Status:** ruled
 - **Date:** 2026-09-05
-- **Context:** The model-tiering floor (`model-tiered-seats` D4, built 2026-08-16 at v0.77.0,
+- **Context:** The model-tiering floor (`model-tiered-seats` D4-explore-tier-restoration, built 2026-08-16 at v0.77.0,
   retargeted 2026-08-19 at v0.78.0) gives every seat one cheap rung: locate/enumerate/targeted
   reads go to a native `Explore` subagent spawned `model: haiku`. Everything else — every read
   that needs judgment and *all* producing, reviewing, and grading work — stays on the seat's own

@@ -87,7 +87,7 @@ README's category-error trap is avoided. `Content:` carries the verbatim superse
 | D3 ground quoted per seat | `record.md` D3 table rows, verbatim: "spec producer, graded by devils-advocate on `review-specifications`" · "design producer, graded by feasibility + plan-artifacts reviews" · "feature-map producer; selection is the user's ruling" · "prototype producer, graded" | yes |
 | G7 cited on three, omitted on technical-analyst | `record.md` D3 fold G7 itself scopes to "three of the four `down` seats"; the excluded seat is the one whose graders emit verdicts (`review-feasibility` → feasible/needs-revision/infeasible; `review-plan-artifacts` → ready/needs-revision/critical-gaps). The asymmetry is the record's own, not an omission | yes |
 | `DECISIONS.md` 2026-09-19 row exists | `DECISIONS.md:13` | yes |
-| the same ruling supersedes `model-tiered-seats` D5 + fold F6 | `DECISIONS.md:170` · `.mochiko/brainstorms/model-tiered-seats/record.md:166` | yes |
+| the same ruling supersedes `model-tiered-seats` D5-seat-tiering-deferred + fold F6 | `DECISIONS.md:170` · `.mochiko/brainstorms/model-tiered-seats/record.md:166` | yes |
 | description char figure 303 against budget 379 (requirements-analyst) | `.mochiko/memory/primitive-cost-budgets.md:307` reads `303 | 379` | yes |
 | `plugin.json` agents list is path-only and unchanged | `plugins/mochiko/.claude-plugin/plugin.json:18–28` — ten `./agents/*.md` strings, no model axis; `git diff` on the file is empty | yes |
 | the router's agents table names no model | `plugins/mochiko/skills/mochiko/SKILL.md:139–149` — ten rows, role text and `skills:` lists only, no model token | yes |
@@ -123,7 +123,7 @@ branch applies; the hand edit is legal and takes no strip entry (the file sits o
 | skills count 38, "the other 37" | `ls plugins/mochiko/skills \| wc -l` → 38 | true |
 | "the thirty schema-bearing skills … the seven prose skills and the router carry no rule set" | `grep -rl "## Rules — delivered by mochiko-cli" plugins/mochiko/skills/ \| wc -l` → 30. 30 + 7 + 1 = 38 | true |
 | templates "7 + `constitution-modules/`" | `ls plugins/mochiko/templates/` → seven `.md` plus `constitution-modules` | true |
-| rules "live in the migration log at `plugins/mochiko/migrations/` … rendered at fire by `mochiko-cli`" | directory exists; CLAUDE.md GI-020 and `.claude/rules/mochiko/primitive-edits.md` state the same delivery | true |
+| rules "live in the migration log at `plugins/mochiko/migrations/` … rendered at fire by `mochiko-cli`" | directory exists; CLAUDE.md GI-020-plugin-install-model and `.claude/rules/mochiko/primitive-edits.md` state the same delivery | true |
 | agents row "10 … six `model: opus`, four `model: sonnet`" | `ls plugins/mochiko/agents/ \| wc -l` → 10; the `grep` in §1 gives 6/4 | true |
 
 ### No new dead pointer

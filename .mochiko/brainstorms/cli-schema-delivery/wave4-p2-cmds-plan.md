@@ -38,7 +38,7 @@ Referent: `commands/brainstorm.md` at HEAD plus its two `[v0.104.0]` strip entri
    changing them needs a ruling and an eleventh strip entry.
 4. **`specify` Goal offers a schema fallback** — "`mochiko-cli template spec`, or its schema
    `plugins/mochiko/schemas/spec.yaml` Read raw when the binary is absent". That is the template path, not the
-   rules path, so GI-020 stands, but it sits three sections under a halt paragraph saying there is no fallback.
+   rules path, so GI-020-plugin-install-model stands, but it sits three sections under a halt paragraph saying there is no fallback.
    Byte-identical this wave; flagged for wave 5.
 
 ## 3. Strips and README

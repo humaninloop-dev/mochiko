@@ -4,7 +4,7 @@ feature: hook-enforced-artifact-schema
 round: 2
 ---
 
-# AM-3 — independent validation of the governance surface set v3.1.0
+# AM-3-conformance-gate-admission — independent validation of the governance surface set v3.1.0
 
 **VALIDATION RESULT: FAIL**
 
@@ -21,7 +21,7 @@ files, never from the producer's report. Single writer of this file.
 
 - **Checklist items:** 59/61 passed · **1 FAILED** · 1 n-a by recorded decline. Core 49 + 2
   selected module fragments (`release-gates` 4 · `knowledge-management` 8). The `layer-rules`
-  and `evolution-notes` fragments were not run — declined durable (GI-013, GI-014); the
+  and `evolution-notes` fragments were not run — declined durable (GI-013-no-layer-rules, GI-014-no-evolution-notes); the
   brownfield "Evolution Notes present" item is the n-a.
 - **Surface integrity:** region markers present at CLAUDE.md:106 / :141 · index → home → ledger
   closes both ways for GI-003, GI-004, GI-005, GI-006, GI-009, GI-010, GI-012, GI-017, GI-019,
@@ -29,16 +29,16 @@ files, never from the producer's report. Single writer of this file.
   incomplete — the blocking finding below** · standing new-file read line present at
   CLAUDE.md:139 and re-pathed correctly · no universal principle relocated into a rules file ·
   content outside the markers limited to the two prose paragraphs, both edited under a recorded
-  ruling and disclosed in the ledger's AM-3 addendum.
-- **Trace closure:** forward — every AM-3 synthesis element reaches a surface line and, where
+  ruling and disclosed in the ledger's AM-3-conformance-gate-admission addendum.
+- **Trace closure:** forward — every AM-3-conformance-gate-admission synthesis element reaches a surface line and, where
   principle-bearing, a Three-Part ledger entry. Reverse — every changed surface line reaches a
   synthesis element or a disclosed lead addition. No GI-ID claimed twice. Waivers one-for-one.
   Modules one-for-one.
 - **Floor / module accounting:** production floor + depth `high` asserted in the region stamp
-  and the ledger header, agreeing at v3.1.0 · compliance modules none, matching the GI-001 fact
-  profile (unchanged at AM-3) · template modules match GI-009/GI-010/GI-012 one-for-one,
+  and the ledger header, agreeing at v3.1.0 · compliance modules none, matching the GI-001-project-fact-profile fact
+  profile (unchanged at AM-3-conformance-gate-admission) · template modules match GI-009-knowledge-management-core/GI-010-changelog-elective-module/GI-012-release-gates-module one-for-one,
   declines recorded · all four Essential Floor categories carry a principle (GI-003 · GI-004 ·
-  GI-005 · GI-006), none re-expressed this round, none waived · waiver GI-008 unchanged, naming
+  GI-005 · GI-006), none re-expressed this round, none waived · waiver GI-008-script-test-waiver unchanged, naming
   no legal-mandate module obligation.
 - **Anti-patterns found:** none blocking. Two watched: build-state detail inside a standing
   ledger Enforcement section (A3), and one unmeasured operative term inside a disclosed
@@ -53,7 +53,7 @@ files, never from the producer's report. Single writer of this file.
 
 ## 1 — Blocking findings
 
-### B1 — Rules-file scope does not reach the surface AM-3's new obligation is violated on
+### B1 — Rules-file scope does not reach the surface AM-3-conformance-gate-admission's new obligation is violated on
 
 **Checklist item failed:** *Rules-File Scope & Delivery* — "Each rules file's `paths` globs cover
 every path whose code can violate the concern — per-layer violation test against the kept
@@ -71,21 +71,21 @@ The four rules files' globs, verified from their frontmatter:
 Three paths are violable and unscoped by any of them:
 
 - **`plugins/mochiko/.claude-plugin/plugin.json`** (present, `"version": "0.108.0"`). Every one
-  of GI-012's gates fires at the bump of this file, and AM-3 adds the strictest obligation in the
+  of GI-012-release-gates-module's gates fires at the bump of this file, and AM-3-conformance-gate-admission adds the strictest obligation in the
   whole set there: "the wave-4 bump that ships the conformance hooks MUST NOT land before the
   first `mochiko-cli` publish carrying all four named supply-chain controls." A maintainer
   editing this file gets no injected rule. `rust-cli.md` itself names the moment — "the
   maintainer-side gate at every `plugin.json` bump" — while not being scoped to the file that
   moment touches.
 - **`.claude-plugin/marketplace.json`** (present). Gate 5's sync obligation, folded from the
-  GI-016 confrontation, is violated here and nowhere else.
-- **`CHANGELOG.md`** (present). This is GI-010's declared **home** — an adopted module principle
+  GI-016-marketplace-metadata-lag confrontation, is violated here and nowhere else.
+- **`CHANGELOG.md`** (present). This is GI-010-changelog-elective-module's declared **home** — an adopted module principle
   whose home file no rules file scopes. Gate 4 is violated here.
 
-The remedy is precedented inside this same ledger: at AM-2 the producer added
+The remedy is precedented inside this same ledger: at AM-2-required-cli-dependency the producer added
 `.github/workflows/**` to `rust-cli.md` as a flagged proposal on exactly this reasoning — "the
-release-train gate (GI-012) is violable in the workflows" (ledger, AM-2 addendum). The identical
-argument reaches the bump surfaces, and AM-3 sharpens it by adding a MUST NOT keyed to the bump.
+release-train gate (GI-012) is violable in the workflows" (ledger, AM-2-required-cli-dependency addendum). The identical
+argument reaches the bump surfaces, and AM-3-conformance-gate-admission sharpens it by adding a MUST NOT keyed to the bump.
 
 **Fix:** extend `.claude/rules/mochiko/rust-cli.md`'s `paths` with
 `plugins/mochiko/.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`, and
@@ -95,7 +95,7 @@ it in-run (the posture the producer took for the depth-flip gap, A9), that is th
 rule, not this seat's to assume.
 
 **Note on scope:** the gap is pre-existing — gates 1–6 have keyed on `plugin.json` since v1.0.0
-and AM-2's validator passed this item. A prior PASS does not license a repeat. The set is graded
+and AM-2-required-cli-dependency's validator passed this item. A prior PASS does not license a repeat. The set is graded
 whole and now, and this round put a new MUST NOT on the unscoped surface.
 
 ---
@@ -106,28 +106,28 @@ whole and now, and this round put a new MUST NOT on the unscoped surface.
 
 | GI | Element | Surface reached | Three-Part entry | Result |
 |----|---------|-----------------|------------------|--------|
-| GI-001 | fact profile, unchanged at AM-3 | region stamp (v3.1.0) | ledger header line 3 | ✓ |
-| GI-002 | identity · risk surface widened (hook vector) | region Technology-stack line | none by ruling (FP-3 at AM-2, accepted) | ✓ |
-| GI-003 | FLOOR-SEC | region line, NON-NEGOTIABLE | ledger, untouched | ✓ |
-| GI-004 | FLOOR-TEST | region line, NON-NEGOTIABLE | ledger, untouched | ✓ |
-| GI-005 | FLOOR-ERR | region line, NON-NEGOTIABLE | ledger, untouched | ✓ |
-| GI-006 | FLOOR-OBS | region line, NON-NEGOTIABLE | ledger, untouched; served by the preserved prior text | ✓ |
-| GI-007 | exclusions, markdown-only | ledger GI-004/005/006 trace lines | n-a (exclusion) | ✓ |
-| GI-008 | waiver | ledger waiver table, unchanged | n-a (waiver) | ✓ |
-| GI-009 | KM core | region Governance-ops line · `operating-docs.md` | ledger + the project pin | ✓ |
-| GI-010 | CHANGELOG elective | region gates line (gate 4) | ledger | ✓ (home unscoped — B1) |
-| GI-011 | RUNBOOK declined durable | ledger declined-durable line | n-a | ✓ |
-| GI-012 | release gates + **C5 precondition** | region gates lines 129/130 | ledger, extended | ✓ |
-| GI-013 | layer-rules declined | ledger amendment policy | n-a | ✓ |
-| GI-014 | evolution-notes declined | ledger amendment policy | n-a | ✓ |
-| GI-015 | live-token confrontation | ledger confrontation table | folded into GI-003 | ✓ |
-| GI-016 | marketplace lag | ledger confrontation table | folded into GI-012 gate 5 | ✓ |
-| GI-017 | pointer-only region | region line | ledger | ✓ |
-| GI-018 | ARCHITECTURE lag accepted | ledger confrontation table | n-a | ✓ |
-| GI-019 | **conformance-gate admission** | CLAUDE.md:72 prose · region index line 118 · `rust-cli.md` | ledger, 7 new bullets + preserved prior text + Testability re-key + trace | ✓ |
-| GI-020 | clone-only + required binary | CLAUDE.md:74 prose, **untouched** | ledger, untouched | ✓ |
-| GI-021 | depth `high` | region stamp | ledger header | ✓ |
-| GI-022 | no feature map here | region index line | ledger | ✓ |
+| GI-001-project-fact-profile | fact profile, unchanged at AM-3-conformance-gate-admission | region stamp (v3.1.0) | ledger header line 3 | ✓ |
+| GI-002-project-type-shelves | identity · risk surface widened (hook vector) | region Technology-stack line | none by ruling (FP-3-ledger-entry-declined at AM-2-required-cli-dependency, accepted) | ✓ |
+| GI-003-repo-secret-hygiene | FLOOR-SEC | region line, NON-NEGOTIABLE | ledger, untouched | ✓ |
+| GI-004-primitive-audit-ratchet | FLOOR-TEST | region line, NON-NEGOTIABLE | ledger, untouched | ✓ |
+| GI-005-record-layer-integrity | FLOOR-ERR | region line, NON-NEGOTIABLE | ledger, untouched | ✓ |
+| GI-006-primitive-edit-traceability | FLOOR-OBS | region line, NON-NEGOTIABLE | ledger, untouched; served by the preserved prior text | ✓ |
+| GI-007-no-application-machinery | exclusions, markdown-only | ledger GI-004/005/006 trace lines | n-a (exclusion) | ✓ |
+| GI-008-script-test-waiver | waiver | ledger waiver table, unchanged | n-a (waiver) | ✓ |
+| GI-009-knowledge-management-core | KM core | region Governance-ops line · `operating-docs.md` | ledger + the project pin | ✓ |
+| GI-010-changelog-elective-module | CHANGELOG elective | region gates line (gate 4) | ledger | ✓ (home unscoped — B1) |
+| GI-011-no-runbook-elective | RUNBOOK declined durable | ledger declined-durable line | n-a | ✓ |
+| GI-012-release-gates-module | release gates + **C5 precondition** | region gates lines 129/130 | ledger, extended | ✓ |
+| GI-013-no-layer-rules | layer-rules declined | ledger amendment policy | n-a | ✓ |
+| GI-014-no-evolution-notes | evolution-notes declined | ledger amendment policy | n-a | ✓ |
+| GI-015-live-token-exposure | live-token confrontation | ledger confrontation table | folded into GI-003-repo-secret-hygiene | ✓ |
+| GI-016-marketplace-metadata-lag | marketplace lag | ledger confrontation table | folded into GI-012-release-gates-module gate 5 | ✓ |
+| GI-017-pointer-only-region | pointer-only region | region line | ledger | ✓ |
+| GI-018-architecture-doc-lag | ARCHITECTURE lag accepted | ledger confrontation table | n-a | ✓ |
+| GI-019-kernel-tooling-admission | **conformance-gate admission** | CLAUDE.md:72 prose · region index line 118 · `rust-cli.md` | ledger, 7 new bullets + preserved prior text + Testability re-key + trace | ✓ |
+| GI-020-plugin-install-model | clone-only + required binary | CLAUDE.md:74 prose, **untouched** | ledger, untouched | ✓ |
+| GI-021-depth-level-declaration | depth `high` | region stamp | ledger header | ✓ |
+| GI-022-no-feature-map | no feature map here | region index line | ledger | ✓ |
 
 Every Trace GI-ID in the set exists in `governance-intent.md`; every one points at a
 principle-bearing element; no two principles claim the same ID.
@@ -138,33 +138,33 @@ Verified by `git diff HEAD` over the three surfaces. Every changed line reaches 
 
 | Surface | Changed line | Element | Sanctioned by |
 |---------|--------------|---------|---------------|
-| CLAUDE.md:72 prose | trace parenthetical gains the conformance-gate admission pointer | GI-019 | Card 2 |
-| region | stamp v3.0.3 → v3.1.0 · 2026-09-14 (AM-3) | GI-001, GI-021 | Card 2 |
-| region:118 | GI-019 index line gains the admission pointer | GI-019 | Card 2 |
-| region:129 | release-gates line gains the wave-4 precondition clause | GI-012, GI-002 | review C5 |
-| region:135 | amend-trigger line names the two owed controls as preconditions | GI-002, GI-012 | review C5 |
-| `rust-cli.md` header | two recorded rulings become three | GI-019 | Card 4 |
-| `rust-cli.md` bright-line bullet | rewritten; mechanical conformance admitted, grading of meaning/quality forbidden, two grounds, explicit allow | GI-019 | Card 4 (D7d) |
-| `rust-cli.md` log-is-truth bullet | `(record D1/D2/D6)` → `(record `cli-schema-delivery` D1/D2/D6)` | GI-005, GI-006 | FP-3, lead-ruled |
-| ledger | version 3.0.3 → 3.1.0 | GI-001 | Card 2 |
+| CLAUDE.md:72 prose | trace parenthetical gains the conformance-gate admission pointer | GI-019-kernel-tooling-admission | Card 2 |
+| region | stamp v3.0.3 → v3.1.0 · 2026-09-14 (AM-3-conformance-gate-admission) | GI-001-project-fact-profile, GI-021-depth-level-declaration | Card 2 |
+| region:118 | GI-019-kernel-tooling-admission index line gains the admission pointer | GI-019-kernel-tooling-admission | Card 2 |
+| region:129 | release-gates line gains the wave-4 precondition clause | GI-012-release-gates-module, GI-002-project-type-shelves | review C5 |
+| region:135 | amend-trigger line names the two owed controls as preconditions | GI-002-project-type-shelves, GI-012-release-gates-module | review C5 |
+| `rust-cli.md` header | two recorded rulings become three | GI-019-kernel-tooling-admission | Card 4 |
+| `rust-cli.md` bright-line bullet | rewritten; mechanical conformance admitted, grading of meaning/quality forbidden, two grounds, explicit allow | GI-019-kernel-tooling-admission | Card 4 (D7d) |
+| `rust-cli.md` log-is-truth bullet | `(record D1/D2/D6)` → "`(record `cli-schema-delivery` D1/D2/D6)`" | GI-005-record-layer-integrity, GI-006-primitive-edit-traceability | FP-3-log-truth-qualifier, lead-ruled |
+| ledger | version 3.0.3 → 3.1.0 | GI-001-project-fact-profile | Card 2 |
 | ledger | amendment policy, MINOR limb gains "a principle significantly expanded" | no GI — disclosed lead addition | verify R3 |
-| ledger | first-public-release paragraph gains the wave-4 precondition | GI-002, GI-012 | review C5 |
-| ledger | GI-012 wave-4 precondition paragraph | GI-012 | review C5 |
-| ledger | GI-012 gate note gains the ≤ 60 s hook-cost watch | GI-012 | FP-1, review C9 |
-| ledger | GI-012 Testability limbs; trace extended | GI-012 | FP-2, FC-4 |
-| ledger | GI-019 — 7 Enforcement bullets, preserved prior bullet, Testability re-key, trace | GI-019 | Card 3, Card 4 |
-| ledger | amendment-log row 3.1.0 + AM-3 addendum | all of the above | Cards 1–7 |
-| trace summary | regenerated whole; superseded-rounds pointer | GI-006 | FP-4 |
+| ledger | first-public-release paragraph gains the wave-4 precondition | GI-002-project-type-shelves, GI-012-release-gates-module | review C5 |
+| ledger | GI-012-release-gates-module wave-4 precondition paragraph | GI-012-release-gates-module | review C5 |
+| ledger | GI-012-release-gates-module gate note gains the ≤ 60 s hook-cost watch | GI-012-release-gates-module | FP-1-hook-cost-watch, review C9 |
+| ledger | GI-012-release-gates-module Testability limbs; trace extended | GI-012-release-gates-module | FP-2-testability-limb-pair, FC-4 |
+| ledger | GI-019-kernel-tooling-admission — 7 Enforcement bullets, preserved prior bullet, Testability re-key, trace | GI-019-kernel-tooling-admission | Card 3, Card 4 |
+| ledger | amendment-log row 3.1.0 + AM-3-conformance-gate-admission addendum | all of the above | Cards 1–7 |
+| trace summary | regenerated whole; superseded-rounds pointer | GI-006-primitive-edit-traceability | FP-4-superseded-rounds-pointer |
 
-Nothing changed that no element reaches. GI-020's paragraph and Three-Part entry are
+Nothing changed that no element reaches. GI-020-plugin-install-model's paragraph and Three-Part entry are
 byte-unchanged, as Card 7 ruled.
 
 ### Three-Part completeness — every changed ledger entry
 
 | Entry | Enforcement | Testability | Rationale | Trace |
 |-------|-------------|-------------|-----------|-------|
-| GI-012 | ✓ gates 1–6 + release train + **wave-4 precondition** | ✓ Pass and Fail limbs both extended (FP-2) | ✓ | ✓ extended (FC-4) |
-| GI-019 | ✓ + 7 new bullets | ✓ re-keyed — **see M1**, no dormancy tier | ✓ | ✓ extended |
+| GI-012-release-gates-module | ✓ gates 1–6 + release train + **wave-4 precondition** | ✓ Pass and Fail limbs both extended (FP-2-testability-limb-pair) | ✓ | ✓ extended (FC-4) |
+| GI-019-kernel-tooling-admission | ✓ + 7 new bullets | ✓ re-keyed — **see M1**, no dormancy tier | ✓ | ✓ extended |
 
 Every unchanged entry retains all four sections; spot-verified on GI-003, GI-004, GI-005, GI-006,
 GI-009, GI-010, GI-017, GI-020, GI-022.
@@ -172,10 +172,10 @@ GI-009, GI-010, GI-017, GI-020, GI-022.
 ### The named checks
 
 - **Preserved prior text.** The `rust-cli.md` bright-line bullet superseded at Card 4 is
-  preserved verbatim in the ledger GI-019 entry as a block quote, with the two superseded clauses
+  preserved verbatim in the ledger GI-019-kernel-tooling-admission entry as a block quote, with the two superseded clauses
   named. Compared against `git show HEAD:.claude/rules/mochiko/rust-cli.md` — the preserved
-  quote is faithful, word for word. GI-006 reconstructibility holds; the no-strip reasoning (a
-  governance surface, not a plugin primitive; AM-2's full rewrite took none) is recorded.
+  quote is faithful, word for word. GI-006-primitive-edit-traceability reconstructibility holds; the no-strip reasoning (a
+  governance surface, not a plugin primitive; AM-2-required-cli-dependency's full rewrite took none) is recorded.
 - **Placeholders.** Scan across all six files for `[PLACEHOLDER]`, `[COMMAND]`, `[THRESHOLD]`,
   `GI-XXX`, `[TBD]`, `[TODO]`, and the module templates' bracketed examples: **zero hits**.
 - **Pointers introduced or carried this round** — all resolve:
@@ -212,7 +212,7 @@ in the project pin ✓ · all three enforcement surfaces present — the pin, th
 covering closing **and** supersession ✓ · invariants stated mechanically, with the
 vacuous-at-zero note ✓ · decision-record schema and glossary term format both present ✓ ·
 disambiguation present ✓ · never-overwrite floor and the "no collisions" ruling recorded in
-GI-009 ✓ · **re-audit against the repo:** ROADMAP Now 5 / Next 7 / Later 10, all three at or
+GI-009-knowledge-management-core ✓ · **re-audit against the repo:** ROADMAP Now 5 / Next 7 / Later 10, all three at or
 under cap ✓ · no `[x]` in BACKLOG ✓ · `hook-enforced-artifact-schema` has a brainstorms-index
 entry and a `DECISIONS.md` row, statuses agreeing ✓ (one wording contradiction in that row —
 A7) · dead-pointer scan over the new pointers clean ✓.
@@ -223,23 +223,23 @@ A7) · dead-pointer scan over the new pointers clean ✓.
 
 All five judged **sanctioned as authored**. None unsanctioned. Each is the user's to overturn.
 
-- **FP-1** (GI-012 gate note, ≤ 60 s hook-cost watch). The synthesis rules C9 under GI-002's risk
-  surface, and GI-002 carries no Three-Part entry by the accepted AM-2 precedent, so the ruling
+- **FP-1-hook-cost-watch** (GI-012-release-gates-module gate note, ≤ 60 s hook-cost watch). The synthesis rules C9 under GI-002-project-type-shelves's risk
+  surface, and GI-002-project-type-shelves carries no Three-Part entry by the accepted AM-2-required-cli-dependency precedent, so the ruling
   would otherwise live only in the synthesis. The chosen home is exact: the gate note already
   carries the "reported, never gating" posture for the read-back metric, and this is the same
   species. Disclosed twice (trace summary, ledger addendum).
-- **FP-2** (GI-012 Testability limbs). Not discretionary in substance — the three-part rule
+- **FP-2-testability-limb-pair** (GI-012-release-gates-module Testability limbs). Not discretionary in substance — the three-part rule
   requires Testability to cover Enforcement, and the synthesis supplied only the enforcement
   clause. Without it the checklist's "every MUST statement has an enforcement mechanism" would
   have been met with no way to check the strictest MUST in the set.
-- **FP-3** (`rust-cli.md` log-is-truth record qualifier). The ambiguity is one this run creates:
+- **FP-3-log-truth-qualifier** (`rust-cli.md` log-is-truth record qualifier). The ambiguity is one this run creates:
   the rewritten header three lines above now names a second driver record with its own D1. The
   bare shorthand would point at the wrong record. Minimal, disclosed, lead-ruled.
-- **FP-4** (trace-summary superseded-rounds pointer). Regenerating Shape 4 whole would otherwise
-  take the v1.0.0 manifest and its ruled FP-1 dark; GI-006 reconstructibility asks for the
+- **FP-4-superseded-rounds-pointer** (trace-summary superseded-rounds pointer). Regenerating Shape 4 whole would otherwise
+  take the v1.0.0 manifest and its ruled FP-1 dark; GI-006-primitive-edit-traceability reconstructibility asks for the
   pointer. Correct.
-- **FC-4** (GI-012 trace line extended, disclosed post-plan). Mandatory, not discretionary — the
-  checklist requires a Trace stamp reflecting the change, and GI-012 changed.
+- **FC-4** (GI-012-release-gates-module trace line extended, disclosed post-plan). Mandatory, not discretionary — the
+  checklist requires a Trace stamp reflecting the change, and GI-012-release-gates-module changed.
 
 ---
 
@@ -247,7 +247,7 @@ All five judged **sanctioned as authored**. None unsanctioned. Each is the user'
 
 - **A1 — the region gives no hint that a deny-on-write gate now exists.** CLAUDE.md:72 still
   reads "never gates pipeline progress", and the region index line is a pointer. A reader must
-  follow two hops to the ledger to learn that a hook will deny their write. This is GI-017
+  follow two hops to the ledger to learn that a hook will deny their write. This is GI-017-pointer-only-region
   working as designed and the clause-(iv) argument is recorded, so it is not a defect — but it is
   the sharpest gap between what the top-level surface says and what a consumer will experience.
 - **A2 — the ledger's MINOR-limb widening rides in the bump it licenses.** Amending the
@@ -255,7 +255,7 @@ All five judged **sanctioned as authored**. None unsanctioned. Each is the user'
   defuse it: the wording was imported from `validation-constitution`'s standing bump grammar
   rather than invented, and it is disclosed in the synthesis Scope bullet and the ledger addendum.
   Recorded, not hidden.
-- **A3 — build-state detail inside a standing Enforcement section.** GI-019 now carries "an
+- **A3 — build-state detail inside a standing Enforcement section.** GI-019-kernel-tooling-admission now carries "an
   `Edit` to an existing undeclared file name rides amnesty with a bare allow … carried to the
   wave-4 build as a fix candidate" and "the `PowerShell` matcher arm ships on the doc quote,
   unverifiable on macOS". Both are build-log facts with a named non-governance home. They will go
@@ -263,31 +263,31 @@ All five judged **sanctioned as authored**. None unsanctioned. Each is the user'
 - **A4 — "a budget table that admits honest content" is an unmeasured operative term** governing
   whether clause (iv) holds. The C1 measurement is carried (43 of 66 records over the 150-line
   bound; largest 1,536) and the ruling venue named, so it is disclosed rather than vague. But the
-  condition has no Testability limb, while its sibling obligation got one under FP-2 on the
+  condition has no Testability limb, while its sibling obligation got one under FP-2-testability-limb-pair on the
   producer's own three-part reasoning. Uneven application of the same standard.
-- **A5 — GI-019 and GI-020 index lines carry no `(NON-NEGOTIABLE)` marker** though their homes
-  are the `## Non-negotiable constraints` paragraphs. Carried from AM-2 as a recorded advisory
-  under the GI-017 pointer precedent; unchanged this round.
-- **A6 — FLOOR-SEC's high row asks that secret scanning block merge.** GI-003 asserts a CI
+- **A5 — GI-019-kernel-tooling-admission and GI-020-plugin-install-model index lines carry no `(NON-NEGOTIABLE)` marker** though their homes
+  are the `## Non-negotiable constraints` paragraphs. Carried from AM-2-required-cli-dependency as a recorded advisory
+  under the GI-017-pointer-only-region pointer precedent; unchanged this round.
+- **A6 — FLOOR-SEC's high row asks that secret scanning block merge.** GI-003-repo-secret-hygiene asserts a CI
   secret-scan step that runs on push/PR; no branch-protection requirement is recorded anywhere.
   For a solo maintainer the failing job is the practical equivalent. Pre-existing, unchanged at
-  AM-3.
+  AM-3-conformance-gate-admission.
 - **A7 — `DECISIONS.md` contradicts Card 4.** The 2026-09-13 row says the supersession lands "via
   a `/mochiko:setup` amend run + GI-019 carve + `rust-cli.md` strip". Card 4 ruled **no**
   `.mochiko/strips/` entry. The row predates the ruling; left as-is it records an obligation that
   will never be discharged. Outside the graded set — fix at the landing.
 - **A8 — release-gates form.** The module fragment asks for a gate table; the ledger uses a
-  numbered list. Content fully satisfies the fragment. Carried from AM-2.
+  numbered list. Content fully satisfies the fragment. Carried from AM-2-required-cli-dependency.
 - **A9 — the producer's own "Owed at the next PATCH" line is accurate.** Verified: the ledger's
   semver MAJOR limb reads "principle removal / incompatible redefinition / floor-level change /
   module attach or detach" and lacks the template's `depth-level flip (low→high)` clause.
-  Pre-existing, correctly declared out of AM-3's scope.
+  Pre-existing, correctly declared out of AM-3-conformance-gate-admission's scope.
 
 ---
 
 ## 5 — Version bump
 
-**Determined independently: MINOR. 3.0.3 → 3.1.0. Agrees** with the synthesis's AM-3 Semver
+**Determined independently: MINOR. 3.0.3 → 3.1.0. Agrees** with the synthesis's AM-3-conformance-gate-admission Semver
 bullet, the ledger row, the ledger version line, and the region stamp.
 
 Walked against the bump grammar:
@@ -300,17 +300,17 @@ Walked against the bump grammar:
   `high` unchanged; no low→high flip.
 - **MAJOR — module attach or detach?** No. Compliance none, knowledge-management, release-gates —
   identical to v3.0.3.
-- **MINOR — principle significantly expanded?** Yes. GI-019 gains clause (iv), seven Enforcement
-  bullets, and a recorded supersession; GI-012 gains a blocking precondition.
+- **MINOR — principle significantly expanded?** Yes. GI-019-kernel-tooling-admission gains clause (iv), seven Enforcement
+  bullets, and a recorded supersession; GI-012-release-gates-module gains a blocking precondition.
 - **MINOR — waiver added or removed?** No.
 
 → MINOR.
 
 **The dissenting MAJOR reading, recorded honestly.** It is stronger than the ledger row makes it
-sound. GI-019's prior Testability **Fail** limb read: "a shipped hook that blocks on anything
-other than the binary's absence or grammar skew." That is precisely the behavior AM-3 admits. A
-testable form whose Fail limb becomes a Pass limb is the signature of a redefinition, and AM-1
-and AM-2 both ruled MAJOR on the softer ground that "a non-negotiable's meaning changes."
+sound. GI-019-kernel-tooling-admission's prior Testability **Fail** limb read: "a shipped hook that blocks on anything
+other than the binary's absence or grammar skew." That is precisely the behavior AM-3-conformance-gate-admission admits. A
+testable form whose Fail limb becomes a Pass limb is the signature of a redefinition, and AM-1-kernel-ban-softened
+and AM-2-required-cli-dependency both ruled MAJOR on the softer ground that "a non-negotiable's meaning changes."
 
 Two things carry MINOR anyway: the user was put this exact reading twice — at Card 1 and again at
 review C6 — and ruled MINOR both times, recorded as a deliberate departure with its reason; and
@@ -331,21 +331,21 @@ neither of which fired. The departure is recorded where a future reader will fin
 
 **Minor (2):**
 
-2. **M1 — GI-019's re-keyed Testability carries no dormancy tier, and its conformance limb is
+2. **M1 — GI-019-kernel-tooling-admission's re-keyed Testability carries no dormancy tier, and its conformance limb is
    unassertable today.** The Pass limb reads "every shipped hook blocks on exactly two grounds —
    the binary's absence or a log outside its grammar range, **and a conformance deny from
    `check`**". Verified against `plugins/mochiko/hooks/hooks.json`: the three shipped hooks are
    `SessionStart`, `UserPromptExpansion`, and `PreToolUse` on `Skill`, all dependency-halt; no
    `check` hook ships until wave 4. The row is vacuously true now and becomes assertable later.
-   The house idiom exists and was reviewer-driven: GI-020's Testability carries two explicit
-   tiers ("Assertable at ratification" / "Activated at v3.0.1 by the wave-3 pilot") after AM-2's
+   The house idiom exists and was reviewer-driven: GI-020-plugin-install-model's Testability carries two explicit
+   tiers ("Assertable at ratification" / "Activated at v3.0.1 by the wave-3 pilot") after AM-2-required-cli-dependency's
    review I1 raised exactly this. **Fix:** mark the conformance limb dormant until the wave-4
-   ship, in GI-020's two-tier form.
+   ship, in GI-020-plugin-install-model's two-tier form.
 
 3. **M2 — the wave-4 precondition is a one-shot clause in two standing homes with no expiry
    route.** Once the hooks ship, "the wave-4 bump … MUST NOT land before the first publish" is
    dead text in the region's release-gates line and in two ledger paragraphs, forever. The set
-   already has the idiom for this: GI-020's transition clause shipped with "its expiry is a
+   already has the idiom for this: GI-020-plugin-install-model's transition clause shipped with "its expiry is a
    pre-authorized PATCH amendment", and that is exactly how it was struck at v3.0.3. **Fix:** add
    the same sentence — the clause is struck by pre-authorized PATCH when the first publish lands
    with all four controls.
@@ -394,22 +394,22 @@ from the files, not from the producer's account of the round.
   the fixes touched it.
 - **Surface integrity:** scope coverage **now closes**. `rust-cli.md` carries eight globs: the
   five ratified plus `plugins/mochiko/.claude-plugin/plugin.json`, `.claude-plugin/marketplace.json`,
-  and `CHANGELOG.md`. All three targets verified present on disk. GI-012's gates and GI-010's home
+  and `CHANGELOG.md`. All three targets verified present on disk. GI-012-release-gates-module's gates and GI-010-changelog-elective-module's home
   now have a touch-time carrier at the files they are violated on. No glob collides with
   `primitive-edits.md` (which scopes `plugins/mochiko/{commands,skills,agents,templates,migrations,hooks}/**`,
   not `.claude-plugin/`) or with `operating-docs.md` (which does not scope `CHANGELOG.md`).
-- **Trace closure:** still closes both ways. The trace summary lists **FP-5** in the flagged-proposals
-  block with its reasoning, its AM-2 FP-1/FP-2 precedent, and its alternative; the reverse table
-  gains the `rust-cli.md` `paths` row keyed to GI-012 and GI-010; the forward table's GI-010 and
-  GI-012 companion cells name the same change. The GI-019 reverse row now reads "Testability
-  re-keyed into two tiers, the conformance limb dormant until the wave-4 hook ship", and the GI-012
+- **Trace closure:** still closes both ways. The trace summary lists **FP-5-bump-surface-globs** in the flagged-proposals
+  block with its reasoning, its AM-2-required-cli-dependency FP-1-workflow-paths-glob/FP-2-hook-paths-glob precedent, and its alternative; the reverse table
+  gains the `rust-cli.md` `paths` row keyed to GI-012-release-gates-module and GI-010-changelog-elective-module; the forward table's GI-010-changelog-elective-module and
+  GI-012-release-gates-module companion cells name the same change. The GI-019-kernel-tooling-admission reverse row now reads "Testability
+  re-keyed into two tiers, the conformance limb dormant until the wave-4 hook ship", and the GI-012-release-gates-module
   row names the M2 expiry at both homes. No row was orphaned and no new line lacks an element.
-- **Contract untouched:** `governance-intent.md`'s AM-3 `**Accepted:**` line is still *(pending)*
+- **Contract untouched:** `governance-intent.md`'s AM-3-conformance-gate-admission `**Accepted:**` line is still *(pending)*
   and the fix round left no trace in the ratified synthesis, which is correct — the producer fixed
   surfaces, not the contract.
 - **Region untouched:** `git diff HEAD -- CLAUDE.md` is still 5 insertions / 5 deletions, identical
   to round 1. The M2 fix correctly left the region gates line alone; the ledger's pre-authorization
-  covers the region-side strike, exactly as GI-020's transition clause was handled at v3.0.1/v3.0.3.
+  covers the region-side strike, exactly as GI-020-plugin-install-model's transition clause was handled at v3.0.1/v3.0.3.
 - **Version bump:** unchanged. MINOR 3.0.3 → 3.1.0. None of the three fixes moves it — a glob
   addition, a Testability re-shaping, and an expiry pre-authorization are all clarification-class
   under the grammar and ride the MINOR.
@@ -418,21 +418,21 @@ from the files, not from the producer's account of the round.
 ### The three fixes, each verified against the file
 
 **B1 — closed.** `paths` re-read from `rust-cli.md`'s frontmatter; eight globs, the three new ones
-last. Recorded as FP-5 in the ledger's AM-3 addendum with the reasoning stated ("every GI-012 gate
+last. Recorded as FP-5-bump-surface-globs in the ledger's AM-3-conformance-gate-admission addendum with the reasoning stated ("every GI-012 gate
 fires at the `plugin.json` bump and AM-3 puts the set's strictest MUST NOT there, and `CHANGELOG.md`
 is GI-010's home") and in the trace summary. The proposal is correctly marked the user's to
 overturn at acceptance.
 
-**M1 — closed, and better than the minimum.** GI-019's Testability is now two tiers in the GI-020
+**M1 — closed, and better than the minimum.** GI-019-kernel-tooling-admission's Testability is now two tiers in the GI-020-plugin-install-model
 idiom, with the reason stated inline: "the conformance limb cannot be asserted until wave 4 ships
 the hooks (`plugins/mochiko/hooks/hooks.json` carries only the three dependency-halt hooks today)."
 The assertable tier keeps the pre-AM-3 hook clause and adds the one new fact that *is* checkable
 now — `check` exists and returns exit 4. The dormant tier carries the two-grounds form and names
 its activation: the wave-4 bump, as a pre-authorized PATCH, no fresh amend run. The two tiers do
-not contradict: they are explicitly time-scoped, the same structure GI-020 uses.
+not contradict: they are explicitly time-scoped, the same structure GI-020-plugin-install-model uses.
 
 **M2 — closed at both homes, identically worded.** The amendment-policy first-publish paragraph
-and the GI-012 wave-4 paragraph each end: "Once the wave-4 bump has landed under this precondition,
+and the GI-012-release-gates-module wave-4 paragraph each end: "Once the wave-4 bump has landed under this precondition,
 striking the clause from the region gates line and these two paragraphs is a pre-authorized PATCH
 amendment, recorded in the log row." The sentence names all three sites it authorizes, including
 the region line, which is why leaving the region untouched is right.
@@ -441,15 +441,15 @@ the region line, which is why leaving the region untouched is right.
 
 - **R1 — the amendment-log row under-describes the fix round.** Row 3.1.0 still reads "GI-019
   Testability re-keyed" and names neither the two-tier shape nor its wave-4 PATCH activation, nor
-  M2's expiry pre-authorization, nor FP-5. The AM-3 addendum names FP-5 only. Both
-  pre-authorizations are stated in their own homes, which is where the GI-020 precedent put them,
+  M2's expiry pre-authorization, nor FP-5-bump-surface-globs. The AM-3-conformance-gate-admission addendum names FP-5-bump-surface-globs only. Both
+  pre-authorizations are stated in their own homes, which is where the GI-020-plugin-install-model precedent put them,
   so nothing is unrecorded — but a reader of the amendment log alone will not find the two new
   pre-authorized PATCHes, and the log row is where the v2.0.1, v3.0.1, and v3.0.3 rows recorded
   exactly this class of thing. One clause in the addendum or the row's GI delta closes it.
 - **R2 — the region's new-file read line and the rules globs have drifted.** CLAUDE.md:139 names
   `.mochiko/specs/`, `plugins/mochiko/`, `crates/mochiko-cli/`, `plugins/mochiko/migrations/`,
   `plugins/mochiko/hooks/`, `evals/contract/`, `.github/workflows/`, and "the operating docs". Two
-  of FP-5's three new globs are outside that list: `.claude-plugin/marketplace.json` (the repo-root
+  of FP-5-bump-surface-globs's three new globs are outside that list: `.claude-plugin/marketplace.json` (the repo-root
   directory is not named) and `CHANGELOG.md` (not named, and "the operating docs" means the five
   files `operating-docs.md` scopes, which do not include it). Practical bite is near zero — the
   line governs *creating* a file under a scoped path and all three targets already exist — and the
@@ -483,20 +483,20 @@ row, plus what those three could disturb. Re-read from the files.
 ### The three edits, verified
 
 **R1 — closed.** The 3.1.0 amendment-log row now carries a terminal `**fix round (validator
-B1/M1/M2):**` clause naming all three: the two-tier GI-019 Testability with its conformance limb
+B1/M1/M2):**` clause naming all three: the two-tier GI-019-kernel-tooling-admission Testability with its conformance limb
 "dormant until the wave-4 hook ship" and activated at that `plugin.json` bump as a pre-authorized
 PATCH, citing the v2.0.1 / v3.0.1 / v3.0.3 idiom by name; M2's post-landing strike as a
-pre-authorized PATCH recorded at both ledger homes; and the three FP-5 globs. A reader of the
+pre-authorized PATCH recorded at both ledger homes; and the three FP-5-bump-surface-globs globs. A reader of the
 amendment log alone now finds both new pre-authorized PATCHes, which was the whole of R1.
 
 **R2 — closed.** CLAUDE.md:139 now reads "… `.github/workflows/`, `.claude-plugin/` (both
-manifests), `CHANGELOG.md`, or the operating docs …". Both FP-5 targets that were outside the list
+manifests), `CHANGELOG.md`, or the operating docs …". Both FP-5-bump-surface-globs targets that were outside the list
 are now named. The read line and `rust-cli.md`'s eight globs no longer disagree.
 
 **Trace row — correct and keyed right.** `governance-trace-summary.md:45` adds "region | path-scoped-rules
 read line names `.claude-plugin/` (both manifests) and `CHANGELOG.md` (residual R2) | GI-012,
-GI-010, GI-019". All three keys hold: GI-010 because `CHANGELOG.md` is its home, GI-012 because the
-bump is where its gates fire, GI-019 because `rust-cli.md` is that principle's rules carrier and the
+GI-010, GI-019". All three keys hold: GI-010-changelog-elective-module because `CHANGELOG.md` is its home, GI-012-release-gates-module because the
+bump is where its gates fire, GI-019-kernel-tooling-admission because `rust-cli.md` is that principle's rules carrier and the
 read line is what routes a reader to it. The producer raised the gap itself, which is the right
 posture. Reverse closure holds; the forward table needs nothing, since element → home is unchanged.
 
@@ -505,9 +505,9 @@ posture. Reverse closure holds; the forward table needs nothing, since element �
 - Round-2 fixes intact: the two-tier Testability block stands at ledger:459–473; the M2 expiry
   sentence appears exactly twice, one per home; `rust-cli.md` still carries eight globs.
 - Region: exactly **six** changed lines against HEAD and no seventh — kernel-class paragraph ·
-  ratified stamp · GI-019 index line · release-gates line · amend-triggers line · the read line.
+  ratified stamp · GI-019-kernel-tooling-admission index line · release-gates line · amend-triggers line · the read line.
   Everything else between the markers is byte-unchanged.
-- Contract untouched: `governance-intent.md`'s AM-3 `**Accepted:**` is still *(pending)*.
+- Contract untouched: `governance-intent.md`'s AM-3-conformance-gate-admission `**Accepted:**` is still *(pending)*.
 - Version bump unchanged: MINOR 3.0.3 → 3.1.0. A log-row clause and a read-line enumeration are
   clarification-class and ride it.
 - Anti-patterns: none.

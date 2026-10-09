@@ -3,20 +3,20 @@
 Pinned 2026-07-25 from `plugins/mochiko/templates/constitution-modules/knowledge-management.md`
 (plugin v0.29.0) — the runtime source commands and the groom skill resolve; template changes
 reach this copy only as amend offers. Hand-pinned at migration; **ratified into the ruled core
-2026-08-06** by the first in-repo `/mochiko:setup` run (governance v1.0.0, GI-009 — the pin's
+2026-08-06** by the first in-repo `/mochiko:setup` run (governance v1.0.0, GI-009-knowledge-management-core — the pin's
 revisit trigger, now discharged). The adopted core set: brainstorms layer · open-only
 `BACKLOG.md` + trail (`.mochiko/archive/backlog-trail.md`) · `ROADMAP.md` · `DECISIONS.md` +
 `.mochiko/decisions/` · `ARCHITECTURE.md` (deferral retired 2026-08-06 — doc gained content;
-the store's derived index from 2026-08-19, `product-architecture-schema` D4) ·
-`GLOSSARY.md` (AM-4, 2026-09-23; term format below) ·
+the store's derived index from 2026-08-19, `product-architecture-schema` D4-store-file-structure) ·
+`GLOSSARY.md` (AM-4-glossary-deviation-discharged, 2026-09-23; term format below) ·
 the `paths` rules file (`.claude/rules/mochiko/operating-docs.md`) · CLAUDE.md pointers.
-Elective adopted: `CHANGELOG.md` (GI-010, release-gated). Elective declined durable:
-`RUNBOOK.md` (GI-011). **Deviation carried (re-ratified 2026-08-06):** command-boundary
+Elective adopted: `CHANGELOG.md` (GI-010-changelog-elective-module, release-gated). Elective declined durable:
+`RUNBOOK.md` (GI-011-no-runbook-elective). **Deviation carried (re-ratified 2026-08-06):** command-boundary
 compliance manual until more commands run in-repo.
 (The `specify.md` no-KM-landing-step deviation was struck 2026-08-06 — the landing line
 shipped at v0.54.0, audit PASS; DECISIONS row + ADR `2026-08-06-specify-km-landing`.)
 (The `GLOSSARY.md` deferral and its revisit trigger — "GLOSSARY.md gains content → scaffold and
-fold in" — were discharged 2026-09-23: the trigger fired at plugin v0.114.0; AM-4, governance
+fold in" — were discharged 2026-09-23: the trigger fired at plugin v0.114.0; AM-4-glossary-deviation-discharged, governance
 v3.1.2, ledger 3.1.2 row.)
 
 ## Document contracts
@@ -69,10 +69,10 @@ A landing that only adds is incomplete.
   (`authoring-architecture-store.orphan-rule`); an element keying a closed, retired or missing
   owner is an **orphan**, surfaced by the derived index's health view and cleaned at the next
   desk visit. (Supersedes the AT-D6-C In-flight-agreement invariant added 2026-08-04 from the
-  `architecture-tieback` record — per `product-architecture-schema` D10, `DECISIONS.md`
+  `architecture-tieback` record — per `product-architecture-schema` D10-plan-time-contract, `DECISIONS.md`
   2026-08-19; landed direct by ruling, not via amend offer. Re-keyed 2026-09-29 to the rule as
   `0025-delta-lifecycle-marker.yaml` words it — `proposed` joins the keyed statuses and an epic or
-  lane may own an element, per `delta-files-vs-direct-baseline-edits` D2/D7 — matching the
+  lane may own an element, per `delta-files-vs-direct-baseline-edits` D2-entry-lifecycle-marker/D7-lifecycle-write-timing — matching the
   shipped template at plugin 0.116.0.)
 - **Index agreement:** repo-root `ARCHITECTURE.md` is the store's derived index and agrees with
   the store it renders; a disagreement is a defect, fixed by re-rendering, never by editing the
@@ -81,7 +81,7 @@ A landing that only adds is incomplete.
   hand-maintained legacy until
   the first `/mochiko:architecture` visit reconstructs the store from it and converts it (D16);
   before that bootstrap both invariants are vacuous.
-  (Added 2026-08-19, `product-architecture-schema` D4 as folded at review, S12; no-ruled-content
+  (Added 2026-08-19, `product-architecture-schema` D4-store-file-structure as folded at review, S12; no-ruled-content
   carve per D16.)
 - **Presence:** the adopted core artifacts above exist.
 - Vacuously satisfied at zero sessions / zero items.

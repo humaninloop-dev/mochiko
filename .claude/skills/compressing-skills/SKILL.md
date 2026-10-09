@@ -73,7 +73,7 @@ table. Zero information leaves. Write the variant as a full skill-directory copy
 
 ### 5. Arm B — cut-line strip
 
-Apply the inherited cut line (`validator-scope-and-verbosity` D4): **keep** goal + output
+Apply the inherited cut line (`validator-scope-and-verbosity` D4-guardrails-cut-line): **keep** goal + output
 contract, non-waivable floors, anti-patterns and rejections, hard reference data; **drop**
 step-by-step procedure, worked examples, restatement — subject to the
 protected set from step 3. Whole sections may vanish; information loss is by design and is what

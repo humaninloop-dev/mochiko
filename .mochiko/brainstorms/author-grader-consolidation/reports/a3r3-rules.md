@@ -24,7 +24,7 @@ with no count stated (D4), and removals confined to D3 and D7.
 
 - `.claude/rules/mochiko/primitive-edits.md` — the whole file, 387 lines, plus its
   `git diff HEAD` against the pre-wave form.
-- `.mochiko/brainstorms/author-grader-consolidation/record.md` — D2 through D11 and the
+- `.mochiko/brainstorms/author-grader-consolidation/record.md` — D2-gate-input-grading through D11-wave-gate-grader and the
   wave-1 build surface, items 1 through 7.
 - `crates/mochiko-cli/src/validate.rs` — the `Code` enum at lines 40–109 and the
   `tombstone-integrity`, `mint-once`, `id-duplicate`, `anchor-format`, `section-set` arms.
@@ -53,7 +53,7 @@ not a plugin primitive, so no budgeted class and no ledger row apply to it.
   clause forbidding judgment re-derivation of what that output asserts.
 - **D3, judgment items keyed by unit — PASS.** Criteria keyed by kind: command pair,
   schema-bearing skill pair, schema content, every other primitive. Schema content carries
-  the AM-2 five — intent stated, anchor present where required, ID lifecycle right, floor
+  the AM-2-required-cli-dependency five — intent stated, anchor present where required, ID lifecycle right, floor
   and fail survival, register.
 - **D6 — PASS.** Same grader seat resumed; the delta read stated as "only what the fix
   touched and what it could have broken, never the whole cluster again"; a second FAIL

@@ -3,6 +3,13 @@
 Entry formats: `strips/README.md`. Wave context: workflow-token-reduction wave 1 (rulings
 ratified 2026-07-23: machine-first YAML, strengths → one-line field).
 
+## [v0.118.0] The `at` example pair joined behind its owner
+
+- **Disposition:** superseded → `(e.g. `product` C-003-no-network-egress ↔ `product` D-007-hosted-vector-store)`, matching `review-feasibility.findings-cite-ids` (migration 0047).
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/human-readable-ids/record.md` D2, D9, D19 and D21's scope clause — durable IDs are written joined, every mention including the definition, with example IDs and template definition lines joined; wave plan `.mochiko/brainstorms/human-readable-ids/wave2-plugin-minting.md`; D11 as changed at review (S4): a C-family ID cited outside its product file carries `product`)
+- **Content (superseded):** "at: "{{the conflicting pair, shown as A ↔ B with IDs (e.g. C-003 ↔ D-007)}}",".
+- **Kept deliberately:** `c1`–`c7`, `a1`–`a3` and `F1` (local labels). Concrete slugs, so no `{{slug}}` nests inside a `{{…}}` value.
+
 ## [v0.91.0] Plan-package wording re-scoped to the design phase; `requirements.md` leaves the reviewed set
 
 - **Disposition:** superseded → the design-phase framing. `/mochiko:plan` and its accepted
@@ -10,7 +17,7 @@ ratified 2026-07-23: machine-first YAML, strengths → one-line field).
   surface; `requirements.md` is dead as a mandatory artifact and could no longer head the
   `artifacts_reviewed` example. Four sites re-worded, nothing else touched.
 - **Tier failed:** n/a — supersession by ruling
-  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1 (plan retires; the design phase is the
+  (`.mochiko/brainstorms/plan-stage-utility/record.md` D1-plan-command-retires (plan retires; the design phase is the
   producing home), D3 (`requirements.md` dies as a mandatory artifact — its gap-finding-fence slot
   re-keys to the sufficiency report plus the design-phase deltas), D4 (dead gates, and the
   sufficiency report as the durable assessment record), and D5 (`review-feasibility` re-scopes at

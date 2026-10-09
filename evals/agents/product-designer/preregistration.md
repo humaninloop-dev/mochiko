@@ -16,7 +16,7 @@
 >
 > Or check the whole archive out: `git worktree add /tmp/eval-evidence eval-evidence-2026-09-19`.
 
-Committed BEFORE the baseline grid (`primitive-eval-harness-v2` D11 as folded; the pilot rulings
+Committed BEFORE the baseline grid (`primitive-eval-harness-v2` D11-preregistration-noise-guard as folded; the pilot rulings
 `2026-09-09-persona-pilot-1-latitude-out-of-instrument` and `2026-09-09-persona-pilot-2-validator-read`;
 the band ruling `2026-09-09-persona-band-invited-only`). This is a **baseline kit**: no persona edit
 exists to detect, so there is no positive control. The kit fixes the band and the coverage so that the
