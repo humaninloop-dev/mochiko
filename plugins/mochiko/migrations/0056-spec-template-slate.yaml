@@ -1,0 +1,282 @@
+grammar: 1
+id: 0056-spec-template-slate
+sequence: 56
+intent: >-
+  Carry the slate in the spec template's User Stories guidance — the header line naming the
+  slate's source, the Test column, the two-phase Disposition, the Struck candidates sub-table —
+  and have each functional requirement cite its story (specify-brainstorm-discovery D5 touch-set,
+  the Slate home and binding default, verify round 1 N1/N3). Conformance, headings and budgets
+  unchanged.
+anchor: 2026-10-10 specify-brainstorm-discovery
+hash: sha256:17c8b9c5b2b6fe41c0aa9038ce54a55518ce420d56a1da9f8528aa3d76189906
+changes:
+  - op: replace-document
+    kind: template
+    name: spec
+    content:
+      template: spec
+      title: Feature Specification
+      form: artifact-format.md
+      register: full
+      overview: |
+        The feature specification deliverable (spec.md). Dense by construction, human-legible.
+        Follows the deliverable envelope (artifact-format.md). Omit empty sections. Section density
+        norms: Overview <= 3 lines; stories per authoring-user-stories (scenarios one line each, 2-3
+        per story); FR/SC/edge-case entries one line each; entities conceptual and compact.
+      sections:
+        - name: Intent
+          required: true
+          density: one line per ruling
+          contract: |
+            The confirmed one-screen synthesis from the intent stage — elicited rulings, one line
+            each, confirmed by the user before authoring began. Governs the authoring depth, the
+            feature derivation, and the stress-test rigor. Omit a line only if the probe was
+            genuinely not applicable. Lines: Scope boundary; Delivery (whole vs subset now, first
+            shippable value, sequencing constraints); Depth / rigor; UX-bearing (yes -> Screens &
+            Flows + prototype obligated; no -> the waiver line); Constraints; Out of scope.
+          check: >-
+            Is the Intent present with its six ruling lines (scope boundary, delivery,
+            depth/rigor, UX-bearing, constraints, out of scope), each confirmed with the user, or
+            a per-line not-applicable note?
+          heading: Intent
+          max_lines: 10
+        - name: Overview
+          required: true
+          density: <= 3 lines
+          contract: |
+            A compact synthesis of what the feature is. No more than three lines.
+          check: Is the Overview present and <= 3 lines?
+          heading: Overview
+          max_lines: 6
+        - name: User Stories
+          required: true
+          contract: |
+            An INDEX only, and the spec's slate. A header line above the table records the slate's
+            source (forks · handed in). The index holds one row per slate row ruled `in`, `in —
+            waiver pending` included; rows ruled `out` sit unlinked in the `### Struck candidates`
+            sub-table below it. Story content lives in per-story files, stories/US-*.md, authored
+            for rows ruled `in` only — each carries the story text, its acceptance scenarios, and
+            its FEAT-ID mapping. Columns: ID (linked to stories/US-N.md; unlinked while `in —
+            waiver pending`), Story (one breath, then its provenance mark, and for a narrowed row
+            the cut noted after the line), Priority (P1/P2/P3), Test (the user's seed, or `test:
+            open`), Feature (FEAT-XXX-<slug> or —), Disposition — before authoring the slate value
+            (`in` | `in — waiver pending`), after derivation `homed | rejected — why`; a struck
+            row's Disposition is `out — <why>`. The only story-native status is `rejected` (the
+            derivation filter's verdict, with the why, recorded in the story file); the slate
+            values are pre-authoring dispositions, not statuses; every other status is derived by
+            following the story's FEAT-ID to the feature map.
+          check: >-
+            Is the User Stories section the slate index — its header line naming the slate's
+            source, one row per row ruled `in` (waiver-pending included) with priority, Test seed,
+            FEAT-ID (or —) and disposition, each authored row linked to its story file and every
+            rejected row a one-line why — with the rows ruled `out` unlinked under Struck
+            candidates and no inline story bodies?
+          heading: User Stories
+        - name: Edge Cases
+          required: true
+          density: one line each
+          contract: |
+            The boundary and failure conditions the feature must handle — one line each.
+          check: Are edge cases enumerated, one line each?
+          heading: Edge Cases
+        - name: Functional Requirements
+          required: true
+          density: one line each
+          contract: |
+            Technology-agnostic functional requirements (FR-XXX-<slug>), one line each, per
+            authoring-requirements, each citing the story it serves (US-N-<slug>). RFC 2119
+            language.
+          check: >-
+            Are functional requirements present in joined `FR-XXX-<slug>` form, one line each,
+            technology-agnostic, each citing the `in`-row story it serves?
+          heading: Functional Requirements
+        - name: Key Entities
+          required: true
+          contract: |
+            The feature's domain nouns — conceptual and compact, not an OpenAPI schema.
+          check: Are key entities listed conceptually and compactly?
+          heading: Key Entities
+          max_lines: 15
+        - name: Success Criteria
+          required: true
+          density: one line each
+          contract: |
+            Measurable success criteria (SC-XXX-<slug>), one line each, per authoring-requirements.
+          check: Are success criteria present in joined `SC-XXX-<slug>` form and measurable?
+          heading: Success Criteria
+        - name: Screens & Flows
+          required: true
+          contract: |
+            Authored per mochiko:authoring-prototype from the Intent section's UX-bearing ruling. Not
+            UX-bearing -> the single line "No UX surface — prototype waived at intent." and nothing
+            else. UX-bearing -> one Direction block per surface (per mochiko:patterns-design-direction), both
+            tables, and the prototype pointer, in full. The manifest is binding
+            (screens, data, actions); the prototype's pixels are advisory. Feature column lands at
+            derivation as a re-tag pass (FEAT-XXX-<slug> per row); screens of unselected features greyed
+            coming-soon; a filter-rejected story's screens kept, greyed, marked rejected.
+          good: |
+            UX-bearing form:
+
+            ### Direction — [surface] ([SCR range])
+            - **Mode:** [Persuade | Operate | Read | Experience]
+            - **Register:** [bolder | quieter | distill | held] — [why, one clause]
+            - **Contract:** thesis — [...] · own world — [...] · story — [...] · first viewport — [...] · viewports — [...]
+            - **Declared tokens (intent):** [type · color · spacing · motion, as intent] | none — honors the baseline
+            - **Incumbent world:** [preserve | expand | replace] — [evidence, one clause]
+
+            | ID | Screen | Purpose | Data shown | Feature |
+            |----|--------|---------|------------|---------|
+            | SCR-001-<slug> | [name] | [one line] | [fields/collections rendered] | FEAT-001-<slug> |
+
+            | ID | Flow | Steps | Story scenario | Feature |
+            |----|------|-------|----------------|---------|
+            | FLOW-001-<slug> | [name] | SCR-001-<slug> -> [action] -> SCR-002-<slug> | US-1-<slug> / [scenario] | FEAT-001-<slug> |
+
+            **Prototype:** `prototype/` — clickable low-fi rendering of this manifest; serve with bun
+            or open `prototype/index.html` directly. Flows and data are binding; layout and styling
+            advisory.
+          check: >-
+            If the spec is UX-bearing, is a Direction block with its five fields present for each
+            surface, and are both the SCR-XXX and FLOW-XXX tables present with a Feature column
+            and the prototype pointer? If not UX-bearing, is the single waiver line present and
+            nothing else?
+          heading: Screens & Flows
+          max_lines: 44
+        - name: Feature Selection
+          required: true
+          contract: |
+            Authored per mochiko:authoring-feature-map after stories are drafted. Derivation output
+            (proposed entries, deltas, index-line drafts) stages in this spec workspace; the live map
+            is written only at spec acceptance, as one atomic batch. The selection itself is the
+            user's ruling — the derived table and filter verdicts are the producer's, the Selected
+            line records the user's choice. Three sub-parts: Derived features (table: FEAT-ID,
+            Feature, New/delta, Stories, SCs verified); Filter rejections (one line per rejected story
+            — the why verbatim from its story file; omit when none); Selection (Selected build-now in
+            dependency order; Deferred proposed entries carrying their SCs + seam obligations;
+            Deferred SCs — the ones covered only by unselected features, shown at the moment of
+            choice, never discovered at close).
+          check: >-
+            Does Feature Selection carry the derived-features table, the filter rejections (or
+            none), and a Selection recording the user's ruling with deferred features and deferred
+            SCs surfaced?
+          heading: Feature Selection
+          max_lines: 20
+        - name: Assumptions
+          required: false
+          contract: |
+            Assumptions the specification rests on. Omit if empty.
+          check: Are material assumptions recorded (or the section omitted when none)?
+          heading: Assumptions
+          max_lines: 10
+        - name: Open Questions
+          required: false
+          contract: |
+            Unresolved questions carried out of authoring. Omit if empty.
+          check: Are open questions recorded (or the section omitted when none)?
+          heading: Open Questions
+          max_lines: 10
+      skeleton: |
+        # {{spec_title}}
+
+        > Spec: {{spec_id}}
+        > Created: {{created}}
+        > Status: {{status}}
+
+        ---
+
+        ## Intent
+
+        - **Scope boundary:** {{intent_scope}}
+        - **Delivery:** {{intent_delivery}}
+        - **Depth / rigor:** {{intent_depth}}
+        - **UX-bearing:** {{intent_ux_bearing}}
+        - **Constraints:** {{intent_constraints}}
+        - **Out of scope:** {{intent_out_of_scope}}
+
+        ---
+
+        ## Overview
+
+        {{overview}}
+
+        ---
+
+        ## User Stories
+
+        > Slate: {{slate_source}}
+
+        | ID | Story (one breath) | Priority | Test | Feature | Disposition |
+        |----|--------------------|----------|------|---------|-------------|
+        | [US-1-{{slug}}](stories/US-1.md) | {{story_hook}} · user's words | P1 | {{seed}} | FEAT-XXX-{{slug}} | homed |
+        | [US-2-{{slug}}](stories/US-2.md) | {{story_hook}} · blind list | P2 | {{seed}} | — | rejected — {{why, one line}} |
+
+        ### Struck candidates
+
+        | ID | Story (one breath) | Priority | Test | Disposition |
+        |----|--------------------|----------|------|-------------|
+        | US-5-{{slug}} | {{story_hook}} · lead's guess, ratified | P3 | {{seed}} | out — {{why, one line}} |
+
+        ---
+
+        ## Edge Cases
+
+        {{edge_cases}}
+
+        ---
+
+        ## Functional Requirements
+
+        {{functional_requirements}}
+
+        ---
+
+        ## Key Entities
+
+        {{key_entities}}
+
+        ---
+
+        ## Success Criteria
+
+        {{success_criteria}}
+
+        ---
+
+        ## Screens & Flows
+
+        {{screens_and_flows}}
+
+        ---
+
+        ## Feature Selection
+
+        ### Derived features
+
+        | FEAT-ID | Feature | New / delta | Stories | SCs verified |
+        |---------|---------|-------------|---------|--------------|
+        | FEAT-XXX-{{slug}} | [name] | new (`proposed`) | US-1-{{slug}}, US-3-{{slug}} | SC-001-{{slug}}, SC-002-{{slug}} |
+        | FEAT-YYY-{{slug}} | [name] | delta on delivered | US-2-{{slug}} | SC-003-{{slug}} |
+
+        ### Filter rejections
+
+        - US-4-{{slug}} — rejected: {{why, one line}}
+
+        ### Selection
+
+        - **Selected (build now, dependency order):** FEAT-XXX-{{slug}}, FEAT-YYY-{{slug}}
+        - **Deferred (`proposed` on the map):** FEAT-ZZZ-{{slug}} — carries SC-004-{{slug}}, SC-005-{{slug}} and [seam obligations]
+        - **Deferred SCs:** SC-004-{{slug}}, SC-005-{{slug}} — wait until FEAT-ZZZ-{{slug}} builds
+
+        ---
+
+        ## Assumptions
+
+        {{assumptions}}
+
+        ---
+
+        ## Open Questions
+
+        {{open_questions}}
+      conformance:
+        extra_headings: deny

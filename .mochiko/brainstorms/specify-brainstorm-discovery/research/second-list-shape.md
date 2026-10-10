@@ -1,0 +1,34 @@
+# Blind second list — the shape fork (Q1)
+
+Seat: `second-list-shape`, persona-less `general-purpose`, spawned `model: opus` (disclosed), 2026-10-10.
+Given: the hardened frame and the question "Where in `/mochiko:specify` does the brainstorm with the
+user about which stories sit, and what does it rule?" — never the lead's options or the record.
+Returned as text; saved here verbatim by the lead. Facts the seat cites were spot-checked by the lead
+(record F-S8–F-S10).
+
+---
+
+Blind second list for the story-discovery fork: six roads, cheapest first, no recommendation.
+
+GROUNDING (rendered at plugin 0.118.0 / binary 0.4.0)
+- Between intent confirm and the selection card, the user's only touch is clicking each story's screens, and that applies only when `ux_bearing=yes` (spec.lockstep-prototyping, spec.reserved-to-user). For a non-UX spec the user sees nothing from intent confirm to the selection card.
+- The intent frame explicitly bans story lists: spec.capability-frame-at-intent says "never enumerating stories"; authoring-feature-map.frame-first says "never a list of stories"; spec.frame-hypothesis-not-anchor says "stories stay journey-driven". Any road that puts a story list before authoring has to declare it is not the frame, or supersede those rules.
+- Where the volume comes from: authoring-user-stories.story-structure allows 2–5 stories per feature, multiplied by the capabilities in the frame (3 capabilities means up to 15 stories).
+- Stories the user doesn't select don't disappear. They land on the live map as `pending` rows at acceptance (Goal step; the completeness view in spec.selection-card). Only the PM's filter rejects (spec.filter-rejections-recorded), and the user rules on the filter only when a disagreement escalates (spec.filter-disagreement-escalates).
+- A slate already has a home with no template change: the spec template's `## User Stories` is an index with one row per story (ID · one-breath story · priority · feature · disposition). The Intent section is capped at 10 lines and is close to full (6 rulings + the frame). Conformance denies any new `##` heading, so a new section means a template migration.
+
+ROADS
+
+1. Change nothing: prune at the existing selection gate. Stories are authored as today, and the user drops the unwanted ones at the selection card or with an amend at acceptance. Example: 9 stories authored, 4 rows picked, 5 deferred. Cost: the volume is still authored, prototyped and stress-tested. Unwanted stories become pending rows on the live map unless the PM filter rejects them. Tightness arrives after the cost is spent, so "before authoring" is not met.
+
+2. Add one intent probe that rules only the core journey. Add "the one journey that must work on day one" to the intent agenda (spec.intent-stage-first) as one Intent line. The analyst authors it as P1 and builds the rest around it. Example: "team invites" → probe → "owner invites by email, invitee lands in the workspace" → line "Core journey: …" → US-1 P1 is that journey, the others P2/P3. Cost: rules the anchor but not the set; the rest is still authored in volume from the analyst's reading. Smallest edit: one agenda item, which fits the Intent budget.
+
+3. A story slate inside the intent synthesis. After the frame, the analyst proposes a one-breath slate (who + journey + priority per line). The user strikes, adds and merges, and the slate is confirmed on the same screen as intent, so spec.fail.intent-unconfirmed holds it in place before authoring. Example: 5 proposed (invite by email · accept from link · revoke pending · role on invite · bulk CSV). The user strikes CSV and role and adds "resend expired invite", so 4 stories are authored. Cost: collides with "never enumerating stories", so it needs a ruling that the slate is the analyst's line and not the PM's frame. The one-screen synthesis grows. Draft-and-strike invites rubber-stamping (spec.intent-probe-discipline already flags ratification streaks). The 10-line Intent budget is too tight, so the slate either rides the User Stories index or the template changes.
+
+4. A separate story-discovery stage after intent confirm, run like a brainstorm. Add a new moment between `intent` and the stories. Analyst and user take story forks one per turn under brainstorm's question discipline: options-rule (the cheaper shape is fewer stories), question-form, show-before-asking (a worked scenario), a decision map (askable / fog / out), and the stop-rule. It closes in a ruled slate, written first as the User Stories index; authoring is bound to that slate, with a new fail for "story authored outside the ruled slate". Example: "billing for teams" → intent confirms the envelope → fork "who pays: owner only (1 story) or any admin (+1 permission story)?" → owner → fork "proration in v1?" → out → 3 stories ruled → authored. Cost: the most new rules (a moment, a reservation line, a fail condition). Borrowing brainstorm's rules means copying them, or extracting them to `common.*`, which touches brainstorm's schema and is out of scope. It is the slowest road and puts the bet's "not much slower" most at risk: two confirm screens instead of one.
+
+5. Story-at-a-time for every spec. Extend the wet-story loop in spec.lockstep-prototyping beyond UX-bearing specs. The analyst offers the next story in one breath, and the user keeps, reshapes or drops it before it is drafted in full. The set stops when the user says enough. Example: "next: owner invites by email, keep?" yes → drafted (plus screens if UX) → "next: bulk CSV, keep?" no → "next: revoke pending, keep?" yes → "enough". Cost: no up-front view of the whole set, so the user can't trade stories against each other or spot what's missing. Turns grow with the story count, and stopping depends on the user. Small rule change: drop the `when:` gate and add keep/drop to spec.reserved-to-user.
+
+6. Route outside specify: brainstorm first, then specify consumes the record. The founder runs /mochiko:brainstorm on the stories and the record rules the slate. Then `/mochiko:specify <record path>` takes it as $ARGUMENTS and intent confirms it. Example: `/mochiko:brainstorm team-invite stories` → D1–D4 = stories in/out → `/mochiko:specify .mochiko/brainstorms/team-invites/record.md`. Cost: two commands and brainstorm's full ceremony (frame card, cold review, accept screens, record freeze, index entry) for one story list. Nothing in specify today binds authoring to a record's slate, so tightness still needs a specify edit. Brainstorm's frame card fits decisions, not story lists.
+
+CROSS-CUT: under roads 3–6 the stories are user-ruled. The post-stories frame confirm ("stories win") still works, and a PM filter rejecting a user-ruled story becomes an escalation (spec.filter-disagreement-escalates). None of the six touches the readers (map rows, S&F flows citing story scenarios, implement's sufficiency check) as long as the story files keep their form.

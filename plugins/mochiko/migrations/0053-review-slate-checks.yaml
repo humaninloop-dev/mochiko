@@ -1,0 +1,41 @@
+grammar: 1
+id: 0053-review-slate-checks
+sequence: 53
+intent: >-
+  Add the four slate checks to the spec review (specify-brainstorm-discovery Slate home and
+  binding as repaired, N2/N3), guarded to specs whose User Stories section carries the slate
+  header line, and name slate rows in the coverage duty.
+anchor: 2026-10-10 specify-brainstorm-discovery
+hash: sha256:27045ad6f99dbbccfac1b08bdfd8c9422af9a1cfd3d068eef3d8f235d5dbbdf7
+changes:
+  - op: set-condition
+    schema: skill/review-specifications
+    name: slate-present
+    spec:
+      values: presence
+      resolution: surface-presence
+      note: 'the spec''s User Stories section carries the slate header line (`> Slate: …`).'
+  - op: mint-rule
+    schema: skill/review-specifications
+    section: review-specifications.sec.verdict
+    rule:
+      id: review-specifications.slate-checks
+      labels: [verdict]
+      class: must
+      kind: duty
+      when: {slate-present: present}
+      text: >-
+        Slate Critical checks, each failure a blocking gap: (1) every story file maps to a row
+        ruled `in` and no row ruled `in` lacks one — a row `in — waiver pending` is not yet
+        due; (2) each file's story line and Independent Test keep the meaning of its row's line
+        and seed, the seed shown beside the expansion; (3) every functional requirement cites the
+        story of a row ruled `in`; (4) each story's scenario count stays within
+        mochiko:authoring-user-stories' bound.
+      anchor: 2026-10-10 specify-brainstorm-discovery
+  - op: reword-rule
+    schema: skill/review-specifications
+    id: review-specifications.complete-coverage
+    text: >-
+      Coverage is complete, never sampled: every slate row and every user story reviewed for
+      completeness, every success criterion checked for measurability, edge cases hunted per main
+      flow.

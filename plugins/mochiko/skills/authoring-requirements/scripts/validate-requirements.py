@@ -49,6 +49,10 @@ BANNED_TERMS = [
 RFC_KEYWORDS = ['must', 'must not', 'shall', 'shall not', 'should',
                 'should not', 'required', 'recommended', 'may', 'optional']
 
+# A trailing story citation on a requirement line (authoring-requirements.fr-format):
+# (US-3-<slug>) or (US-1-<slug>, US-2-<slug>); bare and padded forms (US-001) included
+STORY_CITATION = re.compile(r'\s*\(US-\d+(?:-[a-z0-9]+)*(?:\s*,\s*US-\d+(?:-[a-z0-9]+)*)*\)\.?\s*$', re.IGNORECASE)
+
 
 def find_requirements(content: str, prefix: str) -> list[dict]:
     """Extract requirements with given prefix (FR or SC) from content."""
@@ -65,7 +69,9 @@ def find_requirements(content: str, prefix: str) -> list[dict]:
         # Only the prefix is upper-cased, so a slug keeps its case for check_format
         req_id = prefix + match.group(1)[len(prefix):]
         req_num = int(match.group(2))
-        req_text = match.group(3).strip()
+        # The citation is a reference, not requirement text: stripped so a story slug can
+        # neither trip a banned term nor stand in for a missing RFC 2119 keyword
+        req_text = STORY_CITATION.sub('', match.group(3).strip())
 
         requirements.append({
             'id': req_id,

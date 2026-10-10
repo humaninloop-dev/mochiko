@@ -149,14 +149,15 @@ sections:
         labels: [artifact-grammar]
         class: must
         text: >-
-          The map has four touchpoints. Specify proposes — frame at intent, then confirm-frame,
-          cut rows, filter, and selection after stories. The design phase confirms and hardens
-          alongside architecture — on a zero-gap verdict, where no design phase runs, the
-          card-authoring seat performs the dependency and extent assertion instead. Implement's
-          acceptance landing folds delivered rows into extent — status and index edits are
-          bookkeeping inside that landing, never a separate close stage. `/mochiko:feature`
-          stewards — stub minting, retire, integrity grooming, and the growth door that cuts
-          rows on existing capabilities.
+          The map has four touchpoints. Specify proposes — frame at intent, its one map-fit vet
+          of the slate at the slate's close, then confirm-frame, cut rows, the filter's homing and
+          dedup, and selection after stories. The design phase confirms and hardens alongside
+          architecture — on a zero-gap verdict, where no design phase runs, the card-authoring
+          seat performs the dependency and extent assertion instead. Implement's acceptance
+          landing folds delivered rows into extent — status and index edits are bookkeeping
+          inside that landing, never a separate close stage. `/mochiko:feature` stewards — stub
+          minting, retire, integrity grooming, and the growth door that cuts rows on existing
+          capabilities.
         anchor: 2026-08-26 plan-stage-utility D1
       - id: authoring-feature-map.envelope-binding
         class: must

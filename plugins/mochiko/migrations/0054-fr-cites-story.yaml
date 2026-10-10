@@ -1,0 +1,17 @@
+grammar: 1
+id: 0054-fr-cites-story
+sequence: 54
+intent: >-
+  Each functional requirement line cites the story it serves in joined form — the carrier of
+  slate check (3) (specify-brainstorm-discovery D5 touch-set, verify round 1 N3).
+anchor: 2026-10-10 specify-brainstorm-discovery
+hash: sha256:02f008c0d06edfb4c09539a277581f19868b47827f91cae2f6e0e1b4e6b2f60f
+changes:
+  - op: reword-rule
+    schema: skill/authoring-requirements
+    id: authoring-requirements.fr-format
+    text: >-
+      Functional requirements use the FR-XXX form, each requirement's ID joined to a three-word
+      topic slug (`FR-007-<slug>`), with RFC 2119 keywords — MUST (absolute; no exceptions) ·
+      SHOULD (recommended; valid exceptions may exist) · MAY (optional) — and each FR line
+      cites the story or stories it serves (`US-<n>-<slug>`).

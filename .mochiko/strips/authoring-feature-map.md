@@ -26,6 +26,14 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/authoring-feature-map/SKILL.md`. -->
 
+## [v0.119.0] the intro's derivation-flow parenthetical — the slate-close vet added, the filter after stories narrowed to homing and dedup
+
+- **Disposition:** superseded → "(frame at intent, one map-fit vet of the slate at its close, stories authored inside the frame, the filter's homing and dedup and selection after)"
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/specify-brainstorm-discovery/record.md` default *Filter* — "the PM seat vets the slate once, at its close … after authoring, the filter keeps only its homing and dedup mechanics"; D5-specify-own-rules touch-set; `DECISIONS.md` 2026-10-10; rule carried by `0055-map-slate-touchpoint.yaml` — `authoring-feature-map.four-touchpoints` reworded)
+- **Content:** "(frame at intent, stories authored inside it, filter and selection after)". Pre-edit file: `git show ea57167:plugins/mochiko/skills/authoring-feature-map/SKILL.md`.
+- **Kept deliberately:** frame first at intent, stories inside the frame, selection after; the rest of the intro; the rationalizations table — the filter still rejects with its why.
+- **Consumers assessed:** `authoring-feature-map.frame-first`, `complete-disposition` and `stories-inform-never-define` unchanged; slate values are not story statuses.
+
 ## [v0.107.0] the Related row's "in the schema's artifact section"
 
 - **Disposition:** superseded → "delivered by `mochiko-cli` in the artifact section"

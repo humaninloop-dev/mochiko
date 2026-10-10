@@ -11,8 +11,9 @@ primary capability lens on the product, the way the architecture store is the co
 view; together the two are the central source of truth. Capability delivery and spec
 delivery are independent axes: one spec can surface several capabilities and build only a
 subset of their rows. The map is durable; specs are delivery events. This skill carries
-the authoring craft — the derivation flow (frame at intent, stories authored inside it,
-filter and selection after), entry authoring, and the write mechanics.
+the authoring craft — the derivation flow (frame at intent, one map-fit vet of the slate at its
+close, stories authored inside the frame, the filter's homing and dedup and selection after),
+entry authoring, and the write mechanics.
 
 ## Rules — delivered by mochiko-cli
 

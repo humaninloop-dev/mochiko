@@ -189,9 +189,14 @@ run — an adaptive-probe agenda (`analysis-iterative`: scope · delivery · dep
 UX-bearing · constraints · out-of-scope) with the capability map an obligated read, closing
 in a one-screen synthesis the user confirms; within it the `product-manager` seat states the
 **capability frame** — which capabilities the territory touches, extend-vs-mint — as a
-nouns-and-verbs hypothesis that never enumerates stories. Stories are then authored inside
-that frame (a hypothesis, not an anchor: stories win any conflict, resolved at the
-post-stories confirm step). After stories the PM confirms or adjusts the frame, **cuts the
+nouns-and-verbs hypothesis that never enumerates stories. A **story stage** follows, held by
+the lead inline with the user: candidate stories are ruled `in` or `out` one fork at a time as
+a one-breath line with priority and a seed test, a fresh seat's blind journey list adds
+journeys the user did not name, and the PM vets the set once for map fit; it closes in a
+**slate** — the spec's User Stories index — that the user confirms on a second screen.
+Stories are then authored for the slate's `in` rows only, inside that frame (a hypothesis,
+not an anchor: stories win any conflict, resolved at the post-stories confirm step). After
+stories the PM confirms or adjusts the frame, **cuts the
 work rows** grouped per capability, and runs the story filter (rejections recorded, never
 silent); the user rules the **selection** — which work rows build now — with the
 per-capability completeness view (pending rows · stubs · kills) visible at the moment of
@@ -216,7 +221,7 @@ flowchart LR
   producer["requirements-analyst ×<br/>authoring-requirements +<br/>authoring-user-stories"]
   proto["product-designer ×<br/>authoring-prototype"]
   critic["devils-advocate ×<br/>review-specifications"]
-  user <-->|"intent probes → confirmed synthesis<br/>(capability frame included)"| lead
+  user <-->|"intent probes → confirmed synthesis<br/>(capability frame included) ·<br/>story forks → confirmed slate"| lead
   lead -->|"frame brief · derivation brief"| pm
   lead -->|"seeded template + intent-keyed brief"| producer
   lead -->|"UX-bearing: story-lockstep briefs"| proto

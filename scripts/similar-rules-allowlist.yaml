@@ -628,3 +628,6 @@ suppressions:
     reason: the size ruling carries a raise-freely, never-lower asymmetry the general pen boundary does not (brainstorm-target-state D11-session-size-tiers)
   - ids: [brainstorm.blind-map-dispatch, brainstorm.small-session-review]
     reason: "the two `when: size` arms of one blind-dispatch obligation — front spawn from three frame lines vs today's two-message end dispatch from topic and goal (brainstorm-target-state D10, D11)"
+  # --- specify-brainstorm-discovery (0051, v0.119.0) — the one edge its mints raised, kept distinct ---
+  - ids: [brainstorm.own-rules-win, spec.own-rules-win]
+    reason: "D5-specify-own-rules: specify carries its own precedence clause over mochiko:analysis-iterative, as brainstorm's does; convergence of the brainstorm/specify/architecture-desk ways into a common block is handed to a later session, drift allowed until then (specify-brainstorm-discovery D5)"

@@ -14,7 +14,7 @@ already on disk (below).
 - **Command:** `/mochiko:specify` — the `.md` at `plugins/mochiko/commands/specify.md` plus
   its rules, rendered at fire by `mochiko-cli` from the migration log; the repo-side
   projection is `.mochiko/schema-views/commands/specify.yaml` (52 rules in six sections at
-  kit authoring, HEAD `49acf05`).
+  kit authoring, HEAD `49acf05`; 71 since migration `0051`, 2026-10-10).
 - **Arms:** `pre` (the pair as committed at `--old-ref`, git-archived) · `post` (the working
   tree) · `nocmd` (the bare model on the golden's `control_prompt`, no plugin loaded).
 - **Session model:** Sonnet (R7). **Wrapper:** `evals/commands/wrapper.md`, form-only (D11),
@@ -26,7 +26,7 @@ already on disk (below).
 - Comparison substrate: the **in-grid pre-edit arm** (never a committed baseline file,
   which is only a pinned historical record).
 - **Judge:** Haiku rule-coverage checklist over the D8 observable subset (`observable.yaml`:
-  **40 observable · 12 out-of-instrument · 52 total** (39 · 13 at authoring; `spec.filter-disagreement-escalates` moved to observable on 2026-09-19 by kit audit finding 2)), one binary per rule with a quoted
+  **56 observable · 15 out-of-instrument · 71 total** (39 · 13 at authoring; `spec.filter-disagreement-escalates` moved to observable on 2026-09-19 by kit audit finding 2; migration `0051`'s nineteen mints partitioned 16 · 3 on 2026-10-10)), one binary per rule with a quoted
   evidence span, graded on embodiment after every known rule id is scrubbed from the plan;
   a restated principle is not evidence. Plus the stub axis per numbered phase. Sonnet
   pairwise, position-swapped, advisory.
@@ -55,8 +55,8 @@ already on disk (below).
   (the invited-only re-key has no separate denominator here; where a later edit adds a
   `tempts` list, the invited-only share takes over and the all-pairs figure is disclosed
   beside it). **Band = share + 5 points, capped at 20 %.** An arm with fewer than 8 graded
-  pairs carries an `UNDER-SAMPLED` mark and its band is the cap; at 3 goldens × 40 rules =
-  120 pairs per arm this kit cannot be under-sampled unless the partition shrinks below
+  pairs carries an `UNDER-SAMPLED` mark and its band is the cap; at 3 goldens × 56 rules =
+  168 pairs per arm this kit cannot be under-sampled unless the partition shrinks below
   3 observable rules.
 - **Guard:** the **pre arm's own spread must sit inside its band** before any pre/post diff
   is read. An arm whose flaky share exceeds its band is noise-dominated: add **one extra
@@ -103,8 +103,8 @@ its control from the added or changed bucket in a fill-log row before the grid r
 ## Grid shape and budget
 
 - **Grid:** 3 goldens (s1-online-payment · s2-webhook-retry · s3-bare-greenfield) × 3
-  replicates × 2 arms (pre + post) = **18 sessions**; judges: Haiku coverage over 40 rules in
-  three chunks of ≤ 15 per plan + the stub axis; Sonnet pairwise on each (golden, replicate)
+  replicates × 2 arms (pre + post) = **18 sessions**; judges: Haiku coverage over 56 rules in
+  four chunks of ≤ 15 per plan + the stub axis; Sonnet pairwise on each (golden, replicate)
   pre/post pair.
 - **Control arm:** `--control` adds 9 `nocmd` sessions. Run it **once at the first grid**
   (the dead-zone read — which observable rules the bare model already satisfies from the
@@ -138,7 +138,7 @@ branch — a fixture finding, not a command finding.
 One row per grid, appended before the grid runs (control named) and completed after the
 report is read. Never edit an earlier row; correct with a new one.
 
-| Date | Run name | `--old-ref` | Control (added/changed id expected LANDED) | Arms × k | Sessions · USD | Invalid runs | Pre cov · post cov (pass^k /40) | Unchanged regressions | Added adoption · removed ghosts | Flaky share → band (pre · post) | Guard tripped · extra replicate | Verdict | Re-key count |
+| Date | Run name | `--old-ref` | Control (added/changed id expected LANDED) | Arms × k | Sessions · USD | Invalid runs | Pre cov · post cov (pass^k /56) | Unchanged regressions | Added adoption · removed ghosts | Flaky share → band (pre · post) | Guard tripped · extra replicate | Verdict | Re-key count |
 |------|----------|-------------|--------------------------------------------|----------|----------------|--------------|----------------------------------|-----------------------|--------------------------------|--------------------------------|-------------------------------|---------|--------------|
 | _none yet_ | | | | | | | | | | | | | |
 
@@ -146,11 +146,15 @@ report is read. Never edit an earlier row; correct with a new one.
 
 - **User rulings are described, never taken.** `ux_bearing` resolves at intent by the user;
   the fixtures lean each scenario one way (s1 and s3 name a screen, s2 names none) and the
-  gated rules are graded on the leaned branch. The selection, the acceptance, and every
-  clarification are gates with described branches, not outcomes.
+  gated rules are graded on the leaned branch. `slate_source` resolves as the story stage
+  opens; no golden hands in stories or a brainstorm record, so the forks branch is the one
+  graded. The selection, the acceptance, every clarification, every slate row's ruling, and
+  the slate confirm are gates with described branches, not outcomes.
 - **The stress-test verdict is described inline** (D9's recorded divergence): under the
   fence the run cannot spawn the grading seat, so the plan states what that seat would grade
-  and how a blocking gap would route, not the verdict itself.
+  and how a blocking gap would route, not the verdict itself. The blind journey list and the
+  product-manager seat's slate-close vet are described inline the same way: no seat is
+  spawned, so the plan states what each receives and returns.
 - **Nothing is rendered or served.** Bash is denied, so `mochiko-cli home`, `mochiko-cli
   template spec`, the bun-served prototype, and the served-prototype walk are planned
   steps, not executed ones; the judge reads whether the plan places them, not whether they

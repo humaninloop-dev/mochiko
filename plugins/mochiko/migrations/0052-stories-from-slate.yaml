@@ -1,0 +1,42 @@
+grammar: 1
+id: 0052-stories-from-slate
+sequence: 52
+intent: >-
+  Bind story authoring to a confirmed slate (specify-brainstorm-discovery D2, the D5 touch-set,
+  the Slate home and binding default): the 2-5 bound yields to the slate's count, each story is
+  its file beside its index row, the Independent Test expands the row's seed, and no story falls
+  outside the slate.
+anchor: 2026-10-10 specify-brainstorm-discovery
+hash: sha256:f269367a47b93f06764a6df2523351e31b03e971c80289b7da095f995830f5f9
+changes:
+  - op: reword-rule
+    schema: skill/authoring-user-stories
+    id: authoring-user-stories.story-structure
+    text: >-
+      Generate one story per `in` row of a confirmed slate where one exists — the slate's count
+      is the feature's — or 2–5 per feature for a caller with no slate; each story is its
+      `stories/US-<n>.md` file, written beside its `spec.md` index row (on a slate, the row is
+      already transcribed there) to the exact structure the SKILL.md format block renders —
+      title with priority, the user journey, a "Why this priority" line, an Independent Test line,
+      and numbered acceptance scenarios.
+  - op: reword-rule
+    schema: skill/authoring-user-stories
+    id: authoring-user-stories.independent-test-required
+    text: >-
+      Each story includes an Independent Test description naming how QA can verify the story in
+      isolation, what data or setup is required, and what constitutes passing / failing —
+      enabling parallel testing and clear verification. Where the story's slate row carries a
+      seed, the Independent Test expands it — setup or data, pass and fail — without changing
+      its meaning.
+  - op: mint-rule
+    schema: skill/authoring-user-stories
+    section: authoring-user-stories.sec.artifact
+    rule:
+      id: authoring-user-stories.slate-fidelity
+      labels: [artifact-grammar, user-gate]
+      class: must
+      text: >-
+        Where a confirmed slate exists, no story falls outside it: a story the slate lacks is
+        proposed to the user as a row, never authored, and a `test: open` row becomes an Open
+        Questions entry plus an Independent Test marked provisional, never a silent invention.
+      anchor: 2026-10-10 specify-brainstorm-discovery

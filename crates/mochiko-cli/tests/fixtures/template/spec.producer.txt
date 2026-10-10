@@ -24,12 +24,20 @@ _Density:_ <= 3 lines
 
 ## User Stories
 
-An INDEX only. Story content lives in per-story files: stories/US-*.md — each carries the
-story text, its acceptance scenarios, and its FEAT-ID mapping. The only story-native
-status is `rejected` (the derivation filter's verdict, with the why, recorded in the story
-file); every other status is derived by following the story's FEAT-ID to the feature map.
-One row per story. Columns: ID (linked to stories/US-N.md), Story (one breath), Priority
-(P1/P2/P3), Feature (FEAT-XXX-<slug> or —), Disposition (homed | rejected — why).
+An INDEX only, and the spec's slate. A header line above the table records the slate's
+source (forks · handed in). The index holds one row per slate row ruled `in`, `in —
+waiver pending` included; rows ruled `out` sit unlinked in the `### Struck candidates`
+sub-table below it. Story content lives in per-story files, stories/US-*.md, authored
+for rows ruled `in` only — each carries the story text, its acceptance scenarios, and
+its FEAT-ID mapping. Columns: ID (linked to stories/US-N.md; unlinked while `in —
+waiver pending`), Story (one breath, then its provenance mark, and for a narrowed row
+the cut noted after the line), Priority (P1/P2/P3), Test (the user's seed, or `test:
+open`), Feature (FEAT-XXX-<slug> or —), Disposition — before authoring the slate value
+(`in` | `in — waiver pending`), after derivation `homed | rejected — why`; a struck
+row's Disposition is `out — <why>`. The only story-native status is `rejected` (the
+derivation filter's verdict, with the why, recorded in the story file); the slate
+values are pre-authoring dispositions, not statuses; every other status is derived by
+following the story's FEAT-ID to the feature map.
 
 ## Edge Cases
 
@@ -40,7 +48,8 @@ _Density:_ one line each
 ## Functional Requirements
 
 Technology-agnostic functional requirements (FR-XXX-<slug>), one line each, per
-authoring-requirements. RFC 2119 language.
+authoring-requirements, each citing the story it serves (US-N-<slug>). RFC 2119
+language.
 
 _Density:_ one line each
 
@@ -151,10 +160,18 @@ Checked mechanically before the write lands. Each line is a string or a count, n
 
 ## User Stories
 
-| ID | Story (one breath) | Priority | Feature | Disposition |
-|----|--------------------|----------|---------|-------------|
-| [US-1-{{slug}}](stories/US-1.md) | {{story_hook}} | P1 | FEAT-XXX-{{slug}} | homed |
-| [US-2-{{slug}}](stories/US-2.md) | {{story_hook}} | P2 | — | rejected — {{why, one line}} |
+> Slate: {{slate_source}}
+
+| ID | Story (one breath) | Priority | Test | Feature | Disposition |
+|----|--------------------|----------|------|---------|-------------|
+| [US-1-{{slug}}](stories/US-1.md) | {{story_hook}} · user's words | P1 | {{seed}} | FEAT-XXX-{{slug}} | homed |
+| [US-2-{{slug}}](stories/US-2.md) | {{story_hook}} · blind list | P2 | {{seed}} | — | rejected — {{why, one line}} |
+
+### Struck candidates
+
+| ID | Story (one breath) | Priority | Test | Disposition |
+|----|--------------------|----------|------|-------------|
+| US-5-{{slug}} | {{story_hook}} · lead's guess, ratified | P3 | {{seed}} | out — {{why, one line}} |
 
 ---
 

@@ -1,0 +1,42 @@
+grammar: 1
+id: 0057-specify-var-bindings
+sequence: 57
+intent: >-
+  Gate-audit fix, unit 1 (register): restore specify's own var bindings in four rules 0051 wrote
+  — ${pm_seat} in place of the literal product-manager seat in spec.filter-rejections-recorded,
+  spec.pm-vets-slate-once and spec.slate-rulings-users, and ${spec_schema} in place of the literal
+  template command in spec.slate-home. Each text otherwise verbatim; the resolved render is
+  unchanged.
+anchor: 2026-10-10 specify-brainstorm-discovery
+hash: sha256:2599a82a37f21d957824ccdc85c52d7c056ea6fdc3317218b3a14a304fb3ea42
+changes:
+  - op: reword-rule
+    schema: command/specify
+    id: spec.filter-rejections-recorded
+    text: >-
+      The ${pm_seat} seat runs the filter: a story that earns no place on the map is rejected with
+      the why recorded in its story file, never silently dropped. After authoring, the filter runs
+      on homing and dedup only, and a rejection of a row ruled `in` goes to the user as an
+      escalation.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.pm-vets-slate-once
+    text: >-
+      At the slate's close the ${pm_seat} seat vets every candidate row once for map fit —
+      duplicates of pending rows or stubs, extend-vs-mint — and returns the vet beside the blind
+      journey list, before the user confirms the slate.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.slate-rulings-users
+    text: >-
+      Which stories the spec carries is the user's: every slate row is ruled in or out by the
+      user, a floor-obligated row's strike included. Which capabilities, the filter and selection
+      advice stay the ${pm_seat} seat's.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.slate-home
+    text: >-
+      The slate lives in the spec's `## User Stories` index, its `out` rows in the `### Struck
+      candidates` sub-table, to the grammar `${spec_schema}` renders — the header line, the Test
+      column, the two-phase Disposition. It carries no `deferred` value: later is `in`, authored,
+      and left unselected at the selection card.

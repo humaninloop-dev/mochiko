@@ -107,7 +107,8 @@ sections:
         text: >-
           Functional requirements use the FR-XXX form, each requirement's ID joined to a
           three-word topic slug (`FR-007-<slug>`), with RFC 2119 keywords — MUST (absolute; no
-          exceptions) · SHOULD (recommended; valid exceptions may exist) · MAY (optional).
+          exceptions) · SHOULD (recommended; valid exceptions may exist) · MAY (optional) —
+          and each FR line cites the story or stories it serves (`US-<n>-<slug>`).
         anchor: 2026-07-25 skill-succinctness-strip
       - id: authoring-requirements.rfc2119-pointer
         labels: [binding]

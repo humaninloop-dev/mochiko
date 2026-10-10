@@ -91,9 +91,12 @@ sections:
         class: must
         kind: binding
         text: >-
-          Generate 2–5 user stories per feature, landing in `spec.md`, each to the exact
-          structure the SKILL.md format block renders — title with priority, the user journey, a
-          "Why this priority" line, an Independent Test line, and numbered acceptance scenarios.
+          Generate one story per `in` row of a confirmed slate where one exists — the slate's
+          count is the feature's — or 2–5 per feature for a caller with no slate; each story
+          is its `stories/US-<n>.md` file, written beside its `spec.md` index row (on a slate, the
+          row is already transcribed there) to the exact structure the SKILL.md format block
+          renders — title with priority, the user journey, a "Why this priority" line, an
+          Independent Test line, and numbered acceptance scenarios.
         anchor: 2026-07-25 skill-succinctness-strip
       - id: authoring-user-stories.density-fields
         labels: [artifact-grammar]
@@ -137,7 +140,9 @@ sections:
         text: >-
           Each story includes an Independent Test description naming how QA can verify the story
           in isolation, what data or setup is required, and what constitutes passing / failing —
-          enabling parallel testing and clear verification.
+          enabling parallel testing and clear verification. Where the story's slate row carries a
+          seed, the Independent Test expands it — setup or data, pass and fail — without
+          changing its meaning.
         anchor: 2026-07-25 skill-succinctness-strip
       - id: authoring-user-stories.validation-script
         labels: [binding]
@@ -159,6 +164,14 @@ sections:
           and take the section's budget from `mochiko-cli template spec` — the story count is
           the feature's, the section's length is not.
         anchor: 2026-09-13 hook-enforced-artifact-schema D1
+      - id: authoring-user-stories.slate-fidelity
+        labels: [artifact-grammar, user-gate]
+        class: must
+        text: >-
+          Where a confirmed slate exists, no story falls outside it: a story the slate lacks is
+          proposed to the user as a row, never authored, and a `test: open` row becomes an Open
+          Questions entry plus an Independent Test marked provisional, never a silent invention.
+        anchor: 2026-10-10 specify-brainstorm-discovery
   - id: authoring-user-stories.sec.output
     title: Output — none beyond the artifact
     intent: Report contracts this skill carries.

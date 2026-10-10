@@ -105,7 +105,7 @@
  },
  {
   "id": "review-specifications.complete-coverage",
-  "rule": "Coverage is complete, never sampled: every user story reviewed for completeness, every success criterion checked for measurability, edge cases hunted per main flow.",
+  "rule": "Coverage is complete, never sampled: every slate row and every user story reviewed for completeness, every success criterion checked for measurability, edge cases hunted per main flow.",
   "class": "must",
   "source": "log:review-specifications.complete-coverage",
   "section": "review-specifications.sec.inputs",
@@ -378,6 +378,19 @@
   "labels": [
    "verdict",
    "artifact-grammar"
+  ],
+  "mapped_from": []
+ },
+ {
+  "id": "review-specifications.slate-checks",
+  "rule": "Slate Critical checks, each failure a blocking gap: (1) every story file maps to a row ruled `in` and no row ruled `in` lacks one — a row `in — waiver pending` is not yet due; (2) each file's story line and Independent Test keep the meaning of its row's line and seed, the seed shown beside the expansion; (3) every functional requirement cites the story of a row ruled `in`; (4) each story's scenario count stays within mochiko:authoring-user-stories' bound.",
+  "class": "must",
+  "source": "log:review-specifications.slate-checks",
+  "section": "review-specifications.sec.verdict",
+  "kind": "duty",
+  "when": "slate-present=present",
+  "labels": [
+   "verdict"
   ],
   "mapped_from": []
  },

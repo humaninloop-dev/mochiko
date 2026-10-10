@@ -2,9 +2,9 @@
 
 - [ ] Is the Intent present with its six ruling lines (scope boundary, delivery, depth/rigor, UX-bearing, constraints, out of scope), each confirmed with the user, or a per-line not-applicable note?
 - [ ] Is the Overview present and <= 3 lines?
-- [ ] Is the User Stories section an index (one linked row per story, no inline story bodies), with each row carrying priority, FEAT-ID (or —), and disposition, and every rejected row a one-line why?
+- [ ] Is the User Stories section the slate index — its header line naming the slate's source, one row per row ruled `in` (waiver-pending included) with priority, Test seed, FEAT-ID (or —) and disposition, each authored row linked to its story file and every rejected row a one-line why — with the rows ruled `out` unlinked under Struck candidates and no inline story bodies?
 - [ ] Are edge cases enumerated, one line each?
-- [ ] Are functional requirements present in joined `FR-XXX-<slug>` form, one line each, technology-agnostic?
+- [ ] Are functional requirements present in joined `FR-XXX-<slug>` form, one line each, technology-agnostic, each citing the `in`-row story it serves?
 - [ ] Are key entities listed conceptually and compactly?
 - [ ] Are success criteria present in joined `SC-XXX-<slug>` form and measurable?
 - [ ] If the spec is UX-bearing, is a Direction block with its five fields present for each surface, and are both the SCR-XXX and FLOW-XXX tables present with a Feature column and the prototype pointer? If not UX-bearing, is the single waiver line present and nothing else?

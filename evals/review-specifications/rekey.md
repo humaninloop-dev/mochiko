@@ -175,3 +175,51 @@ view; the file round-trips byte for byte through the script's writer before the 
 - `review-specifications.joined-ids` sits in no golden's `tempts` — the wave ruled no
   change to `tempts` for the new stub — so the run reads it `untempted`, disclosed and never read,
   until a golden plants an ID to grade.
+
+## Re-key 2026-10-10 — specify-brainstorm-discovery
+
+```json
+{
+  "rekeyed": {
+    "at": "2026-10-10T05:45:22Z",
+    "ruling": "specify-brainstorm-discovery (DECISIONS.md 2026-10-10), migration 0053; wave 1 plan §3.9",
+    "source": ".mochiko/schema-views/skills/review-specifications.yaml + mochiko-cli floors line"
+  }
+}
+```
+
+Field-scoped, as the 2026-09-24 and 2026-10-08 re-keys were: the one minted id is added at its
+view position with `mapped_from: []` (no pre-cut `R-XXX` entry maps to it), and the one reworded
+rule's `rule` text is copied from the landed view; every other field and entry is
+byte-identical, `git diff` the proof. Script: one pass over the landed view; the file round-trips
+byte for byte through the script's writer before the edit. The `when` value is written in the
+file's own `<condition>=<value>` string form.
+
+### Counts
+
+- Rules: 31 → 32. Floors: 8 → 8 — equals the render's `floors:` line and its pin.
+- Retired: 0. Added: 1. Text re-keyed: 1.
+
+### Added
+
+| log rule | class | section | when / pointer | note |
+|---|---|---|---|---|
+| `review-specifications.slate-checks` | must | `sec.verdict` | `slate-present=present` | the four slate checks (Slate home and binding, as repaired N2/N3); kind `duty`, label `verdict` |
+
+### Text re-keyed
+
+- `review-specifications.complete-coverage` — the coverage duty now names every slate row beside
+  every user story (`0053`). Its class, kind, section, labels and `mapped_from` are unchanged.
+
+### Invariants verified
+
+- Id set and order equal to the view's but one: `review-specifications.sf-direction-checks`
+  (minted by `0013`, 2026-09-19) is still absent, as the 2026-09-24 and 2026-10-08 re-keys
+  recorded. Pre-existing, out of this field-scoped re-key; disclosed by the wave lead's ruling,
+  not repaired.
+- `preregistration.md` still reads "30 rules — 8 floor · 22 must"; that figure has been stale
+  since the 2026-10-08 re-key. Pre-existing; disclosed by the same ruling, not repaired.
+- `class: floor` set equal to the render's `floors:` line; every `tempts` id resolves.
+- `review-specifications.slate-checks` sits in no golden's `tempts`, so the run reads it
+  `untempted`, disclosed and never read. It is also gated off on every golden: no fixture spec
+  carries the slate header line (`> Slate: …`) its `slate-present` condition reads.

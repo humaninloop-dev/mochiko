@@ -5,6 +5,86 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.119.0] — 2026-10-10
+
+**Specify story-discovery stage — MINOR** (`specify-brainstorm-discovery` D1–D7 and the confirmed
+defaults, record `.mochiko/brainstorms/specify-brainstorm-discovery/record.md`). `/mochiko:specify`
+gains a story stage between the confirmed intent synthesis and the first authored story (D1). The
+lead runs it inline in the main conversation (D3): one fork per turn with at least two real
+options, one the do-less shape, a one-row mock, and a status line over the candidate journeys. The
+user rules each candidate as a one-breath story line with its priority and a seed test — one
+sentence on how they would know it works, or `test: open` (D2). One fresh `general-purpose` seat,
+`model: opus`, given only the intent synthesis and the capability frame, returns the journeys it
+sees; each difference from the slate is a candidate row the user rules (D4). The product-manager
+seat vets every candidate once for map fit at the slate's close. The stage closes in a ruled slate,
+confirmed on its own screen after the intent screen (D6). The slate is the spec's `## User Stories`
+index: a header line recording its source (forks · handed in), a new Test column, a two-phase
+Disposition (`in` · `in — waiver pending` · `out — <why>` before authoring, then
+`homed | rejected — why`), and a `### Struck candidates` sub-table for `out` rows. Story files are
+authored for `in` rows only; a story the slate lacks is proposed to the user as a row, never
+authored; a new floor fail, `spec.fail.story-outside-slate`, holds it. Handed-in stories skip the
+forks, never the blind list, the vet or the confirm. A floor-obligated row (auth, deletion,
+recovery) strikes only as handled elsewhere, as a narrowing, or through a waiver held
+`in — waiver pending`. Where specify's rules and `mochiko:analysis-iterative` differ, specify's win
+(D5). What a run is judged on is deferred to the first `/mochiko:specify` run in ai-fileops (D7).
+
+Downstream, under D5's touch-set: `authoring-user-stories` writes one story per `in` row of a
+confirmed slate — the 2–5 bound kept only for a caller with no slate — expands the row's seed into
+the Independent Test without change of meaning, and turns a `test: open` row into an Open Questions
+entry plus a provisional test. `review-specifications` gains four slate checks, each a blocking
+gap, on any spec whose User Stories section carries the slate header line. Each functional
+requirement line cites the story it serves (`US-<n>-<slug>`), the carrier of slate check (3).
+`authoring-feature-map`'s specify touchpoint names the slate-close vet.
+
+Migrations **`0051-specify-story-stage`**, **`0052-stories-from-slate`**,
+**`0053-review-slate-checks`**, **`0054-fr-cites-story`**, **`0055-map-slate-touchpoint`**,
+**`0056-spec-template-slate`** and **`0057-specify-var-bindings`** carry the schema half — `0057` a
+gate-audit fix restoring specify's `${pm_seat}` and `${spec_schema}` bindings in four rules `0051`
+wrote, the resolved render unchanged. The log, sequences 1..57, replays to 87 documents and 1,196
+rules (1,175 → 1,196). Specify's pins read `kind: fail · 10 rules` (was 9) and
+`class: floor · 18 rules` (was 17); no floor or fail is retired or lowered. `mochiko-cli migrate
+validate` 0 rejecting · 113 advisory, clusters 0, allowlist-suppressed edges 185 (one allowlist row
+added). No binary change: `mochiko-cli` 0.4.0 (grammar 1..2) serves the log.
+
+**Ships under the AM-5 exception row** (governance ledger, Exception registry, first row): the
+conformance hooks still ship before the first `mochiko-cli` publish carrying the four named
+controls; this bump adds no binary change and carries the same unpublished 0.4.0 dependency as
+0.118.0.
+
+Prose primitives: `commands/specify.md` — Identity & Mission gains the story stage, and the Goal's
+fixed done condition carries the confirmed slate and reads stories as files for `in` rows;
+`authoring-user-stories` — the format sentence names the story file beside its index row, and the
+Independent Test placeholder the seed and where a provisional mark sits; `authoring-requirements` —
+the FR format block's lines cite their story; `authoring-feature-map` — the intro's derivation flow
+names the slate-close vet. `review-specifications`' body is unchanged. `validate-requirements.py`
+strips a trailing story citation before its text checks, so a story slug can neither trip a banned
+term nor hide a missing RFC keyword (red-then-green on two fixtures; the 32 tracked eval fixture
+specs byte-identical before and after). 5 strip entries stamped [v0.119.0]. Ripple: `README.md`'s
+specify paragraph and command-table row, `ARCHITECTURE.md`'s specify section and its user–lead
+edge, and the router's `/mochiko:specify` row (a pure addition).
+
+Budgets (`.mochiko/memory/primitive-cost-budgets.md`, measured at the quiesced tree, each delta
+attributed by stepped prefix replays): `authoring-user-stories` +284 → +1,132 (render +717, body
++131), `review-specifications` +1,184 → +1,931 (render +747), `authoring-requirements` +501 → +644
+(render +74, body +69), `authoring-feature-map` +382 → +533 (render +78, body +73), each growth the
+slate's new obligations (D2, D5, the confirmed defaults); all four ruled HOLDS by the wave's gate
+audit (units 5–8, `.mochiko/brainstorms/specify-brainstorm-discovery/reports/audit.md`).
+`specify`'s render 20,118 → 27,999 characters and `specify.md` 4,651 → 4,930 (commands are
+unbudgeted).
+
+Sound loop: three persona-less producers (P1 schema · P2 prose · P3 tests and kits, `opus`), each
+on a plan graded by a fresh generic peer (P1 and P2 revised once — P2's revision the user's grant
+past the wave's spent re-plan bound), one gate grader for the wave's nine units — all PASS, unit 1
+after one fix round (`0057`); the user ruled the checker widening and the re-plan grant
+(`.mochiko/brainstorms/specify-brainstorm-discovery/build-log.md`, `reports/audit.md`). Gates:
+`mochiko-cli migrate validate` 0 rejecting · 113 advisory · clusters 0 · 185 allowlist-suppressed
+edges · views ≡ replay on the bumped tree · `cargo test --all` 765 passed across 18 targets · fmt ·
+clippy · audit · the opt-in full similarity sweep 48 passed · `gitleaks detect --no-git` no leaks ·
+`mochiko-cli ids --check` over the live layer 0 bare · 0 drift · **contract suite 97/97, 97 ran,
+none skipped** (on the bumped tree; 7 host cases against the release binary, 90 in the
+`claude-mochiko` Docker sandbox; 327 measurements recorded, none asserted) · both manifests at
+0.119.0 · 5 strip entries · 4 ledger rows ruled HOLDS.
+
 ## [0.118.0] — 2026-10-09
 
 **Human-readable IDs — MINOR, with a break in the written ID form** (`human-readable-ids` D1–D22
