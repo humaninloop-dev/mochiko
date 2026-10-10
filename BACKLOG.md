@@ -21,6 +21,46 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 
 ---
 
+## Architecture-desk brainstorm build
+
+*(ruled + accepted 2026-10-11, `architecture-brainstorm-interview` D1–D9 as review-amended;
+provenance: `.mochiko/brainstorms/architecture-brainstorm-interview/record.md`)*
+
+- [ ] **Build item A — the focus stage and the visit file** (2026-10-11; provenance: record
+  D1–D6 and the defaults batch) — the desk's new moment, duties, reservation line, `kind: fail`
+  and precedence clause in the `architecture` schema; the visit-file home outside
+  `.mochiko/product/` (working path `.mochiko/architecture/desk/<date-slug>/`) and its template;
+  the blind-list dispatch; `argument-hint` gains a brainstorm record; implement's design-input
+  line and the offer default (two of the ten stamped touches); the `arch.seat-tech-lead-grader`
+  pointer to `EXTERNAL-CLAIMS.md`. Supersessions by ruling at the strip entries: F27's "every
+  visit" narrowed (S13). Gate audits author≠grader per `.claude/rules/mochiko/primitive-edits.md`.
+- [ ] **Build item B — the diagram set and draw-before-code** (2026-10-11; provenance: record
+  D7–D9 and the defaults batch) — the `diagrams/` sub-home and diagram-file template (one Mermaid
+  block, caption, `Draws:` line, `**Lifecycle:**` field); the index's diagrams section and sixth
+  health count (`health-view-binding` amended); the stale compare at every index regeneration
+  with the index header's regeneration commit; implement's design phase drawing into the store
+  diagrams before code, one signed object, the deviation gate on container and flow views, the
+  index rebuild at every checkpoint and landing (the remaining eight stamped touches);
+  `DIAGRAM-CONVENTIONS.md`'s taste section (F36; GitHub init-directive check on a real file,
+  OQ3). Supersessions by ruling: `architecture-design-primitive` D5-plan-run-artifact and
+  D8-rendered-diagram-signoff in part; the three rule texts under D9's changed-at-review.
+- [ ] **Shared thinking-stage design session** (2026-10-11; provenance: record
+  D6-desk-stays-engine, S15, OQ2) — a new brainstorm on the one stage brainstorm's deciding,
+  specify's story stage, the desk's focus stage and implement's design phase all run (judgment
+  work, distinct from the near-dup convergence item below). Trigger: build items A and B landed.
+- [ ] **Two notations and an entity ID family** (2026-10-11; provenance: record S1, OQ5, the
+  *two notations* default) — the feature-level text notation for ER and state machines
+  (`patterns-entity-modeling`) against the product-level Mermaid views, and minting a joined
+  entity ID family for `data-model.md` so `Draws:` lines can cite entities by ID (until then by
+  file and heading, a dangling citation reading stale). Trigger: the first ER or state view
+  drawn at the desk.
+- [ ] **First ai-fileops desk run — the focus stage's test** (2026-10-11; provenance: record
+  *dogfood criteria* default, S16 and OQ1) — after build item A lands and
+  the plugin is upgraded, run `/mochiko:architecture` on ai-fileops (greenfield baseline, desktop
+  scope, no seeded shelf) and log on sight: turns and the user's time to the set's close, the blind
+  list's differences ruled in, pulls per batch, tech-lead's sameness grade. What a run is judged
+  on is decided from that log, never before it (OQ1 — the problem was never felt in a run).
+
 ## Specify story-stage build
 
 - [ ] **First ai-fileops specify run — the story stage's test** (2026-10-10; provenance:
@@ -39,7 +79,9 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
   converging brainstorm's, specify's and the architecture desk's ways of thinking with the user into
   a `common.<slug>` block under near-dup R1–R6 (`.mochiko/decisions/2026-08-28-near-dup-convergence.md`;
   boilerplate only, never judgment); until then the three rule sets drift by ruling. Trigger: the
-  sibling session's landing.
+  sibling session's landing — **fired 2026-10-11** at the `architecture-brainstorm-interview`
+  acceptance; open it after that session's build items A and B land, beside (never merged with)
+  the *Shared thinking-stage design session* above, which carries the judgment half.
 
 ## Human-readable IDs build
 
