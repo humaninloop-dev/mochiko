@@ -9,6 +9,11 @@
 #   contingency    — fires only on a run-time event no forward plan contains
 #   conditional    — observable only under a fixture condition no current scenario plants
 #                    (activating it = planting the condition, a scenario-design act)
+#   precedence     — settles which of two delivered rule sets binds where they differ;
+#                    a plan embodies the winning rules, which are graded on their own,
+#                    so grading the precedence too would count that content twice
+#                    (added 2026-10-10 with `spec.own-rules-win`, migration 0051, as the
+#                    brainstorm kit added it with `brainstorm.own-rules-win`)
 #   latitude       — grants freedom; nothing falsifiable in a plan
 #   register       — prose-register meta-rule; not plan content
 #   fail-condition — end-state failure, not forward-plan content
@@ -22,6 +27,11 @@
 # take — so each plan describes that gate with both branches and the feature description
 # makes one branch the scenario-concrete path (s1 and s3 name a screen; s2 names none).
 # `seats` resolves to multi in every scenario: the stress-test is always a second seat.
+# `slate_source` (migration 0051) resolves as the story stage opens: every golden's
+# `$ARGUMENTS` is a bare feature description that hands in no story lines and names no
+# brainstorm record, so `forks` is the scenario-concrete branch in all three —
+# `spec.story-forks` is graded on all three and `spec.handed-in-slate` is declared
+# conditional.
 command: specify
 
 observable:
@@ -29,16 +39,22 @@ observable:
   - {id: spec.capability-frame-at-intent, why: intent stage shows the PM seat naming the capabilities the territory touches with an extend-or-mint call each — nouns and verbs only — agreed with the user and landed in Intent}
   - {id: spec.confirm-frame-post-stories, why: a post-stories step re-confirms or adjusts the frame against what the stories showed — stories win}
   - {id: spec.cut-work-rows, why: rows cut per capability after the confirm step and every SC mapped to the capability or row that verifies it}
-  - {id: spec.filter-rejections-recorded, why: derivation step records a rejected story with its why in the story file — s1 plants the PDF-cents bug as bait}
+  - {id: spec.filter-rejections-recorded, why: after authoring the filter records a rejected story's why in its story file and sends a rejection of an `in` row to the user — s1's PDF-cents bait now meets the slate first (spec.slate-rulings-users)}
   - {id: spec.pm-recommends-never-selects, why: selection card is a recommendation and the pick is described as the user's}
   - {id: spec.stress-test-one-pass, why: one grading pass over spec + stories + derivation + map delta read from the files with the map's run-open git state as its baseline}
   - {id: spec.stress-test-prototype-walk, why: s1 and s3 plan a served-prototype walk — every flow clickable and every screen reachable with drift a blocking gap}
+  - {id: spec.lead-holds-story-stage, why: the lead runs the story stage itself inline in the main conversation with the frame in hand · no teammate talks to the user · the requirements-analyst authors the stories from the confirmed slate}
+  - {id: spec.blind-journey-list, why: before the slate closes one fresh general-purpose opus seat gets only the confirmed synthesis and the frame — never the slate — and each journey it returns that the slate lacks becomes a candidate row the user rules}
+  - {id: spec.analyst-brief-and-pen, why: at the slate confirm the lead transcribes the slate into spec.md and passes the pen explicitly · the analyst's brief carries each row in the user's quoted words · its seed · the out rows with their whys}
+  - {id: spec.pm-vets-slate-once, why: the PM seat vets every candidate row once for map fit at the slate's close beside the blind list — s1's FEAT-005 stub is the real duplicate and its FEAT-004 pending cadence row a possible one · s2's FEAT-003 pending quiet-hours row a possible one · s3 has no map}
   # reserved
   - {id: spec.reserved-to-user, why: plan names the decisions held for the user — intent confirmation with the frame · clarifications · clicking screens as they land · an escalated filter ruling}
   - {id: spec.selection-card, why: card contents planned — rows per capability · recommendation · dependency order · deferred-SC list · per-capability completeness view at the moment of choice}
   - {id: spec.gate-selection, why: selection gate described as the user's with onward branches}
   - {id: spec.gate-acceptance, why: accept / amend / reject gate over the whole with acceptance executing the map batch and rejection leaving the map untouched}
   - {id: spec.filter-disagreement-escalates, why: the plan describes the escalation branch — a producer holding a rejected story load-bearing goes to the user, never settled between seats}
+  - {id: spec.slate-rulings-users, why: every slate row's in-or-out ruling named as the user's while the capability calls stay the PM seat's — s1's PDF-cents bait is the row most likely struck with its why}
+  - {id: spec.gate-slate-confirm, why: the slate confirm described as the user's gate on its own screen after the intent confirm — every row with its disposition and each out row with its why — with no story authored before it}
   # tools
   - {id: spec.deliverable, why: the spec workspace path with a slug derived from the description · spec.md plus stories/US-*.md · never offered for deletion · uncertainty into Assumptions and Open Questions}
   - {id: spec.intent-stage-first, why: intent stage precedes every authoring step and walks the six probes — scope · delivery · depth · UX-bearing · constraints · out of scope}
@@ -56,6 +72,13 @@ observable:
   - {id: spec.km-landing, why: s1 plans the landing ritual at acceptance — the online-payment BACKLOG item closed to the trail · ROADMAP touched · invariants checked}
   - {id: spec.migration-frozen-specs, why: s1 plants a slice-form spec the plan leaves as frozen history while the new run takes the workspace form}
   - {id: spec.next-step, why: close names one implement run per capability-batch in the rows' dependency order}
+  - {id: spec.story-stage, why: a story stage placed after the intent confirm and before any story is authored · closing in a ruled slate that rules what the spec carries while what builds stays the selection gate's}
+  - {id: spec.slate-unit, why: each slate row a one-breath line with a priority and a seed test or an open test · scenarios and FRs and SCs following inside the ruled lines · the acceptance screen showing each seed beside its expanded Independent Test}
+  - {id: spec.slate-home, why: the slate lands in the spec's User Stories index with its out rows under Struck candidates to the template's rendered grammar — header line · Test column · two-phase Disposition — and no deferred value}
+  - {id: spec.slate-binds-authoring, why: story files planned for in rows only · each keeping its row's line and seed · a story the slate lacks proposed to the user as a row before it is authored}
+  - {id: spec.stage-inputs-in-hand, why: no golden hands in stories or a brainstorm record so the plan runs the stage with no size-gated skip — s2's fully specified request is the sharpest test — a decisive user getting confirmations and a fast wrap-up}
+  - {id: spec.slate-not-the-frame, why: the frame still lands first at intent as nouns and verbs · the story stage runs inside it · stories still win a conflict at the post-stories confirm}
+  - {id: spec.floor-obligated-rows, why: s2 only — a ratified production floor (fixture CLAUDE.md line 8 · depth high) over failure-recovery work · the record glosses the floor's recovery as failure recovery · so the exhausted-retry path is a floor-obligated row the plan puts with the floor named as its fact}
   # ways-of-working
   - {id: spec.model-tiering, why: locate and enumerate reads routed to a cheap Explore subagent and every brief carries the routing rule}
   - {id: spec.intent-probe-discipline, why: intent runs as adaptive probes closing in a one-screen synthesis the user confirms — not a questionnaire}
@@ -66,17 +89,23 @@ observable:
   - {id: spec.no-git-mutations, why: plan suggests commits and never runs a git mutation}
   - {id: spec.acceptance-plain-text, why: every gate described as plain blocking text and never a timed prompt}
   - {id: spec.artifact-home, why: the home rendered before the first write · the spec template's budgets rendered before drafting · admitted sub-directories named · an unknown file name raised to the user}
+  - {id: spec.story-forks, why: forks is the concrete branch in every golden — one fork per turn with its fact first · two real options one of them the do-less shape · a one-row mock · minor candidates named in a line and confirmed on the slate screen · one status line per turn}
+  - {id: spec.slate-provenance, why: "each slate row planned with one provenance mark after its line — blind list · user's words · lead's guess, ratified"}
+  - {id: spec.story-stage-stop-rule, why: the stage planned to close only when every candidate — the blind list's differences included — is ruled in or out with nothing open}
   # boundaries
   - {id: spec.transport-floor, why: every scenario composes more than one seat so the floor binds — referenced never restated}
   - {id: spec.staged-derivation, why: derivation output staged under the spec workspace with the live map untouched until acceptance}
   - {id: spec.epic-mint-desk-only, why: s1 spans three capabilities — where an epic is raised the plan routes minting to the feature desk and never mints in-run}
 
 out_of_instrument:
-  # latitude / register
+  # latitude / register / precedence
   - {id: spec.lead-latitude, why: latitude}
   - {id: spec.epic-proposal-optional, why: latitude — the PM seat may propose an epic and nothing in a plan falsifies not doing so}
   - {id: spec.register, why: register}
-  # fail-conditions (all 9 — end-state failures, not forward-plan content; C1)
+  - {id: spec.own-rules-win, why: precedence — it settles which rules bind where mochiko:analysis-iterative and specify differ · a plan embodies the winning rules (story forks · stop rule · slate unit) and those are graded on their own}
+  # conditional (plantable, unplanted)
+  - {id: spec.handed-in-slate, why: conditional — binds only when slate_source is handed-in · every golden's $ARGUMENTS is a bare feature description with no story lines and no brainstorm record · plantable by a golden that hands either in (a scenario-design act not taken here)}
+  # fail-conditions (all 10 — end-state failures, not forward-plan content; C1)
   - {id: spec.fail.blocking-gap, why: fail-condition}
   - {id: spec.fail.intent-unconfirmed, why: fail-condition}
   - {id: spec.fail.map-unread, why: fail-condition}
@@ -86,8 +115,9 @@ out_of_instrument:
   - {id: spec.fail.premature-map-write, why: fail-condition}
   - {id: spec.fail.self-graded, why: fail-condition}
   - {id: spec.fail.no-acceptance, why: fail-condition}
+  - {id: spec.fail.story-outside-slate, why: fail-condition}
 
-# Declared unplanted branches (fixture-design record, not a partition class): four rule
+# Declared unplanted branches (fixture-design record, not a partition class): eleven rule
 # facets are observable through one side of their subject only, because no scenario plants
 # the other side. Each is a plant candidate if a later grid wants it graded whole.
 #   spec.reserved-to-user — its empty-`$ARGUMENTS` clause (the feature framing asked of the
@@ -109,3 +139,18 @@ out_of_instrument:
 #     partition's own pattern.
 #   spec.transport-floor — `seats: single` is never planted; the floor is graded on its
 #     multi branch in every scenario.
+# Added 2026-10-10 with migration 0051's mints:
+#   spec.stage-inputs-in-hand — no golden names a brainstorm record or hands in story-form
+#     lines, so the in-hand half is unplanted; the plan is graded on the no-skip half.
+#   spec.story-stage-stop-rule — the three-turns-without-shrinking stall fires only in a live
+#     session; the plan is graded on the done condition it describes (as brainstorm.stop-rule).
+#   spec.analyst-brief-and-pen — a row change the user rules after the pen passes is a run-time
+#     event; the plan is graded on the transcription, the explicit pen pass and the brief.
+#   spec.slate-provenance — no golden hands lines in, so the `handed in` mark is unplanted; the
+#     plan is graded on the other three marks.
+#   spec.slate-binds-authoring — no golden plants a floor waiver or a story the slate lacks, so
+#     the `in — waiver pending` wait and the missing-story proposal are unplanted; the plan is
+#     graded on story files for `in` rows only.
+#   spec.floor-obligated-rows — planted on s2 only (s1's clients never get accounts by ruling;
+#     s3 ratifies no floor); the strike, narrowing and waiver arms are unplanted, so the plan is
+#     graded on putting the floor-obligated row with the floor named as its fact.

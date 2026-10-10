@@ -48,10 +48,10 @@ procedure — referenced, never restated.
 ```markdown
 ## Functional Requirements
 
-- **FR-001-<slug>**: System MUST [specific capability]
-- **FR-002-<slug>**: Users MUST be able to [specific action]
-- **FR-003-<slug>**: System SHOULD [recommended behavior]
-- **FR-004-<slug>**: System MAY [optional capability]
+- **FR-001-<slug>**: System MUST [specific capability] (US-1-<slug>)
+- **FR-002-<slug>**: Users MUST be able to [specific action] (US-1-<slug>, US-2-<slug>)
+- **FR-003-<slug>**: System SHOULD [recommended behavior] (US-2-<slug>)
+- **FR-004-<slug>**: System MAY [optional capability] (US-3-<slug>)
 ```
 
 ## Success Criteria Format

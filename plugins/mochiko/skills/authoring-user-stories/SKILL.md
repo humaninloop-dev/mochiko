@@ -39,8 +39,8 @@ halt and surface it.
 
 ## User Story Format
 
-The story lands in `spec.md`, every field to the delivered density rules. The exact
-structure:
+Each story lands in its `stories/US-<n>.md` file beside its `spec.md` index row, every
+field to the delivered density rules. The exact structure:
 
 ```markdown
 ### US-<n>-<slug> — [Brief Title] (Priority: P#)
@@ -49,7 +49,7 @@ structure:
 
 **Why this priority**: [value and priority level — one line]
 
-**Independent Test**: [how this is tested standalone — one line]
+**Independent Test**: [how this is tested standalone — one line; on a slate, the row's seed expanded; on `test: open`, it starts "Provisional:"]
 
 **Acceptance Scenarios**:
 1. **Given** [state], **When** [action], **Then** [outcome] — one line

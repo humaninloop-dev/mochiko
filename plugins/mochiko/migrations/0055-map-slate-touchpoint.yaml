@@ -1,0 +1,21 @@
+grammar: 1
+id: 0055-map-slate-touchpoint
+sequence: 55
+intent: >-
+  Specify's map touchpoint gains the PM's one map-fit vet of the slate at its close; after stories
+  the filter keeps its homing and dedup (specify-brainstorm-discovery Filter default).
+anchor: 2026-10-10 specify-brainstorm-discovery
+hash: sha256:d5c342c34af779985dd689cef02728747844ad30a32e63d322f611706c6bb525
+changes:
+  - op: reword-rule
+    schema: skill/authoring-feature-map
+    id: authoring-feature-map.four-touchpoints
+    text: >-
+      The map has four touchpoints. Specify proposes — frame at intent, its one map-fit vet of
+      the slate at the slate's close, then confirm-frame, cut rows, the filter's homing and dedup,
+      and selection after stories. The design phase confirms and hardens alongside architecture
+      — on a zero-gap verdict, where no design phase runs, the card-authoring seat performs the
+      dependency and extent assertion instead. Implement's acceptance landing folds delivered rows
+      into extent — status and index edits are bookkeeping inside that landing, never a separate
+      close stage. `/mochiko:feature` stewards — stub minting, retire, integrity grooming, and
+      the growth door that cuts rows on existing capabilities.

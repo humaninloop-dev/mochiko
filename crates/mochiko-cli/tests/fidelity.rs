@@ -171,14 +171,16 @@ fn the_log_replays_into_a_deliverable_state() {
     // more — six home documents in `0032`, the `runs` home in `0033`. `0036`–`0043` (the joint
     // build's wave 3) import none; `0040` replaces a home in place. `0044`–`0045` (the 2026-10-06
     // brainstorm target state) import none. `0046`–`0050` (the 2026-10-08 human-readable-ids
-    // wave 2) import none either: `0046` and `0050` replace templates in place.
+    // wave 2) import none either: `0046` and `0050` replace templates in place. `0051`–`0057`
+    // (the 2026-10-10 specify-brainstorm-discovery wave) import none either: `0056` replaces the
+    // `spec` template in place.
     assert_eq!(replay.state.docs.len(), 87);
     assert_eq!(
         replay.sequences(),
         vec![
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
             25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48,
-            49, 50
+            49, 50, 51, 52, 53, 54, 55, 56, 57
         ],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
@@ -198,7 +200,9 @@ fn the_log_replays_into_a_deliverable_state() {
          then the 2026-10-06 brainstorm target state — 0044's brainstorm guardrails, 0045's cold \
          reviewer's side, then the 2026-10-08 human-readable-ids wave 2 — 0046's joined-ID \
          templates, 0047's joined minting rules, 0048's landing re-key, 0049's graders' check, \
-         0050's joined GI check"
+         0050's joined GI check, then the 2026-10-10 specify-brainstorm-discovery wave — 0051's \
+         story stage, 0052's stories from the slate, 0053's slate checks, 0054's FR story \
+         citation, 0055's map slate touchpoint, 0056's slate template, 0057's var bindings"
     );
 }
 
@@ -765,12 +769,21 @@ fn the_corpus_census_holds_through_the_log() {
     // must command rules, `arch.grader-checks-joined-ids` and `feat.grader-checks-joined-ids`;
     // none is a floor or a fail node, so command 360 → 362, skill 808 → 813, total 1168 → 1175,
     // and both floor figures and the fail set hold.
-    assert_eq!(command_rules, 362, "live command rules");
-    assert_eq!(skill_rules, 813, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1175, "live rules in total");
+    // The 2026-10-10 specify-brainstorm-discovery wave carries `0051`–`0057`, anchored to
+    // specify-brainstorm-discovery D1–D6 and its confirmed defaults: twenty-one `mint-rule`s and
+    // nothing retired. `0051` mints nineteen `specify` rules — eighteen musts and the floor fail
+    // node `spec.fail.story-outside-slate` — and `0052` and `0053` mint one must each,
+    // `authoring-user-stories.slate-fidelity` and `review-specifications.slate-checks`. So
+    // command 362 → 381, skill 813 → 815, total 1175 → 1196, command floors 119 → 120 and the
+    // fail set 36 → 37, while the skill floors hold at 264. The wave's twelve `reword-rule`s —
+    // eight across `0051`–`0055`, four in `0057` — each keep their rule's id, class and kind; its
+    // two moments, two conditions and `0056`'s `spec` template replaced move nothing here.
+    assert_eq!(command_rules, 381, "live command rules");
+    assert_eq!(skill_rules, 815, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1196, "live rules in total");
     assert_eq!(skill_floors, 264, "skill floors");
-    assert_eq!(command_floors, 119, "declared command floors");
-    assert_eq!(fail_nodes, 36, "command fail nodes");
+    assert_eq!(command_floors, 120, "declared command floors");
+    assert_eq!(fail_nodes, 37, "command fail nodes");
 }
 
 // ---------------------------------------------------------------------------

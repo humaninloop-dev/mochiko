@@ -380,6 +380,9 @@ EXPECTED = {
                 "spec.fail.premature-map-write",
                 "spec.fail.self-graded",
                 "spec.fail.no-acceptance",
+                # `0051-specify-story-stage` ("2026-10-10 specify-brainstorm-discovery D1")
+                # minted the slate fail node.
+                "spec.fail.story-outside-slate",
             }
         ),
         23_434,

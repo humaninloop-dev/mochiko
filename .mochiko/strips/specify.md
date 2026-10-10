@@ -17,6 +17,14 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/commands/specify.md`. -->
 
+## [v0.119.0] the Goal step's stories clause — narrowed to the slate's `in` rows; the confirmed slate joins the done condition
+
+- **Disposition:** superseded → "stories as `stories/US-*.md` files for `in` rows (…)", with "a confirmed **slate** in the User Stories index (every candidate row ruled `in` or `out` with its disposition, the `out` rows in the `### Struck candidates` sub-table)" added after the Intent clause
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/specify-brainstorm-discovery/record.md` D1-story-discovery-stage, D5-specify-own-rules as changed at review — "a Goal-step clause for the ruled slate", D6-two-confirm-screens, default *Slate home and binding* — "Story files are authored for `in` rows only"; `DECISIONS.md` 2026-10-10; rules carried by `0051-specify-story-stage.yaml`)
+- **Content:** "stories as `stories/US-*.md` files (text, acceptance scenarios, work-row mapping under a capability — or `rejected` with the why)". Pre-edit file: `git show ea57167:plugins/mochiko/commands/specify.md`.
+- **Kept deliberately:** the per-story file contents list; every other done-condition clause; Entry; the Not-done line, which cites the preamble's printed `kind: fail` pin and so needs no edit for the tenth fail. Identity & Mission gains one clause ("the story set is ruled with the user into a confirmed slate before any story is authored") — a pure addition, no prior text left. The Goal paragraph's tail is re-wrapped to the file's width, its wording unchanged.
+- **Consumers assessed:** n/a — a command; `spec.lead-latitude` points at this Goal state and needs no change.
+
 ## [v0.107.0] the Goal step's two-arm spec-template clause — the fallback arm superseded
 
 - **Disposition:** superseded → the single CLI form `(rendered by mochiko-cli template spec)`

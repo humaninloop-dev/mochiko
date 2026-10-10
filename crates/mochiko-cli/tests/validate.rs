@@ -1167,16 +1167,23 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // fail node — command 360 → 362, skill 808 → 813, the floor figures and the fail set unmoved.
     // `0046` and `0050` replace templates, and the fifteen rewords of `0047` and `0048` keep id,
     // class and kind — `impl.baseline-diff-review` stays a floor.
-    assert_eq!(command_rules, 362, "live command rules");
-    assert_eq!(skill_rules, 813, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1175, "live rules in total");
+    // `0051`–`0057` (the 2026-10-10 specify-brainstorm-discovery wave) mint twenty-one rules and
+    // retire none: nineteen on `specify` (`0051`) — eighteen musts and the floor fail node
+    // `spec.fail.story-outside-slate` — and one must each on `authoring-user-stories` (`0052`)
+    // and `review-specifications` (`0053`) — command 362 → 381, skill 813 → 815, the command
+    // floor figure 119 → 120 and the fail set 36 → 37, the skill floors unmoved. The twelve
+    // rewords of `0051`–`0055` and `0057` keep id, class and kind; `0056` replaces a template.
+    assert_eq!(command_rules, 381, "live command rules");
+    assert_eq!(skill_rules, 815, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1196, "live rules in total");
     assert_eq!(skill_floors, 264, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
     // sentence), so the declared floors were 110 — the same figure the shipped checker reported —
     // and `0005`'s six command mints carry it to 116, `0008`'s `setup.gate-loop-bound` to 117,
-    // and `0013`'s `impl.design-first-write` and `impl.design-audit-advisory` to 119.
-    assert_eq!(command_floors, 119, "declared command floors");
+    // `0013`'s `impl.design-first-write` and `impl.design-audit-advisory` to 119, and `0051`'s
+    // `spec.fail.story-outside-slate` to 120.
+    assert_eq!(command_floors, 120, "declared command floors");
 
     let fail_nodes = state
         .docs
@@ -1186,7 +1193,7 @@ fn the_shipped_corpus_matches_its_recorded_census() {
         .flat_map(|s| s.rules())
         .filter(|r| r.is_fail())
         .count();
-    assert_eq!(fail_nodes, 36, "command fail nodes");
+    assert_eq!(fail_nodes, 37, "command fail nodes");
 }
 
 /// The kinds the shipped corpus does not carry yet, each with the wave that lands it.

@@ -1026,7 +1026,17 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
         // The rewords of `0047` and `0048` — `0048`'s on `impl.baseline-diff-review` — move no
         // allowlisted pair, so the suppressed count holds at 57.
         // SUPPRESSED zero unchanged.
-        (362, 15_713, 0, 57),
+        // Re-measured after the 2026-10-10 specify-brainstorm-discovery wave (`0051`–`0057`):
+        // `0051` mints nineteen `specify` rules, moving the scan 362 to 381 and the pair count
+        // 15,713 to 17,989. By kind, counted from the derived views: `constraint` 157 → 170
+        // (+2,119), `duty` 33 → 34 (+33), `reservation` 20 → 21 (+20), `gate` 10 → 11 (+10),
+        // `binding` 52 → 53 (+52), `bound` 6 → 7 (+6), `fail` 36 → 37 (+36) — +2,276, the whole
+        // of the move. The suppressed count moves 57 to 58: the one keep-distinct row the wave
+        // added to the allowlist, `brainstorm.own-rules-win` / `spec.own-rules-win`, an edge
+        // between two command rules its mint raised. The one allowlisted pair the wave's rewords
+        // retire is cross-family (see the corpus pin below), so no command-family hit leaves.
+        // SUPPRESSED zero unchanged.
+        (381, 17_989, 0, 58),
         "rules scanned · in-kind pairs scored · clusters · allowlist-suppressed edges"
     );
 }
@@ -1172,8 +1182,24 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // 185: no mint raises an edge and no reword moves an allowlisted pair. SUPPRESSED zero: with
     // an empty allowlist the corpus still reports 78 clusters over 185 edges, read from a
     // raw-versus-pinned pair of `migrate validate --report` runs over one state.
-    assert_eq!(report.scanned, 1175, "rules scanned");
-    assert_eq!(report.scored, 192_052, "in-kind pairs scored");
+    // Re-measured after the 2026-10-10 specify-brainstorm-discovery wave (`0051`–`0057`):
+    // twenty-one rules minted and none retired move the scan 1,175 to 1,196 and the pair count
+    // 192,052 to 200,540. By kind: `constraint` 556 → 570 (+7,875), `duty` 147 → 149 (+295),
+    // `reservation` 62 → 63 (+62), `gate` 28 → 29 (+28), `binding` 168 → 169 (+168), `bound`
+    // 24 → 25 (+24), `fail` 36 → 37 (+36) — +8,488, the whole of the move. `suppressed_hits`
+    // holds at 185 by one in and one out. In: the row the wave added for the edge `0051`'s mints
+    // raise, `brainstorm.own-rules-win` / `spec.own-rules-win` (see the command-family pin
+    // above). Out, by the reword mechanism: `0051`'s reword of `spec.filter-rejections-recorded`
+    // (`0057` rewords it again only to restore a var binding, its resolved text unchanged) pulls
+    // the allowlisted pair it forms with `authoring-feature-map.complete-disposition` back under
+    // the threshold, so that row no longer has an edge to suppress; the row stays, both ids still
+    // resolving.
+    // SUPPRESSED zero: with an empty allowlist the corpus still reports 78 clusters over 185
+    // edges, the same as before the wave, and the repository allowlist leaves none unsuppressed,
+    // both read from raw-versus-pinned pairs of `migrate validate --report` runs over the old
+    // (`1..50`) and new (`1..57`) logs.
+    assert_eq!(report.scanned, 1196, "rules scanned");
+    assert_eq!(report.scored, 200_540, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
     assert_eq!(report.suppressed_hits, 185, "allowlist-suppressed edges");
 }

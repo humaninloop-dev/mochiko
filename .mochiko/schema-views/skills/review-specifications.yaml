@@ -6,6 +6,10 @@ conditions:
     values: presence
     resolution: surface-presence
     note: the spec carries a Screens & Flows SCR/FLOW manifest with its `prototype/` app.
+  slate-present:
+    values: presence
+    resolution: surface-presence
+    note: 'the spec''s User Stories section carries the slate header line (`> Slate: …`).'
 sections:
   - id: review-specifications.sec.independence
     title: Independence — who is never whom
@@ -71,8 +75,9 @@ sections:
         class: must
         kind: duty
         text: >-
-          Coverage is complete, never sampled: every user story reviewed for completeness, every
-          success criterion checked for measurability, edge cases hunted per main flow.
+          Coverage is complete, never sampled: every slate row and every user story reviewed for
+          completeness, every success criterion checked for measurability, edge cases hunted per
+          main flow.
       - id: review-specifications.external-claims
         labels: [evidence]
         class: must
@@ -232,6 +237,19 @@ sections:
         class: must
         extends: review-common.joined-ids
         anchor: 2026-10-08 human-readable-ids D6
+      - id: review-specifications.slate-checks
+        labels: [verdict]
+        class: must
+        kind: duty
+        text: >-
+          Slate Critical checks, each failure a blocking gap: (1) every story file maps to a row
+          ruled `in` and no row ruled `in` lacks one — a row `in — waiver pending` is not yet
+          due; (2) each file's story line and Independent Test keep the meaning of its row's line
+          and seed, the seed shown beside the expansion; (3) every functional requirement cites
+          the story of a row ruled `in`; (4) each story's scenario count stays within
+          mochiko:authoring-user-stories' bound.
+        when: {slate-present: present}
+        anchor: 2026-10-10 specify-brainstorm-discovery
   - id: review-specifications.sec.output
     title: Output — questions and report contracts
     intent: The question craft and the shapes the findings land in.

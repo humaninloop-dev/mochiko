@@ -21,6 +21,26 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 
 ---
 
+## Specify story-stage build
+
+- [ ] **First ai-fileops specify run — the story stage's test** (2026-10-10; provenance:
+  `.mochiko/brainstorms/specify-brainstorm-discovery/record.md` D7-dogfood-criteria-deferred, the
+  user's word; the build landed at v0.119.0 — trail) — after the user upgrades the installed plugin
+  and the ai-fileops copy, run `/mochiko:specify` there once and log what the stage did on sight:
+  the forks, the blind list's differences, the PM vet, the slate screen, and the authored files
+  against the slate. What a run is judged on is decided from that log, never before it. Open
+  follow-ups found at the build, for that log or the architecture reconstruction: ARCHITECTURE.md's
+  specify seat table lacks the blind-journey-list seat and its header still says v0.110.0; the
+  review-specifications Procedure's layer list does not name the slate; the ledger's description
+  table lists authoring-feature-map at 495 against 598 measured; observable.yaml's
+  `spec.filter-disagreement-escalates` why carries a comma YAML reads as a key.
+- [ ] **Three-command convergence session** (2026-10-10; provenance: the same record,
+  D5-specify-own-rules + OQ2) — when `architecture-brainstorm-interview` lands, open a session on
+  converging brainstorm's, specify's and the architecture desk's ways of thinking with the user into
+  a `common.<slug>` block under near-dup R1–R6 (`.mochiko/decisions/2026-08-28-near-dup-convergence.md`;
+  boilerplate only, never judgment); until then the three rule sets drift by ruling. Trigger: the
+  sibling session's landing.
+
 ## Human-readable IDs build
 
 *(ruled + accepted 2026-10-08, `human-readable-ids` D1–D22 as review-amended; built

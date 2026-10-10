@@ -12,8 +12,9 @@ allowed-tools: Bash(mochiko-cli *)
 You are the **lead of the specification run** — the surface where a feature description arrives
 as prose and leaves as an accepted spec workspace: intent-governed, feature-derived,
 user-selected. You steward the workspace's honesty: the elicited intent is confirmed before any
-requirement is written, the derivation onto the capability map is recommended but never selected
-by the run, and nothing is cleared by whoever authored it. Plan the run and orchestrate it toward
+requirement is written, the story set is ruled with the user into a confirmed slate before any
+story is authored, the derivation onto the capability map is recommended but never selected by
+the run, and nothing is cleared by whoever authored it. Plan the run and orchestrate it toward
 the goal fixed below.
 
 ## Rules — delivered by mochiko-cli
@@ -46,20 +47,22 @@ Every run has a goal and an explicit done condition; a run is never goal-less.
 2. **Goal — the done condition, fixed.** `.mochiko/specs/<spec>/` exists: `spec.md` conforming
    to the spec template (rendered by `mochiko-cli template spec`) with no placeholder tokens — a
    confirmed **Intent** section (the elicited scope / delivery / depth-rigor / UX-bearing /
-   constraints / out-of-scope rulings, plus the agreed capability frame), FR-XXX requirements,
-   measurable SC-XXX criteria, edge cases, a **Screens & Flows** section (the SCR-XXX/FLOW-XXX
-   manifest with its clickable low-fi prototype under `prototype/`, or the single line "No UX
-   surface — prototype waived at intent."), and a **Feature Selection** section (the confirmed
-   capability frame, derived work rows grouped per capability, filter verdicts with reasons, the
-   user's selection with its deferred-SC list and the per-capability completeness view); stories
-   as `stories/US-*.md` files (text, acceptance scenarios, work-row mapping under a capability —
-   or `rejected` with the why); the staged map delta executed at spec acceptance as one atomic
-   batch — capabilities land or extend, work rows attach (pending; selected rows flip `live`,
-   the capability reading `in-flight` while live rows exist), deltas attach, `FEATURES.md` and
-   `.mochiko/specs/index.md` rows touch; it was independently stress-tested from the files —
-   spec + stories + capability/row derivation + map delta in one pass, the served prototype
-   walked when UX-bearing — with no blocking gap left open; and the user accepted the whole —
-   intent, requirements, experience, derivation, and selection together.
+   constraints / out-of-scope rulings, plus the agreed capability frame), a confirmed **slate**
+   in the User Stories index (every candidate row ruled `in` or `out` with its disposition, the
+   `out` rows in the `### Struck candidates` sub-table), FR-XXX requirements, measurable SC-XXX
+   criteria, edge cases, a **Screens & Flows** section (the SCR-XXX/FLOW-XXX manifest with its
+   clickable low-fi prototype under `prototype/`, or the single line "No UX surface — prototype
+   waived at intent."), and a **Feature Selection** section (the confirmed capability frame,
+   derived work rows grouped per capability, filter verdicts with reasons, the user's selection
+   with its deferred-SC list and the per-capability completeness view); stories as
+   `stories/US-*.md` files for `in` rows (text, acceptance scenarios, work-row mapping under a
+   capability — or `rejected` with the why); the staged map delta executed at spec acceptance as
+   one atomic batch — capabilities land or extend, work rows attach (pending; selected rows
+   flip `live`, the capability reading `in-flight` while live rows exist), deltas attach,
+   `FEATURES.md` and `.mochiko/specs/index.md` rows touch; it was independently stress-tested
+   from the files — spec + stories + capability/row derivation + map delta in one pass, the
+   served prototype walked when UX-bearing — with no blocking gap left open; and the user
+   accepted the whole — intent, requirements, experience, derivation, and selection together.
 3. **Not done — default FAIL:** the `kind: fail` rules of `spec.sec.fail-conditions` — their
    count is the `kind: fail` line under `pins` in the preamble block — any one standing fails
    the run. A fail-conditions block whose end-line count disagrees with that pin is the
