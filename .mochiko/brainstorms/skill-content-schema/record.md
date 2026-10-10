@@ -7,7 +7,7 @@ boundary between what lives in a skill's `SKILL.md` and what moves to schema. Dr
 them. Also some logical boundary of what should be in .md vs what should be schema" — walked
 aspect-by-aspect against the command-schema precedent.
 
-**Status:** accepted (2026-09-01)
+**Status:** accepted (2026-09-01) · **superseded in part 2026-10-11** by `implement-brainstorm-led` D2-iterative-becomes-engine (`analysis-iterative` staying prose: it becomes the shared engine with rendered rules)
 **Opened:** 2026-09-01
 **Lead:** session lead (brainstorm charter, run inline in-conversation)
 

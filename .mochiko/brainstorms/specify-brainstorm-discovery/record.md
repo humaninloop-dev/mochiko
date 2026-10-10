@@ -1,6 +1,6 @@
 # Specify reimagined around brainstorm's discovery — decision record
 
-Status: **accepted** 2026-10-10 (user: "accepte", after one re-ask of a vaguer word) · cold read `needs-revision` (13 survivors, 13/13 dispositioned by the user: "as recommded, all inline"), verify round 1 NOT CLEAN (6 fold-introduced Minor, lead-repaired), verify round 2 **`ready`** (three cite-format residuals fixed on sight) · **built** 2026-10-10 at v0.119.0 (branch `specify-story-stage`; `build-log.md` · `wave1-story-stage.md` · `reports/audit.md`) · frozen for cold review 2026-10-10 after the accept screen ("as recommded") · opened 2026-10-10 · lead: Claude (session) · rulings: deepeshBodh
+Status: **accepted** 2026-10-10 (user: "accepte", after one re-ask of a vaguer word) · cold read `needs-revision` (13 survivors, 13/13 dispositioned by the user: "as recommded, all inline"), verify round 1 NOT CLEAN (6 fold-introduced Minor, lead-repaired), verify round 2 **`ready`** (three cite-format residuals fixed on sight) · **built** 2026-10-10 at v0.119.0 (branch `specify-story-stage`; `build-log.md` · `wave1-story-stage.md` · `reports/audit.md`) · **superseded in part 2026-10-11** by `implement-brainstorm-led` (D5-specify-own-rules' "The shared questioning skill is not edited for this" and `spec.own-rules-win`: the story stage's asking moves onto the shared engine) · frozen for cold review 2026-10-10 after the accept screen ("as recommded") · opened 2026-10-10 · lead: Claude (session) · rulings: deepeshBodh
 
 ## Topic (user's words)
 

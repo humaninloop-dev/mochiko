@@ -1,6 +1,6 @@
 # Brainstorm target state — decision record
 
-**Status:** **accepted 2026-10-06** (user: "happy for you to accept and start building", said
+**Status:** **superseded in part 2026-10-11** by `implement-brainstorm-led` (D19-brainstorm-only-reach and `brainstorm.own-rules-win`: brainstorm's asking becomes the shared engine's, reaching the other callers) · **accepted 2026-10-06** (user: "happy for you to accept and start building", said
 while the verify ran and taken as the acceptance once the verify came back with nothing blocking
 and the user had ruled its one open point) — review round 1 folded (16/16 survivors
 dispositioned: S1–S7 user-ruled one by one, S8–S16 in one user-confirmed batch); verify round 1
