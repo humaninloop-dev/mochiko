@@ -136,8 +136,9 @@ Four parts:
      shows. A diagram is pointed at, never embedded.
   4. Health — the health view, a SECTION OF THIS INDEX and not a separate artifact. Six
      counts, each naming its rows: open rows · stale `not-now` triggers · fired triggers
-     awaiting routing · orphan elements (a `proposed` or
-     in-flight-class element whose key names no open feature, epic or lane) · drift register
+     awaiting routing · orphan elements and diagrams (a `proposed` or in-flight-class
+     element, or a diagram whose `**Lifecycle:**` carries a key, whose key names no open
+     feature, epic or lane) · drift register
      · stale diagrams (the compare is mochiko:authoring-architecture-store's).
 
 The index carries no content of its own: everything in it is derived from the store.
@@ -249,7 +250,7 @@ Boundaries, flows, and per-element status: `.mochiko/product/architecture/spine.
 - **Open rows** — 1: AX-004-product-experiment-platform
 - **Stale `not-now` triggers** — 1: AX-002-single-sign-on (trigger unreviewed since [DATE])
 - **Fired triggers awaiting routing** — 0
-- **Orphan elements** — 0
+- **Orphan elements and diagrams** — 0
 - **Drift register** — 0
 - **Stale diagrams** — 0
 

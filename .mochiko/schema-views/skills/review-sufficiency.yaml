@@ -42,6 +42,20 @@ sections:
           rather than clearing here.
         when: {scope: delta}
         anchor: 2026-08-26 plan-stage-utility
+      - id: review-sufficiency.user-added-regrade
+        labels: [boundary, fence]
+        class: must
+        kind: duty
+        text: >-
+          A design piece the user adds to the run at implement's design stage, inside a story the
+          spec already carries, is graded before it joins: the brief names the piece in the user's
+          words and the story it sits in — the run's `design-stage.md` is never read, whether it
+          sits in the feature's home or an epic's — and you grade it on the clause set like any
+          unit, entering each gap it opens in `sufficiency-report.md` marked user-added, or saying
+          there that every clause holds; you stay the report's one writer. A piece that needs
+          behaviour the spec carries no story or acceptance criteria for is new behaviour, never a
+          gap: it goes back to the lead.
+        anchor: 2026-10-11 implement-brainstorm-led D6
   - id: review-sufficiency.sec.inputs
     title: Inputs — the read fence
     intent: What is read, what is never read, and the one carve the fence admits.

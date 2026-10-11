@@ -1056,7 +1056,19 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
         // suppressed count holds at 57: the wave added no allowlist row, and raw runs over the
         // old (`1..62`) and new (`1..70`) logs print identical cluster listings, so no mint raises
         // an edge and no reword moves an allowlisted pair. SUPPRESSED zero unchanged.
-        (390, 18_471, 0, 57),
+        // Re-measured after the 2026-10-11 implement-brainstorm-led wave 3 (`0075`–`0084`):
+        // `0076` mints eight `implement` rules, `0077` the floor stub `impl.thinking-stage` and
+        // `0078` two more, moving the scan 390 to 401 and the pair count 18,471 to 19,010. By
+        // kind, counted from the derived views: `duty` 37 → 41 (+154), `reservation` 21 → 24
+        // (+66), `binding` 56 → 58 (+113), `fail` 38 → 39 (+38), `constraint` 171 → 172 (+171,
+        // less the three pairs `impl.thinking-stage` forms with the other three
+        // `common.thinking-stage` stubs, which the detector skips: +168) — +539, the whole of the
+        // move. The suppressed count holds at 57: the wave added no allowlist row, and raw runs
+        // over the old (`1..70`) and new (`1..84`) logs list the same cluster members, so no mint
+        // raises an edge. `0078`'s reword of `impl.design-review-pair` lowers its allowlisted
+        // pair with `impl.card-review-before-confirm` from 0.67 to 0.61, still over the
+        // threshold, so that row still suppresses its edge. SUPPRESSED zero unchanged.
+        (401, 19_010, 0, 57),
         "rules scanned · in-kind pairs scored · clusters · allowlist-suppressed edges"
     );
 }
@@ -1242,8 +1254,21 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // unchanged. SUPPRESSED zero: with an empty allowlist the corpus reports 77 clusters over
     // 184 edges before and after the wave, the cluster listings identical, read from raw
     // `migrate validate --report` runs over the old (`1..62`) and new (`1..70`) logs.
-    assert_eq!(report.scanned, 1230, "rules scanned");
-    assert_eq!(report.scored, 211_343, "in-kind pairs scored");
+    // Re-measured after the 2026-10-11 implement-brainstorm-led wave 3 (`0075`–`0084`):
+    // thirteen rules minted and none retired move the scan 1,230 to 1,243 and the pair count
+    // 211,343 to 213,340 — the eleven command rules of `0076`–`0078` (see the command-family
+    // pin above), `0080`'s `review-plan-artifacts.meaning-kept` (`gate`) and `0081`'s
+    // `review-sufficiency.user-added-regrade` (`duty`). By kind: `duty` 158 → 163 (+800),
+    // `reservation` 64 → 67 (+195), `binding` 176 → 178 (+353), `fail` 38 → 39 (+38), `gate`
+    // 30 → 31 (+30), `constraint` 584 → 585 (+584, less the three pairs `impl.thinking-stage`
+    // forms with the other `common.thinking-stage` stubs, which the detector skips: +581) —
+    // +1,997, the whole of the move. `suppressed_hits` holds at 184 and the allowlist is
+    // unchanged. SUPPRESSED zero: with an empty allowlist the corpus reports 77 clusters over
+    // 184 edges before and after the wave, the sorted member listings identical — one cluster
+    // re-ranked by `0078`'s reword of `impl.design-review-pair` — read from raw
+    // `migrate validate --report` runs over the old (`1..70`) and new (`1..84`) logs.
+    assert_eq!(report.scanned, 1243, "rules scanned");
+    assert_eq!(report.scored, 213_340, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
     assert_eq!(report.suppressed_hits, 184, "allowlist-suppressed edges");
 }

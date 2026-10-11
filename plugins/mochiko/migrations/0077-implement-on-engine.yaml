@@ -1,0 +1,18 @@
+grammar: 1
+id: 0077-implement-on-engine
+sequence: 77
+intent: >-
+  Put implement's design stage on the shared thinking stage (implement-brainstorm-led D3; default
+  Slots declared where): mint the class: floor stub impl.thinking-stage extending
+  common.thinking-stage, its fourth extender; implement's domain part is 0076's.
+anchor: 2026-10-11 implement-brainstorm-led
+hash: sha256:f0bdf701c6d781570cfc649e1932d1775c06c9eb4c116341ee33245168adfbef
+changes:
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.boundaries
+    rule:
+      id: impl.thinking-stage
+      class: floor
+      extends: common.thinking-stage
+      anchor: 2026-10-11 implement-brainstorm-led D3

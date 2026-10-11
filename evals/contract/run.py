@@ -140,6 +140,9 @@ TEMPLATE_NAMES = (
     # `0013-design-baseline-home` ("2026-09-19 impeccable-design-integration D5") imported the
     # design baseline's template, bound by the `product-design` home.
     "design-baseline",
+    # `0075-design-stage-home` ("2026-10-11 implement-brainstorm-led") imported the design
+    # stage's ruled-set file template, bound by the `feature`, `epic` and `product-lane` homes.
+    "design-stage",
     "feature-entry",
     "features-index",
     "governance-intent",
@@ -337,6 +340,12 @@ EXPECTED = {
                 "impl.fail.skip-unstated",
                 "impl.fail.spec-gap-unresolved",
                 "impl.fail.no-acceptance",
+                # `0076-implement-design-stage` ("2026-10-11 implement-brainstorm-led") minted
+                # the floor fail node for a design write outside the stage's ruled set.
+                "impl.fail.design-outside-ruled-set",
+                # `0077-implement-on-engine` (the same session) minted the thinking-stage
+                # pointer floor.
+                "impl.thinking-stage",
             }
         ),
         44_266,

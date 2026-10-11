@@ -10,8 +10,10 @@ description: This skill MUST be invoked when designing an architecture delta —
 Design the **shape** of a structural change before its detail: what the components are, where the
 boundaries cut, how the pieces talk, and how the proposed system differs from the one the product
 architecture store already describes. The store is the standing topology; this skill governs the
-**altitude and the diagram craft** of the **delta** drawn against it — the drawing the user signs
-(`architecture.md` in the run's home). The change itself is written in place in the store as
+**altitude and the diagram craft** of the **delta** drawn against it — drawn delta-styled into the
+store's own diagrams, with `architecture.md` in the run's home the drawing the user signs: the
+change's neighborhood view and its checkpoint table, listing every store diagram file the change
+edited. The change itself is written in place in the store as
 `proposed (<key>)` elements, through `mochiko:authoring-architecture-store`, and flipped at
 sign-off. The delta is drawn **before**
 `data-model.md` and `contracts/`, which conform to the approved shape.
@@ -65,8 +67,9 @@ show ordering or what happens when a step fails; the sequence view is where that
 ### 3. Checkpoint table of changed elements
 
 A **checkpoint table** of the change — one row per store element the pinned-base diff adds, changes,
-or cuts: `id — kind — name — change (adds · changes · cuts) — status`. It is signed beside the
-diagram, and is the signed state where no commit is made.
+or cuts: `id — kind — name — change (adds · changes · cuts) — status`. It lists, by path, every
+store diagram file the change edited. It is signed beside the diagram, and is the signed state
+where no commit is made.
 **Altitude check — every element the change writes as `kind: container` is a genuine container,
 not a C4-level-3 construct:** each must be a separately deployable or independently runnable piece
 (a service, worker, store, queue, external system). A code-level layer *inside* one process — an

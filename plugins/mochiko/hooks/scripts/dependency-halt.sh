@@ -73,7 +73,7 @@ mochiko:*) ;;
 *) exit 0 ;;
 esac
 
-# The delivery check. A primitive with no `!` line has no rules to deliver — the seven prose
+# The delivery check. A primitive with no `!` line has no rules to deliver — the six prose
 # skills and the router carry procedure only, and never had a rule set — so the binary's absence
 # cannot break it and it is never gated. One whose rules come from the binary is. The primitive's
 # own file is the truth here, so there is no list to keep in sync.

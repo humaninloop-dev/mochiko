@@ -193,9 +193,10 @@ sections:
         kind: duty
         text: >-
           The fold fires when the built work changed structure: the landing flip, read from the
-          pinned-base diff — `in-flight` and `modifying` elements to `built`, their keys
-          cleared, each `removing` element to its `removed` stub — then `As-built:` and `Drift:`
-          on every touched row, and the index regenerated.
+          pinned-base diff — `in-flight` and `modifying` elements and diagrams to `built`, their
+          keys cleared, each `removing` one to its `removed` stub, each diagram's delta styling
+          cleared to plain with no redraw — then `As-built:` and `Drift:` on every touched row,
+          and the index regenerated.
         when: {structure_built: present}
         anchor: 2026-08-19 product-architecture-schema D10
       - id: authoring-architecture-store.orphan-rule
@@ -279,8 +280,8 @@ sections:
           The health view is a section of the index and no separate artifact exists — six
           counts, each naming its rows: open rows (walked, no stance formed) · stale `not-now`
           triggers (deferrals whose revisit condition has gone unreviewed) · fired triggers
-          awaiting routing · orphan elements · the drift register (rows whose `Drift:` field
-          names a live divergence) · stale diagrams, each named.
+          awaiting routing · orphan elements and diagrams · the drift register (rows whose
+          `Drift:` field names a live divergence) · stale diagrams, each named.
         anchor: 2026-10-11 architecture-brainstorm-interview D8
       - id: authoring-architecture-store.readability-bar
         labels: [artifact-grammar]

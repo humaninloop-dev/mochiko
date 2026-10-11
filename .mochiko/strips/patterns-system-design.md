@@ -24,6 +24,61 @@ default *Taste*, S23). Body 9,991 → 10,073, inside the 11,047 budget. Pre-edit
 `git show 963a3d6:plugins/mochiko/skills/patterns-system-design/SKILL.md` and
 `…/references/DIAGRAM-CONVENTIONS.md`. -->
 
+<!-- Wave context: wave 3 of the combined engine/desk build (v0.120.0) — implement's design phase
+draws the change delta-styled into the store's own diagrams, and the run's `architecture.md`
+becomes the neighborhood view plus the checkpoint table listing the store diagram files it signs.
+Ruling for the wave-3 [v0.120.0] entry below:
+`.mochiko/brainstorms/architecture-brainstorm-interview/record.md` D8-draw-before-code as changed at
+review (S6, repaired at verify V1; the signed object V9), with the `DECISIONS.md` 2026-10-11
+"Architecture desk as brainstorm's workflow, plus maintained diagrams, ruled" row; it amends
+`architecture-design-primitive` D5-plan-run-artifact in part, recorded at the landing. The log
+carries the same split in `impl.design-outputs-home` (`0078-implement-architecture-touches.yaml`,
+`0083-artifact-home-stage-file.yaml`). Pure addition the same wave, recorded here for the audit's
+read: §3's checkpoint table lists, by path, every store diagram file the change edited (`SKILL.md`
+pre-edit `:68–69`). Body 10,073 → 10,298, inside the 11,047 budget. Pre-edit verbatim text:
+`git show 7d9d29e:plugins/mochiko/skills/patterns-system-design/SKILL.md`. -->
+
+## [v0.120.0] Overview — "the delta drawn against it — the drawing the user signs (`architecture.md` in the run's home)" superseded by the store-diagram drawing
+
+- **Disposition:** superseded → `SKILL.md` pre-edit `:13–14`, as rewritten: "the **delta** drawn
+  against it — drawn delta-styled into the store's own diagrams, with `architecture.md` in the
+  run's home the drawing the user signs: the change's neighborhood view and its checkpoint table,
+  listing every store diagram file the change edited."
+- **Tier failed:** n/a — supersession by ruling (`architecture-brainstorm-interview`
+  D8-draw-before-code: "implement's design phase edits the store's diagram files in place before
+  any code — the change delta-styled"; S6 as repaired at verify V1: "One signed object: the run's
+  `architecture.md` — the neighborhood delta view … with the checkpoint table listing every store
+  diagram file the change edited"; V9 amends `architecture-design-primitive`
+  D5-plan-run-artifact's "the drawing the user signs" in part)
+- **Content (superseded text, verbatim):** `drawn against it — the drawing the user signs` /
+  `` (`architecture.md` in the run's home). `` — the apposition that made the run's
+  `architecture.md` the whole of the delta's drawing.
+- **Kept deliberately:** "drawn against it"; "the drawing the user signs" and "`architecture.md` in
+  the run's home" — the run's `architecture.md` stays the one signed object (V9); the next
+  sentence, the change written in place as `proposed (<key>)` elements, byte for byte.
+- **Consumers assessed:**
+  - implement's design phase: `impl.design-outputs-home` carries the same split — each view drawn
+    delta-styled into the store's own copy, the run's `architecture.md` the neighborhood view and
+    the table listing the edited files — and points here for structure and scope: consistent;
+  - the store skill: `diagram-set-grammar` (a diagram file one entry with its own
+    `**Lifecycle:**`; the spine keeps its own container view and key-flow sequences) and
+    `sign-off-flips-proposed` (`0067`): consistent;
+  - the desk: writes no store delta for a feature (`architecture-brainstorm-interview`
+    D5-visit-file-input); its diagram redraws follow `references/DIAGRAM-CONVENTIONS.md`'s taste,
+    unchanged: consistent;
+  - `review-plan-artifacts`: `references/ARTIFACT-CHECKLISTS.md`'s store-delta intro re-keyed the
+    same wave (the edited `diagrams/` files among the graded diff);
+  - `testing-gap-finding`: `blindness-fence-inclusion-list` (`0082`) admits the signed
+    `architecture.md` with the store diagram files it lists — the same split: consistent;
+  - `review-sufficiency`: reads a colliding feature's signed `architecture.md` drawing on an
+    in-flight collision — the run's `architecture.md` stays the one signed object (V9): consistent;
+  - `review-feasibility`: `references/FEASIBILITY-LENS.md` `:99–101` and its `store_delta`
+    condition note read "drawn in its architecture.md and read in the pinned-base diff" — the
+    run's `architecture.md` still draws the change's neighborhood view and the pinned-base diff now
+    holds the edited diagram files, so incomplete, not false (the lead's ruling); outside the
+    wave-3 prose seat's write set, a `BACKLOG.md` item at the landing;
+  - the router's `patterns-system-design` row (`:95`) names no drawing home and stands.
+
 ## [v0.120.0] §1 container delta diagram — "it must render, never ship as a raw code block" superseded by the Mermaid-text sign-off
 
 - **Disposition:** superseded → `SKILL.md` pre-edit `:54`, as rewritten: "what the reader approves

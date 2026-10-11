@@ -32,7 +32,7 @@ before reading anything.
 
 3 goldens (s1-zero-gap · s2-two-gaps · s3-empty-args) × 3 replicates × 2 arms
 (pre + post), plus a one-time no-command control arm (3 × 3) at pilot. Judges: Haiku
-coverage checklist over the 58-rule observable subset + stub axis; Sonnet pairwise,
+coverage checklist over the 71-rule observable subset + stub axis; Sonnet pairwise,
 position-swapped. All judges advisory (harness D2) — the runner exits 0 on judged
 degradation.
 
@@ -42,3 +42,16 @@ The instrument is useful if, on its first real edit, it (a) localizes at least o
 true behavioral difference to named rule IDs, and (b) its flaky-rule set stays under
 20% of the observable subset. Failing (b) triggers the record's noise falsifier
 (open question 3): the substrate bet weakens and the session premise is revisited.
+
+## Amendments
+
+- 2026-10-11, recorded after earlier grids (`runs/`) and before any grid of this edit: the
+  rubric is re-keyed to migrations 0075–0084 (implement-brainstorm-led and
+  architecture-brainstorm-interview, wave 3 of their build), and the observable count above
+  is recounted 58 → 71. The 58 had gone stale with no amendment — earlier re-keys had grown
+  the subset to 63 — and the wave adds eight observable rules of eleven;
+  the five `0013` rules no earlier edit placed go out of instrument as conditional (no
+  UX-bearing fixture). `observable.yaml`: 71 observable · 54 out of instrument, 125 rules.
+  Bucket shape at `--old-ref 7d9d29e`: unchanged 103 (54 observable) · changed 11 (9) ·
+  removed 0 · added 11 (8). Goldens, fixtures and wrapper unchanged; no grid run. Made by
+  the build's tests-and-kits seat on a lead-approved plan.

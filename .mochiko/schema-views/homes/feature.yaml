@@ -22,6 +22,9 @@ deliverables:
     max_lines: 300
   - file: gates.md
     max_lines: 300
+  - file: design-stage.md
+    template: design-stage
+    max_lines: 300
 reports:
   envelope: report-envelope
   by_type: {}

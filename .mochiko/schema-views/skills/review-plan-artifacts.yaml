@@ -8,6 +8,12 @@ conditions:
     values: presence
     resolution: entry-derived
     note: fires when the caller names {new} and {prior} artifact sets for an incremental pass.
+  design_stage:
+    values: presence
+    resolution: entry-derived
+    note: >-
+      the caller supplies the run's design-stage.md — implement's design stage ruled the set the
+      drafts were written inside.
 sections:
   - id: review-plan-artifacts.sec.independence
     title: Independence — who is never whom
@@ -26,7 +32,8 @@ sections:
         kind: binding
         text: >-
           The run's floor is the sufficiency report's gap list — the named gaps the design phase
-          was scoped to close — never a fixed artifact set.
+          was scoped to close, a gap the user added at implement's design stage and the report
+          marks user-added among them — never a fixed artifact set.
         anchor: 2026-08-26 plan-stage-utility
       - id: review-plan-artifacts.feasibility-handoff
         labels: [boundary]
@@ -247,6 +254,22 @@ sections:
         class: must
         extends: review-common.joined-ids
         anchor: 2026-10-08 human-readable-ids D6
+      - id: review-plan-artifacts.meaning-kept
+        labels: [verdict]
+        class: must
+        kind: gate
+        text: >-
+          Grade the drafts against the ruled set in the run's `design-stage.md` for meaning kept,
+          beside conformance and at its strength. Each ruled item — direction, seed, ruled
+          piece, user-added gap — is kept, or changed only as a ruling the user made after the
+          pen passed says, its why shown; a ruled item changed with no such ruling is a blocking
+          finding. Every addition the set does not carry is flagged by size: a small technical
+          extra no ruled item or confirmed default touches is listed for the user's OK, never a
+          finding on its own; one that changes a ruling or that the user would notice, written
+          with no ruling of the user's behind it, is a blocking finding. The result fills the
+          landing table the design checkpoint asks the user to sign.
+        when: {design_stage: present}
+        anchor: 2026-10-11 implement-brainstorm-led D8
   - id: review-plan-artifacts.sec.output
     title: Output — report contracts
     intent: Where the grade lands and the shapes it lands in.

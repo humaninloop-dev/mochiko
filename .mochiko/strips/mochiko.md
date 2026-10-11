@@ -58,6 +58,20 @@ stale-diagrams count — and the `tech-lead` row (`:161`) — drawing or redrawi
 among the judgment writes it grades (`0070`). The router body is unbudgeted: 48,037 → 48,637.
 Pre-edit verbatim text: `git show 963a3d6:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+<!-- Wave context: wave 3 of the combined engine/desk build (v0.120.0) — implement's design stage
+and the gap-finding fence's listed diagram files. Pure additions only, so no entry, recorded here
+for the audit's read: the `testing-gap-finding` row (`:117`) — the fence copy gains "with the store
+diagram files it lists" (`0082-gap-finding-signed-set.yaml`,
+`testing-gap-finding.blindness-fence-inclusion-list`;
+`.mochiko/brainstorms/architecture-brainstorm-interview/record.md` D8-draw-before-code, the S8
+list's eighth implement touch) — and the `/mochiko:implement` row (`:143`) — the design stage the
+user rules with the lead before the design seats author (`0076-implement-design-stage.yaml`,
+`0077-implement-on-engine.yaml`; `.mochiko/brainstorms/implement-brainstorm-led/record.md`
+D5-stage-after-runopen). Rows: the `DECISIONS.md` 2026-10-11 "Shared thinking engine ruled" and
+"Architecture desk as brainstorm's workflow, plus maintained diagrams, ruled" rows. The router
+body is unbudgeted: 48,637 → 48,744. Pre-edit verbatim text:
+`git show 7d9d29e:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
 ## [v0.120.0] `/mochiko:architecture` row — "greenfield elicits through the shelf walk" and "Each visit walks the shelves you scope, takes your stance per row" superseded by the focus stage
 
 - **Disposition:** superseded → `SKILL.md`:142 as rewritten, the two passages verbatim —

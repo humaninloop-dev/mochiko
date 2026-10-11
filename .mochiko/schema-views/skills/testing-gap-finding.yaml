@@ -155,11 +155,12 @@ sections:
         text: >-
           The explorer is blind to code and cards. Admissible inputs are an explicit inclusion
           list, not a layer label: `spec.md` (FR-XXX, SC-XXX, stories, declared edge cases) · the
-          run's sufficiency report and the feature's signed `architecture.md` drawing — those
-          two artifacts only, never the `FEAT-XXX/` run-output directory at large · Screens &
-          Flows (SCR-XXX, FLOW-XXX) · `data-model.md` (entities, state machines, DS-XXX
-          sensitivity) · `contracts/` (`api.yaml` and any sibling contract documents) · the
-          architecture store's concern rows only — their `NFR-XXX` targets
+          run's sufficiency report and the feature's signed `architecture.md` — those two
+          artifacts only, never the `FEAT-XXX/` run-output directory at large — with the store
+          diagram files in `.mochiko/product/architecture/diagrams/` that `architecture.md` lists
+          · Screens & Flows (SCR-XXX, FLOW-XXX) · `data-model.md` (entities, state machines,
+          DS-XXX sensitivity) · `contracts/` (`api.yaml` and any sibling contract documents) ·
+          the architecture store's concern rows only — their `NFR-XXX` targets
           (`.mochiko/product/architecture/concerns.md` plus any graduated
           `concerns/AX-XXX-<slug>.md`) · on a UX-bearing feature, the design baseline
           (`.mochiko/product/design/`), whose design truth and as-built system are the promised

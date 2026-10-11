@@ -178,14 +178,18 @@ fn the_log_replays_into_a_deliverable_state() {
     // unused, a legal gap. `0065`–`0070` (its wave 2) import four: `0065` the
     // `architecture-visit` template and the `architecture-desk` home, `0066` the
     // `architecture-diagram` template and the `product-diagrams` home; `0066` also replaces the
-    // `product-architecture` home and the `architecture-store` template in place.
-    assert_eq!(replay.state.docs.len(), 92);
+    // `product-architecture` home and the `architecture-store` template in place. `0071`–`0074`
+    // are unused, a legal gap. `0075`–`0084` (its wave 3) import one: `0075` the
+    // `design-stage` template; `0075` also replaces the `feature`, `epic` and `product-lane`
+    // homes in place, and `0079` the `architecture-store` template.
+    assert_eq!(replay.state.docs.len(), 93);
     assert_eq!(
         replay.sequences(),
         vec![
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
             25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48,
-            49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 65, 66, 67, 68, 69, 70
+            49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 65, 66, 67, 68, 69, 70, 75, 76,
+            77, 78, 79, 80, 81, 82, 83, 84
         ],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
@@ -212,7 +216,12 @@ fn the_log_replays_into_a_deliverable_state() {
          thinking-stage block, 0060's brainstorm on the engine, 0061's specify on the engine, \
          0062's spec-review boundary, then — 0063 and 0064 left unused, a legal gap — its wave \
          2 — 0065's visit-file home, 0066's diagram set, 0067's store diagram rules, 0068's \
-         desk focus stage, 0069's desk on the engine, 0070's diagram write reach"
+         desk focus stage, 0069's desk on the engine, 0070's diagram write reach, then — 0071 \
+         to 0074 left unused, a legal gap — its wave 3 — 0075's design-stage home, 0076's \
+         implement design stage, 0077's implement on the engine, 0078's architecture \
+         touches, 0079's store landing diagrams, 0080's meaning-kept grade, 0081's \
+         user-added re-grade, 0082's gap-finding signed set, 0083's stage file in the \
+         artifact home, 0084's entry-only record restored"
     );
 }
 
@@ -617,6 +626,17 @@ fn the_sidecar_anchors_ride_their_rules() {
              2026-09-24 delta-files-vs-direct-baseline-edits D7",
         ),
     ];
+    /// Sidecar-anchored rules a recorded ruling has re-anchored since genesis — each entry names
+    /// the migration whose `set-rule-field` moved the anchor and the anchor the rule now
+    /// carries. The rule stays live and anchored, so its protection holds; only its provenance
+    /// moved, and the log records the move. A rule listed here MUST carry exactly the named
+    /// anchor, or the walk below still fails — this list names which move is expected, never
+    /// which rule is skipped.
+    const REANCHORED_SIDECAR_ANCHORS: [(&str, &str, &str); 1] = [(
+        "impl.gate-design-checkpoint",
+        "0076-implement-design-stage.yaml",
+        "2026-10-11 implement-brainstorm-led D8",
+    )];
 
     for (id, expected) in &anchors {
         if RETIRED_SIDECAR_ANCHORS
@@ -633,6 +653,10 @@ fn the_sidecar_anchors_ride_their_rules() {
         let rule = live_rules
             .get(id.as_str())
             .unwrap_or_else(|| panic!("{id}: the sidecar's rule is no longer live"));
+        let expected = REANCHORED_SIDECAR_ANCHORS
+            .iter()
+            .find(|(reanchored_id, _, _)| reanchored_id == id)
+            .map_or(expected.as_str(), |(_, _, anchor)| *anchor);
         match rule.anchor.as_deref() {
             Some(carried) => assert_eq!(carried, expected, "{id}: the anchor moved"),
             None => panic!("{id}: the sidecar's anchor was cleared"),
@@ -812,12 +836,26 @@ fn the_corpus_census_holds_through_the_log() {
     // their rule's id, class and kind (the floors among them stay floors); `0067`'s two anchor
     // `set-rule-field`s, `0068`'s condition and moment, and the four documents `0065` and `0066`
     // import and the two `0066` replaces move nothing here.
-    assert_eq!(command_rules, 390, "live command rules");
-    assert_eq!(skill_rules, 840, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1230, "live rules in total");
+    // The 2026-10-11 implement-brainstorm-led wave 3 carries `0075`–`0084`, anchored to that
+    // session's rulings and confirmed defaults and to architecture-brainstorm-interview's:
+    // thirteen `mint-rule`s and nothing retired. `0076` mints eight `implement` rules — seven
+    // musts and the floor fail node `impl.fail.design-outside-ruled-set` — `0077` the floor
+    // stub `impl.thinking-stage`, the fourth extender of `common.thinking-stage`, `0078` two
+    // musts, `impl.desk-offer` and `impl.index-regeneration`, and `0080` and `0081` one must
+    // each, `review-plan-artifacts.meaning-kept` and `review-sufficiency.user-added-regrade`.
+    // So command 390 → 401, skill 840 → 842, total 1230 → 1243, command floors 124 → 126 and
+    // the fail set 38 → 39, while the skill floors hold at 266. The wave's nineteen
+    // `reword-rule`s — two in `0076`, eight in `0078`, two in `0079`, one each in `0080` and
+    // `0082`, four in `0083`, one in `0084` — keep their rule's id, class and kind (the floors
+    // among them stay floors); the six anchor `set-rule-field`s of `0076` and `0078`, `0076`'s
+    // moment, `0080`'s condition, the template `0075` imports and the four documents `0075`
+    // and `0079` replace move nothing here.
+    assert_eq!(command_rules, 401, "live command rules");
+    assert_eq!(skill_rules, 842, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1243, "live rules in total");
     assert_eq!(skill_floors, 266, "skill floors");
-    assert_eq!(command_floors, 124, "declared command floors");
-    assert_eq!(fail_nodes, 38, "command fail nodes");
+    assert_eq!(command_floors, 126, "declared command floors");
+    assert_eq!(fail_nodes, 39, "command fail nodes");
 }
 
 // ---------------------------------------------------------------------------

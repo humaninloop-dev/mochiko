@@ -1,0 +1,75 @@
+grammar: 1
+id: 0083-artifact-home-stage-file
+sequence: 83
+intent: >-
+  Wave 3's plan-grade fix round (implement-brainstorm-led default Implement — the set's home,
+  the fail as narrowed at S2, D6 as changed at S1; architecture-brainstorm-interview D8 as
+  repaired at S6): reword the floor impl.artifact-home so design-stage.md binds its template and
+  holds the stage's ruled set as the run's input, the ruling's record staying on its entry and
+  never in a ledger — the "only" that design-stage.md would contradict leaves, the force and the
+  hook-enforced-artifact-schema D1 anchor kept; reword the floor fail
+  impl.fail.design-outside-ruled-set to except, by name beside the seed, a build-time decision
+  written post-sign under impl.baselines-in-place-marked; reword impl.design-outputs-home so a
+  changed key flow has its named home, the spine's key-flow sequences; reword
+  review-sufficiency.user-added-regrade so its read fence covers design-stage.md in an epic's home
+  as in a feature's. Each rule keeps its id, class, kind and anchor; no floor or fail retired or
+  lowered.
+anchor: 2026-10-11 implement-brainstorm-led
+hash: sha256:6c1ca199f34eece4acec4cbfe26d03de52360cbb4675496812fda4f68544ef24
+changes:
+  - op: reword-rule
+    schema: command/implement
+    id: impl.artifact-home
+    text: >-
+      Build-run artifacts have a declared home: render `mochiko-cli home ${features_dir}/FEAT-XXX`
+      — an epic run, the epic home; a lane run, the lane home — before the first write.
+      `tasks.md` binds the `tasks` template and `design-stage.md` the `design-stage` template;
+      every report lands in that home's `reports/` typed by its envelope. The run log,
+      `implement-log.md`, is the lead's ephemeral working memory in the run folder
+      (impl.run-folder), never in any other home. A ruling made during the run that changes a
+      product baseline or the architecture store is recorded on that entry, its reason in the
+      entry's own fields (impl.baseline-entry-grammar), never in a ledger; the run's
+      `design-stage.md` holds the design stage's ruled set as the run's input, never as that
+      record; a standing ruling that touches no entry lands at the landing as a
+      `.mochiko/decisions/<date>-<slug>.md` record; a checkpoint acceptance takes no
+      `DECISIONS.md` row — its report and the `tasks.md` checkbox carry it. A name the home's
+      set does not carry is raised to the lead, never minted from a sibling run.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.fail.design-outside-ruled-set
+    text: >-
+      A design output (impl.design-outputs-home) written with no ruled set behind it in the run's
+      `design-stage.md` — the baseline seed of impl.design-absent-baseline-seed and a build-time
+      decision written post-sign under impl.baselines-in-place-marked excepted — a write that
+      changes a ruling without the user's word, or a small technical extra the user did not OK at
+      the landing table.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-outputs-home
+    text: >-
+      Design outputs are written in place in the product baselines at ${product_dir}/ under the
+      run's lifecycle marker (impl.baseline-entry-grammar) — data-model.md, contracts/,
+      constraints-and-decisions.md, quickstart.md, the design baseline's truth part, and, where
+      the structural trigger fired, the store's `proposed` elements and the change's drawing,
+      before any code: its container view, its sequence diagrams for qualifying flows and, where
+      IP-XXX rows exist, its deployment view, each drawn delta-styled — new · modified ·
+      removed — into the store's own copy of that view: the spine's container view where a
+      container changes, its key-flow sequences where a key flow does, the diagram file that holds
+      the view, or a new diagram file where none does. The run's home keeps only architecture.md,
+      the drawing the user signs: the neighborhood delta view drawn from the delta-styled elements
+      and the checkpoint table of changed elements, listing every store diagram file the change
+      edited — no register text, no current-state narrative. Structure and scope per
+      mochiko:patterns-system-design, grammar and lifecycle per
+      mochiko:authoring-architecture-store.
+  - op: reword-rule
+    schema: skill/review-sufficiency
+    id: review-sufficiency.user-added-regrade
+    text: >-
+      A design piece the user adds to the run at implement's design stage, inside a story the spec
+      already carries, is graded before it joins: the brief names the piece in the user's words
+      and the story it sits in — the run's `design-stage.md` is never read, whether it sits in
+      the feature's home or an epic's — and you grade it on the clause set like any unit,
+      entering each gap it opens in `sufficiency-report.md` marked user-added, or saying there
+      that every clause holds; you stay the report's one writer. A piece that needs behaviour the
+      spec carries no story or acceptance criteria for is new behaviour, never a gap: it goes back
+      to the lead.

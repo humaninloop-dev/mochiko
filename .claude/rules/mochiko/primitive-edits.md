@@ -72,7 +72,7 @@ log by construction, so schema-content edits take no strip entry. The human-read
   (skill-content-schema D8/I6; the matching-skill routing never applies to the pair). For
   **schema content** — a migration file plus its regenerated view diff — the unit is that pair
   and the items are the AM-2-required-cli-dependency five: intent stated · anchor present where required · ID lifecycle
-  right · floor and fail survival · register. For every other primitive — the seven prose skills
+  right · floor and fail survival · register. For every other primitive — the six prose skills
   and the router included — the unit is the file, graded on internal coherence plus preserved
   responsibilities, with the matching `validation-*` / `review-*` skill reached as the domain
   lens where one exists (`templates/command-shape.md` was deleted at v0.46.0; the dedicated
@@ -238,8 +238,8 @@ log by construction, so schema-content edits take no strip entry. The human-read
   widens the D8 extraction bar to 3+-command near-identical families,
   strongest-wording-wins).
 
-  **Skill-pair criteria — every schema-bearing skill (the thirty); the review family from
-  v0.100.0.** The seven prose skills and the router carry no rule set, never had a schema,
+  **Skill-pair criteria — every schema-bearing skill (the thirty-six); the review family from
+  v0.100.0.** The six prose skills and the router carry no rule set, never had a schema,
   and take the plain primitive ceremony above, not this block. A schema-bearing skill
   ships as `SKILL.md` whose rules `mochiko-cli` renders from the log
   (the skill directory stays the self-contained shipping unit) and is graded

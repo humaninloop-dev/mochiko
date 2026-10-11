@@ -273,8 +273,9 @@ fn every_emitted_view_matches_the_committed_one() {
     // `0032` imported six home documents and `0033` the `runs` home. 88 since `0058` (2026-10-11
     // implement-brainstorm-led), which imported the `analysis-iterative` skill. 92 since
     // `0065`–`0066` (its wave 2), which imported two templates, `architecture-visit` and
-    // `architecture-diagram`, and two homes, `architecture-desk` and `product-diagrams`.
-    assert_eq!(views.len(), 92, "the corpus is 92 documents");
+    // `architecture-diagram`, and two homes, `architecture-desk` and `product-diagrams`. 93
+    // since `0075` (its wave 3), which imported the `design-stage` template.
+    assert_eq!(views.len(), 93, "the corpus is 93 documents");
 
     let mut divergences: Vec<String> = Vec::new();
     for (relative, text) in &views {
@@ -351,8 +352,8 @@ fn the_committed_views_tree_holds_no_file_the_emitter_does_not_write() {
     // since `0032`–`0033` (the 2026-09-29 census table ratification), the seven new homes' views
     // committed. 88 since `0058` (2026-10-11 implement-brainstorm-led), the engine's view
     // committed. 92 since `0065`–`0066` (its wave 2), the two templates' and two homes' views
-    // committed.
-    assert_eq!(found.len(), 92, "the committed tree is 92 views");
+    // committed. 93 since `0075` (its wave 3), the `design-stage` template's view committed.
+    assert_eq!(found.len(), 93, "the committed tree is 93 views");
 }
 
 #[test]
@@ -459,8 +460,8 @@ fn emit_to_writes_only_under_the_out_directory() {
     // 75 since `0009-plan-qa-leg` ("2026-09-03 producer-plan-enforcement D8"); 80 since `0013`
     // (2026-09-19 impeccable-design-integration); 87 since `0032`–`0033` (the 2026-09-29 census
     // table ratification); 88 since `0058` (2026-10-11 implement-brainstorm-led); 92 since
-    // `0065`–`0066` (its wave 2).
-    assert_eq!(written.len(), 92);
+    // `0065`–`0066` (its wave 2); 93 since `0075` (its wave 3).
+    assert_eq!(written.len(), 93);
     for path in &written {
         assert!(path.starts_with(&out), "{} escaped --out", path.display());
         assert!(path.is_file(), "{} was not written", path.display());

@@ -1,0 +1,67 @@
+# Implement Design Stage
+
+`design-stage.md` — the ruled design set of one implement run, in the run's home: the feature's `.mochiko/features/<FEAT-ID>/`, an epic's `.mochiko/epics/<EPIC-ID>/`, a lane's `.mochiko/product/lane-<slug>/`. The lead writes it as the design stage rules each item, and whole before the pen passes; the design seats plan and draft inside it, the design review grades the drafts against it, and the design checkpoint's landing table shows how each of its items landed. It survives a stopped and resumed run: what a stopped stage left unruled is listed, and the resumed stage opens from it. Written in the present tense; the skeleton constrains the shape, never the voice.
+
+## Header
+
+The run's key; the gap list the stage rules — `sufficiency-report.md` and the run-open base commit it names; every input handed in, each by path — a desk visit file keyed to the feature, the spec's slate and Intent, a brainstorm record the user named; and the stage's state — open, stopped, or closed with its date.
+
+## Ruled set
+
+One entry per gap the report names — on an epic also one per joint-spine design item: a seam between members, the joint architecture, the batch ordering — and one per gap the user added. Each entry names what it is — its sufficiency clause, a spine item, `user-added` with its re-grade in the report, or a re-fire naming the cycle that halted — and carries the user's direction in their own words; the seed, one "I'd know it works if…" sentence or `open`, an open seed carried as an open question and never filled in; the ruled pieces, each with its provenance mark; and the entry's own provenance mark. The marks are the one vocabulary: `user's words` · `lead's guess, ratified` · `blind list` · `handed in`. A ruling the user makes after the pen passes is written into its entry.
+
+## Defaults batch — optional
+
+The pieces the stage defaulted, as confirmed on one screen — each with its gap, its suggested default, what it costs, and the user's ruling: confirmed, or pulled into the ruled set.
+
+## Blind list — optional
+
+Each difference between the blind list and the lead's candidates, with the user's ruling — in as a piece, or out with its why; on a single-gap re-fire, one line saying the list was skipped.
+
+## Outside needs — optional
+
+Each design need the stage found outside the gap list, its kind — new behaviour, or a design piece inside a story the spec carries — and the user's ruling: added to this run, re-graded as a gap and entered in the ruled set, or later, naming where it went — `/mochiko:specify`, `BACKLOG.md` or a feature-desk card. New behaviour is never added; a lane run adds none.
+
+## Open — optional
+
+What a stopped stage left unruled — each candidate and the fork it hangs on — so the resumed stage opens from it; empty once the stage closes.
+
+## Skeleton
+
+# Design stage — [FEAT-001-<slug> | EPIC-001-<slug> | lane-<slug>]
+
+**Gap list**: [sufficiency-report.md](sufficiency-report.md) · base [short sha]
+**Handed in**: [a desk visit file's path · the spec's slate and Intent · a brainstorm record's path — or none]
+**State**: [open · stopped — see Open · closed YYYY-MM-DD]
+
+## Ruled set
+
+### [the gap, in a few words] — [its clause · spine item · user-added · re-fire C3-<slug>]
+
+- **Direction**: "[the user's words]"
+- **I'd know it works if**: [one sentence — or `open`]
+- **Pieces**:
+  - [a ruled piece, in plain words] · [user's words · lead's guess, ratified · blind list · handed in]
+- **Provenance**: [user's words · lead's guess, ratified · blind list · handed in]
+
+## Defaults batch
+
+| Gap | Piece | Suggested default | What it costs | Ruling |
+|-----|-------|-------------------|---------------|--------|
+| [gap] | [piece] | [default] | [cost] | [confirmed · pulled into the ruled set] |
+
+## Blind list
+
+| Difference | Ruling |
+|------------|--------|
+| [a hidden choice the list saw that the candidates lacked] | [in · out — why] |
+
+## Outside needs
+
+- [the need] — [new behaviour · a piece inside US-003-<slug>] — [added to this run · later: BACKLOG.md · /mochiko:specify · a feature-desk card]
+
+## Open
+
+- [a candidate still unruled] — [the fork it hangs on]
+
+---

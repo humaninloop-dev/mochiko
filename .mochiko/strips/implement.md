@@ -1,5 +1,22 @@
 # Strip notes — `commands/implement.md`
 
+<!-- Wave context: wave 3 of the combined engine/desk build (v0.120.0) — implement's design stage on
+the shared thinking stage, its `design-stage.md` home, the landing-table checkpoint and the ten
+architecture touches. Schema content only, so no entry below: the migration log carries the
+verbatim prior text (`strips/README.md`), and `commands/implement.md` is unchanged — no line is
+made false, and its Not-done line already cites the CLI-printed pin. Recorded here for the audit's
+read, because a rule carries one anchor: `impl.gate-design-checkpoint`'s wording
+(`0076-implement-design-stage.yaml`, its force kept) is superseded by
+`.mochiko/brainstorms/implement-brainstorm-led/record.md` D8-checkpoint-shows-landing, its anchor,
+together with `.mochiko/brainstorms/architecture-brainstorm-interview/record.md`
+D8-draw-before-code (the signed object) and D9-render-where-viewed (the Mermaid-text surface); the
+degrade-with-record clause leaves, amending `architecture-design-primitive`
+D8-rendered-diagram-signoff in part. `impl.design-outputs-home`
+(`0078-implement-architecture-touches.yaml`, `0083-artifact-home-stage-file.yaml`) amends
+`architecture-design-primitive` D5-plan-run-artifact in part (the record's V9). Rows: the
+`DECISIONS.md` 2026-10-11 "Shared thinking engine ruled" and "Architecture desk as brainstorm's
+workflow, plus maintained diagrams, ruled" rows, whose annotations land at the landing. -->
+
 <!-- Wave context: the CLI schema-delivery command wave (v0.105.0) — the five remaining commands
 convert, `implement` among them: its rules are rendered at fire by `mochiko-cli` from the migration
 log the plugin carries at `plugins/mochiko/migrations/`, and the command reads no schema file.

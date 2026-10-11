@@ -1,0 +1,50 @@
+grammar: 1
+id: 0080-plan-artifacts-meaning-kept
+sequence: 80
+intent: >-
+  Give the design review its meaning-kept grade (implement-brainstorm-led D8 as changed at review
+  S2, and D6): declare the design_stage condition; mint meaning-kept, the drafts graded against
+  the ruled set in the run's design-stage.md beside conformance and at its strength, every seat
+  addition flagged by D8's size split, its result filling the design checkpoint's landing table;
+  and reword the floor gap-list-scope so the gap list it fixes is the grown one where the user
+  added a gap — material-divergence-autofail reads "the gap list" through it. gap-list-scope
+  keeps its anchor and its force; no floor retired or lowered.
+anchor: 2026-10-11 implement-brainstorm-led
+hash: sha256:cf6ed47a336c2c69cf42b8464994693028e2e6f411e771a4253d90c5fa81137f
+changes:
+  - op: set-condition
+    schema: skill/review-plan-artifacts
+    name: design_stage
+    spec:
+      values: presence
+      resolution: entry-derived
+      note: >-
+        the caller supplies the run's design-stage.md — implement's design stage ruled the set
+        the drafts were written inside.
+  - op: mint-rule
+    schema: skill/review-plan-artifacts
+    section: review-plan-artifacts.sec.verdict
+    rule:
+      id: review-plan-artifacts.meaning-kept
+      labels: [verdict]
+      class: must
+      kind: gate
+      text: >-
+        Grade the drafts against the ruled set in the run's `design-stage.md` for meaning kept,
+        beside conformance and at its strength. Each ruled item — direction, seed, ruled piece,
+        user-added gap — is kept, or changed only as a ruling the user made after the pen passed
+        says, its why shown; a ruled item changed with no such ruling is a blocking finding. Every
+        addition the set does not carry is flagged by size: a small technical extra no ruled item
+        or confirmed default touches is listed for the user's OK, never a finding on its own; one
+        that changes a ruling or that the user would notice, written with no ruling of the user's
+        behind it, is a blocking finding. The result fills the landing table the design checkpoint
+        asks the user to sign.
+      when: {design_stage: present}
+      anchor: 2026-10-11 implement-brainstorm-led D8
+  - op: reword-rule
+    schema: skill/review-plan-artifacts
+    id: review-plan-artifacts.gap-list-scope
+    text: >-
+      The run's floor is the sufficiency report's gap list — the named gaps the design phase was
+      scoped to close, a gap the user added at implement's design stage and the report marks
+      user-added among them — never a fixed artifact set.

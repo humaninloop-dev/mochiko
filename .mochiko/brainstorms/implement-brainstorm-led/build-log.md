@@ -806,3 +806,376 @@ audit: unit 8 (crate tests, contract expectations, the architecture plan kit · 
 - Wave 2 closed: units 1–4, 4b and 5–8 all PASS. Plan rounds: P1 PASS, 0070 PASS, P2 PASS on
   round 3, P3 PASS on round 2; every second re-plan went to the user and was granted. No floor or
   fail retired or lowered; no grammar or crate-source change. Committed next, not pushed.
+
+## 2026-10-11 — W2 committed; wave 3 opened
+
+- W2 committed as `7d9d29e` on `engine-desk-build` (44 paths; not pushed), under the user's "commit
+  when you think is good". The staged set was scanned for secrets first; nothing found.
+- User ruling (2026-10-11), asked before the plan: a product-lane run that fires the design stage
+  writes its `design-stage.md` in the lane home — **"Lane home too"**. The record names the feature
+  and epic homes; the lane home joins them, so the stage works the same on every run with gaps.
+- Lead's call under D9 ("the build decides"): the optional `mochiko-cli` Mermaid parse check is not
+  built in this build — it is crate source; BACKLOG at landing.
+- Plan: `wave3-implement.md` (283 lines, sha256 `ab52d7dc…0a4287`). Sequences 0075–0082 (0083–0086
+  held). Seats P1 schema, P2 prose, P3 tests. Ten architecture touches per the architecture
+  record's S8 list and V7. Audit units 1–8 into `reports/audit-w3.md`. `impl.sec.tools` renders
+  26,200 B at the open; over 29,000 B is a stop, and no new rule goes there. Re-plan counter fresh.
+- Facts read for the plan: implement's render is 52,037 B across seven blocks (preamble 4,733 ·
+  roles 4,127 · reserved 3,138 · tools 26,200 · ways-of-working 3,801 · boundaries 5,452 ·
+  fail-conditions 4,579), with 37 floors and 15 fails. The lane home declares
+  `sufficiency-report.md` and `architecture.md`, so a lane run's design phase can fire.
+- P1 dispatched plan-only.
+
+## 2026-10-11 — W3 P1 plan received; sent to its grader
+
+- `w3-p1-schema` returned `w3-p1-plan.md` (803 lines, sha256 `9093c035…123194`), all eight
+  migrations drafted and replayed in a scratch copy outside the tree; tree unchanged against
+  `snap-w3-p1-before.txt`. Predicted: log 1..82, 93 documents, 1,243 rules; validate 0 rejecting ·
+  116 advisory; 0 clusters, no allowlist row; `impl.sec.tools` 26,200 → 27,604 B (rewords only);
+  fails 15 → 16, floors 37 → 39; nothing retired or lowered. Stops: none.
+- Disclosed deviations: `material-divergence-autofail` is not reworded (it reads the list through
+  the reworded `gap-list-scope`); `impl.baseline-entry-grammar`'s store clause is reworded, false
+  against architecture D8 S3; D5's S20 freshness rule is carried in `impl.design-inputs`; the
+  qualifying-flow sequences and the deployment view move into the store's diagram files.
+- Lead's answers. Q1: leave the home printer's "carries its section budgets" line (crate source),
+  BACKLOG at landing. Q2: P3's write set widens to recapture `architecture-store.producer.txt`.
+  Q3: `impl.artifact-home`'s "recorded on that entry only" is made false by `design-stage.md`, so
+  the plan's ready floor reword is taken. Q4: `impl.desk-offer` stays off lane runs. Q5: 0082
+  anchors to architecture D8. Q6: no seed hand-off to TEST cases. Q7: the fail exempts the
+  baseline seed by name, and the re-grade may find every clause holds. Q8: `meaning-kept` blocks at
+  conformance strength.
+- Sent to `w3-g1-plan-grader-p1` (fresh, persona-less, opus) with the `review-seat-plan` render
+  pasted verbatim; the plan goes by path plus hash (the disclosed transport).
+
+## 2026-10-11 — W3 P1 plan round 1: FAIL (1, 4, 5); revision requested
+
+- `PLAN GRADE: W3 P1 schema · FAIL`. Item 1: Q3's floor reword has no full text and no build path.
+  Item 4: no rung claims. Item 5: no gate-grader hand-off and no attempt bound. Verified
+  first-hand: the hash; tree unchanged at start and end; all eight draft hashes; a stamped replay
+  reproduces 1..82 · `7272cd76…` · 93 documents · 1,243 rules · 116 advisory · 0 clusters; the
+  block bytes (tools 27,604 B, no new rule); the anchors; `enforces:` and `when:` terms resolve;
+  every §3.6 carrier present; no engine mechanic loosened; floor rewords keep force.
+- Advisories, folded by the lead. (a) The fail excepts a post-sign build-time decision by name.
+  (b) `impl.design-outputs-home` names the spine's key-flow sequences. (c) 0078's intent names the
+  deployment view's move under S7's "other views". (d) The re-grade's fence covers the epic home.
+  (e) The producer figure is corrected to the repo-path 4,279 B. Q3's "only" is resolved in 0083.
+  Left as is: "the design seats are its next writers" (record wording); item 7, 803 lines.
+- Revision requested: delta only, to a new file `w3-p1-plan-rev1.md`; the base and its drafts stay
+  frozen. This consumes the wave's one re-plan, so a further FAIL goes to the user.
+- Revision returned: `w3-p1-plan-rev1.md` (312 lines, sha256 `d8aab3f9…e74478`). New draft `0083`
+  (`19598b5d…`) carries the Q3 reword and advisories a, b and d, a second op this wave on three ids
+  (disclosed D-10), so every graded stamped hash stands. `0078`'s copy is amended in intent only
+  (`a0daa68d…`), its stamped hash claimed unchanged. Claimed end state: 1..83 · 75 migrations ·
+  1,243 rules · tools 27,650 B. The base and its drafts were re-hashed unchanged; tree unchanged.
+  Sent to the same grader, resumed.
+
+## 2026-10-11 — W3 P1 plan round 2: PASS; build approved
+
+- `PLAN GRADE: W3 P1 schema · PASS · —` (the same seat, resumed). Items 1, 4 and 5 fixed. The
+  grader's own stamped replay of all nine reproduces every hash, `0083`'s `6c1ca199…` included:
+  1..83 · 75 migrations · `68e3074f…` · 93 documents · 1,243 rules · 0 rejecting · 116 advisory ·
+  0 clusters · 184 suppressed; tools 27,650 B, ways-of-working 6,341 B, fail-conditions 5,161 B.
+  `0078`'s intent sits outside the stamp, so unit 3's graded hash stands. The Q3 reword keeps the
+  floor's force and anchor. Advisories, no change: "one span each" in R3 (artifact-home has
+  three); the fail's exception cites `impl.baselines-in-place-marked`, where the post-sign form is
+  defined in `impl.baseline-entry-grammar` (the reading holds either way).
+- Approved, content-pinned to base `9093c035…` + rev1 `d8aab3f9…` and the nine drafts' hashes.
+  Fresh snapshot `snap-w3-p1-build-before.txt` (2 entries).
+- plans: W3 P1 FAIL(1, 4, 5), PASS.
+
+## 2026-10-11 — W3 P1 build landed
+
+- `w3-p1-schema` wrote and stamped `0075`–`0083`, each byte-identical to its re-hashed draft and
+  each stamped hash matching the plan. 0075 `238d849d…` · 0076 `8f88f832…` · 0077 `f0bdf701…` ·
+  0078 `d78415d8…` · 0079 `49954382…` · 0080 `cf6ed47a…` · 0081 `3fd38bcc…` · 0082 `8f59e963…` ·
+  0083 `6c1ca199…`. Views: `templates/design-stage.yaml` new; nine modified (`commands/implement`,
+  the feature, epic and lane homes, the four skills, `templates/architecture-store`).
+- Figures: implement blocks (bytes) preamble 5,015 · roles 5,321 · reserved 5,596 · tools 27,650 ·
+  ways-of-working 6,341 · boundaries 5,990 · fail-conditions 5,161 · total 61,074. Skill renders
+  (chars): store 18,391 · `review-plan-artifacts` 16,038 · `review-sufficiency` 14,091 ·
+  `testing-gap-finding` 16,293. Similar sweep: 1,243 rules · 213,340 pairs · 0 clusters · 184
+  suppressed.
+- Disclosed: 0081–0083 were written before 0081 was stamped, against §7's one-at-a-time order. The
+  intermediate validates showed `header field hash: missing` on the still-unstamped files only, and
+  0 rejecting after 0083; content unaffected. Template bytes in the ledger convention are 4,278 /
+  848 (raw stdout 4,279 / 849).
+- Lead re-check, first-hand: `migrate status` 1..83 (75 migrations) · `68e3074f…` · 93 documents ·
+  1,243 rules; validate 0 rejecting · 116 advisory; views ≡ replay (`diff -r` empty); the porcelain
+  diff against the snapshot is exactly the 19 lines; no crate or allowlist diff.
+- Next: P2 and P3 plan-only in parallel; a fresh W3 gate grader takes units 1–4 meanwhile.
+
+## 2026-10-11 — W3 gate, units 1–4: six PASS, unit 3 FAIL (1); fix ordered
+
+audit: unit 1 (schema content · 0075 + design-stage template view, feature/epic/product-lane home view diffs) · w3-gate-grader · opus · 5 files · 1 rounds · 0 blocking
+audit: unit 2 (schema content · 0076 + 0077 + implement view diff) · w3-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+audit: unit 3 (schema content · 0078 + 0083 + implement and review-sufficiency view diffs) · w3-gate-grader · opus · 4 files · 1 rounds · 1 blocking
+audit: unit 4a (schema content · 0079 + authoring-architecture-store and architecture-store template view diffs) · w3-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+audit: unit 4b (schema content · 0080 + review-plan-artifacts view diff) · w3-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+audit: unit 4c (schema content · 0081 + 0083's user-added-regrade op + review-sufficiency view diff) · w3-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+audit: unit 4d (schema content · 0082 + testing-gap-finding view diff) · w3-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+
+- `w3-gate-grader` is fresh, persona-less, on opus, with the `validation-primitive-edit` render
+  pasted verbatim. Pre-pass, first-hand: 0 rejecting · 116 advisory; 1..83 · `68e3074f…`; views ≡
+  replay; all nine re-stamped hashes match; no rule vanished, moved or changed class, kind or
+  `when:`; tools 27,651 B.
+- Unit 3's blocking finding: 0083 dropped "only" from `impl.artifact-home`'s "recorded on that
+  entry only". The "only" carries seams ruling R1 (`2026-09-29-joint-hook-delta-build-seams.md`,
+  via 0037): an entry-changing ruling stays out of `.mochiko/decisions/`. "Never in a ledger" does
+  not keep that out, and no ruling covers the exit. The cut traces to the lead's own advisory in
+  the P1 revision request; the plan's ready text had kept "only". Fix: `0084` restores the word,
+  everything else byte-identical. This is the unit's one fix round; P1 is building it, and the
+  same grader re-audits that hunk only.
+- Advisory, to unit 7 and the landing: `impl.gate-design-checkpoint` anchors to implement D8, and
+  D9 and `architecture-design-primitive` D8-rendered-diagram-signoff are named only in 0076's
+  intent, so the strips and `DECISIONS.md` annotations must name both.
+- Lead's §3.6 read against the landed render: every carrier is live — `impl.design-stage`,
+  `-agenda`, `-unit`, `-blind-list`, `-inputs`, `-file`, `impl.design-seat-additions` (the by-name
+  `contract-inside` grant), `impl.desk-offer` (`when: scope=selection|delta|epic`),
+  `impl.index-regeneration`, `impl.thinking-stage` (floor, pointer `mochiko:analysis-iterative`),
+  `impl.fail.design-outside-ruled-set`, the `design-stage` moment, the checkpoint reword and
+  `impl.midrun-refire`'s short re-fire. The `design_stage` condition lives on
+  `review-plan-artifacts` (the meaning-kept grade fires only where the stage ran). The read clears
+  nothing on its own.
+- P2 and P3, still planning, were told `0084` is landing (a new `??` line and a changed implement
+  view); P3's census figures are re-read at build.
+- Fix landed: `0084-artifact-home-only-restored.yaml` (`6bbee4f6…`), one reword-rule op that
+  restores "only", so the floor keeps its D1 anchor. Lead re-check, first-hand: 1..84 (76
+  migrations) · `58f165c8…` · 93 documents · 1,243 rules; validate 0 rejecting · 116 advisory;
+  views ≡ replay; the ways-of-working render reads "recorded on that entry only". Sent to the same
+  grader for unit 3's round 2.
+
+## 2026-10-11 — W3 gate, unit 3 round 2: PASS
+
+audit: unit 3 (schema content · 0078 + 0083 + 0084 + implement and review-sufficiency view diffs) · w3-gate-grader · opus · 5 files · 2 rounds · 0 blocking
+
+- First-hand: 0 rejecting · 116 advisory (only implement's budget line moved, 42,178 → 42,183);
+  1..84 · `58f165c8…`; 0084 re-stamps to its committed hash; views ≡ replay. A word diff from 0083
+  to 0084 changes one token, and from HEAD's text (0037) to 0084 the rule only gains text, so R1
+  stands whole. Class, kind, anchor and labels are unchanged; 0075–0083 are byte-identical to round
+  1. Units 1–4 all PASS. Units 5–8 wait on P2 and P3.
+
+## 2026-10-11 — W3 P3 plan received; sent to its grader
+
+- `w3-p3-tests` returned `w3-p3-plan.md` (428 lines, sha256 `51bcbfdb…df356`), measured at 1..84.
+  Red now: 11 crate tests (754 pass, 11 fail), the contract's converted-shape and deliverables
+  cases, the kit's `check-rubric`. Its drafts, dry-run in a scratch mirror: `cargo test` 765 pass,
+  the full sweep 48 pass, fmt and clippy clean, `--host-only` 7/7, `check-rubric` 71 + 54 = 125.
+  Repo untouched by the seat. Stops: none.
+- Lead's answers. Q1: option (a), a named `REANCHORED_SIDECAR_ANCHORS` list in the sidecar-anchor
+  test (test file only; the test's comment prescribes the re-key; 0076 re-anchored
+  `impl.gate-design-checkpoint`). Q2: fold the five pre-existing 0013 ids into the kit, since
+  `check-rubric` needs them; this closes part of BACKLOG's *Eval and doc residuals*. Q3: the write
+  set widens by `evals/plan/README.md:45`. Q4: steps B1–B5 on approval, B6 after "go". Q5: a
+  BACKLOG line at landing for the truncated whys.
+- Sent to `w3-g3-plan-grader-p3` (fresh, persona-less, opus), render pasted verbatim, plan by path
+  plus hash. The wave's re-plan is spent, so a FAIL goes to the user.
+
+## 2026-10-11 — W3 P2 plan received; sent to its grader
+
+- `w3-p2-prose` returned `w3-p2-plan.md` (820 lines, sha256 `3e0dbc1a…b3f9c8`). It has 8 line
+  edits in 5 files: the `review-plan-artifacts` SKILL `:42`, `ARTIFACT-CHECKLISTS.md` `:79–83` and
+  `:89`, `patterns-system-design` `:13–14` and `:67–69`, the router `:117` and `:143`, and README
+  `:134`. Three removals by ruling, with three `[v0.120.0]` strip entries, plus a comment-only
+  `strips/implement.md` that names the checkpoint's D9 and `architecture-design-primitive` D8
+  supersessions (the unit-3 advisory). `implement.md` is unchanged, since its Not-done line
+  already cites the pin. Budgets at 1..84: store 24,276 · `review-plan-artifacts` 19,507 ·
+  `review-sufficiency` 17,360 · `testing-gap-finding` 23,305 · `patterns-system-design` 10,298
+  (inside 11,047). Stops: none; no persona line is false.
+- Lead's answers. Q1: `FEASIBILITY-LENS.md:99–101` and the `store_delta` note are incomplete, not
+  false (`architecture.md` still draws the neighborhood view, and the diagram edits sit in the
+  pinned-base diff), so BACKLOG. Q2: router `:143` and README `:134` are false (authoring-first
+  order), while `implement.md:16–21` and `ARCHITECTURE.md:244` stand; the lead read all four
+  first-hand. Q3: meaning-kept folds into lens 1. Q4: `ARTIFACT-CHECKLISTS.md:91` is incomplete, so
+  BACKLOG. Q5: §12.5's list goes to BACKLOG at landing. Q6: the "Prior (wave 2): …" segment stays.
+  Q7: unit 6a–6d placeholders, as W1/W2. Q8: comment-only strip accepted if the strips README
+  allows it.
+- Sent to `w3-g2-plan-grader-p2` (fresh, persona-less, opus), render verbatim, plan by path plus
+  hash; a FAIL goes to the user.
+
+## 2026-10-11 — W3 P3 plan round 1: PASS; build approved, B6 held
+
+- `PLAN GRADE: W3 P3 tests · PASS · none`. Verified first-hand: the hash; the tree; 1..84 ·
+  `58f165c8…`; `cargo test --all --no-fail-fast` 754 passed · 11 failed, the exact set the plan
+  names, and T5 under the full sweep; the op tally over 0075–0084 (13 mints, 19 rewords); the
+  pair deltas; 39 floors · 16 fails. The fixture convention (`sed '$d'`) matches the committed
+  fixtures, and the recaptures reproduce. Q1's change is test-only, and of the six re-anchored ids
+  only `impl.gate-design-checkpoint` is in the genesis sidecar. `--host-only` is 5/7 with the two
+  named failures; `check-rubric` shows the 16 uncovered ids. The write set is disjoint from P1's
+  and P2's.
+- Advisories carried into the approval. B1/B2's red-then-green order contradicts itself, so the
+  `SHIPPED_TEMPLATES` hunk lands before the fixture Writes; §2's parse-test claim is corrected; and
+  clippy re-runs at the final drafts in B3. Noted, no change: the re-key list's migration field is
+  documentation only, as the existing `RETIRED_…` list's is.
+- Approved, content-pinned to `51bcbfdb…` and its draft hashes, with the Q1–Q5 answers. B0–B5 now;
+  B6 waits for "go" after P2 lands. Fresh snapshot `snap-w3-p3-build-before.txt`.
+- plans: W3 P1 FAIL(1, 4, 5), PASS · W3 P3 PASS · W3 P2 under grade.
+
+## 2026-10-11 — W3 P2 plan round 1: PASS; build approved
+
+- `PLAN GRADE: W3 P2 prose · PASS · none`. Verified first-hand: E1–E8's old strings occur once
+  each at the cited lines; the payloads reproduce (store 24,276 · `review-plan-artifacts` 19,507
+  after E1 · `review-sufficiency` 17,360 · `testing-gap-finding` 23,305); the implement render; the
+  CHANGELOG census against the migration ops (13 minted, 15 pre-existing reworded); every
+  made-false ground against the migrations and records; the strip entries, including the
+  `[v0.116.0]` KEPT survivor handled as a recorded D9 supersession; the unit-3 advisory answered
+  (D9 and `architecture-design-primitive` D8 named); Q8's precedent at `strips/implement.md:159`.
+- Amendments carried into the approval. Router `:66` already names the stage, so it comes off the
+  BACKLOG list. A W3 wave comment goes in `strips/mochiko.md` (router 48,637 → 48,744). §5.2B's
+  consumers line names `review-sufficiency` and `testing-gap-finding`. E5 cites `:67–68`. The
+  CHANGELOG's "no floor or fail retired or lowered" sentence names `impl.deviation-gate`'s
+  cycle-stop set narrowing by ruling: the deployment view leaves it and is checked at the landing
+  diff (architecture D8, S7).
+- Lead's reading on the stop list (§6, "any floor or fail retired or lowered"): that narrowing is
+  ruled in the architecture record (S7, accepted at review) and unit 3 passed it, so it is not a
+  stop. It is named plainly in the CHANGELOG and goes to the user at the wave's close.
+- Approved, content-pinned to `3e0dbc1a…`, with the Q1–Q8 answers. Fresh snapshot
+  `snap-w3-p2-build-before.txt`; P3 builds in parallel on its own surfaces.
+- plans: W3 P1 FAIL(1, 4, 5), PASS · W3 P2 PASS · W3 P3 PASS.
+
+## 2026-10-11 — W3 P3 B0–B5 landed; B6 held
+
+- `w3-p3-tests` built 13 paths, each equal to its plan draft's hash. Five crate test files
+  (`fidelity.rs` carries the `REANCHORED_SIDECAR_ANCHORS` list, keyed to
+  `impl.gate-design-checkpoint` alone); fixtures `design-stage.{producer,check}.txt` (new;
+  `3a6a8f1e…`, `82f093f5…`) and the `architecture-store.producer.txt` recapture (`f362df8a…`), each
+  reproduced from the binary; `run.py` and the contract README; the implement kit's
+  `observable.yaml` (the five 0013 ids folded in) and `preregistration.md`;
+  `evals/plan/README.md:45` ("71 + 54").
+- Red then green, per the amendment. With `SHIPPED_TEMPLATES` landed first, both byte-identical
+  fixture tests failed on "design-stage … fixture is readable: No such file", then passed once the
+  two fixtures were written. The parse tests read no fixture and stayed green, which corrects the
+  plan's §2.
+- Gates: `cargo test --all` 765 passed, 0 failed; the full sweep 48 passed; fmt clean; clippy
+  clean, also from a fresh target dir; `run.py --list` 99; `check-rubric` "71 observable, 54
+  out-of-instrument, 125 total"; `check-fixtures` OK. The porcelain shows only P3's 13 paths beyond
+  its snapshot, and P2's grader confirmed P2's surfaces still untouched.
+- B6 (`--host-only`, the `PROBE_ARGUMENTS` re-read, the final regression) waits for P2's landing.
+  Gate unit 5 (the implement command pair; P2's plan leaves `implement.md` unchanged) is sent now.
+
+## 2026-10-11 — W3 gate, unit 5: PASS
+
+audit: unit 5 (command pair · implement, with change control, delivery and the tools ceiling) · w3-gate-grader · opus · 4 files · 1 rounds · 0 blocking
+
+- First-hand: `implement.md`'s seven `!` lines exit 0, each with both version-triple and end lines
+  (0 · 18 · 12 · 50 · 13 · 16 · 16 rules, 125 in all); `impl.thinking-stage` resolves to
+  `mochiko:analysis-iterative`, whose seven lines also exit 0; the engine is unchanged against
+  HEAD. `impl.sec.tools` 27,651 B, its 50-rule set identical to HEAD's. The Not-done line cites the
+  pin and holds no number, and the pin's 16 fails match the end line. All 37 HEAD floors survive;
+  the deviation-gate narrowing is S7's ruling, still enforced by `impl.fail.deviation-unresolved`.
+  Change control: slots are filled by name, additions only tighten, and `contract-inside`'s
+  latitude is granted by name and narrowed with its halt kept. Convergence stays at run-open.
+
+## 2026-10-11 — W3 P2 build landed
+
+- `w3-p2-prose` built 11 paths to plan `3e0dbc1a…` with the five amendments, each write dry-run
+  first; no deny. E1 `review-plan-artifacts` SKILL; E2–E3 `ARTIFACT-CHECKLISTS.md`; E4–E5
+  `patterns-system-design` SKILL; E6–E7 the router; E8 README; strips `patterns-system-design`
+  (1 entry), `review-plan-artifacts` (2 entries), `implement` (comment only), `mochiko` (W3
+  comment, router 48,637 → 48,744); budget rows `:73`, `:78`, `:80`, `:82`, `:92` with
+  `[lead: the verdict, unit 6a…6d]`; the CHANGELOG W3 slot, which names the deviation-gate
+  narrowing under S7.
+- Figures (chars, 1..84): store 24,276 (+4,543 over budget) · `review-plan-artifacts` 19,507
+  (+1,494) · `review-sufficiency` 17,360 (+1,937) · `testing-gap-finding` 23,305 (+3,328) ·
+  `patterns-system-design` body 10,298 (inside 11,047) · router 48,744. Descriptions unchanged.
+  `ids --check` 0 · 0; validate 0 rejecting · 116 advisory.
+- Lead re-check: the porcelain diff against `snap-w3-p2-build-before.txt` is exactly the 11
+  lines; validate as reported.
+- Found false beyond the plan: `README.md:108`, "Any deviation from the signed store delta stops"
+  — since 0078 only the container and flow views stop. The lead ruled it false, and P2 applies its
+  ready insertion as one dry-run Edit. E5's real span is `:68–69`, and the strip comment keeps it.
+  Router `:143`'s "three routing gates" was checked and is true: the stage is a duty, not a gate.
+- BACKLOG at landing (incomplete, not false): the `review-plan-artifacts` description and router
+  `:98`; router `:90`, `:95`, `:162`; the `patterns-system-design` description, taste scope and
+  Quality Checklist; `ARTIFACT-CHECKLISTS.md:91`; `ARCHITECTURE.md:285`, `:388` and the
+  pre-existing `:277`/`:300–302`; `templates/report-format.md:7`; `devils-advocate.md:20`;
+  `FEASIBILITY-LENS.md:99–101` and the `store_delta` note.
+- `README.md:108` applied: the deviation sentence now names the container and flow views as the
+  cycle stops, the other views checked at the landing's built-vs-signed diff. One CHANGELOG
+  sentence was added, since the W3 slot lists README's ripple. Dry-run allow on both; `ids
+  --check` 0 · 0; still the same 11 paths. Gate units 6a–6d and 7 sent; P3 given "go" for B6.
+
+## 2026-10-11 — W3 P3 B6 done
+
+- With P2's prose landed: `--host-only` "contract suite: 7/7 cases passed" (a filtered run, not
+  the gate). Its `converted-shape` lines pass on P2's surfaces, including the implement floor set
+  (39 ids) and `review-plan-artifacts` (11 ids). The `PROBE_ARGUMENTS` re-read changes nothing:
+  `implement.md` is unchanged and its Entry still holds the row's sentence. `cargo test --all` 765
+  passed, 0 failed; the full sweep 48 passed; fmt and clippy clean; `--list` 99; `check-rubric`
+  125 OK; `check-fixtures` OK. All 13 files still match their B3–B5 hashes. No finding on P2's
+  surfaces. Unit 8 is sent once units 6–7 return.
+- Q-D, prepared for the close: `dependency-halt.sh:76` says "the seven prose skills"; since W1's
+  conversion there are six plus the router, so a shipped-hook comment edit with its strip goes to
+  P2 as unit 7b. The lead fixes `.claude/rules/mochiko/primitive-edits.md:75`/`:241–242` (six
+  prose skills; 36 schema-bearing, "the thirty" stale) and `BACKLOG.md:158` at landing.
+  `evals/contract/README.md:371`'s "seven" counts the router and stays true.
+
+## 2026-10-11 — W3 gate, units 6a–6d and 7: PASS
+
+audit: unit 6a (skill pair · authoring-architecture-store, overage +4,543 HOLDS) · w3-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+audit: unit 6b (skill pair · review-plan-artifacts, overage +1,494 HOLDS) · w3-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+audit: unit 6c (skill pair · review-sufficiency, overage +1,937 HOLDS) · w3-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+audit: unit 6d (skill pair · testing-gap-finding, overage +3,328 HOLDS) · w3-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+audit: unit 7 (prose primitives and records · patterns-system-design, ARTIFACT-CHECKLISTS, router, four strips, README, budget ledger, CHANGELOG W3 slot) · w3-gate-grader · opus · 11 files · 1 rounds · 0 blocking
+
+- First-hand: every payload reproduces (24,276 · 19,507 · 17,360 · 23,305; HEAD 24,192 · 18,272 ·
+  16,621 · 23,208); descriptions unchanged; `patterns-system-design` body 10,298 inside 11,047;
+  router 48,744. Stepped prefix replays tie each render move to its migration: store +84 at 0079,
+  `review-plan-artifacts` +1,136 at 0080, `review-sufficiency` +704 at 0081 and +35 at 0083,
+  `testing-gap-finding` +97 at 0082. Each wave delta is a ruled obligation; E1's +99 body is a pure
+  insertion of the meaning-kept lens into the walk order. Every strip entry is complete, and the
+  `strips/implement.md` comment closes the unit-3 advisory.
+- Advisory, outside W3, a BACKLOG candidate: `ARTIFACT.md`'s implement section still says build-time
+  D-/C-/IP- writes "land as baseline-delta.md entries", false since the delta-files retirement.
+- Remaining: unit 8 (queued with the grader) and unit 7b (the hook comment, P2 building).
+- Unit 7b built by `w3-p2-prose`: `dependency-halt.sh:76` "seven" → "six" with no reflow (`bash -n`
+  exit 0, mode 100755), and a `[v0.120.0]` supersession entry in `.mochiko/strips/dependency-halt.md`
+  citing implement-brainstorm-led D2-iterative-becomes-engine. Both dry-run allow; `ids --check`
+  0 · 0. P2's porcelain is now its 11 paths plus these 2. Sent to the grader after unit 8. The
+  advisory's `ARCHITECTURE.md:301` ("land as `baseline-delta.md` entries") is already on the
+  BACKLOG list as pre-existing `:300–302`.
+
+## 2026-10-11 — W3 gate, unit 8: PASS; Q-D counts fixed
+
+audit: unit 8 (crate tests, contract expectations, the implement plan kit · crate non-author review) · w3-gate-grader · opus · 13 files · 1 rounds · 0 blocking
+
+- First-hand: crate `src/`, both `Cargo.toml`, `Cargo.lock` and the allowlist have no diff, and
+  the `#[test]` counts are unchanged per file. `cargo test --all` 765 passed · 0 failed; the full
+  sweep 48 passed; fmt and clippy rc 0; `--host-only` 7/7 (filtered, not gate 6); the implement
+  floor set equals the render's 39. `check-rubric` 125 with every live implement id placed
+  exactly once; skill floors unchanged (266/36); fixtures byte-identical. The raw no-allowlist
+  sweeps at 1..70 and 1..84 match. The crate's non-author review passes. Advisory, no change:
+  `REANCHORED_SIDECAR_ANCHORS`, like `RETIRED_…`, would match nothing silently if an entry named a
+  non-sidecar id, but it is true as written.
+- Q-D, the lead's: `.claude/rules/mochiko/primitive-edits.md:75` and `:242` now read "the six prose
+  skills", and `:241` reads "(the thirty-six)" schema-bearing skills (36 measured; "the thirty" was
+  stale before this build). `BACKLOG.md:158`'s watch line goes at landing.
+
+## 2026-10-11 — W3 gate, unit 7b: FAIL (1); fix ordered
+
+audit: unit 7b (prose primitive · dependency-halt.sh :76 count word + its v0.120.0 strip entry) · w3-gate-grader · opus · 2 files · 1 rounds · 1 blocking
+
+- The hook edit is clean: the count holds (6 prose skills plus the router), `bash -n` rc 0, mode
+  100755, one comment line changed, and the gate is still the `grep -q -F` at `:80`. Blocking: the
+  strip entry's *Consumers assessed* calls `primitive-edits.md:75`/`:242` stale, but the lead
+  corrected both after P2 wrote it. Fix: P2 rewords that clause only; the same grader re-audits
+  it. This is the unit's one fix round.
+- The grader shortened unit 3's resolved Failure narrative to 6 lines, to stay under the report
+  envelope's 15-line section cap; unit 3's block is unchanged. The lead's rules-file edit is not a
+  shipped primitive, so it is outside the gate (`validation-primitive-edit.gate-job`).
+
+## 2026-10-11 — W3 gate, unit 7b round 2: PASS; wave 3 closed
+
+audit: unit 7b (prose primitive · dependency-halt.sh :76 count word + its v0.120.0 strip entry) · w3-gate-grader · opus · 2 files · 2 rounds · 0 blocking
+
+- The revised clause matches the tree. The entry's old "Q-C" label was wrong, since Q-D is this
+  item (`:328`), and the narrative now reads Q-D. Only `:34–36` changed against round 1; the
+  older entries and the header are byte-identical to HEAD.
+- W3 units 1–8, 4a–4d, 6a–6d and 7b all PASS; units 3 and 7b each passed at round 2, each within
+  its one fix round. Plan rounds: P1 PASS on round 2 (the wave's one re-plan), P2 and P3 PASS on
+  round 1. No grammar or crate-source change. No floor or fail retired; `impl.deviation-gate`'s
+  cycle-stop set narrows by ruling (architecture D8, S7), named in the CHANGELOG.
+- Lead's regression read at wave close, first-hand: 1..84 (76 migrations) · `58f165c8…` · 93
+  documents · 1,243 rules; validate 0 rejecting · 116 advisory · 0 clusters · 184 suppressed;
+  views ≡ replay; `cargo test --all` 765 passed, 0 failed; the full sweep 48 passed; fmt clean;
+  clippy `-D warnings` clean; `cargo audit --deny warnings` rc 0. Char budgets as unit 6 measured.
+- Committed next, not pushed. Then the bump, the full contract suite and the landing.
