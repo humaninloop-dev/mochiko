@@ -4,7 +4,8 @@
 # never silently absent at coverage 0. Validated by `run.py check-rubric brainstorm`:
 # every schema rule ID appears in exactly one list. Rule ids and texts come from the
 # derived view `.mochiko/schema-views/commands/brainstorm.yaml` (the projection of the
-# migration log the runner reads; 55 rules since migration 0044, 30 from 0005 to 0043).
+# migration log the runner reads; 49 rules since migration 0060, 55 from 0044 to 0059 and
+# 30 from 0005 to 0043).
 #
 # Out-of-instrument reason vocabulary (implement's, minus `epic` — brainstorm has no epic
 # scope — plus `fail-condition`, as setup's):
@@ -46,11 +47,11 @@ command: brainstorm
 
 observable:
   # roles
-  - {id: brainstorm.lead-inline-questioning, why: the lead plans and orchestrates the run and runs the questioning itself inline — never handed to a seat (since 0044 the form per user state is brainstorm.question-form's)}
+  - {id: brainstorm.lead-inline-questioning, why: the lead plans and orchestrates the run and its deciding is planned as the run's thinking stage on mochiko:analysis-iterative (since 0060 the inline hold and the question form are the engine's · co-moves with brainstorm.thinking-stage)}
   - {id: brainstorm.record-review-independence, why: the review seat is named as a non-author reading the frozen record from the file}
   - {id: brainstorm.blind-map-dispatch, why: standard size (s2 · s3) — the review seat is spawned at frame hardening with the frame's problem · destination and out-of-scope lines only and never the record · questioning goes on without waiting for its map · and the same seat is resumed with the record for the end read (size-split read)}
   - {id: brainstorm.small-session-review, why: small size (s1) — the review seat's first message carries the topic and goal line only and the record path follows only once its blind map has landed (size-split read · the small-size twin of blind-map-dispatch)}
-  - {id: brainstorm.blind-second-list, why: standard size (s2 · s3) — on a fork costly to undo (s3's paired discount against a £70-per-seat contribution) a fresh seat that is never the review seat gets the frame and the question without the lead's options · and the user sees where the two lists differ before ruling (size-split read)}
+  - {id: brainstorm.blind-second-list, why: standard size (s2 · s3) — brainstorm's cadence for the thinking stage's blind second list · a fork costly to undo (s3's paired discount against a £70-per-seat contribution) gets the list with the frame as its seat's opening · none at small size (size-split read · since 0060 the split sits in the rule's text and its when is cleared)}
   # reserved
   - {id: brainstorm.coverage-survivor-routing, why: the disposition gate presents each coverage gap as a candidate topic with the user ruling explore-now / rule-inline / defer}
   - {id: brainstorm.user-record-acceptance, why: the acceptance gate is described as the user's word with both onward branches}
@@ -60,7 +61,7 @@ observable:
   - {id: brainstorm.reopen-born-verify, why: the explore-now branch of the disposition gate carries its bound — one verify round on the decision born there · no fresh cold read and no second reopen off it (thin read — described branch · same shape as brainstorm.coverage-survivor-routing)}
   - {id: brainstorm.frame-changes-users-word, why: once the frame hardens a frame line changes only on the user's word — one line at a time and stamped in the record — and a changed destination re-checks the decisions made under it (thin read — a described reservation · the frame's twin of user-pen-boundary)}
   - {id: brainstorm.size-users-ruling, why: the lead proposes a size on the frame card and the user rules it in the reply that confirms the frame · raised freely and never lowered without the user's word (every golden)}
-  - {id: brainstorm.user-steers, why: each turn the user may edit the decision map · pick the next askable question · pull a default out to its own turn or stop · and any out-of-scope move goes to the user as a frame change (thin read — described standing levers)}
+  - {id: brainstorm.user-steers, why: in any reply the user may edit the decision map · pick the next askable question or stop · and any out-of-scope move goes to the user as a frame change (thin read — described standing levers · pulling a default to its own turn is the engine's since 0060)}
   # tools
   - {id: brainstorm.deliverable-record, why: a kebab-case slug is proposed at the start and the record path with its single decision namespace is named}
   - {id: brainstorm.record-as-you-go, why: the record is written as decisions settle during the questioning — never assembled at the end}
@@ -82,25 +83,19 @@ observable:
   - {id: brainstorm.frame-hardens, why: no deciding starts before the user's first reply hardens the frame — each guessed line confirmed · corrected or struck — and a line the user cannot answer is marked open and taken as an early decision (a described gate)}
   - {id: brainstorm.decision-map, why: the first question arrives with a three-part decision map (askable now · in fog with what each hangs on · out of scope) never put up for approval · then one status line each turn and the full map again when it changes}
   - {id: brainstorm.blind-map-fold, why: standard size (s2 · s3) — when the blind map lands its load-bearing angles are folded into the decision map marked as from the blind map · the dropped angles are listed for the end read · and a ruling a late angle bears on goes back to the user (size-split read)}
-  - {id: brainstorm.fact-before-decision, why: no decision is put before the fact it hangs on is in hand with its source — s2's data-or-screen question waits on the instructor_id mismatch · s1's window on the waitlist figures · s3's lever on the pricing figures — and a fact only the user holds is asked as a labelled fact question}
-  - {id: brainstorm.own-turn-or-batch, why: real or costly forks get their own turn · every other decision is a default named in one line when it arises and confirmed in one batch at wrap-up · a default others hang on is confirmed before them}
-  - {id: brainstorm.options-rule, why: every fork carries at least two real options with the cheaper shape among them (do less · reuse · do nothing — s3's no-referral road) and names the rejected road with its reason}
-  - {id: brainstorm.ratified-yes, why: a yes to the lead's pick is recorded as ratified in the card's how-it-was-decided part with no new confidence mark · and after three ratified rulings running the next fork is put in another form (s1's confident user asking for a pressure-test plants the run of yeses)}
-  - {id: brainstorm.vague-answer-reasked, why: a whatever-you-think answer is re-asked as a choice between two concrete options and a convention-sounding answer draws one probe (thin read — a described branch · s2's unsure user invites it)}
+  - {id: brainstorm.ratified-yes, why: a ratified pick is recorded in the card's how-it-was-decided part with no new confidence mark (s1's confident user asking for a pressure-test plants the yeses · the three-in-a-row form change is the engine's since 0060)}
   - {id: brainstorm.dependency-order, why: no question is put before what it hangs on is settled and each says in one line what it unblocks · which askable question goes first is the lead's call}
-  - {id: brainstorm.question-form, why: options are put in plain words naming decisions and never bare ids · one sentence and one concrete example per option · the case against the pick and a one-line recommendation on one screen — options testing s1's stated lean · an open question still allowed for s2's unsure user (ship bar d's legibility rule from 0044)}
-  - {id: brainstorm.show-before-asking, why: a question about how something looks or behaves carries a rough in-message artifact — a worked scenario with real numbers or a replay on a past case (s1's 412 offers · s2's handed-over sessions · s3's £595 course) — never a file or code}
-  - {id: brainstorm.stop-rule, why: deciding is planned to end only when the map is empty — nothing askable · fog ruled or deferred or handed on · no open frame line · the defaults batch confirmed · any started blind map landed and folded — and a session the user stops records what is left open}
+  - {id: brainstorm.stop-rule, why: deciding is planned to end only when the map is empty — nothing askable · fog ruled or deferred or handed on · no open frame line · the defaults batch confirmed · any started blind map landed and folded — and a session the user stops also says the destination was not reached}
   - {id: brainstorm.fix-one-card-verify-once, why: a review fix edits the one card it touches and adds a line under its changed-at-review part · the review seat verifies the fixes once reading only the changed cards and their gists · a second failed verify goes to the user (thin read — a described branch · same chain as reopen-born-verify)}
   - {id: brainstorm.accept-screens, why: before the freeze the user confirms or changes one screen — decisions by name with gists · the defaults batch · out of scope · open questions · untested bets with how each would be tested — and after review one screen shows what changed · acceptance taken only on the user's explicit word}
   # boundaries
   - {id: brainstorm.transport-floor, why: the review seat (spawned at frame hardening at standard size or dispatched in two messages at small size) makes every run multi-seat so the floor binds and is referenced never restated}
+  - {id: brainstorm.thinking-stage, why: the plan binds its deciding to mochiko:analysis-iterative as the run's thinking stage — the engine's asking rules referenced never restated · brainstorm's own rules carry the domain part (every golden · co-moves with brainstorm.lead-inline-questioning)}
 
 out_of_instrument:
-  # latitude / register / precedence
+  # latitude / register
   - {id: brainstorm.staffing-latitude, why: latitude}
   - {id: brainstorm.register, why: register}
-  - {id: brainstorm.own-rules-win, why: precedence — it settles which rules bind where mochiko:analysis-iterative and this command differ · a plan embodies the winning rules (frame card · decision map · batched defaults) and those are graded on their own}
   # conditional (plantable, unplanted) / structural (unplantable by design)
   - {id: brainstorm.pair-maps-independent, why: conditional — binds only when the lead's staffing call composes a review pair; staffing is latitude so no fixture plants a pair and the read would follow the lead's choice replicate by replicate}
   - {id: brainstorm.size-shapes, why: conditional — binds only when the user rules the size too-big · no golden's topic is fog-dominated so none is expected to propose it · plantable by a topic where fog dominates (a scenario-design act not taken here)}
@@ -126,6 +121,15 @@ out_of_instrument:
 # share a bucket, as the 2026-09-19 audit asked: fix-one-card-verify-once sits beside
 # reopen-born-verify, frame-changes-users-word beside user-pen-boundary, and
 # small-session-review beside blind-map-dispatch as its other size.
+#
+# Re-keyed 2026-10-11 to migration 0060 (implement-brainstorm-led D3), before any grid: the
+# deciding moved onto mochiko:analysis-iterative, so 7 rules left — fact-before-decision,
+# own-turn-or-batch, options-rule, vague-answer-reasked, question-form and show-before-asking out
+# of observable, own-rules-win out of out_of_instrument — and 1 was added, the floor stub
+# thinking-stage (observable, beside transport-floor). The 6 reworded rules
+# (lead-inline-questioning, blind-second-list, user-steers, decision-map, ratified-yes,
+# stop-rule) keep their buckets and are graded against their new text; a why was re-cut only
+# where it named a limb the new text no longer carries. 40 · 9 of 49.
 
 # Declared unplanted branches (fixture-design record, not a partition class): plant
 # candidates if a later grid wants them graded.
@@ -144,5 +148,5 @@ out_of_instrument:
 #     would plant it.
 #   brainstorm.frame-changes-users-word — no fixture plants a fact that breaks a hardened
 #     frame line; the reservation is graded on its described form.
-#   brainstorm.stop-rule — the three-questions-without-shrinking limit fires only in a live
+#   brainstorm.stop-rule — its stall clause (a stall steps back to the frame) fires only in a live
 #     session; the plan is graded on the done condition it describes.

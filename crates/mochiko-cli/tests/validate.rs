@@ -1101,8 +1101,14 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // ("2026-09-03 producer-plan-enforcement D8"); the 2026-09-19 impeccable-design-integration
     // wave imported three skills (`0011`, `0012`), the `product-design` home and the
     // `design-baseline` template (`0013`); the 2026-09-29 census table ratification imported seven
-    // home documents (`0032` six, `0033` the `runs` home).
-    assert_eq!(state.docs.len(), 87, "the schema class is 87 files");
+    // home documents (`0032` six, `0033` the `runs` home); `0058-thinking-engine` imported the
+    // `analysis-iterative` skill ("2026-10-11 implement-brainstorm-led"); `0065-desk-visit-home`
+    // ("2026-10-11 architecture-brainstorm-interview D3") imported the `architecture-visit`
+    // template and the `architecture-desk` home, and `0066-store-diagram-set` ("2026-10-11
+    // architecture-brainstorm-interview") the `architecture-diagram` template and the
+    // `product-diagrams` home; `0075-design-stage-home` ("2026-10-11 implement-brainstorm-led")
+    // imported the `design-stage` template.
+    assert_eq!(state.docs.len(), 93, "the schema class is 93 files");
 
     let census = census(&state);
     let (command_rules, command_floors) =
@@ -1173,17 +1179,45 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // and `review-specifications` (`0053`) — command 362 → 381, skill 813 → 815, the command
     // floor figure 119 → 120 and the fail set 36 → 37, the skill floors unmoved. The twelve
     // rewords of `0051`–`0055` and `0057` keep id, class and kind; `0056` replaces a template.
-    assert_eq!(command_rules, 381, "live command rules");
-    assert_eq!(skill_rules, 815, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1196, "live rules in total");
-    assert_eq!(skill_floors, 264, "skill floors");
+    // `0058`–`0062` (the 2026-10-11 implement-brainstorm-led wave 1) bring in twenty-three rules
+    // and retire eight: `0058`'s imported `analysis-iterative` carries twenty-one skill rules, two
+    // of them floors; `0060` and `0061` each mint one floor stub over the new
+    // `common.thinking-stage` block (a block, outside both counts) and supersede seven
+    // `brainstorm` rules and `spec.own-rules-win`, none a floor or a fail node — command
+    // 381 → 375, skill 815 → 836, the command floor figure 120 → 122 and the skill floors
+    // 264 → 266, the fail set unmoved. The sixteen rewords and the one `when:` cleared keep id,
+    // class and kind.
+    // `0065`–`0070` (the 2026-10-11 implement-brainstorm-led wave 2) mint nineteen rules and
+    // retire none: fourteen on `architecture` (`0068`) — thirteen musts and the floor fail node
+    // `arch.fail.write-outside-focus` — the floor stub `arch.thinking-stage` (`0069`), the third
+    // extender of `common.thinking-stage`, and four musts on `authoring-architecture-store`
+    // (`0067`) — command 375 → 390, skill 836 → 840, the command floor figure 122 → 124 and the
+    // fail set 37 → 38, the skill floors unmoved. The fourteen rewords of `0067`, `0068` and
+    // `0070` and `0067`'s two anchor `set-rule-field`s keep id, class and kind; `0065` and `0066`
+    // import and replace documents that carry no rules.
+    // `0075`–`0084` (the 2026-10-11 implement-brainstorm-led wave 3) mint thirteen rules and
+    // retire none: eight on `implement` (`0076`) — seven musts and the floor fail node
+    // `impl.fail.design-outside-ruled-set` — the floor stub `impl.thinking-stage` (`0077`), the
+    // fourth extender of `common.thinking-stage`, two `implement` musts (`0078`), and one must
+    // each on `review-plan-artifacts` (`0080`) and `review-sufficiency` (`0081`) — command
+    // 390 → 401, skill 840 → 842, the command floor figure 124 → 126 and the fail set 38 → 39,
+    // the skill floors unmoved. The nineteen rewords of `0076` and `0078`–`0084` and the six
+    // anchor `set-rule-field`s of `0076` and `0078` keep id, class and kind; `0075` and `0079`
+    // import and replace documents that carry no rules.
+    assert_eq!(command_rules, 401, "live command rules");
+    assert_eq!(skill_rules, 842, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1243, "live rules in total");
+    assert_eq!(skill_floors, 266, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
     // sentence), so the declared floors were 110 — the same figure the shipped checker reported —
     // and `0005`'s six command mints carry it to 116, `0008`'s `setup.gate-loop-bound` to 117,
     // `0013`'s `impl.design-first-write` and `impl.design-audit-advisory` to 119, and `0051`'s
-    // `spec.fail.story-outside-slate` to 120.
-    assert_eq!(command_floors, 120, "declared command floors");
+    // `spec.fail.story-outside-slate` to 120, and the two `thinking-stage` stubs of `0060` and
+    // `0061` to 122, and `0068`'s `arch.fail.write-outside-focus` and `0069`'s
+    // `arch.thinking-stage` to 124, and `0076`'s `impl.fail.design-outside-ruled-set` and
+    // `0077`'s `impl.thinking-stage` to 126.
+    assert_eq!(command_floors, 126, "declared command floors");
 
     let fail_nodes = state
         .docs
@@ -1193,7 +1227,7 @@ fn the_shipped_corpus_matches_its_recorded_census() {
         .flat_map(|s| s.rules())
         .filter(|r| r.is_fail())
         .count();
-    assert_eq!(fail_nodes, 37, "command fail nodes");
+    assert_eq!(fail_nodes, 39, "command fail nodes");
 }
 
 /// The kinds the shipped corpus does not carry yet, each with the wave that lands it.
@@ -2810,10 +2844,12 @@ fn every_shipped_pointer_resolves_from_its_own_skill_directory() {
     // where `0045` minted `review-brainstorm.card-parts-first` pointing at
     // `references/RECORD-FITNESS.md`; 88 from the 2026-10-08 human-readable-ids wave 2, where
     // `0049`'s five `extends: review-common.joined-ids` stubs each inherit the common block's
-    // `pointer: ../../templates/artifact-format.md`.
+    // `pointer: ../../templates/artifact-format.md`; 89 from the 2026-10-11
+    // implement-brainstorm-led wave 1, where `0058` imported `analysis-iterative`, whose
+    // `analysis-iterative.deliverable` points at `SYNTHESIS.md`.
     assert_eq!(
-        report.checked, 88,
-        "the corpus carries 88 path-shaped pointers"
+        report.checked, 89,
+        "the corpus carries 89 path-shaped pointers"
     );
     assert!(
         report.findings.is_empty(),

@@ -42,8 +42,8 @@ plan/                    (shared mechanics — session, provisioning, judge call
                          s2-two-gaps (planted: missing search contract + store-colliding
                          background worker) · s3-empty-args
     observable.yaml      D8 partition: every rule bucketed observable or declared
-                         out-of-instrument (implement 58 + 46; specify 56 of 71;
-                         feature 48 of 51; architecture 46 of 49; brainstorm 45 of 55)
+                         out-of-instrument (implement 71 + 54; specify 57 of 71;
+                         feature 48 of 51; architecture 58 of 64; brainstorm 40 of 49)
     preregistration.md   read rule + tolerance band + F2 noise guard (grid-gating)
     runs/<name>/         plans, summary.json, report.md (gitignored or committed per run)
 ```

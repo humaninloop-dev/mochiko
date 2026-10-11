@@ -59,7 +59,7 @@ pinned in [`CLAUDE.md`](CLAUDE.md#skill-library-conventions-five-axes).
 |---|---|---|---|
 | **Commands** | [`plugins/mochiko/commands/`](plugins/mochiko/commands/) | 6 | User-invoked contracts (`disable-model-invocation: true`), all six on **one canonical scaffold** (v0.97.0): Identity & Mission · `## Rules — delivered by mochiko-cli` · Adaptive Goal Protocol (Entry · Goal · the count-pinned `Not done — default FAIL` line, last). Each ships as a `.md` alone; its rule content — roles · reserved · tools · ways-of-working · boundaries · fail-conditions, all six sections always present — lives in the migration log at [`plugins/mochiko/migrations/`](plugins/mochiko/migrations/) and is rendered at fire by `mochiko-cli`. No schema file ships (v0.107.0). The desks (`feature`, `architecture`) converge a done condition per visit; the runs (`brainstorm`, `implement`, `setup`, `specify`) carry a fixed one. `plan` retired at v0.91.0. The lead plans and orchestrates the run — teammates or subagents per seat is its call. |
 | **Agents** | [`plugins/mochiko/agents/`](plugins/mochiko/agents/) | 10 | Personas that carry judgment and declare `skills:`, each pinning a ruled default tier — six `model: opus`, four `model: sonnet` (seat default key, 2026-09-19). A persona contains no trace of any workflow — decoupling by absence; caller-side context rides the dispatch brief. |
-| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 38 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 37, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. The thirty schema-bearing skills carry a `## Rules — delivered by mochiko-cli` block over rules held in the migration log, exactly as the commands do; the seven prose skills and the router carry no rule set. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
+| **Skills** | [`plugins/mochiko/skills/`](plugins/mochiko/skills/) | 43 | Procedure. One user-invoked router ([`skills/mochiko/`](plugins/mochiko/skills/mochiko/SKILL.md)) indexes the other 42, which are model-invoked with graded MUST/SHOULD triggers in their descriptions. The thirty-six schema-bearing skills carry a `## Rules — delivered by mochiko-cli` block over rules held in the migration log, exactly as the commands do; the six prose skills and the router carry no rule set. Deterministic sub-checks ride as `scripts/` inside skills (e.g. `analysis-codebase`'s `detect-stack.sh`); depth rides as `references/`. |
 | **Templates** | [`plugins/mochiko/templates/`](plugins/mochiko/templates/) | 7 + `constitution-modules/` | **Report schemas** (per-seat reports) over the shared `report-format.md` envelope, plus that envelope and its deliverable-side twin `artifact-format.md`, and `output-style.md`. The **artifact schemas** left `templates/` at v0.76.0 and now live in the migration log at [`plugins/mochiko/migrations/`](plugins/mochiko/migrations/), delivered at fire by `mochiko-cli` — no schema file ships and no agent Reads one (v0.107.0, the wave-6 end state). The former doctrine homes (`workflow-contract.md`, `agent-dispatch.md`, `sized-end-stage-review.md`) were deleted at the doctrine purge (v0.46.0–v0.47.0) — their mechanics live inline in each command. `constitution-modules/` is setup's module library (knowledge-management, layer-rules, release-gates, evolution-notes). |
 
 The plugin manifest, [`.claude-plugin/plugin.json`](plugins/mochiko/.claude-plugin/plugin.json),
@@ -333,14 +333,15 @@ desk since v0.81.0 and on the canonical scaffold since v0.97.0. The peer of the 
 `.mochiko/product/architecture/` — capabilities are what the product does, the store is how it
 is built, and neither desk writes the other's truth. A visit opens with the health view read
 from the derived index (`open` rows carrying no stance · stale `not-now` revisit triggers ·
-fired upgrade triggers awaiting routing · orphan in-flight elements · the drift register),
-converges to a one-line goal and done condition, and closes with a verdict against it. The
+fired upgrade triggers awaiting routing · orphan `proposed` and in-flight-class elements and
+diagrams · the drift register · stale diagrams), converges to a one-line goal and done condition,
+and closes with a verdict against it. The
 lead writes no architecture truth alone: every stance, baseline, and amendment is the user's
 ruling on a produced-and-graded proposal.
 
 | Seat | Wiring |
 |---|---|
-| producer | `principal-architect` × `authoring-architecture-store`, `patterns-architecture-shelves` — baseline authoring (greenfield elicit, brownfield reconstruct-and-confirm), shelf-walk stance batches, amendments, delta authoring |
+| producer | `principal-architect` × `authoring-architecture-store`, `patterns-architecture-shelves` — baseline authoring (greenfield elicit, brownfield reconstruct-and-confirm), shelf-walk stance batches, amendments, the store's diagrams |
 | judgment grader | `tech-lead` — independently grades the architect's judgment writes before the user ratifies; transcription-only changes ride the landing audit instead |
 | drift probe | an empirical seat reading the codebase against the store's `As-built:` claims — never the seat that wrote the claim |
 
@@ -369,7 +370,7 @@ never to the builder who will execute the cards.
 | Primitive | Carries |
 |---|---|
 | `report-format.md` / `artifact-format.md` (templates) | The two shared envelopes every report and pipeline artifact follows. |
-| `analysis-iterative` (skill) | The shared questioning engine — lead-inline in brainstorm, setup's interrogation, and specify's intent stage. |
+| `analysis-iterative` (skill) | The shared thinking stage — the asking every user command's thinking runs on, lead-inline, plus a ruled-set contract a caller switches on; extended in each caller's own rules by brainstorm's deciding, specify's intent and story stages, the architecture desk's focus stage, implement's design stage, and setup's interrogation. |
 | `grooming-operating-docs` (skill) | Fix-on-sight restoration of a target project's operating docs when a pinned knowledge-management cap trips at a command boundary. |
 
 ## Data flow — what lands where

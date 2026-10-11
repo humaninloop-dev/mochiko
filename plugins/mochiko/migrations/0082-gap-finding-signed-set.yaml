@@ -1,0 +1,32 @@
+grammar: 1
+id: 0082-gap-finding-signed-set
+sequence: 82
+intent: >-
+  The gap-finding fence's share of the signed drawing's new shape
+  (architecture-brainstorm-interview D8 — touch 8, gap-finding's first message carries the
+  signed store diagrams): reword the floor blindness-fence-inclusion-list so the signed
+  architecture.md is admitted with the store diagram files it lists, in place of "the signed
+  architecture.md drawing" alone. Every other limb of the fence stands, the spine stays outside
+  it, and the rule keeps its anchor and its force.
+anchor: 2026-10-11 architecture-brainstorm-interview D8
+hash: sha256:8f59e963f36568d1fc3e0226f715920ecaa720a3e6fd014c6572257d7aaf20af
+changes:
+  - op: reword-rule
+    schema: skill/testing-gap-finding
+    id: testing-gap-finding.blindness-fence-inclusion-list
+    text: >-
+      The explorer is blind to code and cards. Admissible inputs are an explicit inclusion list,
+      not a layer label: `spec.md` (FR-XXX, SC-XXX, stories, declared edge cases) · the run's
+      sufficiency report and the feature's signed `architecture.md` — those two artifacts only,
+      never the `FEAT-XXX/` run-output directory at large — with the store diagram files in
+      `.mochiko/product/architecture/diagrams/` that `architecture.md` lists · Screens & Flows
+      (SCR-XXX, FLOW-XXX) · `data-model.md` (entities, state machines, DS-XXX sensitivity) ·
+      `contracts/` (`api.yaml` and any sibling contract documents) · the architecture store's
+      concern rows only — their `NFR-XXX` targets (`.mochiko/product/architecture/concerns.md`
+      plus any graduated `concerns/AX-XXX-<slug>.md`) · on a UX-bearing feature, the design
+      baseline (`.mochiko/product/design/`), whose design truth and as-built system are the
+      promised look and conduct of the rendered UI. In each baseline and store file the fence
+      admits entries reading `built` (or no `**Lifecycle:**` field) and the in-flight class
+      (`in-flight` · `modifying` · `removing`), never a `proposed` entry, which is nothing
+      promised; a `removed` stub reads absent. All define externally-observable promised behavior,
+      so the pass stays black-box.

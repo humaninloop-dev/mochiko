@@ -39,7 +39,8 @@ halt and surface it.
 
 ## Procedure
 
-Walk the four lenses in order: **conformance** against the sufficiency report's gap list ·
+Walk the four lenses in order: **conformance** against the sufficiency report's gap list, with
+**meaning kept** against the run's `design-stage.md` beside it where the caller supplies one ·
 **adopt-first disclosure** over commodity-category decisions · **rung-claim honesty** over
 each seat's disclosed ladder stops · **completeness within scope** through the mirror
 checklists of [ARTIFACT-CHECKLISTS.md](references/ARTIFACT-CHECKLISTS.md) (analysis · store

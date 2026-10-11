@@ -64,6 +64,10 @@ moments:
     The whole-build verification pass — regression sweep, cold verification, gap finding.
   landing: The acceptance-time execution of folds, graduations, and the store landing.
   acceptance: The user's accept / amend / reject that closes the run.
+  design-stage: >-
+    Where the design phase's agenda is ruled with the user — after the run-open confirmation,
+    before any design seat drafts — and again, scoped to the discovery, when undesigned
+    structure halts a cycle.
 sections:
   - id: impl.sec.roles
     title: Roles & Responsibilities — seat wiring
@@ -119,8 +123,8 @@ sections:
         kind: latitude
         text: >-
           Design-seat staffing is your call: typically ${design_seat} for the design-phase
-          baseline writes, ${architect_seat} for the store's `proposed` elements and the run's
-          architecture.md drawing, ${qa_seat} for the **TEST:** cases.
+          baseline writes, ${architect_seat} for the store's `proposed` elements, its diagram
+          edits and the run's architecture.md drawing, ${qa_seat} for the **TEST:** cases.
       - id: impl.design-gaps-only
         labels: [independence, scope-entry]
         class: must
@@ -172,6 +176,31 @@ sections:
         text: >-
           The gap-finding seat is a fresh ${gap_finder_seat}, dispatched blind: never a seat that
           built these cycles or saw this feature's design-time test cases.
+      - id: impl.design-stage
+        labels: [scope-entry, user-gate]
+        class: must
+        kind: duty
+        text: >-
+          At the design-stage moment the design phase's agenda (impl.design-stage-agenda) is ruled
+          with the user on the thinking stage with its ruled-set contract on: the ruled set is
+          saved in the run's `design-stage.md` (impl.design-stage-file), the design seats are its
+          next writers and plan and draft only inside it, and the design review pair is its
+          independent leg (impl.design-review-pair). Run-open stays one confirmation; on the
+          zero-gap path no stage runs and nothing changes, and an epic's joint spine always gives
+          it an agenda.
+        anchor: 2026-10-11 implement-brainstorm-led D5
+      - id: impl.design-stage-blind-list
+        labels: [independence, seats]
+        class: must
+        kind: duty
+        text: >-
+          Once per design phase, before the stage closes, one fresh persona-less `general-purpose`
+          seat spawned with `model: opus` draws the blind list, given only the spec, the gap list,
+          the derived store index and any visit file handed in, and returns the hidden choices it
+          sees inside each gap; each difference from your candidates is a candidate piece the user
+          rules, and one outside every gap is an outside need (impl.design-stage-agenda). Skipped
+          on a single-gap re-fire.
+        anchor: 2026-10-11 implement-brainstorm-led
   - id: impl.sec.reserved
     title: Reserved to the user — never the run's
     intent: 'Decisions held by the user: gates, rulings, and escalations no seat may take.'
@@ -182,16 +211,23 @@ sections:
         kind: gate
         text: >-
           The design checkpoint is the user's. Where the check named gaps, no code is written
-          before the user signs the design and the store delta — the store delta signed on a
-          rendered diagram plus its named AX-XXX row changes and the pinned-base diff of the
-          baselines (no render surface: present the source plus the changed-element table, and
-          record it). The checkpoint's closing act is the flip: each `proposed (<key>)` entry of
-          the run, in every baseline and the store, flips by the pinned-base diff — absent at
-          the base to `in-flight (<key>)`, changed from it to `modifying (<key>)`, cut to its
-          heading to `removing (<key>)` — the store's through
+          before the user signs the design and the store delta, asked as the landing table: each
+          ruled item of the run's `design-stage.md` — direction, seed, ruled piece, user-added
+          gap — beside how it landed in the drafts, kept or changed with why, and every small
+          technical extra the seats added, each needing the user's OK;
+          mochiko:review-plan-artifacts' meaning-kept grade fills it. The store delta is signed on
+          the run's architecture.md — signing it signs the delta-styled store diagram files it
+          lists — plus its named AX-XXX row changes and the pinned-base diff of the baselines;
+          each diagram is shown as Mermaid text that parses, rendered beside it where the session
+          can — a local preview preferred, a hosted page only on the user's yes — else with a
+          one-line note that it was not rendered here, that it renders where it is viewed, and
+          which read confirmed the parse. The checkpoint's closing act is the flip: each `proposed
+          (<key>)` entry of the run, in every baseline and the store, flips by the pinned-base
+          diff — absent at the base to `in-flight (<key>)`, changed from it to `modifying
+          (<key>)`, cut to its heading to `removing (<key>)` — the store's through
           mochiko:authoring-architecture-store; the sign-off base is then pinned per
           impl.base-pins. The user may stop at the checkpoint and resume the build later.
-        anchor: 2026-08-26 plan-stage-utility
+        anchor: 2026-10-11 implement-brainstorm-led D8
       - id: impl.gate-card-confirm
         labels: [user-gate]
         class: floor
@@ -252,6 +288,44 @@ sections:
           system part seeded at setup was signed there.
         when: {ux_bearing: present}
         anchor: 2026-09-19 impeccable-design-integration D7
+      - id: impl.design-stage-agenda
+        labels: [user-gate, scope-entry]
+        class: must
+        kind: reservation
+        text: >-
+          The stage's agenda is the gap list the sufficiency check graded — on an epic, once,
+          the joint gap list with the joint spine's design items beside it: the seams between
+          members, the joint architecture, the batch ordering. A design need found outside it is
+          the user's to rule, split by kind: new behaviour, which the spec carries no story or
+          acceptance criteria for, never joins this run — it goes to `/mochiko:specify`,
+          `BACKLOG.md` or a feature-desk card; a design piece inside a story the spec carries is
+          the user's — this run, or later — and joins only once the sufficiency seat has
+          re-graded it as a gap, marked user-added in its report. A lane run adds none
+          (impl.lane-never-widens). Nothing outside the agenda is designed without that ruling.
+        anchor: 2026-10-11 implement-brainstorm-led D6
+      - id: impl.design-seat-additions
+        labels: [user-gate]
+        class: must
+        kind: reservation
+        text: >-
+          What a design seat adds beyond the ruled set is the user's. A small technical extra no
+          ruled item or confirmed default touches — an index for speed — may wait for the
+          landing table at the design checkpoint: this is implement's by-name grant of
+          analysis-iterative.contract-inside's latitude for a later sign-off, and nothing wider.
+          Anything that changes a ruling, or that the user would notice — invoices becoming
+          deletable — halts to the user through you before it is written.
+        anchor: 2026-10-11 implement-brainstorm-led D8
+      - id: impl.desk-offer
+        labels: [user-gate, scope-entry]
+        class: must
+        kind: reservation
+        text: >-
+          Where the check names a structural gap and no desk visit file keyed to the feature
+          exists, the stage first offers a desk visit — `/mochiko:architecture <FEAT-ID>`, the
+          run pausing until the visit closes and its file is handed in — or to go on here; the
+          choice is the user's at run time.
+        when: {scope: [selection, delta, epic]}
+        anchor: 2026-10-11 architecture-brainstorm-interview D5
   - id: impl.sec.tools
     title: Tools bindings
     intent: Paths, schemas, skills, and templates the run binds to.
@@ -311,20 +385,28 @@ sections:
         text: >-
           Design outputs are written in place in the product baselines at ${product_dir}/ under
           the run's lifecycle marker (impl.baseline-entry-grammar) — data-model.md, contracts/,
-          constraints-and-decisions.md, quickstart.md, the design baseline's truth part, and the
-          store's `proposed` elements where the structural trigger fired. The run's home keeps
-          only architecture.md, the drawing the user signs: the C4-container delta diagram, the
-          sequence diagrams for qualifying flows, the deployment view where IP-XXX rows exist, and
-          the checkpoint table of changed elements — no register text, no current-state
-          narrative. Structure and scope per mochiko:patterns-system-design, grammar and lifecycle
-          per mochiko:authoring-architecture-store.
+          constraints-and-decisions.md, quickstart.md, the design baseline's truth part, and,
+          where the structural trigger fired, the store's `proposed` elements and the change's
+          drawing, before any code: its container view, its sequence diagrams for qualifying flows
+          and, where IP-XXX rows exist, its deployment view, each drawn delta-styled — new ·
+          modified · removed — into the store's own copy of that view: the spine's container
+          view where a container changes, its key-flow sequences where a key flow does, the
+          diagram file that holds the view, or a new diagram file where none does. The run's home
+          keeps only architecture.md, the drawing the user signs: the neighborhood delta view
+          drawn from the delta-styled elements and the checkpoint table of changed elements,
+          listing every store diagram file the change edited — no register text, no
+          current-state narrative. Structure and scope per mochiko:patterns-system-design, grammar
+          and lifecycle per mochiko:authoring-architecture-store.
+        anchor: 2026-10-11 architecture-brainstorm-interview D8
       - id: impl.design-review-pair
         labels: [independence, floor-pointer]
         class: must
         text: >-
           A non-author seat grades the design-phase output before the design checkpoint —
-          mochiko:review-plan-artifacts for conformance to the gap list and card quality
-          (blocking), mochiko:review-feasibility for buildability and contradiction.
+          mochiko:review-plan-artifacts for conformance to the gap list, the meaning kept against
+          the run's design-stage.md, and card quality (blocking), mochiko:review-feasibility for
+          buildability and contradiction.
+        anchor: 2026-10-11 implement-brainstorm-led D8
       - id: impl.design-absent-baseline-seed
         labels: [scope-entry]
         class: must
@@ -350,9 +432,11 @@ sections:
         class: must
         kind: routing
         text: >-
-          A builder hitting undesigned structure halts that cycle; the design phase re-fires
-          scoped to the discovery — same grade, same checkpoint. The deviation gate anchors to
-          the signed delta once one exists.
+          A builder hitting undesigned structure halts that cycle and interrupts, as
+          impl.escalation-batching allows a build-blocking question: the design phase re-fires
+          scoped to the discovery — a short design stage over it, then the same grade and the
+          same landing-table checkpoint. The deviation gate anchors to the signed delta once one
+          exists.
         anchor: 2026-08-26 plan-stage-utility
       - id: impl.epic-design-always-fires
         labels: [scope-entry, seats]
@@ -440,14 +524,20 @@ sections:
         class: must
         kind: binding
         text: >-
-          Design inputs are sufficiency-report.md and, where the design phase ran, the run's
-          architecture.md drawing at ${features_dir}/FEAT-XXX/ and its marked entries in the
-          product baselines, read in the pinned-base diff — the signed store delta among them
-          (the store at the sign-off base, or the checkpoint table), the anchor for the deviation
-          check and the built-vs-signed diff; the product baselines at ${product_dir}/
-          (data-model.md, contracts/, constraints-and-decisions.md, the design baseline at
-          ${product_dir}/design/, and the architecture store, whose concern rows carry the NFR-XXX
-          targets the built code must meet); spec.md for the cards' cited acceptance criteria.
+          Design inputs are sufficiency-report.md and any desk visit file keyed to the run's
+          feature or an epic member — its directory under `.mochiko/architecture/desk/` carrying
+          the joined FEAT id lower-cased in its slug, read against the run's own pinned base, any
+          conflict where the store has moved past it listed at the design checkpoint for the user
+          to rule — and, where the design phase ran, the run's design-stage.md, its signed
+          architecture.md at ${features_dir}/FEAT-XXX/ with the store diagram files it lists, and
+          its marked entries in the product baselines, read in the pinned-base diff — the signed
+          store delta among them (the store at the sign-off base, or the checkpoint table), the
+          anchor for the deviation check and the built-vs-signed diff; the product baselines at
+          ${product_dir}/ (data-model.md, contracts/, constraints-and-decisions.md, the design
+          baseline at ${product_dir}/design/, and the architecture store, whose concern rows carry
+          the NFR-XXX targets the built code must meet); spec.md for the cards' cited acceptance
+          criteria.
+        anchor: 2026-10-11 architecture-brainstorm-interview D5
       - id: impl.progress-surface
         labels: [evidence, reporting]
         class: must
@@ -505,12 +595,13 @@ sections:
         class: must
         text: >-
           Gap-finding dispatch is two-message and blind. The first message carries only spec.md,
-          the sufficiency report and the signed architecture.md drawing where one exists, Screens
-          & Flows, and the baselines data-model.md, contracts/, the design baseline, and the
-          store's NFR-XXX concern rows — their `built` and in-flight-class entries only, never a
-          `proposed` one — never the code, tasks.md, the **TEST:** cases, or any report. The
-          seat states its derived expectations; only then does probing begin. Its brief carries
-          the model-tiering rule, and its delegated reads stay inside the same fence.
+          the sufficiency report and, where one exists, the signed architecture.md with the store
+          diagram files it lists, Screens & Flows, and the baselines data-model.md, contracts/,
+          the design baseline, and the store's NFR-XXX concern rows — their `built` and
+          in-flight-class entries only, never a `proposed` one — never the code, tasks.md, the
+          **TEST:** cases, or any report. The seat states its derived expectations; only then does
+          probing begin. Its brief carries the model-tiering rule, and its delegated reads stay
+          inside the same fence.
         pointer: mochiko:testing-gap-finding
         anchor: 2026-08-19 qa-gap-finding-verification
       - id: impl.mutation-lens
@@ -558,13 +649,17 @@ sections:
         class: must
         text: >-
           A built structural change lands in the architecture store in three parts: the landing
-          flip over the run's elements — `in-flight` and `modifying` to `built`, the key
-          cleared, each `removing` element to its `removed` stub (transcription — rides this
-          run's landing audit) · the touched rows' As-built: and Drift: fields are written as
-          judgment and independently graded · the orphan check runs — a `proposed` or
-          in-flight-class element keying no open feature, epic or lane is flagged, never left. The
+          flip over the run's elements and diagram files — `in-flight` and `modifying` to
+          `built`, the key cleared, each `removing` one to its `removed` stub, and each diagram's
+          delta styling cleared to plain, no redraw (transcription — rides this run's landing
+          audit) · the touched rows' As-built: and Drift: fields are written as judgment and
+          independently graded · the orphan check runs — a `proposed` or in-flight-class
+          element, or a diagram whose `**Lifecycle:**` carries a key, keying no open feature, epic
+          or lane is flagged, never left. The built-vs-signed diff reads the signed
+          architecture.md and every store diagram file it lists, every view kind included. The
           store skill regenerates the derived root ARCHITECTURE.md; it is never hand-edited here.
         pointer: mochiko:authoring-architecture-store
+        anchor: 2026-10-11 architecture-brainstorm-interview D8
       - id: impl.km-landing
         labels: [landing]
         class: must
@@ -670,8 +765,8 @@ sections:
         kind: binding
         text: >-
           Every product-baseline entry a run writes or amends carries a `**Lifecycle:**` field of
-          its own, apart from any stance field (the store's lifecycle field is its `Status`; a
-          constraints entry's `**Status:**` stays its stance). The key is the run's owner:
+          its own, apart from any stance field (a store element's lifecycle field is its `Status`;
+          a constraints entry's `**Status:**` stays its stance). The key is the run's owner:
           `FEAT-XXX` for a feature run, `EPIC-XXX` for an epic's shared write, `lane-<slug>` for a
           product-lane run. Before the design checkpoint every run write reads `proposed (<key>)`:
           a new entry, an amended one with its new text in place, a removed one with its heading
@@ -700,11 +795,13 @@ sections:
           A contracts/ .md entry is the heading of the clause that changes, at the level its
           sibling clauses use, `**Lifecycle:**` its first line; api.yaml takes an `x-lifecycle`
           key on the changed operation or schema, with the same values, a removed one keeping only
-          its summary and `x-lifecycle: removed`. The architecture store takes no separate field
-          and keeps its own `**Name**:` form: a spine element's lifecycle is its Status column,
-          with Raised and Weighed columns filled on a build-raised element; a concern row's is its
-          `- **Status**:` field, followed on a build-raised row by `- **Raised**:` and `-
-          **Weighed**:`; a removed concern keeps its heading and `- **Status**: removed`, a
+          its summary and `x-lifecycle: removed`. The architecture store's elements take no
+          separate field and keep their own `**Name**:` form: a spine element's lifecycle is its
+          Status column, with Raised and Weighed columns filled on a build-raised element; a
+          concern row's is its `- **Status**:` field, followed on a build-raised row by `-
+          **Raised**:` and `- **Weighed**:`; a store diagram file is one entry carrying its own
+          `**Lifecycle:**` line beside its `**Draws:**` line, to the `architecture-diagram`
+          template's shape; a removed concern keeps its heading and `- **Status**: removed`, a
           removed spine row its id, kind, name and status, not drawn. Every brief to a seat that
           writes or amends a product baseline carries this rule as an obligated read.
         anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D2
@@ -851,16 +948,67 @@ sections:
         text: >-
           Build-run artifacts have a declared home: render `mochiko-cli home
           ${features_dir}/FEAT-XXX` — an epic run, the epic home; a lane run, the lane home —
-          before the first write. `tasks.md` binds the `tasks` template; every report lands in
-          that home's `reports/` typed by its envelope. The run log, `implement-log.md`, is the
-          lead's ephemeral working memory in the run folder (impl.run-folder), never in any other
-          home. A ruling made during the run that changes a product baseline or the architecture
-          store is recorded on that entry only, its reason in the entry's own fields
-          (impl.baseline-entry-grammar); a standing ruling that touches no entry lands at the
-          landing as a `.mochiko/decisions/<date>-<slug>.md` record; a checkpoint acceptance takes
-          no `DECISIONS.md` row — its report and the `tasks.md` checkbox carry it. A name the
+          before the first write. `tasks.md` binds the `tasks` template and `design-stage.md` the
+          `design-stage` template; every report lands in that home's `reports/` typed by its
+          envelope. The run log, `implement-log.md`, is the lead's ephemeral working memory in the
+          run folder (impl.run-folder), never in any other home. A ruling made during the run that
+          changes a product baseline or the architecture store is recorded on that entry only, its
+          reason in the entry's own fields (impl.baseline-entry-grammar), never in a ledger; the
+          run's `design-stage.md` holds the design stage's ruled set as the run's input, never as
+          that record; a standing ruling that touches no entry lands at the landing as a
+          `.mochiko/decisions/<date>-<slug>.md` record; a checkpoint acceptance takes no
+          `DECISIONS.md` row — its report and the `tasks.md` checkbox carry it. A name the
           home's set does not carry is raised to the lead, never minted from a sibling run.
         anchor: 2026-09-13 hook-enforced-artifact-schema D1
+      - id: impl.design-stage-unit
+        labels: [user-gate, seats]
+        class: must
+        kind: duty
+        text: >-
+          Per gap the user gives the direction in their own words and one "I'd know it works
+          if…" line — the seed, `open` allowed and carried as an open question, never
+          invented. The design seat that owns the gap's surface — ${design_seat} for a data or
+          contract gap, ${architect_seat} for a structural one — then proposes its candidate
+          pieces read-only, riding its plan-only dispatch and writing nothing: for a data gap the
+          fields, states and rules; for an API gap the inputs, outputs and errors; for a
+          structural gap the parts and how they talk. You put the pieces to the user under the
+          stage's own-turn-or-batch rule, a piece with its own turn put as what the user would
+          notice — plain consequences and a worked example with real values, never a schema —
+          and a batched one with its suggestion and its cost. A gap's ruled set is its direction,
+          its seed and its ruled pieces; once the stage closes the seat finishes its plan inside
+          it, peer-graded per impl.plan-approval-producers.
+        anchor: 2026-10-11 implement-brainstorm-led D7
+      - id: impl.design-stage-inputs
+        labels: [scope-entry, evidence]
+        class: must
+        kind: binding
+        text: >-
+          Implement's inputs in hand when its design stage opens: a desk visit file keyed to the
+          feature (impl.design-inputs), the spec's slate and Intent, and a brainstorm record the
+          user names. A visit file that covers some gaps leaves the stage to run on the rest.
+        anchor: 2026-10-11 implement-brainstorm-led
+      - id: impl.design-stage-file
+        labels: [binding]
+        class: must
+        kind: binding
+        text: >-
+          The ruled set is kept in `design-stage.md` at the run's home — the feature's, an
+          epic's, a lane's — to the shape `mochiko-cli template design-stage` renders: you write
+          each item into it as the stage rules it and the whole set before the pen passes, every
+          later ruling — a halted addition, a user-added gap — before it reaches the writer,
+          and a stopped stage's open candidates, so a resumed run opens the stage from the file.
+        anchor: 2026-10-11 implement-brainstorm-led
+      - id: impl.index-regeneration
+        labels: [landing, evidence]
+        class: must
+        kind: duty
+        text: >-
+          At the design-checkpoint and landing moments of every run that wrote a product baseline
+          or a store diagram, structural or not, you call the pointer skill's regeneration of the
+          derived root ARCHITECTURE.md, so its stale compare runs there; the fold itself still
+          fires only when structure was built.
+        pointer: mochiko:authoring-architecture-store
+        anchor: 2026-10-11 architecture-brainstorm-interview D8
   - id: impl.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-run ruling can waive.
@@ -871,9 +1019,12 @@ sections:
         kind: gate
         text: >-
           A cycle that adds or removes a box, adds, removes, or redirects an arrow, or moves a
-          responsibility across a boundary of the signed delta stops and is presented — build as
-          approved, or amend the delta by the user's ruling first. Never design around it
-          silently.
+          responsibility across a boundary of the signed delta — the run's signed
+          architecture.md and the container and flow views of the store diagram files it lists —
+          stops and is presented: build as approved, or amend the delta by the user's ruling
+          first. Never design around it silently. ER, state, flowchart and other views are checked
+          at the landing's built-vs-signed diff, never as cycle stops.
+        anchor: 2026-10-11 architecture-brainstorm-interview D8
       - id: impl.constitution-supremacy
         labels: [user-gate]
         class: floor
@@ -988,6 +1139,10 @@ sections:
           The rule binds feature, epic and product-lane runs; an out-of-run fix that ships a
           baseline edit and its code in one commit writes `built` directly, no marker.
         anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D1
+      - id: impl.thinking-stage
+        class: floor
+        extends: common.thinking-stage
+        anchor: 2026-10-11 implement-brainstorm-led D3
   - id: impl.sec.fail-conditions
     title: Not done — default FAIL
     intent: >-
@@ -1123,6 +1278,18 @@ sections:
           grade, the unmarked-write test, the duplicate-id check and the landing flip.
         enforces: [impl.baseline-diff-review]
         anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D3
+      - id: impl.fail.design-outside-ruled-set
+        labels: [user-gate]
+        class: floor
+        kind: fail
+        text: >-
+          A design output (impl.design-outputs-home) written with no ruled set behind it in the
+          run's `design-stage.md` — the baseline seed of impl.design-absent-baseline-seed and a
+          build-time decision written post-sign under impl.baselines-in-place-marked excepted —
+          a write that changes a ruling without the user's word, or a small technical extra the
+          user did not OK at the landing table.
+        enforces: [impl.design-stage, impl.design-stage-agenda, impl.design-stage-file, impl.design-seat-additions]
+        anchor: 2026-10-11 implement-brainstorm-led
 tombstones:
   - id: impl.baselines-never-in-place
     disposition: >-

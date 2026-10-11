@@ -1,0 +1,18 @@
+grammar: 1
+id: 0069-desk-on-engine
+sequence: 69
+intent: >-
+  Put the desk's focus stage on the shared thinking stage (implement-brainstorm-led D3; default
+  Slots declared where): mint the class: floor stub arch.thinking-stage extending
+  common.thinking-stage, its third extender; the desk's domain part is 0068's.
+anchor: 2026-10-11 implement-brainstorm-led
+hash: sha256:c4e0a45976a6378e4e1f787e921a207fec7e5e09b1a246471a818cd62fcc4121
+changes:
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.boundaries
+    rule:
+      id: arch.thinking-stage
+      class: floor
+      extends: common.thinking-stage
+      anchor: 2026-10-11 implement-brainstorm-led D3

@@ -1,0 +1,120 @@
+grammar: 1
+id: 0060-brainstorm-on-engine
+sequence: 60
+intent: >-
+  Move brainstorm's deciding onto the shared thinking stage (implement-brainstorm-led D3): mint
+  the class: floor stub brainstorm.thinking-stage, supersede brainstorm.own-rules-win and the six
+  asking rules the engine now carries, reword six rules to brainstorm's domain part, and clear the
+  blind second list's size guard so a small session keeps none. No floor or fail retired or
+  lowered.
+anchor: 2026-10-11 implement-brainstorm-led
+hash: sha256:bf42612e0646aeaa721b66a27f13d238bcba7a8cf869bbe6a1c8f42abdec4b45
+changes:
+  - op: mint-rule
+    schema: command/brainstorm
+    section: brainstorm.sec.boundaries
+    rule:
+      id: brainstorm.thinking-stage
+      class: floor
+      extends: common.thinking-stage
+      anchor: 2026-10-11 implement-brainstorm-led D3
+  - op: supersede-rule
+    schema: command/brainstorm
+    id: brainstorm.own-rules-win
+    disposition: >-
+      superseded — precedence flipped: the engine's asking rules hold in every caller
+      (analysis-iterative.engine-precedence); brainstorm keeps its domain part, reached through
+      brainstorm.thinking-stage (default Precedence; supersedes brainstorm-target-state
+      D19-brainstorm-only-reach as to this clause)
+    anchor: 2026-10-11 implement-brainstorm-led D3
+  - op: supersede-rule
+    schema: command/brainstorm
+    id: brainstorm.fact-before-decision
+    disposition: >-
+      superseded — moved to the engine as analysis-iterative.fact-before-fork, every limb kept,
+      reached through brainstorm.thinking-stage (was brainstorm-target-state D5)
+    anchor: 2026-10-11 implement-brainstorm-led D3
+  - op: supersede-rule
+    schema: command/brainstorm
+    id: brainstorm.own-turn-or-batch
+    disposition: >-
+      superseded — moved to the engine as analysis-iterative.own-turn-or-batch, "never by
+      silence" in analysis-iterative.user-rules; brainstorm's one screen stays
+      brainstorm.accept-screens (was brainstorm-target-state D6)
+    anchor: 2026-10-11 implement-brainstorm-led D3
+  - op: supersede-rule
+    schema: command/brainstorm
+    id: brainstorm.options-rule
+    disposition: >-
+      superseded — moved verbatim to the engine as analysis-iterative.options-rule (was
+      brainstorm-target-state D7)
+    anchor: 2026-10-11 implement-brainstorm-led D3
+  - op: supersede-rule
+    schema: command/brainstorm
+    id: brainstorm.vague-answer-reasked
+    disposition: >-
+      superseded — moved verbatim to the engine as analysis-iterative.vague-answer (was
+      brainstorm-target-state D8)
+    anchor: 2026-10-11 implement-brainstorm-led D3
+  - op: supersede-rule
+    schema: command/brainstorm
+    id: brainstorm.question-form
+    disposition: >-
+      superseded — moved to the engine as analysis-iterative.question-form (was
+      brainstorm-target-state D13)
+    anchor: 2026-10-11 implement-brainstorm-led D3
+  - op: supersede-rule
+    schema: command/brainstorm
+    id: brainstorm.show-before-asking
+    disposition: >-
+      superseded — moved to the engine as analysis-iterative.mock-in-message (was
+      brainstorm-target-state D14)
+    anchor: 2026-10-11 implement-brainstorm-led D3
+  - op: reword-rule
+    schema: command/brainstorm
+    id: brainstorm.lead-inline-questioning
+    text: >-
+      You are the lead. Plan the run and orchestrate it toward the run's goal; its deciding is the
+      run's thinking stage, on mochiko:analysis-iterative.
+  - op: reword-rule
+    schema: command/brainstorm
+    id: brainstorm.ratified-yes
+    text: >-
+      A ratified pick is recorded in the decision's how-it-was-decided part, with no new
+      confidence mark.
+  - op: reword-rule
+    schema: command/brainstorm
+    id: brainstorm.stop-rule
+    text: >-
+      Deciding is finished only when the map is empty — nothing askable, every patch of fog
+      ruled, deferred by the user's word or handed to a later session, no open frame line, the
+      defaults batch confirmed, and any blind map that was started landed, each of its angles
+      folded or listed as dropped; a session the user stops also says the destination was not
+      reached. A stall steps back to the frame.
+  - op: reword-rule
+    schema: command/brainstorm
+    id: brainstorm.decision-map
+    text: >-
+      The first question arrives with a decision map in three parts — askable now (sharply
+      stated, by name) · in fog (with what each hangs on) · out of scope — never put to the
+      user for approval. The per-turn status line runs over the map, the full map shown again when
+      it changes, and every item you add or graduate changes visibly.
+  - op: set-rule-field
+    schema: command/brainstorm
+    id: brainstorm.blind-second-list
+    field: when
+    value: null
+  - op: reword-rule
+    schema: command/brainstorm
+    id: brainstorm.blind-second-list
+    text: >-
+      Brainstorm's cadence for the thinking stage's blind second list: a fork costly to undo in a
+      standard or too-big session, none in a small one; its seat gets the frame as the opening.
+  - op: reword-rule
+    schema: command/brainstorm
+    id: brainstorm.user-steers
+    text: >-
+      In any reply the user may edit the decision map, pick which askable question comes next, or
+      stop the session — the thinking stage's other steering is in
+      analysis-iterative.user-rules; moving anything out of scope is a frame change and takes the
+      user's word.

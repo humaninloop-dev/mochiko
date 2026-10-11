@@ -23,49 +23,52 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 
 ## Architecture-desk brainstorm build
 
-*(ruled + accepted 2026-10-11, `architecture-brainstorm-interview` D1–D9 as review-amended;
-provenance: `.mochiko/brainstorms/architecture-brainstorm-interview/record.md`. **One combined
-build with the shared engine** — `implement-brainstorm-led` D1–D8 as review-amended, accepted
-2026-10-11: items A and B ship together with item C below; item A's focus stage is written straight
-onto the engine, never as a local copy.)*
+*(ruled + accepted 2026-10-11, `architecture-brainstorm-interview` D1–D9 and `implement-brainstorm-led`
+D1–D8, both as review-amended; build items A, B and C **built together 2026-10-11 at v0.120.0** on
+branch `engine-desk-build` (trail); provenance: the two records and
+`.mochiko/brainstorms/implement-brainstorm-led/build-log.md`.)*
 
-- [ ] **Build item C — the shared thinking engine and its users** (2026-10-11; provenance:
-  `.mochiko/brainstorms/implement-brainstorm-led/record.md` D1–D8, its defaults, *Supersessions owed
-  at the build* and *Touch set for the build*) — `analysis-iterative` converted to a rendered skill
-  carrying the asking and the switchable contract, one default per slot (blind list on a costly
-  fork, labels saved where the caller writes, contract off), its enrichment variant stripped and its
-  anti-pattern rows reworded; one `common.*` pointer line, `class: floor`, extended by brainstorm,
-  specify's story stage, the desk and implement, each with its domain part; implement's stage moment
-  (D5–D8: gaps-only agenda plus epic spine, seat-proposed pieces, `design-stage.md`, the landing-table
-  sign-off, `review-plan-artifacts`' meaning-kept grade, the narrowed fail); the before-and-after
-  obligation map over brainstorm, specify, setup's interrogation and specify's intent, gains and
-  losses shown to the user before the bump. Gate audits author≠grader per
-  `.claude/rules/mochiko/primitive-edits.md`.
-
-- [ ] **Build item A — the focus stage and the visit file** (2026-10-11; provenance: record
-  D1–D6 and the defaults batch) — the desk's new moment, duties, reservation line, `kind: fail`
-  and precedence clause in the `architecture` schema; the visit-file home outside
-  `.mochiko/product/` (working path `.mochiko/architecture/desk/<date-slug>/`) and its template;
-  the blind-list dispatch; `argument-hint` gains a brainstorm record; implement's design-input
-  line and the offer default (two of the ten stamped touches); the `arch.seat-tech-lead-grader`
-  pointer to `EXTERNAL-CLAIMS.md`. Supersessions by ruling at the strip entries: F27's "every
-  visit" narrowed (S13). Gate audits author≠grader per `.claude/rules/mochiko/primitive-edits.md`.
-- [ ] **Build item B — the diagram set and draw-before-code** (2026-10-11; provenance: record
-  D7–D9 and the defaults batch) — the `diagrams/` sub-home and diagram-file template (one Mermaid
-  block, caption, `Draws:` line, `**Lifecycle:**` field); the index's diagrams section and sixth
-  health count (`health-view-binding` amended); the stale compare at every index regeneration
-  with the index header's regeneration commit; implement's design phase drawing into the store
-  diagrams before code, one signed object, the deviation gate on container and flow views, the
-  index rebuild at every checkpoint and landing (the remaining eight stamped touches);
-  `DIAGRAM-CONVENTIONS.md`'s taste section (F36; GitHub init-directive check on a real file,
-  OQ3). Supersessions by ruling: `architecture-design-primitive` D5-plan-run-artifact and
-  D8-rendered-diagram-signoff in part; the three rule texts under D9's changed-at-review.
+- [ ] **OQ3 — does GitHub honour a Mermaid init directive?** (2026-10-11; provenance:
+  `architecture-brainstorm-interview` OQ3, the build log's W2 entries; the user's ruling "when I push
+  the branch") — once `engine-desk-build` is on GitHub, open `plugins/mochiko/skills/patterns-system-design/references/DIAGRAM-CONVENTIONS.md`'s
+  taste example there and check whether the `%%{init: …}%%` font line takes effect; until then the
+  taste section's init-directive line holds only where the renderer honours it.
+- [ ] **First ai-fileops implement run — the design stage's test** (2026-10-11; provenance:
+  `implement-brainstorm-led` *Regression watch and dogfood criteria* default, OQ1) — after the
+  plugin is upgraded to v0.120.0, run `/mochiko:implement` on an ai-fileops batch whose sufficiency
+  check names gaps, and log on sight: turns to the stage's close, pieces ruled vs batched, the blind
+  list's differences ruled in, the landing table's kept/changed rows and any halted addition. What
+  the stage is judged on is decided from that log, never before it (OQ1: the problem was never
+  shown in a real run).
+- [ ] **Engine-desk build — lines incomplete, not false** (2026-10-11; provenance: the build log's
+  W2 unit 7 and W3 P2 entries, P2's plan §12.5) — `patterns-system-design`'s description, overview
+  and taste scope still read delta-only while its taste section governs every diagram · the router's
+  desk row lacks the `<FEAT-ID>` delta visit; its `:90`, `:95`, `:98`, `:162` · the
+  `review-plan-artifacts` description · `ARTIFACT-CHECKLISTS.md:91`'s lifecycle check names
+  elements, not diagram files · `FEASIBILITY-LENS.md:99–101` and the `store_delta` note ·
+  `ARCHITECTURE.md:277`, `:285`, `:388` · `templates/report-format.md:7` · `devils-advocate.md:20`.
+  And one false line, pre-existing: `ARCHITECTURE.md:301` says build-time D-/C-/IP- writes "land as
+  `baseline-delta.md` entries", false since the delta-files retirement.
+- [ ] **Engine-desk build — tool and kit residuals** (2026-10-11; provenance: the build log's W1
+  close, W3 P1 Q1, W3 P3 Q5 and W2 unit 8 entries) — `mochiko-cli home` prints "carries its section
+  budgets" for templates that declare none (`architecture-visit`, `design-stage`; crate source) ·
+  D9-render-where-viewed's optional Mermaid parse check in `mochiko-cli`, not built (crate source;
+  the lead's call as D9 allows) · a command's `pointer:` to a skill name is unchecked by
+  `migrate validate` · `analysis-iterative/references/ADAPTIVE-EXAMPLES.md` predates the delivered
+  rules (an examples refresh) · 18 implement-kit whys cut short by YAML at a comma · the
+  architecture kit's g3 argument opens with a FEAT id, which the new `argument-hint` reads as a
+  delta visit while the kit expects `visit_kind` other — watch the first grid · `mochiko-cli ids
+  --check` over the whole tree reads 94 bare at the bump (0 under `plugins/mochiko`): 87 in session
+  records (68 this build's own, 19 the specify record's) and seven bare `D3` lines this build added
+  to `crates/mochiko-cli/tests/fidelity.rs:829` and the architecture, brainstorm and specify plan
+  kits — reporting only (human-readable-ids D18-build-done-check); join them at the next touch.
 - [ ] **Engine follow-up session** (2026-10-11; provenance:
   `.mochiko/brainstorms/implement-brainstorm-led/record.md` D4-shaped-for-six, OQ2) — a brainstorm
   on: `/mochiko:feature` joining the engine (its unit and where its ruled set lives); whether setup's
   interrogation and specify's intent stage take the contract half; implement's other moments (card
   slicing and the seed's hand-off to the `**TEST:**` cases, cycle-checkpoint batches, final
-  validation's gap-finder reading the ruled set, acceptance). Trigger: build item C landed.
+  validation's gap-finder reading the ruled set, acceptance). Trigger: build item C landed —
+  **fired 2026-10-11** (built at v0.120.0).
 - [ ] **Two notations and an entity ID family** (2026-10-11; provenance: record S1, OQ5, the
   *two notations* default) — the feature-level text notation for ER and state machines
   (`patterns-entity-modeling`) against the product-level Mermaid views, and minting a joined
@@ -73,7 +76,7 @@ onto the engine, never as a local copy.)*
   file and heading, a dangling citation reading stale). Trigger: the first ER or state view
   drawn at the desk.
 - [ ] **First ai-fileops desk run — the focus stage's test** (2026-10-11; provenance: record
-  *dogfood criteria* default, S16 and OQ1) — after build item A lands and
+  *dogfood criteria* default, S16 and OQ1) — build item A landed at v0.120.0; once
   the plugin is upgraded, run `/mochiko:architecture` on ai-fileops (greenfield baseline, desktop
   scope, no seeded shelf) and log on sight: turns and the user's time to the set's close, the blind
   list's differences ruled in, pulls per batch, tech-lead's sameness grade. What a run is judged
@@ -100,7 +103,8 @@ onto the engine, never as a local copy.)*
   sibling session's landing — **fired 2026-10-11** at the `architecture-brainstorm-interview`
   acceptance. **Narrowed 2026-10-11** (`implement-brainstorm-led` D1–D3): the stage's asking and
   contract now converge in the shared engine (build item C); this session keeps only the
-  boilerplate outside the stage. Open it after build items A, B and C land.
+  boilerplate outside the stage. Open it after build items A, B and C land — **fired 2026-10-11**:
+  all three built at v0.120.0 (trail).
 
 ## Human-readable IDs build
 
@@ -155,8 +159,8 @@ onto the engine, never as a local copy.)*
   fallback review seat reading the floor `blind-map-before-record-contact` literally, which does
   not name the saved map · cards reaching the review without a part, now reported only (D16 as
   changed at build, Q23) · the narrowed `verify-pass-grade` beside `reopen-born-verify`'s
-  record-fitness read · `analysis-iterative`'s Overview and General-analysis lines still stating
-  the synthesis default (true under D21's "when it names none"; a later ruling's candidate). A
+  record-fitness read · the synthesis default, a delivered rule since v0.120.0
+  (`analysis-iterative.deliverable`, "when it names none"; a later ruling's candidate). A
   count that does not move goes to the user as a finding, never tuned away in place.
 
 ## Setup product-agnostic build
@@ -244,8 +248,8 @@ verdicts in `.mochiko/brainstorms/hook-enforcement-field-review/build-log.md`; n
   the epic home never declared `tasks.md` while `patterns-vertical-tdd.artifact-home` points there ·
   `impl.sec.tools` renders 25,469 of its 30,000 ceiling · 0040 archives the constraints file
   "unchanged" while it stays live in reduced form.
-- [ ] **Eval and doc residuals** (2026-09-29; provenance: build-log, S5 Q3, S9 Q3, P9 A5, G4 A1–A3 and V3b unit 10) — the five
-  0013 `impl.*` ids missing from `evals/plan/implement/observable.yaml` (pre-existing) · the three
+- [ ] **Eval and doc residuals** (2026-09-29; provenance: build-log, S5 Q3, S9 Q3, P9 A5, G4 A1–A3 and V3b unit 10) — (the five
+  0013 `impl.*` ids were placed in the implement kit at v0.120.0) · the three
   `review-plan-artifacts` goldens g1–g3 (and its preregistration `:37`) still carry the pre-delta
   per-feature package shape, as do `evals/agents/technical-analyst/evals.json:103` and the
   `principal-architect` p2 fixture's `architecture-delta.md` (S9's widened sweep) ·

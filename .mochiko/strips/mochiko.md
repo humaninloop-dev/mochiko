@@ -42,6 +42,101 @@ Ruling: `.mochiko/brainstorms/brainstorm-target-state/record.md` D6-question-tur
 row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
 `git show 2e4c57c:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the combined engine/desk build (v0.120.0) — the `analysis-iterative`
+row and the brainstorm-cluster note re-keyed to the shared thinking stage. Ruling:
+`.mochiko/brainstorms/implement-brainstorm-led/record.md` D2-iterative-becomes-engine
+(`DECISIONS.md` 2026-10-11 "Shared thinking engine ruled" row). The router body is unbudgeted:
+47,617 → 48,037. Pre-edit verbatim text: `git show 5162f1a:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+<!-- Wave context: wave 2 of the combined engine/desk build (v0.120.0) — the router's architecture
+rows re-keyed to the desk's focus stage, the store's diagram set and the Mermaid-text sign-off.
+Ruling: `.mochiko/brainstorms/architecture-brainstorm-interview/record.md` D1–D9 as review-amended
+(`DECISIONS.md` 2026-10-11 "Architecture desk as brainstorm's workflow, plus maintained diagrams,
+ruled" row). One entry per superseded passage. Pure additions, recorded here for the audit's read:
+the `authoring-architecture-store` row (`:58`) — the diagram set in the store's file list and the
+stale-diagrams count — and the `tech-lead` row (`:161`) — drawing or redrawing a store diagram
+among the judgment writes it grades (`0070`). The router body is unbudgeted: 48,037 → 48,637.
+Pre-edit verbatim text: `git show 963a3d6:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+<!-- Wave context: wave 3 of the combined engine/desk build (v0.120.0) — implement's design stage
+and the gap-finding fence's listed diagram files. Pure additions only, so no entry, recorded here
+for the audit's read: the `testing-gap-finding` row (`:117`) — the fence copy gains "with the store
+diagram files it lists" (`0082-gap-finding-signed-set.yaml`,
+`testing-gap-finding.blindness-fence-inclusion-list`;
+`.mochiko/brainstorms/architecture-brainstorm-interview/record.md` D8-draw-before-code, the S8
+list's eighth implement touch) — and the `/mochiko:implement` row (`:143`) — the design stage the
+user rules with the lead before the design seats author (`0076-implement-design-stage.yaml`,
+`0077-implement-on-engine.yaml`; `.mochiko/brainstorms/implement-brainstorm-led/record.md`
+D5-stage-after-runopen). Rows: the `DECISIONS.md` 2026-10-11 "Shared thinking engine ruled" and
+"Architecture desk as brainstorm's workflow, plus maintained diagrams, ruled" rows. The router
+body is unbudgeted: 48,637 → 48,744. Pre-edit verbatim text:
+`git show 7d9d29e:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+## [v0.120.0] `/mochiko:architecture` row — "greenfield elicits through the shelf walk" and "Each visit walks the shelves you scope, takes your stance per row" superseded by the focus stage
+
+- **Disposition:** superseded → `SKILL.md`:142 as rewritten, the two passages verbatim —
+
+  ```text
+  (greenfield elicits it on the focus stage from the shelf rows and a blind list, brownfield
+  Each visit runs the scoped drift probe against real code and shows the health view. A visit that rules something first works its **focus set** with you on the shared thinking stage — each part with your direction and how you would know it is right; the shelf rows you scope that carry no stance yet as one defaults batch, your stance per row; a blind list for what the shelf lacks — saved in a visit file (`.mochiko/architecture/desk/<date-slug>/visit.md`) the principal-architect writes the rows from. The store is the single source
+  ```
+- **Tier failed:** n/a — supersession by ruling (`architecture-brainstorm-interview`
+  D1-focus-stage-first as changed at review — S13, the stage only on a visit that rules
+  something; S11, a ruled row changes only as a focus item pulled in, the batch holding the rows
+  with no stance — and the default *First visits*; D2-part-direction-know; D3-visit-file-home;
+  D4-blind-list-visits)
+- **Content (superseded, verbatim):**
+
+  ```text
+  (greenfield elicits through the shelf walk, brownfield
+  Each visit walks the shelves you scope, takes your stance per row, runs the scoped drift probe against real code, and shows the health view; the store is the single source
+  ```
+- **Kept deliberately:** "the shelves you scope" (as "the shelf rows you scope") and "your stance
+  per row" for the batch rows — `arch.breadth-invariant` stands; the drift probe and the health
+  view on each visit; brownfield's clause and "the store is the single source and repo-root
+  `ARCHITECTURE.md` its regenerated index", byte for byte past the new sentence start; the rest of
+  the row.
+- **Consumers assessed:** no primitive quotes the row (grep "elicits through the shelf walk":
+  router only); `README.md`'s architecture row and `ARCHITECTURE.md`'s desk health list re-keyed
+  the same wave where false.
+
+## [v0.120.0] `patterns-system-design` row — "the user's sign-off on the rendered diagram" superseded
+
+- **Disposition:** superseded → `SKILL.md`:95 as rewritten: "the user's sign-off — on the diagram as
+  Mermaid text that parses, rendered where the session can — flips them,".
+- **Tier failed:** n/a — supersession by ruling (`architecture-brainstorm-interview`
+  D9-render-where-viewed as changed at review, S9)
+- **Content (superseded text, verbatim):** `the user's sign-off on the rendered diagram flips them,`
+- **Kept deliberately:** "flips them" and the rest of the row, byte for byte — D8-draw-before-code's
+  re-scope of where the delta is drawn is wave 3's, with implement's design phase.
+- **Consumers assessed:** `README.md` and `ARCHITECTURE.md` carry no "rendered diagram" (grep);
+  `review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md:80`, `:89` — wave 3's.
+
+## [v0.120.0] The `analysis-iterative` row and the brainstorm-cluster note — re-keyed to the shared thinking stage
+
+- **Disposition:** superseded → `SKILL.md`:66 and `:124` as rewritten, verbatim —
+
+  ```text
+  SKILL.md:66: | `analysis-iterative` (general/shared) | the **shared thinking stage** — the asking every user command's thinking runs on, plus the **ruled-set contract** a caller switches on to keep the next writer inside what the user ruled; extended in each caller's own rules by `/mochiko:brainstorm`'s deciding, the specify run's **story stage** (contract on) and **intent stage** (adaptive-probe agenda: the feature-map read first, then scope · delivery · depth-rigor · constraints · out-of-scope → a one-screen synthesis the user confirms, landing as the spec's Intent section), the architecture desk's focus stage, implement's design stage, and setup's interrogation; a cross-cluster engine |
+  SKILL.md:124: > The shared thinking stage is `analysis-iterative` (registered under Specify, above — a general/shared skill every user command's thinking extends); brainstorm's deciding runs on it, and it is not brainstorm-specific.
+  ```
+- **Tier failed:** n/a — supersession by ruling (`implement-brainstorm-led`
+  D2-iterative-becomes-engine, *Accepted risk*: "the router's lines (`skills/mochiko/SKILL.md`
+  lines 66, 124) are rewritten around the stage"; D1-engine-asking-contract; D3-four-move-now)
+- **Content (superseded):** verbatim, as `<line>: <text>` —
+
+  ```text
+  SKILL.md:66: | `analysis-iterative` (general/shared) | the specify run's **intent stage** (adaptive-probe agenda: the feature-map read first, then scope · delivery · depth-rigor · constraints · out-of-scope → a one-screen synthesis the user confirms, landing as the spec's Intent section) and any brainstorm/exploration questioning; a cross-cluster engine |
+  SKILL.md:124: > The questioning engine is `analysis-iterative` (registered under Specify, above — a general/shared skill); it is not brainstorm-specific.
+  ```
+- **Kept deliberately:** the row's home under the Specify cluster (the skill's registration
+  home, as `:124` says); the intent-stage parenthetical byte for byte; "(general/shared)" and "a
+  cross-cluster engine"; `:124`'s "registered under Specify, above — a general/shared skill" and
+  "it is not brainstorm-specific".
+- **Consumers assessed:** none quotes either line. "questioning engine" outside the router:
+  `ARCHITECTURE.md:372` (re-keyed the same wave) and `INTERROGATION-AGENDA.md:5` (handed to the
+  lead).
+
 ## [v0.118.0] Wave 3 back-fill: the fresh-gate-grader, primitive-audit-ratchet and transport-neutral-harness cites joined
 
 - **Disposition:** superseded → `SKILL.md`:39 now cites

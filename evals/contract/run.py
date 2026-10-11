@@ -126,15 +126,23 @@ TEMPLATE_FOOTER = "schemas: replayed from "
 # them. Discovery alone would shrink silently if a document vanished from the log; a written-down
 # set alone would go stale when one is added. Compared in both directions, neither can.
 TEMPLATE_NAMES = (
-    # `0005-artifact-homes` (2026-09-13) imported the last three: the report envelope every
-    # `reports/` directory binds, and the spine/concerns split of the store template.
+    # `0005-artifact-homes` (2026-09-13) imported three: the report envelope every `reports/`
+    # directory binds, and the spine/concerns split of the store template. `0065-desk-visit-home`
+    # ("2026-10-11 architecture-brainstorm-interview D3") and `0066-store-diagram-set` (the same
+    # session) imported two more: the visit file's template, bound by the `architecture-desk`
+    # home, and the diagram file's, bound by `product-diagrams`.
     "architecture-concerns",
+    "architecture-diagram",
     "architecture-spine",
     "architecture-store",
+    "architecture-visit",
     "codebase-analysis",
     # `0013-design-baseline-home` ("2026-09-19 impeccable-design-integration D5") imported the
     # design baseline's template, bound by the `product-design` home.
     "design-baseline",
+    # `0075-design-stage-home` ("2026-10-11 implement-brainstorm-led") imported the design
+    # stage's ruled-set file template, bound by the `feature`, `epic` and `product-lane` homes.
+    "design-stage",
     "feature-entry",
     "features-index",
     "governance-intent",
@@ -230,6 +238,12 @@ EXPECTED = {
                 "arch.sound-loop-floor",
                 "arch.transport-floor",
                 "arch.fail.no-verdict",
+                # `0068-desk-focus-stage` ("2026-10-11 architecture-brainstorm-interview")
+                # minted the floor fail node for a store write outside the visit's ruled set.
+                "arch.fail.write-outside-focus",
+                # `0069-desk-on-engine` ("2026-10-11 implement-brainstorm-led D3") minted the
+                # thinking-stage pointer floor.
+                "arch.thinking-stage",
             }
         ),
         23_026,
@@ -247,6 +261,9 @@ EXPECTED = {
                 "brainstorm.fail.unreviewed-no-waiver",
                 "brainstorm.fail.survivor-undispositioned",
                 "brainstorm.fail.index-mismatch",
+                # `0060-brainstorm-on-engine` ("2026-10-11 implement-brainstorm-led D3") minted
+                # the thinking-stage pointer floor.
+                "brainstorm.thinking-stage",
             }
         ),
         12_819,
@@ -323,6 +340,12 @@ EXPECTED = {
                 "impl.fail.skip-unstated",
                 "impl.fail.spec-gap-unresolved",
                 "impl.fail.no-acceptance",
+                # `0076-implement-design-stage` ("2026-10-11 implement-brainstorm-led") minted
+                # the floor fail node for a design write outside the stage's ruled set.
+                "impl.fail.design-outside-ruled-set",
+                # `0077-implement-on-engine` (the same session) minted the thinking-stage
+                # pointer floor.
+                "impl.thinking-stage",
             }
         ),
         44_266,
@@ -383,6 +406,9 @@ EXPECTED = {
                 # `0051-specify-story-stage` ("2026-10-10 specify-brainstorm-discovery D1")
                 # minted the slate fail node.
                 "spec.fail.story-outside-slate",
+                # `0061-specify-on-engine` ("2026-10-11 implement-brainstorm-led D3") minted the
+                # thinking-stage pointer floor.
+                "spec.thinking-stage",
             }
         ),
         23_434,
@@ -601,6 +627,13 @@ PROBE_ARGUMENTS = {
     "testing-gap-finding": (
         "FEAT-000",
         "Runs the blind pass over a selection; the argument is a capability id, its own unit.",
+    ),
+    # --- converted after the freeze: the thinking engine (review family by the crate's fallthrough)
+    "analysis-iterative": (
+        "caching",
+        "The shared thinking stage, invoked with no calling command: the argument is the question "
+        "it thinks through with the user. Free text; with no caller its deliverable is its own "
+        "synthesis.",
     ),
 }
 
@@ -1723,7 +1756,7 @@ def unconverted_primitive(plugin_root: pathlib.Path, kind: str) -> str | None:
 
     Through wave 5 the subject of this was the transition clause: a primitive still reading a
     shipped schema file was never gated. The clause expired at wave 6 and no schema file ships,
-    but the limb it exercised outlives it and the subject is still real. Eight shipped skills
+    but the limb it exercised outlives it and the subject is still real. Seven shipped skills
     carry no schema and never did — the router and the prose skills — so the hook must leave them
     alone for the simpler reason that there is nothing to halt for.
     """
@@ -2255,7 +2288,7 @@ def case_hook_input(runner, sandbox) -> tuple[list, pathlib.Path]:
     if unconverted_command is None:
         # From wave 4 every shipped command is converted, so this row loses its subject and the
         # case would fail on a check about the hook rather than about the wave. The row still has
-        # to run: eight shipped skills carry no rules and never will, so the limb it exercises —
+        # to run: seven shipped skills carry no rules, so the limb it exercises —
         # leave a primitive with nothing to deliver completely alone — stays live on the skill
         # side. So the subject is staged, exactly as the converted-skill row above stages its own,
         # and nothing in `plugins/mochiko/` is touched.

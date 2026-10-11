@@ -27,10 +27,11 @@ sections:
         class: floor
         kind: binding
         text: >-
-          Judgment writes — baseline authoring, shelf-walk stance batches, amendments, and every
-          `As-built:`/`Drift:` write — take the independent review leg before the user's ruling,
-          per `mochiko:patterns-sound-loop`; status flips and orphan cleanup are transcription and
-          ride the landing audit. Do not relabel judgment as mechanical to skip the leg.
+          Judgment writes — baseline authoring, shelf-walk stance batches, amendments, drawing
+          or redrawing a store diagram, and every `As-built:`/`Drift:` write — take the
+          independent review leg before the user's ruling, per `mochiko:patterns-sound-loop`;
+          status flips and orphan cleanup are transcription and ride the landing audit. Do not
+          relabel judgment as mechanical to skip the leg.
         pointer: mochiko:patterns-sound-loop
         anchor: 2026-08-19 product-architecture-schema
   - id: authoring-architecture-store.sec.scope
@@ -94,8 +95,9 @@ sections:
         kind: binding
         text: >-
           The store layout binds: `spine.md` (topology deep view) · `concerns.md` (the `AX-XXX`
-          ledger) · `concerns/AX-XXX-<slug>.md` (graduated concerns) · the derived
-          `ARCHITECTURE.md` index at the repo root — never inside the store directory.
+          ledger) · `concerns/AX-XXX-<slug>.md` (graduated concerns) · `diagrams/<slug>.md` (the
+          diagram set) · the derived `ARCHITECTURE.md` index at the repo root — never inside
+          the store directory.
       - id: authoring-architecture-store.scope-line-durable-home
         labels: [single-home, artifact-grammar]
         class: must
@@ -191,19 +193,21 @@ sections:
         kind: duty
         text: >-
           The fold fires when the built work changed structure: the landing flip, read from the
-          pinned-base diff — `in-flight` and `modifying` elements to `built`, their keys
-          cleared, each `removing` element to its `removed` stub — then `As-built:` and `Drift:`
-          on every touched row, and the index regenerated.
+          pinned-base diff — `in-flight` and `modifying` elements and diagrams to `built`, their
+          keys cleared, each `removing` one to its `removed` stub, each diagram's delta styling
+          cleared to plain with no redraw — then `As-built:` and `Drift:` on every touched row,
+          and the index regenerated.
         when: {structure_built: present}
         anchor: 2026-08-19 product-architecture-schema D10
       - id: authoring-architecture-store.orphan-rule
         labels: [artifact-grammar]
         class: must
         text: >-
-          Every `proposed` and in-flight-class element keys an open feature, epic or lane; an
-          element whose key names a closed, retired, or nonexistent owner is an orphan — the
-          health view flags it, the sufficiency check lists it for the user at run-open, the
-          landing verifier flags one keyed to its own run, and desk visits clean it.
+          Every `proposed` and in-flight-class element, and every diagram whose `**Lifecycle:**`
+          carries a key, keys an open feature, epic or lane; an element or diagram whose key names
+          a closed, retired, or nonexistent owner is an orphan — the health view flags it, the
+          sufficiency check lists it for the user at run-open, the landing verifier flags one
+          keyed to its own run, and desk visits clean it.
         anchor: 2026-08-19 product-architecture-schema D10
       - id: authoring-architecture-store.first-visit-bootstrap
         labels: [evidence]
@@ -224,12 +228,36 @@ sections:
         text: >-
           Every store write goes to a declared file: render `mochiko-cli home
           .mochiko/product/architecture` before the first one. `spine.md` and `concerns.md` are
-          the hand-written pair, `concerns/<AX-ID>.md` is a graduated row's file in the sub-home,
-          and the repo-root index is the derived view this skill regenerates rather than authors.
-          Take `spine.md`'s and `concerns.md`'s shape from their templates and their bound from
-          `mochiko-cli home` — per `##` entry, the templates' section budgets no longer apply; a
-          graduated file takes its sub-home's whole-file bound.
+          the hand-written pair, `concerns/<AX-ID>.md` is a graduated row's file and
+          `diagrams/<slug>.md` a diagram's, each in its sub-home, and the repo-root index is the
+          derived view this skill regenerates rather than authors. Take `spine.md`'s and
+          `concerns.md`'s shape from their templates and their bound from `mochiko-cli home` —
+          per `##` entry, the templates' section budgets no longer apply; a graduated file takes
+          its sub-home's whole-file bound, a diagram file the `architecture-diagram` shape and its
+          sub-home's entry bound.
         anchor: 2026-09-13 hook-enforced-artifact-schema D1
+      - id: authoring-architecture-store.diagram-set-grammar
+        labels: [artifact-grammar, single-home]
+        class: must
+        kind: binding
+        text: >-
+          The diagram set is `diagrams/`, one file per diagram, each file one entry carrying its
+          own `**Lifecycle:**` field and a `Draws:` line that cites store elements and concern
+          rows by joined ID and data-model entities by file and heading (`data-model.md §
+          Vault`); a file holds one open key at most — a run that finds a diagram open under
+          another key waits or routes to the user, never adding a second marker. Any kind may join
+          the set where a reader learns more from it than from a well-written paragraph and the
+          plan-minimalism ladder keeps it; the spine keeps its own container view and key-flow
+          sequences.
+        anchor: 2026-10-11 architecture-brainstorm-interview
+      - id: authoring-architecture-store.diagram-redraw-timing
+        labels: [artifact-grammar, evidence]
+        class: must
+        text: >-
+          A stale diagram is redrawn at the next desk visit or the next design phase that touches
+          it, never inside a landing; whoever reads a diagram reads the health view's stale list
+          with it.
+        anchor: 2026-10-11 architecture-brainstorm-interview D8
   - id: authoring-architecture-store.sec.output
     title: Output — the derived index and the health view
     intent: The projection every write regenerates and the bar it must clear.
@@ -249,19 +277,40 @@ sections:
         class: must
         kind: binding
         text: >-
-          The health view is a section of the index and no separate artifact exists — five
+          The health view is a section of the index and no separate artifact exists — six
           counts, each naming its rows: open rows (walked, no stance formed) · stale `not-now`
           triggers (deferrals whose revisit condition has gone unreviewed) · fired triggers
-          awaiting routing · orphan elements · the drift register (rows whose `Drift:` field
-          names a live divergence).
+          awaiting routing · orphan elements and diagrams · the drift register (rows whose
+          `Drift:` field names a live divergence) · stale diagrams, each named.
+        anchor: 2026-10-11 architecture-brainstorm-interview D8
       - id: authoring-architecture-store.readability-bar
         labels: [artifact-grammar]
         class: must
         kind: bound
         text: >-
           A reader new to the repo can place any file or component in the system from the index
-          alone; an index too thin for that is regenerated with more of the spine, never padded
-          with hand-written prose.
+          and the diagrams it points at; an index too thin for that is regenerated with more of
+          the spine, never padded with hand-written prose.
+      - id: authoring-architecture-store.stale-compare
+        labels: [evidence, single-home]
+        class: must
+        kind: duty
+        text: >-
+          At every regeneration of the index, read each diagram's `Draws:` targets against the
+          entries and headings changed since the commit the index header names, then write the new
+          commit there; a cited target changed with no delta-styled change in that diagram under
+          the same key or visit, or a citation that no longer resolves, flags the diagram stale in
+          the health view, the flag's one home. The compare is a model's read — a tool check may
+          assist, never required.
+        anchor: 2026-10-11 architecture-brainstorm-interview D8
+      - id: authoring-architecture-store.index-diagrams-section
+        labels: [artifact-grammar]
+        class: must
+        kind: binding
+        text: >-
+          The index's diagrams section points at each diagram file with a one-line summary of what
+          it shows and embeds none.
+        anchor: 2026-10-11 architecture-brainstorm-interview D7
   - id: authoring-architecture-store.sec.reserved
     title: Reserved — the user's gates and dispositions
     intent: Decisions a run never takes on its own.
@@ -300,14 +349,15 @@ sections:
           A delivery run writes its store changes in place as `proposed (<key>)` — a new
           element, an amended one with its new text in place, a removed one cut to its heading (a
           spine row: to its id, kind, name and status) — and nothing it writes before the user's
-          sign-off is promised. The sign-off, on the rendered diagram, the changed-element table
-          and the pinned-base diff, is the user's; it flips each `proposed (<key>)` by that diff
-          — absent at the base to `in-flight (<key>)`, changed from it to `modifying (<key>)`,
-          cut to its heading to `removing (<key>)` — through this skill, which regenerates the
-          index. The signed store delta is the store at the sign-off base, or the checkpoint table
-          where no commit is made. A run that ends before its checkpoint reverts its `proposed`
-          elements by the diff. No sign-off, no in-flight element.
-        anchor: 2026-09-24 delta-files-vs-direct-baseline-edits D7
+          sign-off is promised. The sign-off, on the diagram as Mermaid text that parses (rendered
+          beside it where the session can), the changed-element table and the pinned-base diff, is
+          the user's; it flips each `proposed (<key>)` by that diff — absent at the base to
+          `in-flight (<key>)`, changed from it to `modifying (<key>)`, cut to its heading to
+          `removing (<key>)` — through this skill, which regenerates the index. The signed store
+          delta is the store at the sign-off base, or the checkpoint table where no commit is
+          made. A run that ends before its checkpoint reverts its `proposed` elements by the diff.
+          No sign-off, no in-flight element.
+        anchor: 2026-10-11 architecture-brainstorm-interview D9
 tombstones:
   - id: authoring-architecture-store.sign-off-is-write-gate
     disposition: >-

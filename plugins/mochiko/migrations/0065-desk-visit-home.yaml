@@ -1,0 +1,129 @@
+grammar: 1
+id: 0065-desk-visit-home
+sequence: 65
+intent: >-
+  Give each architecture-desk visit that rules something its own home outside .mochiko/product/
+  (architecture-brainstorm-interview D3 as changed at review S5, V3; the user's file name visit.md
+  at the build open): import the architecture-visit template and the architecture-desk home —
+  .mochiko/architecture/desk/<date-slug>/, one deliverable visit.md bound to the template under a
+  whole-file bound of 300, and a reports/ directory under the report envelope, the feature desk's
+  shape. The header anchor carries D3, the one ruling this file executes.
+anchor: 2026-10-11 architecture-brainstorm-interview D3
+hash: sha256:7ae7c0049443cfb139199185ad0b5ba43377f24488f73db2938430c93c68b00e
+changes:
+  - op: import-document
+    kind: template
+    name: architecture-visit
+    content:
+      template: architecture-visit
+      title: Architecture Desk Visit
+      form: artifact-format.md
+      register: full
+      overview: >-
+        `visit.md` — the record of one architecture-desk visit that rules something, in its own
+        directory at `.mochiko/architecture/desk/<date-slug>/`, outside the store. The lead writes
+        it as the visit goes; the store rows written from it link it as their rationale home, and
+        a feature's delta visit closes in it. Written in the present tense; the skeleton
+        constrains the shape, never the voice.
+      sections:
+        - name: Header
+          required: true
+          contract: >-
+            The visit goal and its done condition; the joined FEAT id the visit is keyed to, on a
+            feature's delta visit; any brainstorm record or direction handed in.
+          check: >-
+            Are the goal and its done condition stated, the FEAT id named on a delta visit, and
+            every input handed in named?
+        - name: Focus set
+          required: true
+          contract: >-
+            One entry per focus item: the part (a store element, an AX row, a shelf row or a spine
+            area), the user's direction in their own words, the one "how I'd know" sentence or
+            `open`, and the item's provenance mark in the engine's vocabulary.
+          check: >-
+            Does every item name its part, quote the user's direction, carry a sentence or `open`,
+            and carry one provenance mark?
+        - name: Defaults batch
+          required: false
+          contract: >-
+            The shelf rows in play with no stance yet, as confirmed — each with its suggested
+            default, what it costs, what argues against it, and the user's ruling.
+          check: >-
+            Does every batch row show its default, its cost and the case against it beside the
+            user's ruling?
+        - name: Blind list
+          required: false
+          contract: >-
+            Each difference between the blind list and the focus set, with the user's ruling —
+            in, or out with its why; on a single-row ask, one line saying the list was skipped.
+          check: Is every difference ruled in or out, an out carrying its why?
+        - name: Outside claims
+          required: false
+          contract: >-
+            Each outside claim a focus item hangs on, with the source it was checked at, or
+            `unknown`.
+          check: Does every claim carry a source or `unknown`?
+        - name: Rows written
+          required: false
+          contract: >-
+            Each store row, spine element and diagram written from this file, linked; a feature's
+            delta visit writes none.
+          check: Is each row written from the file linked, and none listed on a delta visit?
+        - name: Verdict
+          required: true
+          contract: The closing verdict against the done condition, one line.
+          check: Is there a verdict against the done condition?
+      skeleton: |
+        # Architecture visit — [the visit goal, one line]
+
+        **Goal**: [one line] · **Done when**: [the done condition]
+        **Keyed to**: [FEAT-001-<slug> — a feature's delta visit only]
+        **Handed in**: [a brainstorm record's path, or the user's own direction — or none]
+
+        ## Focus set
+
+        ### [AX-004-<slug> | SPN-002-<slug> | a shelf row | a spine area] — [the part, in a few words]
+
+        - **Direction**: "[the user's words]"
+        - **How I'd know**: [one sentence — or `open`]
+        - **Provenance**: [user's words · lead's guess, ratified · blind list · handed in]
+
+        ## Defaults batch
+
+        | Row | Suggested default | What it costs | What argues against it | Ruling |
+        |-----|-------------------|---------------|------------------------|--------|
+        | [shelf row] | [default] | [cost] | [case against] | [confirmed · pulled into the focus set] |
+
+        ## Blind list
+
+        | Difference | Ruling |
+        |------------|--------|
+        | [a part, concern or fork the list saw that the focus set lacked] | [in · out — why] |
+
+        ## Outside claims
+
+        - [the claim] — [the source, checked YYYY-MM-DD] · or `unknown`
+
+        ## Rows written
+
+        - [AX-004-<slug>](../../../product/architecture/concerns.md) — [its stance]
+        - [the diagram's title](../../../product/architecture/diagrams/<slug>.md) — [what changed]
+
+        ## Verdict
+
+        [Done or not done against the done condition, one line.]
+  - op: import-document
+    kind: home
+    name: architecture-desk
+    content:
+      home: architecture-desk
+      title: One architecture-desk visit that rules something
+      path: [.mochiko, architecture, desk, <date-slug>]
+      bounds: whole-file
+      deliverables:
+        - file: visit.md
+          template: architecture-visit
+          max_lines: 300
+      reports:
+        envelope: report-envelope
+        by_type: {}

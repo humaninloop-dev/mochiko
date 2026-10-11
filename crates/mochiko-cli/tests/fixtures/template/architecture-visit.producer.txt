@@ -1,0 +1,74 @@
+# Architecture Desk Visit
+
+`visit.md` — the record of one architecture-desk visit that rules something, in its own directory at `.mochiko/architecture/desk/<date-slug>/`, outside the store. The lead writes it as the visit goes; the store rows written from it link it as their rationale home, and a feature's delta visit closes in it. Written in the present tense; the skeleton constrains the shape, never the voice.
+
+## Header
+
+The visit goal and its done condition; the joined FEAT id the visit is keyed to, on a feature's delta visit; any brainstorm record or direction handed in.
+
+## Focus set
+
+One entry per focus item: the part (a store element, an AX row, a shelf row or a spine area), the user's direction in their own words, the one "how I'd know" sentence or `open`, and the item's provenance mark in the engine's vocabulary.
+
+## Defaults batch — optional
+
+The shelf rows in play with no stance yet, as confirmed — each with its suggested default, what it costs, what argues against it, and the user's ruling.
+
+## Blind list — optional
+
+Each difference between the blind list and the focus set, with the user's ruling — in, or out with its why; on a single-row ask, one line saying the list was skipped.
+
+## Outside claims — optional
+
+Each outside claim a focus item hangs on, with the source it was checked at, or `unknown`.
+
+## Rows written — optional
+
+Each store row, spine element and diagram written from this file, linked; a feature's delta visit writes none.
+
+## Verdict
+
+The closing verdict against the done condition, one line.
+
+## Skeleton
+
+# Architecture visit — [the visit goal, one line]
+
+**Goal**: [one line] · **Done when**: [the done condition]
+**Keyed to**: [FEAT-001-<slug> — a feature's delta visit only]
+**Handed in**: [a brainstorm record's path, or the user's own direction — or none]
+
+## Focus set
+
+### [AX-004-<slug> | SPN-002-<slug> | a shelf row | a spine area] — [the part, in a few words]
+
+- **Direction**: "[the user's words]"
+- **How I'd know**: [one sentence — or `open`]
+- **Provenance**: [user's words · lead's guess, ratified · blind list · handed in]
+
+## Defaults batch
+
+| Row | Suggested default | What it costs | What argues against it | Ruling |
+|-----|-------------------|---------------|------------------------|--------|
+| [shelf row] | [default] | [cost] | [case against] | [confirmed · pulled into the focus set] |
+
+## Blind list
+
+| Difference | Ruling |
+|------------|--------|
+| [a part, concern or fork the list saw that the focus set lacked] | [in · out — why] |
+
+## Outside claims
+
+- [the claim] — [the source, checked YYYY-MM-DD] · or `unknown`
+
+## Rows written
+
+- [AX-004-<slug>](../../../product/architecture/concerns.md) — [its stance]
+- [the diagram's title](../../../product/architecture/diagrams/<slug>.md) — [what changed]
+
+## Verdict
+
+[Done or not done against the done condition, one line.]
+
+---

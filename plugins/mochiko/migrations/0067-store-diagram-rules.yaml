@@ -1,0 +1,133 @@
+grammar: 1
+id: 0067-store-diagram-rules
+sequence: 67
+intent: >-
+  The store skill's share of the diagram set (architecture-brainstorm-interview D7, D8 and D9 as
+  changed at review S1, S3, S4, S9 and verify V2, V8): mint diagram-set-grammar,
+  diagram-redraw-timing, stale-compare and index-diagrams-section; reword health-view-binding to
+  six counts, the sixth the stale diagrams (D8, superseding its five), and the floor
+  sign-off-flips-proposed's "on the rendered diagram" to D9's surface (superseding
+  architecture-design-primitive D8-rendered-diagram-signoff as to that clause, the gate's force
+  and every other clause kept), each re-anchored to the ruling it now carries; reword
+  store-layout, the floor artifact-home and readability-bar for the lines the diagram set makes
+  false (D7). No floor retired or lowered.
+anchor: 2026-10-11 architecture-brainstorm-interview
+hash: sha256:b88c10f2d64bfe0e7eebb283cd7f71effd0b41de1ec89948d1bd7d243ac07c8a
+changes:
+  - op: mint-rule
+    schema: skill/authoring-architecture-store
+    section: authoring-architecture-store.sec.artifact
+    rule:
+      id: authoring-architecture-store.diagram-set-grammar
+      labels: [artifact-grammar, single-home]
+      class: must
+      kind: binding
+      text: >-
+        The diagram set is `diagrams/`, one file per diagram, each file one entry carrying its own
+        `**Lifecycle:**` field and a `Draws:` line that cites store elements and concern rows by
+        joined ID and data-model entities by file and heading (`data-model.md § Vault`); a file
+        holds one open key at most — a run that finds a diagram open under another key waits or
+        routes to the user, never adding a second marker. Any kind may join the set where a reader
+        learns more from it than from a well-written paragraph and the plan-minimalism ladder
+        keeps it; the spine keeps its own container view and key-flow sequences.
+      anchor: 2026-10-11 architecture-brainstorm-interview
+  - op: mint-rule
+    schema: skill/authoring-architecture-store
+    section: authoring-architecture-store.sec.artifact
+    rule:
+      id: authoring-architecture-store.diagram-redraw-timing
+      labels: [artifact-grammar, evidence]
+      class: must
+      text: >-
+        A stale diagram is redrawn at the next desk visit or the next design phase that touches
+        it, never inside a landing; whoever reads a diagram reads the health view's stale list
+        with it.
+      anchor: 2026-10-11 architecture-brainstorm-interview D8
+  - op: mint-rule
+    schema: skill/authoring-architecture-store
+    section: authoring-architecture-store.sec.output
+    rule:
+      id: authoring-architecture-store.stale-compare
+      labels: [evidence, single-home]
+      class: must
+      kind: duty
+      text: >-
+        At every regeneration of the index, read each diagram's `Draws:` targets against the
+        entries and headings changed since the commit the index header names, then write the new
+        commit there; a cited target changed with no delta-styled change in that diagram under the
+        same key or visit, or a citation that no longer resolves, flags the diagram stale in the
+        health view, the flag's one home. The compare is a model's read — a tool check may
+        assist, never required.
+      anchor: 2026-10-11 architecture-brainstorm-interview D8
+  - op: mint-rule
+    schema: skill/authoring-architecture-store
+    section: authoring-architecture-store.sec.output
+    rule:
+      id: authoring-architecture-store.index-diagrams-section
+      labels: [artifact-grammar]
+      class: must
+      kind: binding
+      text: >-
+        The index's diagrams section points at each diagram file with a one-line summary of what
+        it shows and embeds none.
+      anchor: 2026-10-11 architecture-brainstorm-interview D7
+  - op: reword-rule
+    schema: skill/authoring-architecture-store
+    id: authoring-architecture-store.health-view-binding
+    text: >-
+      The health view is a section of the index and no separate artifact exists — six counts,
+      each naming its rows: open rows (walked, no stance formed) · stale `not-now` triggers
+      (deferrals whose revisit condition has gone unreviewed) · fired triggers awaiting routing
+      · orphan elements · the drift register (rows whose `Drift:` field names a live divergence)
+      · stale diagrams, each named.
+  - op: set-rule-field
+    schema: skill/authoring-architecture-store
+    id: authoring-architecture-store.health-view-binding
+    field: anchor
+    value: 2026-10-11 architecture-brainstorm-interview D8
+  - op: reword-rule
+    schema: skill/authoring-architecture-store
+    id: authoring-architecture-store.sign-off-flips-proposed
+    text: >-
+      A delivery run writes its store changes in place as `proposed (<key>)` — a new element, an
+      amended one with its new text in place, a removed one cut to its heading (a spine row: to
+      its id, kind, name and status) — and nothing it writes before the user's sign-off is
+      promised. The sign-off, on the diagram as Mermaid text that parses (rendered beside it where
+      the session can), the changed-element table and the pinned-base diff, is the user's; it
+      flips each `proposed (<key>)` by that diff — absent at the base to `in-flight (<key>)`,
+      changed from it to `modifying (<key>)`, cut to its heading to `removing (<key>)` — through
+      this skill, which regenerates the index. The signed store delta is the store at the sign-off
+      base, or the checkpoint table where no commit is made. A run that ends before its checkpoint
+      reverts its `proposed` elements by the diff. No sign-off, no in-flight element.
+  - op: set-rule-field
+    schema: skill/authoring-architecture-store
+    id: authoring-architecture-store.sign-off-flips-proposed
+    field: anchor
+    value: 2026-10-11 architecture-brainstorm-interview D9
+  - op: reword-rule
+    schema: skill/authoring-architecture-store
+    id: authoring-architecture-store.store-layout
+    text: >-
+      The store layout binds: `spine.md` (topology deep view) · `concerns.md` (the `AX-XXX`
+      ledger) · `concerns/AX-XXX-<slug>.md` (graduated concerns) · `diagrams/<slug>.md` (the
+      diagram set) · the derived `ARCHITECTURE.md` index at the repo root — never inside the
+      store directory.
+  - op: reword-rule
+    schema: skill/authoring-architecture-store
+    id: authoring-architecture-store.artifact-home
+    text: >-
+      Every store write goes to a declared file: render `mochiko-cli home
+      .mochiko/product/architecture` before the first one. `spine.md` and `concerns.md` are the
+      hand-written pair, `concerns/<AX-ID>.md` is a graduated row's file and `diagrams/<slug>.md`
+      a diagram's, each in its sub-home, and the repo-root index is the derived view this skill
+      regenerates rather than authors. Take `spine.md`'s and `concerns.md`'s shape from their
+      templates and their bound from `mochiko-cli home` — per `##` entry, the templates' section
+      budgets no longer apply; a graduated file takes its sub-home's whole-file bound, a diagram
+      file the `architecture-diagram` shape and its sub-home's entry bound.
+  - op: reword-rule
+    schema: skill/authoring-architecture-store
+    id: authoring-architecture-store.readability-bar
+    text: >-
+      A reader new to the repo can place any file or component in the system from the index and
+      the diagrams it points at; an index too thin for that is regenerated with more of the spine,
+      never padded with hand-written prose.

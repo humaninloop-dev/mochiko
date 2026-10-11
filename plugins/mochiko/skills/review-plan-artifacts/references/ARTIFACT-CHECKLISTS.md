@@ -77,16 +77,18 @@ coverage is now graded upstream, at the sufficiency check's clause 1.
 ## Architecture Store Delta
 
 Grade this when the run proposes a **store delta** — the topology + `AX-XXX` concern-row changes
-the user signs off on, from a rendered diagram, before detailed design builds on them (authored by
-`mochiko:patterns-system-design` against the standing store at `.mochiko/product/architecture/`).
-The run writes them in place as `proposed` elements: what you grade is the pinned-base diff of
-`spine.md` / `concerns.md` plus the run's `architecture.md` drawing and its checkpoint table.
+the user signs off on, as Mermaid text that parses (rendered where the session can), before
+detailed design builds on them (authored by `mochiko:patterns-system-design` against the standing
+store at `.mochiko/product/architecture/`). The run writes them in place as `proposed` elements:
+what you grade is the pinned-base diff of `spine.md` / `concerns.md` and of every `diagrams/` file
+the change edited, plus the run's `architecture.md` drawing and its checkpoint table, which lists
+those files.
 
 ### Checklist — Store delta (proposed)
 
 | Check | Question | Severity |
 |-------|----------|----------|
-| Delta-diagram coverage | Does every `SPN-XXX` element the delta names (container / boundary / flow) appear in the rendered diagram, and every new, modified or removed box/arrow in the diff and the checkpoint table? (Unchanged collaborators are drawn plain and take no row.) | Critical |
+| Delta-diagram coverage | Does every `SPN-XXX` element the delta names (container / boundary / flow) appear in the container delta diagram, and every new, modified or removed box/arrow in the diff and the checkpoint table? (Unchanged collaborators are drawn plain and take no row.) | Critical |
 | Qualifying-flow coverage | Does every **qualifying flow** — any flow crossing ≥2 components with non-trivial ordering or failure semantics (user journey *or* system flow) — have a sequence diagram? | Critical |
 | Lifecycle status correctness | Is every delta element — `SPN-XXX` and `AX-XXX` alike — marked `proposed (<key>)`, the key naming this run's owner? | Critical |
 | AX-row change legality | Does every changed concern row carry a legal stance — `decided` / `not-now` (+ revisit trigger) / `n-a` (+ reason axis; a handled-elsewhere row carries its pointer) / `open`? | Critical |

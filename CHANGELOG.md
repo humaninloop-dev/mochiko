@@ -5,6 +5,243 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.120.0] — 2026-10-11
+
+**The shared thinking stage; the desk's focus stage and diagram set; implement's design stage —
+MINOR** (`implement-brainstorm-led` D1–D8 and the confirmed defaults, record
+`.mochiko/brainstorms/implement-brainstorm-led/record.md`; `architecture-brainstorm-interview`
+D1–D9 and the confirmed defaults — its build items A and B — record
+`.mochiko/brainstorms/architecture-brainstorm-interview/record.md`). One combined build in three
+waves on branch `engine-desk-build`, one bump.
+
+**Wave 1 — the shared thinking stage; brainstorm and specify on it** (D1-engine-asking-contract,
+D2-iterative-becomes-engine, D3-four-move-now, D4-shaped-for-six). `mochiko:analysis-iterative`
+becomes the shared thinking stage: converted from a prose skill to a pair whose 21 rules
+`mochiko-cli` renders from the log, on the review six-set. It owns the asking — one fork per turn,
+the defaults batch the one exception; the fact before the fork; at least two real options, one the
+cheaper shape; a rough mock inside the message; own turn or batch; a status line; the ratified-yes
+streak; vague answers re-asked; the stop rule and its three-turn stall; one provenance
+vocabulary; a fenced blind second list on a fork costly to undo — and a ruled-set contract a
+caller switches on through the `contract` condition (D1). A caller fills named slots in its own
+rules and never loosens a mechanic; every slot has one default every caller inherits (D1 as
+changed at verify, D4). A new pointer block, `common.thinking-stage`, is the line each user
+command extends, `class: floor` in each. `/mochiko:brainstorm`'s deciding moves onto it: seven
+rules leave by supersession, `brainstorm.own-rules-win` among them, and six are reworded to
+brainstorm's part (D3). `/mochiko:specify`'s story stage moves onto it with the contract on — the
+slate is the ruled set, the requirements-analyst seat the next writer; `spec.own-rules-win` is
+superseded and nine rules are reworded to specify's part; the intent stage keeps its pointer.
+Setup's interrogation and specify's intent stage follow the engine's asking through their
+unchanged pointers, the contract off. The user ruled every lost word and gained obligation the
+build's obligation map listed ("Accept all"), kept setup's deck card by card, kept intent's
+provenance marks in the conversation, and ruled that adopting setup's default-on modules takes
+their explicit yes. The enrichment variant (`SPECIFICATION-INPUT.md`, `ENRICHMENT.md`, the Who /
+Problem / Value triad) had no caller and is stripped (D2); `review-specifications.not-for` routes
+a sparse idea to specify's intent and story stages.
+
+Migrations **`0058-thinking-engine`**, **`0059-thinking-stage-block`**,
+**`0060-brainstorm-on-engine`**, **`0061-specify-on-engine`** and **`0062-spec-review-boundary`**
+carry the W1 schema half. After W1 the log, sequences 1..62, replays to 88 documents and 1,211
+rules (1,196 → 1,211). Brainstorm's pins read `kind: fail · 4 rules` and `class: floor · 9 rules`
+(was 8); specify's `kind: fail · 10 rules` and `class: floor · 19 rules` (was 18); the engine's
+`class: floor · 2 rules`. No floor or fail is retired or lowered. After W3 the log, sequences
+1..84, replays to 93 documents and 1,243 rules (wave 3 below).
+
+W1 prose primitives: `analysis-iterative`'s `SKILL.md` rewritten to the rendered-skill shape — an
+Overview naming the stage and its callers, the Rules block, When NOT to Use (the
+implementation-details row rewritten), the confidence marks, the Common Mistakes rows reworded to
+agree with the engine, the Reference line; `## Two output shapes, one engine` removed; its
+`description:` rewritten by ruling (D2, superseding skill-pair criterion 7 for this conversion);
+`SYNTHESIS.md` and `references/` kept. The router's `analysis-iterative` row and brainstorm-cluster
+note; `review-specifications`' description and opening line; `authoring-constitution`'s
+`INTERROGATION-AGENDA.md` — dimension 7's and 8's default-on modules adopted only on the user's
+yes, and the deck's recommend-then-arbitrate pointer repointed to the engine's asking rules — and
+the knowledge-management module template's header on the same ruling.
+`commands/brainstorm.md` and `commands/specify.md` are unchanged. 13 strip entries stamped
+[v0.120.0] in W1. Ripple: `ARCHITECTURE.md`'s skills row (counts corrected) and its cross-cutting
+`analysis-iterative` row.
+
+W1 budgets (`.mochiko/memory/primitive-cost-budgets.md`, measured at the quiesced tree):
+`analysis-iterative` re-seeded as a skill pair — payload 16,067 = body 5,376 + render 10,691, no
+headroom, +11,139 over the 4,928 prose budget, argued as D1's ruled obligations moved in from
+brainstorm's and specify's renders, ruled HOLDS (W1 unit 5); description 476 → 594.
+`review-specifications` +1,931 → +2,005 (render +44 from `0062`, body +30 — the boundary re-keyed
+to specify's two stages on the engine, D2), ruled HOLDS (W1 unit 5b); description 490 → 535.
+`brainstorm`'s render 21,198 → 19,074 bytes and `specify`'s 27,999 → 27,160 characters (commands
+are unbudgeted).
+
+**Wave 2 — the desk's focus stage on the engine, the visit file, and the store's diagram set**
+(`architecture-brainstorm-interview` D1-focus-stage-first, D2-part-direction-know,
+D3-visit-file-home, D4-blind-list-visits, D5-visit-file-input's desk share, D7-diagram-set-index,
+D8-draw-before-code's store and desk share, D9-render-where-viewed; `implement-brainstorm-led`
+D3-four-move-now). `/mochiko:architecture` gains a focus stage at a new `focus` moment, after the
+visit goal and before the principal-architect authors anything. It runs on the shared thinking
+stage with the ruled-set contract on, through `arch.thinking-stage` (`class: floor`, the third
+extender of `common.thinking-stage`); the desk's own rules carry only its domain part and no
+asking mechanic of their own, so the architecture record's "the desk's rules win" default never
+shipped. A new condition, `visit_kind` (`ruling · delta · other`, fixed by the converged goal),
+binds the stage, the visit file and the blind list only to a visit that rules something or thinks
+a feature's delta through. The user rules each focus item as its part, a direction in their own
+words and one "how I'd know" sentence or `open`; the shelf rows with no stance yet come as one
+defaults batch; one fresh blind seat per visit draws what the shelf lacks; confirming the ruled
+set is the user's, on a screen of its own. The set and the visit's state live in one visit file,
+`visit.md`, at `.mochiko/architecture/desk/<date-slug>/`, outside `.mochiko/product/`; the
+principal-architect authors the rows from it and tech-lead grades them for sameness of meaning.
+`/mochiko:architecture <FEAT-ID>` closes in a visit file keyed to the feature, its folder carrying
+the FEAT id lower-cased, and writes nothing to the store. A new floor fail,
+`arch.fail.write-outside-focus`, fails a desk visit's store write with no ruled set behind it. The
+store gains a diagram set — `diagrams/`, one Mermaid diagram per file with a caption, a `Draws:`
+line and its own `**Lifecycle:**` field; the derived index gains a diagrams section that links and
+summarizes each diagram, a header naming the commit it was last regenerated at, and a sixth health
+count, the stale diagrams, found by the stale compare at every regeneration. A diagram's sign-off
+surface becomes its Mermaid text, which must parse, rendered beside it where the session can.
+
+Migrations **`0065-desk-visit-home`**, **`0066-store-diagram-set`**,
+**`0067-store-diagram-rules`**, **`0068-desk-focus-stage`**, **`0069-desk-on-engine`** and
+**`0070-diagram-write-reach`** carry the W2 schema half: two new homes (`architecture-desk`,
+`product-diagrams`), two new templates (`architecture-visit`, `architecture-diagram`),
+`architecture-store` and `product-architecture` replaced; `0070` makes a store diagram's drawing a
+judgment write under the sound loop, a keyed diagram an orphan under the orphan rule, and the
+desk's author ≠ grader list read diagram for delta. After W2 the log, sequences 1..70, replays to
+92 documents and 1,230 rules (1,211 → 1,230). The desk's pins read `kind: fail · 2 rules` (was 1)
+and `class: floor · 25 rules` (was 23); the store skill's `class: floor · 10 rules`, unchanged. No
+floor or fail is retired or lowered.
+
+W2 prose primitives: `commands/architecture.md` — the `argument-hint` gains a brainstorm record and
+a `<FEAT-ID>`, the Entry step names both inputs, the diagram orphans and the health view's sixth
+count; `authoring-architecture-store`'s store-layout table gains the diagram file;
+`patterns-system-design` — the delta diagram's "must render" line, the checkpoint table's
+no-render clause and the checklist's render item superseded by D9-render-where-viewed; its
+`DIAGRAM-CONVENTIONS.md` gains a taste section — delete first and the paragraph test, about 12
+nodes, a title and a caption, one accent color, hairline strokes and no fills beyond the accent,
+one font family by the init directive (holding only where the renderer honors it), a delta read as
+Before · Changes · After — the one home the queued trust-boundary convention extends, and its
+rendering line made true under D9-render-where-viewed. The router's store-skill, system-design,
+architecture-desk and `tech-lead` rows. 6 strip entries stamped [v0.120.0] in W2. Ripple:
+`README.md`'s architecture loop, `ARCHITECTURE.md`'s desk health list and producer row.
+
+W2 budgets (characters, measured at the quiesced tree): `authoring-architecture-store` payload
+21,879 → 24,192 = body 5,878 + render 18,314, +4,459 over the 19,733 budget (the standing +2,146
+plus +2,313 this wave — render +2,096 from `0067` and +106 from `0070`, body +111), argued as
+D7-diagram-set-index's, D8-draw-before-code's and D9-render-where-viewed's ruled obligations,
+ruled HOLDS (W2 unit 5); description 492 unchanged. `patterns-system-design` body 9,991 → 10,073,
+inside its 11,047 budget; description 625 unchanged. `architecture`'s render 20,379 → 28,000
+characters across its seven blocks (commands are unbudgeted); the router body 48,037 → 48,637 (unbudgeted).
+
+**Wave 3 — implement's design stage on the engine, its home, the landing-table checkpoint, and the
+architecture touches** (`implement-brainstorm-led` D1-engine-asking-contract and
+D3-four-move-now in implement's share, D5-stage-after-runopen, D6-outside-need-asked,
+D7-direction-then-pieces, D8-checkpoint-shows-landing and the *Implement —* defaults;
+`architecture-brainstorm-interview` D5-visit-file-input, D8-draw-before-code and
+D9-render-where-viewed in implement's share, the S8 list and its tenth touch). `/mochiko:implement`
+gains a design stage at a new `design-stage` moment, after the run-open confirmation and before any
+design seat drafts; the run-open stays one confirmation, and the zero-gap path has no stage. It
+runs on the shared thinking stage with the ruled-set contract on, through `impl.thinking-stage`
+(`class: floor`, the fourth extender of `common.thinking-stage`); implement's own rules carry only
+its domain part. The agenda is the graded gap list — on an epic, once, the joint gap list with the
+joint spine's design items beside it. A design need found outside it splits by kind: new behaviour
+never joins the run (it goes to `/mochiko:specify`, `BACKLOG.md` or a feature-desk card); a design
+piece inside a story the spec carries is the user's, this run or later, and joins only once the
+sufficiency seat has re-graded it as a gap, marked user-added; a lane run adds none. Per gap the
+user gives the direction in their own words and one "I'd know it works if…" seed or `open`; the
+design seat that owns the gap proposes candidate pieces read-only on its plan-only dispatch, and
+the lead puts them to the user, a real or costly choice on its own turn, the rest in the defaults
+batch. One fresh persona-less blind seat on `model: opus` draws the hidden choices once per design
+phase, skipped on a single-gap re-fire. A desk visit file keyed to the feature, the spec's slate
+and Intent, and a brainstorm record the user names open the stage as facts; a structural gap with
+no visit file is first offered a desk visit (`/mochiko:architecture <FEAT-ID>`, the run pausing).
+The ruled set is written to `design-stage.md`, a new templated file in the feature, epic and lane
+homes, before the pen passes, and a stopped stage resumes from it. A seat's small technical extra
+that no ruled item or confirmed default touches waits for the sign-off — implement's by-name grant
+of the engine's latitude, nothing wider; anything that changes a ruling or that the user would
+notice halts to the user first. The design checkpoint keeps its force and is asked as a landing
+table — each ruled item beside how it landed, every small extra for the user's OK — filled by
+`review-plan-artifacts`' new meaning-kept grade; the store delta is signed on the run's
+`architecture.md`, which signs the delta-styled store diagram files it lists, each diagram
+shown as Mermaid text that parses, rendered where the session can. Undesigned structure found
+mid-cycle re-fires a short stage scoped to it and interrupts. A new floor fail,
+`impl.fail.design-outside-ruled-set`, fails a design write with no ruled set behind it, a write
+that changes a ruling without the user's word, or a small extra the user did not OK.
+
+The architecture touches: the design phase draws the change delta-styled into the store's own
+diagrams before any code, and the run's `architecture.md` becomes the neighborhood view plus the
+checkpoint table listing the edited diagram files; a desk visit file, read against the run's own
+pinned base, and the run's `design-stage.md` join the design inputs; a store diagram file carries
+its own `**Lifecycle:**` line beside its `**Draws:**` line; the deviation gate holds the build to
+the container and flow views, the other views checked at the landing's built-vs-signed diff, which
+reads every listed diagram file; the landing flip clears each diagram's delta styling to plain with
+no redraw, and the orphan check covers keyed diagrams; gap-finding's first message carries the
+signed `architecture.md` with the diagram files it lists; implement rebuilds the derived index at
+every design checkpoint and landing, so the stale compare runs there. The store skill's fold and
+health view, `review-sufficiency`'s re-grade of a user-added piece and `testing-gap-finding`'s fence
+follow. `architecture-design-primitive` D5-plan-run-artifact and D8-rendered-diagram-signoff are
+superseded in part, and `impl.gate-design-checkpoint`'s wording with its force kept.
+
+Migrations **`0075-design-stage-home`**, **`0076-implement-design-stage`**,
+**`0077-implement-on-engine`**, **`0078-implement-architecture-touches`**,
+**`0079-store-landing-diagrams`**, **`0080-plan-artifacts-meaning-kept`**,
+**`0081-sufficiency-user-added`**, **`0082-gap-finding-signed-set`**,
+**`0083-artifact-home-stage-file`** and **`0084-artifact-home-only-restored`** carry the W3
+schema half: a new template, `design-stage`; the `feature`, `epic` and `product-lane` homes
+replaced, each gaining `design-stage.md`; `architecture-store` replaced, its health view's orphan
+count naming diagrams; a new implement moment, `design-stage`, and a new `review-plan-artifacts`
+condition, `design_stage`. Thirteen rules are minted — eleven in implement,
+`review-plan-artifacts.meaning-kept` and `review-sufficiency.user-added-regrade` — and fifteen
+reworded, every id kept. After W3 the log, sequences 1..84, replays to 93 documents and 1,243
+rules (1,230 → 1,243). Implement's pins read `kind: fail · 16 rules` (was 15) and `class: floor ·
+39 rules` (was 37); the four skills' floor pins are unchanged. No floor or fail is retired or
+lowered; `impl.deviation-gate`'s cycle-stop set narrows by ruling — the deployment view leaves
+it, checked at the landing's built-vs-signed diff (`architecture-brainstorm-interview`
+D8-draw-before-code, S7). `impl.sec.tools` renders 27,650 bytes, under its 29,000-byte ceiling.
+
+W3 prose primitives: `review-plan-artifacts` — the procedure's conformance lens names the
+meaning-kept grade beside it; its `ARTIFACT-CHECKLISTS.md` store-delta intro reads the sign-off as
+Mermaid text that parses and grades the edited `diagrams/` files with the checkpoint table's list
+of them, and its coverage row reads the container delta diagram for "the rendered diagram"
+(D9-render-where-viewed, wave 2's carry-forward; D8-draw-before-code); `patterns-system-design` —
+the overview's drawing home re-keyed to the store's own diagrams, the run's `architecture.md` the
+drawing the user signs, and the checkpoint table listing the store diagram files the change edited
+(D8-draw-before-code). The router's `testing-gap-finding` row (the fence's listed diagram files)
+and `/mochiko:implement` row (the design stage before the seats author). `commands/implement.md`
+is unchanged: no line is made false, and its Not-done line already cites the CLI-printed pin. The
+`dependency-halt` hook's delivery-check comment counts six prose skills, not seven, since W1's
+conversion of `analysis-iterative` (behaviour unchanged: the gate keys on each primitive's own `!`
+line). 4 strip entries stamped [v0.120.0] in W3. Ripple: `README.md`'s implement loop.
+`README.md`'s deviation sentence now names the container and flow views as the cycle stops,
+the other views checked at the landing's built-vs-signed diff (D8-draw-before-code, S7).
+
+W3 budgets (characters, measured at the quiesced tree): `authoring-architecture-store` payload
+24,192 → 24,276 (render +84 from `0079`), +4,543 over the 19,733 budget (W3 unit 6a);
+`review-plan-artifacts` 18,272 → 19,507 = body 3,462 + render 16,045, +1,494 over the 18,013 budget
+(render +1,136 from `0080`, body +99; unit 6b); `review-sufficiency` 16,621 → 17,360 (render +704
+from `0081`, +35 from `0083`), +1,937 over the 15,423 budget (unit 6c); `testing-gap-finding`
+23,208 → 23,305 (render +97 from `0082`), +3,328 over the 19,977 budget (unit 6d) — each argued as
+the ruled obligations named above and ruled HOLDS by the wave's gate audit; descriptions unchanged. `patterns-system-design` body 10,073 → 10,298,
+inside its 11,047 budget; description 625 unchanged. `implement`'s render 51,441 → 60,392
+characters (commands are unbudgeted); the router body 48,637 → 48,744 (unbudgeted).
+
+**Ships under the AM-5 exception row** (governance ledger, Exception registry, first row): the
+conformance hooks still ship before the first `mochiko-cli` publish carrying the four named
+controls; this bump adds no binary change and carries the same unpublished 0.4.0 dependency as
+0.118.0 and 0.119.0 (`mochiko-cli` 0.4.0, grammar 1..2, serves the log; no `mochiko-cli-v*` tag
+exists).
+
+Sound loop: per wave, three persona-less producers (P1 schema · P2 prose · P3 tests and kits,
+`opus`), each on a plan graded by a fresh generic peer — W1 P1 passed at round 3 and W2 P2 at
+round 3, each extra round the user's grant past the wave's spent re-plan bound; W1 P2 and P3, W2 P3
+and W3 P1 revised once — and one gate grader per wave, with every unit's outcome line in its
+report: W1 ten units, W2 nine, W3 fifteen, all PASS, W1 unit 7 and W3 units 3 (`0084`) and 7b
+after one fix round; the user ruled the obligation map, the re-plan grants, `visit.md`, the lane
+home for `design-stage.md` and the booking of incomplete lines found past the plans
+(`.mochiko/brainstorms/implement-brainstorm-led/build-log.md`, `reports/audit.md`,
+`reports/audit-w2.md`, `reports/audit-w3.md`). Gates: `mochiko-cli migrate validate` 0 rejecting ·
+116 advisory · clusters 0 · 184 allowlist-suppressed edges · views ≡ replay on the bumped tree ·
+`cargo test --all` 765 passed · fmt · clippy · audit · the opt-in full similarity sweep 48 passed ·
+`gitleaks detect --no-git` no leaks · `mochiko-cli ids --check plugins/mochiko` 0 bare · 0 drift
+(the whole tree 94 bare in session records and seven eval-kit and crate-test lines, reporting
+only, booked) · **contract suite 99/99, 99 ran, none skipped** (on the bumped tree; 335 measurements recorded,
+none asserted) · both manifests at 0.120.0 · 23 strip entries ·
+7 ledger rows ruled HOLDS.
+
 ## [0.119.0] — 2026-10-10
 
 **Specify story-discovery stage — MINOR** (`specify-brainstorm-discovery` D1–D7 and the confirmed

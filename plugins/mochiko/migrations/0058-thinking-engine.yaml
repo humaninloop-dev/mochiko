@@ -1,0 +1,248 @@
+grammar: 1
+id: 0058-thinking-engine
+sequence: 58
+intent: >-
+  Convert mochiko:analysis-iterative into the shared thinking stage (implement-brainstorm-led D1,
+  D2, D4 and the confirmed defaults): its skill schema on the review six-set, one caller-set
+  condition (contract, off unless a caller names it on), and twenty-one rules — the asking half,
+  the slots, one provenance vocabulary, the relocated output floor and deliverable line, and the
+  switchable ruled-set contract.
+anchor: 2026-10-11 implement-brainstorm-led
+hash: sha256:e857808f8cd8fc03d90b1dc61c1b00b54e0a0cd8ae6b7f9c7f289d8d5e1d6e8e
+changes:
+  - op: import-document
+    kind: skill
+    name: analysis-iterative
+    content:
+      kind: skill
+      skill: analysis-iterative
+      conditions:
+        contract:
+          values:
+            - 'on'
+            - 'off'
+          resolution: entry-derived
+          note: >-
+            whether the calling command's own rule text names the ruled-set contract on; off when
+            the caller names none.
+      sections:
+        - id: analysis-iterative.sec.independence
+          title: Independence — who holds the conversation, and the blind list
+          intent: The lead's hold on the conversation, and the fenced list a fresh seat draws.
+          rules:
+            - id: analysis-iterative.lead-holds-conversation
+              labels: [independence, user-gate]
+              class: must
+              kind: duty
+              text: >-
+                You run the stage yourself, inline in the main conversation; no teammate holds a
+                conversation with the user. Transcribing the user's rulings is not authoring and
+                takes no sound loop — the caller's own independent leg still runs.
+              anchor: 2026-10-11 implement-brainstorm-led
+            - id: analysis-iterative.blind-second-list
+              labels: [independence, fence]
+              class: must
+              kind: duty
+              text: >-
+                On a fork costly to undo, a fresh seat — never a review seat — gets the
+                caller's opening and the question, never your options, the conversation or the
+                ruled set, and returns the roads it sees; the user sees where its list and yours
+                differ before ruling. The caller's own rules may set the list's cadence, inputs
+                and job in place of this default.
+              anchor: 2026-10-11 implement-brainstorm-led D1
+        - id: analysis-iterative.sec.scope
+          title: Scope — the engine and its callers
+          intent: What holds in every caller, and the slots a caller fills in its own rules.
+          rules:
+            - id: analysis-iterative.engine-precedence
+              labels: [boundary]
+              class: must
+              text: >-
+                These asking rules hold in every command whose thinking stage runs on this skill:
+                the command adds its domain part and fills its slots in its own rules, never
+                loosening a mechanic here; a difference a command needs becomes a slot by ruling.
+              anchor: 2026-10-11 implement-brainstorm-led
+            - id: analysis-iterative.caller-slots
+              labels: [binding, boundary]
+              class: must
+              kind: binding
+              text: >-
+                A caller fills these slots in its own rules: its opening · the unit the user
+                rules · its deliverable and where the ruled set is saved · whether the ruled-set
+                contract is on, and who writes after · the blind list's cadence, inputs and job
+                · its independent leg. A slot it leaves unfilled takes this skill's default where
+                one is stated here, inherited by every caller with no per-caller carve-out; a gate
+                and a `kind: fail` are command grammar and stay the caller's.
+              anchor: 2026-10-11 implement-brainstorm-led D4
+        - id: analysis-iterative.sec.inputs
+          title: Inputs — facts before forks
+          intent: >-
+            What is in hand before a fork is put, and how inputs already in hand open the stage.
+          rules:
+            - id: analysis-iterative.fact-before-fork
+              labels: [evidence]
+              class: must
+              text: >-
+                No fork is put to the user before the fact it hangs on is in hand, its source
+                attached — you find what the repo, the platform or the docs can answer while
+                other questions go on. A fact only the user holds is asked as a labelled fact
+                question, never dressed as a fork; one that cannot be found is stated as unknown
+                and the fork carries it as open.
+              anchor: 2026-10-11 implement-brainstorm-led D1
+            - id: analysis-iterative.inputs-in-hand
+              labels: [evidence]
+              class: must
+              text: >-
+                Inputs already in hand open the stage as facts, never re-asked, and only what they
+                leave open is asked; a skip skips the forks, never the close. With nothing in hand
+                there is no skip: the stage runs.
+              anchor: 2026-10-11 implement-brainstorm-led D1
+        - id: analysis-iterative.sec.verdict
+          title: Verdict — how a fork is put and how the stage closes
+          intent: >-
+            The asking grammar: one fork per turn, options, question form, mocks, defaults, the
+            status line, streaks, vague answers, and the stop rule.
+          rules:
+            - id: analysis-iterative.one-fork-per-turn
+              labels: [user-gate]
+              class: must
+              text: >-
+                Put one fork per turn; the defaults batch, confirmed on one screen, is the one
+                stated exception.
+              anchor: 2026-10-11 implement-brainstorm-led D1
+            - id: analysis-iterative.options-rule
+              labels: [user-gate]
+              class: must
+              text: >-
+                Every fork carries at least two real options, one of them the cheaper shape — do
+                less, reuse, or do nothing — and names the rejected road with its reason.
+              anchor: 2026-10-11 implement-brainstorm-led D1
+            - id: analysis-iterative.question-form
+              labels: [reporting, user-gate]
+              class: must
+              text: >-
+                When options are put, the question uses plain words and names decisions, never
+                bare ids; each option is one sentence with one concrete example, and the question
+                carries the case against your pick and a one-line recommendation, all on one
+                screen. An open probe to an unsure user stays allowed.
+              anchor: 2026-10-11 implement-brainstorm-led D1
+            - id: analysis-iterative.mock-in-message
+              labels: [evidence]
+              class: must
+              kind: duty
+              text: >-
+                A question about how something looks or behaves comes with a rough artifact inside
+                the message — a mock, a worked scenario with real numbers, or a replay on a past
+                case — never a file or code; anything heavier, such as a clickable prototype, is
+                built only on the user's request.
+              anchor: 2026-10-11 implement-brainstorm-led D1
+            - id: analysis-iterative.own-turn-or-batch
+              labels: [user-gate]
+              class: must
+              text: >-
+                A fork gets its own turn only when it is a real choice or a wrong pick is costly
+                to undo; every other one is a default, shown by name in one line when it arises
+                and confirmed in one batch on one screen at wrap-up — a default other forks hang
+                on is confirmed before them.
+              anchor: 2026-10-11 implement-brainstorm-led D1
+            - id: analysis-iterative.status-line
+              labels: [reporting]
+              class: must
+              kind: duty
+              text: >-
+                Each turn carries one status line over the stage's candidates: ruled · askable ·
+                in fog.
+              anchor: 2026-10-11 implement-brainstorm-led D1
+            - id: analysis-iterative.ratified-streak
+              labels: [user-gate]
+              class: must
+              text: >-
+                A yes to your pick stands as ratified; after three ratified rulings in a row, say
+                so, flagging the streak before treating the adoptions as engagement, and put the
+                next fork in another form — the case against first, or a weak lean in place of a
+                firm pick.
+              anchor: 2026-10-11 implement-brainstorm-led D1
+            - id: analysis-iterative.vague-answer
+              labels: [user-gate]
+              class: must
+              text: >-
+                "Whatever you think" is not a ruling: re-ask it as a choice between two concrete
+                options. An answer that sounds like convention, not a want, draws one probe —
+                what would you want if you need not justify it.
+              anchor: 2026-10-11 implement-brainstorm-led D1
+            - id: analysis-iterative.stop-rule
+              labels: [user-gate]
+              class: must
+              kind: bound
+              text: >-
+                The stage closes only when every candidate is ruled in or out and nothing is open;
+                a stage the user stops records what is left as open. If the candidates have not
+                shrunk for three turns running, say so and offer to step back to the caller's
+                opening.
+              anchor: 2026-10-11 implement-brainstorm-led D1
+        - id: analysis-iterative.sec.output
+          title: Output — what each ruling carries and where it lands
+          intent: The provenance vocabulary, the open-unknowns floor, and the deliverable.
+          rules:
+            - id: analysis-iterative.provenance-marks
+              labels: [evidence, reporting]
+              class: must
+              text: >-
+                Each ruled item carries one provenance mark — `blind list` for one the blind
+                list added, `handed in` for one taken from inputs in hand, otherwise `user's
+                words` or `lead's guess, ratified` — shown as it is ruled, and saved where the
+                caller writes its output when that output has a place for them, else kept in the
+                conversation.
+              anchor: 2026-10-11 implement-brainstorm-led D1
+            - id: analysis-iterative.open-unknowns
+              labels: [evidence]
+              class: floor
+              text: >-
+                Surface every elicited unknown as an open question in the produced artifacts; a
+                vague zone the principal could not resolve is never silently omitted.
+              anchor: 2026-08-10 validator-scope-and-verbosity
+            - id: analysis-iterative.deliverable
+              labels: [binding]
+              class: must
+              kind: binding
+              text: >-
+                Conclude with the deliverable your calling command names; when it names none,
+                generate the synthesis document using `SYNTHESIS.md`.
+              pointer: SYNTHESIS.md
+              anchor: 2026-10-06 brainstorm-target-state D21
+        - id: analysis-iterative.sec.reserved
+          title: Reserved — the user's rulings and the ruled-set contract
+          intent: >-
+            What only the user rules, and how the next writer stays inside the ruled set when the
+            contract is on.
+          rules:
+            - id: analysis-iterative.user-rules
+              labels: [user-gate]
+              class: must
+              kind: reservation
+              text: >-
+                Silence never rules: each ruling stands only on the user's own word, and the user
+                may pull a default out to its own turn.
+              anchor: 2026-10-11 implement-brainstorm-led D1
+            - id: analysis-iterative.contract-pen
+              labels: [user-gate, single-home]
+              class: must
+              kind: duty
+              when: {contract: 'on'}
+              text: >-
+                You transcribe the ruled set where the caller saves it — transcription of the
+                user's rulings, not authoring — before the next writer opens it, then pass the
+                pen explicitly, the user's own words quoted in its brief. After the pen passes, a
+                change the user rules reaches the writer as the exact text to land, written as
+                mechanical execution.
+              anchor: 2026-10-11 implement-brainstorm-led D1
+            - id: analysis-iterative.contract-inside
+              labels: [user-gate, boundary]
+              class: floor
+              when: {contract: 'on'}
+              text: >-
+                The next writer writes only inside the ruled set, keeping each item's meaning;
+                anything off it that changes a ruling or that the user would notice goes back to
+                the user before it is written. A small technical extra no ruled item touches may
+                wait for a later sign-off only where the caller's own rules grant that by name.
+              anchor: 2026-10-11 implement-brainstorm-led D1

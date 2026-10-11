@@ -10,6 +10,280 @@ second pass generates the survivor-provenance (KEPT) entries below rather than f
 verify (V4) for the scoped supersession. The skill's behaviour for setup and specify is unchanged.
 Pre-edit verbatim text: `git show 2e4c57c:plugins/mochiko/skills/analysis-iterative/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the combined engine/desk build (v0.120.0) — the skill converts to a
+schema-bearing pair and becomes the shared thinking stage. Ruling for every [v0.120.0] entry
+below: `.mochiko/brainstorms/implement-brainstorm-led/record.md` D1-engine-asking-contract,
+D2-iterative-becomes-engine, D3-four-move-now and D4-shaped-for-six as review-amended, with the
+defaults *What analysis-iterative keeps*, *Precedence* and *Supersessions owed at the build*
+(`DECISIONS.md` 2026-10-11 "Shared thinking engine ruled" row); wave plan
+`.mochiko/brainstorms/implement-brainstorm-led/wave1-engine.md` §3.8. D2 reverses the 2026-09-01
+"stay prose" ruling for this skill (`DECISIONS.md` 2026-09-01 skill-schema wave-2 row). The rules
+land by `0058-thinking-engine.yaml` on the review six-set; the `## Rules — delivered by
+mochiko-cli` block and the `allowed-tools` grant are pure additions riding D2. Pre-edit verbatim
+text: `git show 5162f1a:plugins/mochiko/skills/analysis-iterative/<file>`. -->
+
+## [v0.120.0] The enrichment variant — `SPECIFICATION-INPUT.md`, `ENRICHMENT.md` and `### Specification-input enrichment` — stripped
+
+- **Disposition:** superseded → none in this skill: the variant had no caller (record F27). A
+  sparse idea is thought through before a spec exists in `/mochiko:specify`'s intent and story
+  stages, which run on this skill (`review-specifications.not-for`, reworded by
+  `0062-spec-review-boundary.yaml`).
+- **Tier failed:** n/a — supersession by ruling (`implement-brainstorm-led`
+  D2-iterative-becomes-engine: "the Who / Problem / Value enrichment variant
+  (`SPECIFICATION-INPUT.md`, `ENRICHMENT.md`, and the *Two output shapes* section) has no caller
+  (F27) and is stripped, recorded")
+- **Content (faithfully compressed; verbatim at `git show 5162f1a:` each path):**
+  - `SPECIFICATION-INPUT.md` (4,763 characters) — "A focused variant of the iterative-analysis
+    engine for conditioning a sparse feature description into a specification-ready brief."
+    *When this variant fits* (the caller decides sparseness and names the missing triad
+    elements; the hand-off is caller-side) · *Question Agenda* — Part 1, triad gaps, conditional:
+    the WHO, PROBLEM and VALUE question templates, three options and "My Recommendation" each;
+    Part 2, always asked: the SCOPE (out of scope for v1) and SUCCESS templates · *Output* (the
+    `ENRICHMENT.md` template) · *Completion* ("do NOT ask any follow-up questions"; the enriched
+    description is the deliverable) · *Key Differences from General Analysis* (questions · depth
+    2–5 · output · purpose).
+  - `ENRICHMENT.md` (2,403 characters) — the *Enriched Feature Description* template (Actor ·
+    Problem · Value · Out of Scope · Success Criteria · Summary · Original Input, verbatim), the
+    "Add dark mode" worked example, seven field guidelines.
+  - `SKILL.md` `### Specification-input enrichment`, verbatim: "When the work is conditioning a
+    sparse feature description before a specification is authored — the description is thin on
+    the **Who / Problem / Value** triad — run the focused variant in
+    [SPECIFICATION-INPUT.md](SPECIFICATION-INPUT.md). It fills the missing triad elements plus
+    scope and success, and concludes with the [ENRICHMENT.md](ENRICHMENT.md) artifact, handed to
+    whoever authors the specification next (the requirements producer). ¶ The enriched
+    description is plain output: whoever requested the enrichment reads the artifact directly.
+    How a caller asks for this shape — and tells you which triad elements it already knows are
+    missing — is a caller-side dispatch concern, carried in the caller's own brief, not
+    something this skill parses or owns."
+- **Kept deliberately:** `SYNTHESIS.md` (the deliverable for a caller that names none,
+  `analysis-iterative.deliverable`) and `references/ADAPTIVE-EXAMPLES.md`, both unchanged.
+- **Consumers assessed:** `grep -rn -i 'triad\|Who / Problem\|SPECIFICATION-INPUT\|ENRICHMENT.md\|enrich'`
+  over `plugins/mochiko` (this skill's directory and `migrations/` excluded) — before: only
+  `review-specifications/SKILL.md:3` and `:11` (re-keyed this wave, its [v0.120.0] entry) and the
+  `not-for` rule (0062); after: none. `crates/`, `evals/contract/`, `scripts/`, the hooks: no
+  reference to either file. `brainstorm`, `specify`, `setup`, the router and the agenda name no
+  part of the variant.
+
+## [v0.120.0] `## Two output shapes, one engine` — the dispatch seam superseded by the shared stage
+
+- **Disposition:** superseded → one asking for every caller, the rendered rules
+  (`analysis-iterative.sec.*`, `0058-thinking-engine.yaml`); the concluding artifact is the
+  caller's (`analysis-iterative.deliverable` — the calling command's deliverable, else
+  `SYNTHESIS.md`), so there is no shape left to dispatch between.
+- **Tier failed:** n/a — supersession by ruling (`implement-brainstorm-led`
+  D2-iterative-becomes-engine — the *Two output shapes* section stripped; *Supersessions owed at
+  the build*: "the protected `[v0.25.0] KEPT:` entry and v0.63.0 keep-set naming `## Two output
+  shapes, one engine` the caller-facing dispatch seam")
+- **Content:** verbatim, with the horizontal rule above it (the enrichment subsection is quoted
+  in the entry above) —
+
+  ```
+  ---
+
+  ## Two output shapes, one engine
+
+  The adaptive questioning the Overview describes is the single questioning engine. It carries two output shapes; the engine is identical and only the agenda and the concluding artifact differ. Pick the shape that matches the work in front of you.
+
+  ### General analysis (default)
+
+  Open exploration — brainstorming, trade-off analysis, thinking a problem through. Converges when the decisions are settled and concludes with a synthesis document. Use [SYNTHESIS.md](SYNTHESIS.md) for the output.
+
+  ### Specification-input enrichment
+  [the entry above]
+  ```
+- **Kept deliberately:** the "single questioning engine" claim, now the skill's whole job (the
+  Overview names the shared thinking stage); General analysis's "converges when the decisions are
+  settled and concludes with a synthesis document" — carried by `analysis-iterative.stop-rule`
+  and `analysis-iterative.deliverable`.
+- **Protected-content reconciliation (MANDATORY):**
+  - **`[v0.25.0] KEPT: confidence-signals table, asymmetry principle, two-output-shapes dispatch`**
+    — its last surviving limb, the two-output-shapes dispatch ("survives intact" at [v0.63.0]),
+    is **superseded by this ruling**; the entry's KEPT status ends whole. Its signals table and
+    asymmetry principle left at [v0.63.0], verbatim in that entry's three homes.
+  - **`[v0.25.0] KEPT: the four question-format templates + ratification-streak doctrine`** —
+    superseded at [v0.63.0]; its intent rode the Common Mistakes rows since. This wave carries
+    the streak as a rule by ruling — `analysis-iterative.ratified-streak` (D1's "the ratified-yes
+    streak flag") — and the recommend-then-arbitrate shape through `analysis-iterative.options-rule`
+    and `question-form` (a pick with the case against). Not a RETURNED re-add: D1 states the
+    obligation fresh; the four format templates stay out.
+  - **[v0.63.0] guardrails keep-set**, member by member: the goal/output contract (Overview +
+    Output's synthesis-doc contract) → the Overview rewritten (its entry below) and the contract
+    relocated into `analysis-iterative.deliverable` (the `## Output` entry); the non-waivable
+    floor → `analysis-iterative.open-unknowns`, `class: floor`; the anti-patterns (`## Common
+    Mistakes`, `## When NOT to Use`) → kept, rows reworded (their entries); the caller-facing
+    dispatch seam → superseded here; the `references/ADAPTIVE-EXAMPLES.md` pointer → kept (the
+    Reference entry).
+- **Consumers assessed (shared skill):** `brainstorm` (`brainstorm.thinking-stage`,
+  `brainstorm.lead-inline-questioning`), `specify` (`spec.thinking-stage`, `spec.story-stage`,
+  `spec.intent-stage-first`), `setup` (`setup.interrogation-inline`,
+  `setup.coverage-survivor-routing`), `review-specifications` (`not-for`, `description:`, opening
+  line), the router (`SKILL.md:66`, `:124`), `INTERROGATION-AGENDA.md` (`:5`, `:166`). None
+  dispatches to a shape by name: grep "output shape|general analysis|specification-input|two
+  shapes" over `plugins/mochiko`, `.mochiko/schema-views`, `README.md`, `ARCHITECTURE.md` outside
+  this skill finds no consumer.
+
+## [v0.120.0] `## Output` — the deliverable and floor lines relocated into the rules; the table kept under `## Confidence marks`
+
+- **Disposition:** superseded → schema content, `0058-thinking-engine.yaml`: the deliverable
+  line → `analysis-iterative.deliverable` (`kind: binding`, `pointer: SYNTHESIS.md`); the floor
+  line → `analysis-iterative.open-unknowns` (`class: floor`). The confidence-indicators table stays
+  in the body under `## Confidence marks`.
+- **Tier failed:** n/a — supersession by ruling (`implement-brainstorm-led`
+  D2-iterative-becomes-engine — the skill's rules rendered by `mochiko-cli`; a supersession-transfer
+  of protected lines into schema content, skill-content-schema D8-skill-governance-envelope/C4)
+- **Content:** verbatim —
+
+  ```
+  ## Output
+
+  Conclude with the deliverable your calling command names; when it names none, generate the synthesis document using [SYNTHESIS.md](SYNTHESIS.md).
+
+  **Floor (non-waivable)** — surface every elicited unknown as an open question in the produced artifacts; a vague zone the principal could not resolve is never silently omitted.
+
+  **Confidence indicators** — assign based on conversation observation:
+  ```
+- **Kept deliberately:** the table, byte for byte, under the new heading, its lead-in shortened
+  to "Assign based on conversation observation:". The floor line's meaning stands verbatim in the
+  rule (its "**Floor (non-waivable)** —" label is now `class: floor`); the deliverable line's
+  `[SYNTHESIS.md](SYNTHESIS.md)` link is now the rule's `pointer:`. Both lines are protected — the
+  [v0.63.0] floor-line addition and the keep-set's synthesis-doc contract as narrowed at
+  [v0.117.0] — and keep that status through their rule anchors (`open-unknowns`:
+  `2026-08-10 validator-scope-and-verbosity`; `deliverable`: the `brainstorm-target-state`
+  D21-questioning-skill-repairs anchor, 2026-10-06), leaving only by recorded supersession-by-ruling (skill-pair criterion 12).
+- **Consumers assessed:** `setup.synthesis-artifact`, `brainstorm.deliverable-record` and
+  specify's Goal (the Intent section) each name their deliverable, as at [v0.117.0]; a direct
+  think-through keeps `SYNTHESIS.md`.
+
+## [v0.120.0] Title and `## Overview` — rewritten around the shared thinking stage and its callers
+
+- **Disposition:** superseded → `# Iterative Analysis — the Shared Thinking Stage` and the
+  two-paragraph Overview: "The shared thinking stage: a question thought through with the user and
+  turned into rulings — the asking, and, where a caller switches it on, the ruled-set contract
+  that keeps the next writer inside what the user ruled. Each question builds on the previous
+  answer; style, depth and output adapt to the complexity that emerges, and each question's
+  format to the user's state — confident, uncertain, or somewhere in between. ¶ Its callers
+  extend it with their domain part in their own rules: `/mochiko:brainstorm`'s deciding,
+  `/mochiko:specify`'s story stage, the `/mochiko:architecture` desk's focus stage and
+  `/mochiko:implement`'s design stage; `/mochiko:setup`'s interrogation and specify's intent stage
+  reach it through their own pointers, the contract off."
+- **Tier failed:** n/a — supersession by ruling (`implement-brainstorm-led`
+  D2-iterative-becomes-engine — "the existing questioning skill is the one that becomes the
+  shared stage"; D1-engine-asking-contract — each command "extends the engine with its own domain
+  expertise"; D3-four-move-now and D4-shaped-for-six as changed at review, S4)
+- **Content:** verbatim — "# Iterative Analysis" and "Guide collaborative thinking by adapting
+  questioning style, depth, and output to the complexity that emerges during conversation. Each
+  question builds on the previous answer, and the format of each question adapts to the user's
+  current state — confident, uncertain, or somewhere in between. Conclude with a structured
+  synthesis document whose depth matches the conversation's depth."
+- **Kept deliberately:** "each question builds on the previous answer", the adaptation of style,
+  depth and output to the emerging complexity, and of each question's format to the user's state
+  (obligation map row P1, `kept`). The last sentence moves to `analysis-iterative.deliverable`
+  and the "Padding the synthesis" row ("Output depth matches conversation depth"). Protected —
+  the [v0.63.0] keep-set's goal/output contract — reconciled in the `## Two output shapes` entry.
+- **Consumers assessed:** none quotes the Overview (grep "Guide collaborative" over
+  `plugins/mochiko`: this file only).
+
+## [v0.120.0] `## When NOT to Use` — the implementation-details row and the spec-review parenthetical reworded
+
+- **Disposition:** superseded → (a) "**Build-time implementation details** — decomposing and
+  coding a card is the builder's (`mochiko:executing-tdd-cycle`); a design choice the user rules,
+  as in `/mochiko:implement`'s design stage, runs here"; (b) the Specification review row's
+  parenthetical → "(this skill rules what gets written, never grades what was)".
+- **Tier failed:** n/a — supersession by ruling (`implement-brainstorm-led` *Touch set for the
+  build*, added at verify, V5: "the *When NOT to Use* line '**Implementation details** — use
+  planning skills instead' (F21) rewritten, since implement's design phase now runs the skill";
+  D3-four-move-now; for (b) D2-iterative-becomes-engine — the parenthetical named the stripped
+  enrichment shape, and the desk's and implement's stages run after a spec exists)
+- **Content:** verbatim — "- **Implementation details** — use planning skills instead" and
+  "(this skill conditions raw input *before* a spec exists)".
+- **Kept deliberately:** the other three rows byte for byte (quick clarifications · clear
+  direction · time-sensitive) and the Specification review row's route to
+  `mochiko:review-specifications` — the [v0.63.0] keep-set's anti-patterns (obligation map P2,
+  `reworded`).
+- **Consumers assessed:** no primitive quotes a row (grep "use planning skills instead",
+  "conditions raw input" over `plugins/mochiko`: this file only).
+
+## [v0.120.0] `## Common Mistakes` — two rows reworded to agree with the engine; the [v0.117.0] brainstorm-only supersession ends
+
+- **Disposition:** superseded → "| Options before an unsure user can choose | Options force
+  premature decisions on an unsure user | Open probes help them discover what they think; the
+  fork, with its options, follows once they can choose |" and "| Multiple forks per turn |
+  Fractured attention, shallow answers across all of them | One fork per turn; the defaults
+  batch, confirmed on one screen, is the one stated exception |".
+- **Tier failed:** n/a — supersession by ruling (`implement-brainstorm-led` default *What
+  analysis-iterative keeps*, added at review, S3: "'one question per turn — always' reads one fork
+  per turn, with the defaults batch confirmed on one screen as the one stated exception; 'always
+  using structured options' keeps an open probe allowed for an unsure user beside the engine's
+  options rule"; D1-engine-asking-contract)
+- **Content:** verbatim —
+
+  ```
+  | Always using structured options | Options force premature decisions on an unsure user | Open probes help them discover what they think |
+  | Multiple questions per turn | Fractured attention, shallow answers across all of them | One question per turn — always |
+  ```
+- **Kept deliberately:** the other five rows byte for byte (obligation map P8, `kept`); row 1's
+  "Why it fails" and its fix's first clause verbatim — the open probe stays allowed beside
+  `analysis-iterative.question-form` ("An open probe to an unsure user stays allowed"). The
+  [v0.117.0] entry's brainstorm-only supersession ends: `brainstorm.own-rules-win` is superseded by
+  `0060-brainstorm-on-engine.yaml` and `spec.own-rules-win` by `0061-specify-on-engine.yaml`
+  (default *Precedence*), so the rows and the engine now hold for every caller and the "two texts
+  that disagree" that entry accepted no longer exist.
+- **Consumers assessed:** `setup` (`setup.interrogation-inline`), specify's intent and story
+  stages, `brainstorm` — each now reads the reworded rows beside the engine's rules. No primitive
+  quotes a row (grep "One question per turn — always", "Always using structured options": this
+  file only). `INTERROGATION-AGENDA.md:5` and `:27` state "one question per turn" in their own
+  words — handed to the lead (the engine's `engine-precedence` holds meanwhile).
+
+## [v0.120.0] `## Reference` — the pointer kept, a precedence clause added
+
+- **Disposition:** superseded → "See [ADAPTIVE-EXAMPLES.md](references/ADAPTIVE-EXAMPLES.md) for
+  annotated conversations showing these principles in action; they predate the delivered rules,
+  which hold where an example differs."
+- **Tier failed:** n/a — supersession by ruling (`implement-brainstorm-led` default *Precedence* —
+  "the engine's asking rules hold in every user command" — with *What analysis-iterative keeps*,
+  which keeps "the adaptive examples")
+- **Content:** verbatim — "See [ADAPTIVE-EXAMPLES.md](references/ADAPTIVE-EXAMPLES.md) for
+  annotated conversations showing these principles in action."
+- **Kept deliberately:** the pointer (the [v0.63.0] keep-set) and `references/ADAPTIVE-EXAMPLES.md`
+  byte for byte. Where the examples differ, recorded for a later ruling: Example 1 Turn 3 reads
+  three confident yeses to the lead's pick as "a convergence signal — time to nudge toward
+  wrap-up", where `analysis-iterative.ratified-streak` flags the streak and changes the next
+  fork's form; no example carries the status line (`status-line`) or the case against the pick
+  (`question-form`).
+- **Consumers assessed:** no primitive outside this skill names the reference file (grep
+  "ADAPTIVE-EXAMPLES" over `plugins/mochiko`).
+
+## [v0.120.0] `description:` — rewritten around the shared thinking stage
+
+- **Disposition:** superseded → "This skill MUST be invoked when running the shared thinking
+  stage — a question worked through with the user one fork per turn, facts before forks, every
+  ruling the user's, the next writer held inside the ruled set when the caller asks — in
+  brainstorm's deciding, specify's intent and story stages, the architecture desk's focus stage,
+  implement's design stage and setup's interrogation. SHOULD also invoke on 'think this through',
+  'thinking stage', 'ruled set', or a multi-decision trade-off. Distinct from
+  review-specifications, which grades a drafted spec; this skill rules what gets written." (594
+  characters, the canonical snippet; budget 595; cap 1,536.)
+- **Tier failed:** n/a — supersession by ruling (`implement-brainstorm-led`
+  D2-iterative-becomes-engine, *Accepted risk*: "The skill's `description:` and the router's lines
+  … are rewritten around the stage"; *Touch set for the build*: "`description:` rewritten"). This
+  ruling supersedes, for this conversion only, skill-pair criterion 7 of
+  `.claude/rules/mochiko/primitive-edits.md` ("The frontmatter `description:` value is
+  byte-identical across the conversion"); the criterion's ≤ 1,536 cap holds.
+- **Content:** verbatim (476 characters, the [v0.63.0] slim form) — "This skill MUST be invoked
+  when enriching a sparse feature description into the Who / Problem / Value triad before a
+  specification is authored, or when running a collaborative think-through / brainstorm through
+  adaptive, one-question-at-a-time discovery. SHOULD also invoke when working through a complex,
+  multi-decision trade-off space. Distinct from review-specifications, which reviews an
+  already-drafted spec for gaps: this skill conditions raw input BEFORE a spec exists."
+- **Kept deliberately:** the MUST/SHOULD grading; brainstorm as a caller; the multi-decision
+  trade-off trigger; the `review-specifications` sibling distinction, re-keyed from "conditions
+  raw input BEFORE a spec exists" to "rules what gets written". The [v0.63.0] slim discipline
+  holds — inside its 595 budget. Leaving: the Who / Problem / Value trigger (the stripped
+  variant) and "one-question-at-a-time discovery" (one fork per turn, `one-fork-per-turn`).
+- **Consumers assessed:** the router's row (re-keyed, `.mochiko/strips/mochiko.md` [v0.120.0]);
+  `review-specifications`' description (re-keyed, its [v0.120.0] entry); the ledger's description
+  row, 476 → 594.
+
 ## [v0.117.0] `## Output` — the synthesis line re-keyed to defer to the calling command's deliverable
 
 - **Disposition:** superseded → "Conclude with the deliverable your calling command names; when it

@@ -1,0 +1,89 @@
+grammar: 1
+id: 0061-specify-on-engine
+sequence: 61
+intent: >-
+  Move specify's story stage onto the shared thinking stage with its ruled-set contract on
+  (implement-brainstorm-led D3; default Slots declared where): mint the class: floor stub
+  spec.thinking-stage, supersede spec.own-rules-win, and reword spec.story-stage and eight story-
+  and intent-stage rules to specify's domain part. spec.intent-stage-first and
+  spec.blind-journey-list untouched; no floor or fail retired or lowered.
+anchor: 2026-10-11 implement-brainstorm-led
+hash: sha256:e15008eb923432d99ae0d031a8ff81af744ee211190d0e02f09eeeaece75842e
+changes:
+  - op: mint-rule
+    schema: command/specify
+    section: spec.sec.boundaries
+    rule:
+      id: spec.thinking-stage
+      class: floor
+      extends: common.thinking-stage
+      anchor: 2026-10-11 implement-brainstorm-led D3
+  - op: supersede-rule
+    schema: command/specify
+    id: spec.own-rules-win
+    disposition: >-
+      superseded — precedence flipped: the engine's asking rules hold in every caller
+      (analysis-iterative.engine-precedence); specify keeps its domain part, reached through
+      spec.thinking-stage (default Precedence; supersedes specify-brainstorm-discovery
+      D5-specify-own-rules as to this clause)
+    anchor: 2026-10-11 implement-brainstorm-led D3
+  - op: reword-rule
+    schema: command/specify
+    id: spec.story-stage
+    text: >-
+      No story fork is put before the intent synthesis is confirmed; at the story-stage moment the
+      story set is worked with the user on the thinking stage with its ruled-set contract on —
+      the slate is the ruled set, the requirements-analyst seat the next writer — and closes in
+      a ruled slate. The slate rules what the spec carries, never what builds now — that stays
+      the selection gate's.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.story-forks
+    text: >-
+      A story fork's do-less option is fewer stories, or none, for that journey, and its mock is a
+      one-row mock of the story as it would read; the story stage's defaults are confirmed
+      together on the slate screen, and its status line runs over the candidate journeys.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.story-stage-stop-rule
+    text: >-
+      The story stage's candidates include the blind journey list's differences, each ruled in or
+      out before the stage closes; a stall steps back to the intent synthesis.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.intent-probe-discipline
+    text: >-
+      Intent runs as probes, never a questionnaire; it closes in a one-screen synthesis the user
+      confirms before any authoring.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.lead-holds-story-stage
+    text: >-
+      The story stage runs with the capability frame in hand; the requirements-analyst seat
+      authors the stories from the confirmed slate.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.analyst-brief-and-pen
+    text: >-
+      At the slate confirm the slate is transcribed into `spec.md`; the next writer's brief
+      carries each row with its seed, and the `out` rows with their whys.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.slate-binds-authoring
+    text: >-
+      Story files are authored for `in` rows only — a row `in — waiver pending` waits — and
+      the slate's count is the feature's; a story the slate lacks is proposed to the user as a
+      row.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.stage-inputs-in-hand
+    text: >-
+      Specify's inputs in hand when its story stage opens: a brainstorm record named in
+      `$ARGUMENTS`, or stories already in story form; there is no size gate, and a decisive user
+      gets confirmations and a fast wrap-up.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.slate-provenance
+    text: >-
+      A slate row's provenance mark sits after its line in the Story cell; a row taken from a
+      named brainstorm record is `handed in` whatever the slate's source.

@@ -173,14 +173,23 @@ fn the_log_replays_into_a_deliverable_state() {
     // brainstorm target state) import none. `0046`–`0050` (the 2026-10-08 human-readable-ids
     // wave 2) import none either: `0046` and `0050` replace templates in place. `0051`–`0057`
     // (the 2026-10-10 specify-brainstorm-discovery wave) import none either: `0056` replaces the
-    // `spec` template in place.
-    assert_eq!(replay.state.docs.len(), 87);
+    // `spec` template in place. `0058` (the 2026-10-11 implement-brainstorm-led wave 1) imports
+    // one skill document, `analysis-iterative`; `0059`–`0062` import none. `0063` and `0064` are
+    // unused, a legal gap. `0065`–`0070` (its wave 2) import four: `0065` the
+    // `architecture-visit` template and the `architecture-desk` home, `0066` the
+    // `architecture-diagram` template and the `product-diagrams` home; `0066` also replaces the
+    // `product-architecture` home and the `architecture-store` template in place. `0071`–`0074`
+    // are unused, a legal gap. `0075`–`0084` (its wave 3) import one: `0075` the
+    // `design-stage` template; `0075` also replaces the `feature`, `epic` and `product-lane`
+    // homes in place, and `0079` the `architecture-store` template.
+    assert_eq!(replay.state.docs.len(), 93);
     assert_eq!(
         replay.sequences(),
         vec![
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
             25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48,
-            49, 50, 51, 52, 53, 54, 55, 56, 57
+            49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 65, 66, 67, 68, 69, 70, 75, 76,
+            77, 78, 79, 80, 81, 82, 83, 84
         ],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
@@ -202,7 +211,17 @@ fn the_log_replays_into_a_deliverable_state() {
          templates, 0047's joined minting rules, 0048's landing re-key, 0049's graders' check, \
          0050's joined GI check, then the 2026-10-10 specify-brainstorm-discovery wave — 0051's \
          story stage, 0052's stories from the slate, 0053's slate checks, 0054's FR story \
-         citation, 0055's map slate touchpoint, 0056's slate template, 0057's var bindings"
+         citation, 0055's map slate touchpoint, 0056's slate template, 0057's var bindings, \
+         then the 2026-10-11 implement-brainstorm-led wave 1 — 0058's thinking engine, 0059's \
+         thinking-stage block, 0060's brainstorm on the engine, 0061's specify on the engine, \
+         0062's spec-review boundary, then — 0063 and 0064 left unused, a legal gap — its wave \
+         2 — 0065's visit-file home, 0066's diagram set, 0067's store diagram rules, 0068's \
+         desk focus stage, 0069's desk on the engine, 0070's diagram write reach, then — 0071 \
+         to 0074 left unused, a legal gap — its wave 3 — 0075's design-stage home, 0076's \
+         implement design stage, 0077's implement on the engine, 0078's architecture \
+         touches, 0079's store landing diagrams, 0080's meaning-kept grade, 0081's \
+         user-added re-grade, 0082's gap-finding signed set, 0083's stage file in the \
+         artifact home, 0084's entry-only record restored"
     );
 }
 
@@ -607,6 +626,17 @@ fn the_sidecar_anchors_ride_their_rules() {
              2026-09-24 delta-files-vs-direct-baseline-edits D7",
         ),
     ];
+    /// Sidecar-anchored rules a recorded ruling has re-anchored since genesis — each entry names
+    /// the migration whose `set-rule-field` moved the anchor and the anchor the rule now
+    /// carries. The rule stays live and anchored, so its protection holds; only its provenance
+    /// moved, and the log records the move. A rule listed here MUST carry exactly the named
+    /// anchor, or the walk below still fails — this list names which move is expected, never
+    /// which rule is skipped.
+    const REANCHORED_SIDECAR_ANCHORS: [(&str, &str, &str); 1] = [(
+        "impl.gate-design-checkpoint",
+        "0076-implement-design-stage.yaml",
+        "2026-10-11 implement-brainstorm-led D8",
+    )];
 
     for (id, expected) in &anchors {
         if RETIRED_SIDECAR_ANCHORS
@@ -623,6 +653,10 @@ fn the_sidecar_anchors_ride_their_rules() {
         let rule = live_rules
             .get(id.as_str())
             .unwrap_or_else(|| panic!("{id}: the sidecar's rule is no longer live"));
+        let expected = REANCHORED_SIDECAR_ANCHORS
+            .iter()
+            .find(|(reanchored_id, _, _)| reanchored_id == id)
+            .map_or(expected.as_str(), |(_, _, anchor)| *anchor);
         match rule.anchor.as_deref() {
             Some(carried) => assert_eq!(carried, expected, "{id}: the anchor moved"),
             None => panic!("{id}: the sidecar's anchor was cleared"),
@@ -778,12 +812,50 @@ fn the_corpus_census_holds_through_the_log() {
     // fail set 36 → 37, while the skill floors hold at 264. The wave's twelve `reword-rule`s —
     // eight across `0051`–`0055`, four in `0057` — each keep their rule's id, class and kind; its
     // two moments, two conditions and `0056`'s `spec` template replaced move nothing here.
-    assert_eq!(command_rules, 381, "live command rules");
-    assert_eq!(skill_rules, 815, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1196, "live rules in total");
-    assert_eq!(skill_floors, 264, "skill floors");
-    assert_eq!(command_floors, 120, "declared command floors");
-    assert_eq!(fail_nodes, 37, "command fail nodes");
+    // The 2026-10-11 implement-brainstorm-led wave 1 carries `0058`–`0062`, anchored to
+    // implement-brainstorm-led D1–D3 and its confirmed defaults. `0058` imports the engine,
+    // `analysis-iterative`: twenty-one skill rules, two of them floors
+    // (`analysis-iterative.open-unknowns`, `analysis-iterative.contract-inside`). `0059` mints
+    // `common.thinking-stage`, a block in the command-common library that sits outside this
+    // count. `0060` supersedes seven `brainstorm` rules and `0061` one `specify` rule, none of
+    // them a floor or a fail node, and each mints one floor stub extending the block,
+    // `brainstorm.thinking-stage` and `spec.thinking-stage`. So command 381 − 8 + 2 = 375, skill
+    // 815 → 836, total 1196 → 1211, command floors 120 → 122 and skill floors 264 → 266, while
+    // the fail set holds at 37. The wave's sixteen `reword-rule`s — six in `0060`, nine in
+    // `0061`, one in `0062` — and `0060`'s one `when:` cleared keep their rule's id, class and
+    // kind, and move nothing here.
+    // The 2026-10-11 implement-brainstorm-led wave 2 carries `0065`–`0070`, anchored to
+    // architecture-brainstorm-interview D1–D5 and D7–D9 and its confirmed defaults, and to
+    // implement-brainstorm-led D3: nineteen `mint-rule`s and nothing retired. `0068` mints
+    // fourteen `architecture` rules — thirteen musts and the floor fail node
+    // `arch.fail.write-outside-focus` — `0069` the floor stub `arch.thinking-stage`, the third
+    // extender of `common.thinking-stage`, and `0067` four musts on
+    // `authoring-architecture-store`. So command 375 → 390, skill 836 → 840, total 1211 → 1230,
+    // command floors 122 → 124 and the fail set 37 → 38, while the skill floors hold at 266. The
+    // wave's fourteen `reword-rule`s — five in `0067`, six in `0068`, three in `0070` — keep
+    // their rule's id, class and kind (the floors among them stay floors); `0067`'s two anchor
+    // `set-rule-field`s, `0068`'s condition and moment, and the four documents `0065` and `0066`
+    // import and the two `0066` replaces move nothing here.
+    // The 2026-10-11 implement-brainstorm-led wave 3 carries `0075`–`0084`, anchored to that
+    // session's rulings and confirmed defaults and to architecture-brainstorm-interview's:
+    // thirteen `mint-rule`s and nothing retired. `0076` mints eight `implement` rules — seven
+    // musts and the floor fail node `impl.fail.design-outside-ruled-set` — `0077` the floor
+    // stub `impl.thinking-stage`, the fourth extender of `common.thinking-stage`, `0078` two
+    // musts, `impl.desk-offer` and `impl.index-regeneration`, and `0080` and `0081` one must
+    // each, `review-plan-artifacts.meaning-kept` and `review-sufficiency.user-added-regrade`.
+    // So command 390 → 401, skill 840 → 842, total 1230 → 1243, command floors 124 → 126 and
+    // the fail set 38 → 39, while the skill floors hold at 266. The wave's nineteen
+    // `reword-rule`s — two in `0076`, eight in `0078`, two in `0079`, one each in `0080` and
+    // `0082`, four in `0083`, one in `0084` — keep their rule's id, class and kind (the floors
+    // among them stay floors); the six anchor `set-rule-field`s of `0076` and `0078`, `0076`'s
+    // moment, `0080`'s condition, the template `0075` imports and the four documents `0075`
+    // and `0079` replace move nothing here.
+    assert_eq!(command_rules, 401, "live command rules");
+    assert_eq!(skill_rules, 842, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1243, "live rules in total");
+    assert_eq!(skill_floors, 266, "skill floors");
+    assert_eq!(command_floors, 126, "declared command floors");
+    assert_eq!(fail_nodes, 39, "command fail nodes");
 }
 
 // ---------------------------------------------------------------------------

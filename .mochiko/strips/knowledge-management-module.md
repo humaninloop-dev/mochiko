@@ -13,6 +13,35 @@ document contracts are the **user's** artifacts and are untouchable. A prefix-ba
 `.mochiko/` would gut the KM module and the brainstorm command; 101 of this tree's 146
 `.mochiko/` references were correctly left alone on that test.
 
+<!-- Wave context: wave 1 of the combined engine/desk build (v0.120.0) — the module header's
+active-decline clause re-keyed. Ruling: the user's Q5 ruling at the build ("Need my explicit
+yes", `.mochiko/brainstorms/implement-brainstorm-led/build-log.md`, 2026-10-11) with
+`.mochiko/brainstorms/implement-brainstorm-led/record.md` D1-engine-asking-contract
+(`DECISIONS.md` 2026-10-11 "Shared thinking engine ruled" row); added to the wave's prose seat by
+the lead (plan question Q-B). Pre-edit verbatim text:
+`git show 5162f1a:plugins/mochiko/templates/constitution-modules/knowledge-management.md`. -->
+
+## [v0.120.0] The module header — adopted only on the user's yes, the active-decline clause superseded
+
+- **Disposition:** superseded → line 5 "Offered DEFAULT-ON in every mode — recommended, and
+  adopted only on the user's yes."
+- **Tier failed:** n/a — supersession by ruling (the user's Q5 ruling at the build, "Need my
+  explicit yes": from this build adopting the knowledge-management and release-gates modules takes
+  the user's yes, setup still recommends; carried by `analysis-iterative.user-rules` — "Silence
+  never rules" — under `implement-brainstorm-led` D1-engine-asking-contract. It supersedes the
+  active-decline clause of `setup-operating-docs-scaffolding` D2-elective-default-module —
+  "shipped **default-on**: the user must actively decline it" (`DECISIONS.md` 2026-07-17 row,
+  carried forward by `operating-docs-maintenance` D9-knowledge-module-redesign, 2026-07-25 row))
+- **Content:** verbatim — "Offered DEFAULT-ON in every mode — the user must actively decline."
+- **Kept deliberately:** "DEFAULT-ON in every mode" as the offer's name — setup still leads with
+  adoption, and the engine reads a default as one the user confirms, never by silence; the rest of
+  the header byte for byte (core whole, electives per-doc, the ruling recorded either way, a
+  recorded decline durable).
+- **Consumers assessed:** `INTERROGATION-AGENDA.md` dimension 7 (re-keyed the same wave on the same
+  ruling, `.mochiko/strips/authoring-constitution.md` [v0.120.0]); `authoring-constitution/SKILL.md:91`
+  ("default-on, whole" — true); the `governance-intent` template's module row ("offered default-on
+  at dimension 7" — true).
+
 ## [v0.118.0] The two GI trace slots joined
 
 - **Disposition:** superseded → `GI-XXX-<slug>` in the collision-rulings slot and in `**Trace**: GI-XXX-<slug> (module selection)`.

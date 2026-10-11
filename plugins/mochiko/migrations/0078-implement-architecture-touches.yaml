@@ -1,0 +1,205 @@
+grammar: 1
+id: 0078-implement-architecture-touches
+sequence: 78
+intent: >-
+  Implement's share of architecture-brainstorm-interview D5, D8 and D9 as review-amended (the S8
+  list and the tenth touch stamped at V7; the ninth, the checkpoint's wording, is 0076's): reword
+  impl.design-inputs for the desk visit file (D5, with its S20 read against the run's base) and
+  the run's design-stage.md; mint impl.desk-offer, the offer default; reword
+  impl.design-outputs-home so the change is drawn into the store's diagram files before code and
+  the run's architecture.md is the neighborhood view plus the checkpoint table listing them (D8 as
+  repaired at S6/V1 and V9, superseding architecture-design-primitive D5-plan-run-artifact in
+  part); reword impl.baseline-entry-grammar, whose store clause a diagram file's own Lifecycle
+  line (D8 S3) makes false; reword the floor impl.deviation-gate to read the store diagrams, held
+  to the container and flow views (D8 S6, S7), its force kept — the deployment view, signed in
+  the run's drawing before, leaves the cycle-stop set as one of S7's "other views" and is checked
+  at the landing's built-vs-signed diff, a narrowing by that ruling, not a silent one; reword
+  impl.store-landing for the built-vs-signed diff, the landing flip of the diagrams and the orphan
+  check over them (D8, and 0070's orphan-rule); reword impl.gap-finding-blind-dispatch's first
+  message (D8); mint impl.index-regeneration (D8 S4, V7); and reword impl.design-seats-staffing
+  and impl.design-review-pair, incomplete against D8 and against implement-brainstorm-led D8's
+  meaning-kept grade. No floor or fail retired or lowered.
+anchor: 2026-10-11 architecture-brainstorm-interview
+hash: sha256:d78415d85d12509c44a7e5cdba48a95e16af62d11b12d1df52a4ff3c4de229fd
+changes:
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-inputs
+    text: >-
+      Design inputs are sufficiency-report.md and any desk visit file keyed to the run's feature
+      or an epic member — its directory under `.mochiko/architecture/desk/` carrying the joined
+      FEAT id lower-cased in its slug, read against the run's own pinned base, any conflict where
+      the store has moved past it listed at the design checkpoint for the user to rule — and,
+      where the design phase ran, the run's design-stage.md, its signed architecture.md at
+      ${features_dir}/FEAT-XXX/ with the store diagram files it lists, and its marked entries in
+      the product baselines, read in the pinned-base diff — the signed store delta among them
+      (the store at the sign-off base, or the checkpoint table), the anchor for the deviation
+      check and the built-vs-signed diff; the product baselines at ${product_dir}/ (data-model.md,
+      contracts/, constraints-and-decisions.md, the design baseline at ${product_dir}/design/, and
+      the architecture store, whose concern rows carry the NFR-XXX targets the built code must
+      meet); spec.md for the cards' cited acceptance criteria.
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.design-inputs
+    field: anchor
+    value: 2026-10-11 architecture-brainstorm-interview D5
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.reserved
+    rule:
+      id: impl.desk-offer
+      labels: [user-gate, scope-entry]
+      class: must
+      kind: reservation
+      text: >-
+        Where the check names a structural gap and no desk visit file keyed to the feature exists,
+        the stage first offers a desk visit — `/mochiko:architecture <FEAT-ID>`, the run pausing
+        until the visit closes and its file is handed in — or to go on here; the choice is the
+        user's at run time.
+      when: {scope: [selection, delta, epic]}
+      anchor: 2026-10-11 architecture-brainstorm-interview D5
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-outputs-home
+    text: >-
+      Design outputs are written in place in the product baselines at ${product_dir}/ under the
+      run's lifecycle marker (impl.baseline-entry-grammar) — data-model.md, contracts/,
+      constraints-and-decisions.md, quickstart.md, the design baseline's truth part, and, where
+      the structural trigger fired, the store's `proposed` elements and the change's drawing,
+      before any code: its container view, its sequence diagrams for qualifying flows and, where
+      IP-XXX rows exist, its deployment view, each drawn delta-styled — new · modified ·
+      removed — into the store's own copy of that view: the spine's container view where a
+      container changes, the diagram file that holds the view, or a new diagram file where none
+      does. The run's home keeps only architecture.md, the drawing the user signs: the
+      neighborhood delta view drawn from the delta-styled elements and the checkpoint table of
+      changed elements, listing every store diagram file the change edited — no register text,
+      no current-state narrative. Structure and scope per mochiko:patterns-system-design, grammar
+      and lifecycle per mochiko:authoring-architecture-store.
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.design-outputs-home
+    field: anchor
+    value: 2026-10-11 architecture-brainstorm-interview D8
+  - op: reword-rule
+    schema: command/implement
+    id: impl.baseline-entry-grammar
+    text: >-
+      Every product-baseline entry a run writes or amends carries a `**Lifecycle:**` field of its
+      own, apart from any stance field (a store element's lifecycle field is its `Status`; a
+      constraints entry's `**Status:**` stays its stance). The key is the run's owner: `FEAT-XXX`
+      for a feature run, `EPIC-XXX` for an epic's shared write, `lane-<slug>` for a product-lane
+      run. Before the design checkpoint every run write reads `proposed (<key>)`: a new entry, an
+      amended one with its new text in place, a removed one with its heading and marker kept and
+      its body cut. The sign-off flips each by the pinned-base diff — absent at the base to
+      `in-flight (<key>)`, changed from it to `modifying (<key>)`, cut to its heading to `removing
+      (<key>)`. A build-time decision is written directly in that post-sign form — new
+      `in-flight`, amended `modifying`, removed `removing` — its judgment graded by the landing
+      verification seat. At landing `in-flight` and `modifying` flip to `built`, the key cleared;
+      a `removing` entry becomes its stub (heading kept, `**Lifecycle:** removed`, no body, no
+      key, its id still taken). An entry with no `**Lifecycle:**` field reads `built`. Readers:
+      `proposed` is nothing promised and reads absent; the in-flight class (`in-flight` ·
+      `modifying` · `removing`) is planned contract; `removed` reads absent; `built` or no field
+      is delivered. A new entry takes the next free id of the product file's own sequence at write
+      time, written joined with its three-word topic slug per the IDs section of
+      `templates/artifact-format.md`, a `removed` stub's id counting as taken — no feature-local
+      sequence, no renumbering at landing. The why lives on the entry (a constraints entry's
+      `Source` · `Shaped by` · `Impact`; a build-raised entry's `**Raised:**` and one-line
+      `**Weighed:**`), never in a ledger; the commit message is not a carrier. Prior text is never
+      kept beside the new — the pinned-base diff shows it. Where the marker sits: in
+      data-model.md and quickstart.md the `**Lifecycle:**` line is the first line under the entry
+      heading; in constraints-and-decisions.md it is the same first line, above the stance line
+      (`**Class:** … · **Status:** …`), never sharing it; a build-raised entry's
+      ``**Raised:** `<key>` C<n>-<slug>`` — the run's key in a code span, a FEAT or EPIC key
+      written joined — and `**Weighed:** <why, one line>` follow it directly, one line each. A
+      contracts/ .md entry is the heading of the clause that changes, at the level its sibling
+      clauses use, `**Lifecycle:**` its first line; api.yaml takes an `x-lifecycle` key on the
+      changed operation or schema, with the same values, a removed one keeping only its summary
+      and `x-lifecycle: removed`. The architecture store's elements take no separate field and
+      keep their own `**Name**:` form: a spine element's lifecycle is its Status column, with
+      Raised and Weighed columns filled on a build-raised element; a concern row's is its `-
+      **Status**:` field, followed on a build-raised row by `- **Raised**:` and `- **Weighed**:`;
+      a store diagram file is one entry carrying its own `**Lifecycle:**` line beside its
+      `**Draws:**` line, to the `architecture-diagram` template's shape; a removed concern keeps
+      its heading and `- **Status**: removed`, a removed spine row its id, kind, name and status,
+      not drawn. Every brief to a seat that writes or amends a product baseline carries this rule
+      as an obligated read.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.deviation-gate
+    text: >-
+      A cycle that adds or removes a box, adds, removes, or redirects an arrow, or moves a
+      responsibility across a boundary of the signed delta — the run's signed architecture.md
+      and the container and flow views of the store diagram files it lists — stops and is
+      presented: build as approved, or amend the delta by the user's ruling first. Never design
+      around it silently. ER, state, flowchart and other views are checked at the landing's
+      built-vs-signed diff, never as cycle stops.
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.deviation-gate
+    field: anchor
+    value: 2026-10-11 architecture-brainstorm-interview D8
+  - op: reword-rule
+    schema: command/implement
+    id: impl.store-landing
+    text: >-
+      A built structural change lands in the architecture store in three parts: the landing flip
+      over the run's elements and diagram files — `in-flight` and `modifying` to `built`, the
+      key cleared, each `removing` one to its `removed` stub, and each diagram's delta styling
+      cleared to plain, no redraw (transcription — rides this run's landing audit) · the
+      touched rows' As-built: and Drift: fields are written as judgment and independently graded
+      · the orphan check runs — a `proposed` or in-flight-class element, or a diagram whose
+      `**Lifecycle:**` carries a key, keying no open feature, epic or lane is flagged, never left.
+      The built-vs-signed diff reads the signed architecture.md and every store diagram file it
+      lists, every view kind included. The store skill regenerates the derived root
+      ARCHITECTURE.md; it is never hand-edited here.
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.store-landing
+    field: anchor
+    value: 2026-10-11 architecture-brainstorm-interview D8
+  - op: reword-rule
+    schema: command/implement
+    id: impl.gap-finding-blind-dispatch
+    text: >-
+      Gap-finding dispatch is two-message and blind. The first message carries only spec.md, the
+      sufficiency report and, where one exists, the signed architecture.md with the store diagram
+      files it lists, Screens & Flows, and the baselines data-model.md, contracts/, the design
+      baseline, and the store's NFR-XXX concern rows — their `built` and in-flight-class entries
+      only, never a `proposed` one — never the code, tasks.md, the **TEST:** cases, or any
+      report. The seat states its derived expectations; only then does probing begin. Its brief
+      carries the model-tiering rule, and its delegated reads stay inside the same fence.
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.ways-of-working
+    rule:
+      id: impl.index-regeneration
+      labels: [landing, evidence]
+      class: must
+      kind: duty
+      text: >-
+        At the design-checkpoint and landing moments of every run that wrote a product baseline or
+        a store diagram, structural or not, you call the pointer skill's regeneration of the
+        derived root ARCHITECTURE.md, so its stale compare runs there; the fold itself still fires
+        only when structure was built.
+      pointer: mochiko:authoring-architecture-store
+      anchor: 2026-10-11 architecture-brainstorm-interview D8
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-seats-staffing
+    text: >-
+      Design-seat staffing is your call: typically ${design_seat} for the design-phase baseline
+      writes, ${architect_seat} for the store's `proposed` elements, its diagram edits and the
+      run's architecture.md drawing, ${qa_seat} for the **TEST:** cases.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-review-pair
+    text: >-
+      A non-author seat grades the design-phase output before the design checkpoint —
+      mochiko:review-plan-artifacts for conformance to the gap list, the meaning kept against the
+      run's design-stage.md, and card quality (blocking), mochiko:review-feasibility for
+      buildability and contradiction.
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.design-review-pair
+    field: anchor
+    value: 2026-10-11 implement-brainstorm-led D8

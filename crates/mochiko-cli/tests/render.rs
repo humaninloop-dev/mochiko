@@ -27,9 +27,9 @@ const SHIPPED_LOG_DIR: &str = concat!(
 /// schema-source line stripped, so the byte-equality assertion names the one line that moved.
 const FIXTURE_DIR: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/tests/fixtures/template");
 
-/// The eight templates the log carries. This is the fixture's own manifest, not a production
+/// The fifteen templates the log carries. This is the fixture's own manifest, not a production
 /// constant: the closed `TEMPLATE_NAMES` set left the crate when the templates became log data.
-const SHIPPED_TEMPLATES: [&str; 12] = [
+const SHIPPED_TEMPLATES: [&str; 15] = [
     "spec",
     "tasks",
     "feature-entry",
@@ -47,6 +47,14 @@ const SHIPPED_TEMPLATES: [&str; 12] = [
     // `0013-design-baseline-home` ("2026-09-19 impeccable-design-integration D5") imported the
     // design baseline's template, bound by the `product-design` home.
     "design-baseline",
+    // The 2026-10-11 implement-brainstorm-led wave 2 imported two: the desk's visit file at
+    // `0065-desk-visit-home` and the store's diagram file at `0066-store-diagram-set`, bound by
+    // the `architecture-desk` and `product-diagrams` homes.
+    "architecture-visit",
+    "architecture-diagram",
+    // Its wave 3 imported one: the design stage's ruled-set file at `0075-design-stage-home`,
+    // bound by the `feature`, `epic` and `product-lane` homes.
+    "design-stage",
 ];
 
 // ---------------------------------------------------------------------------
@@ -1073,7 +1081,7 @@ fn no_shipped_section_renders_past_the_inline_ceiling() {
 /// `implement`'s floor set, the corpus's largest, in render order. Written out rather than
 /// derived: a floor rule added, renamed or reordered should break a test here, because the
 /// converted `.md`'s read-back and the contract suite's frozen expectations both key on this set.
-const IMPLEMENT_FLOORS: [&str; 37] = [
+const IMPLEMENT_FLOORS: [&str; 39] = [
     "impl.gate-design-checkpoint",
     "impl.gate-card-confirm",
     "impl.gate-final-acceptance",
@@ -1106,6 +1114,9 @@ const IMPLEMENT_FLOORS: [&str; 37] = [
     // ("2026-09-24 delta-files-vs-direct-baseline-edits D1"). A mint appends to its section, so it
     // renders at the end of `boundaries` rather than where its predecessor stood.
     "impl.baselines-in-place-marked",
+    // `0077-implement-on-engine` ("2026-10-11 implement-brainstorm-led") minted the
+    // thinking-stage pointer floor into `boundaries`, so it renders at that section's end.
+    "impl.thinking-stage",
     "impl.fail.sufficiency-unrecorded",
     "impl.fail.design-skipped",
     "impl.fail.card-independence",
@@ -1123,6 +1134,9 @@ const IMPLEMENT_FLOORS: [&str; 37] = [
     // two (D3), appended to `fail-conditions`.
     "impl.fail.unmarked-baseline-write",
     "impl.fail.unreviewed-baseline-diff",
+    // `0076-implement-design-stage` (the same session) minted the design stage's floor fail
+    // node, appended to `fail-conditions`.
+    "impl.fail.design-outside-ruled-set",
 ];
 
 /// A skill's floor set, the review family's referent, in render order.
@@ -1184,8 +1198,10 @@ fn every_shipped_floor_index_matches_its_pin() {
     // and `0009-plan-qa-leg` imported `review-seat-plan` ("2026-09-03
     // producer-plan-enforcement D8"), whose index carries five. The 2026-09-19
     // impeccable-design-integration wave imported three more: `patterns-design-direction` and
-    // `patterns-craft-floor` at `0011`, `review-design-audit` at `0012`.
-    assert_eq!(checked, 41, "six commands and thirty-five skills");
+    // `patterns-craft-floor` at `0011`, `review-design-audit` at `0012`. `0058-thinking-engine`
+    // ("2026-10-11 implement-brainstorm-led") imported `analysis-iterative`, whose index carries
+    // two.
+    assert_eq!(checked, 42, "six commands and thirty-six skills");
 }
 
 /// The index's own size at its widest, pinned the way the legend's is: every converted primitive
@@ -1212,8 +1228,11 @@ fn the_widest_shipped_floor_index_is_the_size_the_wave_recorded() {
         // again after `0013-design-baseline-home` added `impl.design-first-write` and
         // `impl.design-audit-advisory`, and again after `0024` and `0026` (2026-09-24
         // delta-files-vs-direct-baseline-edits) swapped four floors for four longer ids: +27
-        // characters, all ASCII, so bytes move by the same.
-        ("implement", 1048, 1084),
+        // characters, all ASCII, so bytes move by the same. Re-measured after `0076` and `0077`
+        // (2026-10-11 implement-brainstorm-led wave 3) added `impl.fail.design-outside-ruled-set`
+        // and `impl.thinking-stage`: +59 characters and +61 bytes, each id's ` · ` separator
+        // carrying one two-byte middle dot.
+        ("implement", 1107, 1145),
         "the widest floor index moved"
     );
 }

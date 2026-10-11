@@ -1,0 +1,10 @@
+# Implement Design Stage — checklist
+
+- [ ] Are the run's key, the gap list's report and base commit, every handed-in input by path, and the stage's state stated?
+- [ ] Does every entry name what it is, quote the user's direction, carry a seed or `open`, list its ruled pieces each with a provenance mark, and carry its own mark from the four?
+- [ ] Does every batch row show its gap, its default, its cost and the user's ruling?
+- [ ] Is every difference ruled in or out, an out carrying its why, or the skip stated?
+- [ ] Does every outside need carry its kind and the user's ruling, a later one naming where it went, with no new behaviour added and nothing added on a lane run?
+- [ ] On a stopped stage, is every open candidate listed with its fork, and on a closed one is the list empty?
+
+---

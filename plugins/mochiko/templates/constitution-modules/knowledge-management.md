@@ -2,7 +2,7 @@
 MODULE: knowledge-management
 ============================
 Attach when: the knowledge-management dimension (dimension 7) elicited adoption of the
-operating-docs layer. Offered DEFAULT-ON in every mode — the user must actively decline.
+operating-docs layer. Offered DEFAULT-ON in every mode — recommended, and adopted only on the user's yes.
 Adopted as CORE + ELECTIVES: the core bundle is adopted or declined WHOLE (a project for
 which the core feels heavy declines the module, not a fragment); the electives
 (`CHANGELOG.md`, `RUNBOOK.md`) are per-doc opt-in, elicited by project type. The ruling is

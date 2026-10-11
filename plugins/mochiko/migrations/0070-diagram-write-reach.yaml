@@ -1,0 +1,42 @@
+grammar: 1
+id: 0070-diagram-write-reach
+sequence: 70
+intent: >-
+  Make three lines true of the diagram set and the desk's delta-free visits
+  (architecture-brainstorm-interview D5, D8, and S3 as the lead reads it): the floor
+  sound-loop-on-judgment-writes names drawing or redrawing a store diagram among the judgment
+  writes (D8 — the desk's drawing is graded by tech-lead); the floor
+  arch.author-grader-separation's list of what a seat produces drops the delta the desk no longer
+  writes (D5) and names the diagram it now produces (D8); orphan-rule makes a diagram whose
+  Lifecycle key names a closed, retired or nonexistent owner an orphan too, flagged and cleaned as
+  an element is — the lead's reading of S3, which gives each diagram file its own Lifecycle
+  field, not a new ruling. Each rule keeps its anchor and its force; no floor retired or lowered.
+anchor: 2026-10-11 architecture-brainstorm-interview
+hash: sha256:7d24a923fecc9a664969a1b67a4300bb11cc1afaa7386fa67d604e52bc8e4773
+changes:
+  - op: reword-rule
+    schema: skill/authoring-architecture-store
+    id: authoring-architecture-store.sound-loop-on-judgment-writes
+    text: >-
+      Judgment writes — baseline authoring, shelf-walk stance batches, amendments, drawing or
+      redrawing a store diagram, and every `As-built:`/`Drift:` write — take the independent
+      review leg before the user's ruling, per `mochiko:patterns-sound-loop`; status flips and
+      orphan cleanup are transcription and ride the landing audit. Do not relabel judgment as
+      mechanical to skip the leg.
+  - op: reword-rule
+    schema: command/architecture
+    id: arch.author-grader-separation
+    text: >-
+      Author ≠ grader — wherever a seat produces (baseline, stance batch, amendment, diagram),
+      no output is cleared by its author; a producing seat plans first, read-only, in a plan-only
+      dispatch, and works only on a plan a fresh peer of its persona type passed per
+      `mochiko:review-seat-plan` and you approved.
+  - op: reword-rule
+    schema: skill/authoring-architecture-store
+    id: authoring-architecture-store.orphan-rule
+    text: >-
+      Every `proposed` and in-flight-class element, and every diagram whose `**Lifecycle:**`
+      carries a key, keys an open feature, epic or lane; an element or diagram whose key names a
+      closed, retired, or nonexistent owner is an orphan — the health view flags it, the
+      sufficiency check lists it for the user at run-open, the landing verifier flags one keyed to
+      its own run, and desk visits clean it.

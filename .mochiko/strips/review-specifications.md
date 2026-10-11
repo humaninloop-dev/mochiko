@@ -14,6 +14,32 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/review-specifications/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the combined engine/desk build (v0.120.0) — the enrichment boundary
+re-keyed. Ruling: `.mochiko/brainstorms/implement-brainstorm-led/record.md`
+D2-iterative-becomes-engine (the enrichment variant stripped; F27 names this skill's boundary
+line), `DECISIONS.md` 2026-10-11 "Shared thinking engine ruled" row; the schema half is
+`0062-spec-review-boundary.yaml`. Pre-edit verbatim text:
+`git show 5162f1a:plugins/mochiko/skills/review-specifications/SKILL.md`. -->
+
+## [v0.120.0] The enrichment boundary — `description:` and the opening line re-keyed to `/mochiko:specify`'s intent and story stages
+
+- **Disposition:** superseded → the description's last sentence "For thinking a sparse idea
+  through before a spec exists, use /mochiko:specify — its intent and story stages run on
+  mochiko:analysis-iterative." and the opening line's clause "a sparse idea is thought through
+  before a spec exists, in `/mochiko:specify`'s intent and story stages."
+- **Tier failed:** n/a — supersession by ruling (`implement-brainstorm-led`
+  D2-iterative-becomes-engine — the variant this boundary named is stripped, F27; the body and
+  description now agree with `review-specifications.not-for` as `0062` reworded it)
+- **Content:** verbatim — "For enriching a sparse feature idea before a spec exists, use
+  mochiko:analysis-iterative instead." and "enriching a sparse idea before a spec exists is a
+  different skill's work."
+- **Kept deliberately:** the sibling distinction itself — kept at [v0.63.0] in the description
+  cut and at [v0.88.0] as "the `analysis-iterative` disjoint-triggers boundary" — repointed, never
+  dropped; every other byte of the description and the body.
+- **Consumers assessed:** `analysis-iterative`'s description (its distinct-from line re-keyed the
+  same wave); the router's `review-specifications` row (names no sibling — unchanged); the
+  ledger's description row, 490 → 535.
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

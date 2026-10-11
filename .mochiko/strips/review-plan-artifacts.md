@@ -35,6 +35,67 @@ row); census: `.mochiko/decisions/2026-09-29-census-table-ratified.md`, rows in
 2026-09-29 row). Pre-edit verbatim text:
 `git show 5558fd7:plugins/mochiko/skills/review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md`. -->
 
+<!-- Wave context: wave 3 of the combined engine/desk build (v0.120.0) — implement's design stage
+gives this skill the meaning-kept grade (`0080-plan-artifacts-meaning-kept.yaml`), and the store
+delta it grades is signed as Mermaid text and drawn into the store's own diagrams. Rulings for the
+two [v0.120.0] entries below, each named in its entry:
+`.mochiko/brainstorms/architecture-brainstorm-interview/record.md` D9-render-where-viewed as changed
+at review (S9), routed here from wave 2 by the lead's ruling, with the `DECISIONS.md` 2026-10-11
+"Architecture desk as brainstorm's workflow, plus maintained diagrams, ruled" row; it amends
+`architecture-design-primitive` D8-rendered-diagram-signoff in part, recorded at the landing. Pure
+additions the same wave, recorded here for the audit's read: the `SKILL.md` procedure's
+conformance lens names the meaning-kept grade beside it (`.mochiko/brainstorms/implement-brainstorm-led/record.md`
+D8-checkpoint-shows-landing, the `DECISIONS.md` 2026-10-11 "Shared thinking engine ruled" row;
+`SKILL.md` pre-edit `:42`); `references/ARTIFACT-CHECKLISTS.md`'s store-delta intro grades the
+pinned-base diff of every `diagrams/` file the change edited and the checkpoint table's list of
+them (`architecture-brainstorm-interview` D8-draw-before-code, S6 as repaired at verify V1;
+pre-edit `:82–83`). Body 3,363 → 3,462; the budget row argues the payload. Pre-edit verbatim text:
+`git show 7d9d29e:plugins/mochiko/skills/review-plan-artifacts/SKILL.md` and
+`…/references/ARTIFACT-CHECKLISTS.md`. -->
+
+## [v0.120.0] ARTIFACT-CHECKLISTS store-delta intro — "the user signs off on, from a rendered diagram" superseded by the Mermaid-text sign-off
+
+- **Disposition:** superseded → `references/ARTIFACT-CHECKLISTS.md` pre-edit `:80`, as rewritten:
+  "the user signs off on, as Mermaid text that parses (rendered where the session can), before
+  detailed design builds on them".
+- **Tier failed:** n/a — supersession by ruling (`architecture-brainstorm-interview`
+  D9-render-where-viewed: "A diagram's sign-off surface is its Mermaid text, which must parse";
+  "must be seen rendered at sign-off" becomes "must render wherever it is viewed"; it amends
+  `architecture-design-primitive` D8-rendered-diagram-signoff in part)
+- **Content (superseded text, verbatim):** `from a rendered diagram,`
+- **Kept deliberately:** the sign-off itself, before detailed design builds on the changes — the
+  survivor the [v0.116.0] store-delta intro entry below named; the author
+  (`mochiko:patterns-system-design`), the standing-store path and the `proposed` in-place write,
+  byte for byte.
+- **Consumers assessed:**
+  - implement's design checkpoint: `impl.gate-design-checkpoint` (`0076`) shows each diagram as
+    Mermaid text that parses, rendered beside it where the session can, else with the one-line
+    note: consistent;
+  - `patterns-system-design` §1 and its checklist ([v0.120.0], wave 2) and the store skill's
+    `sign-off-flips-proposed` (`0067`) carry the same surface: consistent;
+  - the desk: `arch.diagram-signoff` (`0068`) carries the same surface: consistent;
+  - `review-plan-artifacts.store-delta-checklists` points at this section and quotes none of it;
+  - `review-sufficiency` and `testing-gap-finding` read the signed `architecture.md`, never its
+    render, and quote none of the clause (grep "rendered diagram" over `plugins/mochiko` outside
+    `migrations/`: this file's `:80` and `:89` only): consistent.
+
+## [v0.120.0] ARTIFACT-CHECKLISTS delta-diagram coverage — "appear in the rendered diagram" superseded
+
+- **Disposition:** superseded → `references/ARTIFACT-CHECKLISTS.md` pre-edit `:89`, the coverage
+  row as rewritten: "appear in the container delta diagram".
+- **Tier failed:** n/a — supersession by ruling (`architecture-brainstorm-interview`
+  D9-render-where-viewed: the diagram's Mermaid text is what is signed, shown rendered only where
+  the session can, so the check reads the diagram, never its render)
+- **Content (superseded text, verbatim):** `appear in the rendered diagram,`
+- **Kept deliberately:** the coverage check in both directions, the plain-drawn no-row clause and
+  the Critical severity; "the container delta diagram" names the same diagram, the one
+  `patterns-system-design` §1 calls the sign-off surface.
+- **Consumers assessed:** `review-feasibility`'s `references/FEASIBILITY-LENS.md:183` quotes the
+  check as "does every delta element appear in the diagram?", the sibling's: consistent;
+  `patterns-system-design`'s box-to-row checklist item and this file's Key Question ("an `SPN-XXX`
+  element with no box in the diagram"): consistent; implement's design checkpoint, the desk, the
+  store skill, `review-sufficiency` and `testing-gap-finding` quote none of the check.
+
 ## [v0.118.0] `check-artifacts.py` counts distinct IDs by their core; one checklist example joined
 
 - **Disposition:** superseded → `fr_matches`/`us_matches` key each match on its ID core, prefix plus number (`m.rstrip('-').upper()`), so `FR-012-csv…` and `FR-012` count once; `ARTIFACT-CHECKLISTS.md:279` reads `` `<spec-slug>` FR-003-<slug> not addressed in contracts ``.

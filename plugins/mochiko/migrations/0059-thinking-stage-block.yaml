@@ -1,0 +1,22 @@
+grammar: 1
+id: 0059-thinking-stage-block
+sequence: 59
+intent: >-
+  Mint common.thinking-stage, the shared pointer line each user command extends to run its
+  thinking stage on mochiko:analysis-iterative (implement-brainstorm-led D1, D3; default Slots
+  declared where — the transport-floor shape). It names no contract mode: a stub inherits text
+  only.
+anchor: 2026-10-11 implement-brainstorm-led
+hash: sha256:d14c5d9a7b6966161958c305e5e72f5dfbbfbbe079042eeff64a59c41c2f2e74
+changes:
+  - op: mint-rule
+    schema: command-common/common
+    rule:
+      id: common.thinking-stage
+      labels: [floor-pointer, user-gate]
+      text: >-
+        This command's thinking stage runs on mochiko:analysis-iterative: its asking rules hold
+        here, and this command's own rules carry only the domain part and the slots they fill —
+        referenced, never restated.
+      pointer: mochiko:analysis-iterative
+      anchor: 2026-10-11 implement-brainstorm-led D1

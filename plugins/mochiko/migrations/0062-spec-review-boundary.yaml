@@ -1,0 +1,19 @@
+grammar: 1
+id: 0062-spec-review-boundary
+sequence: 62
+intent: >-
+  Repoint review-specifications.not-for: with the enrichment variant stripped
+  (implement-brainstorm-led D2), thinking a sparse idea through before a spec exists routes to
+  specify's intent and story stages, which run on mochiko:analysis-iterative.
+anchor: 2026-10-11 implement-brainstorm-led
+hash: sha256:b03ae1250f7d8f247eece6cf9bd023f14a565ffc3f21b527f618e6315c3d1ab0
+changes:
+  - op: reword-rule
+    schema: skill/review-specifications
+    id: review-specifications.not-for
+    text: >-
+      Not for: architecture/design review · code review (sole carve-out
+      `mochiko:review-code-minimalism`, implement-side) · implementation planning · performance
+      specs · no spec yet (`mochiko:authoring-requirements` first) · thinking a sparse idea
+      through before a spec exists (`/mochiko:specify`'s intent and story stages, which run on
+      `mochiko:analysis-iterative`).
