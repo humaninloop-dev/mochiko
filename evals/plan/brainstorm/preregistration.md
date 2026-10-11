@@ -16,7 +16,7 @@ the turn cap; those findings are reused here, not repeated.
 ## Command under test and arms
 
 `plugins/mochiko/commands/brainstorm.md` + its rules, rendered at fire by `mochiko-cli` from
-`plugins/mochiko/migrations/` (55 rules since migration 0044, 30 from 0005 to 0043; the repo-side derived view
+`plugins/mochiko/migrations/` (49 rules since migration 0060, 55 from 0044 to 0059, 30 from 0005 to 0043; the repo-side derived view
 `.mochiko/schema-views/commands/brainstorm.yaml` is the projection the runner reads for ids
 and texts). Three arms:
 
@@ -40,6 +40,16 @@ run at the re-key: **unchanged 26 (19 observable) · changed 4 (3 observable, gr
 the new text) · removed 0 · added 25 (23 observable)**. Recompute before reading any grid — the
 buckets move with every edit — and name the SHA explicitly; `HEAD` is never the pre arm.
 
+Two more pair edits landed before any grid. Migration 0047 (`human-readable-ids`, 2026-10-08)
+reworded `brainstorm.deliverable-record`, which moves it from unchanged to changed. Migration 0060
+(`implement-brainstorm-led` D3, 2026-10-11) moves seven rules to `mochiko:analysis-iterative`,
+mints the floor stub `brainstorm.thinking-stage` and rewords six. The first grid reads every edit
+since the same `--old-ref 2e4c57c` — 0044, 0047's reword and 0060 — and none of the seven moved
+rules existed at that ref, so none sits in any bucket. The same `partition` run at the 0060
+re-key gives **unchanged 25 (18 observable) · changed 5 (4 observable, graded against the new
+text) · removed 0 · added 19 (18 observable)**: against the 0044 re-key's figures above,
+unchanged 26 → 25 and changed 4 → 5 are 0047's, added 25 → 19 is 0060's.
+
 History: at authoring the kit was a baseline kit whose edit under read was migration 0005
 ("`2026-09-13 hook-enforced-artifact-schema D1`", commit `5d8fc69`), read at `--old-ref 794cea8`
 (unchanged 29 · changed 0 · removed 0 · added 1). No grid ran against it; it retired at the
@@ -47,15 +57,17 @@ History: at authoring the kit was a baseline kit whose edit under read was migra
 
 ## Rubric shape (D8 partition, `observable.yaml`)
 
-55 rules: **45 plan-observable · 10 out-of-instrument** (2 latitude/register · 1
-precedence · 2 conditional · 1 structural · 4 fail-conditions). `check-rubric brainstorm`
-prints `rubric OK: 45 observable, 10 out-of-instrument, 55 total`. At authoring the split was
+49 rules: **40 plan-observable · 9 out-of-instrument** (2 latitude/register · 2
+conditional · 1 structural · 4 fail-conditions). `check-rubric brainstorm` prints
+`rubric OK: 40 observable, 9 out-of-instrument, 49 total`. At authoring the split was
 21 · 9; the kit audit of 2026-09-19 moved `brainstorm.reopen-born-verify` to observable,
 emptying the contingency class, because the same reasoning would have condemned
 `brainstorm.coverage-survivor-routing`, which this kit grades observable. The 0044 re-key
 (2026-10-06) took it from 22 · 8 of 30 to 45 · 10 of 55: 23 of the 25 added rules are
 observable; `brainstorm.own-rules-win` is out as `precedence` (a new reason term, defined in
-`observable.yaml`) and `brainstorm.size-shapes` as `conditional`.
+`observable.yaml`) and `brainstorm.size-shapes` as `conditional`. The 0060 re-key
+(2026-10-11) took it to 40 · 9 of 49: the six observable rules and the one `precedence` rule the
+engine took left, and `brainstorm.thinking-stage` joined observable.
 
 - **Condition gating.** `km_file` is planted both ways (present in s1 and s3, absent in s2):
   `brainstorm.km-close-ritual` is graded on s1 and s3, where a backlog item exists for the
@@ -75,12 +87,12 @@ observable; `brainstorm.own-rules-win` is out as `precedence` (a new reason term
   Too-big is planted nowhere, so `brainstorm.size-shapes` is out-of-instrument.
 - **Thin reads, named now:** `brainstorm.user-survivor-challenge`,
   `brainstorm.user-pen-boundary` and `brainstorm.reopen-born-verify` are graded on one
-  described branch each at the disposition and acceptance gates; since 0044 four more join
+  described branch each at the disposition and acceptance gates; since 0044 three more join
   them — `brainstorm.frame-changes-users-word` (a hardened frame line changing on the user's
-  word), `brainstorm.user-steers` (the user's standing levers each turn),
-  `brainstorm.vague-answer-reasked` (a vague answer re-asked; s2's unsure user invites it)
-  and `brainstorm.fix-one-card-verify-once` (the fix-and-verify branch after review
-  survivors). They are the expected flaky candidates; a flaky pair on any of them is read as
+  word), `brainstorm.user-steers` (the user's standing levers each turn) and
+  `brainstorm.fix-one-card-verify-once` (the fix-and-verify branch after review
+  survivors). (`brainstorm.vague-answer-reasked`, a fourth at 0044, left with the asking
+  mechanics at 0060.) They are the expected flaky candidates; a flaky pair on any of them is read as
   one noise event, never as a command finding on its own. `reopen-born-verify` (moved here
   from out-of-instrument on 2026-09-19) and `fix-one-card-verify-once` sit one hypothetical
   layer deeper than the others — each bounds what follows a routed survivor — so expect them
@@ -93,7 +105,8 @@ observable; `brainstorm.own-rules-win` is out as `precedence` (a new reason term
   card and its first reply), the map (`decision-map` / `stop-rule`, and `blind-map-fold` on
   s2 and s3 — one map from first question to empty) and the close of deciding
   (`accept-screens` / `user-record-acceptance` — one screen before the freeze and the word
-  after review). The band counts each member (the runner's raw figure); the reader notes the
+  after review). Since 0060 one more pair: `lead-inline-questioning` / `thinking-stage` — one
+  binding of the deciding to the engine. The band counts each member (the runner's raw figure); the reader notes the
   cluster.
 
 ## Read rule (D6 as amended — tolerance band, verify V4; D11's form)
@@ -131,13 +144,17 @@ range below) and a command finding only after the instrument is cleared. A faile
 re-keys the runner, rubric, or goldens — it is never reported as a command regression. Once
 the pair's next edit lands, that edit's added or removed rules become the control and this
 one retires. (History: `brainstorm.artifact-home` at `--old-ref 794cea8` was the control
-from authoring to the 0044 re-key and retired under this rule before any grid ran.)
+from authoring to the 0044 re-key and retired under this rule before any grid ran.) The 0060 edit
+landed before any grid and is read with 0044 and 0047's reword at the same `--old-ref`; none of
+its rules can serve — `brainstorm.thinking-stage` binds the deciding to the engine the pre text
+already named, so it cannot read `absent` in `pre`, and the seven moved rules sit in neither arm's
+rubric — so `frame-card` stays the control (2026-10-11 amendment in the fill log).
 
 ## Noise band (`primitive-eval-harness-v2` D11-preregistration-noise-guard · I7, in the command form) and noise guard (F2)
 
 - **Denominator: all pairs.** Command goldens carry no `tempts`; every observable rule is
   judged on every golden, so the band is the **all-pairs** flaky share per arm — pairs with
-  replicate disagreement over 3 goldens × 45 observable rules = **135 pairs per arm** (well
+  replicate disagreement over 3 goldens × 40 observable rules = **120 pairs per arm** (well
   above the 8-pair `UNDER-SAMPLED` mark; a rubric re-cut that drops an arm below 8 pairs
   carries the mark and takes the band as the cap). The persona kits' invited-only recount
   (`2026-09-09-persona-band-invited-only`) does not apply where no golden invites a subset;
@@ -150,7 +167,7 @@ from authoring to the 0044 re-key and retired under this rule before any grid ra
   combined pre-or-post flaky line per golden (`cmd_report`, "flaky rules (replicate
   disagreement — noise-guard input)"); the per-arm share the band needs is computed from
   `summary.json`'s per-run `coverage` verdicts — count, per arm, the (golden, rule) pairs
-  whose three replicate verdicts are not all equal, over 135. A per-arm band line in
+  whose three replicate verdicts are not all equal, over 120. A per-arm band line in
   `cmd_report` mirroring `agent-report`'s *Band input* section is the disclosed runner gap
   (a re-key candidate; no verdict depends on it).
 - **Guard:** an arm whose flaky share exceeds the band is noise-dominated: no pre/post
@@ -168,7 +185,7 @@ from authoring to the 0044 re-key and retired under this rule before any grid ra
 3 goldens (`s1-tradeoff-confident` · `s2-halfformed-unsure` · `s3-feature-shaped`) × 3
 replicates × 2 arms (`pre` + `post`) = **18 plan sessions**, plus the one-time `nocmd`
 control (3 × 3 = **9**) on the first grid only. Judges: Haiku coverage checklist over the
-45-rule observable subset (three chunks of ≤ 15 per plan) + the stub axis; Sonnet pairwise,
+40-rule observable subset (three chunks of ≤ 15 per plan) + the stub axis; Sonnet pairwise,
 position-swapped (2 calls per pre/post pair, 9 pairs). All judges advisory.
 
 Cost anchor: the probe's `total_cost_usd` for this command was **$0.65 per session** at 25
@@ -183,22 +200,22 @@ sessions' `total_cost_usd` (the command runner does not yet sum it; record it by
 The kit is ready if the first grid (a) passes the positive control on every golden, (b)
 localizes zero unchanged-bucket regressions or each one to a named rule id with evidence
 quotes, (c) keeps the `pre` all-pairs flaky share ≤ 15 % so the band it fixes binds
-uncapped (≤ 20 of 135 pairs), and (d) shows the branch is legible: the three goldens
-produce visibly different coverage or evidence profiles on `question-form` (options with the
-case against the stated lean on s1 versus an open question for the unsure user on s2),
-`km-close-ritual` (s1/s3 versus s2), `next-step-offer` (the s3 offer described as an option
-after acceptance), and the size split (`small-session-review` on s1 versus
-`blind-map-dispatch` on s2 and s3). Identical profiles across the three would be a fixture
+uncapped (≤ 18 of 120 pairs), and (d) shows the branch is legible: the three goldens
+produce visibly different coverage or evidence profiles on `km-close-ritual` (s1/s3 versus
+s2), `next-step-offer` (the s3 offer described as an option after acceptance), and the size split (`small-session-review` on s1 versus
+`blind-map-dispatch` on s2 and s3). (The `question-form` read left this rubric at 0060 with the
+rule; the engine's rules are outside it.) Identical profiles across the three would be a fixture
 finding, not a command finding. (a) failing after one re-key, or the guard
 tripping twice, triggers the stopping rule.
 
 ## Disclosures
 
 1. **The inline questioning is the fidelity gap this instrument was built to state, not
-   hide.** Since 0044 `brainstorm.lead-inline-questioning` binds the lead to run the
-   questioning itself, inline, and the form of each question is `brainstorm.question-form`'s,
-   its order `brainstorm.dependency-order`'s and the split between own turns and batched
-   defaults `brainstorm.own-turn-or-batch`'s — and a headless run has no user. The form-only
+   hide.** Since 0044 the lead runs the questioning itself, inline — since 0060 as the run's
+   thinking stage on `mochiko:analysis-iterative` (`brainstorm.lead-inline-questioning`,
+   `brainstorm.thinking-stage`), whose own rules, outside this rubric, set each question's form
+   and the split between own turns and batched defaults, its order staying
+   `brainstorm.dependency-order`'s — and a headless run has no user. The form-only
    wrapper (D11, pinned by sha in every run) asks for the plan of the questioning, never a
    question; the judge reads these rules on the *described* sequence and its fit to the state
    the topic line carries (s1 states a lean and asks for a pressure-test; s2 states
@@ -257,7 +274,7 @@ tripping twice, triggers the stopping rule.
   working tree and confirm a version-triple line; a halt is a blocked grid, never a
   regression. Candidate runner re-key: assert the absence of the halt string in every plan,
   as the skill runner does. The `pre` arm at `2e4c57c` archives a log ending at 0043 and the
-  `post` arm one ending at 0045; both need a binary whose grammar range covers the log's
+  `post` arm one ending at 0062; both need a binary whose grammar range covers the log's
   (`mochiko-cli migrate status` prints it).
 - **`check-fixtures brainstorm`** prints `fixture consistency: OK` (probe finding 9) — every
   index link, decision-row pointer, trail pointer, and CLAUDE.md region pointer resolves
@@ -272,8 +289,8 @@ tripping twice, triggers the stopping rule.
 
 ## Fill log
 
-- band: **[measured at baseline]** — `pre` flaky pairs ___/135 = ___ % → +5 = ___ %
-  (capped 20 %); `post` ___/135 = ___ %. Filled from `runs/<grid>` on ____ (sessions $___;
+- band: **[measured at baseline]** — `pre` flaky pairs ___/120 = ___ % → +5 = ___ %
+  (capped 20 %); `post` ___/120 = ___ %. Filled from `runs/<grid>` on ____ (sessions $___;
   judges $___ / ___ calls).
 - positive control (`frame-card`, `--old-ref 2e4c57c`): pre `absent` on s1 / s2 / s3
   ___; post pass^k `reflected` on s1 / s2 / s3 ___.
@@ -284,11 +301,9 @@ tripping twice, triggers the stopping rule.
   s2 ___ · s3 ___; goldens whose replicates disagree ___ (a fixture finding).
 - dead-zone (`nocmd`, first grid only): rules pass^k under `nocmd` per golden ___.
 - thin reads (`user-survivor-challenge`, `user-pen-boundary`, `reopen-born-verify`,
-  `frame-changes-users-word`, `user-steers`, `vague-answer-reasked`,
-  `fix-one-card-verify-once`): flaky on ___; co-moving clusters observed ___; any absent on
+  `frame-changes-users-word`, `user-steers`, `fix-one-card-verify-once`): flaky on ___; co-moving clusters observed ___; any absent on
   every replicate of every golden? ___ (yes = dead-rule finding, not noise).
-- branch legibility (ship bar d): `question-form` evidence on s1 vs s2 ___;
-  `km-close-ritual` on s1/s3 vs s2 ___; `next-step-offer` on s3 ___; size split
+- branch legibility (ship bar d): `km-close-ritual` on s1/s3 vs s2 ___; `next-step-offer` on s3 ___; size split
   (`small-session-review` s1 vs `blind-map-dispatch` s2/s3) ___.
 - cap-hit runs ___ · fence breaches ___ · unresolvable names ___.
 - budget: ___ plan sessions · US$ ___ of 40.
@@ -302,3 +317,12 @@ tripping twice, triggers the stopping rule.
   rules. The re-key count stays 0: the stopping rule counts re-keys made to make a control
   detectable after a grid, and no grid has run (no `runs/`). Made by the build's tests-and-kits
   seat on a lead-approved plan.
+- 2026-10-11 amendment, recorded before any grid: the kit is re-keyed to migration 0060
+  (`implement-brainstorm-led` D3; `observable.yaml` 40 · 9 of 49 — seven rules out with the move
+  to `mochiko:analysis-iterative`, `brainstorm.thinking-stage` in, six rewords graded against
+  their new text). The edit under read stays at `--old-ref 2e4c57c`, now reading 0044, 0047's
+  reword of `brainstorm.deliverable-record` and 0060 together, and the positive control stays
+  `frame-card`: the control-moves rule is not applied because no rule 0060 adds or removes can
+  read `absent` in `pre` and `reflected` in `post` — lead ruling, build log 2026-10-11, W1 P3
+  approval. Goldens, fixtures and wrapper unchanged. The re-key count stays 0: no grid has run
+  (no `runs/`). Made by the build's tests-and-kits seat on a lead-approved plan.

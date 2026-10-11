@@ -1184,8 +1184,10 @@ fn every_shipped_floor_index_matches_its_pin() {
     // and `0009-plan-qa-leg` imported `review-seat-plan` ("2026-09-03
     // producer-plan-enforcement D8"), whose index carries five. The 2026-09-19
     // impeccable-design-integration wave imported three more: `patterns-design-direction` and
-    // `patterns-craft-floor` at `0011`, `review-design-audit` at `0012`.
-    assert_eq!(checked, 41, "six commands and thirty-five skills");
+    // `patterns-craft-floor` at `0011`, `review-design-audit` at `0012`. `0058-thinking-engine`
+    // ("2026-10-11 implement-brainstorm-led") imported `analysis-iterative`, whose index carries
+    // two.
+    assert_eq!(checked, 42, "six commands and thirty-six skills");
 }
 
 /// The index's own size at its widest, pinned the way the legend's is: every converted primitive

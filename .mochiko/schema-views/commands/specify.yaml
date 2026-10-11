@@ -143,9 +143,8 @@ sections:
         labels: [seats, user-gate]
         class: must
         text: >-
-          You run the story stage yourself, inline in the main conversation, with the capability
-          frame in hand; no teammate holds a conversation with the user. The requirements-analyst
-          seat authors the stories from the confirmed slate.
+          The story stage runs with the capability frame in hand; the requirements-analyst seat
+          authors the stories from the confirmed slate.
         anchor: 2026-10-10 specify-brainstorm-discovery D3
       - id: spec.blind-journey-list
         labels: [independence, seats]
@@ -161,11 +160,8 @@ sections:
         labels: [seats, user-gate]
         class: must
         text: >-
-          At the slate confirm you write the slate into `spec.md` — transcription of the user's
-          rulings, not authoring — before the requirements-analyst seat opens it, then pass the
-          pen explicitly; its brief carries each row with the user's own words quoted, its seed,
-          and the `out` rows with their whys. After the pen passes, a row change the user rules
-          reaches the seat as the exact row text to land, written as mechanical execution.
+          At the slate confirm the slate is transcribed into `spec.md`; the next writer's brief
+          carries each row with its seed, and the `out` rows with their whys.
         anchor: 2026-10-10 specify-brainstorm-discovery
       - id: spec.pm-vets-slate-once
         labels: [seats, evidence]
@@ -394,8 +390,10 @@ sections:
         class: must
         text: >-
           No story fork is put before the intent synthesis is confirmed; at the story-stage moment
-          the story set is worked with the user and closes in a ruled slate. The slate rules what
-          the spec carries, never what builds now — that stays the selection gate's.
+          the story set is worked with the user on the thinking stage with its ruled-set contract
+          on — the slate is the ruled set, the requirements-analyst seat the next writer — and
+          closes in a ruled slate. The slate rules what the spec carries, never what builds now
+          — that stays the selection gate's.
         anchor: 2026-10-10 specify-brainstorm-discovery D1
       - id: spec.slate-unit
         labels: [user-gate]
@@ -422,18 +420,16 @@ sections:
         class: must
         text: >-
           Story files are authored for `in` rows only — a row `in — waiver pending` waits —
-          each keeping the meaning of its row's line and seed, and the slate's count is the
-          feature's. A story the slate lacks is proposed to the user as a row, never authored
-          before the user rules it in.
+          and the slate's count is the feature's; a story the slate lacks is proposed to the user
+          as a row.
         anchor: 2026-10-10 specify-brainstorm-discovery
       - id: spec.stage-inputs-in-hand
         labels: [scope-entry]
         class: must
         text: >-
-          A brainstorm record named in `$ARGUMENTS`, or stories already in story form, open the
-          story stage as facts, and only what they leave open is asked; there is no size gate, and
-          a decisive user gets confirmations and a fast wrap-up. With nothing in hand there is no
-          skip: the stage runs.
+          Specify's inputs in hand when its story stage opens: a brainstorm record named in
+          `$ARGUMENTS`, or stories already in story form; there is no size gate, and a decisive
+          user gets confirmations and a fast wrap-up.
         anchor: 2026-10-10 specify-brainstorm-discovery
       - id: spec.handed-in-slate
         labels: [scope-entry, user-gate]
@@ -478,9 +474,7 @@ sections:
         class: must
         text: >-
           Intent runs as probes, never a questionnaire; it closes in a one-screen synthesis the
-          user confirms. In the intent and story stages alike, flag ratification streaks before
-          treating adoptions as engagement; in the story stage a vague answer is re-asked as a
-          choice between two concrete options.
+          user confirms before any authoring.
       - id: spec.frame-hypothesis-not-anchor
         labels: [scope-entry]
         class: must
@@ -528,38 +522,27 @@ sections:
         labels: [user-gate]
         class: must
         text: >-
-          Put one fork per turn, its fact in hand first, with at least two real options — one
-          the do-less shape, fewer stories or none for that journey — and a one-row mock of the
-          story as it would read; a candidate gets its own turn only when it is a real choice or
-          costly to undo, the rest named in one line as they arise and confirmed together on the
-          slate screen. Each turn carries one status line over the candidate journeys: ruled ·
-          askable · in fog.
+          A story fork's do-less option is fewer stories, or none, for that journey, and its mock
+          is a one-row mock of the story as it would read; the story stage's defaults are
+          confirmed together on the slate screen, and its status line runs over the candidate
+          journeys.
         when: {slate_source: forks}
         anchor: 2026-10-10 specify-brainstorm-discovery
       - id: spec.slate-provenance
         labels: [evidence]
         class: must
         text: >-
-          Each slate row carries one provenance mark after its line in the Story cell: `blind
-          list` for a row the blind journey list added; `handed in` for a row taken from story
-          lines the user handed in or from a named brainstorm record, whatever the slate's source;
-          any other row, ruled through the forks, `user's words` or `lead's guess, ratified`.
+          A slate row's provenance mark sits after its line in the Story cell; a row taken from a
+          named brainstorm record is `handed in` whatever the slate's source.
         anchor: 2026-10-10 specify-brainstorm-discovery
       - id: spec.story-stage-stop-rule
         labels: [attempt-economy]
         class: must
         kind: bound
         text: >-
-          The story stage closes only when every candidate — the blind list's differences
-          included — is ruled in or out and nothing is open; if the candidate set has not shrunk
-          for three turns running, say so and offer to step back to the intent synthesis.
+          The story stage's candidates include the blind journey list's differences, each ruled in
+          or out before the stage closes; a stall steps back to the intent synthesis.
         anchor: 2026-10-10 specify-brainstorm-discovery
-      - id: spec.own-rules-win
-        labels: [floor-pointer]
-        class: must
-        text: >-
-          Where mochiko:analysis-iterative and specify's own rules differ, specify's rules win.
-        anchor: 2026-10-10 specify-brainstorm-discovery D5
   - id: spec.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-run ruling can waive.
@@ -584,6 +567,10 @@ sections:
           mints; the run never mints an epic (mochiko:authoring-epic).
         pointer: mochiko:authoring-epic
         anchor: 2026-08-26 plan-stage-utility D4
+      - id: spec.thinking-stage
+        class: floor
+        extends: common.thinking-stage
+        anchor: 2026-10-11 implement-brainstorm-led D3
   - id: spec.sec.fail-conditions
     title: Not done — default FAIL
     intent: >-
@@ -672,3 +659,9 @@ tombstones:
     disposition: >-
       superseded → rules redistributed across the D4 six-set
       (command-md-scaffold-standardization D3/D4/D5)
+  - id: spec.own-rules-win
+    disposition: >-
+      superseded — precedence flipped: the engine's asking rules hold in every caller
+      (analysis-iterative.engine-precedence); specify keeps its domain part, reached through
+      spec.thinking-stage (default Precedence; supersedes specify-brainstorm-discovery
+      D5-specify-own-rules as to this clause) (2026-10-11 implement-brainstorm-led D3)

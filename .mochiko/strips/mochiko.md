@@ -42,6 +42,37 @@ Ruling: `.mochiko/brainstorms/brainstorm-target-state/record.md` D6-question-tur
 row). The router body is unbudgeted: 47,326 → 47,303. Pre-edit verbatim text:
 `git show 2e4c57c:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the combined engine/desk build (v0.120.0) — the `analysis-iterative`
+row and the brainstorm-cluster note re-keyed to the shared thinking stage. Ruling:
+`.mochiko/brainstorms/implement-brainstorm-led/record.md` D2-iterative-becomes-engine
+(`DECISIONS.md` 2026-10-11 "Shared thinking engine ruled" row). The router body is unbudgeted:
+47,617 → 48,037. Pre-edit verbatim text: `git show 5162f1a:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+## [v0.120.0] The `analysis-iterative` row and the brainstorm-cluster note — re-keyed to the shared thinking stage
+
+- **Disposition:** superseded → `SKILL.md`:66 and `:124` as rewritten, verbatim —
+
+  ```text
+  SKILL.md:66: | `analysis-iterative` (general/shared) | the **shared thinking stage** — the asking every user command's thinking runs on, plus the **ruled-set contract** a caller switches on to keep the next writer inside what the user ruled; extended in each caller's own rules by `/mochiko:brainstorm`'s deciding, the specify run's **story stage** (contract on) and **intent stage** (adaptive-probe agenda: the feature-map read first, then scope · delivery · depth-rigor · constraints · out-of-scope → a one-screen synthesis the user confirms, landing as the spec's Intent section), the architecture desk's focus stage, implement's design stage, and setup's interrogation; a cross-cluster engine |
+  SKILL.md:124: > The shared thinking stage is `analysis-iterative` (registered under Specify, above — a general/shared skill every user command's thinking extends); brainstorm's deciding runs on it, and it is not brainstorm-specific.
+  ```
+- **Tier failed:** n/a — supersession by ruling (`implement-brainstorm-led`
+  D2-iterative-becomes-engine, *Accepted risk*: "the router's lines (`skills/mochiko/SKILL.md`
+  lines 66, 124) are rewritten around the stage"; D1-engine-asking-contract; D3-four-move-now)
+- **Content (superseded):** verbatim, as `<line>: <text>` —
+
+  ```text
+  SKILL.md:66: | `analysis-iterative` (general/shared) | the specify run's **intent stage** (adaptive-probe agenda: the feature-map read first, then scope · delivery · depth-rigor · constraints · out-of-scope → a one-screen synthesis the user confirms, landing as the spec's Intent section) and any brainstorm/exploration questioning; a cross-cluster engine |
+  SKILL.md:124: > The questioning engine is `analysis-iterative` (registered under Specify, above — a general/shared skill); it is not brainstorm-specific.
+  ```
+- **Kept deliberately:** the row's home under the Specify cluster (the skill's registration
+  home, as `:124` says); the intent-stage parenthetical byte for byte; "(general/shared)" and "a
+  cross-cluster engine"; `:124`'s "registered under Specify, above — a general/shared skill" and
+  "it is not brainstorm-specific".
+- **Consumers assessed:** none quotes either line. "questioning engine" outside the router:
+  `ARCHITECTURE.md:372` (re-keyed the same wave) and `INTERROGATION-AGENDA.md:5` (handed to the
+  lead).
+
 ## [v0.118.0] Wave 3 back-fill: the fresh-gate-grader, primitive-audit-ratchet and transport-neutral-harness cites joined
 
 - **Disposition:** superseded → `SKILL.md`:39 now cites

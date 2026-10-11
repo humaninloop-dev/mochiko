@@ -36,14 +36,14 @@ numbers.
 | 3 | **Project type & shape** | frontend / backend / fullstack / service / mobile / desktop — read first from the code (brownfield) or from the architecture store's `Scope:` line when the store carries one; asked only when neither answers | Shelf selection |
 | 5 | **Team reality** | Solo vs team, experience mix, review culture | Enforcement must fit who's enforcing |
 | 6 | **Existing practices & tools** | Detected stack, CI, linters, tests; brownfield analysis feeds in here | The real commands the validator requires |
-| 7 | **Knowledge management** | Adopt or decline the `knowledge-management` module — the operating-docs layer (brainstorms + `index.md`, open-only `BACKLOG.md` + trail, `ROADMAP.md`, the decisions layer, `ARCHITECTURE.md`, `GLOSSARY.md`, plus the enforcement surfaces), offered default-on — **core taken whole, electives (`CHANGELOG.md` / `RUNBOOK.md`) per-doc** | Module ruling (recorded either way); elective rulings; finalize scaffolding; collision rulings |
-| 8 | **Deployment & release reality** | Target, environments, cadence, what blocks a release, rollback expectations · the **trust vectors** of what ships where — a binary, hooks, a public package, a deploy target's exposure — and the supply-chain controls they call for | Quality Gates; Observability/Error-Handling expression; deck presets (with dimension 9); the `release-gates` module offer — default-on for a deployed product, recorded either way — **always interrogated**: the target is software the team deploys and operates |
+| 7 | **Knowledge management** | Adopt or decline the `knowledge-management` module — the operating-docs layer (brainstorms + `index.md`, open-only `BACKLOG.md` + trail, `ROADMAP.md`, the decisions layer, `ARCHITECTURE.md`, `GLOSSARY.md`, plus the enforcement surfaces), offered default-on, adopted only on the user's yes — **core taken whole, electives (`CHANGELOG.md` / `RUNBOOK.md`) per-doc** | Module ruling (recorded either way); elective rulings; finalize scaffolding; collision rulings |
+| 8 | **Deployment & release reality** | Target, environments, cadence, what blocks a release, rollback expectations · the **trust vectors** of what ships where — a binary, hooks, a public package, a deploy target's exposure — and the supply-chain controls they call for | Quality Gates; Observability/Error-Handling expression; deck presets (with dimension 9); the `release-gates` module offer — default-on for a deployed product, adopted only on the user's yes, recorded either way — **always interrogated**: the target is software the team deploys and operates |
 | 9 | **Values & non-negotiables** | What the user insists on enforcing and explicitly refuses — engineering values, minted under the product-instance test below | The preference gap only they can fill; primary source for minted principles |
 | 10 | **Deliberate exclusions** | What governance will not cover, beyond the floor | Recorded exclusions — the floor itself leaves only by recorded waiver (D4), never by exclusion |
 
 **Dimension 7 offers the knowledge-management module default-on: core whole, electives
-per-doc.** Recommend adoption — the user must actively decline (the projects most needing
-imposed structure are the least likely to ask for it). The **core** bundle
+per-doc.** Recommend adoption — the projects most needing imposed structure are the least
+likely to ask for it — and adopt it only on the user's yes. The **core** bundle
 (`templates/constitution-modules/knowledge-management.md`) is adopted or declined as one unit —
 a project for which the core feels heavy declines the module, not a fragment — while the
 **electives** (`CHANGELOG.md` for release-shaped projects, `RUNBOOK.md` for deployed services)
@@ -162,9 +162,9 @@ tightens live checks under the team.
 2. **Deal the arbitrated deck** — shelf cards selected by type (dimension 3), presets tuned by
    deployment reality and values (dimensions 8, 9). Architecture-opinion cards (BE-HEX and kin) are the
    deliberately arbitrated layer (`production-only-focus` D3-library-owned-standard's S7 carve-out): present with recommendations; the user
-   **keeps / tightens / drops / re-ranks** each. Use the recommend-then-arbitrate format from
-   `analysis-iterative` — the user sorts and arbitrates supplied content, they are not asked to
-   generate it. Every ruling is recorded.
+   **keeps / tightens / drops / re-ranks** each, recommend-then-arbitrate under
+   `mochiko:analysis-iterative`'s asking rules — the user sorts and arbitrates supplied content,
+   they are not asked to generate it. Every ruling is recorded.
 3. **Mint** — turn dimension-9 intent that no card covers into minted-principle intents (what to
    enforce, how strictly — formulation is the producer's job later) — only intent that passes the
    dimension-9 test; the rest goes to the Handed off list.

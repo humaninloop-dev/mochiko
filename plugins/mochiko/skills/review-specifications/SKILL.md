@@ -1,6 +1,6 @@
 ---
 name: review-specifications
-description: This skill MUST be invoked when reviewing an already-drafted specification for gaps — missing requirements, ambiguities, unstated assumptions, and missing edge cases — including its feature layer and the Screens & Flows of a UX-bearing spec. Reach for it on 'review spec', 'find gaps', 'what's missing', or 'is the spec complete'. Produces gap-finding INPUT, not a clearing PASS/FAIL verdict. For enriching a sparse feature idea before a spec exists, use mochiko:analysis-iterative instead.
+description: This skill MUST be invoked when reviewing an already-drafted specification for gaps — missing requirements, ambiguities, unstated assumptions, and missing edge cases — including its feature layer and the Screens & Flows of a UX-bearing spec. Reach for it on 'review spec', 'find gaps', 'what's missing', or 'is the spec complete'. Produces gap-finding INPUT, not a clearing PASS/FAIL verdict. For thinking a sparse idea through before a spec exists, use /mochiko:specify — its intent and story stages run on mochiko:analysis-iterative.
 allowed-tools: Bash(mochiko-cli *)
 ---
 
@@ -8,8 +8,8 @@ allowed-tools: Bash(mochiko-cli *)
 
 Gap-finder over a drafted spec — severity-bucketed gaps plus clarifying questions a
 stakeholder can answer. The seat hunts what is missing, ambiguous, assumed, or contradictory
-in a spec that already exists; enriching a sparse idea before a spec exists is a different
-skill's work.
+in a spec that already exists; a sparse idea is thought through before a spec exists, in
+`/mochiko:specify`'s intent and story stages.
 
 ## Rules — delivered by mochiko-cli
 

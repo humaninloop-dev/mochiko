@@ -270,8 +270,9 @@ fn every_emitted_view_matches_the_committed_one() {
     // impeccable-design-integration wave: `0011` imported `patterns-design-direction` and
     // `patterns-craft-floor`, `0012` `review-design-audit`, and `0013` the `product-design` home
     // and the `design-baseline` template. 87 since the 2026-09-29 census table ratification:
-    // `0032` imported six home documents and `0033` the `runs` home.
-    assert_eq!(views.len(), 87, "the corpus is 87 documents");
+    // `0032` imported six home documents and `0033` the `runs` home. 88 since `0058` (2026-10-11
+    // implement-brainstorm-led), which imported the `analysis-iterative` skill.
+    assert_eq!(views.len(), 88, "the corpus is 88 documents");
 
     let mut divergences: Vec<String> = Vec::new();
     for (relative, text) in &views {
@@ -346,8 +347,9 @@ fn the_committed_views_tree_holds_no_file_the_emitter_does_not_write() {
     // holds once the new skill's view is committed alongside the migration. 80 since `0013`
     // (2026-09-19 impeccable-design-integration), the five design-wave documents committed. 87
     // since `0032`–`0033` (the 2026-09-29 census table ratification), the seven new homes' views
+    // committed. 88 since `0058` (2026-10-11 implement-brainstorm-led), the engine's view
     // committed.
-    assert_eq!(found.len(), 87, "the committed tree is 87 views");
+    assert_eq!(found.len(), 88, "the committed tree is 88 views");
 }
 
 #[test]
@@ -453,8 +455,8 @@ fn emit_to_writes_only_under_the_out_directory() {
 
     // 75 since `0009-plan-qa-leg` ("2026-09-03 producer-plan-enforcement D8"); 80 since `0013`
     // (2026-09-19 impeccable-design-integration); 87 since `0032`–`0033` (the 2026-09-29 census
-    // table ratification).
-    assert_eq!(written.len(), 87);
+    // table ratification); 88 since `0058` (2026-10-11 implement-brainstorm-led).
+    assert_eq!(written.len(), 88);
     for path in &written {
         assert!(path.starts_with(&out), "{} escaped --out", path.display());
         assert!(path.is_file(), "{} was not written", path.display());

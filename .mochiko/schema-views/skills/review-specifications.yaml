@@ -37,9 +37,9 @@ sections:
         text: >-
           Not for: architecture/design review · code review (sole carve-out
           `mochiko:review-code-minimalism`, implement-side) · implementation planning ·
-          performance specs · no spec yet (`mochiko:authoring-requirements` first) · pre-spec
-          enrichment of a sparse idea (`mochiko:analysis-iterative` — disjoint triggers by
-          design).
+          performance specs · no spec yet (`mochiko:authoring-requirements` first) · thinking a
+          sparse idea through before a spec exists (`/mochiko:specify`'s intent and story stages,
+          which run on `mochiko:analysis-iterative`).
         anchor: 2026-08-05 ponytail-concepts-integration
       - id: review-specifications.excess-admissibility
         labels: [boundary]

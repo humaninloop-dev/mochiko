@@ -56,3 +56,11 @@ rules:
       `validation-primitive-edit.gate-loop-bound` cite this id — a rename or tombstone sweeps
       them.
     anchor: 2026-09-19 author-grader-consolidation D6
+  - id: common.thinking-stage
+    labels: [floor-pointer, user-gate]
+    text: >-
+      This command's thinking stage runs on mochiko:analysis-iterative: its asking rules hold
+      here, and this command's own rules carry only the domain part and the slots they fill —
+      referenced, never restated.
+    pointer: mochiko:analysis-iterative
+    anchor: 2026-10-11 implement-brainstorm-led D1

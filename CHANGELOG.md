@@ -5,6 +5,78 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.120.0] — [lead: date]
+
+**[lead: the release title and class]** (`implement-brainstorm-led` D1–D8 and the confirmed
+defaults, record `.mochiko/brainstorms/implement-brainstorm-led/record.md`; [lead: the
+architecture record's items A and B]).
+
+**Wave 1 — the shared thinking stage; brainstorm and specify on it** (D1-engine-asking-contract,
+D2-iterative-becomes-engine, D3-four-move-now, D4-shaped-for-six). `mochiko:analysis-iterative`
+becomes the shared thinking stage: converted from a prose skill to a pair whose 21 rules
+`mochiko-cli` renders from the log, on the review six-set. It owns the asking — one fork per turn,
+the defaults batch the one exception; the fact before the fork; at least two real options, one the
+cheaper shape; a rough mock inside the message; own turn or batch; a status line; the ratified-yes
+streak; vague answers re-asked; the stop rule and its three-turn stall; one provenance
+vocabulary; a fenced blind second list on a fork costly to undo — and a ruled-set contract a
+caller switches on through the `contract` condition (D1). A caller fills named slots in its own
+rules and never loosens a mechanic; every slot has one default every caller inherits (D1 as
+changed at verify, D4). A new pointer block, `common.thinking-stage`, is the line each user
+command extends, `class: floor` in each. `/mochiko:brainstorm`'s deciding moves onto it: seven
+rules leave by supersession, `brainstorm.own-rules-win` among them, and six are reworded to
+brainstorm's part (D3). `/mochiko:specify`'s story stage moves onto it with the contract on — the
+slate is the ruled set, the requirements-analyst seat the next writer; `spec.own-rules-win` is
+superseded and nine rules are reworded to specify's part; the intent stage keeps its pointer.
+Setup's interrogation and specify's intent stage follow the engine's asking through their
+unchanged pointers, the contract off. The user ruled every lost word and gained obligation the
+build's obligation map listed ("Accept all"), kept setup's deck card by card, kept intent's
+provenance marks in the conversation, and ruled that adopting setup's default-on modules takes
+their explicit yes. The enrichment variant (`SPECIFICATION-INPUT.md`, `ENRICHMENT.md`, the Who /
+Problem / Value triad) had no caller and is stripped (D2); `review-specifications.not-for` routes
+a sparse idea to specify's intent and story stages.
+
+Migrations **`0058-thinking-engine`**, **`0059-thinking-stage-block`**,
+**`0060-brainstorm-on-engine`**, **`0061-specify-on-engine`** and **`0062-spec-review-boundary`**
+carry the W1 schema half. After W1 the log, sequences 1..62, replays to 88 documents and 1,211
+rules (1,196 → 1,211). Brainstorm's pins read `kind: fail · 4 rules` and `class: floor · 9 rules`
+(was 8); specify's `kind: fail · 10 rules` and `class: floor · 19 rules` (was 18); the engine's
+`class: floor · 2 rules`. No floor or fail is retired or lowered. [lead: the final log figures
+after W3.]
+
+W1 prose primitives: `analysis-iterative`'s `SKILL.md` rewritten to the rendered-skill shape — an
+Overview naming the stage and its callers, the Rules block, When NOT to Use (the
+implementation-details row rewritten), the confidence marks, the Common Mistakes rows reworded to
+agree with the engine, the Reference line; `## Two output shapes, one engine` removed; its
+`description:` rewritten by ruling (D2, superseding skill-pair criterion 7 for this conversion);
+`SYNTHESIS.md` and `references/` kept. The router's `analysis-iterative` row and brainstorm-cluster
+note; `review-specifications`' description and opening line; `authoring-constitution`'s
+`INTERROGATION-AGENDA.md` — dimension 7's and 8's default-on modules adopted only on the user's
+yes, and the deck's recommend-then-arbitrate pointer repointed to the engine's asking rules — and
+the knowledge-management module template's header on the same ruling.
+`commands/brainstorm.md` and `commands/specify.md` are unchanged. 13 strip entries stamped
+[v0.120.0] in W1. Ripple: `ARCHITECTURE.md`'s skills row (counts corrected) and its cross-cutting
+`analysis-iterative` row.
+
+W1 budgets (`.mochiko/memory/primitive-cost-budgets.md`, measured at the quiesced tree):
+`analysis-iterative` re-seeded as a skill pair — payload 16,067 = body 5,376 + render 10,691, no
+headroom, +11,139 over the 4,928 prose budget, argued as D1's ruled obligations moved in from
+brainstorm's and specify's renders [lead: the unit-5 verdict]; description 476 → 594.
+`review-specifications` +1,931 → +2,005 (render +44 from `0062`, body +30 — the boundary re-keyed
+to specify's two stages on the engine, D2) [lead: the unit-5b verdict]; description 490 → 535.
+`brainstorm`'s render 21,198 → 19,074 bytes and `specify`'s 27,999 → 27,160 characters (commands
+are unbudgeted).
+
+[lead: Wave 2 — the desk's focus stage and the diagram set.]
+
+[lead: Wave 3 — implement's stage and its touches.]
+
+[lead: the AM-5 exception paragraph, if it still applies.]
+
+[lead: sound loop and gates — seats, plan grades, gate audits and outcome lines, `migrate
+validate`, views ≡ replay, `cargo test` + fmt + clippy + audit, the full similarity sweep,
+gitleaks, `ids --check`, the contract suite (none skipped), both manifests at 0.120.0, the strip
+count, the ledger rows ruled.]
+
 ## [0.119.0] — 2026-10-10
 
 **Specify story-discovery stage — MINOR** (`specify-brainstorm-discovery` D1–D7 and the confirmed

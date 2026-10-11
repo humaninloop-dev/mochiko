@@ -47,8 +47,8 @@ sections:
         class: must
         kind: duty
         text: >-
-          You are the lead. Plan the run and orchestrate it toward the run's goal; run the
-          questioning yourself, inline, via mochiko:analysis-iterative.
+          You are the lead. Plan the run and orchestrate it toward the run's goal; its deciding is
+          the run's thinking stage, on mochiko:analysis-iterative.
         pointer: mochiko:analysis-iterative
       - id: brainstorm.staffing-latitude
         labels: [seats]
@@ -77,13 +77,6 @@ sections:
         class: must
         text: In a review pair, each seat draws its own blind angle map independently.
         anchor: 2026-08-10 cold-review-gap-challenge D5
-      - id: brainstorm.own-rules-win
-        labels: [floor-pointer]
-        class: must
-        text: >-
-          Where mochiko:analysis-iterative and brainstorm's own rules differ, brainstorm's rules
-          win.
-        anchor: 2026-10-06 brainstorm-target-state D19
       - id: brainstorm.small-session-review
         labels: [independence, seats]
         class: must
@@ -98,10 +91,9 @@ sections:
         class: must
         kind: duty
         text: >-
-          On a fork costly to undo, a fresh seat — never the review seat — gets the frame and
-          the question but not your options, and returns the roads it sees; the user sees where
-          its list and yours differ before ruling.
-        when: {size: [standard, too-big]}
+          Brainstorm's cadence for the thinking stage's blind second list: a fork costly to undo
+          in a standard or too-big session, none in a small one; its seat gets the frame as the
+          opening.
         anchor: 2026-10-06 brainstorm-target-state D7
   - id: brainstorm.sec.reserved
     title: Reserved to the user — never the run's
@@ -166,8 +158,9 @@ sections:
         kind: reservation
         text: >-
           In any reply the user may edit the decision map, pick which askable question comes next,
-          pull a default out to its own turn, or stop the session; moving anything out of scope is
-          a frame change and takes the user's word.
+          or stop the session — the thinking stage's other steering is in
+          analysis-iterative.user-rules; moving anything out of scope is a frame change and takes
+          the user's word.
         anchor: 2026-10-06 brainstorm-target-state
   - id: brainstorm.sec.tools
     title: Tools bindings
@@ -320,9 +313,8 @@ sections:
         text: >-
           The first question arrives with a decision map in three parts — askable now (sharply
           stated, by name) · in fog (with what each hangs on) · out of scope — never put to
-          the user for approval. Each later turn carries one status line (decided · askable now
-          · in fog), the full map shown again when it changes, and every item you add or graduate
-          changes visibly.
+          the user for approval. The per-turn status line runs over the map, the full map shown
+          again when it changes, and every item you add or graduate changes visibly.
         anchor: 2026-10-06 brainstorm-target-state D4
       - id: brainstorm.blind-map-fold
         labels: [evidence]
@@ -334,47 +326,12 @@ sections:
           already made that a late angle bears on goes back to the user.
         when: {size: [standard, too-big]}
         anchor: 2026-10-06 brainstorm-target-state D10
-      - id: brainstorm.fact-before-decision
-        labels: [evidence]
-        class: must
-        text: >-
-          No decision is put to the user before the fact it hangs on is in hand, its source
-          attached — you find what the repo, the platform or the docs can answer while other
-          questions go on. A fact only the user holds is asked as a labelled fact question, never
-          dressed as a decision; one that cannot be found is stated as unknown and the decision
-          carries it as open.
-        anchor: 2026-10-06 brainstorm-target-state D5
-      - id: brainstorm.own-turn-or-batch
-        labels: [user-gate]
-        class: must
-        text: >-
-          A decision gets its own turn when it is a real choice or a wrong pick is costly to undo;
-          every other one is a default, shown by name in one line when it arises and confirmed in
-          one batch at wrap-up — a default other questions hang on is confirmed before them.
-        anchor: 2026-10-06 brainstorm-target-state D6
-      - id: brainstorm.options-rule
-        labels: [user-gate]
-        class: must
-        text: >-
-          Every fork carries at least two real options, one of them the cheaper shape — do less,
-          reuse, or do nothing — and names the rejected road with its reason.
-        anchor: 2026-10-06 brainstorm-target-state D7
       - id: brainstorm.ratified-yes
         labels: [user-gate]
         class: must
         text: >-
-          A yes to your pick stands and is recorded as ratified in the decision's
-          how-it-was-decided part, with no new confidence mark; after three ratified rulings in a
-          row, say so and put the next fork in another form — the case against first, or a weak
-          lean in place of a firm pick.
-        anchor: 2026-10-06 brainstorm-target-state D8
-      - id: brainstorm.vague-answer-reasked
-        labels: [user-gate]
-        class: must
-        text: >-
-          "Whatever you think" is not a ruling: re-ask it as a choice between two concrete
-          options. An answer that sounds like convention, not a want, draws one probe — what
-          would you want if you need not justify it.
+          A ratified pick is recorded in the decision's how-it-was-decided part, with no new
+          confidence mark.
         anchor: 2026-10-06 brainstorm-target-state D8
       - id: brainstorm.dependency-order
         labels: [user-gate]
@@ -383,25 +340,6 @@ sections:
           No question is put before what it hangs on is settled, and each says in one line what it
           unblocks; which askable question goes first is your judgment.
         anchor: 2026-10-06 brainstorm-target-state D12
-      - id: brainstorm.question-form
-        labels: [reporting]
-        class: must
-        text: >-
-          When options are put, the question uses plain words and names decisions, never bare ids;
-          each option is one sentence with one concrete example, and the question carries the case
-          against your pick and a one-line recommendation, all on one screen. An open question to
-          an unsure user stays allowed.
-        anchor: 2026-10-06 brainstorm-target-state D13
-      - id: brainstorm.show-before-asking
-        labels: [evidence]
-        class: must
-        kind: duty
-        text: >-
-          A question about how something looks or behaves comes with a rough artifact inside the
-          message — a mock, a worked scenario with real numbers, or a replay on a past case —
-          never a file or code; anything heavier, such as a clickable prototype, is built only on
-          the user's request.
-        anchor: 2026-10-06 brainstorm-target-state D14
       - id: brainstorm.stop-rule
         labels: [attempt-economy]
         class: must
@@ -409,9 +347,8 @@ sections:
           Deciding is finished only when the map is empty — nothing askable, every patch of fog
           ruled, deferred by the user's word or handed to a later session, no open frame line, the
           defaults batch confirmed, and any blind map that was started landed, each of its angles
-          folded or listed as dropped; a session the user stops records what is left as open and
-          says the destination was not reached. If the map has not shrunk for three questions
-          running, say so and offer to step back to the frame.
+          folded or listed as dropped; a session the user stops also says the destination was not
+          reached. A stall steps back to the frame.
         anchor: 2026-10-06 brainstorm-target-state D15
       - id: brainstorm.fix-one-card-verify-once
         labels: [attempt-economy]
@@ -449,6 +386,10 @@ sections:
         class: floor
         when: {seats: multi}
         extends: common.transport-floor
+      - id: brainstorm.thinking-stage
+        class: floor
+        extends: common.thinking-stage
+        anchor: 2026-10-11 implement-brainstorm-led D3
   - id: brainstorm.sec.fail-conditions
     title: Not done — default FAIL
     intent: >-
@@ -492,3 +433,36 @@ tombstones:
     disposition: >-
       superseded → rules redistributed across the D4 six-set
       (command-md-scaffold-standardization D3/D4/D5)
+  - id: brainstorm.own-rules-win
+    disposition: >-
+      superseded — precedence flipped: the engine's asking rules hold in every caller
+      (analysis-iterative.engine-precedence); brainstorm keeps its domain part, reached through
+      brainstorm.thinking-stage (default Precedence; supersedes brainstorm-target-state
+      D19-brainstorm-only-reach as to this clause) (2026-10-11 implement-brainstorm-led D3)
+  - id: brainstorm.fact-before-decision
+    disposition: >-
+      superseded — moved to the engine as analysis-iterative.fact-before-fork, every limb kept,
+      reached through brainstorm.thinking-stage (was brainstorm-target-state D5) (2026-10-11
+      implement-brainstorm-led D3)
+  - id: brainstorm.own-turn-or-batch
+    disposition: >-
+      superseded — moved to the engine as analysis-iterative.own-turn-or-batch, "never by
+      silence" in analysis-iterative.user-rules; brainstorm's one screen stays
+      brainstorm.accept-screens (was brainstorm-target-state D6) (2026-10-11
+      implement-brainstorm-led D3)
+  - id: brainstorm.options-rule
+    disposition: >-
+      superseded — moved verbatim to the engine as analysis-iterative.options-rule (was
+      brainstorm-target-state D7) (2026-10-11 implement-brainstorm-led D3)
+  - id: brainstorm.vague-answer-reasked
+    disposition: >-
+      superseded — moved verbatim to the engine as analysis-iterative.vague-answer (was
+      brainstorm-target-state D8) (2026-10-11 implement-brainstorm-led D3)
+  - id: brainstorm.question-form
+    disposition: >-
+      superseded — moved to the engine as analysis-iterative.question-form (was
+      brainstorm-target-state D13) (2026-10-11 implement-brainstorm-led D3)
+  - id: brainstorm.show-before-asking
+    disposition: >-
+      superseded — moved to the engine as analysis-iterative.mock-in-message (was
+      brainstorm-target-state D14) (2026-10-11 implement-brainstorm-led D3)

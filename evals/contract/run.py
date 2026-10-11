@@ -247,6 +247,9 @@ EXPECTED = {
                 "brainstorm.fail.unreviewed-no-waiver",
                 "brainstorm.fail.survivor-undispositioned",
                 "brainstorm.fail.index-mismatch",
+                # `0060-brainstorm-on-engine` ("2026-10-11 implement-brainstorm-led D3") minted
+                # the thinking-stage pointer floor.
+                "brainstorm.thinking-stage",
             }
         ),
         12_819,
@@ -383,6 +386,9 @@ EXPECTED = {
                 # `0051-specify-story-stage` ("2026-10-10 specify-brainstorm-discovery D1")
                 # minted the slate fail node.
                 "spec.fail.story-outside-slate",
+                # `0061-specify-on-engine` ("2026-10-11 implement-brainstorm-led D3") minted the
+                # thinking-stage pointer floor.
+                "spec.thinking-stage",
             }
         ),
         23_434,
@@ -601,6 +607,13 @@ PROBE_ARGUMENTS = {
     "testing-gap-finding": (
         "FEAT-000",
         "Runs the blind pass over a selection; the argument is a capability id, its own unit.",
+    ),
+    # --- converted after the freeze: the thinking engine (review family by the crate's fallthrough)
+    "analysis-iterative": (
+        "caching",
+        "The shared thinking stage, invoked with no calling command: the argument is the question "
+        "it thinks through with the user. Free text; with no caller its deliverable is its own "
+        "synthesis.",
     ),
 }
 
@@ -1723,7 +1736,7 @@ def unconverted_primitive(plugin_root: pathlib.Path, kind: str) -> str | None:
 
     Through wave 5 the subject of this was the transition clause: a primitive still reading a
     shipped schema file was never gated. The clause expired at wave 6 and no schema file ships,
-    but the limb it exercised outlives it and the subject is still real. Eight shipped skills
+    but the limb it exercised outlives it and the subject is still real. Seven shipped skills
     carry no schema and never did — the router and the prose skills — so the hook must leave them
     alone for the simpler reason that there is nothing to halt for.
     """
@@ -2255,7 +2268,7 @@ def case_hook_input(runner, sandbox) -> tuple[list, pathlib.Path]:
     if unconverted_command is None:
         # From wave 4 every shipped command is converted, so this row loses its subject and the
         # case would fail on a check about the hook rather than about the wave. The row still has
-        # to run: eight shipped skills carry no rules and never will, so the limb it exercises —
+        # to run: seven shipped skills carry no rules, so the limb it exercises —
         # leave a primitive with nothing to deliver completely alone — stays live on the skill
         # side. So the subject is staged, exactly as the converted-skill row above stages its own,
         # and nothing in `plugins/mochiko/` is touched.

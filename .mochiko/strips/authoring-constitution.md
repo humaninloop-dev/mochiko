@@ -58,6 +58,61 @@ verbatim text: `git show bbe303f:plugins/mochiko/skills/authoring-constitution/<
 `references/catalog/universal-floor.md`, `references/catalog/backend-service.md`). The rules this
 skill's pointers bind are schema content, recorded by the migration log, not here. -->
 
+<!-- Wave context: wave 1 of the combined engine/desk build (v0.120.0) — `INTERROGATION-AGENDA.md`
+only. Rulings: the user's Q5 ruling at the build ("Need my explicit yes",
+`.mochiko/brainstorms/implement-brainstorm-led/build-log.md`, 2026-10-11 entry "P1 revision
+received; the obligation map's questions ruled by the user"; obligation map U13 and G50) and
+`.mochiko/brainstorms/implement-brainstorm-led/record.md` D1-engine-asking-contract
+(`DECISIONS.md` 2026-10-11 "Shared thinking engine ruled" row). Pre-edit verbatim text:
+`git show 5162f1a:plugins/mochiko/skills/authoring-constitution/references/INTERROGATION-AGENDA.md`. -->
+
+## [v0.120.0] INTERROGATION-AGENDA — the default-on modules adopted only on the user's yes
+
+- **Disposition:** superseded → line 39 "offered default-on, adopted only on the user's yes —";
+  line 40 "default-on for a deployed product, adopted only on the user's yes, recorded either
+  way"; lines 44–46 "Recommend adoption — the projects most needing imposed structure are the
+  least likely to ask for it — and adopt it only on the user's yes."
+- **Tier failed:** n/a — supersession by ruling (the user's Q5 ruling at the build, "Need my
+  explicit yes": from this build adopting the knowledge-management and release-gates modules takes
+  the user's yes, setup still recommends; carried by `analysis-iterative.user-rules` — "Silence
+  never rules" — under `implement-brainstorm-led` D1-engine-asking-contract and frame change 3. It
+  supersedes the active-decline clause of `setup-operating-docs-scaffolding`
+  D2-elective-default-module — "shipped **default-on**: the user must actively decline it"
+  (`DECISIONS.md` 2026-07-17 row, carried forward by `operating-docs-maintenance`
+  D9-knowledge-module-redesign, 2026-07-25 row))
+- **Content:** verbatim — line 39 "offered default-on — **core taken whole"; line 40 "the
+  `release-gates` module offer — default-on for a deployed product, recorded either way —";
+  lines 44–46 "Recommend adoption — the user must actively decline (the projects most needing
+  imposed structure are the least likely to ask for it)."
+- **Kept deliberately:** "default-on" as the offer's name — setup still leads with adoption, and
+  the engine reads a default as one the user confirms, never by silence; D2's rationale (the
+  projects most needing structure are the least likely to ask), now the reason to recommend;
+  "recorded either way"; core whole, electives per-doc; a decline memorialized in dimension 10.
+- **Consumers assessed:** `setup.interrogation-inputs` (reads the agenda);
+  `setup.user-card-rulings` ("every card, module and waiver ruling is the user's" — agrees);
+  `authoring-constitution/SKILL.md:91` ("default-on, whole" — true); the `governance-intent`
+  template's module row ("offered default-on at dimension 7" — true);
+  `templates/constitution-modules/knowledge-management.md:5` ("the user must actively decline" —
+  re-keyed the same wave on this ruling, `.mochiko/strips/knowledge-management-module.md` [v0.120.0]).
+
+## [v0.120.0] INTERROGATION-AGENDA — the deck's stale format pointer repointed to the engine's asking rules
+
+- **Disposition:** superseded → "…each, recommend-then-arbitrate under
+  `mochiko:analysis-iterative`'s asking rules — the user sorts and arbitrates supplied content,
+  they are not asked to generate it."
+- **Tier failed:** n/a — supersession by ruling (`implement-brainstorm-led`
+  D1-engine-asking-contract — the engine owns the asking — and D2-iterative-becomes-engine; the
+  obligation map's P2 hand-off: the format template left the skill at [v0.63.0], and
+  `analysis-iterative.options-rule` and `question-form` now carry the recommendation and the case
+  against)
+- **Content:** verbatim — "each. Use the recommend-then-arbitrate format from
+  `analysis-iterative` — the user sorts and arbitrates supplied content, they are not asked to
+  generate it."
+- **Kept deliberately:** recommend-then-arbitrate as the deck's form (`setup.interrogation-inline`
+  names it); the sort-not-generate clause; the deck card by card (the user's Q2 ruling, "Keep card
+  by card" — setup's own cadence).
+- **Consumers assessed:** `setup.interrogation-inline`; no other primitive quotes the line.
+
 ## [v0.118.0] Wave 3 back-fill: production-only-focus and setup-product-agnostic cites joined
 
 - **Disposition:** superseded → 26 lines across `SKILL.md`, `references/COMPLIANCE-MODULES.md`,
