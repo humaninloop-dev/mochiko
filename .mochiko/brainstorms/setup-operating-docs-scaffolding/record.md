@@ -2,7 +2,7 @@
 
 - **Session:** `setup-operating-docs-scaffolding`
 - **Opened:** 2026-07-17
-- **Status:** **accepted** (user, 2026-07-17) — review: single reviewer per sizing ruling, 12 raised → 9 survived → 9/9 dispositioned, verify pass PASS; this record is the deliverable and stays canonical in place
+- **Status:** **accepted** (user, 2026-07-17) — review: single reviewer per sizing ruling, 12 raised → 9 survived → 9/9 dispositioned, verify pass PASS; this record is the deliverable and stays canonical in place · **D2-elective-default-module superseded in part 2026-10-11** — its active-decline clause ("the user must actively decline"): a default-on module is adopted only on the user's yes, setup still recommending (the user's Q5 word at the `implement-brainstorm-led` build, built at v0.120.0; `.mochiko/brainstorms/implement-brainstorm-led/build-log.md`)
 - **Topic:** ensure `/mochiko:setup` establishes brainstorm session organisation (`.mochiko/brainstorms/` + `index.md`), `BACKLOG.md`, and `ROADMAP.md` as part of the appropriate step
 - **Fact-checker seat:** filled — the topic has a direct reality surface (the setup command and its cluster, the brainstorm command's index assumptions, and the operating-docs conventions in `CLAUDE.md`); factual map pending below
 

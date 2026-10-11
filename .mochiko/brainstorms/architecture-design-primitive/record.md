@@ -1,6 +1,6 @@
 # Architecture Design as a First-Class Primitive — Decision Record
 
-**Status:** accepted (2026-07-30) — pair-reviewed, clearing verdict READY (11 raised → 10 merged survivors → 10/10 resolved via user-adopted batch R1–R10; verify pass CLEAN after one B1 repair + bounded re-verify). Landed: DECISIONS.md rows AD-D1–D9 · BACKLOG "Architecture-primitive build items" · ROADMAP Next row.
+**Status:** accepted (2026-07-30) — pair-reviewed, clearing verdict READY (11 raised → 10 merged survivors → 10/10 resolved via user-adopted batch R1–R10; verify pass CLEAN after one B1 repair + bounded re-verify). Landed: DECISIONS.md rows AD-D1–D9 · BACKLOG "Architecture-primitive build items" · ROADMAP Next row. **D5-plan-run-artifact and D8-rendered-diagram-signoff superseded in part 2026-10-11** (`architecture-brainstorm-interview` D8-draw-before-code: the run's `architecture.md` drawn from and listing the store's delta-styled diagram files, which signing it signs; `architecture-brainstorm-interview` D9-render-where-viewed: Mermaid text that parses, rendered where the session can and shown with a one-line note where it cannot; built at v0.120.0).
 **Opened:** 2026-07-30
 **Topic:** How architecture design becomes a first-class primitive in the mochiko workflow — architecture alignment integral to planning and implementing, with a visual representation (standard design diagrams) so the user is never blind to the components, their interactions, and the shape of the service.
 

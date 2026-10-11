@@ -1,6 +1,6 @@
 # The architecture interview as brainstorm's workflow for architecture — decision record
 
-Status: **accepted** 2026-10-11 (user: "accept") · cold read `critical-gaps` (29 raised → 24 survivors, 24/24 dispositioned: S1, S5, S13 user-ruled one by one; S8 and S14 the user's word; S11, S12, S16, S23 ruled inline as coverage candidates; the rest one user-confirmed repair batch), verify round 1 NOT CLEAN (21/24 CLEAN, V1–V6 lead-repaired), verify round 2 NOT CLEAN, nothing Critical (8/9 CLEAN; V7 user-stamped, V4 and V8–V10 lead-repaired, closed seat-unverified by the user's word) · **superseded in part 2026-10-11** by `implement-brainstorm-led` (the default *Where the rules live* — its desk-wins precedence flipped by the user's word — and D6-desk-stays-engine's hand-off to a later session; build items A and B ship with that session's build item C) · frozen for the cold read 2026-10-11 after the accept screen ("confirm") · opened 2026-10-10 · lead: Claude (session) · rulings: deepeshBodh
+Status: **accepted** 2026-10-11 (user: "accept") · cold read `critical-gaps` (29 raised → 24 survivors, 24/24 dispositioned: S1, S5, S13 user-ruled one by one; S8 and S14 the user's word; S11, S12, S16, S23 ruled inline as coverage candidates; the rest one user-confirmed repair batch), verify round 1 NOT CLEAN (21/24 CLEAN, V1–V6 lead-repaired), verify round 2 NOT CLEAN, nothing Critical (8/9 CLEAN; V7 user-stamped, V4 and V8–V10 lead-repaired, closed seat-unverified by the user's word) · **superseded in part 2026-10-11** by `implement-brainstorm-led` (the default *Where the rules live* — its desk-wins precedence flipped by the user's word — and D6-desk-stays-engine's hand-off to a later session; build items A and B ship with that session's build item C) · **built** 2026-10-11 at v0.120.0 with that build item C (branch `engine-desk-build`; `implement-brainstorm-led/build-log.md` · `wave2-desk.md` · `wave3-implement.md`) · frozen for the cold read 2026-10-11 after the accept screen ("confirm") · opened 2026-10-10 · lead: Claude (session) · rulings: deepeshBodh
 
 ## Topic (user's words)
 
@@ -1725,3 +1725,20 @@ Landing (KM close ritual, `.mochiko/memory/knowledge-management.md`), 2026-10-11
 Next-step offer (never a default): the build items above; the first ai-fileops desk run after
 the build; a commit of this session's artifacts and operating-doc touches, suggested to the
 user, never run by the session.
+
+Built 2026-10-11 at v0.120.0 on branch `engine-desk-build`, together with `implement-brainstorm-led`'s
+shared thinking engine (its build item C) — one combined build in three waves, one bump
+(`.mochiko/brainstorms/implement-brainstorm-led/build-log.md`, `wave2-desk.md`, `wave3-implement.md`,
+`reports/audit-w2.md`, `reports/audit-w3.md`). Item A in wave 2: migration 0065 the visit-file home
+(`visit.md` at `.mochiko/architecture/desk/<date-slug>/`, the name the user's ruling at the build),
+0068 the desk's `focus` moment, the `visit_kind` condition and `arch.fail.write-outside-focus`,
+0069 the desk on the engine through `arch.thinking-stage` — the default *Where the rules live*'s
+desk-wins clause never shipped, as superseded; implement's design-input line and the offer default
+in wave 3. Item B in waves 2 and 3: 0066, 0067 and 0070 the store's `diagrams/` set, its index
+section, sixth health count and stale net, and `DIAGRAM-CONVENTIONS.md`'s taste section; 0078 and
+0079 implement drawing into the store before code with one signed object, the deviation gate on
+container and flow views and the index rebuilt at every checkpoint and landing.
+`architecture-design-primitive` D5-plan-run-artifact and D8-rendered-diagram-signoff stamped
+superseded in part. Every W2 gate unit PASS round 1; W3 as that record states. OQ3 (GitHub's
+handling of the `%%{init…}%%` line at `DIAGRAM-CONVENTIONS.md:39`) waits for the branch's push;
+the first ai-fileops desk run stays open in BACKLOG.

@@ -1,6 +1,6 @@
 # Implement reimagined around brainstorm's thinking — decision record
 
-Status: **accepted** 2026-10-11 (user: "accept") · cold read `needs-revision` (18 raised → 15 survivors, 0 Critical · 8 Important · 7 Minor, 2 coverage; 15/15 dispositioned: S1, S2, S4, S7, S8 user-ruled one by one, S6 and S9 ruled inline as coverage candidates, the rest one user-confirmed repair batch), verify round 1 NOT CLEAN (15/15 CLEAN, V1 user-ruled, V2–V6 lead-repaired), verify round 2 NOT CLEAN, Minor only (V2's title and W1, lead-repaired; closed seat-unverified by the user's word) · frozen for the cold read 2026-10-11 after the accept screen ("confirm") · opened 2026-10-11 · lead: Claude (session) · rulings: deepeshBodh
+Status: **accepted** 2026-10-11 (user: "accept") · cold read `needs-revision` (18 raised → 15 survivors, 0 Critical · 8 Important · 7 Minor, 2 coverage; 15/15 dispositioned: S1, S2, S4, S7, S8 user-ruled one by one, S6 and S9 ruled inline as coverage candidates, the rest one user-confirmed repair batch), verify round 1 NOT CLEAN (15/15 CLEAN, V1 user-ruled, V2–V6 lead-repaired), verify round 2 NOT CLEAN, Minor only (V2's title and W1, lead-repaired; closed seat-unverified by the user's word) · **built** 2026-10-11 at v0.120.0 with `architecture-brainstorm-interview`'s items A and B (branch `engine-desk-build`; `build-log.md` · `wave1-engine.md` · `wave2-desk.md` · `wave3-implement.md` · `reports/audit.md`, `audit-w2.md`, `audit-w3.md`) · frozen for the cold read 2026-10-11 after the accept screen ("confirm") · opened 2026-10-11 · lead: Claude (session) · rulings: deepeshBodh
 
 ## Topic (user's words)
 
@@ -1235,3 +1235,28 @@ rows; S5 the off-by-default switch). No survivor challenged a ruling without its
   entries and records annotated.
 - Seats closed: `review-seat` (blind map, cold read, two verify rounds) and `second-list-engine` are
   done; no seat holds a pen.
+
+Built 2026-10-11 at v0.120.0 on branch `engine-desk-build`, the same day, on the user's word, as
+one combined build with `architecture-brainstorm-interview`'s items A and B — three waves, one bump
+(`wave1-engine.md`, `wave2-desk.md`, `wave3-implement.md`; the log `build-log.md`; the gate reports
+`reports/audit.md`, `reports/audit-w2.md`, `reports/audit-w3.md`). Wave 1 (migrations 0058–0062)
+carries D1–D4: `analysis-iterative` converted to a rendered skill pair holding the asking and the
+switchable ruled-set contract, `common.thinking-stage` the floor pointer each command extends,
+brainstorm and specify's story stage moved onto it, setup and specify's intent following its asking
+through their unchanged pointers, the enrichment variant stripped. The obligation map's lost and
+gained rows went to the user before the bump ("Accept all"; setup's deck kept card by card;
+intent's provenance marks kept in the chat; default-on modules now adopted only on the user's yes,
+superseding in part `setup-operating-docs-scaffolding` D2-elective-default-module's active-decline
+clause). Wave 2 (0065–0070) built the desk's items on the engine. Wave 3 (0075–0084) carries
+D5–D8: implement's design stage after run-open over the gaps (`design-stage.md` in the feature,
+epic and product-lane homes — the lane home the user's ruling at the build), the design seat
+proposing pieces, the landing-table sign-off, `review-plan-artifacts`' meaning-kept grade, the
+narrowed `impl.fail.design-outside-ruled-set`, and the ten architecture touches. Three
+persona-less producers per wave on peer-graded plans (re-plan grants by the user in waves 1 and
+2), one gate grader per wave, every unit PASS — W1 unit 7 and W3 units 3 (0084 restoring
+`impl.artifact-home`'s "only") and 7b after one fix round. 23 strip entries; seven ledger rows
+ruled HOLDS. Gates: validate 0 rejecting · views ≡ replay · `cargo test --all` 765 · the full
+similarity sweep · gitleaks clean · `ids --check plugins/mochiko` 0 bare · 0 drift · contract
+suite 99/99, none skipped. Landed: the `DECISIONS.md` row stamped built · build items A, B and C to the trail ·
+the engine follow-up session, the first ai-fileops implement run and the build's residual items
+left open · the ROADMAP row touched · the index entries stamped built.

@@ -1179,3 +1179,38 @@ audit: unit 7b (prose primitive · dependency-halt.sh :76 count word + its v0.12
   views ≡ replay; `cargo test --all` 765 passed, 0 failed; the full sweep 48 passed; fmt clean;
   clippy `-D warnings` clean; `cargo audit --deny warnings` rc 0. Char budgets as unit 6 measured.
 - Committed next, not pushed. Then the bump, the full contract suite and the landing.
+
+## 2026-10-11 — the 0.120.0 bump, the release gates and the landing
+
+- W3 committed as `969808d`, not pushed. Bump: `plugins/mochiko/.claude-plugin/plugin.json` and
+  `.claude-plugin/marketplace.json` both at `0.120.0`; the implement render prints plugin 0.120.0.
+- Ledger: every `[lead:` placeholder in `.mochiko/memory/primitive-cost-budgets.md` filled with its
+  gate verdict — W1 units 5 and 5b, W2 unit 5, W3 units 6a–6d, seven rows ruled HOLDS.
+- `CHANGELOG.md` [0.120.0] completed: the waves' final figures, the S7 narrowing of
+  `impl.deviation-gate` named, the AM-5 exception paragraph, the sound-loop and gates paragraph.
+- Gates on the bumped tree, first-hand: `migrate validate` 0 rejecting · 116 advisory · clusters 0
+  · 184 suppressed; views ≡ replay (emitted to scratch, `diff -r` clean); `cargo test --all` 765
+  passed, 0 failed; fmt, clippy `-D warnings`, `cargo audit --deny warnings` clean; full sweep 48;
+  `gitleaks detect --no-git` no leaks; `mochiko-cli ids --check plugins/mochiko` 0 bare · 0 drift.
+  Over the whole tree the check reads 94 bare: 87 in session records (68 this build's own, 19 the
+  specify record's) and seven bare `D3` lines this build added to `tests/fidelity.rs:829` and the
+  architecture, brainstorm and specify plan kits — reporting only (human-readable-ids
+  D18-build-done-check), booked in BACKLOG's tool-and-kit residuals item.
+- Contract suite: `uv run evals/contract/run.py` on the bumped tree, the sandbox sign-in live
+  (`sbx secret ls` anthropic oauth; probe replied READY) — **99/99 cases passed, 99 ran, none
+  skipped**, 335 measurements recorded and not asserted; exit 0.
+- Landing: `DECISIONS.md` row 13 stamped built, naming the Q5 supersession of
+  `setup-operating-docs-scaffolding` D2-elective-default-module's active-decline clause (Q-F); row
+  14 stamped built; rows 176 and 179 (`architecture-design-primitive` D5-plan-run-artifact,
+  D8-rendered-diagram-signoff) stamped superseded in part. BACKLOG: build items A, B and C to the
+  trail (three DONE lines); new items for OQ3's GitHub check, the first ai-fileops implement run,
+  the build's incomplete lines and its tool-and-kit residuals; the engine follow-up and convergence
+  triggers marked fired. ROADMAP: the Plan-surface builds Next row stamped built (caps held).
+  Index: both entries stamped built with Landed notes; the `setup-operating-docs-scaffolding` and
+  `architecture-design-primitive` entries and records annotated superseded in part. Records: both
+  Status lines stamped built and a Built paragraph appended to each.
+- Q-D (lead, owed at the close): `.claude/rules/mochiko/primitive-edits.md` `:75`, `:241–242`
+  corrected in W3; `dependency-halt.sh:76` went through gate unit 7b with its strip entry;
+  `BACKLOG.md`'s watch line updated.
+- Next: the final commit after a secret scan, never pushed. The push is the user's; OQ3 (GitHub's
+  handling of the `%%{init…}%%` line at `DIAGRAM-CONVENTIONS.md:39`) is checked when it lands.

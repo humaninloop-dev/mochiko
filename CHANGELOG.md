@@ -5,11 +5,14 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
-## [0.120.0] — [lead: date]
+## [0.120.0] — 2026-10-11
 
-**[lead: the release title and class]** (`implement-brainstorm-led` D1–D8 and the confirmed
-defaults, record `.mochiko/brainstorms/implement-brainstorm-led/record.md`; [lead: the
-architecture record's items A and B]).
+**The shared thinking stage; the desk's focus stage and diagram set; implement's design stage —
+MINOR** (`implement-brainstorm-led` D1–D8 and the confirmed defaults, record
+`.mochiko/brainstorms/implement-brainstorm-led/record.md`; `architecture-brainstorm-interview`
+D1–D9 and the confirmed defaults — its build items A and B — record
+`.mochiko/brainstorms/architecture-brainstorm-interview/record.md`). One combined build in three
+waves on branch `engine-desk-build`, one bump.
 
 **Wave 1 — the shared thinking stage; brainstorm and specify on it** (D1-engine-asking-contract,
 D2-iterative-becomes-engine, D3-four-move-now, D4-shaped-for-six). `mochiko:analysis-iterative`
@@ -40,8 +43,8 @@ Migrations **`0058-thinking-engine`**, **`0059-thinking-stage-block`**,
 carry the W1 schema half. After W1 the log, sequences 1..62, replays to 88 documents and 1,211
 rules (1,196 → 1,211). Brainstorm's pins read `kind: fail · 4 rules` and `class: floor · 9 rules`
 (was 8); specify's `kind: fail · 10 rules` and `class: floor · 19 rules` (was 18); the engine's
-`class: floor · 2 rules`. No floor or fail is retired or lowered. [lead: the final log figures
-after W3.]
+`class: floor · 2 rules`. No floor or fail is retired or lowered. After W3 the log, sequences
+1..84, replays to 93 documents and 1,243 rules (wave 3 below).
 
 W1 prose primitives: `analysis-iterative`'s `SKILL.md` rewritten to the rendered-skill shape — an
 Overview naming the stage and its callers, the Rules block, When NOT to Use (the
@@ -60,9 +63,9 @@ the knowledge-management module template's header on the same ruling.
 W1 budgets (`.mochiko/memory/primitive-cost-budgets.md`, measured at the quiesced tree):
 `analysis-iterative` re-seeded as a skill pair — payload 16,067 = body 5,376 + render 10,691, no
 headroom, +11,139 over the 4,928 prose budget, argued as D1's ruled obligations moved in from
-brainstorm's and specify's renders [lead: the unit-5 verdict]; description 476 → 594.
+brainstorm's and specify's renders, ruled HOLDS (W1 unit 5); description 476 → 594.
 `review-specifications` +1,931 → +2,005 (render +44 from `0062`, body +30 — the boundary re-keyed
-to specify's two stages on the engine, D2) [lead: the unit-5b verdict]; description 490 → 535.
+to specify's two stages on the engine, D2), ruled HOLDS (W1 unit 5b); description 490 → 535.
 `brainstorm`'s render 21,198 → 19,074 bytes and `specify`'s 27,999 → 27,160 characters (commands
 are unbudgeted).
 
@@ -119,10 +122,10 @@ architecture-desk and `tech-lead` rows. 6 strip entries stamped [v0.120.0] in W2
 W2 budgets (characters, measured at the quiesced tree): `authoring-architecture-store` payload
 21,879 → 24,192 = body 5,878 + render 18,314, +4,459 over the 19,733 budget (the standing +2,146
 plus +2,313 this wave — render +2,096 from `0067` and +106 from `0070`, body +111), argued as
-D7-diagram-set-index's, D8-draw-before-code's and D9-render-where-viewed's ruled obligations [lead:
-the unit-5 verdict]; description 492 unchanged. `patterns-system-design` body 9,991 → 10,073,
+D7-diagram-set-index's, D8-draw-before-code's and D9-render-where-viewed's ruled obligations,
+ruled HOLDS (W2 unit 5); description 492 unchanged. `patterns-system-design` body 9,991 → 10,073,
 inside its 11,047 budget; description 625 unchanged. `architecture`'s render 20,379 → 28,000
-characters per block (commands are unbudgeted); the router body 48,037 → 48,637 (unbudgeted).
+characters across its seven blocks (commands are unbudgeted); the router body 48,037 → 48,637 (unbudgeted).
 
 **Wave 3 — implement's design stage on the engine, its home, the landing-table checkpoint, and the
 architecture touches** (`implement-brainstorm-led` D1-engine-asking-contract and
@@ -199,28 +202,45 @@ the overview's drawing home re-keyed to the store's own diagrams, the run's `arc
 drawing the user signs, and the checkpoint table listing the store diagram files the change edited
 (D8-draw-before-code). The router's `testing-gap-finding` row (the fence's listed diagram files)
 and `/mochiko:implement` row (the design stage before the seats author). `commands/implement.md`
-is unchanged: no line is made false, and its Not-done line already cites the CLI-printed pin. 3
-strip entries stamped [v0.120.0] in W3. Ripple: `README.md`'s implement loop.
+is unchanged: no line is made false, and its Not-done line already cites the CLI-printed pin. The
+`dependency-halt` hook's delivery-check comment counts six prose skills, not seven, since W1's
+conversion of `analysis-iterative` (behaviour unchanged: the gate keys on each primitive's own `!`
+line). 4 strip entries stamped [v0.120.0] in W3. Ripple: `README.md`'s implement loop.
 `README.md`'s deviation sentence now names the container and flow views as the cycle stops,
 the other views checked at the landing's built-vs-signed diff (D8-draw-before-code, S7).
 
 W3 budgets (characters, measured at the quiesced tree): `authoring-architecture-store` payload
-24,192 → 24,276 (render +84 from `0079`), +4,543 over the 19,733 budget [lead: the unit-6a
-verdict]; `review-plan-artifacts` 18,272 → 19,507 = body 3,462 + render 16,045, +1,494 over the
-18,013 budget (render +1,136 from `0080`, body +99) [lead: the unit-6b verdict];
-`review-sufficiency` 16,621 → 17,360 (render +704 from `0081`, +35 from `0083`), +1,937 over the
-15,423 budget [lead: the unit-6c verdict]; `testing-gap-finding` 23,208 → 23,305 (render +97 from
-`0082`), +3,328 over the 19,977 budget [lead: the unit-6d verdict] — each argued as the ruled
-obligations named above; descriptions unchanged. `patterns-system-design` body 10,073 → 10,298,
+24,192 → 24,276 (render +84 from `0079`), +4,543 over the 19,733 budget (W3 unit 6a);
+`review-plan-artifacts` 18,272 → 19,507 = body 3,462 + render 16,045, +1,494 over the 18,013 budget
+(render +1,136 from `0080`, body +99; unit 6b); `review-sufficiency` 16,621 → 17,360 (render +704
+from `0081`, +35 from `0083`), +1,937 over the 15,423 budget (unit 6c); `testing-gap-finding`
+23,208 → 23,305 (render +97 from `0082`), +3,328 over the 19,977 budget (unit 6d) — each argued as
+the ruled obligations named above and ruled HOLDS by the wave's gate audit; descriptions unchanged. `patterns-system-design` body 10,073 → 10,298,
 inside its 11,047 budget; description 625 unchanged. `implement`'s render 51,441 → 60,392
 characters (commands are unbudgeted); the router body 48,637 → 48,744 (unbudgeted).
 
-[lead: the AM-5 exception paragraph, if it still applies.]
+**Ships under the AM-5 exception row** (governance ledger, Exception registry, first row): the
+conformance hooks still ship before the first `mochiko-cli` publish carrying the four named
+controls; this bump adds no binary change and carries the same unpublished 0.4.0 dependency as
+0.118.0 and 0.119.0 (`mochiko-cli` 0.4.0, grammar 1..2, serves the log; no `mochiko-cli-v*` tag
+exists).
 
-[lead: sound loop and gates — seats, plan grades, gate audits and outcome lines, `migrate
-validate`, views ≡ replay, `cargo test` + fmt + clippy + audit, the full similarity sweep,
-gitleaks, `ids --check`, the contract suite (none skipped), both manifests at 0.120.0, the strip
-count, the ledger rows ruled.]
+Sound loop: per wave, three persona-less producers (P1 schema · P2 prose · P3 tests and kits,
+`opus`), each on a plan graded by a fresh generic peer — W1 P1 passed at round 3 and W2 P2 at
+round 3, each extra round the user's grant past the wave's spent re-plan bound; W1 P2 and P3, W2 P3
+and W3 P1 revised once — and one gate grader per wave, with every unit's outcome line in its
+report: W1 ten units, W2 nine, W3 fifteen, all PASS, W1 unit 7 and W3 units 3 (`0084`) and 7b
+after one fix round; the user ruled the obligation map, the re-plan grants, `visit.md`, the lane
+home for `design-stage.md` and the booking of incomplete lines found past the plans
+(`.mochiko/brainstorms/implement-brainstorm-led/build-log.md`, `reports/audit.md`,
+`reports/audit-w2.md`, `reports/audit-w3.md`). Gates: `mochiko-cli migrate validate` 0 rejecting ·
+116 advisory · clusters 0 · 184 allowlist-suppressed edges · views ≡ replay on the bumped tree ·
+`cargo test --all` 765 passed · fmt · clippy · audit · the opt-in full similarity sweep 48 passed ·
+`gitleaks detect --no-git` no leaks · `mochiko-cli ids --check plugins/mochiko` 0 bare · 0 drift
+(the whole tree 94 bare in session records and seven eval-kit and crate-test lines, reporting
+only, booked) · **contract suite 99/99, 99 ran, none skipped** (on the bumped tree; 335 measurements recorded,
+none asserted) · both manifests at 0.120.0 · 23 strip entries ·
+7 ledger rows ruled HOLDS.
 
 ## [0.119.0] — 2026-10-10
 
