@@ -1,0 +1,9 @@
+# Architecture Diagram — checklist
+
+- [ ] Is there exactly one `##` heading, naming the diagram, with nothing above it?
+- [ ] Is there exactly one Mermaid block?
+- [ ] Is there a one-line caption?
+- [ ] Does the Draws line cite each store target by its joined ID and each data-model entity by file and heading?
+- [ ] Is there one Lifecycle line with a legal value and at most one open key, and no stale flag in the file?
+
+---

@@ -1,0 +1,11 @@
+# Architecture Desk Visit — checklist
+
+- [ ] Are the goal and its done condition stated, the FEAT id named on a delta visit, and every input handed in named?
+- [ ] Does every item name its part, quote the user's direction, carry a sentence or `open`, and carry one provenance mark?
+- [ ] Does every batch row show its default, its cost and the case against it beside the user's ruling?
+- [ ] Is every difference ruled in or out, an out carrying its why?
+- [ ] Does every claim carry a source or `unknown`?
+- [ ] Is each row written from the file linked, and none listed on a delta visit?
+- [ ] Is there a verdict against the done condition?
+
+---

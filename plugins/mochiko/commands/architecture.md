@@ -1,6 +1,6 @@
 ---
 description: The architecture desk — standing surface over the product architecture store. Surfaces store health, converges each visit to a one-line goal and its done condition, authors the baseline (greenfield elicit, brownfield reconstruct-and-confirm), walks the opinion shelves row by row, probes drift against the code, and routes fired upgrade triggers to the capability map. Every stance is the user's ruling.
-argument-hint: [architecture demand | store query]
+argument-hint: [architecture demand | store query | brainstorm record | <FEAT-ID>]
 disable-model-invocation: true
 allowed-tools: Bash(mochiko-cli *)
 ---
@@ -45,13 +45,14 @@ reading grammar; a `pointer:` binds you to that skill's procedure, referenced ne
 
 Every visit has a goal; a visit is never goal-less.
 
-1. **Entry.** `$ARGUMENTS` = the incoming architecture demand or store query; empty → surface
-   health, then ask what the visit is for. **Health first, then the ask:** open by surfacing
-   store state *before* taking the request — the health view, read from the derived root index:
-   `open` rows still carrying no stance · `not-now` rows whose revisit trigger has gone stale ·
-   **fired** upgrade triggers awaiting their routing · orphan `proposed` and in-flight-class
-   elements keying no open feature, epic or lane · the standing drift register. The health view is a section of the derived index,
-   never a separate artifact.
+1. **Entry.** `$ARGUMENTS` = the incoming architecture demand or store query, a brainstorm record
+   handed in, or a `<FEAT-ID>` for that feature's delta visit; empty → surface health, then ask
+   what the visit is for. **Health first, then the ask:** open by surfacing store state *before*
+   taking the request — the health view, read from the derived root index: `open` rows still
+   carrying no stance · `not-now` rows whose revisit trigger has gone stale · **fired** upgrade
+   triggers awaiting their routing · orphan `proposed` and in-flight-class elements and diagrams
+   keying no open feature, epic or lane · the standing drift register · stale diagrams. The health
+   view is a section of the derived index, never a separate artifact.
 2. **Goal — the done condition, converged per visit.** Converge to a goal and its done
    condition: a micro-brainstorm converges to a **one-line visit goal and its explicit done
    condition**, agreed with the user. Convergence is the requirement, not conversation length: a

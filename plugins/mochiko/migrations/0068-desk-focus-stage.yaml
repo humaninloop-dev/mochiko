@@ -1,0 +1,293 @@
+grammar: 1
+id: 0068-desk-focus-stage
+sequence: 68
+intent: >-
+  The desk's focus stage, written straight onto the shared thinking stage with only its domain
+  part (architecture-brainstorm-interview D1–D5, D7–D9 desk share as review-amended, and the
+  confirmed defaults; implement-brainstorm-led D3 and default Slots declared where): the
+  visit_kind condition and the focus moment; thirteen domain rules and the floor fail
+  arch.fail.write-outside-focus; six rewords for lines the visit file and the diagram set make
+  false, arch.seat-architect-producer's "delta authoring" among them (D5 — the desk writes no
+  store delta). No asking mechanic is restated; no floor or fail retired or lowered.
+anchor: 2026-10-11 architecture-brainstorm-interview
+hash: sha256:c37dcab6a9a7244ac92e5c7720bc4364039b9fae11f45476781ab43fef7adf3b
+changes:
+  - op: set-condition
+    schema: command/architecture
+    name: visit_kind
+    spec:
+      values: [ruling, delta, other]
+      resolution: entry-derived
+      note: >-
+        fixed by the converged visit goal: ruling — the visit rules a baseline, a stance or an
+        amendment; delta — a feature's delta thinking, /mochiko:architecture <FEAT-ID>; other
+        — a store query, a drift visit (its dispositions land on the rows as today) or a fired
+        trigger's routing. Re-derived whenever the visit goal is re-converged: a query or drift
+        visit that turns to ruling something re-converges its goal first, so the stage runs before
+        any store write.
+  - op: set-moment
+    schema: command/architecture
+    name: focus
+    text: >-
+      Where the visit's focus set is worked with the user — after the one-line visit goal is
+      agreed, before the principal-architect seat authors anything.
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.roles
+    rule:
+      id: arch.focus-blind-list
+      labels: [independence, seats]
+      class: must
+      kind: duty
+      text: >-
+        Before the focus set closes, one fresh persona-less `general-purpose` seat spawned with
+        `model: opus` draws the visit's blind list from the focus context (arch.focus-context),
+        never the visit file, and returns the parts, concerns and forks it sees; a part the shelf
+        lacks is how an off-shelf concern enters. One list per visit, skipped only on a single-row
+        ask — the goal names one row and the user hands in its direction.
+      when: {visit_kind: [ruling, delta]}
+      anchor: 2026-10-11 architecture-brainstorm-interview D4
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.roles
+    rule:
+      id: arch.rows-from-visit-file
+      labels: [seats, independence]
+      class: must
+      kind: duty
+      text: >-
+        At the set's close the ${producer_seat} seat authors the rows and spine elements from the
+        visit file in the same visit, each row linking the file as its rationale home, and
+        ${grader_seat} grades them against the file for sameness of meaning — additive to the
+        user's word on the row text, never a substitute; the visit does not close until the rows
+        are in.
+      when: {visit_kind: ruling}
+      anchor: 2026-10-11 architecture-brainstorm-interview D3
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.reserved
+    rule:
+      id: arch.gate-focus-confirm
+      labels: [user-gate]
+      class: must
+      kind: gate
+      text: >-
+        Confirming the ruled set is the user's, on a screen of its own — never the goal's or the
+        rows' — and the ${producer_seat} seat authors nothing before it.
+      when: {visit_kind: [ruling, delta]}
+      anchor: 2026-10-11 architecture-brainstorm-interview
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.tools
+    rule:
+      id: arch.focus-stage
+      labels: [scope-entry, user-gate]
+      class: must
+      kind: duty
+      text: >-
+        At the focus moment the parts this visit decides are worked with the user on the thinking
+        stage with its ruled-set contract on: the visit goal is its opening, the focus set with
+        the defaults batch as confirmed is the ruled set, saved in the visit file, and the
+        ${producer_seat} seat is the next writer. The set's close sits inside the visit's done
+        condition, never beside it.
+      when: {visit_kind: [ruling, delta]}
+      anchor: 2026-10-11 architecture-brainstorm-interview D1
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.tools
+    rule:
+      id: arch.focus-unit
+      labels: [user-gate, binding]
+      class: must
+      kind: binding
+      text: >-
+        The user rules each focus item as three things: the part — a store element, an AX row, a
+        shelf row or a spine area — the direction for it in their own words, and one sentence on
+        how they would know it is right, or `open`. The sentence lands in the visit file always,
+        as the upgrade trigger on a `not-now` row and as the first line of `Rationale` on a
+        `decided` one; a target number comes only from the user, and an `open` sentence stays open
+        on the row, never filled in by the ${producer_seat} seat.
+      anchor: 2026-10-11 architecture-brainstorm-interview D2
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.tools
+    rule:
+      id: arch.focus-context
+      labels: [evidence, binding]
+      class: must
+      kind: binding
+      text: >-
+        To propose a focus you read — and the blind seat is given — the visit goal, the
+        store's `Scope:` line, the derived index, any brainstorm record named, `FEATURES.md` with
+        the capability entries in the visit's territory, the codebase analysis where one exists
+        and, for a feature's delta, its spec; on a greenfield baseline, where the index is a
+        scaffold, the product's own description and the capability map carry the context.
+      when: {visit_kind: [ruling, delta]}
+      anchor: 2026-10-11 architecture-brainstorm-interview D4
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.tools
+    rule:
+      id: arch.visit-file
+      labels: [binding]
+      class: must
+      kind: binding
+      text: >-
+        The visit keeps its state in one visit file, `visit.md`, which you write as the visit goes
+        to the shape `mochiko-cli template architecture-visit` renders; you hold its pen, the
+        ${producer_seat} seat the store's.
+      when: {visit_kind: [ruling, delta]}
+      anchor: 2026-10-11 architecture-brainstorm-interview D3
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.tools
+    rule:
+      id: arch.first-visit-stage
+      labels: [scope-entry]
+      class: must
+      text: >-
+        The first visit's focus stage is the baseline's elicitation: greenfield, the shelf rows
+        and the blind list supply its candidates and the user's directions become the baseline's
+        rulings; brownfield, the reconstructed derivation is its fact base, the stage picks which
+        derived elements get a fork of their own and which the batch confirms, and its close is
+        the confirm step.
+      when: {store_ruled_content: absent}
+      anchor: 2026-10-11 architecture-brainstorm-interview
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.tools
+    rule:
+      id: arch.feature-delta-visit
+      labels: [scope-entry]
+      class: must
+      text: >-
+        A feature's delta visit, `/mochiko:architecture <FEAT-ID>`, closes in a visit file keyed
+        to the feature — its directory's slug carrying the joined FEAT id lower-cased, its
+        header naming it — and the desk writes nothing to the store for it and no link on the
+        feature's capability entry.
+      when: {visit_kind: delta}
+      anchor: 2026-10-11 architecture-brainstorm-interview D5
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.ways-of-working
+    rule:
+      id: arch.focus-batch
+      labels: [user-gate, evidence]
+      class: must
+      text: >-
+        The stage's defaults batch holds the shelf rows in play with no stance yet — `open`, or
+        newly in scope — each shown with its suggested default, what it costs and what argues
+        against it; a `decided`, `not-now` or `n-a` row is never re-dealt by a batch and changes
+        only as a focus item the user pulls in — an amendment demand, a fired trigger or a drift
+        finding. Focus items and batch rows are each walked in retrofit-cost order.
+      anchor: 2026-10-11 architecture-brainstorm-interview D1
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.ways-of-working
+    rule:
+      id: arch.outside-claims
+      labels: [evidence]
+      class: must
+      text: >-
+        An outside claim a focus item hangs on — a provider limit, a price, a platform behaviour
+        — is taken from its live source, never from memory, and the visit file records that
+        source, or `unknown`, beside the item.
+      anchor: 2026-10-11 architecture-brainstorm-interview
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.ways-of-working
+    rule:
+      id: arch.desk-redraw
+      labels: [stewardship]
+      class: must
+      kind: duty
+      text: >-
+        A store change ruled at the visit redraws, during the visit and inside the ruled set,
+        every diagram it touches.
+      when: {visit_kind: ruling}
+      anchor: 2026-10-11 architecture-brainstorm-interview D8
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.ways-of-working
+    rule:
+      id: arch.diagram-signoff
+      labels: [user-gate, evidence]
+      class: must
+      text: >-
+        A diagram is signed off on its Mermaid text, which you confirm parses before the sign-off
+        — by the render surface where one exists, else by its author's own read. Where the
+        session can render it, the user sees the picture beside the text; where it cannot, a
+        one-line note says it was not rendered here, that it renders where it is viewed, and which
+        read confirmed the parse; publishing to a hosted service to render it waits for the user's
+        yes, a local preview preferred.
+      anchor: 2026-10-11 architecture-brainstorm-interview D9
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.fail-conditions
+    rule:
+      id: arch.fail.write-outside-focus
+      labels: [user-gate]
+      class: floor
+      kind: fail
+      text: >-
+        A desk visit's store write — a baseline, a stance batch, an amendment or a diagram —
+        with no ruled set behind it in a visit file, or one outside that set.
+      enforces: [arch.focus-stage, arch.visit-file, arch.rows-from-visit-file, arch.gate-focus-confirm]
+      anchor: 2026-10-11 architecture-brainstorm-interview
+  - op: reword-rule
+    schema: command/architecture
+    id: arch.seat-architect-producer
+    text: >-
+      ${producer_seat} is the producing seat: the baseline, shelf-walk stance batches and
+      amendments — the rows and spine elements a visit file rules — and the store's diagrams.
+      Recommends with reasons; never rules. Plans first, read-only, in a plan-only dispatch, and
+      works only on a plan a fresh peer passed and you approved.
+  - op: reword-rule
+    schema: command/architecture
+    id: arch.seat-tech-lead-grader
+    text: >-
+      ${grader_seat} is the independent grader of the architect's judgment writes, before the
+      user's ratification: it grades a drawing against the targets its `Draws:` line cites, and
+      re-checks the outside claims the rows rest on under the review-seat duty of
+      mochiko:review-brainstorm's `references/EXTERNAL-CLAIMS.md`, which its brief names. Status
+      flips and orphan cleanup are transcription and ride the landing audit instead.
+  - op: reword-rule
+    schema: command/architecture
+    id: arch.tools-store
+    text: >-
+      The store lives at ${store_dir}/: `spine.md` (the topology deep view — containers,
+      boundaries, communication styles), the `concerns.md` ledger of `AX-XXX` rows, a row
+      graduating to its own file at ${store_dir}/concerns/AX-XXX-<slug>.md only when it carries
+      real depth — extend beats mint — and the diagram set, one file per diagram in
+      ${store_dir}/diagrams/. Repo-root `ARCHITECTURE.md` is the store's derived index — spine
+      thumbnail, AX summary table, diagrams section, health view — and is a rendered projection,
+      never a second store.
+  - op: reword-rule
+    schema: command/architecture
+    id: arch.tools-store-skill
+    text: >-
+      mochiko:authoring-architecture-store is the store's owner: AX and spine grammar, the element
+      lifecycle (`ruled` → `proposed (<key>)` → at sign-off `in-flight (<key>)` / `modifying
+      (<key>)` / `removing (<key>)` → `built`, or `removed` for a removal; the key `FEAT-XXX`,
+      `EPIC-XXX` or `lane-<slug>`), the stance vocabulary (`decided` · `not-now` · `n-a` ·
+      `open`), row graduation, the diagram set and its stale compare, the fold at landings, the
+      health view, and the index regeneration.
+  - op: reword-rule
+    schema: command/architecture
+    id: arch.tools-system-design
+    text: >-
+      mochiko:patterns-system-design carries altitude and diagram craft for the spine, the store's
+      diagram set and the deltas features draft against it.
+  - op: reword-rule
+    schema: command/architecture
+    id: arch.artifact-home
+    text: >-
+      The store's files have a declared home: render `mochiko-cli home
+      .mochiko/product/architecture` before the first write. `spine.md` binds the
+      `architecture-spine` template and `concerns.md` binds `architecture-concerns`: each takes
+      its shape from `mochiko-cli template <kind>` and its bound from the home — per `##` entry,
+      the templates' section budgets replaced, no whole-file bound; a graduated row's file is
+      `<AX-ID>.md` in `concerns/`, under that sub-home's whole-file bound, and a diagram's file
+      `<slug>.md` in `diagrams/`, bound per entry. The visit file's home is
+      `.mochiko/architecture/desk/<date-slug>/`, outside the store — render `mochiko-cli home`
+      on it before its first write. The repo-root index is derived, never hand-written.

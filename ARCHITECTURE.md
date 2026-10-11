@@ -333,14 +333,15 @@ desk since v0.81.0 and on the canonical scaffold since v0.97.0. The peer of the 
 `.mochiko/product/architecture/` — capabilities are what the product does, the store is how it
 is built, and neither desk writes the other's truth. A visit opens with the health view read
 from the derived index (`open` rows carrying no stance · stale `not-now` revisit triggers ·
-fired upgrade triggers awaiting routing · orphan in-flight elements · the drift register),
-converges to a one-line goal and done condition, and closes with a verdict against it. The
+fired upgrade triggers awaiting routing · orphan `proposed` and in-flight-class elements and
+diagrams · the drift register · stale diagrams), converges to a one-line goal and done condition,
+and closes with a verdict against it. The
 lead writes no architecture truth alone: every stance, baseline, and amendment is the user's
 ruling on a produced-and-graded proposal.
 
 | Seat | Wiring |
 |---|---|
-| producer | `principal-architect` × `authoring-architecture-store`, `patterns-architecture-shelves` — baseline authoring (greenfield elicit, brownfield reconstruct-and-confirm), shelf-walk stance batches, amendments, delta authoring |
+| producer | `principal-architect` × `authoring-architecture-store`, `patterns-architecture-shelves` — baseline authoring (greenfield elicit, brownfield reconstruct-and-confirm), shelf-walk stance batches, amendments, the store's diagrams |
 | judgment grader | `tech-lead` — independently grades the architect's judgment writes before the user ratifies; transcription-only changes ride the landing audit instead |
 | drift probe | an empirical seat reading the codebase against the store's `As-built:` claims — never the seat that wrote the claim |
 

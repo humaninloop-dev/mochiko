@@ -12,6 +12,84 @@ cap; the slim form is the highest-value part of this cut.
 `.mochiko/brainstorms/delta-files-vs-direct-baseline-edits/record.md` (`DECISIONS.md` 2026-09-24
 row). Pre-edit verbatim text: `git show 5558fd7:plugins/mochiko/skills/patterns-system-design/SKILL.md`. -->
 
+<!-- Wave context: wave 2 of the combined engine/desk build (v0.120.0) — the delta diagram's
+sign-off surface becomes its Mermaid text. Ruling for every [v0.120.0] entry below:
+`.mochiko/brainstorms/architecture-brainstorm-interview/record.md` D9-render-where-viewed as
+changed at review (S9 names this skill's "must render" line and its checklist item), with the
+`DECISIONS.md` 2026-10-11 "Architecture desk as brainstorm's workflow, plus maintained diagrams,
+ruled" row; it amends `architecture-design-primitive` D8-rendered-diagram-signoff, recorded at the
+landing. Pure additions the same wave, recorded here for the audit's read:
+`references/DIAGRAM-CONVENTIONS.md` gains its opening clause and the taste section (the record's
+default *Taste*, S23). Body 9,991 → 10,073, inside the 11,047 budget. Pre-edit verbatim text:
+`git show 963a3d6:plugins/mochiko/skills/patterns-system-design/SKILL.md` and
+`…/references/DIAGRAM-CONVENTIONS.md`. -->
+
+## [v0.120.0] §1 container delta diagram — "it must render, never ship as a raw code block" superseded by the Mermaid-text sign-off
+
+- **Disposition:** superseded → `SKILL.md` pre-edit `:54`, as rewritten: "what the reader approves
+  — its Mermaid text is what is signed, so it must parse, and it must render wherever it is viewed
+  (the sign-off: `mochiko:authoring-architecture-store`)."
+- **Tier failed:** n/a — supersession by ruling (`architecture-brainstorm-interview`
+  D9-render-where-viewed: "A diagram's sign-off surface is its Mermaid text, which must parse";
+  "must be seen rendered at sign-off" becomes "must render wherever it is viewed"; S9 at review
+  names this line)
+- **Content (superseded text, verbatim):** `what the reader approves — it must render, never ship
+  as a raw code block masquerading as a picture.`
+- **Kept deliberately:** "This diagram is what the reader approves" — the container delta diagram
+  stays the sign-off surface; the delta-marking sentence before it, byte for byte.
+- **Consumers assessed:**
+  - the desk: `arch.diagram-signoff` (`0068`) carries the same surface — consistent;
+  - the store skill: `authoring-architecture-store.sign-off-flips-proposed`, reworded to the same
+    surface by `0067` — consistent, and the line's pointer target;
+  - implement's design phase: `impl.gate-design-checkpoint`'s "signed on a rendered diagram" is in
+    the same S9 list, wave 3's to supersede inside the same 0.120.0 bump;
+  - `review-plan-artifacts`: `references/ARTIFACT-CHECKLISTS.md:80` and `:89` read "a rendered
+    diagram" / "the rendered diagram" — routed to wave 3 by the lead's ruling.
+
+## [v0.120.0] §3 checkpoint table — "the sign-off surface where no render exists" superseded
+
+- **Disposition:** superseded → `SKILL.md` pre-edit `:67–68`, as rewritten: "It is signed beside
+  the diagram, and is the signed state where no commit is made."
+- **Tier failed:** n/a — supersession by ruling (`architecture-brainstorm-interview`
+  D9-render-where-viewed: with no render surface the Mermaid text is still what is signed, shown
+  with a one-line note, so nothing stands in for the picture; it retires the degrade-with-record
+  exception `architecture-design-primitive` D8-rendered-diagram-signoff carried)
+- **Content (superseded text, verbatim):** `It is the sign-off surface` / `where no render exists,`
+- **Kept deliberately:** "the signed state where no commit is made", matching
+  `sign-off-flips-proposed`'s "or the checkpoint table where no commit is made".
+- **Consumers assessed:** the store skill — `sign-off-flips-proposed` names the table among the
+  sign-off's three surfaces, consistent; the desk, implement's design phase and
+  `review-plan-artifacts` quote no part of the clause (grep "where no render exists": this file
+  only).
+
+## [v0.120.0] Quality Checklist — "The diagram renders (valid mermaid)" superseded
+
+- **Disposition:** superseded → `SKILL.md` pre-edit `:128`, as rewritten: "- [ ] The diagram's
+  Mermaid text parses — the text is what is signed, and it renders wherever it is viewed".
+- **Tier failed:** n/a — supersession by ruling (`architecture-brainstorm-interview`
+  D9-render-where-viewed as changed at review — S9 names "its checklist item"; "must parse" is
+  checked before the sign-off)
+- **Content (superseded text, verbatim):** `- [ ] The diagram renders (valid mermaid) — it is meant
+  to be seen, not read as source`
+- **Kept deliberately:** the item's place, last in the checklist; its validity demand, "valid
+  mermaid" read as "parses".
+- **Consumers assessed:** as the §1 entry above.
+
+## [v0.120.0] DIAGRAM-CONVENTIONS rendering line — "presented as a picture, never as a raw code block" superseded
+
+- **Disposition:** superseded → `references/DIAGRAM-CONVENTIONS.md` *Rendering* paragraph, as
+  rewritten: "the diagram is Mermaid text that must parse — the text is what the user signs, and it
+  renders wherever it is viewed (GitHub, an IDE preview); where the session can render it, the
+  picture is shown beside the text."
+- **Tier failed:** n/a — supersession by ruling (`architecture-brainstorm-interview`
+  D9-render-where-viewed; the record's F22 quotes this line as the rule D9 replaces)
+- **Content (superseded text, verbatim):** `the diagram must be valid mermaid that renders — it is
+  presented as a *picture*, never` / `as a raw code block standing in for one.`
+- **Kept deliberately:** "Keep node ids short and label text in quotes so protocol slashes and
+  `<br/>` render cleanly", byte for byte; the validity demand, as "must parse".
+- **Consumers assessed:** no primitive outside this skill quotes the line (grep "raw code block":
+  this skill only); the record's F22 quotes it as a fact of 2026-10-10.
+
 ## [v0.116.0] DIAGRAM-CONVENTIONS sequence-participant line — "the delta register" re-keyed to the checkpoint table
 
 - **Disposition:** superseded → "components named in the container diagram (and, for a changed

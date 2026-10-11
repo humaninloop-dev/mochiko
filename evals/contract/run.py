@@ -126,11 +126,16 @@ TEMPLATE_FOOTER = "schemas: replayed from "
 # them. Discovery alone would shrink silently if a document vanished from the log; a written-down
 # set alone would go stale when one is added. Compared in both directions, neither can.
 TEMPLATE_NAMES = (
-    # `0005-artifact-homes` (2026-09-13) imported the last three: the report envelope every
-    # `reports/` directory binds, and the spine/concerns split of the store template.
+    # `0005-artifact-homes` (2026-09-13) imported three: the report envelope every `reports/`
+    # directory binds, and the spine/concerns split of the store template. `0065-desk-visit-home`
+    # ("2026-10-11 architecture-brainstorm-interview D3") and `0066-store-diagram-set` (the same
+    # session) imported two more: the visit file's template, bound by the `architecture-desk`
+    # home, and the diagram file's, bound by `product-diagrams`.
     "architecture-concerns",
+    "architecture-diagram",
     "architecture-spine",
     "architecture-store",
+    "architecture-visit",
     "codebase-analysis",
     # `0013-design-baseline-home` ("2026-09-19 impeccable-design-integration D5") imported the
     # design baseline's template, bound by the `product-design` home.
@@ -230,6 +235,12 @@ EXPECTED = {
                 "arch.sound-loop-floor",
                 "arch.transport-floor",
                 "arch.fail.no-verdict",
+                # `0068-desk-focus-stage` ("2026-10-11 architecture-brainstorm-interview")
+                # minted the floor fail node for a store write outside the visit's ruled set.
+                "arch.fail.write-outside-focus",
+                # `0069-desk-on-engine` ("2026-10-11 implement-brainstorm-led D3") minted the
+                # thinking-stage pointer floor.
+                "arch.thinking-stage",
             }
         ),
         23_026,

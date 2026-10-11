@@ -553,3 +553,256 @@ Append-only. One `##` entry per event, 60 lines at most.
   clause (the lead's amendment; +177 bytes in the architecture preamble) · one scratch capture
   outside the tree. Homes checked: the lower-case feat visit path resolves to `architecture-desk`,
   the upper-case one to no home (the user's Q2); `diagrams/` to `product-diagrams`.
+
+## 2026-10-11 — wave 1 committed; W2 gate and P2/P3 dispatched
+
+- The user (2026-10-11): **"commit when you think is good"**. Wave 1 committed as `963a3d6` on
+  `engine-desk-build` — its 43 paths only (W2's files left in the tree; P1's build had returned
+  first, so its tree checks were not disturbed). The staged set was exported and checked on its
+  own before the commit: log 1..62 · `sha256:a978b6d1…` · 0 rejecting · views ≡ replay. Not pushed.
+  Wave 2 gets its own commit at its close.
+- New snapshot `scratchpad/snap-w2-p2p3-before.txt` (14 entries; tracked diff sha256 `0810ac18…`).
+- `w2-gate-grader` (fresh persona-less `general-purpose`, `model: opus`; a new seat for the wave)
+  dispatched on units 1–4 with the `validation-primitive-edit` render pasted verbatim; verdicts to
+  `reports/audit-w2.md`. `w2-p2-prose` and `w2-p3-tests` dispatched plan-only against
+  `wave2-desk.md` §3.5 and §3.7.
+
+## 2026-10-11 — W2 gate, schema units 1–4: all PASS (round 1)
+
+- audit: unit 1 (schema content · 0065 + architecture-desk and architecture-visit views) · w2-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+- audit: unit 2 (schema content · 0066 + product-diagrams and architecture-diagram views, product-architecture and architecture-store view diffs) · w2-gate-grader · opus · 5 files · 1 rounds · 0 blocking
+- audit: unit 3 (schema content · 0067 + authoring-architecture-store view diff) · w2-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+- audit: unit 4 (schema content · 0068 + 0069 + architecture view diff) · w2-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+- Grader's pre-pass: 0 rejecting · 116 advisory (four changed against HEAD: `visit_kind`'s `other`
+  coverage, enforces-coverage 21 → 23, two budget lines) · views ≡ replay · ids 0 · 0. Q5 held: D9's
+  S9 names the superseded text, the D7 → D9 anchor swap lowers no protection (0029 keeps D7's
+  provenance; 0009 and 0013 are the precedent). Q7 confirmed (a 317-line `visit.md` denied).
+- Carry-forwards and the lead's dispositions:
+  - Store payload 23,975 against the 19,733 budget (render +2,096) — P2's argued overage (unit 5).
+  - Gaps the wave's own diagram writes open, fixed now by a small P1 delta (0070, plan → the same
+    plan grader → build → unit 4b): `authoring-architecture-store.sound-loop-on-judgment-writes`
+    (floor) lists no diagram write, so a drawing could read as transcription (D8: tech-lead grades
+    it) · `arch.author-grader-separation` (floor) lists "delta", which the desk no longer writes
+    (D5), and not the diagram it now produces · `authoring-architecture-store.orphan-rule` keys
+    elements only, so a diagram left open under a closed run's key goes unflagged (S3 gives each
+    diagram its own lifecycle; the lead reads the orphan reach as following from it).
+  - Left as built: `arch.focus-blind-list` names only "never the visit file" — the engine's
+    `blind-second-list` carries the rest of the fence (never the options, the conversation or the
+    ruled set) · the `focus` moment naming principal-architect, as the seat rules do.
+  - Wave 3: the store skill's landing flip of a diagram's delta styling and `**Lifecycle:**`
+    (`fold-duty` names elements only) beside implement's landing touch · the D9 degrade note at
+    implement's checkpoint.
+- `w2-p1-schema` asked for a delta plan for `0070-diagram-write-reach.yaml` (the three rewords);
+  P2 and P3 told that 0070 lands before their builds, so their figures are planning figures.
+
+## 2026-10-11 — W2 P2 plan received; grader dispatched
+
+- `w2-p2-prose` returned twice: 51,979 bytes, then — at the lead's 0070 heads-up, before any
+  grade — 54,111 bytes (sha256 `17e40390…0c6c0eb`, 809 lines; §0, a new §6.1, T3 and two build
+  steps carry the re-measure-after-0070 note). The second version is the plan under grade; the
+  lead's crossed request for a separate addendum was withdrawn. Tree unchanged against
+  `snap-w2-p2p3-before.txt` apart from the lead's log and the grader's report.
+- `w2-g2-plan-grader-p2` (persona-less `general-purpose`, `model: opus`) dispatched on the usual
+  terms (render pasted, plan by path and hash).
+
+## 2026-10-11 — W2 P1 0070 plan: PASS; build approved
+
+- `w2-p1-plan-0070.md` (206 lines, sha256 `0075fe63…282c1c`), graded by `w2-g1-plan-grader-p1`
+  resumed: `PLAN GRADE: W2 P1 schema (0070) · PASS · —` — the three before-texts match the views,
+  each after-text changes only its named span, anchors resolve; the "delta" list member (from 0009)
+  carries no ruling of its own, so D5 covers dropping it.
+- Advisory routed to wave 3: the reworded `orphan-rule`'s "the landing verifier flags one keyed to
+  its own run" is true for diagrams only once implement's landing orphan check names diagram files.
+- Approval sent, content-pinned `0075fe63…`. plans: W2 P1 PASS · W2 P1 0070 PASS.
+- Built: 0070 stamped `7d24a923…`; no deviation. Lead's read (clears nothing): the one new path
+  beyond the snapshot is the migration · validate 0 rejecting · 116 advisory · clusters 0 · 184
+  suppressed · status 1..70 (66 migrations) · `sha256:805d2597…` · 92 documents · 1,230 rules ·
+  views ≡ replay. Render bytes: architecture 28,392 → 28,394; store skill 18,492 → 18,598. Unit
+  4b queued to `w2-gate-grader`.
+
+## 2026-10-11 — W2 P3 plan received; W2 P2 plan round 1: FAIL (5, 1)
+
+- `w2-p3-tests` returned `plan written: 50328` (sha256 `129954bd…cb6eac`, 662 lines; carries
+  0070 in its §5.4 and step 0); tree untouched by it. `w2-g3-plan-grader-p3` dispatched.
+- `PLAN GRADE: W2 P2 prose · FAIL · 5, 1` — (5) the attempt bounds unacknowledged; (1a) the
+  router `:142` `<FEAT-ID>` sentence, a self-declared widening, defaulted in, and E21 calling the
+  same README clause a fix; (1b) a `patterns-system-design :43–44` edit no line made false; (1c)
+  router `:161`/`:156` and `ARCHITECTURE.md:343` unread against 0068/0070, and 0070-made-false
+  lines sent to a stop instead of planned. Verified true first-hand: every figure and old string.
+  Advisories: 809 lines; a taste example sets a white fill against "no fills"; the Identity line's
+  "ruled store write or a routed hand-off" against a `<FEAT-ID>` visit.
+- W2's one re-plan consumed by this revision (a second FAIL goes to the user). Lead rulings sent:
+  the router widening struck by default (an incomplete line is not a false one); the README clause
+  kept only if the line as written is false; the `:43–44` edit dropped; `:161`, `:156`, `:343` and
+  0070's rewords planned or argued true; both advisories taken.
+- plans: W2 P1 PASS · W2 P1 0070 PASS · W2 P2 FAIL(5, 1) · W2 P3 under grade.
+
+## 2026-10-11 — W2 gate, unit 4b (0070): PASS
+
+- audit: unit 4b (schema content · 0070 + architecture and authoring-architecture-store view diffs) · w2-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+- Grader's pre-pass matches the producer's (1..70 · `805d2597…` · 92 · 1,230 · 0 rejecting · 116
+  advisory · clusters 0 · 184 suppressed · views ≡ replay · ids 0 · 0); three hunks only; no class,
+  kind, `when:` or anchor value moves; pins unchanged. "delta" leaves the floor inside the anchored
+  migration, tied to D5 (S18 also dropped it). Store rendered rules now 18,314 characters (+106) —
+  for unit 5.
+- Open, routed to wave 3 with the store skill's other diagram touches: the health view's orphan
+  count reads "orphan elements" though a diagram can now be one.
+
+## 2026-10-11 — W2 P2 revision sent to its grader; W2 P3 plan round 1: FAIL (3), the user grants a revision
+
+- `w2-p2-prose` returned `revision written: 19252` (`w2-p2-plan-rev1.md`, 306 lines, sha256
+  `78830f54…bfed5`; base unchanged `17e40390…`); tree untouched. Sent to `w2-g2-plan-grader-p2`
+  resumed for the re-grade.
+- `PLAN GRADE: W2 P3 tests · FAIL · 3` — §7's not-built line for a homes/`visit_kind` crate test
+  cites `home.rs`, unread and built on synthetic logs, never the shipped one (fix: re-ground on
+  `views.rs`' emit-vs-committed and/or rung 1). Items 1, 2, 4, 5, 6 cleared; checked first-hand: 9
+  crate failures, the contract FAILs, the kit's 15 uncovered ids, the partition 38·9·0·17, the six
+  fixture hashes. Advisories: Q3's premise (`evals/plan/README.md:46` was true at HEAD); W8's
+  comment placement splitting `0005`'s "the last three"; the W5/W6 fixture recaptures read "figures
+  only" broadly; 662 lines.
+- W2's re-plan was spent by P2's revision, so this went to the user. The user's ruling
+  (2026-10-11): **"One more revision"** — same seat, delta only, the same grader re-grades.
+- Lead's answers to P3's §8, for the build: Q1 yes (fixtures for the two new templates) · Q2
+  option A (recount; the authoring-time shape kept as history; `--old-ref 794cea8` and the
+  `arch.artifact-home` control kept; one honest fill-log amendment line citing this ruling) · Q3
+  yes (`evals/plan/README.md:46`). The W5/W6 fixture recaptures confirmed in scope (two render tests
+  fail without them; `202dae7` precedent).
+- plans: W2 P1 PASS · W2 P1 0070 PASS · W2 P2 FAIL(5, 1) → under re-grade · W2 P3 FAIL(3).
+
+## 2026-10-11 — W2 P2 plan round 2: FAIL (1, one clause); the user grants a revision
+
+- `PLAN GRADE: W2 P2 prose · FAIL · 1` — router `:58` still adds ", beside a diagrams section that
+  points at each diagram and embeds none" to a passage nothing made false (the kind rev1 struck at
+  `:142`). Fixes that hold: 5, 1a, 1b, 1c (`:161`, `ARCHITECTURE.md:343` and both orphan items
+  planned; `:156`, `:344` argued true), both advisories. Verified first-hand: both hashes, 0070's
+  three rewords, the log and validate lines, the store render 18,314 chars / 18,598 B per block, the
+  architecture render, the router, `patterns-system-design` and conventions figures. Advisory: two
+  extra phrases at `:58` and `:161`.
+- A second FAIL on P2's plan, so it went to the user. The user's ruling (2026-10-11): **"One more
+  revision"** — strike the clause, drop it from §4.5's made-false list, carry it into §5.2 and the
+  router figure; take the bare forms of the two phrases unless needed for truth.
+- Revisions returned: P3 rev1 (`w2-p3-plan-rev1.md`, 129 lines, sha256 `cfd0d90f…6e9024`) and P2
+  rev2 (`w2-p2-plan-rev2.md`, 77 lines, sha256 `c93d93cf…876db`); every base file unchanged; tree
+  untouched. Each sent to its own grader, resumed.
+
+## 2026-10-11 — W2 P3 plan round 2: PASS; build approved, held for P2
+
+- `PLAN GRADE: W2 P3 tests · PASS · —` (re-grade of rev1, the same seat resumed). The item-3 fix
+  holds: R1 re-grounded on rung 1 and the `views.rs:276–300` reads; R2's premise fixed; R3 matches
+  `run.py:128–137`; R4 folds in the lead's Q1/Q2/Q3 answers. Items 1–6 clear; item 7 advisory as
+  before. Both hashes confirmed by the grader and re-checked by the lead (base `129954bd…cb6eac`,
+  rev1 `cfd0d90f…6e9024`); tree unchanged against `snap-w2-p2p3-before.txt` beyond the lead's own
+  paths.
+- Approved, content-pinned to those two hashes, with the §8 answers logged above. The build waits
+  for the lead's "go": steps 2 and 4 read P2's landed surface, so it starts once P2 lands, with a
+  fresh snapshot.
+- plans: W2 P1 PASS · W2 P1 0070 PASS · W2 P2 FAIL(5, 1), FAIL(1) → rev2 under re-grade · W2 P3
+  FAIL(3), PASS.
+
+## 2026-10-11 — W2 P2 plan round 3: PASS; build approved
+
+- `PLAN GRADE: W2 P2 prose · PASS · none` (re-grade of rev2, the same seat resumed). Router `:58`'s
+  clause is struck and `index-diagrams-section` is dropped from the made-false line, which now cites
+  `store-layout` and `health-view-binding` only. The bare forms match their rules word for word:
+  "· stale diagrams" is `health-view-binding`'s sixth count, and "drawing or redrawing a store
+  diagram" is 0070's `sound-loop-on-judgment-writes` wording. Router figure 48,637 reproduces, and
+  rev2 also fixes rev1's stale §12 48,842. All three hashes confirmed.
+- Advisory, carried into the approval as the lead's amendment: two build-step counts rev1 left stale.
+  Base §11 step 5 is three Edits (`:54`, `:67–68`, `:128`), not four, since `:43–44` was dropped.
+  Step 7 is six Edits, not five, adding `:161`.
+- Approved, content-pinned to base `17e40390…0c6c0eb` + rev1 `78830f54…bfed5` + rev2
+  `c93d93cf…876db`, with that amendment. Fresh snapshot `snap-w2-p2-build-before.txt` (17 entries).
+  P3 is told "go" once P2 reports landed.
+- plans: W2 P1 PASS · W2 P1 0070 PASS · W2 P2 FAIL(5, 1), FAIL(1), PASS · W2 P3 FAIL(3), PASS.
+
+## 2026-10-11 — W2 P2 build landed; P3 released
+
+- `w2-p2-prose` landed 11 paths, all on its declared surface: `commands/architecture.md`, the store
+  skill's `SKILL.md`, `patterns-system-design` `SKILL.md` (three Edits) and `DIAGRAM-CONVENTIONS.md`,
+  the router (six Edits), strips `patterns-system-design.md` (4 `[v0.120.0]` entries) and
+  `mochiko.md` (2), `README.md`, `ARCHITECTURE.md`, `primitive-cost-budgets.md` rows `:73`/`:82`,
+  and `CHANGELOG.md` (the W2 slot only; every other `[lead: …]` placeholder kept). Each strip and
+  ledger write was dry-run first; no hook deny. Migrations, views and tests untouched.
+- Lead re-check, first-hand: the porcelain diff against `snap-w2-p2-build-before.txt` is exactly
+  those 11 new ` M` lines. `migrate validate` reads 0 rejecting · 116 advisory · clusters 0 · 184
+  suppressed. Characters: store skill payload 24,192 (body 5,878 + render 18,314; budget 19,733,
+  +2,313 this wave, the overage argued at unit 5), router body 48,637, `patterns-system-design`
+  body 10,073 (budget 11,047). Descriptions unchanged.
+- P2 found no false line beyond its plan. The superseded phrases survive only at
+  `review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md:80`/`:89`, routed to W3. The taste
+  example's Mermaid was checked by reading only; no renderer is on this machine (OQ3 covers it).
+- P3 given "go" with a fresh snapshot, `snap-w2-p3-build-before.txt` (28 entries).
+
+## 2026-10-11 — W2 gate, units 5–7: PASS; the lead's §3.6 read
+
+audit: unit 5 (skill pair · authoring-architecture-store) · w2-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+audit: unit 6 (command pair · architecture, with change control and delivery) · w2-gate-grader · opus · 4 files · 1 rounds · 0 blocking
+audit: unit 7 (prose primitives and records · patterns-system-design + DIAGRAM-CONVENTIONS, router, two strips, README, ARCHITECTURE, budget ledger, CHANGELOG) · w2-gate-grader · opus · 9 files · 1 rounds · 0 blocking
+
+- Pre-pass, first-hand: log 1..70, 92 documents, 1,230 rules, 0 rejecting, 116 advisory.
+- Unit 5's named overage **holds**: 24,192 = body 5,878 + render 18,314. Stepped replays give +2,096
+  (0067) and +106 (0070); four per-rule figures differ from the ledger by one character (a trailing
+  newline), and the totals agree. Unit 6 change control: no desk rule loosens an engine mechanic;
+  where the desk adds, it tightens. Delivery: `arch.thinking-stage` points at
+  `mochiko:analysis-iterative`, whose seven lines exit 0 (21 rules); the hook confirms presence on
+  Skill and UserPromptExpansion and denies with the binary off PATH.
+- Advisories, routed. To the bump: `CHANGELOG.md:125`'s "per block" means the sum over seven blocks,
+  so fix the wording when the placeholders fill. Placeholders: `primitive-cost-budgets.md:82` and
+  `:289`, plus every CHANGELOG `[lead: …]` slot, also fill at the bump. To W3's touch set or BACKLOG
+  at landing: `patterns-system-design`'s overview and description still scope it to the delta while
+  its taste section governs every diagram; the router's desk row does not name the `<FEAT-ID>`
+  delta visit (consistent with the lead's earlier `:142` ruling — incomplete, not false). Left as
+  built: the focus moment names principal-architect. To the landing: the `DECISIONS.md:179`
+  annotation for D8-rendered-diagram-signoff. To W3: `ARTIFACT-CHECKLISTS.md:80`/`:89`.
+- Lead's §3.6 read, row by row against the renders: every carrier id is live. The architecture
+  render (28,394 B) carries all sixteen `arch.*` carriers and the `visit_kind` condition with its
+  re-converge note; `arch.thinking-stage` is floor, pointer `mochiko:analysis-iterative`; the store
+  render carries `diagram-set-grammar`, `stale-compare`, `diagram-redraw-timing`,
+  `health-view-binding`, `index-diagrams-section` and `sign-off-flips-proposed`;
+  `DIAGRAM-CONVENTIONS.md` carries the taste section, the ~12-node budget, the init-directive
+  caveat and the trust-boundary one-home line. The read clears nothing on its own.
+- Remaining: unit 8 when P3 lands, then the regression read and the W2 commit.
+
+## 2026-10-11 — W2 P3 build landed; unit 8 dispatched
+
+- `w2-p3-tests` built to its two pinned files, with plan §5.4's 0070 substitutions. Step 0 matched
+  the snapshot; the 9 crate failures and 2 host-case failures reproduced before any edit. 16 paths:
+  five crate test files (`render.rs`'s `SHIPPED_TEMPLATES` 12 → 14, per Q1), the two
+  `architecture-store` fixtures recaptured, four new fixtures for `architecture-visit` and
+  `architecture-diagram`, `run.py` (EXPECTED +2 ids, TEMPLATE_NAMES +2, the `0005` comment extended),
+  the contract README `:274`, `evals/plan/README.md:46`, and the architecture kit's
+  `observable.yaml` and `preregistration.md` (the option-A amendment line).
+- Results as P3 reports them: `cargo test --all` 765 passed, 0 failed; the opt-in similar sweep 48
+  passed; fmt and clippy clean; `run.py --list` 99; `--host-only` 7/7; `check-rubric architecture`
+  "58 observable, 6 out-of-instrument, 64 total"; `check-fixtures` OK. Kit recount against
+  `794cea8`: unchanged 38 · changed 9 · removed 0 · added 17. `PROBE_ARGUMENTS["architecture"]`
+  stays true against P2's Entry, so S8 did not fire.
+- Disclosed deviations: fixtures written with Write/Edit (the lead's terms), not the plan's
+  redirects; the preregistration's `post` line names `0070-…` where the plan said `0069`.
+- Lead re-check: the porcelain diff against `snap-w2-p3-build-before.txt` is exactly the 16 paths
+  (12 ` M`, 4 `??`); crate `src/`, both `Cargo.toml` and `Cargo.lock` unchanged.
+- Unit 8 sent to `w2-gate-grader`, which also serves as the crate's non-author review; the seat
+  rules on both deviations.
+
+## 2026-10-11 — W2 gate, unit 8: PASS; wave 2 closed
+
+audit: unit 8 (crate tests, contract expectations, the architecture plan kit · crate non-author review) · w2-gate-grader · opus · 16 files · 1 rounds · 0 blocking
+
+- The seat ran every check first-hand, all green. Crate `src/`, both `Cargo.toml`, `Cargo.lock` and
+  the allowlist have no diff. All six fixtures are byte-identical to the binary's output.
+  `EXPECTED["architecture"]` equals the render's 25 floors, and the store skill's frozen set equals
+  its 10. The partition re-run reproduces 38 · 9 · 0 · 17. Both deviations are ruled acceptable:
+  the write method does not change the bytes, and `0070` is the right log end because it rewords
+  `arch.author-grader-separation`. The crate's non-author review passes.
+- Advisory, carried to the first architecture grid: kit case g3's argument opens "FEAT-006 shipped
+  last week…", and the new `argument-hint` reads a `<FEAT-ID>` as a delta visit, while the kit
+  expects `visit_kind` other. Watch for the focus stage firing on g3. The sandbox contract cases
+  are the bump's gate; SKIPPED is not green.
+- Lead's regression read at wave close, first-hand: `migrate validate` 0 rejecting · 116 advisory
+  (log 1..70, `sha256:805d2597…`, 92 documents, 1,230 rules); views ≡ replay (`diff -r` empty);
+  `cargo test --all` 765 passed, 0 failed; `MOCHIKO_FULL_SIMILAR=1` matrix_similar 48 passed; fmt
+  clean; clippy `-D warnings` clean; `cargo audit` rc 0. Char budgets: store skill 24,192 (argued
+  overage, unit 5 holds), `patterns-system-design` 10,073 inside 11,047, descriptions unchanged.
+- Wave 2 closed: units 1–4, 4b and 5–8 all PASS. Plan rounds: P1 PASS, 0070 PASS, P2 PASS on
+  round 3, P3 PASS on round 2; every second re-plan went to the user and was granted. No floor or
+  fail retired or lowered; no grammar or crate-source change. Committed next, not pushed.

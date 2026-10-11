@@ -48,6 +48,56 @@ row and the brainstorm-cluster note re-keyed to the shared thinking stage. Rulin
 (`DECISIONS.md` 2026-10-11 "Shared thinking engine ruled" row). The router body is unbudgeted:
 47,617 → 48,037. Pre-edit verbatim text: `git show 5162f1a:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+<!-- Wave context: wave 2 of the combined engine/desk build (v0.120.0) — the router's architecture
+rows re-keyed to the desk's focus stage, the store's diagram set and the Mermaid-text sign-off.
+Ruling: `.mochiko/brainstorms/architecture-brainstorm-interview/record.md` D1–D9 as review-amended
+(`DECISIONS.md` 2026-10-11 "Architecture desk as brainstorm's workflow, plus maintained diagrams,
+ruled" row). One entry per superseded passage. Pure additions, recorded here for the audit's read:
+the `authoring-architecture-store` row (`:58`) — the diagram set in the store's file list and the
+stale-diagrams count — and the `tech-lead` row (`:161`) — drawing or redrawing a store diagram
+among the judgment writes it grades (`0070`). The router body is unbudgeted: 48,037 → 48,637.
+Pre-edit verbatim text: `git show 963a3d6:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+## [v0.120.0] `/mochiko:architecture` row — "greenfield elicits through the shelf walk" and "Each visit walks the shelves you scope, takes your stance per row" superseded by the focus stage
+
+- **Disposition:** superseded → `SKILL.md`:142 as rewritten, the two passages verbatim —
+
+  ```text
+  (greenfield elicits it on the focus stage from the shelf rows and a blind list, brownfield
+  Each visit runs the scoped drift probe against real code and shows the health view. A visit that rules something first works its **focus set** with you on the shared thinking stage — each part with your direction and how you would know it is right; the shelf rows you scope that carry no stance yet as one defaults batch, your stance per row; a blind list for what the shelf lacks — saved in a visit file (`.mochiko/architecture/desk/<date-slug>/visit.md`) the principal-architect writes the rows from. The store is the single source
+  ```
+- **Tier failed:** n/a — supersession by ruling (`architecture-brainstorm-interview`
+  D1-focus-stage-first as changed at review — S13, the stage only on a visit that rules
+  something; S11, a ruled row changes only as a focus item pulled in, the batch holding the rows
+  with no stance — and the default *First visits*; D2-part-direction-know; D3-visit-file-home;
+  D4-blind-list-visits)
+- **Content (superseded, verbatim):**
+
+  ```text
+  (greenfield elicits through the shelf walk, brownfield
+  Each visit walks the shelves you scope, takes your stance per row, runs the scoped drift probe against real code, and shows the health view; the store is the single source
+  ```
+- **Kept deliberately:** "the shelves you scope" (as "the shelf rows you scope") and "your stance
+  per row" for the batch rows — `arch.breadth-invariant` stands; the drift probe and the health
+  view on each visit; brownfield's clause and "the store is the single source and repo-root
+  `ARCHITECTURE.md` its regenerated index", byte for byte past the new sentence start; the rest of
+  the row.
+- **Consumers assessed:** no primitive quotes the row (grep "elicits through the shelf walk":
+  router only); `README.md`'s architecture row and `ARCHITECTURE.md`'s desk health list re-keyed
+  the same wave where false.
+
+## [v0.120.0] `patterns-system-design` row — "the user's sign-off on the rendered diagram" superseded
+
+- **Disposition:** superseded → `SKILL.md`:95 as rewritten: "the user's sign-off — on the diagram as
+  Mermaid text that parses, rendered where the session can — flips them,".
+- **Tier failed:** n/a — supersession by ruling (`architecture-brainstorm-interview`
+  D9-render-where-viewed as changed at review, S9)
+- **Content (superseded text, verbatim):** `the user's sign-off on the rendered diagram flips them,`
+- **Kept deliberately:** "flips them" and the rest of the row, byte for byte — D8-draw-before-code's
+  re-scope of where the delta is drawn is wave 3's, with implement's design phase.
+- **Consumers assessed:** `README.md` and `ARCHITECTURE.md` carry no "rendered diagram" (grep);
+  `review-plan-artifacts/references/ARTIFACT-CHECKLISTS.md:80`, `:89` — wave 3's.
+
 ## [v0.120.0] The `analysis-iterative` row and the brainstorm-cluster note — re-keyed to the shared thinking stage
 
 - **Disposition:** superseded → `SKILL.md`:66 and `:124` as rewritten, verbatim —

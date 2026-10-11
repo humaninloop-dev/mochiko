@@ -66,7 +66,63 @@ to specify's two stages on the engine, D2) [lead: the unit-5b verdict]; descript
 `brainstorm`'s render 21,198 → 19,074 bytes and `specify`'s 27,999 → 27,160 characters (commands
 are unbudgeted).
 
-[lead: Wave 2 — the desk's focus stage and the diagram set.]
+**Wave 2 — the desk's focus stage on the engine, the visit file, and the store's diagram set**
+(`architecture-brainstorm-interview` D1-focus-stage-first, D2-part-direction-know,
+D3-visit-file-home, D4-blind-list-visits, D5-visit-file-input's desk share, D7-diagram-set-index,
+D8-draw-before-code's store and desk share, D9-render-where-viewed; `implement-brainstorm-led`
+D3-four-move-now). `/mochiko:architecture` gains a focus stage at a new `focus` moment, after the
+visit goal and before the principal-architect authors anything. It runs on the shared thinking
+stage with the ruled-set contract on, through `arch.thinking-stage` (`class: floor`, the third
+extender of `common.thinking-stage`); the desk's own rules carry only its domain part and no
+asking mechanic of their own, so the architecture record's "the desk's rules win" default never
+shipped. A new condition, `visit_kind` (`ruling · delta · other`, fixed by the converged goal),
+binds the stage, the visit file and the blind list only to a visit that rules something or thinks
+a feature's delta through. The user rules each focus item as its part, a direction in their own
+words and one "how I'd know" sentence or `open`; the shelf rows with no stance yet come as one
+defaults batch; one fresh blind seat per visit draws what the shelf lacks; confirming the ruled
+set is the user's, on a screen of its own. The set and the visit's state live in one visit file,
+`visit.md`, at `.mochiko/architecture/desk/<date-slug>/`, outside `.mochiko/product/`; the
+principal-architect authors the rows from it and tech-lead grades them for sameness of meaning.
+`/mochiko:architecture <FEAT-ID>` closes in a visit file keyed to the feature, its folder carrying
+the FEAT id lower-cased, and writes nothing to the store. A new floor fail,
+`arch.fail.write-outside-focus`, fails a desk visit's store write with no ruled set behind it. The
+store gains a diagram set — `diagrams/`, one Mermaid diagram per file with a caption, a `Draws:`
+line and its own `**Lifecycle:**` field; the derived index gains a diagrams section that links and
+summarizes each diagram, a header naming the commit it was last regenerated at, and a sixth health
+count, the stale diagrams, found by the stale compare at every regeneration. A diagram's sign-off
+surface becomes its Mermaid text, which must parse, rendered beside it where the session can.
+
+Migrations **`0065-desk-visit-home`**, **`0066-store-diagram-set`**,
+**`0067-store-diagram-rules`**, **`0068-desk-focus-stage`**, **`0069-desk-on-engine`** and
+**`0070-diagram-write-reach`** carry the W2 schema half: two new homes (`architecture-desk`,
+`product-diagrams`), two new templates (`architecture-visit`, `architecture-diagram`),
+`architecture-store` and `product-architecture` replaced; `0070` makes a store diagram's drawing a
+judgment write under the sound loop, a keyed diagram an orphan under the orphan rule, and the
+desk's author ≠ grader list read diagram for delta. After W2 the log, sequences 1..70, replays to
+92 documents and 1,230 rules (1,211 → 1,230). The desk's pins read `kind: fail · 2 rules` (was 1)
+and `class: floor · 25 rules` (was 23); the store skill's `class: floor · 10 rules`, unchanged. No
+floor or fail is retired or lowered.
+
+W2 prose primitives: `commands/architecture.md` — the `argument-hint` gains a brainstorm record and
+a `<FEAT-ID>`, the Entry step names both inputs, the diagram orphans and the health view's sixth
+count; `authoring-architecture-store`'s store-layout table gains the diagram file;
+`patterns-system-design` — the delta diagram's "must render" line, the checkpoint table's
+no-render clause and the checklist's render item superseded by D9-render-where-viewed; its
+`DIAGRAM-CONVENTIONS.md` gains a taste section — delete first and the paragraph test, about 12
+nodes, a title and a caption, one accent color, hairline strokes and no fills beyond the accent,
+one font family by the init directive (holding only where the renderer honors it), a delta read as
+Before · Changes · After — the one home the queued trust-boundary convention extends, and its
+rendering line made true under D9-render-where-viewed. The router's store-skill, system-design,
+architecture-desk and `tech-lead` rows. 6 strip entries stamped [v0.120.0] in W2. Ripple:
+`README.md`'s architecture loop, `ARCHITECTURE.md`'s desk health list and producer row.
+
+W2 budgets (characters, measured at the quiesced tree): `authoring-architecture-store` payload
+21,879 → 24,192 = body 5,878 + render 18,314, +4,459 over the 19,733 budget (the standing +2,146
+plus +2,313 this wave — render +2,096 from `0067` and +106 from `0070`, body +111), argued as
+D7-diagram-set-index's, D8-draw-before-code's and D9-render-where-viewed's ruled obligations [lead:
+the unit-5 verdict]; description 492 unchanged. `patterns-system-design` body 9,991 → 10,073,
+inside its 11,047 budget; description 625 unchanged. `architecture`'s render 20,379 → 28,000
+characters per block (commands are unbudgeted); the router body 48,037 → 48,637 (unbudgeted).
 
 [lead: Wave 3 — implement's stage and its touches.]
 

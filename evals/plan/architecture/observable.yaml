@@ -13,15 +13,18 @@
 #   register       — prose-register meta-rule; not plan content
 #   fail-condition — end-state failure, not forward-plan content
 #
-# Condition gating: the view declares three dimensions. `store_ruled_content` takes both
+# Condition gating: the view declares four dimensions. `store_ruled_content` takes both
 # values across the scenarios (absent in g1 — a scaffold-only spine; present in g2 and g3),
 # `km_file` takes both (present in g1 and g3, absent in g2), and `seats` resolves to multi in
 # every scenario because a stance batch, a baseline, and an as-built claim each compose a
-# producing seat beside an independent grading seat. Every gated rule is therefore observable
-# in the scenario that plants its condition, and the desk pair carries no contingency-class
-# rule: each duty that needs a planted event (a fired trigger, a floor-asserted drop request,
-# a divergent as-built claim, an orphan, an index-versus-ledger disagreement) has that event
-# planted in a fixture.
+# producing seat beside an independent grading seat. `visit_kind` (migration 0068) resolves to
+# ruling in g1 (the baseline) and g2 (the stance batch) and to other in g3 (an as-built drift
+# visit); no scenario plants delta, a feature's delta visit. Every gated rule is therefore
+# observable in the scenario that plants its condition, save two conditional ones:
+# arch.feature-delta-visit (delta is unplanted) and arch.desk-redraw (no ruled change touches
+# a drawn element). The desk pair carries no contingency-class rule: each duty that needs a
+# planted event (a fired trigger, a floor-asserted drop request, a divergent as-built claim, an
+# orphan, an index-versus-ledger disagreement) has that event planted in a fixture.
 command: architecture
 
 observable:
@@ -39,8 +42,11 @@ observable:
   - {id: arch.seat-tech-lead-grader, why: the grader is named AND its read is described — the authored files rather than the producer's report, with a stated refusal reason; g3 separates the transcription flip from the graded as-built line}
   - {id: arch.grader-checks-joined-ids, why: g1's baseline mints every spine and concern row, so the grading seat's read names the ID check — new rows joined, slug naming the row; g2/g3 cite the fixtures' bare rows, which stay bare}
   - {id: arch.seat-drift-probe-empirical, why: g3 asks the desk to copy the as-built from the approved delta, so the probe seat reading the code, never the claim's author, is the visible refusal}
+  - {id: arch.focus-blind-list, why: g1's baseline and g2's four-row batch are ruling visits and neither is a single-row ask · so before the focus set closes a fresh persona-less opus seat draws the blind list from the focus context and never from the visit file (described under the fence · absent on g3's drift visit)}
+  - {id: arch.rows-from-visit-file, why: g1's baseline elements and g2's stance rows are authored by the producing seat from the visit file at the set's close · each row linking the file · and the grading seat checks them against it for sameness of meaning beside the user's word on the rows (ruling visits g1 · g2)}
   # reserved
   - {id: arch.user-reserved-rulings, why: row stances (g2), the baseline confirmation (g1), the drift disposition (g3), the growth-door mint (g2), and the waiver route (g2) each described as the user's, with branches}
+  - {id: arch.gate-focus-confirm, why: the ruled set's confirmation is described as the user's own gate on its own screen apart from the goal and the rows · and the producing seat authors nothing before it (g1 · g2)}
   # tools
   - {id: arch.tools-referenced-never-restated, why: the plan names the store, shelf, and system-design skills as the procedure homes without restating their steps}
   - {id: arch.tools-store, why: the store files and the derived root index named by path in every scenario, the index as a projection never a second store}
@@ -54,6 +60,11 @@ observable:
   - {id: arch.dispatch-feature-growth-door, why: g2's fired AX-008 trigger is routed to the capability desk's growth door as a candidate the user rules on, never minted at the desk}
   - {id: arch.dispatch-setup-waiver, why: g2's request to mark floor-asserted rate limiting not-applicable is routed to a governance-ledger waiver through the setup command, never granted at the shelf}
   - {id: arch.dispatch-implement-delivery, why: g3's request to fix the webhook bug at the desk is routed to delivery through the feature desk and the implement run}
+  - {id: arch.focus-stage, why: g1 and g2 work the visit's focus set on the thinking stage with its ruled-set contract on · the goal as its opening · the confirmed set saved in the visit file · the producing seat the next writer · the set's close inside the done condition (co-moves with arch.thinking-stage · absent on g3)}
+  - {id: arch.focus-unit, why: each focus item in g1 and g2 is ruled as the part · the direction in the user's words · and a know-it-is-right sentence or open · the sentence landing as a not-now row's trigger or a decided row's first rationale line · no target number the user did not give}
+  - {id: arch.focus-context, why: the focus proposal and the blind seat's brief read the goal · the Scope line · the derived index (g1's a scaffold beside hand-written prose · g2's stale) · FEATURES.md and the capability entries in the visit's territory (g1 · g2)}
+  - {id: arch.visit-file, why: g1 and g2 keep the visit's state in one visit.md written to the architecture-visit template's shape · the lead holding its pen and the producing seat the store's}
+  - {id: arch.first-visit-stage, why: g1's scaffold-only store makes the focus stage the baseline's elicitation on its brownfield limb · the reconstruction is the fact base · the stage picks which derived elements get a fork of their own and which the batch confirms · its close is the confirm step}
   # ways-of-working
   - {id: arch.proactive-report-first, why: the health report precedes the ask in every plan, including g1 where the store is scaffold-only and the root file is hand-written prose}
   - {id: arch.reference-never-restate, why: the plan points at the store grammar, the shelf data, and the pipeline commands rather than reproducing their content}
@@ -64,6 +75,9 @@ observable:
   - {id: arch.no-git-mutations, why: the plan suggests a commit at close and never runs a git mutation}
   - {id: arch.rulings-plain-text, why: every gate described as plain blocking text, never a timed prompt}
   - {id: arch.artifact-home, why: the home render before the first store write and the spine's shape from its template and its per-entry bound from the home named in every scenario that writes the store}
+  - {id: arch.focus-batch, why: g1's unsettled shelf rows and g2's four open rows are dealt in the stage's defaults batch with default · cost and the case against in retrofit-cost order · while g2's decided and not-now rows are not re-dealt unless the user pulls one in as a focus item}
+  - {id: arch.outside-claims, why: g1's SMS-path items hang on provider facts its legacy sources assert (Twilio's p99 latency · the carrier's A2P-number rule) · so each is taken from its live source or recorded unknown beside the item in the visit file (thin read · g2 and g3 plant none)}
+  - {id: arch.diagram-signoff, why: g1's baseline draws the spine's container view and key flows · so their sign-off is planned on the Mermaid text with the parse confirmed · the one-line not-rendered note where the session cannot render · and no hosted render without the user's yes}
   # boundaries
   - {id: arch.truth-user-ruling, why: g2 presses the desk to write decided stances unruled; the plan keeps unruled rows open and names the user's word as what moves a row}
   - {id: arch.breadth-invariant, why: g2 asks to skip heavy rows; the plan walks every open row in retrofit-cost order and records any narrowing as the user's explicit override}
@@ -76,13 +90,18 @@ observable:
   - {id: arch.no-silent-store-mutations, why: the stale index (g2), the orphans (g2, g3), and the drift finding (g3) are surfaced as defects and findings, never quietly corrected}
   - {id: arch.sound-loop-floor, why: produce on an approved plan, independent review, then the user's gate — visible end to end on the baseline, the stance batch, and the as-built write, each leg carrying what it reads and what would stop it}
   - {id: arch.transport-floor, why: every scenario composes a producing seat beside a grading seat, so the floor binds and is referenced never restated}
+  - {id: arch.thinking-stage, why: the plan binds the desk's focus stage to mochiko:analysis-iterative as the visit's thinking stage — the engine's asking rules referenced never restated · the desk's rules carry the domain part (g1 · g2 · co-moves with arch.focus-stage)}
 
 out_of_instrument:
   # latitude / register
   - {id: arch.staffing-latitude, why: latitude}
   - {id: arch.register, why: register}
-  # fail-conditions (the pair's single kind: fail rule — an end-state failure, not forward-plan content; C1)
+  # conditional (a fixture condition no current scenario plants)
+  - {id: arch.feature-delta-visit, why: conditional — binds only on a feature's delta visit (/mochiko:architecture <FEAT-ID>) · no golden plants one (g3 is an as-built visit) · plantable by a FEAT-keyed golden (a scenario-design act not taken here)}
+  - {id: arch.desk-redraw, why: conditional — binds only when a change the visit rules touches a drawn element · g2's ruled set is four concern rows its spine's diagrams do not draw and g1's baseline draws fresh (arch.diagram-signoff) · plantable by a ruling golden whose change moves a drawn container or flow}
+  # fail-conditions (the pair's two kind: fail rules — end-state failures, not forward-plan content; C1)
   - {id: arch.fail.no-verdict, why: fail-condition}
+  - {id: arch.fail.write-outside-focus, why: fail-condition}
 
 # What the pipeline actually reads (traced in the runner, kit audit re-grade 2026-09-19):
 # the coverage judge is handed each observable rule's id and its text from the derived schema
@@ -111,7 +130,7 @@ out_of_instrument:
 # bar in their assertions, requiring the plan to say what the grader reads and what would make
 # it refuse. Grade the evidence quotes, never the boilerplate.
 
-# Declared unplanted facets (fixture-design record, not a partition class): four rules are
+# Declared unplanted facets (fixture-design record, not a partition class): five rules are
 # observable through one half of their subject only, because no scenario plants the other
 # half. Each is a plant candidate if a later grid wants it graded whole.
 #   arch.shelf-scope-source — the override half (an ordinary store write to the Scope line as
@@ -120,8 +139,22 @@ out_of_instrument:
 #   arch.dm-author-baseline — only the brownfield limb is planted (g1 reconstructs from legacy
 #     sources); the greenfield elicit limb needs a repo with no prior architecture prose and no
 #     code, which no scenario carries.
+#   arch.first-visit-stage — the same brownfield-only plant: the greenfield limb (shelf rows and
+#     the blind list as the baseline's candidates) needs a repo with no prior architecture prose.
 #   arch.tools-drift-probe-scope — the "touched since the last desk visit" half is planted in
 #     g3 only; g1 and g2 grade the probe on its sampling half (rows the visit itself touches).
 #   arch.grader-checks-joined-ids — the citation half that follows a joined definition needs a
 #     store whose rows are already joined; every fixture row is bare, so the rule is graded on
 #     the new-row half (g1's minted rows) and on bare citations staying bare (g2, g3).
+
+# Re-keyed 2026-10-11 to migrations 0068–0070 (architecture-brainstorm-interview D1–D5,
+# D7–D9 desk share; implement-brainstorm-led D3), before any grid: 15 rules added — 12
+# observable (eleven of 0068's thirteen domain rules and the floor stub arch.thinking-stage,
+# beside transport-floor), 2 conditional (arch.feature-delta-visit, arch.desk-redraw) and the
+# floor fail node arch.fail.write-outside-focus beside arch.fail.no-verdict — and none removed.
+# The 7 reworded rules (seat-architect-producer, seat-tech-lead-grader, tools-store,
+# tools-store-skill, tools-system-design, artifact-home, and 0070's author-grader-separation)
+# keep their buckets and are graded against their new text; no why named a limb the new text
+# dropped, so none was re-cut. Their new limbs read on the ruling visits only: the visit file's
+# home on g1 and g2; the diagram set, the drawing grade, the outside-claim re-check and the
+# diagram among the authored outputs on g1, the one golden whose write draws. 58 · 6 of 64.

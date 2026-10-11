@@ -54,6 +54,7 @@ halt and surface it.
 | `.mochiko/product/architecture/spine.md` | topology deep view | yes |
 | `.mochiko/product/architecture/concerns.md` | the `AX-XXX` ledger | yes |
 | `.mochiko/product/architecture/concerns/AX-XXX-<slug>.md` | a graduated concern | yes, when one exists |
+| `.mochiko/product/architecture/diagrams/<slug>.md` | one diagram of the diagram set | yes, when one exists |
 | `ARCHITECTURE.md` (repo root) | the derived index | **no — regenerated** |
 
 The `Scope:` line at the top of `spine.md` (e.g. `Scope: backend-service`) is written by

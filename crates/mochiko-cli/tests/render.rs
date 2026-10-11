@@ -27,9 +27,9 @@ const SHIPPED_LOG_DIR: &str = concat!(
 /// schema-source line stripped, so the byte-equality assertion names the one line that moved.
 const FIXTURE_DIR: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/tests/fixtures/template");
 
-/// The eight templates the log carries. This is the fixture's own manifest, not a production
+/// The fourteen templates the log carries. This is the fixture's own manifest, not a production
 /// constant: the closed `TEMPLATE_NAMES` set left the crate when the templates became log data.
-const SHIPPED_TEMPLATES: [&str; 12] = [
+const SHIPPED_TEMPLATES: [&str; 14] = [
     "spec",
     "tasks",
     "feature-entry",
@@ -47,6 +47,11 @@ const SHIPPED_TEMPLATES: [&str; 12] = [
     // `0013-design-baseline-home` ("2026-09-19 impeccable-design-integration D5") imported the
     // design baseline's template, bound by the `product-design` home.
     "design-baseline",
+    // The 2026-10-11 implement-brainstorm-led wave 2 imported two: the desk's visit file at
+    // `0065-desk-visit-home` and the store's diagram file at `0066-store-diagram-set`, bound by
+    // the `architecture-desk` and `product-diagrams` homes.
+    "architecture-visit",
+    "architecture-diagram",
 ];
 
 // ---------------------------------------------------------------------------
