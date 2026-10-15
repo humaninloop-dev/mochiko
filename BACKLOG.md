@@ -62,13 +62,19 @@ branch `engine-desk-build` (trail); provenance: the two records and
   records (68 this build's own, 19 the specify record's) and seven bare `D3` lines this build added
   to `crates/mochiko-cli/tests/fidelity.rs:829` and the architecture, brainstorm and specify plan
   kits — reporting only (human-readable-ids D18-build-done-check); join them at the next touch.
-- [ ] **Engine follow-up session** (2026-10-11; provenance:
-  `.mochiko/brainstorms/implement-brainstorm-led/record.md` D4-shaped-for-six, OQ2) — a brainstorm
-  on: `/mochiko:feature` joining the engine (its unit and where its ruled set lives); whether setup's
-  interrogation and specify's intent stage take the contract half; implement's other moments (card
-  slicing and the seed's hand-off to the `**TEST:**` cases, cycle-checkpoint batches, final
-  validation's gap-finder reading the ruled set, acceptance). Trigger: build item C landed —
-  **fired 2026-10-11** (built at v0.120.0).
+- [ ] **Engine follow-up build** (2026-10-15; provenance: `.mochiko/brainstorms/engine-follow-up/record.md`
+  D1–D10 as review-amended + the 24 defaults; `DECISIONS.md` 2026-10-15) — one combined build, one
+  bump, started now (D9-one-build-now, `Contested`): feature on the engine — a `feat.thinking-stage`
+  floor, a `visit_kind` condition, a typed `visit.md` (home + template) holding the set and the card,
+  a fail, implement and specify reading it (D2, D3, D7, defaults 6–14, 23–24) · implement's later
+  moments — the card-order question and its fail, checkpoint and finding rulings writer *on*, the
+  promises-kept table, the gap-finder's added lines (D1, D5, D6, D8) · the 39-row re-sort as one
+  `common.*` pointer line per command naming `analysis-iterative`'s subset (D4, D10, default 18) ·
+  setup's `setup.thinking-stage` pointer (default 17) · the engine-desk *lines incomplete* and
+  *tool and kit residuals* items where they touch the same files (default 21). Owed at the build:
+  the supersession list with strips (default 20), the cited engine rule ids in the gate audit
+  (D10's risk), no new engine slot (default 19). OQ1–OQ2 stay open; the three ai-fileops runs test
+  the result.
 - [ ] **Two notations and an entity ID family** (2026-10-11; provenance: record S1, OQ5, the
   *two notations* default) — the feature-level text notation for ER and state machines
   (`patterns-entity-modeling`) against the product-level Mermaid views, and minting a joined
