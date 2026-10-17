@@ -259,7 +259,10 @@ sections:
       - id: authoring-feature-map.growth-rides-work-row
         labels: [artifact-grammar]
         class: must
-        text: Growth on a delivered capability rides a marked work row, never an in-place edit.
+        text: >-
+          Growth on a delivered capability rides a marked work row, never an in-place edit; a row
+          /mochiko:feature cuts at a card visit — growth, bug or improvement — also points at
+          the visit's `visit.md`, where its card and ruled set sit.
         anchor: 2026-08-13 pm-role-and-feature-derivation D8
       - id: authoring-feature-map.pre-acceptance-workspace
         labels: [artifact-grammar]

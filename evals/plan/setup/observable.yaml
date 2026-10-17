@@ -59,6 +59,8 @@ observable:
   - {id: setup.map-never-overwrite, why: the empty-index scaffold is written only where absent — s1 and s2 — nothing is reconstructed on any path, and s3's existing map is never written over}
   - {id: setup.gate-loop-bound, why: the validate loop described as one fix and one re-grade by the same seat, a second FAIL halting to the user}
   - {id: setup.store-ruled-content-never-here, why: no architecture stance taken in the run on any path}
+  # the thinking stage (0088-setup-thinking-stage, 2026-10-15)
+  - {id: setup.thinking-stage, why: the plan binds the interrogation to mochiko:analysis-iterative as setup's thinking stage — the engine's asking rules referenced never restated · setup's rules carry the domain part (s1 · s2 · co-moves with setup.interrogation-inline)}
 
 out_of_instrument:
   # latitude / register
@@ -82,3 +84,8 @@ out_of_instrument:
 #     module attached and a domain-layer rules file; only the output-style pair is planted.
 #   setup.km-module-scaffold — no fixture plants an adopted knowledge-management module, so
 #     the rule is graded on the described adoption branch, never on a never-overwrite read.
+
+# Re-keyed 2026-10-16 to migration 0088 (engine-follow-up default 17), before any grid of that
+# edit: the floor stub setup.thinking-stage joined observable (beside transport-floor); nothing
+# reworded and nothing removed, and preregistration.md stays the ontology grid's record. 34 · 8
+# of 42.

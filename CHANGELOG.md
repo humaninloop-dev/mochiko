@@ -5,6 +5,96 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.121.0] — [lead: date]
+
+**[lead: the release title and class]** (`engine-follow-up` D1–D10 as review-amended and the
+confirmed defaults, record `.mochiko/brainstorms/engine-follow-up/record.md`). One combined build
+in three waves on branch `engine-follow-up-build`, one bump.
+
+**Wave 1 — the shared asking line; `/mochiko:feature` on the engine; setup's pointer**
+(D2-card-visits-stage, D3-card-unit-reused, D7-desk-visit-file and D10-two-switch-test, as changed
+at review — QR3, QR4, QR5 — with defaults 6–11, 13, 14, 17–20, 23 and 24). A new pointer block,
+`common.asking-line`, is the line each user command extends for the rulings it asks outside a
+thinking stage: those rulings hold to a named subset of `mochiko:analysis-iterative`'s rules — the
+fact before the fork, one fork per turn, the options rule, the question form, the mock in the
+message, own turn or batch, the ratified streak, the vague answer, the user rules — plus the
+contract's pen and its inside rule only where the command's own rules set that ruling's next
+writer *on*; the blind list, the status line, the stop rule and provenance marks stay the stage's,
+and a yes / no gate on a finished result keeps its own form (D10 as changed at review, QR3;
+default 18). No engine rule or slot changes (default 19). `/mochiko:feature` moves onto the
+engine. A new condition, `visit_kind` (`card · ruling · other`, fixed by the converged visit goal),
+and a new `card-set` moment, after the goal is agreed and before the card's writer writes
+anything, mirror the architecture desk's. A visit that cuts a card — a bug, an improvement, a
+growth row or a lane card — works its card set on the shared thinking stage with the ruled-set
+contract on, through `feat.thinking-stage` (`class: floor`, the fifth extender of
+`common.thinking-stage`). Per card the user rules the change in their own words and one "I'd know
+it works if…" sentence or `open`; a bug's reproduction is a fact in hand, never asked again, and
+the card's writer writes the 1–3 acceptance criteria or the reproduction-failing test inside that
+ruling (D3). A single-card clear ask whose set the demand already states closes on the goal nod;
+the set takes a screen of its own whenever there is more than one card or any fork was put (D2 as
+changed at review, QR5). The set and the cards live in one typed visit file, `visit.md`, per
+capability or lane, in the feature-desk home `.mochiko/features/desk/<date-slug>/`, its folder
+keyed to the joined FEAT id lower-cased or `lane-<slug>`: the lead holds the pen for the header
+and the set and passes it to the card's writer for the cards, and the capability entry's marked
+work row points at the file (D7 as changed at review, QR4; default 11). The card's writer follows
+the desk's wiring, and each card's sound-loop review leg, `devils-advocate`, grades it against the
+visit file for sameness of meaning (defaults 6, 7). One fresh blind seat draws the blind list once
+per visit that cuts more than one card or a growth row (default 10). The desk's other rulings take
+the asking line through `feat.asking-line`, each with its next writer set — grooming and an
+epic's mint, membership change and close *on*, a route override and an architecture trigger at the
+growth door *off*, a selection *held* (the re-sort's Feature row). A demand routed to
+`/mochiko:specify` writes no visit file and hands in the sitting's `derivation.md`; an outside
+need `/mochiko:implement` sends arrives with the run's note, read as inputs in hand (defaults 23
+and 24, the desk's side). A new floor fail, `feat.fail.card-outside-set`, fails a card cut with no
+ruled set behind it in a visit file, or one that changes a ruling without the user's word
+(default 8). `/mochiko:setup` gains `setup.thinking-stage` (`class: floor`, the sixth extender),
+its contract off (default 17).
+
+Migrations **`0085-asking-line`**, **`0086-feature-visit-home`**, **`0087-feature-on-engine`**,
+**`0088-setup-thinking-stage`** and **`0089-entry-points-at-visit`** carry the W1 schema half: a
+new template, `feature-visit`, the `architecture-visit` template's sibling; the `feature-desk`
+home replaced, its title corrected from "One specify-desk sitting" (default 13) and `visit.md`
+declared beside `derivation.md`, bound to the template; `feat.artifact-home`, `feat.delta-cards`
+and `feat.stable-ground-triage` reworded, every id kept — "card on the entry" now reads as the
+entry's marked work row pointing at the card in the visit file; and
+`authoring-feature-map.growth-rides-work-row` reworded, its anchor kept, so a row the desk cuts at
+a card visit points at its `visit.md`. After W1 the log, sequences 1..89, replays to 94 documents
+and 1,254 rules (1,243 → 1,254). Feature's pins read `kind: fail · 2 rules` (was 1) and `class:
+floor · 16 rules` (was 14); setup's `kind: fail · 6 rules` and `class: floor · 21 rules` (was 20).
+No floor or fail is retired or lowered. [lead: the final log figures after W3]
+
+W1 prose primitives: `commands/feature.md` — the Goal step's "never imposes brainstorm ceremony on
+a clear ask" kept and re-pointed at the card stage's one-confirm close (default 14, with D2 as
+changed at review, QR5); no other line is made false, and its Not-done line already cites the
+CLI-printed pin. `commands/setup.md` and `authoring-feature-map`'s `SKILL.md` are unchanged.
+`analysis-iterative`'s `description:` and Overview name the feature desk's card visits among the
+callers and the shared asking line (D2; D10 as changed at review, QR3); no rule, slot or body
+mechanic changes. The router's `analysis-iterative` row names the product desk's card visits.
+1 strip entry stamped [v0.121.0] in W1. Ripple: `ARCHITECTURE.md`'s cross-cutting
+`analysis-iterative` row; `GLOSSARY.md`'s **visit file** entry, now naming both desks' `visit.md`
+in their homes — its stale `focus.md` corrected — widened by D7-desk-visit-file.
+
+W1 budgets (characters, measured at the quiesced tree): `analysis-iterative` payload 16,067 →
+16,279 = body 5,588 + render 10,691 (render unchanged), +212 over the 16,067 budget, argued as D2's
+and D10's ruled obligations (QR3, default 18) [lead: the unit-6 verdict]; description 594 → 713,
++118 over its 595 budget, on the same ruling [lead: the unit-6 verdict]. `authoring-feature-map`
+payload 22,856 → 23,004 (render +148 from `0089`, body unchanged), +681 over the 22,323 budget —
+the standing +533 plus +148 — argued as D7's ruled obligation as changed at review (QR4) [lead:
+the verdict and its unit]; description 598 unchanged. `feature`'s render 18,507 → 24,641
+characters and `setup`'s 17,661 → 18,002 (commands are unbudgeted); the router body 48,744 →
+48,776 (unbudgeted).
+
+[lead: Wave 2 — implement's later moments.]
+
+[lead: Wave 3 — the specify, setup and architecture-desk rows, the carry-forward readers, the
+0.120.0 residuals.]
+
+[lead: the AM-5 exception paragraph, if it still applies.]
+
+[lead: sound loop and gates — seats, plan grades, gate audits and outcome lines, `migrate
+validate`, views ≡ replay, `cargo test` and the four crate layers, the similarity sweep, the
+contract suite, both manifests, strip and ledger counts.]
+
 ## [0.120.0] — 2026-10-11
 
 **The shared thinking stage; the desk's focus stage and diagram set; implement's design stage —

@@ -1107,8 +1107,9 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // template and the `architecture-desk` home, and `0066-store-diagram-set` ("2026-10-11
     // architecture-brainstorm-interview") the `architecture-diagram` template and the
     // `product-diagrams` home; `0075-design-stage-home` ("2026-10-11 implement-brainstorm-led")
-    // imported the `design-stage` template.
-    assert_eq!(state.docs.len(), 93, "the schema class is 93 files");
+    // imported the `design-stage` template; `0086-feature-visit-home` ("2026-10-15
+    // engine-follow-up") imported the `feature-visit` template.
+    assert_eq!(state.docs.len(), 94, "the schema class is 94 files");
 
     let census = census(&state);
     let (command_rules, command_floors) =
@@ -1204,9 +1205,17 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // the skill floors unmoved. The nineteen rewords of `0076` and `0078`–`0084` and the six
     // anchor `set-rule-field`s of `0076` and `0078` keep id, class and kind; `0075` and `0079`
     // import and replace documents that carry no rules.
-    assert_eq!(command_rules, 401, "live command rules");
+    // `0085`–`0089` (the 2026-10-15 engine-follow-up wave 1) mint eleven command rules and retire
+    // none: ten on `feature` (`0087`) — eight musts, the floor stub `feat.thinking-stage` and the
+    // floor fail node `feat.fail.card-outside-set` — and the floor stub `setup.thinking-stage`
+    // (`0088`), the fifth and sixth extenders of `common.thinking-stage`; `0085`'s
+    // `common.asking-line` is a block, outside both counts — command 401 → 412, the command floor
+    // figure 126 → 129 and the fail set 39 → 40, the skill rules and floors unmoved. The three
+    // rewords of `0087` and the one of `0089` keep id, class and kind; `0086` imports and
+    // replaces documents that carry no rules.
+    assert_eq!(command_rules, 412, "live command rules");
     assert_eq!(skill_rules, 842, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1243, "live rules in total");
+    assert_eq!(command_rules + skill_rules, 1254, "live rules in total");
     assert_eq!(skill_floors, 266, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
@@ -1216,8 +1225,9 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // `spec.fail.story-outside-slate` to 120, and the two `thinking-stage` stubs of `0060` and
     // `0061` to 122, and `0068`'s `arch.fail.write-outside-focus` and `0069`'s
     // `arch.thinking-stage` to 124, and `0076`'s `impl.fail.design-outside-ruled-set` and
-    // `0077`'s `impl.thinking-stage` to 126.
-    assert_eq!(command_floors, 126, "declared command floors");
+    // `0077`'s `impl.thinking-stage` to 126, and `0087`'s `feat.thinking-stage` and
+    // `feat.fail.card-outside-set` and `0088`'s `setup.thinking-stage` to 129.
+    assert_eq!(command_floors, 129, "declared command floors");
 
     let fail_nodes = state
         .docs
@@ -1227,7 +1237,7 @@ fn the_shipped_corpus_matches_its_recorded_census() {
         .flat_map(|s| s.rules())
         .filter(|r| r.is_fail())
         .count();
-    assert_eq!(fail_nodes, 39, "command fail nodes");
+    assert_eq!(fail_nodes, 40, "command fail nodes");
 }
 
 /// The kinds the shipped corpus does not carry yet, each with the wave that lands it.

@@ -72,6 +72,15 @@ D5-stage-after-runopen). Rows: the `DECISIONS.md` 2026-10-11 "Shared thinking en
 body is unbudgeted: 48,637 → 48,744. Pre-edit verbatim text:
 `git show 7d9d29e:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the engine follow-up build (v0.121.0) — the `analysis-iterative`
+row's caller list gains "the product desk's card visits" (`:66`). Pure addition only, so no entry,
+recorded here for the audit's read. Ruling: `.mochiko/brainstorms/engine-follow-up/record.md`
+D2-card-visits-stage (`DECISIONS.md` 2026-10-15 "Engine follow-up ruled" row;
+`0087-feature-on-engine.yaml`, `feat.thinking-stage` and `feat.card-stage`). The
+`/mochiko:feature` row (`:141`) is unchanged: no clause in it is made false this wave. The router
+body is unbudgeted: 48,744 → 48,776. Pre-edit verbatim text:
+`git show c840469:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
 ## [v0.120.0] `/mochiko:architecture` row — "greenfield elicits through the shelf walk" and "Each visit walks the shelves you scope, takes your stance per row" superseded by the focus stage
 
 - **Disposition:** superseded → `SKILL.md`:142 as rewritten, the two passages verbatim —

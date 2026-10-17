@@ -370,7 +370,7 @@ never to the builder who will execute the cards.
 | Primitive | Carries |
 |---|---|
 | `report-format.md` / `artifact-format.md` (templates) | The two shared envelopes every report and pipeline artifact follows. |
-| `analysis-iterative` (skill) | The shared thinking stage — the asking every user command's thinking runs on, lead-inline, plus a ruled-set contract a caller switches on; extended in each caller's own rules by brainstorm's deciding, specify's intent and story stages, the architecture desk's focus stage, implement's design stage, and setup's interrogation. |
+| `analysis-iterative` (skill) | The shared thinking stage — the asking every user command's thinking runs on, lead-inline, plus a ruled-set contract a caller switches on; extended in each caller's own rules by brainstorm's deciding, specify's intent and story stages, the architecture desk's focus stage, the product desk's card visits, implement's design stage, and setup's interrogation. |
 | `grooming-operating-docs` (skill) | Fix-on-sight restoration of a target project's operating docs when a pinned knowledge-management cap trips at a command boundary. |
 
 ## Data flow — what lands where

@@ -26,6 +26,16 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/skills/authoring-feature-map/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the engine follow-up build (v0.121.0) — schema content only, so no
+entry: the migration log carries the verbatim prior text (`strips/README.md`), and `SKILL.md` is
+unchanged — no line is made false. Recorded here for the audit's read, because a rule carries one
+anchor (default 20): `0089-entry-points-at-visit.yaml` rewords
+`authoring-feature-map.growth-rides-work-row` (anchor `pm-role-and-feature-derivation` D8 kept, its
+first clause word for word) — a row `/mochiko:feature` cuts at a card visit also points at the
+visit's `visit.md` — by `.mochiko/brainstorms/engine-follow-up/record.md` D7-desk-visit-file as
+changed at review (QR4), the migration's anchor (`DECISIONS.md` 2026-10-15 "Engine follow-up
+ruled" row). Payload 22,856 → 23,004, render +148 (the ledger row). -->
+
 ## [v0.119.0] the intro's derivation-flow parenthetical — the slate-close vet added, the filter after stories narrowed to homing and dedup
 
 - **Disposition:** superseded → "(frame at intent, one map-fit vet of the slate at its close, stories authored inside the frame, the filter's homing and dedup and selection after)"

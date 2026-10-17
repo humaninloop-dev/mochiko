@@ -18,15 +18,25 @@ from the baseline grid.
 ## Command under test and arms
 
 - **Pair:** `plugins/mochiko/commands/feature.md` + its rules as rendered by `mochiko-cli` from
-  the migration log (`plugins/mochiko/migrations/0001–0005`); the derived view the runner reads
-  for the rubric is `.mochiko/schema-views/commands/feature.yaml` — 50 rules, six sections,
-  one `kind: fail` rule.
+  the migration log (`plugins/mochiko/migrations/0001–0005` at authoring; re-keyed 2026-10-16 to
+  the log through `0089-entry-points-at-visit.yaml`); the derived view the runner reads for the
+  rubric is `.mochiko/schema-views/commands/feature.yaml` — 61 rules, six sections, two
+  `kind: fail` rules (50 rules and one fail node at authoring).
 - **`post`** — the working tree's pair.
 - **`pre`** — the pair at `--old-ref`. At the baseline grid the ref is **`794cea8`** (plugin
   v0.108.0), which partitions as **unchanged 49 · changed 0 · removed 0 · added 1 —
   `feat.artifact-home`**, the same positive control the `architecture` and `brainstorm` kits
   use. The next pair edit names its own pre-edit SHA — `HEAD` is never the pre arm once the
-  edit lands.
+  edit lands. **Recomputed 2026-10-16, before any grid**, by the same command crossed with the
+  re-keyed subset: **unchanged 44 (41 observable) · changed 5 (5) · removed 0 · added 12 (11)**.
+  The authoring-time shape had gone stale with no recompute: `0009`'s rewords of
+  `feat.author-grader` and `feat.sound-loop-floor`, `0024`'s of `feat.author-grader` and
+  `feat.delta-cards` and `0027`'s of `feat.product-surface` moved four rules to changed, and
+  `0049` added `feat.grader-checks-joined-ids` (observable). The engine-follow-up wave's `0087`
+  then moved `feat.stable-ground-triage` to changed (its rewords of `feat.delta-cards` and
+  `feat.artifact-home` fall on rules already changed or added) and added ten, nine observable.
+  At that wave's own pre-edit ref, `c840469`, the pair partitions unchanged 48 (45) · changed 3
+  (3) · removed 0 · added 10 (9).
 - **Positive control (pre-registered, D11):** `feat.artifact-home` is absent from the `pre`
   pair and present in the `post` pair. The grid is only readable if it **LANDS** — the rule
   reads `absent` under `pre` and `reflected` pass^k under `post`, localized to that id with
@@ -65,7 +75,7 @@ from the baseline grid.
   sha in every run's pins; D11 — form, never content), `--allowedTools Read,Grep,Glob`,
   `--max-turns 40`, session model Sonnet. The command plans; user gates are described with the
   onward branch per ruling, never awaited (D9).
-- **Judge:** Haiku coverage checklist over the 47-rule D8 observable subset, one binary per rule
+- **Judge:** Haiku coverage checklist over the 57-rule D8 observable subset, one binary per rule
   with a quoted plan line; rule ids are scrubbed from every plan before judging, so the read is
   embodiment, never lexical match (a restated obligation is `absent`); stub-detection axis per
   phase; Sonnet pairwise position-swapped, advisory. All judges advisory (harness D2) — the runner
@@ -83,7 +93,7 @@ from the baseline grid.
   only — stability cannot be demanded of an obligation that itself moved.
 - Recompute the buckets before reading any grid:
   `uv run evals/commands/run.py partition feature --old-ref <pre-sha>` crossed with the D8
-  observable subset; the regression denominator is the unchanged *observable* rules, never all 47.
+  observable subset; the regression denominator is the unchanged *observable* rules, never all 57.
 
 ## Noise band (v2 D11 as folded — I7; the D11 band the report prints)
 
@@ -91,11 +101,11 @@ The command report prints, per golden, the count and ids of **flaky rules** (rep
 disagreement within an arm, observable subset, all pairs). The band is computed from those lines:
 
 - **Band per arm** = the arm's flaky share over all (golden, rule) pairs — flaky pairs ÷ (3 goldens
-  × 47 observable rules = 141 pairs) — **plus five points, capped at 20 %**. Measured at baseline
+  × 57 observable rules = 171 pairs) — **plus five points, capped at 20 %**. Measured at baseline
   from the `post` arm's own spread **[measured at baseline]**, never inherited from another target
   (setup's or implement's band does not transfer).
 - **UNDER-SAMPLED:** an arm with fewer than 8 judged pairs carries the mark and its band is the cap
-  (20 %); at 141 pairs per arm the mark cannot apply here unless judge verdicts go MISSING —
+  (20 %); at 171 pairs per arm the mark cannot apply here unless judge verdicts go MISSING —
   re-run `judge` before reading, never read around a MISSING pair.
 - **Guard at the next edit:** an arm whose flaky share sits above the band is noise-dominated and
   no `pre`/`post` difference is read from it; run **one extra replicate per arm, once**, re-judge,
@@ -106,7 +116,7 @@ disagreement within an arm, observable subset, all pairs). The band is computed 
   re-shape / abandon ruling.
 - **Invited-pair companion read (disclosed, not binding):** the command target has no `tempts`
   list and the report counts every pair, so the binding band is all-pairs. The planted set per
-  golden below (121 of 141 pairs) lets a reader recount the band on invited pairs by hand from the
+  golden below (141 of 171 pairs) lets a reader recount the band on invited pairs by hand from the
   per-golden flaky ids, in the spirit of `2026-09-09-persona-band-invited-only`; a rule read on a
   golden that does not plant its door is a control read (`absent` is honest there) and is not a
   regression when it stays `absent` across arms.
@@ -135,30 +145,33 @@ door-gated rule is graded in the scenario that plants it:
 **Planted (invited) rules per golden** — the honest coverage denominator per scenario; a rule
 outside a golden's set reads `absent` there by design:
 
-- **s1 (37):** dm-health-first · dm-converge-goal · dm-map-integrity · dm-route-honestly ·
+- **s1 (44):** dm-health-first · dm-converge-goal · dm-map-integrity · dm-route-honestly ·
   dm-complete-card · dm-epic-stewardship · dm-km-landing · dm-close-verdict · pm-seat ·
   architect-dormancy · dispatched-runs-own-delivery · user-reserved ·
   tools-referenced-never-restated · map-files · feature-map-binding · capability-write-test ·
   stable-ground-triage · delta-cards · product-surface · dispatch-scope-split · km-relation ·
-  proactive-report · reference-never-restate · author-grader · advisory-front-door ·
-  model-tiering · no-git-mutations · rulings-plain-text · artifact-home ·
+  proactive-report · reference-never-restate · author-grader · grader-checks-joined-ids ·
+  advisory-front-door · model-tiering · no-git-mutations · rulings-plain-text · artifact-home ·
   capability-writes-sacred · lane-never-widens · no-delivery-harness · no-self-graded-writes ·
-  no-silent-map-mutations · sound-loop-floor · transport-floor · stub-parking
-- **s2 (41):** s1's set minus dm-km-landing and lane-never-widens, plus map-minimalism-binding ·
-  epic-binding · dispatch-specify · single-flight-lane · growth-door · growth-routes-to-specify
-- **s3 (43):** dm-health-first · dm-converge-goal · dm-map-integrity · dm-route-honestly ·
+  no-silent-map-mutations · sound-loop-floor · transport-floor · stub-parking · card-writer ·
+  card-blind-list · card-stage · card-unit · visit-file · thinking-stage
+- **s2 (50):** s1's set minus dm-km-landing, lane-never-widens and grader-checks-joined-ids, plus
+  map-minimalism-binding · epic-binding · dispatch-specify · single-flight-lane · growth-door ·
+  growth-routes-to-specify · carry-forward · ruling-places · asking-line
+- **s3 (47):** dm-health-first · dm-converge-goal · dm-map-integrity · dm-route-honestly ·
   dm-complete-card · dm-epic-stewardship · dm-km-landing · dm-close-verdict · pm-seat ·
   architect-dormancy · dispatched-runs-own-delivery · user-reserved ·
   tools-referenced-never-restated · map-files · map-minimalism-binding · feature-map-binding ·
   epic-binding · epic-dispatch · capability-write-test · product-surface · architecture-intake ·
   dispatch-scope-split · dispatch-specify · km-relation · proactive-report ·
-  reference-never-restate · author-grader · advisory-front-door · model-tiering ·
-  no-git-mutations · rulings-plain-text · artifact-home · capability-writes-sacred ·
-  grooming-door-ceiling · out-of-remit-hosting · growth-door · growth-routes-to-specify ·
-  no-delivery-harness · no-self-graded-writes · no-silent-map-mutations · sound-loop-floor ·
-  transport-floor · stub-parking
+  reference-never-restate · author-grader · grader-checks-joined-ids · advisory-front-door ·
+  model-tiering · no-git-mutations · rulings-plain-text · artifact-home ·
+  capability-writes-sacred · grooming-door-ceiling · out-of-remit-hosting · growth-door ·
+  growth-routes-to-specify · no-delivery-harness · no-self-graded-writes ·
+  no-silent-map-mutations · sound-loop-floor · transport-floor · stub-parking · carry-forward ·
+  ruling-places · asking-line
 
-Every one of the 47 observable rules is planted on at least one golden. Single-golden rules
+Every one of the 57 observable rules is planted on at least one golden. Single-golden rules
 (thin coverage, one invited pair per arm each): epic-dispatch · architecture-intake ·
 grooming-door-ceiling · out-of-remit-hosting (s3) · single-flight-lane (s2) ·
 lane-never-widens (s1). A flaky read on any of them is one pair, not a trend.
@@ -173,14 +186,16 @@ lane-never-widens (s1). A flaky read on any of them is one pair, not a trend.
   read the same; `contradicted` only when the plan records a merge, retire, status change, or
   selection as made at the desk.
 - **The read-only fence forecloses every write.** `feat.artifact-home`, `feat.delta-cards`,
-  `feat.product-surface`, `feat.dm-map-integrity`, and `feat.no-silent-map-mutations` are read on
-  the writes the plan *describes* — paths, content, and sequence (home rendered before the first
-  write; the contract touch named on the card; the dangling row folded) — since no write lands.
+  `feat.product-surface`, `feat.visit-file`, `feat.dm-map-integrity`, and
+  `feat.no-silent-map-mutations` are read on the writes the plan *describes* — paths, content,
+  and sequence (home rendered before the first write; the contract touch named on the card; the
+  dangling row folded) — since no write lands.
 - **The no-dispatch line forbids spawning, not describing.** `feat.sound-loop-floor`,
-  `feat.author-grader`, `feat.no-self-graded-writes`, `feat.transport-floor`, and
-  `feat.model-tiering` are read on the seat wiring the plan describes (a producing seat on an
-  approved plan, a named non-author reviewer, an Explore read dispatch); a described dispatch is
-  `reflected`, an omitted one `absent`.
+  `feat.author-grader`, `feat.no-self-graded-writes`, `feat.transport-floor`,
+  `feat.model-tiering`, `feat.card-writer`, and `feat.card-blind-list` are read on the seat
+  wiring the plan describes (a producing seat on an approved plan, a named non-author reviewer,
+  an Explore read dispatch, the blind-list seat); a described dispatch is `reflected`, an omitted
+  one `absent`.
 - **The desk's rules arrive by slash-command expansion, not by a tool call.** The command's
   `!mochiko-cli rules` lines are preprocessed by the CLI when `/mochiko:feature` expands, outside
   the model's tool roster, so the `Read,Grep,Glob` fence does not block them (the implement and
@@ -192,6 +207,9 @@ lane-never-widens (s1). A flaky read on any of them is one pair, not a trend.
   `feat.author-grader`, and `feat.sound-loop-floor` share the review-leg evidence, differing in
   the plan-first leg and the user-gate leg; and `feat.dispatched-runs-own-delivery`,
   `feat.reference-never-restate`, and `feat.no-delivery-harness` share the dispatch-only evidence.
+  Since the 2026-10-16 re-key, `feat.thinking-stage` and `feat.card-stage` share the card-set
+  stage's evidence, as do `feat.asking-line` and `feat.ruling-places` for the rulings outside it,
+  and `feat.card-writer` shares the review-leg evidence with the three above.
 
 ## Run precondition (binary range)
 
@@ -203,7 +221,8 @@ predates it halts every session at first use (`mochiko-cli rules not delivered`)
 records invalid runs, not plans. Before the baseline grid, run one `plan-run feature
 s1-bug-delta-lane --arm post` and confirm the init event's plugin pin and a plan with numbered
 phases; a halt there is a precondition failure to fix (install a binary at or above the log's
-range), not a result.
+range), not a result. Since the 2026-10-16 re-key the working tree's log runs to `0089` at
+grammar 2, so the binary on PATH must read grammar 2.
 
 ## Fixture-echo caveat
 
@@ -224,12 +243,14 @@ would make them; the `nocmd` control arm on those goldens is what measures the r
 The kit is ready if (a) the baseline read shows every planted plan-observable rule either
 pass^k-reflected on a golden that plants it or explained (model-native under `nocmd`, flaky within
 band, or a golden-design note); (b) its flaky-rule set stays under 20 % of the observable subset
-(fewer than 10 of 47) so the band it fixes binds uncapped — a band that only binds through the cap
+(fewer than 12 of 57) so the band it fixes binds uncapped — a band that only binds through the cap
 is a kit whose goldens are too noisy to read the next edit; and (c) the three scenarios produce
 visibly different coverage profiles on the door-gated rules (delta-cards and lane-never-widens on
 s1 · growth-door, growth-routes-to-specify, and single-flight-lane on s2 · grooming-door-ceiling,
-out-of-remit-hosting, architecture-intake, and epic-dispatch on s3). Identical profiles across the
-three would mean the fixtures do not force the doors — a fixture finding, not a command finding.
+out-of-remit-hosting, architecture-intake, and epic-dispatch on s3 · the card-set stage's
+card-stage, card-unit, visit-file, card-writer, and card-blind-list on s1 and s2 against their
+absence on s3). Identical profiles across the three would mean the fixtures do not force the
+doors — a fixture finding, not a command finding.
 Failing (b) triggers the record's noise falsifier (open question 3): the substrate bet weakens and
 the session premise is revisited. A kit failing (a) on more than three rules gets one golden re-cut
 before it is declared ready.
@@ -255,3 +276,21 @@ sessions inside the same bound. Exceeding either halts and returns to the user.
 - re-key count: 0
 - kit status: **AUTHORED — awaiting the baseline grid**
 - 2026-09-29 amendment, recorded before any grid: the s3-groom-at-cap fixture file `.mochiko/features/FEAT-004/baseline-delta.md` is deleted and the plant phrases at `:131` (s1) and `:133` (s3) and the reading example at `:178` are reworded to match. This changes the s3 scenario a session sees, since fixtures reach the session (`evals/plan/README.md:32–33`). Why: delta D1 (2026-09-24 delta-files-vs-direct-baseline-edits) retired the feature-dir delta ledger; baselines are edited in place under a run's lifecycle marker, so the plant no longer exists in the model. No grid had run before this change (kit status AUTHORED — awaiting the baseline grid; no `runs/`), and s3's invited set is unchanged. Ruled at the joint hook/delta build, wave 3 (lead's Q2(a)).
+- 2026-10-16 amendment, recorded before any grid: the kit is re-keyed to migrations 0085–0089
+  (`engine-follow-up` D2, D3, D7, D10's Feature row and its confirmed defaults; `observable.yaml`
+  57 · 4 of 61 — nine of the ten added rules observable, the three rewords graded against their
+  new text), and every count above is recomputed. The recount knowingly folds in the pre-wave
+  drift from `0009`, `0024`, `0027` and `0049` that no earlier edit recorded — the bucket shape,
+  above, the subset's 47 → 48 at `0049`, and `feat.grader-checks-joined-ids` placed on s1 and
+  s3, where its why plants it — since the true 57 needs it. The baseline arms stay as
+  registered — `pre` at `--old-ref 794cea8`, now reading `0005` with every later pair edit
+  together, and the positive control `feat.artifact-home`, graded on its current text — and the
+  wave's own pre-edit ref `c840469` is recorded beside them. One golden phrase moves with
+  `0087`: s1's `expected_output` in `evals.json` had the bug card "on the entry, in the FEAT-003
+  artifact directory, appended and dated", which the rewords of `feat.delta-cards` and
+  `feat.stable-ground-triage` make false; it now reads "in the feature desk's visit file for
+  FEAT-003, the entry's marked work row pointing at it". `expected_output` reaches no session
+  (`evals/plan/README.md:33–34`), so the scenario a session sees is unchanged; fixtures and
+  wrapper unchanged. Lead rulings at the W1 P3 approval, 2026-10-16 (arms kept, drift folded,
+  golden phrase). The re-key count stays 0: no grid has run (no `runs/`). Made by the build's
+  tests-and-kits seat on a lead-approved plan.

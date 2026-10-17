@@ -312,6 +312,10 @@ sections:
         class: floor
         extends: common.gate-loop-bound
         anchor: 2026-09-19 author-grader-consolidation D6
+      - id: setup.thinking-stage
+        class: floor
+        extends: common.thinking-stage
+        anchor: 2026-10-15 engine-follow-up
   - id: setup.sec.fail-conditions
     title: Not done — default FAIL
     intent: >-

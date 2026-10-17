@@ -1,5 +1,50 @@
 # Strip notes — `commands/feature.md`
 
+<!-- Wave context: wave 1 of the engine follow-up build (v0.121.0) — `/mochiko:feature` moves
+onto the shared thinking stage: its card visits run the stage with the ruled-set contract on, the
+set and the cards live in a typed visit file at the feature desk, and its other rulings take the
+shared asking line. Ruling for the [v0.121.0] entry below:
+`.mochiko/brainstorms/engine-follow-up/record.md` D2-card-visits-stage as changed at review (QR5)
+and default 14 (`DECISIONS.md` 2026-10-15 "Engine follow-up ruled" row). Schema content otherwise,
+so no further entry: the migration log carries the verbatim prior text (`strips/README.md`).
+Recorded here for the audit's read, because a rule carries one anchor (default 20):
+`0087-feature-on-engine.yaml` rewords three rules, each keeping its id, class, kind and anchor —
+`feat.artifact-home` (`class: floor`, anchor `hook-enforced-artifact-schema` D1; `visit.md` joins
+the desk's output, the force kept), `feat.delta-cards` (last reworded under
+`delta-files-vs-direct-baseline-edits` D1; the card is written in the visit file's card part) and
+`feat.stable-ground-triage` (`pm-role-and-feature-derivation` D10-feature-desk-charter's tools;
+"card on the entry" reads as the entry's marked work row pointing at the card in the visit file)
+— each wording superseded by D7-desk-visit-file as changed at review (QR4), this session's anchor
+on the migration. No other line is made false; the Not-done line already cites the CLI-printed
+pin (`kind: fail · 2 rules`). Pre-edit verbatim text:
+`git show c840469:plugins/mochiko/commands/feature.md`. -->
+
+## [v0.121.0] Goal step — "never imposes brainstorm ceremony on a clear ask" re-pointed at the card stage's one-confirm close
+
+- **Disposition:** superseded → the Goal step's sentence as reworded: "The protocol never imposes
+  brainstorm ceremony on a clear ask — a clear ask cutting one card whose ruled set the demand
+  already states closes its thinking stage on the goal nod, one confirm (`feat.card-stage`); it
+  only refuses to start a visit whose finish line no one has named."
+- **Tier failed:** n/a — supersession by ruling (`engine-follow-up` default 14 — "`feature.md`'s
+  'no ceremony on a clear ask' line kept, reworded to the one-confirm close" — with
+  D2-card-visits-stage as changed at review, QR5: "a single-card clear ask whose set the demand
+  already states closes with the goal nod, as `feature.md` promises (F21) … the set takes a screen
+  of its own whenever there is more than one card or any fork was put"; `DECISIONS.md` 2026-10-15
+  "Engine follow-up ruled" row)
+- **Content:** verbatim — "The protocol never imposes brainstorm ceremony on a clear ask; it only
+  refuses to start a visit whose finish line no one has named."
+- **Kept deliberately:** both clauses word for word — the line is protected (the [v0.97.0]
+  *Kept deliberately* set and the [v0.105.0] Goal step kept byte for byte), and default 14 rules it
+  kept; only its reach narrows, to a clear ask cutting one card, by QR5. The crisp-demand sentence
+  before it, the micro-brainstorm clause and the run-to-the-done-condition close stay byte for
+  byte: the goal still converges in one exchange, and the card set's close sits inside the visit's
+  done condition (`feat.card-stage`).
+- **Consumers assessed:** no primitive quotes the line (`git grep "brainstorm ceremony"` outside
+  `.mochiko/archive` and `evals/.work`: this command, session records, one frozen referent, this
+  strip file and this wave's `CHANGELOG.md` entry). `commands/architecture.md`:59–60, the sibling desk's "crisp ask … converges in a
+  single exchange", is untouched — the desk's set confirm keeps its own screen
+  (`arch.gate-focus-confirm`), which QR5 left standing.
+
 <!-- Wave context: the CLI schema-delivery command wave (v0.105.0) — the five remaining commands
 convert, `feature` among them: its rules are rendered at fire by `mochiko-cli` from the migration
 log the plugin carries at `plugins/mochiko/migrations/`, and the command reads no schema file.

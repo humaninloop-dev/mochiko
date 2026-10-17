@@ -27,9 +27,9 @@ const SHIPPED_LOG_DIR: &str = concat!(
 /// schema-source line stripped, so the byte-equality assertion names the one line that moved.
 const FIXTURE_DIR: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/tests/fixtures/template");
 
-/// The fifteen templates the log carries. This is the fixture's own manifest, not a production
+/// The sixteen templates the log carries. This is the fixture's own manifest, not a production
 /// constant: the closed `TEMPLATE_NAMES` set left the crate when the templates became log data.
-const SHIPPED_TEMPLATES: [&str; 15] = [
+const SHIPPED_TEMPLATES: [&str; 16] = [
     "spec",
     "tasks",
     "feature-entry",
@@ -55,6 +55,9 @@ const SHIPPED_TEMPLATES: [&str; 15] = [
     // Its wave 3 imported one: the design stage's ruled-set file at `0075-design-stage-home`,
     // bound by the `feature`, `epic` and `product-lane` homes.
     "design-stage",
+    // The 2026-10-15 engine-follow-up wave 1 imported one: the feature desk's card-visit file at
+    // `0086-feature-visit-home`, bound by the `feature-desk` home.
+    "feature-visit",
 ];
 
 // ---------------------------------------------------------------------------

@@ -628,3 +628,8 @@ suppressions:
     reason: the size ruling carries a raise-freely, never-lower asymmetry the general pen boundary does not (brainstorm-target-state D11-session-size-tiers)
   - ids: [brainstorm.blind-map-dispatch, brainstorm.small-session-review]
     reason: "the two `when: size` arms of one blind-dispatch obligation — front spawn from three frame lines vs today's two-message end dispatch from topic and goal (brainstorm-target-state D10, D11)"
+  # --- engine-follow-up W1 (0087, v0.121.0) — the two edges feature's card fail raised, each kept distinct ---
+  - ids: [feat.fail.card-outside-set, arch.fail.write-outside-focus]
+    reason: "each desk's own fail over its own write — a card vs a store write; a kind: fail is command grammar and stays the caller's (analysis-iterative.caller-slots), and a common block cannot carry kind: (validate.rs:1854-1871), so no shared block converges them"
+  - ids: [feat.fail.card-outside-set, spec.fail.story-outside-slate]
+    reason: "a card outside the desk's ruled set vs a story file outside specify's confirmed slate — different artifact, different stage; a kind: fail stays the caller's (analysis-iterative.caller-slots) and cannot ride a common block (validate.rs:1854-1871)"
