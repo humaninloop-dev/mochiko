@@ -5,11 +5,12 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
-## [0.121.0] — [lead: date]
+## [0.121.0] — 2026-10-18
 
-**[lead: the release title and class]** (`engine-follow-up` D1–D10 as review-amended and the
-confirmed defaults, record `.mochiko/brainstorms/engine-follow-up/record.md`). One combined build
-in three waves on branch `engine-follow-up-build`, one bump.
+**The shared asking line; the feature desk on the shared thinking stage; every command's ruling
+places sorted — MINOR** (`engine-follow-up` D1–D10 as review-amended and the confirmed defaults,
+record `.mochiko/brainstorms/engine-follow-up/record.md`). One combined build in three waves on
+branch `engine-follow-up-build`, one bump.
 
 **Wave 1 — the shared asking line; `/mochiko:feature` on the engine; setup's pointer**
 (D2-card-visits-stage, D3-card-unit-reused, D7-desk-visit-file and D10-two-switch-test, as changed
@@ -61,7 +62,8 @@ entry's marked work row pointing at the card in the visit file; and
 a card visit points at its `visit.md`. After W1 the log, sequences 1..89, replays to 94 documents
 and 1,254 rules (1,243 → 1,254). Feature's pins read `kind: fail · 2 rules` (was 1) and `class:
 floor · 16 rules` (was 14); setup's `kind: fail · 6 rules` and `class: floor · 21 rules` (was 20).
-No floor or fail is retired or lowered. [lead: the final log figures after W3]
+No floor or fail is retired or lowered. The final figures, after W3: sequences 1..101 (89
+migrations), 94 documents, 1,266 rules, state `sha256:300e26a8…`.
 
 W1 prose primitives: `commands/feature.md` — the Goal step's "never imposes brainstorm ceremony on
 a clear ask" kept and re-pointed at the card stage's one-confirm close (default 14, with D2 as
@@ -76,11 +78,11 @@ in their homes — its stale `focus.md` corrected — widened by D7-desk-visit-f
 
 W1 budgets (characters, measured at the quiesced tree): `analysis-iterative` payload 16,067 →
 16,279 = body 5,588 + render 10,691 (render unchanged), +212 over the 16,067 budget, argued as D2's
-and D10's ruled obligations (QR3, default 18) [lead: the unit-6 verdict]; description 594 → 713,
-+118 over its 595 budget, on the same ruling [lead: the unit-6 verdict]. `authoring-feature-map`
-payload 22,856 → 23,004 (render +148 from `0089`, body unchanged), +681 over the 22,323 budget —
-the standing +533 plus +148 — argued as D7's ruled obligation as changed at review (QR4) [lead:
-the verdict and its unit]; description 598 unchanged. `feature`'s render 18,507 → 24,641
+and D10's ruled obligations (QR3, default 18), ruled HOLDS by the W1 gate (unit 6); description
+594 → 713, +118 over its 595 budget, on the same ruling, ruled HOLDS by the W1 gate (unit 6).
+`authoring-feature-map` payload 22,856 → 23,004 (render +148 from `0089`, body unchanged), +681 over the 22,323 budget —
+the standing +533 plus +148 — argued as D7's ruled obligation as changed at review (QR4), ruled
+HOLDS by the W1 gate (unit 3); description 598 unchanged. `feature`'s render 18,507 → 24,641
 characters and `setup`'s 17,661 → 18,002 (commands are unbudgeted); the router body 48,744 →
 48,776 (unbudgeted).
 
@@ -165,11 +167,11 @@ approved plan. `README.md` and `ARCHITECTURE.md` are unchanged.
 W2 budgets (characters, measured at the quiesced tree): `review-sufficiency` payload 17,360 → 17,614
 = body 3,262 + render 14,352 (render +254 from `0095`, body unchanged), +2,191 over the 15,423
 budget — the standing +1,937 plus +254 — argued as default 12's ruled obligation as changed at
-review (RB3), with D7 as changed at review (QR4) [lead: the unit-6 verdict]; description 686
-unchanged. `testing-gap-finding` payload 23,305 → 23,629 = body 7,005 + render 16,624 (render +324
+review (RB3), with D7 as changed at review (QR4), ruled HOLDS by the W2 gate (unit 6); description
+686 unchanged. `testing-gap-finding` payload 23,305 → 23,629 = body 7,005 + render 16,624 (render +324
 from `0094`, body unchanged), +3,652 over the 19,977 budget — the standing +3,328 plus +324 — argued
-as D8's ruled obligation as changed at review (S10 with RB3) [lead: the unit-6 verdict]; description
-770 unchanged. `implement`'s render 60,392 → 66,907 characters (commands are unbudgeted), its
+as D8's ruled obligation as changed at review (S10 with RB3), ruled HOLDS by the W2 gate (unit 4);
+description 770 unchanged. `implement`'s render 60,392 → 66,907 characters (commands are unbudgeted), its
 `impl.sec.tools` block 27,651 → 28,443 bytes, 557 under the 29,000-byte line; the router body 48,776
 → 48,995 (unbudgeted).
 
@@ -245,16 +247,38 @@ the shared `.mochiko/product/` baselines", "touched baselines take their delta f
 `devils-advocate.md:20` and `templates/report-format.md:7`.
 
 W3 budgets (characters, measured at the quiesced tree): no budgeted primitive moves — the four
-migrations change command schemas only, and no skill body or description changes. `specify`'s render
+migrations change command schemas only, and no budgeted skill body or description changes. `specify`'s render
 27,160 → 29,636 characters, `setup`'s 18,002 → 19,821, `architecture`'s 28,000 → 29,718 and
 `implement`'s 66,907 → 67,376 (commands are unbudgeted); `impl.sec.tools` is untouched at 28,443
 bytes, 557 under the 29,000-byte line; the router body 48,995 → 49,956 (unbudgeted).
 
-[lead: the AM-5 exception paragraph, if it still applies.]
+**Stop count** (default 22 as changed at review, S4): one question is added to `/mochiko:implement`
+— the card order, put only when a real order choice exists, the card confirm staying after the
+cards; final acceptance changes form, not count. A feature card visit gains at most one confirm
+screen, none on a single-card clear ask whose goal nod closes its set. Specify, setup and the
+architecture desk add no moment. No merge is suggested.
 
-[lead: sound loop and gates — seats, plan grades, gate audits and outcome lines, `migrate
-validate`, views ≡ replay, `cargo test` and the four crate layers, the similarity sweep, the
-contract suite, both manifests, strip and ledger counts.]
+**Ships under the AM-5 exception row** (governance ledger, Exception registry, first row): the
+conformance hooks still ship before the first `mochiko-cli` publish carrying the four named
+controls; this bump adds no binary change and carries the same unpublished 0.4.0 dependency as
+0.118.0 through 0.120.0 (`mochiko-cli` 0.4.0, grammar 1..2, serves the log; no `mochiko-cli-v*`
+tag exists).
+
+Sound loop: per wave, three persona-less producers (P1 schema · P2 prose · P3 tests and kits,
+`opus`), each on a plan graded by a fresh generic peer (`opus`) — W1 P1 and W2 P1 passed after
+their wave's one re-plan, every other plan at round 1, W3 P2 and P3 approved with lead addenda sent
+as exact text — and one non-author gate grader per wave, with every unit's outcome line in its
+report: W1 eight units, W2 eight, W3 seven, all PASS at round 1, 0 blocking
+(`.mochiko/brainstorms/engine-follow-up/build-log.md`, `reports/audit.md`, `reports/audit-w2.md`,
+`reports/audit-w3.md`). Four ruling places the re-sort never listed — `spec.missing-map-surfaced`,
+`spec.governance-region-absent`, `setup.stress-test-cold-seat` and `arch.diagram-signoff` — stay
+unlisted, reached by `common.asking-line` with the writer off, and are put to the user as a note at
+this bump. Gates: `mochiko-cli migrate validate` 0 rejecting · 118 advisory · clusters 0 · 185
+allowlist-suppressed edges · views ≡ replay on the bumped tree · `cargo test --all` 765 passed ·
+fmt · clippy · audit · the opt-in full similarity sweep 48 passed · `gitleaks detect --no-git` no
+leaks · `mochiko-cli ids --check plugins/mochiko` 0 bare · 0 drift · **contract suite 99/99, 99 ran, none skipped** (on the bumped tree; 335 measurements recorded,
+none asserted) · both
+manifests at 0.121.0 · 1 strip entry and 12 wave-context comments · 5 ledger rows ruled HOLDS.
 
 ## [0.120.0] — 2026-10-11
 

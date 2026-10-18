@@ -667,3 +667,40 @@ audit: unit 8 (crate tests, contract expectations, plan kits · crate non-author
 - The lead's §3.6 read, row by row (it clears nothing): D4 and D10 in units 1–3 · defaults 15 and
   16 in unit 2 · default 21 in units 6 and 7 · default 22's count owed at the bump · default 23 in
   unit 1 · the W2 advisories in unit 4. W3 committed next; then the bump.
+
+## 2026-10-18 — W3 committed; bump in progress (paused on a usage limit)
+
+- W3 committed at `7555e3d`. Release gates so far, first-hand, on the pre-bump tree: `migrate
+  validate` 0 rejecting · 118 advisory · clusters 0 · 185 suppressed · status 1..101, state
+  `300e26a8…` · views ≡ replay · `cargo test --all` 765/0. The full sweep and gitleaks were
+  started in the background; results unread.
+- Bump edits made (uncommitted): `plugin.json` and `marketplace.json` to 0.121.0; the CHANGELOG
+  date, title (MINOR), final figures, five budget verdicts (W1 units 6, 6, 3; W2 units 6, 4),
+  the W3 advisory-3 wording, default 22's stop count and the AM-5 paragraph; the five budget-ledger
+  `[lead: …]` slots ruled HOLDS with their units.
+- Left: the sweep and gitleaks results · on the bumped tree, `cargo test`, views ≡ replay, fmt,
+  clippy, `cargo audit` (workspace root) and `ids --check` · rebuild `target/release/mochiko-cli`
+  and run the contract suite (sbx login and the anthropic OAuth both show configured) · the
+  CHANGELOG's sound-loop-and-gates slot · the KM landing (wave3-rest.md §5.4, with README
+  `:106`/`:108`, the two W2 bare ids and the 47-why closure in the narrowed items) · the A1 note
+  to the user · the release commit.
+
+## 2026-10-18 — Release gates green; 0.121.0 bumped and landed
+
+- Pre-bump: the full sweep 48 passed · `gitleaks detect --no-git` no leaks · `ids --check
+  plugins/mochiko` 0 bare, 0 drift.
+- On the bumped tree, first-hand: views ≡ replay · `cargo test --all` 765/0 · fmt 0 · clippy 0 ·
+  `cargo audit --deny warnings` 0 (31 deps, workspace root) · `target/release/mochiko-cli`
+  rebuilt (current; no crate source change) · contract suite **99/99, 99 ran, none skipped**
+  (335 measurements recorded, none asserted).
+- CHANGELOG `[0.121.0]` complete: date, title (MINOR), final figures, five budget verdicts, the
+  stop count (default 22), the AM-5 paragraph (still applies: no `mochiko-cli-v*` tag, crate
+  0.4.0 unchanged), the sound-loop and gates paragraph naming A1's four unlisted places. Both
+  manifests at 0.121.0. The ledger's five `[lead: …]` slots ruled HOLDS with their units.
+- KM landing (`wave3-rest.md` §5.4): `DECISIONS.md` 2026-10-15 row stamped built · BACKLOG
+  *Engine follow-up build* to the trail · the two engine-desk residual items narrowed (README
+  `:106`/`:108` added as pre-existing false lines; the 65 quoted whys and four joined `D3` lines
+  closed; W2's two bare ids booked) · new item *Delta-card criteria have no line outside the
+  TEST: bundle* (N1) · ROADMAP engine line stamped BUILT, caps unchanged · the brainstorms index
+  entry and the record's Status line stamped built; statuses agree.
+- Release commit next; no push, no merge. A1's note goes to the user with it.
