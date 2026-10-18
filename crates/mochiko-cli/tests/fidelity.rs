@@ -181,15 +181,20 @@ fn the_log_replays_into_a_deliverable_state() {
     // `product-architecture` home and the `architecture-store` template in place. `0071`–`0074`
     // are unused, a legal gap. `0075`–`0084` (its wave 3) import one: `0075` the
     // `design-stage` template; `0075` also replaces the `feature`, `epic` and `product-lane`
-    // homes in place, and `0079` the `architecture-store` template.
-    assert_eq!(replay.state.docs.len(), 93);
+    // homes in place, and `0079` the `architecture-store` template. `0085`–`0089` (the
+    // 2026-10-15 engine-follow-up wave 1) import one: `0086` the `feature-visit` template;
+    // `0086` also replaces the `feature-desk` home in place. `0090` and `0091` are unused, a
+    // legal gap. `0092`–`0095` (its wave 2) import none. `0096` and `0097` are unused, a
+    // legal gap. `0098`–`0101` (its wave 3) import none.
+    assert_eq!(replay.state.docs.len(), 94);
     assert_eq!(
         replay.sequences(),
         vec![
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
             25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48,
             49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 65, 66, 67, 68, 69, 70, 75, 76,
-            77, 78, 79, 80, 81, 82, 83, 84
+            77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 92, 93, 94, 95, 98, 99, 100,
+            101
         ],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
@@ -221,7 +226,14 @@ fn the_log_replays_into_a_deliverable_state() {
          implement design stage, 0077's implement on the engine, 0078's architecture \
          touches, 0079's store landing diagrams, 0080's meaning-kept grade, 0081's \
          user-added re-grade, 0082's gap-finding signed set, 0083's stage file in the \
-         artifact home, 0084's entry-only record restored"
+         artifact home, 0084's entry-only record restored, then the 2026-10-15 \
+         engine-follow-up wave 1 — 0085's shared asking line, 0086's feature visit file, 0087's \
+         feature on the engine, 0088's setup thinking stage, 0089's entry pointing at the visit, \
+         then — 0090 and 0091 left unused, a legal gap — its wave 2 — 0092's implement card \
+         order, 0093's implement asking line, 0094's implement reading the desk, 0095's \
+         sufficiency reading the visit, then — 0096 and 0097 left unused, a legal gap — its \
+         wave 3 — 0098's specify asking line, 0099's setup asking line, 0100's desk asking \
+         line, 0101's implement residuals"
     );
 }
 
@@ -826,8 +838,8 @@ fn the_corpus_census_holds_through_the_log() {
     // kind, and move nothing here.
     // The 2026-10-11 implement-brainstorm-led wave 2 carries `0065`–`0070`, anchored to
     // architecture-brainstorm-interview D1–D5 and D7–D9 and its confirmed defaults, and to
-    // implement-brainstorm-led D3: nineteen `mint-rule`s and nothing retired. `0068` mints
-    // fourteen `architecture` rules — thirteen musts and the floor fail node
+    // implement-brainstorm-led D3-four-move-now: nineteen `mint-rule`s and nothing retired.
+    // `0068` mints fourteen `architecture` rules — thirteen musts and the floor fail node
     // `arch.fail.write-outside-focus` — `0069` the floor stub `arch.thinking-stage`, the third
     // extender of `common.thinking-stage`, and `0067` four musts on
     // `authoring-architecture-store`. So command 375 → 390, skill 836 → 840, total 1211 → 1230,
@@ -850,12 +862,46 @@ fn the_corpus_census_holds_through_the_log() {
     // among them stay floors); the six anchor `set-rule-field`s of `0076` and `0078`, `0076`'s
     // moment, `0080`'s condition, the template `0075` imports and the four documents `0075`
     // and `0079` replace move nothing here.
-    assert_eq!(command_rules, 401, "live command rules");
+    // The 2026-10-15 engine-follow-up wave 1 carries `0085`–`0089`, anchored to that session's
+    // rulings and confirmed defaults: eleven `mint-rule`s on commands and nothing retired.
+    // `0085` mints `common.asking-line`, a block in the command-common library that sits outside
+    // this count. `0087` mints ten `feature` rules — eight musts, the floor stub
+    // `feat.thinking-stage`, the fifth extender of `common.thinking-stage`, and the floor fail
+    // node `feat.fail.card-outside-set` — and `0088` the floor stub `setup.thinking-stage`, the
+    // sixth. So command 401 → 412, total 1243 → 1254, command floors 126 → 129 and the fail set
+    // 39 → 40, while the skill rules hold at 842 and the skill floors at 266. The wave's four
+    // `reword-rule`s — three in `0087`, one in `0089` — keep their rule's id, class and kind (the
+    // floor `feat.artifact-home` stays a floor); `0087`'s condition and moment, the template
+    // `0086` imports and the home it replaces move nothing here.
+    // The 2026-10-15 engine-follow-up wave 2 carries `0092`–`0095`, anchored to that session's
+    // rulings and confirmed defaults: six `mint-rule`s, all on `implement`, and nothing retired.
+    // `0092` mints the must `impl.card-order` and the floor fail node
+    // `impl.fail.cards-outside-order`, `0093` three musts — the stub `impl.asking-line`, the
+    // second extender of `common.asking-line`, `impl.ruling-places` and
+    // `impl.promises-kept-table` — and `0094` the must `impl.feature-visit-input`. So command
+    // 412 → 418, total 1254 → 1260, command floors 129 → 130 and the fail set 40 → 41, while the
+    // skill rules hold at 842 and the skill floors at 266. The wave's fourteen `reword-rule`s —
+    // one in `0092`, three in `0093`, eight in `0094`, two in `0095` — keep their rule's id,
+    // class and kind (the floors `testing-gap-finding.blindness-fence-inclusion-list` and
+    // `testing-gap-finding.two-message-dispatch` stay floors); the two moments `0092` and `0093`
+    // set move nothing here.
+    // The 2026-10-15 engine-follow-up wave 3 carries `0098`–`0101`, anchored to that session's
+    // rulings and confirmed defaults: six `mint-rule`s, two each on `specify`, `setup` and
+    // `architecture`, and nothing retired. `0098`, `0099` and `0100` each mint two musts — the
+    // stubs `spec.asking-line`, `setup.asking-line` and `arch.asking-line`, the third, fourth
+    // and fifth extenders of `common.asking-line`, and the bindings `spec.ruling-places`,
+    // `setup.ruling-places` and `arch.ruling-places`. So command 418 → 424 and total
+    // 1260 → 1266, while the command floors hold at 130, the fail set at 41, the skill rules at
+    // 842 and the skill floors at 266. The wave's four `reword-rule`s — one in `0098`
+    // (`spec.stage-inputs-in-hand`), three in `0101` (`impl.feature-visit-input`,
+    // `impl.landing-verifier-folds`, `impl.ruling-places`) — keep their rule's id, class and
+    // kind.
+    assert_eq!(command_rules, 424, "live command rules");
     assert_eq!(skill_rules, 842, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1243, "live rules in total");
+    assert_eq!(command_rules + skill_rules, 1266, "live rules in total");
     assert_eq!(skill_floors, 266, "skill floors");
-    assert_eq!(command_floors, 126, "declared command floors");
-    assert_eq!(fail_nodes, 39, "command fail nodes");
+    assert_eq!(command_floors, 130, "declared command floors");
+    assert_eq!(fail_nodes, 41, "command fail nodes");
 }
 
 // ---------------------------------------------------------------------------

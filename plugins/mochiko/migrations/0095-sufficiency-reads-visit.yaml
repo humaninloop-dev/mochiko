@@ -1,0 +1,37 @@
+grammar: 1
+id: 0095-sufficiency-reads-visit
+sequence: 95
+intent: >-
+  Point the sufficiency check's per-card form at the delta card where it now sits, the
+  feature-desk visit file's card part (engine-follow-up default 12 as changed at review, RB3 with
+  S10; D7 as changed at review, QR4): two review-sufficiency rewords, each keeping its id, class,
+  kind and the plan-stage-utility anchor. clause9-delta-inapplicable's "carrying the marked delta
+  on the entry" is made false by the card's move — the card is written in the visit file and the
+  entry's marked work row points at it; fence-read-set admits that card under delta scope, since a
+  closed read set that names only the map entries would leave the per-card form nothing to read
+  — the card's scope and acceptance criteria, a bug's its reproduction, never its **TEST:**
+  cases, which the three delta clauses (testable criteria: "a stateable oracle") do not need. The
+  floor fence-never-reads stands unchanged and is not contradicted: the visit file sits outside
+  the batch's own run-output directory and the card's **TEST:** cases stay unread. No floor is
+  retired or lowered.
+anchor: 2026-10-15 engine-follow-up
+hash: sha256:cede5dc20524d36a05de1c42ebee30ce00d7bef52e7d2f62e3056eddaa0abeed
+changes:
+  - op: reword-rule
+    schema: skill/review-sufficiency
+    id: review-sufficiency.fence-read-set
+    text: >-
+      Read the feature's `spec.md` (its Screens & Flows manifest included), the product
+      architecture store, the product baselines (`data-model.md`, `contracts/`,
+      `constraints-and-decisions.md`, the design baseline at `.mochiko/product/design/`), and the
+      capability map entries at `.mochiko/features/FEAT-XXX-<slug>.md`; under delta scope, the
+      delta card too, in the feature-desk visit file the entry's marked work row points at — its
+      scope and acceptance criteria, a bug's its reproduction, never its **TEST:** cases.
+  - op: reword-rule
+    schema: skill/review-sufficiency
+    id: review-sufficiency.clause9-delta-inapplicable
+    text: >-
+      The delivered-feature exposure clause does not apply under delta scope — the desk's delta
+      card is itself the `[MODIFY]` instrument, written in the feature-desk visit file's card
+      part, the entry's marked work row pointing at it and folding at landing; a delta fix
+      discovered structural re-fires the design phase rather than clearing here.

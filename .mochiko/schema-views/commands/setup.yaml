@@ -119,6 +119,22 @@ sections:
         kind: gate
         text: >-
           Final acceptance of the surface set is the user's, flagged proposal by flagged proposal.
+      - id: setup.ruling-places
+        labels: [user-gate]
+        class: must
+        kind: binding
+        text: >-
+          The run's rulings outside its interrogation take the asking line (setup.asking-line),
+          each with its next writer set. Writer held: a reality-vs-intent conflict
+          (setup.user-conflict-rulings), by the trace from ratified intent to authored surfaces
+          (setup.fail.unclosed-trace). Writer off: the mode when ambiguous
+          (setup.user-mode-ruling), a coverage survivor's routing
+          (setup.coverage-survivor-routing) and a second FAIL at the gate loop
+          (setup.gate-loop-bound). Synthesis ratification (setup.gate-synthesis-ratification) and
+          final acceptance (setup.gate-final-acceptance) stay yes / no gates, their writer held by
+          that trace and the validate seat's grade (setup.validate-seat-form). The interrogation's
+          card, module and waiver rulings (setup.user-card-rulings) stay its own.
+        anchor: 2026-10-15 engine-follow-up D10
   - id: setup.sec.tools
     title: Tools bindings
     intent: Surfaces, inputs, templates, and hand-offs the run binds to.
@@ -260,6 +276,10 @@ sections:
           after. The memory home's size bounds live in the knowledge-management invariants it
           cites, and the ledger and trace manifest are declared files there, not free names.
         anchor: 2026-09-13 hook-enforced-artifact-schema D1
+      - id: setup.asking-line
+        class: must
+        extends: common.asking-line
+        anchor: 2026-10-15 engine-follow-up D10
   - id: setup.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-run ruling can waive.
@@ -312,6 +332,10 @@ sections:
         class: floor
         extends: common.gate-loop-bound
         anchor: 2026-09-19 author-grader-consolidation D6
+      - id: setup.thinking-stage
+        class: floor
+        extends: common.thinking-stage
+        anchor: 2026-10-15 engine-follow-up
   - id: setup.sec.fail-conditions
     title: Not done — default FAIL
     intent: >-

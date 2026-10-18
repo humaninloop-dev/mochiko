@@ -22,6 +22,19 @@ land by `0058-thinking-engine.yaml` on the review six-set; the `## Rules — del
 mochiko-cli` block and the `allowed-tools` grant are pure additions riding D2. Pre-edit verbatim
 text: `git show 5162f1a:plugins/mochiko/skills/analysis-iterative/<file>`. -->
 
+<!-- Wave context: wave 1 of the engine follow-up build (v0.121.0) — the `description:` and the
+Overview name the feature desk's card visits among the callers, and the shared asking line. Pure
+additions only, so no entry, recorded here for the audit's read: the description gains "the
+feature desk's card visits" and ", and when a command asks a ruling outside its stage, by its
+asking line's named subset" (594 → 713 characters, the canonical snippet; budget 595, cap 1,536);
+the Overview's caller list gains "the `/mochiko:feature` desk's card visits" and a closing
+sentence naming `common.asking-line` (body 5,376 → 5,588). Ruling:
+`.mochiko/brainstorms/engine-follow-up/record.md` D2-card-visits-stage and D10-two-switch-test as
+changed at review (QR3), with default 18 (`0085-asking-line.yaml`); `DECISIONS.md` 2026-10-15
+"Engine follow-up ruled" row. No rule, slot or body mechanic changes (default 19); the render is
+unchanged at 10,691. Pre-edit verbatim text:
+`git show c840469:plugins/mochiko/skills/analysis-iterative/SKILL.md`. -->
+
 ## [v0.120.0] The enrichment variant — `SPECIFICATION-INPUT.md`, `ENRICHMENT.md` and `### Specification-input enrichment` — stripped
 
 - **Disposition:** superseded → none in this skill: the variant had no caller (record F27). A

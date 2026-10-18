@@ -1,6 +1,6 @@
 ---
 name: analysis-iterative
-description: This skill MUST be invoked when running the shared thinking stage — a question worked through with the user one fork per turn, facts before forks, every ruling the user's, the next writer held inside the ruled set when the caller asks — in brainstorm's deciding, specify's intent and story stages, the architecture desk's focus stage, implement's design stage and setup's interrogation. SHOULD also invoke on 'think this through', 'thinking stage', 'ruled set', or a multi-decision trade-off. Distinct from review-specifications, which grades a drafted spec; this skill rules what gets written.
+description: This skill MUST be invoked when running the shared thinking stage — a question worked through with the user one fork per turn, facts before forks, every ruling the user's, the next writer held inside the ruled set when the caller asks — in brainstorm's deciding, specify's intent and story stages, the architecture desk's focus stage, the feature desk's card visits, implement's design stage and setup's interrogation, and when a command asks a ruling outside its stage, by its asking line's named subset. SHOULD also invoke on 'think this through', 'thinking stage', 'ruled set', or a multi-decision trade-off. Distinct from review-specifications, which grades a drafted spec; this skill rules what gets written.
 allowed-tools: Bash(mochiko-cli *)
 ---
 
@@ -15,9 +15,11 @@ adapt to the complexity that emerges, and each question's format to the user's s
 confident, uncertain, or somewhere in between.
 
 Its callers extend it with their domain part in their own rules: `/mochiko:brainstorm`'s
-deciding, `/mochiko:specify`'s story stage, the `/mochiko:architecture` desk's focus stage and
-`/mochiko:implement`'s design stage; `/mochiko:setup`'s interrogation and specify's intent stage
-reach it through their own pointers, the contract off.
+deciding, `/mochiko:specify`'s story stage, the `/mochiko:architecture` desk's focus stage, the
+`/mochiko:feature` desk's card visits and `/mochiko:implement`'s design stage; `/mochiko:setup`'s
+interrogation and specify's intent stage reach it through their own pointers, the contract off.
+Outside its thinking stage, a command opts the rulings it asks into a named subset of these rules
+by the shared asking line its own rules extend (`common.asking-line`).
 
 ## Rules — delivered by mochiko-cli
 

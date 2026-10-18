@@ -1,0 +1,10 @@
+# Feature Desk Visit — checklist
+
+- [ ] Are the goal and its done condition stated, the key named, and every input handed in named?
+- [ ] Does every entry name its kind, quote the user's change, carry a sentence or `open`, give a bug's reproduction, and carry one provenance mark?
+- [ ] Does every batch row show its default and its cost beside the user's ruling?
+- [ ] Is every difference ruled in or out, an out carrying its why, or the skip stated?
+- [ ] Is every ruled card here in the tasks template's card shape, each acceptance inside its entry in the ruled set?
+- [ ] Is there a verdict against the done condition?
+
+---

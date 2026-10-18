@@ -58,9 +58,11 @@ Every visit has a goal; a visit is never goal-less.
    condition: a micro-brainstorm converges to a **one-line visit goal and its explicit done
    condition**, agreed with the user. Convergence is the requirement, not conversation length: a
    crisp demand converges in a single exchange — state the goal and its done condition, get the
-   nod, and go. The protocol never imposes brainstorm ceremony on a clear ask; it only refuses to
-   start a visit whose finish line no one has named. Then run to the done condition: the visit
-   executes toward that condition and closes with a verdict against it.
+   nod, and go. The protocol never imposes brainstorm ceremony on a clear ask — a clear ask
+   cutting one card whose ruled set the demand already states closes its thinking stage on the
+   goal nod, one confirm (`feat.card-stage`); it only refuses to start a visit whose finish line
+   no one has named. Then run to the done condition: the visit executes toward that condition and
+   closes with a verdict against it.
 3. **Not done — default FAIL:** the `kind: fail` rules of `feat.sec.fail-conditions` — their
    count is the `kind: fail` line under `pins` in the preamble block — any one standing fails
    the visit. A fail-conditions block whose end-line count disagrees with that pin is the

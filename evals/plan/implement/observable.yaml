@@ -28,9 +28,9 @@ observable:
   - {id: impl.builder-never-designs, why: roster separates builder from design seats}
   - {id: impl.seat-card-author-independence, why: card author design-class with QA on TEST cases}
   - {id: impl.builder-decompose-disclose, why: build phase shows decomposition disclosed + test-first + plan approval}
-  - {id: impl.seat-verification-independence, why: verification seats never the implementer, real infrastructure}
+  - {id: impl.seat-verification-independence, why: "verification seats never the implementer, real infrastructure"}
   - {id: impl.verification-design-time-grades, why: card review + the judgment grade of any build-raised baseline entry named}
-  - {id: impl.landing-verifier-folds, why: landing verification checks the landing flip — in-flight and modifying to built, removing to its stub}
+  - {id: impl.landing-verifier-folds, why: "landing verification checks the landing flip — in-flight and modifying to built, removing to its stub"}
   - {id: impl.seat-gap-finder-blind, why: fresh devils-advocate dispatched blind}
   # the design stage (0076-implement-design-stage · 0077-implement-on-engine, 2026-10-11)
   - {id: impl.design-stage, why: s2's two graded gaps are ruled with the user on the thinking stage with its ruled-set contract on before any design seat drafts · the ruled set saved in design-stage.md · the design seats planning and drafting only inside it · run-open still one confirmation · s1's zero-gap path runs no stage (co-moves with impl.thinking-stage)}
@@ -43,52 +43,58 @@ observable:
   - {id: impl.design-stage-agenda, why: s2's stage agenda is exactly its two graded gaps and nothing outside them is designed without the user's ruling (the outside-need split by kind is unplanted · no fixture carries a need outside the gap list)}
   # architecture touches (0078-implement-architecture-touches, 2026-10-11)
   - {id: impl.desk-offer, why: s2's background-worker gap is structural and no desk visit file is keyed to FEAT-002 · so the stage first offers a desk visit (/mochiko:architecture FEAT-002 · the run pausing) or going on here · the user's choice}
+  # the card order and the ruling places (0092-implement-card-order · 0093-implement-asking-line, 2026-10-15)
+  - {id: impl.card-order, why: s1's cards (after the run-open confirmation) and s2's (after the design checkpoint) follow a rough order of what works after each step shown as a mock in the message before the card-authoring seat slices · a question only on a real choice (which independent outcome first · few big steps or many small) and none where the walking skeleton and the dependencies decide it · the ruled order saved as one line in tasks.md's header before that seat opens the file · the cards shown at the confirm as after step n you can… (the delta and lane limbs are unplanted · no delta or lane scenario)}
+  - {id: impl.ruling-places, why: each ruling outside the design stage goes on the asking line with its next writer set — the card order writer on (s1 · s2 · the card-authoring seat writes from it and the card review checks it kept) · the run-open rulings writer held (written into the sufficiency report and binding the run) · s2's desk offer writer off · final acceptance kept a yes-or-no gate held by the landing verification seat (the checkpoint · disposition · deviation · governance · scope · kind-dispute · rework-bound · exemption and disputed-clause limbs are run-time contingencies · the epic-halt limb needs an epic scenario · the absent-surface and design-first-write limbs need fixture conditions none plants · co-moves with impl.asking-line)}
+  - {id: impl.promises-kept-table, why: s2's acceptance gate is shown as a promises-kept table composed in the conversation with no new file — each I'd-know-it-works line from s2's design-stage.md quoted verbatim beside the test that proves it and its result · an open line reading open — no target set · no pass or fail column · the final-validation report and the built-vs-signed diff beneath it · an amend naming the disputed rows each then put as fix now or book (s1 carries no such line · no slate · no stage · no visit file)}
   # tools
-  - {id: impl.tools-referenced-never-restated, why: plan references pointer skills, never restates their procedure}
+  - {id: impl.tools-referenced-never-restated, why: "plan references pointer skills, never restates their procedure"}
   - {id: impl.sufficiency-binding-verdict, why: entry shows per-row check with binding verdict routing}
   - {id: impl.sufficiency-report, why: sufficiency-report.md path and content planned}
   - {id: impl.design-outputs-home, why: design outputs written in place in the product baselines under the run's marker; only the architecture.md drawing in the run home (s2)}
   - {id: impl.design-review-pair, why: both review skills graded before the checkpoint (s2)}
   - {id: impl.design-map-assertion, why: design phase asserts dependencies/extent onto the entry (s2)}
   - {id: impl.cards-template, why: tasks.md from the tasks template/schema binding}
-  - {id: impl.card-contents, why: card content fields incl TEST gate described, no task lists}
+  - {id: impl.card-contents, why: "card content fields incl TEST gate described, no task lists"}
   - {id: impl.zero-gap-map-assertion, why: zero-gap path carries the map assertion (s1)}
   - {id: impl.card-review-before-confirm, why: verification seat reviews cards before the confirm}
   - {id: impl.craft-build-bindings, why: build binds the executing/brownfield/minimalism skills}
   - {id: impl.craft-verify-bindings, why: verify binds testing-end-user + code-minimalism lens}
-  - {id: impl.design-inputs, why: inputs enumerated - sufficiency report, the architecture.md drawing and the marked baseline entries in the pinned-base diff, baselines, spec}
+  - {id: impl.design-inputs, why: "inputs enumerated - sufficiency report, the architecture.md drawing and the marked baseline entries in the pinned-base diff, baselines, spec"}
   - {id: impl.progress-surface, why: per-card checkboxes flipped as progress}
   - {id: impl.reports-envelope, why: report paths + envelope format named}
   - {id: impl.gates-full-suite, why: quality gates run the full suite}
   - {id: impl.regression-sweep, why: accumulated delivered gates re-run (s2 - FEAT-001 gates.md)}
   - {id: impl.cold-verification, why: dependency-cold snapshot step planned}
-  - {id: impl.gap-finding-scope, why: pass present on selection scope, skip stated otherwise}
+  - {id: impl.gap-finding-scope, why: "pass present on selection scope, skip stated otherwise"}
   - {id: impl.gap-finding-blind-dispatch, why: two-message blind dispatch with the fence list}
   - {id: impl.finding-kinds, why: finding split spec-required vs beyond-spec described}
   - {id: impl.store-landing, why: three-part store landing (flip · As-built/Drift judgment · orphan check) planned where a store delta exists (s2)}
-  - {id: impl.landing-selection, why: graduation batch - row fold, status, index, specs-index}
+  - {id: impl.landing-selection, why: "graduation batch - row fold, status, index, specs-index"}
   - {id: impl.baseline-diff-review, why: pinned-base diff of every touched baseline reviewed - non-author grade; unmarked-write test; duplicate-id check; landing flip}
   - {id: impl.base-pins, why: run-open base pinned at entry before the sufficiency seat; sign-off pin at the checkpoint; both in the final-validation report}
   - {id: impl.baseline-entry-grammar, why: written and amended baseline entries carry the run's Lifecycle marker - proposed (<key>) until the checkpoint flips them}
-  - {id: impl.run-folder, why: run-open names the run folder .mochiko/runs/<owner>-run<n>/ with its .gitignore line ensured, every seat brief carries it, and the lead removes it after acceptance}
-  - {id: impl.evidence-citation, why: reports quote decisive lines with the command and commit (or the run-open pin plus the working fingerprint), never a full-log path}
+  - {id: impl.run-folder, why: "run-open names the run folder .mochiko/runs/<owner>-run<n>/ with its .gitignore line ensured, every seat brief carries it, and the lead removes it after acceptance"}
+  - {id: impl.evidence-citation, why: "reports quote decisive lines with the command and commit (or the run-open pin plus the working fingerprint), never a full-log path"}
   - {id: impl.gates-fold, why: ruled findings fold into gates.md in TEST grammar}
   # ways-of-working
   - {id: impl.author-grader-default-fail, why: no output cleared by its author across the roster}
-  - {id: impl.plan-approval-producers, why: producing seats plan first, graders exempt}
-  - {id: impl.escalation-batching, why: reserved questions batched at checkpoints}
-  - {id: impl.finding-severity-routing, why: Minor to BACKLOG, Important blocks - routing described}
-  - {id: impl.model-tiering, why: explore reads routed to haiku Explore, briefs carry the rule}
-  - {id: impl.no-git-mutations, why: plan suggests commits, never runs git}
-  - {id: impl.acceptance-plain-text, why: gates as plain blocking text, never timed}
+  - {id: impl.plan-approval-producers, why: "producing seats plan first, graders exempt"}
+  - {id: impl.escalation-batching, why: reserved questions accumulate to the cycle checkpoint and are put there on the asking line · only a build-blocking question interrupts mid-cycle}
+  - {id: impl.finding-severity-routing, why: "Minor to BACKLOG, Important blocks - routing described"}
+  - {id: impl.model-tiering, why: "explore reads routed to haiku Explore, briefs carry the rule"}
+  - {id: impl.no-git-mutations, why: "plan suggests commits, never runs git"}
+  - {id: impl.acceptance-plain-text, why: "gates as plain blocking text, never timed"}
   - {id: impl.design-stage-unit, why: each of s2's gaps opens on the user's direction and one I'd-know-it-works line (open allowed) · the contract gap's pieces proposed read-only by the technical-analyst and the worker gap's by the principal-architect · each piece put on its own turn or in the defaults batch · the seats' plans finished inside the ruled set}
   - {id: impl.design-stage-file, why: s2's ruled set is written to design-stage.md in FEAT-002's home in the shape `mochiko-cli template design-stage` renders · item by item as ruled and whole before the pen passes to the design seats}
   - {id: impl.index-regeneration, why: s2 writes contracts and store entries · so the derived ARCHITECTURE.md is regenerated through the store skill at the design checkpoint and again at landing (the fold only where structure was built)}
+  # the asking line (0085-asking-line · 0093-implement-asking-line, 2026-10-15)
+  - {id: impl.asking-line, why: the run's rulings outside the design stage — the card-order question where one is put (s1 · s2) and s2's desk offer — are put under mochiko:analysis-iterative's asking rules by reference (facts read first · options with a recommendation · a mock in the message) and never restated · the card confirm and final acceptance keep their yes-or-no gate form (co-moves with impl.ruling-places)}
   # boundaries
   - {id: impl.baselines-in-place-marked, why: baselines edited in place under the run's lifecycle marker - no per-feature copies; no ledger; no fold}
-  - {id: impl.attempt-per-grade, why: attempt bounds declared at run-open, charged per grade}
+  - {id: impl.attempt-per-grade, why: "attempt bounds declared at run-open, charged per grade"}
   - {id: impl.gap-rework-bound, why: run-scale bound restated at run-open}
-  - {id: impl.gates-never-triaged, why: failed gate fails the cycle, no triage}
+  - {id: impl.gates-never-triaged, why: "failed gate fails the cycle, no triage"}
   - {id: impl.minimalism-advisory, why: minimalism findings stay advisory in verification}
   - {id: impl.sound-loop-floor, why: produce/review/user-rule wiring visible end to end}
   - {id: impl.transport-floor, why: multi-seat composition names the transport floor}
@@ -119,10 +125,10 @@ out_of_instrument:
   - {id: impl.absent-surfaces, why: conditional - all surfaces present in the fixtures}
   - {id: impl.briefs-name-rules-files, why: conditional - no governance region planted}
   - {id: impl.design-absent-baseline-seed, why: conditional - baselines present}
-  - {id: impl.mutation-lens, why: conditional - depth-conditional, no governance planted}
+  - {id: impl.mutation-lens, why: "conditional - depth-conditional, no governance planted"}
   - {id: impl.km-landing, why: conditional - no knowledge-management.md planted}
   - {id: impl.lane-never-widens, why: conditional - no product-lane scenario}
-  - {id: impl.landing-lane, why: conditional - no product-lane scenario (minted at the ontology wave's D9 gate, 2026-08-27)}
+  - {id: impl.landing-lane, why: "conditional - no product-lane scenario (minted at the ontology wave's D9 gate, 2026-08-27)"}
   - {id: impl.landing-delta, why: conditional - no delta-scope scenario}
   - {id: impl.design-stage-inputs, why: conditional - no handed-in input planted (no desk visit file · the specs carry no slate or Intent · no brainstorm record named)}
   - {id: impl.design-first-write, why: conditional - no UX-bearing scenario (ux_bearing absent · the specs carry no Screens & Flows)}
@@ -130,6 +136,7 @@ out_of_instrument:
   - {id: impl.design-finish, why: conditional - no UX-bearing scenario}
   - {id: impl.design-landing, why: conditional - no UX-bearing scenario}
   - {id: impl.design-audit-advisory, why: conditional - no UX-bearing scenario}
+  - {id: impl.feature-visit-input, why: conditional - no feature-desk visit file planted (no .mochiko/features/desk/ in any fixture) · the rule binds a present file's ruled set and cards as inputs · with none planted a plan can show only an absence (impl.design-stage-inputs sits conditional on the same file · impl.design-inputs is observable on the inputs s2 does carry) · minted at 0094-implement-reads-desk 2026-10-15}
   # epic
   - {id: impl.epic-design-always-fires, why: epic}
   - {id: impl.epic-seam-owners, why: epic}
@@ -137,7 +144,7 @@ out_of_instrument:
   - {id: impl.epic-card-sequence, why: epic}
   - {id: impl.landing-epic, why: epic}
   - {id: impl.epic-member-halt, why: epic + contingency}
-  # fail-conditions (all 16 - end-state failures, not forward-plan content; C1)
+  # fail-conditions (all 17 - end-state failures, not forward-plan content; C1)
   - {id: impl.fail.sufficiency-unrecorded, why: fail-condition}
   - {id: impl.fail.design-skipped, why: fail-condition}
   - {id: impl.fail.card-independence, why: fail-condition}
@@ -154,6 +161,7 @@ out_of_instrument:
   - {id: impl.fail.spec-gap-unresolved, why: fail-condition}
   - {id: impl.fail.no-acceptance, why: fail-condition}
   - {id: impl.fail.design-outside-ruled-set, why: fail-condition}
+  - {id: impl.fail.cards-outside-order, why: fail-condition}
 
 # Re-keyed 2026-10-11 to migrations 0075-0084 (implement-brainstorm-led and
 # architecture-brainstorm-interview, wave 3 of their build), before any grid of that edit:
@@ -169,3 +177,31 @@ out_of_instrument:
 # Placed at the same re-key: the five 0013-design-baseline-home rules
 # (2026-09-19 impeccable-design-integration) no earlier edit placed, all five
 # conditional on ux_bearing, which no fixture plants. 71 + 54 = 125.
+
+# Re-keyed 2026-10-18 to migrations 0092-0095 (engine-follow-up W2 — D5, D6, D8, D10's
+# Implement row and its confirmed defaults), before any grid of that edit: 6 rules added -
+# 4 observable (impl.card-order on s1 and s2, impl.ruling-places on its planted limbs,
+# impl.promises-kept-table on s2's ruled lines, and the stub impl.asking-line) and 2 out of
+# instrument (the floor fail node impl.fail.cards-outside-order beside the other sixteen, and
+# impl.feature-visit-input conditional) - and none removed. Of the 10 reworded rules, 9
+# (card-review-before-confirm, finding-severity-routing, beyond-spec-disposition,
+# delivered-territory-routing, design-inputs, design-stage-inputs, desk-offer,
+# design-stage-agenda, gap-finding-blind-dispatch) keep their buckets and whys and are graded
+# against their new text; impl.escalation-batching keeps its bucket, and its why, which named
+# the one-batch limb 0093 dropped, is re-cut to the asking line. Bucket shape at --old-ref
+# fccae34: unchanged 115 (64 observable) · changed 10 (7) · removed 0 · added 6 (4).
+# preregistration.md stays the record of the grids in runs/ and of its 2026-10-11 amendment
+# (its 71 is that amendment's count): the wave plan's §3.6 leaves a kit that has run
+# un-recounted, as W1 left setup's; implement's own 2026-10-11 amendment did recount, so the
+# next grid of this edit amends it first. 75 + 56 = 131.
+
+# Re-keyed 2026-10-18 to migration 0101 (engine-follow-up W3 — the two W2 gate advisories),
+# before any grid of that edit: no rule added or removed. The 3 reworded rules
+# (feature-visit-input, landing-verifier-folds, ruling-places) keep their buckets and whys,
+# graded against their new text; no why named a limb the new text dropped. Bucket shape at
+# --old-ref 437b654: unchanged 128 (73 observable) · changed 3 (2) · removed 0 · added 0. At the
+# same touch the 18 whys a comma cut short (a flow mapping ends a plain scalar at the comma, so
+# the rest parsed as a stray key; BACKLOG "Engine-desk build — tool and kit residuals",
+# engine-follow-up default 21) are double-quoted whole, their words unchanged.
+# preregistration.md stays as it is: the kit has run (runs/), so it is not recounted
+# (wave2-implement.md §3.6's rule). 75 + 56 = 131.

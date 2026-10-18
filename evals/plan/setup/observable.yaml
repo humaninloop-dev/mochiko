@@ -56,9 +56,14 @@ observable:
   - {id: setup.durables-never-deleted, why: s3 carries both durables — the amend extends them and never offers deletion}
   - {id: setup.governance-region-ownership, why: region regenerated between the markers with user content outside them untouched (planted in s1 and s3)}
   - {id: setup.carve-outs-preserved, why: s3 plants the output-style pair carrying a user-set value plus a user-added line}
-  - {id: setup.map-never-overwrite, why: the empty-index scaffold is written only where absent — s1 and s2 — nothing is reconstructed on any path, and s3's existing map is never written over}
-  - {id: setup.gate-loop-bound, why: the validate loop described as one fix and one re-grade by the same seat, a second FAIL halting to the user}
+  - {id: setup.map-never-overwrite, why: "the empty-index scaffold is written only where absent — s1 and s2 — nothing is reconstructed on any path, and s3's existing map is never written over"}
+  - {id: setup.gate-loop-bound, why: "the validate loop described as one fix and one re-grade by the same seat, a second FAIL halting to the user"}
   - {id: setup.store-ruled-content-never-here, why: no architecture stance taken in the run on any path}
+  # the thinking stage (0088-setup-thinking-stage, 2026-10-15)
+  - {id: setup.thinking-stage, why: the plan binds the interrogation to mochiko:analysis-iterative as setup's thinking stage — the engine's asking rules referenced never restated · setup's rules carry the domain part (s1 · s2 · co-moves with setup.interrogation-inline)}
+  # the asking line and ruling places (0085-asking-line · 0099-setup-asking-line, 2026-10-15)
+  - {id: setup.ruling-places, why: each ruling outside the interrogation goes on the asking line with its next writer set — s2's three reality-versus-README conflicts writer held by the trace from ratified intent to the authored surfaces · the mode where ambiguous (all three modes planted) · the coverage survivors' routing · and a second FAIL at the gate loop writer off · synthesis ratification and final acceptance kept yes-or-no gates held by that trace and the validate seat's grade · the interrogation's card · module and waiver rulings left its own (co-moves with setup.asking-line)}
+  - {id: setup.asking-line, why: the run's rulings outside the interrogation — s2's conflicts · the mode where ambiguous · the coverage survivors' routing · a second FAIL at the gate loop — are put under mochiko:analysis-iterative's asking rules by reference (facts read first · options with a recommendation · a mock in the message) and never restated · ratification and final acceptance keep their yes-or-no gate form (co-moves with setup.ruling-places)}
 
 out_of_instrument:
   # latitude / register
@@ -82,3 +87,18 @@ out_of_instrument:
 #     module attached and a domain-layer rules file; only the output-style pair is planted.
 #   setup.km-module-scaffold — no fixture plants an adopted knowledge-management module, so
 #     the rule is graded on the described adoption branch, never on a never-overwrite read.
+
+# Re-keyed 2026-10-16 to migration 0088 (engine-follow-up default 17), before any grid of that
+# edit: the floor stub setup.thinking-stage joined observable (beside transport-floor); nothing
+# reworded and nothing removed, and preregistration.md stays the ontology grid's record. 34 · 8
+# of 42.
+
+# Re-keyed 2026-10-18 to migration 0099 (engine-follow-up W3 — D4-every-place-sorted and
+# D10-two-switch-test, the re-sort's Setup row, defaults 15 and 16 held), before any grid of
+# that edit: setup.ruling-places and the stub setup.asking-line joined observable; nothing
+# reworded and nothing removed. Bucket shape at --old-ref 437b654: unchanged 42 (34 observable)
+# · changed 0 · removed 0 · added 2 (2). At the same touch the 2 whys a comma cut short (a flow
+# mapping ends a plain scalar at the comma, so the rest parsed as a stray key; found at W3
+# planning, engine-follow-up default 21) are double-quoted whole, their words unchanged.
+# preregistration.md stays the ontology grid's record: the kit has run (runs/), so it is not
+# recounted (wave2-implement.md §3.6's rule, carried to this wave). 36 · 8 of 44.

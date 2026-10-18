@@ -155,13 +155,16 @@ sections:
         text: >-
           The explorer is blind to code and cards. Admissible inputs are an explicit inclusion
           list, not a layer label: `spec.md` (FR-XXX, SC-XXX, stories, declared edge cases) · the
-          run's sufficiency report and the feature's signed `architecture.md` — those two
-          artifacts only, never the `FEAT-XXX/` run-output directory at large — with the store
-          diagram files in `.mochiko/product/architecture/diagrams/` that `architecture.md` lists
-          · Screens & Flows (SCR-XXX, FLOW-XXX) · `data-model.md` (entities, state machines,
-          DS-XXX sensitivity) · `contracts/` (`api.yaml` and any sibling contract documents) ·
-          the architecture store's concern rows only — their `NFR-XXX` targets
-          (`.mochiko/product/architecture/concerns.md` plus any graduated
+          user's own lines from the run's ruled sets, quoted into message 1 by the lead — each
+          direction and "I'd know it works if…" line of the run's `design-stage.md` and of any
+          feature-desk visit file keyed to the run, never those files, their ruled pieces or their
+          cards · the run's sufficiency report and the feature's signed `architecture.md` —
+          those two artifacts only, never the `FEAT-XXX/` run-output directory at large — with
+          the store diagram files in `.mochiko/product/architecture/diagrams/` that
+          `architecture.md` lists · Screens & Flows (SCR-XXX, FLOW-XXX) · `data-model.md`
+          (entities, state machines, DS-XXX sensitivity) · `contracts/` (`api.yaml` and any
+          sibling contract documents) · the architecture store's concern rows only — their
+          `NFR-XXX` targets (`.mochiko/product/architecture/concerns.md` plus any graduated
           `concerns/AX-XXX-<slug>.md`) · on a UX-bearing feature, the design baseline
           (`.mochiko/product/design/`), whose design truth and as-built system are the promised
           look and conduct of the rendered UI. In each baseline and store file the fence admits
@@ -199,9 +202,9 @@ sections:
         kind: duty
         text: >-
           The fence is held by dispatch order, not trust. Message 1 carries inclusion-list
-          references only — never a card, code, or `**TEST:**` path — and the seat reads them
-          and states its derived expectations; message 2 opens probing only once those
-          expectations are on the record.
+          references only, and the user's lines the list admits as quoted text — never a card,
+          code, or `**TEST:**` path — and the seat reads them and states its derived
+          expectations; message 2 opens probing only once those expectations are on the record.
         anchor: 2026-08-19 qa-gap-finding-verification D3
       - id: testing-gap-finding.expectations-numbered-before-probing
         labels: [evidence]

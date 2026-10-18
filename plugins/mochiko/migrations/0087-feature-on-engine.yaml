@@ -1,0 +1,214 @@
+grammar: 1
+id: 0087-feature-on-engine
+sequence: 87
+intent: >-
+  Put /mochiko:feature's card visits on the shared thinking stage and its other rulings on the
+  asking line (engine-follow-up D2 with QR5, D3, D7 with QR4, D10's Feature row; defaults 6–11,
+  23, 24 as changed at review): the visit_kind condition and the card-set moment, mirroring the
+  architecture desk's; the class: floor stub feat.thinking-stage (common.thinking-stage's fifth
+  extender) and the stub feat.asking-line (common.asking-line's first); six domain rules —
+  feat.card-stage, feat.card-unit, feat.visit-file, feat.card-writer, feat.card-blind-list,
+  feat.ruling-places — the hand-off rule feat.carry-forward, and the floor fail
+  feat.fail.card-outside-set. Three rewords for lines the visit file makes false, each keeping its
+  id, class, kind and anchor: feat.artifact-home (the floor of hook-enforced-artifact-schema D1
+  — visit.md joins the desk's output, the force kept), feat.delta-cards (last reworded under
+  delta-files-vs-direct-baseline-edits D1 — the card is written in the visit file's card part,
+  its shape, baseline touch and review leg unchanged), feat.stable-ground-triage
+  (pm-role-and-feature-derivation D10's charter tools — "card on the entry" reads as the entry
+  pointing at the card, D7's changed-at-review line). feat.dispatch-scope-split and
+  feat.dispatch-specify stay true and are untouched. No asking mechanic is restated, no engine
+  rule or slot changes, and no floor or fail is retired or lowered.
+anchor: 2026-10-15 engine-follow-up
+hash: sha256:897d1d65f309eb9ca3ed2425d8fdefcafa7a3002df8453b8555c41ae57eb1bc1
+changes:
+  - op: set-condition
+    schema: command/feature
+    name: visit_kind
+    spec:
+      values: [card, ruling, other]
+      resolution: entry-derived
+      note: >-
+        fixed by the converged visit goal: card — the visit cuts a card (a bug, an improvement,
+        a growth row, a lane card), whatever else it rules; ruling — a grooming ruling (merge,
+        retire, status) or an epic ruling (mint, membership, close); other — a map query, a
+        route to /mochiko:specify, a route override or an architecture trigger's routing.
+        Re-derived whenever the visit goal is re-converged: a visit that turns to cutting a card
+        re-converges its goal first, so the stage runs before any card is written.
+  - op: set-moment
+    schema: command/feature
+    name: card-set
+    text: >-
+      Where the visit's card set is worked with the user — after the one-line visit goal is
+      agreed, before the card's writer writes anything.
+  - op: mint-rule
+    schema: command/feature
+    section: feat.sec.boundaries
+    rule:
+      id: feat.thinking-stage
+      class: floor
+      extends: common.thinking-stage
+      anchor: 2026-10-15 engine-follow-up D2
+  - op: mint-rule
+    schema: command/feature
+    section: feat.sec.ways-of-working
+    rule:
+      id: feat.asking-line
+      class: must
+      extends: common.asking-line
+      anchor: 2026-10-15 engine-follow-up D10
+  - op: mint-rule
+    schema: command/feature
+    section: feat.sec.reserved
+    rule:
+      id: feat.ruling-places
+      labels: [user-gate]
+      class: must
+      kind: binding
+      text: >-
+        The desk's rulings outside the card set's stage take the asking line (feat.asking-line),
+        each with its next writer set: a grooming ruling — merge, retire, status — and an
+        epic's mint, membership change and close are writer on, the map or epic write landing the
+        ruling and its existing non-author grade checking the meaning kept; a route override and
+        an architecture trigger at the growth door are writer off; a selection is writer held, the
+        run building only what is selected.
+      anchor: 2026-10-15 engine-follow-up D10
+  - op: mint-rule
+    schema: command/feature
+    section: feat.sec.tools
+    rule:
+      id: feat.card-stage
+      labels: [scope-entry, user-gate]
+      class: must
+      kind: duty
+      text: >-
+        At the card-set moment the cards this visit cuts are worked with the user on the thinking
+        stage with its ruled-set contract on: the visit goal is its opening, the card set with the
+        defaults as confirmed is the ruled set, saved in the visit file (feat.visit-file), and the
+        card's writer (feat.card-writer) is the next writer. A single-card clear ask whose set the
+        demand already states closes with the goal nod; the set takes a screen of its own whenever
+        there is more than one card or any fork was put, and its close sits inside the visit's
+        done condition, never beside it.
+      when: {visit_kind: card}
+      anchor: 2026-10-15 engine-follow-up D2
+  - op: mint-rule
+    schema: command/feature
+    section: feat.sec.tools
+    rule:
+      id: feat.card-unit
+      labels: [user-gate, binding]
+      class: must
+      kind: binding
+      text: >-
+        The user rules each card as two things: the change in their own words, and one "I'd know
+        it works if…" sentence or `open`, an open line carried as an open question and never
+        filled in. A bug's reproduction is a fact in hand, never asked again; the card's writer
+        writes the card's 1–3 acceptance criteria, or the bug's reproduction-failing test,
+        inside that ruling, and a target number comes only from the user.
+      anchor: 2026-10-15 engine-follow-up D3
+  - op: mint-rule
+    schema: command/feature
+    section: feat.sec.tools
+    rule:
+      id: feat.visit-file
+      labels: [binding]
+      class: must
+      kind: binding
+      text: >-
+        A card visit keeps its ruled set and its cards in one visit file, `visit.md`, for each
+        capability or lane it cuts cards on, in the feature-desk home to the shape `mochiko-cli
+        template feature-visit` renders, its folder's slug carrying the joined FEAT id lower-cased
+        or `lane-<slug>`. You hold its pen for the header and the set, the card's writer for the
+        card part once the pen passes; a capability's entry carries the marked work row pointing
+        at the file.
+      when: {visit_kind: card}
+      anchor: 2026-10-15 engine-follow-up D7
+  - op: mint-rule
+    schema: command/feature
+    section: feat.sec.roles
+    rule:
+      id: feat.card-writer
+      labels: [independence, seats]
+      class: must
+      kind: duty
+      text: >-
+        The card's writer follows the desk's wiring — desk-authored by
+        mochiko:patterns-sound-loop's default wiring, a producing seat where the desk staffs one
+        (feat.author-grader) — and each card's sound-loop review leg (feat.sound-loop-floor),
+        `devils-advocate` by that same wiring, grades the card against the visit file for sameness
+        of meaning.
+      when: {visit_kind: card}
+      anchor: 2026-10-15 engine-follow-up
+  - op: mint-rule
+    schema: command/feature
+    section: feat.sec.roles
+    rule:
+      id: feat.card-blind-list
+      labels: [independence, seats]
+      class: must
+      kind: duty
+      text: >-
+        Once per visit that cuts more than one card or a growth row, before the card set closes,
+        one fresh persona-less `general-purpose` seat spawned with `model: opus` draws the blind
+        list (analysis-iterative.blind-second-list), the visit goal its opening; a visit that cuts
+        a single bug or improvement card skips it.
+      when: {visit_kind: card}
+      anchor: 2026-10-15 engine-follow-up
+  - op: mint-rule
+    schema: command/feature
+    section: feat.sec.tools
+    rule:
+      id: feat.carry-forward
+      labels: [scope-entry, evidence]
+      class: must
+      kind: binding
+      text: >-
+        A demand the desk routes to /mochiko:specify writes no visit file: the sitting's
+        `derivation.md`, carrying the visit goal and the user's words so far, is handed in to
+        specify. An outside need /mochiko:implement sends to the desk arrives with the run's note,
+        handed in to the visit and read as inputs in hand (analysis-iterative.inputs-in-hand), so
+        the stage asks only what the note leaves open.
+      anchor: 2026-10-15 engine-follow-up
+  - op: mint-rule
+    schema: command/feature
+    section: feat.sec.fail-conditions
+    rule:
+      id: feat.fail.card-outside-set
+      labels: [user-gate]
+      class: floor
+      kind: fail
+      text: >-
+        A card cut with no ruled set behind it in a visit file, or one that changes a ruling
+        without the user's word.
+      enforces: [feat.card-stage, feat.visit-file, feat.card-writer]
+      anchor: 2026-10-15 engine-follow-up
+  - op: reword-rule
+    schema: command/feature
+    id: feat.artifact-home
+    text: >-
+      Map stewardship writes into two declared homes: render `mochiko-cli home .mochiko/features`
+      and, for a desk sitting, `mochiko-cli home .mochiko/features/desk/<date-slug>` before the
+      first write. A capability entry is `<FEAT-ID>.md` bound to the `feature-entry` template; the
+      desk's own output is `derivation.md`, and a card visit's is `visit.md` bound to the
+      `feature-visit` template (feat.visit-file); a review of any of them is a report in that
+      home's `reports/`. An id outside the `FEAT-XXX` shape has no home and is raised, never
+      written.
+  - op: reword-rule
+    schema: command/feature
+    id: feat.delta-cards
+    text: >-
+      One delta card per the tasks template's card shape (rendered by `${tasks_schema}`), written
+      in the visit file's card part (feat.visit-file): a bug's acceptance is its
+      reproduction-failing test, an improvement carries 1–3 acceptance criteria; a
+      product-baseline touch known at intake is named on the card, its entries enumerated, and the
+      implement run writes it in place under its lifecycle marker — never a side ledger. Each
+      card — bug and improvement alike — takes the sound-loop review leg
+      (feat.sound-loop-floor) before dispatch.
+  - op: reword-rule
+    schema: command/feature
+    id: feat.stable-ground-triage
+    text: >-
+      Stable-ground triage keys a report to its surface, then checks the ground from the files: a
+      single owning capability `delivered` → the delta lane, the entry's marked work row
+      pointing at the card in the visit file · a single owning capability `in-flight` → not
+      lane work, the finding files to the owning run · no single owner → the product lane,
+      single-flight.

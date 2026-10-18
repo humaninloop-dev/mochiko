@@ -41,34 +41,36 @@ branch `engine-desk-build` (trail); provenance: the two records and
   the stage is judged on is decided from that log, never before it (OQ1: the problem was never
   shown in a real run).
 - [ ] **Engine-desk build — lines incomplete, not false** (2026-10-11; provenance: the build log's
-  W2 unit 7 and W3 P2 entries, P2's plan §12.5) — `patterns-system-design`'s description, overview
-  and taste scope still read delta-only while its taste section governs every diagram · the router's
-  desk row lacks the `<FEAT-ID>` delta visit; its `:90`, `:95`, `:98`, `:162` · the
-  `review-plan-artifacts` description · `ARTIFACT-CHECKLISTS.md:91`'s lifecycle check names
-  elements, not diagram files · `FEASIBILITY-LENS.md:99–101` and the `store_delta` note ·
-  `ARCHITECTURE.md:277`, `:285`, `:388` · `templates/report-format.md:7` · `devils-advocate.md:20`.
-  And one false line, pre-existing: `ARCHITECTURE.md:301` says build-time D-/C-/IP- writes "land as
-  `baseline-delta.md` entries", false since the delta-files retirement.
+  W2 unit 7 and W3 P2 entries, P2's plan §12.5; narrowed 2026-10-18 by the engine follow-up build,
+  default 21 — the router's desk rows and `ARCHITECTURE.md`'s lines fixed, its W3 P2 entries) —
+  `patterns-system-design`'s description, overview and taste scope still read delta-only while its
+  taste section governs every diagram · the `review-plan-artifacts` description ·
+  `ARTIFACT-CHECKLISTS.md:91`'s lifecycle check names elements, not diagram files ·
+  `FEASIBILITY-LENS.md:99–101` and the `store_delta` note · `templates/report-format.md:7` ·
+  `devils-advocate.md:20`. And two false lines, pre-existing: `README.md:106` ("deltas against the
+  shared `.mochiko/product/` baselines") and `:108` ("touched baselines take their delta folds"),
+  false since the delta-files retirement.
 - [ ] **Engine-desk build — tool and kit residuals** (2026-10-11; provenance: the build log's W1
-  close, W3 P1 Q1, W3 P3 Q5 and W2 unit 8 entries) — `mochiko-cli home` prints "carries its section
-  budgets" for templates that declare none (`architecture-visit`, `design-stage`; crate source) ·
-  D9-render-where-viewed's optional Mermaid parse check in `mochiko-cli`, not built (crate source;
-  the lead's call as D9 allows) · a command's `pointer:` to a skill name is unchecked by
-  `migrate validate` · `analysis-iterative/references/ADAPTIVE-EXAMPLES.md` predates the delivered
-  rules (an examples refresh) · 18 implement-kit whys cut short by YAML at a comma · the
-  architecture kit's g3 argument opens with a FEAT id, which the new `argument-hint` reads as a
-  delta visit while the kit expects `visit_kind` other — watch the first grid · `mochiko-cli ids
-  --check` over the whole tree reads 94 bare at the bump (0 under `plugins/mochiko`): 87 in session
-  records (68 this build's own, 19 the specify record's) and seven bare `D3` lines this build added
-  to `crates/mochiko-cli/tests/fidelity.rs:829` and the architecture, brainstorm and specify plan
-  kits — reporting only (human-readable-ids D18-build-done-check); join them at the next touch.
-- [ ] **Engine follow-up session** (2026-10-11; provenance:
-  `.mochiko/brainstorms/implement-brainstorm-led/record.md` D4-shaped-for-six, OQ2) — a brainstorm
-  on: `/mochiko:feature` joining the engine (its unit and where its ruled set lives); whether setup's
-  interrogation and specify's intent stage take the contract half; implement's other moments (card
-  slicing and the seed's hand-off to the `**TEST:**` cases, cycle-checkpoint batches, final
-  validation's gap-finder reading the ruled set, acceptance). Trigger: build item C landed —
-  **fired 2026-10-11** (built at v0.120.0).
+  close, W3 P1 Q1, W3 P3 Q5 and W2 unit 8 entries; narrowed 2026-10-18 by the engine follow-up
+  build, default 21 — 65 comma-cut kit whys across five kits quoted whole, four bare `D3` lines
+  joined, its W3 P3 entries) — `mochiko-cli home` prints "carries its section budgets" for
+  templates that declare none (`architecture-visit`, `design-stage`; crate source) ·
+  D9-render-where-viewed's optional Mermaid parse check, not built (crate source) · a command's
+  `pointer:` to a skill name is unchecked by `migrate validate` ·
+  `analysis-iterative/references/ADAPTIVE-EXAMPLES.md` predates the delivered rules · the
+  architecture kit's g3 argument opens with a FEAT id, read as a delta visit while the kit expects
+  `visit_kind` other — watch the first grid · bare ids, reporting only (human-readable-ids
+  D18-build-done-check), joined at the next touch: the brainstorm kit's three `D3` lines
+  (`observable.yaml:125`, `preregistration.md:45`, `:321`), W2's two at
+  `.mochiko/strips/implement.md:41`, `:43` (`architecture-brainstorm-interview` D5-visit-file-input,
+  `implement-brainstorm-led` D6-outside-need-asked), and session records.
+- [ ] **Delta-card criteria have no line outside the TEST: bundle** (2026-10-18; provenance:
+  `.mochiko/brainstorms/engine-follow-up/build-log.md`, the W2 P1 plan entries, N1) —
+  `feat.delta-cards` asks for "1–3 acceptance criteria" on an improvement card, but the `tasks`
+  card shape keeps criteria only as per-case Covers inside the **TEST:** bundle, so the sufficiency
+  check's per-card form has no admissible object to grade; it fails safe (never reads **TEST:**,
+  grades the ruled set's seed or reads a gap). Rule before the first improvement delta run; naming
+  the seed as the oracle was not taken, since it changes what the clause grades.
 - [ ] **Two notations and an entity ID family** (2026-10-11; provenance: record S1, OQ5, the
   *two notations* default) — the feature-level text notation for ER and state machines
   (`patterns-entity-modeling`) against the product-level Mermaid views, and minting a joined

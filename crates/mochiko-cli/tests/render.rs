@@ -27,9 +27,9 @@ const SHIPPED_LOG_DIR: &str = concat!(
 /// schema-source line stripped, so the byte-equality assertion names the one line that moved.
 const FIXTURE_DIR: &str = concat!(env!("CARGO_MANIFEST_DIR"), "/tests/fixtures/template");
 
-/// The fifteen templates the log carries. This is the fixture's own manifest, not a production
+/// The sixteen templates the log carries. This is the fixture's own manifest, not a production
 /// constant: the closed `TEMPLATE_NAMES` set left the crate when the templates became log data.
-const SHIPPED_TEMPLATES: [&str; 15] = [
+const SHIPPED_TEMPLATES: [&str; 16] = [
     "spec",
     "tasks",
     "feature-entry",
@@ -55,6 +55,9 @@ const SHIPPED_TEMPLATES: [&str; 15] = [
     // Its wave 3 imported one: the design stage's ruled-set file at `0075-design-stage-home`,
     // bound by the `feature`, `epic` and `product-lane` homes.
     "design-stage",
+    // The 2026-10-15 engine-follow-up wave 1 imported one: the feature desk's card-visit file at
+    // `0086-feature-visit-home`, bound by the `feature-desk` home.
+    "feature-visit",
 ];
 
 // ---------------------------------------------------------------------------
@@ -1081,7 +1084,7 @@ fn no_shipped_section_renders_past_the_inline_ceiling() {
 /// `implement`'s floor set, the corpus's largest, in render order. Written out rather than
 /// derived: a floor rule added, renamed or reordered should break a test here, because the
 /// converted `.md`'s read-back and the contract suite's frozen expectations both key on this set.
-const IMPLEMENT_FLOORS: [&str; 39] = [
+const IMPLEMENT_FLOORS: [&str; 40] = [
     "impl.gate-design-checkpoint",
     "impl.gate-card-confirm",
     "impl.gate-final-acceptance",
@@ -1137,6 +1140,9 @@ const IMPLEMENT_FLOORS: [&str; 39] = [
     // `0076-implement-design-stage` (the same session) minted the design stage's floor fail
     // node, appended to `fail-conditions`.
     "impl.fail.design-outside-ruled-set",
+    // `0092-implement-card-order` ("2026-10-15 engine-follow-up D5") minted the card order's
+    // floor fail node, appended to `fail-conditions`.
+    "impl.fail.cards-outside-order",
 ];
 
 /// A skill's floor set, the review family's referent, in render order.
@@ -1231,8 +1237,10 @@ fn the_widest_shipped_floor_index_is_the_size_the_wave_recorded() {
         // characters, all ASCII, so bytes move by the same. Re-measured after `0076` and `0077`
         // (2026-10-11 implement-brainstorm-led wave 3) added `impl.fail.design-outside-ruled-set`
         // and `impl.thinking-stage`: +59 characters and +61 bytes, each id's ` · ` separator
-        // carrying one two-byte middle dot.
-        ("implement", 1107, 1145),
+        // carrying one two-byte middle dot. Re-measured after `0092` (the 2026-10-15
+        // engine-follow-up wave 2) added `impl.fail.cards-outside-order`: +32 characters and +33
+        // bytes, its separator carrying the one middle dot.
+        ("implement", 1139, 1178),
         "the widest floor index moved"
     );
 }

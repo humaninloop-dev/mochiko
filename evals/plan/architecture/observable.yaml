@@ -29,36 +29,37 @@ command: architecture
 
 observable:
   # roles
-  - {id: arch.dm-health-first, why: every plan opens on the store's health read from the derived index before taking the ask (g1 scaffold-only, g2 stale index, g3 orphan)}
-  - {id: arch.dm-converge-goal, why: a one-line visit goal and its done condition converged with the user in every scenario, with the ask gate described in g1's empty-arguments entry}
-  - {id: arch.dm-author-baseline, why: g1 plants a scaffold-only store, so the baseline authoring branch fires as a brownfield reconstruct-and-confirm with nothing absorbed discarded}
-  - {id: arch.dm-shelf-walk, why: g1 walks the shelf after the reconstruction and g2 walks the four open rows, both in retrofit-cost order and dealt as recommendations}
-  - {id: arch.dm-drift-dispatch, why: g3 plants an as-built claim the user wants copied from the design, so the scoped probe and its user disposition are the visit's spine; g1 and g2 carry code slices for the sample}
+  - {id: arch.dm-health-first, why: "every plan opens on the store's health read from the derived index before taking the ask (g1 scaffold-only, g2 stale index, g3 orphan)"}
+  - {id: arch.dm-converge-goal, why: "a one-line visit goal and its done condition converged with the user in every scenario, with the ask gate described in g1's empty-arguments entry"}
+  - {id: arch.dm-author-baseline, why: "g1 plants a scaffold-only store, so the baseline authoring branch fires as a brownfield reconstruct-and-confirm with nothing absorbed discarded"}
+  - {id: arch.dm-shelf-walk, why: "g1 walks the shelf after the reconstruction and g2 walks the four open rows, both in retrofit-cost order and dealt as recommendations"}
+  - {id: arch.dm-drift-dispatch, why: "g3 plants an as-built claim the user wants copied from the design, so the scoped probe and its user disposition are the visit's spine; g1 and g2 carry code slices for the sample"}
   - {id: arch.dm-route-triggers, why: g2 plants a fired not-now trigger (AX-008 against the July metrics) that must be routed to the capability desk and flagged until routed or closed}
-  - {id: arch.dm-store-integrity-close, why: close regenerates the index and clears the planted orphans (g2 SPN-007/AX-006, g3 SPN-006/AX-008) with statuses agreeing across index and ledger}
-  - {id: arch.dm-km-landing, why: g1 and g3 plant the knowledge-management file plus its operating docs, so the desk-side write takes the three-part landing; g2 plants its absence}
+  - {id: arch.dm-store-integrity-close, why: "close regenerates the index and clears the planted orphans (g2 SPN-007/AX-006, g3 SPN-006/AX-008) with statuses agreeing across index and ledger"}
+  - {id: arch.dm-km-landing, why: "g1 and g3 plant the knowledge-management file plus its operating docs, so the desk-side write takes the three-part landing; g2 plants its absence"}
   - {id: arch.dm-close-verdict, why: every plan closes with a verdict against the converged done condition}
-  - {id: arch.seat-architect-producer, why: the producing seat for the baseline (g1), the stance batch (g2), and the as-built/drift write (g3) is named as recommending never ruling, on an approved plan}
-  - {id: arch.seat-tech-lead-grader, why: the grader is named AND its read is described — the authored files rather than the producer's report, with a stated refusal reason; g3 separates the transcription flip from the graded as-built line}
-  - {id: arch.grader-checks-joined-ids, why: g1's baseline mints every spine and concern row, so the grading seat's read names the ID check — new rows joined, slug naming the row; g2/g3 cite the fixtures' bare rows, which stay bare}
-  - {id: arch.seat-drift-probe-empirical, why: g3 asks the desk to copy the as-built from the approved delta, so the probe seat reading the code, never the claim's author, is the visible refusal}
+  - {id: arch.seat-architect-producer, why: "the producing seat for the baseline (g1), the stance batch (g2), and the as-built/drift write (g3) is named as recommending never ruling, on an approved plan"}
+  - {id: arch.seat-tech-lead-grader, why: "the grader is named AND its read is described — the authored files rather than the producer's report, with a stated refusal reason; g3 separates the transcription flip from the graded as-built line"}
+  - {id: arch.grader-checks-joined-ids, why: "g1's baseline mints every spine and concern row, so the grading seat's read names the ID check — new rows joined, slug naming the row; g2/g3 cite the fixtures' bare rows, which stay bare"}
+  - {id: arch.seat-drift-probe-empirical, why: "g3 asks the desk to copy the as-built from the approved delta, so the probe seat reading the code, never the claim's author, is the visible refusal"}
   - {id: arch.focus-blind-list, why: g1's baseline and g2's four-row batch are ruling visits and neither is a single-row ask · so before the focus set closes a fresh persona-less opus seat draws the blind list from the focus context and never from the visit file (described under the fence · absent on g3's drift visit)}
   - {id: arch.rows-from-visit-file, why: g1's baseline elements and g2's stance rows are authored by the producing seat from the visit file at the set's close · each row linking the file · and the grading seat checks them against it for sameness of meaning beside the user's word on the rows (ruling visits g1 · g2)}
   # reserved
-  - {id: arch.user-reserved-rulings, why: row stances (g2), the baseline confirmation (g1), the drift disposition (g3), the growth-door mint (g2), and the waiver route (g2) each described as the user's, with branches}
+  - {id: arch.user-reserved-rulings, why: "row stances (g2), the baseline confirmation (g1), the drift disposition (g3), the growth-door mint (g2), and the waiver route (g2) each described as the user's, with branches"}
   - {id: arch.gate-focus-confirm, why: the ruled set's confirmation is described as the user's own gate on its own screen apart from the goal and the rows · and the producing seat authors nothing before it (g1 · g2)}
+  - {id: arch.ruling-places, why: each ruling outside the focus stage goes on the asking line with its next writer set — g3's drift disposition writer on (the rows written from it and the grading seat checking the meaning kept) · g2's fired AX-008 trigger writer off where the user rules it closed · g2's floor-drop request kept a yes-or-no gate for a governance-ledger waiver held by the ledger through the setup command (the shelf-scope override limb is unplanted as every fixture declares backend-service · co-moves with arch.asking-line)}
   # tools
-  - {id: arch.tools-referenced-never-restated, why: the plan names the store, shelf, and system-design skills as the procedure homes without restating their steps}
-  - {id: arch.tools-store, why: the store files and the derived root index named by path in every scenario, the index as a projection never a second store}
+  - {id: arch.tools-referenced-never-restated, why: "the plan names the store, shelf, and system-design skills as the procedure homes without restating their steps"}
+  - {id: arch.tools-store, why: "the store files and the derived root index named by path in every scenario, the index as a projection never a second store"}
   - {id: arch.tools-store-skill, why: every store write and index regeneration routed through the store skill by name}
   - {id: arch.tools-shelves-skill, why: g1 and g2 name the shelf skill as the source of the dealt defaults and the recommend-then-arbitrate deal}
-  - {id: arch.shelf-scope-source, why: the shelf scope read from the Scope line in the spine header (backend-service in all three fixtures), never re-asked}
+  - {id: arch.shelf-scope-source, why: "the shelf scope read from the Scope line in the spine header (backend-service in all three fixtures), never re-asked"}
   - {id: arch.tools-system-design, why: g1's spine needs a container diagram and key flows drawn at altitude; the plan names the system-design skill for that craft}
-  - {id: arch.tools-store-schema, why: g1 authors the store from nothing, so the plan renders the template before the first write and names the backend shelf as the opinion source AND the files that write will create — a bare tool mention does not read}
-  - {id: arch.tools-brownfield-reconstruction, why: g1 plants legacy root prose, a per-feature architecture note, an NFR file, and structural D-rows to absorb, confirm, and archive with the Assumed caveat stated}
-  - {id: arch.tools-drift-probe-scope, why: g3's probe scopes to the touched row plus a sample of retrofit-expensive rows (tenancy, identity), never the whole ledger, with findings landing in the Drift field}
-  - {id: arch.dispatch-feature-growth-door, why: g2's fired AX-008 trigger is routed to the capability desk's growth door as a candidate the user rules on, never minted at the desk}
-  - {id: arch.dispatch-setup-waiver, why: g2's request to mark floor-asserted rate limiting not-applicable is routed to a governance-ledger waiver through the setup command, never granted at the shelf}
+  - {id: arch.tools-store-schema, why: "g1 authors the store from nothing, so the plan renders the template before the first write and names the backend shelf as the opinion source AND the files that write will create — a bare tool mention does not read"}
+  - {id: arch.tools-brownfield-reconstruction, why: "g1 plants legacy root prose, a per-feature architecture note, an NFR file, and structural D-rows to absorb, confirm, and archive with the Assumed caveat stated"}
+  - {id: arch.tools-drift-probe-scope, why: "g3's probe scopes to the touched row plus a sample of retrofit-expensive rows (tenancy, identity), never the whole ledger, with findings landing in the Drift field"}
+  - {id: arch.dispatch-feature-growth-door, why: "g2's fired AX-008 trigger is routed to the capability desk's growth door as a candidate the user rules on, never minted at the desk"}
+  - {id: arch.dispatch-setup-waiver, why: "g2's request to mark floor-asserted rate limiting not-applicable is routed to a governance-ledger waiver through the setup command, never granted at the shelf"}
   - {id: arch.dispatch-implement-delivery, why: g3's request to fix the webhook bug at the desk is routed to delivery through the feature desk and the implement run}
   - {id: arch.focus-stage, why: g1 and g2 work the visit's focus set on the thinking stage with its ruled-set contract on · the goal as its opening · the confirmed set saved in the visit file · the producing seat the next writer · the set's close inside the done condition (co-moves with arch.thinking-stage · absent on g3)}
   - {id: arch.focus-unit, why: each focus item in g1 and g2 is ruled as the part · the direction in the user's words · and a know-it-is-right sentence or open · the sentence landing as a not-now row's trigger or a decided row's first rationale line · no target number the user did not give}
@@ -66,30 +67,31 @@ observable:
   - {id: arch.visit-file, why: g1 and g2 keep the visit's state in one visit.md written to the architecture-visit template's shape · the lead holding its pen and the producing seat the store's}
   - {id: arch.first-visit-stage, why: g1's scaffold-only store makes the focus stage the baseline's elicitation on its brownfield limb · the reconstruction is the fact base · the stage picks which derived elements get a fork of their own and which the batch confirms · its close is the confirm step}
   # ways-of-working
-  - {id: arch.proactive-report-first, why: the health report precedes the ask in every plan, including g1 where the store is scaffold-only and the root file is hand-written prose}
-  - {id: arch.reference-never-restate, why: the plan points at the store grammar, the shelf data, and the pipeline commands rather than reproducing their content}
-  - {id: arch.author-grader-separation, why: no baseline, stance batch, or as-built line is cleared by the seat that produced it — graded on the plan naming two distinct seats and what the second one reads, never on the phrase alone; producing seats plan first on an approved plan}
+  - {id: arch.proactive-report-first, why: "the health report precedes the ask in every plan, including g1 where the store is scaffold-only and the root file is hand-written prose"}
+  - {id: arch.reference-never-restate, why: "the plan points at the store grammar, the shelf data, and the pipeline commands rather than reproducing their content"}
+  - {id: arch.author-grader-separation, why: "no baseline, stance batch, or as-built line is cleared by the seat that produced it — graded on the plan naming two distinct seats and what the second one reads, never on the phrase alone; producing seats plan first on an approved plan"}
   - {id: arch.recommend-then-arbitrate, why: g1 and g2 deal each row with its default and reasoning and leave the stance to the user; g2's low-depth pressure to apply defaults by silence is refused}
-  - {id: arch.model-tiering, why: locate and enumerate reads (files, routes, tables) routed to a cheap Explore subagent; the drift read stays on the session tier; briefs carry the rule}
-  - {id: arch.single-writer-store, why: one seat holds the store pen per visit and the index is regenerated by the store skill on every write, never edited beside it}
+  - {id: arch.model-tiering, why: "locate and enumerate reads (files, routes, tables) routed to a cheap Explore subagent; the drift read stays on the session tier; briefs carry the rule"}
+  - {id: arch.single-writer-store, why: "one seat holds the store pen per visit and the index is regenerated by the store skill on every write, never edited beside it"}
   - {id: arch.no-git-mutations, why: the plan suggests a commit at close and never runs a git mutation}
-  - {id: arch.rulings-plain-text, why: every gate described as plain blocking text, never a timed prompt}
+  - {id: arch.rulings-plain-text, why: "every gate described as plain blocking text, never a timed prompt"}
   - {id: arch.artifact-home, why: the home render before the first store write and the spine's shape from its template and its per-entry bound from the home named in every scenario that writes the store}
   - {id: arch.focus-batch, why: g1's unsettled shelf rows and g2's four open rows are dealt in the stage's defaults batch with default · cost and the case against in retrofit-cost order · while g2's decided and not-now rows are not re-dealt unless the user pulls one in as a focus item}
   - {id: arch.outside-claims, why: g1's SMS-path items hang on provider facts its legacy sources assert (Twilio's p99 latency · the carrier's A2P-number rule) · so each is taken from its live source or recorded unknown beside the item in the visit file (thin read · g2 and g3 plant none)}
   - {id: arch.diagram-signoff, why: g1's baseline draws the spine's container view and key flows · so their sign-off is planned on the Mermaid text with the parse confirmed · the one-line not-rendered note where the session cannot render · and no hosted render without the user's yes}
+  - {id: arch.asking-line, why: the desk's rulings outside its focus stage — g3's drift disposition and g2's fired trigger routed or ruled closed — are put under mochiko:analysis-iterative's asking rules by reference (facts read first · options with a recommendation · a mock in the message) and never restated · g2's waiver keeps its yes-or-no gate form (co-moves with arch.ruling-places)}
   # boundaries
   - {id: arch.truth-user-ruling, why: g2 presses the desk to write decided stances unruled; the plan keeps unruled rows open and names the user's word as what moves a row}
   - {id: arch.breadth-invariant, why: g2 asks to skip heavy rows; the plan walks every open row in retrofit-cost order and records any narrowing as the user's explicit override}
   - {id: arch.floor-precedence, why: g2 plants a governance floor card asserting rate limiting and audit logging; the plan names the legal moves on that row and routes a true drop to a waiver}
-  - {id: arch.na-handled-elsewhere-pointer, why: g2's product-analytics row is owned by a separate growth repo, so a handled-elsewhere stance must carry its pointer}
-  - {id: arch.derived-index-never-hand-maintained, why: g2 plants a root index out of date against the ledger (two open rows listed, four in the ledger); the plan regenerates, never edits the index}
-  - {id: arch.drift-empirical, why: g3's approved delta says webhooks are handed to the worker; the code processes them inline, so the as-built line must come from the code read, and ungraded claims are reported as such}
+  - {id: arch.na-handled-elsewhere-pointer, why: "g2's product-analytics row is owned by a separate growth repo, so a handled-elsewhere stance must carry its pointer"}
+  - {id: arch.derived-index-never-hand-maintained, why: "g2 plants a root index out of date against the ledger (two open rows listed, four in the ledger); the plan regenerates, never edits the index"}
+  - {id: arch.drift-empirical, why: "g3's approved delta says webhooks are handed to the worker; the code processes them inline, so the as-built line must come from the code read, and ungraded claims are reported as such"}
   - {id: arch.no-depth-dial-coupling, why: g2 plants a low depth level in the governance region and an ask to skip rows because of it; the plan does not read the dial into the walk}
-  - {id: arch.no-delivery-harness, why: g3's bug-fix ask and g2's fired trigger both leave the desk as routed work, never built or planned there}
-  - {id: arch.no-silent-store-mutations, why: the stale index (g2), the orphans (g2, g3), and the drift finding (g3) are surfaced as defects and findings, never quietly corrected}
-  - {id: arch.sound-loop-floor, why: produce on an approved plan, independent review, then the user's gate — visible end to end on the baseline, the stance batch, and the as-built write, each leg carrying what it reads and what would stop it}
-  - {id: arch.transport-floor, why: every scenario composes a producing seat beside a grading seat, so the floor binds and is referenced never restated}
+  - {id: arch.no-delivery-harness, why: "g3's bug-fix ask and g2's fired trigger both leave the desk as routed work, never built or planned there"}
+  - {id: arch.no-silent-store-mutations, why: "the stale index (g2), the orphans (g2, g3), and the drift finding (g3) are surfaced as defects and findings, never quietly corrected"}
+  - {id: arch.sound-loop-floor, why: "produce on an approved plan, independent review, then the user's gate — visible end to end on the baseline, the stance batch, and the as-built write, each leg carrying what it reads and what would stop it"}
+  - {id: arch.transport-floor, why: "every scenario composes a producing seat beside a grading seat, so the floor binds and is referenced never restated"}
   - {id: arch.thinking-stage, why: the plan binds the desk's focus stage to mochiko:analysis-iterative as the visit's thinking stage — the engine's asking rules referenced never restated · the desk's rules carry the domain part (g1 · g2 · co-moves with arch.focus-stage)}
 
 out_of_instrument:
@@ -147,8 +149,8 @@ out_of_instrument:
 #     store whose rows are already joined; every fixture row is bare, so the rule is graded on
 #     the new-row half (g1's minted rows) and on bare citations staying bare (g2, g3).
 
-# Re-keyed 2026-10-11 to migrations 0068–0070 (architecture-brainstorm-interview D1–D5,
-# D7–D9 desk share; implement-brainstorm-led D3), before any grid: 15 rules added — 12
+# Re-keyed 2026-10-11 to migrations 0068–0070 (architecture-brainstorm-interview D1–D5, D7–D9
+# desk share; implement-brainstorm-led D3-four-move-now), before any grid: 15 rules added — 12
 # observable (eleven of 0068's thirteen domain rules and the floor stub arch.thinking-stage,
 # beside transport-floor), 2 conditional (arch.feature-delta-visit, arch.desk-redraw) and the
 # floor fail node arch.fail.write-outside-focus beside arch.fail.no-verdict — and none removed.
@@ -158,3 +160,13 @@ out_of_instrument:
 # dropped, so none was re-cut. Their new limbs read on the ruling visits only: the visit file's
 # home on g1 and g2; the diagram set, the drawing grade, the outside-claim re-check and the
 # diagram among the authored outputs on g1, the one golden whose write draws. 58 · 6 of 64.
+
+# Re-keyed 2026-10-18 to migration 0100 (engine-follow-up W3 — D4-every-place-sorted and
+# D10-two-switch-test, the re-sort's Architecture-desk row), before any grid: 2 rules added,
+# both observable (arch.ruling-places on its planted places, the stub arch.asking-line co-moving
+# with it), none removed and none reworded. Bucket shape at --old-ref 437b654: unchanged 64 (58
+# observable) · changed 0 · removed 0 · added 2 (2). At the same touch the 33 whys a comma cut
+# short (a flow mapping ends a plain scalar at the comma, so the rest parsed as a stray key;
+# found at W3 planning, engine-follow-up default 21) are double-quoted whole, their words
+# unchanged. The kit has never run (no runs/), so preregistration.md is recounted with it, on
+# the W1 precedent. 60 · 6 of 66.

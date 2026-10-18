@@ -1,0 +1,66 @@
+grammar: 1
+id: 0092-implement-card-order
+sequence: 92
+intent: >-
+  Put the card order before slicing in /mochiko:implement (engine-follow-up D5 as changed at
+  review, S4/S8 with QR2, RB2, V1, V2 and W1 with QR7; defaults 4 and 5 as changed at review): the
+  card-order moment beside card-confirm, mirroring feature's card-set; impl.card-order — a rough
+  order shown as a mock, a question only on a real choice, a ruled order saved as one line in
+  tasks.md's header before the card-authoring seat opens it, no order shown and no question on a
+  delta or lane run, a lane run slicing several cycles raised to the user, the cards shown at the
+  confirm as "after step n you can…" with each open line listed; and the floor fail
+  impl.fail.cards-outside-order (RB2). One reword, keeping its id, class and kind:
+  impl.card-review-before-confirm (no earlier ruling anchors it) — the card review also checks
+  the ruled order and that each "I'd know it works if…" line keeps its meaning in at least one
+  **TEST:** case, an open line riding open (default 5). impl.gate-card-confirm and the
+  card-confirm moment are unchanged (D5: "unchanged"); the tasks template's header takes the line
+  with no template change. No floor or fail is retired or lowered.
+anchor: 2026-10-15 engine-follow-up
+hash: sha256:441a35b9d36366382b51b976b574ebc8eba07734efd3d1a196bd1329da95b0db
+changes:
+  - op: set-moment
+    schema: command/implement
+    name: card-order
+    text: >-
+      Where the order of what works after each step is shown to the user and, on a real choice,
+      ruled — after the design checkpoint, or the run-open confirmation on the zero-gap path,
+      before the card-authoring seat slices.
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.reserved
+    rule:
+      id: impl.card-order
+      labels: [user-gate, binding]
+      class: must
+      kind: duty
+      text: >-
+        At the card-order moment you show the user a rough order of what works after each step, as
+        a mock in the message, and put a question only on a real choice — which independent
+        outcome comes first, or few big steps against many small; where the walking skeleton and
+        the dependencies leave no choice, none is put. A ruled order and step size are the ruled
+        set: you save the order as one line in `tasks.md`'s header before the card-authoring seat,
+        its next writer, opens the file. A delta or lane run builds from one desk card, so no
+        order is shown and no question put; a lane run that would slice several cycles raises
+        where its order line lives to the user first. At the card confirm the cards are shown as
+        "after step n you can…", each `open` line listed.
+      anchor: 2026-10-15 engine-follow-up D5
+  - op: reword-rule
+    schema: command/implement
+    id: impl.card-review-before-confirm
+    text: >-
+      The verification seat reviews the cards before the card confirm — quality per
+      mochiko:review-plan-artifacts, buildability its own judgment — and checks that they follow
+      the ruled order (impl.card-order) and that every "I'd know it works if…" line behind them,
+      from the spec's slate, the run's `design-stage.md` or the feature-desk visit file, has at
+      least one **TEST:** case keeping its meaning, an `open` line riding open.
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.fail-conditions
+    rule:
+      id: impl.fail.cards-outside-order
+      labels: [user-gate]
+      class: floor
+      kind: fail
+      text: Cards cut against a ruled card order without the user's word.
+      enforces: [impl.card-order, impl.card-review-before-confirm]
+      anchor: 2026-10-15 engine-follow-up D5

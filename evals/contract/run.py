@@ -144,6 +144,9 @@ TEMPLATE_NAMES = (
     # stage's ruled-set file template, bound by the `feature`, `epic` and `product-lane` homes.
     "design-stage",
     "feature-entry",
+    # `0086-feature-visit-home` ("2026-10-15 engine-follow-up") imported the feature desk's
+    # card-visit file template, bound by the `feature-desk` home.
+    "feature-visit",
     "features-index",
     "governance-intent",
     "governance-surfaces",
@@ -287,6 +290,12 @@ EXPECTED = {
                 "feat.transport-floor",
                 "feat.stub-parking",
                 "feat.fail.no-verdict",
+                # `0087-feature-on-engine` ("2026-10-15 engine-follow-up D2") minted the
+                # thinking-stage pointer floor.
+                "feat.thinking-stage",
+                # The same migration ("2026-10-15 engine-follow-up") minted the floor fail node
+                # for a card cut with no ruled set behind it.
+                "feat.fail.card-outside-set",
             }
         ),
         21_020,
@@ -346,6 +355,9 @@ EXPECTED = {
                 # `0077-implement-on-engine` (the same session) minted the thinking-stage
                 # pointer floor.
                 "impl.thinking-stage",
+                # `0092-implement-card-order` ("2026-10-15 engine-follow-up D5") minted the
+                # floor fail node for cycle cards cut against a ruled card order.
+                "impl.fail.cards-outside-order",
             }
         ),
         44_266,
@@ -377,6 +389,9 @@ EXPECTED = {
                 "setup.fail.floor-category-uncovered",
                 "setup.fail.no-acceptance",
                 "setup.fail.no-feature-map",
+                # `0088-setup-thinking-stage` ("2026-10-15 engine-follow-up") minted the
+                # thinking-stage pointer floor.
+                "setup.thinking-stage",
             }
         ),
         20_245,

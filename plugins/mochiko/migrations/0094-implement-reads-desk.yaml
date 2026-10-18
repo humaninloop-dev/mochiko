@@ -1,0 +1,138 @@
+grammar: 1
+id: 0094-implement-reads-desk
+sequence: 94
+intent: >-
+  Let /mochiko:implement read the feature desk's visit file and hand an outside need back to the
+  desk, and give the gap-finder the user's own lines (engine-follow-up default 12 as changed at
+  review, RB3 with S10, and D7's change; default 24, QR6; D8 as changed at review, S10 with RB3):
+  mint impl.feature-visit-input — the visit file read at entry in every scope, whatever the gap
+  count, its ruled set and the cards in its card part inputs in hand, the desk card a delta or
+  lane run builds among them. Six implement rewords, each keeping its id, class, kind and anchor:
+  impl.design-inputs (architecture-brainstorm-interview D5) and impl.design-stage-inputs
+  (implement-brainstorm-led) name the feature-desk file beside the architecture desk's;
+  impl.desk-offer (architecture-brainstorm-interview D5) names the architecture desk's file, since
+  "a desk visit file keyed to the feature" now reads two ways; impl.design-stage-agenda
+  (implement-brainstorm-led D6) and impl.delivered-territory-routing (qa-gap-finding-verification)
+  send a feature-desk card with the run's note, the latter by default 24's general words and
+  feat.carry-forward's reader; and impl.gap-finding-blind-dispatch (qa-gap-finding-verification)
+  adds the user's own lines to its first message, quoted, never those files' ruled pieces or
+  cards. D8's other half rewords two testing-gap-finding floors, each keeping its id, class, kind
+  and the qa-gap-finding-verification D3 anchor: blindness-fence-inclusion-list admits those
+  quoted lines and two-message-dispatch lets message 1 carry them; every other limb of the fence
+  stands. No floor or fail is retired or lowered.
+anchor: 2026-10-15 engine-follow-up
+hash: sha256:856004e0a35eb1d151d2cb3bccb5cad19379a3c48d40880e8413ceafe359a1d1
+changes:
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.ways-of-working
+    rule:
+      id: impl.feature-visit-input
+      labels: [scope-entry, evidence]
+      class: must
+      kind: binding
+      text: >-
+        At entry, in every scope — selection, delta, lane, an epic's member — and whatever the
+        gap count, you read any feature-desk visit file keyed to the run's FEAT, each member's on
+        an epic, or its lane: `${features_dir}/desk/<date-slug>/visit.md`, its slug carrying the
+        joined FEAT id lower-cased or `lane-<slug>`. Its ruled set and the cards in its card part
+        are inputs in hand for the run, the desk card a delta or lane run builds among them.
+      anchor: 2026-10-15 engine-follow-up
+  - op: reword-rule
+    schema: command/implement
+    id: impl.delivered-territory-routing
+    text: >-
+      A gap in a previously delivered feature's territory is not this run's rework: it routes to a
+      /mochiko:feature delta card, cited in the report, the run's note — the finding and the run
+      it came from — handed in to the desk visit.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-inputs
+    text: >-
+      Design inputs are sufficiency-report.md, any feature-desk visit file keyed to the run
+      (impl.feature-visit-input) and any desk visit file keyed to the run's feature or an epic
+      member — its directory under `.mochiko/architecture/desk/` carrying the joined FEAT id
+      lower-cased in its slug, read against the run's own pinned base, any conflict where the
+      store has moved past it listed at the design checkpoint for the user to rule — and, where
+      the design phase ran, the run's design-stage.md, its signed architecture.md at
+      ${features_dir}/FEAT-XXX/ with the store diagram files it lists, and its marked entries in
+      the product baselines, read in the pinned-base diff — the signed store delta among them
+      (the store at the sign-off base, or the checkpoint table), the anchor for the deviation
+      check and the built-vs-signed diff; the product baselines at ${product_dir}/ (data-model.md,
+      contracts/, constraints-and-decisions.md, the design baseline at ${product_dir}/design/, and
+      the architecture store, whose concern rows carry the NFR-XXX targets the built code must
+      meet); spec.md for the cards' cited acceptance criteria.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-stage-inputs
+    text: >-
+      Implement's inputs in hand when its design stage opens: an architecture-desk visit file
+      keyed to the feature (impl.design-inputs), a feature-desk visit file keyed to the run
+      (impl.feature-visit-input), the spec's slate and Intent, and a brainstorm record the user
+      names. A visit file that covers some gaps leaves the stage to run on the rest.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.desk-offer
+    text: >-
+      Where the check names a structural gap and no architecture-desk visit file keyed to the
+      feature exists, the stage first offers a desk visit — `/mochiko:architecture <FEAT-ID>`,
+      the run pausing until the visit closes and its file is handed in — or to go on here; the
+      choice is the user's at run time.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-stage-agenda
+    text: >-
+      The stage's agenda is the gap list the sufficiency check graded — on an epic, once, the
+      joint gap list with the joint spine's design items beside it: the seams between members, the
+      joint architecture, the batch ordering. A design need found outside it is the user's to
+      rule, split by kind: new behaviour, which the spec carries no story or acceptance criteria
+      for, never joins this run — it goes to `/mochiko:specify`, `BACKLOG.md` or a feature-desk
+      card, carrying the run's note to the desk visit: the need in the user's words and the run it
+      came from; a design piece inside a story the spec carries is the user's — this run, or
+      later — and joins only once the sufficiency seat has re-graded it as a gap, marked
+      user-added in its report. A lane run adds none (impl.lane-never-widens). Nothing outside the
+      agenda is designed without that ruling.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.gap-finding-blind-dispatch
+    text: >-
+      Gap-finding dispatch is two-message and blind. The first message carries only spec.md, the
+      sufficiency report, the user's own lines from the run's ruled sets — each direction and
+      "I'd know it works if…" line in the run's `design-stage.md` and in any feature-desk visit
+      file keyed to the run (impl.feature-visit-input), quoted by you, never their ruled pieces or
+      cards — and, where one exists, the signed architecture.md with the store diagram files it
+      lists, Screens & Flows, and the baselines data-model.md, contracts/, the design baseline,
+      and the store's NFR-XXX concern rows — their `built` and in-flight-class entries only,
+      never a `proposed` one — never the code, tasks.md, the **TEST:** cases, or any report. The
+      seat states its derived expectations; only then does probing begin. Its brief carries the
+      model-tiering rule, and its delegated reads stay inside the same fence.
+  - op: reword-rule
+    schema: skill/testing-gap-finding
+    id: testing-gap-finding.blindness-fence-inclusion-list
+    text: >-
+      The explorer is blind to code and cards. Admissible inputs are an explicit inclusion list,
+      not a layer label: `spec.md` (FR-XXX, SC-XXX, stories, declared edge cases) · the user's
+      own lines from the run's ruled sets, quoted into message 1 by the lead — each direction
+      and "I'd know it works if…" line of the run's `design-stage.md` and of any feature-desk
+      visit file keyed to the run, never those files, their ruled pieces or their cards · the
+      run's sufficiency report and the feature's signed `architecture.md` — those two artifacts
+      only, never the `FEAT-XXX/` run-output directory at large — with the store diagram files
+      in `.mochiko/product/architecture/diagrams/` that `architecture.md` lists · Screens & Flows
+      (SCR-XXX, FLOW-XXX) · `data-model.md` (entities, state machines, DS-XXX sensitivity) ·
+      `contracts/` (`api.yaml` and any sibling contract documents) · the architecture store's
+      concern rows only — their `NFR-XXX` targets (`.mochiko/product/architecture/concerns.md`
+      plus any graduated `concerns/AX-XXX-<slug>.md`) · on a UX-bearing feature, the design
+      baseline (`.mochiko/product/design/`), whose design truth and as-built system are the
+      promised look and conduct of the rendered UI. In each baseline and store file the fence
+      admits entries reading `built` (or no `**Lifecycle:**` field) and the in-flight class
+      (`in-flight` · `modifying` · `removing`), never a `proposed` entry, which is nothing
+      promised; a `removed` stub reads absent. All define externally-observable promised behavior,
+      so the pass stays black-box.
+  - op: reword-rule
+    schema: skill/testing-gap-finding
+    id: testing-gap-finding.two-message-dispatch
+    text: >-
+      The fence is held by dispatch order, not trust. Message 1 carries inclusion-list references
+      only, and the user's lines the list admits as quoted text — never a card, code, or
+      `**TEST:**` path — and the seat reads them and states its derived expectations; message 2
+      opens probing only once those expectations are on the record.

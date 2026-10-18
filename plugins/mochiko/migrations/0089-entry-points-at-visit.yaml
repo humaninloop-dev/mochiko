@@ -1,0 +1,21 @@
+grammar: 1
+id: 0089-entry-points-at-visit
+sequence: 89
+intent: >-
+  Let a capability entry's marked work row point at the feature-desk visit file that holds its
+  card and ruled set (engine-follow-up D7 as changed at review, QR4: "the entry's marked delta
+  points at it"). The feature-entry template's row grammar carries a state, the increment, its
+  acceptance and a run pointer, and no place for the file; the work-row rules are the skill's, so
+  one reword of authoring-feature-map.growth-rides-work-row (pm-role-and-feature-derivation D8,
+  its anchor kept and its first clause word for word) adds the pointer for a row the desk cuts.
+  Nothing else changes.
+anchor: 2026-10-15 engine-follow-up
+hash: sha256:7b039115497f1c6f05ead7763c93c7c6c3c9893a58d4faa9c6ebe0fddeeee011
+changes:
+  - op: reword-rule
+    schema: skill/authoring-feature-map
+    id: authoring-feature-map.growth-rides-work-row
+    text: >-
+      Growth on a delivered capability rides a marked work row, never an in-place edit; a row
+      /mochiko:feature cuts at a card visit — growth, bug or improvement — also points at the
+      visit's `visit.md`, where its card and ruled set sit.

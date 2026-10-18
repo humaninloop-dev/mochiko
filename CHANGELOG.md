@@ -5,6 +5,281 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.121.0] — 2026-10-18
+
+**The shared asking line; the feature desk on the shared thinking stage; every command's ruling
+places sorted — MINOR** (`engine-follow-up` D1–D10 as review-amended and the confirmed defaults,
+record `.mochiko/brainstorms/engine-follow-up/record.md`). One combined build in three waves on
+branch `engine-follow-up-build`, one bump.
+
+**Wave 1 — the shared asking line; `/mochiko:feature` on the engine; setup's pointer**
+(D2-card-visits-stage, D3-card-unit-reused, D7-desk-visit-file and D10-two-switch-test, as changed
+at review — QR3, QR4, QR5 — with defaults 6–11, 13, 14, 17–20, 23 and 24). A new pointer block,
+`common.asking-line`, is the line each user command extends for the rulings it asks outside a
+thinking stage: those rulings hold to a named subset of `mochiko:analysis-iterative`'s rules — the
+fact before the fork, one fork per turn, the options rule, the question form, the mock in the
+message, own turn or batch, the ratified streak, the vague answer, the user rules — plus the
+contract's pen and its inside rule only where the command's own rules set that ruling's next
+writer *on*; the blind list, the status line, the stop rule and provenance marks stay the stage's,
+and a yes / no gate on a finished result keeps its own form (D10 as changed at review, QR3;
+default 18). No engine rule or slot changes (default 19). `/mochiko:feature` moves onto the
+engine. A new condition, `visit_kind` (`card · ruling · other`, fixed by the converged visit goal),
+and a new `card-set` moment, after the goal is agreed and before the card's writer writes
+anything, mirror the architecture desk's. A visit that cuts a card — a bug, an improvement, a
+growth row or a lane card — works its card set on the shared thinking stage with the ruled-set
+contract on, through `feat.thinking-stage` (`class: floor`, the fifth extender of
+`common.thinking-stage`). Per card the user rules the change in their own words and one "I'd know
+it works if…" sentence or `open`; a bug's reproduction is a fact in hand, never asked again, and
+the card's writer writes the 1–3 acceptance criteria or the reproduction-failing test inside that
+ruling (D3). A single-card clear ask whose set the demand already states closes on the goal nod;
+the set takes a screen of its own whenever there is more than one card or any fork was put (D2 as
+changed at review, QR5). The set and the cards live in one typed visit file, `visit.md`, per
+capability or lane, in the feature-desk home `.mochiko/features/desk/<date-slug>/`, its folder
+keyed to the joined FEAT id lower-cased or `lane-<slug>`: the lead holds the pen for the header
+and the set and passes it to the card's writer for the cards, and the capability entry's marked
+work row points at the file (D7 as changed at review, QR4; default 11). The card's writer follows
+the desk's wiring, and each card's sound-loop review leg, `devils-advocate`, grades it against the
+visit file for sameness of meaning (defaults 6, 7). One fresh blind seat draws the blind list once
+per visit that cuts more than one card or a growth row (default 10). The desk's other rulings take
+the asking line through `feat.asking-line`, each with its next writer set — grooming and an
+epic's mint, membership change and close *on*, a route override and an architecture trigger at the
+growth door *off*, a selection *held* (the re-sort's Feature row). A demand routed to
+`/mochiko:specify` writes no visit file and hands in the sitting's `derivation.md`; an outside
+need `/mochiko:implement` sends arrives with the run's note, read as inputs in hand (defaults 23
+and 24, the desk's side). A new floor fail, `feat.fail.card-outside-set`, fails a card cut with no
+ruled set behind it in a visit file, or one that changes a ruling without the user's word
+(default 8). `/mochiko:setup` gains `setup.thinking-stage` (`class: floor`, the sixth extender),
+its contract off (default 17).
+
+Migrations **`0085-asking-line`**, **`0086-feature-visit-home`**, **`0087-feature-on-engine`**,
+**`0088-setup-thinking-stage`** and **`0089-entry-points-at-visit`** carry the W1 schema half: a
+new template, `feature-visit`, the `architecture-visit` template's sibling; the `feature-desk`
+home replaced, its title corrected from "One specify-desk sitting" (default 13) and `visit.md`
+declared beside `derivation.md`, bound to the template; `feat.artifact-home`, `feat.delta-cards`
+and `feat.stable-ground-triage` reworded, every id kept — "card on the entry" now reads as the
+entry's marked work row pointing at the card in the visit file; and
+`authoring-feature-map.growth-rides-work-row` reworded, its anchor kept, so a row the desk cuts at
+a card visit points at its `visit.md`. After W1 the log, sequences 1..89, replays to 94 documents
+and 1,254 rules (1,243 → 1,254). Feature's pins read `kind: fail · 2 rules` (was 1) and `class:
+floor · 16 rules` (was 14); setup's `kind: fail · 6 rules` and `class: floor · 21 rules` (was 20).
+No floor or fail is retired or lowered. The final figures, after W3: sequences 1..101 (89
+migrations), 94 documents, 1,266 rules, state `sha256:300e26a8…`.
+
+W1 prose primitives: `commands/feature.md` — the Goal step's "never imposes brainstorm ceremony on
+a clear ask" kept and re-pointed at the card stage's one-confirm close (default 14, with D2 as
+changed at review, QR5); no other line is made false, and its Not-done line already cites the
+CLI-printed pin. `commands/setup.md` and `authoring-feature-map`'s `SKILL.md` are unchanged.
+`analysis-iterative`'s `description:` and Overview name the feature desk's card visits among the
+callers and the shared asking line (D2; D10 as changed at review, QR3); no rule, slot or body
+mechanic changes. The router's `analysis-iterative` row names the product desk's card visits.
+1 strip entry stamped [v0.121.0] in W1. Ripple: `ARCHITECTURE.md`'s cross-cutting
+`analysis-iterative` row; `GLOSSARY.md`'s **visit file** entry, now naming both desks' `visit.md`
+in their homes — its stale `focus.md` corrected — widened by D7-desk-visit-file.
+
+W1 budgets (characters, measured at the quiesced tree): `analysis-iterative` payload 16,067 →
+16,279 = body 5,588 + render 10,691 (render unchanged), +212 over the 16,067 budget, argued as D2's
+and D10's ruled obligations (QR3, default 18), ruled HOLDS by the W1 gate (unit 6); description
+594 → 713, +118 over its 595 budget, on the same ruling, ruled HOLDS by the W1 gate (unit 6).
+`authoring-feature-map` payload 22,856 → 23,004 (render +148 from `0089`, body unchanged), +681 over the 22,323 budget —
+the standing +533 plus +148 — argued as D7's ruled obligation as changed at review (QR4), ruled
+HOLDS by the W1 gate (unit 3); description 598 unchanged. `feature`'s render 18,507 → 24,641
+characters and `setup`'s 17,661 → 18,002 (commands are unbudgeted); the router body 48,744 →
+48,776 (unbudgeted).
+
+**Wave 2 — implement's later moments on the asking line** (D1-three-way-test as amended by D6 and
+D10, D5-card-order-asked, D6-promises-kept-table, D8-finder-reads-promises and D10-two-switch-test's
+Implement share, as changed at review — QR2, QR3, QR6, QR7, RB1–RB3 — with defaults 1–5, 12 and 24).
+`/mochiko:implement`'s moments after the design checkpoint take the shared asking line through
+`impl.asking-line`, `common.asking-line`'s second extender. A new `card-order` moment, beside
+`card-confirm`, comes before the card-authoring seat slices: the lead shows a rough order of what
+works after each step as a mock in the message and puts a question only on a real choice — which
+independent outcome comes first, or few big steps against many small; where the walking skeleton and
+the dependencies leave no choice, none is put. A ruled order and step size are the ruled set, the
+writer *on*, saved as one line in `tasks.md`'s header before the card-authoring seat opens the file;
+a delta or lane run builds from one desk card and takes no order question, and a lane run that would
+slice several cycles raises where its order line lives to the user (`impl.card-order`; D5 as changed
+at review, QR2 and QR7; default 4). The card confirm stays after the cards, unchanged
+(`impl.gate-card-confirm`); the verification seat's card review before it also checks the ruled
+order and that every "I'd know it works if…" line keeps its meaning in at least one **TEST:** case,
+an `open` line riding open (default 5); and a new floor fail, `impl.fail.cards-outside-order`, fails
+cards cut against a ruled order without the user's word (RB2). Every other ruling place takes its
+writer switch in `impl.ruling-places`, each named by its live rule id — the card order, the
+checkpoint rulings, the final-validation dispositions and the deviation gate's amend *on*; a
+governance conflict and the run-open rulings *held*; a scope escalation, a disputed finding kind, an
+exhausted gap-rework bound, an epic member halt, an attempt exemption, a disputed sufficiency
+clause, the desk offer and the absent-surface offers *off*; the design baseline's first system-part
+write and final acceptance stay yes / no gates, held by the landing verification seat (the re-sort's
+Implement row). The cycle checkpoint puts its questions on the asking line, a requirement ambiguity
+only the user can settle asked as a fact question, and a build-blocking question still interrupts at
+once (default 1); a beyond-spec finding's accept as designed is checked against the run's ruled set
+before it is put (default 2); default 3's altitude rides the asking line's question form and mock,
+with no rule of its own. Final acceptance stays the user's accept / amend / reject gate, shown as a
+promises-kept table: each "I'd know it works if…" line from the spec's slate, the run's
+`design-stage.md` or the feature-desk visit file, quoted verbatim, beside the test that proves it
+and its result — an `open` line reading "open — no target set", a measured value shown where there
+is one, no pass / fail column — composed by the lead in the conversation, no new file; an amend
+names the disputed rows, each then put as fix now or book (`impl.promises-kept-table`, minted beside
+the floor `impl.gate-final-acceptance`, which keeps its text; D6 as changed at review, RB1). At
+entry, in every scope and whatever the gap count, implement reads any feature-desk visit file keyed
+to its FEAT, each epic member's, or its lane, the desk card a delta or lane run builds among its
+inputs (`impl.feature-visit-input`; default 12 as changed at review, RB3, with D7's change); the
+design inputs and the design stage's inputs name it beside the architecture desk's file, and
+`impl.desk-offer` now names the architecture desk's file outright. An outside need sent to the
+feature desk — from the design stage's agenda, or a gap in a delivered feature's territory — carries
+the run's note to the desk visit (default 24, the implement side). The blind gap-finder's first
+message gains the user's own lines from the run's ruled sets — each direction and "I'd know it works
+if…" line of the run's `design-stage.md` and of any feature-desk visit file keyed to the run, quoted
+by the lead, never those files' ruled pieces or cards — on selection-scope and epic runs, since
+delta and lane runs skip gap-finding; the rest of the fence and the two-message dispatch stand (D8
+as changed at review, S10).
+
+Migrations **`0092-implement-card-order`**, **`0093-implement-asking-line`**,
+**`0094-implement-reads-desk`** and **`0095-sufficiency-reads-visit`** carry the W2 schema half: six
+new implement rules (`impl.card-order`, `impl.fail.cards-outside-order`, `impl.asking-line`,
+`impl.ruling-places`, `impl.promises-kept-table` and `impl.feature-visit-input`), the new
+`card-order` moment and the `cycle-checkpoint` moment reworded; ten implement rules reworded, every
+id, class and kind kept (`impl.card-review-before-confirm`, `impl.escalation-batching`,
+`impl.finding-severity-routing`, `impl.beyond-spec-disposition`, `impl.design-inputs`,
+`impl.design-stage-inputs`, `impl.desk-offer`, `impl.design-stage-agenda`,
+`impl.delivered-territory-routing` and `impl.gap-finding-blind-dispatch`); the `testing-gap-finding`
+floors `blindness-fence-inclusion-list` and `two-message-dispatch` reworded to admit the user's
+quoted lines, every other limb of the fence standing; and `review-sufficiency.fence-read-set` and
+`review-sufficiency.clause9-delta-inapplicable` reworded so the per-card form reads the delta card
+in the visit file's card part, never its **TEST:** cases. No template changes: the `tasks` header
+takes the order line. After W2 the log, sequences 1..95, replays to 94 documents and 1,260 rules
+(1,254 → 1,260). Implement's pins read `kind: fail · 17 rules` (was 16) and
+`class: floor · 40 rules` (was 39); `review-sufficiency`'s `class: floor · 8 rules` and
+`testing-gap-finding`'s `class: floor · 9 rules` are unchanged. No floor or fail is retired or
+lowered.
+
+W2 prose primitives: `commands/implement.md` and the `SKILL.md` of `review-sufficiency` and
+`testing-gap-finding` are unchanged — no line is made false: the Entry step's delta card names its
+source and role, never its home; the Goal step's accept / amend / reject is the gate D6 keeps; the
+two skills' bodies name no read set the rewords change. The router's `testing-gap-finding` row: its
+copy of the fence gains the user's quoted lines (D8). No strip entry is stamped [v0.121.0] in W2;
+four wave-context comments — in the `implement`, `review-sufficiency`, `testing-gap-finding` and
+router strip files — record the schema-only rewords and the router addition. Ripple: none made
+false. W1's carried note is re-read, and both lines it named hold by `impl.feature-visit-input`:
+`GLOSSARY.md:16`, the **visit file** entry ("read by implement"), unchanged; and the `feature-visit`
+template overview ("the dispatched run reads the cards and their set here"), left unchanged by P1's
+approved plan. `README.md` and `ARCHITECTURE.md` are unchanged.
+
+W2 budgets (characters, measured at the quiesced tree): `review-sufficiency` payload 17,360 → 17,614
+= body 3,262 + render 14,352 (render +254 from `0095`, body unchanged), +2,191 over the 15,423
+budget — the standing +1,937 plus +254 — argued as default 12's ruled obligation as changed at
+review (RB3), with D7 as changed at review (QR4), ruled HOLDS by the W2 gate (unit 6); description
+686 unchanged. `testing-gap-finding` payload 23,305 → 23,629 = body 7,005 + render 16,624 (render +324
+from `0094`, body unchanged), +3,652 over the 19,977 budget — the standing +3,328 plus +324 — argued
+as D8's ruled obligation as changed at review (S10 with RB3), ruled HOLDS by the W2 gate (unit 4);
+description 770 unchanged. `implement`'s render 60,392 → 66,907 characters (commands are unbudgeted), its
+`impl.sec.tools` block 27,651 → 28,443 bytes, 557 under the 29,000-byte line; the router body 48,776
+→ 48,995 (unbudgeted).
+
+**Wave 3 — specify, setup and the architecture desk on the asking line; specify reads the desk's
+derivation; the 0.120.0 residuals** (D4-every-place-sorted and D10-two-switch-test as changed at
+review, QR3 — the re-sort under D10, its Specify, Setup and Architecture-desk rows — with defaults
+12, 15, 16, 18, 21 and 23 as changed at review, RB3 and RB13 with QR6). `/mochiko:specify`,
+`/mochiko:setup` and the `/mochiko:architecture` desk take the shared asking line for the rulings
+they ask outside their thinking stages, through `spec.asking-line`, `setup.asking-line` and
+`arch.asking-line` — `common.asking-line`'s third, fourth and fifth extenders — and each command's
+other ruling places take their writer switches in `spec.ruling-places`, `setup.ruling-places` and
+`arch.ruling-places`, each named by its live rule id. Specify: the post-stories frame adjust *on*,
+the product-manager seat's map derivation writing from it and the stress-test checking the meaning
+kept; a clarification answer only the user can settle (a fact question), a filter disagreement or a
+rejected `in` row after authoring, and the selection *held* — the selection moves off "stays a gate"
+by its ruling-places row alone, the floor `spec.gate-selection` keeping its text, class and kind;
+the framing on an empty argument *off*, an open probe; acceptance stays a yes / no gate, held;
+clicking a story's prototype screens stays outside the line, a reaction, not a ruling. Setup: a
+reality-vs-intent conflict *held* by the trace from ratified intent to authored surfaces; the mode
+when ambiguous, a coverage survivor's routing and a second FAIL at the gate loop *off*; synthesis
+ratification and final acceptance stay yes / no gates, held by that trace and the validate seat's
+grade; the interrogation's card, module and waiver rulings stay its own. The desk: each drift
+finding's disposition *on*, tech-lead's grade checking the meaning kept, and a shelf-scope override
+*on*, landing as the exact text of the `Scope:` line; a fired trigger ruled closed *off*; the waiver
+a true floor drop needs stays a yes / no gate, held — the ledger records it through
+`/mochiko:setup`; the row stances, the baseline confirmation and amendments stay in the focus stage,
+as built (the re-sort's Specify, Setup and Architecture-desk rows). Setup's and specify's intent
+contract stays off, the writer held by their own rules (defaults 15 and 16). A demand
+`/mochiko:feature` routes to `/mochiko:specify` hands in the desk sitting's `derivation.md`, whose
+visit goal and the user's words so far specify reads as inputs in hand from the intent stage on,
+never re-asked (`spec.stage-inputs-in-hand`; default 23 as changed at review, RB13, the reader's
+side). Two W2 gate advisories close on implement: the entry's visit-file read narrows from any visit
+file keyed to the FEAT to the one the run's own entry points at — a selected work row's, each epic
+member's, the delta card's marked work row's, or the lane's — keeping "in every scope, whatever the
+gap count" (`impl.feature-visit-input`; default 12 as changed at review, RB3); and the landing
+verification seat names the `gates.md` fold check D10 gives it, each finding ruled fix-now or
+backlog folded with its ruling's meaning kept (`impl.landing-verifier-folds`, which
+`impl.ruling-places` now points at). No moment is added.
+
+Migrations **`0098-specify-asking-line`**, **`0099-setup-asking-line`**, **`0100-desk-asking-line`**
+and **`0101-implement-residuals`** carry the W3 schema half: six new rules (`spec.asking-line`,
+`spec.ruling-places`, `setup.asking-line`, `setup.ruling-places`, `arch.asking-line` and
+`arch.ruling-places`); four rules reworded, every id, class and kind kept
+(`spec.stage-inputs-in-hand`, `impl.feature-visit-input`, `impl.landing-verifier-folds` and
+`impl.ruling-places`). After W3 the log, sequences 1..101, replays to 94 documents and 1,266 rules
+(1,260 → 1,266). Every pin is unchanged: specify's `kind: fail · 10 rules` and
+`class: floor · 19 rules`, setup's 6 and 21, architecture's 2 and 25, implement's 17 and 40. No
+floor or fail is retired or lowered.
+
+W3 prose primitives: `commands/specify.md`, `setup.md`, `architecture.md` and `implement.md` are
+unchanged — no line is made false: specify's empty-argument ask is the open probe, its Goal step's
+selection and acceptance stay the user's; setup's ratification and acceptance keep their gates; the
+desk's crisp-ask convergence names the goal, not how a disposition is asked; implement's Entry step
+names no visit file; each Not-done line already cites the CLI-printed pin. The router completes five
+rows from the 0.120.0 build's "lines incomplete, not false" list (default 21): the
+`review-sufficiency` row names the re-grade of a design piece the user adds at the design stage; the
+`patterns-system-design` row the desk's spine and diagram set and the taste governing every diagram;
+the `review-plan-artifacts` row the meaning-kept grade; the `/mochiko:architecture` row a feature's
+delta visit, `/mochiko:architecture <FEAT-ID>`; the `technical-analyst` row its candidate pieces at
+the design stage. No strip entry is stamped [v0.121.0] in W3; three wave-context comments — in the
+`specify`, `implement` and router strip files — record the schema-only rewords and the router
+additions. Ripple: `ARCHITECTURE.md`'s implement section — its false build-time line (`D-XXX` /
+`C-XXX` / `IP-XXX` writes "land as `baseline-delta.md` entries") now reads in-place build-raised
+entries graded from the pinned-base diff, its flowchart's design output node and the user's
+touchpoints (the design stage, the card order) are re-keyed, and its landing line's graded delta
+fold now reads the landing flip; its "Data flow" section — the `.mochiko/features/` file list names
+the design stage's file, the signed drawing and the feature desk's sittings, and the
+`.mochiko/product/` entry's false "per-capability deltas fold into" now reads the baselines edited
+in place under the run's lifecycle marker and flipped from the pinned-base diff. `README.md` and
+`GLOSSARY.md` are unchanged. Left in `BACKLOG.md` (default 21: files this build does not touch):
+`README.md:106` and `:108`, pre-existing and false since the delta-files retirement ("deltas against
+the shared `.mochiko/product/` baselines", "touched baselines take their delta folds"),
+`devils-advocate.md:20` and `templates/report-format.md:7`.
+
+W3 budgets (characters, measured at the quiesced tree): no budgeted primitive moves — the four
+migrations change command schemas only, and no budgeted skill body or description changes. `specify`'s render
+27,160 → 29,636 characters, `setup`'s 18,002 → 19,821, `architecture`'s 28,000 → 29,718 and
+`implement`'s 66,907 → 67,376 (commands are unbudgeted); `impl.sec.tools` is untouched at 28,443
+bytes, 557 under the 29,000-byte line; the router body 48,995 → 49,956 (unbudgeted).
+
+**Stop count** (default 22 as changed at review, S4): one question is added to `/mochiko:implement`
+— the card order, put only when a real order choice exists, the card confirm staying after the
+cards; final acceptance changes form, not count. A feature card visit gains at most one confirm
+screen, none on a single-card clear ask whose goal nod closes its set. Specify, setup and the
+architecture desk add no moment. No merge is suggested.
+
+**Ships under the AM-5 exception row** (governance ledger, Exception registry, first row): the
+conformance hooks still ship before the first `mochiko-cli` publish carrying the four named
+controls; this bump adds no binary change and carries the same unpublished 0.4.0 dependency as
+0.118.0 through 0.120.0 (`mochiko-cli` 0.4.0, grammar 1..2, serves the log; no `mochiko-cli-v*`
+tag exists).
+
+Sound loop: per wave, three persona-less producers (P1 schema · P2 prose · P3 tests and kits,
+`opus`), each on a plan graded by a fresh generic peer (`opus`) — W1 P1 and W2 P1 passed after
+their wave's one re-plan, every other plan at round 1, W3 P2 and P3 approved with lead addenda sent
+as exact text — and one non-author gate grader per wave, with every unit's outcome line in its
+report: W1 eight units, W2 eight, W3 seven, all PASS at round 1, 0 blocking
+(`.mochiko/brainstorms/engine-follow-up/build-log.md`, `reports/audit.md`, `reports/audit-w2.md`,
+`reports/audit-w3.md`). Four ruling places the re-sort never listed — `spec.missing-map-surfaced`,
+`spec.governance-region-absent`, `setup.stress-test-cold-seat` and `arch.diagram-signoff` — stay
+unlisted, reached by `common.asking-line` with the writer off, and are put to the user as a note at
+this bump. Gates: `mochiko-cli migrate validate` 0 rejecting · 118 advisory · clusters 0 · 185
+allowlist-suppressed edges · views ≡ replay on the bumped tree · `cargo test --all` 765 passed ·
+fmt · clippy · audit · the opt-in full similarity sweep 48 passed · `gitleaks detect --no-git` no
+leaks · `mochiko-cli ids --check plugins/mochiko` 0 bare · 0 drift · **contract suite 99/99, 99 ran, none skipped** (on the bumped tree; 335 measurements recorded,
+none asserted) · both
+manifests at 0.121.0 · 1 strip entry and 12 wave-context comments · 5 ledger rows ruled HOLDS.
+
 ## [0.120.0] — 2026-10-11
 
 **The shared thinking stage; the desk's focus stage and diagram set; implement's design stage —

@@ -15,7 +15,8 @@ already on disk (below).
   its rules, rendered at fire by `mochiko-cli` from the migration log; the repo-side
   projection is `.mochiko/schema-views/commands/specify.yaml` (52 rules in six sections at
   kit authoring, HEAD `49acf05`; 71 since migration `0051`, 2026-10-10, and still 71 after
-  `0061` swapped `spec.own-rules-win` for `spec.thinking-stage`, 2026-10-11).
+  `0061` swapped `spec.own-rules-win` for `spec.thinking-stage`, 2026-10-11; 73 since `0098`
+  added `spec.asking-line` and `spec.ruling-places`, 2026-10-18).
 - **Arms:** `pre` (the pair as committed at `--old-ref`, git-archived) · `post` (the working
   tree) · `nocmd` (the bare model on the golden's `control_prompt`, no plugin loaded).
 - **Session model:** Sonnet (R7). **Wrapper:** `evals/commands/wrapper.md`, form-only (D11),
@@ -27,7 +28,7 @@ already on disk (below).
 - Comparison substrate: the **in-grid pre-edit arm** (never a committed baseline file,
   which is only a pinned historical record).
 - **Judge:** Haiku rule-coverage checklist over the D8 observable subset (`observable.yaml`:
-  **57 observable · 14 out-of-instrument · 71 total** (39 · 13 at authoring; `spec.filter-disagreement-escalates` moved to observable on 2026-09-19 by kit audit finding 2; migration `0051`'s nineteen mints partitioned 16 · 3 on 2026-10-10; migration `0061` moved one each way on 2026-10-11 — `spec.own-rules-win` out of out-of-instrument, `spec.thinking-stage` into observable)), one binary per rule with a quoted
+  **59 observable · 14 out-of-instrument · 73 total** (39 · 13 at authoring; `spec.filter-disagreement-escalates` moved to observable on 2026-09-19 by kit audit finding 2; migration `0051`'s nineteen mints partitioned 16 · 3 on 2026-10-10; migration `0061` moved one each way on 2026-10-11 — `spec.own-rules-win` out of out-of-instrument, `spec.thinking-stage` into observable; migration `0098`'s two mints joined observable on 2026-10-18)), one binary per rule with a quoted
   evidence span, graded on embodiment after every known rule id is scrubbed from the plan;
   a restated principle is not evidence. Plus the stub axis per numbered phase. Sonnet
   pairwise, position-swapped, advisory.
@@ -56,8 +57,8 @@ already on disk (below).
   (the invited-only re-key has no separate denominator here; where a later edit adds a
   `tempts` list, the invited-only share takes over and the all-pairs figure is disclosed
   beside it). **Band = share + 5 points, capped at 20 %.** An arm with fewer than 8 graded
-  pairs carries an `UNDER-SAMPLED` mark and its band is the cap; at 3 goldens × 57 rules =
-  171 pairs per arm this kit cannot be under-sampled unless the partition shrinks below
+  pairs carries an `UNDER-SAMPLED` mark and its band is the cap; at 3 goldens × 59 rules =
+  177 pairs per arm this kit cannot be under-sampled unless the partition shrinks below
   3 observable rules.
 - **Guard:** the **pre arm's own spread must sit inside its band** before any pre/post diff
   is read. An arm whose flaky share exceeds its band is noise-dominated: add **one extra
@@ -82,6 +83,23 @@ that cannot see that edit is re-keyed before the command is graded by it. Every 
 recomputes the buckets against its own `--old-ref` — they move with every edit — and names
 its control from the added or changed bucket in a fill-log row before the grid runs.
 
+**Recomputed 2026-10-18, before any grid**, by the same command crossed with the re-keyed
+subset: **unchanged 44 (33 observable) · changed 7 (6) · removed 0 · added 22 (20)**. The
+authoring-time shape had gone stale with no recompute: `0009`'s reword of
+`common.plan-approval-producers` (which `spec.plan-approval` extends), `0011`'s and `0016`'s of
+`spec.fail.screens-flows` and `spec.prototype-craft`, `0023`'s of `spec.missing-map-surfaced`
+and `0051`'s of `spec.filter-rejections-recorded`, `spec.intent-probe-discipline` and
+`spec.lockstep-prototyping` moved seven rules to changed — `0057`'s reword of
+`spec.filter-rejections-recorded` and `0061`'s of `spec.intent-probe-discipline` falling on
+rules already changed — and `0051`'s nineteen mints, `0061` swapping `spec.own-rules-win` for
+`spec.thinking-stage`, added nineteen, seventeen of them observable. The engine-follow-up wave's
+`0098` then added two, both observable; its reword of `spec.stage-inputs-in-hand` falls on a
+rule already added. At that wave's own pre-edit ref, `437b654`, the pair partitions unchanged 70
+(56) · changed 1 (1) · removed 0 · added 2 (2). The first grid still pins `--old-ref 32c1ed5`,
+and its control stays `spec.artifact-home`, in the added bucket there and graded on its current
+text. Recorded by the build's tests-and-kits seat on a lead-approved plan; no grid has run (no
+`runs/`).
+
 ## Validity prerequisites (blocking, before any session)
 
 - `uv run evals/commands/run.py check-rubric specify` prints `rubric OK`;
@@ -104,7 +122,7 @@ its control from the added or changed bucket in a fill-log row before the grid r
 ## Grid shape and budget
 
 - **Grid:** 3 goldens (s1-online-payment · s2-webhook-retry · s3-bare-greenfield) × 3
-  replicates × 2 arms (pre + post) = **18 sessions**; judges: Haiku coverage over 57 rules in
+  replicates × 2 arms (pre + post) = **18 sessions**; judges: Haiku coverage over 59 rules in
   four chunks of ≤ 15 per plan + the stub axis; Sonnet pairwise on each (golden, replicate)
   pre/post pair.
 - **Control arm:** `--control` adds 9 `nocmd` sessions. Run it **once at the first grid**
@@ -139,7 +157,7 @@ branch — a fixture finding, not a command finding.
 One row per grid, appended before the grid runs (control named) and completed after the
 report is read. Never edit an earlier row; correct with a new one.
 
-| Date | Run name | `--old-ref` | Control (added/changed id expected LANDED) | Arms × k | Sessions · USD | Invalid runs | Pre cov · post cov (pass^k /57) | Unchanged regressions | Added adoption · removed ghosts | Flaky share → band (pre · post) | Guard tripped · extra replicate | Verdict | Re-key count |
+| Date | Run name | `--old-ref` | Control (added/changed id expected LANDED) | Arms × k | Sessions · USD | Invalid runs | Pre cov · post cov (pass^k /59) | Unchanged regressions | Added adoption · removed ghosts | Flaky share → band (pre · post) | Guard tripped · extra replicate | Verdict | Re-key count |
 |------|----------|-------------|--------------------------------------------|----------|----------------|--------------|----------------------------------|-----------------------|--------------------------------|--------------------------------|-------------------------------|---------|--------------|
 | _none yet_ | | | | | | | | | | | | | |
 

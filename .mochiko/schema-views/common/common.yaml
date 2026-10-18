@@ -64,3 +64,19 @@ rules:
       referenced, never restated.
     pointer: mochiko:analysis-iterative
     anchor: 2026-10-11 implement-brainstorm-led D1
+  - id: common.asking-line
+    labels: [floor-pointer, user-gate]
+    text: >-
+      Every ruling this command asks of the user outside its thinking stage holds to
+      analysis-iterative.fact-before-fork, analysis-iterative.one-fork-per-turn,
+      analysis-iterative.options-rule, analysis-iterative.question-form,
+      analysis-iterative.mock-in-message, analysis-iterative.own-turn-or-batch,
+      analysis-iterative.ratified-streak, analysis-iterative.vague-answer and
+      analysis-iterative.user-rules; where this command's own rules set the ruling's next writer
+      on — a seat writes from the answer and no other rule holds it —
+      analysis-iterative.contract-pen and analysis-iterative.contract-inside hold too, and where
+      its own rules already hold that writer (held) or no one writes from the answer (off), they
+      stay off. The blind list, the status line, the stop rule and provenance marks stay the
+      stage's, and a yes / no gate on a finished result keeps its own form.
+    pointer: mochiko:analysis-iterative
+    anchor: 2026-10-15 engine-follow-up D10

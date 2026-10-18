@@ -1,0 +1,32 @@
+grammar: 1
+id: 0085-asking-line
+sequence: 85
+intent: >-
+  Mint common.asking-line, the shared line each user command extends for the rulings it asks
+  outside a thinking stage (engine-follow-up D10 as changed at review, QR3; defaults 18, 19): it
+  names the subset of mochiko:analysis-iterative rules that holds for those rulings, the contract
+  pair only where the command's own rules set the next writer on, and keeps the blind list, the
+  status line, the stop rule and provenance marks the stage's. No engine rule changes; it names no
+  command and no place.
+anchor: 2026-10-15 engine-follow-up
+hash: sha256:77a78feaef6098d655458dc45f4511fd8d1f25ae535881b2c0ab5a55e2731e49
+changes:
+  - op: mint-rule
+    schema: command-common/common
+    rule:
+      id: common.asking-line
+      labels: [floor-pointer, user-gate]
+      text: >-
+        Every ruling this command asks of the user outside its thinking stage holds to
+        analysis-iterative.fact-before-fork, analysis-iterative.one-fork-per-turn,
+        analysis-iterative.options-rule, analysis-iterative.question-form,
+        analysis-iterative.mock-in-message, analysis-iterative.own-turn-or-batch,
+        analysis-iterative.ratified-streak, analysis-iterative.vague-answer and
+        analysis-iterative.user-rules; where this command's own rules set the ruling's next writer
+        on — a seat writes from the answer and no other rule holds it —
+        analysis-iterative.contract-pen and analysis-iterative.contract-inside hold too, and where
+        its own rules already hold that writer (held) or no one writes from the answer (off), they
+        stay off. The blind list, the status line, the stop rule and provenance marks stay the
+        stage's, and a yes / no gate on a finished result keeps its own form.
+      pointer: mochiko:analysis-iterative
+      anchor: 2026-10-15 engine-follow-up D10

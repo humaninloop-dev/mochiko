@@ -274,8 +274,9 @@ fn every_emitted_view_matches_the_committed_one() {
     // implement-brainstorm-led), which imported the `analysis-iterative` skill. 92 since
     // `0065`–`0066` (its wave 2), which imported two templates, `architecture-visit` and
     // `architecture-diagram`, and two homes, `architecture-desk` and `product-diagrams`. 93
-    // since `0075` (its wave 3), which imported the `design-stage` template.
-    assert_eq!(views.len(), 93, "the corpus is 93 documents");
+    // since `0075` (its wave 3), which imported the `design-stage` template. 94 since `0086`
+    // (the 2026-10-15 engine-follow-up wave 1), which imported the `feature-visit` template.
+    assert_eq!(views.len(), 94, "the corpus is 94 documents");
 
     let mut divergences: Vec<String> = Vec::new();
     for (relative, text) in &views {
@@ -352,8 +353,10 @@ fn the_committed_views_tree_holds_no_file_the_emitter_does_not_write() {
     // since `0032`–`0033` (the 2026-09-29 census table ratification), the seven new homes' views
     // committed. 88 since `0058` (2026-10-11 implement-brainstorm-led), the engine's view
     // committed. 92 since `0065`–`0066` (its wave 2), the two templates' and two homes' views
-    // committed. 93 since `0075` (its wave 3), the `design-stage` template's view committed.
-    assert_eq!(found.len(), 93, "the committed tree is 93 views");
+    // committed. 93 since `0075` (its wave 3), the `design-stage` template's view committed. 94
+    // since `0086` (the 2026-10-15 engine-follow-up wave 1), the `feature-visit` template's view
+    // committed.
+    assert_eq!(found.len(), 94, "the committed tree is 94 views");
 }
 
 #[test]
@@ -460,8 +463,9 @@ fn emit_to_writes_only_under_the_out_directory() {
     // 75 since `0009-plan-qa-leg` ("2026-09-03 producer-plan-enforcement D8"); 80 since `0013`
     // (2026-09-19 impeccable-design-integration); 87 since `0032`–`0033` (the 2026-09-29 census
     // table ratification); 88 since `0058` (2026-10-11 implement-brainstorm-led); 92 since
-    // `0065`–`0066` (its wave 2); 93 since `0075` (its wave 3).
-    assert_eq!(written.len(), 93);
+    // `0065`–`0066` (its wave 2); 93 since `0075` (its wave 3); 94 since `0086` (the 2026-10-15
+    // engine-follow-up wave 1).
+    assert_eq!(written.len(), 94);
     for path in &written {
         assert!(path.starts_with(&out), "{} escaped --out", path.display());
         assert!(path.is_file(), "{} was not written", path.display());

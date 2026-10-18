@@ -1,0 +1,19 @@
+grammar: 1
+id: 0088-setup-thinking-stage
+sequence: 88
+intent: >-
+  Give setup its thinking-stage floor pointer (engine-follow-up default 17): mint the class: floor
+  stub setup.thinking-stage extending common.thinking-stage, its sixth extender. The contract is
+  not named, so it stays off (defaults 15, 16 read as held at the re-sort);
+  setup.interrogation-inline keeps its pointer and no other setup rule changes.
+anchor: 2026-10-15 engine-follow-up
+hash: sha256:87d41e99f3320d2f55aa43a246b6a1317a3864deabe8e27d0e58adc2a3f5ecb7
+changes:
+  - op: mint-rule
+    schema: command/setup
+    section: setup.sec.boundaries
+    rule:
+      id: setup.thinking-stage
+      class: floor
+      extends: common.thinking-stage
+      anchor: 2026-10-15 engine-follow-up
