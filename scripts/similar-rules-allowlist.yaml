@@ -633,3 +633,6 @@ suppressions:
     reason: "each desk's own fail over its own write — a card vs a store write; a kind: fail is command grammar and stays the caller's (analysis-iterative.caller-slots), and a common block cannot carry kind: (validate.rs:1854-1871), so no shared block converges them"
   - ids: [feat.fail.card-outside-set, spec.fail.story-outside-slate]
     reason: "a card outside the desk's ruled set vs a story file outside specify's confirmed slate — different artifact, different stage; a kind: fail stays the caller's (analysis-iterative.caller-slots) and cannot ride a common block (validate.rs:1854-1871)"
+  # --- engine-follow-up W2 (0092, v0.121.0) — the edge implement's card-order fail raised, kept distinct ---
+  - ids: [feat.fail.card-outside-set, impl.fail.cards-outside-order]
+    reason: "a desk card cut outside its visit file's ruled set vs implement's cycle cards cut against a ruled card order — different artifact, different moment; a kind: fail stays the caller's (analysis-iterative.caller-slots) and cannot ride a common block (validate.rs:1854-1871)"

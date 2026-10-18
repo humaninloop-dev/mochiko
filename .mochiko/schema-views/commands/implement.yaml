@@ -59,7 +59,9 @@ moments:
   entry: The gating and the sufficiency check, before the run-open confirmation.
   design-checkpoint: The user's sign-off on the design phase's output and the store delta.
   card-confirm: The user's ruling on the cycle slicing, before any card is built.
-  cycle-checkpoint: The per-cycle grading point where escalations and findings land as one batch.
+  cycle-checkpoint: >-
+    The per-cycle grading point where escalations and findings are put to the user on the asking
+    line.
   final-validation: >-
     The whole-build verification pass — regression sweep, cold verification, gap finding.
   landing: The acceptance-time execution of folds, graduations, and the store landing.
@@ -68,6 +70,10 @@ moments:
     Where the design phase's agenda is ruled with the user — after the run-open confirmation,
     before any design seat drafts — and again, scoped to the discovery, when undesigned
     structure halts a cycle.
+  card-order: >-
+    Where the order of what works after each step is shown to the user and, on a real choice,
+    ruled — after the design checkpoint, or the run-open confirmation on the zero-gap path,
+    before the card-authoring seat slices.
 sections:
   - id: impl.sec.roles
     title: Roles & Responsibilities — seat wiring
@@ -298,9 +304,10 @@ sections:
           members, the joint architecture, the batch ordering. A design need found outside it is
           the user's to rule, split by kind: new behaviour, which the spec carries no story or
           acceptance criteria for, never joins this run — it goes to `/mochiko:specify`,
-          `BACKLOG.md` or a feature-desk card; a design piece inside a story the spec carries is
-          the user's — this run, or later — and joins only once the sufficiency seat has
-          re-graded it as a gap, marked user-added in its report. A lane run adds none
+          `BACKLOG.md` or a feature-desk card, carrying the run's note to the desk visit: the need
+          in the user's words and the run it came from; a design piece inside a story the spec
+          carries is the user's — this run, or later — and joins only once the sufficiency
+          seat has re-graded it as a gap, marked user-added in its report. A lane run adds none
           (impl.lane-never-widens). Nothing outside the agenda is designed without that ruling.
         anchor: 2026-10-11 implement-brainstorm-led D6
       - id: impl.design-seat-additions
@@ -320,12 +327,69 @@ sections:
         class: must
         kind: reservation
         text: >-
-          Where the check names a structural gap and no desk visit file keyed to the feature
-          exists, the stage first offers a desk visit — `/mochiko:architecture <FEAT-ID>`, the
-          run pausing until the visit closes and its file is handed in — or to go on here; the
-          choice is the user's at run time.
+          Where the check names a structural gap and no architecture-desk visit file keyed to the
+          feature exists, the stage first offers a desk visit — `/mochiko:architecture
+          <FEAT-ID>`, the run pausing until the visit closes and its file is handed in — or to
+          go on here; the choice is the user's at run time.
         when: {scope: [selection, delta, epic]}
         anchor: 2026-10-11 architecture-brainstorm-interview D5
+      - id: impl.card-order
+        labels: [user-gate, binding]
+        class: must
+        kind: duty
+        text: >-
+          At the card-order moment you show the user a rough order of what works after each step,
+          as a mock in the message, and put a question only on a real choice — which independent
+          outcome comes first, or few big steps against many small; where the walking skeleton and
+          the dependencies leave no choice, none is put. A ruled order and step size are the ruled
+          set: you save the order as one line in `tasks.md`'s header before the card-authoring
+          seat, its next writer, opens the file. A delta or lane run builds from one desk card, so
+          no order is shown and no question put; a lane run that would slice several cycles raises
+          where its order line lives to the user first. At the card confirm the cards are shown as
+          "after step n you can…", each `open` line listed.
+        anchor: 2026-10-15 engine-follow-up D5
+      - id: impl.ruling-places
+        labels: [user-gate]
+        class: must
+        kind: binding
+        text: >-
+          The run's rulings outside its design stage take the asking line (impl.asking-line), each
+          with its next writer set. Writer on, the ruling reaching its writer as its exact text
+          and the place's existing grader checking the meaning kept: the card order
+          (impl.card-order), the card review (impl.card-review-before-confirm) checking it; the
+          checkpoint rulings — an infeasible card, an ambiguity, an adopt-first or IP-XXX call,
+          a constraint challenge (impl.infeasible-card-escalation, impl.ambiguity-escalation,
+          impl.adopt-first-user-call, impl.constraint-challenge) — the cycle's verification seat
+          checking the rework kept the ruling; the final-validation dispositions
+          (impl.beyond-spec-disposition), the landing verification seat checking the `gates.md`
+          fold; the deviation gate's amend (impl.deviation-gate), the delta amended from the
+          ruling and its existing non-author grade checking it. Writer held: a governance conflict
+          (impl.constitution-supremacy), by the ledger's own amend path; the run-open rulings
+          (impl.user-runopen-rulings), written into the sufficiency report and binding the run.
+          Writer off: a scope escalation (impl.scope-escalation-fail), a disputed finding kind
+          (impl.finding-kind-disputed), an exhausted gap-rework bound (impl.gap-rework-bound), an
+          epic member halt (impl.epic-member-halt), an attempt exemption
+          (impl.attempt-exemption-user-only), a disputed sufficiency clause
+          (impl.sufficiency-disputed-clause), the desk offer (impl.desk-offer) and the
+          absent-surface offers (impl.absent-surfaces). The design baseline's first system-part
+          write (impl.design-first-write) and final acceptance (impl.gate-final-acceptance) stay
+          yes / no gates, their writer held by the landing verification seat
+          (impl.landing-verifier-folds).
+        anchor: 2026-10-15 engine-follow-up D10
+      - id: impl.promises-kept-table
+        labels: [user-gate, evidence]
+        class: must
+        kind: duty
+        text: >-
+          At the acceptance moment you show the gate of impl.gate-final-acceptance as a
+          promises-kept table, composed in the conversation in the user-facing register
+          (impl.register), no new file: each "I'd know it works if…" line from the spec's slate,
+          the run's `design-stage.md` or the feature-desk visit file, quoted verbatim from its
+          file, beside the test that proves it and its result — an `open` line reading "open —
+          no target set", a measured value shown where there is one, no pass / fail column. The
+          final-validation report and the built-vs-signed diff stay the evidence beneath it. An
+          amend names the disputed rows, each then put to the user as fix now or book.
+        anchor: 2026-10-15 engine-follow-up D6
   - id: impl.sec.tools
     title: Tools bindings
     intent: Paths, schemas, skills, and templates the run binds to.
@@ -493,7 +557,11 @@ sections:
         class: must
         text: >-
           The verification seat reviews the cards before the card confirm — quality per
-          mochiko:review-plan-artifacts, buildability its own judgment.
+          mochiko:review-plan-artifacts, buildability its own judgment — and checks that they
+          follow the ruled order (impl.card-order) and that every "I'd know it works if…" line
+          behind them, from the spec's slate, the run's `design-stage.md` or the feature-desk
+          visit file, has at least one **TEST:** case keeping its meaning, an `open` line riding
+          open.
       - id: impl.epic-card-sequence
         labels: [seats]
         class: must
@@ -524,19 +592,19 @@ sections:
         class: must
         kind: binding
         text: >-
-          Design inputs are sufficiency-report.md and any desk visit file keyed to the run's
-          feature or an epic member — its directory under `.mochiko/architecture/desk/` carrying
-          the joined FEAT id lower-cased in its slug, read against the run's own pinned base, any
-          conflict where the store has moved past it listed at the design checkpoint for the user
-          to rule — and, where the design phase ran, the run's design-stage.md, its signed
-          architecture.md at ${features_dir}/FEAT-XXX/ with the store diagram files it lists, and
-          its marked entries in the product baselines, read in the pinned-base diff — the signed
-          store delta among them (the store at the sign-off base, or the checkpoint table), the
-          anchor for the deviation check and the built-vs-signed diff; the product baselines at
-          ${product_dir}/ (data-model.md, contracts/, constraints-and-decisions.md, the design
-          baseline at ${product_dir}/design/, and the architecture store, whose concern rows carry
-          the NFR-XXX targets the built code must meet); spec.md for the cards' cited acceptance
-          criteria.
+          Design inputs are sufficiency-report.md, any feature-desk visit file keyed to the run
+          (impl.feature-visit-input) and any desk visit file keyed to the run's feature or an epic
+          member — its directory under `.mochiko/architecture/desk/` carrying the joined FEAT id
+          lower-cased in its slug, read against the run's own pinned base, any conflict where the
+          store has moved past it listed at the design checkpoint for the user to rule — and,
+          where the design phase ran, the run's design-stage.md, its signed architecture.md at
+          ${features_dir}/FEAT-XXX/ with the store diagram files it lists, and its marked entries
+          in the product baselines, read in the pinned-base diff — the signed store delta among
+          them (the store at the sign-off base, or the checkpoint table), the anchor for the
+          deviation check and the built-vs-signed diff; the product baselines at ${product_dir}/
+          (data-model.md, contracts/, constraints-and-decisions.md, the design baseline at
+          ${product_dir}/design/, and the architecture store, whose concern rows carry the NFR-XXX
+          targets the built code must meet); spec.md for the cards' cited acceptance criteria.
         anchor: 2026-10-11 architecture-brainstorm-interview D5
       - id: impl.progress-surface
         labels: [evidence, reporting]
@@ -595,13 +663,16 @@ sections:
         class: must
         text: >-
           Gap-finding dispatch is two-message and blind. The first message carries only spec.md,
-          the sufficiency report and, where one exists, the signed architecture.md with the store
-          diagram files it lists, Screens & Flows, and the baselines data-model.md, contracts/,
-          the design baseline, and the store's NFR-XXX concern rows — their `built` and
-          in-flight-class entries only, never a `proposed` one — never the code, tasks.md, the
-          **TEST:** cases, or any report. The seat states its derived expectations; only then does
-          probing begin. Its brief carries the model-tiering rule, and its delegated reads stay
-          inside the same fence.
+          the sufficiency report, the user's own lines from the run's ruled sets — each
+          direction and "I'd know it works if…" line in the run's `design-stage.md` and in any
+          feature-desk visit file keyed to the run (impl.feature-visit-input), quoted by you,
+          never their ruled pieces or cards — and, where one exists, the signed architecture.md
+          with the store diagram files it lists, Screens & Flows, and the baselines data-model.md,
+          contracts/, the design baseline, and the store's NFR-XXX concern rows — their `built`
+          and in-flight-class entries only, never a `proposed` one — never the code, tasks.md,
+          the **TEST:** cases, or any report. The seat states its derived expectations; only then
+          does probing begin. Its brief carries the model-tiering rule, and its delegated reads
+          stay inside the same fence.
         pointer: mochiko:testing-gap-finding
         anchor: 2026-08-19 qa-gap-finding-verification
       - id: impl.mutation-lens
@@ -634,7 +705,8 @@ sections:
         kind: routing
         text: >-
           A gap in a previously delivered feature's territory is not this run's rework: it routes
-          to a /mochiko:feature delta card, cited in the report.
+          to a /mochiko:feature delta card, cited in the report, the run's note — the finding
+          and the run it came from — handed in to the desk visit.
         anchor: 2026-08-19 qa-gap-finding-verification
       - id: impl.beyond-spec-disposition
         labels: [user-gate]
@@ -642,7 +714,8 @@ sections:
         kind: reservation
         text: >-
           Each beyond-spec finding's disposition is the user's: fix now, book to BACKLOG.md, or
-          accept as designed.
+          accept as designed, an accept as designed checked against the run's ruled set before it
+          is put.
         anchor: 2026-08-19 qa-gap-finding-verification
       - id: impl.store-landing
         labels: [landing]
@@ -904,9 +977,10 @@ sections:
         class: must
         kind: routing
         text: >-
-          Reserved-to-user questions accumulate and land as one batch at the cycle checkpoint;
-          only a question the build cannot proceed without interrupts mid-cycle. Never sit on a
-          build-blocking one.
+          Reserved-to-user questions accumulate to the cycle checkpoint and are put there on the
+          asking line (impl.asking-line), a requirement ambiguity only the user can settle asked
+          as a fact question; only a question the build cannot proceed without interrupts
+          mid-cycle. Never sit on a build-blocking one.
       - id: impl.finding-severity-routing
         labels: [reporting]
         class: must
@@ -914,7 +988,7 @@ sections:
         text: >-
           Advisory verifier findings ride the escalation cadence: a Minor finding defaults to a
           BACKLOG.md booking, never an in-cycle fix; an Important-or-above finding blocks the
-          cycle and joins the checkpoint batch.
+          cycle and is put to the user at the cycle checkpoint (impl.escalation-batching).
       - id: impl.model-tiering
         class: must
         kind: routing
@@ -983,8 +1057,9 @@ sections:
         class: must
         kind: binding
         text: >-
-          Implement's inputs in hand when its design stage opens: a desk visit file keyed to the
-          feature (impl.design-inputs), the spec's slate and Intent, and a brainstorm record the
+          Implement's inputs in hand when its design stage opens: an architecture-desk visit file
+          keyed to the feature (impl.design-inputs), a feature-desk visit file keyed to the run
+          (impl.feature-visit-input), the spec's slate and Intent, and a brainstorm record the
           user names. A visit file that covers some gaps leaves the stage to run on the rest.
         anchor: 2026-10-11 implement-brainstorm-led
       - id: impl.design-stage-file
@@ -1009,6 +1084,22 @@ sections:
           fires only when structure was built.
         pointer: mochiko:authoring-architecture-store
         anchor: 2026-10-11 architecture-brainstorm-interview D8
+      - id: impl.asking-line
+        class: must
+        extends: common.asking-line
+        anchor: 2026-10-15 engine-follow-up D10
+      - id: impl.feature-visit-input
+        labels: [scope-entry, evidence]
+        class: must
+        kind: binding
+        text: >-
+          At entry, in every scope — selection, delta, lane, an epic's member — and whatever
+          the gap count, you read any feature-desk visit file keyed to the run's FEAT, each
+          member's on an epic, or its lane: `${features_dir}/desk/<date-slug>/visit.md`, its slug
+          carrying the joined FEAT id lower-cased or `lane-<slug>`. Its ruled set and the cards in
+          its card part are inputs in hand for the run, the desk card a delta or lane run builds
+          among them.
+        anchor: 2026-10-15 engine-follow-up
   - id: impl.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-run ruling can waive.
@@ -1290,6 +1381,13 @@ sections:
           user did not OK at the landing table.
         enforces: [impl.design-stage, impl.design-stage-agenda, impl.design-stage-file, impl.design-seat-additions]
         anchor: 2026-10-11 implement-brainstorm-led
+      - id: impl.fail.cards-outside-order
+        labels: [user-gate]
+        class: floor
+        kind: fail
+        text: Cards cut against a ruled card order without the user's word.
+        enforces: [impl.card-order, impl.card-review-before-confirm]
+        anchor: 2026-10-15 engine-follow-up D5
 tombstones:
   - id: impl.baselines-never-in-place
     disposition: >-

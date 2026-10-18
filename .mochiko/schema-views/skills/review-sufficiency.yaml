@@ -37,9 +37,9 @@ sections:
         class: must
         text: >-
           The delivered-feature exposure clause does not apply under delta scope — the desk's
-          delta card is itself the `[MODIFY]` instrument, carrying the marked delta on the entry
-          and folding at landing; a delta fix discovered structural re-fires the design phase
-          rather than clearing here.
+          delta card is itself the `[MODIFY]` instrument, written in the feature-desk visit file's
+          card part, the entry's marked work row pointing at it and folding at landing; a delta
+          fix discovered structural re-fires the design phase rather than clearing here.
         when: {scope: delta}
         anchor: 2026-08-26 plan-stage-utility
       - id: review-sufficiency.user-added-regrade
@@ -68,7 +68,10 @@ sections:
           Read the feature's `spec.md` (its Screens & Flows manifest included), the product
           architecture store, the product baselines (`data-model.md`, `contracts/`,
           `constraints-and-decisions.md`, the design baseline at `.mochiko/product/design/`), and
-          the capability map entries at `.mochiko/features/FEAT-XXX-<slug>.md`.
+          the capability map entries at `.mochiko/features/FEAT-XXX-<slug>.md`; under delta scope,
+          the delta card too, in the feature-desk visit file the entry's marked work row points at
+          — its scope and acceptance criteria, a bug's its reproduction, never its **TEST:**
+          cases.
         anchor: 2026-08-26 plan-stage-utility
       - id: review-sufficiency.fence-never-reads
         labels: [fence]

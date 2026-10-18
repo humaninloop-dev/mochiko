@@ -84,7 +84,94 @@ the verdict and its unit]; description 598 unchanged. `feature`'s render 18,507 
 characters and `setup`'s 17,661 → 18,002 (commands are unbudgeted); the router body 48,744 →
 48,776 (unbudgeted).
 
-[lead: Wave 2 — implement's later moments.]
+**Wave 2 — implement's later moments on the asking line** (D1-three-way-test as amended by D6 and
+D10, D5-card-order-asked, D6-promises-kept-table, D8-finder-reads-promises and D10-two-switch-test's
+Implement share, as changed at review — QR2, QR3, QR6, QR7, RB1–RB3 — with defaults 1–5, 12 and 24).
+`/mochiko:implement`'s moments after the design checkpoint take the shared asking line through
+`impl.asking-line`, `common.asking-line`'s second extender. A new `card-order` moment, beside
+`card-confirm`, comes before the card-authoring seat slices: the lead shows a rough order of what
+works after each step as a mock in the message and puts a question only on a real choice — which
+independent outcome comes first, or few big steps against many small; where the walking skeleton and
+the dependencies leave no choice, none is put. A ruled order and step size are the ruled set, the
+writer *on*, saved as one line in `tasks.md`'s header before the card-authoring seat opens the file;
+a delta or lane run builds from one desk card and takes no order question, and a lane run that would
+slice several cycles raises where its order line lives to the user (`impl.card-order`; D5 as changed
+at review, QR2 and QR7; default 4). The card confirm stays after the cards, unchanged
+(`impl.gate-card-confirm`); the verification seat's card review before it also checks the ruled
+order and that every "I'd know it works if…" line keeps its meaning in at least one **TEST:** case,
+an `open` line riding open (default 5); and a new floor fail, `impl.fail.cards-outside-order`, fails
+cards cut against a ruled order without the user's word (RB2). Every other ruling place takes its
+writer switch in `impl.ruling-places`, each named by its live rule id — the card order, the
+checkpoint rulings, the final-validation dispositions and the deviation gate's amend *on*; a
+governance conflict and the run-open rulings *held*; a scope escalation, a disputed finding kind, an
+exhausted gap-rework bound, an epic member halt, an attempt exemption, a disputed sufficiency
+clause, the desk offer and the absent-surface offers *off*; the design baseline's first system-part
+write and final acceptance stay yes / no gates, held by the landing verification seat (the re-sort's
+Implement row). The cycle checkpoint puts its questions on the asking line, a requirement ambiguity
+only the user can settle asked as a fact question, and a build-blocking question still interrupts at
+once (default 1); a beyond-spec finding's accept as designed is checked against the run's ruled set
+before it is put (default 2); default 3's altitude rides the asking line's question form and mock,
+with no rule of its own. Final acceptance stays the user's accept / amend / reject gate, shown as a
+promises-kept table: each "I'd know it works if…" line from the spec's slate, the run's
+`design-stage.md` or the feature-desk visit file, quoted verbatim, beside the test that proves it
+and its result — an `open` line reading "open — no target set", a measured value shown where there
+is one, no pass / fail column — composed by the lead in the conversation, no new file; an amend
+names the disputed rows, each then put as fix now or book (`impl.promises-kept-table`, minted beside
+the floor `impl.gate-final-acceptance`, which keeps its text; D6 as changed at review, RB1). At
+entry, in every scope and whatever the gap count, implement reads any feature-desk visit file keyed
+to its FEAT, each epic member's, or its lane, the desk card a delta or lane run builds among its
+inputs (`impl.feature-visit-input`; default 12 as changed at review, RB3, with D7's change); the
+design inputs and the design stage's inputs name it beside the architecture desk's file, and
+`impl.desk-offer` now names the architecture desk's file outright. An outside need sent to the
+feature desk — from the design stage's agenda, or a gap in a delivered feature's territory — carries
+the run's note to the desk visit (default 24, the implement side). The blind gap-finder's first
+message gains the user's own lines from the run's ruled sets — each direction and "I'd know it works
+if…" line of the run's `design-stage.md` and of any feature-desk visit file keyed to the run, quoted
+by the lead, never those files' ruled pieces or cards — on selection-scope and epic runs, since
+delta and lane runs skip gap-finding; the rest of the fence and the two-message dispatch stand (D8
+as changed at review, S10).
+
+Migrations **`0092-implement-card-order`**, **`0093-implement-asking-line`**,
+**`0094-implement-reads-desk`** and **`0095-sufficiency-reads-visit`** carry the W2 schema half: six
+new implement rules (`impl.card-order`, `impl.fail.cards-outside-order`, `impl.asking-line`,
+`impl.ruling-places`, `impl.promises-kept-table` and `impl.feature-visit-input`), the new
+`card-order` moment and the `cycle-checkpoint` moment reworded; ten implement rules reworded, every
+id, class and kind kept (`impl.card-review-before-confirm`, `impl.escalation-batching`,
+`impl.finding-severity-routing`, `impl.beyond-spec-disposition`, `impl.design-inputs`,
+`impl.design-stage-inputs`, `impl.desk-offer`, `impl.design-stage-agenda`,
+`impl.delivered-territory-routing` and `impl.gap-finding-blind-dispatch`); the `testing-gap-finding`
+floors `blindness-fence-inclusion-list` and `two-message-dispatch` reworded to admit the user's
+quoted lines, every other limb of the fence standing; and `review-sufficiency.fence-read-set` and
+`review-sufficiency.clause9-delta-inapplicable` reworded so the per-card form reads the delta card
+in the visit file's card part, never its **TEST:** cases. No template changes: the `tasks` header
+takes the order line. After W2 the log, sequences 1..95, replays to 94 documents and 1,260 rules
+(1,254 → 1,260). Implement's pins read `kind: fail · 17 rules` (was 16) and
+`class: floor · 40 rules` (was 39); `review-sufficiency`'s `class: floor · 8 rules` and
+`testing-gap-finding`'s `class: floor · 9 rules` are unchanged. No floor or fail is retired or
+lowered.
+
+W2 prose primitives: `commands/implement.md` and the `SKILL.md` of `review-sufficiency` and
+`testing-gap-finding` are unchanged — no line is made false: the Entry step's delta card names its
+source and role, never its home; the Goal step's accept / amend / reject is the gate D6 keeps; the
+two skills' bodies name no read set the rewords change. The router's `testing-gap-finding` row: its
+copy of the fence gains the user's quoted lines (D8). No strip entry is stamped [v0.121.0] in W2;
+four wave-context comments — in the `implement`, `review-sufficiency`, `testing-gap-finding` and
+router strip files — record the schema-only rewords and the router addition. Ripple: none made
+false. W1's carried note is re-read, and both lines it named hold by `impl.feature-visit-input`:
+`GLOSSARY.md:16`, the **visit file** entry ("read by implement"), unchanged; and the `feature-visit`
+template overview ("the dispatched run reads the cards and their set here"), left unchanged by P1's
+approved plan. `README.md` and `ARCHITECTURE.md` are unchanged.
+
+W2 budgets (characters, measured at the quiesced tree): `review-sufficiency` payload 17,360 → 17,614
+= body 3,262 + render 14,352 (render +254 from `0095`, body unchanged), +2,191 over the 15,423
+budget — the standing +1,937 plus +254 — argued as default 12's ruled obligation as changed at
+review (RB3), with D7 as changed at review (QR4) [lead: the unit-6 verdict]; description 686
+unchanged. `testing-gap-finding` payload 23,305 → 23,629 = body 7,005 + render 16,624 (render +324
+from `0094`, body unchanged), +3,652 over the 19,977 budget — the standing +3,328 plus +324 — argued
+as D8's ruled obligation as changed at review (S10 with RB3) [lead: the unit-6 verdict]; description
+770 unchanged. `implement`'s render 60,392 → 66,907 characters (commands are unbudgeted), its
+`impl.sec.tools` block 27,651 → 28,443 bytes, 557 under the 29,000-byte line; the router body 48,776
+→ 48,995 (unbudgeted).
 
 [lead: Wave 3 — the specify, setup and architecture-desk rows, the carry-forward readers, the
 0.120.0 residuals.]

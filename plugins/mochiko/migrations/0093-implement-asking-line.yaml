@@ -1,0 +1,108 @@
+grammar: 1
+id: 0093-implement-asking-line
+sequence: 93
+intent: >-
+  Put /mochiko:implement's rulings outside its design stage on the shared asking line
+  (engine-follow-up D10 as changed at review, QR3 and V5; the re-sort under D10, its Implement
+  row; D1 as amended by D6 and D10; D6 as changed at review, S7 with RB1; defaults 1–3): the
+  stub impl.asking-line, common.asking-line's second extender; impl.ruling-places, each ruling
+  place of the Implement row named by its live rule id with its writer setting; and
+  impl.promises-kept-table, final acceptance shown as a promises-kept table, minted beside the
+  floor impl.gate-final-acceptance, which keeps its text, force and anchor. Default 1 rewords
+  impl.escalation-batching (no earlier ruling anchors it) — the cycle checkpoint's questions put
+  on the asking line in place of "one batch", a requirement ambiguity only the user can settle
+  asked as a fact question, the build-blocking interrupt kept — and, false by the same "one
+  batch", the cycle-checkpoint moment's line and impl.finding-severity-routing's "joins the
+  checkpoint batch" (no earlier ruling anchors it), each keeping its id, class and kind. Default 2
+  rewords impl.beyond-spec-disposition (qa-gap-finding-verification, its anchor and its
+  reservation kept) — accept as designed checked against the run's ruled set. Default 3's
+  altitude is carried by the asking line's question form and mock in the message, with no rule of
+  its own. No asking mechanic is restated, no engine rule or slot changes, and no floor or fail is
+  retired or lowered.
+anchor: 2026-10-15 engine-follow-up
+hash: sha256:31acb15cb306fd6c9a72c9c41d9fead1c17714a3ae3bed9caabee76fdf20b6ac
+changes:
+  - op: set-moment
+    schema: command/implement
+    name: cycle-checkpoint
+    text: >-
+      The per-cycle grading point where escalations and findings are put to the user on the asking
+      line.
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.ways-of-working
+    rule:
+      id: impl.asking-line
+      class: must
+      extends: common.asking-line
+      anchor: 2026-10-15 engine-follow-up D10
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.reserved
+    rule:
+      id: impl.ruling-places
+      labels: [user-gate]
+      class: must
+      kind: binding
+      text: >-
+        The run's rulings outside its design stage take the asking line (impl.asking-line), each
+        with its next writer set. Writer on, the ruling reaching its writer as its exact text and
+        the place's existing grader checking the meaning kept: the card order (impl.card-order),
+        the card review (impl.card-review-before-confirm) checking it; the checkpoint rulings —
+        an infeasible card, an ambiguity, an adopt-first or IP-XXX call, a constraint challenge
+        (impl.infeasible-card-escalation, impl.ambiguity-escalation, impl.adopt-first-user-call,
+        impl.constraint-challenge) — the cycle's verification seat checking the rework kept the
+        ruling; the final-validation dispositions (impl.beyond-spec-disposition), the landing
+        verification seat checking the `gates.md` fold; the deviation gate's amend
+        (impl.deviation-gate), the delta amended from the ruling and its existing non-author grade
+        checking it. Writer held: a governance conflict (impl.constitution-supremacy), by the
+        ledger's own amend path; the run-open rulings (impl.user-runopen-rulings), written into
+        the sufficiency report and binding the run. Writer off: a scope escalation
+        (impl.scope-escalation-fail), a disputed finding kind (impl.finding-kind-disputed), an
+        exhausted gap-rework bound (impl.gap-rework-bound), an epic member halt
+        (impl.epic-member-halt), an attempt exemption (impl.attempt-exemption-user-only), a
+        disputed sufficiency clause (impl.sufficiency-disputed-clause), the desk offer
+        (impl.desk-offer) and the absent-surface offers (impl.absent-surfaces). The design
+        baseline's first system-part write (impl.design-first-write) and final acceptance
+        (impl.gate-final-acceptance) stay yes / no gates, their writer held by the landing
+        verification seat (impl.landing-verifier-folds).
+      anchor: 2026-10-15 engine-follow-up D10
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.reserved
+    rule:
+      id: impl.promises-kept-table
+      labels: [user-gate, evidence]
+      class: must
+      kind: duty
+      text: >-
+        At the acceptance moment you show the gate of impl.gate-final-acceptance as a
+        promises-kept table, composed in the conversation in the user-facing register
+        (impl.register), no new file: each "I'd know it works if…" line from the spec's slate,
+        the run's `design-stage.md` or the feature-desk visit file, quoted verbatim from its file,
+        beside the test that proves it and its result — an `open` line reading "open — no
+        target set", a measured value shown where there is one, no pass / fail column. The
+        final-validation report and the built-vs-signed diff stay the evidence beneath it. An
+        amend names the disputed rows, each then put to the user as fix now or book.
+      anchor: 2026-10-15 engine-follow-up D6
+  - op: reword-rule
+    schema: command/implement
+    id: impl.escalation-batching
+    text: >-
+      Reserved-to-user questions accumulate to the cycle checkpoint and are put there on the
+      asking line (impl.asking-line), a requirement ambiguity only the user can settle asked as a
+      fact question; only a question the build cannot proceed without interrupts mid-cycle. Never
+      sit on a build-blocking one.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.finding-severity-routing
+    text: >-
+      Advisory verifier findings ride the escalation cadence: a Minor finding defaults to a
+      BACKLOG.md booking, never an in-cycle fix; an Important-or-above finding blocks the cycle
+      and is put to the user at the cycle checkpoint (impl.escalation-batching).
+  - op: reword-rule
+    schema: command/implement
+    id: impl.beyond-spec-disposition
+    text: >-
+      Each beyond-spec finding's disposition is the user's: fix now, book to BACKLOG.md, or accept
+      as designed, an accept as designed checked against the run's ruled set before it is put.

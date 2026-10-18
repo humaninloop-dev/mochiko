@@ -9,6 +9,27 @@ machinery is `DECISIONS.md`-traceable content: each rule move below cites the `D
 D2-sufficiency-check-clauses as amended), the same ceremony class as a supersession-by-ruling, with **no whole-body
 claim** made.
 
+<!-- Wave context: wave 2 of the engine follow-up build (v0.121.0) — the sufficiency check's
+per-card form reads the delta card where it now sits, the feature-desk visit file's card part.
+Schema content only, so no entry: the migration log carries the verbatim prior text
+(`strips/README.md`), and `SKILL.md` is unchanged — no line is made false (its description's "Never
+reads code, `tasks.md`, `**TEST:**` cases, or cycle reports" holds, since the card is read for its
+scope and acceptance criteria, never its **TEST:** cases; the Procedure's "read the fenced source
+set whole" reads the widened set). Recorded here for the audit's read, because a rule carries one
+anchor (default 20) and both lines are `DECISIONS.md`-traceable (the 2026-08-26
+plan-stage-retirement row, this file's opening paragraph): `0095-sufficiency-reads-visit.yaml`
+rewords `review-sufficiency.fence-read-set` — under delta scope it reads the delta card too, in the
+feature-desk visit file the entry's marked work row points at, its scope and acceptance criteria, a
+bug's its reproduction, never its **TEST:** cases — and
+`review-sufficiency.clause9-delta-inapplicable` — "carrying the marked delta on the entry" now reads
+"written in the feature-desk visit file's card part, the entry's marked work row pointing at it" —
+each keeping its id, class, kind and the `plan-stage-utility` anchor, each wording superseded by
+`.mochiko/brainstorms/engine-follow-up/record.md` default 12 as changed at review (RB3 with S10) and
+D7-desk-visit-file as changed at review (QR4), the migration's anchor (`DECISIONS.md` 2026-10-15
+"Engine follow-up ruled" row). The floor `review-sufficiency.fence-never-reads` stands unchanged and
+uncontradicted: the visit file sits outside the batch's own run-output directory, and the card's
+**TEST:** cases stay unread. Payload 17,360 → 17,614, render +254 (the ledger row). -->
+
 <!-- Wave context: wave 5 of the CLI schema-delivery build (v0.106.0) — the review family
 converts: each member's rules are rendered at fire by `mochiko-cli` from the migration log the
 plugin carries at `plugins/mochiko/migrations/`, and the skill reads no schema file. Ruling for

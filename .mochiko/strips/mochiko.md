@@ -81,6 +81,21 @@ D2-card-visits-stage (`DECISIONS.md` 2026-10-15 "Engine follow-up ruled" row;
 body is unbudgeted: 48,744 → 48,776. Pre-edit verbatim text:
 `git show c840469:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+<!-- Wave context: wave 2 of the engine follow-up build (v0.121.0) — the `testing-gap-finding` row
+(`:117`): the fence copy gains, after `spec.md`, "the user's own direction and "I'd know it works
+if…" lines from the run's `design-stage.md` and any feature-desk visit file keyed to the run, quoted
+into message 1 by the lead, never those files or their ruled pieces"
+(`0094-implement-reads-desk.yaml`, `testing-gap-finding.blindness-fence-inclusion-list`;
+`.mochiko/brainstorms/engine-follow-up/record.md` D8-finder-reads-promises as changed at review, S10
+with RB3). Pure addition only, so no entry, recorded here for the audit's read: the row copies the
+inclusion list (the [v0.116.0] entry below; the `testing-gap-finding` strip's [v0.114.0] consumer
+note), so an unchanged copy would misstate the fence. The `/mochiko:implement` row (`:143`) is
+unchanged: the card confirm and final acceptance keep their gates (`impl.gate-card-confirm`,
+`impl.gate-final-acceptance`), and the card order is an asking-line ruling, never a gate, so "Your
+three routing gates" stays true; the `review-sufficiency` row (`:90`) names no read set. Row: the
+`DECISIONS.md` 2026-10-15 "Engine follow-up ruled" row. The router body is unbudgeted: 48,776 →
+48,995. Pre-edit verbatim text: `git show fccae34:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
 ## [v0.120.0] `/mochiko:architecture` row — "greenfield elicits through the shelf walk" and "Each visit walks the shelves you scope, takes your stance per row" superseded by the focus stage
 
 - **Disposition:** superseded → `SKILL.md`:142 as rewritten, the two passages verbatim —

@@ -183,7 +183,8 @@ fn the_log_replays_into_a_deliverable_state() {
     // `design-stage` template; `0075` also replaces the `feature`, `epic` and `product-lane`
     // homes in place, and `0079` the `architecture-store` template. `0085`–`0089` (the
     // 2026-10-15 engine-follow-up wave 1) import one: `0086` the `feature-visit` template;
-    // `0086` also replaces the `feature-desk` home in place.
+    // `0086` also replaces the `feature-desk` home in place. `0090` and `0091` are unused, a
+    // legal gap. `0092`–`0095` (its wave 2) import none.
     assert_eq!(replay.state.docs.len(), 94);
     assert_eq!(
         replay.sequences(),
@@ -191,7 +192,7 @@ fn the_log_replays_into_a_deliverable_state() {
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
             25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48,
             49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 65, 66, 67, 68, 69, 70, 75, 76,
-            77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89
+            77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 92, 93, 94, 95
         ],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
@@ -225,7 +226,10 @@ fn the_log_replays_into_a_deliverable_state() {
          user-added re-grade, 0082's gap-finding signed set, 0083's stage file in the \
          artifact home, 0084's entry-only record restored, then the 2026-10-15 \
          engine-follow-up wave 1 — 0085's shared asking line, 0086's feature visit file, 0087's \
-         feature on the engine, 0088's setup thinking stage, 0089's entry pointing at the visit"
+         feature on the engine, 0088's setup thinking stage, 0089's entry pointing at the visit, \
+         then — 0090 and 0091 left unused, a legal gap — its wave 2 — 0092's implement card \
+         order, 0093's implement asking line, 0094's implement reading the desk, 0095's \
+         sufficiency reading the visit"
     );
 }
 
@@ -865,12 +869,24 @@ fn the_corpus_census_holds_through_the_log() {
     // `reword-rule`s — three in `0087`, one in `0089` — keep their rule's id, class and kind (the
     // floor `feat.artifact-home` stays a floor); `0087`'s condition and moment, the template
     // `0086` imports and the home it replaces move nothing here.
-    assert_eq!(command_rules, 412, "live command rules");
+    // The 2026-10-15 engine-follow-up wave 2 carries `0092`–`0095`, anchored to that session's
+    // rulings and confirmed defaults: six `mint-rule`s, all on `implement`, and nothing retired.
+    // `0092` mints the must `impl.card-order` and the floor fail node
+    // `impl.fail.cards-outside-order`, `0093` three musts — the stub `impl.asking-line`, the
+    // second extender of `common.asking-line`, `impl.ruling-places` and
+    // `impl.promises-kept-table` — and `0094` the must `impl.feature-visit-input`. So command
+    // 412 → 418, total 1254 → 1260, command floors 129 → 130 and the fail set 40 → 41, while the
+    // skill rules hold at 842 and the skill floors at 266. The wave's fourteen `reword-rule`s —
+    // one in `0092`, three in `0093`, eight in `0094`, two in `0095` — keep their rule's id,
+    // class and kind (the floors `testing-gap-finding.blindness-fence-inclusion-list` and
+    // `testing-gap-finding.two-message-dispatch` stay floors); the two moments `0092` and `0093`
+    // set move nothing here.
+    assert_eq!(command_rules, 418, "live command rules");
     assert_eq!(skill_rules, 842, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1254, "live rules in total");
+    assert_eq!(command_rules + skill_rules, 1260, "live rules in total");
     assert_eq!(skill_floors, 266, "skill floors");
-    assert_eq!(command_floors, 129, "declared command floors");
-    assert_eq!(fail_nodes, 40, "command fail nodes");
+    assert_eq!(command_floors, 130, "declared command floors");
+    assert_eq!(fail_nodes, 41, "command fail nodes");
 }
 
 // ---------------------------------------------------------------------------

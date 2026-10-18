@@ -263,3 +263,220 @@ audit: unit 8 (crate tests, template fixtures, contract expectations, plan kits 
 - P1 (persona-less `general-purpose`, `model: opus`) dispatched plan-only; tree snapshot taken (41
   porcelain lines: W1's 37 paths, the build log, the two wave plans and the W1 audit report).
 - W1 sits uncommitted in the tree; the commit is the user's call.
+
+## 2026-10-18 — W1 committed; commits delegated for the build
+
+- The user: "yes , commit when you see fit during entire implementation" — the lead commits at
+  natural boundaries for the rest of this build; push and merge stay the user's.
+- W1 committed as `fccae34` ("Put feature on the shared engine and mint the shared asking line"):
+  W1's 37 paths, the build log, both wave plans and `reports/audit.md`. Tree clean after.
+- W2 P1 was planning (plan-only, no writes) across the commit; its dirty check now reads against
+  the clean tree at `fccae34`.
+
+## 2026-10-18 — W2 P1 planned; peer grade dispatched
+
+- W2 P1's plan returned (538 lines; truncated in the notice, recovered unchanged, sha256
+  `dd707710…`). Tree after: only the lead's own build-log edit — not dirty.
+- The plan, dry-run: four files land (0092 card order · 0093 asking line, ruling places,
+  promises-kept table, defaults 1–2 · 0094 the feature visit read in every scope, the outside
+  need's note, D8's added input · 0095 `review-sufficiency`); six new implement rules (one floor
+  fail), one moment, nine implement rewords; no template change (the `tasks` header takes the
+  order line, conformance checks nothing above `## Overview`). Dry run `0 rejecting · 118
+  advisory · 0 clusters · 185 suppressed`; `impl.sec.tools` 27,651 → 28,354 bytes (646 under the
+  29,000 line), no new rule in tools. D6 lands as a new must beside the floor, the floor untouched.
+- Four scope points raised for the lead, beyond the wave plan's allocation: L1 — D8's skill side,
+  two `testing-gap-finding` floors (the inclusion list and the two-message dispatch) reworded to
+  admit the user's quoted lines, else D8 contradicts the closed fence (the 0.120.0 0078/0082
+  precedent) · L2 — `review-sufficiency.fence-read-set` widened to the card in the visit file ·
+  L3 — `impl.desk-offer` qualified to the architecture desk's file · L4 — default 24 on
+  `impl.delivered-territory-routing` too (lean: not included).
+- Risks it flagged, not resolved: the order line's first `tasks.md` write must carry the
+  template's required headings or the hook denies it · a pre-existing tension between
+  `review-sufficiency.fence-never-reads` ("never … **TEST:** cases") and the delta card's
+  **TEST:** bundle · two allowlist rows stop firing (left in place).
+- Fresh generic peer (`model: opus`) dispatched; asked for its reading of whether L1 stays inside
+  D8 ("the rest of the fence and the two-message dispatch are unchanged") or lowers a floor.
+
+## 2026-10-18 — W2 P1 plan grade: FAIL; re-plan sent with the L rulings
+
+- Peer grade: FAIL · 2 blocking (item 1) · 4 advisory; the dry run reproduced exactly (hashes,
+  `0 rejecting · 118 advisory · 0 clusters · 185`, `94 documents · 1260 rules`, tools 28,354).
+  Blocking: 1a — the `cycle-checkpoint` moment still says "land as one batch", the phrase the plan
+  judged false on `impl.escalation-batching` · 1b — `impl.feature-visit-input` reads the card part
+  only on delta/lane runs, but default 12 (RB3) and D7 read the card on every path (growth-row
+  cards dispatch in selection scope).
+- The grader's L1 reading: inside D8, no floor lowered — pure insertions of D8's one input, every
+  other limb unchanged, the widening the user's explicit Q8 ruling over "fence as built", the
+  0078/0082 precedent.
+- The lead's rulings, sent with the re-plan: L1 include (the gate grades `testing-gap-finding` as
+  its own skill-pair unit) · L2 include, with the grader's A1 resolved in the plan — word the
+  read so it cannot contradict `review-sufficiency.fence-never-reads` ("never … **TEST:**
+  cases"), or stop and raise it to the user if the per-card form truly needs the card's **TEST:**
+  cases · L3 include · L4 include (default 24's words are general and W1's `feat.carry-forward`
+  expects the note on any outside need; one clause, measured) · A2 moot · A3 no template change,
+  the rung claim citing `analysis-iterative.contract-inside` · A4 the mock scoped off delta/lane.
+- Re-plan bound consumed: 1 of 1 for W2 (the counter P1, P2 and P3 share). A second consumption
+  goes to the user.
+
+## 2026-10-18 — W2 P1 addendum returned; re-grade dispatched
+
+- Addendum (161 lines; recovered unchanged, sha256 `1123e3b6…`), tree clean but the lead's log.
+  Six ops changed: a `cycle-checkpoint` `set-moment` and an `impl.finding-severity-routing`
+  reword ("joins the checkpoint batch" false on the same reading — 1a) · `impl.feature-visit-input`
+  reads the cards in every scope (1b) · `impl.delivered-territory-routing` carries the run's note
+  (L4) · `review-sufficiency.fence-read-set` reads "its scope and acceptance criteria, a bug's its
+  reproduction, never its **TEST:** cases" (L2 — the per-card form's
+  `clause-testable-criteria` grades a stateable oracle, not a written test) · `impl.card-order`
+  scopes the mock off delta/lane (A4). Dry run `0 rejecting · 118 advisory · 0 clusters · 185`;
+  `impl.sec.tools` 28,443 bytes (557 under the line).
+- A risk the seat flags, not a stop: the `tasks` card shape has no standalone acceptance field
+  ("the acceptance-ID citation lives per-case"), so a delta card's 1–3 criteria have no named line
+  outside its **TEST:** bundle — a pre-existing card-shape question beside the
+  `fence-never-reads` tension. Put to the grader for a reading; the lead places it after.
+- The same grader resumed on the revision.
+
+## 2026-10-18 — W2 P1 re-grade PASS, approved, build opened
+
+- Re-grade: PASS · 0 blocking · 1 advisory. The grader re-ran every addendum figure from a fresh
+  scratch tree (hashes, exactly six ops changed, stamp leaving hashes unmoved, `0 rejecting · 118
+  advisory · 0 clusters · 185`, status `ea8e4a6c…`, three views, tools 28,443).
+- Its reading of the L2 risk: not unworkable — a bug card is fully workable (the reproduction
+  sits in the ruled set, outside **TEST:**); an improvement card's criteria-testable clause has
+  no admissible object on the card, since the `tasks` card shape keeps criteria only as per-case
+  Covers inside the **TEST:** bundle — it fails safe (never reads **TEST:**, never silently
+  passes; grades the ruled set's seed or reads gap). Pre-existing; the owner is the card grammar
+  (`feat.delta-cards`' "1–3 acceptance criteria" against the template's no-criteria-field).
+- N1 placed by the lead: a BACKLOG item at the build's landing — *Delta-card criteria have no
+  line outside the **TEST:** bundle* — to be ruled before the first improvement delta run; the
+  optional semantics change (naming the seed as the oracle) not taken, since it changes what the
+  clause grades and is a ruling.
+- The lead approved; the plan pinned (`dd707710…` + `1123e3b6…`); tree snapshot (the log only).
+
+## 2026-10-18 — W2 P1 built; P2 and P3 dispatched plan-only
+
+- W2 P1's build report (recovered from the transcript): four files written byte-for-byte from the
+  stamped scratch copies, stamp hashes unmoved (0092 `441a35b9…`, 0093 `31acb15c…`, 0094
+  `856004e0…`, 0095 `cede5dc2…`); one allowlist row; three views re-emitted; views ≡ replay.
+  `cargo test --no-fail-fast` 759/6, all six P3's pins — one (`render.rs:1173`, implement's
+  pinned floor set) missed by the plan's red list, disclosed.
+- The lead's checks: `git status` shows exactly P1's write set beside the log · `migrate
+  validate` `0 rejecting · 118 advisory`, `clusters: 0`, `185` suppressed · status `1..95`,
+  `ea8e4a6c…`, `94 documents · 1260 rules` · the six new ids and both moments render; the floors
+  `impl.gate-card-confirm` and `impl.gate-final-acceptance` unchanged word for word.
+- P2 (prose; write set widened to `testing-gap-finding`'s SKILL.md and strip, since L1 added the
+  third primitive) and P3 (tests and kits; told the implement kit has `runs/`, so its
+  preregistration decision needs a reason) dispatched plan-only in parallel; tree snapshot taken
+  (9 lines). Both briefs say W2's re-plan bound is spent.
+
+## 2026-10-18 — W2 P2 planned; peer grade dispatched
+
+- W2 P2's plan (324 lines; recovered unchanged, sha256 `fc1141d3…`); tree after planning equals
+  the snapshot. Seven files change: the router's `testing-gap-finding` row (it restates the
+  closed inclusion list 0094 widened — one 214-character insertion) · four wave-context strip
+  comments (`implement`, `review-sufficiency`, `testing-gap-finding`, `mochiko`) · two ledger rows
+  (`review-sufficiency`, `testing-gap-finding`) · the CHANGELOG W2 part. No strip entry (no prose
+  line leaves).
+- Left unchanged, each with its reason: `implement.md` (the Entry step's delta card names its
+  source and role, never its home), both skill bodies, `README.md`, `ARCHITECTURE.md`, and
+  `GLOSSARY.md:16` — W1's carried note now true by `impl.feature-visit-input`.
+- Fresh generic peer (`model: opus`) dispatched, asked to test the "left alone" calls hard.
+
+## 2026-10-18 — W2 P2 plan PASS, approved, build opened
+
+- Peer grade: PASS · 0 blocking · 3 advisory. Every "left alone" call tested against the built
+  rules and held; router `:117` the one false line; the `feature-visit` overview and
+  `GLOSSARY.md:16` both hold by `impl.feature-visit-input`. Figures checked first-hand
+  (review-sufficiency payload 17,360 → 17,614; testing-gap-finding 23,305 → 23,629; router body
+  48,776 → 48,990).
+- The lead approved, the plan pinned (`fc1141d3…`), with amendments: A3 — "keyed to the run" in
+  the router insertion · A1 — the CHANGELOG's carried-note sentence names both lines, the
+  overview's citation corrected (P1's approved no-op, not "ruling A3") · A2 — the other zero-gap
+  "straight / directly" sites named in the build report for unit 6.
+
+## 2026-10-18 — W2 P2 built
+
+- Seven paths, the three amendments applied, no deviation: router `:117` (+219 characters, "keyed
+  to the run") · four wave-context strip comments · ledger rows `:80` (review-sufficiency
+  17,360 → 17,614, +2,191 over 15,423) and `:92` (testing-gap-finding 23,305 → 23,629, +3,652
+  over 19,977), verdict slots left for the gate · the CHANGELOG W2 part. Every declared-home write
+  dry-run (`allow`) and byte-identical to it. One figure moved: the router body 48,990 → 48,995
+  (A3's five characters).
+- A2's sites read as holding ("straight / directly" means the design phase is skipped; the card
+  order is not a phase): `ARCHITECTURE.md:243` · router `:90`, `:100`, `:143`.
+- The lead's check: `git status` beyond the snapshot shows exactly the seven paths; `migrate
+  validate` `0 rejecting · 118 advisory`.
+
+## 2026-10-18 — W2 P3 planned; peer grade dispatched; usage limit reached
+
+- W2 P3's plan (222 lines; recovered unchanged, sha256 `8dec0363…`, with its `plan.diff`
+  `b43c1cc4…` part of the plan); no `crates/` or `evals/` path changed. Eight paths: four crate
+  tests, `evals/contract/run.py` and README, `evals/plan/README.md`, the implement kit's
+  `observable.yaml`. Red observed: the same six failures; the opt-in sweep fails at `:947` and
+  `:1293`. The implement preregistration left as is (the kit has run — 108 tracked files under
+  `runs/`; §3.6's rule; the setup ontology-grid precedent), its counter-precedent named.
+- Fresh generic peer (`model: opus`) dispatched to grade it. The user's usage limit was reached
+  during the dispatch; the grade may not have returned.
+- **Resume here:** read the P3 grader's result (transcript, or re-dispatch the same brief if it
+  failed) · on PASS approve P3 pinned by sha256 and resume it to build · then the W2 gate audit
+  (wave plan §4, seven units plus the `testing-gap-finding` skill-pair unit; named overages:
+  review-sufficiency +2,191, testing-gap-finding +3,652) · then commit W2 · then W3.
+
+## 2026-10-18 — W2 P3 plan PASS (after a limit stop), approved, build opened
+
+- The P3 grader's run ended on a session limit before its verdict; on the reset the same seat was
+  resumed (tree unchanged, 16 lines). Grade: PASS · 0 blocking · 4 advisory, every key claim
+  reproduced in its own mirrors (red 759/6, green 765/0, sweep 48/0, fmt and clippy 0, contract
+  host run 6/7 → 7/7 "implement render (40 ids)", `check-rubric` 75 · 56 · 131, `check-fixtures`
+  OK).
+- The lead approved, the plan pinned (`8dec0363…` + `plan.diff` `b43c1cc4…`), with rulings: the
+  implement preregistration left as is (§3.6; W1's setup precedent) · A1 taken — the footer scoped
+  to this wave, implement's own 2026-10-11 recount named, reason 3 dropped or restated · A3 taken —
+  a fresh mirror after the `run.py` edit for the green contract run · A4 the seat's call, one-line
+  reason in the `why` · A2 noted. Any red beyond the six named is a stop.
+
+## 2026-10-18 — W2 P3 built; W2 gate audit dispatched
+
+- W2 P3's build: step-1 red the six named exactly; eight paths, Edit only, seven byte-identical to
+  the approved after-hashes, `observable.yaml` differing only by rulings 2 and 4
+  (`impl.feature-visit-input` kept conditional, its why giving the reason). Green: `cargo test
+  --all` 765/0 · the opt-in sweep 48/0 · fmt 0 · clippy 0 · contract host run 6/7 → 7/7
+  ("implement render (40 ids)") on a mirror cut after the edit · `check-rubric` 75 · 56 · 131 ·
+  `check-fixtures` OK. No deviation; no new `.pyc`.
+- The lead's check: `git status` beyond the snapshot shows exactly the eight paths (24 lines in
+  all).
+- The W2 gate grader dispatched: persona-less `general-purpose`, `model: opus`, eight units (the
+  wave plan's §4 with `testing-gap-finding`'s skill pair as its own unit), the contract rendered
+  first-hand, report at `reports/audit-w2.md`; named overages review-sufficiency +2,191 and
+  testing-gap-finding +3,652; the tools ceiling measured under unit 5.
+
+## 2026-10-18 — W2 gate audit: all PASS; wave 2 closed
+
+- Report: `reports/audit-w2.md` (the conformance check allowed it before the write). Eight units,
+  0 blocking, no fix round. The outcome lines:
+
+```
+audit: unit 1 (schema content · 0092 + implement view diff) · w2-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+audit: unit 2 (schema content · 0093 + implement view diff, ruling places checked live) · w2-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+audit: unit 3 (schema content · 0094 implement half + 0095 + implement and review-sufficiency view diffs + allowlist row) · w2-gate-grader · opus · 5 files · 1 rounds · 0 blocking
+audit: unit 4 (schema content and skill pair · testing-gap-finding — 0094 skill half, view diff, SKILL.md and render) · w2-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+audit: unit 5 (command pair · implement) · w2-gate-grader · opus · 1 files · 1 rounds · 0 blocking
+audit: unit 6 (skill pair · review-sufficiency) · w2-gate-grader · opus · 1 files · 1 rounds · 0 blocking
+audit: unit 7 (prose primitives and records · router, four strips, budget ledger, CHANGELOG, README, ARCHITECTURE, GLOSSARY) · w2-gate-grader · opus · 10 files · 1 rounds · 0 blocking
+audit: unit 8 (crate tests, contract expectations, plan kits · crate non-author review) · w2-gate-grader · opus · 8 files · 1 rounds · 0 blocking
+```
+
+- The grader's rulings: L1 inside D8, no floor lowered (insertions only, +271 and +53) · L2 does
+  not contradict `review-sufficiency.fence-never-reads` · both overages HOLD (testing-gap-finding
+  +3,652 = the ruled +3,328 plus +324; review-sufficiency +2,191 = the ruled +1,937 plus +254) ·
+  tools 28,443 bytes, 557 under the line · all 22 ids `impl.ruling-places` names live, its writer
+  settings 16 of 16 against the re-sort · W1's carried note: both lines now true.
+- Advisories, placed by the lead: `impl.feature-visit-input` reads "any" visit file keyed to the
+  FEAT, though dated visits accumulate (0095 uses the work row's pointer) — a W3 residual ·
+  `impl.landing-verifier-folds` does not itself name the `gates.md` fold check that
+  `impl.ruling-places` gives it — a W3 residual, one home kept · the order line's first `tasks.md`
+  write must carry the template's headings — operational, left · two allowlist rows now suppress
+  nothing — left, documented in `matrix_similar.rs` · the testing-gap-finding verdict slot in the
+  ledger and CHANGELOG names unit 6; it is unit 4 — corrected when the lead fills the slots at the
+  bump.
+- The lead's wave-close regression read: `cargo audit` clean (31 dependencies). Wave 2 closed; no
+  bump. Committed next.

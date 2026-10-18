@@ -355,6 +355,9 @@ EXPECTED = {
                 # `0077-implement-on-engine` (the same session) minted the thinking-stage
                 # pointer floor.
                 "impl.thinking-stage",
+                # `0092-implement-card-order` ("2026-10-15 engine-follow-up D5") minted the
+                # floor fail node for cycle cards cut against a ruled card order.
+                "impl.fail.cards-outside-order",
             }
         ),
         44_266,

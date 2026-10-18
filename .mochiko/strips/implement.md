@@ -1,5 +1,36 @@
 # Strip notes — `commands/implement.md`
 
+<!-- Wave context: wave 2 of the engine follow-up build (v0.121.0) — implement's moments after the
+design checkpoint move onto the shared asking line: the card order asked before slicing on a real
+choice, every other ruling place set on its writer switch, acceptance shown as a promises-kept
+table, the feature desk's visit file read at entry in every scope, an outside need handed to the
+desk with the run's note, and the gap-finder's first message carrying the user's own lines. Schema
+content only, so no entry below: the migration log carries the verbatim prior text
+(`strips/README.md`), and `commands/implement.md` is unchanged — no line is made false (the Entry
+step's delta card names its source and role, never its home; the Goal step's accept / amend / reject
+is the gate D6 keeps), and its Not-done line already cites the CLI-printed pin
+(`kind: fail · 17 rules`). Recorded here for the audit's read, because a rule carries one anchor
+(default 20): `0092-implement-card-order.yaml`, `0093-implement-asking-line.yaml` and
+`0094-implement-reads-desk.yaml` reword ten rules and the `cycle-checkpoint` moment, each rule
+keeping its id, class, kind and, where it has one, its anchor. By
+`.mochiko/brainstorms/engine-follow-up/record.md` D5-card-order-asked as changed at review (QR2)
+with default 5: `impl.card-review-before-confirm` (no earlier ruling anchors it). By default 1, on
+D10-two-switch-test's asking line (QR3): the `cycle-checkpoint` moment, `impl.escalation-batching`
+and `impl.finding-severity-routing` (no earlier ruling anchors them; "one batch" made false). By
+default 2: `impl.beyond-spec-disposition` (`qa-gap-finding-verification`, its reservation kept). By
+default 12 as changed at review (RB3) with D7-desk-visit-file's change (QR4): `impl.design-inputs`
+and `impl.desk-offer` (`architecture-brainstorm-interview` D5) and `impl.design-stage-inputs`
+(`implement-brainstorm-led`). By default 24 (QR6): `impl.design-stage-agenda`
+(`implement-brainstorm-led` D6) and `impl.delivered-territory-routing`
+(`qa-gap-finding-verification`). By D8-finder-reads-promises as changed at review (S10 with RB3):
+`impl.gap-finding-blind-dispatch` (`qa-gap-finding-verification`). Each earlier ruling's wording is
+superseded by the named one, this session's anchor on the migrations (`DECISIONS.md` 2026-10-15
+"Engine follow-up ruled" row). The floors `impl.gate-card-confirm` and `impl.gate-final-acceptance`
+keep their text, force and anchors; six rules are minted beside them — `impl.card-order`,
+`impl.fail.cards-outside-order`, `impl.asking-line`, `impl.ruling-places`,
+`impl.promises-kept-table`, `impl.feature-visit-input` — and the `tasks` template is unchanged, its
+header taking the order line. No floor or fail is retired or lowered. -->
+
 <!-- Wave context: wave 3 of the combined engine/desk build (v0.120.0) — implement's design stage on
 the shared thinking stage, its `design-stage.md` home, the landing-table checkpoint and the ten
 architecture touches. Schema content only, so no entry below: the migration log carries the

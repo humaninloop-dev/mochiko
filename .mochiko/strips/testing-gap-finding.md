@@ -26,6 +26,26 @@ Ruling: `.mochiko/brainstorms/impeccable-design-integration/record.md` D8-implem
 `DECISIONS.md` 2026-09-19 row and that session's `wave1-design-integration.md`. Pre-edit verbatim
 text: `git show 6e4b264:plugins/mochiko/skills/testing-gap-finding/SKILL.md`. -->
 
+<!-- Wave context: wave 2 of the engine follow-up build (v0.121.0) — the blind gap-finder's first
+message carries the user's own lines from the run's ruled sets. Schema content only, so no entry:
+the migration log carries the verbatim prior text (`strips/README.md`), and `SKILL.md` is unchanged
+— no line is made false (the cards stay outside the fence, so "Peeking at cards or code" stands, and
+the Overview's anchoring rationale, kept at [v0.103.0], stands word for word). Recorded here for the
+audit's read, because a rule carries one anchor (default 20) and both rules hold the protection
+transferred at [v0.103.0] (below): `0094-implement-reads-desk.yaml` rewords the floors
+`testing-gap-finding.blindness-fence-inclusion-list` — the inclusion list gains, after `spec.md`,
+the user's own lines quoted into message 1 by the lead, each direction and "I'd know it works if…"
+line of the run's `design-stage.md` and of any feature-desk visit file keyed to the run, never those
+files, their ruled pieces or their cards — and `testing-gap-finding.two-message-dispatch` — message
+1 carries inclusion-list references only, and the user's lines the list admits as quoted text — each
+keeping its id, class, kind and the `qa-gap-finding-verification` D3 anchor, each wording superseded
+by `.mochiko/brainstorms/engine-follow-up/record.md` D8-finder-reads-promises as changed at review
+(S10 with RB3), the migration's anchor (`DECISIONS.md` 2026-10-15 "Engine follow-up ruled" row).
+Insertions only: every other limb of the fence — the blindness to code and cards, the two-artifacts
+guard, the concern-rows-only guard, the marker reader, the exclusions and the dispatch order —
+stands word for word, as at [v0.114.0] and in `0082-gap-finding-signed-set.yaml`. No floor is
+retired or lowered. Payload 23,305 → 23,629, render +324 (the ledger row). -->
+
 ## [v0.118.0] Durable-gates example IDs joined
 
 - **Disposition:** superseded → `# FEAT-014-<slug> — Durable gates` and `Source: … FEAT-014-<slug> final validation (spec-violation, `<spec-slug>` SC-003-<slug>)`.
