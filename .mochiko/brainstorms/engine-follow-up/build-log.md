@@ -704,3 +704,12 @@ audit: unit 8 (crate tests, contract expectations, plan kits · crate non-author
   TEST: bundle* (N1) · ROADMAP engine line stamped BUILT, caps unchanged · the brainstorms index
   entry and the record's Status line stamped built; statuses agree.
 - Release commit next; no push, no merge. A1's note goes to the user with it.
+
+## 2026-10-18 — Released at `abe26d4`; A1 ruled by the user; push and PR
+
+- Release committed at `abe26d4`. A1 put to the user in plain words — the four ruling places
+  never in the confirmed 39-row list (`spec.missing-map-surfaced`, `spec.governance-region-absent`,
+  `setup.stress-test-cold-seat`, `arch.diagram-signoff`), already on the shared asking rules with
+  the writer off. User's ruling: "Leave as is" — no rows added, no follow-up build. A1 closed.
+- User's ruling on the branch: "Push and open a PR" — `engine-follow-up-build` pushed, a pull
+  request into `main` opened for the user's review and merge.
