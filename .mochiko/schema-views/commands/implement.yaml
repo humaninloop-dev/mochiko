@@ -174,8 +174,10 @@ sections:
         text: >-
           The landing verification seat checks the landing flip of impl.baseline-diff-review —
           `in-flight` and `modifying` entries to `built`, each `removing` entry to its stub
-          (heading kept, `**Lifecycle:** removed`, no body, no key); a lane run adds the map-delta
-          boundary check — the accepted work made no map write beyond the marked delta.
+          (heading kept, `**Lifecycle:** removed`, no body, no key) — and the `gates.md` fold of
+          impl.gates-fold, each finding ruled fix-now or backlog folded with its ruling's meaning
+          kept and none the user accepted as designed; a lane run adds the map-delta boundary
+          check — the accepted work made no map write beyond the marked delta.
       - id: impl.seat-gap-finder-blind
         labels: [independence, seats]
         class: must
@@ -362,14 +364,14 @@ sections:
           impl.adopt-first-user-call, impl.constraint-challenge) — the cycle's verification seat
           checking the rework kept the ruling; the final-validation dispositions
           (impl.beyond-spec-disposition), the landing verification seat checking the `gates.md`
-          fold; the deviation gate's amend (impl.deviation-gate), the delta amended from the
-          ruling and its existing non-author grade checking it. Writer held: a governance conflict
-          (impl.constitution-supremacy), by the ledger's own amend path; the run-open rulings
-          (impl.user-runopen-rulings), written into the sufficiency report and binding the run.
-          Writer off: a scope escalation (impl.scope-escalation-fail), a disputed finding kind
-          (impl.finding-kind-disputed), an exhausted gap-rework bound (impl.gap-rework-bound), an
-          epic member halt (impl.epic-member-halt), an attempt exemption
-          (impl.attempt-exemption-user-only), a disputed sufficiency clause
+          fold (impl.landing-verifier-folds); the deviation gate's amend (impl.deviation-gate),
+          the delta amended from the ruling and its existing non-author grade checking it. Writer
+          held: a governance conflict (impl.constitution-supremacy), by the ledger's own amend
+          path; the run-open rulings (impl.user-runopen-rulings), written into the sufficiency
+          report and binding the run. Writer off: a scope escalation (impl.scope-escalation-fail),
+          a disputed finding kind (impl.finding-kind-disputed), an exhausted gap-rework bound
+          (impl.gap-rework-bound), an epic member halt (impl.epic-member-halt), an attempt
+          exemption (impl.attempt-exemption-user-only), a disputed sufficiency clause
           (impl.sufficiency-disputed-clause), the desk offer (impl.desk-offer) and the
           absent-surface offers (impl.absent-surfaces). The design baseline's first system-part
           write (impl.design-first-write) and final acceptance (impl.gate-final-acceptance) stay
@@ -1094,11 +1096,14 @@ sections:
         kind: binding
         text: >-
           At entry, in every scope — selection, delta, lane, an epic's member — and whatever
-          the gap count, you read any feature-desk visit file keyed to the run's FEAT, each
-          member's on an epic, or its lane: `${features_dir}/desk/<date-slug>/visit.md`, its slug
-          carrying the joined FEAT id lower-cased or `lane-<slug>`. Its ruled set and the cards in
-          its card part are inputs in hand for the run, the desk card a delta or lane run builds
-          among them.
+          the gap count, you read each feature-desk visit file keyed to the run, meaning one the
+          run's own entry points at and never another dated visit on the same FEAT or lane: on
+          selection scope, a file a selected work row points at, each member's on an epic; on a
+          delta run, the file the delta card's marked work row points at; on a lane run, the
+          lane's file holding the card it builds. Each sits at
+          `${features_dir}/desk/<date-slug>/visit.md`, its slug carrying the joined FEAT id
+          lower-cased or `lane-<slug>`. Its ruled set and the cards in its card part are inputs in
+          hand for the run, the desk card a delta or lane run builds among them.
         anchor: 2026-10-15 engine-follow-up
   - id: impl.sec.boundaries
     title: Boundaries — the non-waivable floor

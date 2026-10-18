@@ -184,7 +184,8 @@ fn the_log_replays_into_a_deliverable_state() {
     // homes in place, and `0079` the `architecture-store` template. `0085`–`0089` (the
     // 2026-10-15 engine-follow-up wave 1) import one: `0086` the `feature-visit` template;
     // `0086` also replaces the `feature-desk` home in place. `0090` and `0091` are unused, a
-    // legal gap. `0092`–`0095` (its wave 2) import none.
+    // legal gap. `0092`–`0095` (its wave 2) import none. `0096` and `0097` are unused, a
+    // legal gap. `0098`–`0101` (its wave 3) import none.
     assert_eq!(replay.state.docs.len(), 94);
     assert_eq!(
         replay.sequences(),
@@ -192,7 +193,8 @@ fn the_log_replays_into_a_deliverable_state() {
             1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24,
             25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48,
             49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 65, 66, 67, 68, 69, 70, 75, 76,
-            77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 92, 93, 94, 95
+            77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 92, 93, 94, 95, 98, 99, 100,
+            101
         ],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
@@ -229,7 +231,9 @@ fn the_log_replays_into_a_deliverable_state() {
          feature on the engine, 0088's setup thinking stage, 0089's entry pointing at the visit, \
          then — 0090 and 0091 left unused, a legal gap — its wave 2 — 0092's implement card \
          order, 0093's implement asking line, 0094's implement reading the desk, 0095's \
-         sufficiency reading the visit"
+         sufficiency reading the visit, then — 0096 and 0097 left unused, a legal gap — its \
+         wave 3 — 0098's specify asking line, 0099's setup asking line, 0100's desk asking \
+         line, 0101's implement residuals"
     );
 }
 
@@ -834,8 +838,8 @@ fn the_corpus_census_holds_through_the_log() {
     // kind, and move nothing here.
     // The 2026-10-11 implement-brainstorm-led wave 2 carries `0065`–`0070`, anchored to
     // architecture-brainstorm-interview D1–D5 and D7–D9 and its confirmed defaults, and to
-    // implement-brainstorm-led D3: nineteen `mint-rule`s and nothing retired. `0068` mints
-    // fourteen `architecture` rules — thirteen musts and the floor fail node
+    // implement-brainstorm-led D3-four-move-now: nineteen `mint-rule`s and nothing retired.
+    // `0068` mints fourteen `architecture` rules — thirteen musts and the floor fail node
     // `arch.fail.write-outside-focus` — `0069` the floor stub `arch.thinking-stage`, the third
     // extender of `common.thinking-stage`, and `0067` four musts on
     // `authoring-architecture-store`. So command 375 → 390, skill 836 → 840, total 1211 → 1230,
@@ -881,9 +885,20 @@ fn the_corpus_census_holds_through_the_log() {
     // class and kind (the floors `testing-gap-finding.blindness-fence-inclusion-list` and
     // `testing-gap-finding.two-message-dispatch` stay floors); the two moments `0092` and `0093`
     // set move nothing here.
-    assert_eq!(command_rules, 418, "live command rules");
+    // The 2026-10-15 engine-follow-up wave 3 carries `0098`–`0101`, anchored to that session's
+    // rulings and confirmed defaults: six `mint-rule`s, two each on `specify`, `setup` and
+    // `architecture`, and nothing retired. `0098`, `0099` and `0100` each mint two musts — the
+    // stubs `spec.asking-line`, `setup.asking-line` and `arch.asking-line`, the third, fourth
+    // and fifth extenders of `common.asking-line`, and the bindings `spec.ruling-places`,
+    // `setup.ruling-places` and `arch.ruling-places`. So command 418 → 424 and total
+    // 1260 → 1266, while the command floors hold at 130, the fail set at 41, the skill rules at
+    // 842 and the skill floors at 266. The wave's four `reword-rule`s — one in `0098`
+    // (`spec.stage-inputs-in-hand`), three in `0101` (`impl.feature-visit-input`,
+    // `impl.landing-verifier-folds`, `impl.ruling-places`) — keep their rule's id, class and
+    // kind.
+    assert_eq!(command_rules, 424, "live command rules");
     assert_eq!(skill_rules, 842, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1260, "live rules in total");
+    assert_eq!(command_rules + skill_rules, 1266, "live rules in total");
     assert_eq!(skill_floors, 266, "skill floors");
     assert_eq!(command_floors, 130, "declared command floors");
     assert_eq!(fail_nodes, 41, "command fail nodes");

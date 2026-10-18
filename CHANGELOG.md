@@ -173,8 +173,82 @@ as D8's ruled obligation as changed at review (S10 with RB3) [lead: the unit-6 v
 `impl.sec.tools` block 27,651 → 28,443 bytes, 557 under the 29,000-byte line; the router body 48,776
 → 48,995 (unbudgeted).
 
-[lead: Wave 3 — the specify, setup and architecture-desk rows, the carry-forward readers, the
-0.120.0 residuals.]
+**Wave 3 — specify, setup and the architecture desk on the asking line; specify reads the desk's
+derivation; the 0.120.0 residuals** (D4-every-place-sorted and D10-two-switch-test as changed at
+review, QR3 — the re-sort under D10, its Specify, Setup and Architecture-desk rows — with defaults
+12, 15, 16, 18, 21 and 23 as changed at review, RB3 and RB13 with QR6). `/mochiko:specify`,
+`/mochiko:setup` and the `/mochiko:architecture` desk take the shared asking line for the rulings
+they ask outside their thinking stages, through `spec.asking-line`, `setup.asking-line` and
+`arch.asking-line` — `common.asking-line`'s third, fourth and fifth extenders — and each command's
+other ruling places take their writer switches in `spec.ruling-places`, `setup.ruling-places` and
+`arch.ruling-places`, each named by its live rule id. Specify: the post-stories frame adjust *on*,
+the product-manager seat's map derivation writing from it and the stress-test checking the meaning
+kept; a clarification answer only the user can settle (a fact question), a filter disagreement or a
+rejected `in` row after authoring, and the selection *held* — the selection moves off "stays a gate"
+by its ruling-places row alone, the floor `spec.gate-selection` keeping its text, class and kind;
+the framing on an empty argument *off*, an open probe; acceptance stays a yes / no gate, held;
+clicking a story's prototype screens stays outside the line, a reaction, not a ruling. Setup: a
+reality-vs-intent conflict *held* by the trace from ratified intent to authored surfaces; the mode
+when ambiguous, a coverage survivor's routing and a second FAIL at the gate loop *off*; synthesis
+ratification and final acceptance stay yes / no gates, held by that trace and the validate seat's
+grade; the interrogation's card, module and waiver rulings stay its own. The desk: each drift
+finding's disposition *on*, tech-lead's grade checking the meaning kept, and a shelf-scope override
+*on*, landing as the exact text of the `Scope:` line; a fired trigger ruled closed *off*; the waiver
+a true floor drop needs stays a yes / no gate, held — the ledger records it through
+`/mochiko:setup`; the row stances, the baseline confirmation and amendments stay in the focus stage,
+as built (the re-sort's Specify, Setup and Architecture-desk rows). Setup's and specify's intent
+contract stays off, the writer held by their own rules (defaults 15 and 16). A demand
+`/mochiko:feature` routes to `/mochiko:specify` hands in the desk sitting's `derivation.md`, whose
+visit goal and the user's words so far specify reads as inputs in hand from the intent stage on,
+never re-asked (`spec.stage-inputs-in-hand`; default 23 as changed at review, RB13, the reader's
+side). Two W2 gate advisories close on implement: the entry's visit-file read narrows from any visit
+file keyed to the FEAT to the one the run's own entry points at — a selected work row's, each epic
+member's, the delta card's marked work row's, or the lane's — keeping "in every scope, whatever the
+gap count" (`impl.feature-visit-input`; default 12 as changed at review, RB3); and the landing
+verification seat names the `gates.md` fold check D10 gives it, each finding ruled fix-now or
+backlog folded with its ruling's meaning kept (`impl.landing-verifier-folds`, which
+`impl.ruling-places` now points at). No moment is added.
+
+Migrations **`0098-specify-asking-line`**, **`0099-setup-asking-line`**, **`0100-desk-asking-line`**
+and **`0101-implement-residuals`** carry the W3 schema half: six new rules (`spec.asking-line`,
+`spec.ruling-places`, `setup.asking-line`, `setup.ruling-places`, `arch.asking-line` and
+`arch.ruling-places`); four rules reworded, every id, class and kind kept
+(`spec.stage-inputs-in-hand`, `impl.feature-visit-input`, `impl.landing-verifier-folds` and
+`impl.ruling-places`). After W3 the log, sequences 1..101, replays to 94 documents and 1,266 rules
+(1,260 → 1,266). Every pin is unchanged: specify's `kind: fail · 10 rules` and
+`class: floor · 19 rules`, setup's 6 and 21, architecture's 2 and 25, implement's 17 and 40. No
+floor or fail is retired or lowered.
+
+W3 prose primitives: `commands/specify.md`, `setup.md`, `architecture.md` and `implement.md` are
+unchanged — no line is made false: specify's empty-argument ask is the open probe, its Goal step's
+selection and acceptance stay the user's; setup's ratification and acceptance keep their gates; the
+desk's crisp-ask convergence names the goal, not how a disposition is asked; implement's Entry step
+names no visit file; each Not-done line already cites the CLI-printed pin. The router completes five
+rows from the 0.120.0 build's "lines incomplete, not false" list (default 21): the
+`review-sufficiency` row names the re-grade of a design piece the user adds at the design stage; the
+`patterns-system-design` row the desk's spine and diagram set and the taste governing every diagram;
+the `review-plan-artifacts` row the meaning-kept grade; the `/mochiko:architecture` row a feature's
+delta visit, `/mochiko:architecture <FEAT-ID>`; the `technical-analyst` row its candidate pieces at
+the design stage. No strip entry is stamped [v0.121.0] in W3; three wave-context comments — in the
+`specify`, `implement` and router strip files — record the schema-only rewords and the router
+additions. Ripple: `ARCHITECTURE.md`'s implement section — its false build-time line (`D-XXX` /
+`C-XXX` / `IP-XXX` writes "land as `baseline-delta.md` entries") now reads in-place build-raised
+entries graded from the pinned-base diff, its flowchart's design output node and the user's
+touchpoints (the design stage, the card order) are re-keyed, and its landing line's graded delta
+fold now reads the landing flip; its "Data flow" section — the `.mochiko/features/` file list names
+the design stage's file, the signed drawing and the feature desk's sittings, and the
+`.mochiko/product/` entry's false "per-capability deltas fold into" now reads the baselines edited
+in place under the run's lifecycle marker and flipped from the pinned-base diff. `README.md` and
+`GLOSSARY.md` are unchanged. Left in `BACKLOG.md` (default 21: files this build does not touch):
+`README.md:106` and `:108`, pre-existing and false since the delta-files retirement ("deltas against
+the shared `.mochiko/product/` baselines", "touched baselines take their delta folds"),
+`devils-advocate.md:20` and `templates/report-format.md:7`.
+
+W3 budgets (characters, measured at the quiesced tree): no budgeted primitive moves — the four
+migrations change command schemas only, and no skill body or description changes. `specify`'s render
+27,160 → 29,636 characters, `setup`'s 18,002 → 19,821, `architecture`'s 28,000 → 29,718 and
+`implement`'s 66,907 → 67,376 (commands are unbudgeted); `impl.sec.tools` is untouched at 28,443
+bytes, 557 under the 29,000-byte line; the router body 48,995 → 49,956 (unbudgeted).
 
 [lead: the AM-5 exception paragraph, if it still applies.]
 

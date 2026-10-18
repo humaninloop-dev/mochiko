@@ -52,9 +52,10 @@ observable:
   - {id: spec.selection-card, why: card contents planned — rows per capability · recommendation · dependency order · deferred-SC list · per-capability completeness view at the moment of choice}
   - {id: spec.gate-selection, why: selection gate described as the user's with onward branches}
   - {id: spec.gate-acceptance, why: accept / amend / reject gate over the whole with acceptance executing the map batch and rejection leaving the map untouched}
-  - {id: spec.filter-disagreement-escalates, why: the plan describes the escalation branch — a producer holding a rejected story load-bearing goes to the user, never settled between seats}
+  - {id: spec.filter-disagreement-escalates, why: "the plan describes the escalation branch — a producer holding a rejected story load-bearing goes to the user, never settled between seats"}
   - {id: spec.slate-rulings-users, why: every slate row's in-or-out ruling named as the user's while the capability calls stay the PM seat's — s1's PDF-cents bait is the row most likely struck with its why}
   - {id: spec.gate-slate-confirm, why: the slate confirm described as the user's gate on its own screen after the intent confirm — every row with its disposition and each out row with its why — with no story authored before it}
+  - {id: spec.ruling-places, why: each ruling outside the intent and story stages goes on the asking line with its next writer set — the post-stories frame adjust writer on in every golden (the PM seat's map derivation writes from it and the stress-test checks the meaning kept) · a clarification only the user can settle and the filter's escalation or a rejected `in` row writer held by the slate's contract · the selection writer held (a pick from the selection card · only the selected rows build) · acceptance kept a yes-or-no gate held · executing the staged map batch as shown · s1's and s3's screen clicking a reaction outside the line (the empty-arguments framing limb is unplanted as every golden carries a description · co-moves with spec.asking-line)}
   # tools
   - {id: spec.deliverable, why: the spec workspace path with a slug derived from the description · spec.md plus stories/US-*.md · never offered for deletion · uncertainty into Assumptions and Open Questions}
   - {id: spec.intent-stage-first, why: intent stage precedes every authoring step and walks the six probes — scope · delivery · depth · UX-bearing · constraints · out of scope}
@@ -92,6 +93,7 @@ observable:
   - {id: spec.story-forks, why: forks is the concrete branch in every golden — the do-less option is fewer stories or none for that journey · a one-row mock of the story as it would read · the stage's defaults confirmed together on the slate screen · the status line over the candidate journeys}
   - {id: spec.slate-provenance, why: each slate row planned with its provenance mark after its line in the Story cell (the mark vocabulary is the engine's since 0061)}
   - {id: spec.story-stage-stop-rule, why: the stage planned to close only when every candidate — the blind list's differences included — is ruled in or out}
+  - {id: spec.asking-line, why: the run's rulings outside its intent and story stages — the post-stories frame adjust · a clarification · a filter escalation · the selection (every golden) — are put under mochiko:analysis-iterative's asking rules by reference (facts read first · options with a recommendation · a mock in the message) and never restated · acceptance keeps its yes-or-no gate form (co-moves with spec.ruling-places)}
   # boundaries
   - {id: spec.transport-floor, why: every scenario composes more than one seat so the floor binds — referenced never restated}
   - {id: spec.staged-derivation, why: derivation output staged under the spec workspace with the live map untouched until acceptance}
@@ -153,8 +155,21 @@ out_of_instrument:
 #   spec.floor-obligated-rows — planted on s2 only (s1's clients never get accounts by ruling;
 #     s3 ratifies no floor); the strike, narrowing and waiver arms are unplanted, so the plan is
 #     graded on putting the floor-obligated row with the floor named as its fact.
-# Re-keyed 2026-10-11 to migration 0061 (implement-brainstorm-led D3), before any grid:
-# spec.own-rules-win left out_of_instrument and the floor stub spec.thinking-stage joined
+# Re-keyed 2026-10-11 to migration 0061 (implement-brainstorm-led D3-four-move-now), before any
+# grid: spec.own-rules-win left out_of_instrument and the floor stub spec.thinking-stage joined
 # observable (beside transport-floor); the 9 reworded rules keep their buckets, graded against
 # their new text, a why re-cut only where it named a limb the new text no longer carries;
 # spec.analyst-brief-and-pen's unplanted facet left with its text. 57 · 14 of 71.
+
+# Re-keyed 2026-10-18 to migration 0098 (engine-follow-up W3 — D4-every-place-sorted and
+# D10-two-switch-test, the re-sort's Specify row, and default 23's reader), before any grid: 2
+# rules added, both observable (spec.ruling-places on its planted places, the stub
+# spec.asking-line co-moving with it), and none removed. The one reworded rule,
+# spec.stage-inputs-in-hand, keeps its bucket and its why, graded against its new text: no
+# golden hands in a desk sitting's derivation.md either, so the new hand-in joins the unplanted
+# in-hand half above. Bucket shape at --old-ref 437b654: unchanged 70 (56 observable) · changed
+# 1 (1) · removed 0 · added 2 (2). At the same touch the one why a comma cut short (a flow
+# mapping ends a plain scalar at the comma, so the rest parsed as a stray key; found at W3
+# planning, engine-follow-up default 21) is double-quoted whole, its words unchanged. The kit
+# has never run (no runs/), so preregistration.md is recounted with it, on the W1 precedent.
+# 59 · 14 of 73.

@@ -1,5 +1,24 @@
 # Strip notes — `commands/specify.md`
 
+<!-- Wave context: wave 3 of the engine follow-up build (v0.121.0) — specify's rulings outside its
+intent and story stages take the shared asking line, each set on its writer switch, and specify
+reads the feature desk's handed-in derivation. Schema content only, so no entry: the migration log
+carries the verbatim prior text (`strips/README.md`), and `commands/specify.md` is unchanged — no
+line is made false (the Entry step's "Empty → ask the user for the description" is the open probe
+`spec.ruling-places` sets writer off; the Goal step's "the user's selection" and "the user accepted
+the whole" hold, the selection a pick the run's own rules hold and acceptance a yes / no gate), and
+its Not-done line already cites the CLI-printed pin (`kind: fail · 10 rules`). Recorded here for the
+audit's read, because a rule carries one anchor (default 20): `0098-specify-asking-line.yaml`
+rewords `spec.stage-inputs-in-hand` (anchor `specify-brainstorm-discovery` kept; last reworded under
+`implement-brainstorm-led` D3-four-move-now) — a demand `/mochiko:feature` routes here hands in the
+desk sitting's `derivation.md`, its visit goal and the user's words so far inputs in hand from the
+intent stage on — by `.mochiko/brainstorms/engine-follow-up/record.md` default 23 as changed at
+review (RB13 with QR6), the migration's anchor (`DECISIONS.md` 2026-10-15 "Engine follow-up ruled"
+row). The selection moves off "stays a gate" (the re-sort under D10, its Specify row) by its
+`spec.ruling-places` row alone: the floor `spec.gate-selection` keeps its text, class, `kind: gate`
+and its `pm-role-and-feature-derivation` D5-pm-specify-front anchor. Two rules are minted beside
+them, `spec.asking-line` and `spec.ruling-places`. No floor or fail is retired or lowered. -->
+
 <!-- Wave context: the CLI schema-delivery command wave (v0.105.0) — the five remaining commands
 convert, `specify` among them: its rules are rendered at fire by `mochiko-cli` from the migration
 log the plugin carries at `plugins/mochiko/migrations/`, and the command reads no schema file for

@@ -1,0 +1,65 @@
+grammar: 1
+id: 0098-specify-asking-line
+sequence: 98
+intent: >-
+  Put /mochiko:specify's rulings outside its intent and story stages on the shared asking line
+  (engine-follow-up D10 as changed at review, QR3; D4 as changed at review; the re-sort under D10,
+  its Specify row; defaults 16 and 18), and let specify read the feature desk's handed-in
+  derivation (default 23 as changed at review, RB13 with QR6): the stub spec.asking-line,
+  common.asking-line's third extender, and spec.ruling-places, each place of the Specify row named
+  by its live rule id with its writer setting — the selection moved off "stays a gate" by that
+  row alone, spec.gate-selection's text, class, kind and anchor untouched, since its kind: gate is
+  a blocking checkpoint (command-schema-ontology D1) and its text names no yes / no form;
+  prototype clicking listed as outside the line. One reword, keeping its id, class and anchor:
+  spec.stage-inputs-in-hand (minted under specify-brainstorm-discovery, last reworded under
+  implement-brainstorm-led D3) names the desk sitting's derivation.md a routed demand hands in,
+  its visit goal and the user's words so far inputs in hand from the intent stage on; its writer
+  side is feat.carry-forward. Intent's contract stays off, held by specify's own rules (default
+  16). No asking mechanic is restated, no engine rule or slot changes, no moment is added, and no
+  floor or fail is retired or lowered.
+anchor: 2026-10-15 engine-follow-up
+hash: sha256:025a51f7fe28f03e1403b078b13e487cd8c1495297047a0be04f679d5cdd320c
+changes:
+  - op: mint-rule
+    schema: command/specify
+    section: spec.sec.ways-of-working
+    rule:
+      id: spec.asking-line
+      class: must
+      extends: common.asking-line
+      anchor: 2026-10-15 engine-follow-up D10
+  - op: mint-rule
+    schema: command/specify
+    section: spec.sec.reserved
+    rule:
+      id: spec.ruling-places
+      labels: [user-gate]
+      class: must
+      kind: binding
+      text: >-
+        The run's rulings outside its intent and story stages take the asking line
+        (spec.asking-line), each with its next writer set. Writer on: the post-stories frame
+        adjust the ${pm_seat} seat puts (spec.confirm-frame-post-stories), its map derivation
+        writing from the ruling and the stress-test (spec.stress-test-one-pass) checking the
+        meaning kept. Writer held: a clarification answer only the user can settle
+        (spec.reserved-to-user), asked as a fact question, and a filter disagreement or a rejected
+        `in` row after authoring (spec.filter-disagreement-escalates,
+        spec.filter-rejections-recorded), both by the slate's ruled-set contract
+        (spec.story-stage); the selection (spec.gate-selection), a pick from the selection card
+        (spec.selection-card), only the selected rows building. Writer off: the feature framing
+        when `$ARGUMENTS` is empty (spec.reserved-to-user), asked as an open probe. Acceptance
+        (spec.gate-acceptance) stays a yes / no gate, its writer held, executing the staged map
+        batch as shown (spec.staged-derivation). Clicking a story's prototype screens as they land
+        (spec.reserved-to-user, spec.lockstep-prototyping) is a reaction, not a ruling, and stays
+        outside this line.
+      anchor: 2026-10-15 engine-follow-up D10
+  - op: reword-rule
+    schema: command/specify
+    id: spec.stage-inputs-in-hand
+    text: >-
+      Specify's inputs in hand when its story stage opens: a brainstorm record named in
+      `$ARGUMENTS`, or stories already in story form. A demand /mochiko:feature routes here hands
+      in the desk sitting's `.mochiko/features/desk/<date-slug>/derivation.md`, whose visit goal
+      and the user's words so far are inputs in hand from the intent stage on
+      (analysis-iterative.inputs-in-hand). There is no size gate, and a decisive user gets
+      confirmations and a fast wrap-up.

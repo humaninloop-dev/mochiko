@@ -274,7 +274,7 @@ flowchart LR
   lead -->|"at entry, per work row"| suff
   suff -->|"sufficiency report:<br/>verdicts · gaps · trips"| lead
   lead -->|"any gap"| design
-  design --> deltas[(".mochiko/features/FEAT-XXX/:<br/>signed store delta ·<br/>data-model + contract deltas vs<br/>.mochiko/product/ baselines")]
+  design --> deltas[("in place in .mochiko/product/:<br/>baseline entries + store elements<br/>keyed to the run ·<br/>FEAT-XXX/: design-stage.md ·<br/>signed architecture.md")]
   lead -->|"zero gaps"| cards
   deltas --> cards
   cards --> tasks[("tasks.md cycle cards")]
@@ -282,7 +282,7 @@ flowchart LR
   se --> code[("working code +<br/>cycle-report.md")]
   code -->|"TEST: gates, quality gates,<br/>real infrastructure +<br/>minimalism lens"| qa
   qa -->|"verification report +<br/>recommendation"| lead
-  lead -->|"run-open routing · design sign-off ·<br/>card confirm · deviation consent ·<br/>final acceptance"| user
+  lead -->|"run-open routing · design stage ·<br/>design sign-off · card order ·<br/>card confirm · deviation consent ·<br/>final acceptance"| user
 ```
 
 Case distinguishes two artifacts here: lowercase `architecture.md` is the per-capability design
@@ -298,14 +298,16 @@ twice: the producer's deviation self-check at cycle open/close, and the arch-dif
 built-vs-signed report at final validation — the trigger fires on any delta signed this run,
 whenever signed. A builder hitting undesigned structure mid-cycle **halts the cycle**; the
 design phase re-fires scoped to the discovery. Build-time `D-XXX` / `C-XXX` / `IP-XXX` writes
-are never in-place edits — they land as `baseline-delta.md` entries whose judgment content the
-landing verification seat grades independently; a commodity-category adopt-first ruling or an
+are in-place edits — build-raised entries written into the product file under the run's
+lifecycle marker, whose judgment content the landing verification seat grades independently
+from the diff against the run's pinned base; a commodity-category adopt-first ruling or an
 `IP-XXX` provisioning call is never builder-decided and halts the cycle to the user. The three
 disposable/entry seats (sufficiency grader at entry, arch-diff at final validation, arch-scribe
 at finalize) run outside the cycle loop. The acceptance landing executes the graduation whole:
 delivered work rows fold into the capability's extent (pending rows persist), every touched
-product baseline takes its graded delta fold, and the map bookkeeping (index line · In-flight
-pointer · specs-index row) lands in the same moment — no separate feature-close stage exists.
+product baseline takes the landing flip read from the pinned-base diff, and the map bookkeeping
+(index line · In-flight pointer · specs-index row) lands in the same moment — no separate
+feature-close stage exists.
 
 ### Feature — the product desk
 
@@ -384,13 +386,16 @@ the **target project's** workspace:
   `codebase-analysis.md` (brownfield), and the project-pinned `knowledge-management.md` every
   command resolves at runtime for its KM landing.
 - **`FEATURES.md` + `.mochiko/features/`** — the capability map: the index, per-capability
-  entry files at `FEAT-XXX-<slug>.md` (work rows riding the entries, pending|live), and
-  per-capability run dirs (`FEAT-XXX/`: the sufficiency report, design-phase deltas and the
-  signed store delta when the phase ran, `tasks.md` cycle cards, per-seat reports).
+  entry files at `FEAT-XXX-<slug>.md` (work rows riding the entries, pending|live),
+  per-capability run dirs (`FEAT-XXX/`: the sufficiency report, the design stage's
+  `design-stage.md` and the signed `architecture.md` drawing when the phase ran, `tasks.md`
+  cycle cards, per-seat reports), and the feature desk's sittings (`desk/<date-slug>/`: the
+  sitting's `derivation.md`, a card visit's `visit.md`).
 - **`.mochiko/product/`** — the product baselines (`data-model.md` · `contracts/` ·
-  `constraints-and-decisions.md` · `quickstart.md`) that per-capability deltas fold into at
-  acceptance landings, plus the architecture store at `architecture/` (NFR concern rows and
-  their targets live there since v0.81.0).
+  `constraints-and-decisions.md` · `quickstart.md`), edited in place under the run's lifecycle
+  marker and flipped at acceptance landings from the diff against the run's pinned base, plus
+  the architecture store at `architecture/` (NFR concern rows and their targets live there since
+  v0.81.0).
 - **`.mochiko/specs/<spec>/`** — the delivery-event record: `spec.md` (Intent + Feature
   Selection), `stories/US-*.md`, the staged map delta until acceptance.
 - **`.mochiko/brainstorms/<slug>/`** — `record.md` (+ optional `synthesis.md`) and the session

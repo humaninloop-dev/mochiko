@@ -236,6 +236,27 @@ sections:
           never the intent screen, that shows every row with its disposition and each `out` with
           its why. No story is authored before it.
         anchor: 2026-10-10 specify-brainstorm-discovery D6
+      - id: spec.ruling-places
+        labels: [user-gate]
+        class: must
+        kind: binding
+        text: >-
+          The run's rulings outside its intent and story stages take the asking line
+          (spec.asking-line), each with its next writer set. Writer on: the post-stories frame
+          adjust the ${pm_seat} seat puts (spec.confirm-frame-post-stories), its map derivation
+          writing from the ruling and the stress-test (spec.stress-test-one-pass) checking the
+          meaning kept. Writer held: a clarification answer only the user can settle
+          (spec.reserved-to-user), asked as a fact question, and a filter disagreement or a
+          rejected `in` row after authoring (spec.filter-disagreement-escalates,
+          spec.filter-rejections-recorded), both by the slate's ruled-set contract
+          (spec.story-stage); the selection (spec.gate-selection), a pick from the selection card
+          (spec.selection-card), only the selected rows building. Writer off: the feature framing
+          when `$ARGUMENTS` is empty (spec.reserved-to-user), asked as an open probe. Acceptance
+          (spec.gate-acceptance) stays a yes / no gate, its writer held, executing the staged map
+          batch as shown (spec.staged-derivation). Clicking a story's prototype screens as they
+          land (spec.reserved-to-user, spec.lockstep-prototyping) is a reaction, not a ruling, and
+          stays outside this line.
+        anchor: 2026-10-15 engine-follow-up D10
   - id: spec.sec.tools
     title: Tools bindings
     intent: Paths, schemas, skills, and templates the run binds to.
@@ -428,8 +449,11 @@ sections:
         class: must
         text: >-
           Specify's inputs in hand when its story stage opens: a brainstorm record named in
-          `$ARGUMENTS`, or stories already in story form; there is no size gate, and a decisive
-          user gets confirmations and a fast wrap-up.
+          `$ARGUMENTS`, or stories already in story form. A demand /mochiko:feature routes here
+          hands in the desk sitting's `.mochiko/features/desk/<date-slug>/derivation.md`, whose
+          visit goal and the user's words so far are inputs in hand from the intent stage on
+          (analysis-iterative.inputs-in-hand). There is no size gate, and a decisive user gets
+          confirmations and a fast wrap-up.
         anchor: 2026-10-10 specify-brainstorm-discovery
       - id: spec.handed-in-slate
         labels: [scope-entry, user-gate]
@@ -543,6 +567,10 @@ sections:
           The story stage's candidates include the blind journey list's differences, each ruled in
           or out before the stage closes; a stall steps back to the intent synthesis.
         anchor: 2026-10-10 specify-brainstorm-discovery
+      - id: spec.asking-line
+        class: must
+        extends: common.asking-line
+        anchor: 2026-10-15 engine-follow-up D10
   - id: spec.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-run ruling can waive.

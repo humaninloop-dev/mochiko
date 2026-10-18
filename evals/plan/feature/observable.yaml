@@ -49,15 +49,15 @@ observable:
   - {id: feat.user-reserved, why: merge and retire rulings (s3) · route overrides · every selection described as the user's}
   - {id: feat.ruling-places, why: the rulings outside the card set each go on the asking line with its next writer set — s3's merge and retire writer on (the map write lands each and its non-author grade checks the meaning kept) · s3's fired AX-003 trigger at the growth door writer off · s2's growth-row selection writer held (the run builds only what is selected) · co-moves with feat.asking-line}
   # tools
-  - {id: feat.tools-referenced-never-restated, why: skill and template bindings are pointed at, their procedure never restated in the plan}
-  - {id: feat.map-files, why: the map is answered from FEATURES.md plus the entry files and the FEAT-XXX/ artifact directories actually read, never from memory}
+  - {id: feat.tools-referenced-never-restated, why: "skill and template bindings are pointed at, their procedure never restated in the plan"}
+  - {id: feat.map-files, why: "the map is answered from FEATURES.md plus the entry files and the FEAT-XXX/ artifact directories actually read, never from memory"}
   - {id: feat.map-minimalism-binding, why: extend-vs-mint (s2) · soft cap and grooming trigger · merge mechanics (s3) reached through mochiko:patterns-map-minimalism}
   - {id: feat.feature-map-binding, why: entry shape · row grammar · fold-at-landing reached through mochiko:authoring-feature-map}
-  - {id: feat.epic-binding, why: manifest and spine shape · mint guard · close semantics reached through mochiko:authoring-epic (s2 question, s3 dispatch)}
+  - {id: feat.epic-binding, why: "manifest and spine shape · mint guard · close semantics reached through mochiko:authoring-epic (s2 question, s3 dispatch)"}
   - {id: feat.epic-dispatch, why: s3 plants an open epic with two pending members so the plan dispatches it as one implement run over its members}
-  - {id: feat.capability-write-test, why: every item asked whether it touches a capability or only its rows — capabilities route out, rows the desk cuts}
+  - {id: feat.capability-write-test, why: "every item asked whether it touches a capability or only its rows — capabilities route out, rows the desk cuts"}
   - {id: feat.stable-ground-triage, why: s1 plants a delivered single owner (delta lane) and an in-flight owner (files to the run) · s2 plants a no-single-owner report (product lane)}
-  - {id: feat.delta-cards, why: s1 bug card acceptance is the reproduction-failing test · improvement card carries 1–3 criteria and names the contracts/api.yaml touch, entries enumerated, for the implement run to write in place under its lifecycle marker · both take the review leg}
+  - {id: feat.delta-cards, why: "s1 bug card acceptance is the reproduction-failing test · improvement card carries 1–3 criteria and names the contracts/api.yaml touch, entries enumerated, for the implement run to write in place under its lifecycle marker · both take the review leg"}
   - {id: feat.product-surface, why: baselines at .mochiko/product/ edited in place under a run's lifecycle marker (s1's contracts/api.yaml touch) · the store at .mochiko/product/architecture/ (s3's orphan SPN-005 fix) · the live lane run at lane-tide-tables/ (s2) · cards append dated}
   - {id: feat.architecture-intake, why: s3 plants the fired AX-003 trigger so it is routed like any demand — capability-write test · extend-beats-mint · the user rules the mint · no auto-mint}
   - {id: feat.dispatch-scope-split, why: delta scope for the s1 bug and improvement cards · selection scope for the s2 growth row and the s3 epic members}
@@ -72,18 +72,18 @@ observable:
   - {id: feat.proactive-report, why: the health report opens the visit before the ask (twin of dm-health-first — one quote may credit both; disclosed in the preregistration)}
   - {id: feat.reference-never-restate, why: implement's bounds · verification seats · evidence rules are pointed at from the desk and never restated}
   - {id: feat.author-grader, why: cards · baseline entries written in place under a lifecycle marker · grooming proposals · the derivation are produced on an approved plan and cleared by a non-author}
-  - {id: feat.grader-checks-joined-ids, why: s1/s3 map writes cite entries whose file names carry their slug, and s3 cites the bare epic, so the non-author's grade names the cite-follows-definition check}
+  - {id: feat.grader-checks-joined-ids, why: "s1/s3 map writes cite entries whose file names carry their slug, and s3 cites the bare epic, so the non-author's grade names the cite-follows-definition check"}
   - {id: feat.advisory-front-door, why: bug · improvement · growth intake taken at the desk; the s2 route-out and the s3 ceiling tell the user specify stays directly invocable (thin — s2/s3 only)}
   - {id: feat.model-tiering, why: locate and enumerate reads (entries · specs index · store rows) routed to a cheap Explore subagent; interpretive reads stay on the session; briefs carry the rule}
   - {id: feat.single-flight-lane, why: s2 plants a live product-lane run so the new no-owner request queues behind it rather than opening a second lane run}
-  - {id: feat.no-git-mutations, why: commits suggested at close, never run}
-  - {id: feat.rulings-plain-text, why: the goal gate · card confirmation · merge and retire rulings described as plain blocking text, never a timed prompt}
+  - {id: feat.no-git-mutations, why: "commits suggested at close, never run"}
+  - {id: feat.rulings-plain-text, why: "the goal gate · card confirmation · merge and retire rulings described as plain blocking text, never a timed prompt"}
   - {id: feat.artifact-home, why: the features home (and the desk-sitting home on s3) rendered before the first write; entry as <FEAT-ID>.md · the desk's output derivation.md · reviews in reports/}
   # the asking line (0085-asking-line · 0087-feature-on-engine, 2026-10-15)
   - {id: feat.asking-line, why: the desk's rulings outside the card set — s3's merge and retire and s2's growth-row selection — are put to the user under mochiko:analysis-iterative's asking rules by reference (a fork a turn · its facts read first · options with a recommendation) and never restated · the goal and card confirmations keep their yes-or-no gate form (s2 · s3 · co-moves with feat.ruling-places)}
   # boundaries
   - {id: feat.capability-writes-sacred, why: s2 parks a stub and mints nothing · s3 merge and retire wait for the user's ruling · no status change made at the desk}
-  - {id: feat.grooming-door-ceiling, why: s3 plants a wholesale re-derivation ask that the plan names as specify's derivation work, outside the grooming door}
+  - {id: feat.grooming-door-ceiling, why: "s3 plants a wholesale re-derivation ask that the plan names as specify's derivation work, outside the grooming door"}
   - {id: feat.out-of-remit-hosting, why: s3 plants the explicit 'do it here' ask so the plan names the boundary crossing and imports specify's rituals rather than dropping them}
   - {id: feat.growth-door, why: s2 cuts one pending row on FEAT-001 through the growth door with acceptance on the card; s3 routes the fired trigger through the same door}
   - {id: feat.growth-routes-to-specify, why: the s2 fuel dock is mint-or-uncertain and routes to specify}
@@ -92,8 +92,8 @@ observable:
   - {id: feat.no-self-graded-writes, why: every desk write named with an independent reviewer}
   - {id: feat.no-silent-map-mutations, why: the s1 dangling row · the s3 orphan element are fixed on sight and visibly; every write is on the map}
   - {id: feat.sound-loop-floor, why: produce on an approved plan · non-author review · the user's gate wired end to end; delta cards take the review leg before dispatch}
-  - {id: feat.transport-floor, why: gated seats multi — every scenario composes a producing seat and a reviewing seat, so the floor is referenced never restated}
-  - {id: feat.stub-parking, why: s2 parks the fuel dock as name plus hook marked unrefined; s1 and s3 stale stubs are surfaced, never matured at the desk}
+  - {id: feat.transport-floor, why: "gated seats multi — every scenario composes a producing seat and a reviewing seat, so the floor is referenced never restated"}
+  - {id: feat.stub-parking, why: "s2 parks the fuel dock as name plus hook marked unrefined; s1 and s3 stale stubs are surfaced, never matured at the desk"}
   - {id: feat.thinking-stage, why: the plan binds the card-set stage to mochiko:analysis-iterative as the visit's thinking stage — the engine's asking rules referenced never restated · the desk's rules carry the domain part (s1 · s2 · co-moves with feat.card-stage)}
 
 out_of_instrument:
@@ -141,3 +141,7 @@ out_of_instrument:
 # against their new text; no why named a limb the new text dropped, so none was re-cut — their
 # new limbs (visit.md as the card's home, the entry's row pointing at it) read on s1 and s2,
 # the card visits. 57 · 4 of 61.
+
+# Touched 2026-10-18 (engine-follow-up W3, default 21): the 11 whys a comma cut short (a flow
+# mapping ends a plain scalar at the comma, so the rest parsed as a stray key) are double-quoted
+# whole, their words unchanged; no id, bucket or count moves.

@@ -1,0 +1,45 @@
+grammar: 1
+id: 0099-setup-asking-line
+sequence: 99
+intent: >-
+  Put /mochiko:setup's rulings outside its interrogation on the shared asking line
+  (engine-follow-up D10 as changed at review, QR3; D4 as changed at review; the re-sort under D10,
+  its Setup row; defaults 15, 17 and 18): the stub setup.asking-line, common.asking-line's fourth
+  extender, and setup.ruling-places, each place of the Setup row named by its live rule id with
+  its writer setting — no place set on, the conflicts, ratification and final acceptance held by
+  setup's own trace and validate seat (defaults 15 and 16 read as held), the two gates kept yes /
+  no gates. The interrogation stays on the thinking stage through setup.interrogation-inline and
+  setup.thinking-stage with the contract off; its card, module and waiver rulings stay outside the
+  list. No rule is reworded, no asking mechanic is restated, no engine rule or slot changes, no
+  moment is added, and no floor or fail is retired or lowered.
+anchor: 2026-10-15 engine-follow-up
+hash: sha256:7e2188c98b9e9aeab539295a75355bb70afe0e48dacc66306bbc51523e818493
+changes:
+  - op: mint-rule
+    schema: command/setup
+    section: setup.sec.ways-of-working
+    rule:
+      id: setup.asking-line
+      class: must
+      extends: common.asking-line
+      anchor: 2026-10-15 engine-follow-up D10
+  - op: mint-rule
+    schema: command/setup
+    section: setup.sec.reserved
+    rule:
+      id: setup.ruling-places
+      labels: [user-gate]
+      class: must
+      kind: binding
+      text: >-
+        The run's rulings outside its interrogation take the asking line (setup.asking-line), each
+        with its next writer set. Writer held: a reality-vs-intent conflict
+        (setup.user-conflict-rulings), by the trace from ratified intent to authored surfaces
+        (setup.fail.unclosed-trace). Writer off: the mode when ambiguous (setup.user-mode-ruling),
+        a coverage survivor's routing (setup.coverage-survivor-routing) and a second FAIL at the
+        gate loop (setup.gate-loop-bound). Synthesis ratification
+        (setup.gate-synthesis-ratification) and final acceptance (setup.gate-final-acceptance)
+        stay yes / no gates, their writer held by that trace and the validate seat's grade
+        (setup.validate-seat-form). The interrogation's card, module and waiver rulings
+        (setup.user-card-rulings) stay its own.
+      anchor: 2026-10-15 engine-follow-up D10

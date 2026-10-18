@@ -1221,9 +1221,17 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // figure 129 → 130 and the fail set 40 → 41, the skill rules and floors unmoved. The fourteen
     // rewords of `0092`–`0095`, ten on `implement` and two each on `testing-gap-finding` and
     // `review-sufficiency`, keep id, class and kind.
-    assert_eq!(command_rules, 418, "live command rules");
+    // `0098`–`0101` (the 2026-10-15 engine-follow-up wave 3) mint six command rules, all musts,
+    // and retire none: on `specify` (`0098`), `setup` (`0099`) and `architecture` (`0100`) a
+    // stub over `common.asking-line` — its third, fourth and fifth extenders,
+    // `spec.asking-line`, `setup.asking-line` and `arch.asking-line` — and a binding,
+    // `spec.ruling-places`, `setup.ruling-places` and `arch.ruling-places` — command
+    // 418 → 424, the command floor figure and the fail set unmoved at 130 and 41, the skill
+    // rules and floors unmoved. The four rewords — one on `specify` in `0098`, three on
+    // `implement` in `0101` — keep id, class and kind.
+    assert_eq!(command_rules, 424, "live command rules");
     assert_eq!(skill_rules, 842, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1260, "live rules in total");
+    assert_eq!(command_rules + skill_rules, 1266, "live rules in total");
     assert_eq!(skill_floors, 266, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a

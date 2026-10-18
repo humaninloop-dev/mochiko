@@ -13,9 +13,10 @@ Fields marked **[measured at first grid]** are filled from that grid's `summary.
 
 - **Pair:** `plugins/mochiko/commands/architecture.md` + the rules `mochiko-cli` renders for
   `architecture` from the migration log at `plugins/mochiko/migrations/` (derived view for
-  reading: `.mochiko/schema-views/commands/architecture.yaml`, 64 rules).
+  reading: `.mochiko/schema-views/commands/architecture.yaml`, 66 rules).
 - **`post`** — the working tree (authored at plugin 0.109.0 with `0005-artifact-homes.yaml`, 48
-  rules; re-keyed 2026-10-11 to the log through `0070-diagram-write-reach.yaml`, 64 rules).
+  rules; re-keyed 2026-10-11 to the log through `0070-diagram-write-reach.yaml`, 64 rules;
+  re-keyed 2026-10-18 to the log through `0100-desk-asking-line.yaml`, 66 rules).
 - **`pre`** — `--old-ref 794cea8` (the commit before the artifact-home wave landed the pair's
   last edit; migrations 0001–0004; 47 rules). Pin the SHA, never `HEAD`.
 - **`nocmd`** — the bare-model control: no plugin, the golden's `control_prompt` in place of
@@ -32,7 +33,7 @@ Fields marked **[measured at first grid]** are filled from that grid's `summary.
   seats (the producing architect, the grading tech-lead, the drift probe, the cheap Explore
   reads) cannot be spawned under the fence, so the plan describes them — the recorded
   fidelity divergence, watched not hidden.
-- **Judge:** Haiku coverage checklist over the 58-rule D8 observable subset (`observable.yaml`),
+- **Judge:** Haiku coverage checklist over the 60-rule D8 observable subset (`observable.yaml`),
   one `reflected` / `absent` / `contradicted` per rule with a quoted plan span, rule ids
   scrubbed from the plan before judging; stub axis per numbered phase; Sonnet pairwise
   position-swapped between `pre` and `post`. All judges advisory (harness D2) — the runner
@@ -66,14 +67,20 @@ from unchanged to changed, and `0049` added `arch.grader-checks-joined-ids` (obs
 `arch.tools-system-design` (its other three fall on rules already changed or added) — and
 added fifteen, `0068`'s fourteen and `0069`'s `arch.thinking-stage`, twelve of them observable;
 and `0070`'s reword of `arch.author-grader-separation` falls on a rule already changed.
-Consequences:
+
+**Recomputed 2026-10-18, before any grid**, by the same command crossed with the re-keyed
+subset: **unchanged 38 (35 observable) · changed 9 (9 observable) · removed 0 · added 19 (16
+observable)** — the 2026-10-11 shape plus `0100`'s two added rules, `arch.asking-line` and
+`arch.ruling-places`, both observable; no migration between `0070` and `0100` touched the
+pair's rules. At the engine-follow-up wave's own pre-edit ref, `437b654`, the pair
+partitions unchanged 64 (58) · changed 0 · removed 0 · added 2 (2). Consequences:
 
 - The regression denominator is the **35 unchanged observable rules** (44 at authoring), not
-  all 58.
+  all 60.
 - Removed is empty. Changed carries nine rules, graded against their new text; added carries
-  seventeen, fourteen observable, so the adoption read (DEAD-TEXT) covers `arch.artifact-home`,
-  `arch.grader-checks-joined-ids` and the desk's focus stage. If the pair changes again before
-  the grid runs, recompute.
+  nineteen, sixteen observable, so the adoption read (DEAD-TEXT) covers `arch.artifact-home`,
+  `arch.grader-checks-joined-ids`, the desk's focus stage, and its asking line and ruling
+  places. If the pair changes again before the grid runs, recompute.
 
 ## Positive control
 
@@ -91,12 +98,12 @@ still writes the store.
 ## Noise band (D11 as folded; the band ruling adapted to the command target)
 
 The command target has no `tempts` list, so the band is computed over **all (golden, rule)
-pairs** in the observable subset — 3 goldens × 58 rules = 174 pairs per arm. Band = the
+pairs** in the observable subset — 3 goldens × 60 rules = 180 pairs per arm. Band = the
 `pre` arm's replicate-disagreement share over those pairs **[measured at first grid]** plus
 five points, capped at 20 %, computed per arm from the judged `summary.json` (the report's
-per-golden "flaky rules" lines summed over goldens, divided by 174). Fewer than eight pairs
+per-golden "flaky rules" lines summed over goldens, divided by 180). Fewer than eight pairs
 on an arm would mark the kit UNDER-SAMPLED (band at the cap; one extra replicate per arm
-before any difference is read) — not reachable here at 174 pairs. An arm above the band is
+before any difference is read) — not reachable here at 180 pairs. An arm above the band is
 noise-dominated and no `pre`/`post` difference is read from it: add one extra replicate per
 arm, once, and re-judge. Stopping rule: two consecutive instrument re-keys without a
 detectable positive control return the command target to the user for a keep / re-shape /
@@ -123,7 +130,7 @@ desk's fixtures are the same order of size.
 ## Ship bar (advisory instrument — informs, never gates)
 
 The kit is ready if (a) the positive control is detected as stated above; (b) the `pre` arm's
-flaky share stays ≤ 15 % of the 174 pairs so the band it fixes comes out ≤ 20 % uncapped (a
+flaky share stays ≤ 15 % of the 180 pairs so the band it fixes comes out ≤ 20 % uncapped (a
 band that binds only through the cap is a kit whose goldens are too noisy to read the next
 edit); (c) the three scenarios produce visibly different coverage profiles on the
 condition-gated rules — `arch.dm-author-baseline` reflected on g1 only, `arch.dm-km-landing`
@@ -141,7 +148,7 @@ failing (c) on more than one gated rule gets one golden re-cut before it is decl
 - grid (`runs/<name>`, 18 sessions, $; judge $; MISSING verdicts: n): _pending_
 - bucket shape recomputed at grid time: _pending_
 - positive control (`arch.artifact-home` pre → post, per golden): _pending_
-- band: flaky _n_/174 pairs on `pre` = _x_ % → _x+5_ % (capped 20): _pending_
+- band: flaky _n_/180 pairs on `pre` = _x_ % → _x+5_ % (capped 20): _pending_
 - unchanged-bucket regressions (of 35): _pending_
 - gated-rule profile check (ship bar c): _pending_
 - validity scan (no `mochiko-cli rules not delivered`, no cap-hit, no fence breach): _pending_
@@ -150,14 +157,22 @@ failing (c) on more than one gated rule gets one golden re-cut before it is decl
 - kit status: **AUTHORED — not yet run**
 - 2026-10-11 amendment, recorded before any grid: the kit is re-keyed to migrations 0068–0070
   (`architecture-brainstorm-interview` D1–D5, D7–D9 desk share; `implement-brainstorm-led`
-  D3; `observable.yaml` 58 · 6 of 64 — twelve of the fifteen added rules observable, seven
-  rewords graded against their new text), and every count above is recomputed, the drift from
-  `0009` to `0049` that no earlier edit recorded included (bucket shape, above). The edit under
-  read stays at `--old-ref 794cea8`, now reading `0005` with every later pair edit together,
-  and the positive control stays `arch.artifact-home`, graded on its current text — lead
-  ruling, build log 2026-10-11, W2 P3 approval. Goldens, fixtures and wrapper unchanged. The
-  re-key count stays 0: no grid has run (no `runs/`). Made by the build's tests-and-kits seat
-  on a lead-approved plan.
+  D3-four-move-now; `observable.yaml` 58 · 6 of 64 — twelve of the fifteen added rules
+  observable, seven rewords graded against their new text), and every count above is recomputed,
+  the drift from `0009` to `0049` that no earlier edit recorded included (bucket shape, above).
+  The edit under read stays at `--old-ref 794cea8`, now reading `0005` with every later pair
+  edit together, and the positive control stays `arch.artifact-home`, graded on its current text
+  — lead ruling, build log 2026-10-11, W2 P3 approval. Goldens, fixtures and wrapper unchanged.
+  The re-key count stays 0: no grid has run (no `runs/`). Made by the build's tests-and-kits
+  seat on a lead-approved plan.
+- 2026-10-18 amendment, recorded before any grid: the kit is re-keyed to migration 0100
+  (`engine-follow-up` D4-every-place-sorted and D10-two-switch-test, the re-sort's
+  Architecture-desk row; `observable.yaml` 60 · 6 of 66 — both added rules observable, none
+  reworded), and every count above is recomputed (bucket shape, above). The edit under read
+  stays at `--old-ref 794cea8` and the positive control stays `arch.artifact-home`, as the
+  2026-10-11 amendment ruled; the wave's own pre-edit ref `437b654` is recorded beside them.
+  Goldens, fixtures and wrapper unchanged. The re-key count stays 0: no grid has run (no
+  `runs/`). Made by the build's tests-and-kits seat on a lead-approved plan.
 
 ## Disclosures
 

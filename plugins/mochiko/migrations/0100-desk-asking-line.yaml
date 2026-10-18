@@ -1,0 +1,43 @@
+grammar: 1
+id: 0100-desk-asking-line
+sequence: 100
+intent: >-
+  Put the /mochiko:architecture desk's rulings outside its focus stage on the shared asking line
+  (engine-follow-up D10 as changed at review, QR3; D4 as changed at review; the re-sort under D10,
+  its Architecture-desk row; default 18): the stub arch.asking-line, common.asking-line's fifth
+  extender, and arch.ruling-places, each place of the row named by its live rule id with its
+  writer setting — drift dispositions and the shelf-scope override on, a trigger ruled closed
+  off, the floor-drop waiver a yes / no gate held by the ledger through /mochiko:setup. The row
+  stances, the baseline confirmation and amendments stay in the focus stage as built and are not
+  listed. No rule is reworded, no asking mechanic is restated, no engine rule or slot changes, no
+  moment is added, and no floor or fail is retired or lowered.
+anchor: 2026-10-15 engine-follow-up
+hash: sha256:add9dbeec37b4a15783ec59d7ea6de74980c335911ac44352ad3b15f5772cfe3
+changes:
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.ways-of-working
+    rule:
+      id: arch.asking-line
+      class: must
+      extends: common.asking-line
+      anchor: 2026-10-15 engine-follow-up D10
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.reserved
+    rule:
+      id: arch.ruling-places
+      labels: [user-gate]
+      class: must
+      kind: binding
+      text: >-
+        The desk's rulings outside its focus stage take the asking line (arch.asking-line), each
+        with its next writer set. Writer on: each drift finding's disposition
+        (arch.dm-drift-dispatch), the rows written from it and ${grader_seat}'s grade
+        (arch.seat-tech-lead-grader) checking the meaning kept; a shelf-scope override
+        (arch.shelf-scope-source), landing as the exact text of the store write to the `Scope:`
+        line. Writer off: a fired trigger the user rules closed (arch.dm-route-triggers). The
+        governance-ledger waiver a true floor drop needs (arch.floor-precedence) stays a yes / no
+        gate, its writer held — the ledger records it through /mochiko:setup
+        (arch.dispatch-setup-waiver).
+      anchor: 2026-10-15 engine-follow-up D10

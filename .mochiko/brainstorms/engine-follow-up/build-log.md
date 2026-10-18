@@ -480,3 +480,190 @@ audit: unit 8 (crate tests, contract expectations, plan kits · crate non-author
   bump.
 - The lead's wave-close regression read: `cargo audit` clean (31 dependencies). Wave 2 closed; no
   bump. Committed next.
+
+## 2026-10-18 — W2 committed; W3 plan written, P1 dispatched plan-only
+
+- W2 committed as `437b654` ("Move implement's later moments onto the shared asking line"); tree
+  clean after.
+- `wave3-rest.md` written (244 lines): sequences 0098–0101 (0102–0103 held) — specify, setup and
+  the architecture desk each extend `common.asking-line` with a `<cmd>.ruling-places` binding (the
+  re-sort's three remaining rows), specify's reader for default 23, and 0101 for the two W2 gate
+  advisories; P2 and P3 take the default-21 residuals only where this build already touches the
+  file; the lead holds the bump, the CHANGELOG slots and the KM landing. Seven gate units.
+- W3 P1 (persona-less `general-purpose`, `model: opus`) dispatched plan-only; tree snapshot taken
+  (the W3 plan the only untracked path).
+
+## 2026-10-18 — W3 P1 planned; peer grade dispatched
+
+- W3 P1's plan (547 lines; recovered unchanged, sha256 `6f8da241…`); tree unchanged but the
+  lead's log. Four files (0098 specify · 0099 setup · 0100 desk · 0101 implement residuals); six
+  mints (three asking-line stubs, three ruling-places bindings) and four rewords
+  (`spec.stage-inputs-in-hand`, `impl.feature-visit-input` narrowed to the entry's pointer,
+  `impl.landing-verifier-folds` the one home of the `gates.md` fold check, `impl.ruling-places`
+  pointing at it). Dry run `0 rejecting · 118 advisory · 0 clusters · 185`, no allowlist row,
+  `94 documents · 1266 rules`; `impl.sec.tools` untouched.
+- The 39-row count closes: W3's 17 rows (on 3 · held 8 · off 5 · unchanged 1) with W1's and W2's
+  give on 10 · held 13 · off 15 · unchanged 1 — the record's count; six gates across the commands.
+- Specify's selection moves off "stays a gate" by `spec.ruling-places` alone, `spec.gate-selection`
+  untouched (its `kind: gate` is a blocking checkpoint, its text names no yes / no form).
+- Risks raised for the lead: R1 — the shelf-scope override (writer *on*) has no named grader ·
+  R2 — default 23's reader reaches specify's intent stage, not only the story stage.
+- Fresh generic peer (`model: opus`) dispatched, asked for readings on R1 and R2.
+
+## 2026-10-18 — W3 P1 plan PASS, approved, build opened
+
+- Peer grade: PASS · 0 blocking · 6 advisory, every deciding figure reproduced (`0 rejecting · 118
+  advisory · 1266 scanned · 219979 pairs · 0 clusters · 185`; four views; sizes; `check` allow);
+  the narrowed visit read checked not too narrow (a growth row's work row points at `visit.md`).
+- The lead's rulings: R1 accepted — no grader invented for the shelf-scope override; its only
+  check is the exact-text landing (a transcription, the re-sort row confirmed with no grader) ·
+  R2 accepted — default 23's reader reaches the intent stage, the intent confirm standing · A4
+  taken — 0101's intent says the `gates.md` fold differs from the "graded folds" 0026 removed ·
+  A5 in the build report · A2, A3, A6 noted.
+- A1, placed by the lead: four ruling places the re-sort never listed — `spec.missing-map-surfaced`,
+  `spec.governance-region-absent` (offers to run setup, like implement's absent-surface offers),
+  `setup.stress-test-cold-seat` (a recorded waiver), `arch.diagram-signoff` (a yes before a hosted
+  render). `common.asking-line` already reaches them with the writer off; adding rows would go
+  past the user's confirmed 39-row re-sort, so they stay unlisted — put to the user as a one-line
+  note at the bump, not a fork.
+- The plan pinned (`6f8da241…`); tree snapshot (the log and the W3 plan).
+
+## 2026-10-18 — W3 P1 built; P2 and P3 dispatched plan-only
+
+- W3 P1's build: four files written byte-for-byte (0101 carrying the A4 intent sentence, its hash
+  unmoved, file sha256 `f991b04f…`); four views edited to the emitted hunks; no allowlist row. Red
+  761/4, exactly the four P3 pins planned, plus the opt-in sweep's corpus pin.
+- The lead's checks: `git status` exactly P1's write set beside the log and the W3 plan · `migrate
+  validate` `0 rejecting · 118 advisory`, `clusters: 0` · status `1..101`, `300e26a8…`, `94
+  documents · 1266 rules` · a fresh `views emit` equals the committed views · the three
+  `*.ruling-places` render; `impl.landing-verifier-folds` names the `gates.md` fold.
+- W3 P2 (prose, the default-21 prose residuals) and P3 (tests and the four kits, the default-21 kit
+  residuals) dispatched plan-only in parallel; tree snapshot taken (10 lines).
+
+## 2026-10-18 — W3 P2 planned; peer grade dispatched
+
+- W3 P2's plan (318 lines; recovered unchanged, sha256 `941e7313…`); tree diff clean against the
+  snapshot. Router: five pure insertions R1–R5, the default-21 residuals (body 48,995 to 49,938);
+  `ARCHITECTURE.md`: four line fixes A1–A4, one the false `:301`; three strip comments (specify,
+  implement, router); the CHANGELOG W3 part. The four command `.md`s, `README.md`, `GLOSSARY.md`
+  and the budget ledger left alone, each with a reason.
+- Q1 raised for the lead: `ARCHITECTURE.md:306–308` ("every touched product baseline takes its
+  graded delta fold") false since D1-delta-files-retire, outside §3.5's named list; a ready edit
+  offered, else left for the narrowed BACKLOG item.
+- Fresh generic peer (`model: opus`) dispatched against the review-seat-plan render, asked to read
+  Q1 too. P3 still planning.
+
+## 2026-10-18 — W3 P2 plan PASS, approved with addendum, build opened
+
+- Peer grade: PASS · 0 blocking · 7 advisory. a1 file count off by one · a2 Q1 misses two sibling
+  false lines (`ARCHITECTURE.md:390–391`, `README.md:108`) · a3 A4's desk clause a widening · a4
+  R1's user-added mark on the piece, not its gaps · a5 A3's "too" has no referent · a6 the
+  CHANGELOG names the wrong ARCHITECTURE.md section · a7 three sections unnamed as read.
+- The lead's rulings, sent as exact text (L1–L8): Q1 fixed, the ready edit taken (a false line
+  in a file this build touches, default 21's rule) · `ARCHITECTURE.md:390–393` fixed by the same
+  rule, sourced to `impl.baselines-in-place-marked` and `impl.baseline-diff-review`, the seat
+  told to stop if the text overclaims · `README.md:106`/`:108` stay, since README is not touched
+  by this build; they go to the narrowed BACKLOG item at landing · a4's mark moved to the gaps,
+  per `review-sufficiency.user-added-regrade` · a5's "too" dropped · a1 and a6 corrected in the
+  report and CHANGELOG · a3 kept, being W1's own ripple (`visit.md`), labelled so · a7 noted.
+- The plan pinned (`941e7313…`); tree snapshot (10 lines). P3 still planning; its write set is
+  disjoint.
+
+## 2026-10-18 — W3 P2 built
+
+- W3 P2's build: six paths (`strips/implement.md`, `strips/mochiko.md`, `strips/specify.md`,
+  `ARCHITECTURE.md`, `CHANGELOG.md`, the router), 166 insertions and 19 deletions; each write
+  dry-run through `mochiko-cli check` first (all allow) and `cmp`-matched to its dry-run copy.
+  Router body 48,995 to 49,956 (the plan's 49,938 plus L5's 18). The file count is six; the plan
+  summary's seven was a slip (a1).
+- Four extras past the pinned text, all mechanical: the router strip comment follows L5 and the
+  49,956 figure; three bare decision ids its own comments added are joined; the comments are
+  rewrapped to 100 columns. `ids --check` over the six files: 2 bare, both in W2's existing
+  comment (`strips/implement.md:41`, `:43`), for the gate grader.
+- The lead's checks: `git status` is the 10 snapshot lines plus the six paths · L1 at
+  `ARCHITECTURE.md:307–310`, L2 at `:394–398`, L6 at `:301`, L5 at the router `:90`, all read
+  in the tree · `README.md` untouched, its two lines listed under the CHANGELOG's "Left in
+  `BACKLOG.md`".
+
+## 2026-10-18 — W3 P3 planned; peer grade dispatched
+
+- W3 P3's plan (190 lines; recovered unchanged, sha256 `b0255ff8…`), exact bytes in its
+  `plan.diff` (`ecc798de…`, 545 lines); no repo write. Ten paths: three crate tests (the four red
+  pins plus three asserts masked behind them: 418 to 424, 1260 to 1266, the family `(424, 21068,
+  0, 59)`, the corpus 219,979 scored, suppressed 185 unmoved), four kits' `observable.yaml`, the
+  specify and architecture preregistrations, `evals/plan/README.md`. Mirror dry run green: cargo
+  765/0, sweep 48/0, fmt and clippy 0, contract host 7/7, `check-rubric` on all four kits.
+- Default-21 residuals taken: four bare `D3` lines in touched files, the 18 implement `why`s cut
+  at a comma (re-quoted whole). Left: the brainstorm kit's three bare `D3` lines (untouched kit),
+  `ids.rs`'s deliberate bare test inputs. Setup and implement preregistrations left alone, as
+  run kits (W2's rule); specify and architecture recounted.
+- Q1 for the lead: 47 more comma-cut `why`s BACKLOG never listed (specify 1, setup 2,
+  architecture 33, feature 11); default leave and book at landing. Q2: specify's recount folds
+  in drift since authoring; default take, per the W1 feature-kit ruling.
+- Fresh generic peer (`model: opus`) dispatched against the review-seat-plan render, told to
+  reproduce the red and the census itself and to check the comments' session date.
+
+## 2026-10-18 — W3 P3 plan PASS, approved with addendum, build opened
+
+- Peer grade: PASS · 0 blocking · 2 advisory, every figure reproduced in its own mirror (red
+  761/4 and the masked asserts, sweep 46/2, the census and kind deltas, the C(n,2) sums, every
+  partition shape, the 18 re-quotes byte-equal, the plantings true, no other expectation moving,
+  host 7/7 with P2's edits in; the session date 2026-10-15 right). A1 the specify recount omits
+  two rewords falling on rules already changed · A2 name the no-bytecode form for `uv` runs.
+  Repro note: `matrix_similar.rs:1370` fails with the target dir outside the tree (environmental).
+- The lead's rulings (L1–L4), sent as exact text or a stated transform: Q1 — all 47 comma-cut
+  `why`s taken, double-quoted whole, words byte-equal, a stop on any `"` or `\`; the same rule
+  as P2's Q1 (a defect in a file this build touches), the feature kit touched at W1 (`fccae34`),
+  so it joins the write set (11 paths); a pinned footer sentence per kit · Q2 — the specify
+  recount taken, A1 folded in as a pinned clause, checked against 0057 and 0061 first · A2 —
+  `python3 -B` and `PYTHONDONTWRITEBYTECODE=1` · the target dir kept inside the tree.
+- The plan pinned (`b0255ff8…`, `plan.diff` `ecc798de…`); tree snapshot (16 lines).
+
+## 2026-10-18 — W3 P3 built
+
+- W3 P3's build: 11 paths, +241 −110, Edit only; the planned 10 match `plan.diff`'s
+  after-hashes except where L1 or L2 moved them. Red first, exactly as named (761/4 · sweep 46/2 ·
+  `check-rubric` exit 1 on the three re-keyed kits · comma check 1·2·33·11·18 · 4 bare ids); then
+  green: cargo 765/0 · sweep 48/0 · fmt and clippy 0 · `check-rubric` 59·14·73, 36·8·44,
+  60·6·66, 75·56·131, feature 57·4·61 unchanged · `check-fixtures` OK ×5 · comma check 0 ×5 · 65
+  re-quotes byte-equal, none carrying `"` or `\` · `ids --check` 0 bare, 0 drift · partitions
+  match every footer · contract host 7/7 on a fresh mirror with P2's edits in.
+- L2 checked first: 0057 and 0061 carry the two rewords; the clause landed.
+- The lead's slip: L1's pinned footer, at N=1, reads "the 1 why … are double-quoted". A
+  superseding order, voiding that one sentence, sent as exact text ("the one why …", "is
+  double-quoted").
+- The lead's check: `git status` is the 16 snapshot lines plus the 11 paths; no new `.pyc`.
+
+## 2026-10-18 — W3 frozen; gate audit dispatched
+
+- A second slip in the same pinned sentence ("their words unchanged" at N=1): one more
+  superseding order, voiding those words only ("its words unchanged"), with "59 · 14 of 73."
+  re-filled onto one line. Specify's four checks exit 0; file sha256 `970d4162…`.
+- The wave frozen: 27 `git status` lines, 22 files changed (+649 −146); the diff without this
+  log hashes `0d4f6b99…`. Writers hold until the verdict.
+- One gate grader (`general-purpose`, `model: opus`) dispatched for the seven units of
+  `wave3-rest.md` §4, its brief pinned (sha256 `6998a5ed…`): its contract rendered first-hand,
+  the pre-pass run itself, the lead's W3 rulings named as its sources beside the record. Report
+  at `reports/audit-w3.md`.
+
+## 2026-10-18 — W3 gate audit: seven units PASS
+
+- `reports/audit-w3.md` (454 lines), round 1, all PASS, 0 blocking; the frozen diff without this
+  log held at `0d4f6b99…` from start to end. The outcome lines:
+  - `audit: unit 1 (schema content · 0098 + specify view diff, ruling places checked live) · w3-gate-grader · opus · 2 files · 1 rounds · 0 blocking`
+  - `audit: unit 2 (schema content · 0099 + setup view diff, ruling places checked live) · w3-gate-grader · opus · 2 files · 1 rounds · 0 blocking`
+  - `audit: unit 3 (schema content · 0100 + architecture view diff, ruling places checked live) · w3-gate-grader · opus · 2 files · 1 rounds · 0 blocking`
+  - `audit: unit 4 (schema content · 0101 + implement view diff, tools line measured) · w3-gate-grader · opus · 2 files · 1 rounds · 0 blocking`
+  - `audit: unit 5 (command pairs · specify, setup, architecture + implement 0101 delta) · w3-gate-grader · opus · 4 files · 1 rounds · 0 blocking`
+  - `audit: unit 6 (prose primitives and ripple · router, three strips, ARCHITECTURE, README, GLOSSARY, budget ledger, CHANGELOG) · w3-gate-grader · opus · 9 files · 1 rounds · 0 blocking`
+  - `audit: unit 7 (tests and kits · three crate tests, contract expectations, five plan kits, two preregistrations, README · crate non-author review) · w3-gate-grader · opus · 11 files · 1 rounds · 0 blocking`
+- Grader's rulings: every ruling-places id live, ways and writers matching the re-sort (specify
+  7/7, setup 6/6, desk 4/4), the 39-row count closing · R1, R2 and A1 faithful · the tools line
+  28,443 · W2's two bare ids at `strips/implement.md:41`, `:43` outside default 21 · every
+  left-alone call holding · every moved figure reproduced, the 65 re-quotes byte-equal.
+- Advisories, placed by the lead: 1 — A1's note goes to the user at the bump · 2 — the two bare
+  ids booked in the narrowed bare-id BACKLOG item at landing · 3 — the CHANGELOG's W3 budgets
+  line to read "no budgeted skill body or description changes", fixed at slot fill.
+- The lead's §3.6 read, row by row (it clears nothing): D4 and D10 in units 1–3 · defaults 15 and
+  16 in unit 2 · default 21 in units 6 and 7 · default 22's count owed at the bump · default 23 in
+  unit 1 · the W2 advisories in unit 4. W3 committed next; then the bump.

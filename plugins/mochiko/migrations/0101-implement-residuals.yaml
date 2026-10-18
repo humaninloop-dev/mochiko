@@ -1,0 +1,70 @@
+grammar: 1
+id: 0101-implement-residuals
+sequence: 101
+intent: >-
+  Close the two engine-follow-up wave-2 gate advisories on /mochiko:implement (default 12 as
+  changed at review, RB3 with S10; D10 as changed at review, the re-sort's final-validation
+  dispositions — "the landing verifier checks the gates.md fold"). Three rewords, each keeping
+  its id, class and kind. impl.feature-visit-input (minted by this session's 0094) narrows "any"
+  visit file keyed to the FEAT to the one the run's own entry points at — a selected work row's
+  pointer, the delta card's marked work row (as 0095 reads it for the sufficiency check), the
+  lane's card — keeping "in every scope, whatever the gap count"; "keyed to the run" now names
+  that file, so the cites in impl.design-inputs, impl.design-stage-inputs,
+  impl.gap-finding-blind-dispatch and testing-gap-finding.blindness-fence-inclusion-list stay true
+  untouched. impl.landing-verifier-folds (no anchor; last reworded under
+  delta-files-vs-direct-baseline-edits D3) names the gates.md fold check, its one home, and
+  impl.ruling-places (this session's D10, its anchor kept) points at it. The gates.md fold of
+  impl.gates-fold is a different object from "the graded folds" 0026 removed from
+  impl.landing-verifier-folds (delta-files-vs-direct-baseline-edits D3, replaced there by the
+  pinned-base diff review and the flip), so this restores none of them. impl.sec.tools is not
+  touched. No floor or fail is retired or lowered.
+anchor: 2026-10-15 engine-follow-up
+hash: sha256:ba40192e1fd2b1dff179056dd22a709024c9320004d7474cab2dfd1bfa017664
+changes:
+  - op: reword-rule
+    schema: command/implement
+    id: impl.feature-visit-input
+    text: >-
+      At entry, in every scope — selection, delta, lane, an epic's member — and whatever the
+      gap count, you read each feature-desk visit file keyed to the run, meaning one the run's own
+      entry points at and never another dated visit on the same FEAT or lane: on selection scope,
+      a file a selected work row points at, each member's on an epic; on a delta run, the file the
+      delta card's marked work row points at; on a lane run, the lane's file holding the card it
+      builds. Each sits at `${features_dir}/desk/<date-slug>/visit.md`, its slug carrying the
+      joined FEAT id lower-cased or `lane-<slug>`. Its ruled set and the cards in its card part
+      are inputs in hand for the run, the desk card a delta or lane run builds among them.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.landing-verifier-folds
+    text: >-
+      The landing verification seat checks the landing flip of impl.baseline-diff-review —
+      `in-flight` and `modifying` entries to `built`, each `removing` entry to its stub (heading
+      kept, `**Lifecycle:** removed`, no body, no key) — and the `gates.md` fold of
+      impl.gates-fold, each finding ruled fix-now or backlog folded with its ruling's meaning kept
+      and none the user accepted as designed; a lane run adds the map-delta boundary check — the
+      accepted work made no map write beyond the marked delta.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.ruling-places
+    text: >-
+      The run's rulings outside its design stage take the asking line (impl.asking-line), each
+      with its next writer set. Writer on, the ruling reaching its writer as its exact text and
+      the place's existing grader checking the meaning kept: the card order (impl.card-order), the
+      card review (impl.card-review-before-confirm) checking it; the checkpoint rulings — an
+      infeasible card, an ambiguity, an adopt-first or IP-XXX call, a constraint challenge
+      (impl.infeasible-card-escalation, impl.ambiguity-escalation, impl.adopt-first-user-call,
+      impl.constraint-challenge) — the cycle's verification seat checking the rework kept the
+      ruling; the final-validation dispositions (impl.beyond-spec-disposition), the landing
+      verification seat checking the `gates.md` fold (impl.landing-verifier-folds); the deviation
+      gate's amend (impl.deviation-gate), the delta amended from the ruling and its existing
+      non-author grade checking it. Writer held: a governance conflict
+      (impl.constitution-supremacy), by the ledger's own amend path; the run-open rulings
+      (impl.user-runopen-rulings), written into the sufficiency report and binding the run. Writer
+      off: a scope escalation (impl.scope-escalation-fail), a disputed finding kind
+      (impl.finding-kind-disputed), an exhausted gap-rework bound (impl.gap-rework-bound), an epic
+      member halt (impl.epic-member-halt), an attempt exemption
+      (impl.attempt-exemption-user-only), a disputed sufficiency clause
+      (impl.sufficiency-disputed-clause), the desk offer (impl.desk-offer) and the absent-surface
+      offers (impl.absent-surfaces). The design baseline's first system-part write
+      (impl.design-first-write) and final acceptance (impl.gate-final-acceptance) stay yes / no
+      gates, their writer held by the landing verification seat (impl.landing-verifier-folds).

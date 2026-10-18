@@ -1092,7 +1092,17 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
         // `impl.card-review-before-confirm` takes its pair with `impl.design-review-pair` under
         // the threshold, so that cluster is gone and its row now suppresses nothing. SUPPRESSED
         // zero unchanged.
-        (418, 20_351, 0, 59),
+        // Re-measured after the 2026-10-15 engine-follow-up wave 3 (`0098`–`0101`): `0098`–`0100`
+        // mint six rules, two each on `specify`, `setup` and `architecture`, moving the scan 418
+        // to 424 and the pair count 20,351 to 21,068. By kind, counted from the replayed state:
+        // `binding` 64 → 67 (+195), `constraint` 176 → 179 (+531, less the nine pairs the three
+        // new `common.asking-line` stubs form with `feat.asking-line` and `impl.asking-line` and
+        // with each other, which the detector skips: +522) — +717, the whole of the move. The
+        // suppressed count holds at 59: the wave added no allowlist row, and raw runs over the
+        // old (`1..95`) and new (`1..101`) logs report 29 clusters over 59 edges each, the
+        // listings identical, so no mint raises an edge and no reword in `0098` or `0101` moves
+        // an allowlisted pair. SUPPRESSED zero unchanged.
+        (424, 21_068, 0, 59),
         "rules scanned · in-kind pairs scored · clusters · allowlist-suppressed edges"
     );
 }
@@ -1317,8 +1327,18 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // SUPPRESSED zero: with an empty allowlist the corpus reports 76 clusters over 185 edges (78
     // over 186 before the wave), the listings identical but for those three clusters, read from
     // raw `migrate validate --report` runs over the old (`1..89`) and new (`1..95`) logs.
-    assert_eq!(report.scanned, 1260, "rules scanned");
-    assert_eq!(report.scored, 217_663, "in-kind pairs scored");
+    // Re-measured after the 2026-10-15 engine-follow-up wave 3 (`0098`–`0101`): six rules minted
+    // and none retired move the scan 1,260 to 1,266 and the pair count 217,663 to 219,979 — the
+    // six command rules of `0098`–`0100` (see the command-family pin above). By kind: `binding`
+    // 184 → 187 (+555), `constraint` 589 → 592 (+1,770, less the nine pairs the three new
+    // `common.asking-line` stubs form with the two before them and with each other, which the
+    // detector skips: +1,761) — +2,316, the whole of the move. `suppressed_hits` holds at 185:
+    // the wave added no allowlist row. SUPPRESSED zero: with an empty allowlist the corpus
+    // reports 76 clusters over 185 edges before and after the wave, the listings identical,
+    // read from raw `migrate validate --report` runs over the old (`1..95`) and new
+    // (`1..101`) logs.
+    assert_eq!(report.scanned, 1266, "rules scanned");
+    assert_eq!(report.scored, 219_979, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
     assert_eq!(report.suppressed_hits, 185, "allowlist-suppressed edges");
 }

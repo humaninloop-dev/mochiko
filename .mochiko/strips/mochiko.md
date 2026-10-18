@@ -96,6 +96,36 @@ three routing gates" stays true; the `review-sufficiency` row (`:90`) names no r
 `DECISIONS.md` 2026-10-15 "Engine follow-up ruled" row. The router body is unbudgeted: 48,776 →
 48,995. Pre-edit verbatim text: `git show fccae34:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+<!-- Wave context: wave 3 of the engine follow-up build (v0.121.0) — five rows completed from the
+0.120.0 build's "lines incomplete, not false" list, which rides this build where it touches the same
+files (`.mochiko/brainstorms/engine-follow-up/record.md` default 21; `BACKLOG.md` *Engine-desk build
+— lines incomplete, not false*). Pure additions only, so no entry, recorded here for the audit's
+read: the `review-sufficiency` row (`:90`) — the re-grade of a design piece the user adds at
+implement's design stage, each gap it opens marked user-added
+(`review-sufficiency.user-added-regrade`, `0081-sufficiency-user-added.yaml`;
+`implement-brainstorm-led` D6-outside-need-asked as changed at review, S1); the
+`patterns-system-design` row (`:95`) — the same craft serving the desk's spine and the store's
+diagram set, its taste governing every diagram (`arch.tools-system-design`, reworded by
+`0068-desk-focus-stage.yaml`; `DIAGRAM-CONVENTIONS.md` "Taste — every diagram";
+`architecture-brainstorm-interview` D7-diagram-set-index); the `review-plan-artifacts` row (`:98`) —
+the meaning-kept grade against the run's `design-stage.md` (`review-plan-artifacts.meaning-kept`,
+`0080-plan-artifacts-meaning-kept.yaml`; `implement-brainstorm-led` D8-checkpoint-shows-landing as
+changed at review, S2); the `/mochiko:architecture` row (`:142`) — a feature's delta visit,
+`/mochiko:architecture <FEAT-ID>`, closing in a visit file keyed to the feature and writing nothing
+to the store (`arch.feature-delta-visit`, `0068`; `architecture-brainstorm-interview`
+D5-visit-file-input); and the `technical-analyst` row (`:162`) — its candidate pieces at implement's
+design stage (`impl.design-stage-unit`, `0076-implement-design-stage.yaml`;
+`implement-brainstorm-led` D7-direction-then-pieces). No clause is made false by this wave's
+asking-line rules (`0098`–`0100`): the `/mochiko:specify` row's selection stays the user's pick, the
+`/mochiko:setup` row's ratification and acceptance keep their gates, and the desk's drift
+dispositions and shelf-scope override were already ruled outside its focus stage at v0.120.0
+(`visit_kind`), which `0100` leaves unchanged; the `/mochiko:implement` row (`:143`) and the
+`testing-gap-finding` row (`:117`) hold under `0101`, "keyed to the run" now naming the file the
+run's entry points at. Rows: the `DECISIONS.md` 2026-10-15 "Engine follow-up ruled", 2026-10-11
+"Shared thinking engine ruled" and "Architecture desk as brainstorm's workflow, plus maintained
+diagrams, ruled" rows. The router body is unbudgeted: 48,995 → 49,956. Pre-edit verbatim text:
+`git show 437b654:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
 ## [v0.120.0] `/mochiko:architecture` row — "greenfield elicits through the shelf walk" and "Each visit walks the shelves you scope, takes your stance per row" superseded by the focus stage
 
 - **Disposition:** superseded → `SKILL.md`:142 as rewritten, the two passages verbatim —

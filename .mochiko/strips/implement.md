@@ -1,5 +1,24 @@
 # Strip notes — `commands/implement.md`
 
+<!-- Wave context: wave 3 of the engine follow-up build (v0.121.0) — the two wave-2 gate advisories
+on implement close. Schema content only, so no entry: the migration log carries the verbatim prior
+text (`strips/README.md`), and `commands/implement.md` is unchanged — no line is made false (the
+Entry step names no visit file; the Goal step's "the acceptance landing executed whole" holds with
+the landing verifier's added check), and its Not-done line already cites the CLI-printed pin
+(`kind: fail · 17 rules`). Recorded here for the audit's read, because a rule carries one anchor
+(default 20): `0101-implement-residuals.yaml` rewords three rules, each keeping its id, class and
+kind. `impl.feature-visit-input` (minted by this session's `0094`) narrows "any" visit file keyed to
+the FEAT to the one the run's own entry points at, "in every scope, whatever the gap count" kept, by
+`.mochiko/brainstorms/engine-follow-up/record.md` default 12 as changed at review (RB3 with S10).
+`impl.landing-verifier-folds` (no anchor; last reworded under `delta-files-vs-direct-baseline-edits`
+D3-product-sequence-ids) names the `gates.md` fold check of `impl.gates-fold`, by
+D10-two-switch-test as changed at review (the re-sort's final-validation dispositions: "the landing
+verifier checks the `gates.md` fold"); that fold is a different object from "the graded folds"
+`0026` replaced under D3-product-sequence-ids, so none is restored. `impl.ruling-places` (this
+session's D10, its anchor kept) now points at it. Each earlier wording is superseded by the named
+ruling, this session's anchor on the migration (`DECISIONS.md` 2026-10-15 "Engine follow-up ruled"
+row). `impl.sec.tools` is untouched (28,443 bytes). No floor or fail is retired or lowered. -->
+
 <!-- Wave context: wave 2 of the engine follow-up build (v0.121.0) — implement's moments after the
 design checkpoint move onto the shared asking line: the card order asked before slicing on a real
 choice, every other ruling place set on its writer switch, acceptance shown as a promises-kept

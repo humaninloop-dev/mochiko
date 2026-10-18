@@ -200,6 +200,21 @@ sections:
           the rows' — and the ${producer_seat} seat authors nothing before it.
         when: {visit_kind: [ruling, delta]}
         anchor: 2026-10-11 architecture-brainstorm-interview
+      - id: arch.ruling-places
+        labels: [user-gate]
+        class: must
+        kind: binding
+        text: >-
+          The desk's rulings outside its focus stage take the asking line (arch.asking-line), each
+          with its next writer set. Writer on: each drift finding's disposition
+          (arch.dm-drift-dispatch), the rows written from it and ${grader_seat}'s grade
+          (arch.seat-tech-lead-grader) checking the meaning kept; a shelf-scope override
+          (arch.shelf-scope-source), landing as the exact text of the store write to the `Scope:`
+          line. Writer off: a fired trigger the user rules closed (arch.dm-route-triggers). The
+          governance-ledger waiver a true floor drop needs (arch.floor-precedence) stays a yes /
+          no gate, its writer held — the ledger records it through /mochiko:setup
+          (arch.dispatch-setup-waiver).
+        anchor: 2026-10-15 engine-follow-up D10
   - id: arch.sec.tools
     title: Tools
     intent: >-
@@ -496,6 +511,10 @@ sections:
           viewed, and which read confirmed the parse; publishing to a hosted service to render it
           waits for the user's yes, a local preview preferred.
         anchor: 2026-10-11 architecture-brainstorm-interview D9
+      - id: arch.asking-line
+        class: must
+        extends: common.asking-line
+        anchor: 2026-10-15 engine-follow-up D10
   - id: arch.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-visit ruling can waive.
