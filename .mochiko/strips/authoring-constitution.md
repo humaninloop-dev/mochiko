@@ -66,6 +66,16 @@ received; the obligation map's questions ruled by the user"; obligation map U13 
 (`DECISIONS.md` 2026-10-11 "Shared thinking engine ruled" row). Pre-edit verbatim text:
 `git show 5162f1a:plugins/mochiko/skills/authoring-constitution/references/INTERROGATION-AGENDA.md`. -->
 
+## [v0.122.0] `references/RFC-2119-KEYWORDS.md` — the restated RFC 2119 definitions cut; the keyword-to-enforcement mapping kept
+
+- **Disposition:** deleted — general knowledge the model holds; the file now keeps only how a keyword binds in a principle.
+- **Tier failed:** 1 (altitude — restated RFC 2119 doctrine, not a mochiko convention). User ruling 2026-10-19 (textbook-reference trim, ADR `.mochiko/decisions/2026-10-19-textbook-reference-trim.md`).
+- **Content (faithfully compressed — section-level inventory, 936 → 277 words; verbatim at `main` `4626afd`):**
+  - **Removed:** `## Overview`; `## Keyword Definitions` — the five Meaning / When-to-use / Examples blocks (their per-keyword "Enforcement implication" lines survive as the mapping table); `## Decision Matrix` (a three-row duplicate of `## Enforcement Mapping`); `## Keyword Frequency Guidelines` (MUST 10–20 · MUST NOT 5–10 · SHOULD 5–15 · SHOULD NOT 3–8 · MAY 2–5 and three warning signs); `### Bad Principle (Keyword Misuse)` and its problem list.
+  - **Kept:** `## Enforcement Mapping` (now `## Keyword to enforcement`, the MUST and MUST NOT rows merged, as were the SHOULD pair — identical cells) · the four `## Common Mistakes` as one rule each, with the reject-a-PR test and the exceptions-mean-SHOULD test · "Security requirements" as MUST (the line `security-depth-scoping` F38 cites) · `### Good Principle with Mixed Keywords`, verbatim but for two added articles.
+- **Kept deliberately:** the [v0.101.0] schema-conversion note in this log ("RFC-2119-KEYWORDS.md and EMERGENT-CEILING-PATTERNS.md stay teaching, no stubs") still holds — the file stays a teaching reference; only its restated-RFC content left.
+- **Consumers assessed:** `SKILL.md` § The Three-Part Principle Rule ("detailed usage: references/RFC-2119-KEYWORDS.md") still resolves and still describes it; no schema rule points at the file.
+
 ## [v0.120.0] INTERROGATION-AGENDA — the default-on modules adopted only on the user's yes
 
 - **Disposition:** superseded → line 39 "offered default-on, adopted only on the user's yes —";
