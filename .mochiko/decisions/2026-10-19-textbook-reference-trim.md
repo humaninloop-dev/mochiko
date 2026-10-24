@@ -87,3 +87,14 @@ Advisory notes (non-blocking; disposition: left for a later edit):
   differed before this edit (`comments`, `assignees`).
 - `.mochiko/memory/primitive-cost-budgets.md`: the two re-measured rows (5,511; 20,138, standing
   overage +75) are not yet recorded there. Record them at the release-gate sweep.
+  Disposition: recorded at the release-gate sweep (commit `a630116`).
+
+## Release gates
+
+- `cargo test --all` green, `cargo fmt --all --check` clean; derived views equal the replay
+  (`mochiko-cli views emit` diffed against `.mochiko/schema-views/`, no difference).
+- Plugin contract suite (`python3 evals/contract/run.py`, full run against the rebuilt release
+  binary): first run 2026-10-19 red, 7 host cases ok and every sandbox case failed before the plugin
+  loaded — the `claude-mochiko` sandbox's workspace mount was empty (environment, not this edit; the
+  fixture-plugin cases failed identically). After the user restored the mount, the rerun on
+  2026-10-25 went green: 99 / 99 cases ok, exit 0. Gate 6 met.
