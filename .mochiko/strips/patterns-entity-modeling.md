@@ -20,6 +20,15 @@ status table and the validation-script paragraph — and the v0.64.0 checklist k
 as the supersessions below. Pre-edit verbatim text:
 `git show 5558fd7:plugins/mochiko/skills/patterns-entity-modeling/SKILL.md`. -->
 
+## [v0.122.0] `references/RELATIONSHIP-PATTERNS.md` — cardinality and delete-behavior textbook cut; the documentation formats kept
+
+- **Disposition:** deleted — standard data-modeling knowledge the model holds; the file now keeps the formats `data-model.md` uses.
+- **Tier failed:** 1 (altitude — restated modeling doctrine and example catalogues). User ruling 2026-10-19 (textbook-reference trim, ADR `.mochiko/decisions/2026-10-19-textbook-reference-trim.md`).
+- **Content (faithfully compressed — section-level inventory, 918 → 474 words; verbatim at `main` `4626afd`):**
+  - **Removed:** `## Relationship Types` (1:1 / 1:N / N:M table); `### Common 1:N Examples` and `### Common N:M Examples`; `### When to Use 1:1`; the separate N:M, 1:1, tree and graph aspect-table blocks, folded into one format plus four rules (1:1 unique FK, N:M join rows, self-reference heading, On Delete values); `## Delete Behavior` (the Cascade / Set Null / Restrict / No Action descriptions — the three values survive as the legal On Delete set); two lines of the diagram example (`User ──1:N──▶ Session`, and the `project` row of the in-entity table).
+  - **Kept:** the 1:N aspect table · the join-entity entry with the v0.116.0 lifecycle form (`### Entity:` · `**Lifecycle:** proposed (<key>)` · `#### Attributes` · `#### Constraints`), verbatim · the in-entity `### Relationships` table · the text-diagram notation and its symbol table · the validation checklist, verbatim.
+- **Consumers assessed:** `SKILL.md` § Relationship Modeling ("join entity examples, the text-diagram notation and symbol reference, and documentation formats") and the template's `## Relationships` placeholder still resolve; `scripts/validate-model.py` reads `data-model.md`, not this file; the record citations at `architecture-design-primitive` and `architecture-brainstorm-interview` are line-numbered findings about past text, not pointers.
+
 ## [v0.118.0] Traceability lines joined and qualified; BR examples joined
 
 - **Disposition:** superseded → `` **Traceability:** `<spec-slug>` FR-001-<slug>, FR-002-<slug>, US-1-<slug> ``, `` (`<spec-slug>` DS-001-<slug>) ``, `` `<spec-slug>` FR-003-<slug>, US-2-<slug> ``; `BR-001-date-range-order`, `BR-002-price-range-order`, `BR-003-quantity-ceiling-check` (the BR mint site, F20).

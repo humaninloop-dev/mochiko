@@ -5,6 +5,16 @@ batch-3 ratified 2026-07-25; design: `.mochiko/brainstorms/skill-succinctness-st
 First strip assessment of this skill (never-stripped band 30–70): body 161 → 89 lines = **45%**,
 in-band.
 
+## [v0.122.0] `references/EVALUATION-MATRIX.md` — the illustrative technology-category tables cut
+
+- **Disposition:** deleted — the Authentication, Data Storage and API Style tables restate common trade-offs the model holds, and were self-declared illustrative; the commodity-category alternative rule is `mochiko:patterns-adopt-first`'s.
+- **Tier failed:** 1 (altitude — illustrative catalogue, no behavior named). User ruling 2026-10-19 (textbook-reference trim, ADR `.mochiko/decisions/2026-10-19-textbook-reference-trim.md`).
+- **Content (faithfully compressed, 737 → 490 words; verbatim at `main` `4626afd`):**
+  - **Removed:** `## Common Technology Categories` with its illustrative-only disclaimer and the three four-row tables (JWT · Session cookies · OAuth2/OIDC · API keys; PostgreSQL · MongoDB · Redis · SQLite; REST · GraphQL · gRPC · WebSocket); the `### Questions to Answer` list under Brownfield Considerations, compressed to two sentences.
+  - **Kept:** `## Evaluation Criteria` — the v0.27.0 relocation home of the Quick-Criteria table, its Description and Questions-to-Ask columns merged into one Question column · `## Decision Matrix Format` and `## Comparison Table Format`, verbatim (the two shapes `SKILL.md` § Phase 2 binds) · "prefer extension over addition" (the v0.27.0 home of the shiny-object mistake row) and the two conflict examples · `### Alignment Scoring`, verbatim (the v0.27.0 relocation home of the Brownfield-Alignment table).
+- **`SKILL.md` § Phase 1 pointer** — "for the detailed criteria table, scoring, and technology category comparisons" becomes "for the criteria table and scoring."
+- **Consumers assessed:** `SKILL.md` § Phase 1, § Phase 2 and § Brownfield Alignment pointers still resolve; `build-vs-off-the-shelf` F7 and `security-depth-scoping` F35 cite line numbers of the removed tables as findings about past text — not pointers; `patterns-adopt-first` does not link this file.
+
 ## [v0.118.0] `DECISION-RECORD.md` decision IDs corrected to the `D-XXX` family and joined
 
 - **Disposition:** superseded → `Superseded by D-XXX-<slug>`; the dependency table and impact chain read `D-001-auth-token-mechanism`, `D-002-server-session-storage`, `D-003-client-token-storage`, `D-005-token-refresh-endpoint`, with the row names kept after the ID.

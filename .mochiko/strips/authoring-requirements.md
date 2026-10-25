@@ -16,6 +16,15 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/authoring-requirements/SKILL.md`. -->
 
+## [v0.122.0] `references/RFC-2119-KEYWORDS.md` — the restated RFC 2119 definitions cut; the five skill conventions kept
+
+- **Disposition:** deleted — general knowledge the model holds; the file now opens by saying the keywords carry their RFC 2119 meanings and keeps only what this skill adds.
+- **Tier failed:** 1 (altitude — restated RFC 2119 doctrine, not a mochiko convention). User ruling 2026-10-19 (textbook-reference trim, ADR `.mochiko/decisions/2026-10-19-textbook-reference-trim.md`).
+- **Content (faithfully compressed — section-level inventory, 821 → 185 words; verbatim at `main` `4626afd`):**
+  - **Removed:** the intro paragraph; `## Keyword Definitions` — the five Meaning / When-to-use / Examples blocks (MUST, MUST NOT, SHOULD, SHOULD NOT, MAY), the MUST "Common mistakes" bullets and the SHOULD "When exceptions are valid" bullets; `## Decision Framework` (the MUST/SHOULD/MAY tree); `## Requirement Distribution` (MUST 30–40% · SHOULD 40–50% · MAY 10–20% and its three warning signs); the two remaining `## Combining Keywords` examples (email-notification MAY→MUST, export SHOULD→MUST).
+  - **Kept, compressed to one bullet each:** the level choice (the decision tree's MUST / SHOULD / MAY branches) · `### Under-specifying Security` with its bad/better pair (security, data-integrity and compliance are MUST / MUST NOT — the line `security-depth-scoping` F38 cites) · `### Over-using MUST` (untestable qualities) · `### Implementation in Requirements` with its bcrypt / JSON bad/better pairs · `## Combining Keywords` (the social-login example).
+- **Consumers assessed:** the schema rule `authoring-requirements.rfc2119-pointer` (`pointer: references/RFC-2119-KEYWORDS.md`) still resolves; `authoring-requirements.fr-format` already carries the one-line keyword meanings. No other file links the removed sections.
+
 ## [v0.119.0] `validate-requirements.py` — the trailing story citation stripped from requirement text before every text check
 
 - **Disposition:** superseded → the scope of the text checks narrows by ruling. `find_requirements` stores each requirement's text with its trailing story citation removed (new module constant `STORY_CITATION`, after `RFC_KEYWORDS`), so `check_rfc_keywords`, `check_tech_agnostic` and `check_outcome_focus` scan the requirement's own words only.

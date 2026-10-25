@@ -5,6 +5,31 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.122.0] — 2026-10-19
+
+**Textbook reference trim — MINOR** (user ruling 2026-10-19, ADR
+`.mochiko/decisions/2026-10-19-textbook-reference-trim.md`). Six skill `references/` files that
+restated general knowledge — RFC 2119 meanings, HTTP status semantics, REST pagination and OpenAPI
+boilerplate, relationship cardinality, illustrative technology trade-offs — are cut to the
+conventions mochiko itself fixes, and one fully homed file is deleted: 6,451 → 2,166 words.
+`authoring-requirements` and `authoring-constitution`'s `RFC-2119-KEYWORDS.md` keep the project's
+level choices, the security-is-MUST line and (constitution) the keyword-to-enforcement mapping;
+`patterns-api-contracts`' `ERROR-PATTERNS.md` keeps the error envelope, the status table and the
+naming rules, and `PAGINATION-PATTERNS.md` the envelope, defaults, operators, sort form and the
+`INVALID_FILTER` rejection, with the v0.64.0 quick-reference line back at its head;
+`patterns-entity-modeling`'s `RELATIONSHIP-PATTERNS.md` keeps its documentation formats, the
+join-entity entry and the diagram notation; `patterns-technical-decisions`' `EVALUATION-MATRIX.md`
+drops its illustrative category tables. `executing-tdd-cycle/references/TDD-ANTI-RATIONALIZATION.md`
+is deleted — every row already lives in the skill's STOP list, its Common Mistakes and
+`brownfield-integration` — and its two `SKILL.md` pointer lines go with it;
+`patterns-technical-decisions` § Phase 1's pointer is reworded. Every earlier relocation home and
+every schema `pointer:` target survives, so no migration: rule count 1,266, the render shape
+unchanged. Strip entries `[v0.122.0]` in six `.mochiko/strips/` files. One gate-grader seat (opus)
+passed all six units in one round, 0 blocking. Budgets re-measured: `patterns-technical-decisions`
+5,511 (budget 5,783); `executing-tdd-cycle` 20,138, the standing [v0.109.0] overage down from +317
+to +75. A first `analysis-iterative/SYNTHESIS.md` deletion was withdrawn before any edit: the file
+is the live target of the thinking stage's synthesis pointer.
+
 ## [0.121.0] — 2026-10-18
 
 **The shared asking line; the feature desk on the shared thinking stage; every command's ruling

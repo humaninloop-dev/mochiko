@@ -115,8 +115,6 @@ If any of these thoughts arise, STOP (`executing-tdd-cycle.rationalization-stop`
 - "I know this works from the previous cycle"
 - "The card is clear enough, I'll decompose as I go" — the decomposition is a deliberate step, recorded before the first test is written
 
-See [references/TDD-ANTI-RATIONALIZATION.md](references/TDD-ANTI-RATIONALIZATION.md) for the full rationalization table.
-
 ## Common Mistakes
 
 | Mistake | What goes wrong | Fix |
@@ -131,4 +129,3 @@ See [references/TDD-ANTI-RATIONALIZATION.md](references/TDD-ANTI-RATIONALIZATION
 
 - [references/CYCLE-REPORT-FORMAT.md](references/CYCLE-REPORT-FORMAT.md) — Structured YAML frontmatter schema (incl. the decomposition fields) and the conditional prose rules
 - [references/TASK-PARSING.md](references/TASK-PARSING.md) — Cycle-card fields and how to read them
-- [references/TDD-ANTI-RATIONALIZATION.md](references/TDD-ANTI-RATIONALIZATION.md) — Common shortcuts and why they fail

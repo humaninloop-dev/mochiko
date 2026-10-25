@@ -1,23 +1,23 @@
 # Evaluation Matrix Reference
 
-Detailed criteria, scoring frameworks, and technology category comparisons for evaluating technology choices.
+The criteria, the two comparison shapes, and brownfield alignment scoring for a technology decision.
 
-## Evaluation Criteria
+## Evaluation criteria
 
-| Criterion | Description | Questions to Ask |
-|-----------|-------------|------------------|
-| **Fit** | How well does it solve the problem? | Does it cover all requirements? Any gaps? |
-| **Complexity** | How hard to implement and maintain? | Learning curve? Operational overhead? |
-| **Team Familiarity** | Does the team know this tech? | Existing expertise? Training needed? |
-| **Ecosystem** | Library support, community, docs? | Good documentation? Active community? |
-| **Scalability** | Will it grow with the project? | Performance at scale? Cost at scale? |
-| **Security** | Security posture and track record? | Known vulnerabilities? Security features? |
-| **Cost** | Total cost of ownership? | Licensing? Infrastructure? Maintenance? |
-| **Brownfield Alignment** | Fits existing stack? | Integrates well? Introduces conflict? |
+| Criterion | Question |
+|-----------|----------|
+| **Fit** | Does it cover every requirement, with no gaps? |
+| **Complexity** | What do implementing, learning and operating it cost? |
+| **Team Familiarity** | Does the team already know it? |
+| **Ecosystem** | Are the docs, libraries and community healthy? |
+| **Scalability** | How do performance and cost hold up at scale? |
+| **Security** | What is its posture, its record, and its known vulnerabilities? |
+| **Cost** | What are licensing, infrastructure and maintenance? |
+| **Brownfield Alignment** | Does it fit the existing stack without conflict? |
 
-## Decision Matrix Format
+## Decision matrix format
 
-For complex decisions requiring weighted scoring:
+For a decision that needs weighted scoring:
 
 ```markdown
 ## Decision: [What needs to be decided]
@@ -53,9 +53,9 @@ For complex decisions requiring weighted scoring:
 [What are we giving up by choosing this option]
 ```
 
-## Comparison Table Format
+## Comparison table format
 
-For quick side-by-side evaluation:
+For a quick side-by-side evaluation:
 
 ```markdown
 ### Options Comparison
@@ -69,54 +69,13 @@ For quick side-by-side evaluation:
 | **Risk** | Low/Medium/High | Low/Medium/High | Low/Medium/High |
 ```
 
-## Common Technology Categories
+## Brownfield considerations
 
-> These category tables are **illustrative examples** for practicing the decision technique — not the authoritative source for API or data-model design. Endpoint/contract design is owned by `mochiko:patterns-api-contracts` and entity/storage design by `mochiko:patterns-entity-modeling`; use these tables to weigh a choice, not as the system-of-record for those design domains.
+Check the existing stack before adding to it, and prefer extension over addition. A new dependency
+that competes with an existing one (a second ORM) or breaks an existing pattern (callbacks in an
+async codebase) is a conflict.
 
-### Authentication
-
-| Option | When to Use | Trade-offs |
-|--------|-------------|------------|
-| **JWT** | Stateless APIs, microservices | Token revocation complexity |
-| **Session cookies** | Traditional web apps | Server state required |
-| **OAuth2/OIDC** | Third-party auth, SSO | Integration complexity |
-| **API keys** | Machine-to-machine | Less granular control |
-
-### Data Storage
-
-| Option | When to Use | Trade-offs |
-|--------|-------------|------------|
-| **PostgreSQL** | Complex queries, relations | Operational complexity |
-| **MongoDB** | Flexible schema, documents | Transaction limitations |
-| **Redis** | Caching, sessions, queues | Data persistence concerns |
-| **SQLite** | Local storage, prototypes | Concurrency limitations |
-
-### API Style
-
-| Option | When to Use | Trade-offs |
-|--------|-------------|------------|
-| **REST** | CRUD operations, caching | Over/under-fetching |
-| **GraphQL** | Complex queries, flexibility | Complexity, caching |
-| **gRPC** | Service-to-service, performance | Browser support |
-| **WebSocket** | Real-time, bidirectional | Connection management |
-
-## Brownfield Considerations
-
-### Questions to Answer
-
-1. **Does the existing stack solve this?**
-   - Check existing dependencies for solutions
-   - Prefer extension over addition
-
-2. **Does this integrate cleanly?**
-   - Same language/runtime?
-   - Compatible patterns?
-
-3. **Does this introduce conflict?**
-   - Competing libraries (e.g., two ORMs)?
-   - Incompatible patterns (e.g., callbacks vs async)?
-
-### Alignment Scoring
+### Alignment scoring
 
 | Scenario | Alignment | Action |
 |----------|-----------|--------|

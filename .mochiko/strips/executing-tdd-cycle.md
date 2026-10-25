@@ -39,6 +39,16 @@ report lands in its home's `reports/` directory) and D3 (the homes as the migrat
 with that session's `wave4-plan.md` section (c). Pre-edit verbatim text:
 `git show 794cea8:plugins/mochiko/skills/executing-tdd-cycle/SKILL.md`. -->
 
+## [v0.122.0] `references/TDD-ANTI-RATIONALIZATION.md` deleted — every row already homed in this skill and `brownfield-integration`
+
+- **Disposition:** deleted, its rules relocated earlier → `SKILL.md`'s STOP list (`executing-tdd-cycle.rationalization-stop`) and § Common Mistakes, and `brownfield-integration`'s extend-don't-rewrite rows.
+- **Tier failed:** 1 (altitude — general TDD discipline restated a second time). User ruling 2026-10-19 (textbook-reference trim, ADR `.mochiko/decisions/2026-10-19-textbook-reference-trim.md`).
+- **Content (faithfully compressed, 493 words; verbatim at `main` `4626afd`):**
+  - `## Rationalization Table`, five rows with Why-It's-Wrong and What-To-Do-Instead: test-already-passes (home: the STOP list + Common Mistakes "verify it fails for the right reason") · code-first-tests-after (STOP list + Common Mistakes "Tests after implementation") · trivial-no-test (STOP list) · refactor-while-here, note it in `Notes of note` (STOP list + Common Mistakes "Scope creep during refactor") · EXTEND-but-rewrite, flag it in the cycle report (STOP list + `brownfield-integration` "EXTEND means extend; if you cannot extend, flag it").
+  - `## Red Flags in Practice`, five motivational paragraphs: "I know this works" and "The checkpoint will catch it" (both in the STOP list); "Just this once", "I'll come back and add the test later" and "This is obviously correct" (covered by the STOP list's trivial-no-test and code-first lines).
+- **`SKILL.md`** — the line "See references/TDD-ANTI-RATIONALIZATION.md for the full rationalization table." after the STOP list, and the file's row under § Reference Files, removed.
+- **Consumers assessed:** no schema rule points at the file; plugin-wide grep for `TDD-ANTI-RATIONALIZATION` is empty after the edit. `ops-observability-hardening` F63 quotes its line 19 as a finding about past text — not a pointer.
+
 ## [v0.118.0] Card pattern and cycle citations joined in `TASK-PARSING.md` and `CYCLE-REPORT-FORMAT.md`
 
 - **Disposition:** superseded → the card pattern `### - [ ] C{N}-<slug> — {title} `[P]`?`, `` - **Stories:** `<spec-slug>` US-#-<slug> — rationale ``, `- **Depends on:** — | C{M}-<slug>`, the checkbox field "on the card's `###` heading line", plus one line keeping the pre-upgrade `### - [ ] Cycle {N}:` heading readable; the cycle report's deviation example behind `` `product` `` and its narrative's `C3` behind the run key `` `FEAT-XXX-<slug>` ``.
