@@ -92,8 +92,11 @@ sections:
           blind list — may be skipped, stated; each on a clean cold smoke, per the plan the user
           ruled at run-open, the smoke's procedure `mochiko:testing-end-user`'s. Stakes keys the
           depth of the legs after the trigger fires, never whether they fire: a review leg thins,
-          never vanishes.
+          never vanishes. The standard thin plan (`references/STANDARD-THIN-PLAN.md`) is the
+          worked example the lead cites by name in the run-open line instead of inventing one —
+          an example, never a menu.
         when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
+        pointer: references/STANDARD-THIN-PLAN.md
         anchor: 2026-10-27 implement-lead-adaptive-rigor D5
   - id: patterns-sound-loop.sec.scope
     title: Scope — the door moves, the ritual never drops

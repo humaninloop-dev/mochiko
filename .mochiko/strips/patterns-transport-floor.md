@@ -15,6 +15,42 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/patterns-transport-floor/SKILL.md`. -->
 
+## [v0.123.0] the sound-loop remit paraphrase — "who produces and who reviews" widened by "how deep" (implement-lead-adaptive-rigor D8)
+
+- **Disposition:** superseded → the Overview's first sentence, "The sound-loop floor governs
+  *who produces, who reviews, and how deep*; this floor governs *how seats talk and write while
+  they do it*", and the `## Sibling` line, "the ritual floor (who produces, who reviews, how
+  deep)" — both paraphrases of `mochiko:patterns-sound-loop`'s remit brought level with that
+  skill's widened Overview sentence (its strip, [v0.123.0]).
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/implement-lead-adaptive-rigor/record.md` D8-home-sound-loop — the
+  lever's home, and its accepted risk: "Sound-loop's remit widens from 'who produces, who
+  reviews' to 'who, and how deep'" — with D6-prior-rulings-fate row 2 for the headline clause;
+  `DECISIONS.md` 2026-10-27 row)
+- **Content:** verbatim — line 13 and line 49 as they stood:
+
+  ```
+  The sound-loop floor governs *who produces and who reviews*; this floor governs *how seats
+  ```
+
+  ```
+  `mochiko:patterns-sound-loop` — the ritual floor (who produces, who reviews) on the same
+  ```
+
+- **Kept deliberately:** the transport half of the Overview's first sentence and the rest of
+  the Overview byte for byte; the `## Sibling` line's "on the same kind-keyed pattern, a
+  different axis" and its neutrality sentence byte for byte; the headline, the `description:`
+  (450, "sibling of patterns-sound-loop"), the `## Rules — delivered by mochiko-cli` block, its
+  seven `!` lines and the read-back sentence byte for byte; the render untouched (no migration
+  of this build names the skill). "Who produces" and "who reviews" both survive; the ruling
+  adds a third clause and removes neither. This floor's own remit and lanes do not change —
+  only its paraphrase of the sibling's remit does.
+- **Consumers assessed:** `grep -rn "who produces" plugins/mochiko` finds only these two lines
+  and sound-loop's own Overview — no other paraphrase. The router's `patterns-transport-floor`
+  row names the sibling by axis ("`patterns-sound-loop`'s sibling on the transport axis"),
+  never by remit — unaffected. Sound-loop's Overview points here for transport use only —
+  unaffected. `patterns-model-tiering` names both floors as siblings without a remit — unaffected.
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

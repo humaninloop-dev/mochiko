@@ -288,3 +288,238 @@ audit: unit 5 — review-sufficiency SKILL.md + render (skill pair) · w2-gate-g
 - Wave closed on the standing authorization: the lead commits "W2: the spokes carry each step's
   lighter form" on `adaptive-rigor-build` (hash in the W3 opening entry), never pushes. W3
   (implement + ship) opens next.
+
+## 2026-10-28 — W3 opened; plan written; producers dispatched plan-only
+
+- W2 committed at `c936678`; tree clean at open (`git status --porcelain` empty, snapshot
+  `scratchpad/w3-before.txt`).
+- Inputs read by the lead first-hand: record D1, D5, D6, D7 and the defaults batch DF1–DF11;
+  `research/floor-inventory.md` (the one re-class, the candidate steps); implement's preamble
+  and the texts of every rule W3 touches; `commands/implement.md`'s prose spans; the migration
+  grammar's op table and anchor rule (`set-rule-field` fields; a two-term `when:` has `0001`/`0012`
+  precedent); the contract README's freeze section and the frozen `patterns-sound-loop` row
+  (`floor_pin: 6`, six ids); the 0.121.0 ship entries of `engine-follow-up/build-log.md` as the
+  bump precedent; the budget ledger (commands unbudgeted; `references/` exempt); the sound-loop
+  and transport-floor strip heads; the router row.
+- Plan: `wave3-implement-ship.md` — `0104-implement-stakes.yaml` over three schemas (the
+  `stakes` condition `moment-resolved(run-open)`; nineteen rewords, nine of them keyed `when:`
+  on the six-value list, two-term on `impl.design-finish`; two mints `impl.lowering-trail` ·
+  `impl.smoke-probe`; the two fail rules in their widened and stated-skip forms; DF10 on
+  `impl.attempt-per-grade`; the band rule's pointer to a new
+  `patterns-sound-loop/references/STANDARD-THIN-PLAN.md`); the freeze replacement for the
+  sound-loop row; the three W2 residuals; seven gate units; the ship steps. Two wordings by a
+  step's position against the smoke (the W2 provisional reading, carried). Implement stays
+  40 floors · 17 fails; rules 131 → 133.
+- Dispatched plan-only, `general-purpose` · `model: opus`: `w3-p1-schema` (migration + views +
+  reference file + allowlist + freeze row) and `w3-p2-prose` (implement.md clause ·
+  transport-floor lines + strip · router row · three budget rows). Briefs name both attempt
+  bounds and the Explore no-report fallback; plans to the scratchpad, peers next.
+
+## 2026-10-28 — W3 plans graded PASS(0) · PASS(0); both approved; P2's prose edits landed
+
+- P2's plan (207 lines) arrived first with three questions, answered pre-grade (not a counter
+  consumption): the router cell takes no quoted trigger phrases (d4b dropped — description's
+  job, axis 3); line 13 takes sound-loop's exact wording, the strip recording the old line;
+  the transport-floor −237 (render drift since [v0.106.0], pre-wave) stays inside the row,
+  attributed by prefix replay or stated "unattributed to a migration". The lead tightened d1 to
+  one order so "for the user's ruling" appears once. Peer `w3-p2-peer`: `PLAN GRADE:
+  w3-p2-prose · PASS · none` — four advisories, three folded as the lead's feedback (absolute
+  scratch path; one total overage per row, never "plus … below"; describe the rewords from
+  `0104` as landed), the fourth accepted (no Explore spawned at all — every Explore in this
+  build has returned no report; on-seat reads disclosed). P2 executed steps 1–5: the lead
+  confirmed on disk the implement clause (one-order form), the two transport-floor lines, the
+  strip entry above `[v0.106.0]`, the router clause; body 3,135 (+21). Budget rows wait on
+  `0104`.
+- P1's plan (533 lines, the YAML its bulk; item 7 disclosed) arrived with a clean dry run on a
+  scratch copy and six questions, answered pre-grade: (1) no allowlist row — the 0.70 edge
+  between the two gap-finding fails closes by rewording `impl.fail.gap-finding-missing` to the
+  ruling leg only ("neither ran nor was skipped on the plan the user ruled at run-open"), the
+  report leg being `skip-unstated`'s; (2) `floor_ids` sorted, the file's convention
+  (`run.py` compares a frozenset); (3) "(DF9)" dropped from rule text — no rule text carries a
+  record-card id; (4) mint anchors D1 (trail) · D3 (smoke); (5) eight reference rows, one per
+  step; (6) the contract README's "266 across thirty-six" line joins P1's write set (270, the
+  sound-loop 6 → 10 note). Two lead amendments: (A) the six before-smoke rules cite
+  `impl.smoke-probe` for the revert instead of repeating the clause — single home; (B) the
+  example line's "at after the build" fixed. P1's amended dry run: 0 rejecting · 118 advisory ·
+  0 clusters with no allowlist row (182 suppressed, four earlier edges fall under 0.60 after the
+  rewords — advisory); 1..104 · 1,283 rules; implement 133 · 40 · 17 (tools 51 ·
+  ways-of-working 16); sound-loop 21 · 10; review-sufficiency 30 · 8; three views. Peer
+  `w3-p1-peer` (reproduced the amended draft on its own scratch copy, same figures): `PLAN
+  GRADE: w3-p1-schema · PASS · none` — item 7 a finding only; two substantive advisories the
+  lead adopts as feedback on the PASSed plan: `impl.smoke-probe` gains DF9's "any red after a
+  clean one"; the reference file's never-moves paragraph drops its re-list of
+  `patterns-sound-loop.never-thins` (pointer only). Two moot (a stale "Question 2 below"; the
+  README line's rung claim — the lead's amendment).
+- Plans segment: `plans: w3-p1-schema:PASS(0) · w3-p2-prose:PASS(0)`; the shared re-plan counter
+  unconsumed. Tree at the plan round's end: the lead's two files and P2's four — no producer
+  wrote while planning (`dirty` on neither).
+- P1 resumed to execute with both feedback edits and a re-run dry-run hash; P2 holds for
+  "0104 landed".
+
+## 2026-10-28 — W3 seats executed; gate audit dispatched
+
+- P1 executed (h) steps 1–9, no stop tripped: `0104-implement-stakes.yaml` written and stamped
+  `sha256:7bfc3eac…c16a2` (byte-identical to its final dry-run draft; the stamp rewraps lines,
+  text unchanged); the reference file written; validate `0 rejecting · 118 advisory`, clusters 0,
+  182 suppressed (no allowlist row — the gap-finding fail reword closed the edge), 91 pointers
+  resolved; status 1..104 (92 migrations), state `sha256:94ff194e…`, 1,283 rules; `views emit`
+  changed only the three views; the freeze row edited (ten sorted ids, pin 10; the seat's check
+  script PASS against `c936678`); the contract README line 270. The lead confirmed on disk: the
+  hash, validate, status, the implement preamble (`stakes` condition `moment-resolved(run-open)`,
+  the widened `run-open` moment, 17 · 40, sections 18 · 15 · 51 · 16 · 16 · 17), the renders of
+  `impl.staffing-latitude`, `impl.craft-verify-bindings`, `impl.gap-finding-scope`,
+  `impl.smoke-probe` (DF9's "any red after a clean one" in), `impl.lowering-trail`,
+  `impl.fail.skip-unstated` (no `when:`; enforces both), `impl.fail.gap-finding-missing` (the
+  ruling leg; `when: scope=selection|epic` kept), `patterns-sound-loop.stakes-band` with its
+  pointer, `review-sufficiency.stakes-proposal` widened, the eight-row reference file with the
+  never-moves pointer paragraph, the freeze diff, the README line.
+- P2 executed steps 6–9 after "0104 landed": three rows filled, every figure reproduced twice
+  and once more after the edits; `check` allowed the ledger. Measures (log 1..104, state
+  `sha256:94ff194e…` · 1,283 rules): `patterns-sound-loop` payload 19,242 = 3,315 + 15,927, one
+  total overage +6,854 of which +6,631 ruled HOLDS (W1 unit 2) and +223 the wave-3 delta (trigger
+  section only: the appended sentence +179, the printed `pointer:` +44); `review-sufficiency`
+  18,506 = 3,262 + 15,244, +3,083 of which +3,002 ruled HOLDS (W2 unit 5) and +81 the wave-3
+  delta (verdict section, the widened parenthesis); `patterns-transport-floor` 12,348 = 3,135 +
+  9,213, inside the budget by 216 — body +21 (the two paraphrase lines), render −237 pre-wave,
+  "unattributed to a migration; render at binary 0.4.0 over 1..103" (every replaying prefix
+  renders 9,213, `0001` alone included; none renders the recorded 9,450). The lead confirmed the
+  three heads on disk. The README line P2 flagged is P1's (answer 6).
+- Tree before the gate: eleven modified, three untracked — the lead's two, P1's seven, P2's
+  five (`scratchpad/w3-gate-before.txt`).
+- Gate audit dispatched: `w3-gate-grader` (`general-purpose`, `model: opus`), renders the
+  contract first-hand, runs validate and the snippet itself, baseline by `git archive c936678`;
+  seven units per `wave3-implement-ship.md` §4; report to `reports/audit-w3.md` (`report: review`,
+  round 1). Lead's notes carried: criterion 7 conversion-scoped; overages graded as argued; the
+  freeze replacement a field-scoped diff; commands unbudgeted; `references/` exempt; one strip
+  entry owed (transport-floor) and present; the two fails' legs split by the lead's ruling; the
+  provisional reading recorded; suppressed 186 → 182 advisory; the Explore fallback.
+
+## 2026-10-28 — W3 gate audit: seven units PASS (unit 7 at round 2); the crate census pins found red; P3 opened
+
+- Report: `reports/audit-w3.md` (`report: review`, rounds 1–2, `check` allowed it). Round 1:
+  units 1–6 PASS, unit 7 FAIL on one blocking line — the contract README note the lead
+  dictated listed "the band" among the four floors added at 6 → 10, but `stakes-band` is
+  `class: must`. Fix by P1 (the one round of `common.gate-loop-bound`): "the band, " removed,
+  nothing else; the lead confirmed on disk. Round 2 by the same grader, that line only: PASS.
+  The outcome lines:
+
+```
+audit: unit 1 — 0104-implement-stakes.yaml + three view diffs (schema content) · w3-gate-grader · opus · 4 files · 1 rounds · 0 blocking
+audit: unit 2 — implement.md + render (command pair) · w3-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+audit: unit 3 — patterns-sound-loop SKILL.md + render + references/STANDARD-THIN-PLAN.md (skill pair) · w3-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+audit: unit 4 — review-sufficiency SKILL.md + render (skill pair) · w3-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+audit: unit 5 — patterns-transport-floor SKILL.md + render + strip (skill pair) · w3-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+audit: unit 6 — skills/mochiko/SKILL.md router (prose primitive) · w3-gate-grader · opus · 1 files · 1 rounds · 0 blocking
+audit: unit 7 — expected-skills.json + README.md (contract freeze) · w3-gate-grader · opus · 2 files · 2 rounds · 0 blocking
+```
+
+- The grader's first-hand pre-pass: validate `0 rejecting · 118 advisory`, 0 clusters, 182
+  suppressed; 1..104 · 1,283 rules; views ≡ replay; implement 17 · 40; the three payloads
+  reproduced to the character (19,242 · 18,506 · 12,348); both overages ruled HOLDS (unit 3:
+  the +223 is one pointer sentence plus the printed field, the minimum for D5's worked example;
+  unit 4: without the wider list a delta run could not cite its card); the transport-floor
+  "unattributed −237" ruled honest (genesis alone renders 9,213; the drop is the binary's
+  render code, not the log). Budget rows: the lead transcribed both verdicts into the heads
+  ("ruled HOLDS by wave 3's gate audit, unit n, `reports/audit-w3.md`, 0 blocking").
+- Grader's notes, non-blocking, dispositioned by the lead: (1) the reference file paraphrases
+  the band and `impl.minimalism-advisory` in two cells, and its example line's `never:` names
+  "the cold run", which `never-thins` does not list (it is `impl.cold-verification`'s own
+  always) — accepted as the example's register; a candidate tightening at the file's next
+  touch. (2) `stakes-band` carries the reference path twice (sentence + `pointer:`) — accepted;
+  the sentence names it for the reader, the field binds. (3) "provisionally" does not redo
+  thinned earlier steps after a red smoke — matches DF9; the lead's reading, recorded above.
+  (4) `impl.fail.gap-finding-missing`'s ruling-leg form rests on the line's `thins on clean:`
+  grammar — accepted. (5) four allowlist rows now suppress nothing — stale, harmless; a groom
+  candidate. (6) ten stakes-keyed implement rules, not nine — `impl.smoke-probe` is keyed too;
+  the lead's count corrected. (7) the brief carried the lead's notes beyond unit, paths and
+  pre-pass — every figure was reproduced first-hand; the notes are facts, never the verdict.
+- **Found red at the pre-bump release gates** (the lead's own run, background): `cargo test
+  --all` fails two `fidelity.rs` tests — the sequence list pinned through 101 and the census
+  `command_rules 424` (now 426); `validate.rs` pins the same census, `matrix_similar.rs` the
+  similarity matrix (opt-in sweep, started). The W1 and W2 plans omitted the crate-tests unit
+  the engine-follow-up build carried every wave (its "unit 8 · crate non-author review";
+  `7555e3d` the shape). Fault: the lead's wave plans. Remedy: `wave3-implement-ship.md` amended
+  — P3 (crate tests) added to §2, unit 8 to §4; P3 dispatched plan-only on the same wiring
+  (the shared re-plan counter still unconsumed); the same gate grader takes unit 8 as the
+  non-author code review. `fmt` and `clippy` clean; `cargo audit` and the secret scan running.
+
+## 2026-10-28 — The inline ceiling: `0104` reworked; units 1–2 round 2 PASS; P3 planned PASS(0)
+
+- Pre-bump gates completed: `cargo audit` 31 deps, no findings · gitleaks no leaks (5.29 GB,
+  `target/` included) · `ids --check` 0 bare · 0 drift. The full similarity sweep (opt-in,
+  9 min): two pins red as expected — the command family `(426, 21293, 0, 55)` against
+  `(424, 21068, 0, 59)`, the corpus scanned 1,283 against 1,266 — P3's.
+- P3's plan (250 lines) ran `cargo test --all --no-fail-fast` and found five reds in four
+  binaries, not two: the fidelity pair, `validate.rs`'s census and its pointer pin (89 → 91:
+  `0103`'s `smoke-report` pointer and `0104`'s `stakes-band` pointer), the always-on
+  command-family matrix pin, and — outside its unit — `render.rs`
+  `no_shipped_section_renders_past_the_inline_ceiling`: `implement · impl.sec.tools` rendered
+  32,236 chars against the Bash tool's ≈30,000-char inline ceiling (a platform fact, F12e:
+  past it the `!` line's output truncates at fire). 28,174 before `0104`; `0104` added 4,057
+  there (`impl.smoke-probe` +868 minted into tools; nine band clauses +358 to +450 each; two
+  appends). The lead's wave plan had no ceiling check. Lead's answers to P3: the pointer pin
+  is in (same cause, its file); the ceiling is `0104`'s owner's.
+- The lead's ruling on the ceiling, inside the ruled set (DF7's words are the minimal form):
+  `impl.smoke-probe` mints into `impl.sec.ways-of-working`; every stakes-keyed step carries one
+  uniform clause — the per-step lighter forms leave implement's rules for the worked example
+  and the W2 spokes; the two non-band appends shortened. A first ruled clause (176 chars) left
+  tools at 30,383 and raised a 0.65 cluster; P1 stopped before writing and tabled four shorter
+  clauses with their tools figures. Ruled: the 82-char "In the band it thins per the ruled
+  plan, on a clean cold smoke (impl.smoke-probe)." — DF7's literal wording kept — with P1's
+  shortened appends. The lead's "no op moves an existing rule" was wrong: `move-rule` exists in
+  the op table (P1's correction); not needed here, the move rode the mint. Landed by P1 in the
+  uncommitted `0104` (re-stamped `sha256:7cd24f21…`), the intent reworded to match (outside the
+  hash by the log's design): tools 29,609 (391 under), ways-of-working 9,770; 133 · 40 · 17,
+  tools 50 · ways-of-working 17; validate 0 rejecting · 118 advisory · 0 clusters;
+  `cargo test -p mochiko-cli --test render` 39/0. The lead confirmed on disk. Backlog
+  candidate: implement's tools section sits ~1% under the ceiling — a section split by ruling
+  before further growth.
+- Gate round 2 on units 1 and 2 (changed after their PASS), same grader: both PASS — `audit:
+  unit 1 … · 4 files · 2 rounds · 0 blocking` · `audit: unit 2 … · 2 files · 2 rounds · 0
+  blocking`. Advisory accepted: the six before-smoke steps now read "on a clean cold smoke"
+  without "provisionally" — fails safe; the provisional timing binds through
+  `review-seat-plan.once-per-seat-in-band` and `impl.smoke-probe`.
+- P3's peer `w3-p3-peer` (rendered the contract itself): `PLAN GRADE: w3-p3-crate · PASS ·
+  none` — every old string verbatim, all five reds reproduced, the by-kind arithmetic and the
+  no-allowlist runs confirmed. Plans segment: `plans: w3-p1-schema:PASS(0) ·
+  w3-p2-prose:PASS(0) · w3-p3-crate:PASS(0)`; the shared counter unconsumed. P3 approved and
+  resumed against the settled `0104`; unit 8 follows.
+
+## 2026-10-28 — W3 gate audit: unit 8 PASS; eight units, 0 blocking; wave 3 closed
+
+- P3 (`w3-p3-crate`) landed the three test files (`+79/−18`, no `src/` change) and reported
+  `cargo test --all --no-fail-fast` green in every binary; the lead confirmed on disk.
+- Unit 8, the crate non-author review, by the same gate grader, resumed: `reports/audit-w3.md`
+  from line 237. The grader authored nothing in `crates/` and reproduced every pin first-hand —
+  the per-binary `test result:` lines all `ok … 0 failed` (fidelity 17 · validate 105 ·
+  matrix_similar 48 · render 39 · cli 62 · conform 61 · ids 182 · replay 64 …); the opt-in
+  sweep `48 passed; 0 failed` in 250 s; `fmt --check` exit 0, `clippy -D warnings` silent;
+  `migrate status` 1..104 (92) · 94 documents · 1,283 rules; validate 225,052 pairs scored ·
+  0 clusters · 182 suppressed · pointer resolution 91; three raw no-allowlist runs on scratch
+  logs cut by `--log-dir` — 1..101 `76 / 185`, 1..103 `77 / 186`, 1..104 `76 / 182` — the
+  one added cluster (`smoke-seat` × `seat-devils-advocate`) and the four edges that drop
+  under `0104`'s rewords each named by an allowlist row (lines 140, 142, 186, 188), the
+  allowlist untouched this wave. Seven checklist lines PASS (census pins · census comments ·
+  sequence pin · corpus matrix pin · command-family pin · pointer pin · house style);
+  "Issues requiring fix: none".
+- The eight outcome lines, final:
+
+```
+audit: unit 1 — 0104-implement-stakes.yaml + three view diffs (schema content) · w3-gate-grader · opus · 4 files · 2 rounds · 0 blocking
+audit: unit 2 — implement.md + render (command pair) · w3-gate-grader · opus · 2 files · 2 rounds · 0 blocking
+audit: unit 3 — patterns-sound-loop SKILL.md + render + references/STANDARD-THIN-PLAN.md (skill pair) · w3-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+audit: unit 4 — review-sufficiency SKILL.md + render (skill pair) · w3-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+audit: unit 5 — patterns-transport-floor SKILL.md + render + strip (skill pair) · w3-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+audit: unit 6 — skills/mochiko/SKILL.md router (prose primitive) · w3-gate-grader · opus · 1 files · 1 rounds · 0 blocking
+audit: unit 7 — expected-skills.json + README.md (contract freeze) · w3-gate-grader · opus · 2 files · 2 rounds · 0 blocking
+audit: unit 8 — crate tests (fidelity.rs, validate.rs, matrix_similar.rs · crate non-author review) · w3-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+```
+
+- Disclosure line for the wave: `floor: tripped · seats: w3-p1-schema, w3-p2-prose,
+  w3-p3-crate / w3-p1-peer, w3-p2-peer, w3-p3-peer (plans), w3-gate-grader (audit) · plans:
+  w3-p1-schema:PASS(0) · w3-p2-prose:PASS(0) · w3-p3-crate:PASS(0) · stakes: n/a · thinned:
+  none` — plugin primitives, fixed form (DF11); the shared re-plan counter unconsumed in W3.
+- Wave closed on the standing authorization: the lead commits "W3: implement keys the lever;
+  the freeze moves with it" on `adaptive-rigor-build` (hash in the ship entry), never pushes.
+  The ship (`wave3-implement-ship.md` §5) follows: the bump to 0.123.0, the release gates on
+  the bumped tree first-hand, the KM landing, the release commit — no push, no merge.

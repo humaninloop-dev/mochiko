@@ -1102,7 +1102,19 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
         // old (`1..95`) and new (`1..101`) logs report 29 clusters over 59 edges each, the
         // listings identical, so no mint raises an edge and no reword in `0098` or `0101` moves
         // an allowlisted pair. SUPPRESSED zero unchanged.
-        (424, 21_068, 0, 59),
+        // Re-measured after the 2026-10-27 implement-lead-adaptive-rigor build (`0102`–`0104`):
+        // `0104` mints two `implement` rules, moving the scan 424 to 426 and the pair count 21,068
+        // to 21,293. By kind, counted from the replayed state: `duty` 46 → 47 (+46), `constraint`
+        // 179 → 180 (+179) — +225, the whole of the move. The suppressed count moves 59 to 55:
+        // the build added no command allowlist row, and `0104`'s rewords of
+        // `impl.plan-approval-producers` and `impl.staffing-latitude` take four allowlisted pairs
+        // under the threshold, so each of those rows now suppresses nothing —
+        // `impl.plan-approval-producers` with `setup.plan-approval-producers` and with
+        // `spec.plan-approval`, `impl.staffing-latitude` with `arch.staffing-latitude` and with
+        // `spec.lead-latitude`. Raw runs over the `1..103` and `1..104` logs show the
+        // plan-approval cluster cut to its `brainstorm` pair and the staffing-latitude cluster
+        // gone. SUPPRESSED zero unchanged.
+        (426, 21_293, 0, 55),
         "rules scanned · in-kind pairs scored · clusters · allowlist-suppressed edges"
     );
 }
@@ -1337,10 +1349,24 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // reports 76 clusters over 185 edges before and after the wave, the listings identical,
     // read from raw `migrate validate --report` runs over the old (`1..95`) and new
     // (`1..101`) logs.
-    assert_eq!(report.scanned, 1266, "rules scanned");
-    assert_eq!(report.scored, 219_979, "in-kind pairs scored");
+    // Re-measured after the 2026-10-27 implement-lead-adaptive-rigor build (`0102`–`0104`):
+    // seventeen rules minted and none retired move the scan 1,266 to 1,283 and the pair count
+    // 219,979 to 225,052 — `0102`'s seven `patterns-sound-loop` rules, `0103`'s eight skill
+    // rules and the two `implement` rules of `0104` (see the command-family pin above); none
+    // extends a block. By kind: `constraint` 592 → 598 (+3,567), `duty` 168 → 173 (+850),
+    // `binding` 187 → 190 (+564), `reservation` 67 → 68 (+67), `latitude` 12 → 14 (+25) —
+    // +5,073, the whole of the move. `suppressed_hits` moves 185 to 182: the build's one
+    // allowlist row (W2's) suppresses the one edge `0103` raises, `testing-end-user.smoke-seat`
+    // with `testing-gap-finding.seat-devils-advocate` (+1), and `0104`'s rewords take four
+    // allowlisted pairs under the threshold, so each row now suppresses nothing (−4; see the
+    // command-family pin above). SUPPRESSED zero: with an empty allowlist the corpus reports 76
+    // clusters over 182 edges (76 over 185 before the build, 77 over 186 at `1..103`), the
+    // listings identical but for those three clusters, read from raw `migrate validate
+    // --report` runs over the old (`1..101`), middle (`1..103`) and new (`1..104`) logs.
+    assert_eq!(report.scanned, 1283, "rules scanned");
+    assert_eq!(report.scored, 225_052, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
-    assert_eq!(report.suppressed_hits, 185, "allowlist-suppressed edges");
+    assert_eq!(report.suppressed_hits, 182, "allowlist-suppressed edges");
 }
 
 // ---------------------------------------------------------------------------

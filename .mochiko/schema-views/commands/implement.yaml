@@ -53,9 +53,18 @@ conditions:
     values: presence
     resolution: surface-presence
     note: the batch's spec carries a Screens & Flows SCR/FLOW manifest.
+  stakes:
+    values: [money, data, security, availability, wrong-answer, cosmetic]
+    resolution: moment-resolved(run-open)
+    note: >-
+      the ruled harm class of the run's product work — proposed per unit with its cited line by
+      the sufficiency seat (`review-sufficiency.stakes-proposal`), raised never lowered by the
+      lead, ruled by the user on the run-open line; on an epic the highest class among the
+      members, each read from its own spec lines.
 moments:
   run-open: >-
-    The confirmation that closes entry — batch, scope type, attempt bounds, done condition.
+    The confirmation that closes entry — batch, scope type, attempt bounds, the stakes line,
+    done condition.
   entry: The gating and the sufficiency check, before the run-open confirmation.
   design-checkpoint: The user's sign-off on the design phase's output and the store delta.
   card-confirm: The user's ruling on the cycle slicing, before any card is built.
@@ -84,8 +93,12 @@ sections:
         class: must
         kind: latitude
         text: >-
-          Beyond this schema's `class: floor` rules, everything is your per-run judgment: how you
-          staff, sequence, and run the cycles; teammates or subagents per seat is your call.
+          Beyond this schema's `class: floor` rules, how you staff, sequence, and run the cycles
+          is your per-run judgment; teammates or subagents per seat is your call. Inside the band
+          the ruled stakes class sets, which `stakes`-keyed steps thin or are skipped, and how
+          deep each runs, are yours to propose in the run-open line and the user's to rule —
+          never yours alone. The key, the band, the never-thins set and the trail are
+          mochiko:patterns-sound-loop's, referenced never restated.
       - id: impl.dm-entry-gate
         labels: [scope-entry]
         class: must
@@ -207,7 +220,9 @@ sections:
           the derived store index and any visit file handed in, and returns the hidden choices it
           sees inside each gap; each difference from your candidates is a candidate piece the user
           rules, and one outside every gap is an outside need (impl.design-stage-agenda). Skipped
-          on a single-gap re-fire.
+          on a single-gap re-fire. In the band it thins per the ruled plan, on a clean cold smoke
+          (impl.smoke-probe).
+        when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
         anchor: 2026-10-11 implement-brainstorm-led
   - id: impl.sec.reserved
     title: Reserved to the user — never the run's
@@ -256,7 +271,11 @@ sections:
         kind: reservation
         text: >-
           Reserved to the user at run-open: each store trip (ruled there, or deferred on the
-          record) · each in-flight conflict · any sufficiency clause the grader could not clear.
+          record) · each in-flight conflict · any sufficiency clause the grader could not clear
+          · the stakes read, the review form and the plan of thinnings, put as the run-open line
+          — `stakes: <class> — <cited line> · smoke: <scope> at <point> · thins on clean:
+          <steps> · never: <steps>` — mochiko:patterns-sound-loop's standard thin plan citable
+          by name. A lowering after run-open is the user's checkpoint ruling.
       - id: impl.infeasible-card-escalation
         labels: [user-gate]
         class: must
@@ -390,7 +409,9 @@ sections:
           file, beside the test that proves it and its result — an `open` line reading "open —
           no target set", a measured value shown where there is one, no pass / fail column. The
           final-validation report and the built-vs-signed diff stay the evidence beneath it. An
-          amend names the disputed rows, each then put to the user as fix now or book.
+          amend names the disputed rows, each then put to the user as fix now or book. Beneath the
+          rows, the trail: each lowering line of the final-validation report shown as it stands
+          (impl.lowering-trail), `none` where nothing thinned.
         anchor: 2026-10-15 engine-follow-up D6
   - id: impl.sec.tools
     title: Tools bindings
@@ -426,7 +447,9 @@ sections:
           (impl.base-pins), with any uncommitted product change already in the tree listed as
           pre-existing; the store-consult result and any no-delta claim, the trips for the user at
           run-open, the quickstart.md null path where no real external-integration surface exists,
-          and any [MODIFY] amendment named against a delivered feature.
+          and any [MODIFY] amendment named against a delivered feature. It carries each unit's
+          proposed stakes class and cited line (`review-sufficiency.stakes-proposal`), then the
+          run-open line as ruled, dated — transcription only.
       - id: impl.absent-surfaces
         labels: [scope-entry]
         class: must
@@ -471,7 +494,9 @@ sections:
           A non-author seat grades the design-phase output before the design checkpoint —
           mochiko:review-plan-artifacts for conformance to the gap list, the meaning kept against
           the run's design-stage.md, and card quality (blocking), mochiko:review-feasibility for
-          buildability and contradiction.
+          buildability and contradiction. In the band it thins per the ruled plan, on a clean cold
+          smoke (impl.smoke-probe).
+        when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
         anchor: 2026-10-11 implement-brainstorm-led D8
       - id: impl.design-absent-baseline-seed
         labels: [scope-entry]
@@ -563,7 +588,8 @@ sections:
           follow the ruled order (impl.card-order) and that every "I'd know it works if…" line
           behind them, from the spec's slate, the run's `design-stage.md` or the feature-desk
           visit file, has at least one **TEST:** case keeping its meaning, an `open` line riding
-          open.
+          open. In the band it thins per the ruled plan, on a clean cold smoke (impl.smoke-probe).
+        when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
       - id: impl.epic-card-sequence
         labels: [seats]
         class: must
@@ -588,7 +614,9 @@ sections:
         text: >-
           Verify binds mochiko:testing-end-user — evidence captured, never assumed — plus the
           per-cycle lens mochiko:review-code-minimalism: the verification seat reads the diff, the
-          cycle report, and the codebase around the diff; reuse claims never on trust.
+          cycle report, and the codebase around the diff; reuse claims never on trust. In the band
+          it thins per the ruled plan, on a clean cold smoke (impl.smoke-probe).
+        when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
       - id: impl.design-inputs
         labels: [scope-entry]
         class: must
@@ -631,7 +659,10 @@ sections:
       - id: impl.gates-full-suite
         labels: [evidence]
         class: must
-        text: Quality gates run the full repository suite.
+        text: >-
+          Quality gates run the full repository suite. In the band it thins per the ruled plan, on
+          a clean cold smoke (impl.smoke-probe).
+        when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
       - id: impl.regression-sweep
         labels: [evidence, landing]
         class: must
@@ -642,7 +673,9 @@ sections:
           gates exercise any seam whose earlier side is already delivered (seam ownership sits
           with the later-landing feature, mochiko:authoring-feature-map). An epic runs the
           accumulated gates once, over the union of member territories. A failure here fails the
-          run like any other regression.
+          run like any other regression. In the band it thins per the ruled plan, on a clean cold
+          smoke (impl.smoke-probe).
+        when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
       - id: impl.cold-verification
         labels: [evidence]
         class: must
@@ -651,14 +684,18 @@ sections:
           of the uncommitted working state (`git ls-files -co --exclude-standard
           :!.claude/worktrees` copied to `.claude/worktrees/mochiko-<purpose>/`); ensure the
           `/.claude/worktrees` ignore entry exists first. Results are part of the acceptance
-          evidence. One snapshot covers a whole epic.
+          evidence. One snapshot covers a whole epic. It always runs, on the head the user
+          accepts, and repeats after rework changes code, within impl.gap-rework-bound; a ruled
+          smoke runs here (impl.smoke-probe) — no CI result stands in.
       - id: impl.gap-finding-scope
         labels: [scope-entry, evidence]
         class: must
         text: >-
           The gap-finding pass runs on selection-scope and epic runs only (an epic: once, over the
-          union of member territories); a delta-scope or lane run skips it, and its
-          final-validation report states the skip — never a silent no-op.
+          union of member territories); a delta-scope or lane run skips it. Every skip, by scope
+          or by band, is stated in the final-validation report — never a silent no-op. In the
+          band it thins per the ruled plan, on a clean cold smoke (impl.smoke-probe).
+        when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
         anchor: 2026-08-19 qa-gap-finding-verification
       - id: impl.gap-finding-blind-dispatch
         labels: [independence]
@@ -816,8 +853,9 @@ sections:
           spec-required nor beyond-spec, it takes no beyond-spec disposition and rides to the
           design landing fold; a disputed kind goes to the user as impl.finding-kind-disputed
           routes it. Critique rework spends at most one fix round and one confirm round inside
-          impl.gap-rework-bound — never a bound beside it, never raising it.
-        when: {ux_bearing: present}
+          impl.gap-rework-bound — never a bound beside it, never raising it. In the band it
+          thins per the ruled plan, on a clean cold smoke (impl.smoke-probe).
+        when: {ux_bearing: present, stakes: [money, data, security, availability, wrong-answer, cosmetic]}
         pointer: mochiko:testing-gap-finding
         anchor: 2026-09-19 impeccable-design-integration D8
       - id: impl.design-landing
@@ -973,7 +1011,9 @@ sections:
           dispatch, and stops; a fresh peer of its persona type — a generic seat for a
           persona-less producer — grades the plan per `mochiko:review-seat-plan`, and you
           approve only a passed plan and resume the seat to work; grading, verification, and
-          fact-finding seats are exempt.
+          fact-finding seats are exempt. In the band it thins per the ruled plan, on a clean cold
+          smoke (impl.smoke-probe).
+        when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
       - id: impl.escalation-batching
         labels: [user-gate, reporting]
         class: must
@@ -1105,6 +1145,33 @@ sections:
           lower-cased or `lane-<slug>`. Its ruled set and the cards in its card part are inputs in
           hand for the run, the desk card a delta or lane run builds among them.
         anchor: 2026-10-15 engine-follow-up
+      - id: impl.lowering-trail
+        labels: [reporting, evidence]
+        class: must
+        kind: duty
+        text: >-
+          Every thinned or skipped step is written, one line per lowering, into the
+          final-validation report file — the step, the smoke result it rode on, and what still
+          covers the failure kind. That file is the durable home impl.fail.skip-unstated reads;
+          the lines are shown beneath the promises-kept table (impl.promises-kept-table). A raise
+          needs no line. The trail is `patterns-sound-loop.trail-of-lowerings`'s, referenced never
+          restated.
+        anchor: 2026-10-27 implement-lead-adaptive-rigor D1
+      - id: impl.smoke-probe
+        labels: [evidence, seats]
+        class: must
+        text: >-
+          Where the ruled plan names a smoke, ${qa_seat} — the run's QA seat, which wrote no
+          product code in the run — runs it at the point the run-open line names, by default
+          after the build and before final validation, inside the cold snapshot
+          (impl.cold-verification); its legs and its report are the pointer skill's. One smoke per
+          epic. A red smoke, any red after a clean one, or a money, data or security surface in
+          the diff, returns the run to full depth: the rework is graded at full depth for the
+          touched cycle, the band is gone for the run, and the cold run repeats. A clean smoke is
+          a weak negative and thins only what the ruled line named.
+        when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
+        pointer: mochiko:testing-end-user
+        anchor: 2026-10-27 implement-lead-adaptive-rigor D3
   - id: impl.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-run ruling can waive.
@@ -1142,7 +1209,9 @@ sections:
         kind: bound
         text: >-
           A cycle consumes an attempt every time a verification seat grades it, whatever the round
-          is called. Default ${attempt_bound_cycle} per cycle, redeclarable only at run-open.
+          is called. Default ${attempt_bound_cycle} per cycle, redeclarable only at run-open. A
+          grade shared over several cycles charges one attempt to each cycle it covers; a FAIL on
+          one cycle charges only that cycle's rework.
         anchor: 2026-08-26 command-content-schema D12
       - id: impl.attempt-exemption-user-only
         labels: [attempt-economy, user-gate]
@@ -1318,7 +1387,9 @@ sections:
         labels: [evidence]
         class: floor
         kind: fail
-        text: A run without its gap-finding pass.
+        text: >-
+          A selection-scope or epic run whose gap-finding pass neither ran nor was skipped on the
+          plan the user ruled at run-open.
         when: {scope: [selection, epic]}
         enforces: [impl.gap-finding-scope]
         anchor: 2026-08-26 command-content-schema D7
@@ -1326,9 +1397,10 @@ sections:
         labels: [reporting]
         class: floor
         kind: fail
-        text: A run whose final-validation report does not state its skipped gap-finding pass.
-        when: {scope: [delta, lane]}
-        enforces: [impl.gap-finding-scope]
+        text: >-
+          A run whose final-validation report does not state a thinned or skipped step — the
+          gap-finding pass skipped by scope, or any step thinned or skipped in the band.
+        enforces: [impl.gap-finding-scope, impl.lowering-trail]
         anchor: 2026-08-26 command-content-schema D7
       - id: impl.fail.spec-gap-unresolved
         labels: [evidence]

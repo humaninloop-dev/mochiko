@@ -10,7 +10,7 @@ allowed-tools: Bash(mochiko-cli *)
 
 ## Overview
 
-The sound-loop floor governs *who produces and who reviews*; this floor governs *how seats
+The sound-loop floor governs *who produces, who reviews, and how deep*; this floor governs *how seats
 talk and write while they do it*. It is kind-keyed on the transport axis: whenever a
 multi-seat run carries messaging or a shared write surface, a set of legs becomes
 non-waivable for the hazard class it fires against. The hazards are concrete: message races
@@ -46,6 +46,6 @@ halt and surface it.
 
 ## Sibling
 
-`mochiko:patterns-sound-loop` — the ritual floor (who produces, who reviews) on the same
+`mochiko:patterns-sound-loop` — the ritual floor (who produces, who reviews, how deep) on the same
 kind-keyed pattern, a different axis. That floor's neutrality line points here: the
 transport *choice* stays neutral, transport *use* carries this floor.

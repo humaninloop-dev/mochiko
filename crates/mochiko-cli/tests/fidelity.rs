@@ -185,7 +185,8 @@ fn the_log_replays_into_a_deliverable_state() {
     // 2026-10-15 engine-follow-up wave 1) import one: `0086` the `feature-visit` template;
     // `0086` also replaces the `feature-desk` home in place. `0090` and `0091` are unused, a
     // legal gap. `0092`–`0095` (its wave 2) import none. `0096` and `0097` are unused, a
-    // legal gap. `0098`–`0101` (its wave 3) import none.
+    // legal gap. `0098`–`0101` (its wave 3) import none. `0102`–`0104` (the 2026-10-27
+    // implement-lead-adaptive-rigor build) import none.
     assert_eq!(replay.state.docs.len(), 94);
     assert_eq!(
         replay.sequences(),
@@ -194,7 +195,7 @@ fn the_log_replays_into_a_deliverable_state() {
             25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48,
             49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 65, 66, 67, 68, 69, 70, 75, 76,
             77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 92, 93, 94, 95, 98, 99, 100,
-            101
+            101, 102, 103, 104
         ],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
@@ -233,7 +234,9 @@ fn the_log_replays_into_a_deliverable_state() {
          order, 0093's implement asking line, 0094's implement reading the desk, 0095's \
          sufficiency reading the visit, then — 0096 and 0097 left unused, a legal gap — its \
          wave 3 — 0098's specify asking line, 0099's setup asking line, 0100's desk asking \
-         line, 0101's implement residuals"
+         line, 0101's implement residuals, then the 2026-10-27 implement-lead-adaptive-rigor \
+         waves — 0102's sound-loop stakes lever, 0103's spoke lighter forms, 0104's implement \
+         keys"
     );
 }
 
@@ -896,10 +899,26 @@ fn the_corpus_census_holds_through_the_log() {
     // (`spec.stage-inputs-in-hand`), three in `0101` (`impl.feature-visit-input`,
     // `impl.landing-verifier-folds`, `impl.ruling-places`) — keep their rule's id, class and
     // kind.
-    assert_eq!(command_rules, 424, "live command rules");
-    assert_eq!(skill_rules, 842, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1266, "live rules in total");
-    assert_eq!(skill_floors, 266, "skill floors");
+    // The 2026-10-27 implement-lead-adaptive-rigor build carries `0102`–`0104`, anchored to that
+    // session's rulings and its DF defaults: seventeen `mint-rule`s and nothing retired. `0102`
+    // mints seven `patterns-sound-loop` rules — the musts `patterns-sound-loop.stakes-key`,
+    // `patterns-sound-loop.stakes-band` and `patterns-sound-loop.raise-free-lower-ruled`, and the
+    // floors `patterns-sound-loop.never-thins`, `patterns-sound-loop.review-form-invariants`,
+    // `patterns-sound-loop.trail-of-lowerings` and `patterns-sound-loop.user-rules-the-plan` —
+    // `0103` eight skill musts, five on `testing-end-user` and one each on `testing-gap-finding`,
+    // `review-seat-plan` and `review-sufficiency`, and `0104` the two `implement` musts
+    // `impl.lowering-trail` and `impl.smoke-probe`. So command 424 → 426, skill 842 → 857, total
+    // 1266 → 1283 and the skill floors 266 → 270, while the command floors hold at 130 and the
+    // fail set at 41. The build's twenty-three `reword-rule`s — three in `0102`, one in `0103`,
+    // nineteen in `0104` (seventeen on `implement`) — keep their rule's id, class and kind (the
+    // floors `patterns-sound-loop.two-part-trigger`, `impl.attempt-per-grade`,
+    // `impl.fail.skip-unstated` and `impl.fail.gap-finding-missing` stay floors); `0103`'s
+    // section reword, the five `stakes` conditions `0102`–`0104` set, `0104`'s `run-open` moment
+    // and its twelve `set-rule-field`s move nothing here.
+    assert_eq!(command_rules, 426, "live command rules");
+    assert_eq!(skill_rules, 857, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1283, "live rules in total");
+    assert_eq!(skill_floors, 270, "skill floors");
     assert_eq!(command_floors, 130, "declared command floors");
     assert_eq!(fail_nodes, 41, "command fail nodes");
 }

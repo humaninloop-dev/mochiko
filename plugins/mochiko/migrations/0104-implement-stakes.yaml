@@ -1,0 +1,333 @@
+grammar: 1
+id: 0104-implement-stakes
+sequence: 104
+intent: >-
+  Make /mochiko:implement consume the adaptive-rigor lever (implement-lead-adaptive-rigor D1, D2
+  as amended, D3, D5 as amended, D6, D7, DF2, DF5 as amended, DF7–DF10): declare the stakes
+  condition, resolved at the run-open moment, whose text gains the stakes line; widen the one
+  latitude rule to the band's thinnings, proposed and ruled; put the run-open line in the user's
+  run-open rulings and the sufficiency report, and the trail beneath the promises-kept table; key
+  every thinnable class: must verification step on stakes, each worded per the ruled plan on a
+  clean cold smoke (DF7) — the lighter forms live in the worked example and the W2 spokes, the
+  revert in the smoke probe (DF9); keep the cold run unconditional with the smoke inside it;
+  charge a shared grade per cycle (DF10); mint the trail of lowerings and the smoke probe; widen
+  impl.fail.skip-unstated to every thinned or skipped step at every scope and give
+  impl.fail.gap-finding-missing its stated-skip form (research/floor-inventory.md). Widen
+  review-sufficiency's stakes-proposal fence paraphrase (the W2 grader's note) and point
+  patterns-sound-loop's band rule at the standard thin plan, D5's worked example. The rewords keep
+  their ids, classes, kinds, labels and anchors; the two kind: fail floors and the class: floor
+  bound take this header as their authority. No floor minted, retired or lowered: implement 40
+  floors · 17 fails, rules 131 to 133; patterns-sound-loop 10 · 21 and review-sufficiency 8 ·
+  30 unchanged.
+anchor: 2026-10-27 implement-lead-adaptive-rigor
+hash: sha256:7cd24f219d7a3e22bba029c629e6e10e8f4d2b23f00c6d53ae175e3564756a12
+changes:
+  - op: set-condition
+    schema: command/implement
+    name: stakes
+    spec:
+      values: [money, data, security, availability, wrong-answer, cosmetic]
+      resolution: moment-resolved(run-open)
+      note: >-
+        the ruled harm class of the run's product work — proposed per unit with its cited line
+        by the sufficiency seat (`review-sufficiency.stakes-proposal`), raised never lowered by
+        the lead, ruled by the user on the run-open line; on an epic the highest class among the
+        members, each read from its own spec lines.
+  - op: set-moment
+    schema: command/implement
+    name: run-open
+    text: >-
+      The confirmation that closes entry — batch, scope type, attempt bounds, the stakes line,
+      done condition.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.staffing-latitude
+    text: >-
+      Beyond this schema's `class: floor` rules, how you staff, sequence, and run the cycles is
+      your per-run judgment; teammates or subagents per seat is your call. Inside the band the
+      ruled stakes class sets, which `stakes`-keyed steps thin or are skipped, and how deep each
+      runs, are yours to propose in the run-open line and the user's to rule — never yours
+      alone. The key, the band, the never-thins set and the trail are
+      mochiko:patterns-sound-loop's, referenced never restated.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.user-runopen-rulings
+    text: >-
+      Reserved to the user at run-open: each store trip (ruled there, or deferred on the record)
+      · each in-flight conflict · any sufficiency clause the grader could not clear · the
+      stakes read, the review form and the plan of thinnings, put as the run-open line —
+      `stakes: <class> — <cited line> · smoke: <scope> at <point> · thins on clean: <steps> ·
+      never: <steps>` — mochiko:patterns-sound-loop's standard thin plan citable by name. A
+      lowering after run-open is the user's checkpoint ruling.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.sufficiency-report
+    text: >-
+      The verdict lands as sufficiency-report.md in the feature dir: the run-open base commit
+      (impl.base-pins), with any uncommitted product change already in the tree listed as
+      pre-existing; the store-consult result and any no-delta claim, the trips for the user at
+      run-open, the quickstart.md null path where no real external-integration surface exists, and
+      any [MODIFY] amendment named against a delivered feature. It carries each unit's proposed
+      stakes class and cited line (`review-sufficiency.stakes-proposal`), then the run-open line
+      as ruled, dated — transcription only.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.promises-kept-table
+    text: >-
+      At the acceptance moment you show the gate of impl.gate-final-acceptance as a promises-kept
+      table, composed in the conversation in the user-facing register (impl.register), no new
+      file: each "I'd know it works if…" line from the spec's slate, the run's `design-stage.md`
+      or the feature-desk visit file, quoted verbatim from its file, beside the test that proves
+      it and its result — an `open` line reading "open — no target set", a measured value
+      shown where there is one, no pass / fail column. The final-validation report and the
+      built-vs-signed diff stay the evidence beneath it. An amend names the disputed rows, each
+      then put to the user as fix now or book. Beneath the rows, the trail: each lowering line of
+      the final-validation report shown as it stands (impl.lowering-trail), `none` where nothing
+      thinned.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.craft-verify-bindings
+    text: >-
+      Verify binds mochiko:testing-end-user — evidence captured, never assumed — plus the
+      per-cycle lens mochiko:review-code-minimalism: the verification seat reads the diff, the
+      cycle report, and the codebase around the diff; reuse claims never on trust. In the band it
+      thins per the ruled plan, on a clean cold smoke (impl.smoke-probe).
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.craft-verify-bindings
+    field: when
+    value:
+      stakes: [money, data, security, availability, wrong-answer, cosmetic]
+  - op: reword-rule
+    schema: command/implement
+    id: impl.gates-full-suite
+    text: >-
+      Quality gates run the full repository suite. In the band it thins per the ruled plan, on a
+      clean cold smoke (impl.smoke-probe).
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.gates-full-suite
+    field: when
+    value:
+      stakes: [money, data, security, availability, wrong-answer, cosmetic]
+  - op: reword-rule
+    schema: command/implement
+    id: impl.regression-sweep
+    text: >-
+      The final validation additionally runs the accumulated **TEST:** gates of previously
+      delivered features in this feature's territory — their durable gate sets at
+      ${features_dir}/FEAT-XXX/gates.md plus the cases on their cards — and this feature's gates
+      exercise any seam whose earlier side is already delivered (seam ownership sits with the
+      later-landing feature, mochiko:authoring-feature-map). An epic runs the accumulated gates
+      once, over the union of member territories. A failure here fails the run like any other
+      regression. In the band it thins per the ruled plan, on a clean cold smoke
+      (impl.smoke-probe).
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.regression-sweep
+    field: when
+    value:
+      stakes: [money, data, security, availability, wrong-answer, cosmetic]
+  - op: reword-rule
+    schema: command/implement
+    id: impl.cold-verification
+    text: >-
+      The final validation builds and runs the quality gates from a dependency-cold snapshot of
+      the uncommitted working state (`git ls-files -co --exclude-standard :!.claude/worktrees`
+      copied to `.claude/worktrees/mochiko-<purpose>/`); ensure the `/.claude/worktrees` ignore
+      entry exists first. Results are part of the acceptance evidence. One snapshot covers a whole
+      epic. It always runs, on the head the user accepts, and repeats after rework changes code,
+      within impl.gap-rework-bound; a ruled smoke runs here (impl.smoke-probe) — no CI result
+      stands in.
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-review-pair
+    text: >-
+      A non-author seat grades the design-phase output before the design checkpoint —
+      mochiko:review-plan-artifacts for conformance to the gap list, the meaning kept against the
+      run's design-stage.md, and card quality (blocking), mochiko:review-feasibility for
+      buildability and contradiction. In the band it thins per the ruled plan, on a clean cold
+      smoke (impl.smoke-probe).
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.design-review-pair
+    field: when
+    value:
+      stakes: [money, data, security, availability, wrong-answer, cosmetic]
+  - op: reword-rule
+    schema: command/implement
+    id: impl.plan-approval-producers
+    text: >-
+      Every seat that writes code or artifacts plans first, read-only, in a plan-only dispatch,
+      and stops; a fresh peer of its persona type — a generic seat for a persona-less producer
+      — grades the plan per `mochiko:review-seat-plan`, and you approve only a passed plan and
+      resume the seat to work; grading, verification, and fact-finding seats are exempt. In the
+      band it thins per the ruled plan, on a clean cold smoke (impl.smoke-probe).
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.plan-approval-producers
+    field: when
+    value:
+      stakes: [money, data, security, availability, wrong-answer, cosmetic]
+  - op: reword-rule
+    schema: command/implement
+    id: impl.card-review-before-confirm
+    text: >-
+      The verification seat reviews the cards before the card confirm — quality per
+      mochiko:review-plan-artifacts, buildability its own judgment — and checks that they follow
+      the ruled order (impl.card-order) and that every "I'd know it works if…" line behind them,
+      from the spec's slate, the run's `design-stage.md` or the feature-desk visit file, has at
+      least one **TEST:** case keeping its meaning, an `open` line riding open. In the band it
+      thins per the ruled plan, on a clean cold smoke (impl.smoke-probe).
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.card-review-before-confirm
+    field: when
+    value:
+      stakes: [money, data, security, availability, wrong-answer, cosmetic]
+  - op: reword-rule
+    schema: command/implement
+    id: impl.gap-finding-scope
+    text: >-
+      The gap-finding pass runs on selection-scope and epic runs only (an epic: once, over the
+      union of member territories); a delta-scope or lane run skips it. Every skip, by scope or by
+      band, is stated in the final-validation report — never a silent no-op. In the band it
+      thins per the ruled plan, on a clean cold smoke (impl.smoke-probe).
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.gap-finding-scope
+    field: when
+    value:
+      stakes: [money, data, security, availability, wrong-answer, cosmetic]
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-stage-blind-list
+    text: >-
+      Once per design phase, before the stage closes, one fresh persona-less `general-purpose`
+      seat spawned with `model: opus` draws the blind list, given only the spec, the gap list, the
+      derived store index and any visit file handed in, and returns the hidden choices it sees
+      inside each gap; each difference from your candidates is a candidate piece the user rules,
+      and one outside every gap is an outside need (impl.design-stage-agenda). Skipped on a
+      single-gap re-fire. In the band it thins per the ruled plan, on a clean cold smoke
+      (impl.smoke-probe).
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.design-stage-blind-list
+    field: when
+    value:
+      stakes: [money, data, security, availability, wrong-answer, cosmetic]
+  - op: reword-rule
+    schema: command/implement
+    id: impl.design-finish
+    text: >-
+      On a UX-bearing batch the final validation carries the design finish: the gap-finding pass
+      runs its critique lens, the run's depth level in the finder's brief, and ${qa_seat} runs
+      mochiko:review-design-audit. The pointer skill owns the lens's blocking/advisory split and
+      its depth keying. A blocking critique finding is spec-required under impl.finding-kinds; an
+      advisory one is its own kind, critique-advisory — neither spec-required nor beyond-spec,
+      it takes no beyond-spec disposition and rides to the design landing fold; a disputed kind
+      goes to the user as impl.finding-kind-disputed routes it. Critique rework spends at most one
+      fix round and one confirm round inside impl.gap-rework-bound — never a bound beside it,
+      never raising it. In the band it thins per the ruled plan, on a clean cold smoke
+      (impl.smoke-probe).
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.design-finish
+    field: when
+    value:
+      ux_bearing: present
+      stakes: [money, data, security, availability, wrong-answer, cosmetic]
+  - op: reword-rule
+    schema: command/implement
+    id: impl.attempt-per-grade
+    text: >-
+      A cycle consumes an attempt every time a verification seat grades it, whatever the round is
+      called. Default ${attempt_bound_cycle} per cycle, redeclarable only at run-open. A grade
+      shared over several cycles charges one attempt to each cycle it covers; a FAIL on one cycle
+      charges only that cycle's rework.
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.ways-of-working
+    rule:
+      id: impl.lowering-trail
+      labels: [reporting, evidence]
+      class: must
+      kind: duty
+      text: >-
+        Every thinned or skipped step is written, one line per lowering, into the final-validation
+        report file — the step, the smoke result it rode on, and what still covers the failure
+        kind. That file is the durable home impl.fail.skip-unstated reads; the lines are shown
+        beneath the promises-kept table (impl.promises-kept-table). A raise needs no line. The
+        trail is `patterns-sound-loop.trail-of-lowerings`'s, referenced never restated.
+      anchor: 2026-10-27 implement-lead-adaptive-rigor D1
+  - op: mint-rule
+    schema: command/implement
+    section: impl.sec.ways-of-working
+    rule:
+      id: impl.smoke-probe
+      labels: [evidence, seats]
+      class: must
+      text: >-
+        Where the ruled plan names a smoke, ${qa_seat} — the run's QA seat, which wrote no
+        product code in the run — runs it at the point the run-open line names, by default after
+        the build and before final validation, inside the cold snapshot (impl.cold-verification);
+        its legs and its report are the pointer skill's. One smoke per epic. A red smoke, any red
+        after a clean one, or a money, data or security surface in the diff, returns the run to
+        full depth: the rework is graded at full depth for the touched cycle, the band is gone for
+        the run, and the cold run repeats. A clean smoke is a weak negative and thins only what
+        the ruled line named.
+      when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
+      pointer: mochiko:testing-end-user
+      anchor: 2026-10-27 implement-lead-adaptive-rigor D3
+  - op: reword-rule
+    schema: command/implement
+    id: impl.fail.skip-unstated
+    text: >-
+      A run whose final-validation report does not state a thinned or skipped step — the
+      gap-finding pass skipped by scope, or any step thinned or skipped in the band.
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.fail.skip-unstated
+    field: when
+    value: null
+  - op: set-rule-field
+    schema: command/implement
+    id: impl.fail.skip-unstated
+    field: enforces
+    value: [impl.gap-finding-scope, impl.lowering-trail]
+  - op: reword-rule
+    schema: command/implement
+    id: impl.fail.gap-finding-missing
+    text: >-
+      A selection-scope or epic run whose gap-finding pass neither ran nor was skipped on the plan
+      the user ruled at run-open.
+  - op: reword-rule
+    schema: skill/review-sufficiency
+    id: review-sufficiency.stakes-proposal
+    text: >-
+      Each unit carries one more field: the proposed stakes class — the worst kind of thing that
+      breaks if the batch's product work is wrong, from `mochiko:patterns-sound-loop`'s closed
+      list — read from one line inside the read fence (any surface the fence admits — the
+      spec, a baseline, the store, the map entry, or under delta scope the delta card) and quoted
+      with it; on an epic, one per member, from that member's own spec lines. Where no line can be
+      cited, say so and propose the class the key reads an uncited read as — money, data or
+      security. It is a proposal, never a ruling: who may raise it and who rules it is the stakes
+      key's, referenced never restated.
+  - op: reword-rule
+    schema: skill/patterns-sound-loop
+    id: patterns-sound-loop.stakes-band
+    text: >-
+      The class sets the band. Money, data, security: no step outside the floor thins, whatever
+      any probe says. Availability, wrong-answer, cosmetic: any `class: must` verification step
+      the command keys on `stakes` may thin, and only the four non-leg steps — the gap-finding
+      pass, the design audit, the code-minimalism lens, the design-stage blind list — may be
+      skipped, stated; each on a clean cold smoke, per the plan the user ruled at run-open, the
+      smoke's procedure `mochiko:testing-end-user`'s. Stakes keys the depth of the legs after the
+      trigger fires, never whether they fire: a review leg thins, never vanishes. The standard
+      thin plan (`references/STANDARD-THIN-PLAN.md`) is the worked example the lead cites by name
+      in the run-open line instead of inventing one — an example, never a menu.
+  - op: set-rule-field
+    schema: skill/patterns-sound-loop
+    id: patterns-sound-loop.stakes-band
+    field: pointer
+    value: references/STANDARD-THIN-PLAN.md

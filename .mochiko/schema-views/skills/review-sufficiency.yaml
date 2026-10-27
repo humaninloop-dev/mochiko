@@ -265,11 +265,12 @@ sections:
         text: >-
           Each unit carries one more field: the proposed stakes class — the worst kind of thing
           that breaks if the batch's product work is wrong, from `mochiko:patterns-sound-loop`'s
-          closed list — read from one line inside the read fence (the spec, a baseline or the
-          store) and quoted with it; on an epic, one per member, from that member's own spec
-          lines. Where no line can be cited, say so and propose the class the key reads an uncited
-          read as — money, data or security. It is a proposal, never a ruling: who may raise it
-          and who rules it is the stakes key's, referenced never restated.
+          closed list — read from one line inside the read fence (any surface the fence admits
+          — the spec, a baseline, the store, the map entry, or under delta scope the delta card)
+          and quoted with it; on an epic, one per member, from that member's own spec lines. Where
+          no line can be cited, say so and propose the class the key reads an uncited read as —
+          money, data or security. It is a proposal, never a ruling: who may raise it and who
+          rules it is the stakes key's, referenced never restated.
         pointer: mochiko:patterns-sound-loop
         anchor: 2026-10-27 implement-lead-adaptive-rigor D2
   - id: review-sufficiency.sec.output
