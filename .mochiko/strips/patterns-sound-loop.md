@@ -12,6 +12,47 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/patterns-sound-loop/SKILL.md`. -->
 
+## [v0.123.0] Overview remit sentence — "who produces and who reviews" widened to "and how deep" (implement-lead-adaptive-rigor D8)
+
+- **Disposition:** superseded → the Overview's widened closing sentence, "this floor governs who
+  produces, who reviews, and how deep", followed by two sentences naming what the how-deep half
+  holds (the `stakes` key, the band, the steps that never thin, the five review-form invariants,
+  the trail of every lowering) and that the key and the band bind the reviews of a run's product
+  work only.
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/implement-lead-adaptive-rigor/record.md` D8-home-sound-loop — the
+  lever's home, and its accepted risk: "Sound-loop's remit widens from 'who produces, who
+  reviews' to 'who, and how deep'" — with D6-prior-rulings-fate row 2 for the headline clause;
+  `DECISIONS.md` 2026-10-27 row)
+- **Content:** verbatim —
+
+  ```
+  The three
+  minimalism siblings — `mochiko:patterns-plan-minimalism`, `mochiko:patterns-code-minimalism`,
+  `mochiko:patterns-map-minimalism` — size the artifact; this floor governs who produces and
+  who reviews.
+  ```
+
+- **Kept deliberately:** the sentence's sibling half byte for byte — the three minimalism
+  siblings named and "size the artifact", the line [v0.102.0] re-homed from `## When NOT to Use`
+  and `## Sibling`, which still routes sizing questions away from this floor; the Overview's
+  first two sentences byte for byte, the [v0.71.0] transport sentence among them; the headline
+  "**The entry door never lowers the review.**" unchanged; the `## Rules — delivered by
+  mochiko-cli` block, its seven `!` lines and the read-back sentence byte for byte. "Who
+  produces" and "who reviews" both survive; the ruling adds a third clause and removes neither.
+- **Additions riding the decision row (no strip):** the headline's second line, "**Stakes key
+  how deep the legs run after the trigger fires — never whether they fire.**" (D6 row 2, D8); the
+  `description:` remit clause and the trigger phrases 'stakes', 'stakes band', 'thin a step',
+  'run-open line' and 'smoke probe' (D8), the MUST/SHOULD form kept. Body 2,812 → 3,315;
+  description 505 → 746, inside the 1,536 cap. The rule text the remit now covers arrives by
+  migration `0102-sound-loop-stakes.yaml`, which carries its own record and takes no entry here.
+- **Consumers assessed:** `patterns-transport-floor/SKILL.md` paraphrases this remit twice
+  (line 13, "The sound-loop floor governs *who produces and who reviews*"; line 49, "the ritual
+  floor (who produces, who reviews)") — still true, now partial; outside this seat's ownership,
+  raised to the lead. The router's `patterns-sound-loop` row names no remit sentence and no
+  stakes trigger — unchanged by this edit, raised to the lead for its discoverability. The three
+  DM-chartered commands carry the floor pointer only, never this sentence — unaffected.
+
 ## [v0.106.0] the Rules block — raw schema Read superseded by CLI delivery
 
 - **Disposition:** superseded → `## Rules — delivered by mochiko-cli`: the positive-confirmation

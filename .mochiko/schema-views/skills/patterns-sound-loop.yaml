@@ -8,6 +8,14 @@ conditions:
     note: >-
       fired = both parts of the two-part test true of the output about to be produced
       (judgment-authored AND governing surface); clear otherwise.
+  stakes:
+    values: [money, data, security, availability, wrong-answer, cosmetic]
+    resolution: entry-derived
+    note: >-
+      the harm class of the run's product work — the worst kind of thing that breaks if the run
+      is wrong. Proposed with its cited line by the command's entry grading seat where it has one,
+      else by the lead; raised never lowered by the lead; ruled by the user at the command's
+      run-open confirmation. Absent where the reviewed object is not product work.
 sections:
   - id: patterns-sound-loop.sec.trigger
     title: Trigger — two parts, no size threshold
@@ -25,14 +33,19 @@ sections:
           downstream work will read it as truth. Both true, the three legs are obligatory; either
           false, lead-inline freedom stands as chartered. There is no size threshold: a small
           judgment-authored write on a governing surface trips the floor as surely as a 10-file
-          rewrite — magnitude never gates it.
+          rewrite — magnitude never gates it. Stakes, a harm kind, never gates it either: it
+          keys the depth of the legs after the trigger fires, never whether they fire
+          (`patterns-sound-loop.stakes-band`).
         anchor: 2026-08-13 charter-ritual-balance
       - id: patterns-sound-loop.kind-keyed-library-wide
         labels: [trigger]
         class: must
         text: >-
           The floor is kind-keyed and library-wide: any session, any command, whatever door the
-          work entered through.
+          work entered through. The stakes key and band bind product-run reviews only: where the
+          reviewed object is not product work — a plugin primitive, a governance surface, a
+          brainstorm record — no harm class applies, there is no band, and the review runs in
+          its fixed form.
         anchor: 2026-08-13 charter-ritual-balance
       - id: patterns-sound-loop.governing-surface-table
         labels: [trigger, binding]
@@ -53,6 +66,35 @@ sections:
           where it runs — the bite is any store write outside it.
         pointer: mochiko:authoring-architecture-store
         anchor: 2026-08-13 charter-ritual-balance
+      - id: patterns-sound-loop.stakes-key
+        labels: [trigger, binding]
+        class: must
+        kind: binding
+        text: >-
+          The stakes key is the harm class of the run's product work: the worst kind of thing that
+          breaks if the run is wrong, read at run-open from one cited line, from a closed list —
+          money · data (loss or corruption) · security (or trust) · availability ·
+          wrong-answer (shown) · cosmetic. The command's entry grading seat proposes it where the
+          command has one, the lead where none exists; the lead carries it to the run-open line
+          and may raise it, never lower it; the user rules it. Where no line can be cited, the
+          class reads as money, data or security — the band where nothing thins. The key is
+          never a count of files, cards, rows, gaps or users. The word is "stakes": the governance
+          `depth` dial keys code standards and is never read to size process.
+        anchor: 2026-10-27 implement-lead-adaptive-rigor D3
+      - id: patterns-sound-loop.stakes-band
+        labels: [trigger, ladder]
+        class: must
+        text: >-
+          The class sets the band. Money, data, security: no step outside the floor thins,
+          whatever any probe says. Availability, wrong-answer, cosmetic: any `class: must`
+          verification step the command keys on `stakes` may thin, and only the four non-leg steps
+          — the gap-finding pass, the design audit, the code-minimalism lens, the design-stage
+          blind list — may be skipped, stated; each on a clean cold smoke, per the plan the user
+          ruled at run-open, the smoke's procedure `mochiko:testing-end-user`'s. Stakes keys the
+          depth of the legs after the trigger fires, never whether they fire: a review leg thins,
+          never vanishes.
+        when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
+        anchor: 2026-10-27 implement-lead-adaptive-rigor D5
   - id: patterns-sound-loop.sec.scope
     title: Scope — the door moves, the ritual never drops
     intent: How out-of-remit demands are hosted without lowering the floor.
@@ -134,6 +176,45 @@ sections:
           whatever stories exist — no spec required.
         when: {trigger: fired}
         anchor: 2026-08-13 charter-ritual-balance
+      - id: patterns-sound-loop.never-thins
+        labels: [boundary, evidence]
+        class: floor
+        text: >-
+          At any stakes, none of these thins or is skipped: the user's gates · outcome honesty,
+          no output cleared by its author · the trail · one non-author read of the built thing
+          before acceptance · the machine-checked record layer · every step that guards a shared
+          record — the baseline diff review's mechanical legs, the built-vs-signed store diff,
+          the landing verifier on any run that wrote a record, the sufficiency check at entry ·
+          `**TEST:**` execution on real infrastructure · probe breadth. A code revert undoes
+          code, never a shared record or a ruling taken from the user.
+        anchor: 2026-10-27 implement-lead-adaptive-rigor D5
+      - id: patterns-sound-loop.review-form-invariants
+        labels: [independence]
+        class: floor
+        text: >-
+          For the input-job reviews of a run's product work — implement's cycle grades, its
+          final validation, the design phase's drafts, and the same job in any command that
+          reviews product work — the form is the lead's per run, named in the run-open line,
+          bound by five invariants: (1) the reader never authored what it reads; (2) it reads the
+          surface itself, never the author's report; (3) it starts at FAIL; (4) it runs at or
+          above the tier the work was produced at, its model named on the spawn; (5) where the
+          form is a blind hunt, the reader stays blind — the two-message dispatch, nothing of
+          the author's reasoning in its brief. The input jobs `author-grader-consolidation` D8
+          names keep its conditions besides, and nothing else binds the form. The gate jobs keep
+          their fixed forms: the primitive-edit audit and setup's governance validation. Named
+          forms — a cold pair review, one blind seat solo, a delta read of the changed surface,
+          the smoke probe, a plan-QA leg — are examples, never a menu; a form the lead invents
+          is legal when it meets the five and is named in the line.
+        anchor: 2026-10-27 implement-lead-adaptive-rigor D4
+      - id: patterns-sound-loop.raise-free-lower-ruled
+        labels: [ladder, user-gate]
+        class: must
+        text: >-
+          Raising rigor is always free and needs no line. After run-open the read moves up on
+          in-run evidence — a consumed attempt, a failed gate, a deviation, a money, data or
+          security surface found in the diff, which voids the thinning outright — by the lead's
+          own hand; it never moves down except by the user's checkpoint ruling.
+        anchor: 2026-10-27 implement-lead-adaptive-rigor D2
   - id: patterns-sound-loop.sec.inputs
     title: Inputs
     intent: Read duties this floor would carry before it fires.
@@ -151,11 +232,14 @@ sections:
         kind: duty
         text: >-
           Every visit/run close report carries one line, pinned grammar: `floor: tripped|clear ·
-          seats: <who produced> / <who reviewed> · plans: <seat>:PASS|FAIL(n)[ dirty]…`. The
-          `plans:` segment carries one entry per producing seat — `n` the re-plan rounds
-          consumed on the run's one shared counter, and `dirty` appended where the seat changed
-          the tree while planning. When clear: `floor: clear` alone — no seats segment and no
-          plans segment, since no seats existed to name.
+          seats: <who produced> / <who reviewed> · plans: <seat>:PASS|FAIL(n)[ dirty]… ·
+          stakes: <class>|n/a · thinned: <step>(<cover>)…|none`. The `plans:` segment carries
+          one entry per producing seat — `n` the re-plan rounds consumed on the run's one shared
+          counter, and `dirty` appended where the seat changed the tree while planning. The
+          `stakes:` segment carries the ruled harm class, `n/a` where the reviewed object is not
+          product work; the `thinned:` segment names each step thinned or skipped with what still
+          covered its failure kind, `none` where nothing thinned. When clear: `floor: clear` alone
+          — no seats, plans, stakes or thinned segment, since no seats existed to name.
         anchor: 2026-08-13 charter-ritual-balance
       - id: patterns-sound-loop.only-real-seats
         labels: [reporting, evidence]
@@ -165,6 +249,16 @@ sections:
           itself. The known under-classification risk — calling judgment work "mechanical" to
           stay inline — is what the disclosure line makes auditable, visit by visit.
         anchor: 2026-08-13 charter-ritual-balance
+      - id: patterns-sound-loop.trail-of-lowerings
+        labels: [reporting, evidence]
+        class: floor
+        kind: duty
+        text: >-
+          Every thinned or skipped step is proposed in the run-open line and recorded, one line
+          per lowering, in the command's final report file — the step, the smoke result it rode
+          on, and what still covers the failure kind. A thinning or skip not stated fails the run
+          under the command's own fail rule. A raise needs no line.
+        anchor: 2026-10-27 implement-lead-adaptive-rigor D1
   - id: patterns-sound-loop.sec.reserved
     title: Reserved — the user gate stays
     intent: The ruling layer the floor works beneath, never above.
@@ -178,3 +272,12 @@ sections:
           adds review beneath the gate, never a machine gate above it.
         when: {trigger: fired}
         anchor: 2026-08-13 charter-ritual-balance
+      - id: patterns-sound-loop.user-rules-the-plan
+        labels: [user-gate]
+        class: floor
+        kind: reservation
+        text: >-
+          The stakes read, the review form and the plan of thinnings are the user's ruling at the
+          command's existing run-open confirmation — one line on it, never a new gate. A
+          lowering after run-open is the user's checkpoint ruling, never the lead's alone.
+        anchor: 2026-10-27 implement-lead-adaptive-rigor D2
