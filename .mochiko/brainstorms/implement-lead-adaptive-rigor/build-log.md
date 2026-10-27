@@ -523,3 +523,39 @@ audit: unit 8 — crate tests (fidelity.rs, validate.rs, matrix_similar.rs · cr
   the freeze moves with it" on `adaptive-rigor-build` (hash in the ship entry), never pushes.
   The ship (`wave3-implement-ship.md` §5) follows: the bump to 0.123.0, the release gates on
   the bumped tree first-hand, the KM landing, the release commit — no push, no merge.
+
+## 2026-10-28 — The ship: 0.123.0 — release gates green, the KM landing, the sandbox mount
+
+- Wave commit `cb9b932`. Bump: both manifests to 0.123.0; `CHANGELOG.md` `[0.123.0]` (MINOR,
+  the three waves in order, the audit counts, the budget verdicts, the strip entries, the
+  figures, DF11's note).
+- Release gates on the bumped tree, first-hand: `migrate validate` 0 rejecting · 118 advisory ·
+  0 clusters · 182 suppressed; `migrate status` 1..104 (92) · 94 documents · 1,283 rules, state
+  `sha256:84802fd7…`; `views emit` identical to the committed views; `ids --check` 0 bare ·
+  0 drift; `cargo test --all` 765 passed · 0 failed across 20 binaries; fmt 0 · clippy 0 ·
+  `cargo audit` 31 deps clean; gitleaks 5.30 GB, no leaks; contract suite **99/99, 99 ran, none
+  skipped**, 335 measurements recorded.
+- The contract suite's sandbox: two runs came back 8/99 — every sandbox case FAIL (never SKIP,
+  so the suite's own preflight passed), the probe plugin "Unknown command" — before the lead ran
+  the one-line mount pre-check its own note prescribes; the lead's omission, two runs burned.
+  Cause in the daemon log: `policybind: bind failed … stat source "/mnt/host/…/Documents/GitHub/
+  mochiko": operation not permitted` — macOS privacy protection denying Sbx
+  (`com.docker.sandboxes`, re-identified by the 0.49.2 → 0.50.0 upgrade's new install path) the
+  repo under `~/Documents`. The user declined Full Disk Access; Files and Folders lists only
+  Docker Desktop (a different app); a daemon restart from a Documents-capable shell failed; an
+  in-place recreate failed too (0.50.0 refuses to create a sandbox whose workspace it cannot
+  expose), the old sandbox removed on the user's word. Ruled by the user: the sandbox recreated
+  at `~/sbx/mochiko`, an rsync of the working tree (the uncommitted bump edits included)
+  outside the protected folder — minimal rustup and `cc` inside, the auth probe READY. The
+  suite ran from the copy: 99/99. The per-bump routine (rsync · release build in the copy ·
+  suite from the copy) is recorded in the lead's memory note; moving the repo out of
+  `~/Documents` would retire the copy — offered, not ruled.
+- KM landing, one move: the `DECISIONS.md` 2026-10-27 row stamped BUILT 2026-10-28 at v0.123.0;
+  the BACKLOG build item to the trail (DONE 2026-10-28), the section note re-stamped, the OQ2
+  item open, two follow-ups added (*Split implement's tools section before it grows* · *Groom
+  four stale similarity-allowlist rows*); the ROADMAP Next line stamped BUILT; the brainstorms
+  index Status, Artifacts (the build files and three audits) and Landed lines; the record's
+  Status line. Open backlog items 113 against the 83 baseline of the 2026-09-03 groom — flagged
+  to the user; a groom runs on their word.
+- Release commit on `adaptive-rigor-build` (hash in the hand-off); no push, no merge — the
+  user's. The standing lead-commit authorization for this build ends with it.

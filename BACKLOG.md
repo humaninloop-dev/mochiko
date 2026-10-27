@@ -23,25 +23,29 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 
 ## Implement adaptive-rigor build
 
-*(ruled + accepted 2026-10-27, `implement-lead-adaptive-rigor` D1–D9 as review-amended; build
-pending; provenance: the record and its cold-review and verify reports.)*
+*(ruled + accepted 2026-10-27, `implement-lead-adaptive-rigor` D1–D9 as review-amended; the build
+item **built 2026-10-28 at v0.123.0** on branch `adaptive-rigor-build` (trail); provenance: the
+record, its cold-review and verify reports, and
+`.mochiko/brainstorms/implement-lead-adaptive-rigor/build-log.md`.)*
 
-- [ ] **Implement adaptive-rigor build** (2026-10-27; provenance: `implement-lead-adaptive-rigor`
-  D1–D9, DF1–DF11) — land the lever in `patterns-sound-loop` (the stakes key, the band and
-  never-thins rule, the trail segment, the five review invariants in leg 2, one clause each on
-  its headline and trigger floor) · lighter forms in the owning skills (`testing-gap-finding`
-  stated skip, `review-seat-plan` once-per-seat, `testing-end-user` the smoke procedure and
-  cold-run clause) · `review-sufficiency` gains the harm-class field · implement declares
-  `stakes` `moment-resolved(run-open)`, keys its thinnable must-rules `when: stakes=…`, widens
-  `impl.staffing-latitude` and `impl.fail.skip-unstated`, re-keys `impl.fail.gap-finding-missing`
-  to its stated-skip form, the thin plan as prose · re-freeze `evals/contract/expected-skills.json`
-  · one audit per edited unit under the locked gate form (DF11) · annotate the seven bent rows'
-  strips where protected text changes. No watch item ships (D9).
 - [ ] **Stakes key for non-product surfaces — later session** (2026-10-27; provenance:
   `implement-lead-adaptive-rigor` OQ2, cold review S1, frame change 3) — what "stakes" means for
   a plugin-primitive edit, a governance surface or a brainstorm record, and whether the gate
   jobs (`author-grader-consolidation` D2, D3, D7; GI-004) may ever thin under it; until ruled,
   non-product surfaces have no band and those reviews run in their fixed forms.
+- [ ] **Split implement's tools section before it grows** (2026-10-28; provenance:
+  `implement-lead-adaptive-rigor` build log, the inline-ceiling entry, and `wave3-implement-ship.md`)
+  — `impl.sec.tools` renders at 29,609 chars, 391 under the Bash tool's ≈30,000-char inline
+  ceiling that `render.rs` pins (`no_shipped_section_renders_past_the_inline_ceiling`); the first
+  draft of `0104` crossed it and was reworked. Any further rule in that section takes a section
+  split by ruling first (a `reword-section` plus `move-rule` migration), never a squeeze of the
+  existing text.
+- [ ] **Groom four stale similarity-allowlist rows** (2026-10-28; provenance:
+  `implement-lead-adaptive-rigor/reports/audit-w3.md` unit 8 and the W3 gate notes) —
+  `scripts/similar-rules-allowlist.yaml` lines 140, 142, 186 and 188 name edges that fell under
+  0.60 after `0104`'s rewords of `impl.plan-approval-producers` and `impl.staffing-latitude`;
+  harmless, suppressing nothing (182 suppressed, 186 before). Drop them at the allowlist's next
+  touch and re-pin `matrix_similar.rs`'s suppressed figures.
 
 ## Architecture-desk brainstorm build
 
