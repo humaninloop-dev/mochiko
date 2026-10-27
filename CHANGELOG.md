@@ -5,6 +5,130 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.123.0] — 2026-10-28
+
+**Adaptive rigor — the stakes lever in `patterns-sound-loop`, each step's lighter form in its
+owning skill, `/mochiko:implement` keying its thinnable steps — MINOR** (`implement-lead-adaptive-rigor`
+D1–D9 as review-amended, D2 amended in session, defaults DF1–DF11, record
+`.mochiko/brainstorms/implement-lead-adaptive-rigor/record.md`; `DECISIONS.md` 2026-10-27 row).
+One combined build in three waves on branch `adaptive-rigor-build`, one bump. The lead holds a
+ruled, visible choice over which verification steps run and how deep, keyed on the run's
+harm class — money · data · security · availability · wrong-answer · cosmetic — proposed by
+the entry grading seat with its cited line, raised never lowered by the lead, ruled by the user
+on the existing run-open confirmation; money, data and security never thin; in the band a cold
+smoke probe by the QA seat decides, the four non-leg steps may be skipped stated, every
+lowering is trailed, and the floors D1's four questions keep stand at every stakes.
+
+**Wave 1 — the lever's single home** (D3-harm-band-smoke, D5-band-step-latitude as amended,
+D4-review-form-invariants, D2-stakes-read-ruling as amended, D1-floor-four-questions,
+D8-home-sound-loop, D6 row 2, DF1–DF5). Migration **`0102-sound-loop-stakes`**: the
+`stakes` condition on `patterns-sound-loop` (six values, entry-derived); seven rules minted —
+`patterns-sound-loop.stakes-key` (must · binding), `stakes-band` (must, keyed on the whole
+six-value list so the fixed-band values stay covered), `never-thins` (floor),
+`review-form-invariants` (floor — the five invariants, named forms examples never a menu),
+`raise-free-lower-ruled` (must), `trail-of-lowerings` (floor · duty) and `user-rules-the-plan`
+(floor · reservation); three rewords keeping id, class, kind and anchor — `two-part-trigger`
+gains D6 row 2's clause (stakes keys the depth of the legs after the trigger fires, never
+whether they fire), `kind-keyed-library-wide` the product-work scope (no band on a plugin
+primitive, a governance surface or a brainstorm record), `disclosure-line` the `stakes:` and
+`thinned:` segments. Floors 6 → 10, rules 14 → 21. `SKILL.md`: the `description:` names the
+remit and the triggers 'stakes', 'stakes band', 'thin a step', 'run-open line', 'smoke probe'
+(746 chars, budget 625 → re-measured, the cap 1,536); a second headline line; the Overview's
+remit widened "who produces, who reviews, and how deep" — strip entry `[v0.123.0]` in
+`.mochiko/strips/patterns-sound-loop.md`. Gate audit (one opus seat, rendered contract): two
+units PASS in one round, 0 blocking. Budget: payload 19,019 = body 3,315 + render 15,704,
++6,631 over 12,388, ruled HOLDS (unit 2).
+
+**Wave 2 — the lighter forms in the owning skills** (D5, D3, D2 as amended, D8's "each step's
+lighter form stays in the skill that owns the step", DF2, DF8). Migration
+**`0103-spokes-stakes`**: the `stakes` condition on `testing-gap-finding`, `testing-end-user`
+and `review-seat-plan`; eight rules minted — `testing-gap-finding.band-skip-stated` (the pass
+skipped only on the ruled plan and a clean cold smoke, stated with what still covers the
+failure kind), `testing-end-user.smoke-seat` (the run's QA seat, `mochiko:qa-engineer`),
+`smoke-procedure` (build · full suite · start on real infrastructure · hand probes · the diff
+held against the ruled class), `cold-run-always` (the smoke runs in the cold snapshot; the
+cold run always, on the accepted head, repeating after post-smoke code changes),
+`smoke-clean-weak-negative`, `smoke-report` (a `verification` report, `smoke: true`),
+`review-seat-plan.once-per-seat-in-band` (provisional until the smoke) and
+`review-sufficiency.stakes-proposal` (the class per unit from one cited line; on an epic one
+per member); `testing-end-user.sec.independence` retitled "Independence — the smoke seat";
+`review-sufficiency.report-binding` reworded, its anchor kept. One allowlist row (the
+`smoke-seat` / `seat-devils-advocate` cross-pair at 0.64). Floors unchanged (9 · 7 · 5 · 8);
+rules 36 → 37 · 25 → 30 · 15 → 16 · 29 → 30. `testing-end-user`'s `description:` gains 'smoke
+probe' (521 chars, budget 625) and its Overview one pointer sentence. Gate audit: five units
+PASS in one round, 0 blocking. Budgets ruled HOLDS: `testing-end-user` 25,725 (+4,015),
+`testing-gap-finding` 24,859 (+4,882), `review-seat-plan` 13,813 (+1,112, of which −21 pre-wave
+`0019` drift), `review-sufficiency` 18,425 (+3,002).
+
+**Wave 3 — implement keys the lever; the ship** (D2 as amended, D5 as amended, D6, D7, DF5
+as amended, DF7–DF10, DF11). Migration **`0104-implement-stakes`**, over three schemas:
+`implement` declares `stakes` `moment-resolved(run-open)` and its `run-open` moment names the
+stakes line; `impl.staffing-latitude` widens to which `stakes`-keyed steps thin or are skipped
+and how deep — proposed in the run-open line, the user's to rule; `impl.user-runopen-rulings`
+carries the line's grammar (`stakes: <class> — <cited line> · smoke: <scope> at <point> ·
+thins on clean: <steps> · never: <steps>`); `impl.sufficiency-report` the proposed class per
+unit and, after the ruling, the line as ruled; `impl.promises-kept-table` the trail beneath
+its rows; nine thinnable steps keyed `when: stakes=…` on the six-value list, each worded with
+DF7's clause "In the band it thins per the ruled plan, on a clean cold smoke
+(impl.smoke-probe)." — `craft-verify-bindings`, `gates-full-suite`, `regression-sweep`,
+`design-review-pair`, `plan-approval-producers`, `card-review-before-confirm`,
+`gap-finding-scope`, `design-stage-blind-list`, `design-finish` (two-term `when:` with
+`ux_bearing`); `impl.cold-verification` always runs on the accepted head and repeats after
+post-smoke code changes (never keyed); `impl.attempt-per-grade` (floor) charges a shared
+grade one attempt per covered cycle (DF10); two rules minted in `impl.sec.ways-of-working` —
+`impl.lowering-trail` (one line per lowering in the final-validation report file, shown beneath
+the promises-kept table) and `impl.smoke-probe` (the QA seat's smoke at the ruled point inside
+the cold snapshot, one per epic; a red smoke, any red after a clean one, or a money, data or
+security surface in the diff returns the run to full depth); `impl.fail.skip-unstated` widened
+to every thinned or skipped step at every scope (its `when:` cleared; enforces
+`impl.gap-finding-scope` and `impl.lowering-trail`); `impl.fail.gap-finding-missing` in its
+stated-skip form — the ruling leg ("neither ran nor was skipped on the plan the user ruled at
+run-open"), the report leg `skip-unstated`'s; `review-sufficiency.stakes-proposal` cites any
+surface the read fence admits (the W2 gate's note); `patterns-sound-loop.stakes-band` names
+and points at the new **`references/STANDARD-THIN-PLAN.md`** — D5's worked example in eight
+rows (step · full form · thin form · what still catches the failure kind), the never-moves set
+by pointer, one example run-open line; "an example, never a menu" (D7). Implement 131 → 133
+rules, 40 floors · 17 fails unchanged; `impl.sec.tools` 50 rules at 29,609 rendered chars
+(28,174 before) — the per-step lighter forms left implement's rules for the worked example
+and the W2 spokes when the first draft put the section past the Bash tool's ≈30,000-char
+inline ceiling (`render.rs`'s F12e test; backlog: a section split by ruling before further
+growth). Prose: `commands/implement.md`'s Entry step puts the run-open line for the user's
+ruling on the existing confirmation (ADR 2026-08-13 ruling 3 — no new gate);
+`patterns-transport-floor/SKILL.md` lines 13 and 49 carry the sibling's widened remit — strip
+entry `[v0.123.0]`; the router's `patterns-sound-loop` row names the stakes key and band.
+Contract suite: the `patterns-sound-loop` freeze row replaced under ruling (`floor_ids` ten,
+`floor_pin` 10; nothing else), the README's skills floor total 266 → 270. Crate tests: the
+census pins in `fidelity.rs`, `validate.rs` and `matrix_similar.rs` re-measured for
+`0102`–`0104` (sequences through 104; command 424 → 426, skill 842 → 857, total 1,283, skill
+floors 270; pointers 89 → 91; the command-family matrix `(426, 21_293, 0, 55)`; corpus scanned
+1,283 · scored 225,052 · suppressed 182 — four earlier allowlist rows fall under 0.60 after the
+rewords, a groom candidate). Gate audit: eight units PASS — unit 7 (the freeze) in two rounds
+(a README phrase the lead dictated listed the band among the floors), units 1 and 2 in two
+rounds (the ceiling fix), unit 8 the crate non-author review; 0 blocking. Budgets ruled HOLDS:
+`patterns-sound-loop` 19,242 (+6,854, of which +223 this wave — the band rule's sentence and
+pointer), `review-sufficiency` 18,506 (+3,083, of which +81); `patterns-transport-floor` 12,348
+inside its budget by 216 (body +21; render −237 pre-wave, unattributed to a migration — the
+binary's render, not the log).
+
+After W3 the log, sequences 1..104 (92 migrations), replays to 94 documents and **1,283
+rules** (1,266 → 1,283), state `sha256:84802fd7…`; skill floors 266 → 270, command floors 130,
+the fail set 41. No floor or fail retired or lowered; the three protected rewords
+(`impl.attempt-per-grade`, `impl.fail.skip-unstated`, `impl.fail.gap-finding-missing`) carry
+the session's anchor. The seven prior rulings D6 names were annotated on their `DECISIONS.md`
+rows at the session close (2026-10-27). Every wave ran under the locked gate form (DF11): plans
+graded by fresh peers — W1 `w1-p1-schema:PASS(1) · w1-p2-prose:PASS(1)` with one user-ruled
+extra re-plan, W2 `PASS(1) · PASS(0)`, W3 `PASS(0) · PASS(0) · PASS(0)`; `stakes: n/a ·
+thinned: none` on every wave (plugin primitives, fixed form). Release gates on the bumped tree:
+`migrate validate` 0 rejecting · 118 advisory · 0 clusters · 182 suppressed; views ≡ replay;
+`cargo test --all` 765 passed · 0 failed across 20 binaries, the opt-in similarity sweep 48/0;
+fmt 0 · clippy 0 · `cargo audit` 31 deps clean; gitleaks no leaks; `ids --check` 0 bare ·
+0 drift; **contract suite 99/99, 99 ran, none skipped** (335 measurements recorded; on the
+bumped tree, served to the sandbox from a copy of the working tree at `~/sbx/mochiko` — the
+sandbox `claude-mochiko` recreated outside the macOS-protected Documents folder after its
+workspace bind failed under sbx 0.50.0; the build log's ship entry has the trail). AM-5 still
+applies: no `mochiko-cli-v*` tag — the crate's source is
+unchanged at 0.4.0 (tests only); the plugin depends on the published 0.4.0.
+
 ## [0.122.0] — 2026-10-19
 
 **Textbook reference trim — MINOR** (user ruling 2026-10-19, ADR

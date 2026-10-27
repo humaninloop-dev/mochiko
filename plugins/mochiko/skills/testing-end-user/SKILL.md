@@ -1,6 +1,6 @@
 ---
 name: testing-end-user
-description: This skill MUST be invoked when executing a `**TEST:**` verification task against real infrastructure — parsing its Setup/Action/Assert fields, running actions and capturing evidence, evaluating asserts, and classifying the task CLI/GUI/SUBJECTIVE to decide auto-approve vs human checkpoint. SHOULD also invoke when running quality gates (lint/build/test) as exit-code checks. Consumes the `**TEST:**` grammar owned by mochiko:patterns-vertical-tdd; verifies against real infrastructure, never mocks.
+description: This skill MUST be invoked when executing a `**TEST:**` verification task against real infrastructure — parsing its Setup/Action/Assert fields, running actions and capturing evidence, evaluating asserts, and classifying the task CLI/GUI/SUBJECTIVE to decide auto-approve vs human checkpoint. SHOULD also invoke when running quality gates (lint/build/test) as exit-code checks, or on 'smoke probe'. Consumes the `**TEST:**` grammar owned by mochiko:patterns-vertical-tdd; verifies against real infrastructure, never mocks.
 allowed-tools: Bash(mochiko-cli *)
 ---
 
@@ -8,7 +8,7 @@ allowed-tools: Bash(mochiko-cli *)
 
 ## Overview
 
-Execute verification tasks that validate real infrastructure behavior through structured Setup/Action/Assert sequences. Classify tasks at runtime (CLI/GUI/SUBJECTIVE) to determine whether to auto-approve or present a human checkpoint. This skill turns a task marked with `**TEST:**` into an executed verification sequence with captured evidence, a classified result, and a checkpoint.
+Execute verification tasks that validate real infrastructure behavior through structured Setup/Action/Assert sequences. Classify tasks at runtime (CLI/GUI/SUBJECTIVE) to determine whether to auto-approve or present a human checkpoint. This skill turns a task marked with `**TEST:**` into an executed verification sequence with captured evidence, a classified result, and a checkpoint. The stakes smoke probe lives here too: the run's QA seat's pass that decides inside the band `mochiko:patterns-sound-loop` sets; its legs and its report are rules below.
 
 **Violating the letter of the rules is violating the spirit of the rules.**
 

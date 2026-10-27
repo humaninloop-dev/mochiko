@@ -1229,10 +1229,23 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // 418 → 424, the command floor figure and the fail set unmoved at 130 and 41, the skill
     // rules and floors unmoved. The four rewords — one on `specify` in `0098`, three on
     // `implement` in `0101` — keep id, class and kind.
-    assert_eq!(command_rules, 424, "live command rules");
-    assert_eq!(skill_rules, 842, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1266, "live rules in total");
-    assert_eq!(skill_floors, 266, "skill floors");
+    // `0102`–`0104` (the 2026-10-27 implement-lead-adaptive-rigor build) mint seventeen rules
+    // and retire none: seven on `patterns-sound-loop` (`0102`) — the musts
+    // `patterns-sound-loop.stakes-key`, `patterns-sound-loop.stakes-band` and
+    // `patterns-sound-loop.raise-free-lower-ruled` and the floors
+    // `patterns-sound-loop.never-thins`, `patterns-sound-loop.review-form-invariants`,
+    // `patterns-sound-loop.trail-of-lowerings` and `patterns-sound-loop.user-rules-the-plan` —
+    // eight skill musts (`0103`), five on `testing-end-user` and one each on
+    // `testing-gap-finding`, `review-seat-plan` and `review-sufficiency`, and the `implement`
+    // musts `impl.lowering-trail` and `impl.smoke-probe` (`0104`) — command 424 → 426, skill
+    // 842 → 857, the skill floors 266 → 270, the command floor figure and the fail set unmoved
+    // at 130 and 41. The twenty-three rewords — three in `0102`, one in `0103`, nineteen in
+    // `0104` — and `0104`'s twelve `set-rule-field`s keep id, class and kind; `0103`'s section
+    // reword, the five `stakes` conditions and `0104`'s `run-open` moment carry no rule.
+    assert_eq!(command_rules, 426, "live command rules");
+    assert_eq!(skill_rules, 857, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1283, "live rules in total");
+    assert_eq!(skill_floors, 270, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
     // sentence), so the declared floors were 110 — the same figure the shipped checker reported —
@@ -2873,10 +2886,13 @@ fn every_shipped_pointer_resolves_from_its_own_skill_directory() {
     // `0049`'s five `extends: review-common.joined-ids` stubs each inherit the common block's
     // `pointer: ../../templates/artifact-format.md`; 89 from the 2026-10-11
     // implement-brainstorm-led wave 1, where `0058` imported `analysis-iterative`, whose
-    // `analysis-iterative.deliverable` points at `SYNTHESIS.md`.
+    // `analysis-iterative.deliverable` points at `SYNTHESIS.md`; 91 from the 2026-10-27
+    // implement-lead-adaptive-rigor build, where `0103` minted `testing-end-user.smoke-report`
+    // pointing at `references/REPORT-TEMPLATES.md` and `0104` set
+    // `patterns-sound-loop.stakes-band`'s pointer to `references/STANDARD-THIN-PLAN.md`.
     assert_eq!(
-        report.checked, 89,
-        "the corpus carries 89 path-shaped pointers"
+        report.checked, 91,
+        "the corpus carries 91 path-shaped pointers"
     );
     assert!(
         report.findings.is_empty(),

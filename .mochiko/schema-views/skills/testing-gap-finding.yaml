@@ -20,6 +20,12 @@ conditions:
       - 'no'
     resolution: entry-derived
     note: the spec's intent-stage UX-bearing ruling for the feature under validation.
+  stakes:
+    values: [money, data, security, availability, wrong-answer, cosmetic]
+    resolution: entry-derived
+    note: >-
+      the run's ruled harm class, carried in from the command's run-open ruling
+      (`mochiko:patterns-sound-loop`). Absent where the run is not product work.
 sections:
   - id: testing-gap-finding.sec.independence
     title: Independence — the blind seat and the split authorships
@@ -142,6 +148,24 @@ sections:
           build-time standard; verifying it at final validation is the audit lens's `**TEST:**`
           legs on `mochiko:qa-engineer`.
         anchor: 2026-09-19 impeccable-design-integration D11
+      - id: testing-gap-finding.band-skip-stated
+        labels: [boundary, reporting]
+        class: must
+        kind: latitude
+        text: >-
+          In the band, the pass `testing-gap-finding.one-pass-at-final-validation` places may be
+          skipped only on a clean cold smoke and only as the user ruled it — at run-open, or by
+          a later checkpoint ruling of theirs — never on the finder's or the lead's own call
+          mid-run. The final-validation report states the skip with the smoke result it rode on
+          and what still covers the failure kind: the smoke's hand probes over the changed
+          behaviour, and the non-author read before acceptance. A skip not stated fails the run
+          under the command's own fail rule. Outside the band the pass runs as
+          `testing-gap-finding.one-pass-at-final-validation` binds, whatever any probe says. The
+          band, the smoke and the trail are `mochiko:patterns-sound-loop`'s, referenced never
+          restated.
+        when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
+        pointer: mochiko:patterns-sound-loop
+        anchor: 2026-10-27 implement-lead-adaptive-rigor D5
   - id: testing-gap-finding.sec.inputs
     title: Inputs — the blindness fence and the derivation duty
     intent: >-

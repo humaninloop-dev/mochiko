@@ -1,0 +1,201 @@
+grammar: 1
+id: 0103-spokes-stakes
+sequence: 103
+intent: >-
+  Land each thinnable step's lighter form in the skill that owns it (implement-lead-adaptive-rigor
+  D8): declare the entry-derived stakes condition on testing-gap-finding, testing-end-user and
+  review-seat-plan (D3, D8); mint gap-finding's stated band skip (D5, D8), the smoke probe's seat,
+  procedure, weak-negative verdict and report and the cold-run clause in testing-end-user (D3, D5,
+  DF2), the plan grade's once-per-seat form in review-seat-plan (D5), and the harm-class proposal
+  in review-sufficiency (D2 as amended, D3, DF3, DF8); reword testing-end-user's independence
+  section to host the smoke seat, its census note cleared; append the proposal to
+  review-sufficiency's report contract. The band, the never-thins floor, the smoke's authority and
+  the trail stay patterns-sound-loop's, referenced never restated. Each minted rule carries its
+  card's anchor; the reword keeps its id, class, kind and labels, its authority this header. No
+  floor minted, retired or lowered; floors 9 · 7 · 5 · 8 unchanged.
+anchor: 2026-10-27 implement-lead-adaptive-rigor
+hash: sha256:2b234bb793a33c88e7a51f4a01ce3223fd0b724686f64f150b5bfe16c9ed760f
+changes:
+  - op: set-condition
+    schema: skill/testing-gap-finding
+    name: stakes
+    spec:
+      values: [money, data, security, availability, wrong-answer, cosmetic]
+      resolution: entry-derived
+      note: >-
+        the run's ruled harm class, carried in from the command's run-open ruling
+        (`mochiko:patterns-sound-loop`). Absent where the run is not product work.
+  - op: set-condition
+    schema: skill/testing-end-user
+    name: stakes
+    spec:
+      values: [money, data, security, availability, wrong-answer, cosmetic]
+      resolution: entry-derived
+      note: >-
+        the run's ruled harm class, carried in from the command's run-open ruling
+        (`mochiko:patterns-sound-loop`). Absent where the run is not product work.
+  - op: set-condition
+    schema: skill/review-seat-plan
+    name: stakes
+    spec:
+      values: [money, data, security, availability, wrong-answer, cosmetic]
+      resolution: entry-derived
+      note: >-
+        the run's ruled harm class, carried in from the command's run-open ruling
+        (`mochiko:patterns-sound-loop`). Absent where the run is not product work.
+  - op: mint-rule
+    schema: skill/testing-gap-finding
+    section: testing-gap-finding.sec.scope
+    rule:
+      id: testing-gap-finding.band-skip-stated
+      labels: [boundary, reporting]
+      class: must
+      kind: latitude
+      text: >-
+        In the band, the pass `testing-gap-finding.one-pass-at-final-validation` places may be
+        skipped only on a clean cold smoke and only as the user ruled it — at run-open, or by a
+        later checkpoint ruling of theirs — never on the finder's or the lead's own call
+        mid-run. The final-validation report states the skip with the smoke result it rode on and
+        what still covers the failure kind: the smoke's hand probes over the changed behaviour,
+        and the non-author read before acceptance. A skip not stated fails the run under the
+        command's own fail rule. Outside the band the pass runs as
+        `testing-gap-finding.one-pass-at-final-validation` binds, whatever any probe says. The
+        band, the smoke and the trail are `mochiko:patterns-sound-loop`'s, referenced never
+        restated.
+      when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
+      pointer: mochiko:patterns-sound-loop
+      anchor: 2026-10-27 implement-lead-adaptive-rigor D5
+  - op: reword-section
+    schema: skill/testing-end-user
+    id: testing-end-user.sec.independence
+    title: Independence — the smoke seat
+    intent: Who runs the stakes smoke probe, and what it never authored.
+    note: null
+  - op: mint-rule
+    schema: skill/testing-end-user
+    section: testing-end-user.sec.independence
+    rule:
+      id: testing-end-user.smoke-seat
+      labels: [independence, binding]
+      class: must
+      kind: binding
+      text: >-
+        The stakes smoke probe is run by the run's QA seat — `mochiko:qa-engineer`, on its
+        persona tier — which wrote no product code in the run: it authors `**TEST:**` cases,
+        never the code they test. Persona carries the judgment, this skill carries the procedure.
+      when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
+      pointer: mochiko:qa-engineer
+      anchor: 2026-10-27 implement-lead-adaptive-rigor D3
+  - op: mint-rule
+    schema: skill/testing-end-user
+    section: testing-end-user.sec.scope
+    rule:
+      id: testing-end-user.smoke-procedure
+      labels: [evidence, ladder]
+      class: must
+      kind: duty
+      text: >-
+        The smoke probe runs at the point the ruled plan names — by default after the build,
+        before final validation — in strict order: build the thing · run the full automated
+        suite · start it on real infrastructure · probe the changed behaviour by hand · hold
+        the diff against the ruled harm class. A diff touching a money, data or security surface,
+        or any red leg, is reported as voiding every thinning, and the run goes full depth under
+        `mochiko:patterns-sound-loop`. Its scope is bounded to those five legs: the lighter form
+        of the steps that thin on it, never a substitute for a declared `**TEST:**` case.
+      when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
+      anchor: 2026-10-27 implement-lead-adaptive-rigor D3
+  - op: mint-rule
+    schema: skill/testing-end-user
+    section: testing-end-user.sec.scope
+    rule:
+      id: testing-end-user.cold-run-always
+      labels: [evidence]
+      class: must
+      kind: duty
+      text: >-
+        The cold run is the one final gate run. The smoke, where the plan names one, runs in the
+        dependency-cold snapshot the command's cold verification takes — never a warm run
+        followed by a cold one. That run always happens, on the exact head the user accepts, and
+        repeats whenever rework changes code after it, within the command's existing gap-rework
+        bound. Its results are acceptance evidence; no CI result stands in for it.
+      when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
+      anchor: 2026-10-27 implement-lead-adaptive-rigor D5
+  - op: mint-rule
+    schema: skill/testing-end-user
+    section: testing-end-user.sec.verdict
+    rule:
+      id: testing-end-user.smoke-clean-weak-negative
+      labels: [verdict, evidence]
+      class: must
+      text: >-
+        A clean smoke is a weak negative, never a verdict of safety. It is reported method-scoped
+        — `clean by <probes> over <surface>` — and it thins only the steps the user's run-open
+        ruling named, as mechanical execution of that ruling, never a step on its own.
+      when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
+      anchor: 2026-10-27 implement-lead-adaptive-rigor D3
+  - op: mint-rule
+    schema: skill/testing-end-user
+    section: testing-end-user.sec.output
+    rule:
+      id: testing-end-user.smoke-report
+      labels: [reporting, binding]
+      class: must
+      kind: binding
+      text: >-
+        The smoke lands as a `verification` report carrying `smoke: true` — the envelope admits
+        the extra field — under the frontmatter of `references/REPORT-TEMPLATES.md`, naming the
+        probes run and the surface covered. Its evidence rides the run folder like any task's.
+      when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
+      pointer: references/REPORT-TEMPLATES.md
+      anchor: 2026-10-27 implement-lead-adaptive-rigor D3
+  - op: mint-rule
+    schema: skill/review-seat-plan
+    section: review-seat-plan.sec.scope
+    rule:
+      id: review-seat-plan.once-per-seat-in-band
+      labels: [boundary, user-gate]
+      class: must
+      kind: latitude
+      text: >-
+        In the band, per the plan the user ruled at run-open, the grade runs once per seat per
+        run: a seat's first plan is graded on the seven items, and its later plans in the same run
+        ride that PASS — each still reaching the lead verbatim, the thinning stated in the
+        trail. The thinning stands provisionally until the smoke: a red smoke, or any in-run
+        raise, returns every later plan to the full grade, under `mochiko:patterns-sound-loop`'s
+        raise rule. A seat re-staffed, re-scoped, or re-planning after a FAIL is graded again.
+        Outside the band every plan is graded. The band and the trail are
+        `mochiko:patterns-sound-loop`'s, referenced never restated.
+      when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
+      pointer: mochiko:patterns-sound-loop
+      anchor: 2026-10-27 implement-lead-adaptive-rigor D5
+  - op: mint-rule
+    schema: skill/review-sufficiency
+    section: review-sufficiency.sec.verdict
+    rule:
+      id: review-sufficiency.stakes-proposal
+      labels: [verdict, evidence]
+      class: must
+      kind: duty
+      text: >-
+        Each unit carries one more field: the proposed stakes class — the worst kind of thing
+        that breaks if the batch's product work is wrong, from `mochiko:patterns-sound-loop`'s
+        closed list — read from one line inside the read fence (the spec, a baseline or the
+        store) and quoted with it; on an epic, one per member, from that member's own spec lines.
+        Where no line can be cited, say so and propose the class the key reads an uncited read as
+        — money, data or security. It is a proposal, never a ruling: who may raise it and who
+        rules it is the stakes key's, referenced never restated.
+      pointer: mochiko:patterns-sound-loop
+      anchor: 2026-10-27 implement-lead-adaptive-rigor D2
+  - op: reword-rule
+    schema: skill/review-sufficiency
+    id: review-sufficiency.report-binding
+    text: >-
+      The verdict lands as `sufficiency-report.md` in the feature dir
+      (`.mochiko/features/FEAT-XXX/`), under the `templates/report-format.md` envelope. It
+      carries: the run-open base commit named in the brief, with any uncommitted product change
+      already in the tree listed as pre-existing · the per-unit verdicts · the gap list, each
+      gap keyed to its clause · the store-consult result and any no-delta claim · store trips
+      awaiting the user's disposition at run-open · in-flight conflicts routed to the user · any
+      `[MODIFY]` amendment naming · the `quickstart.md` null-path record where no real
+      external-integration surface exists · the proposed stakes class per unit, with its cited
+      line (`review-sufficiency.stakes-proposal`).

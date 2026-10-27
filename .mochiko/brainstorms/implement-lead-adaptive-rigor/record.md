@@ -1,6 +1,6 @@
 # Implement — lead-held adaptive rigor: which steps run, and how deep — decision record
 
-Status: **accepted** 2026-10-27 (user's word: "accept") · frame hardened 2026-10-25 (size standard, reach universal), three lines amended by the user's word · deciding finished 2026-10-27 — map empty · ruled 9 (D1–D9; D2 amended in session; D3, D4, D5, D6, D7, D8 and five slugs changed at review) · defaults DF1–DF11 confirmed · cold review: 14 survivors and 4 verify-born inconsistencies, every one dispositioned by the user's word; verify bound exhausted after one pass and one bounded re-verify · landed: `DECISIONS.md` row 2026-10-27, `BACKLOG.md` build item and OQ2 open thread, `ROADMAP.md` Now touched, index entry updated
+Status: **accepted** 2026-10-27 (user's word: "accept") · frame hardened 2026-10-25 (size standard, reach universal), three lines amended by the user's word · deciding finished 2026-10-27 — map empty · ruled 9 (D1–D9; D2 amended in session; D3, D4, D5, D6, D7, D8 and five slugs changed at review) · defaults DF1–DF11 confirmed · cold review: 14 survivors and 4 verify-born inconsistencies, every one dispositioned by the user's word; verify bound exhausted after one pass and one bounded re-verify · landed: `DECISIONS.md` row 2026-10-27, `BACKLOG.md` build item and OQ2 open thread, `ROADMAP.md` Now touched, index entry updated · **built** 2026-10-28 at v0.123.0 on branch `adaptive-rigor-build`, three waves (`build-log.md`; migrations `0102`–`0104`); the build item to the trail, the OQ2 later session still open
 
 ## Topic (user's words)
 

@@ -79,8 +79,10 @@ Every run has a goal and an explicit done condition; a run is never goal-less.
    batch and scope type (epic: members too; delta: the card-vs-entry check) · restate both
    attempt bounds — per-cycle and gap-rework, defaults carried by the `vars` block of the
    preamble delivered above — at their **only redeclaration point** · present the sufficiency
-   verdict, its gap routing, and the trips and conflicts for the user's ruling · state the done
-   condition.
+   verdict, its gap routing, and the trips and conflicts for the user's ruling · put the
+   run-open line — the harm class with its cited line, the smoke, what thins on a clean
+   smoke, what never does — for the user's ruling (rules: `impl.sec.reserved`, delivered
+   above; the band and the trail `mochiko:patterns-sound-loop`'s) · state the done condition.
 2. **Goal — the done condition, fixed.** Every cycle card `[x]`, built test-first and
    independently verified against real infrastructure (per cycle and whole); the code meets its
    criteria, traces to requirements, aligns with governance; the acceptance landing executed
