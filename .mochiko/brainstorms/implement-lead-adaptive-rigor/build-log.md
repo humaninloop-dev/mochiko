@@ -176,3 +176,115 @@ audit: unit 2 — patterns-sound-loop SKILL.md + render (skill pair) · w1-gate-
   W2 (spokes) opens next: `testing-gap-finding`, `testing-end-user`, `review-seat-plan`,
   `review-sufficiency`; the W2 plan-only briefs name both attempt bounds and the Explore
   fallback explicitly.
+
+## 2026-10-28 — W2 opened: plan written, P1 and P2 planning
+
+- W1 committed as `5c4ba7c` ("W1: patterns-sound-loop gains the stakes lever"); tree clean after.
+- `wave2-spokes.md` written: one migration `0103-spokes-stakes.yaml` over four skill schemas —
+  three `set-condition` (`stakes` on `testing-gap-finding`, `testing-end-user`,
+  `review-seat-plan`), one `reword-section` (`testing-end-user.sec.independence`, its
+  "Deliberately empty" note cleared), eight `mint-rule`, one `reword-rule`
+  (`review-sufficiency.report-binding`, appended). Carriers: `testing-gap-finding.band-skip-stated`
+  · `testing-end-user.smoke-seat` / `smoke-procedure` / `smoke-clean-weak-negative` /
+  `smoke-report` / `cold-run-always` · `review-seat-plan.once-per-seat-in-band` ·
+  `review-sufficiency.stakes-proposal`. All `class: must`; no floor minted, so the frozen floor
+  set moves only by W1. Rules 36→37 · 25→30 · 15→16 · 29→30.
+- Seats: P1 schema (migration, views, allowlist) · P2 prose (`testing-end-user/SKILL.md`
+  description `'smoke probe'` phrase and one Overview sentence; four budget rows; no strip owed).
+  Gate: one grader, five units (schema content + four skill pairs).
+- Tree snapshot before dispatch: the wave plan untracked, nothing else. Both plan-only briefs
+  name the re-plan bound (one, shared) and the gate fix loop, and the Explore no-report fallback.
+
+## 2026-10-28 — W2 plans graded; one re-plan consumed; seats resuming
+
+- Tree unchanged after every plan return (no `dirty`). Both haiku `Explore` dispatches and all
+  four peers' again returned no report; every seat ran its locate reads on-seat, disclosed.
+- P2 plan, peer `w2-p2-peer` (`general-purpose`, `model: opus`): PASS round 1 — one item-4
+  honesty advisory, taken by the lead: the `testing-end-user` Overview sentence paraphrased the
+  smoke-seat, smoke-procedure and smoke-report rules; trimmed to one clause that only says the
+  probe lives here and points at sound-loop (body delta +351 → +170; description 521/625). The
+  peer reproduced all four baselines; `review-seat-plan` renders 12,680 against its 12,701 seed,
+  the −21 traced to `0019-setup-agnostic-modules-out.yaml`'s reword of `review-common.never-excess`
+  (seed measured at the 0009 landing, before 0019) — recorded inside that row at execution. P2's
+  five questions ruled: the [v0.103.0] Kept line is conversion-scoped (no strip) · the drift
+  sits in the row · `review-sufficiency`'s overage argued on D8's touch-set sentence (S8) ·
+  `'smoke probe'` routes to both sound-loop and end-user, intended · `--plugin-root` on the
+  dry-run line. P2 holds for `0103`.
+- P1 plan: before any grade the seat posed five questions and the lead ruled them (not a counter
+  consumption): Q1 every stakes-keyed rule keys the whole six-value list (a smoke may be planned
+  in the fixed band, D3's cost line; the fixed-band values stay covered, so the six
+  `condition-coverage` advisories the first draft raised vanish and validate stays at 118) ·
+  Q2 `once-per-seat-in-band` drops "on a clean cold smoke" (plan grades run before the smoke)
+  and says the thinning stands provisionally until the smoke, a red smoke or any in-run raise
+  returning every later plan to the full grade · Q3 `band-skip-stated` names the user's later
+  checkpoint ruling beside run-open (D2) · Q4 moot · Q5 the persona sentence stays and one
+  allowlist row is added (`smoke-seat` vs `seat-devils-advocate`, CROSS-PAIR 0.64; dropping the
+  sentence moves the edge to `review-design-audit.seat-qa-engineer` at 0.73). Wave plan §3
+  amended to match. Peer `w2-p1-peer`: round 1 FAIL item 3 — the plan claimed
+  `review-sufficiency.report-binding` carries no anchor; the view shows
+  `anchor: 2026-08-26 plan-stage-utility` (`review-sufficiency.yaml:278`); fix: state it kept
+  under `reword-rule` (header authority, the 0080/0095 precedent, as W1), correct the
+  removed-lines claim (`rules: []`); advisory taken on the lead's ruling: DF8's "from that
+  member's own spec lines" into `stakes-proposal`. That FAIL consumed W2's one shared re-plan.
+  Round 2: PASS (hash `sha256:2b234bb7…760f`, validate 0 · 118 · 0 clusters · 186 suppressed ·
+  1,281 rules, four views, `check` allow — all reproduced by the peer).
+- Plans segment so far: `plans: w2-p1-schema:PASS(1) · w2-p2-prose:PASS(0)`. P1 approved and
+  resumed with the YAML and the allowlist row quoted; P2 resumes after `0103` lands.
+
+## 2026-10-28 — W2 seats executed; gate audit dispatched
+
+- P1 executed (e) steps 1–7, no stop tripped: `0103-spokes-stakes.yaml` written and stamped
+  `sha256:2b234bb7…760f` (byte-identical to the approved plan's (d)); one allowlist row appended;
+  `views emit` changed only the four spoke views; validate `0 rejecting · 118 advisory`,
+  clusters 0, 186 suppressed, 1,281 rules. The lead confirmed on disk: the hash, the tail, the
+  `stakes` condition on three spokes, floors 9 · 7 · 5 · 8, and the `testing-end-user`
+  independence section rendering its new title and the `smoke-seat` rule.
+- P2 resumed with the trimmed d2 quoted; executed (e) steps 1–7 with Edit on two files. Measures
+  (canonical snippet at log 1..103, state `sha256:6cf0a382…` · 1,281 rules): `testing-end-user`
+  description 521 (budget 625) · body 9,763 (+170) · payload 25,725 (+2,985 over 22,740: render
+  +2,815 from `0103` alone, body +170), overage +4,015 · `testing-gap-finding` 24,859 (+1,230,
+  render only), overage +4,882 · `review-seat-plan` 13,813 (+1,112 over the 12,701 seed =
+  `0019` −21 + `0103` +1,133), overage +1,112 · `review-sufficiency` 18,425 (+811, render
+  only), overage +3,002. Every pre-wave render reproduced exactly without `0103`. All four rows
+  over budget, each argued as D8's ruled obligation; the description-table row re-measured.
+  The lead confirmed the tree: eight modified, two untracked.
+- Gate audit dispatched: `w2-gate-grader` (`general-purpose`, `model: opus`), renders the
+  contract first-hand, runs validate and the snippet itself, baseline by `git archive 5c4ba7c`;
+  unit 1 schema content (0103 + four view diffs + the allowlist row), units 2–5 the four skill
+  pairs; report to `reports/audit-w2.md` (`report: review`, round 1). Lead's notes carried:
+  criterion 7 conversion-scoped; overages graded as argued; the `0019` −21 claim to check; no
+  strip owed; the trimmed Overview sentence; the suppressed 0.64 edge.
+
+## 2026-10-28 — W2 gate audit: all PASS; wave 2 closed
+
+- Report: `reports/audit-w2.md` (138 lines, `report: review`, round 1, `check` allowed it
+  before the write). Five units, 0 blocking, no fix round. The outcome lines:
+
+```
+audit: unit 1 — 0103-spokes-stakes.yaml + four view diffs + allowlist row (schema content) · w2-gate-grader · opus · 6 files · 1 rounds · 0 blocking
+audit: unit 2 — testing-end-user SKILL.md + render (skill pair) · w2-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+audit: unit 3 — testing-gap-finding SKILL.md + render (skill pair) · w2-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+audit: unit 4 — review-seat-plan SKILL.md + render (skill pair) · w2-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+audit: unit 5 — review-sufficiency SKILL.md + render (skill pair) · w2-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+```
+
+- The grader's first-hand pre-pass: validate `0 rejecting · 118 advisory`, 0 clusters, 186
+  suppressed (the row is needed — without it one CROSS-PAIR at 0.64); floors 9 · 7 · 5 · 8;
+  `views emit` identical to the committed views; every budget-row figure reproduced per section
+  at both trees; the `0019` −21 confirmed (scope 1,034 at 1..18, 1,013 at 1..19).
+- Budget rows: the lead transcribed the verdict into the four heads — "ruled-HOLDS overage at
+  [v0.123.0] — ruled HOLDS by wave 2's gate audit, unit n, `reports/audit-w2.md`, 0 blocking".
+- Grader's notes, non-blocking, dispositioned by the lead: (1) `stakes-proposal` names "the
+  spec, a baseline or the store" as cite sources; the fence also admits map entries and the
+  delta card, so a delta run whose harm shows only in the card reads high (safe) — a W3
+  candidate reword, held with the `patterns-transport-floor` paraphrase residual. (2) The
+  `testing-end-user` Overview sentence names the QA seat, overlapping `smoke-seat`'s binding —
+  accepted; the identity line names who, the rule binds. (3) "Provisional until the smoke" is
+  the lead's reading of D5 (the carriers amendment), not a record line — the coherent reading,
+  since plan grades precede the smoke; recorded here, no record amendment (the user's word).
+- Disclosure line for the wave: `floor: tripped · seats: w2-p1-schema, w2-p2-prose /
+  w2-p1-peer, w2-p2-peer (plans), w2-gate-grader (audit) · plans: w2-p1-schema:PASS(1) ·
+  w2-p2-prose:PASS(0) · stakes: n/a · thinned: none` — plugin primitives, fixed form (DF11).
+- Wave closed on the standing authorization: the lead commits "W2: the spokes carry each step's
+  lighter form" on `adaptive-rigor-build` (hash in the W3 opening entry), never pushes. W3
+  (implement + ship) opens next.

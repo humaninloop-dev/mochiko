@@ -258,6 +258,20 @@ sections:
           The UX-trace clause's no-manifest n/a and the delivered-feature clause's delta-scope n/a
           are the only structural ones.
         anchor: 2026-08-26 plan-stage-utility
+      - id: review-sufficiency.stakes-proposal
+        labels: [verdict, evidence]
+        class: must
+        kind: duty
+        text: >-
+          Each unit carries one more field: the proposed stakes class — the worst kind of thing
+          that breaks if the batch's product work is wrong, from `mochiko:patterns-sound-loop`'s
+          closed list — read from one line inside the read fence (the spec, a baseline or the
+          store) and quoted with it; on an epic, one per member, from that member's own spec
+          lines. Where no line can be cited, say so and propose the class the key reads an uncited
+          read as — money, data or security. It is a proposal, never a ruling: who may raise it
+          and who rules it is the stakes key's, referenced never restated.
+        pointer: mochiko:patterns-sound-loop
+        anchor: 2026-10-27 implement-lead-adaptive-rigor D2
   - id: review-sufficiency.sec.output
     title: Output — the report contract
     intent: Where the verdict lands and what the report carries.
@@ -274,7 +288,8 @@ sections:
           list, each gap keyed to its clause · the store-consult result and any no-delta claim ·
           store trips awaiting the user's disposition at run-open · in-flight conflicts routed to
           the user · any `[MODIFY]` amendment naming · the `quickstart.md` null-path record
-          where no real external-integration surface exists.
+          where no real external-integration surface exists · the proposed stakes class per unit,
+          with its cited line (`review-sufficiency.stakes-proposal`).
         anchor: 2026-08-26 plan-stage-utility
       - id: review-sufficiency.evidence-floor
         labels: [evidence]

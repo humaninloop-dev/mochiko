@@ -3,6 +3,13 @@ kind: skill
 skill: review-seat-plan
 vars:
   verdict: PASS
+conditions:
+  stakes:
+    values: [money, data, security, availability, wrong-answer, cosmetic]
+    resolution: entry-derived
+    note: >-
+      the run's ruled harm class, carried in from the command's run-open ruling
+      (`mochiko:patterns-sound-loop`). Absent where the run is not product work.
 sections:
   - id: review-seat-plan.sec.independence
     title: Independence — who grades a plan, and at what remove
@@ -54,6 +61,22 @@ sections:
       - id: review-seat-plan.never-excess
         class: must
         extends: review-common.never-excess
+      - id: review-seat-plan.once-per-seat-in-band
+        labels: [boundary, user-gate]
+        class: must
+        kind: latitude
+        text: >-
+          In the band, per the plan the user ruled at run-open, the grade runs once per seat per
+          run: a seat's first plan is graded on the seven items, and its later plans in the same
+          run ride that PASS — each still reaching the lead verbatim, the thinning stated in the
+          trail. The thinning stands provisionally until the smoke: a red smoke, or any in-run
+          raise, returns every later plan to the full grade, under `mochiko:patterns-sound-loop`'s
+          raise rule. A seat re-staffed, re-scoped, or re-planning after a FAIL is graded again.
+          Outside the band every plan is graded. The band and the trail are
+          `mochiko:patterns-sound-loop`'s, referenced never restated.
+        when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
+        pointer: mochiko:patterns-sound-loop
+        anchor: 2026-10-27 implement-lead-adaptive-rigor D5
   - id: review-seat-plan.sec.inputs
     title: Inputs — the plan verbatim, and the tree behind its claims
     intent: How the plan reaches the grader, and what the grader must check itself.
