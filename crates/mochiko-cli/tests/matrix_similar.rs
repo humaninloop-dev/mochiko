@@ -1363,8 +1363,20 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // clusters over 182 edges (76 over 185 before the build, 77 over 186 at `1..103`), the
     // listings identical but for those three clusters, read from raw `migrate validate
     // --report` runs over the old (`1..101`), middle (`1..103`) and new (`1..104`) logs.
-    assert_eq!(report.scanned, 1283, "rules scanned");
-    assert_eq!(report.scored, 225_052, "in-kind pairs scored");
+    // Re-measured after the 2026-10-28 stakes-non-product-surfaces wave 1 (`0105`): one rule
+    // minted and none retired move the scan 1,283 to 1,284 and the pair count 225,052 to
+    // 225,650 — the floor `patterns-sound-loop.planning-quick-read`, a skill rule, so the
+    // command-family pin above holds; it extends no block. By kind: `constraint` 598 → 599
+    // (+598), the whole of the move. `suppressed_hits` holds at 182: the wave added no allowlist
+    // row, and its five `patterns-sound-loop` rewords raise or drop no edge —
+    // `patterns-sound-loop.kind-keyed-library-wide`'s allowlisted pair with
+    // `patterns-transport-floor.neither-lane-waivable` sits under the threshold on both logs, so
+    // that row suppresses nothing before or after. SUPPRESSED zero: with an empty allowlist the
+    // corpus reports 76 clusters over 182 edges before and after the wave, the listings
+    // identical, read from raw `migrate validate --report` runs over the old (`1..104`) and new
+    // (`1..105`) logs.
+    assert_eq!(report.scanned, 1284, "rules scanned");
+    assert_eq!(report.scored, 225_650, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
     assert_eq!(report.suppressed_hits, 182, "allowlist-suppressed edges");
 }

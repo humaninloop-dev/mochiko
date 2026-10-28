@@ -30,8 +30,8 @@ record, its cold-review and verify reports, and
 
 - [ ] **Planning-output stakes build** (2026-10-28; provenance:
   `.mochiko/brainstorms/stakes-non-product-surfaces/record.md` D1–D3 as review-amended, DF1–DF6;
-  `DECISIONS.md` 2026-10-28) — **gated on DF3**: starts only after the user has run implement's
-  v0.123.0 stakes lever on a real project and judged it fine. Lands D1-planning-quick-read's
+  `DECISIONS.md` 2026-10-28) — **in build** on `adaptive-rigor-build` since 2026-10-28 (DF3, the
+  trial gate, withdrawn by the user's word; log `.mochiko/brainstorms/stakes-non-product-surfaces/build-log.md`). Lands D1-planning-quick-read's
   eleven-item list exactly (the `patterns-sound-loop` rewrites, the D8 bend, the specify fail
   rules' `enforces:`, the quick-read homes in `review-specifications`, feature's card grade and
   `arch.seat-tech-lead-grader`) and re-keys specify, feature and architecture on D2/D3. Plan

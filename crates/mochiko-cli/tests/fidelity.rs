@@ -186,7 +186,8 @@ fn the_log_replays_into_a_deliverable_state() {
     // `0086` also replaces the `feature-desk` home in place. `0090` and `0091` are unused, a
     // legal gap. `0092`–`0095` (its wave 2) import none. `0096` and `0097` are unused, a
     // legal gap. `0098`–`0101` (its wave 3) import none. `0102`–`0104` (the 2026-10-27
-    // implement-lead-adaptive-rigor build) import none.
+    // implement-lead-adaptive-rigor build) import none. `0105` (the 2026-10-28
+    // stakes-non-product-surfaces wave 1) imports none.
     assert_eq!(replay.state.docs.len(), 94);
     assert_eq!(
         replay.sequences(),
@@ -195,7 +196,7 @@ fn the_log_replays_into_a_deliverable_state() {
             25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48,
             49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 65, 66, 67, 68, 69, 70, 75, 76,
             77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 92, 93, 94, 95, 98, 99, 100,
-            101, 102, 103, 104
+            101, 102, 103, 104, 105
         ],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
@@ -236,7 +237,8 @@ fn the_log_replays_into_a_deliverable_state() {
          wave 3 — 0098's specify asking line, 0099's setup asking line, 0100's desk asking \
          line, 0101's implement residuals, then the 2026-10-27 implement-lead-adaptive-rigor \
          waves — 0102's sound-loop stakes lever, 0103's spoke lighter forms, 0104's implement \
-         keys"
+         keys, then the 2026-10-28 stakes-non-product-surfaces wave 1 — 0105's sound-loop \
+         planning stakes"
     );
 }
 
@@ -915,10 +917,20 @@ fn the_corpus_census_holds_through_the_log() {
     // `impl.fail.skip-unstated` and `impl.fail.gap-finding-missing` stay floors); `0103`'s
     // section reword, the five `stakes` conditions `0102`–`0104` set, `0104`'s `run-open` moment
     // and its twelve `set-rule-field`s move nothing here.
+    // The 2026-10-28 stakes-non-product-surfaces wave 1 carries `0105`, anchored to that
+    // session's D1: one `mint-rule` and nothing retired. `0105` mints the `patterns-sound-loop`
+    // floor `patterns-sound-loop.planning-quick-read`. So skill 857 → 858, total 1283 → 1284 and
+    // the skill floors 270 → 271, while the command rules hold at 426, the command floors at 130
+    // and the fail set at 41. Its five `reword-rule`s —
+    // `patterns-sound-loop.kind-keyed-library-wide`, `patterns-sound-loop.stakes-key`,
+    // `patterns-sound-loop.stakes-band`, `patterns-sound-loop.review-form-invariants` and
+    // `patterns-sound-loop.disclosure-line` — keep their rule's id, class and kind (the floor
+    // `patterns-sound-loop.review-form-invariants` stays a floor); its `set-condition`
+    // re-setting the `stakes` note moves nothing here.
     assert_eq!(command_rules, 426, "live command rules");
-    assert_eq!(skill_rules, 857, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1283, "live rules in total");
-    assert_eq!(skill_floors, 270, "skill floors");
+    assert_eq!(skill_rules, 858, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1284, "live rules in total");
+    assert_eq!(skill_floors, 271, "skill floors");
     assert_eq!(command_floors, 130, "declared command floors");
     assert_eq!(fail_nodes, 41, "command fail nodes");
 }

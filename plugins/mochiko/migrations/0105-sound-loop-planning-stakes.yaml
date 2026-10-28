@@ -1,0 +1,148 @@
+grammar: 1
+id: 0105-sound-loop-planning-stakes
+sequence: 105
+intent: >-
+  Widen the stakes lever's single home in patterns-sound-loop to the three planning outputs
+  (stakes-non-product-surfaces D1 items 1 in part, 3–6 and 8, D2, D3, DF4, DF6, as
+  review-amended): re-set the stakes condition's note to the class of the product work a planning
+  output steers; reword kind-keyed-library-wide to bind the key and band to specify's spec and map
+  delta, the feature desk's map writes and the architecture desk's store writes (superseding in
+  part the product-run-only scope clause of implement-lead-adaptive-rigor D8 and frame change 3);
+  reword stakes-key with the borrowed planning source, the higher label over one review of two
+  outputs, and the quick reader's raise; reword stakes-band with the planning clause (no smoke
+  precondition, the quick read for the full review, the blind list skippable, stated); widen the
+  floor review-form-invariants so invariants (1)–(4) bind the quick read and D8's completed-hunt
+  rule yields to the quick read (D1 item 1); reword disclosure-line so the stakes segment reads
+  n/a only off product work and the three outputs (D1 item 3); and mint the floor
+  planning-quick-read (D1 statement as amended at review, D3). The five rewords keep their ids,
+  classes, kinds, labels, pointers and anchors, their authority this header.
+  patterns-sound-loop.never-thins is kept whole and untouched (D1 item 2), and
+  author-grader-consolidation D1-universal-grader-independence as amended is kept (D1 item 9); D1
+  item 1's bend lands in full with review-specifications. No floor retired or lowered; floors 10
+  to 11, rules 21 to 22.
+anchor: 2026-10-28 stakes-non-product-surfaces
+hash: sha256:2bb4490ac6da693f4bd2710228ad59be1a080f3ca9bb7b474bf62c80ab3954c2
+changes:
+  - op: set-condition
+    schema: skill/patterns-sound-loop
+    name: stakes
+    spec:
+      values: [money, data, security, availability, wrong-answer, cosmetic]
+      resolution: entry-derived
+      note: >-
+        the harm class of the run's product work, or of the product work a planning output steers
+        — specify's spec and its map delta, the feature desk's map writes, the architecture
+        desk's store writes — the worst kind of thing that breaks if it is wrong. Proposed with
+        its cited line by the command's entry grading seat where it has one, else by the lead;
+        raised never lowered by the lead or the planning quick reader; ruled by the user at the
+        command's existing confirmation point. Absent where the reviewed object is neither —
+        governance surfaces, brainstorm records, plugin primitives and the other surfaces
+        `patterns-sound-loop.kind-keyed-library-wide` names.
+  - op: reword-rule
+    schema: skill/patterns-sound-loop
+    id: patterns-sound-loop.kind-keyed-library-wide
+    text: >-
+      The floor is kind-keyed and library-wide: any session, any command, whatever door the work
+      entered through. The stakes key and band bind product-run reviews and the reviews of three
+      planning outputs — `/mochiko:specify`'s spec and its map delta, `/mochiko:feature`'s map
+      writes, `/mochiko:architecture`'s store writes; a store write made inside
+      `/mochiko:implement`'s design phase follows implement's run stakes. Every other review whose
+      object is not product work — a plugin primitive, a governance surface, a brainstorm
+      record, a product baseline, an epic, `gates.md`, an operating doc, crate code, a migration
+      — has no harm class and no band, and runs in its fixed form; the gate jobs keep theirs.
+  - op: reword-rule
+    schema: skill/patterns-sound-loop
+    id: patterns-sound-loop.stakes-key
+    text: >-
+      The stakes key is the harm class of the run's product work: the worst kind of thing that
+      breaks if the run is wrong, read at run-open from one cited line, from a closed list —
+      money · data (loss or corruption) · security (or trust) · availability · wrong-answer
+      (shown) · cosmetic. A planning output borrows the class of the product work it steers, with
+      no list of its own: a spec takes its feature's class, read from its own spec lines — at
+      specify's intent confirm, before any spec line exists, from the confirmed intent synthesis
+      that lands verbatim as the spec's Intent section; a feature-map or architecture-store change
+      takes the highest class among the capabilities or store elements it touches, a harm read and
+      never a row count; where one review grades two outputs, as specify's stress-test grades the
+      spec and its map delta, the higher label governs. The command's entry grading seat proposes
+      it where the command has one, the lead where none exists; the lead carries it to the
+      run-open line — on a planning output, the command's existing confirmation point — and
+      may raise it, never lower it; the planning quick reader may raise it; no seat lowers it; the
+      user rules it. Where no line can be cited, the class reads as money, data or security —
+      the band where nothing thins. The key is never a count of files, cards, rows, gaps or users.
+      The word is "stakes": the governance `depth` dial keys code standards and is never read to
+      size process.
+  - op: reword-rule
+    schema: skill/patterns-sound-loop
+    id: patterns-sound-loop.stakes-band
+    text: >-
+      The class sets the band. Money, data, security: no step outside the floor thins, whatever
+      any probe says. Availability, wrong-answer, cosmetic: any `class: must` verification step
+      the command keys on `stakes` may thin, and only the four non-leg steps — the gap-finding
+      pass, the design audit, the code-minimalism lens, the design-stage blind list — may be
+      skipped, stated; each on a clean cold smoke, per the plan the user ruled at run-open, the
+      smoke's procedure `mochiko:testing-end-user`'s. Stakes keys the depth of the legs after the
+      trigger fires, never whether they fire: a review leg thins, never vanishes. The standard
+      thin plan (`references/STANDARD-THIN-PLAN.md`) is the worked example the lead cites by name
+      in the run-open line instead of inventing one — an example, never a menu. On the three
+      planning outputs there is no smoke precondition, since a document has nothing to run: at
+      availability, wrong-answer or cosmetic the full review may take the planning quick read
+      (`patterns-sound-loop.planning-quick-read`) and the command's blind list may be skipped,
+      each stated, the cited label line standing where a smoke result would; the plan check
+      lightens, never vanishes.
+  - op: reword-rule
+    schema: skill/patterns-sound-loop
+    id: patterns-sound-loop.review-form-invariants
+    text: >-
+      For the input-job reviews of a run's product work — implement's cycle grades, its final
+      validation, the design phase's drafts, and the same job in any command that reviews product
+      work — the form is the lead's per run, named in the run-open line, bound by five
+      invariants: (1) the reader never authored what it reads; (2) it reads the surface itself,
+      never the author's report; (3) it starts at FAIL; (4) it runs at or above the tier the work
+      was produced at, its model named on the spawn; (5) where the form is a blind hunt, the
+      reader stays blind — the two-message dispatch, nothing of the author's reasoning in its
+      brief. The input jobs `author-grader-consolidation` D8 names keep its conditions besides —
+      save the completed-hunt rule the planning quick read drops — and nothing else binds the
+      form. Invariants (1)–(4) bind the planning quick read as well, whose form is fixed by
+      `patterns-sound-loop.planning-quick-read`, never the lead's free pick. The gate jobs keep
+      their fixed forms: the primitive-edit audit and setup's governance validation. Named forms
+      — a cold pair review, one blind seat solo, a delta read of the changed surface, the smoke
+      probe, a plan-QA leg — are examples, never a menu; a form the lead invents is legal when
+      it meets the five and is named in the line.
+  - op: reword-rule
+    schema: skill/patterns-sound-loop
+    id: patterns-sound-loop.disclosure-line
+    text: >-
+      Every visit/run close report carries one line, pinned grammar: `floor: tripped|clear ·
+      seats: <who produced> / <who reviewed> · plans: <seat>:PASS|FAIL(n)[ dirty]… · stakes:
+      <class>|n/a · thinned: <step>(<cover>)…|none`. The `plans:` segment carries one entry per
+      producing seat — `n` the re-plan rounds consumed on the run's one shared counter, and
+      `dirty` appended where the seat changed the tree while planning. The `stakes:` segment
+      carries the ruled harm class, `n/a` only where the reviewed object is neither product work
+      nor one of the three planning outputs `patterns-sound-loop.kind-keyed-library-wide` names;
+      the `thinned:` segment names each step thinned or skipped with what still covered its
+      failure kind, `none` where nothing thinned. When clear: `floor: clear` alone — no seats,
+      plans, stakes or thinned segment, since no seats existed to name.
+  - op: mint-rule
+    schema: skill/patterns-sound-loop
+    section: patterns-sound-loop.sec.discipline
+    rule:
+      id: patterns-sound-loop.planning-quick-read
+      labels: [independence, evidence]
+      class: floor
+      text: >-
+        On the three planning outputs `patterns-sound-loop.kind-keyed-library-wide` names, a
+        change ruled availability, wrong-answer or cosmetic may skip the full review — the
+        completed open hunt of specify's stress-test, of the feature desk's card grade, of the
+        architecture desk's store grade — and takes the planning quick read in its place: one
+        read, before the user rules, by a seat that authored none of the change, of what the run
+        wrote, a new output read whole. It keeps every hard check of the full review it replaces
+        and every check that guards the record — the prototype walk and its drift check on a
+        UX-bearing feature, the agreement of spec, stories, derivation and map delta, the joined
+        IDs, sameness of meaning against the visit file — and drops only its open hunt — in
+        specify, the hunt for missing requirements, ambiguities and edge cases — which it
+        reports as "open hunt not run", never as "no gaps". Invariants (1)–(4) of
+        `patterns-sound-loop.review-form-invariants` bind it. Its reader may raise the label when
+        the change touches a money, data or security surface: the raise voids the skip and the
+        full review runs, while a blind list already skipped is not re-run, the full review's open
+        hunt covering missing journeys. Each command's grading rule names its own hard checks.
+      anchor: 2026-10-28 stakes-non-product-surfaces D1

@@ -1,6 +1,6 @@
 # Stakes key for non-product surfaces — decision record
 
-Status: **accepted** 2026-10-28 (user's word: "accept") · landed: `DECISIONS.md` row 2026-10-28 (rows 2026-10-27 and 2026-09-19 annotated), `BACKLOG.md` OQ2 item to the trail + new item *Planning-output stakes build* (gated on DF3), `ROADMAP.md` Next touched, index entry updated · unbuilt · frame hardened 2026-10-28 (user: "confirmed" — every line, size standard) · ruled 3 (D1–D3) · defaults DF1–DF6 confirmed · deciding finished 2026-10-28 — map empty · accept screen confirmed · cold review round 1 landed (0C/4I/10M), every survivor dispositioned by the user's word · verify pass pending
+Status: **accepted** 2026-10-28 (user's word: "accept") · landed: `DECISIONS.md` row 2026-10-28 (rows 2026-10-27 and 2026-09-19 annotated), `BACKLOG.md` OQ2 item to the trail + new item *Planning-output stakes build* (gated on DF3), `ROADMAP.md` Next touched, index entry updated · DF3 withdrawn 2026-10-28 by the user's word, build opened on `adaptive-rigor-build` · frame hardened 2026-10-28 (user: "confirmed" — every line, size standard) · ruled 3 (D1–D3) · defaults DF1–DF6 confirmed · deciding finished 2026-10-28 — map empty · accept screen confirmed · cold review round 1 landed (0C/4I/10M), every survivor dispositioned by the user's word · verify pass pending
 
 ## Topic (user's words)
 
@@ -402,7 +402,11 @@ flag. Provenance on each: `lead's guess, ratified`; blind-map angles named.*
 - **DF3 — The build waits for one real trial of the product lever.** No command is re-keyed under
   D1–D3 until the user has run implement's v0.123.0 lever on a real project and judged it fine
   (blind map A1; `implement-lead-adaptive-rigor` D9-evidence-users-trials, the user's own trials).
-  Case against shown: delays the ask; the levers differ. Lean weak.
+  Case against shown: delays the ask; the levers differ. Lean weak. **Withdrawn 2026-10-28 by the
+  user's word** after acceptance — offered A keep the gate · B drop it and build now · C build now,
+  hold the bump for the trial (lead's pick C); user: "happy for you to build on the branch. no need
+  to wait" — the build opens at once on `adaptive-rigor-build`, the trial no longer a precondition
+  (bet B's test and OQ1 move to the user's first runs after the build).
 - **DF4 — What else a low label lowers.** At low stakes the blind list may be skipped, stated in
   the run's report; the plan check lightens and never vanishes — as the product band treats the
   same steps (`patterns-sound-loop.stakes-band`). Case against shown: the blind list is cheap.

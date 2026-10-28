@@ -12,6 +12,53 @@ to body + rendered output), with the wave-open rulings in that session's `wave5-
 `DECISIONS.md` 2026-09-04 row. Pre-edit verbatim text:
 `git show 7d098b9:plugins/mochiko/skills/patterns-sound-loop/SKILL.md`. -->
 
+## [v0.124.0] Overview scope sentence and the `description:` stakes clause — "product work only" widened to the three planning outputs (stakes-non-product-surfaces D1)
+
+- **Disposition:** superseded → the Overview's rewritten closing sentence, "The key and the band
+  bind the reviews of a run's product work and of the three planning outputs that steer it
+  (`patterns-sound-loop.kind-keyed-library-wide`); on a plugin primitive, a governance surface or
+  a brainstorm record no harm class applies, there is no band, and the review runs in its fixed
+  form.", and the `description:` clause "Stakes, the harm class of a product run or of the
+  product work a spec, map or store change steers, key how deep the legs run".
+- **Tier failed:** n/a — supersession by ruling
+  (`.mochiko/brainstorms/stakes-non-product-surfaces/record.md` D1-planning-quick-read items 3
+  and 8 — `implement-lead-adaptive-rigor` D8-home-sound-loop's scope clause, "The key and the band
+  bind product-run reviews only", superseded in part for the three outputs — and
+  D2-borrow-product-label, a planning output's class read from the product work it steers;
+  `DECISIONS.md` 2026-10-28 row)
+- **Content:** verbatim —
+
+  ```
+  The key and the band bind the reviews of a run's product work only;
+  on a plugin primitive, a governance surface or a brainstorm record no harm class applies,
+  there is no band, and the review runs in its fixed form.
+  ```
+
+  and, from the `description:` value —
+
+  ```
+  Stakes, a product run's harm class, key how deep the legs run
+  ```
+
+- **Kept deliberately:** the sentence's non-product half byte for byte — D1 gives governance
+  surfaces, brainstorm records and plugin primitives no lever, so their fixed-form clause stands,
+  and the scope stays stated in the skill's own text beside the key, as
+  `implement-lead-adaptive-rigor` D8 (S1) ordered; both headline lines (neither names product
+  work); the Overview's other sentences; the `## Rules — delivered by mochiko-cli` block, its
+  seven `!` lines and the read-back sentence; the description's MUST/SHOULD form and every prior
+  trigger phrase.
+- **Additions riding the decision row (no strip):** the trigger phrase 'quick read' — the
+  `patterns-sound-loop.planning-quick-read` floor's home is this skill (D1). Body 3,315 → 3,406;
+  description 746 → 823, inside the 1,536 cap. The rule text — the `stakes` condition note,
+  `kind-keyed-library-wide`, `stakes-key`, `stakes-band`, `review-form-invariants` and
+  `disclosure-line` reworded and `planning-quick-read` minted — arrives by migration
+  `0105-sound-loop-planning-stakes.yaml`, which carries its own record and takes no entry here.
+- **Consumers assessed:** `patterns-transport-floor/SKILL.md:49` ("who produces, who reviews, how
+  deep") names no scope — unaffected. specify, feature and architecture consume the widened lever
+  through their own texts in W2/W3, not through this sentence. The router's
+  `patterns-sound-loop` row carried the same product-only clause; re-keyed in the same wave (its
+  own entry in `strips/mochiko.md`).
+
 ## [v0.123.0] Overview remit sentence — "who produces and who reviews" widened to "and how deep" (implement-lead-adaptive-rigor D8)
 
 - **Disposition:** superseded → the Overview's widened closing sentence, "this floor governs who

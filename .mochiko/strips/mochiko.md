@@ -126,6 +126,35 @@ run's entry points at. Rows: the `DECISIONS.md` 2026-10-15 "Engine follow-up rul
 diagrams, ruled" rows. The router body is unbudgeted: 48,995 → 49,956. Pre-edit verbatim text:
 `git show 437b654:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the planning-output stakes build (v0.124.0) — the
+`patterns-sound-loop` row's stakes clause widened to the three planning outputs. Ruling:
+`.mochiko/brainstorms/stakes-non-product-surfaces/record.md` D1-planning-quick-read items 3 and 8,
+D2-borrow-product-label, DF5 (`DECISIONS.md` 2026-10-28 row). The router body is unbudgeted:
+50,224 → 50,337. Pre-edit verbatim text: `git show 5691a67:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+## [v0.124.0] `patterns-sound-loop` row — "a product run's harm class, ruled by the user on the run-open line" widened to the three planning outputs
+
+- **Disposition:** superseded → `SKILL.md`:70 as rewritten: "(a product run's harm class, or the
+  class of the product work a spec, map or store change steers, ruled by the user at the
+  command's confirmation point — implement's run-open line — keys how deep"
+- **Tier failed:** n/a — supersession by ruling (`stakes-non-product-surfaces`
+  D1-planning-quick-read items 3 and 8 — `implement-lead-adaptive-rigor` D8-home-sound-loop's
+  scope clause superseded in part for the three outputs; D2-borrow-product-label, the class read
+  from the product work the output steers; DF5, the label ruled on each command's existing
+  confirmation point)
+- **Content (superseded, verbatim):**
+
+  ```text
+  (a product run's harm class, ruled by the user on the run-open line, keys how deep
+  ```
+- **Kept deliberately:** "a product run's harm class" and the run-open line, both kept for
+  implement's product runs; "keys how deep the legs run after the trigger fires — never whether
+  they fire", the never-thins set, the five review-form invariants, the trail, and the rest of
+  the row byte for byte.
+- **Consumers assessed:** no primitive quotes the row (grep "on the run-open line": router only);
+  the skill's own `description:` and Overview re-keyed the same wave (`strips/patterns-sound-loop.md`
+  [v0.124.0]).
+
 ## [v0.120.0] `/mochiko:architecture` row — "greenfield elicits through the shelf walk" and "Each visit walks the shelves you scope, takes your stance per row" superseded by the focus stage
 
 - **Disposition:** superseded → `SKILL.md`:142 as rewritten, the two passages verbatim —

@@ -1242,10 +1242,15 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // at 130 and 41. The twenty-three rewords — three in `0102`, one in `0103`, nineteen in
     // `0104` — and `0104`'s twelve `set-rule-field`s keep id, class and kind; `0103`'s section
     // reword, the five `stakes` conditions and `0104`'s `run-open` moment carry no rule.
+    // `0105` (the 2026-10-28 stakes-non-product-surfaces wave 1) mints one skill rule and
+    // retires none: the `patterns-sound-loop` floor `patterns-sound-loop.planning-quick-read` —
+    // skill 857 → 858, the skill floors 270 → 271, the command rules, the command floor figure
+    // and the fail set unmoved at 426, 130 and 41. Its five rewords keep id, class and kind; its
+    // `set-condition` re-setting the `stakes` note carries no rule.
     assert_eq!(command_rules, 426, "live command rules");
-    assert_eq!(skill_rules, 857, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1283, "live rules in total");
-    assert_eq!(skill_floors, 270, "skill floors");
+    assert_eq!(skill_rules, 858, "live skill rules");
+    assert_eq!(command_rules + skill_rules, 1284, "live rules in total");
+    assert_eq!(skill_floors, 271, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
     // sentence), so the declared floors were 110 — the same figure the shipped checker reported —
