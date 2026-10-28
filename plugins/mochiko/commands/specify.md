@@ -61,8 +61,10 @@ Every run has a goal and an explicit done condition; a run is never goal-less.
    flip `live`, the capability reading `in-flight` while live rows exist), deltas attach,
    `FEATURES.md` and `.mochiko/specs/index.md` rows touch; it was independently stress-tested
    from the files — spec + stories + capability/row derivation + map delta in one pass, the
-   served prototype walked when UX-bearing — with no blocking gap left open; and the user
-   accepted the whole — intent, requirements, experience, derivation, and selection together.
+   served prototype walked when UX-bearing; where the user ruled the quick read on the stakes
+   line, that read in its place (`spec.stress-test-quick-read`), the open hunt reported not
+   run — with no blocking gap left open; and the user accepted the whole — intent,
+   requirements, experience, derivation, and selection together.
 3. **Not done — default FAIL:** the `kind: fail` rules of `spec.sec.fail-conditions` — their
    count is the `kind: fail` line under `pins` in the preamble block — any one standing fails
    the run. A fail-conditions block whose end-line count disagrees with that pin is the

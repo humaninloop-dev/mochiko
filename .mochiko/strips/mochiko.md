@@ -132,6 +132,32 @@ diagrams, ruled" rows. The router body is unbudgeted: 48,995 → 49,956. Pre-edi
 D2-borrow-product-label, DF5 (`DECISIONS.md` 2026-10-28 row). The router body is unbudgeted:
 50,224 → 50,337. Pre-edit verbatim text: `git show 5691a67:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+<!-- Wave context: wave 2 of the planning-output stakes build (v0.124.0) — the
+`/mochiko:specify` row qualified by the skips the user rules on the stakes line. Ruling:
+`.mochiko/brainstorms/stakes-non-product-surfaces/record.md` D1-planning-quick-read, DF4,
+D3-lead-proposes-label (`DECISIONS.md` 2026-10-28 row). The router body is unbudgeted:
+50,337 → 50,483. Pre-edit verbatim text: `git show e9a13e2:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+## [v0.124.0] `/mochiko:specify` row — the blind journey list and the stress-test qualified by the user's ruling on a low stakes line
+
+- **Disposition:** superseded → `SKILL.md`:140 with "(skippable, stated, where you rule the skip
+  on a low stakes line)" after "a blind journey list surfacing what you missed" and "; a quick
+  read where you rule it on a low stakes line, the open gap hunt not run" after "prototype walked,
+  map delta graded"
+- **Tier failed:** n/a — supersession by ruling (`stakes-non-product-surfaces`
+  D1-planning-quick-read — the full stress-test skipped where a low label's quick read is ruled,
+  the quick read keeping the prototype walk and the map-delta check (items 1, 7); DF4 — the blind
+  list may be skipped, stated; D3-lead-proposes-label — the user rules the label)
+- **Content (superseded, verbatim; each read unconditionally before this wave):**
+
+  ```text
+  a blind journey list surfacing what you missed
+  independently stress-tested from the file — prototype walked, map delta graded
+  ```
+- **Kept deliberately:** both phrases byte for byte, and the rest of the row.
+- **Consumers assessed:** no primitive quotes the row; specify's Goal step qualified the same wave
+  (`strips/specify.md` [v0.124.0]).
+
 ## [v0.124.0] `patterns-sound-loop` row — "a product run's harm class, ruled by the user on the run-open line" widened to the three planning outputs
 
 - **Disposition:** superseded → `SKILL.md`:70 as rewritten: "(a product run's harm class, or the

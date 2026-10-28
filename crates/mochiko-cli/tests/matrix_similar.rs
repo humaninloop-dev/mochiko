@@ -1114,7 +1114,14 @@ fn the_detector_reproduces_its_figures_over_the_command_family() {
         // `spec.lead-latitude`. Raw runs over the `1..103` and `1..104` logs show the
         // plan-approval cluster cut to its `brainstorm` pair and the staffing-latitude cluster
         // gone. SUPPRESSED zero unchanged.
-        (426, 21_293, 0, 55),
+        // Re-measured after the 2026-10-28 stakes-non-product-surfaces wave 2 (`0106`): it mints
+        // three `specify` rules, moving the scan 426 to 429 and the pair count 21,293 to 21,561.
+        // By kind, counted from the replayed state: `constraint` 180 → 181 (+180), `duty`
+        // 47 → 48 (+47), `fail` 41 → 42 (+41) — +268, the whole of the move. The suppressed
+        // count holds at 55: the wave added no allowlist row, no row names a rule it rewords,
+        // and raw runs over the `1..105` and `1..106` logs list the same clusters, so no mint
+        // raises an edge and no reword moves a pair. SUPPRESSED zero unchanged.
+        (429, 21_561, 0, 55),
         "rules scanned · in-kind pairs scored · clusters · allowlist-suppressed edges"
     );
 }
@@ -1375,8 +1382,17 @@ fn the_detector_reproduces_the_live_runs_figures_over_the_corpus() {
     // corpus reports 76 clusters over 182 edges before and after the wave, the listings
     // identical, read from raw `migrate validate --report` runs over the old (`1..104`) and new
     // (`1..105`) logs.
-    assert_eq!(report.scanned, 1284, "rules scanned");
-    assert_eq!(report.scored, 225_650, "in-kind pairs scored");
+    // Re-measured after its wave 2 (`0106`): four rules minted and none retired move the scan
+    // 1,284 to 1,288 and the pair count 225,650 to 227,063 — the three `specify` rules (see the
+    // command-family pin above) and the `review-specifications` must
+    // `review-specifications.quick-read`; none extends a block. By kind: `constraint` 599 → 601
+    // (+1,199), `duty` 173 → 174 (+173), `fail` 41 → 42 (+41) — +1,413, the whole of the move.
+    // `suppressed_hits` holds at 182: the wave added no allowlist row and no row names a rule
+    // it rewords. SUPPRESSED zero: with an empty allowlist the corpus reports 76 clusters over
+    // 182 edges before and after the wave, the listings identical, read from raw `migrate
+    // validate --report` runs over the old (`1..105`) and new (`1..106`) logs.
+    assert_eq!(report.scanned, 1288, "rules scanned");
+    assert_eq!(report.scored, 227_063, "in-kind pairs scored");
     assert_eq!(report.clusters.len(), 0, "clusters");
     assert_eq!(report.suppressed_hits, 182, "allowlist-suppressed edges");
 }

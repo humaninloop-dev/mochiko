@@ -9,7 +9,9 @@ allowed-tools: Bash(mochiko-cli *)
 Gap-finder over a drafted spec — severity-bucketed gaps plus clarifying questions a
 stakeholder can answer. The seat hunts what is missing, ambiguous, assumed, or contradictory
 in a spec that already exists; a sparse idea is thought through before a spec exists, in
-`/mochiko:specify`'s intent and story stages.
+`/mochiko:specify`'s intent and story stages. Where a `/mochiko:specify` run's user ruled the
+quick read on its stakes line, the seat takes the quick-read form instead
+(`review-specifications.quick-read`): the open hunt drops, every other check runs.
 
 ## Rules — delivered by mochiko-cli
 
@@ -38,6 +40,10 @@ prints and the ids its `floors:` line lists; a blank or partial read-back is a s
 halt and surface it.
 
 ## Procedure
+
+Where the caller's run ruled the quick read on its stakes line, the quick-read form
+(`review-specifications.quick-read`) narrows the hunt below: run only what that rule keeps, and
+report as it says.
 
 Hunt the user-facing categories for the six requirement-defect classes: **missing
 requirements** (mentioned-not-specified · implicit expectations · dependencies on undefined

@@ -171,3 +171,153 @@ audit: unit 2 — patterns-sound-loop SKILL.md + render (skill pair) · w1-gate-
   w1-gate-grader (gate) — all general-purpose, opus · plans: w1-p1-schema:PASS(0) ·
   w1-p2-prose:PASS(0) · w1-p3-crate:PASS(0) · stakes: n/a · thinned: none`. The contract suite
   (Docker) runs at the bump, not per wave. Wave commit next; W2 opens after it.
+
+## 2026-10-28 — W1 committed; W2 opened, plan written, P1 and P2 planning
+
+- Wave 1 commit `e9a13e2` ("W1: patterns-sound-loop reaches the planning outputs"), 18 paths.
+- `wave2-specify.md` written: sequence 0106 over `command/specify`, `skill/review-specifications`,
+  `skill/review-seat-plan`; seats P1 schema · P2 prose · P3 crate pins; up to seven gate units.
+  Carriers: specify's `stakes` condition (read at the intent confirm), the stress-test keyed with a
+  minted `spec.stress-test-quick-read`, the prototype walk inside both, the blind journey list's
+  stated skip, the two fail rules' `enforces:` widened, a minted `spec.fail.skip-unstated`, the
+  trail's home (OQ3, P1 proposes); `review-specifications`' `stakes` condition and minted
+  `quick-read` form (the D8 bend's home); `review-seat-plan`'s `stakes` note re-set and
+  `once-per-seat-in-band` reworded for a run with no smoke (the W1 peer's coverage note).
+- P1 (`w2-p1-schema`) and P2 (`w2-p2-prose`), `general-purpose`, `model: opus`, dispatched
+  plan-only in parallel. Snapshot: only the wave plan untracked. This wave's peer briefs paste the
+  plan text inline (W1's path-only deviation corrected).
+
+## 2026-10-28 — W2 plans returned; P1 to its peer
+
+- P2's plan (372 lines) asked three questions; the lead answered Q1 (the Procedure paragraph in
+  scope only if its unconditional "Hunt the …" order would read false — P2 holds that it does, a
+  one-sentence pointer) and Q2 (a qualifier that narrows a prior claim takes a supersession entry;
+  a pure addition rides the decision row); Q3 (the trail home) waits on P1's grade.
+- P1's plan (~420 lines, the full `0106` drafted, 17 ops + one allowlist row; dry run 0 rejecting ·
+  121 advisory — +3 `condition-coverage`, accepted as the closed class list): specify 73 → 76
+  rules, 19 → 20 floors, 10 → 11 fails; `review-specifications` 33 → 34; `review-seat-plan` 16;
+  OQ3 proposal: `spec.md`'s header block, `> Lowered:` lines beneath `> Status:` (`check` allow);
+  `review-specifications.quick-read` keeps the important-tier checks (card wins over the wave
+  plan's paraphrase); `spec.plan-approval` left unkeyed (a common stub; the plan check thins
+  through `review-seat-plan`). Pin outside every owner: `evals/contract/run.py`
+  `EXPECTED["specify"]` — given to P3 (§2 widened).
+- **Disclosed deviation, again:** the wave plan §0 promised the plan text inline; at ~420 lines the
+  lead sent the peer the seat's own unedited file by path instead and amended §0 to say so. The
+  render was not pasted this time either — the peer invokes the skill and the brief quotes the
+  seven items verbatim. Same intent (never a summary), not the floor's letter; the user may rule
+  the inline form back in.
+- P1's plan sent to peer `w2-p1-peer` (`general-purpose`, `model: opus`).
+- `PLAN GRADE: w2-p1-schema · FAIL · (1) scope fidelity` — the drafted
+  `review-specifications.quick-read` dropped all six `gap-taxonomy` classes where the landed floor
+  `planning-quick-read` and D1 (S4) name three (missing requirements, ambiguities, edge cases).
+  **The wave's one shared re-plan is consumed**; a second consumption goes to the user. Re-plan
+  ordered with the fix and the lead's rulings: Q1 important-tier checks kept · Q2 OQ3 home
+  confirmed · Q3 `spec.plan-approval` unkeyed, the fail text naming the
+  `review-seat-plan.once-per-seat-in-band` route · the skill rule's raise scoped to a money, data
+  or security surface (D3) · the specify note kept lean. The peer re-checked every tree claim
+  first-hand; its one unreproduced claim (`check` allow on `> Lowered:` lines) goes to the gate.
+- P1 re-planned in place: the skill quick read drops only the three named classes + the
+  `complete-coverage` sweep (assumption gaps, contradictions, excess/unpaid scope and
+  `smuggled-posture` stay); the raise scoped per D3; the note trimmed; the fail names
+  `review-seat-plan.once-per-seat-in-band`; the allowlist row dropped (no near-dup edge now).
+  `PLAN GRADE: w2-p1-schema · PASS · none` (round 2, same peer; re-ran 0106 at hash `f7d5053f…`
+  first-hand: 0 rejecting · 121 advisory; 1288 / 227,063 / 0 / 182; three views +115/−22).
+  Approved with one lead-ordered clause (peer advisory 4: "hunted across the user-facing
+  categories"); P1 resumed. Q3 relayed to P2 (the stakes line ruled at the intent confirm; the
+  trail in `spec.md`'s header, `> Lowered:` lines; the full op list).
+
+## 2026-10-28 — W2 P1 landed `0106`; P2 to its peer; P3 planning
+
+- P1 landed `0106-specify-planning-stakes.yaml` (`sha256:39ced306…`, 18 ops: two
+  `set-condition` on specify / `review-specifications`, one re-set on `review-seat-plan`, one
+  `set-moment`, six rewords, three `set-rule-field enforces:`/`when:` — two `when:`, two
+  `enforces:` — and four mints: `spec.stress-test-quick-read`, `spec.lowering-trail`,
+  `spec.fail.skip-unstated`, `review-specifications.quick-read`) and three regenerated views
+  (+116/−22). validate 0 rejecting · 121 advisory · 1288 / 227,063 / 0 / 182; no allowlist row;
+  specify 76 rules · 20 floors · 11 fails. Lead's `git status`: only `0106` and the three views
+  new. Pre-check by the seat: the log byte-identical to plan time.
+- P2 revised for Q3 (d1b dropped; d3 "narrows the hunt"; d1–d4 each a supersession entry) and went
+  to peer `w2-p2-peer`; the shared re-plan being spent, a FAIL there goes to the user. P2's
+  worry that the spec template has no header block: the lead checked — `mochiko-cli template spec`
+  carries `> Spec:` · `> Created:` · `> Status:` (lines 138–140); the gate grader runs `check` on
+  a full body carrying `> Lowered:` lines.
+- P3 (`w2-p3-crate`) dispatched plan-only against the landed tree.
+- `PLAN GRADE: w2-p2-prose · PASS · none`. Advisory 1 taken as a lead-ordered fix: every prose
+  sentence keyed on the user's stakes-line ruling, never on the label alone (the landed carriers
+  say "where the user ruled that on the stakes line"). Advisory 2 (the Goal step lists `spec.md`
+  contents without the `> Lowered:` block, nor `> Status:`) left for unit 2's grader to rule.
+  Advisory 3 already on the gate brief. The peer's haiku `Explore` also returned no report — the
+  third seat this build to see it; locate reads ran on-seat, disclosed. P2 resumed with the
+  landed op list, hash and rule-text figures.
+- P2 executed: 7 files (`specify.md` Goal clause · `review-specifications/SKILL.md` two sentences
+  · router row `mochiko/SKILL.md:140` · strips `specify`/`review-specifications`/`mochiko`
+  [v0.124.0] · budget rows 63, 94); `check` allow ×7, each write `cmp`-identical to its checked
+  draft; every sentence keyed on the user's stakes-line ruling. Figures (two runs, control = log
+  without 0106): review-specifications payload 20,317 (+2,138; standing +4,143) · review-seat-plan
+  14,103 (+290; standing +1,402). Hash correction: the relay's `sha256:39ced306…` is 0106's own
+  stamp; the live state at 1..106 is `sha256:1bc8198c…` (94 docs · 1288 rules), which the budget
+  rows quote. Ruled HOLDS still owed to transcribe.
+- P3 plan returned (write set: fidelity.rs · matrix_similar.rs · validate.rs · run.py ·
+  README.md:274; `expected-skills.json` untouched — every skill floor set equals its render);
+  baseline red 4 + the opt-in sweep + the freeze cross-check. Its haiku `Explore` also returned no
+  report (fourth seat). Sent to fresh generic peer `w2-p3-peer` (opus), render pasted verbatim,
+  plan by path.
+- Gate grader `w2-gate-grader` (`general-purpose`, `model: opus`, the `validation-primitive-edit`
+  render pasted verbatim, 149 lines) dispatched on units 1–5 while P3 plans — their files are
+  frozen (P3 writes only `crates/mochiko-cli/tests/*` and `evals/contract/*`); the same seat is
+  resumed for units 6–7 after P3 lands (one seat per wave). Brief carried the units, paths,
+  pre-pass commands, the editor's named overage, the live-state hash note, the `> Lowered:`
+  `check` ask and the Goal-step ruling ask for unit 2, and the ruling-keyed prose check. Report:
+  `reports/audit-w2.md`.
+- `PLAN GRADE: w2-p3-crate · PASS · <none>` (`w2-p3-peer`: figures, 4 reds, empty-allowlist
+  listings and the skill floor sets re-measured first-hand; no `Explore` dispatched — every read a
+  completeness-sensitive claim check, kept on-seat). P3 approved and resumed. Advisories: (1)
+  run.py anchor line off by one, text-anchored, harmless; (2) `evals/plan/specify/observable.yaml`'s
+  D8 partition lacks 0106's three new specify ids — outside every W2 write set; precedent
+  confirmed (0104 left `impl.lowering-trail`/`impl.smoke-probe` out of the implement rubric; grep
+  0 hits), and `check-rubric` is in no CI or release gate — deferred, a BACKLOG line at the ship
+  landing; (3) unit 7's gate brief names `run.py` beside the README; (4) opt-in sweep figure left
+  to P3's execution return.
+- P3 executed: five files (fidelity.rs · matrix_similar.rs · validate.rs · run.py · README.md:274),
+  +57/−19, `check` allow ×5 (`--plugin-root` needed). After: `cargo test --all --no-fail-fast`
+  exit 0, 765 passed 0 failed over 20 result lines; opt-in sweep `MOCHIKO_FULL_SIMILAR=1` ok
+  (1288 · 227_063 · 0 · 182); fmt and clippy `-D warnings` exit 0; freeze cross-check every row
+  "missing [] extra []" (specify 20/20, commands 131). Units 6–7 held for the gate grader once
+  units 1–5 return — one seat per wave, no mid-grade message.
+
+## 2026-10-28 — W2 gate audit units 1–5: all PASS, 0 blocking
+
+- audit: unit 1 — 0106-specify-planning-stakes.yaml + view diff (schema content) · w2-gate-grader · opus · 4 files · 1 rounds · 0 blocking
+- audit: unit 2 — specify.md + render (command pair) · w2-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+- audit: unit 3 — review-specifications SKILL.md + render (skill pair) · w2-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+- audit: unit 4 — review-seat-plan SKILL.md + render (skill pair) · w2-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+- audit: unit 5 — mochiko router SKILL.md (prose primitive) · w2-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+- Report: `reports/audit-w2.md`. Pre-pass first-hand: validate 0 rejecting · 121 advisory (control
+  118; the +3 are legal `condition-coverage` advisories on `review-specifications.stakes`);
+  status 1..106 · `sha256:1bc8198c…` · 1288 rules; views ≡ emit; every budget figure reproduces.
+  Both overages (review-specifications standing +4,143, review-seat-plan +1,402) ruled HOLDS.
+- Lead asks: (a) `check` admits `> Lowered:` lines — dry-run on a filled spec body at
+  `.mochiko/specs/…/spec.md` allowed with two trail lines, with `> Lowered: none`, and with none;
+  a `## Bogus` negative control denied (exit 4); nothing written. (b) the Goal step need not name
+  the trail block — it lists section-level content and names no header line; the seat's
+  argument holds.
+- Advisories, deferred to BACKLOG lines at the ship landing: `spec.handed-in-slate` still reads
+  "never the blind journey list" unqualified (reconciled only from the blind-list side); a missing
+  `> Lowered: none` has no fail behind it; pre-existing, the filled spec template trips the
+  10-line `## Intent` budget (11 lines, the `---` separator). No `Explore` dispatched; locate
+  greps inline, disclosed in the report.
+- Grader resumed for units 6 (crate code) and 7 (contract freeze, `run.py` named per the P3
+  peer's advisory 3).
+
+## 2026-10-28 — W2 gate audit units 6–7: both PASS; W2 closes
+
+- audit: unit 6 — crate tests (fidelity.rs, matrix_similar.rs, validate.rs · crate non-author review) · w2-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+- audit: unit 7 — run.py + contract README, expected-skills.json cross-checked (contract freeze) · w2-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+- First-hand: `cargo test --all --no-fail-fast` 765 passed 0 failed; fmt, clippy `-D warnings`
+  exit 0; opt-in sweep 1 passed. Pins match: 1288 rules · command 429 · command floors 131 ·
+  fails 42 · skill floors 271 · 1..106 · 227,063 / 0 / 182 · command family (429, 21_561, 0, 55).
+  Freeze: six command sets ≡ live `floors:` (131, specify 20); `expected-skills.json` 36 rows ≡
+  render (271). Docker contract suite not run here — owed at the bump.
+- Ruled HOLDS transcribed into the `review-specifications` and `review-seat-plan` budget rows
+  (units 3 and 4, `reports/audit-w2.md`). All seven units PASS, 0 blocking; one re-plan spent
+  (P1). W2 committed; W3 opens.

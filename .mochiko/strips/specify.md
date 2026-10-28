@@ -36,6 +36,33 @@ the [v0.107.0] entry below: `.mochiko/brainstorms/cli-schema-delivery/record.md`
 the `DECISIONS.md` 2026-09-05 row and that session's `wave6-plan.md`. Pre-edit verbatim text:
 `git show 62aa99d:plugins/mochiko/commands/specify.md`. -->
 
+## [v0.124.0] the Goal step's stress-test clause — qualified by the quick read the user rules on the stakes line
+
+- **Disposition:** superseded → the clause as qualified: "it was independently stress-tested from
+  the files — spec + stories + capability/row derivation + map delta in one pass, the served
+  prototype walked when UX-bearing; where the user ruled the quick read on the stakes line, that
+  read in its place (`spec.stress-test-quick-read`), the open hunt reported not run — with no
+  blocking gap left open"
+- **Tier failed:** n/a — supersession by ruling (`.mochiko/brainstorms/stakes-non-product-surfaces/record.md`
+  D1-planning-quick-read — statement, items 1 and 7 — D2-borrow-product-label and
+  D3-lead-proposes-label; `DECISIONS.md` 2026-10-28 row; rules carried by
+  `0106-specify-planning-stakes.yaml`)
+- **Content:** verbatim, read unconditionally before this wave — "it was independently
+  stress-tested from the files — spec + stories + capability/row derivation + map delta in one
+  pass, the served prototype walked when UX-bearing — with no blocking gap left open". Pre-edit
+  file: `git show e9a13e2:plugins/mochiko/commands/specify.md`.
+- **Kept deliberately:** every word of the clause — the full stress-test stands at money, data or
+  security and wherever the user did not rule the quick read, and "with no blocking gap left open"
+  binds both forms (D1 item 7: the two fail rules kept, enforced by the quick read as far as its
+  hard checks reach). Identity & Mission, Entry and the Not-done line unchanged — the line cites
+  the printed `kind: fail` pin, so the eleventh fail (`spec.fail.skip-unstated`) needs no edit. The
+  Intent-section list is unchanged: the stakes line is ruled with the intent synthesis, never
+  written into the Intent section, and the trail lives in `spec.md`'s header block
+  (`spec.lowering-trail`), which the Goal does not enumerate. The paragraph's tail re-wrapped to
+  the file's width.
+- **Consumers assessed:** n/a — a command; the router's `/mochiko:specify` row qualified the same
+  wave (`strips/mochiko.md` [v0.124.0]).
+
 ## [v0.119.0] the Goal step's stories clause — narrowed to the slate's `in` rows; the confirmed slate joins the done condition
 
 - **Disposition:** superseded → "stories as `stories/US-*.md` files for `in` rows (…)", with "a confirmed **slate** in the User Stories index (every candidate row ruled `in` or `out` with its disposition, the `out` rows in the `### Struck candidates` sub-table)" added after the Intent clause

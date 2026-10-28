@@ -424,6 +424,9 @@ EXPECTED = {
                 # `0061-specify-on-engine` ("2026-10-11 implement-brainstorm-led D3") minted the
                 # thinking-stage pointer floor.
                 "spec.thinking-stage",
+                # `0106-specify-planning-stakes` ("2026-10-28 stakes-non-product-surfaces D1")
+                # minted the floor fail node for a thinned or skipped step left out of the trail.
+                "spec.fail.skip-unstated",
             }
         ),
         23_434,
