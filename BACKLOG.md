@@ -28,11 +28,16 @@ item **built 2026-10-28 at v0.123.0** on branch `adaptive-rigor-build` (trail); 
 record, its cold-review and verify reports, and
 `.mochiko/brainstorms/implement-lead-adaptive-rigor/build-log.md`.)*
 
-- [ ] **Stakes key for non-product surfaces — later session** (2026-10-27; provenance:
-  `implement-lead-adaptive-rigor` OQ2, cold review S1, frame change 3) — what "stakes" means for
-  a plugin-primitive edit, a governance surface or a brainstorm record, and whether the gate
-  jobs (`author-grader-consolidation` D2, D3, D7; GI-004) may ever thin under it; until ruled,
-  non-product surfaces have no band and those reviews run in their fixed forms.
+- [ ] **Planning-output stakes build** (2026-10-28; provenance:
+  `.mochiko/brainstorms/stakes-non-product-surfaces/record.md` D1–D3 as review-amended, DF1–DF6;
+  `DECISIONS.md` 2026-10-28) — **gated on DF3**: starts only after the user has run implement's
+  v0.123.0 stakes lever on a real project and judged it fine. Lands D1-planning-quick-read's
+  eleven-item list exactly (the `patterns-sound-loop` rewrites, the D8 bend, the specify fail
+  rules' `enforces:`, the quick-read homes in `review-specifications`, feature's card grade and
+  `arch.seat-tech-lead-grader`) and re-keys specify, feature and architecture on D2/D3. Plan
+  decides OQ2 (which existing confirmation point hosts the label per command) and OQ3 (specify's
+  home for the lowering line); trial reads close OQ1 and test bets A–C. Mind the
+  `impl.sec.tools` inline-ceiling item below if implement's text is touched.
 - [ ] **Split implement's tools section before it grows** (2026-10-28; provenance:
   `implement-lead-adaptive-rigor` build log, the inline-ceiling entry, and `wave3-implement-ship.md`)
   — `impl.sec.tools` renders at 29,609 chars, 391 under the Bash tool's ≈30,000-char inline
