@@ -138,6 +138,44 @@ D2-borrow-product-label, DF5 (`DECISIONS.md` 2026-10-28 row). The router body is
 D3-lead-proposes-label (`DECISIONS.md` 2026-10-28 row). The router body is unbudgeted:
 50,337 → 50,483. Pre-edit verbatim text: `git show e9a13e2:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+<!-- Wave context: wave 3 of the planning-output stakes build (v0.124.0) — the
+`/mochiko:architecture` row's blind list qualified by the skip the user rules on a ruling visit's
+stakes line. Ruling: `.mochiko/brainstorms/stakes-non-product-surfaces/record.md`
+D1-planning-quick-read (statement and item 11), DF4, DF5, D3-lead-proposes-label (`DECISIONS.md`
+2026-10-28 row); the schema half is `0107-desk-planning-stakes.yaml`. The `/mochiko:feature` row
+names no card grade and no blind list, so it holds. The strip is owed because the router row
+itself changed; `feature.md` and `architecture.md` are unchanged, so their strip files take
+nothing. The router body is unbudgeted: 50,483 → 50,599. Pre-edit verbatim text:
+`git show 07123f6:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+## [v0.124.0] `/mochiko:architecture` row — the ruling visit's blind list qualified by the user's ruling on a low stakes line
+
+- **Disposition:** superseded → `SKILL.md`:142 with "(skippable, stated, where you rule the skip
+  on a ruling visit's low stakes line, never on a greenfield first visit)" after "a blind list for
+  what the shelf lacks"
+- **Tier failed:** n/a — supersession by ruling (`stakes-non-product-surfaces`
+  D1-planning-quick-read — the lever reaches the architecture desk's store writes, a ruling visit
+  only, since a delta visit writes nothing to the store; DF4 — the blind list may be skipped,
+  stated; DF5 — the label read on the visit's goal line; D3-lead-proposes-label — the user rules
+  the label; carried by `arch.focus-blind-list` as reworded in `0107`, the skip never on a
+  greenfield first visit, whose candidates `arch.first-visit-stage` takes from the list)
+- **Content (superseded, verbatim; read unconditionally on a multi-part ruling visit before this
+  wave):**
+
+  ```text
+  a blind list for what the shelf lacks — saved in a visit file
+  ```
+- **Kept deliberately:** the phrase byte for byte, and the rest of the row — the greenfield clause
+  "from the shelf rows and a blind list" holds (the stakes-line skip never applies there); the
+  delta-visit sentence's "the same way" holds, the qualifier naming a ruling visit's stakes line,
+  which a delta visit never states; the row names no tech-lead grade, so the store grade's quick
+  read (`arch.store-grade-quick-read`) makes nothing in it false.
+- **Consumers assessed:** no primitive quotes the row (grep "a blind list for what the shelf
+  lacks": router only); `README.md`:133 "tech-lead grades" holds, the quick read being a grade;
+  `architecture.md` and `feature.md` prose unchanged this wave — neither names the grade's depth
+  or the blind list, and their Not-done lines cite the printed `kind: fail` pin, so the third fail
+  each (`feat.fail.skip-unstated`, `arch.fail.skip-unstated`) needs no edit.
+
 ## [v0.124.0] `/mochiko:specify` row — the blind journey list and the stress-test qualified by the user's ruling on a low stakes line
 
 - **Disposition:** superseded → `SKILL.md`:140 with "(skippable, stated, where you rule the skip

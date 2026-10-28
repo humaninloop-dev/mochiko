@@ -247,6 +247,9 @@ EXPECTED = {
                 # `0069-desk-on-engine` ("2026-10-11 implement-brainstorm-led D3") minted the
                 # thinking-stage pointer floor.
                 "arch.thinking-stage",
+                # `0107-desk-planning-stakes` ("2026-10-28 stakes-non-product-surfaces D1")
+                # minted the floor fail node for a thinned or skipped step left out of the trail.
+                "arch.fail.skip-unstated",
             }
         ),
         23_026,
@@ -296,6 +299,9 @@ EXPECTED = {
                 # The same migration ("2026-10-15 engine-follow-up") minted the floor fail node
                 # for a card cut with no ruled set behind it.
                 "feat.fail.card-outside-set",
+                # `0107-desk-planning-stakes` ("2026-10-28 stakes-non-product-surfaces D1")
+                # minted the floor fail node for a thinned or skipped step left out of the trail.
+                "feat.fail.skip-unstated",
             }
         ),
         21_020,

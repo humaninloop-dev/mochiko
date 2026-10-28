@@ -1254,9 +1254,16 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // figure 130 → 131 and the fail set 41 → 42, the skill floors unmoved at 271. Its six rewords
     // and four `set-rule-field`s keep id, class and kind; its three `set-condition`s and its
     // `set-moment` carry no rule.
-    assert_eq!(command_rules, 429, "live command rules");
+    // `0107` (its wave 3) mints six rules and retires none, three on each desk: the musts
+    // `feat.card-grade-quick-read` and `feat.lowering-trail` and the floor fail node
+    // `feat.fail.skip-unstated` on `feature`, and the musts `arch.store-grade-quick-read` and
+    // `arch.lowering-trail` and the floor fail node `arch.fail.skip-unstated` on `architecture` —
+    // command 429 → 435, the command floor figure 131 → 133 and the fail set 42 → 44, the skill
+    // rules and skill floors unmoved at 859 and 271. Its six rewords and three `set-rule-field`s
+    // keep id, class and kind; its two `set-condition`s and two `set-moment`s carry no rule.
+    assert_eq!(command_rules, 435, "live command rules");
     assert_eq!(skill_rules, 859, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1288, "live rules in total");
+    assert_eq!(command_rules + skill_rules, 1294, "live rules in total");
     assert_eq!(skill_floors, 271, "skill floors");
     // The record's 112 is a `grep -c 'class: floor'` figure. Two of those matches are prose
     // inside rule text (architecture.yaml and implement.yaml each name `class: floor` in a
@@ -1268,8 +1275,9 @@ fn the_shipped_corpus_matches_its_recorded_census() {
     // `arch.thinking-stage` to 124, and `0076`'s `impl.fail.design-outside-ruled-set` and
     // `0077`'s `impl.thinking-stage` to 126, and `0087`'s `feat.thinking-stage` and
     // `feat.fail.card-outside-set` and `0088`'s `setup.thinking-stage` to 129, and `0092`'s
-    // `impl.fail.cards-outside-order` to 130, and `0106`'s `spec.fail.skip-unstated` to 131.
-    assert_eq!(command_floors, 131, "declared command floors");
+    // `impl.fail.cards-outside-order` to 130, and `0106`'s `spec.fail.skip-unstated` to 131, and
+    // `0107`'s `feat.fail.skip-unstated` and `arch.fail.skip-unstated` to 133.
+    assert_eq!(command_floors, 133, "declared command floors");
 
     let fail_nodes = state
         .docs
@@ -1279,7 +1287,7 @@ fn the_shipped_corpus_matches_its_recorded_census() {
         .flat_map(|s| s.rules())
         .filter(|r| r.is_fail())
         .count();
-    assert_eq!(fail_nodes, 42, "command fail nodes");
+    assert_eq!(fail_nodes, 44, "command fail nodes");
 }
 
 /// The kinds the shipped corpus does not carry yet, each with the wave that lands it.

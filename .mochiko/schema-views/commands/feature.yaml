@@ -35,12 +35,20 @@ conditions:
       to /mochiko:specify, a route override or an architecture trigger's routing. Re-derived
       whenever the visit goal is re-converged: a visit that turns to cutting a card re-converges
       its goal first, so the stage runs before any card is written.
+  stakes:
+    values: [money, data, security, availability, wrong-answer, cosmetic]
+    resolution: moment-resolved(card-set)
+    note: >-
+      the harm class a card visit's map writes borrow from the capabilities or lane its cards
+      touch, per `patterns-sound-loop.stakes-key` — proposed by you with its cited line, ruled
+      by the user on the visit goal line as the stakes line. A visit that cuts no card states
+      none.
 moments:
   visit-open: Map health surfaced before the ask, every visit.
   close: The verdict against the visit's done condition, with map integrity intact.
   card-set: >-
     Where the visit's card set is worked with the user — after the one-line visit goal is
-    agreed, before the card's writer writes anything.
+    agreed, the stakes line ruled with it, before the card's writer writes anything.
 sections:
   - id: feat.sec.roles
     title: Roles & Responsibilities
@@ -137,8 +145,10 @@ sections:
           mochiko:patterns-sound-loop's default wiring, a producing seat where the desk staffs one
           (feat.author-grader) — and each card's sound-loop review leg (feat.sound-loop-floor),
           `devils-advocate` by that same wiring, grades the card against the visit file for
-          sameness of meaning.
-        when: {visit_kind: card}
+          sameness of meaning. The grade runs in full at money, data or security; at availability,
+          wrong-answer or cosmetic it takes the quick read instead (feat.card-grade-quick-read)
+          only where the user ruled that on the stakes line, the full grade running otherwise.
+        when: {visit_kind: card, stakes: [money, data, security, availability, wrong-answer, cosmetic]}
         anchor: 2026-10-15 engine-follow-up
       - id: feat.card-blind-list
         labels: [independence, seats]
@@ -148,9 +158,28 @@ sections:
           Once per visit that cuts more than one card or a growth row, before the card set closes,
           one fresh persona-less `general-purpose` seat spawned with `model: opus` draws the blind
           list (analysis-iterative.blind-second-list), the visit goal its opening; a visit that
-          cuts a single bug or improvement card skips it.
-        when: {visit_kind: card}
+          cuts a single bug or improvement card skips it. At availability, wrong-answer or
+          cosmetic it may also be skipped where the user ruled that on the stakes line, the skip
+          stated in the trail (feat.lowering-trail).
+        when: {visit_kind: card, stakes: [money, data, security, availability, wrong-answer, cosmetic]}
         anchor: 2026-10-15 engine-follow-up
+      - id: feat.card-grade-quick-read
+        labels: [independence, evidence]
+        class: must
+        text: >-
+          Where the user ruled it on the stakes line, the card's review leg takes the planning
+          quick read (`patterns-sound-loop.planning-quick-read`) in place of the full grade: the
+          same non-author seat reads every card the visit cut, whole, against the visit file, and
+          keeps the hard checks — each card holding what its ruled-set entry rules, its
+          acceptance inside that ruling and a target number only where the user gave one
+          (feat.card-unit), the card in the shape feat.delta-cards binds, and the FEAT and EPIC
+          IDs (feat.grader-checks-joined-ids). It drops the open hunt — the what-if search for
+          acceptance, edge cases and ambiguities the ruled set never raised — and reports it as
+          "open hunt not run", never "no gaps". Its raise, and what a raise restores, are the
+          planning quick read's.
+        when: {visit_kind: card, stakes: [availability, wrong-answer, cosmetic]}
+        pointer: mochiko:patterns-sound-loop
+        anchor: 2026-10-28 stakes-non-product-surfaces D1
   - id: feat.sec.reserved
     title: Reserved to the user — never the desk's
     intent: 'Decisions held by the user: gates, rulings, and escalations no seat may take.'
@@ -159,7 +188,10 @@ sections:
         labels: [user-gate]
         class: must
         kind: reservation
-        text: The user holds retire and merge rulings, route overrides, and every selection.
+        text: >-
+          The user holds retire and merge rulings, route overrides, and every selection. A card
+          visit's stakes line is theirs too, ruled on its goal line, and only their checkpoint
+          ruling lowers it later.
       - id: feat.ruling-places
         labels: [user-gate]
         class: must
@@ -428,6 +460,19 @@ sections:
         class: must
         extends: common.asking-line
         anchor: 2026-10-15 engine-follow-up D10
+      - id: feat.lowering-trail
+        labels: [reporting, evidence]
+        class: must
+        kind: duty
+        text: >-
+          A card visit's trail sits in each visit file's header, beneath the `**Handed in**:`
+          line: one `**Lowered**: <step> · stakes: <class> — <cited line> · covered by: <what
+          still covers the failure kind>` line per thinned or skipped step, or `**Lowered**: none`
+          where nothing thinned; a lowering the user rules after the goal line is written when
+          ruled. feat.fail.skip-unstated reads it there. A raise needs no line. The trail is
+          `patterns-sound-loop.trail-of-lowerings`'s, referenced never restated.
+        when: {visit_kind: card}
+        anchor: 2026-10-28 stakes-non-product-surfaces D1
   - id: feat.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no visit and no seat can waive.
@@ -552,3 +597,13 @@ sections:
           without the user's word.
         enforces: [feat.card-stage, feat.visit-file, feat.card-writer]
         anchor: 2026-10-15 engine-follow-up
+      - id: feat.fail.skip-unstated
+        labels: [reporting, evidence]
+        class: floor
+        kind: fail
+        text: >-
+          A card visit whose card grade ran as the quick read, whose blind list was skipped on the
+          stakes line, or whose plan grade thinned under `review-seat-plan.once-per-seat-in-band`,
+          with no `**Lowered**:` line for it in each visit file's header (feat.lowering-trail).
+        enforces: [feat.lowering-trail, feat.card-grade-quick-read, feat.card-blind-list]
+        anchor: 2026-10-28 stakes-non-product-surfaces D1

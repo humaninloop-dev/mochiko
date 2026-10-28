@@ -186,8 +186,8 @@ fn the_log_replays_into_a_deliverable_state() {
     // `0086` also replaces the `feature-desk` home in place. `0090` and `0091` are unused, a
     // legal gap. `0092`–`0095` (its wave 2) import none. `0096` and `0097` are unused, a
     // legal gap. `0098`–`0101` (its wave 3) import none. `0102`–`0104` (the 2026-10-27
-    // implement-lead-adaptive-rigor build) import none. `0105` and `0106` (the 2026-10-28
-    // stakes-non-product-surfaces waves 1 and 2) import none.
+    // implement-lead-adaptive-rigor build) import none. `0105`–`0107` (the 2026-10-28
+    // stakes-non-product-surfaces waves 1–3) import none.
     assert_eq!(replay.state.docs.len(), 94);
     assert_eq!(
         replay.sequences(),
@@ -196,7 +196,7 @@ fn the_log_replays_into_a_deliverable_state() {
             25, 26, 27, 28, 29, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48,
             49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 65, 66, 67, 68, 69, 70, 75, 76,
             77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 92, 93, 94, 95, 98, 99, 100,
-            101, 102, 103, 104, 105, 106
+            101, 102, 103, 104, 105, 106, 107
         ],
         "genesis, wave 4's fail-conditions reword, wave 6's two-arm retirement, the sonnet \
          worker rung, the artifact-home census, the lead's-pen copy loophole, 0007's seat \
@@ -238,7 +238,8 @@ fn the_log_replays_into_a_deliverable_state() {
          line, 0101's implement residuals, then the 2026-10-27 implement-lead-adaptive-rigor \
          waves — 0102's sound-loop stakes lever, 0103's spoke lighter forms, 0104's implement \
          keys, then the 2026-10-28 stakes-non-product-surfaces wave 1 — 0105's sound-loop \
-         planning stakes, then its wave 2 — 0106's specify planning stakes"
+         planning stakes, then its wave 2 — 0106's specify planning stakes, then its wave 3 — \
+         0107's desk planning stakes"
     );
 }
 
@@ -939,12 +940,23 @@ fn the_corpus_census_holds_through_the_log() {
     // and its four `set-rule-field`s keep their rule's id, class and kind (the floor fail nodes
     // `spec.fail.blocking-gap` and `spec.fail.screens-flows`, which gain an `enforces:` entry,
     // stay floors); its three `set-condition`s and its `intent` moment move nothing here.
-    assert_eq!(command_rules, 429, "live command rules");
+    // Its wave 3 carries `0107`, its mints anchored to the same session's D1: six `mint-rule`s
+    // and nothing retired, three on each desk. On `feature` the must
+    // `feat.card-grade-quick-read`, the must duty `feat.lowering-trail` and the floor fail node
+    // `feat.fail.skip-unstated`; on `architecture` the must `arch.store-grade-quick-read`, the
+    // must duty `arch.lowering-trail` and the floor fail node `arch.fail.skip-unstated`. So
+    // command 429 → 435, total 1288 → 1294, the command floors 131 → 133 and the fail set
+    // 42 → 44, while the skill rules hold at 859 and the skill floors at 271. Its six
+    // `reword-rule`s — `feat.user-reserved`, `feat.card-writer`, `feat.card-blind-list`,
+    // `arch.user-reserved-rulings`, `arch.rows-from-visit-file` and `arch.focus-blind-list` —
+    // and its three `set-rule-field`s keep their rule's id, class and kind; its two
+    // `set-condition`s and its `card-set` and `focus` moments move nothing here.
+    assert_eq!(command_rules, 435, "live command rules");
     assert_eq!(skill_rules, 859, "live skill rules");
-    assert_eq!(command_rules + skill_rules, 1288, "live rules in total");
+    assert_eq!(command_rules + skill_rules, 1294, "live rules in total");
     assert_eq!(skill_floors, 271, "skill floors");
-    assert_eq!(command_floors, 131, "declared command floors");
-    assert_eq!(fail_nodes, 42, "command fail nodes");
+    assert_eq!(command_floors, 133, "declared command floors");
+    assert_eq!(fail_nodes, 44, "command fail nodes");
 }
 
 // ---------------------------------------------------------------------------

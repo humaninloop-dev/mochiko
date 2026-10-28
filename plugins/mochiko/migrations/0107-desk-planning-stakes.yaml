@@ -1,0 +1,251 @@
+grammar: 1
+id: 0107-desk-planning-stakes
+sequence: 107
+intent: >-
+  Make /mochiko:feature and /mochiko:architecture consume the planning stakes lever on their own
+  writes (stakes-non-product-surfaces D1 statement and item 11, D2, D3, DF4, DF5, DF6, as
+  review-amended): declare each desk's stakes condition, resolved at the moment whose text gains
+  the stakes line ruled with the visit goal — feature's card-set, on a card visit;
+  architecture's focus, on a ruling visit only, since a delta visit writes nothing to the store
+  and a store write inside /mochiko:implement's design phase keeps implement's stakes; reserve the
+  stakes line and any later lowering to the user; key the feature card grade and the architecture
+  ruling visit's store grade on stakes, each worded for its lighter form on the stakes line the
+  user ruled, and mint each grade's quick read (D1 item 11), naming the hard checks it keeps and
+  the open hunt it drops; let each desk's blind list be skipped where the user ruled that (DF4),
+  architecture's stakes-line skip never on a greenfield first visit, whose candidates
+  arch.first-visit-stage takes from the list; mint each desk's trail of lowerings in its visit
+  file's header and the floor fails feat.fail.skip-unstated and arch.fail.skip-unstated. The key,
+  the band, the quick read's raise and the trail stay patterns-sound-loop's, referenced never
+  restated; arch.seat-tech-lead-grader, whose two checks the quick read keeps, and the floor
+  arch.dm-converge-goal are untouched. The rewords keep their ids, classes, kinds, labels,
+  pointers and anchors, their authority this header. Two floors minted, none retired or lowered:
+  feature rules 61 to 64, floors 16 to 17, fails 2 to 3; architecture rules 66 to 69, floors 25 to
+  26, fails 2 to 3.
+anchor: 2026-10-28 stakes-non-product-surfaces
+hash: sha256:b047e9b7d22cbec88449fbb6cbca9ffcc09a2b4a801c3df957fceb543b3e357f
+changes:
+  - op: set-condition
+    schema: command/feature
+    name: stakes
+    spec:
+      values: [money, data, security, availability, wrong-answer, cosmetic]
+      resolution: moment-resolved(card-set)
+      note: >-
+        the harm class a card visit's map writes borrow from the capabilities or lane its cards
+        touch, per `patterns-sound-loop.stakes-key` — proposed by you with its cited line, ruled
+        by the user on the visit goal line as the stakes line. A visit that cuts no card states
+        none.
+  - op: set-moment
+    schema: command/feature
+    name: card-set
+    text: >-
+      Where the visit's card set is worked with the user — after the one-line visit goal is
+      agreed, the stakes line ruled with it, before the card's writer writes anything.
+  - op: reword-rule
+    schema: command/feature
+    id: feat.user-reserved
+    text: >-
+      The user holds retire and merge rulings, route overrides, and every selection. A card
+      visit's stakes line is theirs too, ruled on its goal line, and only their checkpoint ruling
+      lowers it later.
+  - op: reword-rule
+    schema: command/feature
+    id: feat.card-writer
+    text: >-
+      The card's writer follows the desk's wiring — desk-authored by
+      mochiko:patterns-sound-loop's default wiring, a producing seat where the desk staffs one
+      (feat.author-grader) — and each card's sound-loop review leg (feat.sound-loop-floor),
+      `devils-advocate` by that same wiring, grades the card against the visit file for sameness
+      of meaning. The grade runs in full at money, data or security; at availability, wrong-answer
+      or cosmetic it takes the quick read instead (feat.card-grade-quick-read) only where the user
+      ruled that on the stakes line, the full grade running otherwise.
+  - op: set-rule-field
+    schema: command/feature
+    id: feat.card-writer
+    field: when
+    value:
+      visit_kind: card
+      stakes: [money, data, security, availability, wrong-answer, cosmetic]
+  - op: mint-rule
+    schema: command/feature
+    section: feat.sec.roles
+    rule:
+      id: feat.card-grade-quick-read
+      labels: [independence, evidence]
+      class: must
+      text: >-
+        Where the user ruled it on the stakes line, the card's review leg takes the planning quick
+        read (`patterns-sound-loop.planning-quick-read`) in place of the full grade: the same
+        non-author seat reads every card the visit cut, whole, against the visit file, and keeps
+        the hard checks — each card holding what its ruled-set entry rules, its acceptance
+        inside that ruling and a target number only where the user gave one (feat.card-unit), the
+        card in the shape feat.delta-cards binds, and the FEAT and EPIC IDs
+        (feat.grader-checks-joined-ids). It drops the open hunt — the what-if search for
+        acceptance, edge cases and ambiguities the ruled set never raised — and reports it as
+        "open hunt not run", never "no gaps". Its raise, and what a raise restores, are the
+        planning quick read's.
+      when: {visit_kind: card, stakes: [availability, wrong-answer, cosmetic]}
+      pointer: mochiko:patterns-sound-loop
+      anchor: 2026-10-28 stakes-non-product-surfaces D1
+  - op: reword-rule
+    schema: command/feature
+    id: feat.card-blind-list
+    text: >-
+      Once per visit that cuts more than one card or a growth row, before the card set closes, one
+      fresh persona-less `general-purpose` seat spawned with `model: opus` draws the blind list
+      (analysis-iterative.blind-second-list), the visit goal its opening; a visit that cuts a
+      single bug or improvement card skips it. At availability, wrong-answer or cosmetic it may
+      also be skipped where the user ruled that on the stakes line, the skip stated in the trail
+      (feat.lowering-trail).
+  - op: set-rule-field
+    schema: command/feature
+    id: feat.card-blind-list
+    field: when
+    value:
+      visit_kind: card
+      stakes: [money, data, security, availability, wrong-answer, cosmetic]
+  - op: mint-rule
+    schema: command/feature
+    section: feat.sec.ways-of-working
+    rule:
+      id: feat.lowering-trail
+      labels: [reporting, evidence]
+      class: must
+      kind: duty
+      text: >-
+        A card visit's trail sits in each visit file's header, beneath the `**Handed in**:` line:
+        one `**Lowered**: <step> · stakes: <class> — <cited line> · covered by: <what still
+        covers the failure kind>` line per thinned or skipped step, or `**Lowered**: none` where
+        nothing thinned; a lowering the user rules after the goal line is written when ruled.
+        feat.fail.skip-unstated reads it there. A raise needs no line. The trail is
+        `patterns-sound-loop.trail-of-lowerings`'s, referenced never restated.
+      when: {visit_kind: card}
+      anchor: 2026-10-28 stakes-non-product-surfaces D1
+  - op: mint-rule
+    schema: command/feature
+    section: feat.sec.fail-conditions
+    rule:
+      id: feat.fail.skip-unstated
+      labels: [reporting, evidence]
+      class: floor
+      kind: fail
+      text: >-
+        A card visit whose card grade ran as the quick read, whose blind list was skipped on the
+        stakes line, or whose plan grade thinned under `review-seat-plan.once-per-seat-in-band`,
+        with no `**Lowered**:` line for it in each visit file's header (feat.lowering-trail).
+      enforces: [feat.lowering-trail, feat.card-grade-quick-read, feat.card-blind-list]
+      anchor: 2026-10-28 stakes-non-product-surfaces D1
+  - op: set-condition
+    schema: command/architecture
+    name: stakes
+    spec:
+      values: [money, data, security, availability, wrong-answer, cosmetic]
+      resolution: moment-resolved(focus)
+      note: >-
+        the harm class a ruling visit's store writes borrow from the store elements they touch,
+        per `patterns-sound-loop.stakes-key` — proposed by you with its cited line, ruled by the
+        user on the visit goal line as the stakes line. Only a ruling visit states one: a delta
+        visit writes nothing to the store, a store write inside /mochiko:implement's design phase
+        keeps implement's stakes, and a query or drift visit has nothing to lighten.
+  - op: set-moment
+    schema: command/architecture
+    name: focus
+    text: >-
+      Where the visit's focus set is worked with the user — after the one-line visit goal is
+      agreed, on a ruling visit the stakes line ruled with it, before the principal-architect seat
+      authors anything.
+  - op: reword-rule
+    schema: command/architecture
+    id: arch.user-reserved-rulings
+    text: >-
+      Reserved to the user: every row stance, the baseline confirmation, every amendment, each
+      drift finding's disposition, the shelf-scope override, the capability mint at
+      /mochiko:feature's growth door (arch.dispatch-feature-growth-door), the governance-ledger
+      waiver a true floor drop needs, and a ruling visit's stakes line, with any later lowering of
+      it.
+  - op: reword-rule
+    schema: command/architecture
+    id: arch.rows-from-visit-file
+    text: >-
+      At the set's close the ${producer_seat} seat authors the rows and spine elements from the
+      visit file in the same visit, each row linking the file as its rationale home, and
+      ${grader_seat} grades them against the file for sameness of meaning — additive to the
+      user's word on the row text, never a substitute; the visit does not close until the rows are
+      in. The grade runs in full at money, data or security; at availability, wrong-answer or
+      cosmetic it takes the quick read instead (arch.store-grade-quick-read) only where the user
+      ruled that on the stakes line, the full grade running otherwise.
+  - op: set-rule-field
+    schema: command/architecture
+    id: arch.rows-from-visit-file
+    field: when
+    value:
+      visit_kind: ruling
+      stakes: [money, data, security, availability, wrong-answer, cosmetic]
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.roles
+    rule:
+      id: arch.store-grade-quick-read
+      labels: [independence, evidence]
+      class: must
+      text: >-
+        Where the user ruled it on the stakes line, ${grader_seat}'s grade of a ruling visit's
+        store writes takes the planning quick read (`patterns-sound-loop.planning-quick-read`) in
+        place of the full grade: ${grader_seat}, a seat that authored none of them, reads every
+        row, spine element and diagram the visit wrote, whole, and keeps the hard checks — each
+        row holding its focus item's direction against the visit file, an `open` sentence left
+        open (arch.focus-unit), each drawing against the targets its `Draws:` line cites, the
+        outside claims the rows rest on re-checked (arch.seat-tech-lead-grader), and the AX, SPN
+        and NFR IDs (arch.grader-checks-joined-ids). It drops the open hunt — whether each
+        stance is enforceable, its trigger testable, its rationale one a maintainer could weigh
+        and its row worth its cost, and what it clashes with elsewhere in the store — and
+        reports it as "open hunt not run", never "no gaps". Its raise, and what a raise restores,
+        are the planning quick read's.
+      when: {visit_kind: ruling, stakes: [availability, wrong-answer, cosmetic]}
+      pointer: mochiko:patterns-sound-loop
+      anchor: 2026-10-28 stakes-non-product-surfaces D1
+  - op: reword-rule
+    schema: command/architecture
+    id: arch.focus-blind-list
+    text: >-
+      Before the focus set closes, one fresh persona-less `general-purpose` seat spawned with
+      `model: opus` draws the visit's blind list from the focus context (arch.focus-context),
+      never the visit file, and returns the parts, concerns and forks it sees; a part the shelf
+      lacks is how an off-shelf concern enters. One list per visit, skipped only on a single-row
+      ask — the goal names one row and the user hands in its direction — or on a ruling visit
+      at availability, wrong-answer or cosmetic where the user ruled the skip on the stakes line,
+      stated in the trail (arch.lowering-trail). That stakes-line skip never applies on a
+      greenfield first visit, whose candidates the list supplies (arch.first-visit-stage).
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.ways-of-working
+    rule:
+      id: arch.lowering-trail
+      labels: [reporting, evidence]
+      class: must
+      kind: duty
+      text: >-
+        A ruling visit's trail sits in its visit file's header, beneath the `**Handed in**:` line:
+        one `**Lowered**: <step> · stakes: <class> — <cited line> · covered by: <what still
+        covers the failure kind>` line per thinned or skipped step, or `**Lowered**: none` where
+        nothing thinned; a lowering the user rules after the goal line is written when ruled.
+        Every row written from the file links it as its rationale home, and
+        arch.fail.skip-unstated reads it. A raise needs no line. The trail is
+        `patterns-sound-loop.trail-of-lowerings`'s, referenced never restated.
+      when: {visit_kind: ruling}
+      anchor: 2026-10-28 stakes-non-product-surfaces D1
+  - op: mint-rule
+    schema: command/architecture
+    section: arch.sec.fail-conditions
+    rule:
+      id: arch.fail.skip-unstated
+      labels: [reporting, evidence]
+      class: floor
+      kind: fail
+      text: >-
+        A ruling visit whose store grade ran as the quick read, whose focus blind list was skipped
+        on the stakes line, or whose ${producer_seat} plan grade thinned under
+        `review-seat-plan.once-per-seat-in-band`, with no `**Lowered**:` line for it in the visit
+        file's header (arch.lowering-trail).
+      enforces: [arch.lowering-trail, arch.store-grade-quick-read, arch.focus-blind-list]
+      anchor: 2026-10-28 stakes-non-product-surfaces D1

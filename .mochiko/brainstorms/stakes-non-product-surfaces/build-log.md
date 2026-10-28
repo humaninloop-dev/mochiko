@@ -321,3 +321,201 @@ audit: unit 2 — patterns-sound-loop SKILL.md + render (skill pair) · w1-gate-
 - Ruled HOLDS transcribed into the `review-specifications` and `review-seat-plan` budget rows
   (units 3 and 4, `reports/audit-w2.md`). All seven units PASS, 0 blocking; one re-plan spent
   (P1). W2 committed; W3 opens.
+
+## 2026-10-28 — W2 committed; W3 opened (the desks)
+
+- W2 committed `07123f6` "W2: specify keys its review on stakes" (19 paths, the lead's commit per
+  the build's authorization).
+- W3 plan `wave3-desks.md` written: `0107-desk-planning-stakes.yaml` for `/mochiko:feature` and
+  `/mochiko:architecture` — the `stakes` condition at the visit goal line (DF5), the card grade and
+  tech-lead's grade each gaining the quick-read form (D1 item 11), the two blind lists skippable
+  where the user ruled it (DF4), a trail home P1 argues, a `*.fail.skip-unstated` per command.
+  Seats P1 schema · P2 prose (feature.md, architecture.md, budget rows, strips, router rows) · P3
+  crate pins and contract freeze. Gate units 1–6.
+- P1 (`w3-p1-schema`, persona-less, opus) dispatched plan-only, with eight decisions to argue
+  (moment, visit kinds, hard checks kept, trail home, reservation reword, plan-check keying,
+  near-dup measure, counts for P3) and the W2 lesson that every rule text is keyed on the user's
+  stakes-line ruling.
+- P1 plan returned (`plans/w3-p1-schema.md`; dry-run hash `sha256:7ad0a099…`): `stakes` ruled at
+  the goal line opening the existing `card-set` / `focus` moments (both reworded, no new gate);
+  the lever on feature `card` and architecture `ruling` visits only; two quick-read mints
+  (joined IDs + sameness of meaning kept; feature keeps the card shape, architecture keeps the
+  `Draws:` check and the outside-claims re-check; the what-if / stance / clash hunts drop); the
+  architecture key on `arch.rows-from-visit-file`, not `arch.seat-tech-lead-grader` (an all-six
+  key there would switch off drift-disposition grades); `arch.focus-blind-list` clause-only; trail
+  a `**Lowered**:` visit-header line; two floor fails; two allowlist rows (raw 76/182 → 77/183;
+  with rows 0 clusters, 183 suppressed). Counts for P3: 1294 rules · command 435 · command floors
+  133 · fails 44 · command family (435, 22_106, 0, 56) · scored 228,700. Its haiku `Explore`
+  returned no report (fifth seat).
+- The plan's Q1 (architecture `ruling` only, against the wave plan's `ruling|delta` paraphrase)
+  read by the lead as settled by the card: D1 reaches "the architecture desk's store writes — and
+  nothing else", and a delta visit writes nothing to the store (`arch.feature-delta-visit`) — card
+  wins, scope fidelity, not a user fork; the peer told to flag it if it reads the card otherwise.
+  Sent to fresh generic peer `w3-p1-peer` (opus), render pasted verbatim, plan by path.
+- `PLAN GRADE: w3-p1-schema · FAIL · 3` — decision 4's reason (ii) and the drafted
+  `feat.lowering-trail` sentence "The dispatched run reads it with the cards" rest on
+  `impl.feature-visit-input`, unnamed in the reads and overreaching (implement's lead reads the
+  ruled set and cards at entry; no header line, no sufficiency seat). Items 1, 2, 4–6 PASS; every
+  figure, the hash, the near-dup set diff, views, renders and `check` reproduced first-hand. The
+  peer reads Q1 as the lead does (ruling-only is scope fidelity). The wave's one re-plan spent:
+  P1 resumed with the fix verbatim plus three lead-ordered advisories (architecture rule-text
+  figure 20,441 not 20,426; reconcile `arch.first-visit-stage`'s "the blind list supply its
+  candidates" from the blind-list side or argue a baseline visit cannot read low; "each visit
+  file's header" for multi-capability visits). The same peer re-grades; a second FAIL goes to the
+  user. The peer's haiku `Explore` also returned no report (sixth seat).
+- P1 revision 1 returned (in place, revision note at top; hash `sha256:031fbfe4…`): the
+  unsupported sentence dropped from `feat.lowering-trail` (citing the rule raised a `cite-foreign`
+  advisory) and the allowlist reason reworded; `arch.focus-blind-list` gains "— never on a
+  greenfield first visit, whose candidates the list supplies (arch.first-visit-stage)" (the
+  "cannot read low" argument rejected as not airtight); "each visit file's header" in the two feat
+  rules, the arch twins singular (`arch.visit-file` keeps one file). Figures: 0 rejecting · 121
+  advisory · 0 clusters · 183 suppressed; architecture 69 rules · 20,540; P3 counts unchanged.
+  Sent to `w3-p1-peer`, resumed, for the re-grade.
+- `PLAN GRADE: w3-p1-schema · PASS · none` (re-grade, revision 1): the diff against revision 0 is
+  exactly the four edits claimed; hash, validate, budgets, raw clusters, pair scores, views and
+  pins reproduced. P1 approved and resumed with three lead-ordered changes from the advisories:
+  the greenfield clause scoped to the stakes-line skip only (as drafted it could also void the
+  standing single-row-ask skip); the carve named in 0107's `intent:`; "No stakes carve is added"
+  in the plan's decision 2. **Disclosure (peer advisory 2):** the greenfield clause narrows DF4's
+  "may be skipped" for one visit kind — a greenfield first visit — by reconciliation with
+  `arch.first-visit-stage`, not a new ruling; carried to the close report for the user to see.
+  P2 and P3 plan against the landed tree once 0107 lands, as P3 did in W2.
+
+## 2026-10-28 — W3 P1 landed 0107; P2, P3 planning; gate unit 1 dispatched
+
+- P1 executed: `0107-desk-planning-stakes.yaml` (file `sha256:0bb60b77…f5eb`; live state
+  `sha256:bfa93263…d792` at 1..107 · 95 migrations · 94 documents · 1294 rules), two allowlist rows
+  (fail pair 0.99, trail pair 0.71), views regenerated (feature +61/−6, architecture +69/−8;
+  `views emit` ≡ tree). The three lead-ordered fixes applied before the stamp: the greenfield
+  sentence now reads "That stakes-line skip never applies on a greenfield first visit, whose
+  candidates the list supplies (arch.first-visit-stage)" beside the untouched single-row-ask
+  sentence; the carve named in `intent:`; the plan's decision 2 reworded. `migrate validate`
+  0 rejecting · 121 advisory · scanned 1294 · scored 228,700 · 0 clusters · 183 suppressed; raw
+  77/183. 19 ops: 6 mints (2 floor fails), 7 rewords, 3 `when:` keys, 2 conditions, 2 moments.
+  `check` allow on every path before its write.
+- Figures relayed: feature 64 rules · 17 floors · 3 fails · rule text 16,569; architecture 69 ·
+  26 · 3 · 20,567; commands 435 · command floors 133 · fails 44 · command family
+  (435, 22_106, 0, 56).
+- P2 (`w3-p2-prose`) and P3 (`w3-p3-crate`) dispatched plan-only in parallel against the landed
+  tree, each brief carrying the full 19-op list and the figures; P2's carrying the W2
+  ruling-keyed register lesson.
+- Gate grader `w3-gate-grader` (`general-purpose`, `model: opus`, the `validation-primitive-edit`
+  render pasted verbatim) dispatched on unit 1 now — its files frozen, P2/P3 only planning — to be
+  resumed for units 2–6. Asked to rule (a) the `ruling`-only scope against the card, (b) the
+  greenfield carve's register and its leaving the single-row-ask skip intact, (c) the ruling-keyed
+  register, and to `check` filled visit bodies carrying `**Lowered**:`. Report:
+  `reports/audit-w3.md`.
+- P2 plan returned (`plans/w3-p2-prose.md`): two writes only — one router parenthetical on the
+  `/mochiko:architecture` row (SKILL.md:142, body 50,483 → 50,599) and one `.mochiko/strips/mochiko.md`
+  entry; no edit to `feature.md` or `architecture.md` (Identity, Entry, Not-done stay true; the
+  Not-done lines cite the pin, not a number; Goal steps fail rung 1 — the stakes line rides the
+  goal nod, DF6 runs the full grade where none is stated); no budget rows exist for commands or
+  the router. Its rule-text figures differ from P1's by counting method (feature 12,465 → 14,521,
+  architecture 16,369 → 18,768 from the views), informational. Its haiku `Explore` returned no
+  report (seventh seat). Its open question — name the stakes line in the Goal steps anyway? —
+  answered by the lead: no edit unless the gate grader rules otherwise (the wave plan's
+  "only where … must change to stay true"). Sent to fresh generic peer `w3-p2-peer` (opus).
+- P3 plan returned (`plans/w3-p3-crate.md`): 12 pin rows across five files (fidelity.rs ·
+  matrix_similar.rs · validate.rs · run.py · README.md:274), `expected-skills.json` untouched;
+  red baseline 761 passed / 4 failed (the same four tests as W2), opt-in sweep red 1294 vs 1288,
+  freeze off for feature 16/17 and architecture 25/26 only. No test pins a per-row suppression
+  count — the `feat.user-reserved`↔`setup.user-card-rulings` row stays (ids resolve), suppressing
+  nothing. Its haiku `Explore` returned no report (eighth seat). Sent to fresh generic peer
+  `w3-p3-peer` (opus).
+
+## 2026-10-28 — W3 gate audit unit 1 round 1: FAIL (1 blocking, register); fix ordered
+
+- audit: unit 1 — schema content 0107-desk-planning-stakes + view diff + allowlist rows · w3-gate-grader · opus · 4 files · 1 rounds · 1 blocking
+- The FAIL: `arch.rows-from-visit-file`'s reword turned `${producer_seat}` / `${grader_seat}` into
+  the literal "principal-architect" / "tech-lead", and the new `arch.store-grade-quick-read` writes
+  "tech-lead" twice — architecture's `${…}` tokens 15 → 13, so a later `set-var` would silently
+  miss them; the render is identical today. Fix ordered to P1 verbatim, plus a sweep of every new
+  or reworded text on both commands for the same defect (feature declares `architect_seat`).
+  Re-audit by the same grader on the touched texts, the hash, the view diff and validate; a second
+  FAIL goes to the user.
+- The lead's three asks all PASS: (a) the `ruling`-only scope is faithful to the card (the wave
+  plan names no visit kind); (b) the greenfield carve is register-faithful — a narrowing toward
+  rigor, a free raise under `raise-free-lower-ruled`, the single-row-ask clause byte-identical,
+  brownfield unaffected — disclosure to the user stands; (c) every lowering keys on the user's
+  stakes-line ruling. Pre-pass reproduced the seat's figures; `check` admits `**Lowered**:` in
+  both visit files with live negative controls.
+- Advisories: the allowlist row `[feat.user-reserved, setup.user-card-rulings]` (line 242) now
+  suppresses nothing and could be pruned — kept, not ordered (its ids resolve; a prune is a
+  removal this wave did not plan); the feature condition note's "or lane" goes past D2's wording
+  but is needed for lane cards.
+- Quiesce: P2 and P3 are planning only and write nothing in the repo while P1 fixes; P3's pinned
+  figures depend on rule counts, not text, and P1 reports whether any moved.
+- P1 fix landed: the two ordered texts restored to `${producer_seat}` / `${grader_seat}`, and the
+  sweep found a third — `arch.fail.skip-unstated`'s "architect plan grade" now
+  "${producer_seat} plan grade"; feature had none. 0107 `sha256:b047e9b7…357f`; live state
+  `sha256:c24258e3…4f95` (1..107 · 1294 rules); validate 0 rejecting · 121 advisory · 0 clusters
+  · 183 suppressed; raw 77/183, set diff unchanged; the fail pair 0.99 → 1.00 (raw `${…}` text
+  scored), the trail pair 0.71. Architecture rule text 20,586; view +67/−6. No P3 pin moved.
+  The grader resumed for the unit-1 round-2 re-audit, the third text named in its scope.
+- `PLAN GRADE: w3-p2-prose · PASS · none` (`w3-p2-peer`): each Identity, Entry, Goal and Not-done
+  sentence of `feature.md` and `architecture.md` checked true under 0107 against the live text;
+  the Goal no-edit argument holds on the W2 precedent (specify's Goal was edited only where it
+  named the stress-test); the `:142` architecture row is the one sentence 0107 makes false; no
+  budget rows; the router draft keys on the ruling. Its `Explore` also returned no report (ninth
+  seat). P2 approved and resumed, with the 0107 re-stamp relayed as a supersession naming what it
+  voids (hash, state, the three var-restored texts) and the peer's advisory 2 (state why the
+  `mochiko.md` strip is owed). P2's files are outside unit 1's re-audit.
+- P2 executed: router `SKILL.md:142` parenthetical "(skippable, stated, where you rule the skip on a
+  ruling visit's low stakes line, never on a greenfield first visit)" (body 50,483 → 50,599,
+  unbudgeted) and `.mochiko/strips/mochiko.md` W3 comment + [v0.124.0] entry (+38 lines, advisory 2
+  folded); `check` allow before each Edit and after. Reconcile clean against the re-stamp. One
+  correction to the lead's relay ("renders unchanged"): architecture's render moved +10 in
+  fail-conditions (1,297 → 1,307; total 33,286, was 33,276), since `${producer_seat}` renders
+  "principal-architect" where the round-1 text said "architect"; feature unchanged at 27,734. No
+  command `.md` edited; units 2 and 3 are each the unchanged `.md` + its new render.
+
+## 2026-10-28 — W3 gate audit unit 1 round 2: PASS
+
+- audit: unit 1 — schema content 0107-desk-planning-stakes + view diff + allowlist rows · w3-gate-grader · opus · 4 files · 2 rounds · 0 blocking
+- Seat vars verified against the files: architecture `${…}` tokens 13 → 18 (HEAD's 15 + 3 new), 0
+  unresolved in the render; `arch.fail.skip-unstated`'s swap PASS (same seat, var-bound); the
+  feature view byte-identical to round 1; raw 77/183 same members (fail pair 1.00, trail 0.71);
+  no allowlist reason quotes a score. Pre-pass first-hand: 0 rejecting · 121 advisory · 1294 ·
+  228,700 · 0 · 183; state `c24258e3…`; views ≡ emit. Round-1 advisories stand (row 242 stale;
+  "or lane" needed for lane cards).
+- Grader resumed for units 2 (feature pair), 3 (architecture pair) and 4 (router row + strip),
+  the relay's "renders unchanged" corrected to architecture 33,286; units 5–6 follow P3.
+- `PLAN GRADE: w3-p3-crate · PASS · none` (`w3-p3-peer`): the 4 reds, every pin row's file:line
+  and before-text, the +545 / +1,637 arithmetic, the empty-allowlist diff, the no-per-row-pin
+  claim and the freeze cross-check reproduced first-hand; no `Explore` dispatched
+  (completeness-sensitive reads kept on-seat). P3 approved and resumed with the 0107 re-stamp
+  relayed as a supersession naming what it voids (hash, state, fail pair 0.99 → 1.00); no
+  asserted figure moved.
+
+## 2026-10-28 — W3 gate audit units 2–4: all PASS, 0 blocking
+
+- audit: unit 2 — command pair feature.md + render · w3-gate-grader · opus · 1 files · 1 rounds · 0 blocking
+- audit: unit 3 — command pair architecture.md + render · w3-gate-grader · opus · 1 files · 1 rounds · 0 blocking
+- audit: unit 4 — prose primitive router SKILL.md:142 + strips/mochiko.md [v0.124.0] · w3-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+- Pre-pass first-hand: validate 0 rejecting · 121 advisory, state `c24258e3…`; both `.md` unchanged
+  against `07123f6`; renders feature 27,734 · architecture 33,286; pins 3/17 and 3/26; router body
+  50,483 → 50,599 (+116, exactly the insertion), unbudgeted.
+- The lead's ask ruled: the Goal steps need not name the stakes line — nothing they say goes false,
+  and the rules already carry it (restating would breach GI-017). Every Identity, Entry, Goal and
+  Not-done sentence of both commands stays true; the router qualifier keys on the user's ruling and
+  the delta sentence does not inherit the skip. Advisory: the architecture row names only the
+  stakes-line skip (the single-row-ask skip was never in it). Units 5–6 follow P3.
+- P3 executed: five files (fidelity.rs · matrix_similar.rs · validate.rs · run.py · README.md:274),
+  +65/−18 (comment wrap past the plan's estimate, text as planned), `check` allow before and
+  after each Edit; reconcile clean against the re-stamp (fail pair "(1.00)"). `cargo test --all
+  --no-fail-fast` 765 passed 0 failed; opt-in sweep 1 passed; fmt, clippy `-D warnings` exit 0;
+  freeze cross-check 42 rows equal (feature 17, architecture 26, commands 133, skills 271).
+  Grader resumed for units 5 (crate) and 6 (contract freeze).
+
+## 2026-10-28 — W3 gate audit units 5–6: both PASS; W3 closes
+
+- audit: unit 5 — crate code tests/{fidelity,matrix_similar,validate}.rs, non-author review · w3-gate-grader · opus · 3 files · 1 rounds · 0 blocking
+- audit: unit 6 — contract freeze evals/contract/run.py EXPECTED + README.md:274 · w3-gate-grader · opus · 2 files · 1 rounds · 0 blocking
+- First-hand: `cargo test --all --no-fail-fast` 765/0; fmt, clippy `-D warnings`, opt-in sweep,
+  `cargo audit --deny warnings` all exit 0; src/, Cargo.toml, Cargo.lock unchanged. Every pin
+  matches (435 · 1294 · 133 · 44 · 859 · 271 · 1..107 · 1294/228,700/0/183 · (435, 22_106, 0,
+  56)); per-kind deltas +545 / +1,637 re-derived. Freeze: run.py's six sets ≡ live `floors:`
+  (133), `expected-skills.json` 36 rows ≡ render (271). Contract suite owed at the bump.
+- All six W3 units PASS: unit 1 in two rounds (the seat-var register fix), the rest in one;
+  0 blocking. One re-plan spent (P1, item 3). No ruled-HOLDS to transcribe — commands and the
+  router are unbudgeted. W3 committed; the ship opens.
