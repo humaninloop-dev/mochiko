@@ -519,3 +519,27 @@ audit: unit 2 — patterns-sound-loop SKILL.md + render (skill pair) · w1-gate-
 - All six W3 units PASS: unit 1 in two rounds (the seat-var register fix), the rest in one;
   0 blocking. One re-plan spent (P1, item 3). No ruled-HOLDS to transcribe — commands and the
   router are unbudgeted. W3 committed; the ship opens.
+
+## 2026-10-28 — The ship: 0.124.0 — release gates green, the KM landing
+
+- Wave commit `0c16d5d`. Bump: both manifests to 0.124.0; `CHANGELOG.md` `[0.124.0]` (MINOR,
+  the three waves, the audit counts, the budget verdicts, the strips, the figures).
+- Release gates on the bumped tree, first-hand: `migrate validate` 0 rejecting · 121 advisory ·
+  0 clusters · 183 suppressed; `migrate status` 1..107 (95) · 94 documents · 1,294 rules, state
+  `sha256:c24258e3…`; `views emit` identical to the committed views; `cargo test --all
+  --no-fail-fast` 765 passed · 0 failed; fmt 0 · clippy 0 · `cargo audit --deny warnings` 31 deps
+  clean; gitleaks no leaks (66 MB); contract suite **99/99, 99 ran, none skipped**, 335
+  measurements — from the `~/sbx/mochiko` copy (rsync after the bump, release build in the copy),
+  the mount check run first (17 entries).
+- `ids --check` (advisory) under CI's exclude list: 536 bare · 6 drift. The 0.123.0 tree
+  (`git archive 05d6166`, same excludes, same binary) gives 489 · 5, so the 0.123.0 ship entry's
+  "0 bare · 0 drift" does not reproduce; this build adds 47 bare (its record, reports, two strips,
+  a budget row) and 1 drift (a cross-record `D2` cite in the record). Booked in BACKLOG.
+- The greenfield narrowing (W3, `arch.focus-blind-list`) put to the user at the close: "keep the
+  greenfield narrowing" — kept; stamped on the `DECISIONS.md` row and in the CHANGELOG.
+- KM landing, one move: the `DECISIONS.md` 2026-10-28 row stamped BUILT at v0.124.0 (OQ2, OQ3 and
+  the scope reading named); the BACKLOG build item to the trail (DONE 2026-10-28), the section note
+  re-stamped, three follow-ups opened (small rule residues, plan-eval rubrics, the `ids --check`
+  baseline) and the stale-allowlist item widened to row 242; the ROADMAP Floor-builds line
+  stamped; the index entry and the record Status stamped BUILT. Release commit on
+  `adaptive-rigor-build`; no push, no merge — the build's commit authorization expires there.
