@@ -126,6 +126,99 @@ run's entry points at. Rows: the `DECISIONS.md` 2026-10-15 "Engine follow-up rul
 diagrams, ruled" rows. The router body is unbudgeted: 48,995 → 49,956. Pre-edit verbatim text:
 `git show 437b654:plugins/mochiko/skills/mochiko/SKILL.md`. -->
 
+<!-- Wave context: wave 1 of the planning-output stakes build (v0.124.0) — the
+`patterns-sound-loop` row's stakes clause widened to the three planning outputs. Ruling:
+`.mochiko/brainstorms/stakes-non-product-surfaces/record.md` D1-planning-quick-read items 3 and 8,
+D2-borrow-product-label, DF5 (`DECISIONS.md` 2026-10-28 row). The router body is unbudgeted:
+50,224 → 50,337. Pre-edit verbatim text: `git show 5691a67:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+<!-- Wave context: wave 2 of the planning-output stakes build (v0.124.0) — the
+`/mochiko:specify` row qualified by the skips the user rules on the stakes line. Ruling:
+`.mochiko/brainstorms/stakes-non-product-surfaces/record.md` D1-planning-quick-read, DF4,
+D3-lead-proposes-label (`DECISIONS.md` 2026-10-28 row). The router body is unbudgeted:
+50,337 → 50,483. Pre-edit verbatim text: `git show e9a13e2:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+<!-- Wave context: wave 3 of the planning-output stakes build (v0.124.0) — the
+`/mochiko:architecture` row's blind list qualified by the skip the user rules on a ruling visit's
+stakes line. Ruling: `.mochiko/brainstorms/stakes-non-product-surfaces/record.md`
+D1-planning-quick-read (statement and item 11), DF4, DF5, D3-lead-proposes-label (`DECISIONS.md`
+2026-10-28 row); the schema half is `0107-desk-planning-stakes.yaml`. The `/mochiko:feature` row
+names no card grade and no blind list, so it holds. The strip is owed because the router row
+itself changed; `feature.md` and `architecture.md` are unchanged, so their strip files take
+nothing. The router body is unbudgeted: 50,483 → 50,599. Pre-edit verbatim text:
+`git show 07123f6:plugins/mochiko/skills/mochiko/SKILL.md`. -->
+
+## [v0.124.0] `/mochiko:architecture` row — the ruling visit's blind list qualified by the user's ruling on a low stakes line
+
+- **Disposition:** superseded → `SKILL.md`:142 with "(skippable, stated, where you rule the skip
+  on a ruling visit's low stakes line, never on a greenfield first visit)" after "a blind list for
+  what the shelf lacks"
+- **Tier failed:** n/a — supersession by ruling (`stakes-non-product-surfaces`
+  D1-planning-quick-read — the lever reaches the architecture desk's store writes, a ruling visit
+  only, since a delta visit writes nothing to the store; DF4 — the blind list may be skipped,
+  stated; DF5 — the label read on the visit's goal line; D3-lead-proposes-label — the user rules
+  the label; carried by `arch.focus-blind-list` as reworded in `0107`, the skip never on a
+  greenfield first visit, whose candidates `arch.first-visit-stage` takes from the list)
+- **Content (superseded, verbatim; read unconditionally on a multi-part ruling visit before this
+  wave):**
+
+  ```text
+  a blind list for what the shelf lacks — saved in a visit file
+  ```
+- **Kept deliberately:** the phrase byte for byte, and the rest of the row — the greenfield clause
+  "from the shelf rows and a blind list" holds (the stakes-line skip never applies there); the
+  delta-visit sentence's "the same way" holds, the qualifier naming a ruling visit's stakes line,
+  which a delta visit never states; the row names no tech-lead grade, so the store grade's quick
+  read (`arch.store-grade-quick-read`) makes nothing in it false.
+- **Consumers assessed:** no primitive quotes the row (grep "a blind list for what the shelf
+  lacks": router only); `README.md`:133 "tech-lead grades" holds, the quick read being a grade;
+  `architecture.md` and `feature.md` prose unchanged this wave — neither names the grade's depth
+  or the blind list, and their Not-done lines cite the printed `kind: fail` pin, so the third fail
+  each (`feat.fail.skip-unstated`, `arch.fail.skip-unstated`) needs no edit.
+
+## [v0.124.0] `/mochiko:specify` row — the blind journey list and the stress-test qualified by the user's ruling on a low stakes line
+
+- **Disposition:** superseded → `SKILL.md`:140 with "(skippable, stated, where you rule the skip
+  on a low stakes line)" after "a blind journey list surfacing what you missed" and "; a quick
+  read where you rule it on a low stakes line, the open gap hunt not run" after "prototype walked,
+  map delta graded"
+- **Tier failed:** n/a — supersession by ruling (`stakes-non-product-surfaces`
+  D1-planning-quick-read — the full stress-test skipped where a low label's quick read is ruled,
+  the quick read keeping the prototype walk and the map-delta check (items 1, 7); DF4 — the blind
+  list may be skipped, stated; D3-lead-proposes-label — the user rules the label)
+- **Content (superseded, verbatim; each read unconditionally before this wave):**
+
+  ```text
+  a blind journey list surfacing what you missed
+  independently stress-tested from the file — prototype walked, map delta graded
+  ```
+- **Kept deliberately:** both phrases byte for byte, and the rest of the row.
+- **Consumers assessed:** no primitive quotes the row; specify's Goal step qualified the same wave
+  (`strips/specify.md` [v0.124.0]).
+
+## [v0.124.0] `patterns-sound-loop` row — "a product run's harm class, ruled by the user on the run-open line" widened to the three planning outputs
+
+- **Disposition:** superseded → `SKILL.md`:70 as rewritten: "(a product run's harm class, or the
+  class of the product work a spec, map or store change steers, ruled by the user at the
+  command's confirmation point — implement's run-open line — keys how deep"
+- **Tier failed:** n/a — supersession by ruling (`stakes-non-product-surfaces`
+  D1-planning-quick-read items 3 and 8 — `implement-lead-adaptive-rigor` D8-home-sound-loop's
+  scope clause superseded in part for the three outputs; D2-borrow-product-label, the class read
+  from the product work the output steers; DF5, the label ruled on each command's existing
+  confirmation point)
+- **Content (superseded, verbatim):**
+
+  ```text
+  (a product run's harm class, ruled by the user on the run-open line, keys how deep
+  ```
+- **Kept deliberately:** "a product run's harm class" and the run-open line, both kept for
+  implement's product runs; "keys how deep the legs run after the trigger fires — never whether
+  they fire", the never-thins set, the five review-form invariants, the trail, and the rest of
+  the row byte for byte.
+- **Consumers assessed:** no primitive quotes the row (grep "on the run-open line": router only);
+  the skill's own `description:` and Overview re-keyed the same wave (`strips/patterns-sound-loop.md`
+  [v0.124.0]).
+
 ## [v0.120.0] `/mochiko:architecture` row — "greenfield elicits through the shelf walk" and "Each visit walks the shelves you scope, takes your stance per row" superseded by the focus stage
 
 - **Disposition:** superseded → `SKILL.md`:142 as rewritten, the two passages verbatim —

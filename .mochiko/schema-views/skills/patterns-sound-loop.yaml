@@ -12,10 +12,14 @@ conditions:
     values: [money, data, security, availability, wrong-answer, cosmetic]
     resolution: entry-derived
     note: >-
-      the harm class of the run's product work — the worst kind of thing that breaks if the run
-      is wrong. Proposed with its cited line by the command's entry grading seat where it has one,
-      else by the lead; raised never lowered by the lead; ruled by the user at the command's
-      run-open confirmation. Absent where the reviewed object is not product work.
+      the harm class of the run's product work, or of the product work a planning output steers
+      — specify's spec and its map delta, the feature desk's map writes, the architecture desk's
+      store writes — the worst kind of thing that breaks if it is wrong. Proposed with its cited
+      line by the command's entry grading seat where it has one, else by the lead; raised never
+      lowered by the lead or the planning quick reader; ruled by the user at the command's
+      existing confirmation point. Absent where the reviewed object is neither — governance
+      surfaces, brainstorm records, plugin primitives and the other surfaces
+      `patterns-sound-loop.kind-keyed-library-wide` names.
 sections:
   - id: patterns-sound-loop.sec.trigger
     title: Trigger — two parts, no size threshold
@@ -42,10 +46,14 @@ sections:
         class: must
         text: >-
           The floor is kind-keyed and library-wide: any session, any command, whatever door the
-          work entered through. The stakes key and band bind product-run reviews only: where the
-          reviewed object is not product work — a plugin primitive, a governance surface, a
-          brainstorm record — no harm class applies, there is no band, and the review runs in
-          its fixed form.
+          work entered through. The stakes key and band bind product-run reviews and the reviews
+          of three planning outputs — `/mochiko:specify`'s spec and its map delta,
+          `/mochiko:feature`'s map writes, `/mochiko:architecture`'s store writes; a store write
+          made inside `/mochiko:implement`'s design phase follows implement's run stakes. Every
+          other review whose object is not product work — a plugin primitive, a governance
+          surface, a brainstorm record, a product baseline, an epic, `gates.md`, an operating doc,
+          crate code, a migration — has no harm class and no band, and runs in its fixed form;
+          the gate jobs keep theirs.
         anchor: 2026-08-13 charter-ritual-balance
       - id: patterns-sound-loop.governing-surface-table
         labels: [trigger, binding]
@@ -74,12 +82,21 @@ sections:
           The stakes key is the harm class of the run's product work: the worst kind of thing that
           breaks if the run is wrong, read at run-open from one cited line, from a closed list —
           money · data (loss or corruption) · security (or trust) · availability ·
-          wrong-answer (shown) · cosmetic. The command's entry grading seat proposes it where the
-          command has one, the lead where none exists; the lead carries it to the run-open line
-          and may raise it, never lower it; the user rules it. Where no line can be cited, the
-          class reads as money, data or security — the band where nothing thins. The key is
-          never a count of files, cards, rows, gaps or users. The word is "stakes": the governance
-          `depth` dial keys code standards and is never read to size process.
+          wrong-answer (shown) · cosmetic. A planning output borrows the class of the product
+          work it steers, with no list of its own: a spec takes its feature's class, read from its
+          own spec lines — at specify's intent confirm, before any spec line exists, from the
+          confirmed intent synthesis that lands verbatim as the spec's Intent section; a
+          feature-map or architecture-store change takes the highest class among the capabilities
+          or store elements it touches, a harm read and never a row count; where one review grades
+          two outputs, as specify's stress-test grades the spec and its map delta, the higher
+          label governs. The command's entry grading seat proposes it where the command has one,
+          the lead where none exists; the lead carries it to the run-open line — on a planning
+          output, the command's existing confirmation point — and may raise it, never lower it;
+          the planning quick reader may raise it; no seat lowers it; the user rules it. Where no
+          line can be cited, the class reads as money, data or security — the band where nothing
+          thins. The key is never a count of files, cards, rows, gaps or users. The word is
+          "stakes": the governance `depth` dial keys code standards and is never read to size
+          process.
         anchor: 2026-10-27 implement-lead-adaptive-rigor D3
       - id: patterns-sound-loop.stakes-band
         labels: [trigger, ladder]
@@ -94,7 +111,11 @@ sections:
           depth of the legs after the trigger fires, never whether they fire: a review leg thins,
           never vanishes. The standard thin plan (`references/STANDARD-THIN-PLAN.md`) is the
           worked example the lead cites by name in the run-open line instead of inventing one —
-          an example, never a menu.
+          an example, never a menu. On the three planning outputs there is no smoke precondition,
+          since a document has nothing to run: at availability, wrong-answer or cosmetic the full
+          review may take the planning quick read (`patterns-sound-loop.planning-quick-read`) and
+          the command's blind list may be skipped, each stated, the cited label line standing
+          where a smoke result would; the plan check lightens, never vanishes.
         when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
         pointer: references/STANDARD-THIN-PLAN.md
         anchor: 2026-10-27 implement-lead-adaptive-rigor D5
@@ -203,11 +224,14 @@ sections:
           above the tier the work was produced at, its model named on the spawn; (5) where the
           form is a blind hunt, the reader stays blind — the two-message dispatch, nothing of
           the author's reasoning in its brief. The input jobs `author-grader-consolidation` D8
-          names keep its conditions besides, and nothing else binds the form. The gate jobs keep
-          their fixed forms: the primitive-edit audit and setup's governance validation. Named
-          forms — a cold pair review, one blind seat solo, a delta read of the changed surface,
-          the smoke probe, a plan-QA leg — are examples, never a menu; a form the lead invents
-          is legal when it meets the five and is named in the line.
+          names keep its conditions besides — save the completed-hunt rule the planning quick
+          read drops — and nothing else binds the form. Invariants (1)–(4) bind the planning
+          quick read as well, whose form is fixed by `patterns-sound-loop.planning-quick-read`,
+          never the lead's free pick. The gate jobs keep their fixed forms: the primitive-edit
+          audit and setup's governance validation. Named forms — a cold pair review, one blind
+          seat solo, a delta read of the changed surface, the smoke probe, a plan-QA leg — are
+          examples, never a menu; a form the lead invents is legal when it meets the five and is
+          named in the line.
         anchor: 2026-10-27 implement-lead-adaptive-rigor D4
       - id: patterns-sound-loop.raise-free-lower-ruled
         labels: [ladder, user-gate]
@@ -218,6 +242,27 @@ sections:
           security surface found in the diff, which voids the thinning outright — by the lead's
           own hand; it never moves down except by the user's checkpoint ruling.
         anchor: 2026-10-27 implement-lead-adaptive-rigor D2
+      - id: patterns-sound-loop.planning-quick-read
+        labels: [independence, evidence]
+        class: floor
+        text: >-
+          On the three planning outputs `patterns-sound-loop.kind-keyed-library-wide` names, a
+          change ruled availability, wrong-answer or cosmetic may skip the full review — the
+          completed open hunt of specify's stress-test, of the feature desk's card grade, of the
+          architecture desk's store grade — and takes the planning quick read in its place: one
+          read, before the user rules, by a seat that authored none of the change, of what the run
+          wrote, a new output read whole. It keeps every hard check of the full review it replaces
+          and every check that guards the record — the prototype walk and its drift check on a
+          UX-bearing feature, the agreement of spec, stories, derivation and map delta, the joined
+          IDs, sameness of meaning against the visit file — and drops only its open hunt — in
+          specify, the hunt for missing requirements, ambiguities and edge cases — which it
+          reports as "open hunt not run", never as "no gaps". Invariants (1)–(4) of
+          `patterns-sound-loop.review-form-invariants` bind it. Its reader may raise the label
+          when the change touches a money, data or security surface: the raise voids the skip and
+          the full review runs, while a blind list already skipped is not re-run, the full
+          review's open hunt covering missing journeys. Each command's grading rule names its own
+          hard checks.
+        anchor: 2026-10-28 stakes-non-product-surfaces D1
   - id: patterns-sound-loop.sec.inputs
     title: Inputs
     intent: Read duties this floor would carry before it fires.
@@ -239,10 +284,12 @@ sections:
           stakes: <class>|n/a · thinned: <step>(<cover>)…|none`. The `plans:` segment carries
           one entry per producing seat — `n` the re-plan rounds consumed on the run's one shared
           counter, and `dirty` appended where the seat changed the tree while planning. The
-          `stakes:` segment carries the ruled harm class, `n/a` where the reviewed object is not
-          product work; the `thinned:` segment names each step thinned or skipped with what still
-          covered its failure kind, `none` where nothing thinned. When clear: `floor: clear` alone
-          — no seats, plans, stakes or thinned segment, since no seats existed to name.
+          `stakes:` segment carries the ruled harm class, `n/a` only where the reviewed object is
+          neither product work nor one of the three planning outputs
+          `patterns-sound-loop.kind-keyed-library-wide` names; the `thinned:` segment names each
+          step thinned or skipped with what still covered its failure kind, `none` where nothing
+          thinned. When clear: `floor: clear` alone — no seats, plans, stakes or thinned
+          segment, since no seats existed to name.
         anchor: 2026-08-13 charter-ritual-balance
       - id: patterns-sound-loop.only-real-seats
         labels: [reporting, evidence]

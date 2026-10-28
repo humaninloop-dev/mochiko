@@ -47,8 +47,17 @@ conditions:
       handed-in — the user hands in the story set (their own lines, or a named brainstorm record
       that leaves none open) and skips the forks, never the close; forks — otherwise; ruled as
       the stage opens.
+  stakes:
+    values: [money, data, security, availability, wrong-answer, cosmetic]
+    resolution: moment-resolved(intent)
+    note: >-
+      the harm class the spec and its map delta borrow from the product work they steer, per
+      `patterns-sound-loop.stakes-key` — proposed by you with one line cited from the confirmed
+      intent synthesis, ruled by the user at the intent confirm as the stakes line.
 moments:
-  intent: The adaptive-probe stage that closes in the user-confirmed intent synthesis.
+  intent: >-
+    The adaptive-probe stage that closes in the user-confirmed intent synthesis and the stakes
+    line ruled with it.
   stories-confirm: The post-stories step where the capability frame is confirmed or adjusted.
   derivation: Where work rows are cut under their capabilities and the map delta is staged.
   selection: Where the user picks which work rows build now, from the selection card.
@@ -129,14 +138,19 @@ sections:
           The stress-test grades spec + stories + capability/row derivation + map delta in one
           pass — derivation honesty, filter rejections justified, dedup against the actual map,
           granularity respected, capabilities and rows well-formed — its map-delta baseline the
-          map's git state at run open.
+          map's git state at run open. It runs in full at money, data or security; at
+          availability, wrong-answer or cosmetic it takes the quick read instead
+          (spec.stress-test-quick-read) only where the user ruled that on the stakes line, the
+          full pass running otherwise.
+        when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
       - id: spec.stress-test-prototype-walk
         labels: [independence, evidence]
         class: must
         text: >-
-          The stress-test also walks the prototype (served, or opened directly via the no-server
-          degrade path): every FLOW-XXX clickable end-to-end, every SCR-XXX reachable, every P1
-          acceptance scenario carrying a click path; manifest↔prototype drift is a blocking gap.
+          The stress-test also walks the prototype, in the full pass and in the quick read alike
+          (spec.stress-test-quick-read) — served, or opened directly via the no-server degrade
+          path: every FLOW-XXX clickable end-to-end, every SCR-XXX reachable, every P1 acceptance
+          scenario carrying a click path; manifest↔prototype drift is a blocking gap.
         when: {ux_bearing: 'yes'}
         anchor: 2026-08-02 ux-mocking-in-specify D7
       - id: spec.lead-holds-story-stage
@@ -154,7 +168,11 @@ sections:
           Before the slate closes, one fresh `general-purpose` teammate spawned with `model: opus`
           gets the confirmed intent synthesis and the capability frame — never the slate or the
           conversation — and returns the journeys it sees; each difference from the slate is a
-          candidate row the user rules in or out. One list per spec run.
+          candidate row the user rules in or out. One list per spec run. At availability,
+          wrong-answer or cosmetic it may be skipped where the user ruled that on the stakes line,
+          the skip stated in the trail (spec.lowering-trail); that is its only skip — a
+          handed-in slate never skips it (spec.handed-in-slate).
+        when: {stakes: [money, data, security, availability, wrong-answer, cosmetic]}
         anchor: 2026-10-10 specify-brainstorm-discovery D4
       - id: spec.analyst-brief-and-pen
         labels: [seats, user-gate]
@@ -172,6 +190,22 @@ sections:
           blind journey list, before the user confirms the slate.
         pointer: mochiko:patterns-map-minimalism
         anchor: 2026-10-10 specify-brainstorm-discovery
+      - id: spec.stress-test-quick-read
+        labels: [independence, evidence]
+        class: must
+        text: >-
+          Where the user ruled it on the stakes line, the stress-test takes the planning quick
+          read (`patterns-sound-loop.planning-quick-read`) in place of the full pass: one fresh
+          seat that authored none of it reads what the run wrote — a new spec whole, with its
+          stories, derivation and staged map delta — on mochiko:review-specifications'
+          quick-read form, keeping every check spec.stress-test-one-pass names, against the map's
+          git state at run open, and on a UX-bearing feature the prototype walk
+          (spec.stress-test-prototype-walk); it drops the open gap hunt — missing requirements,
+          ambiguities, edge cases — and reports it as "open hunt not run", never "no gaps". Its
+          raise, and what a raise restores, are the planning quick read's.
+        when: {stakes: [availability, wrong-answer, cosmetic]}
+        pointer: mochiko:review-specifications
+        anchor: 2026-10-28 stakes-non-product-surfaces D1
   - id: spec.sec.reserved
     title: Reserved to the user — never the run's
     intent: 'Decisions held by the user: gates, rulings, and escalations no seat may take.'
@@ -182,9 +216,11 @@ sections:
         kind: reservation
         text: >-
           Reserved to the user: the feature framing when `$ARGUMENTS` is empty · intent
-          confirmation (the capability frame included) · clarification answers only they can
-          settle · clicking each story's prototype screens as they land (their reactions fold
-          back into story and screen together) · ruling on an escalated filter disagreement.
+          confirmation (the capability frame and the stakes line included) · any lowering of the
+          stakes label after the intent confirm, as a checkpoint ruling · clarification answers
+          only they can settle · clicking each story's prototype screens as they land (their
+          reactions fold back into story and screen together) · ruling on an escalated filter
+          disagreement.
       - id: spec.selection-card
         labels: [user-gate, reporting]
         class: must
@@ -571,6 +607,19 @@ sections:
         class: must
         extends: common.asking-line
         anchor: 2026-10-15 engine-follow-up D10
+      - id: spec.lowering-trail
+        labels: [reporting, evidence]
+        class: must
+        kind: duty
+        text: >-
+          Every thinned or skipped step is written, one line per lowering, in spec.md's header
+          block beneath its `> Status:` line — `> Lowered: <step> · stakes: <class> — <cited
+          line> · covered by: <what still covers the failure kind>` — the block reading `>
+          Lowered: none` where nothing thinned; a lowering the user rules after the intent confirm
+          is written when ruled. That block is the durable home spec.fail.skip-unstated reads, and
+          it stands on the acceptance screen. A raise needs no line. The trail is
+          `patterns-sound-loop.trail-of-lowerings`'s, referenced never restated.
+        anchor: 2026-10-28 stakes-non-product-surfaces D1
   - id: spec.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-run ruling can waive.
@@ -610,7 +659,7 @@ sections:
         class: floor
         kind: fail
         text: A blocking gap open.
-        enforces: [spec.stress-test-one-pass]
+        enforces: [spec.stress-test-one-pass, spec.stress-test-quick-read]
         anchor: 2026-08-26 command-content-schema D10
       - id: spec.fail.intent-unconfirmed
         labels: [user-gate]
@@ -642,7 +691,7 @@ sections:
           A Screens & Flows section absent (the waiver line counts), or ruled UX-bearing with a
           surface lacking its Direction block or with no clickable prototype, or
           manifest↔prototype drift unresolved.
-        enforces: [spec.prototype-craft, spec.stress-test-prototype-walk]
+        enforces: [spec.prototype-craft, spec.stress-test-prototype-walk, spec.stress-test-quick-read]
         anchor: 2026-08-26 command-content-schema D10
       - id: spec.fail.selection-unruled
         labels: [user-gate]
@@ -678,6 +727,17 @@ sections:
         text: A story file with no confirmed slate behind it, or one outside the confirmed slate.
         enforces: [spec.story-stage, spec.slate-binds-authoring, spec.gate-slate-confirm]
         anchor: 2026-10-10 specify-brainstorm-discovery D1
+      - id: spec.fail.skip-unstated
+        labels: [reporting, evidence]
+        class: floor
+        kind: fail
+        text: >-
+          A step thinned or skipped in the band — the stress-test taken as the quick read, the
+          blind journey list skipped, a plan grade thinned under
+          `review-seat-plan.once-per-seat-in-band` — with no line in spec.md's trail
+          (spec.lowering-trail).
+        enforces: [spec.lowering-trail, spec.stress-test-quick-read, spec.blind-journey-list]
+        anchor: 2026-10-28 stakes-non-product-surfaces D1
 tombstones:
   - id: spec.sec.harness
     disposition: >-

@@ -42,12 +42,22 @@ conditions:
       trigger's routing. Re-derived whenever the visit goal is re-converged: a query or drift
       visit that turns to ruling something re-converges its goal first, so the stage runs before
       any store write.
+  stakes:
+    values: [money, data, security, availability, wrong-answer, cosmetic]
+    resolution: moment-resolved(focus)
+    note: >-
+      the harm class a ruling visit's store writes borrow from the store elements they touch, per
+      `patterns-sound-loop.stakes-key` — proposed by you with its cited line, ruled by the user
+      on the visit goal line as the stakes line. Only a ruling visit states one: a delta visit
+      writes nothing to the store, a store write inside /mochiko:implement's design phase keeps
+      implement's stakes, and a query or drift visit has nothing to lighten.
 moments:
   visit-open: Store health surfaced from the derived index before the ask, every visit.
   close: The verdict against the visit's done condition, with store integrity intact.
   focus: >-
     Where the visit's focus set is worked with the user — after the one-line visit goal is
-    agreed, before the principal-architect seat authors anything.
+    agreed, on a ruling visit the stakes line ruled with it, before the principal-architect seat
+    authors anything.
 sections:
   - id: arch.sec.roles
     title: Roles & Responsibilities
@@ -162,7 +172,11 @@ sections:
           `model: opus` draws the visit's blind list from the focus context (arch.focus-context),
           never the visit file, and returns the parts, concerns and forks it sees; a part the
           shelf lacks is how an off-shelf concern enters. One list per visit, skipped only on a
-          single-row ask — the goal names one row and the user hands in its direction.
+          single-row ask — the goal names one row and the user hands in its direction — or on
+          a ruling visit at availability, wrong-answer or cosmetic where the user ruled the skip
+          on the stakes line, stated in the trail (arch.lowering-trail). That stakes-line skip
+          never applies on a greenfield first visit, whose candidates the list supplies
+          (arch.first-visit-stage).
         when: {visit_kind: [ruling, delta]}
         anchor: 2026-10-11 architecture-brainstorm-interview D4
       - id: arch.rows-from-visit-file
@@ -174,9 +188,30 @@ sections:
           the visit file in the same visit, each row linking the file as its rationale home, and
           ${grader_seat} grades them against the file for sameness of meaning — additive to the
           user's word on the row text, never a substitute; the visit does not close until the rows
-          are in.
-        when: {visit_kind: ruling}
+          are in. The grade runs in full at money, data or security; at availability, wrong-answer
+          or cosmetic it takes the quick read instead (arch.store-grade-quick-read) only where the
+          user ruled that on the stakes line, the full grade running otherwise.
+        when: {visit_kind: ruling, stakes: [money, data, security, availability, wrong-answer, cosmetic]}
         anchor: 2026-10-11 architecture-brainstorm-interview D3
+      - id: arch.store-grade-quick-read
+        labels: [independence, evidence]
+        class: must
+        text: >-
+          Where the user ruled it on the stakes line, ${grader_seat}'s grade of a ruling visit's
+          store writes takes the planning quick read (`patterns-sound-loop.planning-quick-read`)
+          in place of the full grade: ${grader_seat}, a seat that authored none of them, reads
+          every row, spine element and diagram the visit wrote, whole, and keeps the hard checks
+          — each row holding its focus item's direction against the visit file, an `open`
+          sentence left open (arch.focus-unit), each drawing against the targets its `Draws:` line
+          cites, the outside claims the rows rest on re-checked (arch.seat-tech-lead-grader), and
+          the AX, SPN and NFR IDs (arch.grader-checks-joined-ids). It drops the open hunt —
+          whether each stance is enforceable, its trigger testable, its rationale one a maintainer
+          could weigh and its row worth its cost, and what it clashes with elsewhere in the store
+          — and reports it as "open hunt not run", never "no gaps". Its raise, and what a raise
+          restores, are the planning quick read's.
+        when: {visit_kind: ruling, stakes: [availability, wrong-answer, cosmetic]}
+        pointer: mochiko:patterns-sound-loop
+        anchor: 2026-10-28 stakes-non-product-surfaces D1
   - id: arch.sec.reserved
     title: Reserved to the user — never the desk's
     intent: 'Decisions held by the user: gates, rulings, and escalations no seat may take.'
@@ -188,8 +223,9 @@ sections:
         text: >-
           Reserved to the user: every row stance, the baseline confirmation, every amendment, each
           drift finding's disposition, the shelf-scope override, the capability mint at
-          /mochiko:feature's growth door (arch.dispatch-feature-growth-door), and the
-          governance-ledger waiver a true floor drop needs.
+          /mochiko:feature's growth door (arch.dispatch-feature-growth-door), the
+          governance-ledger waiver a true floor drop needs, and a ruling visit's stakes line, with
+          any later lowering of it.
         anchor: 2026-08-19 product-architecture-schema
       - id: arch.gate-focus-confirm
         labels: [user-gate]
@@ -515,6 +551,20 @@ sections:
         class: must
         extends: common.asking-line
         anchor: 2026-10-15 engine-follow-up D10
+      - id: arch.lowering-trail
+        labels: [reporting, evidence]
+        class: must
+        kind: duty
+        text: >-
+          A ruling visit's trail sits in its visit file's header, beneath the `**Handed in**:`
+          line: one `**Lowered**: <step> · stakes: <class> — <cited line> · covered by: <what
+          still covers the failure kind>` line per thinned or skipped step, or `**Lowered**: none`
+          where nothing thinned; a lowering the user rules after the goal line is written when
+          ruled. Every row written from the file links it as its rationale home, and
+          arch.fail.skip-unstated reads it. A raise needs no line. The trail is
+          `patterns-sound-loop.trail-of-lowerings`'s, referenced never restated.
+        when: {visit_kind: ruling}
+        anchor: 2026-10-28 stakes-non-product-surfaces D1
   - id: arch.sec.boundaries
     title: Boundaries — the non-waivable floor
     intent: Floor obligations no seat and no in-visit ruling can waive.
@@ -639,3 +689,14 @@ sections:
           with no ruled set behind it in a visit file, or one outside that set.
         enforces: [arch.focus-stage, arch.visit-file, arch.rows-from-visit-file, arch.gate-focus-confirm]
         anchor: 2026-10-11 architecture-brainstorm-interview
+      - id: arch.fail.skip-unstated
+        labels: [reporting, evidence]
+        class: floor
+        kind: fail
+        text: >-
+          A ruling visit whose store grade ran as the quick read, whose focus blind list was
+          skipped on the stakes line, or whose ${producer_seat} plan grade thinned under
+          `review-seat-plan.once-per-seat-in-band`, with no `**Lowered**:` line for it in the
+          visit file's header (arch.lowering-trail).
+        enforces: [arch.lowering-trail, arch.store-grade-quick-read, arch.focus-blind-list]
+        anchor: 2026-10-28 stakes-non-product-surfaces D1

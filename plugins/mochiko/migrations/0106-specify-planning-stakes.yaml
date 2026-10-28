@@ -1,0 +1,218 @@
+grammar: 1
+id: 0106-specify-planning-stakes
+sequence: 106
+intent: >-
+  Make /mochiko:specify consume the planning stakes lever (stakes-non-product-surfaces D1 items 1,
+  7 and 10, D2, D3, DF4, DF5, DF6 and OQ3, as review-amended): declare the stakes condition,
+  resolved at the intent moment, whose text gains the stakes line; reserve the stakes line and any
+  later lowering to the user; key the one-pass stress-test and the blind journey list on stakes,
+  each worded for its lighter form on the stakes line the user ruled; mint the stress-test's quick
+  read, the trail of lowerings in spec.md's header block (OQ3) and the floor fail
+  spec.fail.skip-unstated; widen spec.fail.blocking-gap and spec.fail.screens-flows to enforce the
+  quick read (D1 item 7); reword the prototype walk to run inside both forms. Give
+  review-specifications the entry-derived stakes condition and its quick-read form — the bend of
+  author-grader-consolidation D8-input-job-conditions' completed-hunt rule for this review only
+  (D1 item 1) — and carve complete-coverage's sweep out of it; no floor of the skill collides.
+  Re-set review-seat-plan's stakes note to a planning output's ruling and reword its once-per-seat
+  latitude for a run with no smoke (DF4). The key, the band, the quick read's raise and the trail
+  stay patterns-sound-loop's, referenced never restated. The rewords keep their ids, classes,
+  kinds, labels, pointers and anchors, their authority this header. One floor minted, none retired
+  or lowered: specify rules 73 to 76, floors 19 to 20, fails 10 to 11; review-specifications rules
+  33 to 34, floors 8; review-seat-plan rules 16, floors 5.
+anchor: 2026-10-28 stakes-non-product-surfaces
+hash: sha256:39ced306f5e33f4a982f3bb44cb70280320a091a36f3e9e6fe47e2de17c499a1
+changes:
+  - op: set-condition
+    schema: command/specify
+    name: stakes
+    spec:
+      values: [money, data, security, availability, wrong-answer, cosmetic]
+      resolution: moment-resolved(intent)
+      note: >-
+        the harm class the spec and its map delta borrow from the product work they steer, per
+        `patterns-sound-loop.stakes-key` — proposed by you with one line cited from the
+        confirmed intent synthesis, ruled by the user at the intent confirm as the stakes line.
+  - op: set-moment
+    schema: command/specify
+    name: intent
+    text: >-
+      The adaptive-probe stage that closes in the user-confirmed intent synthesis and the stakes
+      line ruled with it.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.reserved-to-user
+    text: >-
+      Reserved to the user: the feature framing when `$ARGUMENTS` is empty · intent confirmation
+      (the capability frame and the stakes line included) · any lowering of the stakes label
+      after the intent confirm, as a checkpoint ruling · clarification answers only they can
+      settle · clicking each story's prototype screens as they land (their reactions fold back
+      into story and screen together) · ruling on an escalated filter disagreement.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.stress-test-one-pass
+    text: >-
+      The stress-test grades spec + stories + capability/row derivation + map delta in one pass
+      — derivation honesty, filter rejections justified, dedup against the actual map,
+      granularity respected, capabilities and rows well-formed — its map-delta baseline the
+      map's git state at run open. It runs in full at money, data or security; at availability,
+      wrong-answer or cosmetic it takes the quick read instead (spec.stress-test-quick-read) only
+      where the user ruled that on the stakes line, the full pass running otherwise.
+  - op: set-rule-field
+    schema: command/specify
+    id: spec.stress-test-one-pass
+    field: when
+    value:
+      stakes: [money, data, security, availability, wrong-answer, cosmetic]
+  - op: mint-rule
+    schema: command/specify
+    section: spec.sec.roles
+    rule:
+      id: spec.stress-test-quick-read
+      labels: [independence, evidence]
+      class: must
+      text: >-
+        Where the user ruled it on the stakes line, the stress-test takes the planning quick read
+        (`patterns-sound-loop.planning-quick-read`) in place of the full pass: one fresh seat that
+        authored none of it reads what the run wrote — a new spec whole, with its stories,
+        derivation and staged map delta — on mochiko:review-specifications' quick-read form,
+        keeping every check spec.stress-test-one-pass names, against the map's git state at run
+        open, and on a UX-bearing feature the prototype walk (spec.stress-test-prototype-walk); it
+        drops the open gap hunt — missing requirements, ambiguities, edge cases — and reports
+        it as "open hunt not run", never "no gaps". Its raise, and what a raise restores, are the
+        planning quick read's.
+      when: {stakes: [availability, wrong-answer, cosmetic]}
+      pointer: mochiko:review-specifications
+      anchor: 2026-10-28 stakes-non-product-surfaces D1
+  - op: reword-rule
+    schema: command/specify
+    id: spec.stress-test-prototype-walk
+    text: >-
+      The stress-test also walks the prototype, in the full pass and in the quick read alike
+      (spec.stress-test-quick-read) — served, or opened directly via the no-server degrade path:
+      every FLOW-XXX clickable end-to-end, every SCR-XXX reachable, every P1 acceptance scenario
+      carrying a click path; manifest↔prototype drift is a blocking gap.
+  - op: reword-rule
+    schema: command/specify
+    id: spec.blind-journey-list
+    text: >-
+      Before the slate closes, one fresh `general-purpose` teammate spawned with `model: opus`
+      gets the confirmed intent synthesis and the capability frame — never the slate or the
+      conversation — and returns the journeys it sees; each difference from the slate is a
+      candidate row the user rules in or out. One list per spec run. At availability, wrong-answer
+      or cosmetic it may be skipped where the user ruled that on the stakes line, the skip stated
+      in the trail (spec.lowering-trail); that is its only skip — a handed-in slate never skips
+      it (spec.handed-in-slate).
+  - op: set-rule-field
+    schema: command/specify
+    id: spec.blind-journey-list
+    field: when
+    value:
+      stakes: [money, data, security, availability, wrong-answer, cosmetic]
+  - op: mint-rule
+    schema: command/specify
+    section: spec.sec.ways-of-working
+    rule:
+      id: spec.lowering-trail
+      labels: [reporting, evidence]
+      class: must
+      kind: duty
+      text: >-
+        Every thinned or skipped step is written, one line per lowering, in spec.md's header block
+        beneath its `> Status:` line — `> Lowered: <step> · stakes: <class> — <cited line> ·
+        covered by: <what still covers the failure kind>` — the block reading `> Lowered: none`
+        where nothing thinned; a lowering the user rules after the intent confirm is written when
+        ruled. That block is the durable home spec.fail.skip-unstated reads, and it stands on the
+        acceptance screen. A raise needs no line. The trail is
+        `patterns-sound-loop.trail-of-lowerings`'s, referenced never restated.
+      anchor: 2026-10-28 stakes-non-product-surfaces D1
+  - op: set-rule-field
+    schema: command/specify
+    id: spec.fail.blocking-gap
+    field: enforces
+    value: [spec.stress-test-one-pass, spec.stress-test-quick-read]
+  - op: set-rule-field
+    schema: command/specify
+    id: spec.fail.screens-flows
+    field: enforces
+    value: [spec.prototype-craft, spec.stress-test-prototype-walk, spec.stress-test-quick-read]
+  - op: mint-rule
+    schema: command/specify
+    section: spec.sec.fail-conditions
+    rule:
+      id: spec.fail.skip-unstated
+      labels: [reporting, evidence]
+      class: floor
+      kind: fail
+      text: >-
+        A step thinned or skipped in the band — the stress-test taken as the quick read, the
+        blind journey list skipped, a plan grade thinned under
+        `review-seat-plan.once-per-seat-in-band` — with no line in spec.md's trail
+        (spec.lowering-trail).
+      enforces: [spec.lowering-trail, spec.stress-test-quick-read, spec.blind-journey-list]
+      anchor: 2026-10-28 stakes-non-product-surfaces D1
+  - op: set-condition
+    schema: skill/review-specifications
+    name: stakes
+    spec:
+      values: [money, data, security, availability, wrong-answer, cosmetic]
+      resolution: entry-derived
+      note: >-
+        the ruled harm class of the spec under review, carried in from `/mochiko:specify`'s stakes
+        line (`mochiko:patterns-sound-loop`). Absent outside specify's stress-test — every other
+        review of a spec runs the full form.
+  - op: mint-rule
+    schema: skill/review-specifications
+    section: review-specifications.sec.inputs
+    rule:
+      id: review-specifications.quick-read
+      labels: [evidence, boundary]
+      class: must
+      text: >-
+        Where the caller's run ruled the planning quick read (`mochiko:patterns-sound-loop`), you
+        drop only its open hunt: the missing-requirement, ambiguity and edge-case classes of
+        review-specifications.gap-taxonomy and the sweep of
+        review-specifications.complete-coverage. Assumption gaps, contradictions and excess /
+        unpaid scope stay hunted across the user-facing categories,
+        review-specifications.smuggled-posture stands, and every other check of this skill — the
+        feature-layer checks against the map's git baseline, review-specifications.joined-ids,
+        review-specifications.slate-checks, review-specifications.external-claims and, where a
+        manifest is present, the Screens & Flows checks on the served prototype — runs as in the
+        full form, a blocking finding among them a blocking gap. The report states the dropped
+        hunt as "open hunt not run", never "no gaps". Where the change touches a money, data or
+        security surface, raise the label: the raise ends the quick read and the full form runs.
+        This bends `author-grader-consolidation` D8-input-job-conditions' completed-hunt rule for
+        this review only, at a low label only; every floor of this skill stands.
+      when: {stakes: [availability, wrong-answer, cosmetic]}
+      pointer: mochiko:patterns-sound-loop
+      anchor: 2026-10-28 stakes-non-product-surfaces D1
+  - op: reword-rule
+    schema: skill/review-specifications
+    id: review-specifications.complete-coverage
+    text: >-
+      Coverage is complete, never sampled: every slate row and every user story reviewed for
+      completeness, every success criterion checked for measurability, edge cases hunted per main
+      flow — save in the quick read (review-specifications.quick-read), which drops this sweep.
+  - op: set-condition
+    schema: skill/review-seat-plan
+    name: stakes
+    spec:
+      values: [money, data, security, availability, wrong-answer, cosmetic]
+      resolution: entry-derived
+      note: >-
+        the ruled harm class, carried in from the command's ruling — a product run's run-open
+        line, or a planning output's stakes line at the command's confirmation point
+        (`mochiko:patterns-sound-loop`). Absent where the run is neither.
+  - op: reword-rule
+    schema: skill/review-seat-plan
+    id: review-seat-plan.once-per-seat-in-band
+    text: >-
+      In the band, per the plan the user ruled at run-open — on a planning output, at the
+      command's confirmation point — the grade runs once per seat per run: a seat's first plan
+      is graded on the seven items, and its later plans in the same run ride that PASS — each
+      still reaching the lead verbatim, the thinning stated in the trail. The thinning stands
+      provisionally until the smoke: a red smoke, or any in-run raise, returns every later plan to
+      the full grade, under `mochiko:patterns-sound-loop`'s raise rule. Where the run has no smoke
+      — a planning output's — the thinning stands for the run, and any in-run raise returns
+      every later plan to the full grade. A seat re-staffed, re-scoped, or re-planning after a
+      FAIL is graded again. Outside the band every plan is graded. The band and the trail are
+      `mochiko:patterns-sound-loop`'s, referenced never restated.

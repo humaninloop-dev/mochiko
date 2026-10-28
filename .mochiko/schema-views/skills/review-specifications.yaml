@@ -10,6 +10,13 @@ conditions:
     values: presence
     resolution: surface-presence
     note: 'the spec''s User Stories section carries the slate header line (`> Slate: …`).'
+  stakes:
+    values: [money, data, security, availability, wrong-answer, cosmetic]
+    resolution: entry-derived
+    note: >-
+      the ruled harm class of the spec under review, carried in from `/mochiko:specify`'s stakes
+      line (`mochiko:patterns-sound-loop`). Absent outside specify's stress-test — every other
+      review of a spec runs the full form.
 sections:
   - id: review-specifications.sec.independence
     title: Independence — who is never whom
@@ -77,7 +84,8 @@ sections:
         text: >-
           Coverage is complete, never sampled: every slate row and every user story reviewed for
           completeness, every success criterion checked for measurability, edge cases hunted per
-          main flow.
+          main flow — save in the quick read (review-specifications.quick-read), which drops
+          this sweep.
       - id: review-specifications.external-claims
         labels: [evidence]
         class: must
@@ -123,6 +131,28 @@ sections:
         kind: duty
         text: Check existing patterns and decisions first — never ask what is already answered.
         anchor: 2026-08-11 validator-scope-and-verbosity
+      - id: review-specifications.quick-read
+        labels: [evidence, boundary]
+        class: must
+        text: >-
+          Where the caller's run ruled the planning quick read (`mochiko:patterns-sound-loop`),
+          you drop only its open hunt: the missing-requirement, ambiguity and edge-case classes of
+          review-specifications.gap-taxonomy and the sweep of
+          review-specifications.complete-coverage. Assumption gaps, contradictions and excess /
+          unpaid scope stay hunted across the user-facing categories,
+          review-specifications.smuggled-posture stands, and every other check of this skill —
+          the feature-layer checks against the map's git baseline,
+          review-specifications.joined-ids, review-specifications.slate-checks,
+          review-specifications.external-claims and, where a manifest is present, the Screens &
+          Flows checks on the served prototype — runs as in the full form, a blocking finding
+          among them a blocking gap. The report states the dropped hunt as "open hunt not run",
+          never "no gaps". Where the change touches a money, data or security surface, raise the
+          label: the raise ends the quick read and the full form runs. This bends
+          `author-grader-consolidation` D8-input-job-conditions' completed-hunt rule for this
+          review only, at a low label only; every floor of this skill stands.
+        when: {stakes: [availability, wrong-answer, cosmetic]}
+        pointer: mochiko:patterns-sound-loop
+        anchor: 2026-10-28 stakes-non-product-surfaces D1
   - id: review-specifications.sec.verdict
     title: Verdict — the grading grammar
     intent: The hunt taxonomy, the check sets, and the severity grammar findings are graded by.

@@ -5,6 +5,113 @@ appending here is release gate 4 (`.mochiko/memory/governance-ledger.md`, GI-010
 Entries before 0.53.0 predate this file; their history lives in `ROADMAP.md` stamp lines,
 `DECISIONS.md`, and git log.
 
+## [0.124.0] — 2026-10-28
+
+**Planning-output stakes — the lever reaches specify's spec, the feature desk's cards and the
+architecture desk's store writes; a low label the user rules trades the open hunt for one quick
+non-author read — MINOR** (`stakes-non-product-surfaces` D1–D3 as review-amended, defaults
+DF1–DF6, DF3 withdrawn by the user's word; record
+`.mochiko/brainstorms/stakes-non-product-surfaces/record.md`; `DECISIONS.md` 2026-10-28 row). One
+build in three waves on branch `adaptive-rigor-build`, one bump. Only the three commands' own
+outputs get the lever; governance, brainstorm records, plugin primitives, product baselines,
+epics, `gates.md`, operating docs, crate code and migrations keep fixed reviews, and the two
+gate jobs keep their forms (D1, DF1, DF2). The label borrows implement's six harm classes, read
+from the product work the output steers (D2); the lead proposes it with one cited line, the user
+rules it at an existing confirmation point, the quick reader may raise it and only the user
+lowers it (D3, DF5); no cite reads money, data or security (DF6). Where the user rules the quick
+read on a low line (availability · wrong-answer · cosmetic), the review keeps every hard check
+and drops only its open hunt, reporting "open hunt not run", never "no gaps"; the blind list may
+be skipped, stated; every lowering is trailed and an unstated one fails the run.
+
+**Wave 1 — the lever's single home widens** (D1 items 3–6, D2, D3, DF4, DF6). Migration
+**`0105-sound-loop-planning-stakes`**, seven ops on `patterns-sound-loop`: the `stakes`
+condition re-set to carry a planning output's stakes line; five rewords keeping id, class,
+kind and anchor — `kind-keyed-library-wide` (the key and band bind product-run reviews and the
+reviews of the spec, the feature map and the architecture store), `stakes-key` (a planning
+output's class read from the product work it steers), `stakes-band` (the planning clause: no
+smoke precondition, the full grade may become the quick read, the three blind lists join the
+skippable steps), `review-form-invariants` (invariants (1)–(4) bind the quick read, its form
+fixed by D1 — save the completed-hunt rule it drops) and `disclosure-line` (its `stakes: n/a`
+case narrowed); one floor minted, `patterns-sound-loop.planning-quick-read`. Rules 21 → 22,
+floors 10 → 11. `SKILL.md`'s Overview scope sentence and `description:` stakes clause name the
+three outputs (823 chars, the cap 1,536); the router row says so — strips `[v0.124.0]` in
+`patterns-sound-loop.md` and `mochiko.md`. Contract: the `patterns-sound-loop` freeze row gains
+`planning-quick-read` (`floor_pin` 11), the README's skills floor total 270 → 271. Gate audit:
+five units PASS, unit 2 in two rounds (the budget row's argument named four rewords of five),
+0 blocking. Budget ruled HOLDS: `patterns-sound-loop` 22,821 (+3,579 this wave, +10,433
+standing).
+
+**Wave 2 — specify keys its review on stakes** (D1 items 1, 7, 10; D2; D3; DF4–DF6; OQ3).
+Migration **`0106-specify-planning-stakes`**, 18 ops over three schemas: `specify` declares
+`stakes` `moment-resolved(intent)`, its `intent` moment closing in the confirmed synthesis and
+the stakes line ruled with it, `spec.reserved-to-user` naming the line and a later lowering as
+the user's; `spec.stress-test-one-pass` and `spec.blind-journey-list` keyed on all six classes,
+each with a clause naming its lighter form where the user ruled it; `spec.stress-test-quick-read`
+minted (the quick read on `review-specifications`' quick-read form, the prototype walk and the
+spec–stories–derivation–map-delta agreement kept), `spec.stress-test-prototype-walk` running in
+both forms, `spec.lowering-trail` minted (OQ3: `> Lowered: <step> · stakes: <class> — <cited
+line> · covered by: …` beneath `> Status:` in `spec.md`'s header, `> Lowered: none` otherwise),
+`spec.fail.blocking-gap` and `spec.fail.screens-flows` enforcing the quick read as far as its
+hard checks reach, and `spec.fail.skip-unstated` minted (floor · fail). `review-specifications`
+declares `stakes` and mints `review-specifications.quick-read` — only the missing-requirement,
+ambiguity and edge-case classes and `complete-coverage`'s sweep drop; assumption gaps,
+contradictions and excess or unpaid scope stay hunted; the raise scoped to a money, data or
+security surface; `author-grader-consolidation` D8-input-job-conditions' completed-hunt rule bent
+for this review only (D1 item 1) — and `complete-coverage` is reworded to match.
+`review-seat-plan`'s `stakes` note and `once-per-seat-in-band` learn that a planning run has no
+smoke: the thinning stands for the run, any raise restoring the full grade. Specify 73 → 76
+rules, floors 19 → 20, fails 10 → 11. Prose: `specify.md`'s Goal clause, two sentences in
+`review-specifications/SKILL.md`, the router's specify row — every sentence keyed on the user's
+stakes-line ruling, never on the label alone; strips `[v0.124.0]` in `specify.md`,
+`review-specifications.md` and `mochiko.md`. Contract: `EXPECTED["specify"]` gains
+`spec.fail.skip-unstated`, the README's commands floor total 130 → 131. Gate audit: seven units
+PASS in one round, 0 blocking (`check` admits the `> Lowered:` lines, negative control live).
+Budgets ruled HOLDS: `review-specifications` 20,317 (+2,138, +4,143 standing),
+`review-seat-plan` 14,103 (+290, +1,402 standing).
+
+**Wave 3 — the desks key their grades on stakes** (D1 statement and item 11, D2, D3, DF4–DF6).
+Migration **`0107-desk-planning-stakes`**, 19 ops over two schemas. `feature` and
+`architecture` each declare `stakes`, ruled on the visit goal line that opens the existing
+`card-set` / `focus` moment (no new gate), and each reserved-rulings rule names the line and a
+later lowering as the user's. The lever reaches feature `card` visits and architecture `ruling`
+visits only — a delta visit writes nothing to the store (`arch.feature-delta-visit`), and drift,
+query and grooming visits grade only the meaning kept. `feat.card-writer` and
+`arch.rows-from-visit-file` are keyed on all six classes with the quick-read clause;
+`feat.card-grade-quick-read` (joined IDs, sameness of meaning against the visit file and the
+card shape kept; the what-if hunt dropped) and `arch.store-grade-quick-read` (joined IDs,
+sameness of meaning, the `Draws:` check and the outside-claims re-check kept; the stance and
+clash hunts dropped) minted; `feat.card-blind-list` and `arch.focus-blind-list` skippable where
+the user ruled it — architecture's stakes-line skip never on a greenfield first visit, whose
+candidates the list supplies (`arch.first-visit-stage`); a reconciliation that narrows DF4 for
+that one visit kind toward rigor, disclosed and kept by the user's word. `feat.lowering-trail` / `arch.lowering-trail`
+(a `**Lowered**:` line in the visit file's header) and `feat.fail.skip-unstated` /
+`arch.fail.skip-unstated` (floor · fail) minted. Feature 61 → 64 rules, 16 → 17 floors,
+2 → 3 fails; architecture 66 → 69, 25 → 26, 2 → 3. Two allowlist rows (the twin fails at 1.00,
+the twin trails at 0.71). Prose: the router's architecture row names the skip; `feature.md` and
+`architecture.md` unchanged (every sentence stays true, the gate ruled) — strip `[v0.124.0]` in
+`mochiko.md`. Contract: `EXPECTED["feature"]` and `EXPECTED["architecture"]` gain their fails,
+the README's commands floor total 131 → 133. Gate audit: six units PASS, unit 1 in two rounds
+(two architecture texts named the seats as literals in place of `${producer_seat}` /
+`${grader_seat}`; a third found in the fix sweep), 0 blocking.
+
+Crate tests: the census pins in `fidelity.rs`, `validate.rs` and `matrix_similar.rs` re-measured
+per wave (sequences through 107; command 426 → 435, skill 857 → 859, total 1,294; command floors
+133, skill floors 271, the fail set 44; the command-family matrix `(435, 22_106, 0, 56)`; corpus
+scanned 1,294 · scored 228,700 · suppressed 183). After W3 the log, sequences 1..107
+(95 migrations), replays to 94 documents and **1,294 rules** (1,283 → 1,294), state
+`sha256:c24258e3…`. No floor or fail retired or lowered. Plans graded by fresh peers on every
+seat — W1 `PASS · PASS · PASS`, W2 one re-plan (`w2-p1-schema`, scope fidelity) then
+`PASS · PASS · PASS`, W3 one re-plan (`w3-p1-schema`, an on-trust read) then
+`PASS · PASS · PASS`; `stakes: n/a · thinned: none` on every wave (plugin primitives, fixed
+form). Release gates on the bumped tree: `migrate validate` 0 rejecting · 121
+advisory · 0 clusters · 183 suppressed; views ≡ replay; `cargo test --all` 765 passed · 0
+failed, the opt-in similarity sweep green; fmt 0 · clippy 0 · `cargo audit` 31 deps clean;
+gitleaks no leaks; **contract suite 99/99, 99 ran, none skipped** (335 measurements recorded;
+served from the `~/sbx/mochiko` copy, mount checked first). `ids --check` (advisory) 536 bare ·
+6 drift under CI's exclude list — the 0.123.0 tree re-run the same way gives 489 · 5, so its
+recorded "0 · 0" does not reproduce; this build adds 47 · 1 (BACKLOG). AM-5 still applies: no `mochiko-cli-v*` tag — the crate's source is unchanged at 0.4.0 (tests
+only); the plugin depends on the published 0.4.0.
+
 ## [0.123.0] — 2026-10-28
 
 **Adaptive rigor — the stakes lever in `patterns-sound-loop`, each step's lighter form in its

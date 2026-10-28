@@ -21,6 +21,36 @@ line), `DECISIONS.md` 2026-10-11 "Shared thinking engine ruled" row; the schema 
 `0062-spec-review-boundary.yaml`. Pre-edit verbatim text:
 `git show 5162f1a:plugins/mochiko/skills/review-specifications/SKILL.md`. -->
 
+<!-- Wave context: wave 2 of the planning-output stakes build (v0.124.0) — the quick-read form.
+Ruling: `.mochiko/brainstorms/stakes-non-product-surfaces/record.md` D1-planning-quick-read items 1
+and 10 (`DECISIONS.md` 2026-10-28 row); the schema half is `0106-specify-planning-stakes.yaml`.
+Pre-edit verbatim text: `git show e9a13e2:plugins/mochiko/skills/review-specifications/SKILL.md`. -->
+
+## [v0.124.0] The opening line's hunt and the Procedure's hunt — qualified by the quick-read form a `/mochiko:specify` run rules on its stakes line
+
+- **Disposition:** superseded → the opening paragraph's added sentence "Where a
+  `/mochiko:specify` run's user ruled the quick read on its stakes line, the seat takes the
+  quick-read form instead (`review-specifications.quick-read`): the open hunt drops, every other
+  check runs." and the Procedure's new opening paragraph "Where the caller's run ruled the quick
+  read on its stakes line, the quick-read form (`review-specifications.quick-read`) narrows the
+  hunt below: run only what that rule keeps, and report as it says."
+- **Tier failed:** n/a — supersession by ruling (`stakes-non-product-surfaces`
+  D1-planning-quick-read item 1 — `author-grader-consolidation` D8-input-job-conditions'
+  completed-hunt rule bent for the spec stress-test only, at low stakes only — and item 10, this
+  skill gains the quick-read form; `DECISIONS.md` 2026-10-28 row)
+- **Content:** verbatim, each read unconditionally before this wave — "The seat hunts what is
+  missing, ambiguous, assumed, or contradictory in a spec that already exists" and "Hunt the
+  user-facing categories for the six requirement-defect classes".
+- **Kept deliberately:** both sentences byte for byte — the full form stands at money, data or
+  security, wherever the quick read was not ruled, and wherever the `stakes` condition is absent;
+  the quick read itself keeps three of the six classes hunted. The `description:` (535) — the
+  quick read is reached through `spec.stress-test-quick-read`, which names this skill, and a
+  'quick read' trigger here would duplicate `patterns-sound-loop`'s. The Rules block, its seven
+  `!` lines and the read-back sentence.
+- **Consumers assessed:** `devils-advocate` (mounts this skill; names no depth — unaffected); the
+  router's `review-specifications` row (names the grades, no fixed depth — unchanged); specify's
+  Goal step (qualified the same wave, `strips/specify.md` [v0.124.0]).
+
 ## [v0.120.0] The enrichment boundary — `description:` and the opening line re-keyed to `/mochiko:specify`'s intent and story stages
 
 - **Disposition:** superseded → the description's last sentence "For thinking a sparse idea

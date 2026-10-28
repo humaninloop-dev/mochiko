@@ -24,15 +24,29 @@ uncompressed. Prior groom narrative: git history (this line, before this groom).
 ## Implement adaptive-rigor build
 
 *(ruled + accepted 2026-10-27, `implement-lead-adaptive-rigor` D1–D9 as review-amended; the build
-item **built 2026-10-28 at v0.123.0** on branch `adaptive-rigor-build` (trail); provenance: the
-record, its cold-review and verify reports, and
-`.mochiko/brainstorms/implement-lead-adaptive-rigor/build-log.md`.)*
+item **built 2026-10-28 at v0.123.0** on branch `adaptive-rigor-build` (trail); the planning-output
+stakes build (`stakes-non-product-surfaces` D1–D3) **built 2026-10-28 at v0.124.0** on the same
+branch (trail); provenance: the records, their review reports, and the two build logs.)*
 
-- [ ] **Stakes key for non-product surfaces — later session** (2026-10-27; provenance:
-  `implement-lead-adaptive-rigor` OQ2, cold review S1, frame change 3) — what "stakes" means for
-  a plugin-primitive edit, a governance surface or a brainstorm record, and whether the gate
-  jobs (`author-grader-consolidation` D2, D3, D7; GI-004) may ever thin under it; until ruled,
-  non-product surfaces have no band and those reviews run in their fixed forms.
+- [ ] **Planning-output stakes — small rule follow-ups** (2026-10-28; provenance:
+  `stakes-non-product-surfaces/reports/audit-w2.md` and `audit-w3.md` advisories) — three
+  non-blocking residues of `0106`/`0107`: `spec.handed-in-slate` still reads "never the blind
+  journey list" unqualified (reconciled only from `spec.blind-journey-list`'s side); a spec missing
+  its `> Lowered: none` line has no fail behind it (nor a visit file its `**Lowered**: none`);
+  and, pre-existing, the filled spec template trips its own 10-line `## Intent` budget (11 lines,
+  the `---` separator). Each is one reword or template fix by ruling at the next specify touch.
+- [ ] **Plan-eval rubrics lack the adaptive-rigor ids** (2026-10-28; provenance: the W2 P3 plan
+  grade's advisory in `stakes-non-product-surfaces/build-log.md`) — the `evals/plan/<command>/observable.yaml`
+  D8 partition ("every schema rule ID appears in exactly one list", `evals/plan/run.py
+  check-rubric`) omits `0104`'s `impl.lowering-trail` / `impl.smoke-probe`, `0106`'s three new
+  specify ids and `0107`'s new feature / architecture ids. In no CI or release gate; fold them into
+  the rubrics before the plan evals next run.
+- [ ] **`ids --check` baseline is not zero** (2026-10-28; provenance: the 0.124.0 ship entry in
+  `stakes-non-product-surfaces/build-log.md`) — under CI's exclude list the tree reports 536 bare
+  · 6 drift; the 0.123.0 tree, re-run the same way, 489 · 5, so 0.123.0's recorded "0 bare ·
+  0 drift" does not reproduce. This build added 47 bare (its record, reports, two strips, a budget
+  row) and one drift (a cross-record `D2` cite in its record). Advisory only; a back-fill pass or an
+  exclude ruling for session records, by ruling.
 - [ ] **Split implement's tools section before it grows** (2026-10-28; provenance:
   `implement-lead-adaptive-rigor` build log, the inline-ceiling entry, and `wave3-implement-ship.md`)
   — `impl.sec.tools` renders at 29,609 chars, 391 under the Bash tool's ≈30,000-char inline
@@ -45,7 +59,9 @@ record, its cold-review and verify reports, and
   `scripts/similar-rules-allowlist.yaml` lines 140, 142, 186 and 188 name edges that fell under
   0.60 after `0104`'s rewords of `impl.plan-approval-producers` and `impl.staffing-latitude`;
   harmless, suppressing nothing (182 suppressed, 186 before). Drop them at the allowlist's next
-  touch and re-pin `matrix_similar.rs`'s suppressed figures.
+  touch and re-pin `matrix_similar.rs`'s suppressed figures. A fifth joined at v0.124.0: the
+  `[feat.user-reserved, setup.user-card-rulings]` row (line 242) fell under 0.60 after `0107`'s
+  reword (`stakes-non-product-surfaces/reports/audit-w3.md`).
 
 ## Architecture-desk brainstorm build
 

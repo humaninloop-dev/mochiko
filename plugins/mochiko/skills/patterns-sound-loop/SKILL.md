@@ -1,6 +1,6 @@
 ---
 name: patterns-sound-loop
-description: This skill MUST be invoked before a judgment-authored write to a governing surface — capability map, product baselines, the architecture store, specs, governance, plugin primitives, product code — running the floor: a seat produces on a lead-approved plan (never the lead), a non-author seat reviews, the user rules. No size gate; desk delta cards take the review leg. Stakes, a product run's harm class, key how deep the legs run, never whether they fire — the band, what never thins, the review-form invariants and the trail live here. SHOULD also invoke on 'sound loop', 'ritual floor', 'seat wiring', 'stakes', 'stakes band', 'thin a step', 'run-open line', or 'smoke probe'. Single source of the floor; fourth sibling of the minimalism trio.
+description: This skill MUST be invoked before a judgment-authored write to a governing surface — capability map, product baselines, the architecture store, specs, governance, plugin primitives, product code — running the floor: a seat produces on a lead-approved plan (never the lead), a non-author seat reviews, the user rules. No size gate; desk delta cards take the review leg. Stakes, the harm class of a product run or of the product work a spec, map or store change steers, key how deep the legs run, never whether they fire — the band, what never thins, the review-form invariants and the trail live here. SHOULD also invoke on 'sound loop', 'ritual floor', 'seat wiring', 'stakes', 'stakes band', 'thin a step', 'quick read', 'run-open line', or 'smoke probe'. Single source of the floor; fourth sibling of the minimalism trio.
 allowed-tools: Bash(mochiko-cli *)
 ---
 
@@ -21,9 +21,10 @@ minimalism siblings — `mochiko:patterns-plan-minimalism`, `mochiko:patterns-co
 `mochiko:patterns-map-minimalism` — size the artifact; this floor governs who produces, who
 reviews, and how deep. The how-deep half lives here: the `stakes` key — a harm kind, never a
 size — the band it sets, the steps that never thin, the five review-form invariants, and the
-trail of every lowering. The key and the band bind the reviews of a run's product work only;
-on a plugin primitive, a governance surface or a brainstorm record no harm class applies,
-there is no band, and the review runs in its fixed form.
+trail of every lowering. The key and the band bind the reviews of a run's product work and
+of the three planning outputs that steer it (`patterns-sound-loop.kind-keyed-library-wide`); on a
+plugin primitive, a governance surface or a brainstorm record no harm class applies, there is no
+band, and the review runs in its fixed form.
 
 ## Rules — delivered by mochiko-cli
 
